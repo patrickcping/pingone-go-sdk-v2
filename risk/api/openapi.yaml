@@ -2190,7 +2190,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - properties:
-          whiteList:
+          domainWhiteList:
             description: A list of strings that specify legitimate domains that users
               will access for restricted resources.
             items:

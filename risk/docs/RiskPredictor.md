@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
+**DomainWhiteList** | Pointer to **[]string** | A list of strings that specify legitimate domains that users will access for restricted resources. | [optional] 
 **WhiteList** | Pointer to **[]string** | A list of IP addresses (CDIRs) that are ignored for the predictor results. | [optional] 
 **Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
 **Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
@@ -337,6 +338,31 @@ SetCondition sets Condition field to given value.
 `func (o *RiskPredictor) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
+
+### GetDomainWhiteList
+
+`func (o *RiskPredictor) GetDomainWhiteList() []string`
+
+GetDomainWhiteList returns the DomainWhiteList field if non-nil, zero value otherwise.
+
+### GetDomainWhiteListOk
+
+`func (o *RiskPredictor) GetDomainWhiteListOk() (*[]string, bool)`
+
+GetDomainWhiteListOk returns a tuple with the DomainWhiteList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainWhiteList
+
+`func (o *RiskPredictor) SetDomainWhiteList(v []string)`
+
+SetDomainWhiteList sets DomainWhiteList field to given value.
+
+### HasDomainWhiteList
+
+`func (o *RiskPredictor) HasDomainWhiteList() bool`
+
+HasDomainWhiteList returns a boolean if a field has been set.
 
 ### GetWhiteList
 
