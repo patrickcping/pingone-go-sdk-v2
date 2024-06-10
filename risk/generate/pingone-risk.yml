@@ -872,7 +872,7 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
           properties:
-            whiteList:
+            domainWhiteList:
               type: array
               description: A list of strings that specify legitimate domains that users will access for restricted resources.
               items:

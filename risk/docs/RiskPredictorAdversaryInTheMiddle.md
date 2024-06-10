@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
-**WhiteList** | Pointer to **[]string** | A list of strings that specify legitimate domains that users will access for restricted resources. | [optional] 
+**DomainWhiteList** | Pointer to **[]string** | A list of strings that specify legitimate domains that users will access for restricted resources. | [optional] 
 
 ## Methods
 
@@ -322,30 +322,30 @@ SetCondition sets Condition field to given value.
 
 HasCondition returns a boolean if a field has been set.
 
-### GetWhiteList
+### GetDomainWhiteList
 
-`func (o *RiskPredictorAdversaryInTheMiddle) GetWhiteList() []string`
+`func (o *RiskPredictorAdversaryInTheMiddle) GetDomainWhiteList() []string`
 
-GetWhiteList returns the WhiteList field if non-nil, zero value otherwise.
+GetDomainWhiteList returns the DomainWhiteList field if non-nil, zero value otherwise.
 
-### GetWhiteListOk
+### GetDomainWhiteListOk
 
-`func (o *RiskPredictorAdversaryInTheMiddle) GetWhiteListOk() (*[]string, bool)`
+`func (o *RiskPredictorAdversaryInTheMiddle) GetDomainWhiteListOk() (*[]string, bool)`
 
-GetWhiteListOk returns a tuple with the WhiteList field if it's non-nil, zero value otherwise
+GetDomainWhiteListOk returns a tuple with the DomainWhiteList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWhiteList
+### SetDomainWhiteList
 
-`func (o *RiskPredictorAdversaryInTheMiddle) SetWhiteList(v []string)`
+`func (o *RiskPredictorAdversaryInTheMiddle) SetDomainWhiteList(v []string)`
 
-SetWhiteList sets WhiteList field to given value.
+SetDomainWhiteList sets DomainWhiteList field to given value.
 
-### HasWhiteList
+### HasDomainWhiteList
 
-`func (o *RiskPredictorAdversaryInTheMiddle) HasWhiteList() bool`
+`func (o *RiskPredictorAdversaryInTheMiddle) HasDomainWhiteList() bool`
 
-HasWhiteList returns a boolean if a field has been set.
+HasDomainWhiteList returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

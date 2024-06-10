@@ -41,7 +41,7 @@ type RiskPredictorAdversaryInTheMiddle struct {
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	// A list of strings that specify legitimate domains that users will access for restricted resources.
-	WhiteList []string `json:"whiteList,omitempty"`
+	DomainWhiteList []string `json:"domainWhiteList,omitempty"`
 }
 
 // NewRiskPredictorAdversaryInTheMiddle instantiates a new RiskPredictorAdversaryInTheMiddle object
@@ -424,36 +424,36 @@ func (o *RiskPredictorAdversaryInTheMiddle) SetCondition(v RiskPredictorCommonCo
 	o.Condition = &v
 }
 
-// GetWhiteList returns the WhiteList field value if set, zero value otherwise.
-func (o *RiskPredictorAdversaryInTheMiddle) GetWhiteList() []string {
-	if o == nil || IsNil(o.WhiteList) {
+// GetDomainWhiteList returns the DomainWhiteList field value if set, zero value otherwise.
+func (o *RiskPredictorAdversaryInTheMiddle) GetDomainWhiteList() []string {
+	if o == nil || IsNil(o.DomainWhiteList) {
 		var ret []string
 		return ret
 	}
-	return o.WhiteList
+	return o.DomainWhiteList
 }
 
-// GetWhiteListOk returns a tuple with the WhiteList field value if set, nil otherwise
+// GetDomainWhiteListOk returns a tuple with the DomainWhiteList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAdversaryInTheMiddle) GetWhiteListOk() ([]string, bool) {
-	if o == nil || IsNil(o.WhiteList) {
+func (o *RiskPredictorAdversaryInTheMiddle) GetDomainWhiteListOk() ([]string, bool) {
+	if o == nil || IsNil(o.DomainWhiteList) {
 		return nil, false
 	}
-	return o.WhiteList, true
+	return o.DomainWhiteList, true
 }
 
-// HasWhiteList returns a boolean if a field has been set.
-func (o *RiskPredictorAdversaryInTheMiddle) HasWhiteList() bool {
-	if o != nil && !IsNil(o.WhiteList) {
+// HasDomainWhiteList returns a boolean if a field has been set.
+func (o *RiskPredictorAdversaryInTheMiddle) HasDomainWhiteList() bool {
+	if o != nil && !IsNil(o.DomainWhiteList) {
 		return true
 	}
 
 	return false
 }
 
-// SetWhiteList gets a reference to the given []string and assigns it to the WhiteList field.
-func (o *RiskPredictorAdversaryInTheMiddle) SetWhiteList(v []string) {
-	o.WhiteList = v
+// SetDomainWhiteList gets a reference to the given []string and assigns it to the DomainWhiteList field.
+func (o *RiskPredictorAdversaryInTheMiddle) SetDomainWhiteList(v []string) {
+	o.DomainWhiteList = v
 }
 
 func (o RiskPredictorAdversaryInTheMiddle) MarshalJSON() ([]byte, error) {
@@ -496,8 +496,8 @@ func (o RiskPredictorAdversaryInTheMiddle) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
-	if !IsNil(o.WhiteList) {
-		toSerialize["whiteList"] = o.WhiteList
+	if !IsNil(o.DomainWhiteList) {
+		toSerialize["domainWhiteList"] = o.DomainWhiteList
 	}
 	return toSerialize, nil
 }
