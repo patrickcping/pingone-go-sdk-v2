@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationSAMLAllOfSpEncryptionCertificate{}
 
 // ApplicationSAMLAllOfSpEncryptionCertificate struct for ApplicationSAMLAllOfSpEncryptionCertificate
 type ApplicationSAMLAllOfSpEncryptionCertificate struct {
-	// The unique identifier for the encryption public certificate that has been uploaded to PingOne.
+	// Specify the unique identifier of the encryption public certificate that has been uploaded to PingOne.
 	Id string `json:"id"`
 }
 

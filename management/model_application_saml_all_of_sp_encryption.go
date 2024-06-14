@@ -17,7 +17,7 @@ import (
 // checks if the ApplicationSAMLAllOfSpEncryption type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApplicationSAMLAllOfSpEncryption{}
 
-// ApplicationSAMLAllOfSpEncryption Enables PingOne to encrypt SAML assertion to be sent to the application. Assertions are not encrypted by default.
+// ApplicationSAMLAllOfSpEncryption Enables PingOne to encrypt SAML assertions to be sent to the application. Assertions are not encrypted by default.
 type ApplicationSAMLAllOfSpEncryption struct {
 	Algorithm EnumCertificateKeyEncryptionAlgorithm `json:"algorithm"`
 	Certificate ApplicationSAMLAllOfSpEncryptionCertificate `json:"certificate"`

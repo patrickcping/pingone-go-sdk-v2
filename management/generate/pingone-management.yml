@@ -1009,7 +1009,7 @@ components:
               description: Defines how long PingOne can exchange logout messages with the application, specifically a `LogoutRequest` from the application, since the initial request. PingOne can also send a `LogoutRequest` to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens.
             spEncryption:
               type: object
-              description: Enables PingOne to encrypt SAML assertion to be sent to the application. Assertions are not encrypted by default.
+              description: Enables PingOne to encrypt SAML assertions to be sent to the application. Assertions are not encrypted by default.
               properties:
                 algorithm:
                   $ref: '#/components/schemas/EnumCertificateKeyEncryptionAlgorithm'
@@ -1018,7 +1018,7 @@ components:
                   properties:
                     id:
                       type: string
-                      description: The unique identifier for the encryption public certificate that has been uploaded to PingOne.
+                      description: Specify the unique identifier of the encryption public certificate that has been uploaded to PingOne.
                   required:
                     - id
               required:

@@ -35944,7 +35944,7 @@ components:
     ApplicationSAML_allOf_spEncryption_certificate:
       properties:
         id:
-          description: The unique identifier for the encryption public certificate
+          description: Specify the unique identifier of the encryption public certificate
             that has been uploaded to PingOne.
           type: string
       required:
@@ -35952,7 +35952,7 @@ components:
       type: object
       example: null
     ApplicationSAML_allOf_spEncryption:
-      description: Enables PingOne to encrypt SAML assertion to be sent to the application.
+      description: Enables PingOne to encrypt SAML assertions to be sent to the application.
         Assertions are not encrypted by default.
       properties:
         algorithm:
