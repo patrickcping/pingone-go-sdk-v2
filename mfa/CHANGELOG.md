@@ -1,4 +1,4 @@
-# v0.19.0 (Unreleased)
+# v0.19.0 (2024-06-07)
 
 * **Breaking change** Remove optional `DeviceAuthenticationPolicyMobileOtpWindow` from `DeviceAuthenticationPolicyMobileOtp` constructor. [#343](https://github.com/patrickcping/pingone-go-sdk-v2/pull/343)
 * **Enhancement** Added `PromptForNicknameOnPairing` boolean field to the `DeviceAuthenticationPolicyFido2`, `DeviceAuthenticationPolicyMobile`, `DeviceAuthenticationPolicyOfflineDevice` and `DeviceAuthenticationPolicyTotp` models. [#349](https://github.com/patrickcping/pingone-go-sdk-v2/pull/349)
