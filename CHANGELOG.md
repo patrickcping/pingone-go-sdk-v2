@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.40.0 => v0.41.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.15.0 => v0.15.1
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.41.0](./management/CHANGELOG.md)
     * **Enhancement** Added `SpEncryption` to the `ApplicationSAML` and associated models to control encryption of SAML application assertions. [#348](https://github.com/patrickcping/pingone-go-sdk-v2/pull/348)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.15.1](./risk/CHANGELOG.md)
