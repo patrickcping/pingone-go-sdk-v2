@@ -17,7 +17,7 @@ import (
 // checks if the ApplicationSAMLAllOfSpEncryptionCertificate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApplicationSAMLAllOfSpEncryptionCertificate{}
 
-// ApplicationSAMLAllOfSpEncryptionCertificate struct for ApplicationSAMLAllOfSpEncryptionCertificate
+// ApplicationSAMLAllOfSpEncryptionCertificate Contains the ID of the encryption public certificate that has been uploaded to PingOne.
 type ApplicationSAMLAllOfSpEncryptionCertificate struct {
 	// Specify the unique identifier of the encryption public certificate that has been uploaded to PingOne.
 	Id string `json:"id"`

@@ -1015,6 +1015,7 @@ components:
                   $ref: '#/components/schemas/EnumCertificateKeyEncryptionAlgorithm'
                 certificate:
                   type: object
+                  description: Contains the ID of the encryption public certificate that has been uploaded to PingOne.
                   properties:
                     id:
                       type: string

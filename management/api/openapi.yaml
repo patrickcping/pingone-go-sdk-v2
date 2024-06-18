@@ -35942,6 +35942,8 @@ components:
       type: object
       example: null
     ApplicationSAML_allOf_spEncryption_certificate:
+      description: Contains the ID of the encryption public certificate that has been
+        uploaded to PingOne.
       properties:
         id:
           description: Specify the unique identifier of the encryption public certificate
