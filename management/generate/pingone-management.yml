@@ -157,6 +157,10 @@ components:
       type: string
       enum: [RSA, EC, UNKNOWN]
       description: Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`.
+    EnumCertificateKeyEncryptionAlgorithm:
+      type: string
+      enum: [AES_128, AES_256, TRIPLEDES]
+      description: The algorithm to use when encrypting assertions.
     EnumCertificateKeySignagureAlgorithm:
       type: string
       description: Specifies the signature algorithm of the key. For RSA keys, options are `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical curve (EC) keys, options are `SHA256withECDSA`, `SHA384withECDSA`, and `SHA512withECDSA`
@@ -1003,6 +1007,24 @@ components:
             sloWindow:
               type: integer
               description: Defines how long PingOne can exchange logout messages with the application, specifically a `LogoutRequest` from the application, since the initial request. PingOne can also send a `LogoutRequest` to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens.
+            spEncryption:
+              type: object
+              description: Enables PingOne to encrypt SAML assertions to be sent to the application. Assertions are not encrypted by default.
+              properties:
+                algorithm:
+                  $ref: '#/components/schemas/EnumCertificateKeyEncryptionAlgorithm'
+                certificate:
+                  type: object
+                  description: Contains the ID of the encryption public certificate that has been uploaded to PingOne.
+                  properties:
+                    id:
+                      type: string
+                      description: Specify the unique identifier of the encryption public certificate that has been uploaded to PingOne.
+                  required:
+                    - id
+              required:
+                - algorithm
+                - certificate
             spEntityId:
               type: string
               description: A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.

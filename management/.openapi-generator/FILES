@@ -128,6 +128,8 @@ docs/ApplicationRoleAssignmentsApi.md
 docs/ApplicationSAML.md
 docs/ApplicationSAMLAllOfIdpSigning.md
 docs/ApplicationSAMLAllOfIdpSigningKey.md
+docs/ApplicationSAMLAllOfSpEncryption.md
+docs/ApplicationSAMLAllOfSpEncryptionCertificate.md
 docs/ApplicationSAMLAllOfSpVerification.md
 docs/ApplicationSAMLAllOfSpVerificationCertificates.md
 docs/ApplicationSecret.md
@@ -213,6 +215,7 @@ docs/EnumBrandingThemeTemplate.md
 docs/EnumCSRExportHeader.md
 docs/EnumCSRResponseImportHeader.md
 docs/EnumCertificateKeyAlgorithm.md
+docs/EnumCertificateKeyEncryptionAlgorithm.md
 docs/EnumCertificateKeySignagureAlgorithm.md
 docs/EnumCertificateKeyStatus.md
 docs/EnumCertificateKeyUsageType.md
@@ -699,6 +702,8 @@ model_application_resource_grant_scopes_inner.go
 model_application_saml.go
 model_application_saml_all_of_idp_signing.go
 model_application_saml_all_of_idp_signing_key.go
+model_application_saml_all_of_sp_encryption.go
+model_application_saml_all_of_sp_encryption_certificate.go
 model_application_saml_all_of_sp_verification.go
 model_application_saml_all_of_sp_verification_certificates.go
 model_application_secret.go
@@ -765,6 +770,7 @@ model_enum_branding_logo_type.go
 model_enum_branding_theme_background_type.go
 model_enum_branding_theme_template.go
 model_enum_certificate_key_algorithm.go
+model_enum_certificate_key_encryption_algorithm.go
 model_enum_certificate_key_signagure_algorithm.go
 model_enum_certificate_key_status.go
 model_enum_certificate_key_usage_type.go

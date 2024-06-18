@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
 **SloWindow** | Pointer to **int32** | Defines how long PingOne can exchange logout messages with the application, specifically a &#x60;LogoutRequest&#x60; from the application, since the initial request. PingOne can also send a &#x60;LogoutRequest&#x60; to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens. | [optional] 
+**SpEncryption** | Pointer to [**ApplicationSAMLAllOfSpEncryption**](ApplicationSAMLAllOfSpEncryption.md) |  | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 
@@ -723,6 +724,31 @@ SetSloWindow sets SloWindow field to given value.
 `func (o *ApplicationSAML) HasSloWindow() bool`
 
 HasSloWindow returns a boolean if a field has been set.
+
+### GetSpEncryption
+
+`func (o *ApplicationSAML) GetSpEncryption() ApplicationSAMLAllOfSpEncryption`
+
+GetSpEncryption returns the SpEncryption field if non-nil, zero value otherwise.
+
+### GetSpEncryptionOk
+
+`func (o *ApplicationSAML) GetSpEncryptionOk() (*ApplicationSAMLAllOfSpEncryption, bool)`
+
+GetSpEncryptionOk returns a tuple with the SpEncryption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpEncryption
+
+`func (o *ApplicationSAML) SetSpEncryption(v ApplicationSAMLAllOfSpEncryption)`
+
+SetSpEncryption sets SpEncryption field to given value.
+
+### HasSpEncryption
+
+`func (o *ApplicationSAML) HasSpEncryption() bool`
+
+HasSpEncryption returns a boolean if a field has been set.
 
 ### GetSpEntityId
 
