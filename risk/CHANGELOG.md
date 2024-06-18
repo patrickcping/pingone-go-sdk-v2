@@ -1,4 +1,4 @@
-# v0.15.1 (Unreleased)
+# v0.15.1 (2024-06-18)
 
 * **Bug** Corrected `DomainWhiteList` field in the `RiskPredictorAdversaryInTheMiddle` model. [#361](https://github.com/patrickcping/pingone-go-sdk-v2/pull/361)
 
