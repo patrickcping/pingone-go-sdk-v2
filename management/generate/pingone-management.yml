@@ -64,8 +64,8 @@ components:
       enum: [text/html,text/plain]
     EnumAlertChannelAlertType:
       type: string
-      enum: [CERTIFICATE_EXPIRED, CERTIFICATE_EXPIRING, KEY_PAIR_EXPIRED, GATEWAY_VERSION_DEPRECATED, KEY_PAIR_EXPIRING, GATEWAY_VERSION_DEPRECATING]
-      description: Alert channel alerting types. Possible values are `CERTIFICATE_EXPIRED`, `CERTIFICATE_EXPIRING`, `KEY_PAIR_EXPIRED`, `GATEWAY_VERSION_DEPRECATED`, `KEY_PAIR_EXPIRING`, `GATEWAY_VERSION_DEPRECATING`.
+      enum: [LICENSE_USER_HARD_LIMIT_EXCEEDED, LICENSE_EXPIRING, LICENSE_90_PERCENT_USER_SOFT_LIMIT, GATEWAY_VERSION_DEPRECATING, LICENSE_ROTATED, CERTIFICATE_EXPIRED, LICENSE_USER_SOFT_LIMIT_EXCEEDED, GATEWAY_VERSION_DEPRECATED, LICENSE_EXPIRED, RISK_CONFIGURATION, KEY_PAIR_EXPIRED, CERTIFICATE_EXPIRING, KEY_PAIR_EXPIRING]
+      description: Alert channel alerting types.
     EnumAlertChannelSeverity:
       type: string
       enum: [INFO, WARNING, ERROR]
@@ -812,6 +812,9 @@ components:
           readOnly: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        alertName:
+          type: string
+          description: The name to assign to the alert channel.
         channelType:
           $ref: '#/components/schemas/EnumAlertChannelType'
         addresses:
