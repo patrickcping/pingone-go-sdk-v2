@@ -1,3 +1,7 @@
+# v0.42.0 (Unreleased)
+
+* **Enhancement** Added trials ENUM values to the `EnumSolutionType` model.
+
 # v0.41.0 (2024-06-18)
 
 * **Enhancement** Added `SpEncryption` to the `ApplicationSAML` and associated models to control encryption of SAML application assertions. [#348](https://github.com/patrickcping/pingone-go-sdk-v2/pull/348)

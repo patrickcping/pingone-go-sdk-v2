@@ -588,8 +588,13 @@ components:
       description: A string identifying the type of gateway. Currently, only `LDAP` is supported.
     EnumSolutionType:
       type: string
-      enum: [WORKFORCE, CUSTOMER]
-      description: The solution set of the environment
+      enum: [WORKFORCE, CUSTOMER, CIAM_TRIAL, WF_TRIAL]
+      description: |
+        The solution type selected when creating the environment. Ignored on PUT operations. The following values are supported:
+        `CIAM_TRIAL`. The Customer trial experience. Indicates the Customer solution type, and the Solution Designer was selected.
+        `WF_TRIAL`. The Workforce trial experience. Indicates the Workforce solution type, and the Solution Designer was selected.
+        `CUSTOMER`. Indicates the Customer solution type was selected. This solution type uses PingOne MFA, rather than PingID.
+        `WORKFORCE`. Indicates the Workforce solution type was selected. This solution type uses PingID, rather than PingOne MFA.
     EnumSubscriptionFilterIncludedTags:
       type: string
       enum: [adminIdentityEvent]
