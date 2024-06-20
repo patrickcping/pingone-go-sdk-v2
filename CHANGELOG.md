@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.42.0](./management/CHANGELOG.md)
+    * **Enhancement** Added trials ENUM values to the `EnumSolutionType` model. [#364](https://github.com/patrickcping/pingone-go-sdk-v2/pull/364)
+
 # Release (2024-06-18)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.1
