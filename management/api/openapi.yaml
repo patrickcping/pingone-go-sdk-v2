@@ -27277,10 +27277,17 @@ components:
       - LDAP
       type: string
     EnumSolutionType:
-      description: The solution set of the environment
+      description: |
+        The solution type selected when creating the environment. Ignored on PUT operations. The following values are supported:
+        `CIAM_TRIAL`. The Customer trial experience. Indicates the Customer solution type, and the Solution Designer was selected.
+        `WF_TRIAL`. The Workforce trial experience. Indicates the Workforce solution type, and the Solution Designer was selected.
+        `CUSTOMER`. Indicates the Customer solution type was selected. This solution type uses PingOne MFA, rather than PingID.
+        `WORKFORCE`. Indicates the Workforce solution type was selected. This solution type uses PingID, rather than PingOne MFA.
       enum:
       - WORKFORCE
       - CUSTOMER
+      - CIAM_TRIAL
+      - WF_TRIAL
       type: string
     EnumSubscriptionFilterIncludedTags:
       description: "A tags that events must have to be monitored by a subscription.\
