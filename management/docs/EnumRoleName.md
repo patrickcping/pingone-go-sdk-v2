@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `APPLICATION_OWNER` (value: `"Application Owner"`)
+
 * `CLIENT_APPLICATION_DEVELOPER` (value: `"Client Application Developer"`)
 
 * `CONFIGURATION_READ_ONLY` (value: `"Configuration Read Only"`)

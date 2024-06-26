@@ -20,6 +20,7 @@ type EnumRoleName string
 
 // List of EnumRoleName
 const (
+	ENUMROLENAME_APPLICATION_OWNER EnumRoleName = "Application Owner"
 	ENUMROLENAME_CLIENT_APPLICATION_DEVELOPER EnumRoleName = "Client Application Developer"
 	ENUMROLENAME_CONFIGURATION_READ_ONLY EnumRoleName = "Configuration Read Only"
 	ENUMROLENAME_DA_VINCI_ADMIN_READ_ONLY EnumRoleName = "DaVinci Admin Read Only"
@@ -37,6 +38,7 @@ const (
 
 // All allowed values of EnumRoleName enum
 var AllowedEnumRoleNameEnumValues = []EnumRoleName{
+	"Application Owner",
 	"Client Application Developer",
 	"Configuration Read Only",
 	"DaVinci Admin Read Only",

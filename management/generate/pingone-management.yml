@@ -538,6 +538,7 @@ components:
       type: string
       description: The name of the role
       enum: [
+        "Application Owner",
         "Client Application Developer",
         "Configuration Read Only",
         "DaVinci Admin Read Only",
@@ -554,7 +555,7 @@ components:
       ]
     EnumRoleAssignmentScopeType:
       type: string
-      enum: [ORGANIZATION, ENVIRONMENT, POPULATION]
+      enum: [ORGANIZATION, ENVIRONMENT, POPULATION, APPLICATION]
       description: A string that specifies the type of resource defining the scope of the Role assignment.
     EnumSchemaAttributeSchemaType:
       type: string

@@ -27251,6 +27251,7 @@ components:
     EnumRoleName:
       description: The name of the role
       enum:
+      - Application Owner
       - Client Application Developer
       - Configuration Read Only
       - DaVinci Admin Read Only
@@ -27272,6 +27273,7 @@ components:
       - ORGANIZATION
       - ENVIRONMENT
       - POPULATION
+      - APPLICATION
       type: string
     EnumSchemaAttributeSchemaType:
       description: "A string that specifies the schema type of the attribute. It may\
