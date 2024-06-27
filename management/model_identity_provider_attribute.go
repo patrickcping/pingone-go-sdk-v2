@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityProviderAttribute{}
 
 // IdentityProviderAttribute struct for IdentityProviderAttribute
 type IdentityProviderAttribute struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	MappingType *EnumIdentityProviderAttributeMappingType `json:"mappingType,omitempty"`
 	// The user attribute, which is unique per provider. The attribute must not be defined as read only from the user schema or of type COMPLEX based on the user schema. Valid examples username, and name.first. The following attributes may not be used account, id, created, updated, lifecycle, mfaEnabled, and enabled.
 	Name string `json:"name"`
@@ -57,9 +57,9 @@ func NewIdentityProviderAttributeWithDefaults() *IdentityProviderAttribute {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *IdentityProviderAttribute) GetLinks() LinksHATEOAS {
+func (o *IdentityProviderAttribute) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -67,7 +67,7 @@ func (o *IdentityProviderAttribute) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderAttribute) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *IdentityProviderAttribute) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -83,8 +83,8 @@ func (o *IdentityProviderAttribute) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *IdentityProviderAttribute) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *IdentityProviderAttribute) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

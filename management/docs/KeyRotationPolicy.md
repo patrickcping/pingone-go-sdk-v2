@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Algorithm** | [**EnumKeyRotationPolicyAlgorithm**](EnumKeyRotationPolicyAlgorithm.md) |  | 
 **CurrentKeyId** | Pointer to **string** | The &#x60;kid&#x60; (key identifier) of the &#x60;KrpKey&#x60; designated as &#x60;CURRENT&#x60;. | [optional] [readonly] 
 **Dn** | **string** | The DN this KRP will apply to generated &#x60;KrpKeys&#x60;. Is applied as both &#x60;issuerDN&#x60; and &#x60;subjectDN&#x60; because generated &#x60;KrpKeys&#x60; are self-signed. | 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *KeyRotationPolicy) GetLinks() LinksHATEOAS`
+`func (o *KeyRotationPolicy) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *KeyRotationPolicy) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *KeyRotationPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *KeyRotationPolicy) SetLinks(v LinksHATEOAS)`
+`func (o *KeyRotationPolicy) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

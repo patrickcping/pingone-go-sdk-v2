@@ -20,7 +20,7 @@ var _ MappedNullable = &Language{}
 
 // Language struct for Language
 type Language struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Specifies whether this language is the default for the environment. This property value must be set to false when creating a language resource. It can be set to true only after the language is enabled and after the localization of an agreement resource is complete when agreements are used for the environment.
 	Default bool `json:"default"`
 	// Specifies whether this language is enabled for the environment. This property value must be set to false when creating a language.
@@ -61,9 +61,9 @@ func NewLanguageWithDefaults() *Language {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Language) GetLinks() LinksHATEOAS {
+func (o *Language) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -71,7 +71,7 @@ func (o *Language) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Language) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Language) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -87,8 +87,8 @@ func (o *Language) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Language) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Language) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

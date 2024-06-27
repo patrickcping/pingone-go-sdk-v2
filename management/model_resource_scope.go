@@ -20,7 +20,7 @@ var _ MappedNullable = &ResourceScope{}
 
 // ResourceScope struct for ResourceScope
 type ResourceScope struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	Resource *ObjectResource `json:"resource,omitempty"`
@@ -58,9 +58,9 @@ func NewResourceScopeWithDefaults() *ResourceScope {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ResourceScope) GetLinks() LinksHATEOAS {
+func (o *ResourceScope) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -68,7 +68,7 @@ func (o *ResourceScope) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceScope) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ResourceScope) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -84,8 +84,8 @@ func (o *ResourceScope) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ResourceScope) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ResourceScope) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

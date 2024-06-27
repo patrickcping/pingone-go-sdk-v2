@@ -19,7 +19,7 @@ var _ MappedNullable = &SchemaAttribute{}
 
 // SchemaAttribute struct for SchemaAttribute
 type SchemaAttribute struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies an optional property that specifies the description of the attribute. If provided, it must not be an empty string. Valid characters consists of any Unicode letter, mark (for example, accent or umlaut), numeric character, punctuation character, or space.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies an optional property that specifies the display name of the attribute such as 'T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
@@ -71,9 +71,9 @@ func NewSchemaAttributeWithDefaults() *SchemaAttribute {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *SchemaAttribute) GetLinks() LinksHATEOAS {
+func (o *SchemaAttribute) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -81,7 +81,7 @@ func (o *SchemaAttribute) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SchemaAttribute) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *SchemaAttribute) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *SchemaAttribute) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *SchemaAttribute) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *SchemaAttribute) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

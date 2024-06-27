@@ -20,7 +20,7 @@ var _ MappedNullable = &KeyRotationPolicy{}
 
 // KeyRotationPolicy struct for KeyRotationPolicy
 type KeyRotationPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Algorithm EnumKeyRotationPolicyAlgorithm `json:"algorithm"`
 	// The `kid` (key identifier) of the `KrpKey` designated as `CURRENT`.
 	CurrentKeyId *string `json:"currentKeyId,omitempty"`
@@ -77,9 +77,9 @@ func NewKeyRotationPolicyWithDefaults() *KeyRotationPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *KeyRotationPolicy) GetLinks() LinksHATEOAS {
+func (o *KeyRotationPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -87,7 +87,7 @@ func (o *KeyRotationPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KeyRotationPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *KeyRotationPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *KeyRotationPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *KeyRotationPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *KeyRotationPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

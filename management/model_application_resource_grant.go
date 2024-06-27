@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationResourceGrant{}
 
 // ApplicationResourceGrant struct for ApplicationResourceGrant
 type ApplicationResourceGrant struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Application *ApplicationResourceGrantApplication `json:"application,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -52,9 +52,9 @@ func NewApplicationResourceGrantWithDefaults() *ApplicationResourceGrant {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationResourceGrant) GetLinks() LinksHATEOAS {
+func (o *ApplicationResourceGrant) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -62,7 +62,7 @@ func (o *ApplicationResourceGrant) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResourceGrant) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationResourceGrant) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -78,8 +78,8 @@ func (o *ApplicationResourceGrant) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationResourceGrant) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationResourceGrant) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

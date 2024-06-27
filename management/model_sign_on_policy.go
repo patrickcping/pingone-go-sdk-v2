@@ -19,7 +19,7 @@ var _ MappedNullable = &SignOnPolicy{}
 
 // SignOnPolicy struct for SignOnPolicy
 type SignOnPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The date and time the resource was created (format ISO-8061).
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A boolean that specifies whether this sign-on policy is the environment's default that is used by applications that do not have application-specific sign-on policy assignments. This property can only be set to true, in which case the isDefault property of all other sign-on policies are set to false.
@@ -58,9 +58,9 @@ func NewSignOnPolicyWithDefaults() *SignOnPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *SignOnPolicy) GetLinks() LinksHATEOAS {
+func (o *SignOnPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -68,7 +68,7 @@ func (o *SignOnPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *SignOnPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -84,8 +84,8 @@ func (o *SignOnPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *SignOnPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *SignOnPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

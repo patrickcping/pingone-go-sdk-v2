@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Description** | Pointer to **string** | The application resource&#39;s description. | [optional] 
 **Id** | Pointer to **string** | The resource&#39;s unique identifier. | [optional] [readonly] 
 **Name** | **string** | The application resource name. The name value must be unique. | 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ApplicationResource) GetLinks() LinksHATEOAS`
+`func (o *ApplicationResource) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ApplicationResource) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *ApplicationResource) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ApplicationResource) SetLinks(v LinksHATEOAS)`
+`func (o *ApplicationResource) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

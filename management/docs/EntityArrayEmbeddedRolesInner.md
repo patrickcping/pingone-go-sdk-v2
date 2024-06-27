@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **ApplicableTo** | Pointer to [**[]EnumRoleAssignmentScopeType**](EnumRoleAssignmentScopeType.md) | A set of strings that specifies the scopes to which the role applies. | [optional] [readonly] 
 **Description** | Pointer to **string** | Specifies the description of the application role assigned to the user. | [optional] 
 **Id** | **string** | Specifies the application role ID to assign to the specified user. | 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EntityArrayEmbeddedRolesInner) GetLinks() LinksHATEOAS`
+`func (o *EntityArrayEmbeddedRolesInner) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EntityArrayEmbeddedRolesInner) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *EntityArrayEmbeddedRolesInner) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EntityArrayEmbeddedRolesInner) SetLinks(v LinksHATEOAS)`
+`func (o *EntityArrayEmbeddedRolesInner) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

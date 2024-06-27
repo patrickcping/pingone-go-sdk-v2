@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | The date and time the resource was created (format ISO-8061). | [optional] [readonly] 
 **Default** | Pointer to **bool** | A boolean that specifies whether this sign-on policy is the environment&#39;s default that is used by applications that do not have application-specific sign-on policy assignments. This property can only be set to true, in which case the isDefault property of all other sign-on policies are set to false. | [optional] [default to false]
 **Description** | Pointer to **string** | A string that specifies the description of the sign-on policy. | [optional] 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *SignOnPolicy) GetLinks() LinksHATEOAS`
+`func (o *SignOnPolicy) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *SignOnPolicy) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *SignOnPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *SignOnPolicy) SetLinks(v LinksHATEOAS)`
+`func (o *SignOnPolicy) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

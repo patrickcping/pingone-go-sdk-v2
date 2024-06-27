@@ -61,9 +61,7 @@ docs/EnumAPIServerOperationMethod.md
 docs/EnumAPIServerOperationPathPatternType.md
 docs/EnumAPIServerPatternType.md
 docs/EnumApplicationResourceParentType.md
-docs/LinksHATEOAS.md
-docs/LinksHATEOASNext.md
-docs/LinksHATEOASSelf.md
+docs/LinksHATEOASValue.md
 docs/ObjectApplication.md
 docs/ObjectEnvironment.md
 docs/ObjectOrganization.md
@@ -117,9 +115,7 @@ model_enum_api_server_operation_method.go
 model_enum_api_server_operation_path_pattern_type.go
 model_enum_api_server_pattern_type.go
 model_enum_application_resource_parent_type.go
-model_links_hateoas.go
-model_links_hateoas_next.go
-model_links_hateoas_self.go
+model_links_hateoas_value.go
 model_object_application.go
 model_object_environment.go
 model_object_organization.go

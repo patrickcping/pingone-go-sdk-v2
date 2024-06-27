@@ -20,7 +20,7 @@ var _ MappedNullable = &APIServerDeployment{}
 
 // APIServerDeployment struct for APIServerDeployment
 type APIServerDeployment struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AccessControl *APIServerDeploymentAccessControl `json:"accessControl,omitempty"`
 	AuthorizationVersion *APIServerDeploymentAuthorizationVersion `json:"authorizationVersion,omitempty"`
 	DecisionEndpoint *APIServerDeploymentDecisionEndpoint `json:"decisionEndpoint,omitempty"`
@@ -48,9 +48,9 @@ func NewAPIServerDeploymentWithDefaults() *APIServerDeployment {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *APIServerDeployment) GetLinks() LinksHATEOAS {
+func (o *APIServerDeployment) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -58,7 +58,7 @@ func (o *APIServerDeployment) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *APIServerDeployment) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *APIServerDeployment) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -74,8 +74,8 @@ func (o *APIServerDeployment) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *APIServerDeployment) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *APIServerDeployment) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

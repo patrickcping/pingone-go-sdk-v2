@@ -20,7 +20,7 @@ var _ MappedNullable = &License{}
 
 // License struct for License
 type License struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AdvancedServices *LicenseAdvancedServices `json:"advancedServices,omitempty"`
 	// A read-only integer that specifies the total number of environments associated with this license.
 	AssignedEnvironmentsCount *int32 `json:"assignedEnvironmentsCount,omitempty"`
@@ -71,9 +71,9 @@ func NewLicenseWithDefaults() *License {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *License) GetLinks() LinksHATEOAS {
+func (o *License) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -81,7 +81,7 @@ func (o *License) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *License) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *License) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *License) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *License) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *License) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

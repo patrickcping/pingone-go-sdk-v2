@@ -19,7 +19,7 @@ var _ MappedNullable = &EmailDomain{}
 
 // EmailDomain struct for EmailDomain
 type EmailDomain struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the auto-generated ID of the email domain.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment (for example, auth.shopco.com). This is a required property. Wildcards are NOT supported.
@@ -46,9 +46,9 @@ func NewEmailDomainWithDefaults() *EmailDomain {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *EmailDomain) GetLinks() LinksHATEOAS {
+func (o *EmailDomain) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -56,7 +56,7 @@ func (o *EmailDomain) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EmailDomain) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *EmailDomain) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *EmailDomain) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *EmailDomain) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *EmailDomain) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

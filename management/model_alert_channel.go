@@ -19,7 +19,7 @@ var _ MappedNullable = &AlertChannel{}
 
 // AlertChannel struct for AlertChannel
 type AlertChannel struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Unique ID of the alert channel.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -56,9 +56,9 @@ func NewAlertChannelWithDefaults() *AlertChannel {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *AlertChannel) GetLinks() LinksHATEOAS {
+func (o *AlertChannel) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -66,7 +66,7 @@ func (o *AlertChannel) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertChannel) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *AlertChannel) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -82,8 +82,8 @@ func (o *AlertChannel) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *AlertChannel) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *AlertChannel) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

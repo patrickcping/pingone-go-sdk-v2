@@ -20,7 +20,7 @@ var _ MappedNullable = &CredentialType{}
 
 // CredentialType struct for CredentialType
 type CredentialType struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image.
 	CardDesignTemplate string `json:"cardDesignTemplate"`
 	// A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance.
@@ -68,9 +68,9 @@ func NewCredentialTypeWithDefaults() *CredentialType {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *CredentialType) GetLinks() LinksHATEOAS {
+func (o *CredentialType) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -78,7 +78,7 @@ func (o *CredentialType) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *CredentialType) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -94,8 +94,8 @@ func (o *CredentialType) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *CredentialType) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *CredentialType) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

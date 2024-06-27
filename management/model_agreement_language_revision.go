@@ -20,7 +20,7 @@ var _ MappedNullable = &AgreementLanguageRevision{}
 
 // AgreementLanguageRevision struct for AgreementLanguageRevision
 type AgreementLanguageRevision struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
 	ContentType EnumAgreementRevisionContentType `json:"contentType"`
 	// A date that specifies the start date that the revision is presented to users. This property value can be modified only if the current value is a date that has not already passed. The effective date must be unique for each language agreement, and the property value can be the present date or a future date only.
@@ -58,9 +58,9 @@ func NewAgreementLanguageRevisionWithDefaults() *AgreementLanguageRevision {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *AgreementLanguageRevision) GetLinks() LinksHATEOAS {
+func (o *AgreementLanguageRevision) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -68,7 +68,7 @@ func (o *AgreementLanguageRevision) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgreementLanguageRevision) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *AgreementLanguageRevision) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -84,8 +84,8 @@ func (o *AgreementLanguageRevision) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *AgreementLanguageRevision) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *AgreementLanguageRevision) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

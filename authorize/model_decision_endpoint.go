@@ -19,7 +19,7 @@ var _ MappedNullable = &DecisionEndpoint{}
 
 // DecisionEndpoint struct for DecisionEndpoint
 type DecisionEndpoint struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies alternative unique identifier for the endpoint, which provides a method for locating the resource by a known, fixed identifier.
 	AlternateId *string `json:"alternateId,omitempty"`
 	AuthorizationVersion *DecisionEndpointAuthorizationVersion `json:"authorizationVersion,omitempty"`
@@ -63,9 +63,9 @@ func NewDecisionEndpointWithDefaults() *DecisionEndpoint {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *DecisionEndpoint) GetLinks() LinksHATEOAS {
+func (o *DecisionEndpoint) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -73,7 +73,7 @@ func (o *DecisionEndpoint) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DecisionEndpoint) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *DecisionEndpoint) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -89,8 +89,8 @@ func (o *DecisionEndpoint) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *DecisionEndpoint) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *DecisionEndpoint) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

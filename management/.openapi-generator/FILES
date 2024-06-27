@@ -87,6 +87,7 @@ docs/AgreementLanguageRevision.md
 docs/AgreementLanguageRevisionLanguage.md
 docs/AgreementLanguageUserExperience.md
 docs/AgreementLanguagesResourcesApi.md
+docs/AgreementRevisionText.md
 docs/AgreementRevisionsResourcesApi.md
 docs/AgreementsResourcesApi.md
 docs/AlertChannel.md
@@ -459,9 +460,7 @@ docs/LicenseUsers.md
 docs/LicenseVerify.md
 docs/LicensesApi.md
 docs/LinkedAccountsApi.md
-docs/LinksHATEOAS.md
-docs/LinksHATEOASNext.md
-docs/LinksHATEOASSelf.md
+docs/LinksHATEOASValue.md
 docs/MFAPairingKeysApi.md
 docs/NotificationsPoliciesApi.md
 docs/NotificationsPolicy.md
@@ -670,6 +669,7 @@ model_agreement_language_current_revision.go
 model_agreement_language_revision.go
 model_agreement_language_revision_language.go
 model_agreement_language_user_experience.go
+model_agreement_revision_text.go
 model_alert_channel.go
 model_application.go
 model_application_access_control.go
@@ -995,9 +995,7 @@ model_license_replaced_by_license.go
 model_license_replaces_license.go
 model_license_users.go
 model_license_verify.go
-model_links_hateoas.go
-model_links_hateoas_next.go
-model_links_hateoas_self.go
+model_links_hateoas_value.go
 model_notifications_policy.go
 model_notifications_policy_country_limit.go
 model_notifications_policy_quotas_inner.go

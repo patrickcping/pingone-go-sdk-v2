@@ -20,7 +20,7 @@ var _ MappedNullable = &RiskPredictorEmailReputation{}
 
 // RiskPredictorEmailReputation struct for RiskPredictorEmailReputation
 type RiskPredictorEmailReputation struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -63,9 +63,9 @@ func NewRiskPredictorEmailReputationWithDefaults() *RiskPredictorEmailReputation
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *RiskPredictorEmailReputation) GetLinks() LinksHATEOAS {
+func (o *RiskPredictorEmailReputation) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -73,7 +73,7 @@ func (o *RiskPredictorEmailReputation) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorEmailReputation) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *RiskPredictorEmailReputation) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -89,8 +89,8 @@ func (o *RiskPredictorEmailReputation) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *RiskPredictorEmailReputation) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *RiskPredictorEmailReputation) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

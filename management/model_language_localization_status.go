@@ -20,7 +20,7 @@ var _ MappedNullable = &LanguageLocalizationStatus{}
 
 // LanguageLocalizationStatus struct for LanguageLocalizationStatus
 type LanguageLocalizationStatus struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the language localization status resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -54,9 +54,9 @@ func NewLanguageLocalizationStatusWithDefaults() *LanguageLocalizationStatus {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *LanguageLocalizationStatus) GetLinks() LinksHATEOAS {
+func (o *LanguageLocalizationStatus) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -64,7 +64,7 @@ func (o *LanguageLocalizationStatus) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LanguageLocalizationStatus) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *LanguageLocalizationStatus) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -80,8 +80,8 @@ func (o *LanguageLocalizationStatus) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *LanguageLocalizationStatus) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *LanguageLocalizationStatus) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

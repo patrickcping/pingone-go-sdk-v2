@@ -19,7 +19,7 @@ var _ MappedNullable = &UserMFAEnabled{}
 
 // UserMFAEnabled struct for UserMFAEnabled
 type UserMFAEnabled struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Whether multi-factor authentication is enabled. This attribute is set to `false` by default when the user is created.
 	MfaEnabled bool `json:"mfaEnabled"`
 }
@@ -43,9 +43,9 @@ func NewUserMFAEnabledWithDefaults() *UserMFAEnabled {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *UserMFAEnabled) GetLinks() LinksHATEOAS {
+func (o *UserMFAEnabled) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -53,7 +53,7 @@ func (o *UserMFAEnabled) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserMFAEnabled) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *UserMFAEnabled) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *UserMFAEnabled) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *UserMFAEnabled) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *UserMFAEnabled) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

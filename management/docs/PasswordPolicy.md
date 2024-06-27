@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **BypassPolicy** | Pointer to **bool** | Determines whether the password policy for a user will be ignored. If this property is omitted from a CREATE Password Policy request, its value is set to false. | [optional] [default to false]
 **CreatedAt** | Pointer to **string** | The date and time the resource was created (format ISO-8061). | [optional] [readonly] 
 **CurrentPassword** | Pointer to **string** | The current password to be verified before the new password is set. Required for self-change when the user already has a password (the user whose password is being changed is the same as the actor in the access token). | [optional] 
@@ -50,20 +50,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *PasswordPolicy) GetLinks() LinksHATEOAS`
+`func (o *PasswordPolicy) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *PasswordPolicy) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *PasswordPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *PasswordPolicy) SetLinks(v LinksHATEOAS)`
+`func (o *PasswordPolicy) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

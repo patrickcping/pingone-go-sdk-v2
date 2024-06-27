@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityProviderOIDC{}
 
 // IdentityProviderOIDC struct for IdentityProviderOIDC
 type IdentityProviderOIDC struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
@@ -94,9 +94,9 @@ func NewIdentityProviderOIDCWithDefaults() *IdentityProviderOIDC {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *IdentityProviderOIDC) GetLinks() LinksHATEOAS {
+func (o *IdentityProviderOIDC) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -104,7 +104,7 @@ func (o *IdentityProviderOIDC) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderOIDC) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *IdentityProviderOIDC) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -120,8 +120,8 @@ func (o *IdentityProviderOIDC) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *IdentityProviderOIDC) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *IdentityProviderOIDC) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
