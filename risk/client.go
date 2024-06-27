@@ -42,6 +42,8 @@ type APIClient struct {
 
 	// API Services
 
+	HALApi *HALApiService
+
 	RiskAdvancedPredictorsApi *RiskAdvancedPredictorsApiService
 
 	RiskEvaluationsApi *RiskEvaluationsApiService
@@ -85,6 +87,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.HALApi = (*HALApiService)(&c.common)
 	c.RiskAdvancedPredictorsApi = (*RiskAdvancedPredictorsApiService)(&c.common)
 	c.RiskEvaluationsApi = (*RiskEvaluationsApiService)(&c.common)
 	c.RiskPoliciesApi = (*RiskPoliciesApiService)(&c.common)
