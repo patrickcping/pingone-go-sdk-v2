@@ -259,15 +259,21 @@ func (o VoicePhraseContents) MarshalJSON() ([]byte, error) {
 
 func (o VoicePhraseContents) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["voicePhrase"] = o.VoicePhrase
 	toSerialize["locale"] = o.Locale
 	toSerialize["content"] = o.Content
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

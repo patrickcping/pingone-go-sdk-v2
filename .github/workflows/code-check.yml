@@ -12,6 +12,7 @@ on:
       - 'CONTRIBUTING.md'
       - 'LICENSE'
   push:
+    branches: [ "main" ]
     paths-ignore:
       - 'README.md'
       - '.vscode'
@@ -34,15 +35,15 @@ jobs:
     steps:
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v3.5.3
+      uses: actions/checkout@v4.1.1
 
     - name: Set up Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         go-version-file: 'go.mod'
         cache: false
       id: go
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       continue-on-error: true
       timeout-minutes: 2
       with:
@@ -56,45 +57,34 @@ jobs:
   lint:
     needs: [build]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        module:
+          - '.'
+          - 'authorize'
+          - 'credentials'
+          - 'management'
+          - 'mfa'
+          - 'risk'
+          - 'verify'
     steps:
-      - uses: actions/checkout@v3.5.3
-      - uses: actions/setup-go@v4
+      - uses: actions/checkout@v4.1.1
+      - uses: actions/setup-go@v5
         with:
-          go-version: '^1.18.0' # The Go version to download (if necessary) and use.
+          go-version: '^1.20.0' # The Go version to download (if necessary) and use.
           cache: true
-      - uses: actions/cache@v3
-        continue-on-error: true
-        timeout-minutes: 2
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-pkg-mod-${{ hashFiles('go.sum') }}
 
-      - run: make tools
+      - id: golangci-lint-version
+        working-directory: tools
+        run: >-
+          echo "version=$(
+            go list -m all |
+            grep github.com/golangci/golangci-lint |
+            awk '{print $2}'
+          )" >> $GITHUB_OUTPUT
 
       - name: lint
-        run: |
-          make lint
-
-  gosec:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3.5.3
-      - uses: actions/setup-go@v4
+        uses: golangci/golangci-lint-action@v6
         with:
-          go-version: '^1.18.0' # The Go version to download (if necessary) and use.
-          cache: true
-      - uses: actions/cache@v3
-        continue-on-error: true
-        timeout-minutes: 2
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-pkg-mod-${{ hashFiles('go.sum') }}
-
-      - run: make tools
-
-      - name: gosec
-        run: |
-          make gosec
-
-  
+          version: "${{ steps.golangci-lint-version.outputs.version }}"
+          working-directory: ${{ matrix.module }}

@@ -2,28 +2,32 @@ package pingone
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"regexp"
+	"slices"
 	"strings"
 
+	"github.com/patrickcping/pingone-go-sdk-v2/management"
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
-	"golang.org/x/exp/slices"
 	"golang.org/x/oauth2"
 )
 
 type Config struct {
-	AccessToken                   *string
-	accessTokenObject             *oauth2.Token
-	AgreementMgmtHostnameOverride *string
-	APIHostnameOverride           *string
-	AuthHostnameOverride          *string
-	ClientID                      *string
-	ClientSecret                  *string
-	EnvironmentID                 *string
-	ProxyURL                      *string
-	Region                        string
-	UserAgentOverride             *string
-	validated                     bool
+	AccessToken          *string
+	accessTokenObject    *oauth2.Token
+	APIHostnameOverride  *string
+	AuthHostnameOverride *string
+	ClientID             *string
+	ClientSecret         *string
+	EnvironmentID        *string
+	ProxyURL             *string
+	// Deprecated: Use RegionCode instead
+	Region            string
+	RegionCode        *management.EnumRegionCode
+	UserAgentOverride *string
+	UserAgentSuffix   *string
+	validated         bool
 }
 
 var p1ResourceIDRegexp = regexp.MustCompile(`^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`)
@@ -33,22 +37,6 @@ func (c *Config) validateAccessToken() error {
 	if !checkForValue(c.AccessToken) {
 		if v := envVar("PINGONE_API_ACCESS_TOKEN"); v != "" {
 			c.AccessToken = &v
-		}
-	}
-
-	return nil
-}
-
-func (c *Config) validateAgreementMgmtHostnameOverride() error {
-	if !checkForValue(c.AgreementMgmtHostnameOverride) {
-		if v := envVar("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME"); v != "" {
-			c.AgreementMgmtHostnameOverride = &v
-		}
-	}
-
-	if checkForValue(c.AgreementMgmtHostnameOverride) {
-		if !isHostname.MatchString(*c.AgreementMgmtHostnameOverride) {
-			return fmt.Errorf("Invalid parameter format.  Expected hostname format, got: %s", *c.AgreementMgmtHostnameOverride)
 		}
 	}
 
@@ -130,18 +118,22 @@ func (c *Config) validateEnvironmentID() error {
 }
 
 func (c *Config) validateRegion() error {
-	if !checkForValue(c.Region) {
-		if v := envVar("PINGONE_REGION"); v != "" {
+
+	if !checkForValue(c.Region) && !checkForValue(c.RegionCode) {
+		if v := management.EnumRegionCode(envVar("PINGONE_REGION_CODE")); v != "" && string(v) != "UNKNOWN" {
+			c.RegionCode = &v
+		} else if v := envVar("PINGONE_REGION"); v != "" {
+			log.Printf("WARNING: Use of the PINGONE_REGION environment variable is deprecated. Use PINGONE_REGION_CODE instead.")
 			c.Region = v
 		}
 	}
 
-	if !checkForValue(c.Region) {
-		return fmt.Errorf("Must provide the region parameter.")
-	} else {
-		if !slices.Contains(model.RegionsAvailableList(), c.Region) {
-			return fmt.Errorf("Invalid region value.  The region parameter is case sensitive and must be one of the following values: %s", strings.Join(model.RegionsAvailableList(), ", "))
-		}
+	if !checkForValue(c.Region) && !checkForValue(c.RegionCode) {
+		return fmt.Errorf("Must provide the region code parameter.")
+	}
+
+	if checkForValue(c.Region) && !slices.Contains(model.RegionsAvailableList(), c.Region) {
+		return fmt.Errorf("Invalid region value %s.  The region parameter is case sensitive and must be one of the following values: %s", c.Region, strings.Join(model.RegionsAvailableList(), ", "))
 	}
 
 	return nil
@@ -159,10 +151,6 @@ func (c *Config) Validate() error {
 	}
 
 	if err := c.validateAccessToken(); err != nil {
-		return err
-	}
-
-	if err := c.validateAgreementMgmtHostnameOverride(); err != nil {
 		return err
 	}
 
@@ -209,7 +197,7 @@ func (c *Config) Validate() error {
 	}
 
 	// Service overrides
-	if servicesOverridden := checkForValue(c.APIHostnameOverride) || checkForValue(c.AuthHostnameOverride) || checkForValue(c.AgreementMgmtHostnameOverride); servicesOverridden {
+	if servicesOverridden := checkForValue(c.APIHostnameOverride) || checkForValue(c.AuthHostnameOverride); servicesOverridden {
 
 		if servicesOverridden && (!checkForValue(c.APIHostnameOverride) || !checkForValue(c.AuthHostnameOverride)) {
 			return fmt.Errorf("Required service endpoints not configured.  When overriding service endpoints, both auth (e.g. auth.pingone.com) and api service (e.g. api.pingone.com) endpoints must be set.")
@@ -235,6 +223,16 @@ func checkForValue(o any) bool {
 		return true
 	case string:
 		if v == "" {
+			return false
+		}
+		return true
+	case *management.EnumRegionCode:
+		if v == nil || string(*v) == "UNKNOWN" || string(*v) == "" {
+			return false
+		}
+		return true
+	case management.EnumRegionCode:
+		if string(v) == "UNKNOWN" {
 			return false
 		}
 		return true

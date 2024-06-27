@@ -134,9 +134,13 @@ func (o LinksHATEOAS) ToMap() (map[string]interface{}, error) {
 func (o *LinksHATEOAS) UnmarshalJSON(bytes []byte) (err error) {
 	varLinksHATEOAS := _LinksHATEOAS{}
 
-	if err = json.Unmarshal(bytes, &varLinksHATEOAS); err == nil {
-		*o = LinksHATEOAS(varLinksHATEOAS)
+	err = json.Unmarshal(bytes, &varLinksHATEOAS)
+
+	if err != nil {
+		return err
 	}
+
+	*o = LinksHATEOAS(varLinksHATEOAS)
 
 	additionalProperties := make(map[string]interface{})
 

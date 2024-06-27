@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | FIDO policy&#39;s UUID. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *FIDOPolicy) GetLinks() LinksHATEOAS`
+`func (o *FIDOPolicy) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *FIDOPolicy) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *FIDOPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *FIDOPolicy) SetLinks(v LinksHATEOAS)`
+`func (o *FIDOPolicy) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

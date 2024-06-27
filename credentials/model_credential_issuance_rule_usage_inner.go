@@ -155,7 +155,9 @@ func (o CredentialIssuanceRuleUsageInner) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Credential) {
 		toSerialize["credential"] = o.Credential
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	return toSerialize, nil
 }
 

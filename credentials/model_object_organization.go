@@ -82,7 +82,9 @@ func (o ObjectOrganization) MarshalJSON() ([]byte, error) {
 
 func (o ObjectOrganization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	return toSerialize, nil
 }
 

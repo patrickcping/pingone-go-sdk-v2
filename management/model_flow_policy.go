@@ -19,7 +19,7 @@ var _ MappedNullable = &FlowPolicy{}
 
 // FlowPolicy struct for FlowPolicy
 type FlowPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The flow policy resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -49,9 +49,9 @@ func NewFlowPolicyWithDefaults() *FlowPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *FlowPolicy) GetLinks() LinksHATEOAS {
+func (o *FlowPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -59,7 +59,7 @@ func (o *FlowPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FlowPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *FlowPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -75,8 +75,8 @@ func (o *FlowPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *FlowPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *FlowPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -285,15 +285,21 @@ func (o FlowPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	// skip: enabled is readOnly
-	// skip: name is readOnly
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.Trigger) {
 		toSerialize["trigger"] = o.Trigger
 	}

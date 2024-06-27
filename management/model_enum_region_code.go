@@ -21,6 +21,7 @@ type EnumRegionCode string
 // List of EnumRegionCode
 const (
 	ENUMREGIONCODE_AP EnumRegionCode = "AP"
+	ENUMREGIONCODE_AU EnumRegionCode = "AU"
 	ENUMREGIONCODE_CA EnumRegionCode = "CA"
 	ENUMREGIONCODE_EU EnumRegionCode = "EU"
 	ENUMREGIONCODE_NA EnumRegionCode = "NA"
@@ -29,6 +30,7 @@ const (
 // All allowed values of EnumRegionCode enum
 var AllowedEnumRegionCodeEnumValues = []EnumRegionCode{
 	"AP",
+	"AU",
 	"CA",
 	"EU",
 	"NA",

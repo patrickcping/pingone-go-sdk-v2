@@ -204,11 +204,15 @@ func (o RecaptchaConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o RecaptchaConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: created is readOnly
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: modified is readOnly
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 	toSerialize["siteKey"] = o.SiteKey
 	toSerialize["secretKey"] = o.SecretKey
 	return toSerialize, nil

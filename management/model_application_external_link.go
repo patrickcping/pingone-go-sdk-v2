@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationExternalLink{}
 
 // ApplicationExternalLink struct for ApplicationExternalLink
 type ApplicationExternalLink struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -69,9 +69,9 @@ func NewApplicationExternalLinkWithDefaults() *ApplicationExternalLink {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetLinks() LinksHATEOAS {
+func (o *ApplicationExternalLink) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -79,7 +79,7 @@ func (o *ApplicationExternalLink) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationExternalLink) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *ApplicationExternalLink) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationExternalLink) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationExternalLink) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -524,7 +524,9 @@ func (o ApplicationExternalLink) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -538,14 +540,18 @@ func (o ApplicationExternalLink) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginPageUrl) {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["type"] = o.Type
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["homePageUrl"] = o.HomePageUrl
 	return toSerialize, nil
 }

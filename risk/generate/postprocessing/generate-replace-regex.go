@@ -34,7 +34,7 @@ func main() {
 			content = re.ReplaceAll(content, []byte(rule.repl))
 
 			// Write the updated file contents
-			err = os.WriteFile(file, content, os.ModePerm)
+			err = os.WriteFile(file, content, os.ModeAppend)
 			if err != nil {
 				panic(err)
 			}
@@ -50,12 +50,6 @@ var (
 		repl              string
 	}{
 
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
-			repl:              `"PingOne-GOLANG-SDK/risk/$1/go",`,
-		},
-
 		// RiskPredictor model
 		{
 			fileSelectPattern: "model_risk_predictor.go",
@@ -68,8 +62,12 @@ var (
 		return err
 	}
 
+	dst.RiskPredictorAdversaryInTheMiddle = nil
 	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorBotDetection = nil
+	dst.RiskPredictorCommon = nil
 	dst.RiskPredictorComposite = nil
+	dst.RiskPredictorEmailReputation = nil
 	dst.RiskPredictorCustom = nil
 	dst.RiskPredictorGeovelocity = nil
 	dst.RiskPredictorIPReputation = nil
@@ -85,12 +83,24 @@ var (
 	}
 
 	switch objType {
+	case ENUMPREDICTORTYPE_ADVERSARY_IN_THE_MIDDLE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorAdversaryInTheMiddle); err != nil {
+			return err
+		}
 	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
 		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil {
 			return err
 		}
+	case ENUMPREDICTORTYPE_BOT:
+		if err := json.Unmarshal(data, &dst.RiskPredictorBotDetection); err != nil {
+			return err
+		}
 	case ENUMPREDICTORTYPE_COMPOSITE:
 		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil {
+			return err
+		}
+	case ENUMPREDICTORTYPE_EMAIL_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorEmailReputation); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_MAP:

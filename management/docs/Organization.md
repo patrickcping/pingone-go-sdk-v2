@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | Pointer to **string** | A string that specifies the organization name, which must be provided and must be unique among all organizations in PingOne. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the organization. | [optional] [readonly] 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *Organization) GetLinks() LinksHATEOAS`
+`func (o *Organization) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *Organization) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *Organization) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *Organization) SetLinks(v LinksHATEOAS)`
+`func (o *Organization) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

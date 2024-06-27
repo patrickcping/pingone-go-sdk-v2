@@ -21,7 +21,7 @@ var _ MappedNullable = &Certificate{}
 
 // Certificate struct for Certificate
 type Certificate struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Algorithm EnumCertificateKeyAlgorithm `json:"algorithm"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -34,7 +34,7 @@ type Certificate struct {
 	Id *string `json:"id,omitempty"`
 	// Specifies the distinguished name of the certificate issuer.
 	IssuerDN *string `json:"issuerDN,omitempty"`
-	// Specifies the key length. For RSA keys, options are 2048, 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256, and 384.
+	// The key length. For RSA keys, options are `2048`, `3072`, `4096`, and `7680`. For elliptical curve (EC) keys, options are `224`, `256`, `384`, and `521`.
 	KeyLength int32 `json:"keyLength"`
 	// Specifies the resource name.
 	Name string `json:"name"`
@@ -79,9 +79,9 @@ func NewCertificateWithDefaults() *Certificate {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Certificate) GetLinks() LinksHATEOAS {
+func (o *Certificate) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -89,7 +89,7 @@ func (o *Certificate) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Certificate) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Certificate) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *Certificate) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Certificate) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Certificate) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -644,15 +644,21 @@ func (o Certificate) ToMap() (map[string]interface{}, error) {
 		toSerialize["_links"] = o.Links
 	}
 	toSerialize["algorithm"] = o.Algorithm
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: expiresAt is readOnly
-	// skip: id is readOnly
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.IssuerDN) {
 		toSerialize["issuerDN"] = o.IssuerDN
 	}
@@ -665,7 +671,9 @@ func (o Certificate) ToMap() (map[string]interface{}, error) {
 		toSerialize["serialNumber"] = o.SerialNumber
 	}
 	toSerialize["signatureAlgorithm"] = o.SignatureAlgorithm
-	// skip: startsAt is readOnly
+	if !IsNil(o.StartsAt) {
+		toSerialize["startsAt"] = o.StartsAt
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}

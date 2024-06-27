@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicy{}
 
 // DeviceAuthenticationPolicy struct for DeviceAuthenticationPolicy
 type DeviceAuthenticationPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Device authentication policy's UUID.
 	Id *string `json:"id,omitempty"`
@@ -72,9 +72,9 @@ func NewDeviceAuthenticationPolicyWithDefaults() *DeviceAuthenticationPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicy) GetLinks() LinksHATEOAS {
+func (o *DeviceAuthenticationPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -82,7 +82,7 @@ func (o *DeviceAuthenticationPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *DeviceAuthenticationPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *DeviceAuthenticationPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *DeviceAuthenticationPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *DeviceAuthenticationPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -576,7 +576,9 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewDeviceNotification) {
 		toSerialize["newDeviceNotification"] = o.NewDeviceNotification
@@ -600,7 +602,9 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &GatewayTypeRADIUS{}
 
 // GatewayTypeRADIUS struct for GatewayTypeRADIUS
 type GatewayTypeRADIUS struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -37,6 +37,7 @@ type GatewayTypeRADIUS struct {
 	Davinci GatewayTypeRADIUSAllOfDavinci `json:"davinci"`
 	// Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified.
 	DefaultSharedSecret *string `json:"defaultSharedSecret,omitempty"`
+	NetworkPolicyServer *GatewayTypeRADIUSAllOfNetworkPolicyServer `json:"networkPolicyServer,omitempty"`
 	// Collection of RADIUS clients.
 	RadiusClients []GatewayTypeRADIUSAllOfRadiusClients `json:"radiusClients"`
 }
@@ -64,9 +65,9 @@ func NewGatewayTypeRADIUSWithDefaults() *GatewayTypeRADIUS {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GatewayTypeRADIUS) GetLinks() LinksHATEOAS {
+func (o *GatewayTypeRADIUS) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -74,7 +75,7 @@ func (o *GatewayTypeRADIUS) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayTypeRADIUS) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *GatewayTypeRADIUS) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -90,8 +91,8 @@ func (o *GatewayTypeRADIUS) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *GatewayTypeRADIUS) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *GatewayTypeRADIUS) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -415,6 +416,38 @@ func (o *GatewayTypeRADIUS) SetDefaultSharedSecret(v string) {
 	o.DefaultSharedSecret = &v
 }
 
+// GetNetworkPolicyServer returns the NetworkPolicyServer field value if set, zero value otherwise.
+func (o *GatewayTypeRADIUS) GetNetworkPolicyServer() GatewayTypeRADIUSAllOfNetworkPolicyServer {
+	if o == nil || IsNil(o.NetworkPolicyServer) {
+		var ret GatewayTypeRADIUSAllOfNetworkPolicyServer
+		return ret
+	}
+	return *o.NetworkPolicyServer
+}
+
+// GetNetworkPolicyServerOk returns a tuple with the NetworkPolicyServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayTypeRADIUS) GetNetworkPolicyServerOk() (*GatewayTypeRADIUSAllOfNetworkPolicyServer, bool) {
+	if o == nil || IsNil(o.NetworkPolicyServer) {
+		return nil, false
+	}
+	return o.NetworkPolicyServer, true
+}
+
+// HasNetworkPolicyServer returns a boolean if a field has been set.
+func (o *GatewayTypeRADIUS) HasNetworkPolicyServer() bool {
+	if o != nil && !IsNil(o.NetworkPolicyServer) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkPolicyServer gets a reference to the given GatewayTypeRADIUSAllOfNetworkPolicyServer and assigns it to the NetworkPolicyServer field.
+func (o *GatewayTypeRADIUS) SetNetworkPolicyServer(v GatewayTypeRADIUSAllOfNetworkPolicyServer) {
+	o.NetworkPolicyServer = &v
+}
+
 // GetRadiusClients returns the RadiusClients field value
 func (o *GatewayTypeRADIUS) GetRadiusClients() []GatewayTypeRADIUSAllOfRadiusClients {
 	if o == nil {
@@ -452,22 +485,33 @@ func (o GatewayTypeRADIUS) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: credentials is readOnly
+	if !IsNil(o.Credentials) {
+		toSerialize["credentials"] = o.Credentials
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["enabled"] = o.Enabled
-	// skip: supportedVersions is readOnly
-	// skip: currentAlerts is readOnly
+	if !IsNil(o.SupportedVersions) {
+		toSerialize["supportedVersions"] = o.SupportedVersions
+	}
+	if !IsNil(o.CurrentAlerts) {
+		toSerialize["currentAlerts"] = o.CurrentAlerts
+	}
 	toSerialize["davinci"] = o.Davinci
 	if !IsNil(o.DefaultSharedSecret) {
 		toSerialize["defaultSharedSecret"] = o.DefaultSharedSecret
+	}
+	if !IsNil(o.NetworkPolicyServer) {
+		toSerialize["networkPolicyServer"] = o.NetworkPolicyServer
 	}
 	toSerialize["radiusClients"] = o.RadiusClients
 	return toSerialize, nil

@@ -19,7 +19,7 @@ var _ MappedNullable = &SignOnPolicyAssignment{}
 
 // SignOnPolicyAssignment struct for SignOnPolicyAssignment
 type SignOnPolicyAssignment struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Application *ObjectApplication `json:"application,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
@@ -49,9 +49,9 @@ func NewSignOnPolicyAssignmentWithDefaults() *SignOnPolicyAssignment {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *SignOnPolicyAssignment) GetLinks() LinksHATEOAS {
+func (o *SignOnPolicyAssignment) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -59,7 +59,7 @@ func (o *SignOnPolicyAssignment) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyAssignment) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *SignOnPolicyAssignment) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -75,8 +75,8 @@ func (o *SignOnPolicyAssignment) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *SignOnPolicyAssignment) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *SignOnPolicyAssignment) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -243,7 +243,9 @@ func (o SignOnPolicyAssignment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["priority"] = o.Priority
 	toSerialize["signOnPolicy"] = o.SignOnPolicy
 	return toSerialize, nil

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] [readonly] 
@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **CurrentAlerts** | Pointer to **[]map[string]interface{}** |  | [optional] [readonly] 
 **Davinci** | [**GatewayTypeRADIUSAllOfDavinci**](GatewayTypeRADIUSAllOfDavinci.md) |  | 
 **DefaultSharedSecret** | Pointer to **string** | Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified. | [optional] 
+**NetworkPolicyServer** | Pointer to [**GatewayTypeRADIUSAllOfNetworkPolicyServer**](GatewayTypeRADIUSAllOfNetworkPolicyServer.md) |  | [optional] 
 **RadiusClients** | [**[]GatewayTypeRADIUSAllOfRadiusClients**](GatewayTypeRADIUSAllOfRadiusClients.md) | Collection of RADIUS clients. | 
 
 ## Methods
@@ -39,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *GatewayTypeRADIUS) GetLinks() LinksHATEOAS`
+`func (o *GatewayTypeRADIUS) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GatewayTypeRADIUS) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *GatewayTypeRADIUS) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GatewayTypeRADIUS) SetLinks(v LinksHATEOAS)`
+`func (o *GatewayTypeRADIUS) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -316,6 +317,31 @@ SetDefaultSharedSecret sets DefaultSharedSecret field to given value.
 `func (o *GatewayTypeRADIUS) HasDefaultSharedSecret() bool`
 
 HasDefaultSharedSecret returns a boolean if a field has been set.
+
+### GetNetworkPolicyServer
+
+`func (o *GatewayTypeRADIUS) GetNetworkPolicyServer() GatewayTypeRADIUSAllOfNetworkPolicyServer`
+
+GetNetworkPolicyServer returns the NetworkPolicyServer field if non-nil, zero value otherwise.
+
+### GetNetworkPolicyServerOk
+
+`func (o *GatewayTypeRADIUS) GetNetworkPolicyServerOk() (*GatewayTypeRADIUSAllOfNetworkPolicyServer, bool)`
+
+GetNetworkPolicyServerOk returns a tuple with the NetworkPolicyServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkPolicyServer
+
+`func (o *GatewayTypeRADIUS) SetNetworkPolicyServer(v GatewayTypeRADIUSAllOfNetworkPolicyServer)`
+
+SetNetworkPolicyServer sets NetworkPolicyServer field to given value.
+
+### HasNetworkPolicyServer
+
+`func (o *GatewayTypeRADIUS) HasNetworkPolicyServer() bool`
+
+HasNetworkPolicyServer returns a boolean if a field has been set.
 
 ### GetRadiusClients
 

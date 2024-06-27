@@ -42,8 +42,12 @@ type APIClient struct {
 
 	// API Services
 
-	VerifyPoliciesApi      *VerifyPoliciesApiService
-	VoicePhrasesApi        *VoicePhrasesApiService
+	HALApi *HALApiService
+
+	VerifyPoliciesApi *VerifyPoliciesApiService
+
+	VoicePhrasesApi *VoicePhrasesApiService
+
 	VoicePhraseContentsApi *VoicePhraseContentsApiService
 }
 
@@ -83,6 +87,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.HALApi = (*HALApiService)(&c.common)
 	c.VerifyPoliciesApi = (*VerifyPoliciesApiService)(&c.common)
 	c.VoicePhrasesApi = (*VoicePhrasesApiService)(&c.common)
 	c.VoicePhraseContentsApi = (*VoicePhraseContentsApiService)(&c.common)
@@ -92,13 +97,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 // selectHeaderContentType select a content type from the available list.
 func selectHeaderContentType(contentTypes []string) string {
-	if len(contentTypes) == 0 {
-		return ""
+	returnVar := ""
+
+	if len(contentTypes) > 0 {
+		returnVar = contentTypes[0] // use the first content type specified in 'consumes'
 	}
 	if contains(contentTypes, "application/json") {
-		return "application/json"
+		returnVar = "application/json"
 	}
-	return contentTypes[0] // use the first content type specified in 'consumes'
+	return returnVar
 }
 
 // selectHeaderAccept join all accept types and return

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights. | 
 **CompactName** | **string** | A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details). | 
@@ -16,13 +16,14 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
-**Composition** | [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | 
+**Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
+**Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
 
 ## Methods
 
 ### NewRiskPredictorComposite
 
-`func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, ) *RiskPredictorComposite`
+`func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner, ) *RiskPredictorComposite`
 
 NewRiskPredictorComposite instantiates a new RiskPredictorComposite object
 This constructor will assign default values to properties that have it defined,
@@ -39,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *RiskPredictorComposite) GetLinks() LinksHATEOAS`
+`func (o *RiskPredictorComposite) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *RiskPredictorComposite) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *RiskPredictorComposite) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *RiskPredictorComposite) SetLinks(v LinksHATEOAS)`
+`func (o *RiskPredictorComposite) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -340,6 +341,31 @@ and a boolean to check if the value has been set.
 `func (o *RiskPredictorComposite) SetComposition(v RiskPredictorCompositeAllOfComposition)`
 
 SetComposition sets Composition field to given value.
+
+### HasComposition
+
+`func (o *RiskPredictorComposite) HasComposition() bool`
+
+HasComposition returns a boolean if a field has been set.
+
+### GetCompositions
+
+`func (o *RiskPredictorComposite) GetCompositions() []RiskPredictorCompositeAllOfCompositionsInner`
+
+GetCompositions returns the Compositions field if non-nil, zero value otherwise.
+
+### GetCompositionsOk
+
+`func (o *RiskPredictorComposite) GetCompositionsOk() (*[]RiskPredictorCompositeAllOfCompositionsInner, bool)`
+
+GetCompositionsOk returns a tuple with the Compositions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompositions
+
+`func (o *RiskPredictorComposite) SetCompositions(v []RiskPredictorCompositeAllOfCompositionsInner)`
+
+SetCompositions sets Compositions field to given value.
 
 
 

@@ -26,23 +26,23 @@ type FormFieldText struct {
 	// A string that specifies an identifier for the field component.
 	Key string `json:"key"`
 	// A string of escaped JSON that is designed to store a series of text and translatable keys.
-	Label *string `json:"label,omitempty"`
+	Label string `json:"label"`
 	LabelMode *EnumFormElementLabelMode `json:"labelMode,omitempty"`
 	// A boolean that specifies whether the field is required.
-	Required bool `json:"required"`
+	Required *bool `json:"required,omitempty"`
 	// A boolean that specifies whether the end user can type an entry that is not in a predefined list.
 	OtherOptionEnabled *bool `json:"otherOptionEnabled,omitempty"`
 	// A string that specifies whether the form identifies that the choice is a custom choice not from a predefined list.
 	OtherOptionKey *string `json:"otherOptionKey,omitempty"`
 	// A string that specifies the label for a custom or \"other\" choice in a list.
-	OtherOptionlabel *string `json:"otherOptionlabel,omitempty"`
+	OtherOptionLabel *string `json:"otherOptionLabel,omitempty"`
 	// A string that specifies the label for the other option in drop-down controls.
-	OtherOptionInputlabel *string `json:"otherOptionInputlabel,omitempty"`
+	OtherOptionInputLabel *string `json:"otherOptionInputLabel,omitempty"`
 	// A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
 	OtherOptionAttributeDisabled *bool `json:"otherOptionAttributeDisabled,omitempty"`
 	Layout *EnumFormElementLayout `json:"layout,omitempty"`
-	// An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
-	Options []string `json:"options,omitempty"`
+	// An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+	Options []FormElementOption `json:"options,omitempty"`
 	Validation FormElementValidation `json:"validation"`
 }
 
@@ -50,12 +50,12 @@ type FormFieldText struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldText(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, required bool, validation FormElementValidation) *FormFieldText {
+func NewFormFieldText(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, validation FormElementValidation) *FormFieldText {
 	this := FormFieldText{}
 	this.Type = type_
 	this.Position = position
 	this.Key = key
-	this.Required = required
+	this.Label = label
 	this.Validation = validation
 	return &this
 }
@@ -172,36 +172,28 @@ func (o *FormFieldText) SetKey(v string) {
 	o.Key = v
 }
 
-// GetLabel returns the Label field value if set, zero value otherwise.
+// GetLabel returns the Label field value
 func (o *FormFieldText) GetLabel() string {
-	if o == nil || IsNil(o.Label) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Label
+
+	return o.Label
 }
 
-// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
+// GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
 func (o *FormFieldText) GetLabelOk() (*string, bool) {
-	if o == nil || IsNil(o.Label) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Label, true
+	return &o.Label, true
 }
 
-// HasLabel returns a boolean if a field has been set.
-func (o *FormFieldText) HasLabel() bool {
-	if o != nil && !IsNil(o.Label) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabel gets a reference to the given string and assigns it to the Label field.
+// SetLabel sets field value
 func (o *FormFieldText) SetLabel(v string) {
-	o.Label = &v
+	o.Label = v
 }
 
 // GetLabelMode returns the LabelMode field value if set, zero value otherwise.
@@ -236,28 +228,36 @@ func (o *FormFieldText) SetLabelMode(v EnumFormElementLabelMode) {
 	o.LabelMode = &v
 }
 
-// GetRequired returns the Required field value
+// GetRequired returns the Required field value if set, zero value otherwise.
 func (o *FormFieldText) GetRequired() bool {
-	if o == nil {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
-
-	return o.Required
+	return *o.Required
 }
 
-// GetRequiredOk returns a tuple with the Required field value
+// GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormFieldText) GetRequiredOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
-	return &o.Required, true
+	return o.Required, true
 }
 
-// SetRequired sets field value
+// HasRequired returns a boolean if a field has been set.
+func (o *FormFieldText) HasRequired() bool {
+	if o != nil && !IsNil(o.Required) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequired gets a reference to the given bool and assigns it to the Required field.
 func (o *FormFieldText) SetRequired(v bool) {
-	o.Required = v
+	o.Required = &v
 }
 
 // GetOtherOptionEnabled returns the OtherOptionEnabled field value if set, zero value otherwise.
@@ -324,68 +324,68 @@ func (o *FormFieldText) SetOtherOptionKey(v string) {
 	o.OtherOptionKey = &v
 }
 
-// GetOtherOptionlabel returns the OtherOptionlabel field value if set, zero value otherwise.
-func (o *FormFieldText) GetOtherOptionlabel() string {
-	if o == nil || IsNil(o.OtherOptionlabel) {
+// GetOtherOptionLabel returns the OtherOptionLabel field value if set, zero value otherwise.
+func (o *FormFieldText) GetOtherOptionLabel() string {
+	if o == nil || IsNil(o.OtherOptionLabel) {
 		var ret string
 		return ret
 	}
-	return *o.OtherOptionlabel
+	return *o.OtherOptionLabel
 }
 
-// GetOtherOptionlabelOk returns a tuple with the OtherOptionlabel field value if set, nil otherwise
+// GetOtherOptionLabelOk returns a tuple with the OtherOptionLabel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldText) GetOtherOptionlabelOk() (*string, bool) {
-	if o == nil || IsNil(o.OtherOptionlabel) {
+func (o *FormFieldText) GetOtherOptionLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionLabel) {
 		return nil, false
 	}
-	return o.OtherOptionlabel, true
+	return o.OtherOptionLabel, true
 }
 
-// HasOtherOptionlabel returns a boolean if a field has been set.
-func (o *FormFieldText) HasOtherOptionlabel() bool {
-	if o != nil && !IsNil(o.OtherOptionlabel) {
+// HasOtherOptionLabel returns a boolean if a field has been set.
+func (o *FormFieldText) HasOtherOptionLabel() bool {
+	if o != nil && !IsNil(o.OtherOptionLabel) {
 		return true
 	}
 
 	return false
 }
 
-// SetOtherOptionlabel gets a reference to the given string and assigns it to the OtherOptionlabel field.
-func (o *FormFieldText) SetOtherOptionlabel(v string) {
-	o.OtherOptionlabel = &v
+// SetOtherOptionLabel gets a reference to the given string and assigns it to the OtherOptionLabel field.
+func (o *FormFieldText) SetOtherOptionLabel(v string) {
+	o.OtherOptionLabel = &v
 }
 
-// GetOtherOptionInputlabel returns the OtherOptionInputlabel field value if set, zero value otherwise.
-func (o *FormFieldText) GetOtherOptionInputlabel() string {
-	if o == nil || IsNil(o.OtherOptionInputlabel) {
+// GetOtherOptionInputLabel returns the OtherOptionInputLabel field value if set, zero value otherwise.
+func (o *FormFieldText) GetOtherOptionInputLabel() string {
+	if o == nil || IsNil(o.OtherOptionInputLabel) {
 		var ret string
 		return ret
 	}
-	return *o.OtherOptionInputlabel
+	return *o.OtherOptionInputLabel
 }
 
-// GetOtherOptionInputlabelOk returns a tuple with the OtherOptionInputlabel field value if set, nil otherwise
+// GetOtherOptionInputLabelOk returns a tuple with the OtherOptionInputLabel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldText) GetOtherOptionInputlabelOk() (*string, bool) {
-	if o == nil || IsNil(o.OtherOptionInputlabel) {
+func (o *FormFieldText) GetOtherOptionInputLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionInputLabel) {
 		return nil, false
 	}
-	return o.OtherOptionInputlabel, true
+	return o.OtherOptionInputLabel, true
 }
 
-// HasOtherOptionInputlabel returns a boolean if a field has been set.
-func (o *FormFieldText) HasOtherOptionInputlabel() bool {
-	if o != nil && !IsNil(o.OtherOptionInputlabel) {
+// HasOtherOptionInputLabel returns a boolean if a field has been set.
+func (o *FormFieldText) HasOtherOptionInputLabel() bool {
+	if o != nil && !IsNil(o.OtherOptionInputLabel) {
 		return true
 	}
 
 	return false
 }
 
-// SetOtherOptionInputlabel gets a reference to the given string and assigns it to the OtherOptionInputlabel field.
-func (o *FormFieldText) SetOtherOptionInputlabel(v string) {
-	o.OtherOptionInputlabel = &v
+// SetOtherOptionInputLabel gets a reference to the given string and assigns it to the OtherOptionInputLabel field.
+func (o *FormFieldText) SetOtherOptionInputLabel(v string) {
+	o.OtherOptionInputLabel = &v
 }
 
 // GetOtherOptionAttributeDisabled returns the OtherOptionAttributeDisabled field value if set, zero value otherwise.
@@ -453,9 +453,9 @@ func (o *FormFieldText) SetLayout(v EnumFormElementLayout) {
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise.
-func (o *FormFieldText) GetOptions() []string {
+func (o *FormFieldText) GetOptions() []FormElementOption {
 	if o == nil || IsNil(o.Options) {
-		var ret []string
+		var ret []FormElementOption
 		return ret
 	}
 	return o.Options
@@ -463,7 +463,7 @@ func (o *FormFieldText) GetOptions() []string {
 
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldText) GetOptionsOk() ([]string, bool) {
+func (o *FormFieldText) GetOptionsOk() ([]FormElementOption, bool) {
 	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
@@ -479,8 +479,8 @@ func (o *FormFieldText) HasOptions() bool {
 	return false
 }
 
-// SetOptions gets a reference to the given []string and assigns it to the Options field.
-func (o *FormFieldText) SetOptions(v []string) {
+// SetOptions gets a reference to the given []FormElementOption and assigns it to the Options field.
+func (o *FormFieldText) SetOptions(v []FormElementOption) {
 	o.Options = v
 }
 
@@ -520,26 +520,28 @@ func (o FormFieldText) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
-	// skip: attributeDisabled is readOnly
-	toSerialize["key"] = o.Key
-	if !IsNil(o.Label) {
-		toSerialize["label"] = o.Label
+	if !IsNil(o.AttributeDisabled) {
+		toSerialize["attributeDisabled"] = o.AttributeDisabled
 	}
+	toSerialize["key"] = o.Key
+	toSerialize["label"] = o.Label
 	if !IsNil(o.LabelMode) {
 		toSerialize["labelMode"] = o.LabelMode
 	}
-	toSerialize["required"] = o.Required
+	if !IsNil(o.Required) {
+		toSerialize["required"] = o.Required
+	}
 	if !IsNil(o.OtherOptionEnabled) {
 		toSerialize["otherOptionEnabled"] = o.OtherOptionEnabled
 	}
 	if !IsNil(o.OtherOptionKey) {
 		toSerialize["otherOptionKey"] = o.OtherOptionKey
 	}
-	if !IsNil(o.OtherOptionlabel) {
-		toSerialize["otherOptionlabel"] = o.OtherOptionlabel
+	if !IsNil(o.OtherOptionLabel) {
+		toSerialize["otherOptionLabel"] = o.OtherOptionLabel
 	}
-	if !IsNil(o.OtherOptionInputlabel) {
-		toSerialize["otherOptionInputlabel"] = o.OtherOptionInputlabel
+	if !IsNil(o.OtherOptionInputLabel) {
+		toSerialize["otherOptionInputLabel"] = o.OtherOptionInputLabel
 	}
 	if !IsNil(o.OtherOptionAttributeDisabled) {
 		toSerialize["otherOptionAttributeDisabled"] = o.OtherOptionAttributeDisabled

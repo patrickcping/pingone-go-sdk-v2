@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityProviderCommon{}
 
 // IdentityProviderCommon struct for IdentityProviderCommon
 type IdentityProviderCommon struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
@@ -60,9 +60,9 @@ func NewIdentityProviderCommonWithDefaults() *IdentityProviderCommon {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *IdentityProviderCommon) GetLinks() LinksHATEOAS {
+func (o *IdentityProviderCommon) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -70,7 +70,7 @@ func (o *IdentityProviderCommon) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderCommon) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *IdentityProviderCommon) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -86,8 +86,8 @@ func (o *IdentityProviderCommon) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *IdentityProviderCommon) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *IdentityProviderCommon) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -442,7 +442,9 @@ func (o IdentityProviderCommon) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginButtonIcon) {
 		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
 	}
@@ -451,8 +453,12 @@ func (o IdentityProviderCommon) ToMap() (map[string]interface{}, error) {
 		toSerialize["registration"] = o.Registration
 	}
 	toSerialize["type"] = o.Type
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

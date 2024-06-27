@@ -23,6 +23,8 @@ type RolePermissionsInner struct {
 	Classifier *string `json:"classifier,omitempty"`
 	// A string that specifies the description of what the permission enables for the role.
 	Description *string `json:"description,omitempty"`
+	// The ID of a permission associated with this role.
+	Id *string `json:"id,omitempty"`
 }
 
 // NewRolePermissionsInner instantiates a new RolePermissionsInner object
@@ -106,6 +108,38 @@ func (o *RolePermissionsInner) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *RolePermissionsInner) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RolePermissionsInner) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *RolePermissionsInner) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *RolePermissionsInner) SetId(v string) {
+	o.Id = &v
+}
+
 func (o RolePermissionsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,8 +150,15 @@ func (o RolePermissionsInner) MarshalJSON() ([]byte, error) {
 
 func (o RolePermissionsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: classifier is readOnly
-	// skip: description is readOnly
+	if !IsNil(o.Classifier) {
+		toSerialize["classifier"] = o.Classifier
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	return toSerialize, nil
 }
 

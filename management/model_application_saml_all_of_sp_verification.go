@@ -19,6 +19,8 @@ var _ MappedNullable = &ApplicationSAMLAllOfSpVerification{}
 
 // ApplicationSAMLAllOfSpVerification struct for ApplicationSAMLAllOfSpVerification
 type ApplicationSAMLAllOfSpVerification struct {
+	// Whether the Authn Request signing should be enforced. Default is `false`.
+	AuthnRequestSigned *bool `json:"authnRequestSigned,omitempty"`
 	Certificates []ApplicationSAMLAllOfSpVerificationCertificates `json:"certificates"`
 }
 
@@ -28,6 +30,8 @@ type ApplicationSAMLAllOfSpVerification struct {
 // will change when the set of required properties is changed
 func NewApplicationSAMLAllOfSpVerification(certificates []ApplicationSAMLAllOfSpVerificationCertificates) *ApplicationSAMLAllOfSpVerification {
 	this := ApplicationSAMLAllOfSpVerification{}
+	var authnRequestSigned bool = false
+	this.AuthnRequestSigned = &authnRequestSigned
 	this.Certificates = certificates
 	return &this
 }
@@ -37,7 +41,41 @@ func NewApplicationSAMLAllOfSpVerification(certificates []ApplicationSAMLAllOfSp
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationSAMLAllOfSpVerificationWithDefaults() *ApplicationSAMLAllOfSpVerification {
 	this := ApplicationSAMLAllOfSpVerification{}
+	var authnRequestSigned bool = false
+	this.AuthnRequestSigned = &authnRequestSigned
 	return &this
+}
+
+// GetAuthnRequestSigned returns the AuthnRequestSigned field value if set, zero value otherwise.
+func (o *ApplicationSAMLAllOfSpVerification) GetAuthnRequestSigned() bool {
+	if o == nil || IsNil(o.AuthnRequestSigned) {
+		var ret bool
+		return ret
+	}
+	return *o.AuthnRequestSigned
+}
+
+// GetAuthnRequestSignedOk returns a tuple with the AuthnRequestSigned field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAMLAllOfSpVerification) GetAuthnRequestSignedOk() (*bool, bool) {
+	if o == nil || IsNil(o.AuthnRequestSigned) {
+		return nil, false
+	}
+	return o.AuthnRequestSigned, true
+}
+
+// HasAuthnRequestSigned returns a boolean if a field has been set.
+func (o *ApplicationSAMLAllOfSpVerification) HasAuthnRequestSigned() bool {
+	if o != nil && !IsNil(o.AuthnRequestSigned) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthnRequestSigned gets a reference to the given bool and assigns it to the AuthnRequestSigned field.
+func (o *ApplicationSAMLAllOfSpVerification) SetAuthnRequestSigned(v bool) {
+	o.AuthnRequestSigned = &v
 }
 
 // GetCertificates returns the Certificates field value
@@ -74,6 +112,9 @@ func (o ApplicationSAMLAllOfSpVerification) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationSAMLAllOfSpVerification) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AuthnRequestSigned) {
+		toSerialize["authnRequestSigned"] = o.AuthnRequestSigned
+	}
 	toSerialize["certificates"] = o.Certificates
 	return toSerialize, nil
 }

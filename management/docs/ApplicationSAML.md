@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **AccessControl** | Pointer to [**ApplicationAccessControl**](ApplicationAccessControl.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
@@ -21,14 +21,18 @@ Name | Type | Description | Notes
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
-**AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
+**AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is &#x60;true&#x60;. | [optional] [default to true]
+**CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
+**DefaultTargetUrl** | Pointer to **string** | This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application&#39;s ACS URL as a separate RelayState key value (not within the SAMLResponse key value). | [optional] 
+**EnableRequestedAuthnContext** | Pointer to **bool** | Indicates whether &#x60;requestedAuthnContext&#x60; is taken into account in policy decision-making during authentication. | [optional] 
 **IdpSigning** | Pointer to [**ApplicationSAMLAllOfIdpSigning**](ApplicationSAMLAllOfIdpSigning.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
-**ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False. | [optional] 
-**SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
+**ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is &#x60;false&#x60;. | [optional] [default to false]
+**SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] [default to ENUMAPPLICATIONSAMLSLOBINDING_POST]
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
 **SloWindow** | Pointer to **int32** | Defines how long PingOne can exchange logout messages with the application, specifically a &#x60;LogoutRequest&#x60; from the application, since the initial request. PingOne can also send a &#x60;LogoutRequest&#x60; to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens. | [optional] 
+**SpEncryption** | Pointer to [**ApplicationSAMLAllOfSpEncryption**](ApplicationSAMLAllOfSpEncryption.md) |  | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 
@@ -53,20 +57,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ApplicationSAML) GetLinks() LinksHATEOAS`
+`func (o *ApplicationSAML) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ApplicationSAML) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *ApplicationSAML) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ApplicationSAML) SetLinks(v LinksHATEOAS)`
+`func (o *ApplicationSAML) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -471,6 +475,81 @@ SetAssertionSigned sets AssertionSigned field to given value.
 
 HasAssertionSigned returns a boolean if a field has been set.
 
+### GetCorsSettings
+
+`func (o *ApplicationSAML) GetCorsSettings() ApplicationCorsSettings`
+
+GetCorsSettings returns the CorsSettings field if non-nil, zero value otherwise.
+
+### GetCorsSettingsOk
+
+`func (o *ApplicationSAML) GetCorsSettingsOk() (*ApplicationCorsSettings, bool)`
+
+GetCorsSettingsOk returns a tuple with the CorsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCorsSettings
+
+`func (o *ApplicationSAML) SetCorsSettings(v ApplicationCorsSettings)`
+
+SetCorsSettings sets CorsSettings field to given value.
+
+### HasCorsSettings
+
+`func (o *ApplicationSAML) HasCorsSettings() bool`
+
+HasCorsSettings returns a boolean if a field has been set.
+
+### GetDefaultTargetUrl
+
+`func (o *ApplicationSAML) GetDefaultTargetUrl() string`
+
+GetDefaultTargetUrl returns the DefaultTargetUrl field if non-nil, zero value otherwise.
+
+### GetDefaultTargetUrlOk
+
+`func (o *ApplicationSAML) GetDefaultTargetUrlOk() (*string, bool)`
+
+GetDefaultTargetUrlOk returns a tuple with the DefaultTargetUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultTargetUrl
+
+`func (o *ApplicationSAML) SetDefaultTargetUrl(v string)`
+
+SetDefaultTargetUrl sets DefaultTargetUrl field to given value.
+
+### HasDefaultTargetUrl
+
+`func (o *ApplicationSAML) HasDefaultTargetUrl() bool`
+
+HasDefaultTargetUrl returns a boolean if a field has been set.
+
+### GetEnableRequestedAuthnContext
+
+`func (o *ApplicationSAML) GetEnableRequestedAuthnContext() bool`
+
+GetEnableRequestedAuthnContext returns the EnableRequestedAuthnContext field if non-nil, zero value otherwise.
+
+### GetEnableRequestedAuthnContextOk
+
+`func (o *ApplicationSAML) GetEnableRequestedAuthnContextOk() (*bool, bool)`
+
+GetEnableRequestedAuthnContextOk returns a tuple with the EnableRequestedAuthnContext field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableRequestedAuthnContext
+
+`func (o *ApplicationSAML) SetEnableRequestedAuthnContext(v bool)`
+
+SetEnableRequestedAuthnContext sets EnableRequestedAuthnContext field to given value.
+
+### HasEnableRequestedAuthnContext
+
+`func (o *ApplicationSAML) HasEnableRequestedAuthnContext() bool`
+
+HasEnableRequestedAuthnContext returns a boolean if a field has been set.
+
 ### GetIdpSigning
 
 `func (o *ApplicationSAML) GetIdpSigning() ApplicationSAMLAllOfIdpSigning`
@@ -645,6 +724,31 @@ SetSloWindow sets SloWindow field to given value.
 `func (o *ApplicationSAML) HasSloWindow() bool`
 
 HasSloWindow returns a boolean if a field has been set.
+
+### GetSpEncryption
+
+`func (o *ApplicationSAML) GetSpEncryption() ApplicationSAMLAllOfSpEncryption`
+
+GetSpEncryption returns the SpEncryption field if non-nil, zero value otherwise.
+
+### GetSpEncryptionOk
+
+`func (o *ApplicationSAML) GetSpEncryptionOk() (*ApplicationSAMLAllOfSpEncryption, bool)`
+
+GetSpEncryptionOk returns a tuple with the SpEncryption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpEncryption
+
+`func (o *ApplicationSAML) SetSpEncryption(v ApplicationSAMLAllOfSpEncryption)`
+
+SetSpEncryption sets SpEncryption field to given value.
+
+### HasSpEncryption
+
+`func (o *ApplicationSAML) HasSpEncryption() bool`
+
+HasSpEncryption returns a boolean if a field has been set.
 
 ### GetSpEntityId
 

@@ -20,7 +20,7 @@ var _ MappedNullable = &MFASettings{}
 
 // MFASettings struct for MFASettings
 type MFASettings struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Deprecated
 	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
@@ -29,6 +29,7 @@ type MFASettings struct {
 	PhoneExtensions *MFASettingsPhoneExtensions `json:"phoneExtensions,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Users *MFASettingsUsers `json:"users,omitempty"`
 }
 
 // NewMFASettings instantiates a new MFASettings object
@@ -50,9 +51,9 @@ func NewMFASettingsWithDefaults() *MFASettings {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *MFASettings) GetLinks() LinksHATEOAS {
+func (o *MFASettings) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -60,7 +61,7 @@ func (o *MFASettings) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MFASettings) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *MFASettings) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -76,8 +77,8 @@ func (o *MFASettings) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *MFASettings) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *MFASettings) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -268,6 +269,38 @@ func (o *MFASettings) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetUsers returns the Users field value if set, zero value otherwise.
+func (o *MFASettings) GetUsers() MFASettingsUsers {
+	if o == nil || IsNil(o.Users) {
+		var ret MFASettingsUsers
+		return ret
+	}
+	return *o.Users
+}
+
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MFASettings) GetUsersOk() (*MFASettingsUsers, bool) {
+	if o == nil || IsNil(o.Users) {
+		return nil, false
+	}
+	return o.Users, true
+}
+
+// HasUsers returns a boolean if a field has been set.
+func (o *MFASettings) HasUsers() bool {
+	if o != nil && !IsNil(o.Users) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given MFASettingsUsers and assigns it to the Users field.
+func (o *MFASettings) SetUsers(v MFASettingsUsers) {
+	o.Users = &v
+}
+
 func (o MFASettings) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -294,7 +327,12 @@ func (o MFASettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PhoneExtensions) {
 		toSerialize["phoneExtensions"] = o.PhoneExtensions
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
 	return toSerialize, nil
 }
 

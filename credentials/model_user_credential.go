@@ -20,7 +20,7 @@ var _ MappedNullable = &UserCredential{}
 
 // UserCredential struct for UserCredential
 type UserCredential struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	CredentialType *CredentialDigitalWalletNotificationResultsInnerNotification `json:"credentialType,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -51,9 +51,9 @@ func NewUserCredentialWithDefaults() *UserCredential {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *UserCredential) GetLinks() LinksHATEOAS {
+func (o *UserCredential) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -61,7 +61,7 @@ func (o *UserCredential) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCredential) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *UserCredential) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *UserCredential) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *UserCredential) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *UserCredential) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -415,14 +415,18 @@ func (o UserCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.CredentialType) {
 		toSerialize["credentialType"] = o.CredentialType
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: expiresAt is readOnly
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -432,7 +436,9 @@ func (o UserCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}

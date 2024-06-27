@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**InspectionType** | Pointer to [**EnumInspectionType**](EnumInspectionType.md) |  | [optional] 
 **Verify** | [**EnumVerify**](EnumVerify.md) |  | 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewGovernmentIdConfigurationWithDefaults instantiates a new GovernmentIdConfiguration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetInspectionType
+
+`func (o *GovernmentIdConfiguration) GetInspectionType() EnumInspectionType`
+
+GetInspectionType returns the InspectionType field if non-nil, zero value otherwise.
+
+### GetInspectionTypeOk
+
+`func (o *GovernmentIdConfiguration) GetInspectionTypeOk() (*EnumInspectionType, bool)`
+
+GetInspectionTypeOk returns a tuple with the InspectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInspectionType
+
+`func (o *GovernmentIdConfiguration) SetInspectionType(v EnumInspectionType)`
+
+SetInspectionType sets InspectionType field to given value.
+
+### HasInspectionType
+
+`func (o *GovernmentIdConfiguration) HasInspectionType() bool`
+
+HasInspectionType returns a boolean if a field has been set.
 
 ### GetVerify
 

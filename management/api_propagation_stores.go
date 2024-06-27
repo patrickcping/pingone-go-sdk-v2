@@ -23,37 +23,31 @@ import (
 // PropagationStoresApiService PropagationStoresApi service
 type PropagationStoresApiService service
 
-type ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest struct {
+type ApiCreatePropagationStoreRequest struct {
 	ctx context.Context
 	ApiService *PropagationStoresApiService
 	environmentID string
-	contentType *string
-	body *map[string]interface{}
+	propagationStore *PropagationStore
 }
 
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) ContentType(contentType string) ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest {
-	r.contentType = &contentType
+func (r ApiCreatePropagationStoreRequest) PropagationStore(propagationStore PropagationStore) ApiCreatePropagationStoreRequest {
+	r.propagationStore = &propagationStore
 	return r
 }
 
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r)
+func (r ApiCreatePropagationStoreRequest) Execute() (*PropagationStore, *http.Response, error) {
+	return r.ApiService.CreatePropagationStoreExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost TEST Connection Configuration
+CreatePropagationStore CREATE Propagation Store
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest
+ @return ApiCreatePropagationStoreRequest
 */
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest {
-	return ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest{
+func (a *PropagationStoresApiService) CreatePropagationStore(ctx context.Context, environmentID string) ApiCreatePropagationStoreRequest {
+	return ApiCreatePropagationStoreRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -61,7 +55,217 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 }
 
 // Execute executes the request
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) (*http.Response, error) {
+//  @return PropagationStore
+func (a *PropagationStoresApiService) CreatePropagationStoreExecute(r ApiCreatePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *PropagationStore
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreatePropagationStoreExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *PropagationStoresApiService) internalCreatePropagationStoreExecute(r ApiCreatePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PropagationStore
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.CreatePropagationStore")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.propagationStore
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 405 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeletePropagationStoreRequest struct {
+	ctx context.Context
+	ApiService *PropagationStoresApiService
+	environmentID string
+	storeID string
+}
+
+func (r ApiDeletePropagationStoreRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeletePropagationStoreExecute(r)
+}
+
+/*
+DeletePropagationStore DELETE Store
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param storeID
+ @return ApiDeletePropagationStoreRequest
+*/
+func (a *PropagationStoresApiService) DeletePropagationStore(ctx context.Context, environmentID string, storeID string) ApiDeletePropagationStoreRequest {
+	return ApiDeletePropagationStoreRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		storeID: storeID,
+	}
+}
+
+// Execute executes the request
+func (a *PropagationStoresApiService) DeletePropagationStoreExecute(r ApiDeletePropagationStoreRequest) (*http.Response, error) {
 	var (
 		err      error
 		response *http.Response
@@ -69,7 +273,7 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r)
+			resp, err := r.ApiService.internalDeletePropagationStoreExecute(r)
 			return nil, resp, err
 		},
 		nil,
@@ -77,14 +281,602 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 	return response, err
 }
 			
-func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) (*http.Response, error) {
+func (a *PropagationStoresApiService) internalDeletePropagationStoreExecute(r ApiDeletePropagationStoreRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.DeletePropagationStore")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiReadAllStoresRequest struct {
+	ctx context.Context
+	ApiService *PropagationStoresApiService
+	environmentID string
+}
+
+func (r ApiReadAllStoresRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllStoresExecute(r)
+}
+
+/*
+ReadAllStores READ All Stores
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @return ApiReadAllStoresRequest
+*/
+func (a *PropagationStoresApiService) ReadAllStores(ctx context.Context, environmentID string) ApiReadAllStoresRequest {
+	return ApiReadAllStoresRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *PropagationStoresApiService) ReadAllStoresExecute(r ApiReadAllStoresRequest) (*EntityArray, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalReadAllStoresExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *PropagationStoresApiService) internalReadAllStoresExecute(r ApiReadAllStoresRequest) (*EntityArray, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.ReadAllStores")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOnePropagationStoreRequest struct {
+	ctx context.Context
+	ApiService *PropagationStoresApiService
+	environmentID string
+	storeID string
+}
+
+func (r ApiReadOnePropagationStoreRequest) Execute() (*PropagationStore, *http.Response, error) {
+	return r.ApiService.ReadOnePropagationStoreExecute(r)
+}
+
+/*
+ReadOnePropagationStore READ One Store
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param storeID
+ @return ApiReadOnePropagationStoreRequest
+*/
+func (a *PropagationStoresApiService) ReadOnePropagationStore(ctx context.Context, environmentID string, storeID string) ApiReadOnePropagationStoreRequest {
+	return ApiReadOnePropagationStoreRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		storeID: storeID,
+	}
+}
+
+// Execute executes the request
+//  @return PropagationStore
+func (a *PropagationStoresApiService) ReadOnePropagationStoreExecute(r ApiReadOnePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *PropagationStore
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalReadOnePropagationStoreExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *PropagationStoresApiService) internalReadOnePropagationStoreExecute(r ApiReadOnePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PropagationStore
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.ReadOnePropagationStore")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTestConnectionConfigurationRequest struct {
+	ctx context.Context
+	ApiService *PropagationStoresApiService
+	environmentID string
+	contentType *EnumPropagationStoreConnectionStatusContentType
+	propagationStore *PropagationStore
+}
+
+func (r ApiTestConnectionConfigurationRequest) ContentType(contentType EnumPropagationStoreConnectionStatusContentType) ApiTestConnectionConfigurationRequest {
+	r.contentType = &contentType
+	return r
+}
+
+func (r ApiTestConnectionConfigurationRequest) PropagationStore(propagationStore PropagationStore) ApiTestConnectionConfigurationRequest {
+	r.propagationStore = &propagationStore
+	return r
+}
+
+func (r ApiTestConnectionConfigurationRequest) Execute() (*http.Response, error) {
+	return r.ApiService.TestConnectionConfigurationExecute(r)
+}
+
+/*
+TestConnectionConfiguration TEST Connection Configuration
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @return ApiTestConnectionConfigurationRequest
+*/
+func (a *PropagationStoresApiService) TestConnectionConfiguration(ctx context.Context, environmentID string) ApiTestConnectionConfigurationRequest {
+	return ApiTestConnectionConfigurationRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+	}
+}
+
+// Execute executes the request
+func (a *PropagationStoresApiService) TestConnectionConfigurationExecute(r ApiTestConnectionConfigurationRequest) (*http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			resp, err := r.ApiService.internalTestConnectionConfigurationExecute(r)
+			return nil, resp, err
+		},
+		nil,
+	)
+	return response, err
+}
+			
+func (a *PropagationStoresApiService) internalTestConnectionConfigurationExecute(r ApiTestConnectionConfigurationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.TestConnectionConfiguration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -117,7 +909,7 @@ func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagati
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.propagationStore
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -195,177 +987,7 @@ func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagati
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest struct {
-	ctx context.Context
-	ApiService *PropagationStoresApiService
-	environmentID string
-	accept *string
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest) Accept(accept string) ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest {
-	r.accept = &accept
-	return r
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDPropagationStoresGetExecute(r)
-}
-
-/*
-EnvironmentsEnvironmentIDPropagationStoresGet READ All Stores
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest
-*/
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresGet(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest {
-	return ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-	}
-}
-
-// Execute executes the request
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest) (*http.Response, error) {
-	var (
-		err      error
-		response *http.Response
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresGetExecute(r)
-			return nil, resp, err
-		},
-		nil,
-	)
-	return response, err
-}
-			
-func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.EnvironmentsEnvironmentIDPropagationStoresGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.accept != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -404,224 +1026,33 @@ func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagati
 	return localVarHTTPResponse, nil
 }
 
-type ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest struct {
-	ctx context.Context
-	ApiService *PropagationStoresApiService
-	environmentID string
-	body *map[string]interface{}
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDPropagationStoresPostExecute(r)
-}
-
-/*
-EnvironmentsEnvironmentIDPropagationStoresPost CREATE Store (Aquera)
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest
-*/
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresPost(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest {
-	return ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-	}
-}
-
-// Execute executes the request
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest) (*http.Response, error) {
-	var (
-		err      error
-		response *http.Response
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresPostExecute(r)
-			return nil, resp, err
-		},
-		nil,
-	)
-	return response, err
-}
-			
-func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.EnvironmentsEnvironmentIDPropagationStoresPost")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 405 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest struct {
+type ApiUpdatePropagationStoreRequest struct {
 	ctx context.Context
 	ApiService *PropagationStoresApiService
 	environmentID string
 	storeID string
-	accept *string
+	propagationStore *PropagationStore
 }
 
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) Accept(accept string) ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest {
-	r.accept = &accept
+func (r ApiUpdatePropagationStoreRequest) PropagationStore(propagationStore PropagationStore) ApiUpdatePropagationStoreRequest {
+	r.propagationStore = &propagationStore
 	return r
 }
 
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r)
+func (r ApiUpdatePropagationStoreRequest) Execute() (*PropagationStore, *http.Response, error) {
+	return r.ApiService.UpdatePropagationStoreExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete DELETE Store
+UpdatePropagationStore UPDATE Store
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param storeID
- @return ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest
+ @return ApiUpdatePropagationStoreRequest
 */
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete(ctx context.Context, environmentID string, storeID string) ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest {
-	return ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest{
+func (a *PropagationStoresApiService) UpdatePropagationStore(ctx context.Context, environmentID string, storeID string) ApiUpdatePropagationStoreRequest {
+	return ApiUpdatePropagationStoreRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -630,402 +1061,34 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 }
 
 // Execute executes the request
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) (*http.Response, error) {
+//  @return PropagationStore
+func (a *PropagationStoresApiService) UpdatePropagationStoreExecute(r ApiUpdatePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
 	var (
-		err      error
-		response *http.Response
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *PropagationStore
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalUpdatePropagationStoreExecute(r)
 		},
-		nil,
+		&localVarReturnValue,
 	)
-	return response, err
+	return localVarReturnValue, response, err
 }
 			
-func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.accept != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest struct {
-	ctx context.Context
-	ApiService *PropagationStoresApiService
-	environmentID string
-	storeID string
-	accept *string
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) Accept(accept string) ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest {
-	r.accept = &accept
-	return r
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r)
-}
-
-/*
-EnvironmentsEnvironmentIDPropagationStoresStoreIDGet READ One Store
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param storeID
- @return ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest
-*/
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDGet(ctx context.Context, environmentID string, storeID string) ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest {
-	return ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		storeID: storeID,
-	}
-}
-
-// Execute executes the request
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) (*http.Response, error) {
-	var (
-		err      error
-		response *http.Response
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r)
-			return nil, resp, err
-		},
-		nil,
-	)
-	return response, err
-}
-			
-func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.EnvironmentsEnvironmentIDPropagationStoresStoreIDGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.accept != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest struct {
-	ctx context.Context
-	ApiService *PropagationStoresApiService
-	environmentID string
-	storeID string
-	body *map[string]interface{}
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r)
-}
-
-/*
-EnvironmentsEnvironmentIDPropagationStoresStoreIDPut UPDATE Store
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param storeID
- @return ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest
-*/
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDPut(ctx context.Context, environmentID string, storeID string) ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest {
-	return ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		storeID: storeID,
-	}
-}
-
-// Execute executes the request
-func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) (*http.Response, error) {
-	var (
-		err      error
-		response *http.Response
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r)
-			return nil, resp, err
-		},
-		nil,
-	)
-	return response, err
-}
-			
-func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) (*http.Response, error) {
+func (a *PropagationStoresApiService) internalUpdatePropagationStoreExecute(r ApiUpdatePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *PropagationStore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.EnvironmentsEnvironmentIDPropagationStoresStoreIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropagationStoresApiService.UpdatePropagationStore")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
@@ -1054,22 +1117,22 @@ func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagati
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.propagationStore
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1082,69 +1145,89 @@ func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagati
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

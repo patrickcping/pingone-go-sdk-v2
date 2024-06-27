@@ -28,6 +28,8 @@ type RiskEvaluationEventFlow struct {
 // will change when the set of required properties is changed
 func NewRiskEvaluationEventFlow() *RiskEvaluationEventFlow {
 	this := RiskEvaluationEventFlow{}
+	var type_ EnumFlowType = ENUMFLOWTYPE_AUTHENTICATION
+	this.Type = &type_
 	return &this
 }
 
@@ -36,6 +38,8 @@ func NewRiskEvaluationEventFlow() *RiskEvaluationEventFlow {
 // but it doesn't guarantee that properties required by API are set
 func NewRiskEvaluationEventFlowWithDefaults() *RiskEvaluationEventFlow {
 	this := RiskEvaluationEventFlow{}
+	var type_ EnumFlowType = ENUMFLOWTYPE_AUTHENTICATION
+	this.Type = &type_
 	return &this
 }
 

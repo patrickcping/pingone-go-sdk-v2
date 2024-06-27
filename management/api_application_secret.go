@@ -23,6 +23,193 @@ import (
 // ApplicationSecretApiService ApplicationSecretApi service
 type ApplicationSecretApiService service
 
+type ApiDeletePreviousApplicationSecretRequest struct {
+	ctx context.Context
+	ApiService *ApplicationSecretApiService
+	environmentID string
+	applicationID string
+}
+
+func (r ApiDeletePreviousApplicationSecretRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeletePreviousApplicationSecretExecute(r)
+}
+
+/*
+DeletePreviousApplicationSecret DELETE Previous Application Secret
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param applicationID
+ @return ApiDeletePreviousApplicationSecretRequest
+*/
+func (a *ApplicationSecretApiService) DeletePreviousApplicationSecret(ctx context.Context, environmentID string, applicationID string) ApiDeletePreviousApplicationSecretRequest {
+	return ApiDeletePreviousApplicationSecretRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		applicationID: applicationID,
+	}
+}
+
+// Execute executes the request
+func (a *ApplicationSecretApiService) DeletePreviousApplicationSecretExecute(r ApiDeletePreviousApplicationSecretRequest) (*http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			resp, err := r.ApiService.internalDeletePreviousApplicationSecretExecute(r)
+			return nil, resp, err
+		},
+		nil,
+	)
+	return response, err
+}
+			
+func (a *ApplicationSecretApiService) internalDeletePreviousApplicationSecretExecute(r ApiDeletePreviousApplicationSecretRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.DeletePreviousApplicationSecret")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/secret"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiReadApplicationSecretRequest struct {
 	ctx context.Context
 	ApiService *ApplicationSecretApiService
@@ -173,6 +360,17 @@ func (a *ApplicationSecretApiService) internalReadApplicationSecretExecute(r Api
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -215,9 +413,15 @@ type ApiUpdateApplicationSecretRequest struct {
 	ApiService *ApplicationSecretApiService
 	environmentID string
 	applicationID string
+	applicationSecret *ApplicationSecret
 }
 
-func (r ApiUpdateApplicationSecretRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateApplicationSecretRequest) ApplicationSecret(applicationSecret ApplicationSecret) ApiUpdateApplicationSecretRequest {
+	r.applicationSecret = &applicationSecret
+	return r
+}
+
+func (r ApiUpdateApplicationSecretRequest) Execute() (*ApplicationSecret, *http.Response, error) {
 	return r.ApiService.UpdateApplicationSecretExecute(r)
 }
 
@@ -239,32 +443,34 @@ func (a *ApplicationSecretApiService) UpdateApplicationSecret(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *ApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*http.Response, error) {
+//  @return ApplicationSecret
+func (a *ApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
 	var (
-		err      error
-		response *http.Response
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ApplicationSecret
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalUpdateApplicationSecretExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalUpdateApplicationSecretExecute(r)
 		},
-		nil,
+		&localVarReturnValue,
 	)
-	return response, err
+	return localVarReturnValue, response, err
 }
 			
-func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*http.Response, error) {
+func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ApplicationSecret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.UpdateApplicationSecret")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/secret"
@@ -276,7 +482,7 @@ func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r A
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -292,21 +498,23 @@ func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.applicationSecret
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -319,80 +527,100 @@ func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r A
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

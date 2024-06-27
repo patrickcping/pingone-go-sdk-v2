@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Provider** | [**EnumNotificationsSettingsPhoneDeliverySettingsProvider**](EnumNotificationsSettingsPhoneDeliverySettingsProvider.md) |  | 
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinks() LinksHATEOAS`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetLinks(v LinksHATEOAS)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

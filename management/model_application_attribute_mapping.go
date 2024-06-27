@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationAttributeMapping{}
 
 // ApplicationAttributeMapping struct for ApplicationAttributeMapping
 type ApplicationAttributeMapping struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
 	Application *ApplicationAttributeMappingApplication `json:"application,omitempty"`
@@ -74,9 +74,9 @@ func NewApplicationAttributeMappingWithDefaults() *ApplicationAttributeMapping {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationAttributeMapping) GetLinks() LinksHATEOAS {
+func (o *ApplicationAttributeMapping) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -84,7 +84,7 @@ func (o *ApplicationAttributeMapping) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationAttributeMapping) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationAttributeMapping) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *ApplicationAttributeMapping) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationAttributeMapping) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationAttributeMapping) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -478,17 +478,23 @@ func (o ApplicationAttributeMapping) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.MappingType) {
 		toSerialize["mappingType"] = o.MappingType
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["required"] = o.Required
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["value"] = o.Value
 	if !IsNil(o.NameFormat) {
 		toSerialize["nameFormat"] = o.NameFormat

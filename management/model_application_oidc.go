@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationOIDC{}
 
 // ApplicationOIDC struct for ApplicationOIDC
 type ApplicationOIDC struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -42,10 +42,25 @@ type ApplicationOIDC struct {
 	Type EnumApplicationType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// When set to `true` (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a `false` setting.
+	AdditionalRefreshTokenReplayProtectionEnabled *bool `json:"additionalRefreshTokenReplayProtectionEnabled,omitempty"`
 	// A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri).
 	AllowWildcardInRedirectUris *bool `json:"allowWildcardInRedirectUris,omitempty"`
 	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
 	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
+	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
+	// A string that specifies a unique identifier within an environment for a device authorization grant flow to provide a short identifier to the application. This property is ignored when the `deviceCustomVerificationUri` property is configured. The string can contain any letters, numbers, and some special characters (regex `a-zA-Z0-9_-`). It can have a length of no more than 50 characters (`min`/`max`=`1`/`50`).
+	DevicePathId *string `json:"devicePathId,omitempty"`
+	// A string that specifies an optional custom verification URI that is returned for the `/device_authorization` endpoint.
+	DeviceCustomVerificationUri *string `json:"deviceCustomVerificationUri,omitempty"`
+	// An integer that specifies the length of time (in seconds) that the `userCode` and `deviceCode` returned by the `/device_authorization` endpoint are valid. This property is required only for applications in which the `grantTypes` property is set to `device_code`. The default value is `600` seconds. It can have a value of no more than `3600` seconds (`min`/`max`=`1`/`3600`).
+	DeviceTimeout *int32 `json:"deviceTimeout,omitempty"`
+	// An integer that specifies the frequency (in seconds) for the client to poll the `/as/token` endpoint. This property is required only for applications in which the `grantTypes` property is set to `device_code`. The default value is `5` seconds. It can have a value of no more than `60` seconds (`min`/`max`=`1`/`60`).
+	DevicePollingInterval *int32 `json:"devicePollingInterval,omitempty"`
+	// A JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwksUrl` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwksUrl` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
+	Jwks *string `json:"jwks,omitempty"`
+	// A URL (supports `https://` only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwks` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwks` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
+	JwksUrl *string `json:"jwksUrl,omitempty"`
 	Mobile *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
 	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. 
 	// Deprecated
@@ -71,8 +86,10 @@ type ApplicationOIDC struct {
 	RefreshTokenRollingDuration *int32 `json:"refreshTokenRollingDuration,omitempty"`
 	// The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
 	RefreshTokenRollingGracePeriodDuration *int32 `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
-	// A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
+	// The code or token type returned by an authorization request. Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type).
 	ResponseTypes []EnumApplicationOIDCResponseType `json:"responseTypes,omitempty"`
+	// Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
+	RequireSignedRequestObject *bool `json:"requireSignedRequestObject,omitempty"`
 	// A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
 	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 	// An array that specifies the list of labels associated with the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only applicable for creating worker applications.
@@ -80,6 +97,10 @@ type ApplicationOIDC struct {
 	// The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
 	TargetLinkUri *string `json:"targetLinkUri,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
+	ParRequirement *EnumApplicationOIDCPARRequirement `json:"parRequirement,omitempty"`
+	// PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
+	ParTimeout *int32 `json:"parTimeout,omitempty"`
+	Signing *ApplicationOIDCAllOfSigning `json:"signing,omitempty"`
 }
 
 // NewApplicationOIDC instantiates a new ApplicationOIDC object
@@ -92,10 +113,20 @@ func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProto
 	this.Name = name
 	this.Protocol = protocol
 	this.Type = type_
+	var additionalRefreshTokenReplayProtectionEnabled bool = true
+	this.AdditionalRefreshTokenReplayProtectionEnabled = &additionalRefreshTokenReplayProtectionEnabled
+	var deviceTimeout int32 = 600
+	this.DeviceTimeout = &deviceTimeout
+	var devicePollingInterval int32 = 5
+	this.DevicePollingInterval = &devicePollingInterval
 	this.GrantTypes = grantTypes
 	var refreshTokenDuration int32 = 2592000
 	this.RefreshTokenDuration = &refreshTokenDuration
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
+	var parRequirement EnumApplicationOIDCPARRequirement = ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL
+	this.ParRequirement = &parRequirement
+	var parTimeout int32 = 60
+	this.ParTimeout = &parTimeout
 	return &this
 }
 
@@ -104,15 +135,25 @@ func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProto
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationOIDCWithDefaults() *ApplicationOIDC {
 	this := ApplicationOIDC{}
+	var additionalRefreshTokenReplayProtectionEnabled bool = true
+	this.AdditionalRefreshTokenReplayProtectionEnabled = &additionalRefreshTokenReplayProtectionEnabled
+	var deviceTimeout int32 = 600
+	this.DeviceTimeout = &deviceTimeout
+	var devicePollingInterval int32 = 5
+	this.DevicePollingInterval = &devicePollingInterval
 	var refreshTokenDuration int32 = 2592000
 	this.RefreshTokenDuration = &refreshTokenDuration
+	var parRequirement EnumApplicationOIDCPARRequirement = ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL
+	this.ParRequirement = &parRequirement
+	var parTimeout int32 = 60
+	this.ParTimeout = &parTimeout
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetLinks() LinksHATEOAS {
+func (o *ApplicationOIDC) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -120,7 +161,7 @@ func (o *ApplicationOIDC) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationOIDC) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -136,8 +177,8 @@ func (o *ApplicationOIDC) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationOIDC) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationOIDC) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -525,6 +566,38 @@ func (o *ApplicationOIDC) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetAdditionalRefreshTokenReplayProtectionEnabled returns the AdditionalRefreshTokenReplayProtectionEnabled field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetAdditionalRefreshTokenReplayProtectionEnabled() bool {
+	if o == nil || IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AdditionalRefreshTokenReplayProtectionEnabled
+}
+
+// GetAdditionalRefreshTokenReplayProtectionEnabledOk returns a tuple with the AdditionalRefreshTokenReplayProtectionEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetAdditionalRefreshTokenReplayProtectionEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		return nil, false
+	}
+	return o.AdditionalRefreshTokenReplayProtectionEnabled, true
+}
+
+// HasAdditionalRefreshTokenReplayProtectionEnabled returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasAdditionalRefreshTokenReplayProtectionEnabled() bool {
+	if o != nil && !IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalRefreshTokenReplayProtectionEnabled gets a reference to the given bool and assigns it to the AdditionalRefreshTokenReplayProtectionEnabled field.
+func (o *ApplicationOIDC) SetAdditionalRefreshTokenReplayProtectionEnabled(v bool) {
+	o.AdditionalRefreshTokenReplayProtectionEnabled = &v
+}
+
 // GetAllowWildcardInRedirectUris returns the AllowWildcardInRedirectUris field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetAllowWildcardInRedirectUris() bool {
 	if o == nil || IsNil(o.AllowWildcardInRedirectUris) {
@@ -587,6 +660,230 @@ func (o *ApplicationOIDC) HasAssignActorRoles() bool {
 // SetAssignActorRoles gets a reference to the given bool and assigns it to the AssignActorRoles field.
 func (o *ApplicationOIDC) SetAssignActorRoles(v bool) {
 	o.AssignActorRoles = &v
+}
+
+// GetCorsSettings returns the CorsSettings field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetCorsSettings() ApplicationCorsSettings {
+	if o == nil || IsNil(o.CorsSettings) {
+		var ret ApplicationCorsSettings
+		return ret
+	}
+	return *o.CorsSettings
+}
+
+// GetCorsSettingsOk returns a tuple with the CorsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetCorsSettingsOk() (*ApplicationCorsSettings, bool) {
+	if o == nil || IsNil(o.CorsSettings) {
+		return nil, false
+	}
+	return o.CorsSettings, true
+}
+
+// HasCorsSettings returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasCorsSettings() bool {
+	if o != nil && !IsNil(o.CorsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetCorsSettings gets a reference to the given ApplicationCorsSettings and assigns it to the CorsSettings field.
+func (o *ApplicationOIDC) SetCorsSettings(v ApplicationCorsSettings) {
+	o.CorsSettings = &v
+}
+
+// GetDevicePathId returns the DevicePathId field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetDevicePathId() string {
+	if o == nil || IsNil(o.DevicePathId) {
+		var ret string
+		return ret
+	}
+	return *o.DevicePathId
+}
+
+// GetDevicePathIdOk returns a tuple with the DevicePathId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetDevicePathIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DevicePathId) {
+		return nil, false
+	}
+	return o.DevicePathId, true
+}
+
+// HasDevicePathId returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasDevicePathId() bool {
+	if o != nil && !IsNil(o.DevicePathId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevicePathId gets a reference to the given string and assigns it to the DevicePathId field.
+func (o *ApplicationOIDC) SetDevicePathId(v string) {
+	o.DevicePathId = &v
+}
+
+// GetDeviceCustomVerificationUri returns the DeviceCustomVerificationUri field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetDeviceCustomVerificationUri() string {
+	if o == nil || IsNil(o.DeviceCustomVerificationUri) {
+		var ret string
+		return ret
+	}
+	return *o.DeviceCustomVerificationUri
+}
+
+// GetDeviceCustomVerificationUriOk returns a tuple with the DeviceCustomVerificationUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetDeviceCustomVerificationUriOk() (*string, bool) {
+	if o == nil || IsNil(o.DeviceCustomVerificationUri) {
+		return nil, false
+	}
+	return o.DeviceCustomVerificationUri, true
+}
+
+// HasDeviceCustomVerificationUri returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasDeviceCustomVerificationUri() bool {
+	if o != nil && !IsNil(o.DeviceCustomVerificationUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceCustomVerificationUri gets a reference to the given string and assigns it to the DeviceCustomVerificationUri field.
+func (o *ApplicationOIDC) SetDeviceCustomVerificationUri(v string) {
+	o.DeviceCustomVerificationUri = &v
+}
+
+// GetDeviceTimeout returns the DeviceTimeout field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetDeviceTimeout() int32 {
+	if o == nil || IsNil(o.DeviceTimeout) {
+		var ret int32
+		return ret
+	}
+	return *o.DeviceTimeout
+}
+
+// GetDeviceTimeoutOk returns a tuple with the DeviceTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetDeviceTimeoutOk() (*int32, bool) {
+	if o == nil || IsNil(o.DeviceTimeout) {
+		return nil, false
+	}
+	return o.DeviceTimeout, true
+}
+
+// HasDeviceTimeout returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasDeviceTimeout() bool {
+	if o != nil && !IsNil(o.DeviceTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceTimeout gets a reference to the given int32 and assigns it to the DeviceTimeout field.
+func (o *ApplicationOIDC) SetDeviceTimeout(v int32) {
+	o.DeviceTimeout = &v
+}
+
+// GetDevicePollingInterval returns the DevicePollingInterval field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetDevicePollingInterval() int32 {
+	if o == nil || IsNil(o.DevicePollingInterval) {
+		var ret int32
+		return ret
+	}
+	return *o.DevicePollingInterval
+}
+
+// GetDevicePollingIntervalOk returns a tuple with the DevicePollingInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetDevicePollingIntervalOk() (*int32, bool) {
+	if o == nil || IsNil(o.DevicePollingInterval) {
+		return nil, false
+	}
+	return o.DevicePollingInterval, true
+}
+
+// HasDevicePollingInterval returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasDevicePollingInterval() bool {
+	if o != nil && !IsNil(o.DevicePollingInterval) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevicePollingInterval gets a reference to the given int32 and assigns it to the DevicePollingInterval field.
+func (o *ApplicationOIDC) SetDevicePollingInterval(v int32) {
+	o.DevicePollingInterval = &v
+}
+
+// GetJwks returns the Jwks field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetJwks() string {
+	if o == nil || IsNil(o.Jwks) {
+		var ret string
+		return ret
+	}
+	return *o.Jwks
+}
+
+// GetJwksOk returns a tuple with the Jwks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetJwksOk() (*string, bool) {
+	if o == nil || IsNil(o.Jwks) {
+		return nil, false
+	}
+	return o.Jwks, true
+}
+
+// HasJwks returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasJwks() bool {
+	if o != nil && !IsNil(o.Jwks) {
+		return true
+	}
+
+	return false
+}
+
+// SetJwks gets a reference to the given string and assigns it to the Jwks field.
+func (o *ApplicationOIDC) SetJwks(v string) {
+	o.Jwks = &v
+}
+
+// GetJwksUrl returns the JwksUrl field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetJwksUrl() string {
+	if o == nil || IsNil(o.JwksUrl) {
+		var ret string
+		return ret
+	}
+	return *o.JwksUrl
+}
+
+// GetJwksUrlOk returns a tuple with the JwksUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetJwksUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.JwksUrl) {
+		return nil, false
+	}
+	return o.JwksUrl, true
+}
+
+// HasJwksUrl returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasJwksUrl() bool {
+	if o != nil && !IsNil(o.JwksUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksUrl gets a reference to the given string and assigns it to the JwksUrl field.
+func (o *ApplicationOIDC) SetJwksUrl(v string) {
+	o.JwksUrl = &v
 }
 
 // GetMobile returns the Mobile field value if set, zero value otherwise.
@@ -1035,6 +1332,38 @@ func (o *ApplicationOIDC) SetResponseTypes(v []EnumApplicationOIDCResponseType) 
 	o.ResponseTypes = v
 }
 
+// GetRequireSignedRequestObject returns the RequireSignedRequestObject field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetRequireSignedRequestObject() bool {
+	if o == nil || IsNil(o.RequireSignedRequestObject) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireSignedRequestObject
+}
+
+// GetRequireSignedRequestObjectOk returns a tuple with the RequireSignedRequestObject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetRequireSignedRequestObjectOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireSignedRequestObject) {
+		return nil, false
+	}
+	return o.RequireSignedRequestObject, true
+}
+
+// HasRequireSignedRequestObject returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasRequireSignedRequestObject() bool {
+	if o != nil && !IsNil(o.RequireSignedRequestObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireSignedRequestObject gets a reference to the given bool and assigns it to the RequireSignedRequestObject field.
+func (o *ApplicationOIDC) SetRequireSignedRequestObject(v bool) {
+	o.RequireSignedRequestObject = &v
+}
+
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetSupportUnsignedRequestObject() bool {
 	if o == nil || IsNil(o.SupportUnsignedRequestObject) {
@@ -1155,6 +1484,102 @@ func (o *ApplicationOIDC) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenA
 	o.TokenEndpointAuthMethod = v
 }
 
+// GetParRequirement returns the ParRequirement field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetParRequirement() EnumApplicationOIDCPARRequirement {
+	if o == nil || IsNil(o.ParRequirement) {
+		var ret EnumApplicationOIDCPARRequirement
+		return ret
+	}
+	return *o.ParRequirement
+}
+
+// GetParRequirementOk returns a tuple with the ParRequirement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetParRequirementOk() (*EnumApplicationOIDCPARRequirement, bool) {
+	if o == nil || IsNil(o.ParRequirement) {
+		return nil, false
+	}
+	return o.ParRequirement, true
+}
+
+// HasParRequirement returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasParRequirement() bool {
+	if o != nil && !IsNil(o.ParRequirement) {
+		return true
+	}
+
+	return false
+}
+
+// SetParRequirement gets a reference to the given EnumApplicationOIDCPARRequirement and assigns it to the ParRequirement field.
+func (o *ApplicationOIDC) SetParRequirement(v EnumApplicationOIDCPARRequirement) {
+	o.ParRequirement = &v
+}
+
+// GetParTimeout returns the ParTimeout field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetParTimeout() int32 {
+	if o == nil || IsNil(o.ParTimeout) {
+		var ret int32
+		return ret
+	}
+	return *o.ParTimeout
+}
+
+// GetParTimeoutOk returns a tuple with the ParTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetParTimeoutOk() (*int32, bool) {
+	if o == nil || IsNil(o.ParTimeout) {
+		return nil, false
+	}
+	return o.ParTimeout, true
+}
+
+// HasParTimeout returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasParTimeout() bool {
+	if o != nil && !IsNil(o.ParTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetParTimeout gets a reference to the given int32 and assigns it to the ParTimeout field.
+func (o *ApplicationOIDC) SetParTimeout(v int32) {
+	o.ParTimeout = &v
+}
+
+// GetSigning returns the Signing field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetSigning() ApplicationOIDCAllOfSigning {
+	if o == nil || IsNil(o.Signing) {
+		var ret ApplicationOIDCAllOfSigning
+		return ret
+	}
+	return *o.Signing
+}
+
+// GetSigningOk returns a tuple with the Signing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetSigningOk() (*ApplicationOIDCAllOfSigning, bool) {
+	if o == nil || IsNil(o.Signing) {
+		return nil, false
+	}
+	return o.Signing, true
+}
+
+// HasSigning returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasSigning() bool {
+	if o != nil && !IsNil(o.Signing) {
+		return true
+	}
+
+	return false
+}
+
+// SetSigning gets a reference to the given ApplicationOIDCAllOfSigning and assigns it to the Signing field.
+func (o *ApplicationOIDC) SetSigning(v ApplicationOIDCAllOfSigning) {
+	o.Signing = &v
+}
+
 func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1171,7 +1596,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -1185,19 +1612,47 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginPageUrl) {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["type"] = o.Type
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		toSerialize["additionalRefreshTokenReplayProtectionEnabled"] = o.AdditionalRefreshTokenReplayProtectionEnabled
+	}
 	if !IsNil(o.AllowWildcardInRedirectUris) {
 		toSerialize["allowWildcardInRedirectUris"] = o.AllowWildcardInRedirectUris
 	}
 	if !IsNil(o.AssignActorRoles) {
 		toSerialize["assignActorRoles"] = o.AssignActorRoles
+	}
+	if !IsNil(o.CorsSettings) {
+		toSerialize["corsSettings"] = o.CorsSettings
+	}
+	if !IsNil(o.DevicePathId) {
+		toSerialize["devicePathId"] = o.DevicePathId
+	}
+	if !IsNil(o.DeviceCustomVerificationUri) {
+		toSerialize["deviceCustomVerificationUri"] = o.DeviceCustomVerificationUri
+	}
+	if !IsNil(o.DeviceTimeout) {
+		toSerialize["deviceTimeout"] = o.DeviceTimeout
+	}
+	if !IsNil(o.DevicePollingInterval) {
+		toSerialize["devicePollingInterval"] = o.DevicePollingInterval
+	}
+	if !IsNil(o.Jwks) {
+		toSerialize["jwks"] = o.Jwks
+	}
+	if !IsNil(o.JwksUrl) {
+		toSerialize["jwksUrl"] = o.JwksUrl
 	}
 	if !IsNil(o.Mobile) {
 		toSerialize["mobile"] = o.Mobile
@@ -1239,6 +1694,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResponseTypes) {
 		toSerialize["responseTypes"] = o.ResponseTypes
 	}
+	if !IsNil(o.RequireSignedRequestObject) {
+		toSerialize["requireSignedRequestObject"] = o.RequireSignedRequestObject
+	}
 	if !IsNil(o.SupportUnsignedRequestObject) {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
 	}
@@ -1249,6 +1707,15 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 		toSerialize["targetLinkUri"] = o.TargetLinkUri
 	}
 	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
+	if !IsNil(o.ParRequirement) {
+		toSerialize["parRequirement"] = o.ParRequirement
+	}
+	if !IsNil(o.ParTimeout) {
+		toSerialize["parTimeout"] = o.ParTimeout
+	}
+	if !IsNil(o.Signing) {
+		toSerialize["signing"] = o.Signing
+	}
 	return toSerialize, nil
 }
 

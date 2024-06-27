@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | A string that specifies an identifier for the field component. | 
 **Label** | **string** | A string that specifies the button label. | 
-**Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormFlowButton) GetStyles() FormFlowButtonStyles`
+`func (o *FormFlowButton) GetStyles() FormStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormFlowButton) GetStylesOk() (*FormFlowButtonStyles, bool)`
+`func (o *FormFlowButton) GetStylesOk() (*FormStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormFlowButton) SetStyles(v FormFlowButtonStyles)`
+`func (o *FormFlowButton) SetStyles(v FormStyles)`
 
 SetStyles sets Styles field to given value.
 

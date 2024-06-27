@@ -19,7 +19,7 @@ var _ MappedNullable = &Template{}
 
 // Template struct for Template
 type Template struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The template id
 	Id *string `json:"id,omitempty"`
 	// The template’s display name.
@@ -59,9 +59,9 @@ func NewTemplateWithDefaults() *Template {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Template) GetLinks() LinksHATEOAS {
+func (o *Template) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -69,7 +69,7 @@ func (o *Template) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Template) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Template) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -85,8 +85,8 @@ func (o *Template) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Template) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Template) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -335,11 +335,17 @@ func (o Template) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["displayName"] = o.DisplayName
 	toSerialize["deliveryMethods"] = o.DeliveryMethods
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

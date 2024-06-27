@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **MappingType** | Pointer to [**EnumIdentityProviderAttributeMappingType**](EnumIdentityProviderAttributeMappingType.md) |  | [optional] 
 **Name** | **string** | The user attribute, which is unique per provider. The attribute must not be defined as read only from the user schema or of type COMPLEX based on the user schema. Valid examples username, and name.first. The following attributes may not be used account, id, created, updated, lifecycle, mfaEnabled, and enabled. | 
 **Value** | **string** | A placeholder referring to the attribute (or attributes) from the provider. Placeholders must be valid for the attributes returned by the IdP type and use the ${} syntax (for example, username&#x3D;&#x60;${email}&#x60;). For SAML, any placeholder is acceptable, and it is mapped against the attributes available in the SAML assertion after authentication. The ${samlAssertion.subject} placeholder is a special reserved placeholder used to refer to the subject name ID in the SAML assertion response. | 
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *IdentityProviderAttribute) GetLinks() LinksHATEOAS`
+`func (o *IdentityProviderAttribute) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *IdentityProviderAttribute) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *IdentityProviderAttribute) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *IdentityProviderAttribute) SetLinks(v LinksHATEOAS)`
+`func (o *IdentityProviderAttribute) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

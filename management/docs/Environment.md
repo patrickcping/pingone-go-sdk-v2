@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **BillOfMaterials** | Pointer to [**BillOfMaterials**](BillOfMaterials.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
+**Icon** | Pointer to **string** | The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF. | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **License** | [**EnvironmentLicense**](EnvironmentLicense.md) |  | 
 **Name** | **string** | A string that specifies the environment name, which must be provided and must be unique within an organization. | 
 **Organization** | Pointer to [**EnvironmentOrganization**](EnvironmentOrganization.md) |  | [optional] 
-**Region** | [**EnumRegionCode**](EnumRegionCode.md) |  | 
+**Region** | [**EnvironmentRegion**](EnvironmentRegion.md) |  | 
 **Type** | [**EnumEnvironmentType**](EnumEnvironmentType.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironment
 
-`func NewEnvironment(license EnvironmentLicense, name string, region EnumRegionCode, type_ EnumEnvironmentType, ) *Environment`
+`func NewEnvironment(license EnvironmentLicense, name string, region EnvironmentRegion, type_ EnumEnvironmentType, ) *Environment`
 
 NewEnvironment instantiates a new Environment object
 This constructor will assign default values to properties that have it defined,
@@ -37,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *Environment) GetLinks() LinksHATEOAS`
+`func (o *Environment) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *Environment) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *Environment) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *Environment) SetLinks(v LinksHATEOAS)`
+`func (o *Environment) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -134,6 +135,31 @@ SetDescription sets Description field to given value.
 `func (o *Environment) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetIcon
+
+`func (o *Environment) GetIcon() string`
+
+GetIcon returns the Icon field if non-nil, zero value otherwise.
+
+### GetIconOk
+
+`func (o *Environment) GetIconOk() (*string, bool)`
+
+GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIcon
+
+`func (o *Environment) SetIcon(v string)`
+
+SetIcon sets Icon field to given value.
+
+### HasIcon
+
+`func (o *Environment) HasIcon() bool`
+
+HasIcon returns a boolean if a field has been set.
 
 ### GetId
 
@@ -227,20 +253,20 @@ HasOrganization returns a boolean if a field has been set.
 
 ### GetRegion
 
-`func (o *Environment) GetRegion() EnumRegionCode`
+`func (o *Environment) GetRegion() EnvironmentRegion`
 
 GetRegion returns the Region field if non-nil, zero value otherwise.
 
 ### GetRegionOk
 
-`func (o *Environment) GetRegionOk() (*EnumRegionCode, bool)`
+`func (o *Environment) GetRegionOk() (*EnvironmentRegion, bool)`
 
 GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegion
 
-`func (o *Environment) SetRegion(v EnumRegionCode)`
+`func (o *Environment) SetRegion(v EnvironmentRegion)`
 
 SetRegion sets Region field to given value.
 

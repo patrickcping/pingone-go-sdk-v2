@@ -20,7 +20,7 @@ var _ MappedNullable = &RiskPredictorCustom{}
 
 // RiskPredictorCustom struct for RiskPredictorCustom
 type RiskPredictorCustom struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -65,9 +65,9 @@ func NewRiskPredictorCustomWithDefaults() *RiskPredictorCustom {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *RiskPredictorCustom) GetLinks() LinksHATEOAS {
+func (o *RiskPredictorCustom) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -75,7 +75,7 @@ func (o *RiskPredictorCustom) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorCustom) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *RiskPredictorCustom) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -91,8 +91,8 @@ func (o *RiskPredictorCustom) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *RiskPredictorCustom) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *RiskPredictorCustom) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -461,17 +461,27 @@ func (o RiskPredictorCustom) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["compactName"] = o.CompactName
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
-	// skip: licensed is readOnly
-	// skip: deletable is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.Licensed) {
+		toSerialize["licensed"] = o.Licensed
+	}
+	if !IsNil(o.Deletable) {
+		toSerialize["deletable"] = o.Deletable
+	}
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}

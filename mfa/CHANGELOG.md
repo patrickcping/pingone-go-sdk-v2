@@ -1,4 +1,40 @@
-# v0.16.0 (Unreleased)
+# v0.20.0 (Unreleased)
+
+* **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+* **Enhancement** Added the `HALApi` service to be able to follow HAL links in responses. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+
+# v0.19.0 (2024-06-07)
+
+* **Breaking change** Remove optional `DeviceAuthenticationPolicyMobileOtpWindow` from `DeviceAuthenticationPolicyMobileOtp` constructor. [#343](https://github.com/patrickcping/pingone-go-sdk-v2/pull/343)
+* **Enhancement** Added `PromptForNicknameOnPairing` boolean field to the `DeviceAuthenticationPolicyFido2`, `DeviceAuthenticationPolicyMobile`, `DeviceAuthenticationPolicyOfflineDevice` and `DeviceAuthenticationPolicyTotp` models. [#349](https://github.com/patrickcping/pingone-go-sdk-v2/pull/349)
+* **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
+
+# v0.18.3 (2024-01-12)
+
+* **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
+* **Note** Updated the default UserAgent string format. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+* **Enhancement** Add ability to append custom user-agent information to HTTP requests. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+
+# v0.18.2 (2023-12-27)
+
+* **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
+
+# v0.18.1 (2023-11-29)
+
+* **Bug** Fixed invalid value for `EnumMFADevicePolicySelection` model.  `ALWAYS_PROMPT_TO_SELECT` corrected to `ALWAYS_DISPLAY_DEVICES`. [#289](https://github.com/patrickcping/pingone-go-sdk-v2/pull/289)
+
+# v0.18.0 (2023-11-10)
+
+* **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+* **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+
+# v0.17.0 (2023-10-16)
+
+* **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Enhancement** Add `Users` object to the `MFASettings` model to support setting default MFA settings for registering users. [#256](https://github.com/patrickcping/pingone-go-sdk-v2/pull/256)
+
+# v0.16.0 (2023-08-08)
 
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
 

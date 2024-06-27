@@ -19,7 +19,7 @@ var _ MappedNullable = &NotificationsSettingsEmailDeliverySettings{}
 
 // NotificationsSettingsEmailDeliverySettings struct for NotificationsSettingsEmailDeliverySettings
 type NotificationsSettingsEmailDeliverySettings struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the organization's SMTP server.
 	Host *string `json:"host,omitempty"`
 	// An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
@@ -57,9 +57,9 @@ func NewNotificationsSettingsEmailDeliverySettingsWithDefaults() *NotificationsS
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetLinks() LinksHATEOAS {
+func (o *NotificationsSettingsEmailDeliverySettings) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -67,7 +67,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *NotificationsSettingsEmailDeliverySettings) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -83,8 +83,8 @@ func (o *NotificationsSettingsEmailDeliverySettings) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *NotificationsSettingsEmailDeliverySettings) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -363,7 +363,9 @@ func (o NotificationsSettingsEmailDeliverySettings) ToMap() (map[string]interfac
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	// skip: protocol is readOnly
+	if !IsNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
+	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}

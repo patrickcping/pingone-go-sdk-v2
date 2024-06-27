@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationWSFED{}
 
 // ApplicationWSFED struct for ApplicationWSFED
 type ApplicationWSFED struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -46,6 +46,7 @@ type ApplicationWSFED struct {
 	AudienceRestriction *string `json:"audienceRestriction,omitempty"`
 	// The federated domain name (for example, the Azure custom domain).
 	DomainName string `json:"domainName"`
+	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	IdpSigning ApplicationWSFEDAllOfIdpSigning `json:"idpSigning"`
 	Kerberos *ApplicationWSFEDAllOfKerberos `json:"kerberos,omitempty"`
 	// The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests.
@@ -83,9 +84,9 @@ func NewApplicationWSFEDWithDefaults() *ApplicationWSFED {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationWSFED) GetLinks() LinksHATEOAS {
+func (o *ApplicationWSFED) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -93,7 +94,7 @@ func (o *ApplicationWSFED) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationWSFED) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationWSFED) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -109,8 +110,8 @@ func (o *ApplicationWSFED) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationWSFED) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationWSFED) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -554,6 +555,38 @@ func (o *ApplicationWSFED) SetDomainName(v string) {
 	o.DomainName = v
 }
 
+// GetCorsSettings returns the CorsSettings field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetCorsSettings() ApplicationCorsSettings {
+	if o == nil || IsNil(o.CorsSettings) {
+		var ret ApplicationCorsSettings
+		return ret
+	}
+	return *o.CorsSettings
+}
+
+// GetCorsSettingsOk returns a tuple with the CorsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetCorsSettingsOk() (*ApplicationCorsSettings, bool) {
+	if o == nil || IsNil(o.CorsSettings) {
+		return nil, false
+	}
+	return o.CorsSettings, true
+}
+
+// HasCorsSettings returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasCorsSettings() bool {
+	if o != nil && !IsNil(o.CorsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetCorsSettings gets a reference to the given ApplicationCorsSettings and assigns it to the CorsSettings field.
+func (o *ApplicationWSFED) SetCorsSettings(v ApplicationCorsSettings) {
+	o.CorsSettings = &v
+}
+
 // GetIdpSigning returns the IdpSigning field value
 func (o *ApplicationWSFED) GetIdpSigning() ApplicationWSFEDAllOfIdpSigning {
 	if o == nil {
@@ -682,7 +715,9 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -696,18 +731,25 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginPageUrl) {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["type"] = o.Type
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.AudienceRestriction) {
 		toSerialize["audienceRestriction"] = o.AudienceRestriction
 	}
 	toSerialize["domainName"] = o.DomainName
+	if !IsNil(o.CorsSettings) {
+		toSerialize["corsSettings"] = o.CorsSettings
+	}
 	toSerialize["idpSigning"] = o.IdpSigning
 	if !IsNil(o.Kerberos) {
 		toSerialize["kerberos"] = o.Kerberos

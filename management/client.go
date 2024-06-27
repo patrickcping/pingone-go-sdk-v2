@@ -59,7 +59,11 @@ type APIClient struct {
 
 	ApplicationResourceGrantsApi *ApplicationResourceGrantsApiService
 
+	ApplicationResourcesApi *ApplicationResourcesApiService
+
 	ApplicationRoleAssignmentsApi *ApplicationRoleAssignmentsApiService
+
+	ApplicationPermissionsApi *ApplicationPermissionsApiService
 
 	ApplicationSecretApi *ApplicationSecretApiService
 
@@ -89,6 +93,8 @@ type APIClient struct {
 
 	FlowPoliciesApi *FlowPoliciesApiService
 
+	FormManagementApi *FormManagementApiService
+
 	GatewayCredentialsApi *GatewayCredentialsApiService
 
 	GatewayInstancesApi *GatewayInstancesApiService
@@ -99,7 +105,11 @@ type APIClient struct {
 
 	GroupMembershipApi *GroupMembershipApiService
 
+	GroupRoleAssignmentsApi *GroupRoleAssignmentsApiService
+
 	GroupsApi *GroupsApiService
+
+	HALApi *HALApiService
 
 	IdentityProviderAttributesApi *IdentityProviderAttributesApiService
 
@@ -139,7 +149,7 @@ type APIClient struct {
 
 	PropagationMappingsApi *PropagationMappingsApiService
 
-	PropagationPlansApi *PropagationPlansApiService
+	IdentityPropagationPlansApi *IdentityPropagationPlansApiService
 
 	PropagationRevisionsApi *PropagationRevisionsApiService
 
@@ -148,6 +158,8 @@ type APIClient struct {
 	PropagationStoreMetadataApi *PropagationStoreMetadataApiService
 
 	PropagationStoresApi *PropagationStoresApiService
+
+	RecaptchaConfigurationApi *RecaptchaConfigurationApiService
 
 	ResourceAttributesApi *ResourceAttributesApiService
 
@@ -180,6 +192,8 @@ type APIClient struct {
 	UserActivitiesApi *UserActivitiesApiService
 
 	UserAgreementConsentsApi *UserAgreementConsentsApiService
+
+	UserApplicationRoleAssignmentsApi *UserApplicationRoleAssignmentsApiService
 
 	UserIDVerificationApi *UserIDVerificationApiService
 
@@ -236,7 +250,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationAttributeMappingApi = (*ApplicationAttributeMappingApiService)(&c.common)
 	c.ApplicationFlowPolicyAssignmentsApi = (*ApplicationFlowPolicyAssignmentsApiService)(&c.common)
 	c.ApplicationResourceGrantsApi = (*ApplicationResourceGrantsApiService)(&c.common)
+	c.ApplicationResourcesApi = (*ApplicationResourcesApiService)(&c.common)
 	c.ApplicationRoleAssignmentsApi = (*ApplicationRoleAssignmentsApiService)(&c.common)
+	c.ApplicationPermissionsApi = (*ApplicationPermissionsApiService)(&c.common)
 	c.ApplicationSecretApi = (*ApplicationSecretApiService)(&c.common)
 	c.ApplicationSignOnPolicyAssignmentsApi = (*ApplicationSignOnPolicyAssignmentsApiService)(&c.common)
 	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
@@ -251,12 +267,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EnableUsersApi = (*EnableUsersApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.FlowPoliciesApi = (*FlowPoliciesApiService)(&c.common)
+	c.FormManagementApi = (*FormManagementApiService)(&c.common)
 	c.GatewayCredentialsApi = (*GatewayCredentialsApiService)(&c.common)
 	c.GatewayInstancesApi = (*GatewayInstancesApiService)(&c.common)
 	c.GatewayRoleAssignmentsApi = (*GatewayRoleAssignmentsApiService)(&c.common)
 	c.GatewaysApi = (*GatewaysApiService)(&c.common)
 	c.GroupMembershipApi = (*GroupMembershipApiService)(&c.common)
+	c.GroupRoleAssignmentsApi = (*GroupRoleAssignmentsApiService)(&c.common)
 	c.GroupsApi = (*GroupsApiService)(&c.common)
+	c.HALApi = (*HALApiService)(&c.common)
 	c.IdentityProviderAttributesApi = (*IdentityProviderAttributesApiService)(&c.common)
 	c.IdentityProvidersApi = (*IdentityProvidersApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
@@ -276,11 +295,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PhoneDeliverySettingsApi = (*PhoneDeliverySettingsApiService)(&c.common)
 	c.PopulationsApi = (*PopulationsApiService)(&c.common)
 	c.PropagationMappingsApi = (*PropagationMappingsApiService)(&c.common)
-	c.PropagationPlansApi = (*PropagationPlansApiService)(&c.common)
+	c.IdentityPropagationPlansApi = (*IdentityPropagationPlansApiService)(&c.common)
 	c.PropagationRevisionsApi = (*PropagationRevisionsApiService)(&c.common)
 	c.PropagationRulesApi = (*PropagationRulesApiService)(&c.common)
 	c.PropagationStoreMetadataApi = (*PropagationStoreMetadataApiService)(&c.common)
 	c.PropagationStoresApi = (*PropagationStoresApiService)(&c.common)
+	c.RecaptchaConfigurationApi = (*RecaptchaConfigurationApiService)(&c.common)
 	c.ResourceAttributesApi = (*ResourceAttributesApiService)(&c.common)
 	c.ResourceClientSecretApi = (*ResourceClientSecretApiService)(&c.common)
 	c.ResourceScopesApi = (*ResourceScopesApiService)(&c.common)
@@ -297,6 +317,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserAccountsApi = (*UserAccountsApiService)(&c.common)
 	c.UserActivitiesApi = (*UserActivitiesApiService)(&c.common)
 	c.UserAgreementConsentsApi = (*UserAgreementConsentsApiService)(&c.common)
+	c.UserApplicationRoleAssignmentsApi = (*UserApplicationRoleAssignmentsApiService)(&c.common)
 	c.UserIDVerificationApi = (*UserIDVerificationApiService)(&c.common)
 	c.UserPasswordsApi = (*UserPasswordsApiService)(&c.common)
 	c.UserPopulationsApi = (*UserPopulationsApiService)(&c.common)
@@ -308,13 +329,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 // selectHeaderContentType select a content type from the available list.
 func selectHeaderContentType(contentTypes []string) string {
-	if len(contentTypes) == 0 {
-		return ""
+	returnVar := ""
+
+	if len(contentTypes) > 0 {
+		returnVar = contentTypes[0] // use the first content type specified in 'consumes'
 	}
 	if contains(contentTypes, "application/json") {
-		return "application/json"
+		returnVar = "application/json"
 	}
-	return contentTypes[0] // use the first content type specified in 'consumes'
+	return returnVar
 }
 
 // selectHeaderAccept join all accept types and return

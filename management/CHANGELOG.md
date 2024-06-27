@@ -1,7 +1,144 @@
-# v0.25.0 (Unreleased)
+# v0.42.0 (Unreleased)
+
+* **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+* **Enhancement** Added the `HALApi` service to be able to follow HAL links in responses. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+* **Enhancement** Added trials ENUM values to the `EnumSolutionType` model. [#364](https://github.com/patrickcping/pingone-go-sdk-v2/pull/364)
+* **Enhancement** Added `AlertName` field to the `AlertChannel` model. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
+* **Bug** Remove unsupported `AlertingApi.ReadOneAlertChannel`. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
+* **Bug** Corrected `EnumAlertChannelAlertType` enum values. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
+
+# v0.41.0 (2024-06-18)
+
+* **Enhancement** Added `SpEncryption` to the `ApplicationSAML` and associated models to control encryption of SAML application assertions. [#348](https://github.com/patrickcping/pingone-go-sdk-v2/pull/348)
+
+# v0.40.0 (2024-06-07)
+
+* **Breaking Change** Removed the `FormSocialLoginButtonStyles` data model.  Use the `FormStyles` data model going forward. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Note** Removed unnecessary `Width` and `IconSrc` fields from `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Feature** Add support for Application Resource API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+* **Feature** Add support for Application Resource Permissions API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+* **Feature** Add support for User Application Role Assignment API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+* **Enhancement** Added `Key` field to `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Enhancement** Added `ApplicationPermissionsSettings` to the `Resource` model. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+* **Enhancement** Added the `DeletePreviousResourceSecret` function to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
+* **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
+* **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
+* **Enhancement** Add the `AU` region code to the `EnumRegionCode` model. [#358](https://github.com/patrickcping/pingone-go-sdk-v2/pull/358)
+
+# v0.39.0 (2024-05-01)
+
+* **Enhancement** Added the `NetworkPolicyServer` property to the `GatewayTypeRADIUS` data model. [#336](https://github.com/patrickcping/pingone-go-sdk-v2/pull/336)
+
+# v0.38.0 (2024-03-15)
+
+* **Enhancement** Added the `DefaultTargetUrl` property to the `ApplicationSAML` data model. [#325](https://github.com/patrickcping/pingone-go-sdk-v2/pull/325)
+* **Enhancement** Added the `UpdateUserOnSuccessfulAuthentication` property to the `GatewayTypeLDAPAllOfUserTypes` data model. [#328](https://github.com/patrickcping/pingone-go-sdk-v2/pull/328)
+* **Enhancement** Added the `PkceMethod` ENUM property to the `IdentityProviderOIDC` data model. [#329](https://github.com/patrickcping/pingone-go-sdk-v2/pull/329)
+
+# v0.37.0 (2024-02-23)
+
+* **Enhancement** Add new API operations `ReadOnePopulationDefaultIdp` and `UpdatePopulationDefaultIdp` to support setting default identity providers to populations. [#319](https://github.com/patrickcping/pingone-go-sdk-v2/pull/319)
+* **Enhancement** Added the `Signing` property to the `ApplicationOIDC` data model, to support assigning custom defined KRPs to a supported application. [#320](https://github.com/patrickcping/pingone-go-sdk-v2/pull/320)
+* **Enhancement** Added the `DevicePathId`, `DeviceCustomVerificationUri`, `DeviceTimeout`, `DevicePollingInterval` properties to the `ApplicationOIDC` data model and extended the `EnumApplicationOIDCGrantType` ENUM, to support the `DEVICE_CODE` application grant type. [#320](https://github.com/patrickcping/pingone-go-sdk-v2/pull/320)
+* **Enhancement** Added the `Jwks`, `JwksUrl` properties to the `ApplicationOIDC` data model and extended the `EnumApplicationOIDCTokenAuthMethod` ENUM, to support the `PRIVATE_KEY_JWT` and `CLIENT_SECRET_JWT` token endpoint auth methods. [#320](https://github.com/patrickcping/pingone-go-sdk-v2/pull/320)
+
+# v0.36.0 (2024-01-30)
+
+* **Breaking Change** Notification template names, used on the `NotificationsTemplatesApiService` service now uses an enum which defines the templates supported in the API path. [#314](https://github.com/patrickcping/pingone-go-sdk-v2/pull/314)
+* **Enhancement** Add ability to designate an application's client secret as a previous secret with an expiry date up to 30 days, for rotation purposes. [#311](https://github.com/patrickcping/pingone-go-sdk-v2/pull/311)
+* **Enhancement** Add ability to set an icon on the `Environment` object model. [#313](https://github.com/patrickcping/pingone-go-sdk-v2/pull/313)
+
+# v0.35.0 (2024-01-12)
+
+* **Breaking Change** Add ability to use a freetext region code on environment creation for non-production environments.  The `Region` parameter on the `Environment` object model now takes a `EnvironmentRegion` object, where one of `EnumRegionCode` or `string`. [#304](https://github.com/patrickcping/pingone-go-sdk-v2/pull/304)
+* **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
+* **Note** Updated the default UserAgent string format. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+* **Enhancement** Add ability to append custom user-agent information to HTTP requests. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+
+# v0.34.0 (2023-12-27)
+
+* **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
+* **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
+* **Feature** Add support for Identity Propagation Plans API. [#299](https://github.com/patrickcping/pingone-go-sdk-v2/pull/299)
+* **Enhancement** Change `Type` property in the `ApplicationAccessControlGroup` object model to be an ENUM. [#295](https://github.com/patrickcping/pingone-go-sdk-v2/pull/295)
+* **Enhancement** Added the `Include` query string parameter to the `ApiReadFormRequest` API. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Added ability to configure `FormFieldTextblob` form controls. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Added the `ShowPasswordRequirements` property to password based form controls. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Created `FormStyles` object model to make usage simpler. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Added `FormStylesPadding` object model to support custom style override of form controls. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `OtherOptionLabel` property for form field models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `OtherOptionInputLabel` property for form field models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `Alignment` property for form field style models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed required propertys for form field models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `Options` form field property object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `FormFieldCombobox` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Removal of unnecessary `Key` property from the `FormRecaptchaV2` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Added required `Key` property to the `FormQrCode` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+
+# v0.33.0 (2023-11-29)
+
+* **Feature** Add support for User Account API (allowing lock and unlock). [#282](https://github.com/patrickcping/pingone-go-sdk-v2/pull/282)
+* **Enhancement** Expand the `GroupMembership` data model. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
+* **Enhancement** Simplified the `GroupMembershipApi` request and response payload models. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
+* **Enhancement** Corrected and expanded the `SchemaAttributePatch` request and response payload. [#285](https://github.com/patrickcping/pingone-go-sdk-v2/pull/285)
+* **Enhancement** Added `CorsSettings` object attribute to the `ApplicationOIDC`, `ApplicationSAML` and `ApplicationWSFED` object models. [#286](https://github.com/patrickcping/pingone-go-sdk-v2/pull/286)
+
+# v0.32.0 (2023-11-10)
+
+* **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+* **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+
+# v0.31.0 (2023-11-01)
+
+* **Enhancement** Added `DisplayName`, `SourceId` and `SourceType` object attributes to the `Group` object model. [#264](https://github.com/patrickcping/pingone-go-sdk-v2/pull/264)
+* **Enhancement** Added `TlsClientAuthKeyPair` object attributes to the `Subscription` object model. [#265](https://github.com/patrickcping/pingone-go-sdk-v2/pull/265)
+* **Enhancement** Added `OUTBOUND_MTLS` to the `EnumCertificateKeyUsageType` enum. [#265](https://github.com/patrickcping/pingone-go-sdk-v2/pull/265)
+* **Enhancement** Added ability to set a PKCS12 keystore password when building a `CreateKeyRequest`. [#266](https://github.com/patrickcping/pingone-go-sdk-v2/pull/266)
+* **Enhancement** Better define the `Role` and `RolePermissionsInner` data models. [#270](https://github.com/patrickcping/pingone-go-sdk-v2/pull/270)
+* **Enhancement** Support group role assignments. [#271](https://github.com/patrickcping/pingone-go-sdk-v2/pull/271)
+* **Enhancement** Added `Tags` object attribute to the `BillOfMaterialsProductsInner` model, to facilitate creation of DaVinci enabled environments without example configuration. [#272](https://github.com/patrickcping/pingone-go-sdk-v2/pull/272)
+* **Enhancement** Added support for the Propagation Stores API. [#276](https://github.com/patrickcping/pingone-go-sdk-v2/pull/276)
+* **Bug** Corrected situations where `EntityArrayEmbeddedGatewaysInner` unmarshal did not return objects of `type` `ENUMGATEWAYTYPE_RADIUS` properly. [#273](https://github.com/patrickcping/pingone-go-sdk-v2/pull/273)
+
+# v0.30.0 (2023-10-16)
+
+* **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Enhancement** Added `Resource` object attribute to the `ResourceScope` object model. [#262](https://github.com/patrickcping/pingone-go-sdk-v2/pull/262)
+
+# v0.29.0 (2023-09-15)
+
+* **Enhancement** Added the `application/vnd.pingidentity.user.import+json` content-type header to the UsersAPI, to be able to import passwords. [#253](https://github.com/patrickcping/pingone-go-sdk-v2/pull/253)
+
+# v0.28.0 (2023-09-11)
+
+* **Breaking Change** Removed deprecated enum values `SHA224withRSA` and `SHA224withECDSA` from the `EnumCertificateKeySignagureAlgorithm` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added enum values to `EnumApplicationWSFEDIDPSigningAlgorithm` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added default value to model attributes that use the `EnumApplicationSAMLSloBinding` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added default value to model attributes that use the `EnumGatewayTypeLDAPSecurity` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added default value to model attributes that use the `EnumIdentityProvider` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added default value to model attributes that use the `EnumSchemaAttributeType` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added default value to model attributes that use the `EnumTemplateContentPushCategory` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added default value to the `AssertionSigned` attributes on the `ApplicationSAML` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added default value to the `ResponseSigned` attributes on the `ApplicationSAML` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added support for the `AuthnRequestSigned` attribute on the `ApplicationSAMLAllOfSpVerification` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added support for the `Algorithm` attribute on the `IdentityProviderSAMLAllOfSpSigning` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
+* **Enhancement** Added support for new attributes `AdditionalRefreshTokenReplayProtectionEnabled`, `RequireSignedRequestObject`, `ParRequirement`, `ParTimeout` to the `ApplicationOIDC` and `ApplicationOIDCAllOf` data models. [#248](https://github.com/patrickcping/pingone-go-sdk-v2/pull/248)
+
+# v0.27.0 (2023-09-05)
+
+* **Enhancement** Added `EnableRequestedAuthnContext` to the `ApplicationSAML` and `ApplicationSAMLAllOf` data models. [#245](https://github.com/patrickcping/pingone-go-sdk-v2/pull/245)
+
+# v0.26.0 (2023-08-15)
+
+* **Bug** Fixed inclusion of `FormManagementApi` and `RecaptchaConfigurationApi` API to the client. [#235](https://github.com/patrickcping/pingone-go-sdk-v2/pull/235)
+* **Enhancement** Clarified the `headers` parameter in the `SubscriptionHttpEndpoint` model of the subscriptions API endpoint to be a map of strings rather than a map of any data type. [#234](https://github.com/patrickcping/pingone-go-sdk-v2/pull/234)
+
+# v0.25.0 (2023-08-08)
 
 * **Enhancement** Implement basic cursor for paging results (`ApiReadAllEnvironmentsRequest`, `ApiReadAllGroupMembershipsForUserRequest`, `ApiReadAllGroupsRequest`, `ApiReadAllPopulationsRequest`, `ApiReadAllUsersRequest`). [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* **Enhancement** Add new DaVinci admin roles to `EnumRoleName` model. [#230](https://github.com/patrickcping/pingone-go-sdk-v2/pull/230)
 
 # v0.24.0 (2023-07-12)
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityProviderOIDC{}
 
 // IdentityProviderOIDC struct for IdentityProviderOIDC
 type IdentityProviderOIDC struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
@@ -56,6 +56,7 @@ type IdentityProviderOIDC struct {
 	TokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
 	// A string that specifies the OIDC identity provider's userInfo endpoint.
 	UserInfoEndpoint *string `json:"userInfoEndpoint,omitempty"`
+	PkceMethod *EnumIdentityProviderPKCEMethod `json:"pkceMethod,omitempty"`
 }
 
 // NewIdentityProviderOIDC instantiates a new IdentityProviderOIDC object
@@ -75,6 +76,8 @@ func NewIdentityProviderOIDC(enabled bool, name string, type_ EnumIdentityProvid
 	this.Scopes = scopes
 	this.TokenEndpoint = tokenEndpoint
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
+	var pkceMethod EnumIdentityProviderPKCEMethod = ENUMIDENTITYPROVIDERPKCEMETHOD_NONE
+	this.PkceMethod = &pkceMethod
 	return &this
 }
 
@@ -85,13 +88,15 @@ func NewIdentityProviderOIDCWithDefaults() *IdentityProviderOIDC {
 	this := IdentityProviderOIDC{}
 	var tokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod = ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_BASIC
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
+	var pkceMethod EnumIdentityProviderPKCEMethod = ENUMIDENTITYPROVIDERPKCEMETHOD_NONE
+	this.PkceMethod = &pkceMethod
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *IdentityProviderOIDC) GetLinks() LinksHATEOAS {
+func (o *IdentityProviderOIDC) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -99,7 +104,7 @@ func (o *IdentityProviderOIDC) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderOIDC) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *IdentityProviderOIDC) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -115,8 +120,8 @@ func (o *IdentityProviderOIDC) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *IdentityProviderOIDC) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *IdentityProviderOIDC) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -704,6 +709,38 @@ func (o *IdentityProviderOIDC) SetUserInfoEndpoint(v string) {
 	o.UserInfoEndpoint = &v
 }
 
+// GetPkceMethod returns the PkceMethod field value if set, zero value otherwise.
+func (o *IdentityProviderOIDC) GetPkceMethod() EnumIdentityProviderPKCEMethod {
+	if o == nil || IsNil(o.PkceMethod) {
+		var ret EnumIdentityProviderPKCEMethod
+		return ret
+	}
+	return *o.PkceMethod
+}
+
+// GetPkceMethodOk returns a tuple with the PkceMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderOIDC) GetPkceMethodOk() (*EnumIdentityProviderPKCEMethod, bool) {
+	if o == nil || IsNil(o.PkceMethod) {
+		return nil, false
+	}
+	return o.PkceMethod, true
+}
+
+// HasPkceMethod returns a boolean if a field has been set.
+func (o *IdentityProviderOIDC) HasPkceMethod() bool {
+	if o != nil && !IsNil(o.PkceMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPkceMethod gets a reference to the given EnumIdentityProviderPKCEMethod and assigns it to the PkceMethod field.
+func (o *IdentityProviderOIDC) SetPkceMethod(v EnumIdentityProviderPKCEMethod) {
+	o.PkceMethod = &v
+}
+
 func (o IdentityProviderOIDC) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -727,7 +764,9 @@ func (o IdentityProviderOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginButtonIcon) {
 		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
 	}
@@ -736,8 +775,12 @@ func (o IdentityProviderOIDC) ToMap() (map[string]interface{}, error) {
 		toSerialize["registration"] = o.Registration
 	}
 	toSerialize["type"] = o.Type
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["authorizationEndpoint"] = o.AuthorizationEndpoint
 	toSerialize["clientId"] = o.ClientId
 	toSerialize["clientSecret"] = o.ClientSecret
@@ -751,6 +794,9 @@ func (o IdentityProviderOIDC) ToMap() (map[string]interface{}, error) {
 	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
 	if !IsNil(o.UserInfoEndpoint) {
 		toSerialize["userInfoEndpoint"] = o.UserInfoEndpoint
+	}
+	if !IsNil(o.PkceMethod) {
+		toSerialize["pkceMethod"] = o.PkceMethod
 	}
 	return toSerialize, nil
 }

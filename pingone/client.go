@@ -9,7 +9,6 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement"
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
 	"github.com/patrickcping/pingone-go-sdk-v2/credentials"
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
@@ -22,22 +21,18 @@ import (
 )
 
 type Client struct {
-	AgreementManagementAPIClient *agreementmanagement.APIClient
-	AuthorizeAPIClient           *authorize.APIClient
-	CredentialsAPIClient         *credentials.APIClient
-	ManagementAPIClient          *management.APIClient
-	MFAAPIClient                 *mfa.APIClient
-	RiskAPIClient                *risk.APIClient
-	VerifyAPIClient              *verify.APIClient
-	Region                       model.RegionMapping
+	AuthorizeAPIClient   *authorize.APIClient
+	CredentialsAPIClient *credentials.APIClient
+	ManagementAPIClient  *management.APIClient
+	MFAAPIClient         *mfa.APIClient
+	RiskAPIClient        *risk.APIClient
+	VerifyAPIClient      *verify.APIClient
+	Region               model.RegionMapping
 }
 
-func (c *Config) APIClient(ctx context.Context) (*Client, error) {
+var version = "0.12.0"
 
-	agreementManagementClient, err := c.AgreementManagementAPIClient(ctx)
-	if err != nil {
-		return nil, err
-	}
+func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
 	authorizeClient, err := c.AuthorizeAPIClient(ctx)
 	if err != nil {
@@ -69,84 +64,26 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 		return nil, err
 	}
 
+	var region model.RegionMapping
+	if c.Region != "" {
+		region = model.FindRegionByName(c.Region) //nolint:staticcheck
+	}
+
+	if v := c.RegionCode; v != nil {
+		region = model.FindRegionByAPICode(*v)
+	}
+
 	apiClient := &Client{
-		AgreementManagementAPIClient: agreementManagementClient,
-		AuthorizeAPIClient:           authorizeClient,
-		CredentialsAPIClient:         credentialsClient,
-		ManagementAPIClient:          managementClient,
-		MFAAPIClient:                 mfaClient,
-		RiskAPIClient:                riskClient,
-		VerifyAPIClient:              verifyClient,
-		Region:                       model.FindRegionByName(c.Region),
+		AuthorizeAPIClient:   authorizeClient,
+		CredentialsAPIClient: credentialsClient,
+		ManagementAPIClient:  managementClient,
+		MFAAPIClient:         mfaClient,
+		RiskAPIClient:        riskClient,
+		VerifyAPIClient:      verifyClient,
+		Region:               region,
 	}
 
 	return apiClient, nil
-}
-
-// Deprecated: Use (c *Config).AgreementManagementAPIClient() instead
-func AgreementManagementAPIClient(token *oauth2.Token) (*agreementmanagement.APIClient, error) {
-
-	var client *agreementmanagement.APIClient
-
-	clientcfg := agreementmanagement.NewConfiguration()
-	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", token.AccessToken))
-	client = agreementmanagement.NewAPIClient(clientcfg)
-
-	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Agreement Management client")
-	}
-
-	return client, nil
-
-}
-
-func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementmanagement.APIClient, error) {
-
-	if err := c.Validate(); err != nil {
-		return nil, fmt.Errorf("Client validation error: %s", err)
-	}
-
-	if !c.accessTokenObject.Valid() {
-		err := c.getToken(ctx)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	var client *agreementmanagement.APIClient
-
-	clientcfg := agreementmanagement.NewConfiguration()
-	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
-
-	if checkForValue(c.AgreementMgmtHostnameOverride) {
-		clientcfg.SetDefaultServerIndex(1)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.AgreementMgmtHostnameOverride)
-		if err != nil {
-			return nil, err
-		}
-	} else {
-		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
-	}
-
-	if checkForValue(c.ProxyURL) {
-		clientcfg.ProxyURL = c.ProxyURL
-	}
-
-	client = agreementmanagement.NewAPIClient(clientcfg)
-
-	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Agreement Management client")
-	}
-
-	return client, nil
 }
 
 // Deprecated: Use (c *Config).AuthorizeAPIClient() instead
@@ -192,14 +129,30 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+
+		var region model.RegionMapping
+		if c.Region != "" {
+			region = model.FindRegionByName(c.Region) //nolint:staticcheck
+		}
+
+		if v := c.RegionCode; v != nil {
+			region = model.FindRegionByAPICode(*v)
+		}
+
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", region.URLSuffix)
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
+	}
+
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -259,14 +212,30 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+
+		var region model.RegionMapping
+		if c.Region != "" {
+			region = model.FindRegionByName(c.Region) //nolint:staticcheck
+		}
+
+		if v := c.RegionCode; v != nil {
+			region = model.FindRegionByAPICode(*v)
+		}
+
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", region.URLSuffix)
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
+	}
+
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -325,14 +294,30 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+
+		var region model.RegionMapping
+		if c.Region != "" {
+			region = model.FindRegionByName(c.Region) //nolint:staticcheck
+		}
+
+		if v := c.RegionCode; v != nil {
+			region = model.FindRegionByAPICode(*v)
+		}
+
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", region.URLSuffix)
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
+	}
+
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -391,14 +376,30 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+
+		var region model.RegionMapping
+		if c.Region != "" {
+			region = model.FindRegionByName(c.Region) //nolint:staticcheck
+		}
+
+		if v := c.RegionCode; v != nil {
+			region = model.FindRegionByAPICode(*v)
+		}
+
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", region.URLSuffix)
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
+	}
+
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -457,14 +458,30 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+
+		var region model.RegionMapping
+		if c.Region != "" {
+			region = model.FindRegionByName(c.Region) //nolint:staticcheck
+		}
+
+		if v := c.RegionCode; v != nil {
+			region = model.FindRegionByAPICode(*v)
+		}
+
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", region.URLSuffix)
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
+	}
+
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -523,14 +540,30 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+
+		var region model.RegionMapping
+		if c.Region != "" {
+			region = model.FindRegionByName(c.Region) //nolint:staticcheck
+		}
+
+		if v := c.RegionCode; v != nil {
+			region = model.FindRegionByAPICode(*v)
+		}
+
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", region.URLSuffix)
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
+	}
+
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -550,11 +583,20 @@ func (c *Config) getToken(ctx context.Context) error {
 
 	if !checkForValue(c.AccessToken) {
 
-		if !checkForValue(c.ClientID) || !checkForValue(c.ClientSecret) || !checkForValue(c.EnvironmentID) || !checkForValue(c.Region) {
+		if !checkForValue(c.ClientID) || !checkForValue(c.ClientSecret) || !checkForValue(c.EnvironmentID) || (!checkForValue(c.Region) && !checkForValue(c.RegionCode)) {
 			return fmt.Errorf("Required parameter missing.  Must provide ClientID, ClientSecret, EnvironmentID and Region.")
 		}
 
-		regionSuffix := model.FindRegionByName(c.Region).URLSuffix
+		var region model.RegionMapping
+		if c.Region != "" {
+			region = model.FindRegionByName(c.Region) //nolint:staticcheck
+		}
+
+		if v := c.RegionCode; v != nil {
+			region = model.FindRegionByAPICode(*v)
+		}
+
+		regionSuffix := region.URLSuffix
 
 		//Get URL from SDK
 		authURL := fmt.Sprintf("https://auth.pingone.%s", regionSuffix)

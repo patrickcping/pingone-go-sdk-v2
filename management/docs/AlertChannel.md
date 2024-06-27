@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique ID of the alert channel. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**AlertName** | Pointer to **string** | The name to assign to the alert channel. | [optional] 
 **ChannelType** | [**EnumAlertChannelType**](EnumAlertChannelType.md) |  | 
 **Addresses** | **[]string** | The email addresses to send the alert to. | 
 **IncludeSeverities** | Pointer to [**[]EnumAlertChannelSeverity**](EnumAlertChannelSeverity.md) | Filters alerts by severity. If empty, all severities are included. Possible values are &#x60;INFO&#x60;, &#x60;WARNING&#x60;, and &#x60;ERROR&#x60;&#x60;. | [optional] 
@@ -34,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *AlertChannel) GetLinks() LinksHATEOAS`
+`func (o *AlertChannel) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *AlertChannel) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *AlertChannel) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *AlertChannel) SetLinks(v LinksHATEOAS)`
+`func (o *AlertChannel) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -106,6 +107,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *AlertChannel) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetAlertName
+
+`func (o *AlertChannel) GetAlertName() string`
+
+GetAlertName returns the AlertName field if non-nil, zero value otherwise.
+
+### GetAlertNameOk
+
+`func (o *AlertChannel) GetAlertNameOk() (*string, bool)`
+
+GetAlertNameOk returns a tuple with the AlertName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlertName
+
+`func (o *AlertChannel) SetAlertName(v string)`
+
+SetAlertName sets AlertName field to given value.
+
+### HasAlertName
+
+`func (o *AlertChannel) HasAlertName() bool`
+
+HasAlertName returns a boolean if a field has been set.
 
 ### GetChannelType
 

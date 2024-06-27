@@ -19,7 +19,7 @@ var _ MappedNullable = &TemplateContentPush{}
 
 // TemplateContentPush struct for TemplateContentPush
 type TemplateContentPush struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The template id.
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
@@ -50,6 +50,8 @@ func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDel
 	this.DeliveryMethod = deliveryMethod
 	this.Title = title
 	this.Body = body
+	var pushCategory EnumTemplateContentPushCategory = ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS
+	this.PushCategory = &pushCategory
 	return &this
 }
 
@@ -58,13 +60,15 @@ func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDel
 // but it doesn't guarantee that properties required by API are set
 func NewTemplateContentPushWithDefaults() *TemplateContentPush {
 	this := TemplateContentPush{}
+	var pushCategory EnumTemplateContentPushCategory = ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS
+	this.PushCategory = &pushCategory
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *TemplateContentPush) GetLinks() LinksHATEOAS {
+func (o *TemplateContentPush) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -72,7 +76,7 @@ func (o *TemplateContentPush) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentPush) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *TemplateContentPush) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -88,8 +92,8 @@ func (o *TemplateContentPush) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *TemplateContentPush) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *TemplateContentPush) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -394,9 +398,15 @@ func (o TemplateContentPush) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}

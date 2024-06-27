@@ -20,7 +20,7 @@ var _ MappedNullable = &NotificationsPolicy{}
 
 // NotificationsPolicy struct for NotificationsPolicy
 type NotificationsPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -60,9 +60,9 @@ func NewNotificationsPolicyWithDefaults() *NotificationsPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *NotificationsPolicy) GetLinks() LinksHATEOAS {
+func (o *NotificationsPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -70,7 +70,7 @@ func (o *NotificationsPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationsPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *NotificationsPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -86,8 +86,8 @@ func (o *NotificationsPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *NotificationsPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *NotificationsPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -312,9 +312,15 @@ func (o NotificationsPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
-	// skip: id is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default

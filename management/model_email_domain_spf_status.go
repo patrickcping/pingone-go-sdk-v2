@@ -183,7 +183,9 @@ func (o EmailDomainSPFStatus) MarshalJSON() ([]byte, error) {
 
 func (o EmailDomainSPFStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: type is readOnly
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}

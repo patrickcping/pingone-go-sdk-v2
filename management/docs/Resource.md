@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **AccessTokenValiditySeconds** | Pointer to **int32** | An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days). | [optional] 
+**ApplicationPermissionsSettings** | Pointer to [**ResourceApplicationPermissionsSettings**](ResourceApplicationPermissionsSettings.md) |  | [optional] 
 **Audience** | Pointer to **string** | A string that specifies a URL without a fragment or &#x60;@ObjectName&#x60; and must not contain &#x60;pingone&#x60; or &#x60;pingidentity&#x60; (for example, &#x60;https://api.bxretail.org&#x60;). If a URL is not specified, the resource name is used. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
@@ -38,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *Resource) GetLinks() LinksHATEOAS`
+`func (o *Resource) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *Resource) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *Resource) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *Resource) SetLinks(v LinksHATEOAS)`
+`func (o *Resource) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -85,6 +86,31 @@ SetAccessTokenValiditySeconds sets AccessTokenValiditySeconds field to given val
 `func (o *Resource) HasAccessTokenValiditySeconds() bool`
 
 HasAccessTokenValiditySeconds returns a boolean if a field has been set.
+
+### GetApplicationPermissionsSettings
+
+`func (o *Resource) GetApplicationPermissionsSettings() ResourceApplicationPermissionsSettings`
+
+GetApplicationPermissionsSettings returns the ApplicationPermissionsSettings field if non-nil, zero value otherwise.
+
+### GetApplicationPermissionsSettingsOk
+
+`func (o *Resource) GetApplicationPermissionsSettingsOk() (*ResourceApplicationPermissionsSettings, bool)`
+
+GetApplicationPermissionsSettingsOk returns a tuple with the ApplicationPermissionsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationPermissionsSettings
+
+`func (o *Resource) SetApplicationPermissionsSettings(v ResourceApplicationPermissionsSettings)`
+
+SetApplicationPermissionsSettings sets ApplicationPermissionsSettings field to given value.
+
+### HasApplicationPermissionsSettings
+
+`func (o *Resource) HasApplicationPermissionsSettings() bool`
+
+HasApplicationPermissionsSettings returns a boolean if a field has been set.
 
 ### GetAudience
 

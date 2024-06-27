@@ -20,14 +20,14 @@ var _ MappedNullable = &UserAccount{}
 
 // UserAccount struct for UserAccount
 type UserAccount struct {
-	// A boolean that specifies the whether the user can authenticate. If the value is set to false, the account is locked or the user is disabled, and unless specified otherwise in administrative configuration, the user will be unable to authenticate.
+	// A boolean that specifies whether the user can authenticate. If the value is set to `false`, the account is locked or the user is disabled, and unless specified otherwise by the administrative configuration, the user will be unable to authenticate.
 	CanAuthenticate bool `json:"canAuthenticate"`
-	// The time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts.
+	// A string that specifies the date-time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts.
 	LockedAt *time.Time `json:"lockedAt,omitempty"`
 	// An integer that specifies the number of seconds until the user's account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
 	SecondsUntilUnlock *int32 `json:"secondsUntilUnlock,omitempty"`
 	Status EnumUserStatus `json:"status"`
-	// The time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
+	// A string that specifies the time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
 	UnlockAt *time.Time `json:"unlockAt,omitempty"`
 }
 
@@ -205,10 +205,16 @@ func (o UserAccount) MarshalJSON() ([]byte, error) {
 func (o UserAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["canAuthenticate"] = o.CanAuthenticate
-	// skip: lockedAt is readOnly
-	// skip: secondsUntilUnlock is readOnly
+	if !IsNil(o.LockedAt) {
+		toSerialize["lockedAt"] = o.LockedAt
+	}
+	if !IsNil(o.SecondsUntilUnlock) {
+		toSerialize["secondsUntilUnlock"] = o.SecondsUntilUnlock
+	}
 	toSerialize["status"] = o.Status
-	// skip: unlockAt is readOnly
+	if !IsNil(o.UnlockAt) {
+		toSerialize["unlockAt"] = o.UnlockAt
+	}
 	return toSerialize, nil
 }
 

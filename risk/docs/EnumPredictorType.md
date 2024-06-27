@@ -3,11 +3,15 @@
 ## Enum
 
 
+* `ADVERSARY_IN_THE_MIDDLE` (value: `"ADVERSARY_IN_THE_MIDDLE"`)
+
 * `ANONYMOUS_NETWORK` (value: `"ANONYMOUS_NETWORK"`)
 
 * `BOT` (value: `"BOT"`)
 
 * `COMPOSITE` (value: `"COMPOSITE"`)
+
+* `EMAIL_REPUTATION` (value: `"EMAIL_REPUTATION"`)
 
 * `GEO_VELOCITY` (value: `"GEO_VELOCITY"`)
 

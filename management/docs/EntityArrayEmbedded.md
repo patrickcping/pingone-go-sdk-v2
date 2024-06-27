@@ -31,9 +31,11 @@ Name | Type | Description | Notes
 **NotificationsPolicies** | Pointer to [**[]NotificationsPolicy**](NotificationsPolicy.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
+**Permissions** | Pointer to [**[]ResourceApplicationPermission**](ResourceApplicationPermission.md) |  | [optional] 
 **PhoneDeliverySettings** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md) |  | [optional] 
+**Plans** | Pointer to [**[]IdentityPropagationPlan**](IdentityPropagationPlan.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
-**Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
+**Resources** | Pointer to [**[]EntityArrayEmbeddedResourcesInner**](EntityArrayEmbeddedResourcesInner.md) |  | [optional] 
 **Revisions** | Pointer to [**[]AgreementLanguageRevision**](AgreementLanguageRevision.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
 **SignOnPolicies** | Pointer to [**[]SignOnPolicy**](SignOnPolicy.md) |  | [optional] 
@@ -43,7 +45,7 @@ Name | Type | Description | Notes
 **Themes** | Pointer to [**[]BrandingTheme**](BrandingTheme.md) |  | [optional] 
 **TrustedEmails** | Pointer to [**[]EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
-**Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
+**Roles** | Pointer to [**[]EntityArrayEmbeddedRolesInner**](EntityArrayEmbeddedRolesInner.md) |  | [optional] 
 **Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
 **Users** | Pointer to [**[]User**](User.md) |  | [optional] 
 
@@ -741,6 +743,31 @@ SetPasswordPolicies sets PasswordPolicies field to given value.
 
 HasPasswordPolicies returns a boolean if a field has been set.
 
+### GetPermissions
+
+`func (o *EntityArrayEmbedded) GetPermissions() []ResourceApplicationPermission`
+
+GetPermissions returns the Permissions field if non-nil, zero value otherwise.
+
+### GetPermissionsOk
+
+`func (o *EntityArrayEmbedded) GetPermissionsOk() (*[]ResourceApplicationPermission, bool)`
+
+GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPermissions
+
+`func (o *EntityArrayEmbedded) SetPermissions(v []ResourceApplicationPermission)`
+
+SetPermissions sets Permissions field to given value.
+
+### HasPermissions
+
+`func (o *EntityArrayEmbedded) HasPermissions() bool`
+
+HasPermissions returns a boolean if a field has been set.
+
 ### GetPhoneDeliverySettings
 
 `func (o *EntityArrayEmbedded) GetPhoneDeliverySettings() []NotificationsSettingsPhoneDeliverySettings`
@@ -765,6 +792,31 @@ SetPhoneDeliverySettings sets PhoneDeliverySettings field to given value.
 `func (o *EntityArrayEmbedded) HasPhoneDeliverySettings() bool`
 
 HasPhoneDeliverySettings returns a boolean if a field has been set.
+
+### GetPlans
+
+`func (o *EntityArrayEmbedded) GetPlans() []IdentityPropagationPlan`
+
+GetPlans returns the Plans field if non-nil, zero value otherwise.
+
+### GetPlansOk
+
+`func (o *EntityArrayEmbedded) GetPlansOk() (*[]IdentityPropagationPlan, bool)`
+
+GetPlansOk returns a tuple with the Plans field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlans
+
+`func (o *EntityArrayEmbedded) SetPlans(v []IdentityPropagationPlan)`
+
+SetPlans sets Plans field to given value.
+
+### HasPlans
+
+`func (o *EntityArrayEmbedded) HasPlans() bool`
+
+HasPlans returns a boolean if a field has been set.
 
 ### GetPopulations
 
@@ -793,20 +845,20 @@ HasPopulations returns a boolean if a field has been set.
 
 ### GetResources
 
-`func (o *EntityArrayEmbedded) GetResources() []Resource`
+`func (o *EntityArrayEmbedded) GetResources() []EntityArrayEmbeddedResourcesInner`
 
 GetResources returns the Resources field if non-nil, zero value otherwise.
 
 ### GetResourcesOk
 
-`func (o *EntityArrayEmbedded) GetResourcesOk() (*[]Resource, bool)`
+`func (o *EntityArrayEmbedded) GetResourcesOk() (*[]EntityArrayEmbeddedResourcesInner, bool)`
 
 GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResources
 
-`func (o *EntityArrayEmbedded) SetResources(v []Resource)`
+`func (o *EntityArrayEmbedded) SetResources(v []EntityArrayEmbeddedResourcesInner)`
 
 SetResources sets Resources field to given value.
 
@@ -1043,20 +1095,20 @@ HasRoleAssignments returns a boolean if a field has been set.
 
 ### GetRoles
 
-`func (o *EntityArrayEmbedded) GetRoles() []Role`
+`func (o *EntityArrayEmbedded) GetRoles() []EntityArrayEmbeddedRolesInner`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *EntityArrayEmbedded) GetRolesOk() (*[]Role, bool)`
+`func (o *EntityArrayEmbedded) GetRolesOk() (*[]EntityArrayEmbeddedRolesInner, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *EntityArrayEmbedded) SetRoles(v []Role)`
+`func (o *EntityArrayEmbedded) SetRoles(v []EntityArrayEmbeddedRolesInner)`
 
 SetRoles sets Roles field to given value.
 

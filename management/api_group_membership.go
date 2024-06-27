@@ -28,15 +28,15 @@ type ApiAddUserToGroupRequest struct {
 	ApiService *GroupMembershipApiService
 	environmentID string
 	userID string
-	addUserToGroupRequest *AddUserToGroupRequest
+	groupMembership *GroupMembership
 }
 
-func (r ApiAddUserToGroupRequest) AddUserToGroupRequest(addUserToGroupRequest AddUserToGroupRequest) ApiAddUserToGroupRequest {
-	r.addUserToGroupRequest = &addUserToGroupRequest
+func (r ApiAddUserToGroupRequest) GroupMembership(groupMembership GroupMembership) ApiAddUserToGroupRequest {
+	r.groupMembership = &groupMembership
 	return r
 }
 
-func (r ApiAddUserToGroupRequest) Execute() (*Group, *http.Response, error) {
+func (r ApiAddUserToGroupRequest) Execute() (*GroupMembership, *http.Response, error) {
 	return r.ApiService.AddUserToGroupExecute(r)
 }
 
@@ -58,12 +58,12 @@ func (a *GroupMembershipApiService) AddUserToGroup(ctx context.Context, environm
 }
 
 // Execute executes the request
-//  @return Group
-func (a *GroupMembershipApiService) AddUserToGroupExecute(r ApiAddUserToGroupRequest) (*Group, *http.Response, error) {
+//  @return GroupMembership
+func (a *GroupMembershipApiService) AddUserToGroupExecute(r ApiAddUserToGroupRequest) (*GroupMembership, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *Group
+		localVarReturnValue  *GroupMembership
 	)
 	
 	response, err = processResponse(
@@ -75,12 +75,12 @@ func (a *GroupMembershipApiService) AddUserToGroupExecute(r ApiAddUserToGroupReq
 	return localVarReturnValue, response, err
 }
 			
-func (a *GroupMembershipApiService) internalAddUserToGroupExecute(r ApiAddUserToGroupRequest) (*Group, *http.Response, error) {
+func (a *GroupMembershipApiService) internalAddUserToGroupExecute(r ApiAddUserToGroupRequest) (*GroupMembership, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Group
+		localVarReturnValue  *GroupMembership
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupMembershipApiService.AddUserToGroup")
@@ -114,7 +114,7 @@ func (a *GroupMembershipApiService) internalAddUserToGroupExecute(r ApiAddUserTo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.addUserToGroupRequest
+	localVarPostBody = r.groupMembership
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -182,6 +182,17 @@ func (a *GroupMembershipApiService) internalAddUserToGroupExecute(r ApiAddUserTo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -416,6 +427,17 @@ func (a *GroupMembershipApiService) internalReadAllGroupMembershipsForUserExecut
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -459,15 +481,15 @@ type ApiReadOneGroupMembershipForUserRequest struct {
 	environmentID string
 	userID string
 	groupID string
-	expand *string
+	expand *EnumUserGroupAssignmentExpandParameter
 }
 
-func (r ApiReadOneGroupMembershipForUserRequest) Expand(expand string) ApiReadOneGroupMembershipForUserRequest {
+func (r ApiReadOneGroupMembershipForUserRequest) Expand(expand EnumUserGroupAssignmentExpandParameter) ApiReadOneGroupMembershipForUserRequest {
 	r.expand = &expand
 	return r
 }
 
-func (r ApiReadOneGroupMembershipForUserRequest) Execute() (*Group, *http.Response, error) {
+func (r ApiReadOneGroupMembershipForUserRequest) Execute() (*GroupMembership, *http.Response, error) {
 	return r.ApiService.ReadOneGroupMembershipForUserExecute(r)
 }
 
@@ -491,12 +513,12 @@ func (a *GroupMembershipApiService) ReadOneGroupMembershipForUser(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Group
-func (a *GroupMembershipApiService) ReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*Group, *http.Response, error) {
+//  @return GroupMembership
+func (a *GroupMembershipApiService) ReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*GroupMembership, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *Group
+		localVarReturnValue  *GroupMembership
 	)
 	
 	response, err = processResponse(
@@ -508,12 +530,12 @@ func (a *GroupMembershipApiService) ReadOneGroupMembershipForUserExecute(r ApiRe
 	return localVarReturnValue, response, err
 }
 			
-func (a *GroupMembershipApiService) internalReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*Group, *http.Response, error) {
+func (a *GroupMembershipApiService) internalReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*GroupMembership, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Group
+		localVarReturnValue  *GroupMembership
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupMembershipApiService.ReadOneGroupMembershipForUser")
@@ -606,6 +628,17 @@ func (a *GroupMembershipApiService) internalReadOneGroupMembershipForUserExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -795,6 +828,17 @@ func (a *GroupMembershipApiService) internalRemoveUserFromGroupExecute(r ApiRemo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

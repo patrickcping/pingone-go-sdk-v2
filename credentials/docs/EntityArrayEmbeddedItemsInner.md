@@ -4,17 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **CardDesignTemplate** | **string** | A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image. | 
 **CardType** | Pointer to **string** | A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance. | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the credential type. | [optional] 
-**DeletedAt** | Pointer to **string** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] 
+**DeletedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**Issuer** | Pointer to [**CredentialTypeIssuer**](CredentialTypeIssuer.md) |  | [optional] 
-**IssuerName** | Pointer to **string** | v issuer name associated with the card, can differ from title. | [optional] 
+**Issuer** | Pointer to [**ObjectIssuer**](ObjectIssuer.md) |  | [optional] 
+**IssuerName** | Pointer to **string** | A string that specifies the issuer name associated with the card, can differ from title. | [optional] 
+**Management** | Pointer to [**CredentialTypeManagement**](CredentialTypeManagement.md) |  | [optional] 
 **Metadata** | [**CredentialTypeMetaData**](CredentialTypeMetaData.md) |  | 
+**Multiple** | Pointer to [**CredentialTypeMultiple**](CredentialTypeMultiple.md) |  | [optional] 
+**OnDelete** | Pointer to [**CredentialTypeOnDelete**](CredentialTypeOnDelete.md) |  | [optional] 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **CredentialType** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
@@ -45,20 +48,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EntityArrayEmbeddedItemsInner) GetLinks() LinksHATEOAS`
+`func (o *EntityArrayEmbeddedItemsInner) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EntityArrayEmbeddedItemsInner) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *EntityArrayEmbeddedItemsInner) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EntityArrayEmbeddedItemsInner) SetLinks(v LinksHATEOAS)`
+`func (o *EntityArrayEmbeddedItemsInner) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -165,20 +168,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetDeletedAt
 
-`func (o *EntityArrayEmbeddedItemsInner) GetDeletedAt() string`
+`func (o *EntityArrayEmbeddedItemsInner) GetDeletedAt() time.Time`
 
 GetDeletedAt returns the DeletedAt field if non-nil, zero value otherwise.
 
 ### GetDeletedAtOk
 
-`func (o *EntityArrayEmbeddedItemsInner) GetDeletedAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedItemsInner) GetDeletedAtOk() (*time.Time, bool)`
 
 GetDeletedAtOk returns a tuple with the DeletedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeletedAt
 
-`func (o *EntityArrayEmbeddedItemsInner) SetDeletedAt(v string)`
+`func (o *EntityArrayEmbeddedItemsInner) SetDeletedAt(v time.Time)`
 
 SetDeletedAt sets DeletedAt field to given value.
 
@@ -240,20 +243,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetIssuer
 
-`func (o *EntityArrayEmbeddedItemsInner) GetIssuer() CredentialTypeIssuer`
+`func (o *EntityArrayEmbeddedItemsInner) GetIssuer() ObjectIssuer`
 
 GetIssuer returns the Issuer field if non-nil, zero value otherwise.
 
 ### GetIssuerOk
 
-`func (o *EntityArrayEmbeddedItemsInner) GetIssuerOk() (*CredentialTypeIssuer, bool)`
+`func (o *EntityArrayEmbeddedItemsInner) GetIssuerOk() (*ObjectIssuer, bool)`
 
 GetIssuerOk returns a tuple with the Issuer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssuer
 
-`func (o *EntityArrayEmbeddedItemsInner) SetIssuer(v CredentialTypeIssuer)`
+`func (o *EntityArrayEmbeddedItemsInner) SetIssuer(v ObjectIssuer)`
 
 SetIssuer sets Issuer field to given value.
 
@@ -288,6 +291,31 @@ SetIssuerName sets IssuerName field to given value.
 
 HasIssuerName returns a boolean if a field has been set.
 
+### GetManagement
+
+`func (o *EntityArrayEmbeddedItemsInner) GetManagement() CredentialTypeManagement`
+
+GetManagement returns the Management field if non-nil, zero value otherwise.
+
+### GetManagementOk
+
+`func (o *EntityArrayEmbeddedItemsInner) GetManagementOk() (*CredentialTypeManagement, bool)`
+
+GetManagementOk returns a tuple with the Management field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagement
+
+`func (o *EntityArrayEmbeddedItemsInner) SetManagement(v CredentialTypeManagement)`
+
+SetManagement sets Management field to given value.
+
+### HasManagement
+
+`func (o *EntityArrayEmbeddedItemsInner) HasManagement() bool`
+
+HasManagement returns a boolean if a field has been set.
+
 ### GetMetadata
 
 `func (o *EntityArrayEmbeddedItemsInner) GetMetadata() CredentialTypeMetaData`
@@ -307,6 +335,56 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
+
+### GetMultiple
+
+`func (o *EntityArrayEmbeddedItemsInner) GetMultiple() CredentialTypeMultiple`
+
+GetMultiple returns the Multiple field if non-nil, zero value otherwise.
+
+### GetMultipleOk
+
+`func (o *EntityArrayEmbeddedItemsInner) GetMultipleOk() (*CredentialTypeMultiple, bool)`
+
+GetMultipleOk returns a tuple with the Multiple field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMultiple
+
+`func (o *EntityArrayEmbeddedItemsInner) SetMultiple(v CredentialTypeMultiple)`
+
+SetMultiple sets Multiple field to given value.
+
+### HasMultiple
+
+`func (o *EntityArrayEmbeddedItemsInner) HasMultiple() bool`
+
+HasMultiple returns a boolean if a field has been set.
+
+### GetOnDelete
+
+`func (o *EntityArrayEmbeddedItemsInner) GetOnDelete() CredentialTypeOnDelete`
+
+GetOnDelete returns the OnDelete field if non-nil, zero value otherwise.
+
+### GetOnDeleteOk
+
+`func (o *EntityArrayEmbeddedItemsInner) GetOnDeleteOk() (*CredentialTypeOnDelete, bool)`
+
+GetOnDeleteOk returns a tuple with the OnDelete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnDelete
+
+`func (o *EntityArrayEmbeddedItemsInner) SetOnDelete(v CredentialTypeOnDelete)`
+
+SetOnDelete sets OnDelete field to given value.
+
+### HasOnDelete
+
+`func (o *EntityArrayEmbeddedItemsInner) HasOnDelete() bool`
+
+HasOnDelete returns a boolean if a field has been set.
 
 ### GetTitle
 

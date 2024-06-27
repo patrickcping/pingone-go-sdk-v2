@@ -19,7 +19,7 @@ var _ MappedNullable = &SignOnPolicyActionPingIDWinLoginPasswordless{}
 
 // SignOnPolicyActionPingIDWinLoginPasswordless struct for SignOnPolicyActionPingIDWinLoginPasswordless
 type SignOnPolicyActionPingIDWinLoginPasswordless struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
@@ -54,9 +54,9 @@ func NewSignOnPolicyActionPingIDWinLoginPasswordlessWithDefaults() *SignOnPolicy
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *SignOnPolicyActionPingIDWinLoginPasswordless) GetLinks() LinksHATEOAS {
+func (o *SignOnPolicyActionPingIDWinLoginPasswordless) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -64,7 +64,7 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordless) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionPingIDWinLoginPasswordless) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *SignOnPolicyActionPingIDWinLoginPasswordless) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -80,8 +80,8 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordless) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *SignOnPolicyActionPingIDWinLoginPasswordless) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *SignOnPolicyActionPingIDWinLoginPasswordless) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -328,7 +328,9 @@ func (o SignOnPolicyActionPingIDWinLoginPasswordless) ToMap() (map[string]interf
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["priority"] = o.Priority
 	if !IsNil(o.SignOnPolicy) {
 		toSerialize["signOnPolicy"] = o.SignOnPolicy

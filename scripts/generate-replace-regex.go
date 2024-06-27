@@ -34,7 +34,7 @@ func main() {
 			content = re.ReplaceAll(content, []byte(rule.repl))
 
 			// Write the updated file contents
-			err = os.WriteFile(file, content, os.ModePerm)
+			err = os.WriteFile(file, content, os.ModeAppend)
 			if err != nil {
 				panic(err)
 			}
@@ -50,6 +50,12 @@ var (
 		repl              string
 	}{
 
+		{
+			fileSelectPattern: "go.mod",
+			pattern:           `go 1.18`,
+			repl:              `go 1.21`,
+		},
+
 		/////////////////////////
 		// ALL configuration.go
 		/////////////////////////
@@ -64,7 +70,11 @@ var (
 func (c *Configuration) SetUserAgent(userAgent string) {
 	c.UserAgent = userAgent
 }
-			
+
+func (c *Configuration) AppendUserAgent(userAgent string) {
+	c.UserAgent += fmt.Sprintf(" %s", userAgent)
+}
+
 func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {
 	c.DefaultServerIndex = defaultServerIndex
 }

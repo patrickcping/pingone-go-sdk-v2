@@ -19,9 +19,14 @@ var _ MappedNullable = &GroupMembership{}
 
 // GroupMembership struct for GroupMembership
 type GroupMembership struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Embedded *GroupMembershipEmbedded `json:"_embedded,omitempty"`
 	// ID of the group to assign
 	Id string `json:"id"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A string that specifies the group name assigned to the user.
+	Name *string `json:"name,omitempty"`
+	Type *EnumGroupMembershipType `json:"type,omitempty"`
 }
 
 // NewGroupMembership instantiates a new GroupMembership object
@@ -43,9 +48,9 @@ func NewGroupMembershipWithDefaults() *GroupMembership {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GroupMembership) GetLinks() LinksHATEOAS {
+func (o *GroupMembership) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -53,7 +58,7 @@ func (o *GroupMembership) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMembership) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *GroupMembership) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -69,9 +74,41 @@ func (o *GroupMembership) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *GroupMembership) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *GroupMembership) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
+}
+
+// GetEmbedded returns the Embedded field value if set, zero value otherwise.
+func (o *GroupMembership) GetEmbedded() GroupMembershipEmbedded {
+	if o == nil || IsNil(o.Embedded) {
+		var ret GroupMembershipEmbedded
+		return ret
+	}
+	return *o.Embedded
+}
+
+// GetEmbeddedOk returns a tuple with the Embedded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMembership) GetEmbeddedOk() (*GroupMembershipEmbedded, bool) {
+	if o == nil || IsNil(o.Embedded) {
+		return nil, false
+	}
+	return o.Embedded, true
+}
+
+// HasEmbedded returns a boolean if a field has been set.
+func (o *GroupMembership) HasEmbedded() bool {
+	if o != nil && !IsNil(o.Embedded) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmbedded gets a reference to the given GroupMembershipEmbedded and assigns it to the Embedded field.
+func (o *GroupMembership) SetEmbedded(v GroupMembershipEmbedded) {
+	o.Embedded = &v
 }
 
 // GetId returns the Id field value
@@ -98,6 +135,102 @@ func (o *GroupMembership) SetId(v string) {
 	o.Id = v
 }
 
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *GroupMembership) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMembership) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *GroupMembership) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *GroupMembership) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *GroupMembership) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMembership) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *GroupMembership) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *GroupMembership) SetName(v string) {
+	o.Name = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *GroupMembership) GetType() EnumGroupMembershipType {
+	if o == nil || IsNil(o.Type) {
+		var ret EnumGroupMembershipType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMembership) GetTypeOk() (*EnumGroupMembershipType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *GroupMembership) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given EnumGroupMembershipType and assigns it to the Type field.
+func (o *GroupMembership) SetType(v EnumGroupMembershipType) {
+	o.Type = &v
+}
+
 func (o GroupMembership) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -111,7 +244,19 @@ func (o GroupMembership) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
+	if !IsNil(o.Embedded) {
+		toSerialize["_embedded"] = o.Embedded
+	}
 	toSerialize["id"] = o.Id
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 

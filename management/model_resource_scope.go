@@ -20,9 +20,10 @@ var _ MappedNullable = &ResourceScope{}
 
 // ResourceScope struct for ResourceScope
 type ResourceScope struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
+	Resource *ObjectResource `json:"resource,omitempty"`
 	// A string that specifies the resource scope name.
 	Name string `json:"name"`
 	// A string that specifies the description of the scope.
@@ -57,9 +58,9 @@ func NewResourceScopeWithDefaults() *ResourceScope {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ResourceScope) GetLinks() LinksHATEOAS {
+func (o *ResourceScope) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -67,7 +68,7 @@ func (o *ResourceScope) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceScope) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ResourceScope) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -83,8 +84,8 @@ func (o *ResourceScope) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ResourceScope) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ResourceScope) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -118,6 +119,38 @@ func (o *ResourceScope) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ResourceScope) SetId(v string) {
 	o.Id = &v
+}
+
+// GetResource returns the Resource field value if set, zero value otherwise.
+func (o *ResourceScope) GetResource() ObjectResource {
+	if o == nil || IsNil(o.Resource) {
+		var ret ObjectResource
+		return ret
+	}
+	return *o.Resource
+}
+
+// GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceScope) GetResourceOk() (*ObjectResource, bool) {
+	if o == nil || IsNil(o.Resource) {
+		return nil, false
+	}
+	return o.Resource, true
+}
+
+// HasResource returns a boolean if a field has been set.
+func (o *ResourceScope) HasResource() bool {
+	if o != nil && !IsNil(o.Resource) {
+		return true
+	}
+
+	return false
+}
+
+// SetResource gets a reference to the given ObjectResource and assigns it to the Resource field.
+func (o *ResourceScope) SetResource(v ObjectResource) {
+	o.Resource = &v
 }
 
 // GetName returns the Name field value
@@ -349,7 +382,12 @@ func (o ResourceScope) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -363,8 +401,12 @@ func (o ResourceScope) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MappedClaims) {
 		toSerialize["mappedClaims"] = o.MappedClaims
 	}
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

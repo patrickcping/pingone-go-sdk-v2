@@ -19,7 +19,7 @@ var _ MappedNullable = &RiskEvaluation{}
 
 // RiskEvaluation struct for RiskEvaluation
 type RiskEvaluation struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *string `json:"createdAt,omitempty"`
 	Details *RiskEvaluationDetails `json:"details,omitempty"`
@@ -52,9 +52,9 @@ func NewRiskEvaluationWithDefaults() *RiskEvaluation {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *RiskEvaluation) GetLinks() LinksHATEOAS {
+func (o *RiskEvaluation) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -62,7 +62,7 @@ func (o *RiskEvaluation) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluation) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *RiskEvaluation) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -78,8 +78,8 @@ func (o *RiskEvaluation) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *RiskEvaluation) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *RiskEvaluation) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -344,7 +344,9 @@ func (o RiskEvaluation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
@@ -352,14 +354,18 @@ func (o RiskEvaluation) ToMap() (map[string]interface{}, error) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["event"] = o.Event
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.RiskPolicySet) {
 		toSerialize["riskPolicySet"] = o.RiskPolicySet
 	}
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

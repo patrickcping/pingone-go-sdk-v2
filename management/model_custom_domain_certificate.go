@@ -83,7 +83,9 @@ func (o CustomDomainCertificate) MarshalJSON() ([]byte, error) {
 
 func (o CustomDomainCertificate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: expiresAt is readOnly
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
 	return toSerialize, nil
 }
 

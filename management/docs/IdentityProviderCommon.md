@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the IdP. | [optional] 
 **Enabled** | **bool** | The current enabled state of the IdP. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *IdentityProviderCommon) GetLinks() LinksHATEOAS`
+`func (o *IdentityProviderCommon) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *IdentityProviderCommon) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *IdentityProviderCommon) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *IdentityProviderCommon) SetLinks(v LinksHATEOAS)`
+`func (o *IdentityProviderCommon) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

@@ -17,10 +17,14 @@ import (
 
 // RiskPredictor - struct for RiskPredictor
 type RiskPredictor struct {
+	RiskPredictorAdversaryInTheMiddle *RiskPredictorAdversaryInTheMiddle
 	RiskPredictorAnonymousNetwork *RiskPredictorAnonymousNetwork
+	RiskPredictorBotDetection *RiskPredictorBotDetection
+	RiskPredictorCommon *RiskPredictorCommon
 	RiskPredictorComposite *RiskPredictorComposite
 	RiskPredictorCustom *RiskPredictorCustom
 	RiskPredictorDevice *RiskPredictorDevice
+	RiskPredictorEmailReputation *RiskPredictorEmailReputation
 	RiskPredictorGeovelocity *RiskPredictorGeovelocity
 	RiskPredictorIPReputation *RiskPredictorIPReputation
 	RiskPredictorUserLocationAnomaly *RiskPredictorUserLocationAnomaly
@@ -28,10 +32,31 @@ type RiskPredictor struct {
 	RiskPredictorVelocity *RiskPredictorVelocity
 }
 
+// RiskPredictorAdversaryInTheMiddleAsRiskPredictor is a convenience function that returns RiskPredictorAdversaryInTheMiddle wrapped in RiskPredictor
+func RiskPredictorAdversaryInTheMiddleAsRiskPredictor(v *RiskPredictorAdversaryInTheMiddle) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorAdversaryInTheMiddle: v,
+	}
+}
+
 // RiskPredictorAnonymousNetworkAsRiskPredictor is a convenience function that returns RiskPredictorAnonymousNetwork wrapped in RiskPredictor
 func RiskPredictorAnonymousNetworkAsRiskPredictor(v *RiskPredictorAnonymousNetwork) RiskPredictor {
 	return RiskPredictor{
 		RiskPredictorAnonymousNetwork: v,
+	}
+}
+
+// RiskPredictorBotDetectionAsRiskPredictor is a convenience function that returns RiskPredictorBotDetection wrapped in RiskPredictor
+func RiskPredictorBotDetectionAsRiskPredictor(v *RiskPredictorBotDetection) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorBotDetection: v,
+	}
+}
+
+// RiskPredictorCommonAsRiskPredictor is a convenience function that returns RiskPredictorCommon wrapped in RiskPredictor
+func RiskPredictorCommonAsRiskPredictor(v *RiskPredictorCommon) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorCommon: v,
 	}
 }
 
@@ -53,6 +78,13 @@ func RiskPredictorCustomAsRiskPredictor(v *RiskPredictorCustom) RiskPredictor {
 func RiskPredictorDeviceAsRiskPredictor(v *RiskPredictorDevice) RiskPredictor {
 	return RiskPredictor{
 		RiskPredictorDevice: v,
+	}
+}
+
+// RiskPredictorEmailReputationAsRiskPredictor is a convenience function that returns RiskPredictorEmailReputation wrapped in RiskPredictor
+func RiskPredictorEmailReputationAsRiskPredictor(v *RiskPredictorEmailReputation) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorEmailReputation: v,
 	}
 }
 
@@ -101,8 +133,12 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
+	dst.RiskPredictorAdversaryInTheMiddle = nil
 	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorBotDetection = nil
+	dst.RiskPredictorCommon = nil
 	dst.RiskPredictorComposite = nil
+	dst.RiskPredictorEmailReputation = nil
 	dst.RiskPredictorCustom = nil
 	dst.RiskPredictorGeovelocity = nil
 	dst.RiskPredictorIPReputation = nil
@@ -118,12 +154,24 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 	}
 
 	switch objType {
+	case ENUMPREDICTORTYPE_ADVERSARY_IN_THE_MIDDLE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorAdversaryInTheMiddle); err != nil {
+			return err
+		}
 	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
 		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil {
 			return err
 		}
+	case ENUMPREDICTORTYPE_BOT:
+		if err := json.Unmarshal(data, &dst.RiskPredictorBotDetection); err != nil {
+			return err
+		}
 	case ENUMPREDICTORTYPE_COMPOSITE:
 		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil {
+			return err
+		}
+	case ENUMPREDICTORTYPE_EMAIL_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorEmailReputation); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_MAP:
@@ -162,8 +210,20 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src RiskPredictor) MarshalJSON() ([]byte, error) {
+	if src.RiskPredictorAdversaryInTheMiddle != nil {
+		return json.Marshal(&src.RiskPredictorAdversaryInTheMiddle)
+	}
+
 	if src.RiskPredictorAnonymousNetwork != nil {
 		return json.Marshal(&src.RiskPredictorAnonymousNetwork)
+	}
+
+	if src.RiskPredictorBotDetection != nil {
+		return json.Marshal(&src.RiskPredictorBotDetection)
+	}
+
+	if src.RiskPredictorCommon != nil {
+		return json.Marshal(&src.RiskPredictorCommon)
 	}
 
 	if src.RiskPredictorComposite != nil {
@@ -176,6 +236,10 @@ func (src RiskPredictor) MarshalJSON() ([]byte, error) {
 
 	if src.RiskPredictorDevice != nil {
 		return json.Marshal(&src.RiskPredictorDevice)
+	}
+
+	if src.RiskPredictorEmailReputation != nil {
+		return json.Marshal(&src.RiskPredictorEmailReputation)
 	}
 
 	if src.RiskPredictorGeovelocity != nil {
@@ -206,8 +270,20 @@ func (obj *RiskPredictor) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.RiskPredictorAdversaryInTheMiddle != nil {
+		return obj.RiskPredictorAdversaryInTheMiddle
+	}
+
 	if obj.RiskPredictorAnonymousNetwork != nil {
 		return obj.RiskPredictorAnonymousNetwork
+	}
+
+	if obj.RiskPredictorBotDetection != nil {
+		return obj.RiskPredictorBotDetection
+	}
+
+	if obj.RiskPredictorCommon != nil {
+		return obj.RiskPredictorCommon
 	}
 
 	if obj.RiskPredictorComposite != nil {
@@ -220,6 +296,10 @@ func (obj *RiskPredictor) GetActualInstance() (interface{}) {
 
 	if obj.RiskPredictorDevice != nil {
 		return obj.RiskPredictorDevice
+	}
+
+	if obj.RiskPredictorEmailReputation != nil {
+		return obj.RiskPredictorEmailReputation
 	}
 
 	if obj.RiskPredictorGeovelocity != nil {

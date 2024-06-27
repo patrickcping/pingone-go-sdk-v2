@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityProviderClientIDClientSecret{}
 
 // IdentityProviderClientIDClientSecret struct for IdentityProviderClientIDClientSecret
 type IdentityProviderClientIDClientSecret struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
@@ -66,9 +66,9 @@ func NewIdentityProviderClientIDClientSecretWithDefaults() *IdentityProviderClie
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *IdentityProviderClientIDClientSecret) GetLinks() LinksHATEOAS {
+func (o *IdentityProviderClientIDClientSecret) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -76,7 +76,7 @@ func (o *IdentityProviderClientIDClientSecret) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderClientIDClientSecret) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *IdentityProviderClientIDClientSecret) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -92,8 +92,8 @@ func (o *IdentityProviderClientIDClientSecret) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *IdentityProviderClientIDClientSecret) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *IdentityProviderClientIDClientSecret) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -496,7 +496,9 @@ func (o IdentityProviderClientIDClientSecret) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginButtonIcon) {
 		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
 	}
@@ -505,8 +507,12 @@ func (o IdentityProviderClientIDClientSecret) ToMap() (map[string]interface{}, e
 		toSerialize["registration"] = o.Registration
 	}
 	toSerialize["type"] = o.Type
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["clientId"] = o.ClientId
 	toSerialize["clientSecret"] = o.ClientSecret
 	return toSerialize, nil

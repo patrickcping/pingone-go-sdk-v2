@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationSAML{}
 
 // ApplicationSAML struct for ApplicationSAML
 type ApplicationSAML struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -48,12 +48,17 @@ type ApplicationSAML struct {
 	AcsUrls []string `json:"acsUrls"`
 	// An integer that specifies the assertion validity duration in seconds. This is a required property.
 	AssertionDuration int32 `json:"assertionDuration"`
-	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
+	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is `true`.
 	AssertionSigned *bool `json:"assertionSigned,omitempty"`
+	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
+	// This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application's ACS URL as a separate RelayState key value (not within the SAMLResponse key value).
+	DefaultTargetUrl *string `json:"defaultTargetUrl,omitempty"`
+	// Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
+	EnableRequestedAuthnContext *bool `json:"enableRequestedAuthnContext,omitempty"`
 	IdpSigning *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
 	// A string that specifies the format of the Subject NameID attibute in the SAML assertion
 	NameIdFormat *string `json:"nameIdFormat,omitempty"`
-	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False.
+	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is `false`.
 	ResponseSigned *bool `json:"responseSigned,omitempty"`
 	SloBinding *EnumApplicationSAMLSloBinding `json:"sloBinding,omitempty"`
 	// A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error.
@@ -62,6 +67,7 @@ type ApplicationSAML struct {
 	SloResponseEndpoint *string `json:"sloResponseEndpoint,omitempty"`
 	// Defines how long PingOne can exchange logout messages with the application, specifically a `LogoutRequest` from the application, since the initial request. PingOne can also send a `LogoutRequest` to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens.
 	SloWindow *int32 `json:"sloWindow,omitempty"`
+	SpEncryption *ApplicationSAMLAllOfSpEncryption `json:"spEncryption,omitempty"`
 	// A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
 	SpEntityId string `json:"spEntityId"`
 	SpVerification *ApplicationSAMLAllOfSpVerification `json:"spVerification,omitempty"`
@@ -79,6 +85,12 @@ func NewApplicationSAML(enabled bool, name string, protocol EnumApplicationProto
 	this.Type = type_
 	this.AcsUrls = acsUrls
 	this.AssertionDuration = assertionDuration
+	var assertionSigned bool = true
+	this.AssertionSigned = &assertionSigned
+	var responseSigned bool = false
+	this.ResponseSigned = &responseSigned
+	var sloBinding EnumApplicationSAMLSloBinding = ENUMAPPLICATIONSAMLSLOBINDING_POST
+	this.SloBinding = &sloBinding
 	this.SpEntityId = spEntityId
 	return &this
 }
@@ -88,13 +100,19 @@ func NewApplicationSAML(enabled bool, name string, protocol EnumApplicationProto
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationSAMLWithDefaults() *ApplicationSAML {
 	this := ApplicationSAML{}
+	var assertionSigned bool = true
+	this.AssertionSigned = &assertionSigned
+	var responseSigned bool = false
+	this.ResponseSigned = &responseSigned
+	var sloBinding EnumApplicationSAMLSloBinding = ENUMAPPLICATIONSAMLSLOBINDING_POST
+	this.SloBinding = &sloBinding
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationSAML) GetLinks() LinksHATEOAS {
+func (o *ApplicationSAML) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -102,7 +120,7 @@ func (o *ApplicationSAML) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationSAML) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationSAML) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -118,8 +136,8 @@ func (o *ApplicationSAML) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationSAML) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationSAML) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -619,6 +637,102 @@ func (o *ApplicationSAML) SetAssertionSigned(v bool) {
 	o.AssertionSigned = &v
 }
 
+// GetCorsSettings returns the CorsSettings field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetCorsSettings() ApplicationCorsSettings {
+	if o == nil || IsNil(o.CorsSettings) {
+		var ret ApplicationCorsSettings
+		return ret
+	}
+	return *o.CorsSettings
+}
+
+// GetCorsSettingsOk returns a tuple with the CorsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetCorsSettingsOk() (*ApplicationCorsSettings, bool) {
+	if o == nil || IsNil(o.CorsSettings) {
+		return nil, false
+	}
+	return o.CorsSettings, true
+}
+
+// HasCorsSettings returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasCorsSettings() bool {
+	if o != nil && !IsNil(o.CorsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetCorsSettings gets a reference to the given ApplicationCorsSettings and assigns it to the CorsSettings field.
+func (o *ApplicationSAML) SetCorsSettings(v ApplicationCorsSettings) {
+	o.CorsSettings = &v
+}
+
+// GetDefaultTargetUrl returns the DefaultTargetUrl field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetDefaultTargetUrl() string {
+	if o == nil || IsNil(o.DefaultTargetUrl) {
+		var ret string
+		return ret
+	}
+	return *o.DefaultTargetUrl
+}
+
+// GetDefaultTargetUrlOk returns a tuple with the DefaultTargetUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetDefaultTargetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.DefaultTargetUrl) {
+		return nil, false
+	}
+	return o.DefaultTargetUrl, true
+}
+
+// HasDefaultTargetUrl returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasDefaultTargetUrl() bool {
+	if o != nil && !IsNil(o.DefaultTargetUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultTargetUrl gets a reference to the given string and assigns it to the DefaultTargetUrl field.
+func (o *ApplicationSAML) SetDefaultTargetUrl(v string) {
+	o.DefaultTargetUrl = &v
+}
+
+// GetEnableRequestedAuthnContext returns the EnableRequestedAuthnContext field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetEnableRequestedAuthnContext() bool {
+	if o == nil || IsNil(o.EnableRequestedAuthnContext) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableRequestedAuthnContext
+}
+
+// GetEnableRequestedAuthnContextOk returns a tuple with the EnableRequestedAuthnContext field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetEnableRequestedAuthnContextOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableRequestedAuthnContext) {
+		return nil, false
+	}
+	return o.EnableRequestedAuthnContext, true
+}
+
+// HasEnableRequestedAuthnContext returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasEnableRequestedAuthnContext() bool {
+	if o != nil && !IsNil(o.EnableRequestedAuthnContext) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableRequestedAuthnContext gets a reference to the given bool and assigns it to the EnableRequestedAuthnContext field.
+func (o *ApplicationSAML) SetEnableRequestedAuthnContext(v bool) {
+	o.EnableRequestedAuthnContext = &v
+}
+
 // GetIdpSigning returns the IdpSigning field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetIdpSigning() ApplicationSAMLAllOfIdpSigning {
 	if o == nil || IsNil(o.IdpSigning) {
@@ -843,6 +957,38 @@ func (o *ApplicationSAML) SetSloWindow(v int32) {
 	o.SloWindow = &v
 }
 
+// GetSpEncryption returns the SpEncryption field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetSpEncryption() ApplicationSAMLAllOfSpEncryption {
+	if o == nil || IsNil(o.SpEncryption) {
+		var ret ApplicationSAMLAllOfSpEncryption
+		return ret
+	}
+	return *o.SpEncryption
+}
+
+// GetSpEncryptionOk returns a tuple with the SpEncryption field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetSpEncryptionOk() (*ApplicationSAMLAllOfSpEncryption, bool) {
+	if o == nil || IsNil(o.SpEncryption) {
+		return nil, false
+	}
+	return o.SpEncryption, true
+}
+
+// HasSpEncryption returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasSpEncryption() bool {
+	if o != nil && !IsNil(o.SpEncryption) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpEncryption gets a reference to the given ApplicationSAMLAllOfSpEncryption and assigns it to the SpEncryption field.
+func (o *ApplicationSAML) SetSpEncryption(v ApplicationSAMLAllOfSpEncryption) {
+	o.SpEncryption = &v
+}
+
 // GetSpEntityId returns the SpEntityId field value
 func (o *ApplicationSAML) GetSpEntityId() string {
 	if o == nil {
@@ -915,7 +1061,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -929,14 +1077,18 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginPageUrl) {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["type"] = o.Type
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.HomePageUrl) {
 		toSerialize["homePageUrl"] = o.HomePageUrl
 	}
@@ -944,6 +1096,15 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	toSerialize["assertionDuration"] = o.AssertionDuration
 	if !IsNil(o.AssertionSigned) {
 		toSerialize["assertionSigned"] = o.AssertionSigned
+	}
+	if !IsNil(o.CorsSettings) {
+		toSerialize["corsSettings"] = o.CorsSettings
+	}
+	if !IsNil(o.DefaultTargetUrl) {
+		toSerialize["defaultTargetUrl"] = o.DefaultTargetUrl
+	}
+	if !IsNil(o.EnableRequestedAuthnContext) {
+		toSerialize["enableRequestedAuthnContext"] = o.EnableRequestedAuthnContext
 	}
 	if !IsNil(o.IdpSigning) {
 		toSerialize["idpSigning"] = o.IdpSigning
@@ -965,6 +1126,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SloWindow) {
 		toSerialize["sloWindow"] = o.SloWindow
+	}
+	if !IsNil(o.SpEncryption) {
+		toSerialize["spEncryption"] = o.SpEncryption
 	}
 	toSerialize["spEntityId"] = o.SpEntityId
 	if !IsNil(o.SpVerification) {

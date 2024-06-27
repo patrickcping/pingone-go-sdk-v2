@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **AccessControl** | Pointer to [**ApplicationAccessControl**](ApplicationAccessControl.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
@@ -21,18 +21,29 @@ Name | Type | Description | Notes
 **HomePageUrl** | **string** | A string that specifies the custom home page URL for the application. | 
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
-**AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
+**AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is &#x60;true&#x60;. | [optional] [default to true]
+**CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
+**DefaultTargetUrl** | Pointer to **string** | This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application&#39;s ACS URL as a separate RelayState key value (not within the SAMLResponse key value). | [optional] 
+**EnableRequestedAuthnContext** | Pointer to **bool** | Indicates whether &#x60;requestedAuthnContext&#x60; is taken into account in policy decision-making during authentication. | [optional] 
 **IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
-**ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False. | [optional] 
-**SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
+**ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is &#x60;false&#x60;. | [optional] [default to false]
+**SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] [default to ENUMAPPLICATIONSAMLSLOBINDING_POST]
 **SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
 **SloWindow** | Pointer to **int32** | Defines how long PingOne can exchange logout messages with the application, specifically a &#x60;LogoutRequest&#x60; from the application, since the initial request. PingOne can also send a &#x60;LogoutRequest&#x60; to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens. | [optional] 
+**SpEncryption** | Pointer to [**ApplicationSAMLAllOfSpEncryption**](ApplicationSAMLAllOfSpEncryption.md) |  | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
+**AdditionalRefreshTokenReplayProtectionEnabled** | Pointer to **bool** | When set to &#x60;true&#x60; (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a &#x60;false&#x60; setting. | [optional] [default to true]
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
+**DevicePathId** | Pointer to **string** | A string that specifies a unique identifier within an environment for a device authorization grant flow to provide a short identifier to the application. This property is ignored when the &#x60;deviceCustomVerificationUri&#x60; property is configured. The string can contain any letters, numbers, and some special characters (regex &#x60;a-zA-Z0-9_-&#x60;). It can have a length of no more than 50 characters (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;50&#x60;). | [optional] 
+**DeviceCustomVerificationUri** | Pointer to **string** | A string that specifies an optional custom verification URI that is returned for the &#x60;/device_authorization&#x60; endpoint. | [optional] 
+**DeviceTimeout** | Pointer to **int32** | An integer that specifies the length of time (in seconds) that the &#x60;userCode&#x60; and &#x60;deviceCode&#x60; returned by the &#x60;/device_authorization&#x60; endpoint are valid. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;600&#x60; seconds. It can have a value of no more than &#x60;3600&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;3600&#x60;). | [optional] [default to 600]
+**DevicePollingInterval** | Pointer to **int32** | An integer that specifies the frequency (in seconds) for the client to poll the &#x60;/as/token&#x60; endpoint. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;5&#x60; seconds. It can have a value of no more than &#x60;60&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;60&#x60;). | [optional] [default to 5]
+**Jwks** | Pointer to **string** | A JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwksUrl&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwksUrl&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
+**JwksUrl** | Pointer to **string** | A URL (supports &#x60;https://&#x60; only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwks&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwks&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
 **PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
@@ -45,11 +56,15 @@ Name | Type | Description | Notes
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the &#x60;refreshTokenRollingDuration&#x60; property is specified for the application, then this property must be less than or equal to the value of &#x60;refreshTokenRollingDuration&#x60;. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] [default to 2592000]
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingGracePeriodDuration** | Pointer to **int32** | The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0. | [optional] 
-**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
+**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | The code or token type returned by an authorization request. Options are &#x60;TOKEN&#x60;, &#x60;ID_TOKEN&#x60;, and &#x60;CODE&#x60;. For hybrid flows that specify &#x60;CODE&#x60; with &#x60;TOKEN&#x60; or &#x60;ID_TOKEN&#x60;, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type). | [optional] 
+**RequireSignedRequestObject** | Pointer to **bool** | Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If &#x60;false&#x60; or null (default), a signed request object is not required. Both &#x60;supportUnsignedRequestObject&#x60; and this property cannot be set to &#x60;true&#x60;. | [optional] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are &#x60;PING_FED_CONNECTION_INTEGRATION&#x60;.  Only applicable for creating worker applications. | [optional] 
 **TargetLinkUri** | Pointer to **string** | The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the &#x60;target_link_uri&#x60; parameter used for the Initiate Single Sign-On URL field. | [optional] 
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
+**ParRequirement** | Pointer to [**EnumApplicationOIDCPARRequirement**](EnumApplicationOIDCPARRequirement.md) |  | [optional] [default to ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL]
+**ParTimeout** | Pointer to **int32** | PAR timeout in seconds. Must be between &#x60;1&#x60; and &#x60;600&#x60;. The default value is &#x60;60&#x60;. | [optional] [default to 60]
+**Signing** | Pointer to [**ApplicationOIDCAllOfSigning**](ApplicationOIDCAllOfSigning.md) |  | [optional] 
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
@@ -77,20 +92,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ReadOneApplication200Response) GetLinks() LinksHATEOAS`
+`func (o *ReadOneApplication200Response) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ReadOneApplication200Response) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *ReadOneApplication200Response) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ReadOneApplication200Response) SetLinks(v LinksHATEOAS)`
+`func (o *ReadOneApplication200Response) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -490,6 +505,81 @@ SetAssertionSigned sets AssertionSigned field to given value.
 
 HasAssertionSigned returns a boolean if a field has been set.
 
+### GetCorsSettings
+
+`func (o *ReadOneApplication200Response) GetCorsSettings() ApplicationCorsSettings`
+
+GetCorsSettings returns the CorsSettings field if non-nil, zero value otherwise.
+
+### GetCorsSettingsOk
+
+`func (o *ReadOneApplication200Response) GetCorsSettingsOk() (*ApplicationCorsSettings, bool)`
+
+GetCorsSettingsOk returns a tuple with the CorsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCorsSettings
+
+`func (o *ReadOneApplication200Response) SetCorsSettings(v ApplicationCorsSettings)`
+
+SetCorsSettings sets CorsSettings field to given value.
+
+### HasCorsSettings
+
+`func (o *ReadOneApplication200Response) HasCorsSettings() bool`
+
+HasCorsSettings returns a boolean if a field has been set.
+
+### GetDefaultTargetUrl
+
+`func (o *ReadOneApplication200Response) GetDefaultTargetUrl() string`
+
+GetDefaultTargetUrl returns the DefaultTargetUrl field if non-nil, zero value otherwise.
+
+### GetDefaultTargetUrlOk
+
+`func (o *ReadOneApplication200Response) GetDefaultTargetUrlOk() (*string, bool)`
+
+GetDefaultTargetUrlOk returns a tuple with the DefaultTargetUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultTargetUrl
+
+`func (o *ReadOneApplication200Response) SetDefaultTargetUrl(v string)`
+
+SetDefaultTargetUrl sets DefaultTargetUrl field to given value.
+
+### HasDefaultTargetUrl
+
+`func (o *ReadOneApplication200Response) HasDefaultTargetUrl() bool`
+
+HasDefaultTargetUrl returns a boolean if a field has been set.
+
+### GetEnableRequestedAuthnContext
+
+`func (o *ReadOneApplication200Response) GetEnableRequestedAuthnContext() bool`
+
+GetEnableRequestedAuthnContext returns the EnableRequestedAuthnContext field if non-nil, zero value otherwise.
+
+### GetEnableRequestedAuthnContextOk
+
+`func (o *ReadOneApplication200Response) GetEnableRequestedAuthnContextOk() (*bool, bool)`
+
+GetEnableRequestedAuthnContextOk returns a tuple with the EnableRequestedAuthnContext field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableRequestedAuthnContext
+
+`func (o *ReadOneApplication200Response) SetEnableRequestedAuthnContext(v bool)`
+
+SetEnableRequestedAuthnContext sets EnableRequestedAuthnContext field to given value.
+
+### HasEnableRequestedAuthnContext
+
+`func (o *ReadOneApplication200Response) HasEnableRequestedAuthnContext() bool`
+
+HasEnableRequestedAuthnContext returns a boolean if a field has been set.
+
 ### GetIdpSigning
 
 `func (o *ReadOneApplication200Response) GetIdpSigning() ApplicationWSFEDAllOfIdpSigning`
@@ -660,6 +750,31 @@ SetSloWindow sets SloWindow field to given value.
 
 HasSloWindow returns a boolean if a field has been set.
 
+### GetSpEncryption
+
+`func (o *ReadOneApplication200Response) GetSpEncryption() ApplicationSAMLAllOfSpEncryption`
+
+GetSpEncryption returns the SpEncryption field if non-nil, zero value otherwise.
+
+### GetSpEncryptionOk
+
+`func (o *ReadOneApplication200Response) GetSpEncryptionOk() (*ApplicationSAMLAllOfSpEncryption, bool)`
+
+GetSpEncryptionOk returns a tuple with the SpEncryption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpEncryption
+
+`func (o *ReadOneApplication200Response) SetSpEncryption(v ApplicationSAMLAllOfSpEncryption)`
+
+SetSpEncryption sets SpEncryption field to given value.
+
+### HasSpEncryption
+
+`func (o *ReadOneApplication200Response) HasSpEncryption() bool`
+
+HasSpEncryption returns a boolean if a field has been set.
+
 ### GetSpEntityId
 
 `func (o *ReadOneApplication200Response) GetSpEntityId() string`
@@ -704,6 +819,31 @@ SetSpVerification sets SpVerification field to given value.
 `func (o *ReadOneApplication200Response) HasSpVerification() bool`
 
 HasSpVerification returns a boolean if a field has been set.
+
+### GetAdditionalRefreshTokenReplayProtectionEnabled
+
+`func (o *ReadOneApplication200Response) GetAdditionalRefreshTokenReplayProtectionEnabled() bool`
+
+GetAdditionalRefreshTokenReplayProtectionEnabled returns the AdditionalRefreshTokenReplayProtectionEnabled field if non-nil, zero value otherwise.
+
+### GetAdditionalRefreshTokenReplayProtectionEnabledOk
+
+`func (o *ReadOneApplication200Response) GetAdditionalRefreshTokenReplayProtectionEnabledOk() (*bool, bool)`
+
+GetAdditionalRefreshTokenReplayProtectionEnabledOk returns a tuple with the AdditionalRefreshTokenReplayProtectionEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalRefreshTokenReplayProtectionEnabled
+
+`func (o *ReadOneApplication200Response) SetAdditionalRefreshTokenReplayProtectionEnabled(v bool)`
+
+SetAdditionalRefreshTokenReplayProtectionEnabled sets AdditionalRefreshTokenReplayProtectionEnabled field to given value.
+
+### HasAdditionalRefreshTokenReplayProtectionEnabled
+
+`func (o *ReadOneApplication200Response) HasAdditionalRefreshTokenReplayProtectionEnabled() bool`
+
+HasAdditionalRefreshTokenReplayProtectionEnabled returns a boolean if a field has been set.
 
 ### GetAllowWildcardInRedirectUris
 
@@ -754,6 +894,156 @@ SetAssignActorRoles sets AssignActorRoles field to given value.
 `func (o *ReadOneApplication200Response) HasAssignActorRoles() bool`
 
 HasAssignActorRoles returns a boolean if a field has been set.
+
+### GetDevicePathId
+
+`func (o *ReadOneApplication200Response) GetDevicePathId() string`
+
+GetDevicePathId returns the DevicePathId field if non-nil, zero value otherwise.
+
+### GetDevicePathIdOk
+
+`func (o *ReadOneApplication200Response) GetDevicePathIdOk() (*string, bool)`
+
+GetDevicePathIdOk returns a tuple with the DevicePathId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDevicePathId
+
+`func (o *ReadOneApplication200Response) SetDevicePathId(v string)`
+
+SetDevicePathId sets DevicePathId field to given value.
+
+### HasDevicePathId
+
+`func (o *ReadOneApplication200Response) HasDevicePathId() bool`
+
+HasDevicePathId returns a boolean if a field has been set.
+
+### GetDeviceCustomVerificationUri
+
+`func (o *ReadOneApplication200Response) GetDeviceCustomVerificationUri() string`
+
+GetDeviceCustomVerificationUri returns the DeviceCustomVerificationUri field if non-nil, zero value otherwise.
+
+### GetDeviceCustomVerificationUriOk
+
+`func (o *ReadOneApplication200Response) GetDeviceCustomVerificationUriOk() (*string, bool)`
+
+GetDeviceCustomVerificationUriOk returns a tuple with the DeviceCustomVerificationUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceCustomVerificationUri
+
+`func (o *ReadOneApplication200Response) SetDeviceCustomVerificationUri(v string)`
+
+SetDeviceCustomVerificationUri sets DeviceCustomVerificationUri field to given value.
+
+### HasDeviceCustomVerificationUri
+
+`func (o *ReadOneApplication200Response) HasDeviceCustomVerificationUri() bool`
+
+HasDeviceCustomVerificationUri returns a boolean if a field has been set.
+
+### GetDeviceTimeout
+
+`func (o *ReadOneApplication200Response) GetDeviceTimeout() int32`
+
+GetDeviceTimeout returns the DeviceTimeout field if non-nil, zero value otherwise.
+
+### GetDeviceTimeoutOk
+
+`func (o *ReadOneApplication200Response) GetDeviceTimeoutOk() (*int32, bool)`
+
+GetDeviceTimeoutOk returns a tuple with the DeviceTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceTimeout
+
+`func (o *ReadOneApplication200Response) SetDeviceTimeout(v int32)`
+
+SetDeviceTimeout sets DeviceTimeout field to given value.
+
+### HasDeviceTimeout
+
+`func (o *ReadOneApplication200Response) HasDeviceTimeout() bool`
+
+HasDeviceTimeout returns a boolean if a field has been set.
+
+### GetDevicePollingInterval
+
+`func (o *ReadOneApplication200Response) GetDevicePollingInterval() int32`
+
+GetDevicePollingInterval returns the DevicePollingInterval field if non-nil, zero value otherwise.
+
+### GetDevicePollingIntervalOk
+
+`func (o *ReadOneApplication200Response) GetDevicePollingIntervalOk() (*int32, bool)`
+
+GetDevicePollingIntervalOk returns a tuple with the DevicePollingInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDevicePollingInterval
+
+`func (o *ReadOneApplication200Response) SetDevicePollingInterval(v int32)`
+
+SetDevicePollingInterval sets DevicePollingInterval field to given value.
+
+### HasDevicePollingInterval
+
+`func (o *ReadOneApplication200Response) HasDevicePollingInterval() bool`
+
+HasDevicePollingInterval returns a boolean if a field has been set.
+
+### GetJwks
+
+`func (o *ReadOneApplication200Response) GetJwks() string`
+
+GetJwks returns the Jwks field if non-nil, zero value otherwise.
+
+### GetJwksOk
+
+`func (o *ReadOneApplication200Response) GetJwksOk() (*string, bool)`
+
+GetJwksOk returns a tuple with the Jwks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwks
+
+`func (o *ReadOneApplication200Response) SetJwks(v string)`
+
+SetJwks sets Jwks field to given value.
+
+### HasJwks
+
+`func (o *ReadOneApplication200Response) HasJwks() bool`
+
+HasJwks returns a boolean if a field has been set.
+
+### GetJwksUrl
+
+`func (o *ReadOneApplication200Response) GetJwksUrl() string`
+
+GetJwksUrl returns the JwksUrl field if non-nil, zero value otherwise.
+
+### GetJwksUrlOk
+
+`func (o *ReadOneApplication200Response) GetJwksUrlOk() (*string, bool)`
+
+GetJwksUrlOk returns a tuple with the JwksUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksUrl
+
+`func (o *ReadOneApplication200Response) SetJwksUrl(v string)`
+
+SetJwksUrl sets JwksUrl field to given value.
+
+### HasJwksUrl
+
+`func (o *ReadOneApplication200Response) HasJwksUrl() bool`
+
+HasJwksUrl returns a boolean if a field has been set.
 
 ### GetMobile
 
@@ -1075,6 +1365,31 @@ SetResponseTypes sets ResponseTypes field to given value.
 
 HasResponseTypes returns a boolean if a field has been set.
 
+### GetRequireSignedRequestObject
+
+`func (o *ReadOneApplication200Response) GetRequireSignedRequestObject() bool`
+
+GetRequireSignedRequestObject returns the RequireSignedRequestObject field if non-nil, zero value otherwise.
+
+### GetRequireSignedRequestObjectOk
+
+`func (o *ReadOneApplication200Response) GetRequireSignedRequestObjectOk() (*bool, bool)`
+
+GetRequireSignedRequestObjectOk returns a tuple with the RequireSignedRequestObject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireSignedRequestObject
+
+`func (o *ReadOneApplication200Response) SetRequireSignedRequestObject(v bool)`
+
+SetRequireSignedRequestObject sets RequireSignedRequestObject field to given value.
+
+### HasRequireSignedRequestObject
+
+`func (o *ReadOneApplication200Response) HasRequireSignedRequestObject() bool`
+
+HasRequireSignedRequestObject returns a boolean if a field has been set.
+
 ### GetSupportUnsignedRequestObject
 
 `func (o *ReadOneApplication200Response) GetSupportUnsignedRequestObject() bool`
@@ -1169,6 +1484,81 @@ and a boolean to check if the value has been set.
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
 
+
+### GetParRequirement
+
+`func (o *ReadOneApplication200Response) GetParRequirement() EnumApplicationOIDCPARRequirement`
+
+GetParRequirement returns the ParRequirement field if non-nil, zero value otherwise.
+
+### GetParRequirementOk
+
+`func (o *ReadOneApplication200Response) GetParRequirementOk() (*EnumApplicationOIDCPARRequirement, bool)`
+
+GetParRequirementOk returns a tuple with the ParRequirement field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParRequirement
+
+`func (o *ReadOneApplication200Response) SetParRequirement(v EnumApplicationOIDCPARRequirement)`
+
+SetParRequirement sets ParRequirement field to given value.
+
+### HasParRequirement
+
+`func (o *ReadOneApplication200Response) HasParRequirement() bool`
+
+HasParRequirement returns a boolean if a field has been set.
+
+### GetParTimeout
+
+`func (o *ReadOneApplication200Response) GetParTimeout() int32`
+
+GetParTimeout returns the ParTimeout field if non-nil, zero value otherwise.
+
+### GetParTimeoutOk
+
+`func (o *ReadOneApplication200Response) GetParTimeoutOk() (*int32, bool)`
+
+GetParTimeoutOk returns a tuple with the ParTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParTimeout
+
+`func (o *ReadOneApplication200Response) SetParTimeout(v int32)`
+
+SetParTimeout sets ParTimeout field to given value.
+
+### HasParTimeout
+
+`func (o *ReadOneApplication200Response) HasParTimeout() bool`
+
+HasParTimeout returns a boolean if a field has been set.
+
+### GetSigning
+
+`func (o *ReadOneApplication200Response) GetSigning() ApplicationOIDCAllOfSigning`
+
+GetSigning returns the Signing field if non-nil, zero value otherwise.
+
+### GetSigningOk
+
+`func (o *ReadOneApplication200Response) GetSigningOk() (*ApplicationOIDCAllOfSigning, bool)`
+
+GetSigningOk returns a tuple with the Signing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSigning
+
+`func (o *ReadOneApplication200Response) SetSigning(v ApplicationOIDCAllOfSigning)`
+
+SetSigning sets Signing field to given value.
+
+### HasSigning
+
+`func (o *ReadOneApplication200Response) HasSigning() bool`
+
+HasSigning returns a boolean if a field has been set.
 
 ### GetAudienceRestriction
 

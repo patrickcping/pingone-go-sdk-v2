@@ -34,7 +34,7 @@ func main() {
 			content = re.ReplaceAll(content, []byte(rule.repl))
 
 			// Write the updated file contents
-			err = os.WriteFile(file, content, os.ModePerm)
+			err = os.WriteFile(file, content, os.ModeAppend)
 			if err != nil {
 				panic(err)
 			}
@@ -50,12 +50,6 @@ var (
 		repl              string
 	}{
 
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
-			repl:              `"PingOne-GOLANG-SDK/credentials/$1/go",`,
-		},
-
 		// EntityArrayEmbeddedItemsInner model
 		{
 			fileSelectPattern: "model_entity_array__embedded_items_inner.go",
@@ -70,7 +64,7 @@ var (
 		if string(jsonCredentialType) == "{}" { // empty struct
 			dst.CredentialType = nil
 		} else {
-			if dst.CredentialType.CardDesignTemplate != "" {
+			if *dst.CredentialType.CardType != "" {
 				return nil // data stored in dst.CredentialType, return on the first match
 			} else {
 				dst.CredentialType = nil
@@ -87,7 +81,7 @@ var (
 		if string(jsonUserCredential) == "{}" { // empty struct
 			dst.UserCredential = nil
 		} else {
-			if dst.UserCredential.User.Id != "" {
+			if dst.UserCredential.User != nil && dst.UserCredential.User.Id != "" {
 				return nil // data stored in dst.UserCredential, return on the first match
 			} else {
 				dst.UserCredential = nil

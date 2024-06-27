@@ -19,7 +19,7 @@ var _ MappedNullable = &ResourceAttribute{}
 
 // ResourceAttribute struct for ResourceAttribute
 type ResourceAttribute struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource's type property is `OPENID_CONNECT`: - `acr` - `amr` - `aud` - `auth_time` - `client_id` - `env` - `exp` - `iat` - `iss` - `jti` - `org` - `p1.*` (any name starting with the p1. prefix) - `scope` - `sid` - `sub` 
@@ -55,9 +55,9 @@ func NewResourceAttributeWithDefaults() *ResourceAttribute {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ResourceAttribute) GetLinks() LinksHATEOAS {
+func (o *ResourceAttribute) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -65,7 +65,7 @@ func (o *ResourceAttribute) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceAttribute) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ResourceAttribute) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -81,8 +81,8 @@ func (o *ResourceAttribute) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ResourceAttribute) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ResourceAttribute) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -339,7 +339,9 @@ func (o ResourceAttribute) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

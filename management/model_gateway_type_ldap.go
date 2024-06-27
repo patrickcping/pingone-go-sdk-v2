@@ -19,7 +19,7 @@ var _ MappedNullable = &GatewayTypeLDAP{}
 
 // GatewayTypeLDAP struct for GatewayTypeLDAP
 type GatewayTypeLDAP struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -61,6 +61,8 @@ func NewGatewayTypeLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN
 	this.Enabled = enabled
 	this.BindDN = bindDN
 	this.BindPassword = bindPassword
+	var connectionSecurity EnumGatewayTypeLDAPSecurity = ENUMGATEWAYTYPELDAPSECURITY_NONE
+	this.ConnectionSecurity = &connectionSecurity
 	this.ServersHostAndPort = serversHostAndPort
 	this.Vendor = vendor
 	return &this
@@ -71,13 +73,15 @@ func NewGatewayTypeLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayTypeLDAPWithDefaults() *GatewayTypeLDAP {
 	this := GatewayTypeLDAP{}
+	var connectionSecurity EnumGatewayTypeLDAPSecurity = ENUMGATEWAYTYPELDAPSECURITY_NONE
+	this.ConnectionSecurity = &connectionSecurity
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GatewayTypeLDAP) GetLinks() LinksHATEOAS {
+func (o *GatewayTypeLDAP) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -85,7 +89,7 @@ func (o *GatewayTypeLDAP) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayTypeLDAP) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *GatewayTypeLDAP) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -101,8 +105,8 @@ func (o *GatewayTypeLDAP) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *GatewayTypeLDAP) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *GatewayTypeLDAP) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -639,19 +643,27 @@ func (o GatewayTypeLDAP) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: credentials is readOnly
+	if !IsNil(o.Credentials) {
+		toSerialize["credentials"] = o.Credentials
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["enabled"] = o.Enabled
-	// skip: supportedVersions is readOnly
-	// skip: currentAlerts is readOnly
+	if !IsNil(o.SupportedVersions) {
+		toSerialize["supportedVersions"] = o.SupportedVersions
+	}
+	if !IsNil(o.CurrentAlerts) {
+		toSerialize["currentAlerts"] = o.CurrentAlerts
+	}
 	toSerialize["bindDN"] = o.BindDN
 	toSerialize["bindPassword"] = o.BindPassword
 	if !IsNil(o.ConnectionSecurity) {
@@ -668,7 +680,9 @@ func (o GatewayTypeLDAP) ToMap() (map[string]interface{}, error) {
 		toSerialize["validateTlsCertificates"] = o.ValidateTlsCertificates
 	}
 	toSerialize["vendor"] = o.Vendor
-	// skip: followReferrals is readOnly
+	if !IsNil(o.FollowReferrals) {
+		toSerialize["followReferrals"] = o.FollowReferrals
+	}
 	return toSerialize, nil
 }
 

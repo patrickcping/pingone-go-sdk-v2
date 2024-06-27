@@ -4,6 +4,8 @@ import (
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func TestValidateAccessToken_ConfigSuccess(t *testing.T) {
@@ -44,58 +46,6 @@ func TestValidateAccessToken_EnvSuccess(t *testing.T) {
 
 func TestValidateAccessToken_InvalidFormat(t *testing.T) {
 	t.Skip()
-}
-
-func TestValidateAgreementMgmtHostnameOverride_ConfigSuccess(t *testing.T) {
-
-	value := "agreement-mgmt.ping-devops.com"
-
-	config := &Config{
-		AgreementMgmtHostnameOverride: &value,
-	}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); err != nil {
-		t.Fatalf("Parameter not successfully verified: %s", err)
-	}
-
-	if *config.AgreementMgmtHostnameOverride != value {
-		t.Fatalf("Parameter unexpectedly overwritten")
-	}
-}
-
-func TestValidateAgreementMgmtHostnameOverride_EnvSuccess(t *testing.T) {
-
-	value := os.Getenv("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME")
-
-	if value == "" {
-		t.Fatalf("Required environment variable PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME not set")
-	}
-
-	config := &Config{}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); err != nil {
-		t.Fatalf("Parameter not successfully verified: %s", err)
-	}
-
-	if *config.AgreementMgmtHostnameOverride != value {
-		t.Fatalf("Parameter default not taken from environment")
-	}
-}
-
-func TestValidateAgreementMgmtHostnameOverride_InvalidFormat(t *testing.T) {
-	value := "https://dummyhostname"
-
-	config := &Config{
-		AgreementMgmtHostnameOverride: &value,
-	}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); err == nil {
-		t.Fatalf("Invalid Parameter format not successfully verified")
-	}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); !strings.HasPrefix(err.Error(), "Invalid parameter format") {
-		t.Fatalf("Invalid Parameter format not successfully verified: %s", err.Error())
-	}
 }
 
 func TestValidateAPIHostnameOverride_ConfigSuccess(t *testing.T) {
@@ -357,10 +307,11 @@ func TestValidateRegion_ConfigSuccess(t *testing.T) {
 
 func TestValidateRegion_EnvSuccess(t *testing.T) {
 
-	value := os.Getenv("PINGONE_REGION")
+	regionName := os.Getenv("PINGONE_REGION")
+	regionCode := management.EnumRegionCode(os.Getenv("PINGONE_REGION_CODE"))
 
-	if value == "" {
-		t.Fatalf("Required environment variable PINGONE_REGION not set")
+	if regionName == "" && (regionCode == "" || string(regionCode) == "UNKNOWN") {
+		t.Fatalf("Required environment variable PINGONE_REGION_CODE and deprecated environment variable PINGONE_REGION not set")
 	}
 
 	config := &Config{}
@@ -369,12 +320,12 @@ func TestValidateRegion_EnvSuccess(t *testing.T) {
 		t.Fatalf("Parameter not successfully verified: %s", err)
 	}
 
-	if config.Region != value {
-		t.Fatalf("Parameter default not taken from environment")
+	if (config.Region != regionName) && (string(*config.RegionCode) != string(regionCode)) {
+		t.Fatalf("Parameter default not taken from environment: %#v, %#v, %s, %s", config.Region, config.RegionCode, *config.RegionCode, string(regionCode))
 	}
 }
 
-func TestValidateRegion_InvalidValue(t *testing.T) {
+func TestValidateRegion_Deprecated_InvalidValue(t *testing.T) {
 	value := "Tatooine"
 
 	config := &Config{

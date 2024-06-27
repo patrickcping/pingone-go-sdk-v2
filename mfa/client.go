@@ -55,6 +55,8 @@ type APIClient struct {
 
 	FIDO2PolicyApi *FIDO2PolicyApiService
 
+	HALApi *HALApiService
+
 	MFASettingsApi *MFASettingsApiService
 
 	UserMFADevicesApi *UserMFADevicesApiService
@@ -104,6 +106,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.FIDODeviceApi = (*FIDODeviceApiService)(&c.common)
 	c.FIDOPolicyApi = (*FIDOPolicyApiService)(&c.common)
 	c.FIDO2PolicyApi = (*FIDO2PolicyApiService)(&c.common)
+	c.HALApi = (*HALApiService)(&c.common)
 	c.MFASettingsApi = (*MFASettingsApiService)(&c.common)
 	c.UserMFADevicesApi = (*UserMFADevicesApiService)(&c.common)
 	c.UserMFAPairingKeysApi = (*UserMFAPairingKeysApiService)(&c.common)
@@ -113,13 +116,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 // selectHeaderContentType select a content type from the available list.
 func selectHeaderContentType(contentTypes []string) string {
-	if len(contentTypes) == 0 {
-		return ""
+	returnVar := ""
+
+	if len(contentTypes) > 0 {
+		returnVar = contentTypes[0] // use the first content type specified in 'consumes'
 	}
 	if contains(contentTypes, "application/json") {
-		return "application/json"
+		returnVar = "application/json"
 	}
-	return contentTypes[0] // use the first content type specified in 'consumes'
+	return returnVar
 }
 
 // selectHeaderAccept join all accept types and return

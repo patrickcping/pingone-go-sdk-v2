@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format). | [optional] [readonly] 
 **Enabled** | **bool** | A boolean that specifies whether a created or updated subscription should be active or suspended. A suspended state (&#x60;\&quot;enabled\&quot;:false&#x60;) accumulates all matched events, but these events are not delivered until the subscription becomes active again (&#x60;\&quot;enabled\&quot;:true&#x60;). For suspended subscriptions, events accumulate for a maximum of two weeks. Events older than two weeks are deleted. Restarted subscriptions receive the saved events (up to two weeks from the restart date). This is a required property. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | A string that specifies the user resource’s unique identifier. | [optional] [readonly] 
 **HttpEndpoint** | [**SubscriptionHttpEndpoint**](SubscriptionHttpEndpoint.md) |  | 
 **Name** | **string** | A string that specifies the subscription name. This is a required property. | 
+**TlsClientAuthKeyPair** | Pointer to [**SubscriptionTlsClientAuthKeyPair**](SubscriptionTlsClientAuthKeyPair.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The date and time at which the subscription resource was last updated (ISO 8601 format). | [optional] [readonly] 
 **VerifyTlsCertificates** | **bool** | A boolean that specifies whether a certificates should be verified. If this property&#39;s value is set to false, then all certificates are trusted. (Setting this property&#39;s value to false introduces a security risk.) This is a required property. | 
 
@@ -37,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *Subscription) GetLinks() LinksHATEOAS`
+`func (o *Subscription) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *Subscription) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *Subscription) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *Subscription) SetLinks(v LinksHATEOAS)`
+`func (o *Subscription) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -234,6 +235,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetTlsClientAuthKeyPair
+
+`func (o *Subscription) GetTlsClientAuthKeyPair() SubscriptionTlsClientAuthKeyPair`
+
+GetTlsClientAuthKeyPair returns the TlsClientAuthKeyPair field if non-nil, zero value otherwise.
+
+### GetTlsClientAuthKeyPairOk
+
+`func (o *Subscription) GetTlsClientAuthKeyPairOk() (*SubscriptionTlsClientAuthKeyPair, bool)`
+
+GetTlsClientAuthKeyPairOk returns a tuple with the TlsClientAuthKeyPair field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTlsClientAuthKeyPair
+
+`func (o *Subscription) SetTlsClientAuthKeyPair(v SubscriptionTlsClientAuthKeyPair)`
+
+SetTlsClientAuthKeyPair sets TlsClientAuthKeyPair field to given value.
+
+### HasTlsClientAuthKeyPair
+
+`func (o *Subscription) HasTlsClientAuthKeyPair() bool`
+
+HasTlsClientAuthKeyPair returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

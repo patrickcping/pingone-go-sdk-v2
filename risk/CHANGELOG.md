@@ -1,7 +1,58 @@
-# v0.9.0 (Unreleased)
+# v0.16.0 (Unreleased)
+
+* **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+* **Enhancement** Added the `HALApi` service to be able to follow HAL links in responses. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+
+# v0.15.1 (2024-06-18)
+
+* **Bug** Corrected `DomainWhiteList` field in the `RiskPredictorAdversaryInTheMiddle` model. [#361](https://github.com/patrickcping/pingone-go-sdk-v2/pull/361)
+
+# v0.15.0 (2024-06-07)
+
+* **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
+
+# v0.14.1 (2024-03-25)
+
+* **Bug** Fixed error "Error when calling `ReadAllRiskPredictors`: Data failed to match schemas in oneOf(RiskPredictor)" when the `EMAIL_REPUTATION` predictor type is in the API's response payload. [#332](https://github.com/patrickcping/pingone-go-sdk-v2/pull/332)
+
+# v0.14.0 (2024-03-15)
+
+* **Enhancement** Added the `EMAIL_REPUTATION` predictor type. [#330](https://github.com/patrickcping/pingone-go-sdk-v2/pull/330)
+
+# v0.13.0 (2024-02-23)
+
+* **Enhancement** Added the `RiskPredictorAdversaryInTheMiddle` property to the `RiskPredictor` object model and extended the `EnumPredictorType` enum with `ADVERSARY_IN_THE_MIDDLE` to support the adversary in the middle predictor. [#321](https://github.com/patrickcping/pingone-go-sdk-v2/pull/321)
+
+# v0.12.2 (2024-01-12)
+
+* **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
+* **Note** Updated the default UserAgent string format. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+* **Enhancement** Add ability to append custom user-agent information to HTTP requests. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+
+# v0.12.1 (2023-12-27)
+
+* **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
+
+# v0.12.0 (2023-11-10)
+
+* **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+* **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+
+# v0.11.0 (2023-10-16)
+
+* **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Enhancement** Enhance the `EnumFlowType` with new supported values. [#256](https://github.com/patrickcping/pingone-go-sdk-v2/pull/256)
+* **Enhancement** Added the `Compositions` array to the `RiskPredictorComposite` model, to replace the `Composition` attribute that has now been deprecated. [#256](https://github.com/patrickcping/pingone-go-sdk-v2/pull/256)
+
+# v0.10.0 (2023-09-15)
+
+* **Enhancement** Add support for a Bot detection specific data model. [#252](https://github.com/patrickcping/pingone-go-sdk-v2/pull/252)
+
+# v0.9.0 (2023-08-08)
 
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
-* **Enhancement** Add support for Suspicious device and Bot detection predictor types. [#229](https://github.com/patrickcping/pingone-go-sdk-v2/pull/229)
+* **Enhancement** Add support for Suspicious device and Bot detection predictor types. [#229](https://github.com/patrickcping/pingone-go-sdk-v2/pull/229), [#231](https://github.com/patrickcping/pingone-go-sdk-v2/pull/231)
 
 # v0.8.1 (2023-07-12)
 

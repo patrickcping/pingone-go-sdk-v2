@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include&#x3D;memberOfGroupIDs. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**DisplayName** | Pointer to **string** | For external groups, set during user creation/update. For groups created on PingOne, this parameter is identical to &#x60;name&#x60;. | [optional] [readonly] 
 **Population** | Pointer to [**GroupPopulation**](GroupPopulation.md) |  | [optional] 
 **Name** | **string** | The group name. A group name can be reused across populations, but the same user cannot belong to multiple groups with the same group name. Population groups cannot share a group name with an environment group. Search all groups for a specific group name with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group names associated with a user with GET /environments/{environmentID}/users/{userID}?include&#x3D;memberOfGroupNames. Use this operation to determine group membership in attribute mappings for claims and assertions. | 
 **UserFilter** | Pointer to **string** | A SCIM filter that determines which users are dynamically added to the group. For more information, see Adding users to a group and Removing users from a group. | [optional] 
 **Description** | Pointer to **string** | The group description. | [optional] 
 **ExternalId** | Pointer to **string** | A user-defined identifier for the group. Use this propertry to syncronize a group in PingOne with the same group in an external system. PingOne does not directly use this property. Search all groups for a specific external ID with a SCIM filter on GET /environments/{environmentID}/groups | [optional] 
 **CustomData** | Pointer to **map[string]interface{}** | Optional User-defined custom data. | [optional] 
+**SourceId** | Pointer to **string** | External groups only. Set during user creation/update. | [optional] [readonly] 
+**SourceType** | Pointer to [**EnumGroupSourceType**](EnumGroupSourceType.md) |  | [optional] 
 **DirectMemberCounts** | Pointer to [**GroupDirectMemberCounts**](GroupDirectMemberCounts.md) |  | [optional] 
 **TotalMemberCounts** | Pointer to [**GroupTotalMemberCounts**](GroupTotalMemberCounts.md) |  | [optional] 
 
@@ -37,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *Group) GetLinks() LinksHATEOAS`
+`func (o *Group) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *Group) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *Group) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *Group) SetLinks(v LinksHATEOAS)`
+`func (o *Group) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -109,6 +112,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *Group) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetDisplayName
+
+`func (o *Group) GetDisplayName() string`
+
+GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
+
+### GetDisplayNameOk
+
+`func (o *Group) GetDisplayNameOk() (*string, bool)`
+
+GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayName
+
+`func (o *Group) SetDisplayName(v string)`
+
+SetDisplayName sets DisplayName field to given value.
+
+### HasDisplayName
+
+`func (o *Group) HasDisplayName() bool`
+
+HasDisplayName returns a boolean if a field has been set.
 
 ### GetPopulation
 
@@ -254,6 +282,56 @@ SetCustomData sets CustomData field to given value.
 `func (o *Group) HasCustomData() bool`
 
 HasCustomData returns a boolean if a field has been set.
+
+### GetSourceId
+
+`func (o *Group) GetSourceId() string`
+
+GetSourceId returns the SourceId field if non-nil, zero value otherwise.
+
+### GetSourceIdOk
+
+`func (o *Group) GetSourceIdOk() (*string, bool)`
+
+GetSourceIdOk returns a tuple with the SourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceId
+
+`func (o *Group) SetSourceId(v string)`
+
+SetSourceId sets SourceId field to given value.
+
+### HasSourceId
+
+`func (o *Group) HasSourceId() bool`
+
+HasSourceId returns a boolean if a field has been set.
+
+### GetSourceType
+
+`func (o *Group) GetSourceType() EnumGroupSourceType`
+
+GetSourceType returns the SourceType field if non-nil, zero value otherwise.
+
+### GetSourceTypeOk
+
+`func (o *Group) GetSourceTypeOk() (*EnumGroupSourceType, bool)`
+
+GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceType
+
+`func (o *Group) SetSourceType(v EnumGroupSourceType)`
+
+SetSourceType sets SourceType field to given value.
+
+### HasSourceType
+
+`func (o *Group) HasSourceType() bool`
+
+HasSourceType returns a boolean if a field has been set.
 
 ### GetDirectMemberCounts
 

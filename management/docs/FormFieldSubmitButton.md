@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
-**Key** | **string** | A string that specifies an identifier for the field component. | 
+**Key** | Pointer to **string** | A string that specifies an identifier for the field component. | [optional] 
 **Label** | **string** | A string that specifies the button label. | 
-**Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
 
 ## Methods
 
 ### NewFormFieldSubmitButton
 
-`func NewFormFieldSubmitButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, ) *FormFieldSubmitButton`
+`func NewFormFieldSubmitButton(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, ) *FormFieldSubmitButton`
 
 NewFormFieldSubmitButton instantiates a new FormFieldSubmitButton object
 This constructor will assign default values to properties that have it defined,
@@ -88,6 +88,11 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
+### HasKey
+
+`func (o *FormFieldSubmitButton) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
 
 ### GetLabel
 
@@ -111,20 +116,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormFieldSubmitButton) GetStyles() FormFlowButtonStyles`
+`func (o *FormFieldSubmitButton) GetStyles() FormStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormFieldSubmitButton) GetStylesOk() (*FormFlowButtonStyles, bool)`
+`func (o *FormFieldSubmitButton) GetStylesOk() (*FormStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormFieldSubmitButton) SetStyles(v FormFlowButtonStyles)`
+`func (o *FormFieldSubmitButton) SetStyles(v FormStyles)`
 
 SetStyles sets Styles field to given value.
 

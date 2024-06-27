@@ -20,7 +20,7 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCommon{}
 
 // NotificationsSettingsPhoneDeliverySettingsCommon struct for NotificationsSettingsPhoneDeliverySettingsCommon
 type NotificationsSettingsPhoneDeliverySettingsCommon struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -50,9 +50,9 @@ func NewNotificationsSettingsPhoneDeliverySettingsCommonWithDefaults() *Notifica
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *NotificationsSettingsPhoneDeliverySettingsCommon) GetLinks() LinksHATEOAS {
+func (o *NotificationsSettingsPhoneDeliverySettingsCommon) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -60,7 +60,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCommon) GetLinks() LinksHATEO
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettingsCommon) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *NotificationsSettingsPhoneDeliverySettingsCommon) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -76,8 +76,8 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCommon) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *NotificationsSettingsPhoneDeliverySettingsCommon) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCommon) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -246,13 +246,19 @@ func (o NotificationsSettingsPhoneDeliverySettingsCommon) ToMap() (map[string]in
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["provider"] = o.Provider
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

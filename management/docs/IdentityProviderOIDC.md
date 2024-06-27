@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the IdP. | [optional] 
 **Enabled** | **bool** | The current enabled state of the IdP. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **TokenEndpoint** | **string** | A string that specifies the OIDC identity provider&#39;s token endpoint. This is a required property. | 
 **TokenEndpointAuthMethod** | [**EnumIdentityProviderOIDCTokenAuthMethod**](EnumIdentityProviderOIDCTokenAuthMethod.md) |  | [default to ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_BASIC]
 **UserInfoEndpoint** | Pointer to **string** | A string that specifies the OIDC identity provider&#39;s userInfo endpoint. | [optional] 
+**PkceMethod** | Pointer to [**EnumIdentityProviderPKCEMethod**](EnumIdentityProviderPKCEMethod.md) |  | [optional] [default to ENUMIDENTITYPROVIDERPKCEMETHOD_NONE]
 
 ## Methods
 
@@ -48,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *IdentityProviderOIDC) GetLinks() LinksHATEOAS`
+`func (o *IdentityProviderOIDC) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *IdentityProviderOIDC) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *IdentityProviderOIDC) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *IdentityProviderOIDC) SetLinks(v LinksHATEOAS)`
+`func (o *IdentityProviderOIDC) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -540,6 +541,31 @@ SetUserInfoEndpoint sets UserInfoEndpoint field to given value.
 `func (o *IdentityProviderOIDC) HasUserInfoEndpoint() bool`
 
 HasUserInfoEndpoint returns a boolean if a field has been set.
+
+### GetPkceMethod
+
+`func (o *IdentityProviderOIDC) GetPkceMethod() EnumIdentityProviderPKCEMethod`
+
+GetPkceMethod returns the PkceMethod field if non-nil, zero value otherwise.
+
+### GetPkceMethodOk
+
+`func (o *IdentityProviderOIDC) GetPkceMethodOk() (*EnumIdentityProviderPKCEMethod, bool)`
+
+GetPkceMethodOk returns a tuple with the PkceMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPkceMethod
+
+`func (o *IdentityProviderOIDC) SetPkceMethod(v EnumIdentityProviderPKCEMethod)`
+
+SetPkceMethod sets PkceMethod field to given value.
+
+### HasPkceMethod
+
+`func (o *IdentityProviderOIDC) HasPkceMethod() bool`
+
+HasPkceMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

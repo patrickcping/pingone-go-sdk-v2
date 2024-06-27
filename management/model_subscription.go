@@ -20,7 +20,7 @@ var _ MappedNullable = &Subscription{}
 
 // Subscription struct for Subscription
 type Subscription struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether a created or updated subscription should be active or suspended. A suspended state (`\"enabled\":false`) accumulates all matched events, but these events are not delivered until the subscription becomes active again (`\"enabled\":true`). For suspended subscriptions, events accumulate for a maximum of two weeks. Events older than two weeks are deleted. Restarted subscriptions receive the saved events (up to two weeks from the restart date). This is a required property.
@@ -33,6 +33,7 @@ type Subscription struct {
 	HttpEndpoint SubscriptionHttpEndpoint `json:"httpEndpoint"`
 	// A string that specifies the subscription name. This is a required property.
 	Name string `json:"name"`
+	TlsClientAuthKeyPair *SubscriptionTlsClientAuthKeyPair `json:"tlsClientAuthKeyPair,omitempty"`
 	// The date and time at which the subscription resource was last updated (ISO 8601 format).
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether a certificates should be verified. If this property's value is set to false, then all certificates are trusted. (Setting this property's value to false introduces a security risk.) This is a required property.
@@ -63,9 +64,9 @@ func NewSubscriptionWithDefaults() *Subscription {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Subscription) GetLinks() LinksHATEOAS {
+func (o *Subscription) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -73,7 +74,7 @@ func (o *Subscription) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Subscription) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Subscription) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -89,8 +90,8 @@ func (o *Subscription) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Subscription) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Subscription) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -310,6 +311,38 @@ func (o *Subscription) SetName(v string) {
 	o.Name = v
 }
 
+// GetTlsClientAuthKeyPair returns the TlsClientAuthKeyPair field value if set, zero value otherwise.
+func (o *Subscription) GetTlsClientAuthKeyPair() SubscriptionTlsClientAuthKeyPair {
+	if o == nil || IsNil(o.TlsClientAuthKeyPair) {
+		var ret SubscriptionTlsClientAuthKeyPair
+		return ret
+	}
+	return *o.TlsClientAuthKeyPair
+}
+
+// GetTlsClientAuthKeyPairOk returns a tuple with the TlsClientAuthKeyPair field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Subscription) GetTlsClientAuthKeyPairOk() (*SubscriptionTlsClientAuthKeyPair, bool) {
+	if o == nil || IsNil(o.TlsClientAuthKeyPair) {
+		return nil, false
+	}
+	return o.TlsClientAuthKeyPair, true
+}
+
+// HasTlsClientAuthKeyPair returns a boolean if a field has been set.
+func (o *Subscription) HasTlsClientAuthKeyPair() bool {
+	if o != nil && !IsNil(o.TlsClientAuthKeyPair) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsClientAuthKeyPair gets a reference to the given SubscriptionTlsClientAuthKeyPair and assigns it to the TlsClientAuthKeyPair field.
+func (o *Subscription) SetTlsClientAuthKeyPair(v SubscriptionTlsClientAuthKeyPair) {
+	o.TlsClientAuthKeyPair = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Subscription) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -379,17 +412,26 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	toSerialize["enabled"] = o.Enabled
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["filterOptions"] = o.FilterOptions
 	toSerialize["format"] = o.Format
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["httpEndpoint"] = o.HttpEndpoint
 	toSerialize["name"] = o.Name
-	// skip: updatedAt is readOnly
+	if !IsNil(o.TlsClientAuthKeyPair) {
+		toSerialize["tlsClientAuthKeyPair"] = o.TlsClientAuthKeyPair
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["verifyTlsCertificates"] = o.VerifyTlsCertificates
 	return toSerialize, nil
 }

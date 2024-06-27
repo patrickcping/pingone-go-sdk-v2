@@ -20,7 +20,7 @@ var _ MappedNullable = &User{}
 
 // User struct for User
 type User struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Account *UserAccount `json:"account,omitempty"`
 	Address *UserAddress `json:"address,omitempty"`
 	// The time the resource was created.
@@ -95,9 +95,9 @@ func NewUserWithDefaults() *User {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *User) GetLinks() LinksHATEOAS {
+func (o *User) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -105,7 +105,7 @@ func (o *User) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *User) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -121,8 +121,8 @@ func (o *User) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *User) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *User) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -1089,17 +1089,25 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	toSerialize["email"] = o.Email
-	// skip: emailVerified is readOnly
-	// skip: enabled is readOnly
+	if !IsNil(o.EmailVerified) {
+		toSerialize["emailVerified"] = o.EmailVerified
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if !IsNil(o.ExternalId) {
 		toSerialize["externalId"] = o.ExternalId
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.IdentityProvider) {
 		toSerialize["identityProvider"] = o.IdentityProvider
 	}
@@ -1112,8 +1120,12 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
-	// skip: memberOfGroupIDs is readOnly
-	// skip: memberOfGroupNames is readOnly
+	if !IsNil(o.MemberOfGroupIDs) {
+		toSerialize["memberOfGroupIDs"] = o.MemberOfGroupIDs
+	}
+	if !IsNil(o.MemberOfGroupNames) {
+		toSerialize["memberOfGroupNames"] = o.MemberOfGroupNames
+	}
 	if !IsNil(o.MfaEnabled) {
 		toSerialize["mfaEnabled"] = o.MfaEnabled
 	}
@@ -1150,7 +1162,9 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["username"] = o.Username
 	if !IsNil(o.VerifyStatus) {
 		toSerialize["verifyStatus"] = o.VerifyStatus

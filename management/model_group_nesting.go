@@ -19,7 +19,7 @@ var _ MappedNullable = &GroupNesting{}
 
 // GroupNesting struct for GroupNesting
 type GroupNesting struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// ID of the group to nest
 	Id string `json:"id"`
 	// The type of the group nesting
@@ -45,9 +45,9 @@ func NewGroupNestingWithDefaults() *GroupNesting {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GroupNesting) GetLinks() LinksHATEOAS {
+func (o *GroupNesting) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -55,7 +55,7 @@ func (o *GroupNesting) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupNesting) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *GroupNesting) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *GroupNesting) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *GroupNesting) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *GroupNesting) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -146,7 +146,9 @@ func (o GroupNesting) ToMap() (map[string]interface{}, error) {
 		toSerialize["_links"] = o.Links
 	}
 	toSerialize["id"] = o.Id
-	// skip: type is readOnly
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 

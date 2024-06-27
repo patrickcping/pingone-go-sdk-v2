@@ -46,9 +46,11 @@ type EntityArrayEmbedded struct {
 	NotificationsPolicies []NotificationsPolicy `json:"notificationsPolicies,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
+	Permissions []ResourceApplicationPermission `json:"permissions,omitempty"`
 	PhoneDeliverySettings []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
+	Plans []IdentityPropagationPlan `json:"plans,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
-	Resources []Resource `json:"resources,omitempty"`
+	Resources []EntityArrayEmbeddedResourcesInner `json:"resources,omitempty"`
 	Revisions []AgreementLanguageRevision `json:"revisions,omitempty"`
 	Scopes []ResourceScope `json:"scopes,omitempty"`
 	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
@@ -58,7 +60,7 @@ type EntityArrayEmbedded struct {
 	Themes []BrandingTheme `json:"themes,omitempty"`
 	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
-	Roles []Role `json:"roles,omitempty"`
+	Roles []EntityArrayEmbeddedRolesInner `json:"roles,omitempty"`
 	Schemas []Schema `json:"schemas,omitempty"`
 	Users []User `json:"users,omitempty"`
 }
@@ -944,6 +946,38 @@ func (o *EntityArrayEmbedded) SetPasswordPolicies(v []PasswordPolicy) {
 	o.PasswordPolicies = v
 }
 
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetPermissions() []ResourceApplicationPermission {
+	if o == nil || IsNil(o.Permissions) {
+		var ret []ResourceApplicationPermission
+		return ret
+	}
+	return o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetPermissionsOk() ([]ResourceApplicationPermission, bool) {
+	if o == nil || IsNil(o.Permissions) {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasPermissions() bool {
+	if o != nil && !IsNil(o.Permissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given []ResourceApplicationPermission and assigns it to the Permissions field.
+func (o *EntityArrayEmbedded) SetPermissions(v []ResourceApplicationPermission) {
+	o.Permissions = v
+}
+
 // GetPhoneDeliverySettings returns the PhoneDeliverySettings field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetPhoneDeliverySettings() []NotificationsSettingsPhoneDeliverySettings {
 	if o == nil || IsNil(o.PhoneDeliverySettings) {
@@ -974,6 +1008,38 @@ func (o *EntityArrayEmbedded) HasPhoneDeliverySettings() bool {
 // SetPhoneDeliverySettings gets a reference to the given []NotificationsSettingsPhoneDeliverySettings and assigns it to the PhoneDeliverySettings field.
 func (o *EntityArrayEmbedded) SetPhoneDeliverySettings(v []NotificationsSettingsPhoneDeliverySettings) {
 	o.PhoneDeliverySettings = v
+}
+
+// GetPlans returns the Plans field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetPlans() []IdentityPropagationPlan {
+	if o == nil || IsNil(o.Plans) {
+		var ret []IdentityPropagationPlan
+		return ret
+	}
+	return o.Plans
+}
+
+// GetPlansOk returns a tuple with the Plans field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetPlansOk() ([]IdentityPropagationPlan, bool) {
+	if o == nil || IsNil(o.Plans) {
+		return nil, false
+	}
+	return o.Plans, true
+}
+
+// HasPlans returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasPlans() bool {
+	if o != nil && !IsNil(o.Plans) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlans gets a reference to the given []IdentityPropagationPlan and assigns it to the Plans field.
+func (o *EntityArrayEmbedded) SetPlans(v []IdentityPropagationPlan) {
+	o.Plans = v
 }
 
 // GetPopulations returns the Populations field value if set, zero value otherwise.
@@ -1009,9 +1075,9 @@ func (o *EntityArrayEmbedded) SetPopulations(v []Population) {
 }
 
 // GetResources returns the Resources field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetResources() []Resource {
+func (o *EntityArrayEmbedded) GetResources() []EntityArrayEmbeddedResourcesInner {
 	if o == nil || IsNil(o.Resources) {
-		var ret []Resource
+		var ret []EntityArrayEmbeddedResourcesInner
 		return ret
 	}
 	return o.Resources
@@ -1019,7 +1085,7 @@ func (o *EntityArrayEmbedded) GetResources() []Resource {
 
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetResourcesOk() ([]Resource, bool) {
+func (o *EntityArrayEmbedded) GetResourcesOk() ([]EntityArrayEmbeddedResourcesInner, bool) {
 	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
@@ -1035,8 +1101,8 @@ func (o *EntityArrayEmbedded) HasResources() bool {
 	return false
 }
 
-// SetResources gets a reference to the given []Resource and assigns it to the Resources field.
-func (o *EntityArrayEmbedded) SetResources(v []Resource) {
+// SetResources gets a reference to the given []EntityArrayEmbeddedResourcesInner and assigns it to the Resources field.
+func (o *EntityArrayEmbedded) SetResources(v []EntityArrayEmbeddedResourcesInner) {
 	o.Resources = v
 }
 
@@ -1329,9 +1395,9 @@ func (o *EntityArrayEmbedded) SetRoleAssignments(v []RoleAssignment) {
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetRoles() []Role {
+func (o *EntityArrayEmbedded) GetRoles() []EntityArrayEmbeddedRolesInner {
 	if o == nil || IsNil(o.Roles) {
-		var ret []Role
+		var ret []EntityArrayEmbeddedRolesInner
 		return ret
 	}
 	return o.Roles
@@ -1339,7 +1405,7 @@ func (o *EntityArrayEmbedded) GetRoles() []Role {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetRolesOk() ([]Role, bool) {
+func (o *EntityArrayEmbedded) GetRolesOk() ([]EntityArrayEmbeddedRolesInner, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -1355,8 +1421,8 @@ func (o *EntityArrayEmbedded) HasRoles() bool {
 	return false
 }
 
-// SetRoles gets a reference to the given []Role and assigns it to the Roles field.
-func (o *EntityArrayEmbedded) SetRoles(v []Role) {
+// SetRoles gets a reference to the given []EntityArrayEmbeddedRolesInner and assigns it to the Roles field.
+func (o *EntityArrayEmbedded) SetRoles(v []EntityArrayEmbeddedRolesInner) {
 	o.Roles = v
 }
 
@@ -1515,8 +1581,14 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PasswordPolicies) {
 		toSerialize["passwordPolicies"] = o.PasswordPolicies
 	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
 	if !IsNil(o.PhoneDeliverySettings) {
 		toSerialize["phoneDeliverySettings"] = o.PhoneDeliverySettings
+	}
+	if !IsNil(o.Plans) {
+		toSerialize["plans"] = o.Plans
 	}
 	if !IsNil(o.Populations) {
 		toSerialize["populations"] = o.Populations

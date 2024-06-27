@@ -19,6 +19,7 @@ var _ MappedNullable = &GovernmentIdConfiguration{}
 
 // GovernmentIdConfiguration struct for GovernmentIdConfiguration
 type GovernmentIdConfiguration struct {
+	InspectionType *EnumInspectionType `json:"inspectionType,omitempty"`
 	Verify EnumVerify `json:"verify"`
 }
 
@@ -38,6 +39,38 @@ func NewGovernmentIdConfiguration(verify EnumVerify) *GovernmentIdConfiguration 
 func NewGovernmentIdConfigurationWithDefaults() *GovernmentIdConfiguration {
 	this := GovernmentIdConfiguration{}
 	return &this
+}
+
+// GetInspectionType returns the InspectionType field value if set, zero value otherwise.
+func (o *GovernmentIdConfiguration) GetInspectionType() EnumInspectionType {
+	if o == nil || IsNil(o.InspectionType) {
+		var ret EnumInspectionType
+		return ret
+	}
+	return *o.InspectionType
+}
+
+// GetInspectionTypeOk returns a tuple with the InspectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GovernmentIdConfiguration) GetInspectionTypeOk() (*EnumInspectionType, bool) {
+	if o == nil || IsNil(o.InspectionType) {
+		return nil, false
+	}
+	return o.InspectionType, true
+}
+
+// HasInspectionType returns a boolean if a field has been set.
+func (o *GovernmentIdConfiguration) HasInspectionType() bool {
+	if o != nil && !IsNil(o.InspectionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetInspectionType gets a reference to the given EnumInspectionType and assigns it to the InspectionType field.
+func (o *GovernmentIdConfiguration) SetInspectionType(v EnumInspectionType) {
+	o.InspectionType = &v
 }
 
 // GetVerify returns the Verify field value
@@ -74,6 +107,9 @@ func (o GovernmentIdConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o GovernmentIdConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.InspectionType) {
+		toSerialize["inspectionType"] = o.InspectionType
+	}
 	toSerialize["verify"] = o.Verify
 	return toSerialize, nil
 }

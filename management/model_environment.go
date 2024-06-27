@@ -19,19 +19,21 @@ var _ MappedNullable = &Environment{}
 
 // Environment struct for Environment
 type Environment struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	BillOfMaterials *BillOfMaterials `json:"billOfMaterials,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies the description of the population.
 	Description *string `json:"description,omitempty"`
+	// The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF.
+	Icon *string `json:"icon,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	License EnvironmentLicense `json:"license"`
 	// A string that specifies the environment name, which must be provided and must be unique within an organization.
 	Name string `json:"name"`
 	Organization *EnvironmentOrganization `json:"organization,omitempty"`
-	Region EnumRegionCode `json:"region"`
+	Region EnvironmentRegion `json:"region"`
 	Type EnumEnvironmentType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
@@ -41,7 +43,7 @@ type Environment struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironment(license EnvironmentLicense, name string, region EnumRegionCode, type_ EnumEnvironmentType) *Environment {
+func NewEnvironment(license EnvironmentLicense, name string, region EnvironmentRegion, type_ EnumEnvironmentType) *Environment {
 	this := Environment{}
 	this.License = license
 	this.Name = name
@@ -59,9 +61,9 @@ func NewEnvironmentWithDefaults() *Environment {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Environment) GetLinks() LinksHATEOAS {
+func (o *Environment) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -69,7 +71,7 @@ func (o *Environment) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Environment) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Environment) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -85,8 +87,8 @@ func (o *Environment) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Environment) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Environment) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -184,6 +186,38 @@ func (o *Environment) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Environment) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetIcon returns the Icon field value if set, zero value otherwise.
+func (o *Environment) GetIcon() string {
+	if o == nil || IsNil(o.Icon) {
+		var ret string
+		return ret
+	}
+	return *o.Icon
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetIconOk() (*string, bool) {
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
+	}
+	return o.Icon, true
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *Environment) HasIcon() bool {
+	if o != nil && !IsNil(o.Icon) {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given string and assigns it to the Icon field.
+func (o *Environment) SetIcon(v string) {
+	o.Icon = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -299,9 +333,9 @@ func (o *Environment) SetOrganization(v EnvironmentOrganization) {
 }
 
 // GetRegion returns the Region field value
-func (o *Environment) GetRegion() EnumRegionCode {
+func (o *Environment) GetRegion() EnvironmentRegion {
 	if o == nil {
-		var ret EnumRegionCode
+		var ret EnvironmentRegion
 		return ret
 	}
 
@@ -310,7 +344,7 @@ func (o *Environment) GetRegion() EnumRegionCode {
 
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
-func (o *Environment) GetRegionOk() (*EnumRegionCode, bool) {
+func (o *Environment) GetRegionOk() (*EnvironmentRegion, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -318,7 +352,7 @@ func (o *Environment) GetRegionOk() (*EnumRegionCode, bool) {
 }
 
 // SetRegion sets field value
-func (o *Environment) SetRegion(v EnumRegionCode) {
+func (o *Environment) SetRegion(v EnvironmentRegion) {
 	o.Region = v
 }
 
@@ -394,11 +428,18 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillOfMaterials) {
 		toSerialize["billOfMaterials"] = o.BillOfMaterials
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["license"] = o.License
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Organization) {
@@ -406,7 +447,9 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["region"] = o.Region
 	toSerialize["type"] = o.Type
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

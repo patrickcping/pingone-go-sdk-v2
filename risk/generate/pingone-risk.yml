@@ -12,10 +12,11 @@ servers:
     variables:
       suffix:
         enum:
-          - 'eu'
-          - 'com'
           - 'asia'
           - 'ca'
+          - 'com'
+          - 'com.au'
+          - 'eu'
         default: 'com'
       baseDomain:
         default: 'api.pingone'
@@ -39,24 +40,15 @@ components:
     LinksHATEOAS:
       type: object
       readOnly: true
-      additionalProperties: true
-      properties:
-        self:
-          type: object
-          description: An object that describes the current resource.
-          properties:
-            href:
-              $ref: '#/components/schemas/LinksHATEOASHref'
-        next:
-          type: object
-          description: An object that describes the next page of results. This property is present only if there is a next page of results and the `limit` parameter is used.
-          properties:
-            href:
-              $ref: '#/components/schemas/LinksHATEOASHref'
-    LinksHATEOASHref:
-      type: string
-      format: uri
-      description: The URI of the resource.
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+            format: uri
+            description: The HREF of the link.
+        required:
+          - href
     EntityArray:
       type: object
       properties:
@@ -91,8 +83,16 @@ components:
       description: A string that specifies the device sharing type. Options are `UNSPECIFIED`, `SHARED`, and `PRIVATE`.
     EnumFlowType:
       type: string
-      enum: [AUTHENTICATION]
-      description: A string that specifies the flow type for the event. The only option (and default) is `AUTHENTICATION`.
+      enum: [AUTHENTICATION, REGISTRATION, ACCESS, AUTHORIZATION, TRANSACTION]
+      default: AUTHENTICATION
+      description: |
+        	The type of flow for which the risk evaluation is being carried out. Can take any of the following values:
+          `REGISTRATION` - initial registration of an account
+          `AUTHENTICATION` - standard authentication for login or actions such as password change
+          `ACCESS` - verification of whether user can access the relevant application, using tools such as PingAccess
+          `AUTHORIZATION` - verification of whether user is authorized to perform a specific action such as a profile change, using tools such as PingOne Authorize
+          `TRANSACTION` - authentication carried out in the context of a purchase or other monetary transaction
+          The default value is `AUTHENTICATION`.
     EnumRiskPolicyConditionType:
       type: string
       description: |
@@ -115,7 +115,7 @@ components:
       enum: [NEW_DEVICE, SUSPICIOUS_DEVICE]
     EnumPredictorType:
       type: string
-      enum: [ANONYMOUS_NETWORK, BOT, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
+      enum: [ADVERSARY_IN_THE_MIDDLE, ANONYMOUS_NETWORK, BOT, COMPOSITE, EMAIL_REPUTATION, GEO_VELOCITY, IP_REPUTATION, MAP, DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
       description: An enum type that specifies the type of the predictor. Note that both the New Device and Suspicious Device predictors use the type DEVICE. To differentiate between them, you use the `detect` field.
     EnumPredictorUnit:
       type: string
@@ -210,6 +210,10 @@ components:
                   maximumValue:
                     description: The maximum value allowed for the request.
                     type: integer
+                  referencedValues:
+                    type: array
+                    items:
+                      type: string
     RiskEvaluation:
       type: object
       properties:
@@ -758,9 +762,13 @@ components:
         - level
     RiskPredictor:
       oneOf:
+        - $ref: '#/components/schemas/RiskPredictorCommon'
+        - $ref: '#/components/schemas/RiskPredictorAdversaryInTheMiddle'
         - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
+        - $ref: '#/components/schemas/RiskPredictorBotDetection'
         - $ref: '#/components/schemas/RiskPredictorComposite'
         - $ref: '#/components/schemas/RiskPredictorCustom'
+        - $ref: '#/components/schemas/RiskPredictorEmailReputation'
         - $ref: '#/components/schemas/RiskPredictorGeovelocity'
         - $ref: '#/components/schemas/RiskPredictorIPReputation'
         - $ref: '#/components/schemas/RiskPredictorDevice'
@@ -850,6 +858,16 @@ components:
         - name
         - compactName
         - type
+    RiskPredictorAdversaryInTheMiddle:
+      allOf:
+        - $ref: '#/components/schemas/RiskPredictorCommon'
+        - type: object
+          properties:
+            domainWhiteList:
+              type: array
+              description: A list of strings that specify legitimate domains that users will access for restricted resources.
+              items:
+                type: string
     RiskPredictorAnonymousNetwork:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -861,6 +879,9 @@ components:
               items:
                 type: string
                 format: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
+    RiskPredictorBotDetection:
+      allOf:
+        - $ref: '#/components/schemas/RiskPredictorCommon'
     RiskPredictorComposite:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -868,6 +889,7 @@ components:
           properties:
             composition:
               type: object
+              deprecated: true
               properties:
                 condition:
                   $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
@@ -876,8 +898,20 @@ components:
               required:
                 - condition
                 - level
+            compositions:
+              type: array
+              description: Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements.
+              items:
+                properties:
+                  condition:
+                    $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
+                  level:
+                    $ref: '#/components/schemas/EnumRiskLevel'
+                required:
+                  - condition
+                  - level
           required:
-            - composition
+            - compositions
     RiskPredictorCompositeAnd:
       type: object
       properties:
@@ -1044,6 +1078,9 @@ components:
       required:
         - contains
         - list
+    RiskPredictorEmailReputation:
+      allOf:
+        - $ref: '#/components/schemas/RiskPredictorCommon'
     RiskPredictorGeovelocity:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -1209,6 +1246,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/P1Error'
+    '409':
+      description: Conflict.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
     '429':
       description: Request was rate limited
       content:
@@ -1309,6 +1352,8 @@ paths:
           $ref: '#/components/responses/404'
         '405':
           $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1339,6 +1384,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1375,6 +1422,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1467,6 +1516,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1502,6 +1553,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1613,6 +1666,8 @@ paths:
           $ref: '#/components/responses/404'
         '405':
           $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1649,6 +1704,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1692,6 +1749,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1758,6 +1817,8 @@ paths:
           $ref: '#/components/responses/404'
         '405':
           $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1788,6 +1849,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1824,6 +1887,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1892,6 +1957,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':
@@ -1927,6 +1994,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
         '500':

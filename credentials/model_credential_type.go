@@ -20,7 +20,7 @@ var _ MappedNullable = &CredentialType{}
 
 // CredentialType struct for CredentialType
 type CredentialType struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image.
 	CardDesignTemplate string `json:"cardDesignTemplate"`
 	// A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance.
@@ -30,14 +30,17 @@ type CredentialType struct {
 	// A string that specifies the description of the credential type.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \"soft delete\".
-	DeletedAt *string `json:"deletedAt,omitempty"`
+	DeletedAt *time.Time `json:"deletedAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential type.
 	Id *string `json:"id,omitempty"`
-	Issuer *CredentialTypeIssuer `json:"issuer,omitempty"`
-	// v issuer name associated with the card, can differ from title.
+	Issuer *ObjectIssuer `json:"issuer,omitempty"`
+	// A string that specifies the issuer name associated with the card, can differ from title.
 	IssuerName *string `json:"issuerName,omitempty"`
+	Management *CredentialTypeManagement `json:"management,omitempty"`
 	Metadata CredentialTypeMetaData `json:"metadata"`
+	Multiple *CredentialTypeMultiple `json:"multiple,omitempty"`
+	OnDelete *CredentialTypeOnDelete `json:"onDelete,omitempty"`
 	// A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title.
 	Title string `json:"title"`
 	// A string that specifies the date and time the credential type was last updated; can be null.
@@ -65,9 +68,9 @@ func NewCredentialTypeWithDefaults() *CredentialType {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *CredentialType) GetLinks() LinksHATEOAS {
+func (o *CredentialType) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -75,7 +78,7 @@ func (o *CredentialType) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *CredentialType) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -91,8 +94,8 @@ func (o *CredentialType) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *CredentialType) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *CredentialType) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -217,9 +220,9 @@ func (o *CredentialType) SetDescription(v string) {
 }
 
 // GetDeletedAt returns the DeletedAt field value if set, zero value otherwise.
-func (o *CredentialType) GetDeletedAt() string {
+func (o *CredentialType) GetDeletedAt() time.Time {
 	if o == nil || IsNil(o.DeletedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.DeletedAt
@@ -227,7 +230,7 @@ func (o *CredentialType) GetDeletedAt() string {
 
 // GetDeletedAtOk returns a tuple with the DeletedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetDeletedAtOk() (*string, bool) {
+func (o *CredentialType) GetDeletedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.DeletedAt) {
 		return nil, false
 	}
@@ -243,8 +246,8 @@ func (o *CredentialType) HasDeletedAt() bool {
 	return false
 }
 
-// SetDeletedAt gets a reference to the given string and assigns it to the DeletedAt field.
-func (o *CredentialType) SetDeletedAt(v string) {
+// SetDeletedAt gets a reference to the given time.Time and assigns it to the DeletedAt field.
+func (o *CredentialType) SetDeletedAt(v time.Time) {
 	o.DeletedAt = &v
 }
 
@@ -313,9 +316,9 @@ func (o *CredentialType) SetId(v string) {
 }
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
-func (o *CredentialType) GetIssuer() CredentialTypeIssuer {
+func (o *CredentialType) GetIssuer() ObjectIssuer {
 	if o == nil || IsNil(o.Issuer) {
-		var ret CredentialTypeIssuer
+		var ret ObjectIssuer
 		return ret
 	}
 	return *o.Issuer
@@ -323,7 +326,7 @@ func (o *CredentialType) GetIssuer() CredentialTypeIssuer {
 
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetIssuerOk() (*CredentialTypeIssuer, bool) {
+func (o *CredentialType) GetIssuerOk() (*ObjectIssuer, bool) {
 	if o == nil || IsNil(o.Issuer) {
 		return nil, false
 	}
@@ -339,8 +342,8 @@ func (o *CredentialType) HasIssuer() bool {
 	return false
 }
 
-// SetIssuer gets a reference to the given CredentialTypeIssuer and assigns it to the Issuer field.
-func (o *CredentialType) SetIssuer(v CredentialTypeIssuer) {
+// SetIssuer gets a reference to the given ObjectIssuer and assigns it to the Issuer field.
+func (o *CredentialType) SetIssuer(v ObjectIssuer) {
 	o.Issuer = &v
 }
 
@@ -376,6 +379,38 @@ func (o *CredentialType) SetIssuerName(v string) {
 	o.IssuerName = &v
 }
 
+// GetManagement returns the Management field value if set, zero value otherwise.
+func (o *CredentialType) GetManagement() CredentialTypeManagement {
+	if o == nil || IsNil(o.Management) {
+		var ret CredentialTypeManagement
+		return ret
+	}
+	return *o.Management
+}
+
+// GetManagementOk returns a tuple with the Management field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetManagementOk() (*CredentialTypeManagement, bool) {
+	if o == nil || IsNil(o.Management) {
+		return nil, false
+	}
+	return o.Management, true
+}
+
+// HasManagement returns a boolean if a field has been set.
+func (o *CredentialType) HasManagement() bool {
+	if o != nil && !IsNil(o.Management) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagement gets a reference to the given CredentialTypeManagement and assigns it to the Management field.
+func (o *CredentialType) SetManagement(v CredentialTypeManagement) {
+	o.Management = &v
+}
+
 // GetMetadata returns the Metadata field value
 func (o *CredentialType) GetMetadata() CredentialTypeMetaData {
 	if o == nil {
@@ -398,6 +433,70 @@ func (o *CredentialType) GetMetadataOk() (*CredentialTypeMetaData, bool) {
 // SetMetadata sets field value
 func (o *CredentialType) SetMetadata(v CredentialTypeMetaData) {
 	o.Metadata = v
+}
+
+// GetMultiple returns the Multiple field value if set, zero value otherwise.
+func (o *CredentialType) GetMultiple() CredentialTypeMultiple {
+	if o == nil || IsNil(o.Multiple) {
+		var ret CredentialTypeMultiple
+		return ret
+	}
+	return *o.Multiple
+}
+
+// GetMultipleOk returns a tuple with the Multiple field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetMultipleOk() (*CredentialTypeMultiple, bool) {
+	if o == nil || IsNil(o.Multiple) {
+		return nil, false
+	}
+	return o.Multiple, true
+}
+
+// HasMultiple returns a boolean if a field has been set.
+func (o *CredentialType) HasMultiple() bool {
+	if o != nil && !IsNil(o.Multiple) {
+		return true
+	}
+
+	return false
+}
+
+// SetMultiple gets a reference to the given CredentialTypeMultiple and assigns it to the Multiple field.
+func (o *CredentialType) SetMultiple(v CredentialTypeMultiple) {
+	o.Multiple = &v
+}
+
+// GetOnDelete returns the OnDelete field value if set, zero value otherwise.
+func (o *CredentialType) GetOnDelete() CredentialTypeOnDelete {
+	if o == nil || IsNil(o.OnDelete) {
+		var ret CredentialTypeOnDelete
+		return ret
+	}
+	return *o.OnDelete
+}
+
+// GetOnDeleteOk returns a tuple with the OnDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetOnDeleteOk() (*CredentialTypeOnDelete, bool) {
+	if o == nil || IsNil(o.OnDelete) {
+		return nil, false
+	}
+	return o.OnDelete, true
+}
+
+// HasOnDelete returns a boolean if a field has been set.
+func (o *CredentialType) HasOnDelete() bool {
+	if o != nil && !IsNil(o.OnDelete) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnDelete gets a reference to the given CredentialTypeOnDelete and assigns it to the OnDelete field.
+func (o *CredentialType) SetOnDelete(v CredentialTypeOnDelete) {
+	o.OnDelete = &v
 }
 
 // GetTitle returns the Title field value
@@ -473,7 +572,9 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CardType) {
 		toSerialize["cardType"] = o.CardType
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -483,16 +584,29 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Issuer) {
 		toSerialize["issuer"] = o.Issuer
 	}
 	if !IsNil(o.IssuerName) {
 		toSerialize["issuerName"] = o.IssuerName
 	}
+	if !IsNil(o.Management) {
+		toSerialize["management"] = o.Management
+	}
 	toSerialize["metadata"] = o.Metadata
+	if !IsNil(o.Multiple) {
+		toSerialize["multiple"] = o.Multiple
+	}
+	if !IsNil(o.OnDelete) {
+		toSerialize["onDelete"] = o.OnDelete
+	}
 	toSerialize["title"] = o.Title
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

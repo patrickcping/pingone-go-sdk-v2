@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Gateway** | Pointer to [**GatewayInstanceGateway**](GatewayInstanceGateway.md) |  | [optional] 
+**Group** | Pointer to [**RoleAssignmentGroup**](RoleAssignmentGroup.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the user role assignment ID. | [optional] [readonly] 
 **ReadOnly** | Pointer to **bool** | A boolean that specifies whether this role assignment can be deleted by the current actor. | [optional] [readonly] 
 **Role** | [**RoleAssignmentRole**](RoleAssignmentRole.md) |  | 
@@ -33,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *RoleAssignment) GetLinks() LinksHATEOAS`
+`func (o *RoleAssignment) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *RoleAssignment) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *RoleAssignment) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *RoleAssignment) SetLinks(v LinksHATEOAS)`
+`func (o *RoleAssignment) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -105,6 +106,31 @@ SetGateway sets Gateway field to given value.
 `func (o *RoleAssignment) HasGateway() bool`
 
 HasGateway returns a boolean if a field has been set.
+
+### GetGroup
+
+`func (o *RoleAssignment) GetGroup() RoleAssignmentGroup`
+
+GetGroup returns the Group field if non-nil, zero value otherwise.
+
+### GetGroupOk
+
+`func (o *RoleAssignment) GetGroupOk() (*RoleAssignmentGroup, bool)`
+
+GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroup
+
+`func (o *RoleAssignment) SetGroup(v RoleAssignmentGroup)`
+
+SetGroup sets Group field to given value.
+
+### HasGroup
+
+`func (o *RoleAssignment) HasGroup() bool`
+
+HasGroup returns a boolean if a field has been set.
 
 ### GetId
 

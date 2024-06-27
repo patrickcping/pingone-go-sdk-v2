@@ -1,3 +1,22 @@
+# v0.3.2 (2024-06-07)
+
+* **MODULE RETRACTION** The API endpoint in this module suffers major loss of function. The module has been retracted but is retained in the source repo for the purpose of retration. [#352](https://github.com/patrickcping/pingone-go-sdk-v2/pull/352)
+
+# v0.3.1 (2024-01-12)
+
+* **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
+* **Note** Updated the default UserAgent string format. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+* **Enhancement** Add ability to append custom user-agent information to HTTP requests. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+
+# v0.3.0 (2023-11-10)
+
+* **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+* **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+
+# v0.2.2 (2023-10-16)
+
+* **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+
 # v0.2.1 (2023-07-12)
 
 * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)

@@ -21,12 +21,17 @@ var _ MappedNullable = &CredentialTypeMetaDataFieldsInner{}
 type CredentialTypeMetaDataFieldsInner struct {
 	// A string that specifies the name of the PingOne Directory attribute if field.type is Directory Attribute.
 	Attribute *string `json:"attribute,omitempty"`
+	// Assigns a default field value if a PingOne Expression Language (PEL) expression in the fields.attribute evaluates to no value.
+	Default *string `json:"default,omitempty"`
 	// A string that specifies the identifier of the field.
 	Id string `json:"id"`
-	// A string that specifies the descriptive text when showing the field.
-	Title string `json:"title"`
+	FileSupport *EnumCredentialTypeMetaDataFieldsFileSupport `json:"fileSupport,omitempty"`
 	// A boolean value that specifies whether the field should be visible to viewers of the credential.
 	IsVisible bool `json:"isVisible"`
+	// A boolean value that specifies whether the field is required for the credential.
+	Required *bool `json:"required,omitempty"`
+	// A string that specifies the descriptive text when showing the field.
+	Title string `json:"title"`
 	Type EnumCredentialTypeMetaDataFieldsType `json:"type"`
 	// A string that specifies the text to appear on the credential for a type of Alphanumeric Text.
 	Value *string `json:"value,omitempty"`
@@ -36,11 +41,11 @@ type CredentialTypeMetaDataFieldsInner struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCredentialTypeMetaDataFieldsInner(id string, title string, isVisible bool, type_ EnumCredentialTypeMetaDataFieldsType) *CredentialTypeMetaDataFieldsInner {
+func NewCredentialTypeMetaDataFieldsInner(id string, isVisible bool, title string, type_ EnumCredentialTypeMetaDataFieldsType) *CredentialTypeMetaDataFieldsInner {
 	this := CredentialTypeMetaDataFieldsInner{}
 	this.Id = id
-	this.Title = title
 	this.IsVisible = isVisible
+	this.Title = title
 	this.Type = type_
 	return &this
 }
@@ -85,6 +90,38 @@ func (o *CredentialTypeMetaDataFieldsInner) SetAttribute(v string) {
 	o.Attribute = &v
 }
 
+// GetDefault returns the Default field value if set, zero value otherwise.
+func (o *CredentialTypeMetaDataFieldsInner) GetDefault() string {
+	if o == nil || IsNil(o.Default) {
+		var ret string
+		return ret
+	}
+	return *o.Default
+}
+
+// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaDataFieldsInner) GetDefaultOk() (*string, bool) {
+	if o == nil || IsNil(o.Default) {
+		return nil, false
+	}
+	return o.Default, true
+}
+
+// HasDefault returns a boolean if a field has been set.
+func (o *CredentialTypeMetaDataFieldsInner) HasDefault() bool {
+	if o != nil && !IsNil(o.Default) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefault gets a reference to the given string and assigns it to the Default field.
+func (o *CredentialTypeMetaDataFieldsInner) SetDefault(v string) {
+	o.Default = &v
+}
+
 // GetId returns the Id field value
 func (o *CredentialTypeMetaDataFieldsInner) GetId() string {
 	if o == nil {
@@ -109,28 +146,36 @@ func (o *CredentialTypeMetaDataFieldsInner) SetId(v string) {
 	o.Id = v
 }
 
-// GetTitle returns the Title field value
-func (o *CredentialTypeMetaDataFieldsInner) GetTitle() string {
-	if o == nil {
-		var ret string
+// GetFileSupport returns the FileSupport field value if set, zero value otherwise.
+func (o *CredentialTypeMetaDataFieldsInner) GetFileSupport() EnumCredentialTypeMetaDataFieldsFileSupport {
+	if o == nil || IsNil(o.FileSupport) {
+		var ret EnumCredentialTypeMetaDataFieldsFileSupport
 		return ret
 	}
-
-	return o.Title
+	return *o.FileSupport
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetFileSupportOk returns a tuple with the FileSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialTypeMetaDataFieldsInner) GetTitleOk() (*string, bool) {
-	if o == nil {
+func (o *CredentialTypeMetaDataFieldsInner) GetFileSupportOk() (*EnumCredentialTypeMetaDataFieldsFileSupport, bool) {
+	if o == nil || IsNil(o.FileSupport) {
 		return nil, false
 	}
-	return &o.Title, true
+	return o.FileSupport, true
 }
 
-// SetTitle sets field value
-func (o *CredentialTypeMetaDataFieldsInner) SetTitle(v string) {
-	o.Title = v
+// HasFileSupport returns a boolean if a field has been set.
+func (o *CredentialTypeMetaDataFieldsInner) HasFileSupport() bool {
+	if o != nil && !IsNil(o.FileSupport) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileSupport gets a reference to the given EnumCredentialTypeMetaDataFieldsFileSupport and assigns it to the FileSupport field.
+func (o *CredentialTypeMetaDataFieldsInner) SetFileSupport(v EnumCredentialTypeMetaDataFieldsFileSupport) {
+	o.FileSupport = &v
 }
 
 // GetIsVisible returns the IsVisible field value
@@ -155,6 +200,62 @@ func (o *CredentialTypeMetaDataFieldsInner) GetIsVisibleOk() (*bool, bool) {
 // SetIsVisible sets field value
 func (o *CredentialTypeMetaDataFieldsInner) SetIsVisible(v bool) {
 	o.IsVisible = v
+}
+
+// GetRequired returns the Required field value if set, zero value otherwise.
+func (o *CredentialTypeMetaDataFieldsInner) GetRequired() bool {
+	if o == nil || IsNil(o.Required) {
+		var ret bool
+		return ret
+	}
+	return *o.Required
+}
+
+// GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaDataFieldsInner) GetRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.Required) {
+		return nil, false
+	}
+	return o.Required, true
+}
+
+// HasRequired returns a boolean if a field has been set.
+func (o *CredentialTypeMetaDataFieldsInner) HasRequired() bool {
+	if o != nil && !IsNil(o.Required) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequired gets a reference to the given bool and assigns it to the Required field.
+func (o *CredentialTypeMetaDataFieldsInner) SetRequired(v bool) {
+	o.Required = &v
+}
+
+// GetTitle returns the Title field value
+func (o *CredentialTypeMetaDataFieldsInner) GetTitle() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaDataFieldsInner) GetTitleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Title, true
+}
+
+// SetTitle sets field value
+func (o *CredentialTypeMetaDataFieldsInner) SetTitle(v string) {
+	o.Title = v
 }
 
 // GetType returns the Type field value
@@ -226,9 +327,18 @@ func (o CredentialTypeMetaDataFieldsInner) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
 	toSerialize["id"] = o.Id
-	toSerialize["title"] = o.Title
+	if !IsNil(o.FileSupport) {
+		toSerialize["fileSupport"] = o.FileSupport
+	}
 	toSerialize["isVisible"] = o.IsVisible
+	if !IsNil(o.Required) {
+		toSerialize["required"] = o.Required
+	}
+	toSerialize["title"] = o.Title
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value

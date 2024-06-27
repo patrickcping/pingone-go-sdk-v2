@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the IdP. | [optional] 
 **Enabled** | **bool** | The current enabled state of the IdP. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **TokenEndpoint** | **string** | A string that specifies the OIDC identity provider&#39;s token endpoint. This is a required property. | 
 **TokenEndpointAuthMethod** | [**EnumIdentityProviderOIDCTokenAuthMethod**](EnumIdentityProviderOIDCTokenAuthMethod.md) |  | [default to ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_BASIC]
 **UserInfoEndpoint** | Pointer to **string** | A string that specifies the OIDC identity provider&#39;s userInfo endpoint. | [optional] 
+**PkceMethod** | Pointer to [**EnumIdentityProviderPKCEMethod**](EnumIdentityProviderPKCEMethod.md) |  | [optional] [default to ENUMIDENTITYPROVIDERPKCEMETHOD_NONE]
 **ClientSecretSigningKey** | **string** | A string that specifies the private key that is used to generate a client secret. This is a required property. | 
 **KeyId** | **string** | A 10-character string that Apple uses to identify an authentication key. This is a required property. | 
 **TeamId** | **string** | A 10-character string that Apple uses to identify teams. This is a required property. | 
@@ -65,20 +66,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *IdentityProvider) GetLinks() LinksHATEOAS`
+`func (o *IdentityProvider) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *IdentityProvider) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *IdentityProvider) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *IdentityProvider) SetLinks(v LinksHATEOAS)`
+`func (o *IdentityProvider) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 
@@ -597,6 +598,31 @@ SetUserInfoEndpoint sets UserInfoEndpoint field to given value.
 `func (o *IdentityProvider) HasUserInfoEndpoint() bool`
 
 HasUserInfoEndpoint returns a boolean if a field has been set.
+
+### GetPkceMethod
+
+`func (o *IdentityProvider) GetPkceMethod() EnumIdentityProviderPKCEMethod`
+
+GetPkceMethod returns the PkceMethod field if non-nil, zero value otherwise.
+
+### GetPkceMethodOk
+
+`func (o *IdentityProvider) GetPkceMethodOk() (*EnumIdentityProviderPKCEMethod, bool)`
+
+GetPkceMethodOk returns a tuple with the PkceMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPkceMethod
+
+`func (o *IdentityProvider) SetPkceMethod(v EnumIdentityProviderPKCEMethod)`
+
+SetPkceMethod sets PkceMethod field to given value.
+
+### HasPkceMethod
+
+`func (o *IdentityProvider) HasPkceMethod() bool`
+
+HasPkceMethod returns a boolean if a field has been set.
 
 ### GetClientSecretSigningKey
 

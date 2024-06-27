@@ -8,7 +8,9 @@ Method | HTTP request | Description
 [**DeletePopulation**](PopulationsApi.md#DeletePopulation) | **Delete** /environments/{environmentID}/populations/{populationID} | DELETE Population
 [**ReadAllPopulations**](PopulationsApi.md#ReadAllPopulations) | **Get** /environments/{environmentID}/populations | READ All Populations
 [**ReadOnePopulation**](PopulationsApi.md#ReadOnePopulation) | **Get** /environments/{environmentID}/populations/{populationID} | READ One Population
+[**ReadOnePopulationDefaultIdp**](PopulationsApi.md#ReadOnePopulationDefaultIdp) | **Get** /environments/{environmentID}/populations/{populationID}/defaultIdentityProvider | READ One Population Default Identity Provider
 [**UpdatePopulation**](PopulationsApi.md#UpdatePopulation) | **Put** /environments/{environmentID}/populations/{populationID} | UPDATE Population
+[**UpdatePopulationDefaultIdp**](PopulationsApi.md#UpdatePopulationDefaultIdp) | **Put** /environments/{environmentID}/populations/{populationID}/defaultIdentityProvider | UPDATE Population Default Identity Provider
 
 
 
@@ -296,6 +298,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ReadOnePopulationDefaultIdp
+
+> PopulationDefaultIdp ReadOnePopulationDefaultIdp(ctx, environmentID, populationID).Execute()
+
+READ One Population Default Identity Provider
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    populationID := "populationID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PopulationsApi.ReadOnePopulationDefaultIdp(context.Background(), environmentID, populationID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PopulationsApi.ReadOnePopulationDefaultIdp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadOnePopulationDefaultIdp`: PopulationDefaultIdp
+    fmt.Fprintf(os.Stdout, "Response from `PopulationsApi.ReadOnePopulationDefaultIdp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**populationID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadOnePopulationDefaultIdpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PopulationDefaultIdp**](PopulationDefaultIdp.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdatePopulation
 
 > Population UpdatePopulation(ctx, environmentID, populationID).Population(population).Execute()
@@ -354,6 +427,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Population**](Population.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePopulationDefaultIdp
+
+> PopulationDefaultIdp UpdatePopulationDefaultIdp(ctx, environmentID, populationID).PopulationDefaultIdp(populationDefaultIdp).Execute()
+
+UPDATE Population Default Identity Provider
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    populationID := "populationID_example" // string | 
+    populationDefaultIdp := *openapiclient.NewPopulationDefaultIdp() // PopulationDefaultIdp |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PopulationsApi.UpdatePopulationDefaultIdp(context.Background(), environmentID, populationID).PopulationDefaultIdp(populationDefaultIdp).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PopulationsApi.UpdatePopulationDefaultIdp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePopulationDefaultIdp`: PopulationDefaultIdp
+    fmt.Fprintf(os.Stdout, "Response from `PopulationsApi.UpdatePopulationDefaultIdp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**populationID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePopulationDefaultIdpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **populationDefaultIdp** | [**PopulationDefaultIdp**](PopulationDefaultIdp.md) |  | 
+
+### Return type
+
+[**PopulationDefaultIdp**](PopulationDefaultIdp.md)
 
 ### Authorization
 

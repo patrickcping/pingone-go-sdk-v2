@@ -2,14 +2,14 @@ package model
 
 import (
 	"log"
+	"slices"
 	"sort"
-
-	"golang.org/x/exp/slices"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 type RegionMapping struct {
+	// Deprecated: Use APICode instead
 	Region    string
 	URLSuffix string
 	APICode   management.EnumRegionCode
@@ -37,6 +37,11 @@ func init() {
 			APICode:   management.ENUMREGIONCODE_AP,
 		},
 		{
+			Region:    "Australia-AsiaPacific",
+			URLSuffix: "com.au",
+			APICode:   management.ENUMREGIONCODE_AU,
+		},
+		{
 			Region:    "Canada",
 			URLSuffix: "ca",
 			APICode:   management.ENUMREGIONCODE_CA,
@@ -44,6 +49,7 @@ func init() {
 	}
 }
 
+// Deprecated: Use FindRegionByAPICode instead
 func FindRegionByName(region string) RegionMapping {
 
 	idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.Region == region })

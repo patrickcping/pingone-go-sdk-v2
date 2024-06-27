@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Algorithm** | [**EnumCertificateKeyAlgorithm**](EnumCertificateKeyAlgorithm.md) |  | 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Default** | Pointer to **bool** | Specifies whether this is the default key for the specified environment. | [optional] 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **ExpiresAt** | Pointer to **time.Time** | The time the key resource expires. | [optional] [readonly] 
 **Id** | Pointer to **string** | Specifies the resource’s unique identifier. | [optional] [readonly] 
 **IssuerDN** | Pointer to **string** | Specifies the distinguished name of the certificate issuer. | [optional] 
-**KeyLength** | **int32** | Specifies the key length. For RSA keys, options are 2048, 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256, and 384. | 
+**KeyLength** | **int32** | The key length. For RSA keys, options are &#x60;2048&#x60;, &#x60;3072&#x60;, &#x60;4096&#x60;, and &#x60;7680&#x60;. For elliptical curve (EC) keys, options are &#x60;224&#x60;, &#x60;256&#x60;, &#x60;384&#x60;, and &#x60;521&#x60;. | 
 **Name** | **string** | Specifies the resource name. | 
 **Organization** | Pointer to [**ObjectOrganization**](ObjectOrganization.md) |  | [optional] 
 **SerialNumber** | Pointer to **big.Int** | Specifies the serial number of the key or certificate. | [optional] 
@@ -41,6 +42,31 @@ will change when the set of required properties is changed
 NewCertificateWithDefaults instantiates a new Certificate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *Certificate) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *Certificate) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *Certificate) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *Certificate) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetAlgorithm
 

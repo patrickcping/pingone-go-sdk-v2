@@ -20,7 +20,7 @@ var _ MappedNullable = &RiskPredictorComposite{}
 
 // RiskPredictorComposite struct for RiskPredictorComposite
 type RiskPredictorComposite struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -40,19 +40,22 @@ type RiskPredictorComposite struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
-	Composition RiskPredictorCompositeAllOfComposition `json:"composition"`
+	// Deprecated
+	Composition *RiskPredictorCompositeAllOfComposition `json:"composition,omitempty"`
+	// Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements.
+	Compositions []RiskPredictorCompositeAllOfCompositionsInner `json:"compositions"`
 }
 
 // NewRiskPredictorComposite instantiates a new RiskPredictorComposite object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition) *RiskPredictorComposite {
+func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner) *RiskPredictorComposite {
 	this := RiskPredictorComposite{}
 	this.Name = name
 	this.CompactName = compactName
 	this.Type = type_
-	this.Composition = composition
+	this.Compositions = compositions
 	return &this
 }
 
@@ -65,9 +68,9 @@ func NewRiskPredictorCompositeWithDefaults() *RiskPredictorComposite {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *RiskPredictorComposite) GetLinks() LinksHATEOAS {
+func (o *RiskPredictorComposite) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -75,7 +78,7 @@ func (o *RiskPredictorComposite) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorComposite) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *RiskPredictorComposite) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -91,8 +94,8 @@ func (o *RiskPredictorComposite) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *RiskPredictorComposite) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *RiskPredictorComposite) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -424,28 +427,63 @@ func (o *RiskPredictorComposite) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 
-// GetComposition returns the Composition field value
+// GetComposition returns the Composition field value if set, zero value otherwise.
+// Deprecated
 func (o *RiskPredictorComposite) GetComposition() RiskPredictorCompositeAllOfComposition {
-	if o == nil {
+	if o == nil || IsNil(o.Composition) {
 		var ret RiskPredictorCompositeAllOfComposition
 		return ret
 	}
-
-	return o.Composition
+	return *o.Composition
 }
 
-// GetCompositionOk returns a tuple with the Composition field value
+// GetCompositionOk returns a tuple with the Composition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *RiskPredictorComposite) GetCompositionOk() (*RiskPredictorCompositeAllOfComposition, bool) {
+	if o == nil || IsNil(o.Composition) {
+		return nil, false
+	}
+	return o.Composition, true
+}
+
+// HasComposition returns a boolean if a field has been set.
+func (o *RiskPredictorComposite) HasComposition() bool {
+	if o != nil && !IsNil(o.Composition) {
+		return true
+	}
+
+	return false
+}
+
+// SetComposition gets a reference to the given RiskPredictorCompositeAllOfComposition and assigns it to the Composition field.
+// Deprecated
+func (o *RiskPredictorComposite) SetComposition(v RiskPredictorCompositeAllOfComposition) {
+	o.Composition = &v
+}
+
+// GetCompositions returns the Compositions field value
+func (o *RiskPredictorComposite) GetCompositions() []RiskPredictorCompositeAllOfCompositionsInner {
+	if o == nil {
+		var ret []RiskPredictorCompositeAllOfCompositionsInner
+		return ret
+	}
+
+	return o.Compositions
+}
+
+// GetCompositionsOk returns a tuple with the Compositions field value
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorComposite) GetCompositionsOk() ([]RiskPredictorCompositeAllOfCompositionsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Composition, true
+	return o.Compositions, true
 }
 
-// SetComposition sets field value
-func (o *RiskPredictorComposite) SetComposition(v RiskPredictorCompositeAllOfComposition) {
-	o.Composition = v
+// SetCompositions sets field value
+func (o *RiskPredictorComposite) SetCompositions(v []RiskPredictorCompositeAllOfCompositionsInner) {
+	o.Compositions = v
 }
 
 func (o RiskPredictorComposite) MarshalJSON() ([]byte, error) {
@@ -461,24 +499,37 @@ func (o RiskPredictorComposite) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["compactName"] = o.CompactName
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
-	// skip: licensed is readOnly
-	// skip: deletable is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.Licensed) {
+		toSerialize["licensed"] = o.Licensed
+	}
+	if !IsNil(o.Deletable) {
+		toSerialize["deletable"] = o.Deletable
+	}
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
-	toSerialize["composition"] = o.Composition
+	if !IsNil(o.Composition) {
+		toSerialize["composition"] = o.Composition
+	}
+	toSerialize["compositions"] = o.Compositions
 	return toSerialize, nil
 }
 

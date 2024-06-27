@@ -20,9 +20,10 @@ var _ MappedNullable = &Resource{}
 
 // Resource struct for Resource
 type Resource struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days).
 	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
+	ApplicationPermissionsSettings *ResourceApplicationPermissionsSettings `json:"applicationPermissionsSettings,omitempty"`
 	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`). If a URL is not specified, the resource name is used.
 	Audience *string `json:"audience,omitempty"`
 	// The time the resource was created.
@@ -60,9 +61,9 @@ func NewResourceWithDefaults() *Resource {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Resource) GetLinks() LinksHATEOAS {
+func (o *Resource) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -70,7 +71,7 @@ func (o *Resource) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Resource) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Resource) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -86,8 +87,8 @@ func (o *Resource) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Resource) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Resource) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -121,6 +122,38 @@ func (o *Resource) HasAccessTokenValiditySeconds() bool {
 // SetAccessTokenValiditySeconds gets a reference to the given int32 and assigns it to the AccessTokenValiditySeconds field.
 func (o *Resource) SetAccessTokenValiditySeconds(v int32) {
 	o.AccessTokenValiditySeconds = &v
+}
+
+// GetApplicationPermissionsSettings returns the ApplicationPermissionsSettings field value if set, zero value otherwise.
+func (o *Resource) GetApplicationPermissionsSettings() ResourceApplicationPermissionsSettings {
+	if o == nil || IsNil(o.ApplicationPermissionsSettings) {
+		var ret ResourceApplicationPermissionsSettings
+		return ret
+	}
+	return *o.ApplicationPermissionsSettings
+}
+
+// GetApplicationPermissionsSettingsOk returns a tuple with the ApplicationPermissionsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Resource) GetApplicationPermissionsSettingsOk() (*ResourceApplicationPermissionsSettings, bool) {
+	if o == nil || IsNil(o.ApplicationPermissionsSettings) {
+		return nil, false
+	}
+	return o.ApplicationPermissionsSettings, true
+}
+
+// HasApplicationPermissionsSettings returns a boolean if a field has been set.
+func (o *Resource) HasApplicationPermissionsSettings() bool {
+	if o != nil && !IsNil(o.ApplicationPermissionsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationPermissionsSettings gets a reference to the given ResourceApplicationPermissionsSettings and assigns it to the ApplicationPermissionsSettings field.
+func (o *Resource) SetApplicationPermissionsSettings(v ResourceApplicationPermissionsSettings) {
+	o.ApplicationPermissionsSettings = &v
 }
 
 // GetAudience returns the Audience field value if set, zero value otherwise.
@@ -451,10 +484,15 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessTokenValiditySeconds) {
 		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
 	}
+	if !IsNil(o.ApplicationPermissionsSettings) {
+		toSerialize["applicationPermissionsSettings"] = o.ApplicationPermissionsSettings
+	}
 	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -464,7 +502,9 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Resource) {
 		toSerialize["resource"] = o.Resource
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.IntrospectEndpointAuthMethod) {
 		toSerialize["introspectEndpointAuthMethod"] = o.IntrospectEndpointAuthMethod
@@ -472,7 +512,9 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

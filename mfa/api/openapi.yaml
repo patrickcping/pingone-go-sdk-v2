@@ -13,10 +13,11 @@ servers:
     suffix:
       default: com
       enum:
-      - eu
-      - com
       - asia
       - ca
+      - com
+      - com.au
+      - eu
     baseDomain:
       default: api.pingone
     protocol:
@@ -84,6 +85,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -160,6 +167,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -240,6 +253,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -307,6 +326,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -383,6 +408,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -441,6 +472,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -520,6 +557,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -591,6 +634,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -651,6 +700,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -720,6 +775,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -778,6 +839,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -847,6 +914,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -912,6 +985,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -972,6 +1051,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1031,6 +1116,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1101,6 +1192,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1167,6 +1264,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1228,6 +1331,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1298,6 +1407,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1356,6 +1471,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1425,6 +1546,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1490,6 +1617,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1559,6 +1692,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1628,6 +1767,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1686,6 +1831,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1743,6 +1894,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1805,6 +1962,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1877,6 +2040,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1936,6 +2105,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2024,6 +2199,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2093,6 +2274,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2159,6 +2346,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2249,6 +2442,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2325,6 +2524,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2401,6 +2606,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2464,6 +2675,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2533,6 +2750,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2604,6 +2827,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2670,6 +2899,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2747,6 +2982,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -2798,6 +3039,12 @@ components:
           schema:
             $ref: '#/components/schemas/P1Error'
       description: "Invalid request received.  Malformed JSON, malformed HTTP request."
+    "409":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Conflict.
     "429":
       content:
         application/json:
@@ -2812,23 +3059,10 @@ components:
       description: Uncaught error occurred.  Platform outage
   schemas:
     LinksHATEOAS:
-      additionalProperties: true
-      example:
-        next:
-          href: https://openapi-generator.tech
-        self:
-          href: https://openapi-generator.tech
-      properties:
-        self:
-          $ref: '#/components/schemas/LinksHATEOAS_self'
-        next:
-          $ref: '#/components/schemas/LinksHATEOAS_next'
+      additionalProperties:
+        $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
       type: object
-    LinksHATEOASHref:
-      description: The URI of the resource.
-      format: uri
-      type: string
     DeviceAuthenticationPolicyFIDODevice:
       deprecated: true
       example:
@@ -2866,6 +3100,7 @@ components:
             duration: 0
             timeUnit: null
         enabled: true
+        promptForNicknameOnPairing: true
       properties:
         enabled:
           description: Enabled or disabled in the policy.
@@ -2879,6 +3114,10 @@ components:
           type: boolean
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp'
+        promptForNicknameOnPairing:
+          description: Set to `true` if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       - otp
@@ -2897,6 +3136,7 @@ components:
               duration: 0
               timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         totp:
           pairingDisabled: true
           otp:
@@ -2906,11 +3146,10 @@ components:
                 duration: 1
                 timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         newDeviceNotification: null
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         mobile:
           otp:
@@ -2924,6 +3163,7 @@ components:
                 duration: 5
                 timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
           applications:
           - autoEnrollment:
               enabled: true
@@ -2981,6 +3221,7 @@ components:
           fido2PolicyId: fido2PolicyId
           pairingDisabled: true
           enabled: true
+          promptForNicknameOnPairing: true
         platform:
           pairingDisabled: true
           enabled: true
@@ -3002,6 +3243,7 @@ components:
               duration: 0
               timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         id: id
         securityKey:
           pairingDisabled: true
@@ -3019,12 +3261,16 @@ components:
               duration: 0
               timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         authentication:
           deviceSelection: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         id:
@@ -3108,9 +3354,7 @@ components:
       example:
         size: 4.145608029883936
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         _embedded:
           fidoDevicesMetadata:
@@ -3122,9 +3366,7 @@ components:
               enforceDuringAuthentication: true
               option: null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             userDisplayNameAttributes:
               attributes:
@@ -3165,9 +3407,7 @@ components:
               enforceDuringAuthentication: true
               option: null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             userDisplayNameAttributes:
               attributes:
@@ -3206,27 +3446,21 @@ components:
           pushCredentials:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             id: id
             type: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - createdAt: 2000-01-23T04:56:07.000+00:00
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             id: id
             type: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           fidoPolicies:
           - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             description: description
             enforceDuringAuthentication: false
@@ -3244,9 +3478,7 @@ components:
             updatedAt: 2000-01-23T04:56:07.000+00:00
             residentKeyRequirement: null
           - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             description: description
             enforceDuringAuthentication: false
@@ -3276,6 +3508,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             totp:
               pairingDisabled: true
               otp:
@@ -3285,11 +3518,10 @@ components:
                     duration: 1
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             newDeviceNotification: null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             mobile:
               otp:
@@ -3303,6 +3535,7 @@ components:
                     duration: 5
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
               applications:
               - autoEnrollment:
                   enabled: true
@@ -3360,6 +3593,7 @@ components:
               fido2PolicyId: fido2PolicyId
               pairingDisabled: true
               enabled: true
+              promptForNicknameOnPairing: true
             platform:
               pairingDisabled: true
               enabled: true
@@ -3381,6 +3615,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             id: id
             securityKey:
               pairingDisabled: true
@@ -3398,6 +3633,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             authentication:
               deviceSelection: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -3413,6 +3649,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             totp:
               pairingDisabled: true
               otp:
@@ -3422,11 +3659,10 @@ components:
                     duration: 1
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             newDeviceNotification: null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             mobile:
               otp:
@@ -3440,6 +3676,7 @@ components:
                     duration: 5
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
               applications:
               - autoEnrollment:
                   enabled: true
@@ -3497,6 +3734,7 @@ components:
               fido2PolicyId: fido2PolicyId
               pairingDisabled: true
               enabled: true
+              promptForNicknameOnPairing: true
             platform:
               pairingDisabled: true
               enabled: true
@@ -3518,6 +3756,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             id: id
             securityKey:
               pairingDisabled: true
@@ -3535,13 +3774,17 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             authentication:
               deviceSelection: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
         count: 2.027123023002322
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         count:
@@ -3668,12 +3911,12 @@ components:
         The default method that should be used for authentication. Can take one of the following values:
         * `DEFAULT_TO_FIRST` - use the method that the user set as their default
         * `PROMPT_TO_SELECT` - always have the user select the method to use if there is more than one method available
-        * `ALWAYS_PROMPT_TO_SELECT` - always have the user select the method to use even if there is only one method available
+        * `ALWAYS_DISPLAY_DEVICES` - always have the user select the method to use even if there is only one method available
         If this parameter is not provided, the `DEFAULT_TO_FIRST` option is used.
       enum:
       - DEFAULT_TO_FIRST
       - PROMPT_TO_SELECT
-      - ALWAYS_PROMPT_TO_SELECT
+      - ALWAYS_DISPLAY_DEVICES
       type: string
     EnumMFAPushCredentialAttrType:
       description: |
@@ -3731,9 +3974,7 @@ components:
       deprecated: true
       example:
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         description: description
         enforceDuringAuthentication: false
@@ -3752,7 +3993,10 @@ components:
         residentKeyRequirement: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: FIDO policy's UUID.
           readOnly: true
@@ -3810,9 +4054,7 @@ components:
           enforceDuringAuthentication: true
           option: null
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         userDisplayNameAttributes:
           attributes:
@@ -3850,7 +4092,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: FIDO policy's UUID.
           readOnly: true
@@ -3940,20 +4185,71 @@ components:
     MFAPushCredentialAPNS:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
+      - properties:
+          key:
+            description: A string that Apple uses as an identifier to identify an
+              authentication key.  Mandatory.
+            format: password
+            type: string
+          teamId:
+            description: A string that Apple uses as an identifier to identify teams.
+            type: string
+          token:
+            description: A string that Apple uses as the authentication token signing
+              key to securely connect to APNS. This is a p8 file with a private key
+              format.
+            format: password
+            type: string
+        required:
+        - key
+        - teamId
+        - token
+        type: object
     MFAPushCredentialFCM:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
-      - $ref: '#/components/schemas/MFAPushCredentialFCM_allOf'
+      - deprecated: true
+        properties:
+          key:
+            deprecated: true
+            description: A string that Apple uses as an identifier to identify an
+              authentication key.  Mandatory.
+            format: password
+            type: string
+        required:
+        - key
+        type: object
       deprecated: true
     MFAPushCredentialFCMHTTPV1:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
-      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1_allOf'
+      - properties:
+          googleServiceAccountCredentials:
+            description: Used when `type` is set to `FCM_HTTP_V1`. The value should
+              be the contents of the JSON file that represents your Service Account
+              Credentials.
+            format: password
+            type: string
+        required:
+        - googleServiceAccountCredentials
+        type: object
     MFAPushCredentialHMS:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
-      - $ref: '#/components/schemas/MFAPushCredentialHMS_allOf'
+      - properties:
+          clientId:
+            description: Used only if type is set to HMS. OAuth 2.0 Client ID from
+              the Huawei Developers API console.
+            type: string
+          clientSecret:
+            description: Used only if type is set to HMS. The client secret associated
+              with the OAuth 2.0 Client ID.
+            format: password
+            type: string
+        required:
+        - clientId
+        - clientSecret
+        type: object
     MFAPushCredentialRequest:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
@@ -3964,16 +4260,17 @@ components:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         id: id
         type: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the push credential ID.
           readOnly: true
@@ -4001,19 +4298,22 @@ components:
           durationSeconds: 6
           failureCount: 0
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         pairing:
           pairingKeyFormat: null
           maxAllowedDevices: 2
+        users:
+          mfaEnabled: true
         authentication:
           deviceSelection: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         authentication:
@@ -4029,6 +4329,8 @@ components:
           format: date-time
           readOnly: true
           type: string
+        users:
+          $ref: '#/components/schemas/MFASettings_users'
       required:
       - pairing
       type: object
@@ -4071,14 +4373,15 @@ components:
     UserMFAEnabled:
       example:
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         mfaEnabled: true
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         mfaEnabled:
           description: Whether multi-factor authentication is enabled. This attribute
             is set to `false` by default when the user is created.
@@ -4086,27 +4389,16 @@ components:
       required:
       - mfaEnabled
       type: object
-    LinksHATEOAS_self:
-      description: An object that describes the current resource.
+    LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
       properties:
         href:
-          description: The URI of the resource.
+          description: The HREF of the link.
           format: uri
           type: string
-      type: object
-    LinksHATEOAS_next:
-      description: An object that describes the next page of results. This property
-        is present only if there is a next page of results and the `limit` parameter
-        is used.
-      example:
-        href: https://openapi-generator.tech
-      properties:
-        href:
-          description: The URI of the resource.
-          format: uri
-          type: string
+      required:
+      - href
       type: object
     DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime:
       example:
@@ -4189,6 +4481,7 @@ components:
         fido2PolicyId: fido2PolicyId
         pairingDisabled: true
         enabled: true
+        promptForNicknameOnPairing: true
       properties:
         enabled:
           description: A boolean that specifies whether the method is enabled or disabled
@@ -4206,6 +4499,10 @@ components:
             \ This property can be null. When null, the environment's default FIDO2\
             \ Policy is used."
           type: string
+        promptForNicknameOnPairing:
+          description: Set to `true` if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       type: object
@@ -4251,7 +4548,6 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_otp_window'
       required:
       - failure
-      - window
       type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_push:
       example:
@@ -4471,6 +4767,7 @@ components:
               duration: 5
               timeUnit: null
         enabled: true
+        promptForNicknameOnPairing: true
         applications:
         - autoEnrollment:
             enabled: true
@@ -4535,6 +4832,10 @@ components:
           items:
             $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner'
           type: array
+        promptForNicknameOnPairing:
+          description: Set to `true` if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       - otp
@@ -4563,6 +4864,7 @@ components:
               duration: 1
               timeUnit: null
         enabled: true
+        promptForNicknameOnPairing: true
       properties:
         enabled:
           description: Enabled or disabled in the policy.
@@ -4576,6 +4878,10 @@ components:
           type: boolean
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_totp_otp'
+        promptForNicknameOnPairing:
+          description: Set to `true` if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       - otp
@@ -4591,9 +4897,7 @@ components:
             enforceDuringAuthentication: true
             option: null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           userDisplayNameAttributes:
             attributes:
@@ -4634,9 +4938,7 @@ components:
             enforceDuringAuthentication: true
             option: null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           userDisplayNameAttributes:
             attributes:
@@ -4675,27 +4977,21 @@ components:
         pushCredentials:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           id: id
           type: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - createdAt: 2000-01-23T04:56:07.000+00:00
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           id: id
           type: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         fidoPolicies:
         - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           description: description
           enforceDuringAuthentication: false
@@ -4713,9 +5009,7 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
           residentKeyRequirement: null
         - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           description: description
           enforceDuringAuthentication: false
@@ -4745,6 +5039,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           totp:
             pairingDisabled: true
             otp:
@@ -4754,11 +5049,10 @@ components:
                   duration: 1
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           newDeviceNotification: null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           mobile:
             otp:
@@ -4772,6 +5066,7 @@ components:
                   duration: 5
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
             applications:
             - autoEnrollment:
                 enabled: true
@@ -4829,6 +5124,7 @@ components:
             fido2PolicyId: fido2PolicyId
             pairingDisabled: true
             enabled: true
+            promptForNicknameOnPairing: true
           platform:
             pairingDisabled: true
             enabled: true
@@ -4850,6 +5146,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           id: id
           securityKey:
             pairingDisabled: true
@@ -4867,6 +5164,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           authentication:
             deviceSelection: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -4882,6 +5180,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           totp:
             pairingDisabled: true
             otp:
@@ -4891,11 +5190,10 @@ components:
                   duration: 1
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           newDeviceNotification: null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           mobile:
             otp:
@@ -4909,6 +5207,7 @@ components:
                   duration: 5
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
             applications:
             - autoEnrollment:
                 enabled: true
@@ -4966,6 +5265,7 @@ components:
             fido2PolicyId: fido2PolicyId
             pairingDisabled: true
             enabled: true
+            promptForNicknameOnPairing: true
           platform:
             pairingDisabled: true
             enabled: true
@@ -4987,6 +5287,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           id: id
           securityKey:
             pairingDisabled: true
@@ -5004,6 +5305,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           authentication:
             deviceSelection: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -5176,64 +5478,6 @@ components:
       - enforceDuringAuthentication
       - option
       type: object
-    MFAPushCredentialAPNS_allOf:
-      properties:
-        key:
-          description: A string that Apple uses as an identifier to identify an authentication
-            key.  Mandatory.
-          type: string
-        teamId:
-          description: A string that Apple uses as an identifier to identify teams.
-          type: string
-        token:
-          description: A string that Apple uses as the authentication token signing
-            key to securely connect to APNS. This is a p8 file with a private key
-            format.
-          type: string
-      required:
-      - key
-      - teamId
-      - token
-      type: object
-      example: null
-    MFAPushCredentialFCM_allOf:
-      deprecated: true
-      properties:
-        key:
-          deprecated: true
-          description: A string that Apple uses as an identifier to identify an authentication
-            key.  Mandatory.
-          type: string
-      required:
-      - key
-      type: object
-      example: null
-    MFAPushCredentialFCMHTTPV1_allOf:
-      properties:
-        googleServiceAccountCredentials:
-          description: Used when `type` is set to `FCM_HTTP_V1`. The value should
-            be the contents of the JSON file that represents your Service Account
-            Credentials.
-          type: string
-      required:
-      - googleServiceAccountCredentials
-      type: object
-      example: null
-    MFAPushCredentialHMS_allOf:
-      properties:
-        clientId:
-          description: Used only if type is set to HMS. OAuth 2.0 Client ID from the
-            Huawei Developers API console.
-          type: string
-        clientSecret:
-          description: Used only if type is set to HMS. The client secret associated
-            with the OAuth 2.0 Client ID.
-          type: string
-      required:
-      - clientId
-      - clientSecret
-      type: object
-      example: null
     MFASettings_authentication:
       deprecated: true
       description: An object that contains the device selection settings.
@@ -5292,6 +5536,16 @@ components:
             \ for extensions is disabled."
           type: boolean
       type: object
+    MFASettings_users:
+      description: Contains information about the default settings for new users.
+      example:
+        mfaEnabled: true
+      properties:
+        mfaEnabled:
+          description: Set `mfaEnabled` to `true` if you want MFA to be enabled by
+            default for new users.
+          type: boolean
+      type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).
@@ -5314,6 +5568,10 @@ components:
         maximumValue:
           description: The maximum value allowed for the request.
           type: integer
+        referencedValues:
+          items:
+            type: string
+          type: array
       type: object
     P1Error_details_inner:
       properties:
