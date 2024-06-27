@@ -97,7 +97,6 @@ Class | Method | HTTP request | Description
 *AlertingApi* | [**CreateAlertChannel**](docs/AlertingApi.md#createalertchannel) | **Post** /environments/{environmentID}/alertChannels | CREATE Alert Channel
 *AlertingApi* | [**DeleteAlertChannel**](docs/AlertingApi.md#deletealertchannel) | **Delete** /environments/{environmentID}/alertChannels/{alertChannelID} | DELETE Alert Channel
 *AlertingApi* | [**ReadAllAlertChannels**](docs/AlertingApi.md#readallalertchannels) | **Get** /environments/{environmentID}/alertChannels | READ All Alert Channels
-*AlertingApi* | [**ReadOneAlertChannel**](docs/AlertingApi.md#readonealertchannel) | **Get** /environments/{environmentID}/alertChannels/{alertChannelID} | READ One Alert Channel
 *AlertingApi* | [**UpdateAlertChannel**](docs/AlertingApi.md#updatealertchannel) | **Put** /environments/{environmentID}/alertChannels/{alertChannelID} | UPDATE Alert Channel
 *ApplicationAttributeMappingApi* | [**CreateApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#createapplicationattributemapping) | **Post** /environments/{environmentID}/applications/{applicationID}/attributes | CREATE Application Attribute Mapping
 *ApplicationAttributeMappingApi* | [**DeleteApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#deleteapplicationattributemapping) | **Delete** /environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | DELETE Application Attribute Mapping
