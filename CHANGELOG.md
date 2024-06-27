@@ -2,6 +2,9 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.42.0](./management/CHANGELOG.md)
     * **Enhancement** Added trials ENUM values to the `EnumSolutionType` model. [#364](https://github.com/patrickcping/pingone-go-sdk-v2/pull/364)
+    * **Enhancement** Added `AlertName` field to the `AlertChannel` model. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
+    * **Bug** Remove unsupported `AlertingApi.ReadOneAlertChannel`. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
+    * **Bug** Corrected `EnumAlertChannelAlertType` enum values. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
 
 # Release (2024-06-18)
 
