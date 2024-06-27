@@ -1890,6 +1890,8 @@ components:
           description: The HREF of the link.
           format: uri
           type: string
+      required:
+      - href
       type: object
     EntityArray__embedded:
       example:

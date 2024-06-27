@@ -46,7 +46,9 @@ components:
           href:
             type: string
             format: uri
-            description: The HREF of the link. 
+            description: The HREF of the link.
+        required:
+          - href 
     EnumAgreementRevisionContentType:
       type: string
       description: An immutable string that specifies the content type of text. Options are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1) and [Media Types/text](https://www.iana.org/assignments/media-types/media-types.xhtml#text). This attribute is supported in POST requests only.

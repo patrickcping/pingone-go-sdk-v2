@@ -4397,6 +4397,8 @@ components:
           description: The HREF of the link.
           format: uri
           type: string
+      required:
+      - href
       type: object
     DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime:
       example:

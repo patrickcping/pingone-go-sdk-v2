@@ -35675,6 +35675,8 @@ components:
           description: The HREF of the link.
           format: uri
           type: string
+      required:
+      - href
       type: object
     AgreementLanguage_agreement:
       example:

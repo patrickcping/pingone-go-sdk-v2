@@ -46,7 +46,9 @@ components:
           href:
             type: string
             format: uri
-            description: The HREF of the link. 
+            description: The HREF of the link.
+        required:
+          - href
     APIServer:
       type: object
       properties:
