@@ -1,3 +1,8 @@
+# v0.6.0 (Unreleased)
+
+* **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+* **Enhancement** Added the `HALApi` service to be able to follow HAL links in responses. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
+
 # v0.5.0 (2024-06-07)
 
 * **Note** Removed unused `Operations` field from the `APIServer` model. [#353](https://github.com/patrickcping/pingone-go-sdk-v2/pull/353)
