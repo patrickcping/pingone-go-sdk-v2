@@ -27608,6 +27608,15 @@ components:
       - requireReconsent
       - text
       type: object
+    AgreementRevisionText:
+      properties:
+        resourcePath:
+          type: string
+        data:
+          type: string
+        dataType:
+          type: string
+      type: object
     AlertChannel:
       example:
         environment:

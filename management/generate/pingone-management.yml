@@ -795,6 +795,15 @@ components:
         - effectiveAt
         - requireReconsent
         - text
+    AgreementRevisionText:
+      type: object
+      properties:
+        resourcePath:
+          type: string
+        data:
+          type: string
+        dataType:
+          type: string
     AlertChannel:
       type: object
       properties:

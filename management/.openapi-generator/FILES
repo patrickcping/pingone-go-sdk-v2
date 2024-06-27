@@ -87,6 +87,7 @@ docs/AgreementLanguageRevision.md
 docs/AgreementLanguageRevisionLanguage.md
 docs/AgreementLanguageUserExperience.md
 docs/AgreementLanguagesResourcesApi.md
+docs/AgreementRevisionText.md
 docs/AgreementRevisionsResourcesApi.md
 docs/AgreementsResourcesApi.md
 docs/AlertChannel.md
@@ -668,6 +669,7 @@ model_agreement_language_current_revision.go
 model_agreement_language_revision.go
 model_agreement_language_revision_language.go
 model_agreement_language_user_experience.go
+model_agreement_revision_text.go
 model_alert_channel.go
 model_application.go
 model_application_access_control.go

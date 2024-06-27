@@ -439,6 +439,7 @@ Class | Method | HTTP request | Description
  - [AgreementLanguageRevision](docs/AgreementLanguageRevision.md)
  - [AgreementLanguageRevisionLanguage](docs/AgreementLanguageRevisionLanguage.md)
  - [AgreementLanguageUserExperience](docs/AgreementLanguageUserExperience.md)
+ - [AgreementRevisionText](docs/AgreementRevisionText.md)
  - [AlertChannel](docs/AlertChannel.md)
  - [Application](docs/Application.md)
  - [ApplicationAccessControl](docs/ApplicationAccessControl.md)
