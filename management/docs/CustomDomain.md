@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Certificate** | Pointer to [**CustomDomainCertificate**](CustomDomainCertificate.md) |  | [optional] 
 **CanonicalName** | Pointer to **string** | A string that specifies the domain name that should be used as the value of the CNAME record in the customer’s DNS. | [optional] [readonly] 
 **DomainName** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment (for example, auth.shopco.com). This is a required property. | 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *CustomDomain) GetLinks() LinksHATEOAS`
+`func (o *CustomDomain) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *CustomDomain) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *CustomDomain) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *CustomDomain) SetLinks(v LinksHATEOAS)`
+`func (o *CustomDomain) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

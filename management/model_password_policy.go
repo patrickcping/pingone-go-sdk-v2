@@ -19,7 +19,7 @@ var _ MappedNullable = &PasswordPolicy{}
 
 // PasswordPolicy struct for PasswordPolicy
 type PasswordPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Determines whether the password policy for a user will be ignored. If this property is omitted from a CREATE Password Policy request, its value is set to false.
 	BypassPolicy *bool `json:"bypassPolicy,omitempty"`
 	// The date and time the resource was created (format ISO-8061).
@@ -89,9 +89,9 @@ func NewPasswordPolicyWithDefaults() *PasswordPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *PasswordPolicy) GetLinks() LinksHATEOAS {
+func (o *PasswordPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -99,7 +99,7 @@ func (o *PasswordPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *PasswordPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -115,8 +115,8 @@ func (o *PasswordPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *PasswordPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *PasswordPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

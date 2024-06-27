@@ -20,7 +20,7 @@ var _ MappedNullable = &Agreement{}
 
 // Agreement struct for Agreement
 type Agreement struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the consent count metric was last updated. This value is typically updated once every 24 hours.
 	ConsentsAggregatedAt *time.Time `json:"consentsAggregatedAt,omitempty"`
 	// A string that specifies the description of the agreement.
@@ -60,9 +60,9 @@ func NewAgreementWithDefaults() *Agreement {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Agreement) GetLinks() LinksHATEOAS {
+func (o *Agreement) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -70,7 +70,7 @@ func (o *Agreement) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Agreement) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Agreement) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -86,8 +86,8 @@ func (o *Agreement) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Agreement) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Agreement) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &RoleAssignment{}
 
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Gateway *GatewayInstanceGateway `json:"gateway,omitempty"`
 	Group *RoleAssignmentGroup `json:"group,omitempty"`
@@ -51,9 +51,9 @@ func NewRoleAssignmentWithDefaults() *RoleAssignment {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *RoleAssignment) GetLinks() LinksHATEOAS {
+func (o *RoleAssignment) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -61,7 +61,7 @@ func (o *RoleAssignment) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignment) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *RoleAssignment) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *RoleAssignment) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *RoleAssignment) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *RoleAssignment) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

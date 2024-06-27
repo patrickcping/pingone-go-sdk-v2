@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationRole{}
 
 // ApplicationRole struct for ApplicationRole
 type ApplicationRole struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The description of the application role.
 	Description *string `json:"description,omitempty"`
 	// The ID of the application role.
@@ -47,9 +47,9 @@ func NewApplicationRoleWithDefaults() *ApplicationRole {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationRole) GetLinks() LinksHATEOAS {
+func (o *ApplicationRole) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -57,7 +57,7 @@ func (o *ApplicationRole) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRole) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationRole) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *ApplicationRole) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationRole) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationRole) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

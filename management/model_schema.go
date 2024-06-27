@@ -19,7 +19,7 @@ var _ MappedNullable = &Schema{}
 
 // Schema struct for Schema
 type Schema struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Indicates whether or not the `contains` operator can be used. You can use the `contains` operator in a maximum of 5 custom attributes.
 	AllowsContainsOperator *bool `json:"allowsContainsOperator,omitempty"`
 	Attributes []SchemaAttribute `json:"attributes,omitempty"`
@@ -50,9 +50,9 @@ func NewSchemaWithDefaults() *Schema {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Schema) GetLinks() LinksHATEOAS {
+func (o *Schema) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -60,7 +60,7 @@ func (o *Schema) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schema) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Schema) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -76,8 +76,8 @@ func (o *Schema) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Schema) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Schema) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

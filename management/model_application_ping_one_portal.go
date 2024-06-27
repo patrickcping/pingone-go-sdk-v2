@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationPingOnePortal{}
 
 // ApplicationPingOnePortal struct for ApplicationPingOnePortal
 type ApplicationPingOnePortal struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -72,9 +72,9 @@ func NewApplicationPingOnePortalWithDefaults() *ApplicationPingOnePortal {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationPingOnePortal) GetLinks() LinksHATEOAS {
+func (o *ApplicationPingOnePortal) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -82,7 +82,7 @@ func (o *ApplicationPingOnePortal) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPingOnePortal) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationPingOnePortal) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *ApplicationPingOnePortal) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationPingOnePortal) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationPingOnePortal) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

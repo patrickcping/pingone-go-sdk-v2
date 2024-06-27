@@ -20,7 +20,7 @@ var _ MappedNullable = &Subscription{}
 
 // Subscription struct for Subscription
 type Subscription struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether a created or updated subscription should be active or suspended. A suspended state (`\"enabled\":false`) accumulates all matched events, but these events are not delivered until the subscription becomes active again (`\"enabled\":true`). For suspended subscriptions, events accumulate for a maximum of two weeks. Events older than two weeks are deleted. Restarted subscriptions receive the saved events (up to two weeks from the restart date). This is a required property.
@@ -64,9 +64,9 @@ func NewSubscriptionWithDefaults() *Subscription {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Subscription) GetLinks() LinksHATEOAS {
+func (o *Subscription) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -74,7 +74,7 @@ func (o *Subscription) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Subscription) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Subscription) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -90,8 +90,8 @@ func (o *Subscription) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Subscription) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Subscription) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

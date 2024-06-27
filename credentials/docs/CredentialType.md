@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **CardDesignTemplate** | **string** | A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image. | 
 **CardType** | Pointer to **string** | A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was created. | [optional] [readonly] 
@@ -42,20 +42,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *CredentialType) GetLinks() LinksHATEOAS`
+`func (o *CredentialType) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *CredentialType) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *CredentialType) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *CredentialType) SetLinks(v LinksHATEOAS)`
+`func (o *CredentialType) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

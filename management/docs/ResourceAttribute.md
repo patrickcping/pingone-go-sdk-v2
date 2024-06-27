@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource&#39;s type property is &#x60;OPENID_CONNECT&#x60;: - &#x60;acr&#x60; - &#x60;amr&#x60; - &#x60;aud&#x60; - &#x60;auth_time&#x60; - &#x60;client_id&#x60; - &#x60;env&#x60; - &#x60;exp&#x60; - &#x60;iat&#x60; - &#x60;iss&#x60; - &#x60;jti&#x60; - &#x60;org&#x60; - &#x60;p1.*&#x60; (any name starting with the p1. prefix) - &#x60;scope&#x60; - &#x60;sid&#x60; - &#x60;sub&#x60;  | 
 **Type** | Pointer to [**EnumResourceAttributeType**](EnumResourceAttributeType.md) |  | [optional] 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ResourceAttribute) GetLinks() LinksHATEOAS`
+`func (o *ResourceAttribute) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ResourceAttribute) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *ResourceAttribute) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ResourceAttribute) SetLinks(v LinksHATEOAS)`
+`func (o *ResourceAttribute) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

@@ -25,9 +25,7 @@ docs/EnumRiskPolicySetTriggerType.md
 docs/EnumThresholdSource.md
 docs/EnumUserRiskBehaviorRiskModel.md
 docs/EnumUserType.md
-docs/LinksHATEOAS.md
-docs/LinksHATEOASNext.md
-docs/LinksHATEOASSelf.md
+docs/LinksHATEOASValue.md
 docs/ObjectEnvironment.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
@@ -132,9 +130,7 @@ model_enum_risk_policy_set_trigger_type.go
 model_enum_threshold_source.go
 model_enum_user_risk_behavior_risk_model.go
 model_enum_user_type.go
-model_links_hateoas.go
-model_links_hateoas_next.go
-model_links_hateoas_self.go
+model_links_hateoas_value.go
 model_object_environment.go
 model_p1_error.go
 model_p1_error_details_inner.go

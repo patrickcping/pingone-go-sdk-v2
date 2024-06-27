@@ -19,7 +19,7 @@ var _ MappedNullable = &Organization{}
 
 // Organization struct for Organization
 type Organization struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the organization name, which must be provided and must be unique among all organizations in PingOne.
@@ -52,9 +52,9 @@ func NewOrganizationWithDefaults() *Organization {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Organization) GetLinks() LinksHATEOAS {
+func (o *Organization) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -62,7 +62,7 @@ func (o *Organization) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Organization) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Organization) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -78,8 +78,8 @@ func (o *Organization) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Organization) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Organization) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

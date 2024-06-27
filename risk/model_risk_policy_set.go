@@ -20,7 +20,7 @@ var _ MappedNullable = &RiskPolicySet{}
 
 // RiskPolicySet struct for RiskPolicySet
 type RiskPolicySet struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether this risk policy set is the environment's default risk policy set, which is used whenever an explicit policySet ID is not specified in the risk policy evaluation request. If this property is not specified, the value defaults to false, and this risk policy set is not regarded as the default risk policy set for the environment. When this property is set to true (in PUT or POST requests), the default property of all other risk policy sets in the environment is set to false.
@@ -62,9 +62,9 @@ func NewRiskPolicySetWithDefaults() *RiskPolicySet {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *RiskPolicySet) GetLinks() LinksHATEOAS {
+func (o *RiskPolicySet) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -72,7 +72,7 @@ func (o *RiskPolicySet) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySet) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *RiskPolicySet) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -88,8 +88,8 @@ func (o *RiskPolicySet) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *RiskPolicySet) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *RiskPolicySet) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

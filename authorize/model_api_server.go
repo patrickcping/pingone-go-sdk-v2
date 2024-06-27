@@ -19,7 +19,7 @@ var _ MappedNullable = &APIServer{}
 
 // APIServer struct for APIServer
 type APIServer struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AccessControl *APIServerAccessControl `json:"accessControl,omitempty"`
 	AuthorizationServer APIServerAuthorizationServer `json:"authorizationServer"`
 	// An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer's API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters.
@@ -53,9 +53,9 @@ func NewAPIServerWithDefaults() *APIServer {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *APIServer) GetLinks() LinksHATEOAS {
+func (o *APIServer) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -63,7 +63,7 @@ func (o *APIServer) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *APIServer) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *APIServer) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -79,8 +79,8 @@ func (o *APIServer) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *APIServer) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *APIServer) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

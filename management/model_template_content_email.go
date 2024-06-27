@@ -19,7 +19,7 @@ var _ MappedNullable = &TemplateContentEmail{}
 
 // TemplateContentEmail struct for TemplateContentEmail
 type TemplateContentEmail struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The template id.
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
@@ -74,9 +74,9 @@ func NewTemplateContentEmailWithDefaults() *TemplateContentEmail {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *TemplateContentEmail) GetLinks() LinksHATEOAS {
+func (o *TemplateContentEmail) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -84,7 +84,7 @@ func (o *TemplateContentEmail) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentEmail) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *TemplateContentEmail) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *TemplateContentEmail) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *TemplateContentEmail) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *TemplateContentEmail) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

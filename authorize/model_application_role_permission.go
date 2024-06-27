@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationRolePermission{}
 
 // ApplicationRolePermission struct for ApplicationRolePermission
 type ApplicationRolePermission struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The ID of the application resource permission to associate with this role.
 	Id string `json:"id"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -49,9 +49,9 @@ func NewApplicationRolePermissionWithDefaults() *ApplicationRolePermission {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationRolePermission) GetLinks() LinksHATEOAS {
+func (o *ApplicationRolePermission) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -59,7 +59,7 @@ func (o *ApplicationRolePermission) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRolePermission) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *ApplicationRolePermission) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -75,8 +75,8 @@ func (o *ApplicationRolePermission) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *ApplicationRolePermission) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *ApplicationRolePermission) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

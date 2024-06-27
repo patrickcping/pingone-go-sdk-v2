@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | The ID of the API service operation. This is randomly generated when the operation is created. | [optional] [readonly] 
 **Name** | **string** | The name of the API service operation. | 
 **AccessControl** | Pointer to [**APIServerOperationAccessControl**](APIServerOperationAccessControl.md) |  | [optional] 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *APIServerOperation) GetLinks() LinksHATEOAS`
+`func (o *APIServerOperation) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *APIServerOperation) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *APIServerOperation) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *APIServerOperation) SetLinks(v LinksHATEOAS)`
+`func (o *APIServerOperation) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

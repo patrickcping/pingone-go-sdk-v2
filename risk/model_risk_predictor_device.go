@@ -20,7 +20,7 @@ var _ MappedNullable = &RiskPredictorDevice{}
 
 // RiskPredictorDevice struct for RiskPredictorDevice
 type RiskPredictorDevice struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -67,9 +67,9 @@ func NewRiskPredictorDeviceWithDefaults() *RiskPredictorDevice {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *RiskPredictorDevice) GetLinks() LinksHATEOAS {
+func (o *RiskPredictorDevice) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -77,7 +77,7 @@ func (o *RiskPredictorDevice) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorDevice) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *RiskPredictorDevice) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *RiskPredictorDevice) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *RiskPredictorDevice) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *RiskPredictorDevice) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

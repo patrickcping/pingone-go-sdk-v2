@@ -20,7 +20,7 @@ var _ MappedNullable = &Resource{}
 
 // Resource struct for Resource
 type Resource struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days).
 	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
 	ApplicationPermissionsSettings *ResourceApplicationPermissionsSettings `json:"applicationPermissionsSettings,omitempty"`
@@ -61,9 +61,9 @@ func NewResourceWithDefaults() *Resource {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Resource) GetLinks() LinksHATEOAS {
+func (o *Resource) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -71,7 +71,7 @@ func (o *Resource) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Resource) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Resource) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -87,8 +87,8 @@ func (o *Resource) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Resource) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Resource) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
