@@ -11,6 +11,7 @@
     * **Enhancement** Added the `HALApi` service to be able to follow HAL links in responses. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
     * **Enhancement** Added trials ENUM values to the `EnumSolutionType` model. [#364](https://github.com/patrickcping/pingone-go-sdk-v2/pull/364)
     * **Enhancement** Added `AlertName` field to the `AlertChannel` model. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
+    * **Enhancement** Added support for granting the `Application Owner` role. [#365](https://github.com/patrickcping/pingone-go-sdk-v2/pull/365)
     * **Bug** Remove unsupported `AlertingApi.ReadOneAlertChannel`. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
     * **Bug** Corrected `EnumAlertChannelAlertType` enum values. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.20.0](./mfa/CHANGELOG.md)
