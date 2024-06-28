@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **AdvancedServices** | Pointer to [**LicenseAdvancedServices**](LicenseAdvancedServices.md) |  | [optional] 
 **AssignedEnvironmentsCount** | Pointer to **int32** | A read-only integer that specifies the total number of environments associated with this license. | [optional] [readonly] 
 **Authorize** | Pointer to [**LicenseAuthorize**](LicenseAuthorize.md) |  | [optional] 
@@ -49,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *License) GetLinks() LinksHATEOAS`
+`func (o *License) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *License) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *License) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *License) SetLinks(v LinksHATEOAS)`
+`func (o *License) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

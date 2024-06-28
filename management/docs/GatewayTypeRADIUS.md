@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] [readonly] 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *GatewayTypeRADIUS) GetLinks() LinksHATEOAS`
+`func (o *GatewayTypeRADIUS) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GatewayTypeRADIUS) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *GatewayTypeRADIUS) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GatewayTypeRADIUS) SetLinks(v LinksHATEOAS)`
+`func (o *GatewayTypeRADIUS) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

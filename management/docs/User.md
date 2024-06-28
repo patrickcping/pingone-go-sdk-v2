@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Account** | Pointer to [**UserAccount**](UserAccount.md) |  | [optional] 
 **Address** | Pointer to [**UserAddress**](UserAddress.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
@@ -57,20 +57,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *User) GetLinks() LinksHATEOAS`
+`func (o *User) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *User) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *User) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *User) SetLinks(v LinksHATEOAS)`
+`func (o *User) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

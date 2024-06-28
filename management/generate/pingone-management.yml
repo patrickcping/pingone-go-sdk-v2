@@ -40,32 +40,23 @@ components:
     LinksHATEOAS:
       type: object
       readOnly: true
-      additionalProperties: true
-      properties:
-        self:
-          type: object
-          description: An object that describes the current resource.
-          properties:
-            href:
-              $ref: '#/components/schemas/LinksHATEOASHref'
-        next:
-          type: object
-          description: An object that describes the next page of results. This property is present only if there is a next page of results and the `limit` parameter is used.
-          properties:
-            href:
-              $ref: '#/components/schemas/LinksHATEOASHref'
-    LinksHATEOASHref:
-      type: string
-      format: uri
-      description: The URI of the resource.
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+            format: uri
+            description: The HREF of the link.
+        required:
+          - href 
     EnumAgreementRevisionContentType:
       type: string
       description: An immutable string that specifies the content type of text. Options are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1) and [Media Types/text](https://www.iana.org/assignments/media-types/media-types.xhtml#text). This attribute is supported in POST requests only.
       enum: [text/html,text/plain]
     EnumAlertChannelAlertType:
       type: string
-      enum: [CERTIFICATE_EXPIRED, CERTIFICATE_EXPIRING, KEY_PAIR_EXPIRED, GATEWAY_VERSION_DEPRECATED, KEY_PAIR_EXPIRING, GATEWAY_VERSION_DEPRECATING]
-      description: Alert channel alerting types. Possible values are `CERTIFICATE_EXPIRED`, `CERTIFICATE_EXPIRING`, `KEY_PAIR_EXPIRED`, `GATEWAY_VERSION_DEPRECATED`, `KEY_PAIR_EXPIRING`, `GATEWAY_VERSION_DEPRECATING`.
+      enum: [CERTIFICATE_EXPIRED, CERTIFICATE_EXPIRING, KEY_PAIR_EXPIRED, KEY_PAIR_EXPIRING, GATEWAY_VERSION_DEPRECATED, GATEWAY_VERSION_DEPRECATING, LICENSE_90_PERCENT_USER_SOFT_LIMIT, LICENSE_EXPIRED, LICENSE_EXPIRING, LICENSE_ROTATED, LICENSE_USER_HARD_LIMIT_EXCEEDED, LICENSE_USER_SOFT_LIMIT_EXCEEDED, RISK_CONFIGURATION]
+      description: Alert channel alerting types.
     EnumAlertChannelSeverity:
       type: string
       enum: [INFO, WARNING, ERROR]
@@ -807,6 +798,15 @@ components:
         - effectiveAt
         - requireReconsent
         - text
+    AgreementRevisionText:
+      type: object
+      properties:
+        resourcePath:
+          type: string
+        data:
+          type: string
+        dataType:
+          type: string
     AlertChannel:
       type: object
       properties:
@@ -818,6 +818,9 @@ components:
           readOnly: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        alertName:
+          type: string
+          description: The name to assign to the alert channel.
         channelType:
           $ref: '#/components/schemas/EnumAlertChannelType'
         addresses:
@@ -8160,43 +8163,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/AlertChannel'
   /environments/{environmentID}/alertChannels/{alertChannelID}:
-    get:
-      tags:
-        - Alerting
-      summary: READ One Alert Channel
-      operationId: readOneAlertChannel
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: alertChannelID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '409':
-          $ref: '#/components/responses/409'
-        '429':
-          $ref: '#/components/responses/429'
-        '500':
-          $ref: '#/components/responses/500'
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AlertChannel'
     put:
       tags:
         - Alerting

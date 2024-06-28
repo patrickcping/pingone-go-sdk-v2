@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | The template id | [optional] [readonly] 
 **DisplayName** | **string** | The template’s display name. | 
 **DeliveryMethods** | **[]string** | The delivery methods supported for this template. Valid values are &#x60;SMS&#x60;, &#x60;Voice&#x60;, &#x60;Email&#x60; and &#x60;Push&#x60;. | 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *Template) GetLinks() LinksHATEOAS`
+`func (o *Template) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *Template) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *Template) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *Template) SetLinks(v LinksHATEOAS)`
+`func (o *Template) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Condition** | [**RiskPolicyCondition**](RiskPolicyCondition.md) |  | 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was first created (format ISO-8061). | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters. | [optional] 
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *RiskPolicy) GetLinks() LinksHATEOAS`
+`func (o *RiskPolicy) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *RiskPolicy) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *RiskPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *RiskPolicy) SetLinks(v LinksHATEOAS)`
+`func (o *RiskPolicy) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

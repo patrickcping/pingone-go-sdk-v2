@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityProviderSAML{}
 
 // IdentityProviderSAML struct for IdentityProviderSAML
 type IdentityProviderSAML struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
@@ -87,9 +87,9 @@ func NewIdentityProviderSAMLWithDefaults() *IdentityProviderSAML {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *IdentityProviderSAML) GetLinks() LinksHATEOAS {
+func (o *IdentityProviderSAML) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -97,7 +97,7 @@ func (o *IdentityProviderSAML) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderSAML) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *IdentityProviderSAML) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -113,8 +113,8 @@ func (o *IdentityProviderSAML) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *IdentityProviderSAML) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *IdentityProviderSAML) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

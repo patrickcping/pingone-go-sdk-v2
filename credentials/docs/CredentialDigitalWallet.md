@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Application** | Pointer to [**CredentialDigitalWalletApplication**](CredentialDigitalWalletApplication.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential digital wallet was created. | [optional] [readonly] 
 **DigitalWalletApplication** | Pointer to [**CredentialDigitalWalletDigitalWalletApplication**](CredentialDigitalWalletDigitalWalletApplication.md) |  | [optional] 
@@ -37,20 +37,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *CredentialDigitalWallet) GetLinks() LinksHATEOAS`
+`func (o *CredentialDigitalWallet) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *CredentialDigitalWallet) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *CredentialDigitalWallet) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *CredentialDigitalWallet) SetLinks(v LinksHATEOAS)`
+`func (o *CredentialDigitalWallet) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

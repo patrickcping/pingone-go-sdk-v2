@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **AccessControl** | Pointer to [**APIServerAccessControl**](APIServerAccessControl.md) |  | [optional] 
 **AuthorizationServer** | [**APIServerAuthorizationServer**](APIServerAuthorizationServer.md) |  | 
 **BaseUrls** | **[]string** | An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer&#39;s API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters. | 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *APIServer) GetLinks() LinksHATEOAS`
+`func (o *APIServer) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *APIServer) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *APIServer) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *APIServer) SetLinks(v LinksHATEOAS)`
+`func (o *APIServer) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

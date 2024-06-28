@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | The ID of the API server operation. This is randomly generated when the operation is created. | [optional] 
 **Role** | Pointer to **map[string]interface{}** | The role associated with the role assignment. | [optional] 
 **Subject** | Pointer to **map[string]interface{}** | The user associated with the role assignment. | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ApplicationRoleAssignment) GetLinks() LinksHATEOAS`
+`func (o *ApplicationRoleAssignment) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ApplicationRoleAssignment) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *ApplicationRoleAssignment) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ApplicationRoleAssignment) SetLinks(v LinksHATEOAS)`
+`func (o *ApplicationRoleAssignment) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Embedded** | Pointer to [**EntityArrayEmbedded**](EntityArrayEmbedded.md) |  | [optional] 
 **Count** | Pointer to **float32** |  | [optional] 
 **Size** | Pointer to **float32** |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EntityArray) GetLinks() LinksHATEOAS`
+`func (o *EntityArray) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EntityArray) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *EntityArray) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EntityArray) SetLinks(v LinksHATEOAS)`
+`func (o *EntityArray) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

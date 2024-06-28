@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**CreateAlertChannel**](AlertingApi.md#CreateAlertChannel) | **Post** /environments/{environmentID}/alertChannels | CREATE Alert Channel
 [**DeleteAlertChannel**](AlertingApi.md#DeleteAlertChannel) | **Delete** /environments/{environmentID}/alertChannels/{alertChannelID} | DELETE Alert Channel
 [**ReadAllAlertChannels**](AlertingApi.md#ReadAllAlertChannels) | **Get** /environments/{environmentID}/alertChannels | READ All Alert Channels
-[**ReadOneAlertChannel**](AlertingApi.md#ReadOneAlertChannel) | **Get** /environments/{environmentID}/alertChannels/{alertChannelID} | READ One Alert Channel
 [**UpdateAlertChannel**](AlertingApi.md#UpdateAlertChannel) | **Put** /environments/{environmentID}/alertChannels/{alertChannelID} | UPDATE Alert Channel
 
 
@@ -204,77 +203,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EntityArray**](EntityArray.md)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReadOneAlertChannel
-
-> AlertChannel ReadOneAlertChannel(ctx, environmentID, alertChannelID).Execute()
-
-READ One Alert Channel
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    alertChannelID := "alertChannelID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AlertingApi.ReadOneAlertChannel(context.Background(), environmentID, alertChannelID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertingApi.ReadOneAlertChannel``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneAlertChannel`: AlertChannel
-    fmt.Fprintf(os.Stdout, "Response from `AlertingApi.ReadOneAlertChannel`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**alertChannelID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiReadOneAlertChannelRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**AlertChannel**](AlertChannel.md)
 
 ### Authorization
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **AlternateId** | Pointer to **string** | A string that specifies alternative unique identifier for the endpoint, which provides a method for locating the resource by a known, fixed identifier. | [optional] 
 **AuthorizationVersion** | Pointer to [**DecisionEndpointAuthorizationVersion**](DecisionEndpointAuthorizationVersion.md) |  | [optional] 
 **Description** | **string** | A string that specifies the description of the policy decision resource. | 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *DecisionEndpoint) GetLinks() LinksHATEOAS`
+`func (o *DecisionEndpoint) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *DecisionEndpoint) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *DecisionEndpoint) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *DecisionEndpoint) SetLinks(v LinksHATEOAS)`
+`func (o *DecisionEndpoint) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

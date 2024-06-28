@@ -19,10 +19,12 @@ var _ MappedNullable = &AlertChannel{}
 
 // AlertChannel struct for AlertChannel
 type AlertChannel struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Unique ID of the alert channel.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// The name to assign to the alert channel.
+	AlertName *string `json:"alertName,omitempty"`
 	ChannelType EnumAlertChannelType `json:"channelType"`
 	// The email addresses to send the alert to.
 	Addresses []string `json:"addresses"`
@@ -54,9 +56,9 @@ func NewAlertChannelWithDefaults() *AlertChannel {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *AlertChannel) GetLinks() LinksHATEOAS {
+func (o *AlertChannel) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -64,7 +66,7 @@ func (o *AlertChannel) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertChannel) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *AlertChannel) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -80,8 +82,8 @@ func (o *AlertChannel) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *AlertChannel) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *AlertChannel) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
@@ -147,6 +149,38 @@ func (o *AlertChannel) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *AlertChannel) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetAlertName returns the AlertName field value if set, zero value otherwise.
+func (o *AlertChannel) GetAlertName() string {
+	if o == nil || IsNil(o.AlertName) {
+		var ret string
+		return ret
+	}
+	return *o.AlertName
+}
+
+// GetAlertNameOk returns a tuple with the AlertName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertChannel) GetAlertNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AlertName) {
+		return nil, false
+	}
+	return o.AlertName, true
+}
+
+// HasAlertName returns a boolean if a field has been set.
+func (o *AlertChannel) HasAlertName() bool {
+	if o != nil && !IsNil(o.AlertName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertName gets a reference to the given string and assigns it to the AlertName field.
+func (o *AlertChannel) SetAlertName(v string) {
+	o.AlertName = &v
 }
 
 // GetChannelType returns the ChannelType field value
@@ -311,6 +345,9 @@ func (o AlertChannel) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.AlertName) {
+		toSerialize["alertName"] = o.AlertName
 	}
 	toSerialize["channelType"] = o.ChannelType
 	toSerialize["addresses"] = o.Addresses

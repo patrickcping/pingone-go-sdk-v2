@@ -20,7 +20,7 @@ var _ MappedNullable = &FIDOPolicy{}
 
 // FIDOPolicy struct for FIDOPolicy
 type FIDOPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// FIDO policy's UUID.
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
@@ -68,9 +68,9 @@ func NewFIDOPolicyWithDefaults() *FIDOPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *FIDOPolicy) GetLinks() LinksHATEOAS {
+func (o *FIDOPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -78,7 +78,7 @@ func (o *FIDOPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FIDOPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *FIDOPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -94,8 +94,8 @@ func (o *FIDOPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *FIDOPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *FIDOPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

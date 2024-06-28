@@ -20,7 +20,7 @@ var _ MappedNullable = &VerifyPolicy{}
 
 // VerifyPolicy struct for VerifyPolicy
 type VerifyPolicy struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Name displayed in PingOne Admin UI.
@@ -59,9 +59,9 @@ func NewVerifyPolicyWithDefaults() *VerifyPolicy {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *VerifyPolicy) GetLinks() LinksHATEOAS {
+func (o *VerifyPolicy) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -69,7 +69,7 @@ func (o *VerifyPolicy) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *VerifyPolicy) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -85,8 +85,8 @@ func (o *VerifyPolicy) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *VerifyPolicy) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *VerifyPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Agreement** | Pointer to [**AgreementLanguageAgreement**](AgreementLanguageAgreement.md) |  | [optional] 
 **CurrentRevision** | Pointer to [**AgreementLanguageCurrentRevision**](AgreementLanguageCurrentRevision.md) |  | [optional] 
 **DisplayName** | **string** | A string that is used as the title of the agreement for the language presented to the user. This is a required property. | 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *AgreementLanguage) GetLinks() LinksHATEOAS`
+`func (o *AgreementLanguage) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *AgreementLanguage) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *AgreementLanguage) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *AgreementLanguage) SetLinks(v LinksHATEOAS)`
+`func (o *AgreementLanguage) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

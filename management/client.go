@@ -109,6 +109,8 @@ type APIClient struct {
 
 	GroupsApi *GroupsApiService
 
+	HALApi *HALApiService
+
 	IdentityProviderAttributesApi *IdentityProviderAttributesApiService
 
 	IdentityProvidersApi *IdentityProvidersApiService
@@ -273,6 +275,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.GroupMembershipApi = (*GroupMembershipApiService)(&c.common)
 	c.GroupRoleAssignmentsApi = (*GroupRoleAssignmentsApiService)(&c.common)
 	c.GroupsApi = (*GroupsApiService)(&c.common)
+	c.HALApi = (*HALApiService)(&c.common)
 	c.IdentityProviderAttributesApi = (*IdentityProviderAttributesApiService)(&c.common)
 	c.IdentityProvidersApi = (*IdentityProvidersApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)

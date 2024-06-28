@@ -21,7 +21,7 @@ var _ MappedNullable = &Certificate{}
 
 // Certificate struct for Certificate
 type Certificate struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Algorithm EnumCertificateKeyAlgorithm `json:"algorithm"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -79,9 +79,9 @@ func NewCertificateWithDefaults() *Certificate {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Certificate) GetLinks() LinksHATEOAS {
+func (o *Certificate) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -89,7 +89,7 @@ func (o *Certificate) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Certificate) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *Certificate) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *Certificate) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *Certificate) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *Certificate) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

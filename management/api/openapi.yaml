@@ -1913,76 +1913,6 @@ paths:
       summary: DELETE Alert Channel
       tags:
       - Alerting
-    get:
-      operationId: readOneAlertChannel
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: alertChannelID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AlertChannel'
-          description: Successful response
-      summary: READ One Alert Channel
-      tags:
-      - Alerting
     put:
       operationId: updateAlertChannel
       parameters:
@@ -26263,23 +26193,10 @@ components:
       description: Uncaught error occurred.  Platform outage
   schemas:
     LinksHATEOAS:
-      additionalProperties: true
-      example:
-        next:
-          href: https://openapi-generator.tech
-        self:
-          href: https://openapi-generator.tech
-      properties:
-        self:
-          $ref: '#/components/schemas/LinksHATEOAS_self'
-        next:
-          $ref: '#/components/schemas/LinksHATEOAS_next'
+      additionalProperties:
+        $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
       type: object
-    LinksHATEOASHref:
-      description: The URI of the resource.
-      format: uri
-      type: string
     EnumAgreementRevisionContentType:
       description: "An immutable string that specifies the content type of text. Options\
         \ are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1)\
@@ -26290,16 +26207,21 @@ components:
       - text/plain
       type: string
     EnumAlertChannelAlertType:
-      description: "Alert channel alerting types. Possible values are `CERTIFICATE_EXPIRED`,\
-        \ `CERTIFICATE_EXPIRING`, `KEY_PAIR_EXPIRED`, `GATEWAY_VERSION_DEPRECATED`,\
-        \ `KEY_PAIR_EXPIRING`, `GATEWAY_VERSION_DEPRECATING`."
+      description: Alert channel alerting types.
       enum:
       - CERTIFICATE_EXPIRED
       - CERTIFICATE_EXPIRING
       - KEY_PAIR_EXPIRED
-      - GATEWAY_VERSION_DEPRECATED
       - KEY_PAIR_EXPIRING
+      - GATEWAY_VERSION_DEPRECATED
       - GATEWAY_VERSION_DEPRECATING
+      - LICENSE_90_PERCENT_USER_SOFT_LIMIT
+      - LICENSE_EXPIRED
+      - LICENSE_EXPIRING
+      - LICENSE_ROTATED
+      - LICENSE_USER_HARD_LIMIT_EXCEEDED
+      - LICENSE_USER_SOFT_LIMIT_EXCEEDED
+      - RISK_CONFIGURATION
       type: string
     EnumAlertChannelSeverity:
       description: "Alert channel severity. Possible values are `INFO`, `WARNING`,\
@@ -27507,9 +27429,7 @@ components:
           id: id
         totalExpiredConsents: 0
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
         name: name
@@ -27520,7 +27440,10 @@ components:
         reconsentPeriodDays: 6.0274563
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         consentsAggregatedAt:
           description: The time the consent count metric was last updated. This value
             is typically updated once every 24 hours.
@@ -27575,9 +27498,7 @@ components:
         agreement:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         displayName: displayName
         userExperience:
@@ -27589,7 +27510,10 @@ components:
         enabled: true
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         agreement:
           $ref: '#/components/schemas/AgreementLanguage_agreement'
         currentRevision:
@@ -27625,9 +27549,7 @@ components:
         agreement:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         requireReconsent: true
         notValidAfter: 2000-01-23T04:56:07.000+00:00
@@ -27639,7 +27561,10 @@ components:
         contentType: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         agreement:
           $ref: '#/components/schemas/AgreementLanguage_agreement'
         contentType:
@@ -27685,6 +27610,15 @@ components:
       - requireReconsent
       - text
       type: object
+    AgreementRevisionText:
+      properties:
+        resourcePath:
+          type: string
+        data:
+          type: string
+        dataType:
+          type: string
+      type: object
     AlertChannel:
       example:
         environment:
@@ -27696,10 +27630,9 @@ components:
         - null
         - null
         _links:
-          next:
+          key:
             href: https://openapi-generator.tech
-          self:
-            href: https://openapi-generator.tech
+        alertName: alertName
         includeSeverities:
         - null
         - null
@@ -27710,13 +27643,19 @@ components:
         id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: Unique ID of the alert channel.
           readOnly: true
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        alertName:
+          description: The name to assign to the alert channel.
+          type: string
         channelType:
           $ref: '#/components/schemas/EnumAlertChannelType'
         addresses:
@@ -27754,7 +27693,10 @@ components:
     Application:
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         accessControl:
           $ref: '#/components/schemas/Application_accessControl'
         createdAt:
@@ -28190,9 +28132,7 @@ components:
       example:
         userInfo: true
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         oidcScopes:
         - oidcScopes
@@ -28210,7 +28150,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the application ID.
           readOnly: true
@@ -28292,9 +28235,7 @@ components:
         application:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         resource:
           id: id
@@ -28305,7 +28246,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         application:
           $ref: '#/components/schemas/ApplicationResourceGrant_application'
         createdAt:
@@ -28341,14 +28285,15 @@ components:
           secret: secret
           expiresAt: 2000-01-23T04:56:07.000+00:00
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         secret: secret
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         secret:
@@ -28395,9 +28340,7 @@ components:
       example:
         createdAt: createdAt
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         solutionType: null
         updatedAt: updatedAt
@@ -28434,7 +28377,10 @@ components:
             id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         solutionType:
           $ref: '#/components/schemas/EnumSolutionType'
         createdAt:
@@ -28459,9 +28405,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         companyName: companyName
         logo:
@@ -28470,7 +28414,10 @@ components:
         id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: Specifies the resource’s unique identifier.
           readOnly: true
@@ -28490,9 +28437,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         configuration:
           backgroundColor: backgroundColor
@@ -28515,7 +28460,10 @@ components:
         id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         configuration:
           $ref: '#/components/schemas/BrandingTheme_configuration'
         default:
@@ -28539,13 +28487,14 @@ components:
       example:
         default: true
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         default:
           description: A boolean to specify whether the theme is the default in the
             environment
@@ -28558,9 +28507,7 @@ components:
         customCRL: customCRL
         serialNumber: 5
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         issuerDN: issuerDN
         expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -28582,7 +28529,10 @@ components:
         usageType: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         algorithm:
           $ref: '#/components/schemas/EnumCertificateKeyAlgorithm'
         createdAt:
@@ -28678,9 +28628,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         domainName: domainName
         certificate:
@@ -28690,7 +28638,10 @@ components:
         status: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         certificate:
           $ref: '#/components/schemas/CustomDomain_certificate'
         canonicalName:
@@ -28744,15 +28695,16 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         domainName: domainName
         id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the auto-generated ID of the email
             domain.
@@ -28889,9 +28841,7 @@ components:
       example:
         size: 3.0576100241049344
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         _embedded:
           flowPolicies:
@@ -28901,9 +28851,7 @@ components:
               name: name
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             id: id
@@ -28916,9 +28864,7 @@ components:
               name: name
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             id: id
@@ -28930,9 +28876,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             format: null
             httpEndpoint:
@@ -28965,9 +28909,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             format: null
             httpEndpoint:
@@ -29034,9 +28976,7 @@ components:
           - customCRL: customCRL
             serialNumber: 5
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -29059,9 +28999,7 @@ components:
           - customCRL: customCRL
             serialNumber: 5
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -29094,10 +29032,9 @@ components:
             - null
             - null
             _links:
-              next:
+              key:
                 href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
+            alertName: alertName
             includeSeverities:
             - null
             - null
@@ -29115,10 +29052,9 @@ components:
             - null
             - null
             _links:
-              next:
+              key:
                 href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
+            alertName: alertName
             includeSeverities:
             - null
             - null
@@ -29133,9 +29069,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             description: description
@@ -29146,9 +29080,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             description: description
@@ -29160,9 +29092,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             configuration:
               backgroundColor: backgroundColor
@@ -29188,9 +29118,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             configuration:
               backgroundColor: backgroundColor
@@ -29215,9 +29143,7 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             domainName: domainName
             certificate:
@@ -29228,9 +29154,7 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             domainName: domainName
             certificate:
@@ -29269,9 +29193,7 @@ components:
               abcdefghijklmnopqrstuvwxyz: 3
             populationCount: 0
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             length:
               min: 11
@@ -29308,9 +29230,7 @@ components:
               abcdefghijklmnopqrstuvwxyz: 3
             populationCount: 0
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             length:
               min: 11
@@ -29344,9 +29264,7 @@ components:
           - agreement:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             requireReconsent: true
             notValidAfter: 2000-01-23T04:56:07.000+00:00
@@ -29359,9 +29277,7 @@ components:
           - agreement:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             requireReconsent: true
             notValidAfter: 2000-01-23T04:56:07.000+00:00
@@ -29377,9 +29293,7 @@ components:
             role:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             scope:
               id: id
@@ -29395,9 +29309,7 @@ components:
             role:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             scope:
               id: id
@@ -29430,9 +29342,7 @@ components:
             application:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             resource:
               id: id
@@ -29445,9 +29355,7 @@ components:
             application:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             resource:
               id: id
@@ -29464,9 +29372,7 @@ components:
           - null
           keyRotationPolicies:
           - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             dn: dn
             nextKeyId: nextKeyId
@@ -29483,9 +29389,7 @@ components:
             algorithm: null
             usageType: null
           - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             dn: dn
             nextKeyId: nextKeyId
@@ -29520,9 +29424,7 @@ components:
               - null
               - null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             id: id
@@ -29553,9 +29455,7 @@ components:
               - null
               - null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             id: id
@@ -29578,9 +29478,7 @@ components:
           - createdAt: createdAt
             variables: "{}"
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             allowDynamicVariables: true
@@ -29593,9 +29491,7 @@ components:
           - createdAt: createdAt
             variables: "{}"
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             allowDynamicVariables: true
@@ -29610,9 +29506,7 @@ components:
               id: id
             totalExpiredConsents: 0
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
             name: name
@@ -29625,9 +29519,7 @@ components:
               id: id
             totalExpiredConsents: 0
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
             name: name
@@ -29640,27 +29532,21 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             domainName: domainName
             id: id
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             domainName: domainName
             id: id
           groups:
           - sourceId: sourceId
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             description: description
@@ -29680,9 +29566,7 @@ components:
               users: 1
           - sourceId: sourceId
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             description: description
@@ -29706,9 +29590,7 @@ components:
           users:
           - preferredLanguage: preferredLanguage
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             timezone: timezone
             lastSignOn:
@@ -29779,9 +29661,7 @@ components:
             username: username
           - preferredLanguage: preferredLanguage
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             timezone: timezone
             lastSignOn:
@@ -29856,9 +29736,7 @@ components:
             application:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             signOnPolicy:
               id: id
@@ -29869,9 +29747,7 @@ components:
             application:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             signOnPolicy:
               id: id
@@ -29883,9 +29759,7 @@ components:
             application:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             id: id
             flowPolicy:
@@ -29896,9 +29770,7 @@ components:
             application:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             id: id
             flowPolicy:
@@ -29911,9 +29783,7 @@ components:
               allowKerberosGateway: true
             package: package
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             advancedServices:
               pingId:
@@ -29995,9 +29865,7 @@ components:
               allowKerberosGateway: true
             package: package
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             advancedServices:
               pingId:
@@ -30077,9 +29945,7 @@ components:
           - customCRL: customCRL
             serialNumber: 5
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -30102,9 +29968,7 @@ components:
           - customCRL: customCRL
             serialNumber: 5
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -30131,9 +29995,7 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             id: id
@@ -30141,9 +30003,7 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             id: id
@@ -30152,9 +30012,7 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             description: description
@@ -30162,9 +30020,7 @@ components:
             - schema:
                 id: id
               _links:
-                next:
-                  href: https://openapi-generator.tech
-                self:
+                key:
                   href: https://openapi-generator.tech
               displayName: displayName
               description: description
@@ -30201,9 +30057,7 @@ components:
             - schema:
                 id: id
               _links:
-                next:
-                  href: https://openapi-generator.tech
-                self:
+                key:
                   href: https://openapi-generator.tech
               displayName: displayName
               description: description
@@ -30242,9 +30096,7 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             description: description
@@ -30252,9 +30104,7 @@ components:
             - schema:
                 id: id
               _links:
-                next:
-                  href: https://openapi-generator.tech
-                self:
+                key:
                   href: https://openapi-generator.tech
               displayName: displayName
               description: description
@@ -30291,9 +30141,7 @@ components:
             - schema:
                 id: id
               _links:
-                next:
-                  href: https://openapi-generator.tech
-                self:
+                key:
                   href: https://openapi-generator.tech
               displayName: displayName
               description: description
@@ -30332,9 +30180,7 @@ components:
           organizations:
           - createdAt: createdAt
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             billingConnections:
@@ -30346,9 +30192,7 @@ components:
             updatedAt: updatedAt
           - createdAt: createdAt
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             billingConnections:
@@ -30362,17 +30206,13 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             _embedded:
               group:
                 sourceId: sourceId
                 _links:
-                  next:
-                    href: https://openapi-generator.tech
-                  self:
+                  key:
                     href: https://openapi-generator.tech
                 displayName: displayName
                 description: description
@@ -30396,17 +30236,13 @@ components:
           - environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             _embedded:
               group:
                 sourceId: sourceId
                 _links:
-                  next:
-                    href: https://openapi-generator.tech
-                  self:
+                  key:
                     href: https://openapi-generator.tech
                 displayName: displayName
                 description: description
@@ -30435,9 +30271,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             resource:
               id: id
@@ -30455,9 +30289,7 @@ components:
             environment:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             resource:
               id: id
@@ -30483,9 +30315,7 @@ components:
               id: id
             userCount: 4
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             description: description
@@ -30499,9 +30329,7 @@ components:
               id: id
             userCount: 4
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             name: name
             description: description
@@ -30513,9 +30341,7 @@ components:
               - null
               - null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             created: 2000-01-23T04:56:07.000+00:00
             description: description
@@ -30539,9 +30365,7 @@ components:
               - null
               - null
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             created: 2000-01-23T04:56:07.000+00:00
             description: description
@@ -30609,7 +30433,10 @@ components:
         count: 3.0205796992916243
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         count:
@@ -30633,7 +30460,10 @@ components:
           id: 34f0efac-21d9-4a17-8a35-196bb3362983
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         billOfMaterials:
           $ref: '#/components/schemas/BillOfMaterials'
         createdAt:
@@ -30681,9 +30511,7 @@ components:
           name: name
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         id: id
@@ -30692,7 +30520,10 @@ components:
         enabled: true
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: The flow policy resource's unique identifier.
           readOnly: true
@@ -30719,9 +30550,7 @@ components:
         application:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         id: id
         flowPolicy:
@@ -30729,7 +30558,10 @@ components:
         priority: 1
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the flow policy assignment resource's
             unique identifier.
@@ -30758,9 +30590,7 @@ components:
           - null
           - null
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         created: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -30781,7 +30611,10 @@ components:
         cols: 3
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -31305,7 +31138,10 @@ components:
     Gateway:
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the instance ID of the gateway. The
             gateway instance ID is created by the gateway when it starts up.
@@ -31534,9 +31370,7 @@ components:
       example:
         sourceId: sourceId
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         displayName: displayName
         description: description
@@ -31556,7 +31390,10 @@ components:
           users: 1
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: "The unique identifier for the group. Search all groups for\
             \ a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups.\
@@ -31617,17 +31454,13 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         _embedded:
           group:
             sourceId: sourceId
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             description: description
@@ -31650,7 +31483,10 @@ components:
         type: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         _embedded:
           $ref: '#/components/schemas/GroupMembership__embedded'
         id:
@@ -31670,15 +31506,16 @@ components:
     GroupNesting:
       example:
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         id: id
         type: type
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: ID of the group to nest
           type: string
@@ -31694,16 +31531,17 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         id: id
         status: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: "The unique identifier for the group. Search all groups for\
             \ a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups.\
@@ -31734,9 +31572,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         mappingType: null
         name: name
@@ -31748,7 +31584,10 @@ components:
         updatedAt: updatedAt
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         mappingType:
           $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingType'
         name:
@@ -31793,7 +31632,10 @@ components:
     IdentityProviderCommon:
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         description:
           description: The description of the IdP.
           type: string
@@ -32037,9 +31879,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         id: id
         targets:
@@ -32051,7 +31891,10 @@ components:
             height: 6
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -32069,9 +31912,7 @@ components:
     KeyRotationPolicy:
       example:
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         dn: dn
         nextKeyId: nextKeyId
@@ -32089,7 +31930,10 @@ components:
         usageType: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         algorithm:
           $ref: '#/components/schemas/EnumKeyRotationPolicyAlgorithm'
         currentKeyId:
@@ -32153,9 +31997,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         id: id
@@ -32165,7 +32007,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         default:
           description: Specifies whether this language is the default for the environment.
             This property value must be set to false when creating a language resource.
@@ -32215,9 +32060,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         service: service
         statusDetails: statusDetails
@@ -32228,7 +32071,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         createdAt:
           description: The time the language localization status resource was created.
           format: date-time
@@ -32266,9 +32112,7 @@ components:
           allowKerberosGateway: true
         package: package
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         advancedServices:
           pingId:
@@ -32346,7 +32190,10 @@ components:
         status: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         advancedServices:
           $ref: '#/components/schemas/License_advancedServices'
         assignedEnvironmentsCount:
@@ -32450,9 +32297,7 @@ components:
           - null
           - null
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         id: id
@@ -32467,7 +32312,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         createdAt:
           description: The time the resource was created.
           format: date-time
@@ -32514,9 +32362,7 @@ components:
         - smsProvidersFallbackChain
         - smsProvidersFallbackChain
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         deliveryMode: null
         replyTo:
@@ -32537,7 +32383,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         updatedAt:
           description: The time the resource was last updated.
           format: date-time
@@ -32587,9 +32436,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         port: 0
         host: host
@@ -32602,7 +32449,10 @@ components:
         username: username
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         host:
           description: A string that specifies the organization's SMTP server.
           type: string
@@ -32638,7 +32488,10 @@ components:
     NotificationsSettingsPhoneDeliverySettingsCommon:
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -32849,9 +32702,7 @@ components:
       example:
         createdAt: createdAt
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         billingConnections:
@@ -32863,7 +32714,10 @@ components:
         updatedAt: updatedAt
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -32927,9 +32781,7 @@ components:
           abcdefghijklmnopqrstuvwxyz: 3
         populationCount: 0
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         length:
           min: 11
@@ -32961,7 +32813,10 @@ components:
         updatedAt: updatedAt
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         bypassPolicy:
           default: false
           description: "Determines whether the password policy for a user will be\
@@ -33110,9 +32965,7 @@ components:
           id: id
         userCount: 4
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         description: description
@@ -33120,7 +32973,10 @@ components:
         updatedAt: updatedAt
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         createdAt:
           description: The time the resource was created.
           readOnly: true
@@ -33179,9 +33035,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         configuration:
           key: ""
@@ -33201,7 +33055,10 @@ components:
         status: null
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         configuration:
           additionalProperties: true
           description: Configuration properties specific to each identity propagation
@@ -33821,9 +33678,7 @@ components:
           claimEnabled: true
         audience: audience
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         resource:
           id: id
@@ -33839,7 +33694,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         accessTokenValiditySeconds:
           description: "An integer that specifies the number of seconds that the access\
             \ token is valid. If a value is not specified, the default is 3600. The\
@@ -33949,9 +33807,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         resource:
           id: id
@@ -33962,7 +33818,10 @@ components:
         value: value
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -34049,9 +33908,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         resource:
           id: id
@@ -34067,7 +33924,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -34123,9 +33983,7 @@ components:
     Role:
       example:
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         permissions:
         - classifier: classifier
@@ -34142,7 +34000,10 @@ components:
         id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         applicableTo:
           description: A set of strings that specifies the scopes to which the role
             applies.
@@ -34174,9 +34035,7 @@ components:
         role:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         scope:
           id: id
@@ -34189,7 +34048,10 @@ components:
           id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         gateway:
@@ -34218,9 +34080,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         description: description
@@ -34228,9 +34088,7 @@ components:
         - schema:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           description: description
@@ -34267,9 +34125,7 @@ components:
         - schema:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           description: description
@@ -34307,7 +34163,10 @@ components:
         allowsContainsOperator: true
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         allowsContainsOperator:
           description: Indicates whether or not the `contains` operator can be used.
             You can use the `contains` operator in a maximum of 5 custom attributes.
@@ -34338,9 +34197,7 @@ components:
         schema:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         displayName: displayName
         description: description
@@ -34376,7 +34233,10 @@ components:
         multiValued: true
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         description:
           description: "A string that specifies an optional property that specifies\
             \ the description of the attribute. If provided, it must not be an empty\
@@ -34487,9 +34347,7 @@ components:
         - schema:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           description: description
@@ -34526,9 +34384,7 @@ components:
         - schema:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           description: description
@@ -34633,9 +34489,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         name: name
         description: description
@@ -34643,7 +34497,10 @@ components:
         updatedAt: updatedAt
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         createdAt:
           description: The date and time the resource was created (format ISO-8061).
           readOnly: true
@@ -34789,7 +34646,10 @@ components:
     SignOnPolicyActionCommon:
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         condition:
           $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_or_inner'
         environment:
@@ -34992,9 +34852,7 @@ components:
         application:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         signOnPolicy:
           id: id
@@ -35002,7 +34860,10 @@ components:
         priority: 1
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         application:
           $ref: '#/components/schemas/ObjectApplication'
         environment:
@@ -35030,9 +34891,7 @@ components:
         environment:
           id: id
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         format: null
         httpEndpoint:
@@ -35063,7 +34922,10 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         createdAt:
           description: The time the key resource expires.The date and time at which
             the subscription resource was created (ISO 8601 format).
@@ -35123,9 +34985,7 @@ components:
         createdAt: createdAt
         variables: "{}"
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         displayName: displayName
         allowDynamicVariables: true
@@ -35137,7 +34997,10 @@ components:
         updatedAt: updatedAt
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: The template id
           readOnly: true
@@ -35194,7 +35057,10 @@ components:
     TemplateContentCommon:
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: The template id.
           readOnly: true
@@ -35356,9 +35222,7 @@ components:
       example:
         preferredLanguage: preferredLanguage
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         timezone: timezone
         lastSignOn:
@@ -35429,7 +35293,10 @@ components:
         username: username
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         account:
           $ref: '#/components/schemas/UserAccount'
         address:
@@ -35691,14 +35558,15 @@ components:
     UserEnabled:
       example:
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         enabled: true
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         enabled:
           default: true
           description: A read-only boolean attribute that specifies whether the user
@@ -35709,14 +35577,15 @@ components:
     UserPopulation:
       example:
         _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
+          key:
             href: https://openapi-generator.tech
         id: id
       properties:
         _links:
-          $ref: '#/components/schemas/LinksHATEOAS'
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         id:
           description: A string that specifies the population ID associated with the
             user resource ID identified in the request URL.
@@ -35800,27 +35669,16 @@ components:
       - $ref: '#/components/schemas/Gateway'
       - $ref: '#/components/schemas/GatewayTypeLDAP'
       - $ref: '#/components/schemas/GatewayTypeRADIUS'
-    LinksHATEOAS_self:
-      description: An object that describes the current resource.
+    LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
       properties:
         href:
-          description: The URI of the resource.
+          description: The HREF of the link.
           format: uri
           type: string
-      type: object
-    LinksHATEOAS_next:
-      description: An object that describes the next page of results. This property
-        is present only if there is a next page of results and the `limit` parameter
-        is used.
-      example:
-        href: https://openapi-generator.tech
-      properties:
-        href:
-          description: The URI of the resource.
-          format: uri
-          type: string
+      required:
+      - href
       type: object
     AgreementLanguage_agreement:
       example:
@@ -36599,9 +36457,7 @@ components:
             name: name
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           id: id
@@ -36614,9 +36470,7 @@ components:
             name: name
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           id: id
@@ -36628,9 +36482,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           format: null
           httpEndpoint:
@@ -36663,9 +36515,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           format: null
           httpEndpoint:
@@ -36732,9 +36582,7 @@ components:
         - customCRL: customCRL
           serialNumber: 5
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -36757,9 +36605,7 @@ components:
         - customCRL: customCRL
           serialNumber: 5
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -36792,10 +36638,9 @@ components:
           - null
           - null
           _links:
-            next:
+            key:
               href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
+          alertName: alertName
           includeSeverities:
           - null
           - null
@@ -36813,10 +36658,9 @@ components:
           - null
           - null
           _links:
-            next:
+            key:
               href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
+          alertName: alertName
           includeSeverities:
           - null
           - null
@@ -36831,9 +36675,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           description: description
@@ -36844,9 +36686,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           description: description
@@ -36858,9 +36698,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           configuration:
             backgroundColor: backgroundColor
@@ -36886,9 +36724,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           configuration:
             backgroundColor: backgroundColor
@@ -36913,9 +36749,7 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           domainName: domainName
           certificate:
@@ -36926,9 +36760,7 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           domainName: domainName
           certificate:
@@ -36967,9 +36799,7 @@ components:
             abcdefghijklmnopqrstuvwxyz: 3
           populationCount: 0
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           length:
             min: 11
@@ -37006,9 +36836,7 @@ components:
             abcdefghijklmnopqrstuvwxyz: 3
           populationCount: 0
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           length:
             min: 11
@@ -37042,9 +36870,7 @@ components:
         - agreement:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           requireReconsent: true
           notValidAfter: 2000-01-23T04:56:07.000+00:00
@@ -37057,9 +36883,7 @@ components:
         - agreement:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           requireReconsent: true
           notValidAfter: 2000-01-23T04:56:07.000+00:00
@@ -37075,9 +36899,7 @@ components:
           role:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           scope:
             id: id
@@ -37093,9 +36915,7 @@ components:
           role:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           scope:
             id: id
@@ -37128,9 +36948,7 @@ components:
           application:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           resource:
             id: id
@@ -37143,9 +36961,7 @@ components:
           application:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           resource:
             id: id
@@ -37162,9 +36978,7 @@ components:
         - null
         keyRotationPolicies:
         - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           dn: dn
           nextKeyId: nextKeyId
@@ -37181,9 +36995,7 @@ components:
           algorithm: null
           usageType: null
         - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           dn: dn
           nextKeyId: nextKeyId
@@ -37218,9 +37030,7 @@ components:
             - null
             - null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           id: id
@@ -37251,9 +37061,7 @@ components:
             - null
             - null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           id: id
@@ -37276,9 +37084,7 @@ components:
         - createdAt: createdAt
           variables: "{}"
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           allowDynamicVariables: true
@@ -37291,9 +37097,7 @@ components:
         - createdAt: createdAt
           variables: "{}"
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           allowDynamicVariables: true
@@ -37308,9 +37112,7 @@ components:
             id: id
           totalExpiredConsents: 0
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -37323,9 +37125,7 @@ components:
             id: id
           totalExpiredConsents: 0
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -37338,27 +37138,21 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           domainName: domainName
           id: id
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           domainName: domainName
           id: id
         groups:
         - sourceId: sourceId
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           description: description
@@ -37378,9 +37172,7 @@ components:
             users: 1
         - sourceId: sourceId
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           description: description
@@ -37404,9 +37196,7 @@ components:
         users:
         - preferredLanguage: preferredLanguage
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           timezone: timezone
           lastSignOn:
@@ -37477,9 +37267,7 @@ components:
           username: username
         - preferredLanguage: preferredLanguage
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           timezone: timezone
           lastSignOn:
@@ -37554,9 +37342,7 @@ components:
           application:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           signOnPolicy:
             id: id
@@ -37567,9 +37353,7 @@ components:
           application:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           signOnPolicy:
             id: id
@@ -37581,9 +37365,7 @@ components:
           application:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           id: id
           flowPolicy:
@@ -37594,9 +37376,7 @@ components:
           application:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           id: id
           flowPolicy:
@@ -37609,9 +37389,7 @@ components:
             allowKerberosGateway: true
           package: package
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           advancedServices:
             pingId:
@@ -37693,9 +37471,7 @@ components:
             allowKerberosGateway: true
           package: package
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           advancedServices:
             pingId:
@@ -37775,9 +37551,7 @@ components:
         - customCRL: customCRL
           serialNumber: 5
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -37800,9 +37574,7 @@ components:
         - customCRL: customCRL
           serialNumber: 5
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -37829,9 +37601,7 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           id: id
@@ -37839,9 +37609,7 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           id: id
@@ -37850,9 +37618,7 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           description: description
@@ -37860,9 +37626,7 @@ components:
           - schema:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             description: description
@@ -37899,9 +37663,7 @@ components:
           - schema:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             description: description
@@ -37940,9 +37702,7 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           description: description
@@ -37950,9 +37710,7 @@ components:
           - schema:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             description: description
@@ -37989,9 +37747,7 @@ components:
           - schema:
               id: id
             _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
+              key:
                 href: https://openapi-generator.tech
             displayName: displayName
             description: description
@@ -38030,9 +37786,7 @@ components:
         organizations:
         - createdAt: createdAt
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           billingConnections:
@@ -38044,9 +37798,7 @@ components:
           updatedAt: updatedAt
         - createdAt: createdAt
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           billingConnections:
@@ -38060,17 +37812,13 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           _embedded:
             group:
               sourceId: sourceId
               _links:
-                next:
-                  href: https://openapi-generator.tech
-                self:
+                key:
                   href: https://openapi-generator.tech
               displayName: displayName
               description: description
@@ -38094,17 +37842,13 @@ components:
         - environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           _embedded:
             group:
               sourceId: sourceId
               _links:
-                next:
-                  href: https://openapi-generator.tech
-                self:
+                key:
                   href: https://openapi-generator.tech
               displayName: displayName
               description: description
@@ -38133,9 +37877,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           resource:
             id: id
@@ -38153,9 +37895,7 @@ components:
           environment:
             id: id
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           resource:
             id: id
@@ -38181,9 +37921,7 @@ components:
             id: id
           userCount: 4
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           description: description
@@ -38197,9 +37935,7 @@ components:
             id: id
           userCount: 4
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           name: name
           description: description
@@ -38211,9 +37947,7 @@ components:
             - null
             - null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           created: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -38237,9 +37971,7 @@ components:
             - null
             - null
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           created: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -38832,9 +38564,7 @@ components:
         group:
           sourceId: sourceId
           _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
+            key:
               href: https://openapi-generator.tech
           displayName: displayName
           description: description

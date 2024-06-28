@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityProviderFacebook{}
 
 // IdentityProviderFacebook struct for IdentityProviderFacebook
 type IdentityProviderFacebook struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
@@ -66,9 +66,9 @@ func NewIdentityProviderFacebookWithDefaults() *IdentityProviderFacebook {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *IdentityProviderFacebook) GetLinks() LinksHATEOAS {
+func (o *IdentityProviderFacebook) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -76,7 +76,7 @@ func (o *IdentityProviderFacebook) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderFacebook) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *IdentityProviderFacebook) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -92,8 +92,8 @@ func (o *IdentityProviderFacebook) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *IdentityProviderFacebook) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *IdentityProviderFacebook) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

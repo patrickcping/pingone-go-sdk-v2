@@ -19,7 +19,7 @@ var _ MappedNullable = &GatewayTypeRADIUS{}
 
 // GatewayTypeRADIUS struct for GatewayTypeRADIUS
 type GatewayTypeRADIUS struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -65,9 +65,9 @@ func NewGatewayTypeRADIUSWithDefaults() *GatewayTypeRADIUS {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GatewayTypeRADIUS) GetLinks() LinksHATEOAS {
+func (o *GatewayTypeRADIUS) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -75,7 +75,7 @@ func (o *GatewayTypeRADIUS) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayTypeRADIUS) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *GatewayTypeRADIUS) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -91,8 +91,8 @@ func (o *GatewayTypeRADIUS) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *GatewayTypeRADIUS) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *GatewayTypeRADIUS) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

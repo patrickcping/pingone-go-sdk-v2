@@ -19,7 +19,7 @@ var _ MappedNullable = &BrandingTheme{}
 
 // BrandingTheme struct for BrandingTheme
 type BrandingTheme struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Configuration BrandingThemeConfiguration `json:"configuration"`
 	// Specifies whether this theme is the environment's default branding configuration.
 	Default bool `json:"default"`
@@ -50,9 +50,9 @@ func NewBrandingThemeWithDefaults() *BrandingTheme {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *BrandingTheme) GetLinks() LinksHATEOAS {
+func (o *BrandingTheme) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -60,7 +60,7 @@ func (o *BrandingTheme) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BrandingTheme) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *BrandingTheme) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -76,8 +76,8 @@ func (o *BrandingTheme) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *BrandingTheme) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *BrandingTheme) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

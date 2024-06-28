@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **ApplicationInstance** | Pointer to [**CredentialIssuerProfileApplicationInstance**](CredentialIssuerProfileApplicationInstance.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the issuer profile was created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *CredentialIssuerProfile) GetLinks() LinksHATEOAS`
+`func (o *CredentialIssuerProfile) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *CredentialIssuerProfile) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *CredentialIssuerProfile) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *CredentialIssuerProfile) SetLinks(v LinksHATEOAS)`
+`func (o *CredentialIssuerProfile) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

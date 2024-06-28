@@ -20,7 +20,7 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCustom{}
 
 // NotificationsSettingsPhoneDeliverySettingsCustom struct for NotificationsSettingsPhoneDeliverySettingsCustom
 type NotificationsSettingsPhoneDeliverySettingsCustom struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -58,9 +58,9 @@ func NewNotificationsSettingsPhoneDeliverySettingsCustomWithDefaults() *Notifica
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinks() LinksHATEOAS {
+func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -68,7 +68,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinks() LinksHATEO
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -84,8 +84,8 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 

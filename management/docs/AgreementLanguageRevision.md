@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Agreement** | Pointer to [**AgreementLanguageAgreement**](AgreementLanguageAgreement.md) |  | [optional] 
 **ContentType** | [**EnumAgreementRevisionContentType**](EnumAgreementRevisionContentType.md) |  | 
 **EffectiveAt** | **time.Time** | A date that specifies the start date that the revision is presented to users. This property value can be modified only if the current value is a date that has not already passed. The effective date must be unique for each language agreement, and the property value can be the present date or a future date only. | 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *AgreementLanguageRevision) GetLinks() LinksHATEOAS`
+`func (o *AgreementLanguageRevision) GetLinks() map[string]LinksHATEOASValue`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *AgreementLanguageRevision) GetLinksOk() (*LinksHATEOAS, bool)`
+`func (o *AgreementLanguageRevision) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *AgreementLanguageRevision) SetLinks(v LinksHATEOAS)`
+`func (o *AgreementLanguageRevision) SetLinks(v map[string]LinksHATEOASValue)`
 
 SetLinks sets Links field to given value.
 

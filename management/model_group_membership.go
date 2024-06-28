@@ -19,7 +19,7 @@ var _ MappedNullable = &GroupMembership{}
 
 // GroupMembership struct for GroupMembership
 type GroupMembership struct {
-	Links *LinksHATEOAS `json:"_links,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Embedded *GroupMembershipEmbedded `json:"_embedded,omitempty"`
 	// ID of the group to assign
 	Id string `json:"id"`
@@ -48,9 +48,9 @@ func NewGroupMembershipWithDefaults() *GroupMembership {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GroupMembership) GetLinks() LinksHATEOAS {
+func (o *GroupMembership) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
-		var ret LinksHATEOAS
+		var ret map[string]LinksHATEOASValue
 		return ret
 	}
 	return *o.Links
@@ -58,7 +58,7 @@ func (o *GroupMembership) GetLinks() LinksHATEOAS {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMembership) GetLinksOk() (*LinksHATEOAS, bool) {
+func (o *GroupMembership) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -74,8 +74,8 @@ func (o *GroupMembership) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
-func (o *GroupMembership) SetLinks(v LinksHATEOAS) {
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *GroupMembership) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
