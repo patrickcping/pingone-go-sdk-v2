@@ -258,8 +258,8 @@ components:
       description: This can be either `PING_ONE` or `LDAP`. If set to `PING_ONE`, PingOne authenticates with the external directory initially, then PingOne authenticates all subsequent sign-ons.
     EnumGatewayVendor:
       type: string
-      enum: [PingDirectory, Microsoft Active Directory, Oracle Directory Server Enterprise Edition, Oracle Unified Directory, CA Directory, OpenDJ Directory, IBM (Tivoli) Security Directory Server, LDAP v3 compliant Directory Server]
-      description: A string that specifies the LDAP vendor. Options are `PingDirectory`, `Microsoft Active Directory`, `Oracle Directory Server Enterprise Edition`, `Oracle Unified Directory`, `CA Directory`, `OpenDJ Directory`, `IBM (Tivoli) Security Directory Server`, and `LDAP v3 compliant Directory Server`.
+      enum: [PingDirectory, Microsoft Active Directory, Oracle Directory Server Enterprise Edition, Oracle Unified Directory, CA Directory, OpenDJ Directory Server, IBM (Tivoli) Security Directory Server, LDAPv3-compliant Directory Server]
+      description: A string that specifies the LDAP vendor. Options are `PingDirectory`, `Microsoft Active Directory`, `Oracle Directory Server Enterprise Edition`, `Oracle Unified Directory`, `CA Directory`, `OpenDJ Directory Server`, `IBM (Tivoli) Security Directory Server`, and `LDAPv3-compliant Directory Server`.
     EnumGetKeyAcceptHeader:
       type: string
       enum: [application/json, application/x-pkcs7-certificates, application/x-x509-ca-cert]

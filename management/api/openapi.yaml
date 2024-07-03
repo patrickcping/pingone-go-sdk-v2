@@ -26646,17 +26646,17 @@ components:
     EnumGatewayVendor:
       description: "A string that specifies the LDAP vendor. Options are `PingDirectory`,\
         \ `Microsoft Active Directory`, `Oracle Directory Server Enterprise Edition`,\
-        \ `Oracle Unified Directory`, `CA Directory`, `OpenDJ Directory`, `IBM (Tivoli)\
-        \ Security Directory Server`, and `LDAP v3 compliant Directory Server`."
+        \ `Oracle Unified Directory`, `CA Directory`, `OpenDJ Directory Server`, `IBM\
+        \ (Tivoli) Security Directory Server`, and `LDAPv3-compliant Directory Server`."
       enum:
       - PingDirectory
       - Microsoft Active Directory
       - Oracle Directory Server Enterprise Edition
       - Oracle Unified Directory
       - CA Directory
-      - OpenDJ Directory
+      - OpenDJ Directory Server
       - IBM (Tivoli) Security Directory Server
-      - LDAP v3 compliant Directory Server
+      - LDAPv3-compliant Directory Server
       type: string
     EnumGetKeyAcceptHeader:
       enum:

@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumGatewayVendor A string that specifies the LDAP vendor. Options are `PingDirectory`, `Microsoft Active Directory`, `Oracle Directory Server Enterprise Edition`, `Oracle Unified Directory`, `CA Directory`, `OpenDJ Directory`, `IBM (Tivoli) Security Directory Server`, and `LDAP v3 compliant Directory Server`.
+// EnumGatewayVendor A string that specifies the LDAP vendor. Options are `PingDirectory`, `Microsoft Active Directory`, `Oracle Directory Server Enterprise Edition`, `Oracle Unified Directory`, `CA Directory`, `OpenDJ Directory Server`, `IBM (Tivoli) Security Directory Server`, and `LDAPv3-compliant Directory Server`.
 type EnumGatewayVendor string
 
 // List of EnumGatewayVendor
@@ -25,9 +25,9 @@ const (
 	ENUMGATEWAYVENDOR_ORACLE_DIRECTORY_SERVER_ENTERPRISE_EDITION EnumGatewayVendor = "Oracle Directory Server Enterprise Edition"
 	ENUMGATEWAYVENDOR_ORACLE_UNIFIED_DIRECTORY EnumGatewayVendor = "Oracle Unified Directory"
 	ENUMGATEWAYVENDOR_CA_DIRECTORY EnumGatewayVendor = "CA Directory"
-	ENUMGATEWAYVENDOR_OPEN_DJ_DIRECTORY EnumGatewayVendor = "OpenDJ Directory"
+	ENUMGATEWAYVENDOR_OPEN_DJ_DIRECTORY_SERVER EnumGatewayVendor = "OpenDJ Directory Server"
 	ENUMGATEWAYVENDOR_IBM__TIVOLI_SECURITY_DIRECTORY_SERVER EnumGatewayVendor = "IBM (Tivoli) Security Directory Server"
-	ENUMGATEWAYVENDOR_LDAP_V3_COMPLIANT_DIRECTORY_SERVER EnumGatewayVendor = "LDAP v3 compliant Directory Server"
+	ENUMGATEWAYVENDOR_LDAPV3_COMPLIANT_DIRECTORY_SERVER EnumGatewayVendor = "LDAPv3-compliant Directory Server"
 )
 
 // All allowed values of EnumGatewayVendor enum
@@ -37,9 +37,9 @@ var AllowedEnumGatewayVendorEnumValues = []EnumGatewayVendor{
 	"Oracle Directory Server Enterprise Edition",
 	"Oracle Unified Directory",
 	"CA Directory",
-	"OpenDJ Directory",
+	"OpenDJ Directory Server",
 	"IBM (Tivoli) Security Directory Server",
-	"LDAP v3 compliant Directory Server",
+	"LDAPv3-compliant Directory Server",
 }
 
 func (v *EnumGatewayVendor) UnmarshalJSON(src []byte) error {

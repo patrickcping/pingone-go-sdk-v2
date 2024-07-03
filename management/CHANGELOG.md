@@ -7,6 +7,7 @@
 * **Enhancement** Added support for granting the `Application Owner` role. [#365](https://github.com/patrickcping/pingone-go-sdk-v2/pull/365)
 * **Bug** Remove unsupported `AlertingApi.ReadOneAlertChannel`. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
 * **Bug** Corrected `EnumAlertChannelAlertType` enum values. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
+* **Bug** Corrected `EnumGatewayVendor` enum values. [#367](https://github.com/patrickcping/pingone-go-sdk-v2/pull/367)
 
 # v0.41.0 (2024-06-18)
 
