@@ -14,7 +14,7 @@
     * **Enhancement** Added support for granting the `Application Owner` role. [#365](https://github.com/patrickcping/pingone-go-sdk-v2/pull/365)
     * **Bug** Remove unsupported `AlertingApi.ReadOneAlertChannel`. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
     * **Bug** Corrected `EnumAlertChannelAlertType` enum values. [#363](https://github.com/patrickcping/pingone-go-sdk-v2/pull/363)
-    * **Bug** Corrected `EnumGatewayVendor` enum values.
+    * **Bug** Corrected `EnumGatewayVendor` enum values. [#367](https://github.com/patrickcping/pingone-go-sdk-v2/pull/367)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.20.0](./mfa/CHANGELOG.md)
     * **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
     * **Enhancement** Added the `HALApi` service to be able to follow HAL links in responses. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
