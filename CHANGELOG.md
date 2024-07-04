@@ -1,12 +1,12 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.2
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.5.0 => v0.6.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.8.0 => v0.9.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.41.0 => v0.42.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.19.0 => v0.20.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.15.1 => v0.16.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.5.0 => v0.6.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.5.0 => v0.6.0 [#368](https://github.com/patrickcping/pingone-go-sdk-v2/pull/368)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.8.0 => v0.9.0 [#368](https://github.com/patrickcping/pingone-go-sdk-v2/pull/368)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.41.0 => v0.42.0 [#368](https://github.com/patrickcping/pingone-go-sdk-v2/pull/368)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.19.0 => v0.20.0 [#368](https://github.com/patrickcping/pingone-go-sdk-v2/pull/368)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.15.1 => v0.16.0 [#368](https://github.com/patrickcping/pingone-go-sdk-v2/pull/368)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.5.0 => v0.6.0 [#368](https://github.com/patrickcping/pingone-go-sdk-v2/pull/368)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.6.0](./authorize/CHANGELOG.md)
     * **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
     * **Enhancement** Added the `HALApi` service to be able to follow HAL links in responses. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
