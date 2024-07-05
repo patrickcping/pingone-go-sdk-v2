@@ -46,8 +46,7 @@ func (v *EnumVerify) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	*v = EnumVerify(fmt.Sprintf("%s", "UNKNOWN"))
-	return nil
+	return fmt.Errorf("%+v is not a valid EnumVerify", value)
 }
 
 // NewEnumVerifyFromValue returns a pointer to a valid EnumVerify

@@ -19,18 +19,19 @@ var _ MappedNullable = &LivenessConfiguration{}
 
 // LivenessConfiguration struct for LivenessConfiguration
 type LivenessConfiguration struct {
-	Verify EnumVerify `json:"verify"`
+	Retry *ObjectRetry `json:"retry,omitempty"`
 	Threshold EnumThreshold `json:"threshold"`
+	Verify EnumVerify `json:"verify"`
 }
 
 // NewLivenessConfiguration instantiates a new LivenessConfiguration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLivenessConfiguration(verify EnumVerify, threshold EnumThreshold) *LivenessConfiguration {
+func NewLivenessConfiguration(threshold EnumThreshold, verify EnumVerify) *LivenessConfiguration {
 	this := LivenessConfiguration{}
-	this.Verify = verify
 	this.Threshold = threshold
+	this.Verify = verify
 	return &this
 }
 
@@ -42,28 +43,36 @@ func NewLivenessConfigurationWithDefaults() *LivenessConfiguration {
 	return &this
 }
 
-// GetVerify returns the Verify field value
-func (o *LivenessConfiguration) GetVerify() EnumVerify {
-	if o == nil {
-		var ret EnumVerify
+// GetRetry returns the Retry field value if set, zero value otherwise.
+func (o *LivenessConfiguration) GetRetry() ObjectRetry {
+	if o == nil || IsNil(o.Retry) {
+		var ret ObjectRetry
 		return ret
 	}
-
-	return o.Verify
+	return *o.Retry
 }
 
-// GetVerifyOk returns a tuple with the Verify field value
+// GetRetryOk returns a tuple with the Retry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LivenessConfiguration) GetVerifyOk() (*EnumVerify, bool) {
-	if o == nil {
+func (o *LivenessConfiguration) GetRetryOk() (*ObjectRetry, bool) {
+	if o == nil || IsNil(o.Retry) {
 		return nil, false
 	}
-	return &o.Verify, true
+	return o.Retry, true
 }
 
-// SetVerify sets field value
-func (o *LivenessConfiguration) SetVerify(v EnumVerify) {
-	o.Verify = v
+// HasRetry returns a boolean if a field has been set.
+func (o *LivenessConfiguration) HasRetry() bool {
+	if o != nil && !IsNil(o.Retry) {
+		return true
+	}
+
+	return false
+}
+
+// SetRetry gets a reference to the given ObjectRetry and assigns it to the Retry field.
+func (o *LivenessConfiguration) SetRetry(v ObjectRetry) {
+	o.Retry = &v
 }
 
 // GetThreshold returns the Threshold field value
@@ -90,6 +99,30 @@ func (o *LivenessConfiguration) SetThreshold(v EnumThreshold) {
 	o.Threshold = v
 }
 
+// GetVerify returns the Verify field value
+func (o *LivenessConfiguration) GetVerify() EnumVerify {
+	if o == nil {
+		var ret EnumVerify
+		return ret
+	}
+
+	return o.Verify
+}
+
+// GetVerifyOk returns a tuple with the Verify field value
+// and a boolean to check if the value has been set.
+func (o *LivenessConfiguration) GetVerifyOk() (*EnumVerify, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Verify, true
+}
+
+// SetVerify sets field value
+func (o *LivenessConfiguration) SetVerify(v EnumVerify) {
+	o.Verify = v
+}
+
 func (o LivenessConfiguration) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -100,8 +133,11 @@ func (o LivenessConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o LivenessConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["verify"] = o.Verify
+	if !IsNil(o.Retry) {
+		toSerialize["retry"] = o.Retry
+	}
 	toSerialize["threshold"] = o.Threshold
+	toSerialize["verify"] = o.Verify
 	return toSerialize, nil
 }
 

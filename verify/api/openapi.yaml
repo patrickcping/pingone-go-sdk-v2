@@ -1255,7 +1255,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 7.061401241503109
+        size: 9.301444243932576
         _links:
           key:
             href: https://openapi-generator.tech
@@ -1301,6 +1301,8 @@ components:
             liveness:
               verify: null
               threshold: null
+              retry:
+                attempts: 0
             description: description
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -1317,11 +1319,11 @@ components:
                   duration: 5
                   timeUnit: null
                 attempts:
-                  count: 0
-                deliveries:
                   count: 6
+                deliveries:
+                  count: 1
                   cooldown:
-                    duration: 1
+                    duration: 5
                     timeUnit: null
             name: name
             facialComparison:
@@ -1339,24 +1341,30 @@ components:
                   duration: 5
                   timeUnit: null
                 attempts:
-                  count: 0
-                deliveries:
                   count: 6
+                deliveries:
+                  count: 1
                   cooldown:
-                    duration: 1
+                    duration: 5
                     timeUnit: null
             transaction:
               dataCollectionOnly: true
               timeout:
-                duration: 5
+                duration: 2
                 timeUnit: null
               dataCollection:
                 timeout:
-                  duration: 2
+                  duration: 7
                   timeUnit: null
             governmentId:
+              provider:
+                auto: null
+                manual: null
               inspectionType: null
               verify: null
+              failExpiredId: true
+              retry:
+                attempts: 0
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - voice:
               verify: null
@@ -1379,6 +1387,8 @@ components:
             liveness:
               verify: null
               threshold: null
+              retry:
+                attempts: 0
             description: description
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -1395,11 +1405,11 @@ components:
                   duration: 5
                   timeUnit: null
                 attempts:
-                  count: 0
-                deliveries:
                   count: 6
+                deliveries:
+                  count: 1
                   cooldown:
-                    duration: 1
+                    duration: 5
                     timeUnit: null
             name: name
             facialComparison:
@@ -1417,24 +1427,30 @@ components:
                   duration: 5
                   timeUnit: null
                 attempts:
-                  count: 0
-                deliveries:
                   count: 6
+                deliveries:
+                  count: 1
                   cooldown:
-                    duration: 1
+                    duration: 5
                     timeUnit: null
             transaction:
               dataCollectionOnly: true
               timeout:
-                duration: 5
+                duration: 2
                 timeUnit: null
               dataCollection:
                 timeout:
-                  duration: 2
+                  duration: 7
                   timeUnit: null
             governmentId:
+              provider:
+                auto: null
+                manual: null
               inspectionType: null
               verify: null
+              failExpiredId: true
+              retry:
+                attempts: 0
             updatedAt: 2000-01-23T04:56:07.000+00:00
           voicePhrases:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -1467,6 +1483,19 @@ components:
       - AUTOMATIC
       - MANUAL
       - STEP_UP
+      type: string
+    EnumProviderAuto:
+      description: A string that defines the automatic verification subprocessor;
+        can be `MITEK` or `VERIFF`.
+      enum:
+      - MITEK
+      - VERIFF
+      type: string
+    EnumProviderManual:
+      description: A string that defines the automatic verification subprocessor;
+        can be `MITEK`.
+      enum:
+      - MITEK
       type: string
     EnumTimeUnit:
       description: A string that defines the time unit of a specified duration in
@@ -1506,11 +1535,24 @@ components:
       type: object
     GovernmentIdConfiguration:
       example:
+        provider:
+          auto: null
+          manual: null
         inspectionType: null
         verify: null
+        failExpiredId: true
+        retry:
+          attempts: 0
       properties:
+        failExpiredId:
+          description: Indicates whether verification should fail if the ID is expired.
+          type: boolean
         inspectionType:
           $ref: '#/components/schemas/EnumInspectionType'
+        provider:
+          $ref: '#/components/schemas/GovernmentIdConfiguration_provider'
+        retry:
+          $ref: '#/components/schemas/ObjectRetry'
         verify:
           $ref: '#/components/schemas/EnumVerify'
       required:
@@ -1520,11 +1562,15 @@ components:
       example:
         verify: null
         threshold: null
+        retry:
+          attempts: 0
       properties:
-        verify:
-          $ref: '#/components/schemas/EnumVerify'
+        retry:
+          $ref: '#/components/schemas/ObjectRetry'
         threshold:
           $ref: '#/components/schemas/EnumThreshold'
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
       required:
       - threshold
       - verify
@@ -1540,6 +1586,14 @@ components:
           type: string
       readOnly: true
       type: object
+    ObjectRetry:
+      example:
+        attempts: 0
+      properties:
+        attempts:
+          description: The number of retries permitted.
+          type: integer
+      type: object
     OTPDeviceConfiguration:
       example:
         createMfaDevice: true
@@ -1552,11 +1606,11 @@ components:
             duration: 5
             timeUnit: null
           attempts:
-            count: 0
-          deliveries:
             count: 6
+          deliveries:
+            count: 1
             cooldown:
-              duration: 1
+              duration: 5
               timeUnit: null
       properties:
         verify:
@@ -1599,11 +1653,11 @@ components:
       example:
         dataCollectionOnly: true
         timeout:
-          duration: 5
+          duration: 2
           timeUnit: null
         dataCollection:
           timeout:
-            duration: 2
+            duration: 7
             timeUnit: null
       properties:
         timeout:
@@ -1779,6 +1833,8 @@ components:
         liveness:
           verify: null
           threshold: null
+          retry:
+            attempts: 0
         description: description
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -1795,11 +1851,11 @@ components:
               duration: 5
               timeUnit: null
             attempts:
-              count: 0
-            deliveries:
               count: 6
+            deliveries:
+              count: 1
               cooldown:
-                duration: 1
+                duration: 5
                 timeUnit: null
         name: name
         facialComparison:
@@ -1817,24 +1873,30 @@ components:
               duration: 5
               timeUnit: null
             attempts:
-              count: 0
-            deliveries:
               count: 6
+            deliveries:
+              count: 1
               cooldown:
-                duration: 1
+                duration: 5
                 timeUnit: null
         transaction:
           dataCollectionOnly: true
           timeout:
-            duration: 5
+            duration: 2
             timeUnit: null
           dataCollection:
             timeout:
-              duration: 2
+              duration: 7
               timeUnit: null
         governmentId:
+          provider:
+            auto: null
+            manual: null
           inspectionType: null
           verify: null
+          failExpiredId: true
+          retry:
+            attempts: 0
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -1936,6 +1998,8 @@ components:
           liveness:
             verify: null
             threshold: null
+            retry:
+              attempts: 0
           description: description
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -1952,11 +2016,11 @@ components:
                 duration: 5
                 timeUnit: null
               attempts:
-                count: 0
-              deliveries:
                 count: 6
+              deliveries:
+                count: 1
                 cooldown:
-                  duration: 1
+                  duration: 5
                   timeUnit: null
           name: name
           facialComparison:
@@ -1974,24 +2038,30 @@ components:
                 duration: 5
                 timeUnit: null
               attempts:
-                count: 0
-              deliveries:
                 count: 6
+              deliveries:
+                count: 1
                 cooldown:
-                  duration: 1
+                  duration: 5
                   timeUnit: null
           transaction:
             dataCollectionOnly: true
             timeout:
-              duration: 5
+              duration: 2
               timeUnit: null
             dataCollection:
               timeout:
-                duration: 2
+                duration: 7
                 timeUnit: null
           governmentId:
+            provider:
+              auto: null
+              manual: null
             inspectionType: null
             verify: null
+            failExpiredId: true
+            retry:
+              attempts: 0
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - voice:
             verify: null
@@ -2014,6 +2084,8 @@ components:
           liveness:
             verify: null
             threshold: null
+            retry:
+              attempts: 0
           description: description
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -2030,11 +2102,11 @@ components:
                 duration: 5
                 timeUnit: null
               attempts:
-                count: 0
-              deliveries:
                 count: 6
+              deliveries:
+                count: 1
                 cooldown:
-                  duration: 1
+                  duration: 5
                   timeUnit: null
           name: name
           facialComparison:
@@ -2052,24 +2124,30 @@ components:
                 duration: 5
                 timeUnit: null
               attempts:
-                count: 0
-              deliveries:
                 count: 6
+              deliveries:
+                count: 1
                 cooldown:
-                  duration: 1
+                  duration: 5
                   timeUnit: null
           transaction:
             dataCollectionOnly: true
             timeout:
-              duration: 5
+              duration: 2
               timeUnit: null
             dataCollection:
               timeout:
-                duration: 2
+                duration: 7
                 timeUnit: null
           governmentId:
+            provider:
+              auto: null
+              manual: null
             inspectionType: null
             verify: null
+            failExpiredId: true
+            retry:
+              attempts: 0
           updatedAt: 2000-01-23T04:56:07.000+00:00
         voicePhrases:
         - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -2098,10 +2176,20 @@ components:
             $ref: '#/components/schemas/VoicePhraseContents'
           type: array
       type: object
+    GovernmentIdConfiguration_provider:
+      example:
+        auto: null
+        manual: null
+      properties:
+        auto:
+          $ref: '#/components/schemas/EnumProviderAuto'
+        manual:
+          $ref: '#/components/schemas/EnumProviderManual'
+      type: object
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.
       example:
-        count: 0
+        count: 6
       properties:
         count:
           description: Count of OTP failures.
@@ -2112,7 +2200,7 @@ components:
     OTPDeviceConfiguration_otp_deliveries_cooldown:
       description: Cooldown (waiting period between OTP attempts) configuration.
       example:
-        duration: 1
+        duration: 5
         timeUnit: null
       properties:
         duration:
@@ -2127,9 +2215,9 @@ components:
     OTPDeviceConfiguration_otp_deliveries:
       description: OTP delivery configuration.
       example:
-        count: 6
+        count: 1
         cooldown:
-          duration: 1
+          duration: 5
           timeUnit: null
       properties:
         count:
@@ -2178,11 +2266,11 @@ components:
           duration: 5
           timeUnit: null
         attempts:
-          count: 0
-        deliveries:
           count: 6
+        deliveries:
+          count: 1
           cooldown:
-            duration: 1
+            duration: 5
             timeUnit: null
       properties:
         attempts:
@@ -2247,7 +2335,7 @@ components:
       type: object
     TransactionConfiguration_timeout:
       example:
-        duration: 5
+        duration: 2
         timeUnit: null
       properties:
         duration:
@@ -2262,7 +2350,7 @@ components:
       type: object
     TransactionConfiguration_dataCollection_timeout:
       example:
-        duration: 2
+        duration: 7
         timeUnit: null
       properties:
         duration:
@@ -2278,7 +2366,7 @@ components:
     TransactionConfiguration_dataCollection:
       example:
         timeout:
-          duration: 2
+          duration: 7
           timeUnit: null
       properties:
         timeout:

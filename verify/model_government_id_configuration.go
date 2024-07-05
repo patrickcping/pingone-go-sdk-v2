@@ -19,7 +19,11 @@ var _ MappedNullable = &GovernmentIdConfiguration{}
 
 // GovernmentIdConfiguration struct for GovernmentIdConfiguration
 type GovernmentIdConfiguration struct {
+	// Indicates whether verification should fail if the ID is expired.
+	FailExpiredId *bool `json:"failExpiredId,omitempty"`
 	InspectionType *EnumInspectionType `json:"inspectionType,omitempty"`
+	Provider *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
+	Retry *ObjectRetry `json:"retry,omitempty"`
 	Verify EnumVerify `json:"verify"`
 }
 
@@ -39,6 +43,38 @@ func NewGovernmentIdConfiguration(verify EnumVerify) *GovernmentIdConfiguration 
 func NewGovernmentIdConfigurationWithDefaults() *GovernmentIdConfiguration {
 	this := GovernmentIdConfiguration{}
 	return &this
+}
+
+// GetFailExpiredId returns the FailExpiredId field value if set, zero value otherwise.
+func (o *GovernmentIdConfiguration) GetFailExpiredId() bool {
+	if o == nil || IsNil(o.FailExpiredId) {
+		var ret bool
+		return ret
+	}
+	return *o.FailExpiredId
+}
+
+// GetFailExpiredIdOk returns a tuple with the FailExpiredId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GovernmentIdConfiguration) GetFailExpiredIdOk() (*bool, bool) {
+	if o == nil || IsNil(o.FailExpiredId) {
+		return nil, false
+	}
+	return o.FailExpiredId, true
+}
+
+// HasFailExpiredId returns a boolean if a field has been set.
+func (o *GovernmentIdConfiguration) HasFailExpiredId() bool {
+	if o != nil && !IsNil(o.FailExpiredId) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailExpiredId gets a reference to the given bool and assigns it to the FailExpiredId field.
+func (o *GovernmentIdConfiguration) SetFailExpiredId(v bool) {
+	o.FailExpiredId = &v
 }
 
 // GetInspectionType returns the InspectionType field value if set, zero value otherwise.
@@ -71,6 +107,70 @@ func (o *GovernmentIdConfiguration) HasInspectionType() bool {
 // SetInspectionType gets a reference to the given EnumInspectionType and assigns it to the InspectionType field.
 func (o *GovernmentIdConfiguration) SetInspectionType(v EnumInspectionType) {
 	o.InspectionType = &v
+}
+
+// GetProvider returns the Provider field value if set, zero value otherwise.
+func (o *GovernmentIdConfiguration) GetProvider() GovernmentIdConfigurationProvider {
+	if o == nil || IsNil(o.Provider) {
+		var ret GovernmentIdConfigurationProvider
+		return ret
+	}
+	return *o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GovernmentIdConfiguration) GetProviderOk() (*GovernmentIdConfigurationProvider, bool) {
+	if o == nil || IsNil(o.Provider) {
+		return nil, false
+	}
+	return o.Provider, true
+}
+
+// HasProvider returns a boolean if a field has been set.
+func (o *GovernmentIdConfiguration) HasProvider() bool {
+	if o != nil && !IsNil(o.Provider) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given GovernmentIdConfigurationProvider and assigns it to the Provider field.
+func (o *GovernmentIdConfiguration) SetProvider(v GovernmentIdConfigurationProvider) {
+	o.Provider = &v
+}
+
+// GetRetry returns the Retry field value if set, zero value otherwise.
+func (o *GovernmentIdConfiguration) GetRetry() ObjectRetry {
+	if o == nil || IsNil(o.Retry) {
+		var ret ObjectRetry
+		return ret
+	}
+	return *o.Retry
+}
+
+// GetRetryOk returns a tuple with the Retry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GovernmentIdConfiguration) GetRetryOk() (*ObjectRetry, bool) {
+	if o == nil || IsNil(o.Retry) {
+		return nil, false
+	}
+	return o.Retry, true
+}
+
+// HasRetry returns a boolean if a field has been set.
+func (o *GovernmentIdConfiguration) HasRetry() bool {
+	if o != nil && !IsNil(o.Retry) {
+		return true
+	}
+
+	return false
+}
+
+// SetRetry gets a reference to the given ObjectRetry and assigns it to the Retry field.
+func (o *GovernmentIdConfiguration) SetRetry(v ObjectRetry) {
+	o.Retry = &v
 }
 
 // GetVerify returns the Verify field value
@@ -107,8 +207,17 @@ func (o GovernmentIdConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o GovernmentIdConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FailExpiredId) {
+		toSerialize["failExpiredId"] = o.FailExpiredId
+	}
 	if !IsNil(o.InspectionType) {
 		toSerialize["inspectionType"] = o.InspectionType
+	}
+	if !IsNil(o.Provider) {
+		toSerialize["provider"] = o.Provider
+	}
+	if !IsNil(o.Retry) {
+		toSerialize["retry"] = o.Retry
 	}
 	toSerialize["verify"] = o.Verify
 	return toSerialize, nil

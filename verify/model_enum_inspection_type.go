@@ -46,8 +46,7 @@ func (v *EnumInspectionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	*v = EnumInspectionType(fmt.Sprintf("%s", "UNKNOWN"))
-	return nil
+	return fmt.Errorf("%+v is not a valid EnumInspectionType", value)
 }
 
 // NewEnumInspectionTypeFromValue returns a pointer to a valid EnumInspectionType

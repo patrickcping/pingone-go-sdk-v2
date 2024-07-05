@@ -44,8 +44,7 @@ func (v *EnumTimeUnit) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	*v = EnumTimeUnit(fmt.Sprintf("%s", "UNKNOWN"))
-	return nil
+	return fmt.Errorf("%+v is not a valid EnumTimeUnit", value)
 }
 
 // NewEnumTimeUnitFromValue returns a pointer to a valid EnumTimeUnit

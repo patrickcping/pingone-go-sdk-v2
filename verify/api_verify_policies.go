@@ -58,22 +58,6 @@ func (a *VerifyPoliciesApiService) CreateVerifyPolicy(ctx context.Context, envir
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) CreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			return r.ApiService.internalCreateVerifyPolicyExecute(r)
-		},
-		&localVarReturnValue,
-	)
-	return localVarReturnValue, response, err
-}
-			
-func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
-	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -122,7 +106,7 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -267,22 +251,6 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicy(ctx context.Context, envir
 // Execute executes the request
 func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
 	var (
-		err      error
-		response *http.Response
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalDeleteVerifyPolicyExecute(r)
-			return nil, resp, err
-		},
-		nil,
-	)
-	return response, err
-}
-			
-func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
-	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -329,7 +297,7 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -452,22 +420,6 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPolicies(ctx context.Context, en
 //  @return EntityArray
 func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			return r.ApiService.internalReadAllVerifyPoliciesExecute(r)
-		},
-		&localVarReturnValue,
-	)
-	return localVarReturnValue, response, err
-}
-			
-func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
-	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -514,7 +466,7 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -649,22 +601,6 @@ func (a *VerifyPoliciesApiService) ReadOneVerifyPolicy(ctx context.Context, envi
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) ReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			return r.ApiService.internalReadOneVerifyPolicyExecute(r)
-		},
-		&localVarReturnValue,
-	)
-	return localVarReturnValue, response, err
-}
-			
-func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
-	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -712,7 +648,7 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -853,22 +789,6 @@ func (a *VerifyPoliciesApiService) UpdateVerifyPolicy(ctx context.Context, envir
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) UpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			return r.ApiService.internalUpdateVerifyPolicyExecute(r)
-		},
-		&localVarReturnValue,
-	)
-	return localVarReturnValue, response, err
-}
-			
-func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
-	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -918,7 +838,7 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
