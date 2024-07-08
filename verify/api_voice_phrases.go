@@ -58,6 +58,22 @@ func (a *VoicePhrasesApiService) CreateVoicePhrase(ctx context.Context, environm
 //  @return VoicePhrase
 func (a *VoicePhrasesApiService) CreateVoicePhraseExecute(r ApiCreateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *VoicePhrase
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateVoicePhraseExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
+	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -251,6 +267,22 @@ func (a *VoicePhrasesApiService) DeleteVoicePhrase(ctx context.Context, environm
 // Execute executes the request
 func (a *VoicePhrasesApiService) DeleteVoicePhraseExecute(r ApiDeleteVoicePhraseRequest) (*http.Response, error) {
 	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteVoicePhraseExecute(r)
+			return nil, resp, err
+		},
+		nil,
+	)
+	return response, err
+}
+			
+func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoicePhraseRequest) (*http.Response, error) {
+	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -419,6 +451,22 @@ func (a *VoicePhrasesApiService) ReadAllVoicePhrases(ctx context.Context, enviro
 // Execute executes the request
 //  @return EntityArray
 func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecute(r ApiReadAllVoicePhrasesRequest) (*EntityArray, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalReadAllVoicePhrasesExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAllVoicePhrasesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -600,6 +648,22 @@ func (a *VoicePhrasesApiService) ReadOneVoicePhrase(ctx context.Context, environ
 // Execute executes the request
 //  @return VoicePhrase
 func (a *VoicePhrasesApiService) ReadOneVoicePhraseExecute(r ApiReadOneVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *VoicePhrase
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalReadOneVoicePhraseExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -788,6 +852,22 @@ func (a *VoicePhrasesApiService) UpdateVoicePhrase(ctx context.Context, environm
 // Execute executes the request
 //  @return VoicePhrase
 func (a *VoicePhrasesApiService) UpdateVoicePhraseExecute(r ApiUpdateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *VoicePhrase
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalUpdateVoicePhraseExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -80,6 +80,8 @@ type Configuration struct {
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
+	DefaultServerIndex int             `json:"defaultServerIndex,omitempty"`
+	ProxyURL         *string           `json:"proxyURL,omitempty"`
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
@@ -91,6 +93,7 @@ func NewConfiguration() *Configuration {
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "pingtools PingOne-GOLANG-SDK-verify/0.6.0",
 		Debug:            false,
+		DefaultServerIndex: 0,
 		Servers:          ServerConfigurations{
 			{
 				URL: "{protocol}://{baseDomain}.{suffix}/v1",
@@ -138,6 +141,40 @@ func NewConfiguration() *Configuration {
 	return cfg
 }
 
+func (c *Configuration) SetDebug(debug bool) {
+	c.Debug = debug
+}
+
+func (c *Configuration) SetUserAgent(userAgent string) {
+	c.UserAgent = userAgent
+}
+
+func (c *Configuration) AppendUserAgent(userAgent string) {
+	c.UserAgent += fmt.Sprintf(" %s", userAgent)
+}
+
+func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {
+	c.DefaultServerIndex = defaultServerIndex
+}
+
+func (c *Configuration) SetDefaultServerVariableDefaultValue(variable string, value string) error {
+	return c.SetServerVariableDefaultValue(c.DefaultServerIndex, variable, value)
+}
+
+func (c *Configuration) SetServerVariableDefaultValue(serverIndex int, variable string, value string) error {
+	if serverIndex >= 0 && serverIndex < len(c.Servers) {
+		if entry, ok := c.Servers[serverIndex].Variables[variable]; ok {
+			entry.DefaultValue = value
+			c.Servers[serverIndex].Variables[variable] = entry
+			return nil
+		} else {
+			return fmt.Errorf("variable %v not defined in server %v", variable, serverIndex)
+		}
+	} else {
+		return fmt.Errorf("server index %v out of range %v", serverIndex, len(c.Servers)-1)
+	}
+}
+
 // AddDefaultHeader adds a new HTTP header to the default header in the request
 func (c *Configuration) AddDefaultHeader(key string, value string) {
 	c.DefaultHeader[key] = value
@@ -176,22 +213,22 @@ func (c *Configuration) ServerURL(index int, variables map[string]string) (strin
 	return c.Servers.URL(index, variables)
 }
 
-func getServerIndex(ctx context.Context) (int, error) {
+func getServerIndex(ctx context.Context, defaultServerIndex int) (int, error) {
 	si := ctx.Value(ContextServerIndex)
 	if si != nil {
 		if index, ok := si.(int); ok {
 			return index, nil
 		}
-		return 0, reportError("Invalid type %T should be int", si)
+		return defaultServerIndex, reportError("Invalid type %T should be int", si)
 	}
-	return 0, nil
+	return defaultServerIndex, nil
 }
 
-func getServerOperationIndex(ctx context.Context, endpoint string) (int, error) {
+func getServerOperationIndex(ctx context.Context, endpoint string, defaultServerIndex int) (int, error) {
 	osi := ctx.Value(ContextOperationServerIndices)
 	if osi != nil {
 		if operationIndices, ok := osi.(map[string]int); !ok {
-			return 0, reportError("Invalid type %T should be map[string]int", osi)
+			return defaultServerIndex, reportError("Invalid type %T should be map[string]int", osi)
 		} else {
 			index, ok := operationIndices[endpoint]
 			if ok {
@@ -199,7 +236,7 @@ func getServerOperationIndex(ctx context.Context, endpoint string) (int, error) 
 			}
 		}
 	}
-	return getServerIndex(ctx)
+	return getServerIndex(ctx, defaultServerIndex)
 }
 
 func getServerVariables(ctx context.Context) (map[string]string, error) {
@@ -236,10 +273,10 @@ func (c *Configuration) ServerURLWithContext(ctx context.Context, endpoint strin
 	}
 
 	if ctx == nil {
-		return sc.URL(0, nil)
+		return sc.URL(c.DefaultServerIndex, nil)
 	}
 
-	index, err := getServerOperationIndex(ctx, endpoint)
+	index, err := getServerOperationIndex(ctx, endpoint, c.DefaultServerIndex)
 	if err != nil {
 		return "", err
 	}

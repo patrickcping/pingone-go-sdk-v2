@@ -42,7 +42,8 @@ func (v *EnumProviderManual) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumProviderManual", value)
+	*v = EnumProviderManual(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumProviderManualFromValue returns a pointer to a valid EnumProviderManual

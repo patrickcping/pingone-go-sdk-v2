@@ -44,7 +44,8 @@ func (v *EnumProviderAuto) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumProviderAuto", value)
+	*v = EnumProviderAuto(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumProviderAutoFromValue returns a pointer to a valid EnumProviderAuto
