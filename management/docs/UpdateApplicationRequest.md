@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **SpEncryption** | Pointer to [**ApplicationSAMLAllOfSpEncryption**](ApplicationSAMLAllOfSpEncryption.md) |  | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
+**Template** | Pointer to [**ApplicationTemplate**](ApplicationTemplate.md) |  | [optional] 
 **AdditionalRefreshTokenReplayProtectionEnabled** | Pointer to **bool** | When set to &#x60;true&#x60; (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a &#x60;false&#x60; setting. | [optional] [default to true]
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
@@ -819,6 +820,31 @@ SetSpVerification sets SpVerification field to given value.
 `func (o *UpdateApplicationRequest) HasSpVerification() bool`
 
 HasSpVerification returns a boolean if a field has been set.
+
+### GetTemplate
+
+`func (o *UpdateApplicationRequest) GetTemplate() ApplicationTemplate`
+
+GetTemplate returns the Template field if non-nil, zero value otherwise.
+
+### GetTemplateOk
+
+`func (o *UpdateApplicationRequest) GetTemplateOk() (*ApplicationTemplate, bool)`
+
+GetTemplateOk returns a tuple with the Template field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplate
+
+`func (o *UpdateApplicationRequest) SetTemplate(v ApplicationTemplate)`
+
+SetTemplate sets Template field to given value.
+
+### HasTemplate
+
+`func (o *UpdateApplicationRequest) HasTemplate() bool`
+
+HasTemplate returns a boolean if a field has been set.
 
 ### GetAdditionalRefreshTokenReplayProtectionEnabled
 

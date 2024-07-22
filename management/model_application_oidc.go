@@ -96,6 +96,7 @@ type ApplicationOIDC struct {
 	Tags []EnumApplicationTags `json:"tags,omitempty"`
 	// The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
 	TargetLinkUri *string `json:"targetLinkUri,omitempty"`
+	Template *ApplicationTemplate `json:"template,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
 	ParRequirement *EnumApplicationOIDCPARRequirement `json:"parRequirement,omitempty"`
 	// PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
@@ -1460,6 +1461,38 @@ func (o *ApplicationOIDC) SetTargetLinkUri(v string) {
 	o.TargetLinkUri = &v
 }
 
+// GetTemplate returns the Template field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetTemplate() ApplicationTemplate {
+	if o == nil || IsNil(o.Template) {
+		var ret ApplicationTemplate
+		return ret
+	}
+	return *o.Template
+}
+
+// GetTemplateOk returns a tuple with the Template field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetTemplateOk() (*ApplicationTemplate, bool) {
+	if o == nil || IsNil(o.Template) {
+		return nil, false
+	}
+	return o.Template, true
+}
+
+// HasTemplate returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasTemplate() bool {
+	if o != nil && !IsNil(o.Template) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplate gets a reference to the given ApplicationTemplate and assigns it to the Template field.
+func (o *ApplicationOIDC) SetTemplate(v ApplicationTemplate) {
+	o.Template = &v
+}
+
 // GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value
 func (o *ApplicationOIDC) GetTokenEndpointAuthMethod() EnumApplicationOIDCTokenAuthMethod {
 	if o == nil {
@@ -1705,6 +1738,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TargetLinkUri) {
 		toSerialize["targetLinkUri"] = o.TargetLinkUri
+	}
+	if !IsNil(o.Template) {
+		toSerialize["template"] = o.Template
 	}
 	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
 	if !IsNil(o.ParRequirement) {
