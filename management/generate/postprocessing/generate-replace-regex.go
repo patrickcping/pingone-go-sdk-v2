@@ -436,5 +436,44 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// Management: IntegrationVersion model
+		{
+			fileSelectPattern: "model_integration_version.go",
+			pattern:           `(func \(dst \*IntegrationVersion\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *IntegrationVersion) UnmarshalJSON(data []byte) error {
+
+	var common IntegrationVersionCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.IntegrationVersionIntegrationKit = nil
+	dst.IntegrationVersionSAML = nil
+
+	objType := common.GetType()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
+	case ENUMINTEGRATIONVERSIONTYPE_PRODUCT_INTEGRATION_KIT:
+		if err := json.Unmarshal(data, &dst.IntegrationVersionIntegrationKit); err != nil {
+			return err
+		}
+	case ENUMINTEGRATIONVERSIONTYPE_SAML:
+		if err := json.Unmarshal(data, &dst.IntegrationVersionSAML); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(IntegrationVersion)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )

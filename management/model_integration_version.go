@@ -38,45 +38,35 @@ func IntegrationVersionSAMLAsIntegrationVersion(v *IntegrationVersionSAML) Integ
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *IntegrationVersion) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into IntegrationVersionIntegrationKit
-	err = newStrictDecoder(data).Decode(&dst.IntegrationVersionIntegrationKit)
-	if err == nil {
-		jsonIntegrationVersionIntegrationKit, _ := json.Marshal(dst.IntegrationVersionIntegrationKit)
-		if string(jsonIntegrationVersionIntegrationKit) == "{}" { // empty struct
-			dst.IntegrationVersionIntegrationKit = nil
-		} else {
-			match++
+
+	var common IntegrationVersionCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.IntegrationVersionIntegrationKit = nil
+	dst.IntegrationVersionSAML = nil
+
+	objType := common.GetType()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
+	case ENUMINTEGRATIONVERSIONTYPE_PRODUCT_INTEGRATION_KIT:
+		if err := json.Unmarshal(data, &dst.IntegrationVersionIntegrationKit); err != nil {
+			return err
 		}
-	} else {
-		dst.IntegrationVersionIntegrationKit = nil
-	}
-
-	// try to unmarshal data into IntegrationVersionSAML
-	err = newStrictDecoder(data).Decode(&dst.IntegrationVersionSAML)
-	if err == nil {
-		jsonIntegrationVersionSAML, _ := json.Marshal(dst.IntegrationVersionSAML)
-		if string(jsonIntegrationVersionSAML) == "{}" { // empty struct
-			dst.IntegrationVersionSAML = nil
-		} else {
-			match++
+	case ENUMINTEGRATIONVERSIONTYPE_SAML:
+		if err := json.Unmarshal(data, &dst.IntegrationVersionSAML); err != nil {
+			return err
 		}
-	} else {
-		dst.IntegrationVersionSAML = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(IntegrationVersion)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.IntegrationVersionIntegrationKit = nil
-		dst.IntegrationVersionSAML = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(IntegrationVersion)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(IntegrationVersion)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
