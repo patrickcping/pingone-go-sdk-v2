@@ -1,7 +1,8 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.43.0](./management/CHANGELOG.md)
-    * **Enhancement** Added "Integration" and "Integration Version" data models. [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
+    * **Breaking change** API name change for Integration Catalog [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
+    * **Enhancement** Added "Integration", "Integration Version",  "Integration Version Attribute" data models. [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
 * `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.7.0](./verify/CHANGELOG.md)
     * **Enhancement** Added `Retry` field to the `LivenessConfiguration` model. [#369](https://github.com/patrickcping/pingone-go-sdk-v2/pull/369)
     * **Enhancement** Added `FailExpiredId`, `Provider` and `Retry` fields to the `GovernmentIdConfiguration` object. [#369](https://github.com/patrickcping/pingone-go-sdk-v2/pull/369)
