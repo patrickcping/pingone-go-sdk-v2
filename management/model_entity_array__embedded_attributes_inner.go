@@ -19,6 +19,7 @@ type EntityArrayEmbeddedAttributesInner struct {
 	IdentityProviderAttribute   *IdentityProviderAttribute
 	ResourceAttribute           *ResourceAttribute
 	SchemaAttribute             *SchemaAttribute
+	IntegrationVersionAttribute *IntegrationVersionAttribute
 }
 
 // ApplicationAttributeMappingAsEntityArrayEmbeddedAttributesInner is a convenience function that returns ApplicationAttributeMapping wrapped in EntityArrayEmbeddedAttributesInner
@@ -121,12 +122,30 @@ func (dst *EntityArrayEmbeddedAttributesInner) UnmarshalJSON(data []byte) error 
 		dst.SchemaAttribute = nil
 	}
 
+	// try to unmarshal data into IntegrationVersionAttribute
+	err = json.Unmarshal(data, &dst.IntegrationVersionAttribute)
+	if err == nil {
+		jsonIntegrationVersionAttribute, _ := json.Marshal(dst.IntegrationVersionAttribute)
+		if string(jsonIntegrationVersionAttribute) == "{}" { // empty struct
+			dst.IntegrationVersionAttribute = nil
+		} else {
+			if dst.IntegrationVersionAttribute.HasIntegration() {
+				match++
+			} else {
+				dst.IntegrationVersionAttribute = nil
+			}
+		}
+	} else {
+		dst.IntegrationVersionAttribute = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.ApplicationAttributeMapping = nil
 		dst.IdentityProviderAttribute = nil
 		dst.ResourceAttribute = nil
 		dst.SchemaAttribute = nil
+		dst.IntegrationVersionAttribute = nil
 
 		return fmt.Errorf("Data matches more than one schema in oneOf(EntityArrayEmbeddedAttributesInner)")
 	} else if match == 1 {

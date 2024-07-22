@@ -320,6 +320,30 @@ components:
       type: string
       enum: [png, jpg, gif]
       description: A string that specifies the type of format used for the image. Options are jpg, png, and gif.
+    EnumIntegrationPingProductName:
+      type: string
+      enum: [PINGID, PINGONE_ENTERPRISE, PINGONE, PINGACCESS, PINGFEDERATE, PINGDIRECTORY, PINGDATAGOVERNANCE, PINGINTELLIGENCE_FOR_APIS, PINGONE_ADVANCED_SERVICES]
+      description: The Ping product associated with the integration.
+    EnumIntegrationTag:
+      type: string
+      enum: [SSO, AUTHENTICATION, MFA, INTELLIGENCE, GOVERNANCE, IDAAS, ACCESS, DIRECTORY, PROVISIONING]
+      description: Tag to apply to the integration metadata. Can include `SSO`, `AUTHENTICATION`, `MFA`, `INTELLIGENCE`, `GOVERNANCE`, `IDAAS`, `ACCESS`, `DIRECTORY`, or `PROVISIONING`.
+    EnumIntegrationVersionType:
+      type: string
+      enum: [PRODUCT_INTEGRATION_KIT, SAML]
+      description: The type of integration for this version. Currently, the only valid values are PRODUCT_INTEGRATION_KIT and SAML.
+    EnumIntegrationVersionIntegrationKitIntegratedWithName:
+      type: string
+      enum: [PINGID, PINGONE_ENTERPRISE, PINGONE, PINGACCESS, PINGFEDERATE, PINGDIRECTORY, PINGDATAGOVERNANCE]
+      description: Name of the compatible Ping product with which this version integrates. Can include PINGID, PINGONE_ENTERPRISE, PINGONE, PINGACCESS, PINGFEDERATE, PINGDIRECTORY, or PINGDATAGOVERNANCE
+    EnumIntegrationVersionSAMLProtocolVersion:
+      type: string
+      enum: ["2.0", "1.1", "1.0"]
+      description: The SAML protocol version supported 2.0, 1.1, or 1.0.
+    EnumIntegrationVersionSAMLSLOBinding:
+      type: string
+      enum: [HTTP_POST, HTTP_REDIRECT]
+      description: The SLO binding. Must be either HTTP_POST or HTTP_REDIRECT
     EnumKeyRotationPolicyAlgorithm:
       type: string
       enum: [RSA]
@@ -1056,6 +1080,8 @@ components:
                       - id
               required:
                 - certificates
+            template:
+              $ref: '#/components/schemas/ApplicationTemplate'
           required:
             - spEntityId
             - acsUrls
@@ -1254,6 +1280,8 @@ components:
             targetLinkUri:
               type: string
               description: The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
+            template:
+              $ref: '#/components/schemas/ApplicationTemplate'
             tokenEndpointAuthMethod:
               $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
             parRequirement:
@@ -1459,6 +1487,34 @@ components:
               description: A timestamp that specifies when the previous secret was last used.
           required:
             - expiresAt
+    ApplicationTemplate:
+      type: object
+      properties:
+        configuration:
+          type: object
+          description: Contains a key/value map of the parameters required by the integration in Integration Catalog.
+          additionalProperties:
+            type: string
+        integration:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The UUID of the integration in Integration Catalog.
+          required:
+            - id
+        version:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The UUID of the integration version in Integration Catalog.
+          required:
+            - id
+      required:
+        - configuration
+        - integration
+        - version
     ApplicationWSFED:
       allOf:
         - $ref: '#/components/schemas/Application'
@@ -1997,6 +2053,7 @@ components:
                   - $ref:  '#/components/schemas/IdentityProviderAttribute'
                   - $ref:  '#/components/schemas/SchemaAttribute'
                   - $ref:  '#/components/schemas/ResourceAttribute'
+                  - $ref:  '#/components/schemas/IntegrationVersionAttribute'
             applications:
               type: array
               items:
@@ -2071,6 +2128,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/IdentityProvider'
+            integrations:
+              type: array
+              items:
+                $ref: '#/components/schemas/Integration'
             keys:
               type: array
               items:
@@ -2173,6 +2234,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
+            versions:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationVersion'
         count:
           type: number
         size:
@@ -3583,6 +3648,264 @@ components:
                   type: integer
                   readOnly: true
                   description: The height of the image (in pixels).
+    Integration:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            type: string
+          description: The list of categories used to classify the integration. Valid strings include alphanumeric characters, underscore, hyphen, and space.
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Creation date of the integration.
+        description:
+          type: string
+          description: The description of the integration in HTML to be used for the integration listing. You can use class and style attributes for inline styling. There's a 4000 character limit for the description.
+        id:
+          type: string
+          description: The platform-generated ID of this integration.
+          readOnly: true
+        logo:
+          type: object
+          description: A logo to use for the integration. If specified, the associated properties are required.
+          properties:
+            href:
+              type: string
+              description: The href to the absolute URL of the image.
+            id:
+              type: string
+              description: The image ID generated by the Image service.
+          required:
+            - id
+            - href
+        marketingLandingPageUrl:
+          type: string
+          description: Absolute URL link to the marketing landing page.
+        name:
+          type: string
+          description: Name of the integration.
+        pingProductNames:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnumIntegrationPingProductName'
+          description: The Ping product associated with the integration. Can include `PINGID`, `PINGONE_ENTERPRISE`, `PINGONE`, `PINGACCESS`, `PINGFEDERATE`, `PINGDIRECTORY`, `PINGDATAGOVERNANCE`, `PINGINTELLIGENCE_FOR_APIS` or `PINGONE_ADVANCED_SERVICES`
+        publisher:
+          type: string
+          description: Name of the publisher.
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnumIntegrationTag'
+          description: Tags to apply to the integration metadata. Can include `SSO`, `AUTHENTICATION`, `MFA`, `INTELLIGENCE`, `GOVERNANCE`, `IDAAS`, `ACCESS`, `DIRECTORY`, or `PROVISIONING`.
+        thirdParty:
+          type: object
+          description: Metadata that defines the third party related to this integration.
+          properties:
+            companyName:
+              type: string
+              description: Name of the third party company for the listing.
+            products:
+              type: array
+              items:
+                type: string
+              description: Names of the third party products for the integration.
+          required:
+            - companyName
+      required:
+        - name
+        - pingProductNames
+        - publisher
+    IntegrationVersion:
+      oneOf:
+      - $ref: '#/components/schemas/IntegrationVersionIntegrationKit'
+      - $ref: '#/components/schemas/IntegrationVersionSAML'
+      discriminator:
+        propertyName: type
+        mapping:
+          PRODUCT_INTEGRATION_KIT: '#/components/schemas/IntegrationVersionIntegrationKit'
+          SAML: '#/components/schemas/IntegrationVersionSAML'
+    IntegrationVersionAttribute:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Auto-generated ID of this attribute.
+        integration:
+          type: object
+          readOnly: true
+          description: The parent integration of the integration version.
+          properties:
+            id:
+              type: string
+              readOnly: true
+              description: The platform-generated ID of the parent integration.
+          required:
+            - id
+        name:
+          type: string
+          description: Attribute name the application expects. Unique within the integration version and in the form `urn:oasis:names:tc:SAML:2.0:attrname-format:uri`.
+        required:
+          type: boolean
+          description: Whether or not the attribute is required. If true, the value property must be set with a non-empty value. Default is false.
+        schema:
+          type: string
+          description: A JSON schema describing the current attribute mapping.
+        version:
+          type: object
+          readOnly: true
+          description: The relationship to the parent integration version.
+          properties:
+            id:
+              type: string
+              description: The platform-generated ID of the parent integration version.
+          required:
+            - id
+      required:
+        - schema
+    IntegrationVersionCommon:
+      type: object
+      properties:
+        configuration:
+          type: object
+          description: The configuration of the integration version. If specified, configuration.schema and configuration.properties is required.
+          properties:
+            schema:
+              type: object
+              description: Contains a JSON schema defining the integration version.
+            properties:
+              type: object
+              description: Contains the property names and assigned values for the integration version.
+          required:
+            - schema
+            - properties
+        description:
+          type: string
+          description: Unicode characters. The description of this integration metadata version.
+        id:
+          type: string
+          readOnly: true
+          description: The platform-generated ID of this integration metadata version.
+        integration:
+          type: object
+          description: The parent integration of the integration version.
+          readOnly: true
+          properties:
+            id:
+              type: string
+              description: The platform-generated ID of the parent integration.
+          required:
+            - id
+        name:
+          type: string
+          description: A unique name for the integration metadata version.
+        number:
+          type: string
+          description: A unique number for the integration version.
+        type:
+          $ref: '#/components/schemas/EnumIntegrationVersionType'
+      required:
+        - name
+        - number
+    IntegrationVersionIntegrationKit:
+      allOf:
+        - $ref: '#/components/schemas/IntegrationVersionCommon'
+        - type: object
+          properties:
+            documentationUrl:
+              type: string
+              description: Absolute URL to the documentation.
+            endOfLifeOn:
+              type: string
+              format: date
+              description: EOL support date in the form yyyy-mm-dd.
+            integratedWith:
+              type: object
+              description: Ping product integration details.
+              properties:
+                name:
+                  $ref: '#/components/schemas/EnumIntegrationVersionIntegrationKitIntegratedWithName'
+                minVersion:
+                  type: string
+                  description: Earliest version of the integrated Ping product.
+                maxVersion:
+                  type: string
+                  description: Latest version of the integrated Ping product.
+              required:
+                - name
+            number:
+              type: string
+              description: Unique number for the integration version.
+            releasedOn:
+              type: string
+              format: date
+              description: Release date in the form yyyy-mm-dd.
+          required:
+            - number
+            - releasedOn
+    IntegrationVersionSAML:
+      allOf:
+        - $ref: '#/components/schemas/IntegrationVersionCommon'
+        - type: object
+          properties:
+            assertionConsumerService:
+              type: string
+              description: The URL to which PingOne sends SAML responses. Parameterize the URL using `${_paremter_}`. For example, `https://${subdomain}.slack.com`. The maximum length is 2000 characters.
+              maxLength: 2000
+            assertionEncrypted:
+              type: boolean
+              description: The state of assertion encryption. `true` if encrypted.
+            defaultTarget:
+              type: string
+              description: After an IdP-initiated SSO, this URL is passed in the RelayState value in the SAML response. Informs the IdP where to send its response. Parameterize the URL using `${_paremter_}`. For example, `https://${subdomain}.slack.com`.
+            entityId:
+              type: string
+              description: Unique ID for the application.
+            nameIdFormat:
+              type: string
+              description: |
+                This can be one of the following:
+                urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+                urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+                urn:oasis:names:tc:SAML:2.0:nameid-format:persistent
+                urn:oasis:names:tc:SAML:2.0:nameid-format:transient
+            protocolVersion:
+              $ref: '#/components/schemas/EnumIntegrationVersionSAMLProtocolVersion'
+            slo:
+              type: object
+              description: The Single Logout information.
+              properties:
+                requestEndpoint:
+                  type: string
+                  description: The endpoint where SLO requests are sent.
+                responseEndpoint:
+                  type: string
+                  description: The endpoint where SLO responses are sent.
+                binding:
+                  $ref: '#/components/schemas/EnumIntegrationVersionSAMLSLOBinding'
+            thirdParty:
+              type: object
+              description: Third-party IdP information.
+              properties:
+                metadata:
+                  type: object
+                  description: The third-party IdP metadata.
+                  properties:
+                    href:
+                      type: string
+                      description: URL of IdP's SAML metadata XML.
+                instructions:
+                  type: object
+                  properties:
+                    href:
+                      type: string
+                      description: URL of IdP's setup instructions.
+          required:
+            - assertionConsumerService
+            - protocolVersion
     KeyRotationPolicy:
       type: object
       properties:
@@ -14846,13 +15169,24 @@ paths:
     get:
       tags:
         - Integration Catalog
-      summary: READ Integration Metadata
+      summary: READ All Integration Metadata
+      operationId: readAllIntegrationMetadata
       parameters:
         - name: environmentID
           in: path
           schema:
             type: string
           required: true
+        - name: filter
+          in: query
+          schema:
+            type: string
+          example: (pingProductNames eq "PINGFEDERATE" and version.releasedOn ge "2020-05-20")
+        - name: expand
+          in: query
+          schema:
+            type: string
+          example: versions
       responses:
         '400':
           $ref: '#/components/responses/400'
@@ -14871,12 +15205,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
   /environments/{environmentID}/integrations/{integrationID}:
     get:
       tags:
         - Integration Catalog
       summary: READ One Integration Metadata
+      operationId: readOneIntegrationMetadata
       parameters:
         - name: environmentID
           in: path
@@ -14906,12 +15243,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
   /environments/{environmentID}/integrations/{integrationID}/versions:
     get:
       tags:
         - Integration Catalog
-      summary: READ Integration Version Metadata
+      summary: Read All Integration Versions Metadata
+      operationId: readIntegrationVersionMetadata
       parameters:
         - name: environmentID
           in: path
@@ -14941,12 +15281,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
   /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}:
     get:
       tags:
         - Integration Catalog
       summary: READ One Integration Version Metadata
+      operationId: readOneIntegrationVersionMetadata
       parameters:
         - name: environmentID
           in: path
@@ -14981,12 +15324,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationVersion'
   /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset:
     get:
       tags:
         - Integration Catalog
-      summary: READ Integration Version Asset Download
+      summary: Download Integration Version Asset
+      operationId: downloadOneIntegrationVersionAsset
       parameters:
         - name: environmentID
           in: path
@@ -15021,7 +15367,105 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/zip:
+              schema:
+                type: string
+                format: byte
+            application/x-zip-compressed:
+              schema:
+                type: string
+                format: byte
+  /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes:
+    get:
+      tags:
+        - Integration Catalog
+      summary: Read All Attributes of an Integration Version (SAML only)
+      operationId: readAllIntegrationVersionAttributes
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationVersionID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+  /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes/{integrationVersionAttributeID}:
+    get:
+      tags:
+        - Integration Catalog
+      summary: Read One Attributes of an Integration Version (SAML only)
+      operationId: readOneIntegrationVersionAttributes
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationVersionID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationVersionAttributeID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationVersionAttribute'
   /environments/{environmentID}/languages:
     get:
       tags:

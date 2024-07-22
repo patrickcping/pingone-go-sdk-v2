@@ -23,25 +23,239 @@ import (
 // IntegrationCatalogApiService IntegrationCatalogApi service
 type IntegrationCatalogApiService service
 
-type ApiEnvironmentsEnvironmentIDIntegrationsGetRequest struct {
+type ApiDownloadOneIntegrationVersionAssetRequest struct {
 	ctx context.Context
 	ApiService *IntegrationCatalogApiService
 	environmentID string
+	integrationID string
+	integrationVersionID string
 }
 
-func (r ApiEnvironmentsEnvironmentIDIntegrationsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDIntegrationsGetExecute(r)
+func (r ApiDownloadOneIntegrationVersionAssetRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.DownloadOneIntegrationVersionAssetExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDIntegrationsGet READ Integration Metadata
+DownloadOneIntegrationVersionAsset Download Integration Version Asset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiEnvironmentsEnvironmentIDIntegrationsGetRequest
+ @param integrationID
+ @param integrationVersionID
+ @return ApiDownloadOneIntegrationVersionAssetRequest
 */
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsGet(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDIntegrationsGetRequest {
-	return ApiEnvironmentsEnvironmentIDIntegrationsGetRequest{
+func (a *IntegrationCatalogApiService) DownloadOneIntegrationVersionAsset(ctx context.Context, environmentID string, integrationID string, integrationVersionID string) ApiDownloadOneIntegrationVersionAssetRequest {
+	return ApiDownloadOneIntegrationVersionAssetRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		integrationID: integrationID,
+		integrationVersionID: integrationVersionID,
+	}
+}
+
+// Execute executes the request
+//  @return string
+func (a *IntegrationCatalogApiService) DownloadOneIntegrationVersionAssetExecute(r ApiDownloadOneIntegrationVersionAssetRequest) (string, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  string
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalDownloadOneIntegrationVersionAssetExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *IntegrationCatalogApiService) internalDownloadOneIntegrationVersionAssetExecute(r ApiDownloadOneIntegrationVersionAssetRequest) (string, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.DownloadOneIntegrationVersionAsset")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/zip", "application/x-zip-compressed"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadAllIntegrationMetadataRequest struct {
+	ctx context.Context
+	ApiService *IntegrationCatalogApiService
+	environmentID string
+	filter *string
+	expand *string
+}
+
+func (r ApiReadAllIntegrationMetadataRequest) Filter(filter string) ApiReadAllIntegrationMetadataRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ApiReadAllIntegrationMetadataRequest) Expand(expand string) ApiReadAllIntegrationMetadataRequest {
+	r.expand = &expand
+	return r
+}
+
+func (r ApiReadAllIntegrationMetadataRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllIntegrationMetadataExecute(r)
+}
+
+/*
+ReadAllIntegrationMetadata READ All Integration Metadata
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @return ApiReadAllIntegrationMetadataRequest
+*/
+func (a *IntegrationCatalogApiService) ReadAllIntegrationMetadata(ctx context.Context, environmentID string) ApiReadAllIntegrationMetadataRequest {
+	return ApiReadAllIntegrationMetadataRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -49,32 +263,34 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsGet(
 }
 
 // Execute executes the request
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsGetRequest) (*http.Response, error) {
+//  @return EntityArray
+func (a *IntegrationCatalogApiService) ReadAllIntegrationMetadataExecute(r ApiReadAllIntegrationMetadataRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err      error
-		response *http.Response
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsGetExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalReadAllIntegrationMetadataExecute(r)
 		},
-		nil,
+		&localVarReturnValue,
 	)
-	return response, err
+	return localVarReturnValue, response, err
 }
 			
-func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsGetRequest) (*http.Response, error) {
+func (a *IntegrationCatalogApiService) internalReadAllIntegrationMetadataExecute(r ApiReadAllIntegrationMetadataRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.EnvironmentsEnvironmentIDIntegrationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.ReadAllIntegrationMetadata")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations"
@@ -84,6 +300,12 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	}
+	if r.expand != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "expand", r.expand, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -103,19 +325,19 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -128,144 +350,159 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest struct {
+type ApiReadAllIntegrationVersionAttributesRequest struct {
 	ctx context.Context
 	ApiService *IntegrationCatalogApiService
 	environmentID string
 	integrationID string
+	integrationVersionID string
 }
 
-func (r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r)
+func (r ApiReadAllIntegrationVersionAttributesRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllIntegrationVersionAttributesExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet READ One Integration Metadata
+ReadAllIntegrationVersionAttributes Read All Attributes of an Integration Version (SAML only)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param integrationID
- @return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest
+ @param integrationVersionID
+ @return ApiReadAllIntegrationVersionAttributesRequest
 */
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(ctx context.Context, environmentID string, integrationID string) ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest {
-	return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest{
+func (a *IntegrationCatalogApiService) ReadAllIntegrationVersionAttributes(ctx context.Context, environmentID string, integrationID string, integrationVersionID string) ApiReadAllIntegrationVersionAttributesRequest {
+	return ApiReadAllIntegrationVersionAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
 		integrationID: integrationID,
+		integrationVersionID: integrationVersionID,
 	}
 }
 
 // Execute executes the request
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest) (*http.Response, error) {
+//  @return EntityArray
+func (a *IntegrationCatalogApiService) ReadAllIntegrationVersionAttributesExecute(r ApiReadAllIntegrationVersionAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err      error
-		response *http.Response
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalReadAllIntegrationVersionAttributesExecute(r)
 		},
-		nil,
+		&localVarReturnValue,
 	)
-	return response, err
+	return localVarReturnValue, response, err
 }
 			
-func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest) (*http.Response, error) {
+func (a *IntegrationCatalogApiService) internalReadAllIntegrationVersionAttributesExecute(r ApiReadAllIntegrationVersionAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.ReadAllIntegrationVersionAttributes")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -290,19 +527,19 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -315,105 +552,114 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest struct {
+type ApiReadIntegrationVersionMetadataRequest struct {
 	ctx context.Context
 	ApiService *IntegrationCatalogApiService
 	environmentID string
 	integrationID string
 }
 
-func (r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r)
+func (r ApiReadIntegrationVersionMetadataRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadIntegrationVersionMetadataExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet READ Integration Version Metadata
+ReadIntegrationVersionMetadata Read All Integration Versions Metadata
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param integrationID
- @return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest
+ @return ApiReadIntegrationVersionMetadataRequest
 */
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(ctx context.Context, environmentID string, integrationID string) ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest {
-	return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest{
+func (a *IntegrationCatalogApiService) ReadIntegrationVersionMetadata(ctx context.Context, environmentID string, integrationID string) ApiReadIntegrationVersionMetadataRequest {
+	return ApiReadIntegrationVersionMetadataRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -422,32 +668,34 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsInte
 }
 
 // Execute executes the request
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest) (*http.Response, error) {
+//  @return EntityArray
+func (a *IntegrationCatalogApiService) ReadIntegrationVersionMetadataExecute(r ApiReadIntegrationVersionMetadataRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err      error
-		response *http.Response
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalReadIntegrationVersionMetadataExecute(r)
 		},
-		nil,
+		&localVarReturnValue,
 	)
-	return response, err
+	return localVarReturnValue, response, err
 }
 			
-func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest) (*http.Response, error) {
+func (a *IntegrationCatalogApiService) internalReadIntegrationVersionMetadataExecute(r ApiReadIntegrationVersionMetadataRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.ReadIntegrationVersionMetadata")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions"
@@ -477,19 +725,19 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -502,148 +750,155 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest struct {
+type ApiReadOneIntegrationMetadataRequest struct {
 	ctx context.Context
 	ApiService *IntegrationCatalogApiService
 	environmentID string
 	integrationID string
-	integrationVersionID string
 }
 
-func (r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r)
+func (r ApiReadOneIntegrationMetadataRequest) Execute() (*Integration, *http.Response, error) {
+	return r.ApiService.ReadOneIntegrationMetadataExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet READ Integration Version Asset Download
+ReadOneIntegrationMetadata READ One Integration Metadata
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param integrationID
- @param integrationVersionID
- @return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest
+ @return ApiReadOneIntegrationMetadataRequest
 */
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(ctx context.Context, environmentID string, integrationID string, integrationVersionID string) ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest {
-	return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest{
+func (a *IntegrationCatalogApiService) ReadOneIntegrationMetadata(ctx context.Context, environmentID string, integrationID string) ApiReadOneIntegrationMetadataRequest {
+	return ApiReadOneIntegrationMetadataRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
 		integrationID: integrationID,
-		integrationVersionID: integrationVersionID,
 	}
 }
 
 // Execute executes the request
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*http.Response, error) {
+//  @return Integration
+func (a *IntegrationCatalogApiService) ReadOneIntegrationMetadataExecute(r ApiReadOneIntegrationMetadataRequest) (*Integration, *http.Response, error) {
 	var (
-		err      error
-		response *http.Response
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Integration
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalReadOneIntegrationMetadataExecute(r)
 		},
-		nil,
+		&localVarReturnValue,
 	)
-	return response, err
+	return localVarReturnValue, response, err
 }
 			
-func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*http.Response, error) {
+func (a *IntegrationCatalogApiService) internalReadOneIntegrationMetadataExecute(r ApiReadOneIntegrationMetadataRequest) (*Integration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Integration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.ReadOneIntegrationMetadata")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset"
+	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -668,19 +923,19 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -693,85 +948,300 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest struct {
+type ApiReadOneIntegrationVersionAttributesRequest struct {
+	ctx context.Context
+	ApiService *IntegrationCatalogApiService
+	environmentID string
+	integrationID string
+	integrationVersionID string
+	integrationVersionAttributeID string
+}
+
+func (r ApiReadOneIntegrationVersionAttributesRequest) Execute() (*IntegrationVersionAttribute, *http.Response, error) {
+	return r.ApiService.ReadOneIntegrationVersionAttributesExecute(r)
+}
+
+/*
+ReadOneIntegrationVersionAttributes Read One Attributes of an Integration Version (SAML only)
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param integrationID
+ @param integrationVersionID
+ @param integrationVersionAttributeID
+ @return ApiReadOneIntegrationVersionAttributesRequest
+*/
+func (a *IntegrationCatalogApiService) ReadOneIntegrationVersionAttributes(ctx context.Context, environmentID string, integrationID string, integrationVersionID string, integrationVersionAttributeID string) ApiReadOneIntegrationVersionAttributesRequest {
+	return ApiReadOneIntegrationVersionAttributesRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		integrationID: integrationID,
+		integrationVersionID: integrationVersionID,
+		integrationVersionAttributeID: integrationVersionAttributeID,
+	}
+}
+
+// Execute executes the request
+//  @return IntegrationVersionAttribute
+func (a *IntegrationCatalogApiService) ReadOneIntegrationVersionAttributesExecute(r ApiReadOneIntegrationVersionAttributesRequest) (*IntegrationVersionAttribute, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *IntegrationVersionAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalReadOneIntegrationVersionAttributesExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+			
+func (a *IntegrationCatalogApiService) internalReadOneIntegrationVersionAttributesExecute(r ApiReadOneIntegrationVersionAttributesRequest) (*IntegrationVersionAttribute, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IntegrationVersionAttribute
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.ReadOneIntegrationVersionAttributes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes/{integrationVersionAttributeID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionAttributeID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionAttributeID, "integrationVersionAttributeID")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneIntegrationVersionMetadataRequest struct {
 	ctx context.Context
 	ApiService *IntegrationCatalogApiService
 	environmentID string
@@ -779,21 +1249,21 @@ type ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVer
 	integrationVersionID string
 }
 
-func (r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r)
+func (r ApiReadOneIntegrationVersionMetadataRequest) Execute() (*IntegrationVersion, *http.Response, error) {
+	return r.ApiService.ReadOneIntegrationVersionMetadataExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet READ One Integration Version Metadata
+ReadOneIntegrationVersionMetadata READ One Integration Version Metadata
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param integrationID
  @param integrationVersionID
- @return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest
+ @return ApiReadOneIntegrationVersionMetadataRequest
 */
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(ctx context.Context, environmentID string, integrationID string, integrationVersionID string) ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest {
-	return ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest{
+func (a *IntegrationCatalogApiService) ReadOneIntegrationVersionMetadata(ctx context.Context, environmentID string, integrationID string, integrationVersionID string) ApiReadOneIntegrationVersionMetadataRequest {
+	return ApiReadOneIntegrationVersionMetadataRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -803,32 +1273,34 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsInte
 }
 
 // Execute executes the request
-func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*http.Response, error) {
+//  @return IntegrationVersion
+func (a *IntegrationCatalogApiService) ReadOneIntegrationVersionMetadataExecute(r ApiReadOneIntegrationVersionMetadataRequest) (*IntegrationVersion, *http.Response, error) {
 	var (
-		err      error
-		response *http.Response
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *IntegrationVersion
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalReadOneIntegrationVersionMetadataExecute(r)
 		},
-		nil,
+		&localVarReturnValue,
 	)
-	return response, err
+	return localVarReturnValue, response, err
 }
 			
-func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*http.Response, error) {
+func (a *IntegrationCatalogApiService) internalReadOneIntegrationVersionMetadataExecute(r ApiReadOneIntegrationVersionMetadataRequest) (*IntegrationVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *IntegrationVersion
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationCatalogApiService.ReadOneIntegrationVersionMetadata")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}"
@@ -859,19 +1331,19 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -884,80 +1356,89 @@ func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrat
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

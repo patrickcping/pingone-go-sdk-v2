@@ -71,6 +71,7 @@ type ApplicationSAML struct {
 	// A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
 	SpEntityId string `json:"spEntityId"`
 	SpVerification *ApplicationSAMLAllOfSpVerification `json:"spVerification,omitempty"`
+	Template *ApplicationTemplate `json:"template,omitempty"`
 }
 
 // NewApplicationSAML instantiates a new ApplicationSAML object
@@ -1045,6 +1046,38 @@ func (o *ApplicationSAML) SetSpVerification(v ApplicationSAMLAllOfSpVerification
 	o.SpVerification = &v
 }
 
+// GetTemplate returns the Template field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetTemplate() ApplicationTemplate {
+	if o == nil || IsNil(o.Template) {
+		var ret ApplicationTemplate
+		return ret
+	}
+	return *o.Template
+}
+
+// GetTemplateOk returns a tuple with the Template field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetTemplateOk() (*ApplicationTemplate, bool) {
+	if o == nil || IsNil(o.Template) {
+		return nil, false
+	}
+	return o.Template, true
+}
+
+// HasTemplate returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasTemplate() bool {
+	if o != nil && !IsNil(o.Template) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplate gets a reference to the given ApplicationTemplate and assigns it to the Template field.
+func (o *ApplicationSAML) SetTemplate(v ApplicationTemplate) {
+	o.Template = &v
+}
+
 func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1133,6 +1166,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	toSerialize["spEntityId"] = o.SpEntityId
 	if !IsNil(o.SpVerification) {
 		toSerialize["spVerification"] = o.SpVerification
+	}
+	if !IsNil(o.Template) {
+		toSerialize["template"] = o.Template
 	}
 	return toSerialize, nil
 }

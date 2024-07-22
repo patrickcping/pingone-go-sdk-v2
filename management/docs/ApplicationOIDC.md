@@ -46,6 +46,7 @@ Name | Type | Description | Notes
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are &#x60;PING_FED_CONNECTION_INTEGRATION&#x60;.  Only applicable for creating worker applications. | [optional] 
 **TargetLinkUri** | Pointer to **string** | The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the &#x60;target_link_uri&#x60; parameter used for the Initiate Single Sign-On URL field. | [optional] 
+**Template** | Pointer to [**ApplicationTemplate**](ApplicationTemplate.md) |  | [optional] 
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
 **ParRequirement** | Pointer to [**EnumApplicationOIDCPARRequirement**](EnumApplicationOIDCPARRequirement.md) |  | [optional] [default to ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL]
 **ParTimeout** | Pointer to **int32** | PAR timeout in seconds. Must be between &#x60;1&#x60; and &#x60;600&#x60;. The default value is &#x60;60&#x60;. | [optional] [default to 60]
@@ -1094,6 +1095,31 @@ SetTargetLinkUri sets TargetLinkUri field to given value.
 `func (o *ApplicationOIDC) HasTargetLinkUri() bool`
 
 HasTargetLinkUri returns a boolean if a field has been set.
+
+### GetTemplate
+
+`func (o *ApplicationOIDC) GetTemplate() ApplicationTemplate`
+
+GetTemplate returns the Template field if non-nil, zero value otherwise.
+
+### GetTemplateOk
+
+`func (o *ApplicationOIDC) GetTemplateOk() (*ApplicationTemplate, bool)`
+
+GetTemplateOk returns a tuple with the Template field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplate
+
+`func (o *ApplicationOIDC) SetTemplate(v ApplicationTemplate)`
+
+SetTemplate sets Template field to given value.
+
+### HasTemplate
+
+`func (o *ApplicationOIDC) HasTemplate() bool`
+
+HasTemplate returns a boolean if a field has been set.
 
 ### GetTokenEndpointAuthMethod
 
