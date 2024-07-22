@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.3
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.42.0 => v0.43.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.6.0 => v0.7.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.43.0](./management/CHANGELOG.md)
     * **Breaking change** API name change for Integration Catalog [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
     * **Enhancement** Added "Integration", "Integration Version",  "Integration Version Attribute" data models. [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
