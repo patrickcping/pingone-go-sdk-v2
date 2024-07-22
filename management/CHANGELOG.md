@@ -1,6 +1,6 @@
 # v0.43.0 (Unreleased)
 
-* **Enhancement** Added "Integration" and "Integration Version" data models.
+* **Enhancement** Added "Integration" and "Integration Version" data models. [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
 
 # v0.42.0 (2024-07-04)
 
