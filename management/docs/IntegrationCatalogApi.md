@@ -4,19 +4,21 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EnvironmentsEnvironmentIDIntegrationsGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsGet) | **Get** /environments/{environmentID}/integrations | READ Integration Metadata
-[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet) | **Get** /environments/{environmentID}/integrations/{integrationID} | READ One Integration Metadata
-[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions | READ Integration Version Metadata
-[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | READ Integration Version Asset Download
-[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
+[**DownloadOneIntegrationVersionAsset**](IntegrationCatalogApi.md#DownloadOneIntegrationVersionAsset) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | Download Integration Version Asset
+[**ReadAllIntegrationMetadata**](IntegrationCatalogApi.md#ReadAllIntegrationMetadata) | **Get** /environments/{environmentID}/integrations | READ All Integration Metadata
+[**ReadAllIntegrationVersionAttributes**](IntegrationCatalogApi.md#ReadAllIntegrationVersionAttributes) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes | Read All Attributes of an Integration Version (SAML only)
+[**ReadIntegrationVersionMetadata**](IntegrationCatalogApi.md#ReadIntegrationVersionMetadata) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions | Read All Integration Versions Metadata
+[**ReadOneIntegrationMetadata**](IntegrationCatalogApi.md#ReadOneIntegrationMetadata) | **Get** /environments/{environmentID}/integrations/{integrationID} | READ One Integration Metadata
+[**ReadOneIntegrationVersionAttributes**](IntegrationCatalogApi.md#ReadOneIntegrationVersionAttributes) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes/{integrationVersionAttributeID} | Read One Attributes of an Integration Version (SAML only)
+[**ReadOneIntegrationVersionMetadata**](IntegrationCatalogApi.md#ReadOneIntegrationVersionMetadata) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
 
 
 
-## EnvironmentsEnvironmentIDIntegrationsGet
+## DownloadOneIntegrationVersionAsset
 
-> EnvironmentsEnvironmentIDIntegrationsGet(ctx, environmentID).Execute()
+> string DownloadOneIntegrationVersionAsset(ctx, environmentID, integrationID, integrationVersionID).Execute()
 
-READ Integration Metadata
+Download Integration Version Asset
 
 ### Example
 
@@ -32,14 +34,92 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    integrationID := "integrationID_example" // string | 
+    integrationVersionID := "integrationVersionID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsGet(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.IntegrationCatalogApi.DownloadOneIntegrationVersionAsset(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.DownloadOneIntegrationVersionAsset``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `DownloadOneIntegrationVersionAsset`: string
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.DownloadOneIntegrationVersionAsset`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**integrationID** | **string** |  | 
+**integrationVersionID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDownloadOneIntegrationVersionAssetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/zip, application/x-zip-compressed
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadAllIntegrationMetadata
+
+> EntityArray ReadAllIntegrationMetadata(ctx, environmentID).Filter(filter).Expand(expand).Execute()
+
+READ All Integration Metadata
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    filter := "(pingProductNames eq "PINGFEDERATE" and version.releasedOn ge "2020-05-20")" // string |  (optional)
+    expand := "versions" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IntegrationCatalogApi.ReadAllIntegrationMetadata(context.Background(), environmentID).Filter(filter).Expand(expand).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadAllIntegrationMetadata``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllIntegrationMetadata`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadAllIntegrationMetadata`: %v\n", resp)
 }
 ```
 
@@ -53,16 +133,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllIntegrationMetadataRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **filter** | **string** |  | 
+ **expand** | **string** |  | 
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -78,9 +160,154 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet
+## ReadAllIntegrationVersionAttributes
 
-> EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(ctx, environmentID, integrationID).Execute()
+> EntityArray ReadAllIntegrationVersionAttributes(ctx, environmentID, integrationID, integrationVersionID).Execute()
+
+Read All Attributes of an Integration Version (SAML only)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    integrationID := "integrationID_example" // string | 
+    integrationVersionID := "integrationVersionID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IntegrationCatalogApi.ReadAllIntegrationVersionAttributes(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadAllIntegrationVersionAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllIntegrationVersionAttributes`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadAllIntegrationVersionAttributes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**integrationID** | **string** |  | 
+**integrationVersionID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllIntegrationVersionAttributesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadIntegrationVersionMetadata
+
+> EntityArray ReadIntegrationVersionMetadata(ctx, environmentID, integrationID).Execute()
+
+Read All Integration Versions Metadata
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    integrationID := "integrationID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IntegrationCatalogApi.ReadIntegrationVersionMetadata(context.Background(), environmentID, integrationID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadIntegrationVersionMetadata``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadIntegrationVersionMetadata`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadIntegrationVersionMetadata`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**integrationID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadIntegrationVersionMetadataRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneIntegrationMetadata
+
+> Integration ReadOneIntegrationMetadata(ctx, environmentID, integrationID).Execute()
 
 READ One Integration Metadata
 
@@ -102,11 +329,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(context.Background(), environmentID, integrationID).Execute()
+    resp, r, err := apiClient.IntegrationCatalogApi.ReadOneIntegrationMetadata(context.Background(), environmentID, integrationID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadOneIntegrationMetadata``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneIntegrationMetadata`: Integration
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadOneIntegrationMetadata`: %v\n", resp)
 }
 ```
 
@@ -121,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneIntegrationMetadataRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -131,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Integration**](Integration.md)
 
 ### Authorization
 
@@ -147,80 +376,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet
+## ReadOneIntegrationVersionAttributes
 
-> EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(ctx, environmentID, integrationID).Execute()
+> IntegrationVersionAttribute ReadOneIntegrationVersionAttributes(ctx, environmentID, integrationID, integrationVersionID, integrationVersionAttributeID).Execute()
 
-READ Integration Version Metadata
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    integrationID := "integrationID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(context.Background(), environmentID, integrationID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**integrationID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet
-
-> EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(ctx, environmentID, integrationID, integrationVersionID).Execute()
-
-READ Integration Version Asset Download
+Read One Attributes of an Integration Version (SAML only)
 
 ### Example
 
@@ -238,14 +398,17 @@ func main() {
     environmentID := "environmentID_example" // string | 
     integrationID := "integrationID_example" // string | 
     integrationVersionID := "integrationVersionID_example" // string | 
+    integrationVersionAttributeID := "integrationVersionAttributeID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
+    resp, r, err := apiClient.IntegrationCatalogApi.ReadOneIntegrationVersionAttributes(context.Background(), environmentID, integrationID, integrationVersionID, integrationVersionAttributeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadOneIntegrationVersionAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneIntegrationVersionAttributes`: IntegrationVersionAttribute
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadOneIntegrationVersionAttributes`: %v\n", resp)
 }
 ```
 
@@ -258,10 +421,11 @@ Name | Type | Description  | Notes
 **environmentID** | **string** |  | 
 **integrationID** | **string** |  | 
 **integrationVersionID** | **string** |  | 
+**integrationVersionAttributeID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneIntegrationVersionAttributesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -270,9 +434,10 @@ Name | Type | Description  | Notes
 
 
 
+
 ### Return type
 
- (empty response body)
+[**IntegrationVersionAttribute**](IntegrationVersionAttribute.md)
 
 ### Authorization
 
@@ -288,9 +453,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet
+## ReadOneIntegrationVersionMetadata
 
-> EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(ctx, environmentID, integrationID, integrationVersionID).Execute()
+> IntegrationVersion ReadOneIntegrationVersionMetadata(ctx, environmentID, integrationID, integrationVersionID).Execute()
 
 READ One Integration Version Metadata
 
@@ -313,11 +478,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
+    resp, r, err := apiClient.IntegrationCatalogApi.ReadOneIntegrationVersionMetadata(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadOneIntegrationVersionMetadata``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneIntegrationVersionMetadata`: IntegrationVersion
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadOneIntegrationVersionMetadata`: %v\n", resp)
 }
 ```
 
@@ -333,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneIntegrationVersionMetadataRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -344,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**IntegrationVersion**](IntegrationVersion.md)
 
 ### Authorization
 
