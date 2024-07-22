@@ -1,3 +1,7 @@
+# v0.43.0 (Unreleased)
+
+* **Enhancement** Added "Integration" and "Integration Version" data models.
+
 # v0.42.0 (2024-07-04)
 
 * **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
