@@ -1,4 +1,4 @@
-# v0.43.0 (Unreleased)
+# v0.43.0 (2024-07-22)
 
 * **Breaking change** API name change for Integration Catalog [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
 * **Enhancement** Added "Integration", "Integration Version",  "Integration Version Attribute" data models. [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)

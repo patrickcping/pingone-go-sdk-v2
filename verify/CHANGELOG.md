@@ -1,4 +1,4 @@
-# v0.7.0 (Unreleased)
+# v0.7.0 (2024-07-22)
 
 * **Enhancement** Added `Retry` field to the `LivenessConfiguration` model. [#369](https://github.com/patrickcping/pingone-go-sdk-v2/pull/369)
 * **Enhancement** Added `FailExpiredId`, `Provider` and `Retry` fields to the `GovernmentIdConfiguration` object. [#369](https://github.com/patrickcping/pingone-go-sdk-v2/pull/369)
