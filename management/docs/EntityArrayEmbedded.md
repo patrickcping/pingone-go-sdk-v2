@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **IdentityProviders** | Pointer to [**[]IdentityProvider**](IdentityProvider.md) |  | [optional] 
+**Integrations** | Pointer to [**[]Integration**](Integration.md) |  | [optional] 
 **Keys** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
 **KeyRotationPolicies** | Pointer to [**[]KeyRotationPolicy**](KeyRotationPolicy.md) |  | [optional] 
 **Languages** | Pointer to [**[]EntityArrayEmbeddedLanguagesInner**](EntityArrayEmbeddedLanguagesInner.md) |  | [optional] 
@@ -48,6 +49,7 @@ Name | Type | Description | Notes
 **Roles** | Pointer to [**[]EntityArrayEmbeddedRolesInner**](EntityArrayEmbeddedRolesInner.md) |  | [optional] 
 **Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
 **Users** | Pointer to [**[]User**](User.md) |  | [optional] 
+**Versions** | Pointer to [**[]IntegrationVersion**](IntegrationVersion.md) |  | [optional] 
 
 ## Methods
 
@@ -567,6 +569,31 @@ SetIdentityProviders sets IdentityProviders field to given value.
 `func (o *EntityArrayEmbedded) HasIdentityProviders() bool`
 
 HasIdentityProviders returns a boolean if a field has been set.
+
+### GetIntegrations
+
+`func (o *EntityArrayEmbedded) GetIntegrations() []Integration`
+
+GetIntegrations returns the Integrations field if non-nil, zero value otherwise.
+
+### GetIntegrationsOk
+
+`func (o *EntityArrayEmbedded) GetIntegrationsOk() (*[]Integration, bool)`
+
+GetIntegrationsOk returns a tuple with the Integrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrations
+
+`func (o *EntityArrayEmbedded) SetIntegrations(v []Integration)`
+
+SetIntegrations sets Integrations field to given value.
+
+### HasIntegrations
+
+`func (o *EntityArrayEmbedded) HasIntegrations() bool`
+
+HasIntegrations returns a boolean if a field has been set.
 
 ### GetKeys
 
@@ -1167,6 +1194,31 @@ SetUsers sets Users field to given value.
 `func (o *EntityArrayEmbedded) HasUsers() bool`
 
 HasUsers returns a boolean if a field has been set.
+
+### GetVersions
+
+`func (o *EntityArrayEmbedded) GetVersions() []IntegrationVersion`
+
+GetVersions returns the Versions field if non-nil, zero value otherwise.
+
+### GetVersionsOk
+
+`func (o *EntityArrayEmbedded) GetVersionsOk() (*[]IntegrationVersion, bool)`
+
+GetVersionsOk returns a tuple with the Versions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersions
+
+`func (o *EntityArrayEmbedded) SetVersions(v []IntegrationVersion)`
+
+SetVersions sets Versions field to given value.
+
+### HasVersions
+
+`func (o *EntityArrayEmbedded) HasVersions() bool`
+
+HasVersions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

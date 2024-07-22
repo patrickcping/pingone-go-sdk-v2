@@ -39,6 +39,7 @@ type EntityArrayEmbedded struct {
 	Groups []Group `json:"groups,omitempty"`
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
 	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
+	Integrations []Integration `json:"integrations,omitempty"`
 	Keys []Certificate `json:"keys,omitempty"`
 	KeyRotationPolicies []KeyRotationPolicy `json:"keyRotationPolicies,omitempty"`
 	Languages []EntityArrayEmbeddedLanguagesInner `json:"languages,omitempty"`
@@ -63,6 +64,7 @@ type EntityArrayEmbedded struct {
 	Roles []EntityArrayEmbeddedRolesInner `json:"roles,omitempty"`
 	Schemas []Schema `json:"schemas,omitempty"`
 	Users []User `json:"users,omitempty"`
+	Versions []IntegrationVersion `json:"versions,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -720,6 +722,38 @@ func (o *EntityArrayEmbedded) HasIdentityProviders() bool {
 // SetIdentityProviders gets a reference to the given []IdentityProvider and assigns it to the IdentityProviders field.
 func (o *EntityArrayEmbedded) SetIdentityProviders(v []IdentityProvider) {
 	o.IdentityProviders = v
+}
+
+// GetIntegrations returns the Integrations field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetIntegrations() []Integration {
+	if o == nil || IsNil(o.Integrations) {
+		var ret []Integration
+		return ret
+	}
+	return o.Integrations
+}
+
+// GetIntegrationsOk returns a tuple with the Integrations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetIntegrationsOk() ([]Integration, bool) {
+	if o == nil || IsNil(o.Integrations) {
+		return nil, false
+	}
+	return o.Integrations, true
+}
+
+// HasIntegrations returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasIntegrations() bool {
+	if o != nil && !IsNil(o.Integrations) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrations gets a reference to the given []Integration and assigns it to the Integrations field.
+func (o *EntityArrayEmbedded) SetIntegrations(v []Integration) {
+	o.Integrations = v
 }
 
 // GetKeys returns the Keys field value if set, zero value otherwise.
@@ -1490,6 +1524,38 @@ func (o *EntityArrayEmbedded) SetUsers(v []User) {
 	o.Users = v
 }
 
+// GetVersions returns the Versions field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetVersions() []IntegrationVersion {
+	if o == nil || IsNil(o.Versions) {
+		var ret []IntegrationVersion
+		return ret
+	}
+	return o.Versions
+}
+
+// GetVersionsOk returns a tuple with the Versions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetVersionsOk() ([]IntegrationVersion, bool) {
+	if o == nil || IsNil(o.Versions) {
+		return nil, false
+	}
+	return o.Versions, true
+}
+
+// HasVersions returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasVersions() bool {
+	if o != nil && !IsNil(o.Versions) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersions gets a reference to the given []IntegrationVersion and assigns it to the Versions field.
+func (o *EntityArrayEmbedded) SetVersions(v []IntegrationVersion) {
+	o.Versions = v
+}
+
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1559,6 +1625,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IdentityProviders) {
 		toSerialize["identityProviders"] = o.IdentityProviders
+	}
+	if !IsNil(o.Integrations) {
+		toSerialize["integrations"] = o.Integrations
 	}
 	if !IsNil(o.Keys) {
 		toSerialize["keys"] = o.Keys
@@ -1631,6 +1700,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Users) {
 		toSerialize["users"] = o.Users
+	}
+	if !IsNil(o.Versions) {
+		toSerialize["versions"] = o.Versions
 	}
 	return toSerialize, nil
 }

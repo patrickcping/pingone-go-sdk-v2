@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
+**Id** | Pointer to **string** | Auto-generated ID of this attribute. | [optional] [readonly] 
 **Application** | Pointer to [**ApplicationAttributeMappingApplication**](ApplicationAttributeMappingApplication.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **MappingType** | Pointer to [**EnumIdentityProviderAttributeMappingType**](EnumIdentityProviderAttributeMappingType.md) |  | [optional] 
-**Name** | **string** | A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource&#39;s type property is &#x60;OPENID_CONNECT&#x60;: - &#x60;acr&#x60; - &#x60;amr&#x60; - &#x60;aud&#x60; - &#x60;auth_time&#x60; - &#x60;client_id&#x60; - &#x60;env&#x60; - &#x60;exp&#x60; - &#x60;iat&#x60; - &#x60;iss&#x60; - &#x60;jti&#x60; - &#x60;org&#x60; - &#x60;p1.*&#x60; (any name starting with the p1. prefix) - &#x60;scope&#x60; - &#x60;sid&#x60; - &#x60;sub&#x60;  | 
-**Required** | **bool** | A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided. | 
+**Name** | **string** | Attribute name the application expects. Unique within the integration version and in the form &#x60;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#x60;. | 
+**Required** | **bool** | Whether or not the attribute is required. If true, the value property must be set with a non-empty value. Default is false. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **Value** | **string** | A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as &#x60;${user.path.to.value}&#x60;, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are &#x60;${user.email}&#x60;, &#x60;${user.name.family}&#x60;, and &#x60;myClaimValueString&#x60; | 
 **NameFormat** | Pointer to **string** | A URI reference representing the classification of the attribute. Helps the service provider interpret the attribute format. | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | A string that specifies an optional property that specifies the display name of the attribute such as &#39;T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. | [optional] 
 **Enabled** | **bool** | A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read. | 
 **LdapAttribute** | Pointer to **string** | A string that specifies the LDAP attribute. | [optional] [readonly] 
-**Schema** | Pointer to [**SchemaAttributeSchema**](SchemaAttributeSchema.md) |  | [optional] 
+**Schema** | **string** | A JSON schema describing the current attribute mapping. | 
 **SchemaType** | Pointer to [**EnumSchemaAttributeSchemaType**](EnumSchemaAttributeSchemaType.md) |  | [optional] 
 **SubAttributes** | Pointer to [**[]SchemaAttribute**](SchemaAttribute.md) | The list of sub-attributes of this attribute. Only &#x60;COMPLEX&#x60; attribute types can have sub-attributes, and only one-level of nesting is allowed. The leaf attribute definition must have a type of &#x60;STRING&#x60; or &#x60;JSON&#x60;. A &#x60;COMPLEX&#x60; attribute definition must have at least one child attribute definition. | [optional] 
 **Type** | [**EnumResourceAttributeType**](EnumResourceAttributeType.md) |  | 
@@ -33,12 +33,14 @@ Name | Type | Description | Notes
 **EnumeratedValues** | Pointer to [**[]SchemaAttributeEnumeratedValuesInner**](SchemaAttributeEnumeratedValuesInner.md) |  | [optional] 
 **RegexValidation** | Pointer to [**SchemaAttributeRegexValidation**](SchemaAttributeRegexValidation.md) |  | [optional] 
 **Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
+**Integration** | Pointer to [**IntegrationVersionAttributeIntegration**](IntegrationVersionAttributeIntegration.md) |  | [optional] 
+**Version** | Pointer to [**IntegrationVersionAttributeVersion**](IntegrationVersionAttributeVersion.md) |  | [optional] 
 
 ## Methods
 
 ### NewEntityArrayEmbeddedAttributesInner
 
-`func NewEntityArrayEmbeddedAttributesInner(name string, required bool, value string, update EnumIdentityProviderAttributeMappingUpdate, enabled bool, type_ EnumResourceAttributeType, ) *EntityArrayEmbeddedAttributesInner`
+`func NewEntityArrayEmbeddedAttributesInner(name string, required bool, value string, update EnumIdentityProviderAttributeMappingUpdate, enabled bool, schema string, type_ EnumResourceAttributeType, ) *EntityArrayEmbeddedAttributesInner`
 
 NewEntityArrayEmbeddedAttributesInner instantiates a new EntityArrayEmbeddedAttributesInner object
 This constructor will assign default values to properties that have it defined,
@@ -530,28 +532,23 @@ HasLdapAttribute returns a boolean if a field has been set.
 
 ### GetSchema
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetSchema() SchemaAttributeSchema`
+`func (o *EntityArrayEmbeddedAttributesInner) GetSchema() string`
 
 GetSchema returns the Schema field if non-nil, zero value otherwise.
 
 ### GetSchemaOk
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetSchemaOk() (*SchemaAttributeSchema, bool)`
+`func (o *EntityArrayEmbeddedAttributesInner) GetSchemaOk() (*string, bool)`
 
 GetSchemaOk returns a tuple with the Schema field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchema
 
-`func (o *EntityArrayEmbeddedAttributesInner) SetSchema(v SchemaAttributeSchema)`
+`func (o *EntityArrayEmbeddedAttributesInner) SetSchema(v string)`
 
 SetSchema sets Schema field to given value.
 
-### HasSchema
-
-`func (o *EntityArrayEmbeddedAttributesInner) HasSchema() bool`
-
-HasSchema returns a boolean if a field has been set.
 
 ### GetSchemaType
 
@@ -747,6 +744,56 @@ SetResource sets Resource field to given value.
 `func (o *EntityArrayEmbeddedAttributesInner) HasResource() bool`
 
 HasResource returns a boolean if a field has been set.
+
+### GetIntegration
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetIntegration() IntegrationVersionAttributeIntegration`
+
+GetIntegration returns the Integration field if non-nil, zero value otherwise.
+
+### GetIntegrationOk
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetIntegrationOk() (*IntegrationVersionAttributeIntegration, bool)`
+
+GetIntegrationOk returns a tuple with the Integration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegration
+
+`func (o *EntityArrayEmbeddedAttributesInner) SetIntegration(v IntegrationVersionAttributeIntegration)`
+
+SetIntegration sets Integration field to given value.
+
+### HasIntegration
+
+`func (o *EntityArrayEmbeddedAttributesInner) HasIntegration() bool`
+
+HasIntegration returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetVersion() IntegrationVersionAttributeVersion`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetVersionOk() (*IntegrationVersionAttributeVersion, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *EntityArrayEmbeddedAttributesInner) SetVersion(v IntegrationVersionAttributeVersion)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *EntityArrayEmbeddedAttributesInner) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
