@@ -241,11 +241,13 @@ Class | Method | HTTP request | Description
 *ImagesApi* | [**CreateImage**](docs/ImagesApi.md#createimage) | **Post** /environments/{environmentID}/images | CREATE Image
 *ImagesApi* | [**DeleteImage**](docs/ImagesApi.md#deleteimage) | **Delete** /environments/{environmentID}/images/{imgID} | DELETE Image
 *ImagesApi* | [**ReadImage**](docs/ImagesApi.md#readimage) | **Get** /environments/{environmentID}/images/{imgID} | READ Image
-*IntegrationCatalogApi* | [**EnvironmentsEnvironmentIDIntegrationsGet**](docs/IntegrationCatalogApi.md#environmentsenvironmentidintegrationsget) | **Get** /environments/{environmentID}/integrations | READ Integration Metadata
-*IntegrationCatalogApi* | [**EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet**](docs/IntegrationCatalogApi.md#environmentsenvironmentidintegrationsintegrationidget) | **Get** /environments/{environmentID}/integrations/{integrationID} | READ One Integration Metadata
-*IntegrationCatalogApi* | [**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet**](docs/IntegrationCatalogApi.md#environmentsenvironmentidintegrationsintegrationidversionsget) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions | READ Integration Version Metadata
-*IntegrationCatalogApi* | [**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet**](docs/IntegrationCatalogApi.md#environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidassetget) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | READ Integration Version Asset Download
-*IntegrationCatalogApi* | [**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet**](docs/IntegrationCatalogApi.md#environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidget) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
+*IntegrationCatalogApi* | [**DownloadOneIntegrationVersionAsset**](docs/IntegrationCatalogApi.md#downloadoneintegrationversionasset) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | Download Integration Version Asset
+*IntegrationCatalogApi* | [**ReadAllIntegrationMetadata**](docs/IntegrationCatalogApi.md#readallintegrationmetadata) | **Get** /environments/{environmentID}/integrations | READ All Integration Metadata
+*IntegrationCatalogApi* | [**ReadAllIntegrationVersionAttributes**](docs/IntegrationCatalogApi.md#readallintegrationversionattributes) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes | Read All Attributes of an Integration Version (SAML only)
+*IntegrationCatalogApi* | [**ReadIntegrationVersionMetadata**](docs/IntegrationCatalogApi.md#readintegrationversionmetadata) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions | Read All Integration Versions Metadata
+*IntegrationCatalogApi* | [**ReadOneIntegrationMetadata**](docs/IntegrationCatalogApi.md#readoneintegrationmetadata) | **Get** /environments/{environmentID}/integrations/{integrationID} | READ One Integration Metadata
+*IntegrationCatalogApi* | [**ReadOneIntegrationVersionAttributes**](docs/IntegrationCatalogApi.md#readoneintegrationversionattributes) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes/{integrationVersionAttributeID} | Read One Attributes of an Integration Version (SAML only)
+*IntegrationCatalogApi* | [**ReadOneIntegrationVersionMetadata**](docs/IntegrationCatalogApi.md#readoneintegrationversionmetadata) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
 *KeyRotationPoliciesApi* | [**CreateKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#createkeyrotationpolicy) | **Post** /environments/{environmentID}/keyRotationPolicies | CREATE Key Rotation Policy
 *KeyRotationPoliciesApi* | [**DeleteKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#deletekeyrotationpolicy) | **Delete** /environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | DELETE Key Rotation Policy
 *KeyRotationPoliciesApi* | [**GetKeyRotationPolicies**](docs/KeyRotationPoliciesApi.md#getkeyrotationpolicies) | **Get** /environments/{environmentID}/keyRotationPolicies | GET Key Rotation Policies
@@ -765,6 +767,9 @@ Class | Method | HTTP request | Description
  - [IntegrationLogo](docs/IntegrationLogo.md)
  - [IntegrationThirdParty](docs/IntegrationThirdParty.md)
  - [IntegrationVersion](docs/IntegrationVersion.md)
+ - [IntegrationVersionAttribute](docs/IntegrationVersionAttribute.md)
+ - [IntegrationVersionAttributeIntegration](docs/IntegrationVersionAttributeIntegration.md)
+ - [IntegrationVersionAttributeVersion](docs/IntegrationVersionAttributeVersion.md)
  - [IntegrationVersionCommon](docs/IntegrationVersionCommon.md)
  - [IntegrationVersionCommonConfiguration](docs/IntegrationVersionCommonConfiguration.md)
  - [IntegrationVersionCommonIntegration](docs/IntegrationVersionCommonIntegration.md)

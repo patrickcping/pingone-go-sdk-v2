@@ -448,6 +448,9 @@ docs/IntegrationCatalogApi.md
 docs/IntegrationLogo.md
 docs/IntegrationThirdParty.md
 docs/IntegrationVersion.md
+docs/IntegrationVersionAttribute.md
+docs/IntegrationVersionAttributeIntegration.md
+docs/IntegrationVersionAttributeVersion.md
 docs/IntegrationVersionCommon.md
 docs/IntegrationVersionCommonConfiguration.md
 docs/IntegrationVersionCommonIntegration.md
@@ -1011,6 +1014,9 @@ model_integration.go
 model_integration_logo.go
 model_integration_third_party.go
 model_integration_version.go
+model_integration_version_attribute.go
+model_integration_version_attribute_integration.go
+model_integration_version_attribute_version.go
 model_integration_version_common.go
 model_integration_version_common_configuration.go
 model_integration_version_common_integration.go

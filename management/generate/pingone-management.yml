@@ -2053,6 +2053,7 @@ components:
                   - $ref:  '#/components/schemas/IdentityProviderAttribute'
                   - $ref:  '#/components/schemas/SchemaAttribute'
                   - $ref:  '#/components/schemas/ResourceAttribute'
+                  - $ref:  '#/components/schemas/IntegrationVersionAttribute'
             applications:
               type: array
               items:
@@ -2127,6 +2128,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/IdentityProvider'
+            integrations:
+              type: array
+              items:
+                $ref: '#/components/schemas/Integration'
             keys:
               type: array
               items:
@@ -2229,6 +2234,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
+            versions:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationVersion'
         count:
           type: number
         size:
@@ -3718,6 +3727,45 @@ components:
         mapping:
           PRODUCT_INTEGRATION_KIT: '#/components/schemas/IntegrationVersionIntegrationKit'
           SAML: '#/components/schemas/IntegrationVersionSAML'
+    IntegrationVersionAttribute:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Auto-generated ID of this attribute.
+        integration:
+          type: object
+          readOnly: true
+          description: The parent integration of the integration version.
+          properties:
+            id:
+              type: string
+              readOnly: true
+              description: The platform-generated ID of the parent integration.
+          required:
+            - id
+        name:
+          type: string
+          description: Attribute name the application expects. Unique within the integration version and in the form `urn:oasis:names:tc:SAML:2.0:attrname-format:uri`.
+        required:
+          type: boolean
+          description: Whether or not the attribute is required. If true, the value property must be set with a non-empty value. Default is false.
+        schema:
+          type: string
+          description: A JSON schema describing the current attribute mapping.
+        version:
+          type: object
+          readOnly: true
+          description: The relationship to the parent integration version.
+          properties:
+            id:
+              type: string
+              description: The platform-generated ID of the parent integration version.
+          required:
+            - id
+      required:
+        - schema
     IntegrationVersionCommon:
       type: object
       properties:
@@ -15121,13 +15169,24 @@ paths:
     get:
       tags:
         - Integration Catalog
-      summary: READ Integration Metadata
+      summary: READ All Integration Metadata
+      operationId: readAllIntegrationMetadata
       parameters:
         - name: environmentID
           in: path
           schema:
             type: string
           required: true
+        - name: filter
+          in: query
+          schema:
+            type: string
+          example: (pingProductNames eq "PINGFEDERATE" and version.releasedOn ge "2020-05-20")
+        - name: expand
+          in: query
+          schema:
+            type: string
+          example: versions
       responses:
         '400':
           $ref: '#/components/responses/400'
@@ -15146,12 +15205,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
   /environments/{environmentID}/integrations/{integrationID}:
     get:
       tags:
         - Integration Catalog
       summary: READ One Integration Metadata
+      operationId: readOneIntegrationMetadata
       parameters:
         - name: environmentID
           in: path
@@ -15181,12 +15243,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
   /environments/{environmentID}/integrations/{integrationID}/versions:
     get:
       tags:
         - Integration Catalog
-      summary: READ Integration Version Metadata
+      summary: Read All Integration Versions Metadata
+      operationId: readIntegrationVersionMetadata
       parameters:
         - name: environmentID
           in: path
@@ -15216,12 +15281,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
   /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}:
     get:
       tags:
         - Integration Catalog
       summary: READ One Integration Version Metadata
+      operationId: readOneIntegrationVersionMetadata
       parameters:
         - name: environmentID
           in: path
@@ -15256,12 +15324,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationVersion'
   /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset:
     get:
       tags:
         - Integration Catalog
-      summary: READ Integration Version Asset Download
+      summary: Download Integration Version Asset
+      operationId: downloadOneIntegrationVersionAsset
       parameters:
         - name: environmentID
           in: path
@@ -15296,7 +15367,105 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/zip:
+              schema:
+                type: string
+                format: byte
+            application/x-zip-compressed:
+              schema:
+                type: string
+                format: byte
+  /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes:
+    get:
+      tags:
+        - Integration Catalog
+      summary: Read All Attributes of an Integration Version (SAML only)
+      operationId: readAllIntegrationVersionAttributes
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationVersionID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+  /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes/{integrationVersionAttributeID}:
+    get:
+      tags:
+        - Integration Catalog
+      summary: Read One Attributes of an Integration Version (SAML only)
+      operationId: readOneIntegrationVersionAttributes
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationVersionID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: integrationVersionAttributeID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationVersionAttribute'
   /environments/{environmentID}/languages:
     get:
       tags:

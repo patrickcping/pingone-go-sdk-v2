@@ -13862,6 +13862,7 @@ paths:
       - Images
   /environments/{environmentID}/integrations:
     get:
+      operationId: readAllIntegrationMetadata
       parameters:
       - explode: false
         in: path
@@ -13870,6 +13871,22 @@ paths:
         schema:
           type: string
         style: simple
+      - example: (pingProductNames eq "PINGFEDERATE" and version.releasedOn ge "2020-05-20")
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - example: versions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "400":
           content:
@@ -13916,13 +13933,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
-      summary: READ Integration Metadata
+      summary: READ All Integration Metadata
       tags:
       - Integration Catalog
   /environments/{environmentID}/integrations/{integrationID}:
     get:
+      operationId: readOneIntegrationMetadata
       parameters:
       - explode: false
         in: path
@@ -13984,13 +14004,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
           description: Successful response
       summary: READ One Integration Metadata
       tags:
       - Integration Catalog
   /environments/{environmentID}/integrations/{integrationID}/versions:
     get:
+      operationId: readIntegrationVersionMetadata
       parameters:
       - explode: false
         in: path
@@ -14052,13 +14075,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
-      summary: READ Integration Version Metadata
+      summary: Read All Integration Versions Metadata
       tags:
       - Integration Catalog
   /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}:
     get:
+      operationId: readOneIntegrationVersionMetadata
       parameters:
       - explode: false
         in: path
@@ -14127,13 +14153,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationVersion'
           description: Successful response
       summary: READ One Integration Version Metadata
       tags:
       - Integration Catalog
   /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset:
     get:
+      operationId: downloadOneIntegrationVersionAsset
       parameters:
       - explode: false
         in: path
@@ -14202,9 +14231,179 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/zip:
+              schema:
+                format: byte
+                type: string
+            application/x-zip-compressed:
+              schema:
+                format: byte
+                type: string
           description: Successful response
-      summary: READ Integration Version Asset Download
+      summary: Download Integration Version Asset
+      tags:
+      - Integration Catalog
+  /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes:
+    get:
+      operationId: readAllIntegrationVersionAttributes
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: integrationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: integrationVersionID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: Read All Attributes of an Integration Version (SAML only)
+      tags:
+      - Integration Catalog
+  ? /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes/{integrationVersionAttributeID}
+  : get:
+      operationId: readOneIntegrationVersionAttributes
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: integrationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: integrationVersionID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: integrationVersionAttributeID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationVersionAttribute'
+          description: Successful response
+      summary: Read One Attributes of an Integration Version (SAML only)
       tags:
       - Integration Catalog
   /environments/{environmentID}/languages:
@@ -30073,6 +30272,9 @@ components:
           contents:
           - null
           - null
+          versions:
+          - null
+          - null
           plans:
           - environment:
               id: id
@@ -30388,6 +30590,53 @@ components:
           actions:
           - null
           - null
+          integrations:
+          - thirdParty:
+              companyName: companyName
+              products:
+              - products
+              - products
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            marketingLandingPageUrl: marketingLandingPageUrl
+            name: name
+            description: description
+            logo:
+              href: href
+              id: id
+            publisher: publisher
+            categories:
+            - categories
+            - categories
+            id: id
+            pingProductNames:
+            - null
+            - null
+            tags:
+            - null
+            - null
+          - thirdParty:
+              companyName: companyName
+              products:
+              - products
+              - products
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            marketingLandingPageUrl: marketingLandingPageUrl
+            name: name
+            description: description
+            logo:
+              href: href
+              id: id
+            publisher: publisher
+            categories:
+            - categories
+            - categories
+            id: id
+            pingProductNames:
+            - null
+            - null
+            tags:
+            - null
+            - null
           populations:
           - createdAt: createdAt
             default: true
@@ -31992,6 +32241,30 @@ components:
           $ref: '#/components/schemas/Image_targets'
       type: object
     Integration:
+      example:
+        thirdParty:
+          companyName: companyName
+          products:
+          - products
+          - products
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        marketingLandingPageUrl: marketingLandingPageUrl
+        name: name
+        description: description
+        logo:
+          href: href
+          id: id
+        publisher: publisher
+        categories:
+        - categories
+        - categories
+        id: id
+        pingProductNames:
+        - null
+        - null
+        tags:
+        - null
+        - null
       properties:
         categories:
           description: "The list of categories used to classify the integration. Valid\
@@ -32055,6 +32328,39 @@ components:
       oneOf:
       - $ref: '#/components/schemas/IntegrationVersionIntegrationKit'
       - $ref: '#/components/schemas/IntegrationVersionSAML'
+    IntegrationVersionAttribute:
+      example:
+        schema: schema
+        integration:
+          id: id
+        name: name
+        id: id
+        version:
+          id: id
+        required: true
+      properties:
+        id:
+          description: Auto-generated ID of this attribute.
+          readOnly: true
+          type: string
+        integration:
+          $ref: '#/components/schemas/IntegrationVersionAttribute_integration'
+        name:
+          description: Attribute name the application expects. Unique within the integration
+            version and in the form `urn:oasis:names:tc:SAML:2.0:attrname-format:uri`.
+          type: string
+        required:
+          description: "Whether or not the attribute is required. If true, the value\
+            \ property must be set with a non-empty value. Default is false."
+          type: boolean
+        schema:
+          description: A JSON schema describing the current attribute mapping.
+          type: string
+        version:
+          $ref: '#/components/schemas/IntegrationVersionAttribute_version'
+      required:
+      - schema
+      type: object
     IntegrationVersionCommon:
       properties:
         configuration:
@@ -36682,6 +36988,7 @@ components:
       - $ref: '#/components/schemas/IdentityProviderAttribute'
       - $ref: '#/components/schemas/SchemaAttribute'
       - $ref: '#/components/schemas/ResourceAttribute'
+      - $ref: '#/components/schemas/IntegrationVersionAttribute'
     EntityArray__embedded_gateways_inner:
       anyOf:
       - $ref: '#/components/schemas/Gateway'
@@ -37848,6 +38155,9 @@ components:
         contents:
         - null
         - null
+        versions:
+        - null
+        - null
         plans:
         - environment:
             id: id
@@ -38163,6 +38473,53 @@ components:
         actions:
         - null
         - null
+        integrations:
+        - thirdParty:
+            companyName: companyName
+            products:
+            - products
+            - products
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          marketingLandingPageUrl: marketingLandingPageUrl
+          name: name
+          description: description
+          logo:
+            href: href
+            id: id
+          publisher: publisher
+          categories:
+          - categories
+          - categories
+          id: id
+          pingProductNames:
+          - null
+          - null
+          tags:
+          - null
+          - null
+        - thirdParty:
+            companyName: companyName
+            products:
+            - products
+            - products
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          marketingLandingPageUrl: marketingLandingPageUrl
+          name: name
+          description: description
+          logo:
+            href: href
+            id: id
+          publisher: publisher
+          categories:
+          - categories
+          - categories
+          id: id
+          pingProductNames:
+          - null
+          - null
+          tags:
+          - null
+          - null
         populations:
         - createdAt: createdAt
           default: true
@@ -38368,6 +38725,10 @@ components:
           items:
             $ref: '#/components/schemas/IdentityProvider'
           type: array
+        integrations:
+          items:
+            $ref: '#/components/schemas/Integration'
+          type: array
         keys:
           items:
             $ref: '#/components/schemas/Certificate'
@@ -38463,6 +38824,10 @@ components:
         users:
           items:
             $ref: '#/components/schemas/User'
+          type: array
+        versions:
+          items:
+            $ref: '#/components/schemas/IntegrationVersion'
           type: array
       type: object
     Environment_license:
@@ -38968,6 +39333,9 @@ components:
     Integration_logo:
       description: "A logo to use for the integration. If specified, the associated\
         \ properties are required."
+      example:
+        href: href
+        id: id
       properties:
         href:
           description: The href to the absolute URL of the image.
@@ -38981,6 +39349,11 @@ components:
       type: object
     Integration_thirdParty:
       description: Metadata that defines the third party related to this integration.
+      example:
+        companyName: companyName
+        products:
+        - products
+        - products
       properties:
         companyName:
           description: Name of the third party company for the listing.
@@ -38992,6 +39365,31 @@ components:
           type: array
       required:
       - companyName
+      type: object
+    IntegrationVersionAttribute_integration:
+      description: The parent integration of the integration version.
+      example:
+        id: id
+      properties:
+        id:
+          description: The platform-generated ID of the parent integration.
+          readOnly: true
+          type: string
+      readOnly: true
+      required:
+      - id
+      type: object
+    IntegrationVersionAttribute_version:
+      description: The relationship to the parent integration version.
+      example:
+        id: id
+      properties:
+        id:
+          description: The platform-generated ID of the parent integration version.
+          type: string
+      readOnly: true
+      required:
+      - id
       type: object
     IntegrationVersionCommon_configuration:
       description: "The configuration of the integration version. If specified, configuration.schema\
