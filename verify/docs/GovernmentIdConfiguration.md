@@ -4,7 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FailExpiredId** | Pointer to **bool** | Indicates whether verification should fail if the ID is expired. | [optional] 
 **InspectionType** | Pointer to [**EnumInspectionType**](EnumInspectionType.md) |  | [optional] 
+**Provider** | Pointer to [**GovernmentIdConfigurationProvider**](GovernmentIdConfigurationProvider.md) |  | [optional] 
+**Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
 **Verify** | [**EnumVerify**](EnumVerify.md) |  | 
 
 ## Methods
@@ -25,6 +28,31 @@ will change when the set of required properties is changed
 NewGovernmentIdConfigurationWithDefaults instantiates a new GovernmentIdConfiguration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetFailExpiredId
+
+`func (o *GovernmentIdConfiguration) GetFailExpiredId() bool`
+
+GetFailExpiredId returns the FailExpiredId field if non-nil, zero value otherwise.
+
+### GetFailExpiredIdOk
+
+`func (o *GovernmentIdConfiguration) GetFailExpiredIdOk() (*bool, bool)`
+
+GetFailExpiredIdOk returns a tuple with the FailExpiredId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailExpiredId
+
+`func (o *GovernmentIdConfiguration) SetFailExpiredId(v bool)`
+
+SetFailExpiredId sets FailExpiredId field to given value.
+
+### HasFailExpiredId
+
+`func (o *GovernmentIdConfiguration) HasFailExpiredId() bool`
+
+HasFailExpiredId returns a boolean if a field has been set.
 
 ### GetInspectionType
 
@@ -50,6 +78,56 @@ SetInspectionType sets InspectionType field to given value.
 `func (o *GovernmentIdConfiguration) HasInspectionType() bool`
 
 HasInspectionType returns a boolean if a field has been set.
+
+### GetProvider
+
+`func (o *GovernmentIdConfiguration) GetProvider() GovernmentIdConfigurationProvider`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *GovernmentIdConfiguration) GetProviderOk() (*GovernmentIdConfigurationProvider, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *GovernmentIdConfiguration) SetProvider(v GovernmentIdConfigurationProvider)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *GovernmentIdConfiguration) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
+
+### GetRetry
+
+`func (o *GovernmentIdConfiguration) GetRetry() ObjectRetry`
+
+GetRetry returns the Retry field if non-nil, zero value otherwise.
+
+### GetRetryOk
+
+`func (o *GovernmentIdConfiguration) GetRetryOk() (*ObjectRetry, bool)`
+
+GetRetryOk returns a tuple with the Retry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRetry
+
+`func (o *GovernmentIdConfiguration) SetRetry(v ObjectRetry)`
+
+SetRetry sets Retry field to given value.
+
+### HasRetry
+
+`func (o *GovernmentIdConfiguration) HasRetry() bool`
+
+HasRetry returns a boolean if a field has been set.
 
 ### GetVerify
 

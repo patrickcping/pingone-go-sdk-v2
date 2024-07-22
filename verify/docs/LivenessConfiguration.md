@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
 **Threshold** | [**EnumThreshold**](EnumThreshold.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
 
 ## Methods
 
 ### NewLivenessConfiguration
 
-`func NewLivenessConfiguration(verify EnumVerify, threshold EnumThreshold, ) *LivenessConfiguration`
+`func NewLivenessConfiguration(threshold EnumThreshold, verify EnumVerify, ) *LivenessConfiguration`
 
 NewLivenessConfiguration instantiates a new LivenessConfiguration object
 This constructor will assign default values to properties that have it defined,
@@ -26,25 +27,30 @@ NewLivenessConfigurationWithDefaults instantiates a new LivenessConfiguration ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetVerify
+### GetRetry
 
-`func (o *LivenessConfiguration) GetVerify() EnumVerify`
+`func (o *LivenessConfiguration) GetRetry() ObjectRetry`
 
-GetVerify returns the Verify field if non-nil, zero value otherwise.
+GetRetry returns the Retry field if non-nil, zero value otherwise.
 
-### GetVerifyOk
+### GetRetryOk
 
-`func (o *LivenessConfiguration) GetVerifyOk() (*EnumVerify, bool)`
+`func (o *LivenessConfiguration) GetRetryOk() (*ObjectRetry, bool)`
 
-GetVerifyOk returns a tuple with the Verify field if it's non-nil, zero value otherwise
+GetRetryOk returns a tuple with the Retry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVerify
+### SetRetry
 
-`func (o *LivenessConfiguration) SetVerify(v EnumVerify)`
+`func (o *LivenessConfiguration) SetRetry(v ObjectRetry)`
 
-SetVerify sets Verify field to given value.
+SetRetry sets Retry field to given value.
 
+### HasRetry
+
+`func (o *LivenessConfiguration) HasRetry() bool`
+
+HasRetry returns a boolean if a field has been set.
 
 ### GetThreshold
 
@@ -64,6 +70,26 @@ and a boolean to check if the value has been set.
 `func (o *LivenessConfiguration) SetThreshold(v EnumThreshold)`
 
 SetThreshold sets Threshold field to given value.
+
+
+### GetVerify
+
+`func (o *LivenessConfiguration) GetVerify() EnumVerify`
+
+GetVerify returns the Verify field if non-nil, zero value otherwise.
+
+### GetVerifyOk
+
+`func (o *LivenessConfiguration) GetVerifyOk() (*EnumVerify, bool)`
+
+GetVerifyOk returns a tuple with the Verify field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerify
+
+`func (o *LivenessConfiguration) SetVerify(v EnumVerify)`
+
+SetVerify sets Verify field to given value.
 
 
 
