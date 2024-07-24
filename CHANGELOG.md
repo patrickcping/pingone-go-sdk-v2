@@ -1,3 +1,15 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.7.0](./authorize/CHANGELOG.md)
+    * **Feature** Add support for Authorize Editor Attributes API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+    * **Feature** Add support for Authorize Editor Conditions API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+    * **Feature** Add support for Authorize Editor Connector Templates API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+    * **Feature** Add support for Authorize Editor Policies API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+    * **Feature** Add support for Authorize Editor Processors API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+    * **Feature** Add support for Authorize Editor Rules API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+    * **Feature** Add support for Authorize Editor Services API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+    * **Feature** Add support for Authorize Editor Statements API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+
 # Release (2024-07-22)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.3
