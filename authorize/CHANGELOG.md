@@ -1,3 +1,14 @@
+# v0.7.0 (Unreleased)
+
+* **Feature** Add support for Authorize Editor Attributes API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Conditions API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Connector Templates API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Policies API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Processors API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Rules API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Services API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Statements API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+
 # v0.6.0 (2024-07-04)
 
 * **Breaking change** `Links` objects changed from `LinksHATEOAS` object to `map[string]LinksHATEOASValue` type. [#366](https://github.com/patrickcping/pingone-go-sdk-v2/pull/366)
