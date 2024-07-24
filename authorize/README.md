@@ -105,6 +105,48 @@ Class | Method | HTTP request | Description
 *ApplicationRolesApi* | [**ReadApplicationRoles**](docs/ApplicationRolesApi.md#readapplicationroles) | **Get** /environments/{environmentID}/applicationRoles | READ Application Roles
 *ApplicationRolesApi* | [**ReadOneApplicationRole**](docs/ApplicationRolesApi.md#readoneapplicationrole) | **Get** /environments/{environmentID}/applicationRoles/{applicationRoleID} | READ One Application Role
 *ApplicationRolesApi* | [**UpdateApplicationRole**](docs/ApplicationRolesApi.md#updateapplicationrole) | **Put** /environments/{environmentID}/applicationRoles/{applicationRoleID} | UPDATE Application Role
+*AuthorizeEditorAttributesApi* | [**CreateAttribute**](docs/AuthorizeEditorAttributesApi.md#createattribute) | **Post** /environments/{environmentID}/authorizationAttributes | Create an Attribute
+*AuthorizeEditorAttributesApi* | [**DeleteAttribute**](docs/AuthorizeEditorAttributesApi.md#deleteattribute) | **Delete** /environments/{environmentID}/authorizationAttributes/{attributeID} | Delete an Attribute
+*AuthorizeEditorAttributesApi* | [**GetAttribute**](docs/AuthorizeEditorAttributesApi.md#getattribute) | **Get** /environments/{environmentID}/authorizationAttributes/{attributeID} | Get an Attribute by ID
+*AuthorizeEditorAttributesApi* | [**ListAttributes**](docs/AuthorizeEditorAttributesApi.md#listattributes) | **Get** /environments/{environmentID}/authorizationAttributes | List Attributes
+*AuthorizeEditorAttributesApi* | [**TestAttribute**](docs/AuthorizeEditorAttributesApi.md#testattribute) | **Post** /environments/{environmentID}/authorizationAttributes/{attributeID} | Test an Attribute by ID
+*AuthorizeEditorAttributesApi* | [**UpdateAttribute**](docs/AuthorizeEditorAttributesApi.md#updateattribute) | **Put** /environments/{environmentID}/authorizationAttributes/{attributeID} | Update an Attribute
+*AuthorizeEditorConditionsApi* | [**CreateCondition**](docs/AuthorizeEditorConditionsApi.md#createcondition) | **Post** /environments/{environmentID}/authorizationConditions | Create a Condition
+*AuthorizeEditorConditionsApi* | [**DeleteCondition**](docs/AuthorizeEditorConditionsApi.md#deletecondition) | **Delete** /environments/{environmentID}/authorizationConditions/{conditionID} | Delete a Condition
+*AuthorizeEditorConditionsApi* | [**GetCondition**](docs/AuthorizeEditorConditionsApi.md#getcondition) | **Get** /environments/{environmentID}/authorizationConditions/{conditionID} | Get a Condition by ID
+*AuthorizeEditorConditionsApi* | [**ListConditions**](docs/AuthorizeEditorConditionsApi.md#listconditions) | **Get** /environments/{environmentID}/authorizationConditions | List Conditions
+*AuthorizeEditorConditionsApi* | [**TestCondition**](docs/AuthorizeEditorConditionsApi.md#testcondition) | **Post** /environments/{environmentID}/authorizationConditions/{conditionID} | Test a Condition by ID
+*AuthorizeEditorConditionsApi* | [**UpdateCondition**](docs/AuthorizeEditorConditionsApi.md#updatecondition) | **Put** /environments/{environmentID}/authorizationConditions/{conditionID} | Update a Condition
+*AuthorizeEditorConnectorTemplatesApi* | [**GetConnectorTemplate**](docs/AuthorizeEditorConnectorTemplatesApi.md#getconnectortemplate) | **Get** /environments/{environmentID}/authorizationConnectorTemplates/{code} | Get a Connector Template by code
+*AuthorizeEditorConnectorTemplatesApi* | [**ListConnectorTemplates**](docs/AuthorizeEditorConnectorTemplatesApi.md#listconnectortemplates) | **Get** /environments/{environmentID}/authorizationConnectorTemplates | List Connector Templates
+*AuthorizeEditorPoliciesApi* | [**CreatePolicy**](docs/AuthorizeEditorPoliciesApi.md#createpolicy) | **Post** /environments/{environmentID}/authorizationPolicies | Create a Policy
+*AuthorizeEditorPoliciesApi* | [**DeletePolicy**](docs/AuthorizeEditorPoliciesApi.md#deletepolicy) | **Delete** /environments/{environmentID}/authorizationPolicies/{policyID} | Delete a Policy
+*AuthorizeEditorPoliciesApi* | [**GetPolicy**](docs/AuthorizeEditorPoliciesApi.md#getpolicy) | **Get** /environments/{environmentID}/authorizationPolicies/{policyID} | Get a Policy by ID
+*AuthorizeEditorPoliciesApi* | [**ListRootPolicies**](docs/AuthorizeEditorPoliciesApi.md#listrootpolicies) | **Get** /environments/{environmentID}/authorizationPolicies | List Root Policies
+*AuthorizeEditorPoliciesApi* | [**TestPolicy**](docs/AuthorizeEditorPoliciesApi.md#testpolicy) | **Post** /environments/{environmentID}/authorizationPolicies/{policyID} | Test a Policy by ID
+*AuthorizeEditorPoliciesApi* | [**UpdatePolicy**](docs/AuthorizeEditorPoliciesApi.md#updatepolicy) | **Put** /environments/{environmentID}/authorizationPolicies/{policyID} | Update a Policy
+*AuthorizeEditorProcessorsApi* | [**CreateProcessor**](docs/AuthorizeEditorProcessorsApi.md#createprocessor) | **Post** /environments/{environmentID}/authorizationProcessors | Create a Processor
+*AuthorizeEditorProcessorsApi* | [**DeleteProcessor**](docs/AuthorizeEditorProcessorsApi.md#deleteprocessor) | **Delete** /environments/{environmentID}/authorizationProcessors/{processorID} | Delete a Processor
+*AuthorizeEditorProcessorsApi* | [**GetProcessor**](docs/AuthorizeEditorProcessorsApi.md#getprocessor) | **Get** /environments/{environmentID}/authorizationProcessors/{processorID} | Get a Processor by ID
+*AuthorizeEditorProcessorsApi* | [**ListProcessors**](docs/AuthorizeEditorProcessorsApi.md#listprocessors) | **Get** /environments/{environmentID}/authorizationProcessors | List Processors
+*AuthorizeEditorProcessorsApi* | [**UpdateProcessor**](docs/AuthorizeEditorProcessorsApi.md#updateprocessor) | **Put** /environments/{environmentID}/authorizationProcessors/{processorID} | Update a Processor
+*AuthorizeEditorRulesApi* | [**CreateRule**](docs/AuthorizeEditorRulesApi.md#createrule) | **Post** /environments/{environmentID}/authorizationRules | Create a Rule
+*AuthorizeEditorRulesApi* | [**DeleteRule**](docs/AuthorizeEditorRulesApi.md#deleterule) | **Delete** /environments/{environmentID}/authorizationRules/{ruleID} | Delete a Rule
+*AuthorizeEditorRulesApi* | [**GetRule**](docs/AuthorizeEditorRulesApi.md#getrule) | **Get** /environments/{environmentID}/authorizationRules/{ruleID} | Get a Rule by ID
+*AuthorizeEditorRulesApi* | [**ListRules**](docs/AuthorizeEditorRulesApi.md#listrules) | **Get** /environments/{environmentID}/authorizationRules | List Rules
+*AuthorizeEditorRulesApi* | [**TestRule**](docs/AuthorizeEditorRulesApi.md#testrule) | **Post** /environments/{environmentID}/authorizationRules/{ruleID} | Test a Rule by ID
+*AuthorizeEditorRulesApi* | [**UpdateRule**](docs/AuthorizeEditorRulesApi.md#updaterule) | **Put** /environments/{environmentID}/authorizationRules/{ruleID} | Update a Rule
+*AuthorizeEditorServicesApi* | [**CreateService**](docs/AuthorizeEditorServicesApi.md#createservice) | **Post** /environments/{environmentID}/authorizationServices | Create a Service
+*AuthorizeEditorServicesApi* | [**DeleteService**](docs/AuthorizeEditorServicesApi.md#deleteservice) | **Delete** /environments/{environmentID}/authorizationServices/{serviceID} | Delete a Service
+*AuthorizeEditorServicesApi* | [**GetService**](docs/AuthorizeEditorServicesApi.md#getservice) | **Get** /environments/{environmentID}/authorizationServices/{serviceID} | Get a Service by ID
+*AuthorizeEditorServicesApi* | [**ListServices**](docs/AuthorizeEditorServicesApi.md#listservices) | **Get** /environments/{environmentID}/authorizationServices | List Services
+*AuthorizeEditorServicesApi* | [**TestService**](docs/AuthorizeEditorServicesApi.md#testservice) | **Post** /environments/{environmentID}/authorizationServices/{serviceID} | Test a Service by ID
+*AuthorizeEditorServicesApi* | [**UpdateService**](docs/AuthorizeEditorServicesApi.md#updateservice) | **Put** /environments/{environmentID}/authorizationServices/{serviceID} | Update a Service
+*AuthorizeEditorStatementsApi* | [**CreateStatement**](docs/AuthorizeEditorStatementsApi.md#createstatement) | **Post** /environments/{environmentID}/authorizationStatements | Create a Statement
+*AuthorizeEditorStatementsApi* | [**DeleteStatement**](docs/AuthorizeEditorStatementsApi.md#deletestatement) | **Delete** /environments/{environmentID}/authorizationStatements/{statementID} | Delete a Statement
+*AuthorizeEditorStatementsApi* | [**GetStatement**](docs/AuthorizeEditorStatementsApi.md#getstatement) | **Get** /environments/{environmentID}/authorizationStatements/{statementID} | Get a Statement by ID
+*AuthorizeEditorStatementsApi* | [**ListStatements**](docs/AuthorizeEditorStatementsApi.md#liststatements) | **Get** /environments/{environmentID}/authorizationStatements | List Statements
+*AuthorizeEditorStatementsApi* | [**UpdateStatement**](docs/AuthorizeEditorStatementsApi.md#updatestatement) | **Put** /environments/{environmentID}/authorizationStatements/{statementID} | Update a Statement
 *PolicyDecisionManagementApi* | [**CreateDecisionEndpoint**](docs/PolicyDecisionManagementApi.md#createdecisionendpoint) | **Post** /environments/{environmentID}/decisionEndpoints | CREATE Decision Endpoint
 *PolicyDecisionManagementApi* | [**DeleteDecisionEndpoint**](docs/PolicyDecisionManagementApi.md#deletedecisionendpoint) | **Delete** /environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | DELETE Decision Endpoint
 *PolicyDecisionManagementApi* | [**ReadAllDecisionEndpoints**](docs/PolicyDecisionManagementApi.md#readalldecisionendpoints) | **Get** /environments/{environmentID}/decisionEndpoints | READ All Decision Endpoints
@@ -145,6 +187,95 @@ Class | Method | HTTP request | Description
  - [ApplicationRoleAssignment](docs/ApplicationRoleAssignment.md)
  - [ApplicationRolePermission](docs/ApplicationRolePermission.md)
  - [ApplicationRolePermissionResource](docs/ApplicationRolePermissionResource.md)
+ - [AuthorizeEditorDataAttributeResolversAttributeResolverDTO](docs/AuthorizeEditorDataAttributeResolversAttributeResolverDTO.md)
+ - [AuthorizeEditorDataAttributeResolversConstantResolverDTO](docs/AuthorizeEditorDataAttributeResolversConstantResolverDTO.md)
+ - [AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO](docs/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO.md)
+ - [AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO](docs/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO.md)
+ - [AuthorizeEditorDataAttributeResolversRequestResolverDTO](docs/AuthorizeEditorDataAttributeResolversRequestResolverDTO.md)
+ - [AuthorizeEditorDataAttributeResolversServiceResolverDTO](docs/AuthorizeEditorDataAttributeResolversServiceResolverDTO.md)
+ - [AuthorizeEditorDataAttributeResolversSystemResolverDTO](docs/AuthorizeEditorDataAttributeResolversSystemResolverDTO.md)
+ - [AuthorizeEditorDataAttributeResolversUserQueryDTO](docs/AuthorizeEditorDataAttributeResolversUserQueryDTO.md)
+ - [AuthorizeEditorDataAttributeResolversUserResolverDTO](docs/AuthorizeEditorDataAttributeResolversUserResolverDTO.md)
+ - [AuthorizeEditorDataAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationDTO.md)
+ - [AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO.md)
+ - [AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO.md)
+ - [AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO.md)
+ - [AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO.md)
+ - [AuthorizeEditorDataCacheSettingsDTO](docs/AuthorizeEditorDataCacheSettingsDTO.md)
+ - [AuthorizeEditorDataConditionDTO](docs/AuthorizeEditorDataConditionDTO.md)
+ - [AuthorizeEditorDataConditionsAndConditionDTO](docs/AuthorizeEditorDataConditionsAndConditionDTO.md)
+ - [AuthorizeEditorDataConditionsComparandDTO](docs/AuthorizeEditorDataConditionsComparandDTO.md)
+ - [AuthorizeEditorDataConditionsComparandsAttributeComparandDTO](docs/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO.md)
+ - [AuthorizeEditorDataConditionsComparandsConstantComparandDTO](docs/AuthorizeEditorDataConditionsComparandsConstantComparandDTO.md)
+ - [AuthorizeEditorDataConditionsComparandsUserIdQueryDTO](docs/AuthorizeEditorDataConditionsComparandsUserIdQueryDTO.md)
+ - [AuthorizeEditorDataConditionsComparisonConditionDTO](docs/AuthorizeEditorDataConditionsComparisonConditionDTO.md)
+ - [AuthorizeEditorDataConditionsEmptyConditionDTO](docs/AuthorizeEditorDataConditionsEmptyConditionDTO.md)
+ - [AuthorizeEditorDataConditionsNotConditionDTO](docs/AuthorizeEditorDataConditionsNotConditionDTO.md)
+ - [AuthorizeEditorDataConditionsOrConditionDTO](docs/AuthorizeEditorDataConditionsOrConditionDTO.md)
+ - [AuthorizeEditorDataConditionsReferenceConditionDTO](docs/AuthorizeEditorDataConditionsReferenceConditionDTO.md)
+ - [AuthorizeEditorDataConnectorsConnectorCapability](docs/AuthorizeEditorDataConnectorsConnectorCapability.md)
+ - [AuthorizeEditorDataConnectorsConnectorSchema](docs/AuthorizeEditorDataConnectorsConnectorSchema.md)
+ - [AuthorizeEditorDataConnectorsConnectorTemplateDTO](docs/AuthorizeEditorDataConnectorsConnectorTemplateDTO.md)
+ - [AuthorizeEditorDataDefinitionsAttributeDefinitionDTO](docs/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO.md)
+ - [AuthorizeEditorDataDefinitionsConditionDefinitionDTO](docs/AuthorizeEditorDataDefinitionsConditionDefinitionDTO.md)
+ - [AuthorizeEditorDataDefinitionsProcessorDefinitionDTO](docs/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO.md)
+ - [AuthorizeEditorDataDefinitionsServiceDefinitionDTO](docs/AuthorizeEditorDataDefinitionsServiceDefinitionDTO.md)
+ - [AuthorizeEditorDataEntityTestRequestDTO](docs/AuthorizeEditorDataEntityTestRequestDTO.md)
+ - [AuthorizeEditorDataEntityTestResponseDTO](docs/AuthorizeEditorDataEntityTestResponseDTO.md)
+ - [AuthorizeEditorDataEntityTestingDecisionResultDTO](docs/AuthorizeEditorDataEntityTestingDecisionResultDTO.md)
+ - [AuthorizeEditorDataEntityTestingDecisionStatusDTO](docs/AuthorizeEditorDataEntityTestingDecisionStatusDTO.md)
+ - [AuthorizeEditorDataEntityTestingOverrideDTO](docs/AuthorizeEditorDataEntityTestingOverrideDTO.md)
+ - [AuthorizeEditorDataEntityTestingParameterDTO](docs/AuthorizeEditorDataEntityTestingParameterDTO.md)
+ - [AuthorizeEditorDataEntityTestingUserContextDTO](docs/AuthorizeEditorDataEntityTestingUserContextDTO.md)
+ - [AuthorizeEditorDataHttpRequestHeaderDTO](docs/AuthorizeEditorDataHttpRequestHeaderDTO.md)
+ - [AuthorizeEditorDataInputDTO](docs/AuthorizeEditorDataInputDTO.md)
+ - [AuthorizeEditorDataInputMappingDTO](docs/AuthorizeEditorDataInputMappingDTO.md)
+ - [AuthorizeEditorDataInputMappingsAttributeInputMappingDTO](docs/AuthorizeEditorDataInputMappingsAttributeInputMappingDTO.md)
+ - [AuthorizeEditorDataInputMappingsInputInputMappingDTO](docs/AuthorizeEditorDataInputMappingsInputInputMappingDTO.md)
+ - [AuthorizeEditorDataInputsAttributeInputDTO](docs/AuthorizeEditorDataInputsAttributeInputDTO.md)
+ - [AuthorizeEditorDataInputsConstantInputDTO](docs/AuthorizeEditorDataInputsConstantInputDTO.md)
+ - [AuthorizeEditorDataManagedEntityDTO](docs/AuthorizeEditorDataManagedEntityDTO.md)
+ - [AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO](docs/AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO.md)
+ - [AuthorizeEditorDataManagedEntityOwnerDTO](docs/AuthorizeEditorDataManagedEntityOwnerDTO.md)
+ - [AuthorizeEditorDataManagedEntityRestrictionsDTO](docs/AuthorizeEditorDataManagedEntityRestrictionsDTO.md)
+ - [AuthorizeEditorDataOverrideObjectDTO](docs/AuthorizeEditorDataOverrideObjectDTO.md)
+ - [AuthorizeEditorDataPoliciesCombiningAlgorithmDTO](docs/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO.md)
+ - [AuthorizeEditorDataPoliciesPolicyChildList](docs/AuthorizeEditorDataPoliciesPolicyChildList.md)
+ - [AuthorizeEditorDataPoliciesPolicyDTO](docs/AuthorizeEditorDataPoliciesPolicyDTO.md)
+ - [AuthorizeEditorDataPoliciesReferenceablePolicyDTO](docs/AuthorizeEditorDataPoliciesReferenceablePolicyDTO.md)
+ - [AuthorizeEditorDataPoliciesRepetitionSettingsDTO](docs/AuthorizeEditorDataPoliciesRepetitionSettingsDTO.md)
+ - [AuthorizeEditorDataProcessorDTO](docs/AuthorizeEditorDataProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorsChainProcessorDTO](docs/AuthorizeEditorDataProcessorsChainProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO](docs/AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO](docs/AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorsJsonPathProcessorDTO](docs/AuthorizeEditorDataProcessorsJsonPathProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorsReferenceProcessorDTO](docs/AuthorizeEditorDataProcessorsReferenceProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorsSpelProcessorDTO](docs/AuthorizeEditorDataProcessorsSpelProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorsXPathProcessorDTO](docs/AuthorizeEditorDataProcessorsXPathProcessorDTO.md)
+ - [AuthorizeEditorDataReferenceObjectDTO](docs/AuthorizeEditorDataReferenceObjectDTO.md)
+ - [AuthorizeEditorDataResolverDTO](docs/AuthorizeEditorDataResolverDTO.md)
+ - [AuthorizeEditorDataRulesEffectSettingsDTO](docs/AuthorizeEditorDataRulesEffectSettingsDTO.md)
+ - [AuthorizeEditorDataRulesReferenceableRuleDTO](docs/AuthorizeEditorDataRulesReferenceableRuleDTO.md)
+ - [AuthorizeEditorDataRulesRuleDTO](docs/AuthorizeEditorDataRulesRuleDTO.md)
+ - [AuthorizeEditorDataRulesRuleDTOCondition](docs/AuthorizeEditorDataRulesRuleDTOCondition.md)
+ - [AuthorizeEditorDataRulesRuleDTOEffectSettings](docs/AuthorizeEditorDataRulesRuleDTOEffectSettings.md)
+ - [AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO](docs/AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO.md)
+ - [AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO](docs/AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO.md)
+ - [AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO](docs/AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO.md)
+ - [AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO](docs/AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO.md)
+ - [AuthorizeEditorDataServiceObjectDTO](docs/AuthorizeEditorDataServiceObjectDTO.md)
+ - [AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO](docs/AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO.md)
+ - [AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO](docs/AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO.md)
+ - [AuthorizeEditorDataServicesConnectorServiceDefinitionDTO](docs/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO.md)
+ - [AuthorizeEditorDataServicesHttpServiceDefinitionDTO](docs/AuthorizeEditorDataServicesHttpServiceDefinitionDTO.md)
+ - [AuthorizeEditorDataServicesNoneServiceDefinitionDTO](docs/AuthorizeEditorDataServicesNoneServiceDefinitionDTO.md)
+ - [AuthorizeEditorDataStatementsReferenceableStatementDTO](docs/AuthorizeEditorDataStatementsReferenceableStatementDTO.md)
+ - [AuthorizeEditorDataStatementsStatementDTO](docs/AuthorizeEditorDataStatementsStatementDTO.md)
+ - [AuthorizeEditorDataStatementsStatementItemList](docs/AuthorizeEditorDataStatementsStatementItemList.md)
+ - [AuthorizeEditorDataTlsSettingsDTO](docs/AuthorizeEditorDataTlsSettingsDTO.md)
+ - [AuthorizeEditorDataValueTypeDTO](docs/AuthorizeEditorDataValueTypeDTO.md)
+ - [CreateService201Response](docs/CreateService201Response.md)
+ - [CreateServiceRequest](docs/CreateServiceRequest.md)
  - [DecisionEndpoint](docs/DecisionEndpoint.md)
  - [DecisionEndpointAuthorizationVersion](docs/DecisionEndpointAuthorizationVersion.md)
  - [DecisionEndpointRecentDecisions](docs/DecisionEndpointRecentDecisions.md)
@@ -158,6 +289,22 @@ Class | Method | HTTP request | Description
  - [EnumAPIServerPatternType](docs/EnumAPIServerPatternType.md)
  - [EnumApplicationResourceParentType](docs/EnumApplicationResourceParentType.md)
  - [LinksHATEOASValue](docs/LinksHATEOASValue.md)
+ - [ListAttributes200Response](docs/ListAttributes200Response.md)
+ - [ListAttributes200ResponseEmbedded](docs/ListAttributes200ResponseEmbedded.md)
+ - [ListConditions200Response](docs/ListConditions200Response.md)
+ - [ListConditions200ResponseEmbedded](docs/ListConditions200ResponseEmbedded.md)
+ - [ListConnectorTemplates200Response](docs/ListConnectorTemplates200Response.md)
+ - [ListConnectorTemplates200ResponseEmbedded](docs/ListConnectorTemplates200ResponseEmbedded.md)
+ - [ListProcessors200Response](docs/ListProcessors200Response.md)
+ - [ListProcessors200ResponseEmbedded](docs/ListProcessors200ResponseEmbedded.md)
+ - [ListRootPolicies200Response](docs/ListRootPolicies200Response.md)
+ - [ListRootPolicies200ResponseEmbedded](docs/ListRootPolicies200ResponseEmbedded.md)
+ - [ListRules200Response](docs/ListRules200Response.md)
+ - [ListRules200ResponseEmbedded](docs/ListRules200ResponseEmbedded.md)
+ - [ListServices200Response](docs/ListServices200Response.md)
+ - [ListServices200ResponseEmbedded](docs/ListServices200ResponseEmbedded.md)
+ - [ListStatements200Response](docs/ListStatements200Response.md)
+ - [ListStatements200ResponseEmbedded](docs/ListStatements200ResponseEmbedded.md)
  - [ObjectApplication](docs/ObjectApplication.md)
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
  - [ObjectOrganization](docs/ObjectOrganization.md)
@@ -165,6 +312,7 @@ Class | Method | HTTP request | Description
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
+ - [UpdateServiceRequest](docs/UpdateServiceRequest.md)
 
 
 ## Documentation For Authorization
