@@ -28,10 +28,10 @@ type AuthorizeEditorDataPoliciesReferenceablePolicyDTO struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
-	Statements *[]map[string]interface{} `json:"statements,omitempty"`
+	Statements []map[string]interface{} `json:"statements,omitempty"`
 	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
 	CombiningAlgorithm AuthorizeEditorDataPoliciesCombiningAlgorithmDTO `json:"combiningAlgorithm"`
-	Children *[]map[string]interface{} `json:"children,omitempty"`
+	Children []map[string]interface{} `json:"children,omitempty"`
 	RepetitionSettings *AuthorizeEditorDataPoliciesRepetitionSettingsDTO `json:"repetitionSettings,omitempty"`
 	ManagedEntity *AuthorizeEditorDataManagedEntityDTO `json:"managedEntity,omitempty"`
 	Version string `json:"version"`
@@ -272,12 +272,12 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetStatements() []ma
 		var ret []map[string]interface{}
 		return ret
 	}
-	return *o.Statements
+	return o.Statements
 }
 
 // GetStatementsOk returns a tuple with the Statements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetStatementsOk() (*[]map[string]interface{}, bool) {
+func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetStatementsOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Statements) {
 		return nil, false
 	}
@@ -295,7 +295,7 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) HasStatements() bool
 
 // SetStatements gets a reference to the given []map[string]interface{} and assigns it to the Statements field.
 func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetStatements(v []map[string]interface{}) {
-	o.Statements = &v
+	o.Statements = v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
@@ -360,12 +360,12 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildren() []map[
 		var ret []map[string]interface{}
 		return ret
 	}
-	return *o.Children
+	return o.Children
 }
 
 // GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildrenOk() (*[]map[string]interface{}, bool) {
+func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildrenOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Children) {
 		return nil, false
 	}
@@ -383,7 +383,7 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) HasChildren() bool {
 
 // SetChildren gets a reference to the given []map[string]interface{} and assigns it to the Children field.
 func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetChildren(v []map[string]interface{}) {
-	o.Children = &v
+	o.Children = v
 }
 
 // GetRepetitionSettings returns the RepetitionSettings field value if set, zero value otherwise.

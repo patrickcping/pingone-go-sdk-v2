@@ -7448,9 +7448,6 @@ components:
         statements:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-          properties:
-            empty:
-              type: boolean
           type: array
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
@@ -7704,9 +7701,6 @@ components:
         statements:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-          properties:
-            empty:
-              type: boolean
           type: array
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
@@ -7715,9 +7709,6 @@ components:
         children:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
-          properties:
-            empty:
-              type: boolean
           type: array
         repetitionSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
@@ -8289,9 +8280,6 @@ components:
         statements:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-          properties:
-            empty:
-              type: boolean
           type: array
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataRulesRuleDTO_condition'
@@ -8373,9 +8361,6 @@ components:
         statements:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-          properties:
-            empty:
-              type: boolean
           type: array
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataRulesRuleDTO_condition'
@@ -8384,9 +8369,6 @@ components:
         children:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
-          properties:
-            empty:
-              type: boolean
           type: array
         repetitionSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
@@ -8643,16 +8625,10 @@ components:
     AuthorizeEditorDataStatementsStatementItemList:
       items:
         $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-      properties:
-        empty:
-          type: boolean
       type: array
     AuthorizeEditorDataPoliciesPolicyChildList:
       items:
         $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
-      properties:
-        empty:
-          type: boolean
       type: array
     EnumAPIServerPatternType:
       description: "A string that specifies the type of the pattern. Options are `EXACT`\

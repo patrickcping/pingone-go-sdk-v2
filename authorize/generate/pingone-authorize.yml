@@ -933,9 +933,6 @@ components:
           type: boolean
         statements:
           type: array
-          properties:
-            empty:
-              type: boolean
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
@@ -1099,9 +1096,6 @@ components:
           type: boolean
         statements:
           type: array
-          properties:
-            empty:
-              type: boolean
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
@@ -1110,9 +1104,6 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
         children:
           type: array
-          properties:
-            empty:
-              type: boolean
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
         repetitionSettings:
@@ -1483,9 +1474,6 @@ components:
           type: boolean
         statements:
           type: array
-          properties:
-            empty:
-              type: boolean
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
@@ -1536,9 +1524,6 @@ components:
           type: boolean
         statements:
           type: array
-          properties:
-            empty:
-              type: boolean
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
@@ -1553,9 +1538,6 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
         children:
           type: array
-          properties:
-            empty:
-              type: boolean
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
         repetitionSettings:
@@ -1728,16 +1710,10 @@ components:
             type: string
     AuthorizeEditorDataStatementsStatementItemList:
       type: array
-      properties:
-        empty:
-          type: boolean
       items:
         $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
     AuthorizeEditorDataPoliciesPolicyChildList:
       type: array
-      properties:
-        empty:
-          type: boolean
       items:
         $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
     EnumAPIServerPatternType:

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Statements** | Pointer to  |  | [optional] 
+**Statements** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **Condition** | Pointer to [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | [optional] 
 **EffectSettings** | [**AuthorizeEditorDataRulesEffectSettingsDTO**](AuthorizeEditorDataRulesEffectSettingsDTO.md) |  | 
 **Version** | **string** |  | 

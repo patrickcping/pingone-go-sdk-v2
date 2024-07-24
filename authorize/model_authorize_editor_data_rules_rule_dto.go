@@ -29,7 +29,7 @@ type AuthorizeEditorDataRulesRuleDTO struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
-	Statements *[]map[string]interface{} `json:"statements,omitempty"`
+	Statements []map[string]interface{} `json:"statements,omitempty"`
 	Condition *AuthorizeEditorDataRulesRuleDTOCondition `json:"condition,omitempty"`
 	EffectSettings AuthorizeEditorDataRulesRuleDTOEffectSettings `json:"effectSettings"`
 }
@@ -307,12 +307,12 @@ func (o *AuthorizeEditorDataRulesRuleDTO) GetStatements() []map[string]interface
 		var ret []map[string]interface{}
 		return ret
 	}
-	return *o.Statements
+	return o.Statements
 }
 
 // GetStatementsOk returns a tuple with the Statements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataRulesRuleDTO) GetStatementsOk() (*[]map[string]interface{}, bool) {
+func (o *AuthorizeEditorDataRulesRuleDTO) GetStatementsOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Statements) {
 		return nil, false
 	}
@@ -330,7 +330,7 @@ func (o *AuthorizeEditorDataRulesRuleDTO) HasStatements() bool {
 
 // SetStatements gets a reference to the given []map[string]interface{} and assigns it to the Statements field.
 func (o *AuthorizeEditorDataRulesRuleDTO) SetStatements(v []map[string]interface{}) {
-	o.Statements = &v
+	o.Statements = v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.

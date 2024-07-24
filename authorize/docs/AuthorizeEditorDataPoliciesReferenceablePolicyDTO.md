@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Statements** | Pointer to  |  | [optional] 
+**Statements** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **Condition** | Pointer to [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | [optional] 
 **CombiningAlgorithm** | [**AuthorizeEditorDataPoliciesCombiningAlgorithmDTO**](AuthorizeEditorDataPoliciesCombiningAlgorithmDTO.md) |  | 
-**Children** | Pointer to  |  | [optional] 
+**Children** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **RepetitionSettings** | Pointer to [**AuthorizeEditorDataPoliciesRepetitionSettingsDTO**](AuthorizeEditorDataPoliciesRepetitionSettingsDTO.md) |  | [optional] 
 **ManagedEntity** | Pointer to [**AuthorizeEditorDataManagedEntityDTO**](AuthorizeEditorDataManagedEntityDTO.md) |  | [optional] 
 **Version** | **string** |  | 
