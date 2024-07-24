@@ -59,6 +59,22 @@ type APIClient struct {
 
 	ApplicationRolesApi *ApplicationRolesApiService
 
+	AuthorizeEditorAttributesApi *AuthorizeEditorAttributesApiService
+
+	AuthorizeEditorConditionsApi *AuthorizeEditorConditionsApiService
+
+	AuthorizeEditorConnectorTemplatesApi *AuthorizeEditorConnectorTemplatesApiService
+
+	AuthorizeEditorPoliciesApi *AuthorizeEditorPoliciesApiService
+
+	AuthorizeEditorProcessorsApi *AuthorizeEditorProcessorsApiService
+
+	AuthorizeEditorRulesApi *AuthorizeEditorRulesApiService
+
+	AuthorizeEditorServicesApi *AuthorizeEditorServicesApiService
+
+	AuthorizeEditorStatementsApi *AuthorizeEditorStatementsApiService
+
 	HALApi *HALApiService
 
 	PolicyDecisionManagementApi *PolicyDecisionManagementApiService
@@ -109,6 +125,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationRoleAssignmentsApi = (*ApplicationRoleAssignmentsApiService)(&c.common)
 	c.ApplicationRolePermissionsApi = (*ApplicationRolePermissionsApiService)(&c.common)
 	c.ApplicationRolesApi = (*ApplicationRolesApiService)(&c.common)
+	c.AuthorizeEditorAttributesApi = (*AuthorizeEditorAttributesApiService)(&c.common)
+	c.AuthorizeEditorConditionsApi = (*AuthorizeEditorConditionsApiService)(&c.common)
+	c.AuthorizeEditorConnectorTemplatesApi = (*AuthorizeEditorConnectorTemplatesApiService)(&c.common)
+	c.AuthorizeEditorPoliciesApi = (*AuthorizeEditorPoliciesApiService)(&c.common)
+	c.AuthorizeEditorProcessorsApi = (*AuthorizeEditorProcessorsApiService)(&c.common)
+	c.AuthorizeEditorRulesApi = (*AuthorizeEditorRulesApiService)(&c.common)
+	c.AuthorizeEditorServicesApi = (*AuthorizeEditorServicesApiService)(&c.common)
+	c.AuthorizeEditorStatementsApi = (*AuthorizeEditorStatementsApiService)(&c.common)
 	c.HALApi = (*HALApiService)(&c.common)
 	c.PolicyDecisionManagementApi = (*PolicyDecisionManagementApiService)(&c.common)
 
