@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** | The deployment status code. - &#x60;POLICIES_CREATE_IN_PROGRESS&#x60; The policy bundle for the API service&#39;s managed policies is being created. - &#x60;DECISION_ENDPOINT_CREATE_IN_PROGRESS&#x60; A decision endpoint is being created for the API service. - &#x60;DECISION_ENDPOINT_UPDATE_IN_PROGRESS&#x60; The API service&#39;s decision endpoint is being updated. - &#x60;DEPLOYMENT_SUCCESSFUL&#x60; The API service&#39;s policies have been successfully deployed. - &#x60;DEPLOYMENT_FAILED&#x60; HAP-MGMT was unable to deploy the API service&#39;s policies. - &#x60;DEPLOYMENT_UNINITIALIZED&#x60; A deployment has not yet been attempted.  | [optional] 
+**Code** | Pointer to **string** | The deployment status code. - &#x60;POLICIES_CREATE_IN_PROGRESS&#x60; The policy bundle for the API service&#39;s managed policies is being created. - &#x60;DECISION_ENDPOINT_CREATE_IN_PROGRESS&#x60; A decision endpoint is being created for the API service. - &#x60;DECISION_ENDPOINT_UPDATE_IN_PROGRESS&#x60; The API service&#39;s decision endpoint is being updated. - &#x60;DEPLOYMENT_SUCCESSFUL&#x60; The API service&#39;s policies have been successfully deployed. - &#x60;DEPLOYMENT_FAILED&#x60; HAP-MGMT was unable to deploy the API service&#39;s Policies - &#x60;DEPLOYMENT_UNINITIALIZED&#x60; A deployment has not yet been attempted.  | [optional] 
 **Error** | Pointer to [**APIServerDeploymentStatusError**](APIServerDeploymentStatusError.md) |  | [optional] 
 
 ## Methods

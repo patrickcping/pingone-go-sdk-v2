@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Name** | **string** | A string that specifies the policy decision resource name. | 
 **Owned** | Pointer to **bool** | A boolean that when true restricts modifications of the endpoint to PingOne-owned clients. | [optional] 
 **PolicyId** | Pointer to **string** | A string that specifies the ID of the root policy configured for this endpoint. If omitted, the policy editor service decides on a suitable default. | [optional] 
-**Provenance** | Pointer to **string** | A string that specifies a machine-readable identifier indicating the provenance of the current configuration. It has no meaning to the Policy Decision Service itself but exists to support integration with other services. | [optional] 
+**Provenance** | Pointer to **string** | A string that specifies a machine-readable identifier indicating the provenance of the current configuration. It has no meaning to the Policy Decision Service itself but exists to support integration with other Services | [optional] 
 **RecentDecisionsEnabled** | Pointer to **bool** | A boolean that specifies whether to show recent decisions. | [optional] 
 **RecentDecisions** | Pointer to [**DecisionEndpointRecentDecisions**](DecisionEndpointRecentDecisions.md) |  | [optional] 
 **RecordRecentRequests** | **bool** | A boolean that specifies whether to record a limited history of recent decision requests and responses, which can be queried through a separate API. | 

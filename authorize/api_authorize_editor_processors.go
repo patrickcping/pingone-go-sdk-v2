@@ -708,7 +708,7 @@ ListProcessors List Processors
 List Processors in the PingOne Authorize Trust Framework
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID The ID of the environment from which to list processors.
+ @param environmentID The ID of the environment from which to list Processors
  @return ApiListProcessorsRequest
 */
 func (a *AuthorizeEditorProcessorsApiService) ListProcessors(ctx context.Context, environmentID string) ApiListProcessorsRequest {

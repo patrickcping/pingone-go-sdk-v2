@@ -35,7 +35,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the rule.
-    authorizeEditorDataRulesRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesRuleDTO("Name_example", openapiclient.AuthorizeEditorDataRulesRuleDTO_effectSettings{AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO: openapiclient.NewAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO(*openapiclient.NewAuthorizeEditorDataConditionDTO("Type_example"), "Type_example")}) // AuthorizeEditorDataRulesRuleDTO | 
+    authorizeEditorDataRulesRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesRuleDTO("Name_example", openapiclient.AuthorizeEditorDataRulesRuleDTO_effectSettings{AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO: openapiclient.NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(*openapiclient.NewAuthorizeEditorDataConditionDTO("Type_example"), "Type_example")}) // AuthorizeEditorDataRulesRuleDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -254,7 +254,7 @@ import (
 )
 
 func main() {
-    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list rules.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list Rules
     limit := int32(56) // int32 | The maximum number of resources to return in the page (optional) (default to 25)
     cursor := "cursor_example" // string | An optional cursor that may be provided to start paging from a certain location. This cursor will be included in the 'next' link in the response body (optional)
 
@@ -276,7 +276,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** | The ID of the environment from which to list rules. | 
+**environmentID** | **string** | The ID of the environment from which to list Rules | 
 
 ### Other Parameters
 
@@ -405,7 +405,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the rule.
     ruleID := "ruleID_example" // string | The ID of the rule to be updated
-    authorizeEditorDataRulesReferenceableRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesReferenceableRuleDTO("Id_example", "Name_example", *openapiclient.NewAuthorizeEditorDataRulesEffectSettingsDTO("Type_example"), "Version_example") // AuthorizeEditorDataRulesReferenceableRuleDTO | 
+    authorizeEditorDataRulesReferenceableRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesReferenceableRuleDTO(*openapiclient.NewAuthorizeEditorDataRulesEffectSettingsDTO("Type_example"), "Version_example") // AuthorizeEditorDataRulesReferenceableRuleDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()

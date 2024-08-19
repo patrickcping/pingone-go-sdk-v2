@@ -20,8 +20,6 @@ var _ MappedNullable = &AuthorizeEditorDataDefinitionsServiceDefinitionDTO{}
 // AuthorizeEditorDataDefinitionsServiceDefinitionDTO struct for AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 type AuthorizeEditorDataDefinitionsServiceDefinitionDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	// HAL embedded resources
-	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The resource's unique identifier
 	Id *string `json:"id,omitempty"`
@@ -84,38 +82,6 @@ func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) HasLinks() bool {
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
-}
-
-// GetEmbedded returns the Embedded field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetEmbedded() map[string]map[string]interface{} {
-	if o == nil || IsNil(o.Embedded) {
-		var ret map[string]map[string]interface{}
-		return ret
-	}
-	return o.Embedded
-}
-
-// GetEmbeddedOk returns a tuple with the Embedded field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetEmbeddedOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Embedded) {
-		return map[string]map[string]interface{}{}, false
-	}
-	return o.Embedded, true
-}
-
-// HasEmbedded returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) HasEmbedded() bool {
-	if o != nil && !IsNil(o.Embedded) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmbedded gets a reference to the given map[string]map[string]interface{} and assigns it to the Embedded field.
-func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetEmbedded(v map[string]map[string]interface{}) {
-	o.Embedded = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -434,9 +400,6 @@ func (o AuthorizeEditorDataDefinitionsServiceDefinitionDTO) ToMap() (map[string]
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
-	}
-	if !IsNil(o.Embedded) {
-		toSerialize["_embedded"] = o.Embedded
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment

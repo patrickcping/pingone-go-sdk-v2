@@ -19,7 +19,7 @@ var _ MappedNullable = &APIServerDeploymentStatus{}
 
 // APIServerDeploymentStatus struct for APIServerDeploymentStatus
 type APIServerDeploymentStatus struct {
-	// The deployment status code. - `POLICIES_CREATE_IN_PROGRESS` The policy bundle for the API service's managed policies is being created. - `DECISION_ENDPOINT_CREATE_IN_PROGRESS` A decision endpoint is being created for the API service. - `DECISION_ENDPOINT_UPDATE_IN_PROGRESS` The API service's decision endpoint is being updated. - `DEPLOYMENT_SUCCESSFUL` The API service's policies have been successfully deployed. - `DEPLOYMENT_FAILED` HAP-MGMT was unable to deploy the API service's policies. - `DEPLOYMENT_UNINITIALIZED` A deployment has not yet been attempted. 
+	// The deployment status code. - `POLICIES_CREATE_IN_PROGRESS` The policy bundle for the API service's managed policies is being created. - `DECISION_ENDPOINT_CREATE_IN_PROGRESS` A decision endpoint is being created for the API service. - `DECISION_ENDPOINT_UPDATE_IN_PROGRESS` The API service's decision endpoint is being updated. - `DEPLOYMENT_SUCCESSFUL` The API service's policies have been successfully deployed. - `DEPLOYMENT_FAILED` HAP-MGMT was unable to deploy the API service's Policies - `DEPLOYMENT_UNINITIALIZED` A deployment has not yet been attempted. 
 	Code *string `json:"code,omitempty"`
 	Error *APIServerDeploymentStatusError `json:"error,omitempty"`
 }

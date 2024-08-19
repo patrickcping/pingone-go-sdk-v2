@@ -719,7 +719,7 @@ ListRootPolicies List Root Policies
 List Root Policies in the PingOne Authorize Policy Editor
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID The ID of the environment from which to list root policies.
+ @param environmentID The ID of the environment from which to list root Policies
  @return ApiListRootPoliciesRequest
 */
 func (a *AuthorizeEditorPoliciesApiService) ListRootPolicies(ctx context.Context, environmentID string) ApiListRootPoliciesRequest {

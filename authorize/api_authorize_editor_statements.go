@@ -719,7 +719,7 @@ ListStatements List Statements
 List Statements in the PingOne Authorize Policy Editor
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID The ID of the environment from which to list statements.
+ @param environmentID The ID of the environment from which to list Statements
  @return ApiListStatementsRequest
 */
 func (a *AuthorizeEditorStatementsApiService) ListStatements(ctx context.Context, environmentID string) ApiListStatementsRequest {

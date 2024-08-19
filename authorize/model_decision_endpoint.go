@@ -33,7 +33,7 @@ type DecisionEndpoint struct {
 	Owned *bool `json:"owned,omitempty"`
 	// A string that specifies the ID of the root policy configured for this endpoint. If omitted, the policy editor service decides on a suitable default.
 	PolicyId *string `json:"policyId,omitempty"`
-	// A string that specifies a machine-readable identifier indicating the provenance of the current configuration. It has no meaning to the Policy Decision Service itself but exists to support integration with other services.
+	// A string that specifies a machine-readable identifier indicating the provenance of the current configuration. It has no meaning to the Policy Decision Service itself but exists to support integration with other Services
 	Provenance *string `json:"provenance,omitempty"`
 	// A boolean that specifies whether to show recent decisions.
 	RecentDecisionsEnabled *bool `json:"recentDecisionsEnabled,omitempty"`

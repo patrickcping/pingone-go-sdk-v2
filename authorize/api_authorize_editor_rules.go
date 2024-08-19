@@ -719,7 +719,7 @@ ListRules List Rules
 List Rules in the PingOne Authorize Policy Editor
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID The ID of the environment from which to list rules.
+ @param environmentID The ID of the environment from which to list Rules
  @return ApiListRulesRequest
 */
 func (a *AuthorizeEditorRulesApiService) ListRules(ctx context.Context, environmentID string) ApiListRulesRequest {

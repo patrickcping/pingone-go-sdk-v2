@@ -1,4 +1,4 @@
-# AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO
+# AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
 
 ## Properties
 
@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO
+### NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
 
-`func NewAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO() *AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO() *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO`
 
-NewAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO instantiates a new AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO object
+NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTOWithDefaults
+### NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOWithDefaults
 
-`func NewAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTOWithDefaults() *AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOWithDefaults() *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO`
 
-NewAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTOWithDefaults instantiates a new AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO object
+NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOWithDefaults instantiates a new AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 

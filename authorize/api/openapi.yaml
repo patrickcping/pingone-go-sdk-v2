@@ -2675,7 +2675,7 @@ paths:
       description: List Conditions in the PingOne Authorize Trust Framework
       operationId: listConditions
       parameters:
-      - description: The ID of the environment from which to list conditions.
+      - description: The ID of the environment from which to list Conditions
         explode: false
         in: path
         name: environmentID
@@ -3435,7 +3435,7 @@ paths:
       description: List Root Policies in the PingOne Authorize Policy Editor
       operationId: listRootPolicies
       parameters:
-      - description: The ID of the environment from which to list root policies.
+      - description: The ID of the environment from which to list root Policies
         explode: false
         in: path
         name: environmentID
@@ -4010,7 +4010,7 @@ paths:
       description: List Processors in the PingOne Authorize Trust Framework
       operationId: listProcessors
       parameters:
-      - description: The ID of the environment from which to list processors.
+      - description: The ID of the environment from which to list Processors
         explode: false
         in: path
         name: environmentID
@@ -4478,7 +4478,7 @@ paths:
       description: List Rules in the PingOne Authorize Policy Editor
       operationId: listRules
       parameters:
-      - description: The ID of the environment from which to list rules.
+      - description: The ID of the environment from which to list Rules
         explode: false
         in: path
         name: environmentID
@@ -5053,7 +5053,7 @@ paths:
       description: List Services in the PingOne Authorize Trust Framework
       operationId: listServices
       parameters:
-      - description: The ID of the environment from which to list services.
+      - description: The ID of the environment from which to list Services
         explode: false
         in: path
         name: environmentID
@@ -5615,7 +5615,7 @@ paths:
       description: List Statements in the PingOne Authorize Policy Editor
       operationId: listStatements
       parameters:
-      - description: The ID of the environment from which to list statements.
+      - description: The ID of the environment from which to list Statements
         explode: false
         in: path
         name: environmentID
@@ -6092,6 +6092,604 @@ paths:
       summary: Update a Statement
       tags:
       - Authorize Editor Statements
+  /environments/{environmentId}/authorizationVersions:
+    get:
+      description: List Authorize Versions in PingOne Authorize
+      operationId: listVersions
+      parameters:
+      - description: The ID of the environment from which to list versions.
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "The SCIM filter (RFC 7644 Section 3.4.2.2) that should be used\
+          \ to determine the resources to return. Filterable attributes: tag (pr)"
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: The maximum number of resources to return in the page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+      - description: An optional cursor that may be provided to start paging from
+          a certain location. This cursor will be included in the 'next' link in the
+          response body
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Filter'
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/listVersions_200_response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listVersions_200_response'
+          description: Versions listed
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unsupported Media Type
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Service Unavailable
+      summary: List Authorize Versions
+      tags:
+      - Authorization Versions
+  /environments/{environmentId}/authorizationVersions/{authorizationVersionId}:
+    get:
+      description: Get an Authorize Version in PingOne Authorize by its ID
+      operationId: getVersion
+      parameters:
+      - description: The ID of the environment from which to get the version.
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The ID of the version to retrieve
+        explode: false
+        in: path
+        name: authorizationVersionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
+          description: Version found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unsupported Media Type
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Service Unavailable
+      summary: Get an Authorize Version by ID
+      tags:
+      - Authorization Versions
+  /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/policies/{policyId}:
+    get:
+      description: Get a Policy in the PingOne Authorize Policy Manager by its ID
+        and Authorize Version
+      operationId: getPolicyInVersion
+      parameters:
+      - description: The ID of the environment from which to get the policy.
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The ID of the Authorize Version from which to get the policy.
+        explode: false
+        in: path
+        name: authorizationVersionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The ID of the policy to retrieve.
+        explode: false
+        in: path
+        name: policyId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
+          description: Policy found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unsupported Media Type
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Service Unavailable
+      summary: Get a Policy from a specific Authorize Version
+      tags:
+      - Authorization Versions
+  /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag:
+    delete:
+      description: Remove a Tag from an Authorize Version in PingOne Authorize
+      operationId: deleteTag
+      parameters:
+      - description: The ID of the environment from which to remove the version tag.
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The ID of the version to remove the tag from.
+        explode: false
+        in: path
+        name: authorizationVersionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: OK
+        "204":
+          description: Tag removed
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unsupported Media Type
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Service Unavailable
+      summary: Remove a Tag from an Authorize Version
+      tags:
+      - Authorization Versions
+    get:
+      description: Get a Tag for an Authorize Version in PingOne Authorize
+      operationId: getTag
+      parameters:
+      - description: The ID of the environment from which to get the version tag.
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The ID of the version to retrieve the tag for.
+        explode: false
+        in: path
+        name: authorizationVersionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+          description: Tag found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unsupported Media Type
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Service Unavailable
+      summary: Get a Tag for an Authorize Version
+      tags:
+      - Authorization Versions
+    put:
+      description: Create or Update a Tag for an Authorize Version in PingOne Authorize
+      operationId: updateTag
+      parameters:
+      - description: The ID of the environment from which to create or update the
+          version tag.
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The ID of the version to create or update the tag for.
+        explode: false
+        in: path
+        name: authorizationVersionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeEditorDataTagRequestDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+          description: OK
+        "201":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+          description: Tag created/updated successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Unsupported Media Type
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Service Unavailable
+      summary: Create or Update a Tag for an Authorize Version
+      tags:
+      - Authorization Versions
   /environments/{environmentID}/decisionEndpoints:
     get:
       operationId: readAllDecisionEndpoints
@@ -6864,6 +7462,49 @@ components:
           description: The user associated with the role assignment.
           type: object
       type: object
+    AuthorizeEditorDataTagRequestDTO:
+      description: The tag to create or update.
+      example:
+        description: description
+      properties:
+        description:
+          type: string
+      type: object
+    AuthorizeEditorDataTagResponseDTO:
+      example:
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          key: "{}"
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        _embedded:
+          additionalProperties:
+            description: HAL embedded resources
+            readOnly: true
+            type: object
+          description: HAL embedded resources
+          readOnly: true
+          type: object
+        updatedAt:
+          format: date-time
+          type: string
+        description:
+          type: string
+        id:
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
+          type: string
+      type: object
     AuthorizeEditorDataReferenceObjectDTO:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -6881,36 +7522,22 @@ components:
         _links:
           key:
             href: https://openapi-generator.tech
+        payload: payload
         appliesIf: ANYTHING
+        name: name
         description: description
         appliesTo: ANYTHING
-        version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        environment:
-          id: id
-        _embedded:
-          key: "{}"
-        payload: payload
-        name: name
         attributes:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        _embedded:
-          additionalProperties:
-            description: HAL embedded resources
-            readOnly: true
-            type: object
-          description: HAL embedded resources
-          readOnly: true
-          type: object
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
         id:
           description: The resource's unique identifier
           format: uuid
@@ -7060,14 +7687,6 @@ components:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        _embedded:
-          additionalProperties:
-            description: HAL embedded resources
-            readOnly: true
-            type: object
-          description: HAL embedded resources
-          readOnly: true
-          type: object
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         id:
@@ -7200,8 +7819,6 @@ components:
       - properties:
           _links:
             $ref: '#/components/schemas/LinksHATEOAS'
-          processor:
-            $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
           valueType:
             $ref: '#/components/schemas/AuthorizeEditorDataValueTypeDTO'
           serviceSettings:
@@ -7399,58 +8016,18 @@ components:
       type: object
     AuthorizeEditorDataRulesReferenceableRuleDTO:
       example:
-        environment:
-          id: id
-        condition:
-          type: type
         _links:
           key:
             href: https://openapi-generator.tech
-        _embedded:
-          key: "{}"
-        name: name
-        description: description
         effectSettings:
           type: type
-        statements:
-        - null
-        - null
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enabled: true
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        _embedded:
-          additionalProperties:
-            description: HAL embedded resources
-            readOnly: true
-            type: object
-          description: HAL embedded resources
-          readOnly: true
-          type: object
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        id:
-          description: The resource's unique identifier
-          format: uuid
-          readOnly: true
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        enabled:
-          type: boolean
-        statements:
-          items:
-            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-          type: array
-        condition:
-          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         effectSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
         version:
@@ -7462,7 +8039,7 @@ components:
       - name
       - version
       type: object
-    AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO:
+    AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
       - properties:
@@ -7471,7 +8048,7 @@ components:
         type: object
       required:
       - condition
-    AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO:
+    AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
       - properties:
@@ -7480,10 +8057,10 @@ components:
         type: object
       required:
       - condition
-    AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO:
+    AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
-    AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO:
+    AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
     AuthorizeEditorDataStatementsStatementItem:
@@ -7645,23 +8222,13 @@ components:
           restrictions:
             disallowChildren: true
             readOnly: true
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        description: description
-        statements:
-        - null
-        - null
-        version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enabled: true
-        environment:
-          id: id
         condition:
           type: type
         combiningAlgorithm:
           algorithm: PERMIT_OVERRIDES
-        _embedded:
-          key: "{}"
+        _links:
+          key:
+            href: https://openapi-generator.tech
         children:
         - null
         - null
@@ -7669,39 +8236,13 @@ components:
           decision: PERMIT
           source:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        _embedded:
-          additionalProperties:
-            description: HAL embedded resources
-            readOnly: true
-            type: object
-          description: HAL embedded resources
-          readOnly: true
-          type: object
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        id:
-          description: The resource's unique identifier
-          format: uuid
-          readOnly: true
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        enabled:
-          type: boolean
-        statements:
-          items:
-            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-          type: array
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         combiningAlgorithm:
@@ -8378,6 +8919,143 @@ components:
       - combiningAlgorithm
       - name
       type: object
+    Filter:
+      description: |-
+        The tag filter that may be used to list Authorize versions that have a tag.
+        The following filter can be applied to versions:
+            * `tag pr` (versions with a tag)
+      example:
+        expressions:
+        - null
+        - null
+      properties:
+        expressions:
+          items:
+            $ref: '#/components/schemas/FilterExpression'
+          type: array
+      type: object
+    FilterExpression:
+      type: object
+    TypedRelationship:
+      example:
+        id: id
+        type: type
+      properties:
+        id:
+          description: The identifier of the resource referenced by this relationship
+          readOnly: true
+          type: string
+        type:
+          description: The type of the resource referenced by this relationship
+          readOnly: true
+          type: string
+      type: object
+    AuthorizeEditorDataAuthorizationVersionDTO:
+      example:
+        createdAt: createdAt
+        environment:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          key: "{}"
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tag:
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          _embedded:
+            key: "{}"
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        changeDetails:
+          changedEntityName: changedEntityName
+          changedEntityType: changedEntityType
+          changeType: CREATE
+          user:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            envId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          changedResource:
+            id: id
+            type: type
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        _embedded:
+          additionalProperties:
+            description: HAL embedded resources
+            readOnly: true
+            type: object
+          description: HAL embedded resources
+          readOnly: true
+          type: object
+        id:
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
+          type: string
+        createdAt:
+          type: string
+        changeDetails:
+          $ref: '#/components/schemas/AuthorizeEditorDataChangeDetailsDTO'
+        tag:
+          $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+        environment:
+          $ref: '#/components/schemas/AuthorizeEditorDataEnvironmentDTO'
+      type: object
+    AuthorizeEditorDataChangeDetailsDTO:
+      example:
+        changedEntityName: changedEntityName
+        changedEntityType: changedEntityType
+        changeType: CREATE
+        user:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          envId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        changedResource:
+          id: id
+          type: type
+      properties:
+        changedResource:
+          $ref: '#/components/schemas/TypedRelationship'
+        changeType:
+          enum:
+          - CREATE
+          - UPDATE
+          - DELETE
+          - NONE
+          type: string
+        changedEntityName:
+          type: string
+        changedEntityType:
+          type: string
+        user:
+          $ref: '#/components/schemas/AuthorizeEditorDataUserDTO'
+      type: object
+    AuthorizeEditorDataEnvironmentDTO:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+      type: object
+    AuthorizeEditorDataUserDTO:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        envId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        envId:
+          format: uuid
+          type: string
+      type: object
     AuthorizeEditorDataConnectorsConnectorCapability:
       example:
         code: code
@@ -8514,6 +9192,34 @@ components:
             $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorCapability'
           type: array
       type: object
+    AuthorizeEditorDataAttributeResolversuserqueries.UserIdQueryDTO:
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
+      - properties:
+          userId:
+            type: string
+        type: object
+      required:
+      - userId
+    AuthorizeEditorDataConditionsComparandsAttributeComparandDTO:
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - properties:
+          id:
+            format: uuid
+            type: string
+        type: object
+      required:
+      - id
+    AuthorizeEditorDataConditionsComparandsConstantComparandDTO:
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - properties:
+          value:
+            type: string
+        type: object
+      required:
+      - value
     AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
@@ -8588,34 +9294,6 @@ components:
     AuthorizeEditorDataInputsConstantInputDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataInputDTO'
-      - properties:
-          value:
-            type: string
-        type: object
-      required:
-      - value
-    AuthorizeEditorDataConditionsComparandsUserIdQueryDTO:
-      allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
-      - properties:
-          userId:
-            type: string
-        type: object
-      required:
-      - userId
-    AuthorizeEditorDataConditionsComparandsAttributeComparandDTO:
-      allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
-      - properties:
-          id:
-            format: uuid
-            type: string
-        type: object
-      required:
-      - id
-    AuthorizeEditorDataConditionsComparandsConstantComparandDTO:
-      allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
       - properties:
           value:
             type: string
@@ -8743,7 +9421,7 @@ components:
           description: A string that specifies a machine-readable identifier indicating
             the provenance of the current configuration. It has no meaning to the
             Policy Decision Service itself but exists to support integration with
-            other services.
+            other Services
           type: string
         recentDecisionsEnabled:
           description: A boolean that specifies whether to show recent decisions.
@@ -9376,6 +10054,44 @@ components:
           format: int32
           type: integer
       type: object
+    listVersions_200_response__embedded:
+      example:
+        authorizationVersions:
+        - ""
+        - ""
+      properties:
+        authorizationVersions:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
+          type: array
+      type: object
+    listVersions_200_response:
+      example:
+        size: 6
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          authorizationVersions:
+          - ""
+          - ""
+        count: 0
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        _embedded:
+          $ref: '#/components/schemas/listVersions_200_response__embedded'
+        count:
+          format: int32
+          type: integer
+        size:
+          format: int32
+          type: integer
+      type: object
     LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
@@ -9541,7 +10257,7 @@ components:
             \ created for the API service.\n- `DECISION_ENDPOINT_UPDATE_IN_PROGRESS`\t\
             The API service's decision endpoint is being updated.\n- `DEPLOYMENT_SUCCESSFUL`\t\
             The API service's policies have been successfully deployed.\n- `DEPLOYMENT_FAILED`\t\
-            HAP-MGMT was unable to deploy the API service's policies.\n- `DEPLOYMENT_UNINITIALIZED`\t\
+            HAP-MGMT was unable to deploy the API service's Policies\n- `DEPLOYMENT_UNINITIALIZED`\t\
             A deployment has not yet been attempted.\n"
           enum:
           - POLICIES_CREATE_IN_PROGRESS
@@ -9732,10 +10448,10 @@ components:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
     AuthorizeEditorDataRulesRuleDTO_effectSettings:
       oneOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
     DecisionEndpoint_authorizationVersion:
       example:
         id: id
@@ -9746,7 +10462,7 @@ components:
         id:
           description: "A string that specifies the ID of the Authorization Version\
             \ deployed to this endpoint. Versioning allows independent development\
-            \ and deployment of policies. If omitted, the endpoint always uses the\
+            \ and deployment of Policies If omitted, the endpoint always uses the\
             \ latest policy version available from the policy editor service."
           type: string
         href:

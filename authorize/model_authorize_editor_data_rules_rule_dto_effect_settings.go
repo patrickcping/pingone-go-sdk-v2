@@ -17,37 +17,37 @@ import (
 
 // AuthorizeEditorDataRulesRuleDTOEffectSettings - struct for AuthorizeEditorDataRulesRuleDTOEffectSettings
 type AuthorizeEditorDataRulesRuleDTOEffectSettings struct {
-	AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO *AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO
-	AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO *AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO
-	AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO *AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO
-	AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO *AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO
+	AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
+	AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
+	AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
+	AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
 }
 
-// AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
-func AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
+// AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
+func AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
 	return AuthorizeEditorDataRulesRuleDTOEffectSettings{
-		AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO: v,
+		AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO: v,
 	}
 }
 
-// AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
-func AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
+// AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
+func AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
 	return AuthorizeEditorDataRulesRuleDTOEffectSettings{
-		AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO: v,
+		AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO: v,
 	}
 }
 
-// AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
-func AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
+// AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
+func AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
 	return AuthorizeEditorDataRulesRuleDTOEffectSettings{
-		AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO: v,
+		AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO: v,
 	}
 }
 
-// AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
-func AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
+// AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO wrapped in AuthorizeEditorDataRulesRuleDTOEffectSettings
+func AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOAsAuthorizeEditorDataRulesRuleDTOEffectSettings(v *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO) AuthorizeEditorDataRulesRuleDTOEffectSettings {
 	return AuthorizeEditorDataRulesRuleDTOEffectSettings{
-		AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO: v,
+		AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO: v,
 	}
 }
 
@@ -56,64 +56,64 @@ func AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTOAsAuthorizeEdit
 func (dst *AuthorizeEditorDataRulesRuleDTOEffectSettings) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO)
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
 	if err == nil {
-		jsonAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO)
-		if string(jsonAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO = nil
+		jsonAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
 	}
 
-	// try to unmarshal data into AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO)
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
 	if err == nil {
-		jsonAuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO)
-		if string(jsonAuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO = nil
+		jsonAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
 	}
 
-	// try to unmarshal data into AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO)
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
 	if err == nil {
-		jsonAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO)
-		if string(jsonAuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO = nil
+		jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
 	}
 
-	// try to unmarshal data into AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO)
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
 	if err == nil {
-		jsonAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO)
-		if string(jsonAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO = nil
+		jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO = nil
-		dst.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO = nil
-		dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO = nil
-		dst.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataRulesRuleDTOEffectSettings)")
 	} else if match == 1 {
@@ -125,20 +125,20 @@ func (dst *AuthorizeEditorDataRulesRuleDTOEffectSettings) UnmarshalJSON(data []b
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src AuthorizeEditorDataRulesRuleDTOEffectSettings) MarshalJSON() ([]byte, error) {
-	if src.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO != nil {
-		return json.Marshal(&src.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO)
+	if src.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
 	}
 
-	if src.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO != nil {
-		return json.Marshal(&src.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO)
+	if src.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
 	}
 
-	if src.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO != nil {
-		return json.Marshal(&src.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO)
+	if src.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
 	}
 
-	if src.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO != nil {
-		return json.Marshal(&src.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO)
+	if src.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -149,20 +149,20 @@ func (obj *AuthorizeEditorDataRulesRuleDTOEffectSettings) GetActualInstance() (i
 	if obj == nil {
 		return nil
 	}
-	if obj.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO != nil {
-		return obj.AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO
+	if obj.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
 	}
 
-	if obj.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO != nil {
-		return obj.AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO
+	if obj.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
 	}
 
-	if obj.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO != nil {
-		return obj.AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO
+	if obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
 	}
 
-	if obj.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO != nil {
-		return obj.AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO
+	if obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
 	}
 
 	// all schemas are nil

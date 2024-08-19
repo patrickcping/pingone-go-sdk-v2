@@ -1,4 +1,4 @@
-# AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO
+# AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
 
 ## Properties
 
@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO
+### NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
 
-`func NewAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO() *AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO() *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO`
 
-NewAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO instantiates a new AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO object
+NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTOWithDefaults
+### NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOWithDefaults
 
-`func NewAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTOWithDefaults() *AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOWithDefaults() *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO`
 
-NewAuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTOWithDefaults instantiates a new AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO object
+NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOWithDefaults instantiates a new AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 

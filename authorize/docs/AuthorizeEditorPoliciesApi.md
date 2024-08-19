@@ -254,7 +254,7 @@ import (
 )
 
 func main() {
-    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list root policies.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list root Policies
     limit := int32(56) // int32 | The maximum number of resources to return in the page (optional) (default to 25)
     cursor := "cursor_example" // string | An optional cursor that may be provided to start paging from a certain location. This cursor will be included in the 'next' link in the response body (optional)
 
@@ -276,7 +276,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** | The ID of the environment from which to list root policies. | 
+**environmentID** | **string** | The ID of the environment from which to list root Policies | 
 
 ### Other Parameters
 
@@ -405,7 +405,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the policy.
     policyID := "policyID_example" // string | The ID of the policy to be updated
-    authorizeEditorDataPoliciesReferenceablePolicyDTO := *openapiclient.NewAuthorizeEditorDataPoliciesReferenceablePolicyDTO("Id_example", "Name_example", *openapiclient.NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO("Algorithm_example"), "Version_example") // AuthorizeEditorDataPoliciesReferenceablePolicyDTO | 
+    authorizeEditorDataPoliciesReferenceablePolicyDTO := *openapiclient.NewAuthorizeEditorDataPoliciesReferenceablePolicyDTO(*openapiclient.NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO("Algorithm_example"), "Version_example") // AuthorizeEditorDataPoliciesReferenceablePolicyDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()

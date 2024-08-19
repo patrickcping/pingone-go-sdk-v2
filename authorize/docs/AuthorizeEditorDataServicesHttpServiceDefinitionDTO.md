@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**Processor** | Pointer to [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | [optional] 
 **ValueType** | [**AuthorizeEditorDataValueTypeDTO**](AuthorizeEditorDataValueTypeDTO.md) |  | 
 **ServiceSettings** | [**AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO**](AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO.md) |  | 
 
@@ -52,31 +51,6 @@ SetLinks sets Links field to given value.
 `func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
-### GetProcessor
-
-`func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetProcessor() AuthorizeEditorDataProcessorDTO`
-
-GetProcessor returns the Processor field if non-nil, zero value otherwise.
-
-### GetProcessorOk
-
-`func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool)`
-
-GetProcessorOk returns a tuple with the Processor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProcessor
-
-`func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetProcessor(v AuthorizeEditorDataProcessorDTO)`
-
-SetProcessor sets Processor field to given value.
-
-### HasProcessor
-
-`func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasProcessor() bool`
-
-HasProcessor returns a boolean if a field has been set.
 
 ### GetValueType
 

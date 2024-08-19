@@ -1,4 +1,4 @@
-# AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO
+# AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
 
 ## Properties
 
@@ -8,39 +8,39 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO
+### NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
 
-`func NewAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO(condition AuthorizeEditorDataConditionDTO, ) *AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(condition AuthorizeEditorDataConditionDTO, ) *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO`
 
-NewAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO instantiates a new AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO object
+NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTOWithDefaults
+### NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOWithDefaults
 
-`func NewAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTOWithDefaults() *AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOWithDefaults() *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO`
 
-NewAuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTOWithDefaults instantiates a new AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO object
+NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOWithDefaults instantiates a new AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCondition
 
-`func (o *AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO) GetCondition() AuthorizeEditorDataConditionDTO`
+`func (o *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) GetCondition() AuthorizeEditorDataConditionDTO`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
+`func (o *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO) SetCondition(v AuthorizeEditorDataConditionDTO)`
+`func (o *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) SetCondition(v AuthorizeEditorDataConditionDTO)`
 
 SetCondition sets Condition field to given value.
 

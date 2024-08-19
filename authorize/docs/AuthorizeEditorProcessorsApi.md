@@ -249,7 +249,7 @@ import (
 )
 
 func main() {
-    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list processors.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list Processors
     filter := "filter_example" // string | The parent filter that may be used to list the root processors or children of a processor. The following filter options can be applied to processors:     * `parent not pr` (root processors)     * `parent eq id` (processors with parent id equal to id) (optional)
     limit := int32(56) // int32 | The maximum number of resources to return in the page (optional) (default to 25)
     cursor := "cursor_example" // string | An optional cursor that may be provided to start paging from a certain location. This cursor will be included in the 'next' link in the response body (optional)
@@ -272,7 +272,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** | The ID of the environment from which to list processors. | 
+**environmentID** | **string** | The ID of the environment from which to list Processors | 
 
 ### Other Parameters
 

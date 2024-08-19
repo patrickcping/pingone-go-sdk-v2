@@ -167,7 +167,7 @@ components:
                 - `DECISION_ENDPOINT_CREATE_IN_PROGRESS`	A decision endpoint is being created for the API service.
                 - `DECISION_ENDPOINT_UPDATE_IN_PROGRESS`	The API service's decision endpoint is being updated.
                 - `DEPLOYMENT_SUCCESSFUL`	The API service's policies have been successfully deployed.
-                - `DEPLOYMENT_FAILED`	HAP-MGMT was unable to deploy the API service's policies.
+                - `DEPLOYMENT_FAILED`	HAP-MGMT was unable to deploy the API service's Policies
                 - `DEPLOYMENT_UNINITIALIZED`	A deployment has not yet been attempted.
               enum: [POLICIES_CREATE_IN_PROGRESS, DECISION_ENDPOINT_CREATE_IN_PROGRESS, DECISION_ENDPOINT_UPDATE_IN_PROGRESS, DEPLOYMENT_SUCCESSFUL, DEPLOYMENT_FAILED, DEPLOYMENT_UNINITIALIZED]
             error:
@@ -404,6 +404,35 @@ components:
         subject:
           type: object
           description: The user associated with the role assignment.
+    AuthorizeEditorDataTagRequestDTO:
+      type: object
+      properties:
+        description:
+          type: string
+      description: The tag to create or update.
+    AuthorizeEditorDataTagResponseDTO:
+      type: object
+      properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            description: HAL embedded resources
+            readOnly: true
+          description: HAL embedded resources
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+        description:
+          type: string
+        id:
+          type: string
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
     AuthorizeEditorDataReferenceObjectDTO:
       required:
       - id
@@ -426,16 +455,6 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            description: HAL embedded resources
-            readOnly: true
-          description: HAL embedded resources
-          readOnly: true
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
         id:
           type: string
           description: The resource's unique identifier
@@ -569,14 +588,6 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            description: HAL embedded resources
-            readOnly: true
-          description: HAL embedded resources
-          readOnly: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         id:
@@ -712,8 +723,6 @@ components:
         properties:
           '_links':
             $ref: '#/components/schemas/LinksHATEOAS'
-          processor:
-            $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
           valueType:
             $ref: '#/components/schemas/AuthorizeEditorDataValueTypeDTO'
           serviceSettings:
@@ -910,39 +919,12 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            description: HAL embedded resources
-            readOnly: true
-          description: HAL embedded resources
-          readOnly: true
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        id:
-          type: string
-          description: The resource's unique identifier
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-        description:
-          type: string
-        enabled:
-          type: boolean
-        statements:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
-        condition:
-          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         effectSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
         version:
           type: string
           format: uuid
-    AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO:
+    AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO:
       required:
       - condition
       allOf:
@@ -951,7 +933,7 @@ components:
         properties:
           condition:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
-    AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO:
+    AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO:
       required:
       - condition
       allOf:
@@ -960,10 +942,10 @@ components:
         properties:
           condition:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
-    AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO:
+    AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
-    AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO:
+    AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
     AuthorizeEditorDataStatementsStatementItem:
@@ -1073,31 +1055,6 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        _embedded:
-          type: object
-          additionalProperties:
-            type: object
-            description: HAL embedded resources
-            readOnly: true
-          description: HAL embedded resources
-          readOnly: true
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        id:
-          type: string
-          description: The resource's unique identifier
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-        description:
-          type: string
-        enabled:
-          type: boolean
-        statements:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         combiningAlgorithm:
@@ -1486,10 +1443,10 @@ components:
           - $ref: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
         effectSettings:
           oneOf:
-          - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsConditionalDenyElsePermitDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsConditionalPermitElseDenyDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsUnconditionalDenyDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataRuleseffectSettingsUnconditionalPermitDTO'
+          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
+          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
+          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
+          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
       description: "The rule to create, without ID or Version properties"
     AuthorizeEditorDataPoliciesPolicyDTO:
       required:
@@ -1545,6 +1502,89 @@ components:
         managedEntity:
           $ref: '#/components/schemas/AuthorizeEditorDataManagedEntityDTO'
       description: "The policy to create, without ID or Version properties"
+    Filter:
+      type: object
+      properties:
+        expressions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilterExpression'
+      description: |-
+        The tag filter that may be used to list Authorize versions that have a tag.
+        The following filter can be applied to versions:
+            * `tag pr` (versions with a tag)
+    FilterExpression:
+      type: object
+    TypedRelationship:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the resource referenced by this relationship
+          readOnly: true
+        type:
+          type: string
+          description: The type of the resource referenced by this relationship
+          readOnly: true
+    AuthorizeEditorDataAuthorizationVersionDTO:
+      type: object
+      properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            description: HAL embedded resources
+            readOnly: true
+          description: HAL embedded resources
+          readOnly: true
+        id:
+          type: string
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
+        createdAt:
+          type: string
+        changeDetails:
+          $ref: '#/components/schemas/AuthorizeEditorDataChangeDetailsDTO'
+        tag:
+          $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+        environment:
+          $ref: '#/components/schemas/AuthorizeEditorDataEnvironmentDTO'
+    AuthorizeEditorDataChangeDetailsDTO:
+      type: object
+      properties:
+        changedResource:
+          $ref: '#/components/schemas/TypedRelationship'
+        changeType:
+          type: string
+          enum:
+          - CREATE
+          - UPDATE
+          - DELETE
+          - NONE
+        changedEntityName:
+          type: string
+        changedEntityType:
+          type: string
+        user:
+          $ref: '#/components/schemas/AuthorizeEditorDataUserDTO'
+    AuthorizeEditorDataEnvironmentDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    AuthorizeEditorDataUserDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        envId:
+          type: string
+          format: uuid
     AuthorizeEditorDataConnectorsConnectorCapability:
       type: object
       properties:
@@ -1600,6 +1640,34 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorCapability'
+    AuthorizeEditorDataAttributeResolversuserqueries.UserIdQueryDTO:
+      required:
+      - userId
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
+      - type: object
+        properties:
+          userId:
+            type: string
+    AuthorizeEditorDataConditionsComparandsAttributeComparandDTO:
+      required:
+      - id
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+    AuthorizeEditorDataConditionsComparandsConstantComparandDTO:
+      required:
+      - value
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - type: object
+        properties:
+          value:
+            type: string
     AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO:
       required:
       - name
@@ -1680,34 +1748,6 @@ components:
         properties:
           value:
             type: string
-    AuthorizeEditorDataConditionsComparandsUserIdQueryDTO:
-      required:
-      - userId
-      allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
-      - type: object
-        properties:
-          userId:
-            type: string
-    AuthorizeEditorDataConditionsComparandsAttributeComparandDTO:
-      required:
-      - id
-      allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
-      - type: object
-        properties:
-          id:
-            type: string
-            format: uuid
-    AuthorizeEditorDataConditionsComparandsConstantComparandDTO:
-      required:
-      - value
-      allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
-      - type: object
-        properties:
-          value:
-            type: string
     AuthorizeEditorDataStatementsStatementItemList:
       type: array
       items:
@@ -1753,7 +1793,7 @@ components:
           properties:
             id:
               type: string
-              description: A string that specifies the ID of the Authorization Version deployed to this endpoint. Versioning allows independent development and deployment of policies. If omitted, the endpoint always uses the latest policy version available from the policy editor service.
+              description: A string that specifies the ID of the Authorization Version deployed to this endpoint. Versioning allows independent development and deployment of Policies If omitted, the endpoint always uses the latest policy version available from the policy editor service.
             href:
               type: string
               description: A string that specifies the request URL for the authorization version endpoint.
@@ -1781,7 +1821,7 @@ components:
           description: A string that specifies the ID of the root policy configured for this endpoint. If omitted, the policy editor service decides on a suitable default.
         provenance:
           type: string
-          description: A string that specifies a machine-readable identifier indicating the provenance of the current configuration. It has no meaning to the Policy Decision Service itself but exists to support integration with other services.
+          description: A string that specifies a machine-readable identifier indicating the provenance of the current configuration. It has no meaning to the Policy Decision Service itself but exists to support integration with other Services
         recentDecisionsEnabled:
           type: boolean
           description: A boolean that specifies whether to show recent decisions.
@@ -3471,7 +3511,7 @@ paths:
       parameters:
       - name: environmentID
         in: path
-        description: The ID of the environment from which to list conditions.
+        description: The ID of the environment from which to list Conditions
         required: true
         schema:
           type: string
@@ -3965,7 +4005,7 @@ paths:
       parameters:
       - name: environmentID
         in: path
-        description: The ID of the environment from which to list root policies.
+        description: The ID of the environment from which to list root Policies
         required: true
         schema:
           type: string
@@ -4321,7 +4361,7 @@ paths:
       parameters:
       - name: environmentID
         in: path
-        description: The ID of the environment from which to list processors.
+        description: The ID of the environment from which to list Processors
         required: true
         schema:
           type: string
@@ -4619,7 +4659,7 @@ paths:
       parameters:
       - name: environmentID
         in: path
-        description: The ID of the environment from which to list rules.
+        description: The ID of the environment from which to list Rules
         required: true
         schema:
           type: string
@@ -4975,7 +5015,7 @@ paths:
       parameters:
       - name: environmentID
         in: path
-        description: The ID of the environment from which to list services.
+        description: The ID of the environment from which to list Services
         required: true
         schema:
           type: string
@@ -5351,7 +5391,7 @@ paths:
       parameters:
       - name: environmentID
         in: path
-        description: The ID of the environment from which to list statements.
+        description: The ID of the environment from which to list Statements
         required: true
         schema:
           type: string
@@ -5628,6 +5668,378 @@ paths:
       responses:
         "204":
           description: Statement deleted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '415':
+          $ref: '#/components/responses/415'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  /environments/{environmentId}/authorizationVersions:
+    get:
+      tags:
+      - Authorization Versions
+      summary: List Authorize Versions
+      description: List Authorize Versions in PingOne Authorize
+      operationId: listVersions
+      parameters:
+      - name: environmentId
+        in: path
+        description: The ID of the environment from which to list versions.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: filter
+        in: query
+        description: "The SCIM filter (RFC 7644 Section 3.4.2.2) that should be used\
+          \ to determine the resources to return. Filterable attributes: tag (pr)"
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: The maximum number of resources to return in the page
+        schema:
+          maximum: 5000
+          minimum: 1
+          type: integer
+          format: int32
+          default: 25
+      - name: cursor
+        in: query
+        description: An optional cursor that may be provided to start paging from
+          a certain location. This cursor will be included in the 'next' link in the
+          response body
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Filter'
+      responses:
+        "200":
+          description: Versions listed
+          content:
+            application/hal+json:
+              schema:
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  _embedded:
+                    type: object
+                    properties:
+                      authorizationVersions:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
+                  count:
+                    type: integer
+                    format: int32
+                  size:
+                    type: integer
+                    format: int32
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  _embedded:
+                    type: object
+                    properties:
+                      authorizationVersions:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
+                  count:
+                    type: integer
+                    format: int32
+                  size:
+                    type: integer
+                    format: int32
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '415':
+          $ref: '#/components/responses/415'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  /environments/{environmentId}/authorizationVersions/{authorizationVersionId}:
+    get:
+      tags:
+      - Authorization Versions
+      summary: Get an Authorize Version by ID
+      description: Get an Authorize Version in PingOne Authorize by its ID
+      operationId: getVersion
+      parameters:
+      - name: environmentId
+        in: path
+        description: The ID of the environment from which to get the version.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: authorizationVersionId
+        in: path
+        description: The ID of the version to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Version found
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '415':
+          $ref: '#/components/responses/415'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/policies/{policyId}:
+    get:
+      tags:
+      - Authorization Versions
+      summary: Get a Policy from a specific Authorize Version
+      description: Get a Policy in the PingOne Authorize Policy Manager by its ID
+        and Authorize Version
+      operationId: getPolicyInVersion
+      parameters:
+      - name: environmentId
+        in: path
+        description: The ID of the environment from which to get the policy.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: authorizationVersionId
+        in: path
+        description: The ID of the Authorize Version from which to get the policy.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: policyId
+        in: path
+        description: The ID of the policy to retrieve.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Policy found
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '415':
+          $ref: '#/components/responses/415'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag:
+    get:
+      tags:
+      - Authorization Versions
+      summary: Get a Tag for an Authorize Version
+      description: Get a Tag for an Authorize Version in PingOne Authorize
+      operationId: getTag
+      parameters:
+      - name: environmentId
+        in: path
+        description: The ID of the environment from which to get the version tag.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: authorizationVersionId
+        in: path
+        description: The ID of the version to retrieve the tag for.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Tag found
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '415':
+          $ref: '#/components/responses/415'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+    put:
+      tags:
+      - Authorization Versions
+      summary: Create or Update a Tag for an Authorize Version
+      description: Create or Update a Tag for an Authorize Version in PingOne Authorize
+      operationId: updateTag
+      parameters:
+      - name: environmentId
+        in: path
+        description: The ID of the environment from which to create or update the
+          version tag.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: authorizationVersionId
+        in: path
+        description: The ID of the version to create or update the tag for.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeEditorDataTagRequestDTO'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+        "201":
+          description: Tag created/updated successfully
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeEditorDataTagResponseDTO'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '415':
+          $ref: '#/components/responses/415'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+    delete:
+      tags:
+      - Authorization Versions
+      summary: Remove a Tag from an Authorize Version
+      description: Remove a Tag from an Authorize Version in PingOne Authorize
+      operationId: deleteTag
+      parameters:
+      - name: environmentId
+        in: path
+        description: The ID of the environment from which to remove the version tag.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: authorizationVersionId
+        in: path
+        description: The ID of the version to remove the tag from.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+        "204":
+          description: Tag removed
         '400':
           $ref: '#/components/responses/400'
         '401':

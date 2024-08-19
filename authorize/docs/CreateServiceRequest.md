@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**Embedded** | Pointer to **map[string]map[string]interface{}** | HAL embedded resources | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | The resource&#39;s unique identifier | [optional] [readonly] 
 **Version** | Pointer to **string** |  | [optional] 
@@ -16,7 +15,6 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** |  | [optional] 
 **CacheSettings** | Pointer to [**AuthorizeEditorDataCacheSettingsDTO**](AuthorizeEditorDataCacheSettingsDTO.md) |  | [optional] 
 **ServiceType** | **string** |  | 
-**Processor** | Pointer to [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | [optional] 
 **ValueType** | [**AuthorizeEditorDataValueTypeDTO**](AuthorizeEditorDataValueTypeDTO.md) |  | 
 **ServiceSettings** | [**AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO**](AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO.md) |  | 
 
@@ -63,31 +61,6 @@ SetLinks sets Links field to given value.
 `func (o *CreateServiceRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
-### GetEmbedded
-
-`func (o *CreateServiceRequest) GetEmbedded() map[string]map[string]interface{}`
-
-GetEmbedded returns the Embedded field if non-nil, zero value otherwise.
-
-### GetEmbeddedOk
-
-`func (o *CreateServiceRequest) GetEmbeddedOk() (*map[string]map[string]interface{}, bool)`
-
-GetEmbeddedOk returns a tuple with the Embedded field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmbedded
-
-`func (o *CreateServiceRequest) SetEmbedded(v map[string]map[string]interface{})`
-
-SetEmbedded sets Embedded field to given value.
-
-### HasEmbedded
-
-`func (o *CreateServiceRequest) HasEmbedded() bool`
-
-HasEmbedded returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -328,31 +301,6 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
-
-### GetProcessor
-
-`func (o *CreateServiceRequest) GetProcessor() AuthorizeEditorDataProcessorDTO`
-
-GetProcessor returns the Processor field if non-nil, zero value otherwise.
-
-### GetProcessorOk
-
-`func (o *CreateServiceRequest) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool)`
-
-GetProcessorOk returns a tuple with the Processor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProcessor
-
-`func (o *CreateServiceRequest) SetProcessor(v AuthorizeEditorDataProcessorDTO)`
-
-SetProcessor sets Processor field to given value.
-
-### HasProcessor
-
-`func (o *CreateServiceRequest) HasProcessor() bool`
-
-HasProcessor returns a boolean if a field has been set.
 
 ### GetValueType
 

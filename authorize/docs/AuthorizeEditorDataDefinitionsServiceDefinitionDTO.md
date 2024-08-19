@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**Embedded** | Pointer to **map[string]map[string]interface{}** | HAL embedded resources | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | The resource&#39;s unique identifier | [optional] [readonly] 
 **Version** | Pointer to **string** |  | [optional] 
@@ -60,31 +59,6 @@ SetLinks sets Links field to given value.
 `func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
-### GetEmbedded
-
-`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetEmbedded() map[string]map[string]interface{}`
-
-GetEmbedded returns the Embedded field if non-nil, zero value otherwise.
-
-### GetEmbeddedOk
-
-`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetEmbeddedOk() (*map[string]map[string]interface{}, bool)`
-
-GetEmbeddedOk returns a tuple with the Embedded field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmbedded
-
-`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetEmbedded(v map[string]map[string]interface{})`
-
-SetEmbedded sets Embedded field to given value.
-
-### HasEmbedded
-
-`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) HasEmbedded() bool`
-
-HasEmbedded returns a boolean if a field has been set.
 
 ### GetEnvironment
 

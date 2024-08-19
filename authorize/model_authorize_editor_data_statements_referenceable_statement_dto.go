@@ -20,9 +20,6 @@ var _ MappedNullable = &AuthorizeEditorDataStatementsReferenceableStatementDTO{}
 // AuthorizeEditorDataStatementsReferenceableStatementDTO struct for AuthorizeEditorDataStatementsReferenceableStatementDTO
 type AuthorizeEditorDataStatementsReferenceableStatementDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	// HAL embedded resources
-	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The resource's unique identifier
 	Id string `json:"id"`
 	Name string `json:"name"`
@@ -91,70 +88,6 @@ func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) HasLinks() bool
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
-}
-
-// GetEmbedded returns the Embedded field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetEmbedded() map[string]map[string]interface{} {
-	if o == nil || IsNil(o.Embedded) {
-		var ret map[string]map[string]interface{}
-		return ret
-	}
-	return o.Embedded
-}
-
-// GetEmbeddedOk returns a tuple with the Embedded field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetEmbeddedOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Embedded) {
-		return map[string]map[string]interface{}{}, false
-	}
-	return o.Embedded, true
-}
-
-// HasEmbedded returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) HasEmbedded() bool {
-	if o != nil && !IsNil(o.Embedded) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmbedded gets a reference to the given map[string]map[string]interface{} and assigns it to the Embedded field.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetEmbedded(v map[string]map[string]interface{}) {
-	o.Embedded = v
-}
-
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetEnvironment() ObjectEnvironment {
-	if o == nil || IsNil(o.Environment) {
-		var ret ObjectEnvironment
-		return ret
-	}
-	return *o.Environment
-}
-
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || IsNil(o.Environment) {
-		return nil, false
-	}
-	return o.Environment, true
-}
-
-// HasEnvironment returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetEnvironment(v ObjectEnvironment) {
-	o.Environment = &v
 }
 
 // GetId returns the Id field value
@@ -425,12 +358,6 @@ func (o AuthorizeEditorDataStatementsReferenceableStatementDTO) ToMap() (map[str
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
-	}
-	if !IsNil(o.Embedded) {
-		toSerialize["_embedded"] = o.Embedded
-	}
-	if !IsNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name

@@ -708,7 +708,7 @@ ListConditions List Conditions
 List Conditions in the PingOne Authorize Trust Framework
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID The ID of the environment from which to list conditions.
+ @param environmentID The ID of the environment from which to list Conditions
  @return ApiListConditionsRequest
 */
 func (a *AuthorizeEditorConditionsApiService) ListConditions(ctx context.Context, environmentID string) ApiListConditionsRequest {

@@ -708,7 +708,7 @@ ListServices List Services
 List Services in the PingOne Authorize Trust Framework
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID The ID of the environment from which to list services.
+ @param environmentID The ID of the environment from which to list Services
  @return ApiListServicesRequest
 */
 func (a *AuthorizeEditorServicesApiService) ListServices(ctx context.Context, environmentID string) ApiListServicesRequest {
