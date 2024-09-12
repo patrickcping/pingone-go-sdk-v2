@@ -35760,6 +35760,7 @@ components:
     TemplateContentBulkVariant:
       type: object
     User:
+      additionalProperties: true
       example:
         preferredLanguage: preferredLanguage
         _links:
