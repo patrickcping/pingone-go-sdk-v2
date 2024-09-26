@@ -17,7 +17,7 @@ do
         pushd $i
             go mod download
             go mod tidy
-            go mod vendor
+            go work vendor
             make build
             make depscheck
         popd

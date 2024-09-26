@@ -1,6 +1,6 @@
 module github.com/patrickcping/pingone-go-sdk-v2
 
-go 1.21
+go 1.22.7
 
 require (
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.6.0

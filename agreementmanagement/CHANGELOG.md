@@ -1,3 +1,7 @@
+# v0.3.3 (Unreleased)
+
+* **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
+
 # v0.3.2 (2024-06-07)
 
 * **MODULE RETRACTION** The API endpoint in this module suffers major loss of function. The module has been retracted but is retained in the source repo for the purpose of retration. [#352](https://github.com/patrickcping/pingone-go-sdk-v2/pull/352)
