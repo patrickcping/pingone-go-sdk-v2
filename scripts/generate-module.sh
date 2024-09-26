@@ -27,7 +27,7 @@ else
 
         go get -u ./...
         go mod tidy
-        go mod vendor
+        go work vendor
 
     else \
         echo "pingone-$3.yml missing.  Skipping"; \
