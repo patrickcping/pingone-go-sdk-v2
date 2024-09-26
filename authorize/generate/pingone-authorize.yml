@@ -558,28 +558,30 @@ components:
           enum:
           - DEFAULT
           - NONE
+    EnumAuthorizeEditorDataValueTypeDTO:
+      type: string
+      enum:
+      - BOOLEAN
+      - STRING
+      - NUMBER
+      - XML
+      - JSON
+      - COLLECTION
+      - DATE_TIME
+      - LOCAL_TIME
+      - LOCAL_DATE
+      - LOCAL_DATE_TIME
+      - ZONED_DATE_TIME
+      - TIME_PERIOD
+      - PERIOD
+      - DURATION
     AuthorizeEditorDataValueTypeDTO:
       required:
       - type
       type: object
       properties:
         type:
-          type: string
-          enum:
-          - BOOLEAN
-          - STRING
-          - NUMBER
-          - XML
-          - JSON
-          - COLLECTION
-          - DATE_TIME
-          - LOCAL_TIME
-          - LOCAL_DATE
-          - LOCAL_DATE_TIME
-          - ZONED_DATE_TIME
-          - TIME_PERIOD
-          - PERIOD
-          - DURATION
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataValueTypeDTO'
     AuthorizeEditorDataDefinitionsServiceDefinitionDTO:
       required:
       - name

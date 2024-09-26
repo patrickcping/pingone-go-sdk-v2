@@ -298,6 +298,7 @@ Class | Method | HTTP request | Description
  - [EnumAPIServerOperationPathPatternType](docs/EnumAPIServerOperationPathPatternType.md)
  - [EnumAPIServerPatternType](docs/EnumAPIServerPatternType.md)
  - [EnumApplicationResourceParentType](docs/EnumApplicationResourceParentType.md)
+ - [EnumAuthorizeEditorDataValueTypeDTO](docs/EnumAuthorizeEditorDataValueTypeDTO.md)
  - [Filter](docs/Filter.md)
  - [LinksHATEOASValue](docs/LinksHATEOASValue.md)
  - [ListAttributes200Response](docs/ListAttributes200Response.md)

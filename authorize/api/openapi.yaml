@@ -7654,27 +7654,29 @@ components:
       required:
       - tlsValidationType
       type: object
+    EnumAuthorizeEditorDataValueTypeDTO:
+      enum:
+      - BOOLEAN
+      - STRING
+      - NUMBER
+      - XML
+      - JSON
+      - COLLECTION
+      - DATE_TIME
+      - LOCAL_TIME
+      - LOCAL_DATE
+      - LOCAL_DATE_TIME
+      - ZONED_DATE_TIME
+      - TIME_PERIOD
+      - PERIOD
+      - DURATION
+      type: string
     AuthorizeEditorDataValueTypeDTO:
       example:
-        type: BOOLEAN
+        type: null
       properties:
         type:
-          enum:
-          - BOOLEAN
-          - STRING
-          - NUMBER
-          - XML
-          - JSON
-          - COLLECTION
-          - DATE_TIME
-          - LOCAL_TIME
-          - LOCAL_DATE
-          - LOCAL_DATE_TIME
-          - ZONED_DATE_TIME
-          - TIME_PERIOD
-          - PERIOD
-          - DURATION
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataValueTypeDTO'
       required:
       - type
       type: object
@@ -8480,7 +8482,7 @@ components:
         _embedded:
           key: "{}"
         valueType:
-          type: BOOLEAN
+          type: null
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:

@@ -35,7 +35,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the attribute.
-    authorizeEditorDataDefinitionsAttributeDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsAttributeDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO("Type_example")) // AuthorizeEditorDataDefinitionsAttributeDefinitionDTO | 
+    authorizeEditorDataDefinitionsAttributeDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsAttributeDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN"))) // AuthorizeEditorDataDefinitionsAttributeDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -403,7 +403,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the attribute.
     attributeID := "attributeID_example" // string | The ID of the attribute to be updated
-    authorizeEditorDataDefinitionsAttributeDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsAttributeDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO("Type_example")) // AuthorizeEditorDataDefinitionsAttributeDefinitionDTO | 
+    authorizeEditorDataDefinitionsAttributeDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsAttributeDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN"))) // AuthorizeEditorDataDefinitionsAttributeDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

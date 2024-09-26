@@ -172,6 +172,7 @@ docs/EnumAPIServerOperationMethod.md
 docs/EnumAPIServerOperationPathPatternType.md
 docs/EnumAPIServerPatternType.md
 docs/EnumApplicationResourceParentType.md
+docs/EnumAuthorizeEditorDataValueTypeDTO.md
 docs/Filter.md
 docs/LinksHATEOASValue.md
 docs/ListAttributes200Response.md
@@ -340,6 +341,7 @@ model_enum_api_server_operation_method.go
 model_enum_api_server_operation_path_pattern_type.go
 model_enum_api_server_pattern_type.go
 model_enum_application_resource_parent_type.go
+model_enum_authorize_editor_data_value_type_dto.go
 model_filter.go
 model_links_hateoas_value.go
 model_list_attributes_200_response.go

@@ -35,7 +35,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the service.
-    createServiceRequest := openapiclient.createService_request{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO(*openapiclient.NewAuthorizeEditorDataValueTypeDTO("Type_example"), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO("Channel_example", "Code_example", "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{*openapiclient.NewAuthorizeEditorDataInputMappingDTO("Property_example", "Type_example")}), "Name_example", "ServiceType_example")} // CreateServiceRequest | 
+    createServiceRequest := openapiclient.createService_request{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO(*openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN")), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO("Channel_example", "Code_example", "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{*openapiclient.NewAuthorizeEditorDataInputMappingDTO("Property_example", "Type_example")}), "Name_example", "ServiceType_example")} // CreateServiceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -403,7 +403,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the service.
     serviceID := "serviceID_example" // string | The ID of the service to be updated
-    updateServiceRequest := openapiclient.updateService_request{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO(*openapiclient.NewAuthorizeEditorDataValueTypeDTO("Type_example"), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO("Channel_example", "Code_example", "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{*openapiclient.NewAuthorizeEditorDataInputMappingDTO("Property_example", "Type_example")}), "Name_example", "ServiceType_example")} // UpdateServiceRequest | 
+    updateServiceRequest := openapiclient.updateService_request{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO(*openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN")), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO("Channel_example", "Code_example", "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{*openapiclient.NewAuthorizeEditorDataInputMappingDTO("Property_example", "Type_example")}), "Name_example", "ServiceType_example")} // UpdateServiceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
