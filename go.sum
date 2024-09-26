@@ -12,5 +12,5 @@ github.com/patrickcping/pingone-go-sdk-v2/risk v0.16.0 h1:ZDffATzIhUsVlyEWz91DKw
 github.com/patrickcping/pingone-go-sdk-v2/risk v0.16.0/go.mod h1:bOWHYOWkAmJu8KxEsVf3l1XJB2+uFzgEyjk6z6BnjE4=
 github.com/patrickcping/pingone-go-sdk-v2/verify v0.7.0 h1:m6aLDyttXySQaUTNMubJMtI0SteWTsi53lAqlcQ0CrI=
 github.com/patrickcping/pingone-go-sdk-v2/verify v0.7.0/go.mod h1:CYnq6n5E8YDg3FYieSfldjjT/2EyMyYCgdoNAiqNZFc=
-golang.org/x/oauth2 v0.21.0 h1:tsimM75w1tF/uws5rbeHzIWxEqElMehnc+iW793zsZs=
-golang.org/x/oauth2 v0.21.0/go.mod h1:XYTD2NtWslqkgxebSiOHnXEap4TF09sJSc7H1sXbhtI=
+golang.org/x/oauth2 v0.23.0 h1:PbgcYx2W7i4LvjJWEbf0ngHV6qJYr86PkAV3bXdLEbs=
+golang.org/x/oauth2 v0.23.0/go.mod h1:XYTD2NtWslqkgxebSiOHnXEap4TF09sJSc7H1sXbhtI=
