@@ -1,3 +1,3 @@
 module github.com/patrickcping/pingone-go-sdk-v2/management
 
-go 1.21
+go 1.22.7

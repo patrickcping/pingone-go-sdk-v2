@@ -2,7 +2,7 @@
 TEST?=$$(go list ./...)
 OWNER=patrickcping
 REPO=pingone-go-sdk-v2
-VERSION=0.12.3
+VERSION=0.12.4
 
 default: build
 
@@ -11,7 +11,7 @@ tools:
 
 build: fmtcheck
 	@go mod tidy
-	@go mod vendor
+	@go work vendor
 	@go build ./...
 	@./scripts/build-all.sh
 

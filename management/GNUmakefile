@@ -7,7 +7,7 @@ default: build
 
 build: fmtcheck
 	@go mod tidy
-	@go mod vendor
+	@go work vendor
 	@go build ./...
 
 test: fmtcheck
