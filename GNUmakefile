@@ -11,7 +11,7 @@ tools:
 
 build: fmtcheck
 	@go mod tidy
-	@go mod vendor
+	@go work vendor
 	@go build ./...
 	@./scripts/build-all.sh
 
