@@ -1,3 +1,7 @@
+# v0.43.1 (Unreleased)
+
+* **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
+
 # v0.43.0 (2024-07-22)
 
 * **Breaking change** API name change for Integration Catalog [#370](https://github.com/patrickcping/pingone-go-sdk-v2/pull/370)
