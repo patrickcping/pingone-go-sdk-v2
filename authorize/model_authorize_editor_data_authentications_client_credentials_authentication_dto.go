@@ -30,7 +30,7 @@ type AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO struct
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO(tokenEndpoint string, clientId string, clientSecret AuthorizeEditorDataReferenceObjectDTO, scope string, type_ string) *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO {
+func NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO(tokenEndpoint string, clientId string, clientSecret AuthorizeEditorDataReferenceObjectDTO, scope string, type_ EnumAuthorizeEditorDataAuthenticationDTOType) *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO {
 	this := AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO{}
 	this.Type = type_
 	this.TokenEndpoint = tokenEndpoint

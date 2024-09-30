@@ -497,9 +497,21 @@ components:
       type: object
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataAuthenticationDTOType'
       discriminator:
         propertyName: type
+        mapping:
+          BASIC: '#/components/schemas/AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO'
+          CLIENT_CREDENTIALS: '#/components/schemas/AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO'
+          NONE: '#/components/schemas/AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO'
+          TOKEN: '#/components/schemas/AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO'
+    EnumAuthorizeEditorDataAuthenticationDTOType:
+      type: string
+      enum:
+        - BASIC
+        - CLIENT_CREDENTIALS
+        - NONE
+        - TOKEN
     AuthorizeEditorDataCacheSettingsDTO:
       type: object
       properties:

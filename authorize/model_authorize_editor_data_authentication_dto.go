@@ -19,14 +19,14 @@ var _ MappedNullable = &AuthorizeEditorDataAuthenticationDTO{}
 
 // AuthorizeEditorDataAuthenticationDTO struct for AuthorizeEditorDataAuthenticationDTO
 type AuthorizeEditorDataAuthenticationDTO struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataAuthenticationDTO instantiates a new AuthorizeEditorDataAuthenticationDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAuthenticationDTO(type_ string) *AuthorizeEditorDataAuthenticationDTO {
+func NewAuthorizeEditorDataAuthenticationDTO(type_ EnumAuthorizeEditorDataAuthenticationDTOType) *AuthorizeEditorDataAuthenticationDTO {
 	this := AuthorizeEditorDataAuthenticationDTO{}
 	this.Type = type_
 	return &this
@@ -41,9 +41,9 @@ func NewAuthorizeEditorDataAuthenticationDTOWithDefaults() *AuthorizeEditorDataA
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataAuthenticationDTO) GetType() string {
+func (o *AuthorizeEditorDataAuthenticationDTO) GetType() EnumAuthorizeEditorDataAuthenticationDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataAuthenticationDTOType
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *AuthorizeEditorDataAuthenticationDTO) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataAuthenticationDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataAuthenticationDTO) GetTypeOk() (*EnumAuthorizeEditorDataAuthenticationDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *AuthorizeEditorDataAuthenticationDTO) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataAuthenticationDTO) SetType(v string) {
+func (o *AuthorizeEditorDataAuthenticationDTO) SetType(v EnumAuthorizeEditorDataAuthenticationDTOType) {
 	o.Type = v
 }
 
