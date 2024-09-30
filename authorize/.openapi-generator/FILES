@@ -173,6 +173,7 @@ docs/EnumAPIServerOperationPathPatternType.md
 docs/EnumAPIServerPatternType.md
 docs/EnumApplicationResourceParentType.md
 docs/EnumAuthorizeEditorDataAuthenticationDTOType.md
+docs/EnumAuthorizeEditorDataInputMappingDTOType.md
 docs/EnumAuthorizeEditorDataProcessorDTOType.md
 docs/EnumAuthorizeEditorDataValueTypeDTO.md
 docs/Filter.md
@@ -344,6 +345,7 @@ model_enum_api_server_operation_path_pattern_type.go
 model_enum_api_server_pattern_type.go
 model_enum_application_resource_parent_type.go
 model_enum_authorize_editor_data_authentication_dto_type.go
+model_enum_authorize_editor_data_input_mapping_dto_type.go
 model_enum_authorize_editor_data_processor_dto_type.go
 model_enum_authorize_editor_data_value_type_dto.go
 model_filter.go

@@ -545,9 +545,15 @@ components:
         property:
           type: string
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataInputMappingDTOType'
       discriminator:
         propertyName: type
+        mappings:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataInputMappingsAttributeInputMappingDTO'
+          INPUT: '#/components/schemas/AuthorizeEditorDataInputMappingsInputInputMappingDTO'
+    EnumAuthorizeEditorDataInputMappingDTOType:
+      type: string
+      enum: [ATTRIBUTE, INPUT]
     AuthorizeEditorDataProcessorDTO:
       required:
       - name

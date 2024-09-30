@@ -27,7 +27,7 @@ type AuthorizeEditorDataInputMappingsAttributeInputMappingDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO(value AuthorizeEditorDataReferenceObjectDTO, property string, type_ string) *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO {
+func NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO(value AuthorizeEditorDataReferenceObjectDTO, property string, type_ EnumAuthorizeEditorDataInputMappingDTOType) *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO {
 	this := AuthorizeEditorDataInputMappingsAttributeInputMappingDTO{}
 	this.Property = property
 	this.Type = type_

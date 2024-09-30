@@ -7636,11 +7636,16 @@ components:
         property:
           type: string
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataInputMappingDTOType'
       required:
       - property
       - type
       type: object
+    EnumAuthorizeEditorDataInputMappingDTOType:
+      enum:
+      - ATTRIBUTE
+      - INPUT
+      type: string
     AuthorizeEditorDataProcessorDTO:
       discriminator:
         mapping:
