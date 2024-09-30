@@ -545,9 +545,27 @@ components:
         name:
           type: string
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataProcessorDTOType'
       discriminator:
         propertyName: type
+        mapping:
+          CHAIN: '#/components/schemas/AuthorizeEditorDataProcessorsChainProcessorDTO'
+          COLLECTION_FILTER: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO'
+          COLLECTION_TRANSFORM: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO'
+          JSON_PATH: '#/components/schemas/AuthorizeEditorDataProcessorsJsonPathProcessorDTO'
+          REFERENCE: '#/components/schemas/AuthorizeEditorDataProcessorsReferenceProcessorDTO'
+          SPEL: '#/components/schemas/AuthorizeEditorDataProcessorsSpelProcessorDTO'
+          XPATH: '#/components/schemas/AuthorizeEditorDataProcessorsXPathProcessorDTO'
+    EnumAuthorizeEditorDataProcessorDTOType:
+      type: string
+      enum:
+        - CHAIN
+        - COLLECTION_FILTER
+        - COLLECTION_TRANSFORM
+        - JSON_PATH
+        - REFERENCE
+        - SPEL
+        - XPATH
     AuthorizeEditorDataTlsSettingsDTO:
       required:
       - tlsValidationType

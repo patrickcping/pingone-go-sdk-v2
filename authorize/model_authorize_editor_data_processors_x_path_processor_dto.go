@@ -28,7 +28,7 @@ type AuthorizeEditorDataProcessorsXPathProcessorDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataProcessorsXPathProcessorDTO(expression string, valueType AuthorizeEditorDataValueTypeDTO, name string, type_ string) *AuthorizeEditorDataProcessorsXPathProcessorDTO {
+func NewAuthorizeEditorDataProcessorsXPathProcessorDTO(expression string, valueType AuthorizeEditorDataValueTypeDTO, name string, type_ EnumAuthorizeEditorDataProcessorDTOType) *AuthorizeEditorDataProcessorsXPathProcessorDTO {
 	this := AuthorizeEditorDataProcessorsXPathProcessorDTO{}
 	this.Name = name
 	this.Type = type_

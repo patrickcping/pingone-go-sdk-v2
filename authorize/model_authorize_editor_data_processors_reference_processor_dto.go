@@ -27,7 +27,7 @@ type AuthorizeEditorDataProcessorsReferenceProcessorDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataProcessorsReferenceProcessorDTO(processor AuthorizeEditorDataReferenceObjectDTO, name string, type_ string) *AuthorizeEditorDataProcessorsReferenceProcessorDTO {
+func NewAuthorizeEditorDataProcessorsReferenceProcessorDTO(processor AuthorizeEditorDataReferenceObjectDTO, name string, type_ EnumAuthorizeEditorDataProcessorDTOType) *AuthorizeEditorDataProcessorsReferenceProcessorDTO {
 	this := AuthorizeEditorDataProcessorsReferenceProcessorDTO{}
 	this.Name = name
 	this.Type = type_

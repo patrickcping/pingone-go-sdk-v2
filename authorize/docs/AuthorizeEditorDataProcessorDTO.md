@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Type** | **string** |  | 
+**Type** | [**EnumAuthorizeEditorDataProcessorDTOType**](EnumAuthorizeEditorDataProcessorDTOType.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataProcessorDTO
 
-`func NewAuthorizeEditorDataProcessorDTO(name string, type_ string, ) *AuthorizeEditorDataProcessorDTO`
+`func NewAuthorizeEditorDataProcessorDTO(name string, type_ EnumAuthorizeEditorDataProcessorDTOType, ) *AuthorizeEditorDataProcessorDTO`
 
 NewAuthorizeEditorDataProcessorDTO instantiates a new AuthorizeEditorDataProcessorDTO object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetName sets Name field to given value.
 
 ### GetType
 
-`func (o *AuthorizeEditorDataProcessorDTO) GetType() string`
+`func (o *AuthorizeEditorDataProcessorDTO) GetType() EnumAuthorizeEditorDataProcessorDTOType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AuthorizeEditorDataProcessorDTO) GetTypeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataProcessorDTO) GetTypeOk() (*EnumAuthorizeEditorDataProcessorDTOType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AuthorizeEditorDataProcessorDTO) SetType(v string)`
+`func (o *AuthorizeEditorDataProcessorDTO) SetType(v EnumAuthorizeEditorDataProcessorDTOType)`
 
 SetType sets Type field to given value.
 

@@ -7631,19 +7631,37 @@ components:
       type: object
     AuthorizeEditorDataProcessorDTO:
       discriminator:
+        mapping:
+          CHAIN: '#/components/schemas/AuthorizeEditorDataProcessorsChainProcessorDTO'
+          COLLECTION_FILTER: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO'
+          COLLECTION_TRANSFORM: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO'
+          JSON_PATH: '#/components/schemas/AuthorizeEditorDataProcessorsJsonPathProcessorDTO'
+          REFERENCE: '#/components/schemas/AuthorizeEditorDataProcessorsReferenceProcessorDTO'
+          SPEL: '#/components/schemas/AuthorizeEditorDataProcessorsSpelProcessorDTO'
+          XPATH: '#/components/schemas/AuthorizeEditorDataProcessorsXPathProcessorDTO'
         propertyName: type
       example:
         name: name
-        type: type
+        type: null
       properties:
         name:
           type: string
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataProcessorDTOType'
       required:
       - name
       - type
       type: object
+    EnumAuthorizeEditorDataProcessorDTOType:
+      enum:
+      - CHAIN
+      - COLLECTION_FILTER
+      - COLLECTION_TRANSFORM
+      - JSON_PATH
+      - REFERENCE
+      - SPEL
+      - XPATH
+      type: string
     AuthorizeEditorDataTlsSettingsDTO:
       properties:
         tlsValidationType:
@@ -8085,7 +8103,7 @@ components:
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         processor:
           name: name
-          type: type
+          type: null
       properties:
         _links:
           additionalProperties:
@@ -8351,7 +8369,7 @@ components:
         type: type
         processor:
           name: name
-          type: type
+          type: null
       properties:
         name:
           type: string
@@ -8456,14 +8474,14 @@ components:
           type: type
           processor:
             name: name
-            type: type
+            type: null
         - condition:
             type: type
           name: name
           type: type
           processor:
             name: name
-            type: type
+            type: null
         _links:
           key:
             href: https://openapi-generator.tech
@@ -8475,7 +8493,7 @@ components:
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         processor:
           name: name
-          type: type
+          type: null
         valueSchema: valueSchema
         environment:
           id: id
