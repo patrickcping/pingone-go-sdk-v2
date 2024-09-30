@@ -7717,6 +7717,10 @@ components:
       type: object
     AuthorizeEditorDataDefinitionsServiceDefinitionDTO:
       discriminator:
+        mapping:
+          NONE: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+          HTTP: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
+          CONNECTOR: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
         propertyName: serviceType
       properties:
         _links:
@@ -7743,7 +7747,7 @@ components:
         parent:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType'
         cacheSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataCacheSettingsDTO'
         serviceType:
@@ -7752,6 +7756,12 @@ components:
       - name
       - serviceType
       type: object
+    EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType:
+      enum:
+      - NONE
+      - HTTP
+      - CONNECTOR
+      type: string
     AuthorizeEditorDataProcessorsChainProcessorDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'

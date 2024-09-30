@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **FullName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Parent** | Pointer to [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to [**EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md) |  | [optional] 
 **CacheSettings** | Pointer to [**AuthorizeEditorDataCacheSettingsDTO**](AuthorizeEditorDataCacheSettingsDTO.md) |  | [optional] 
 **ServiceType** | **string** |  | 
 **ValueType** | [**AuthorizeEditorDataValueTypeDTO**](AuthorizeEditorDataValueTypeDTO.md) |  | 
@@ -234,20 +234,20 @@ HasParent returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *CreateService201Response) GetType() string`
+`func (o *CreateService201Response) GetType() EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateService201Response) GetTypeOk() (*string, bool)`
+`func (o *CreateService201Response) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateService201Response) SetType(v string)`
+`func (o *CreateService201Response) SetType(v EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType)`
 
 SetType sets Type field to given value.
 

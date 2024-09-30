@@ -299,6 +299,7 @@ Class | Method | HTTP request | Description
  - [EnumAPIServerPatternType](docs/EnumAPIServerPatternType.md)
  - [EnumApplicationResourceParentType](docs/EnumApplicationResourceParentType.md)
  - [EnumAuthorizeEditorDataAuthenticationDTOType](docs/EnumAuthorizeEditorDataAuthenticationDTOType.md)
+ - [EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType](docs/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md)
  - [EnumAuthorizeEditorDataInputMappingDTOType](docs/EnumAuthorizeEditorDataInputMappingDTOType.md)
  - [EnumAuthorizeEditorDataProcessorDTOType](docs/EnumAuthorizeEditorDataProcessorDTOType.md)
  - [EnumAuthorizeEditorDataValueTypeDTO](docs/EnumAuthorizeEditorDataValueTypeDTO.md)

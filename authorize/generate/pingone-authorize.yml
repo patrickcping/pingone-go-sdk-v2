@@ -645,13 +645,23 @@ components:
         parent:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType'
         cacheSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataCacheSettingsDTO'
         serviceType:
           type: string
       discriminator:
         propertyName: serviceType
+        mapping:
+          NONE: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+          HTTP: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
+          CONNECTOR: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
+    EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType:
+      type: string
+      enum:
+      - NONE
+      - HTTP
+      - CONNECTOR
     AuthorizeEditorDataProcessorsChainProcessorDTO:
       required:
       - name

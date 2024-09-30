@@ -28,7 +28,7 @@ type AuthorizeEditorDataDefinitionsServiceDefinitionDTO struct {
 	FullName *string `json:"fullName,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Type *EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType `json:"type,omitempty"`
 	CacheSettings *AuthorizeEditorDataCacheSettingsDTO `json:"cacheSettings,omitempty"`
 	ServiceType string `json:"serviceType"`
 }
@@ -301,9 +301,9 @@ func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetParent(v Authori
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetType() string {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetType() EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType {
 	if o == nil || IsNil(o.Type) {
-		var ret string
+		var ret EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType
 		return ret
 	}
 	return *o.Type
@@ -311,7 +311,7 @@ func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -327,8 +327,8 @@ func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetType(v string) {
+// SetType gets a reference to the given EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType and assigns it to the Type field.
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetType(v EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType) {
 	o.Type = &v
 }
 
