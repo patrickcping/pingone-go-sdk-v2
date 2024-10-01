@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Left** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
-**Comparator** | **string** |  | 
 **Right** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
+**Comparator** | [**EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator**](EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataConditionsComparisonConditionDTO
 
-`func NewAuthorizeEditorDataConditionsComparisonConditionDTO(left AuthorizeEditorDataConditionsComparandDTO, comparator string, right AuthorizeEditorDataConditionsComparandDTO, ) *AuthorizeEditorDataConditionsComparisonConditionDTO`
+`func NewAuthorizeEditorDataConditionsComparisonConditionDTO(left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, ) *AuthorizeEditorDataConditionsComparisonConditionDTO`
 
 NewAuthorizeEditorDataConditionsComparisonConditionDTO instantiates a new AuthorizeEditorDataConditionsComparisonConditionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -47,26 +47,6 @@ and a boolean to check if the value has been set.
 SetLeft sets Left field to given value.
 
 
-### GetComparator
-
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparator() string`
-
-GetComparator returns the Comparator field if non-nil, zero value otherwise.
-
-### GetComparatorOk
-
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparatorOk() (*string, bool)`
-
-GetComparatorOk returns a tuple with the Comparator field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetComparator
-
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetComparator(v string)`
-
-SetComparator sets Comparator field to given value.
-
-
 ### GetRight
 
 `func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandDTO`
@@ -85,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandDTO)`
 
 SetRight sets Right field to given value.
+
+
+### GetComparator
+
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparator() EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator`
+
+GetComparator returns the Comparator field if non-nil, zero value otherwise.
+
+### GetComparatorOk
+
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparatorOk() (*EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, bool)`
+
+GetComparatorOk returns a tuple with the Comparator field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComparator
+
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetComparator(v EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator)`
+
+SetComparator sets Comparator field to given value.
 
 
 

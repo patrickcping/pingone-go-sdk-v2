@@ -21,20 +21,20 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsComparisonConditionDTO{}
 type AuthorizeEditorDataConditionsComparisonConditionDTO struct {
 	AuthorizeEditorDataConditionDTO
 	Left AuthorizeEditorDataConditionsComparandDTO `json:"left"`
-	Comparator string `json:"comparator"`
 	Right AuthorizeEditorDataConditionsComparandDTO `json:"right"`
+	Comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator `json:"comparator"`
 }
 
 // NewAuthorizeEditorDataConditionsComparisonConditionDTO instantiates a new AuthorizeEditorDataConditionsComparisonConditionDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsComparisonConditionDTO(left AuthorizeEditorDataConditionsComparandDTO, comparator string, right AuthorizeEditorDataConditionsComparandDTO, type_ string) *AuthorizeEditorDataConditionsComparisonConditionDTO {
+func NewAuthorizeEditorDataConditionsComparisonConditionDTO(left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, type_ EnumAuthorizeEditorDataConditionDTOType) *AuthorizeEditorDataConditionsComparisonConditionDTO {
 	this := AuthorizeEditorDataConditionsComparisonConditionDTO{}
 	this.Type = type_
 	this.Left = left
-	this.Comparator = comparator
 	this.Right = right
+	this.Comparator = comparator
 	return &this
 }
 
@@ -70,30 +70,6 @@ func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetLeft(v Authoriz
 	o.Left = v
 }
 
-// GetComparator returns the Comparator field value
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparator() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Comparator
-}
-
-// GetComparatorOk returns a tuple with the Comparator field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparatorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Comparator, true
-}
-
-// SetComparator sets field value
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetComparator(v string) {
-	o.Comparator = v
-}
-
 // GetRight returns the Right field value
 func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandDTO {
 	if o == nil {
@@ -118,6 +94,30 @@ func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetRight(v Authori
 	o.Right = v
 }
 
+// GetComparator returns the Comparator field value
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparator() EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator
+		return ret
+	}
+
+	return o.Comparator
+}
+
+// GetComparatorOk returns a tuple with the Comparator field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetComparatorOk() (*EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Comparator, true
+}
+
+// SetComparator sets field value
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetComparator(v EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator) {
+	o.Comparator = v
+}
+
 func (o AuthorizeEditorDataConditionsComparisonConditionDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -137,8 +137,8 @@ func (o AuthorizeEditorDataConditionsComparisonConditionDTO) ToMap() (map[string
 		return map[string]interface{}{}, errAuthorizeEditorDataConditionDTO
 	}
 	toSerialize["left"] = o.Left
-	toSerialize["comparator"] = o.Comparator
 	toSerialize["right"] = o.Right
+	toSerialize["comparator"] = o.Comparator
 	return toSerialize, nil
 }
 
