@@ -7660,6 +7660,9 @@ components:
       type: string
     AuthorizeEditorDataInputMappingDTO:
       discriminator:
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataInputMappingsAttributeInputMappingDTO'
+          INPUT: '#/components/schemas/AuthorizeEditorDataInputMappingsInputInputMappingDTO'
         propertyName: type
       properties:
         property:
