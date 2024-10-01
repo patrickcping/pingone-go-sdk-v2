@@ -1,4 +1,4 @@
-# AuthorizeEditorDataAttributeResolversRequestResolverDTO
+# AuthorizeEditorDataResolverDTOCommon
 
 ## Properties
 
@@ -11,114 +11,114 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewAuthorizeEditorDataAttributeResolversRequestResolverDTO
+### NewAuthorizeEditorDataResolverDTOCommon
 
-`func NewAuthorizeEditorDataAttributeResolversRequestResolverDTO(type_ EnumAuthorizeEditorDataResolverDTOType, ) *AuthorizeEditorDataAttributeResolversRequestResolverDTO`
+`func NewAuthorizeEditorDataResolverDTOCommon(type_ EnumAuthorizeEditorDataResolverDTOType, ) *AuthorizeEditorDataResolverDTOCommon`
 
-NewAuthorizeEditorDataAttributeResolversRequestResolverDTO instantiates a new AuthorizeEditorDataAttributeResolversRequestResolverDTO object
+NewAuthorizeEditorDataResolverDTOCommon instantiates a new AuthorizeEditorDataResolverDTOCommon object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAuthorizeEditorDataAttributeResolversRequestResolverDTOWithDefaults
+### NewAuthorizeEditorDataResolverDTOCommonWithDefaults
 
-`func NewAuthorizeEditorDataAttributeResolversRequestResolverDTOWithDefaults() *AuthorizeEditorDataAttributeResolversRequestResolverDTO`
+`func NewAuthorizeEditorDataResolverDTOCommonWithDefaults() *AuthorizeEditorDataResolverDTOCommon`
 
-NewAuthorizeEditorDataAttributeResolversRequestResolverDTOWithDefaults instantiates a new AuthorizeEditorDataAttributeResolversRequestResolverDTO object
+NewAuthorizeEditorDataResolverDTOCommonWithDefaults instantiates a new AuthorizeEditorDataResolverDTOCommon object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetName() string`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetNameOk() (*string, bool)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) SetName(v string)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) HasName() bool`
+`func (o *AuthorizeEditorDataResolverDTOCommon) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetCondition() AuthorizeEditorDataConditionDTO`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetCondition() AuthorizeEditorDataConditionDTO`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) SetCondition(v AuthorizeEditorDataConditionDTO)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) SetCondition(v AuthorizeEditorDataConditionDTO)`
 
 SetCondition sets Condition field to given value.
 
 ### HasCondition
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) HasCondition() bool`
+`func (o *AuthorizeEditorDataResolverDTOCommon) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
 
 ### GetProcessor
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetProcessor() AuthorizeEditorDataProcessorDTO`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetProcessor() AuthorizeEditorDataProcessorDTO`
 
 GetProcessor returns the Processor field if non-nil, zero value otherwise.
 
 ### GetProcessorOk
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool)`
 
 GetProcessorOk returns a tuple with the Processor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProcessor
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) SetProcessor(v AuthorizeEditorDataProcessorDTO)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) SetProcessor(v AuthorizeEditorDataProcessorDTO)`
 
 SetProcessor sets Processor field to given value.
 
 ### HasProcessor
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) HasProcessor() bool`
+`func (o *AuthorizeEditorDataResolverDTOCommon) HasProcessor() bool`
 
 HasProcessor returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetType() EnumAuthorizeEditorDataResolverDTOType`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetType() EnumAuthorizeEditorDataResolverDTOType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) GetTypeOk() (*EnumAuthorizeEditorDataResolverDTOType, bool)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) GetTypeOk() (*EnumAuthorizeEditorDataResolverDTOType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AuthorizeEditorDataAttributeResolversRequestResolverDTO) SetType(v EnumAuthorizeEditorDataResolverDTOType)`
+`func (o *AuthorizeEditorDataResolverDTOCommon) SetType(v EnumAuthorizeEditorDataResolverDTOType)`
 
 SetType sets Type field to given value.
 

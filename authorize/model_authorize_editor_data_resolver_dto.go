@@ -12,178 +12,281 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataResolverDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataResolverDTO{}
-
-// AuthorizeEditorDataResolverDTO struct for AuthorizeEditorDataResolverDTO
+// AuthorizeEditorDataResolverDTO - struct for AuthorizeEditorDataResolverDTO
 type AuthorizeEditorDataResolverDTO struct {
-	Name *string `json:"name,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
-	Type EnumAuthorizeEditorDataResolverDTOType `json:"type"`
+	AuthorizeEditorDataAttributeResolversAttributeResolverDTO *AuthorizeEditorDataAttributeResolversAttributeResolverDTO
+	AuthorizeEditorDataAttributeResolversConstantResolverDTO *AuthorizeEditorDataAttributeResolversConstantResolverDTO
+	AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO *AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO
+	AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO *AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO
+	AuthorizeEditorDataAttributeResolversRequestResolverDTO *AuthorizeEditorDataAttributeResolversRequestResolverDTO
+	AuthorizeEditorDataAttributeResolversServiceResolverDTO *AuthorizeEditorDataAttributeResolversServiceResolverDTO
+	AuthorizeEditorDataAttributeResolversSystemResolverDTO *AuthorizeEditorDataAttributeResolversSystemResolverDTO
+	AuthorizeEditorDataAttributeResolversUserResolverDTO *AuthorizeEditorDataAttributeResolversUserResolverDTO
 }
 
-// NewAuthorizeEditorDataResolverDTO instantiates a new AuthorizeEditorDataResolverDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataResolverDTO(type_ EnumAuthorizeEditorDataResolverDTOType) *AuthorizeEditorDataResolverDTO {
-	this := AuthorizeEditorDataResolverDTO{}
-	this.Type = type_
-	return &this
-}
-
-// NewAuthorizeEditorDataResolverDTOWithDefaults instantiates a new AuthorizeEditorDataResolverDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataResolverDTOWithDefaults() *AuthorizeEditorDataResolverDTO {
-	this := AuthorizeEditorDataResolverDTO{}
-	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataResolverDTO) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
+// AuthorizeEditorDataAttributeResolversAttributeResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversAttributeResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversAttributeResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversAttributeResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversAttributeResolverDTO: v,
 	}
-	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataResolverDTO) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
+// AuthorizeEditorDataAttributeResolversConstantResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversConstantResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversConstantResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversConstantResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversConstantResolverDTO: v,
 	}
-	return o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataResolverDTO) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
+// AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO: v,
 	}
-
-	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *AuthorizeEditorDataResolverDTO) SetName(v string) {
-	o.Name = &v
-}
-
-// GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataResolverDTO) GetCondition() AuthorizeEditorDataConditionDTO {
-	if o == nil || IsNil(o.Condition) {
-		var ret AuthorizeEditorDataConditionDTO
-		return ret
+// AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO: v,
 	}
-	return *o.Condition
 }
 
-// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataResolverDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool) {
-	if o == nil || IsNil(o.Condition) {
-		return nil, false
+// AuthorizeEditorDataAttributeResolversRequestResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversRequestResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversRequestResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversRequestResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversRequestResolverDTO: v,
 	}
-	return o.Condition, true
 }
 
-// HasCondition returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataResolverDTO) HasCondition() bool {
-	if o != nil && !IsNil(o.Condition) {
-		return true
+// AuthorizeEditorDataAttributeResolversServiceResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversServiceResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversServiceResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversServiceResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversServiceResolverDTO: v,
 	}
-
-	return false
 }
 
-// SetCondition gets a reference to the given AuthorizeEditorDataConditionDTO and assigns it to the Condition field.
-func (o *AuthorizeEditorDataResolverDTO) SetCondition(v AuthorizeEditorDataConditionDTO) {
-	o.Condition = &v
-}
-
-// GetProcessor returns the Processor field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataResolverDTO) GetProcessor() AuthorizeEditorDataProcessorDTO {
-	if o == nil || IsNil(o.Processor) {
-		var ret AuthorizeEditorDataProcessorDTO
-		return ret
+// AuthorizeEditorDataAttributeResolversSystemResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversSystemResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversSystemResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversSystemResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversSystemResolverDTO: v,
 	}
-	return *o.Processor
 }
 
-// GetProcessorOk returns a tuple with the Processor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataResolverDTO) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool) {
-	if o == nil || IsNil(o.Processor) {
-		return nil, false
+// AuthorizeEditorDataAttributeResolversUserResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversUserResolverDTO wrapped in AuthorizeEditorDataResolverDTO
+func AuthorizeEditorDataAttributeResolversUserResolverDTOAsAuthorizeEditorDataResolverDTO(v *AuthorizeEditorDataAttributeResolversUserResolverDTO) AuthorizeEditorDataResolverDTO {
+	return AuthorizeEditorDataResolverDTO{
+		AuthorizeEditorDataAttributeResolversUserResolverDTO: v,
 	}
-	return o.Processor, true
 }
 
-// HasProcessor returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataResolverDTO) HasProcessor() bool {
-	if o != nil && !IsNil(o.Processor) {
-		return true
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataResolverDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversAttributeResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversAttributeResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversAttributeResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
 	}
 
-	return false
-}
-
-// SetProcessor gets a reference to the given AuthorizeEditorDataProcessorDTO and assigns it to the Processor field.
-func (o *AuthorizeEditorDataResolverDTO) SetProcessor(v AuthorizeEditorDataProcessorDTO) {
-	o.Processor = &v
-}
-
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataResolverDTO) GetType() EnumAuthorizeEditorDataResolverDTOType {
-	if o == nil {
-		var ret EnumAuthorizeEditorDataResolverDTOType
-		return ret
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversConstantResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversConstantResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversConstantResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
 	}
 
-	return o.Type
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversRequestResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversRequestResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversRequestResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversServiceResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversServiceResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversServiceResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversSystemResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversSystemResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversSystemResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataAttributeResolversUserResolverDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversUserResolverDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAttributeResolversUserResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversUserResolverDTO)
+		if string(jsonAuthorizeEditorDataAttributeResolversUserResolverDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
+		dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
+		dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
+		dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
+		dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
+		dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
+		dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
+		dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataResolverDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataResolverDTO)")
+	}
 }
 
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataResolverDTO) GetTypeOk() (*EnumAuthorizeEditorDataResolverDTOType, bool) {
-	if o == nil {
-		return nil, false
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataResolverDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataAttributeResolversAttributeResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversAttributeResolverDTO)
 	}
-	return &o.Type, true
+
+	if src.AuthorizeEditorDataAttributeResolversConstantResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversConstantResolverDTO)
+	}
+
+	if src.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO)
+	}
+
+	if src.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO)
+	}
+
+	if src.AuthorizeEditorDataAttributeResolversRequestResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversRequestResolverDTO)
+	}
+
+	if src.AuthorizeEditorDataAttributeResolversServiceResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversServiceResolverDTO)
+	}
+
+	if src.AuthorizeEditorDataAttributeResolversSystemResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversSystemResolverDTO)
+	}
+
+	if src.AuthorizeEditorDataAttributeResolversUserResolverDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAttributeResolversUserResolverDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-// SetType sets field value
-func (o *AuthorizeEditorDataResolverDTO) SetType(v EnumAuthorizeEditorDataResolverDTOType) {
-	o.Type = v
-}
+// Get the actual instance
+func (obj *AuthorizeEditorDataResolverDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataAttributeResolversAttributeResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversAttributeResolverDTO
+	}
 
-func (o AuthorizeEditorDataResolverDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	if obj.AuthorizeEditorDataAttributeResolversConstantResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversConstantResolverDTO
 	}
-	return json.Marshal(toSerialize)
-}
 
-func (o AuthorizeEditorDataResolverDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if obj.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO
 	}
-	if !IsNil(o.Condition) {
-		toSerialize["condition"] = o.Condition
+
+	if obj.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO
 	}
-	if !IsNil(o.Processor) {
-		toSerialize["processor"] = o.Processor
+
+	if obj.AuthorizeEditorDataAttributeResolversRequestResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversRequestResolverDTO
 	}
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+
+	if obj.AuthorizeEditorDataAttributeResolversServiceResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversServiceResolverDTO
+	}
+
+	if obj.AuthorizeEditorDataAttributeResolversSystemResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversSystemResolverDTO
+	}
+
+	if obj.AuthorizeEditorDataAttributeResolversUserResolverDTO != nil {
+		return obj.AuthorizeEditorDataAttributeResolversUserResolverDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataResolverDTO struct {

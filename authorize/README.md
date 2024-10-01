@@ -269,6 +269,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataProcessorsXPathProcessorDTO](docs/AuthorizeEditorDataProcessorsXPathProcessorDTO.md)
  - [AuthorizeEditorDataReferenceObjectDTO](docs/AuthorizeEditorDataReferenceObjectDTO.md)
  - [AuthorizeEditorDataResolverDTO](docs/AuthorizeEditorDataResolverDTO.md)
+ - [AuthorizeEditorDataResolverDTOCommon](docs/AuthorizeEditorDataResolverDTOCommon.md)
  - [AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO](docs/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO.md)
  - [AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO](docs/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO.md)
  - [AuthorizeEditorDataRulesEffectSettingsDTO](docs/AuthorizeEditorDataRulesEffectSettingsDTO.md)

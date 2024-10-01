@@ -8497,23 +8497,7 @@ components:
       - condition
       - name
       type: object
-    AuthorizeEditorDataResolverDTO:
-      discriminator:
-        mapping:
-          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataAttributeResolversAttributeResolverDTO'
-          CONSTANT: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
-          CURRENT_REPETITION_VALUE: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO'
-          CURRENT_USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO'
-          REQUEST: '#/components/schemas/AuthorizeEditorDataAttributeResolversRequestResolverDTO'
-          SERVICE: '#/components/schemas/AuthorizeEditorDataAttributeResolversServiceResolverDTO'
-          SYSTEM: '#/components/schemas/AuthorizeEditorDataAttributeResolversSystemResolverDTO'
-          USER: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserResolverDTO'
-        propertyName: type
-      example:
-        condition: null
-        name: name
-        type: null
-        processor: null
+    AuthorizeEditorDataResolverDTOCommon:
       properties:
         name:
           type: string
@@ -8526,6 +8510,27 @@ components:
       required:
       - type
       type: object
+    AuthorizeEditorDataResolverDTO:
+      discriminator:
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataAttributeResolversAttributeResolverDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
+          CURRENT_REPETITION_VALUE: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO'
+          CURRENT_USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO'
+          REQUEST: '#/components/schemas/AuthorizeEditorDataAttributeResolversRequestResolverDTO'
+          SERVICE: '#/components/schemas/AuthorizeEditorDataAttributeResolversServiceResolverDTO'
+          SYSTEM: '#/components/schemas/AuthorizeEditorDataAttributeResolversSystemResolverDTO'
+          USER: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserResolverDTO'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversAttributeResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversRequestResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversServiceResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversSystemResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserResolverDTO'
     EnumAuthorizeEditorDataResolverDTOType:
       enum:
       - ATTRIBUTE
@@ -8540,7 +8545,7 @@ components:
       type: string
     AuthorizeEditorDataAttributeResolversAttributeResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - properties:
           value:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
@@ -8549,7 +8554,7 @@ components:
       - value
     AuthorizeEditorDataAttributeResolversConstantResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - properties:
           value:
             type: string
@@ -8561,16 +8566,16 @@ components:
       - valueType
     AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
     AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
     AuthorizeEditorDataAttributeResolversRequestResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
     AuthorizeEditorDataAttributeResolversServiceResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - properties:
           value:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
@@ -8579,7 +8584,7 @@ components:
       - value
     AuthorizeEditorDataAttributeResolversSystemResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - properties:
           value:
             $ref: '#/components/schemas/EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue'
@@ -8604,7 +8609,7 @@ components:
       type: object
     AuthorizeEditorDataAttributeResolversUserResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - properties:
           query:
             $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
@@ -8628,14 +8633,8 @@ components:
             disallowChildren: true
             readOnly: true
         resolvers:
-        - condition: null
-          name: name
-          type: null
-          processor: null
-        - condition: null
-          name: name
-          type: null
-          processor: null
+        - null
+        - null
         _links:
           key:
             href: https://openapi-generator.tech

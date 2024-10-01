@@ -19,7 +19,10 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversSystemResolverDTO{}
 
 // AuthorizeEditorDataAttributeResolversSystemResolverDTO struct for AuthorizeEditorDataAttributeResolversSystemResolverDTO
 type AuthorizeEditorDataAttributeResolversSystemResolverDTO struct {
-	AuthorizeEditorDataResolverDTO
+	Name *string `json:"name,omitempty"`
+	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
+	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
+	Type EnumAuthorizeEditorDataResolverDTOType `json:"type"`
 	Value EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue `json:"value"`
 }
 
@@ -27,7 +30,7 @@ type AuthorizeEditorDataAttributeResolversSystemResolverDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAttributeResolversSystemResolverDTO(value EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue, type_ EnumAuthorizeEditorDataResolverDTOType) *AuthorizeEditorDataAttributeResolversSystemResolverDTO {
+func NewAuthorizeEditorDataAttributeResolversSystemResolverDTO(type_ EnumAuthorizeEditorDataResolverDTOType, value EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue) *AuthorizeEditorDataAttributeResolversSystemResolverDTO {
 	this := AuthorizeEditorDataAttributeResolversSystemResolverDTO{}
 	this.Type = type_
 	this.Value = value
@@ -40,6 +43,126 @@ func NewAuthorizeEditorDataAttributeResolversSystemResolverDTO(value EnumAuthori
 func NewAuthorizeEditorDataAttributeResolversSystemResolverDTOWithDefaults() *AuthorizeEditorDataAttributeResolversSystemResolverDTO {
 	this := AuthorizeEditorDataAttributeResolversSystemResolverDTO{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) SetName(v string) {
+	o.Name = &v
+}
+
+// GetCondition returns the Condition field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetCondition() AuthorizeEditorDataConditionDTO {
+	if o == nil || IsNil(o.Condition) {
+		var ret AuthorizeEditorDataConditionDTO
+		return ret
+	}
+	return *o.Condition
+}
+
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool) {
+	if o == nil || IsNil(o.Condition) {
+		return nil, false
+	}
+	return o.Condition, true
+}
+
+// HasCondition returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) HasCondition() bool {
+	if o != nil && !IsNil(o.Condition) {
+		return true
+	}
+
+	return false
+}
+
+// SetCondition gets a reference to the given AuthorizeEditorDataConditionDTO and assigns it to the Condition field.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) SetCondition(v AuthorizeEditorDataConditionDTO) {
+	o.Condition = &v
+}
+
+// GetProcessor returns the Processor field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetProcessor() AuthorizeEditorDataProcessorDTO {
+	if o == nil || IsNil(o.Processor) {
+		var ret AuthorizeEditorDataProcessorDTO
+		return ret
+	}
+	return *o.Processor
+}
+
+// GetProcessorOk returns a tuple with the Processor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool) {
+	if o == nil || IsNil(o.Processor) {
+		return nil, false
+	}
+	return o.Processor, true
+}
+
+// HasProcessor returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) HasProcessor() bool {
+	if o != nil && !IsNil(o.Processor) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessor gets a reference to the given AuthorizeEditorDataProcessorDTO and assigns it to the Processor field.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) SetProcessor(v AuthorizeEditorDataProcessorDTO) {
+	o.Processor = &v
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetType() EnumAuthorizeEditorDataResolverDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataResolverDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetTypeOk() (*EnumAuthorizeEditorDataResolverDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) SetType(v EnumAuthorizeEditorDataResolverDTOType) {
+	o.Type = v
 }
 
 // GetValue returns the Value field value
@@ -76,14 +199,16 @@ func (o AuthorizeEditorDataAttributeResolversSystemResolverDTO) MarshalJSON() ([
 
 func (o AuthorizeEditorDataAttributeResolversSystemResolverDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataResolverDTO, errAuthorizeEditorDataResolverDTO := json.Marshal(o.AuthorizeEditorDataResolverDTO)
-	if errAuthorizeEditorDataResolverDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataResolverDTO
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	errAuthorizeEditorDataResolverDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataResolverDTO), &toSerialize)
-	if errAuthorizeEditorDataResolverDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataResolverDTO
+	if !IsNil(o.Condition) {
+		toSerialize["condition"] = o.Condition
 	}
+	if !IsNil(o.Processor) {
+		toSerialize["processor"] = o.Processor
+	}
+	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }

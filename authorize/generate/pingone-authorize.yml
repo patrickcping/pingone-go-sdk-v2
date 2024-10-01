@@ -1272,7 +1272,7 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
-    AuthorizeEditorDataResolverDTO:
+    AuthorizeEditorDataResolverDTOCommon:
       required:
       - type
       type: object
@@ -1285,6 +1285,16 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
         type:
           $ref: '#/components/schemas/EnumAuthorizeEditorDataResolverDTOType'
+    AuthorizeEditorDataResolverDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversAttributeResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversRequestResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversServiceResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversSystemResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserResolverDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -1313,7 +1323,7 @@ components:
       required:
       - value
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - type: object
         properties:
           value:
@@ -1323,7 +1333,7 @@ components:
       - value
       - valueType
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - type: object
         properties:
           value:
@@ -1332,18 +1342,18 @@ components:
             $ref: '#/components/schemas/AuthorizeEditorDataValueTypeDTO'
     AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
     AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
     AuthorizeEditorDataAttributeResolversRequestResolverDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
     AuthorizeEditorDataAttributeResolversServiceResolverDTO:
       required:
       - value
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - type: object
         properties:
           value:
@@ -1352,7 +1362,7 @@ components:
       required:
       - value
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - type: object
         properties:
           value:
@@ -1377,7 +1387,7 @@ components:
       required:
       - query
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
       - type: object
         properties:
           query:
