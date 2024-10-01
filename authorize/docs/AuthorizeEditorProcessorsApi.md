@@ -34,7 +34,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the processor.
-    authorizeEditorDataDefinitionsProcessorDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataProcessorDTO("Name_example", openapiclient.EnumAuthorizeEditorDataProcessorDTOType("CHAIN"))) // AuthorizeEditorDataDefinitionsProcessorDefinitionDTO | 
+    authorizeEditorDataDefinitionsProcessorDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO("Name_example", openapiclient.AuthorizeEditorDataProcessorDTO{AuthorizeEditorDataProcessorsChainProcessorDTO: openapiclient.NewAuthorizeEditorDataProcessorsChainProcessorDTO("Name_example", openapiclient.EnumAuthorizeEditorDataProcessorDTOType("CHAIN"), []openapiclient.AuthorizeEditorDataProcessorDTO{openapiclient.AuthorizeEditorDataProcessorDTO{AuthorizeEditorDataProcessorsChainProcessorDTO: openapiclient.NewAuthorizeEditorDataProcessorsChainProcessorDTO("Name_example", openapiclient.EnumAuthorizeEditorDataProcessorDTOType("CHAIN"), []openapiclient.AuthorizeEditorDataProcessorDTO{openapiclient.AuthorizeEditorDataProcessorDTO{AuthorizeEditorDataProcessorsChainProcessorDTO: }})}})}) // AuthorizeEditorDataDefinitionsProcessorDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -327,7 +327,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the processor.
     processorID := "processorID_example" // string | The ID of the processor to be updated
-    authorizeEditorDataDefinitionsProcessorDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataProcessorDTO("Name_example", openapiclient.EnumAuthorizeEditorDataProcessorDTOType("CHAIN"))) // AuthorizeEditorDataDefinitionsProcessorDefinitionDTO | 
+    authorizeEditorDataDefinitionsProcessorDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO("Name_example", openapiclient.AuthorizeEditorDataProcessorDTO{AuthorizeEditorDataProcessorsChainProcessorDTO: openapiclient.NewAuthorizeEditorDataProcessorsChainProcessorDTO("Name_example", openapiclient.EnumAuthorizeEditorDataProcessorDTOType("CHAIN"), []openapiclient.AuthorizeEditorDataProcessorDTO{openapiclient.AuthorizeEditorDataProcessorDTO{AuthorizeEditorDataProcessorsChainProcessorDTO: openapiclient.NewAuthorizeEditorDataProcessorsChainProcessorDTO("Name_example", openapiclient.EnumAuthorizeEditorDataProcessorDTOType("CHAIN"), []openapiclient.AuthorizeEditorDataProcessorDTO{openapiclient.AuthorizeEditorDataProcessorDTO{AuthorizeEditorDataProcessorsChainProcessorDTO: }})}})}) // AuthorizeEditorDataDefinitionsProcessorDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

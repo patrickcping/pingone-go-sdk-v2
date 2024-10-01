@@ -7692,6 +7692,16 @@ components:
       - ATTRIBUTE
       - INPUT
       type: string
+    AuthorizeEditorDataProcessorDTOCommon:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataProcessorDTOType'
+      required:
+      - name
+      - type
+      type: object
     AuthorizeEditorDataProcessorDTO:
       discriminator:
         mapping:
@@ -7703,18 +7713,14 @@ components:
           SPEL: '#/components/schemas/AuthorizeEditorDataProcessorsSpelProcessorDTO'
           XPATH: '#/components/schemas/AuthorizeEditorDataProcessorsXPathProcessorDTO'
         propertyName: type
-      example:
-        name: name
-        type: null
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/EnumAuthorizeEditorDataProcessorDTOType'
-      required:
-      - name
-      - type
-      type: object
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsChainProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsJsonPathProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsReferenceProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsSpelProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsXPathProcessorDTO'
     EnumAuthorizeEditorDataProcessorDTOType:
       enum:
       - CHAIN
@@ -7812,7 +7818,7 @@ components:
       type: string
     AuthorizeEditorDataProcessorsChainProcessorDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - properties:
           processors:
             items:
@@ -7824,7 +7830,7 @@ components:
       - processors
     AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - properties:
           predicate:
             $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
@@ -7834,7 +7840,7 @@ components:
       - predicate
     AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - properties:
           processor:
             $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
@@ -7844,7 +7850,7 @@ components:
       - processor
     AuthorizeEditorDataProcessorsJsonPathProcessorDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - properties:
           expression:
             type: string
@@ -7857,7 +7863,7 @@ components:
       - valueType
     AuthorizeEditorDataProcessorsReferenceProcessorDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - properties:
           processor:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
@@ -7867,7 +7873,7 @@ components:
       - processor
     AuthorizeEditorDataProcessorsSpelProcessorDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - properties:
           expression:
             type: string
@@ -7880,7 +7886,7 @@ components:
       - valueType
     AuthorizeEditorDataProcessorsXPathProcessorDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - properties:
           expression:
             type: string
@@ -8218,9 +8224,7 @@ components:
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        processor:
-          name: name
-          type: null
+        processor: null
       properties:
         _links:
           additionalProperties:
@@ -8497,9 +8501,7 @@ components:
           type: null
         name: name
         type: null
-        processor:
-          name: name
-          type: null
+        processor: null
       properties:
         name:
           type: string
@@ -8618,16 +8620,12 @@ components:
             type: null
           name: name
           type: null
-          processor:
-            name: name
-            type: null
+          processor: null
         - condition:
             type: null
           name: name
           type: null
-          processor:
-            name: name
-            type: null
+          processor: null
         _links:
           key:
             href: https://openapi-generator.tech
@@ -8637,9 +8635,7 @@ components:
         fullName: fullName
         description: description
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        processor:
-          name: name
-          type: null
+        processor: null
         valueSchema: valueSchema
         environment:
           id: id

@@ -19,7 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataProcessorsCollectionTransformProcesso
 
 // AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO struct for AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO
 type AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO struct {
-	AuthorizeEditorDataProcessorDTO
+	Name string `json:"name"`
+	Type EnumAuthorizeEditorDataProcessorDTOType `json:"type"`
 	Processor AuthorizeEditorDataProcessorDTO `json:"processor"`
 }
 
@@ -27,7 +28,7 @@ type AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataProcessorsCollectionTransformProcessorDTO(processor AuthorizeEditorDataProcessorDTO, name string, type_ EnumAuthorizeEditorDataProcessorDTOType) *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO {
+func NewAuthorizeEditorDataProcessorsCollectionTransformProcessorDTO(name string, type_ EnumAuthorizeEditorDataProcessorDTOType, processor AuthorizeEditorDataProcessorDTO) *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO {
 	this := AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO{}
 	this.Name = name
 	this.Type = type_
@@ -41,6 +42,54 @@ func NewAuthorizeEditorDataProcessorsCollectionTransformProcessorDTO(processor A
 func NewAuthorizeEditorDataProcessorsCollectionTransformProcessorDTOWithDefaults() *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO {
 	this := AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO{}
 	return &this
+}
+
+// GetName returns the Name field value
+func (o *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) SetName(v string) {
+	o.Name = v
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) GetType() EnumAuthorizeEditorDataProcessorDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataProcessorDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) GetTypeOk() (*EnumAuthorizeEditorDataProcessorDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) SetType(v EnumAuthorizeEditorDataProcessorDTOType) {
+	o.Type = v
 }
 
 // GetProcessor returns the Processor field value
@@ -77,14 +126,8 @@ func (o AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) MarshalJSO
 
 func (o AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataProcessorDTO, errAuthorizeEditorDataProcessorDTO := json.Marshal(o.AuthorizeEditorDataProcessorDTO)
-	if errAuthorizeEditorDataProcessorDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataProcessorDTO
-	}
-	errAuthorizeEditorDataProcessorDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataProcessorDTO), &toSerialize)
-	if errAuthorizeEditorDataProcessorDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataProcessorDTO
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 	toSerialize["processor"] = o.Processor
 	return toSerialize, nil
 }

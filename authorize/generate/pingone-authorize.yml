@@ -580,7 +580,7 @@ components:
     EnumAuthorizeEditorDataInputMappingDTOType:
       type: string
       enum: [ATTRIBUTE, INPUT]
-    AuthorizeEditorDataProcessorDTO:
+    AuthorizeEditorDataProcessorDTOCommon:
       required:
       - name
       - type
@@ -590,6 +590,15 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/EnumAuthorizeEditorDataProcessorDTOType'
+    AuthorizeEditorDataProcessorDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsChainProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsJsonPathProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsReferenceProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsSpelProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorsXPathProcessorDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -695,7 +704,7 @@ components:
       - name
       - processors
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - type: object
         properties:
           processors:
@@ -707,7 +716,7 @@ components:
       - name
       - predicate
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - type: object
         properties:
           predicate:
@@ -717,7 +726,7 @@ components:
       - name
       - processor
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - type: object
         properties:
           processor:
@@ -728,7 +737,7 @@ components:
       - name
       - valueType
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - type: object
         properties:
           expression:
@@ -740,7 +749,7 @@ components:
       - name
       - processor
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - type: object
         properties:
           processor:
@@ -751,7 +760,7 @@ components:
       - name
       - valueType
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - type: object
         properties:
           expression:
@@ -764,7 +773,7 @@ components:
       - name
       - valueType
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTOCommon'
       - type: object
         properties:
           expression:

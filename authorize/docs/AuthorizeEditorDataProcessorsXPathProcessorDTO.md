@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | **string** |  | 
+**Type** | [**EnumAuthorizeEditorDataProcessorDTOType**](EnumAuthorizeEditorDataProcessorDTOType.md) |  | 
 **Expression** | **string** |  | 
 **ValueType** | [**AuthorizeEditorDataValueTypeDTO**](AuthorizeEditorDataValueTypeDTO.md) |  | 
 
@@ -11,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataProcessorsXPathProcessorDTO
 
-`func NewAuthorizeEditorDataProcessorsXPathProcessorDTO(expression string, valueType AuthorizeEditorDataValueTypeDTO, ) *AuthorizeEditorDataProcessorsXPathProcessorDTO`
+`func NewAuthorizeEditorDataProcessorsXPathProcessorDTO(name string, type_ EnumAuthorizeEditorDataProcessorDTOType, expression string, valueType AuthorizeEditorDataValueTypeDTO, ) *AuthorizeEditorDataProcessorsXPathProcessorDTO`
 
 NewAuthorizeEditorDataProcessorsXPathProcessorDTO instantiates a new AuthorizeEditorDataProcessorsXPathProcessorDTO object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +27,46 @@ will change when the set of required properties is changed
 NewAuthorizeEditorDataProcessorsXPathProcessorDTOWithDefaults instantiates a new AuthorizeEditorDataProcessorsXPathProcessorDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *AuthorizeEditorDataProcessorsXPathProcessorDTO) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *AuthorizeEditorDataProcessorsXPathProcessorDTO) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *AuthorizeEditorDataProcessorsXPathProcessorDTO) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetType
+
+`func (o *AuthorizeEditorDataProcessorsXPathProcessorDTO) GetType() EnumAuthorizeEditorDataProcessorDTOType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataProcessorsXPathProcessorDTO) GetTypeOk() (*EnumAuthorizeEditorDataProcessorDTOType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataProcessorsXPathProcessorDTO) SetType(v EnumAuthorizeEditorDataProcessorDTOType)`
+
+SetType sets Type field to given value.
+
 
 ### GetExpression
 

@@ -256,6 +256,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataPoliciesReferenceablePolicyDTO](docs/AuthorizeEditorDataPoliciesReferenceablePolicyDTO.md)
  - [AuthorizeEditorDataPoliciesRepetitionSettingsDTO](docs/AuthorizeEditorDataPoliciesRepetitionSettingsDTO.md)
  - [AuthorizeEditorDataProcessorDTO](docs/AuthorizeEditorDataProcessorDTO.md)
+ - [AuthorizeEditorDataProcessorDTOCommon](docs/AuthorizeEditorDataProcessorDTOCommon.md)
  - [AuthorizeEditorDataProcessorsChainProcessorDTO](docs/AuthorizeEditorDataProcessorsChainProcessorDTO.md)
  - [AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO](docs/AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO.md)
  - [AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO](docs/AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO.md)

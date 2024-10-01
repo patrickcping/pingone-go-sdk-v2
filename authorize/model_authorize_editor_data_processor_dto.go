@@ -12,97 +12,251 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataProcessorDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataProcessorDTO{}
-
-// AuthorizeEditorDataProcessorDTO struct for AuthorizeEditorDataProcessorDTO
+// AuthorizeEditorDataProcessorDTO - struct for AuthorizeEditorDataProcessorDTO
 type AuthorizeEditorDataProcessorDTO struct {
-	Name string `json:"name"`
-	Type EnumAuthorizeEditorDataProcessorDTOType `json:"type"`
+	AuthorizeEditorDataProcessorsChainProcessorDTO *AuthorizeEditorDataProcessorsChainProcessorDTO
+	AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO *AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO
+	AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO
+	AuthorizeEditorDataProcessorsJsonPathProcessorDTO *AuthorizeEditorDataProcessorsJsonPathProcessorDTO
+	AuthorizeEditorDataProcessorsReferenceProcessorDTO *AuthorizeEditorDataProcessorsReferenceProcessorDTO
+	AuthorizeEditorDataProcessorsSpelProcessorDTO *AuthorizeEditorDataProcessorsSpelProcessorDTO
+	AuthorizeEditorDataProcessorsXPathProcessorDTO *AuthorizeEditorDataProcessorsXPathProcessorDTO
 }
 
-// NewAuthorizeEditorDataProcessorDTO instantiates a new AuthorizeEditorDataProcessorDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataProcessorDTO(name string, type_ EnumAuthorizeEditorDataProcessorDTOType) *AuthorizeEditorDataProcessorDTO {
-	this := AuthorizeEditorDataProcessorDTO{}
-	this.Name = name
-	this.Type = type_
-	return &this
+// AuthorizeEditorDataProcessorsChainProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsChainProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
+func AuthorizeEditorDataProcessorsChainProcessorDTOAsAuthorizeEditorDataProcessorDTO(v *AuthorizeEditorDataProcessorsChainProcessorDTO) AuthorizeEditorDataProcessorDTO {
+	return AuthorizeEditorDataProcessorDTO{
+		AuthorizeEditorDataProcessorsChainProcessorDTO: v,
+	}
 }
 
-// NewAuthorizeEditorDataProcessorDTOWithDefaults instantiates a new AuthorizeEditorDataProcessorDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataProcessorDTOWithDefaults() *AuthorizeEditorDataProcessorDTO {
-	this := AuthorizeEditorDataProcessorDTO{}
-	return &this
+// AuthorizeEditorDataProcessorsCollectionFilterProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
+func AuthorizeEditorDataProcessorsCollectionFilterProcessorDTOAsAuthorizeEditorDataProcessorDTO(v *AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO) AuthorizeEditorDataProcessorDTO {
+	return AuthorizeEditorDataProcessorDTO{
+		AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO: v,
+	}
 }
 
-// GetName returns the Name field value
-func (o *AuthorizeEditorDataProcessorDTO) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
+// AuthorizeEditorDataProcessorsCollectionTransformProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
+func AuthorizeEditorDataProcessorsCollectionTransformProcessorDTOAsAuthorizeEditorDataProcessorDTO(v *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) AuthorizeEditorDataProcessorDTO {
+	return AuthorizeEditorDataProcessorDTO{
+		AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO: v,
+	}
+}
+
+// AuthorizeEditorDataProcessorsJsonPathProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsJsonPathProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
+func AuthorizeEditorDataProcessorsJsonPathProcessorDTOAsAuthorizeEditorDataProcessorDTO(v *AuthorizeEditorDataProcessorsJsonPathProcessorDTO) AuthorizeEditorDataProcessorDTO {
+	return AuthorizeEditorDataProcessorDTO{
+		AuthorizeEditorDataProcessorsJsonPathProcessorDTO: v,
+	}
+}
+
+// AuthorizeEditorDataProcessorsReferenceProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsReferenceProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
+func AuthorizeEditorDataProcessorsReferenceProcessorDTOAsAuthorizeEditorDataProcessorDTO(v *AuthorizeEditorDataProcessorsReferenceProcessorDTO) AuthorizeEditorDataProcessorDTO {
+	return AuthorizeEditorDataProcessorDTO{
+		AuthorizeEditorDataProcessorsReferenceProcessorDTO: v,
+	}
+}
+
+// AuthorizeEditorDataProcessorsSpelProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsSpelProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
+func AuthorizeEditorDataProcessorsSpelProcessorDTOAsAuthorizeEditorDataProcessorDTO(v *AuthorizeEditorDataProcessorsSpelProcessorDTO) AuthorizeEditorDataProcessorDTO {
+	return AuthorizeEditorDataProcessorDTO{
+		AuthorizeEditorDataProcessorsSpelProcessorDTO: v,
+	}
+}
+
+// AuthorizeEditorDataProcessorsXPathProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsXPathProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
+func AuthorizeEditorDataProcessorsXPathProcessorDTOAsAuthorizeEditorDataProcessorDTO(v *AuthorizeEditorDataProcessorsXPathProcessorDTO) AuthorizeEditorDataProcessorDTO {
+	return AuthorizeEditorDataProcessorDTO{
+		AuthorizeEditorDataProcessorsXPathProcessorDTO: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataProcessorDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataProcessorsChainProcessorDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsChainProcessorDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataProcessorsChainProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsChainProcessorDTO)
+		if string(jsonAuthorizeEditorDataProcessorsChainProcessorDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
 	}
 
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataProcessorDTO) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AuthorizeEditorDataProcessorDTO) SetName(v string) {
-	o.Name = v
-}
-
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataProcessorDTO) GetType() EnumAuthorizeEditorDataProcessorDTOType {
-	if o == nil {
-		var ret EnumAuthorizeEditorDataProcessorDTOType
-		return ret
+	// try to unmarshal data into AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataProcessorsCollectionFilterProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO)
+		if string(jsonAuthorizeEditorDataProcessorsCollectionFilterProcessorDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataProcessorDTO) GetTypeOk() (*EnumAuthorizeEditorDataProcessorDTOType, bool) {
-	if o == nil {
-		return nil, false
+	// try to unmarshal data into AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataProcessorsCollectionTransformProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO)
+		if string(jsonAuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
 	}
-	return &o.Type, true
-}
 
-// SetType sets field value
-func (o *AuthorizeEditorDataProcessorDTO) SetType(v EnumAuthorizeEditorDataProcessorDTOType) {
-	o.Type = v
-}
-
-func (o AuthorizeEditorDataProcessorDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	// try to unmarshal data into AuthorizeEditorDataProcessorsJsonPathProcessorDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataProcessorsJsonPathProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO)
+		if string(jsonAuthorizeEditorDataProcessorsJsonPathProcessorDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
 	}
-	return json.Marshal(toSerialize)
+
+	// try to unmarshal data into AuthorizeEditorDataProcessorsReferenceProcessorDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataProcessorsReferenceProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO)
+		if string(jsonAuthorizeEditorDataProcessorsReferenceProcessorDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataProcessorsSpelProcessorDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsSpelProcessorDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataProcessorsSpelProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsSpelProcessorDTO)
+		if string(jsonAuthorizeEditorDataProcessorsSpelProcessorDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataProcessorsXPathProcessorDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsXPathProcessorDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataProcessorsXPathProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsXPathProcessorDTO)
+		if string(jsonAuthorizeEditorDataProcessorsXPathProcessorDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
+		dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
+		dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
+		dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
+		dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
+		dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
+		dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataProcessorDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataProcessorDTO)")
+	}
 }
 
-func (o AuthorizeEditorDataProcessorDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataProcessorDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataProcessorsChainProcessorDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataProcessorsChainProcessorDTO)
+	}
+
+	if src.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO)
+	}
+
+	if src.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO)
+	}
+
+	if src.AuthorizeEditorDataProcessorsJsonPathProcessorDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataProcessorsJsonPathProcessorDTO)
+	}
+
+	if src.AuthorizeEditorDataProcessorsReferenceProcessorDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataProcessorsReferenceProcessorDTO)
+	}
+
+	if src.AuthorizeEditorDataProcessorsSpelProcessorDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataProcessorsSpelProcessorDTO)
+	}
+
+	if src.AuthorizeEditorDataProcessorsXPathProcessorDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataProcessorsXPathProcessorDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AuthorizeEditorDataProcessorDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataProcessorsChainProcessorDTO != nil {
+		return obj.AuthorizeEditorDataProcessorsChainProcessorDTO
+	}
+
+	if obj.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO != nil {
+		return obj.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO
+	}
+
+	if obj.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO != nil {
+		return obj.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO
+	}
+
+	if obj.AuthorizeEditorDataProcessorsJsonPathProcessorDTO != nil {
+		return obj.AuthorizeEditorDataProcessorsJsonPathProcessorDTO
+	}
+
+	if obj.AuthorizeEditorDataProcessorsReferenceProcessorDTO != nil {
+		return obj.AuthorizeEditorDataProcessorsReferenceProcessorDTO
+	}
+
+	if obj.AuthorizeEditorDataProcessorsSpelProcessorDTO != nil {
+		return obj.AuthorizeEditorDataProcessorsSpelProcessorDTO
+	}
+
+	if obj.AuthorizeEditorDataProcessorsXPathProcessorDTO != nil {
+		return obj.AuthorizeEditorDataProcessorsXPathProcessorDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataProcessorDTO struct {

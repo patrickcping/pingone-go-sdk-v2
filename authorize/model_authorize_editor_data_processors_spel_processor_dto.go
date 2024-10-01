@@ -19,7 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataProcessorsSpelProcessorDTO{}
 
 // AuthorizeEditorDataProcessorsSpelProcessorDTO struct for AuthorizeEditorDataProcessorsSpelProcessorDTO
 type AuthorizeEditorDataProcessorsSpelProcessorDTO struct {
-	AuthorizeEditorDataProcessorDTO
+	Name string `json:"name"`
+	Type EnumAuthorizeEditorDataProcessorDTOType `json:"type"`
 	Expression string `json:"expression"`
 	ValueType AuthorizeEditorDataValueTypeDTO `json:"valueType"`
 }
@@ -28,7 +29,7 @@ type AuthorizeEditorDataProcessorsSpelProcessorDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataProcessorsSpelProcessorDTO(expression string, valueType AuthorizeEditorDataValueTypeDTO, name string, type_ EnumAuthorizeEditorDataProcessorDTOType) *AuthorizeEditorDataProcessorsSpelProcessorDTO {
+func NewAuthorizeEditorDataProcessorsSpelProcessorDTO(name string, type_ EnumAuthorizeEditorDataProcessorDTOType, expression string, valueType AuthorizeEditorDataValueTypeDTO) *AuthorizeEditorDataProcessorsSpelProcessorDTO {
 	this := AuthorizeEditorDataProcessorsSpelProcessorDTO{}
 	this.Name = name
 	this.Type = type_
@@ -43,6 +44,54 @@ func NewAuthorizeEditorDataProcessorsSpelProcessorDTO(expression string, valueTy
 func NewAuthorizeEditorDataProcessorsSpelProcessorDTOWithDefaults() *AuthorizeEditorDataProcessorsSpelProcessorDTO {
 	this := AuthorizeEditorDataProcessorsSpelProcessorDTO{}
 	return &this
+}
+
+// GetName returns the Name field value
+func (o *AuthorizeEditorDataProcessorsSpelProcessorDTO) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataProcessorsSpelProcessorDTO) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *AuthorizeEditorDataProcessorsSpelProcessorDTO) SetName(v string) {
+	o.Name = v
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataProcessorsSpelProcessorDTO) GetType() EnumAuthorizeEditorDataProcessorDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataProcessorDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataProcessorsSpelProcessorDTO) GetTypeOk() (*EnumAuthorizeEditorDataProcessorDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataProcessorsSpelProcessorDTO) SetType(v EnumAuthorizeEditorDataProcessorDTOType) {
+	o.Type = v
 }
 
 // GetExpression returns the Expression field value
@@ -103,14 +152,8 @@ func (o AuthorizeEditorDataProcessorsSpelProcessorDTO) MarshalJSON() ([]byte, er
 
 func (o AuthorizeEditorDataProcessorsSpelProcessorDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataProcessorDTO, errAuthorizeEditorDataProcessorDTO := json.Marshal(o.AuthorizeEditorDataProcessorDTO)
-	if errAuthorizeEditorDataProcessorDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataProcessorDTO
-	}
-	errAuthorizeEditorDataProcessorDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataProcessorDTO), &toSerialize)
-	if errAuthorizeEditorDataProcessorDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataProcessorDTO
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 	toSerialize["expression"] = o.Expression
 	toSerialize["valueType"] = o.ValueType
 	return toSerialize, nil
