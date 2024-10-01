@@ -19,7 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataInputMappingsAttributeInputMappingDTO
 
 // AuthorizeEditorDataInputMappingsAttributeInputMappingDTO struct for AuthorizeEditorDataInputMappingsAttributeInputMappingDTO
 type AuthorizeEditorDataInputMappingsAttributeInputMappingDTO struct {
-	AuthorizeEditorDataInputMappingDTO
+	Property string `json:"property"`
+	Type EnumAuthorizeEditorDataInputMappingDTOType `json:"type"`
 	Value AuthorizeEditorDataReferenceObjectDTO `json:"value"`
 }
 
@@ -27,7 +28,7 @@ type AuthorizeEditorDataInputMappingsAttributeInputMappingDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO(value AuthorizeEditorDataReferenceObjectDTO, property string, type_ EnumAuthorizeEditorDataInputMappingDTOType) *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO {
+func NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO(property string, type_ EnumAuthorizeEditorDataInputMappingDTOType, value AuthorizeEditorDataReferenceObjectDTO) *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO {
 	this := AuthorizeEditorDataInputMappingsAttributeInputMappingDTO{}
 	this.Property = property
 	this.Type = type_
@@ -41,6 +42,54 @@ func NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO(value Authorize
 func NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTOWithDefaults() *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO {
 	this := AuthorizeEditorDataInputMappingsAttributeInputMappingDTO{}
 	return &this
+}
+
+// GetProperty returns the Property field value
+func (o *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) GetProperty() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Property
+}
+
+// GetPropertyOk returns a tuple with the Property field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) GetPropertyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Property, true
+}
+
+// SetProperty sets field value
+func (o *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) SetProperty(v string) {
+	o.Property = v
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) GetType() EnumAuthorizeEditorDataInputMappingDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataInputMappingDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) GetTypeOk() (*EnumAuthorizeEditorDataInputMappingDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) SetType(v EnumAuthorizeEditorDataInputMappingDTOType) {
+	o.Type = v
 }
 
 // GetValue returns the Value field value
@@ -77,14 +126,8 @@ func (o AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) MarshalJSON() 
 
 func (o AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataInputMappingDTO, errAuthorizeEditorDataInputMappingDTO := json.Marshal(o.AuthorizeEditorDataInputMappingDTO)
-	if errAuthorizeEditorDataInputMappingDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputMappingDTO
-	}
-	errAuthorizeEditorDataInputMappingDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataInputMappingDTO), &toSerialize)
-	if errAuthorizeEditorDataInputMappingDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputMappingDTO
-	}
+	toSerialize["property"] = o.Property
+	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }

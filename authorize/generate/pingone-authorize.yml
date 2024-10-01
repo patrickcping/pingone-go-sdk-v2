@@ -558,7 +558,7 @@ components:
     EnumAuthorizeEditorDataInputDTOType:
       type: string
       enum: [ATTRIBUTE, CONSTANT]
-    AuthorizeEditorDataInputMappingDTO:
+    AuthorizeEditorDataInputMappingDTOCommon:
       required:
       - property
       - type
@@ -568,6 +568,10 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/EnumAuthorizeEditorDataInputMappingDTOType'
+    AuthorizeEditorDataInputMappingDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputMappingsAttributeInputMappingDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputMappingsInputInputMappingDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -1870,7 +1874,7 @@ components:
       - property
       - value
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataInputMappingDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputMappingDTOCommon'
       - type: object
         properties:
           value:
@@ -1880,7 +1884,7 @@ components:
       - property
       - value
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataInputMappingDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputMappingDTOCommon'
       - type: object
         properties:
           value:

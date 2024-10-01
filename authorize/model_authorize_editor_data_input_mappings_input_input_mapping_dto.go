@@ -19,7 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataInputMappingsInputInputMappingDTO{}
 
 // AuthorizeEditorDataInputMappingsInputInputMappingDTO struct for AuthorizeEditorDataInputMappingsInputInputMappingDTO
 type AuthorizeEditorDataInputMappingsInputInputMappingDTO struct {
-	AuthorizeEditorDataInputMappingDTO
+	Property string `json:"property"`
+	Type EnumAuthorizeEditorDataInputMappingDTOType `json:"type"`
 	Value string `json:"value"`
 }
 
@@ -27,7 +28,7 @@ type AuthorizeEditorDataInputMappingsInputInputMappingDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputMappingsInputInputMappingDTO(value string, property string, type_ EnumAuthorizeEditorDataInputMappingDTOType) *AuthorizeEditorDataInputMappingsInputInputMappingDTO {
+func NewAuthorizeEditorDataInputMappingsInputInputMappingDTO(property string, type_ EnumAuthorizeEditorDataInputMappingDTOType, value string) *AuthorizeEditorDataInputMappingsInputInputMappingDTO {
 	this := AuthorizeEditorDataInputMappingsInputInputMappingDTO{}
 	this.Property = property
 	this.Type = type_
@@ -41,6 +42,54 @@ func NewAuthorizeEditorDataInputMappingsInputInputMappingDTO(value string, prope
 func NewAuthorizeEditorDataInputMappingsInputInputMappingDTOWithDefaults() *AuthorizeEditorDataInputMappingsInputInputMappingDTO {
 	this := AuthorizeEditorDataInputMappingsInputInputMappingDTO{}
 	return &this
+}
+
+// GetProperty returns the Property field value
+func (o *AuthorizeEditorDataInputMappingsInputInputMappingDTO) GetProperty() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Property
+}
+
+// GetPropertyOk returns a tuple with the Property field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataInputMappingsInputInputMappingDTO) GetPropertyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Property, true
+}
+
+// SetProperty sets field value
+func (o *AuthorizeEditorDataInputMappingsInputInputMappingDTO) SetProperty(v string) {
+	o.Property = v
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataInputMappingsInputInputMappingDTO) GetType() EnumAuthorizeEditorDataInputMappingDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataInputMappingDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataInputMappingsInputInputMappingDTO) GetTypeOk() (*EnumAuthorizeEditorDataInputMappingDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataInputMappingsInputInputMappingDTO) SetType(v EnumAuthorizeEditorDataInputMappingDTOType) {
+	o.Type = v
 }
 
 // GetValue returns the Value field value
@@ -77,14 +126,8 @@ func (o AuthorizeEditorDataInputMappingsInputInputMappingDTO) MarshalJSON() ([]b
 
 func (o AuthorizeEditorDataInputMappingsInputInputMappingDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataInputMappingDTO, errAuthorizeEditorDataInputMappingDTO := json.Marshal(o.AuthorizeEditorDataInputMappingDTO)
-	if errAuthorizeEditorDataInputMappingDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputMappingDTO
-	}
-	errAuthorizeEditorDataInputMappingDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataInputMappingDTO), &toSerialize)
-	if errAuthorizeEditorDataInputMappingDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputMappingDTO
-	}
+	toSerialize["property"] = o.Property
+	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }

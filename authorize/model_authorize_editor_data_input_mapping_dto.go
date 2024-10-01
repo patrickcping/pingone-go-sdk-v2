@@ -12,97 +12,101 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataInputMappingDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataInputMappingDTO{}
-
-// AuthorizeEditorDataInputMappingDTO struct for AuthorizeEditorDataInputMappingDTO
+// AuthorizeEditorDataInputMappingDTO - struct for AuthorizeEditorDataInputMappingDTO
 type AuthorizeEditorDataInputMappingDTO struct {
-	Property string `json:"property"`
-	Type EnumAuthorizeEditorDataInputMappingDTOType `json:"type"`
+	AuthorizeEditorDataInputMappingsAttributeInputMappingDTO *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO
+	AuthorizeEditorDataInputMappingsInputInputMappingDTO *AuthorizeEditorDataInputMappingsInputInputMappingDTO
 }
 
-// NewAuthorizeEditorDataInputMappingDTO instantiates a new AuthorizeEditorDataInputMappingDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputMappingDTO(property string, type_ EnumAuthorizeEditorDataInputMappingDTOType) *AuthorizeEditorDataInputMappingDTO {
-	this := AuthorizeEditorDataInputMappingDTO{}
-	this.Property = property
-	this.Type = type_
-	return &this
+// AuthorizeEditorDataInputMappingsAttributeInputMappingDTOAsAuthorizeEditorDataInputMappingDTO is a convenience function that returns AuthorizeEditorDataInputMappingsAttributeInputMappingDTO wrapped in AuthorizeEditorDataInputMappingDTO
+func AuthorizeEditorDataInputMappingsAttributeInputMappingDTOAsAuthorizeEditorDataInputMappingDTO(v *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO) AuthorizeEditorDataInputMappingDTO {
+	return AuthorizeEditorDataInputMappingDTO{
+		AuthorizeEditorDataInputMappingsAttributeInputMappingDTO: v,
+	}
 }
 
-// NewAuthorizeEditorDataInputMappingDTOWithDefaults instantiates a new AuthorizeEditorDataInputMappingDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataInputMappingDTOWithDefaults() *AuthorizeEditorDataInputMappingDTO {
-	this := AuthorizeEditorDataInputMappingDTO{}
-	return &this
+// AuthorizeEditorDataInputMappingsInputInputMappingDTOAsAuthorizeEditorDataInputMappingDTO is a convenience function that returns AuthorizeEditorDataInputMappingsInputInputMappingDTO wrapped in AuthorizeEditorDataInputMappingDTO
+func AuthorizeEditorDataInputMappingsInputInputMappingDTOAsAuthorizeEditorDataInputMappingDTO(v *AuthorizeEditorDataInputMappingsInputInputMappingDTO) AuthorizeEditorDataInputMappingDTO {
+	return AuthorizeEditorDataInputMappingDTO{
+		AuthorizeEditorDataInputMappingsInputInputMappingDTO: v,
+	}
 }
 
-// GetProperty returns the Property field value
-func (o *AuthorizeEditorDataInputMappingDTO) GetProperty() string {
-	if o == nil {
-		var ret string
-		return ret
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataInputMappingDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataInputMappingsAttributeInputMappingDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataInputMappingsAttributeInputMappingDTO, _ := json.Marshal(dst.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO)
+		if string(jsonAuthorizeEditorDataInputMappingsAttributeInputMappingDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO = nil
 	}
 
-	return o.Property
-}
-
-// GetPropertyOk returns a tuple with the Property field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataInputMappingDTO) GetPropertyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Property, true
-}
-
-// SetProperty sets field value
-func (o *AuthorizeEditorDataInputMappingDTO) SetProperty(v string) {
-	o.Property = v
-}
-
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataInputMappingDTO) GetType() EnumAuthorizeEditorDataInputMappingDTOType {
-	if o == nil {
-		var ret EnumAuthorizeEditorDataInputMappingDTOType
-		return ret
+	// try to unmarshal data into AuthorizeEditorDataInputMappingsInputInputMappingDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataInputMappingsInputInputMappingDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataInputMappingsInputInputMappingDTO, _ := json.Marshal(dst.AuthorizeEditorDataInputMappingsInputInputMappingDTO)
+		if string(jsonAuthorizeEditorDataInputMappingsInputInputMappingDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataInputMappingsInputInputMappingDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataInputMappingsInputInputMappingDTO = nil
 	}
 
-	return o.Type
-}
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO = nil
+		dst.AuthorizeEditorDataInputMappingsInputInputMappingDTO = nil
 
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataInputMappingDTO) GetTypeOk() (*EnumAuthorizeEditorDataInputMappingDTOType, bool) {
-	if o == nil {
-		return nil, false
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataInputMappingDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataInputMappingDTO)")
 	}
-	return &o.Type, true
 }
 
-// SetType sets field value
-func (o *AuthorizeEditorDataInputMappingDTO) SetType(v EnumAuthorizeEditorDataInputMappingDTOType) {
-	o.Type = v
-}
-
-func (o AuthorizeEditorDataInputMappingDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataInputMappingDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO)
 	}
-	return json.Marshal(toSerialize)
+
+	if src.AuthorizeEditorDataInputMappingsInputInputMappingDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataInputMappingsInputInputMappingDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-func (o AuthorizeEditorDataInputMappingDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["property"] = o.Property
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+// Get the actual instance
+func (obj *AuthorizeEditorDataInputMappingDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO != nil {
+		return obj.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO
+	}
+
+	if obj.AuthorizeEditorDataInputMappingsInputInputMappingDTO != nil {
+		return obj.AuthorizeEditorDataInputMappingsInputInputMappingDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataInputMappingDTO struct {

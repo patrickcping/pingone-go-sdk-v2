@@ -241,6 +241,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataInputDTO](docs/AuthorizeEditorDataInputDTO.md)
  - [AuthorizeEditorDataInputDTOCommon](docs/AuthorizeEditorDataInputDTOCommon.md)
  - [AuthorizeEditorDataInputMappingDTO](docs/AuthorizeEditorDataInputMappingDTO.md)
+ - [AuthorizeEditorDataInputMappingDTOCommon](docs/AuthorizeEditorDataInputMappingDTOCommon.md)
  - [AuthorizeEditorDataInputMappingsAttributeInputMappingDTO](docs/AuthorizeEditorDataInputMappingsAttributeInputMappingDTO.md)
  - [AuthorizeEditorDataInputMappingsInputInputMappingDTO](docs/AuthorizeEditorDataInputMappingsInputInputMappingDTO.md)
  - [AuthorizeEditorDataInputsAttributeInputDTO](docs/AuthorizeEditorDataInputsAttributeInputDTO.md)

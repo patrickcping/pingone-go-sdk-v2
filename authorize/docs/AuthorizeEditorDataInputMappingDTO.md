@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Property** | **string** |  | 
 **Type** | [**EnumAuthorizeEditorDataInputMappingDTOType**](EnumAuthorizeEditorDataInputMappingDTOType.md) |  | 
+**Value** | **string** |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataInputMappingDTO
 
-`func NewAuthorizeEditorDataInputMappingDTO(property string, type_ EnumAuthorizeEditorDataInputMappingDTOType, ) *AuthorizeEditorDataInputMappingDTO`
+`func NewAuthorizeEditorDataInputMappingDTO(property string, type_ EnumAuthorizeEditorDataInputMappingDTOType, value string, ) *AuthorizeEditorDataInputMappingDTO`
 
 NewAuthorizeEditorDataInputMappingDTO instantiates a new AuthorizeEditorDataInputMappingDTO object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataInputMappingDTO) SetType(v EnumAuthorizeEditorDataInputMappingDTOType)`
 
 SetType sets Type field to given value.
+
+
+### GetValue
+
+`func (o *AuthorizeEditorDataInputMappingDTO) GetValue() string`
+
+GetValue returns the Value field if non-nil, zero value otherwise.
+
+### GetValueOk
+
+`func (o *AuthorizeEditorDataInputMappingDTO) GetValueOk() (*string, bool)`
+
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValue
+
+`func (o *AuthorizeEditorDataInputMappingDTO) SetValue(v string)`
+
+SetValue sets Value field to given value.
 
 
 
