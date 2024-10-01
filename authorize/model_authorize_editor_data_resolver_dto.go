@@ -22,14 +22,14 @@ type AuthorizeEditorDataResolverDTO struct {
 	Name *string `json:"name,omitempty"`
 	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
 	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataResolverDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataResolverDTO instantiates a new AuthorizeEditorDataResolverDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataResolverDTO(type_ string) *AuthorizeEditorDataResolverDTO {
+func NewAuthorizeEditorDataResolverDTO(type_ EnumAuthorizeEditorDataResolverDTOType) *AuthorizeEditorDataResolverDTO {
 	this := AuthorizeEditorDataResolverDTO{}
 	this.Type = type_
 	return &this
@@ -140,9 +140,9 @@ func (o *AuthorizeEditorDataResolverDTO) SetProcessor(v AuthorizeEditorDataProce
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataResolverDTO) GetType() string {
+func (o *AuthorizeEditorDataResolverDTO) GetType() EnumAuthorizeEditorDataResolverDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataResolverDTOType
 		return ret
 	}
 
@@ -151,7 +151,7 @@ func (o *AuthorizeEditorDataResolverDTO) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataResolverDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataResolverDTO) GetTypeOk() (*EnumAuthorizeEditorDataResolverDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -159,7 +159,7 @@ func (o *AuthorizeEditorDataResolverDTO) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataResolverDTO) SetType(v string) {
+func (o *AuthorizeEditorDataResolverDTO) SetType(v EnumAuthorizeEditorDataResolverDTOType) {
 	o.Type = v
 }
 

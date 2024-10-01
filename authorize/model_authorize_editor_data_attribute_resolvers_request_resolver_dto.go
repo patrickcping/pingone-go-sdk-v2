@@ -26,7 +26,7 @@ type AuthorizeEditorDataAttributeResolversRequestResolverDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAttributeResolversRequestResolverDTO(type_ string) *AuthorizeEditorDataAttributeResolversRequestResolverDTO {
+func NewAuthorizeEditorDataAttributeResolversRequestResolverDTO(type_ EnumAuthorizeEditorDataResolverDTOType) *AuthorizeEditorDataAttributeResolversRequestResolverDTO {
 	this := AuthorizeEditorDataAttributeResolversRequestResolverDTO{}
 	this.Type = type_
 	return &this

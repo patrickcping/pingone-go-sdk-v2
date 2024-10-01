@@ -304,6 +304,7 @@ Class | Method | HTTP request | Description
  - [EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType](docs/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md)
  - [EnumAuthorizeEditorDataInputMappingDTOType](docs/EnumAuthorizeEditorDataInputMappingDTOType.md)
  - [EnumAuthorizeEditorDataProcessorDTOType](docs/EnumAuthorizeEditorDataProcessorDTOType.md)
+ - [EnumAuthorizeEditorDataResolverDTOType](docs/EnumAuthorizeEditorDataResolverDTOType.md)
  - [EnumAuthorizeEditorDataRulesEffectSettingsDTOType](docs/EnumAuthorizeEditorDataRulesEffectSettingsDTOType.md)
  - [EnumAuthorizeEditorDataValueTypeDTO](docs/EnumAuthorizeEditorDataValueTypeDTO.md)
  - [Filter](docs/Filter.md)

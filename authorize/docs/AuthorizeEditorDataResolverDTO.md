@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Condition** | Pointer to [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | [optional] 
 **Processor** | Pointer to [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | [optional] 
-**Type** | **string** |  | 
+**Type** | [**EnumAuthorizeEditorDataResolverDTOType**](EnumAuthorizeEditorDataResolverDTOType.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataResolverDTO
 
-`func NewAuthorizeEditorDataResolverDTO(type_ string, ) *AuthorizeEditorDataResolverDTO`
+`func NewAuthorizeEditorDataResolverDTO(type_ EnumAuthorizeEditorDataResolverDTOType, ) *AuthorizeEditorDataResolverDTO`
 
 NewAuthorizeEditorDataResolverDTO instantiates a new AuthorizeEditorDataResolverDTO object
 This constructor will assign default values to properties that have it defined,
@@ -105,20 +105,20 @@ HasProcessor returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *AuthorizeEditorDataResolverDTO) GetType() string`
+`func (o *AuthorizeEditorDataResolverDTO) GetType() EnumAuthorizeEditorDataResolverDTOType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AuthorizeEditorDataResolverDTO) GetTypeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataResolverDTO) GetTypeOk() (*EnumAuthorizeEditorDataResolverDTOType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AuthorizeEditorDataResolverDTO) SetType(v string)`
+`func (o *AuthorizeEditorDataResolverDTO) SetType(v EnumAuthorizeEditorDataResolverDTOType)`
 
 SetType sets Type field to given value.
 

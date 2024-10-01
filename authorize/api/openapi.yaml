@@ -8421,12 +8421,21 @@ components:
       type: object
     AuthorizeEditorDataResolverDTO:
       discriminator:
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataAttributeResolversAttributeResolverDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
+          CURRENT_REPETITION_VALUE: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO'
+          CURRENT_USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO'
+          REQUEST: '#/components/schemas/AuthorizeEditorDataAttributeResolversRequestResolverDTO'
+          SERVICE: '#/components/schemas/AuthorizeEditorDataAttributeResolversServiceResolverDTO'
+          SYSTEM: '#/components/schemas/AuthorizeEditorDataAttributeResolversSystemResolverDTO'
+          USER: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserResolverDTO'
         propertyName: type
       example:
         condition:
           type: null
         name: name
-        type: type
+        type: null
         processor:
           name: name
           type: null
@@ -8438,10 +8447,22 @@ components:
         processor:
           $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataResolverDTOType'
       required:
       - type
       type: object
+    EnumAuthorizeEditorDataResolverDTOType:
+      enum:
+      - ATTRIBUTE
+      - CONFIGURATION
+      - CONSTANT
+      - CURRENT_REPETITION_VALUE
+      - CURRENT_USER_ID
+      - REQUEST
+      - SERVICE
+      - SYSTEM
+      - USER
+      type: string
     AuthorizeEditorDataAttributeResolversAttributeResolverDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
@@ -8531,14 +8552,14 @@ components:
         - condition:
             type: null
           name: name
-          type: type
+          type: null
           processor:
             name: name
             type: null
         - condition:
             type: null
           name: name
-          type: type
+          type: null
           processor:
             name: name
             type: null

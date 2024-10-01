@@ -1214,9 +1214,31 @@ components:
         processor:
           $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataResolverDTOType'
       discriminator:
         propertyName: type
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataAttributeResolversAttributeResolverDTO'
+          # CONFIGURATION: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
+          CURRENT_REPETITION_VALUE: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO'
+          CURRENT_USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO'
+          REQUEST: '#/components/schemas/AuthorizeEditorDataAttributeResolversRequestResolverDTO'
+          SERVICE: '#/components/schemas/AuthorizeEditorDataAttributeResolversServiceResolverDTO'
+          SYSTEM: '#/components/schemas/AuthorizeEditorDataAttributeResolversSystemResolverDTO'
+          USER: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserResolverDTO'
+    EnumAuthorizeEditorDataResolverDTOType:
+      type: string
+      enum:
+        - ATTRIBUTE
+        - CONFIGURATION
+        - CONSTANT
+        - CURRENT_REPETITION_VALUE
+        - CURRENT_USER_ID
+        - REQUEST
+        - SERVICE
+        - SYSTEM
+        - USER
     AuthorizeEditorDataAttributeResolversAttributeResolverDTO:
       required:
       - value
