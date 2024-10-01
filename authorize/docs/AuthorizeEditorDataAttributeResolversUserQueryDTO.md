@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | 
+**UserId** | **string** |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataAttributeResolversUserQueryDTO
 
-`func NewAuthorizeEditorDataAttributeResolversUserQueryDTO(type_ string, ) *AuthorizeEditorDataAttributeResolversUserQueryDTO`
+`func NewAuthorizeEditorDataAttributeResolversUserQueryDTO(type_ string, userId string, ) *AuthorizeEditorDataAttributeResolversUserQueryDTO`
 
 NewAuthorizeEditorDataAttributeResolversUserQueryDTO instantiates a new AuthorizeEditorDataAttributeResolversUserQueryDTO object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetUserId
+
+`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetUserId() string`
+
+GetUserId returns the UserId field if non-nil, zero value otherwise.
+
+### GetUserIdOk
+
+`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetUserIdOk() (*string, bool)`
+
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserId
+
+`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) SetUserId(v string)`
+
+SetUserId sets UserId field to given value.
 
 
 

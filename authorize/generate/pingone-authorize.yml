@@ -1372,13 +1372,16 @@ components:
       enum:
       - "NULL"
       - CURRENT_DATE_TIME
-    AuthorizeEditorDataAttributeResolversUserQueryDTO:
+    AuthorizeEditorDataAttributeResolversUserQueryDTOCommon:
       required:
       - type
       type: object
       properties:
         type:
           type: string
+    AuthorizeEditorDataAttributeResolversUserQueryDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -1839,7 +1842,7 @@ components:
       required:
       - userId
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTOCommon'
       - type: object
         properties:
           userId:

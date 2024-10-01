@@ -8596,17 +8596,20 @@ components:
       - "NULL"
       - CURRENT_DATE_TIME
       type: string
-    AuthorizeEditorDataAttributeResolversUserQueryDTO:
-      discriminator:
-        mapping:
-          USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO'
-        propertyName: type
+    AuthorizeEditorDataAttributeResolversUserQueryDTOCommon:
       properties:
         type:
           type: string
       required:
       - type
       type: object
+    AuthorizeEditorDataAttributeResolversUserQueryDTO:
+      discriminator:
+        mapping:
+          USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO'
     AuthorizeEditorDataAttributeResolversUserResolverDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTOCommon'
@@ -9373,7 +9376,7 @@ components:
       type: object
     AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTOCommon'
       - properties:
           userId:
             type: string

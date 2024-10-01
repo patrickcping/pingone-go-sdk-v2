@@ -201,6 +201,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataAttributeResolversServiceResolverDTO](docs/AuthorizeEditorDataAttributeResolversServiceResolverDTO.md)
  - [AuthorizeEditorDataAttributeResolversSystemResolverDTO](docs/AuthorizeEditorDataAttributeResolversSystemResolverDTO.md)
  - [AuthorizeEditorDataAttributeResolversUserQueryDTO](docs/AuthorizeEditorDataAttributeResolversUserQueryDTO.md)
+ - [AuthorizeEditorDataAttributeResolversUserQueryDTOCommon](docs/AuthorizeEditorDataAttributeResolversUserQueryDTOCommon.md)
  - [AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO](docs/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO.md)
  - [AuthorizeEditorDataAttributeResolversUserResolverDTO](docs/AuthorizeEditorDataAttributeResolversUserResolverDTO.md)
  - [AuthorizeEditorDataAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationDTO.md)

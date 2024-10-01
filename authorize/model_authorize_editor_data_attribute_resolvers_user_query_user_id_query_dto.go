@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversUserQueryUserIdQuer
 
 // AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct for AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO
 type AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct {
-	AuthorizeEditorDataAttributeResolversUserQueryDTO
+	Type string `json:"type"`
 	UserId string `json:"userId"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO(userId string, type_ string) *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO {
+func NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO(type_ string, userId string) *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO {
 	this := AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO{}
 	this.Type = type_
 	this.UserId = userId
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO(userId stri
 func NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTOWithDefaults() *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO {
 	this := AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) SetType(v string) {
+	o.Type = v
 }
 
 // GetUserId returns the UserId field value
@@ -76,14 +100,7 @@ func (o AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) MarshalJSO
 
 func (o AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataAttributeResolversUserQueryDTO, errAuthorizeEditorDataAttributeResolversUserQueryDTO := json.Marshal(o.AuthorizeEditorDataAttributeResolversUserQueryDTO)
-	if errAuthorizeEditorDataAttributeResolversUserQueryDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataAttributeResolversUserQueryDTO
-	}
-	errAuthorizeEditorDataAttributeResolversUserQueryDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataAttributeResolversUserQueryDTO), &toSerialize)
-	if errAuthorizeEditorDataAttributeResolversUserQueryDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataAttributeResolversUserQueryDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["userId"] = o.UserId
 	return toSerialize, nil
 }
