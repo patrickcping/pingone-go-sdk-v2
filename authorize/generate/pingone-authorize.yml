@@ -542,6 +542,12 @@ components:
           type: string
       discriminator:
         propertyName: type
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataInputAttributeDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataInputConstantDTO'
+    EnumAuthorizeEditorDataInputDTOType:
+      type: string
+      enum: [ATTRIBUTE, CONSTANT]
     AuthorizeEditorDataInputMappingDTO:
       required:
       - property

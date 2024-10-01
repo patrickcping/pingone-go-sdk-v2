@@ -306,6 +306,7 @@ Class | Method | HTTP request | Description
  - [EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator](docs/EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md)
  - [EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType](docs/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md)
  - [EnumAuthorizeEditorDataEntityTestingOverrideDTOType](docs/EnumAuthorizeEditorDataEntityTestingOverrideDTOType.md)
+ - [EnumAuthorizeEditorDataInputDTOType](docs/EnumAuthorizeEditorDataInputDTOType.md)
  - [EnumAuthorizeEditorDataInputMappingDTOType](docs/EnumAuthorizeEditorDataInputMappingDTOType.md)
  - [EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm](docs/EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm.md)
  - [EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision](docs/EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision.md)
