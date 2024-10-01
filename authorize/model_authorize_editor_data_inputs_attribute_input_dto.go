@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataInputsAttributeInputDTO{}
 
 // AuthorizeEditorDataInputsAttributeInputDTO struct for AuthorizeEditorDataInputsAttributeInputDTO
 type AuthorizeEditorDataInputsAttributeInputDTO struct {
-	AuthorizeEditorDataInputDTO
+	Type string `json:"type"`
 	Attribute AuthorizeEditorDataReferenceObjectDTO `json:"attribute"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataInputsAttributeInputDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputsAttributeInputDTO(attribute AuthorizeEditorDataReferenceObjectDTO, type_ string) *AuthorizeEditorDataInputsAttributeInputDTO {
+func NewAuthorizeEditorDataInputsAttributeInputDTO(type_ string, attribute AuthorizeEditorDataReferenceObjectDTO) *AuthorizeEditorDataInputsAttributeInputDTO {
 	this := AuthorizeEditorDataInputsAttributeInputDTO{}
 	this.Type = type_
 	this.Attribute = attribute
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataInputsAttributeInputDTO(attribute AuthorizeEditorData
 func NewAuthorizeEditorDataInputsAttributeInputDTOWithDefaults() *AuthorizeEditorDataInputsAttributeInputDTO {
 	this := AuthorizeEditorDataInputsAttributeInputDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataInputsAttributeInputDTO) SetType(v string) {
+	o.Type = v
 }
 
 // GetAttribute returns the Attribute field value
@@ -76,14 +100,7 @@ func (o AuthorizeEditorDataInputsAttributeInputDTO) MarshalJSON() ([]byte, error
 
 func (o AuthorizeEditorDataInputsAttributeInputDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataInputDTO, errAuthorizeEditorDataInputDTO := json.Marshal(o.AuthorizeEditorDataInputDTO)
-	if errAuthorizeEditorDataInputDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputDTO
-	}
-	errAuthorizeEditorDataInputDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataInputDTO), &toSerialize)
-	if errAuthorizeEditorDataInputDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["attribute"] = o.Attribute
 	return toSerialize, nil
 }

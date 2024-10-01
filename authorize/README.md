@@ -239,6 +239,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataEnvironmentDTO](docs/AuthorizeEditorDataEnvironmentDTO.md)
  - [AuthorizeEditorDataHttpRequestHeaderDTO](docs/AuthorizeEditorDataHttpRequestHeaderDTO.md)
  - [AuthorizeEditorDataInputDTO](docs/AuthorizeEditorDataInputDTO.md)
+ - [AuthorizeEditorDataInputDTOCommon](docs/AuthorizeEditorDataInputDTOCommon.md)
  - [AuthorizeEditorDataInputMappingDTO](docs/AuthorizeEditorDataInputMappingDTO.md)
  - [AuthorizeEditorDataInputMappingsAttributeInputMappingDTO](docs/AuthorizeEditorDataInputMappingsAttributeInputMappingDTO.md)
  - [AuthorizeEditorDataInputMappingsInputInputMappingDTO](docs/AuthorizeEditorDataInputMappingsInputInputMappingDTO.md)

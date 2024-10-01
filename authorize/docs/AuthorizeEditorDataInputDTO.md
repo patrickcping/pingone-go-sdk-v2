@@ -5,12 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | 
+**Attribute** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
+**Value** | **string** |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataInputDTO
 
-`func NewAuthorizeEditorDataInputDTO(type_ string, ) *AuthorizeEditorDataInputDTO`
+`func NewAuthorizeEditorDataInputDTO(type_ string, attribute AuthorizeEditorDataReferenceObjectDTO, value string, ) *AuthorizeEditorDataInputDTO`
 
 NewAuthorizeEditorDataInputDTO instantiates a new AuthorizeEditorDataInputDTO object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +45,46 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataInputDTO) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetAttribute
+
+`func (o *AuthorizeEditorDataInputDTO) GetAttribute() AuthorizeEditorDataReferenceObjectDTO`
+
+GetAttribute returns the Attribute field if non-nil, zero value otherwise.
+
+### GetAttributeOk
+
+`func (o *AuthorizeEditorDataInputDTO) GetAttributeOk() (*AuthorizeEditorDataReferenceObjectDTO, bool)`
+
+GetAttributeOk returns a tuple with the Attribute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttribute
+
+`func (o *AuthorizeEditorDataInputDTO) SetAttribute(v AuthorizeEditorDataReferenceObjectDTO)`
+
+SetAttribute sets Attribute field to given value.
+
+
+### GetValue
+
+`func (o *AuthorizeEditorDataInputDTO) GetValue() string`
+
+GetValue returns the Value field if non-nil, zero value otherwise.
+
+### GetValueOk
+
+`func (o *AuthorizeEditorDataInputDTO) GetValueOk() (*string, bool)`
+
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValue
+
+`func (o *AuthorizeEditorDataInputDTO) SetValue(v string)`
+
+SetValue sets Value field to given value.
 
 
 

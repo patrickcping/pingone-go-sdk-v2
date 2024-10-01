@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataInputsConstantInputDTO{}
 
 // AuthorizeEditorDataInputsConstantInputDTO struct for AuthorizeEditorDataInputsConstantInputDTO
 type AuthorizeEditorDataInputsConstantInputDTO struct {
-	AuthorizeEditorDataInputDTO
+	Type string `json:"type"`
 	Value string `json:"value"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataInputsConstantInputDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputsConstantInputDTO(value string, type_ string) *AuthorizeEditorDataInputsConstantInputDTO {
+func NewAuthorizeEditorDataInputsConstantInputDTO(type_ string, value string) *AuthorizeEditorDataInputsConstantInputDTO {
 	this := AuthorizeEditorDataInputsConstantInputDTO{}
 	this.Type = type_
 	this.Value = value
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataInputsConstantInputDTO(value string, type_ string) *A
 func NewAuthorizeEditorDataInputsConstantInputDTOWithDefaults() *AuthorizeEditorDataInputsConstantInputDTO {
 	this := AuthorizeEditorDataInputsConstantInputDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataInputsConstantInputDTO) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataInputsConstantInputDTO) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataInputsConstantInputDTO) SetType(v string) {
+	o.Type = v
 }
 
 // GetValue returns the Value field value
@@ -76,14 +100,7 @@ func (o AuthorizeEditorDataInputsConstantInputDTO) MarshalJSON() ([]byte, error)
 
 func (o AuthorizeEditorDataInputsConstantInputDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataInputDTO, errAuthorizeEditorDataInputDTO := json.Marshal(o.AuthorizeEditorDataInputDTO)
-	if errAuthorizeEditorDataInputDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputDTO
-	}
-	errAuthorizeEditorDataInputDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataInputDTO), &toSerialize)
-	if errAuthorizeEditorDataInputDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataInputDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }

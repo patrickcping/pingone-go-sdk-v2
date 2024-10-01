@@ -7647,18 +7647,22 @@ components:
       required:
       - key
       type: object
-    AuthorizeEditorDataInputDTO:
-      discriminator:
-        mapping:
-          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataInputAttributeDTO'
-          CONSTANT: '#/components/schemas/AuthorizeEditorDataInputConstantDTO'
-        propertyName: type
+    AuthorizeEditorDataInputDTOCommon:
       properties:
         type:
           type: string
       required:
       - type
       type: object
+    AuthorizeEditorDataInputDTO:
+      discriminator:
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataInputsAttributeInputDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataInputsConstantInputDTO'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputsAttributeInputDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputsConstantInputDTO'
     EnumAuthorizeEditorDataInputDTOType:
       enum:
       - ATTRIBUTE
@@ -9450,7 +9454,7 @@ components:
       - value
     AuthorizeEditorDataInputsAttributeInputDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTOCommon'
       - properties:
           attribute:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
@@ -9459,7 +9463,7 @@ components:
       - attribute
     AuthorizeEditorDataInputsConstantInputDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTOCommon'
       - properties:
           value:
             type: string

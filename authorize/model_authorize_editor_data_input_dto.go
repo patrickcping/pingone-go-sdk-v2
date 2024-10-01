@@ -12,70 +12,101 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataInputDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataInputDTO{}
-
-// AuthorizeEditorDataInputDTO struct for AuthorizeEditorDataInputDTO
+// AuthorizeEditorDataInputDTO - struct for AuthorizeEditorDataInputDTO
 type AuthorizeEditorDataInputDTO struct {
-	Type string `json:"type"`
+	AuthorizeEditorDataInputsAttributeInputDTO *AuthorizeEditorDataInputsAttributeInputDTO
+	AuthorizeEditorDataInputsConstantInputDTO *AuthorizeEditorDataInputsConstantInputDTO
 }
 
-// NewAuthorizeEditorDataInputDTO instantiates a new AuthorizeEditorDataInputDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputDTO(type_ string) *AuthorizeEditorDataInputDTO {
-	this := AuthorizeEditorDataInputDTO{}
-	this.Type = type_
-	return &this
+// AuthorizeEditorDataInputsAttributeInputDTOAsAuthorizeEditorDataInputDTO is a convenience function that returns AuthorizeEditorDataInputsAttributeInputDTO wrapped in AuthorizeEditorDataInputDTO
+func AuthorizeEditorDataInputsAttributeInputDTOAsAuthorizeEditorDataInputDTO(v *AuthorizeEditorDataInputsAttributeInputDTO) AuthorizeEditorDataInputDTO {
+	return AuthorizeEditorDataInputDTO{
+		AuthorizeEditorDataInputsAttributeInputDTO: v,
+	}
 }
 
-// NewAuthorizeEditorDataInputDTOWithDefaults instantiates a new AuthorizeEditorDataInputDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataInputDTOWithDefaults() *AuthorizeEditorDataInputDTO {
-	this := AuthorizeEditorDataInputDTO{}
-	return &this
+// AuthorizeEditorDataInputsConstantInputDTOAsAuthorizeEditorDataInputDTO is a convenience function that returns AuthorizeEditorDataInputsConstantInputDTO wrapped in AuthorizeEditorDataInputDTO
+func AuthorizeEditorDataInputsConstantInputDTOAsAuthorizeEditorDataInputDTO(v *AuthorizeEditorDataInputsConstantInputDTO) AuthorizeEditorDataInputDTO {
+	return AuthorizeEditorDataInputDTO{
+		AuthorizeEditorDataInputsConstantInputDTO: v,
+	}
 }
 
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataInputDTO) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataInputDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataInputsAttributeInputDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataInputsAttributeInputDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataInputsAttributeInputDTO, _ := json.Marshal(dst.AuthorizeEditorDataInputsAttributeInputDTO)
+		if string(jsonAuthorizeEditorDataInputsAttributeInputDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataInputDTO) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+	// try to unmarshal data into AuthorizeEditorDataInputsConstantInputDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataInputsConstantInputDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataInputsConstantInputDTO, _ := json.Marshal(dst.AuthorizeEditorDataInputsConstantInputDTO)
+		if string(jsonAuthorizeEditorDataInputsConstantInputDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataInputsConstantInputDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataInputsConstantInputDTO = nil
 	}
-	return &o.Type, true
-}
 
-// SetType sets field value
-func (o *AuthorizeEditorDataInputDTO) SetType(v string) {
-	o.Type = v
-}
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
+		dst.AuthorizeEditorDataInputsConstantInputDTO = nil
 
-func (o AuthorizeEditorDataInputDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataInputDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataInputDTO)")
 	}
-	return json.Marshal(toSerialize)
 }
 
-func (o AuthorizeEditorDataInputDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataInputDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataInputsAttributeInputDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataInputsAttributeInputDTO)
+	}
+
+	if src.AuthorizeEditorDataInputsConstantInputDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataInputsConstantInputDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AuthorizeEditorDataInputDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataInputsAttributeInputDTO != nil {
+		return obj.AuthorizeEditorDataInputsAttributeInputDTO
+	}
+
+	if obj.AuthorizeEditorDataInputsConstantInputDTO != nil {
+		return obj.AuthorizeEditorDataInputsConstantInputDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataInputDTO struct {

@@ -539,18 +539,22 @@ components:
           type: string
         value:
           $ref: '#/components/schemas/AuthorizeEditorDataInputDTO'
-    AuthorizeEditorDataInputDTO:
+    AuthorizeEditorDataInputDTOCommon:
       required:
       - type
       type: object
       properties:
         type:
           type: string
+    AuthorizeEditorDataInputDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputsAttributeInputDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputsConstantInputDTO'
       discriminator:
         propertyName: type
         mapping:
-          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataInputAttributeDTO'
-          CONSTANT: '#/components/schemas/AuthorizeEditorDataInputConstantDTO'
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataInputsAttributeInputDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataInputsConstantInputDTO'
     EnumAuthorizeEditorDataInputDTOType:
       type: string
       enum: [ATTRIBUTE, CONSTANT]
@@ -1885,7 +1889,7 @@ components:
       required:
       - attribute
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTOCommon'
       - type: object
         properties:
           attribute:
@@ -1894,7 +1898,7 @@ components:
       required:
       - value
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataInputDTOCommon'
       - type: object
         properties:
           value:
