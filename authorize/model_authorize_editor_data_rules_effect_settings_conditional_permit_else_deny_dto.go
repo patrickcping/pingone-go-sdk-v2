@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataRulesEffectSettingsConditionalPermitE
 
 // AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO struct for AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
 type AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO struct {
-	AuthorizeEditorDataRulesEffectSettingsDTO
+	Type EnumAuthorizeEditorDataRulesEffectSettingsDTOType `json:"type"`
 	Condition AuthorizeEditorDataConditionDTO `json:"condition"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO(condition AuthorizeEditorDataConditionDTO, type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType) *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO {
+func NewAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO(type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType, condition AuthorizeEditorDataConditionDTO) *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO {
 	this := AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO{}
 	this.Type = type_
 	this.Condition = condition
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO(condi
 func NewAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTOWithDefaults() *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO {
 	this := AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) GetType() EnumAuthorizeEditorDataRulesEffectSettingsDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataRulesEffectSettingsDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) GetTypeOk() (*EnumAuthorizeEditorDataRulesEffectSettingsDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) SetType(v EnumAuthorizeEditorDataRulesEffectSettingsDTOType) {
+	o.Type = v
 }
 
 // GetCondition returns the Condition field value
@@ -76,14 +100,7 @@ func (o AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) Mars
 
 func (o AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataRulesEffectSettingsDTO, errAuthorizeEditorDataRulesEffectSettingsDTO := json.Marshal(o.AuthorizeEditorDataRulesEffectSettingsDTO)
-	if errAuthorizeEditorDataRulesEffectSettingsDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataRulesEffectSettingsDTO
-	}
-	errAuthorizeEditorDataRulesEffectSettingsDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataRulesEffectSettingsDTO), &toSerialize)
-	if errAuthorizeEditorDataRulesEffectSettingsDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataRulesEffectSettingsDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["condition"] = o.Condition
 	return toSerialize, nil
 }

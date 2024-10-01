@@ -989,13 +989,19 @@ components:
         properties:
           reference:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
-    AuthorizeEditorDataRulesEffectSettingsDTO:
+    AuthorizeEditorDataRulesEffectSettingsDTOCommon:
       required:
       - type
       type: object
       properties:
         type:
           $ref: '#/components/schemas/EnumAuthorizeEditorDataRulesEffectSettingsDTOType'
+    AuthorizeEditorDataRulesEffectSettingsDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -1029,7 +1035,7 @@ components:
       required:
       - condition
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
       - type: object
         properties:
           condition:
@@ -1038,17 +1044,17 @@ components:
       required:
       - condition
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
       - type: object
         properties:
           condition:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
     AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
     AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
     AuthorizeEditorDataStatementsStatementItem:
       type: object
     AuthorizeEditorDataDefinitionsProcessorDefinitionDTO:

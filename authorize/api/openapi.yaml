@@ -8111,6 +8111,13 @@ components:
         type: object
       required:
       - reference
+    AuthorizeEditorDataRulesEffectSettingsDTOCommon:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataRulesEffectSettingsDTOType'
+      required:
+      - type
+      type: object
     AuthorizeEditorDataRulesEffectSettingsDTO:
       discriminator:
         mapping:
@@ -8119,14 +8126,11 @@ components:
           UNCONDITIONAL_DENY: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
           UNCONDITIONAL_PERMIT: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
         propertyName: type
-      example:
-        type: null
-      properties:
-        type:
-          $ref: '#/components/schemas/EnumAuthorizeEditorDataRulesEffectSettingsDTOType'
-      required:
-      - type
-      type: object
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
     EnumAuthorizeEditorDataRulesEffectSettingsDTOType:
       enum:
       - CONDITIONAL_DENY_ELSE_PERMIT
@@ -8139,8 +8143,7 @@ components:
         _links:
           key:
             href: https://openapi-generator.tech
-        effectSettings:
-          type: null
+        effectSettings: null
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         _links:
@@ -8161,7 +8164,7 @@ components:
       type: object
     AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
       - properties:
           condition:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
@@ -8170,7 +8173,7 @@ components:
       - condition
     AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
       - properties:
           condition:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
@@ -8179,10 +8182,10 @@ components:
       - condition
     AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
     AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTOCommon'
     AuthorizeEditorDataStatementsStatementItem:
       type: object
     AuthorizeEditorDataDefinitionsProcessorDefinitionDTO:

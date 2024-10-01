@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | [**EnumAuthorizeEditorDataRulesEffectSettingsDTOType**](EnumAuthorizeEditorDataRulesEffectSettingsDTOType.md) |  | 
 **Condition** | [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
 
-`func NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(condition AuthorizeEditorDataConditionDTO, ) *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType, condition AuthorizeEditorDataConditionDTO, ) *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO`
 
 NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO object
 This constructor will assign default values to properties that have it defined,
@@ -24,6 +25,26 @@ will change when the set of required properties is changed
 NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOWithDefaults instantiates a new AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) GetType() EnumAuthorizeEditorDataRulesEffectSettingsDTOType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) GetTypeOk() (*EnumAuthorizeEditorDataRulesEffectSettingsDTOType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) SetType(v EnumAuthorizeEditorDataRulesEffectSettingsDTOType)`
+
+SetType sets Type field to given value.
+
 
 ### GetCondition
 

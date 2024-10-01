@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumAuthorizeEditorDataRulesEffectSettingsDTOType**](EnumAuthorizeEditorDataRulesEffectSettingsDTOType.md) |  | 
+**Condition** | [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataRulesEffectSettingsDTO
 
-`func NewAuthorizeEditorDataRulesEffectSettingsDTO(type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType, ) *AuthorizeEditorDataRulesEffectSettingsDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsDTO(type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType, condition AuthorizeEditorDataConditionDTO, ) *AuthorizeEditorDataRulesEffectSettingsDTO`
 
 NewAuthorizeEditorDataRulesEffectSettingsDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsDTO object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataRulesEffectSettingsDTO) SetType(v EnumAuthorizeEditorDataRulesEffectSettingsDTOType)`
 
 SetType sets Type field to given value.
+
+
+### GetCondition
+
+`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetCondition() AuthorizeEditorDataConditionDTO`
+
+GetCondition returns the Condition field if non-nil, zero value otherwise.
+
+### GetConditionOk
+
+`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
+
+GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCondition
+
+`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) SetCondition(v AuthorizeEditorDataConditionDTO)`
+
+SetCondition sets Condition field to given value.
 
 
 

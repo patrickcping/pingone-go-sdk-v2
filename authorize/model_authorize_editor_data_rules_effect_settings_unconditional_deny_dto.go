@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyD
 
 // AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO struct for AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
 type AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO struct {
-	AuthorizeEditorDataRulesEffectSettingsDTO
+	Type EnumAuthorizeEditorDataRulesEffectSettingsDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO object
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOWithDefaults()
 	return &this
 }
 
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) GetType() EnumAuthorizeEditorDataRulesEffectSettingsDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataRulesEffectSettingsDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) GetTypeOk() (*EnumAuthorizeEditorDataRulesEffectSettingsDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) SetType(v EnumAuthorizeEditorDataRulesEffectSettingsDTOType) {
+	o.Type = v
+}
+
 func (o AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -50,14 +74,7 @@ func (o AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) MarshalJSON(
 
 func (o AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataRulesEffectSettingsDTO, errAuthorizeEditorDataRulesEffectSettingsDTO := json.Marshal(o.AuthorizeEditorDataRulesEffectSettingsDTO)
-	if errAuthorizeEditorDataRulesEffectSettingsDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataRulesEffectSettingsDTO
-	}
-	errAuthorizeEditorDataRulesEffectSettingsDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataRulesEffectSettingsDTO), &toSerialize)
-	if errAuthorizeEditorDataRulesEffectSettingsDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataRulesEffectSettingsDTO
-	}
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 

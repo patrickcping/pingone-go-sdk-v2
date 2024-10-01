@@ -12,70 +12,161 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataRulesEffectSettingsDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataRulesEffectSettingsDTO{}
-
-// AuthorizeEditorDataRulesEffectSettingsDTO struct for AuthorizeEditorDataRulesEffectSettingsDTO
+// AuthorizeEditorDataRulesEffectSettingsDTO - struct for AuthorizeEditorDataRulesEffectSettingsDTO
 type AuthorizeEditorDataRulesEffectSettingsDTO struct {
-	Type EnumAuthorizeEditorDataRulesEffectSettingsDTOType `json:"type"`
+	AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
+	AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
+	AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
+	AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
 }
 
-// NewAuthorizeEditorDataRulesEffectSettingsDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataRulesEffectSettingsDTO(type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType) *AuthorizeEditorDataRulesEffectSettingsDTO {
-	this := AuthorizeEditorDataRulesEffectSettingsDTO{}
-	this.Type = type_
-	return &this
+// AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOAsAuthorizeEditorDataRulesEffectSettingsDTO is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO wrapped in AuthorizeEditorDataRulesEffectSettingsDTO
+func AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOAsAuthorizeEditorDataRulesEffectSettingsDTO(v *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) AuthorizeEditorDataRulesEffectSettingsDTO {
+	return AuthorizeEditorDataRulesEffectSettingsDTO{
+		AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO: v,
+	}
 }
 
-// NewAuthorizeEditorDataRulesEffectSettingsDTOWithDefaults instantiates a new AuthorizeEditorDataRulesEffectSettingsDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataRulesEffectSettingsDTOWithDefaults() *AuthorizeEditorDataRulesEffectSettingsDTO {
-	this := AuthorizeEditorDataRulesEffectSettingsDTO{}
-	return &this
+// AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTOAsAuthorizeEditorDataRulesEffectSettingsDTO is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO wrapped in AuthorizeEditorDataRulesEffectSettingsDTO
+func AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTOAsAuthorizeEditorDataRulesEffectSettingsDTO(v *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) AuthorizeEditorDataRulesEffectSettingsDTO {
+	return AuthorizeEditorDataRulesEffectSettingsDTO{
+		AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO: v,
+	}
 }
 
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetType() EnumAuthorizeEditorDataRulesEffectSettingsDTOType {
-	if o == nil {
-		var ret EnumAuthorizeEditorDataRulesEffectSettingsDTOType
-		return ret
+// AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOAsAuthorizeEditorDataRulesEffectSettingsDTO is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO wrapped in AuthorizeEditorDataRulesEffectSettingsDTO
+func AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTOAsAuthorizeEditorDataRulesEffectSettingsDTO(v *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) AuthorizeEditorDataRulesEffectSettingsDTO {
+	return AuthorizeEditorDataRulesEffectSettingsDTO{
+		AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO: v,
+	}
+}
+
+// AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOAsAuthorizeEditorDataRulesEffectSettingsDTO is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO wrapped in AuthorizeEditorDataRulesEffectSettingsDTO
+func AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOAsAuthorizeEditorDataRulesEffectSettingsDTO(v *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO) AuthorizeEditorDataRulesEffectSettingsDTO {
+	return AuthorizeEditorDataRulesEffectSettingsDTO{
+		AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataRulesEffectSettingsDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetTypeOk() (*EnumAuthorizeEditorDataRulesEffectSettingsDTOType, bool) {
-	if o == nil {
-		return nil, false
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
 	}
-	return &o.Type, true
-}
 
-// SetType sets field value
-func (o *AuthorizeEditorDataRulesEffectSettingsDTO) SetType(v EnumAuthorizeEditorDataRulesEffectSettingsDTOType) {
-	o.Type = v
-}
-
-func (o AuthorizeEditorDataRulesEffectSettingsDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
 	}
-	return json.Marshal(toSerialize)
+
+	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
+		if string(jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
+		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataRulesEffectSettingsDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataRulesEffectSettingsDTO)")
+	}
 }
 
-func (o AuthorizeEditorDataRulesEffectSettingsDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataRulesEffectSettingsDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
+	}
+
+	if src.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
+	}
+
+	if src.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
+	}
+
+	if src.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AuthorizeEditorDataRulesEffectSettingsDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
+	}
+
+	if obj.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
+	}
+
+	if obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
+	}
+
+	if obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO != nil {
+		return obj.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataRulesEffectSettingsDTO struct {

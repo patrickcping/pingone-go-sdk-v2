@@ -265,6 +265,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO](docs/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO.md)
  - [AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO](docs/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO.md)
  - [AuthorizeEditorDataRulesEffectSettingsDTO](docs/AuthorizeEditorDataRulesEffectSettingsDTO.md)
+ - [AuthorizeEditorDataRulesEffectSettingsDTOCommon](docs/AuthorizeEditorDataRulesEffectSettingsDTOCommon.md)
  - [AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO](docs/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO.md)
  - [AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO](docs/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO.md)
  - [AuthorizeEditorDataRulesReferenceableRuleDTO](docs/AuthorizeEditorDataRulesReferenceableRuleDTO.md)
