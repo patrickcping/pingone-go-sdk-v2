@@ -8066,18 +8066,22 @@ components:
         type: object
       required:
       - conditions
-    AuthorizeEditorDataConditionsComparandDTO:
-      discriminator:
-        mapping:
-          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
-          CONSTANT: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
-        propertyName: type
+    AuthorizeEditorDataConditionsComparandDTOCommon:
       properties:
         type:
           type: string
       required:
       - type
       type: object
+    AuthorizeEditorDataConditionsComparandDTO:
+      discriminator:
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
     AuthorizeEditorDataConditionsComparisonConditionDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
@@ -9379,7 +9383,7 @@ components:
       - userId
     AuthorizeEditorDataConditionsComparandsAttributeComparandDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTOCommon'
       - properties:
           id:
             format: uuid
@@ -9389,7 +9393,7 @@ components:
       - id
     AuthorizeEditorDataConditionsComparandsConstantComparandDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTOCommon'
       - properties:
           value:
             type: string

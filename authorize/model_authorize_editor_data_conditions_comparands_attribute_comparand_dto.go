@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsComparandsAttributeComparan
 
 // AuthorizeEditorDataConditionsComparandsAttributeComparandDTO struct for AuthorizeEditorDataConditionsComparandsAttributeComparandDTO
 type AuthorizeEditorDataConditionsComparandsAttributeComparandDTO struct {
-	AuthorizeEditorDataConditionsComparandDTO
+	Type string `json:"type"`
 	Id string `json:"id"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataConditionsComparandsAttributeComparandDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsComparandsAttributeComparandDTO(id string, type_ string) *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO {
+func NewAuthorizeEditorDataConditionsComparandsAttributeComparandDTO(type_ string, id string) *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO {
 	this := AuthorizeEditorDataConditionsComparandsAttributeComparandDTO{}
 	this.Type = type_
 	this.Id = id
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataConditionsComparandsAttributeComparandDTO(id string, 
 func NewAuthorizeEditorDataConditionsComparandsAttributeComparandDTOWithDefaults() *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO {
 	this := AuthorizeEditorDataConditionsComparandsAttributeComparandDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) SetType(v string) {
+	o.Type = v
 }
 
 // GetId returns the Id field value
@@ -76,14 +100,7 @@ func (o AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) MarshalJSO
 
 func (o AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataConditionsComparandDTO, errAuthorizeEditorDataConditionsComparandDTO := json.Marshal(o.AuthorizeEditorDataConditionsComparandDTO)
-	if errAuthorizeEditorDataConditionsComparandDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionsComparandDTO
-	}
-	errAuthorizeEditorDataConditionsComparandDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataConditionsComparandDTO), &toSerialize)
-	if errAuthorizeEditorDataConditionsComparandDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionsComparandDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
 }

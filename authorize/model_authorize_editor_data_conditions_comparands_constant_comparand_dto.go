@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsComparandsConstantComparand
 
 // AuthorizeEditorDataConditionsComparandsConstantComparandDTO struct for AuthorizeEditorDataConditionsComparandsConstantComparandDTO
 type AuthorizeEditorDataConditionsComparandsConstantComparandDTO struct {
-	AuthorizeEditorDataConditionsComparandDTO
+	Type string `json:"type"`
 	Value string `json:"value"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataConditionsComparandsConstantComparandDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO(value string, type_ string) *AuthorizeEditorDataConditionsComparandsConstantComparandDTO {
+func NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO(type_ string, value string) *AuthorizeEditorDataConditionsComparandsConstantComparandDTO {
 	this := AuthorizeEditorDataConditionsComparandsConstantComparandDTO{}
 	this.Type = type_
 	this.Value = value
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO(value string
 func NewAuthorizeEditorDataConditionsComparandsConstantComparandDTOWithDefaults() *AuthorizeEditorDataConditionsComparandsConstantComparandDTO {
 	this := AuthorizeEditorDataConditionsComparandsConstantComparandDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) SetType(v string) {
+	o.Type = v
 }
 
 // GetValue returns the Value field value
@@ -76,14 +100,7 @@ func (o AuthorizeEditorDataConditionsComparandsConstantComparandDTO) MarshalJSON
 
 func (o AuthorizeEditorDataConditionsComparandsConstantComparandDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataConditionsComparandDTO, errAuthorizeEditorDataConditionsComparandDTO := json.Marshal(o.AuthorizeEditorDataConditionsComparandDTO)
-	if errAuthorizeEditorDataConditionsComparandDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionsComparandDTO
-	}
-	errAuthorizeEditorDataConditionsComparandDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataConditionsComparandDTO), &toSerialize)
-	if errAuthorizeEditorDataConditionsComparandDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionsComparandDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }

@@ -949,13 +949,17 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
-    AuthorizeEditorDataConditionsComparandDTO:
+    AuthorizeEditorDataConditionsComparandDTOCommon:
       required:
       - type
       type: object
       properties:
         type:
           type: string
+    AuthorizeEditorDataConditionsComparandDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -1834,7 +1838,7 @@ components:
       required:
       - id
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTOCommon'
       - type: object
         properties:
           id:
@@ -1844,7 +1848,7 @@ components:
       required:
       - value
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTOCommon'
       - type: object
         properties:
           value:

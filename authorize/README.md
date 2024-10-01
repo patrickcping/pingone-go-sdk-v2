@@ -216,6 +216,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataConditionDTOCommon](docs/AuthorizeEditorDataConditionDTOCommon.md)
  - [AuthorizeEditorDataConditionsAndConditionDTO](docs/AuthorizeEditorDataConditionsAndConditionDTO.md)
  - [AuthorizeEditorDataConditionsComparandDTO](docs/AuthorizeEditorDataConditionsComparandDTO.md)
+ - [AuthorizeEditorDataConditionsComparandDTOCommon](docs/AuthorizeEditorDataConditionsComparandDTOCommon.md)
  - [AuthorizeEditorDataConditionsComparandsAttributeComparandDTO](docs/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO.md)
  - [AuthorizeEditorDataConditionsComparandsConstantComparandDTO](docs/AuthorizeEditorDataConditionsComparandsConstantComparandDTO.md)
  - [AuthorizeEditorDataConditionsComparisonConditionDTO](docs/AuthorizeEditorDataConditionsComparisonConditionDTO.md)

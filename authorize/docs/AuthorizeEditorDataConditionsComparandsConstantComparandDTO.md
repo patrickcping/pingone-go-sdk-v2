@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | **string** |  | 
 **Value** | **string** |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO
 
-`func NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO(value string, ) *AuthorizeEditorDataConditionsComparandsConstantComparandDTO`
+`func NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO(type_ string, value string, ) *AuthorizeEditorDataConditionsComparandsConstantComparandDTO`
 
 NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO instantiates a new AuthorizeEditorDataConditionsComparandsConstantComparandDTO object
 This constructor will assign default values to properties that have it defined,
@@ -24,6 +25,26 @@ will change when the set of required properties is changed
 NewAuthorizeEditorDataConditionsComparandsConstantComparandDTOWithDefaults instantiates a new AuthorizeEditorDataConditionsComparandsConstantComparandDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) SetType(v string)`
+
+SetType sets Type field to given value.
+
 
 ### GetValue
 

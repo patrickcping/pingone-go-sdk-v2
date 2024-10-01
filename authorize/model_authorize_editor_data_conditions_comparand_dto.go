@@ -12,70 +12,101 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataConditionsComparandDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataConditionsComparandDTO{}
-
-// AuthorizeEditorDataConditionsComparandDTO struct for AuthorizeEditorDataConditionsComparandDTO
+// AuthorizeEditorDataConditionsComparandDTO - struct for AuthorizeEditorDataConditionsComparandDTO
 type AuthorizeEditorDataConditionsComparandDTO struct {
-	Type string `json:"type"`
+	AuthorizeEditorDataConditionsComparandsAttributeComparandDTO *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO
+	AuthorizeEditorDataConditionsComparandsConstantComparandDTO *AuthorizeEditorDataConditionsComparandsConstantComparandDTO
 }
 
-// NewAuthorizeEditorDataConditionsComparandDTO instantiates a new AuthorizeEditorDataConditionsComparandDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsComparandDTO(type_ string) *AuthorizeEditorDataConditionsComparandDTO {
-	this := AuthorizeEditorDataConditionsComparandDTO{}
-	this.Type = type_
-	return &this
+// AuthorizeEditorDataConditionsComparandsAttributeComparandDTOAsAuthorizeEditorDataConditionsComparandDTO is a convenience function that returns AuthorizeEditorDataConditionsComparandsAttributeComparandDTO wrapped in AuthorizeEditorDataConditionsComparandDTO
+func AuthorizeEditorDataConditionsComparandsAttributeComparandDTOAsAuthorizeEditorDataConditionsComparandDTO(v *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) AuthorizeEditorDataConditionsComparandDTO {
+	return AuthorizeEditorDataConditionsComparandDTO{
+		AuthorizeEditorDataConditionsComparandsAttributeComparandDTO: v,
+	}
 }
 
-// NewAuthorizeEditorDataConditionsComparandDTOWithDefaults instantiates a new AuthorizeEditorDataConditionsComparandDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataConditionsComparandDTOWithDefaults() *AuthorizeEditorDataConditionsComparandDTO {
-	this := AuthorizeEditorDataConditionsComparandDTO{}
-	return &this
+// AuthorizeEditorDataConditionsComparandsConstantComparandDTOAsAuthorizeEditorDataConditionsComparandDTO is a convenience function that returns AuthorizeEditorDataConditionsComparandsConstantComparandDTO wrapped in AuthorizeEditorDataConditionsComparandDTO
+func AuthorizeEditorDataConditionsComparandsConstantComparandDTOAsAuthorizeEditorDataConditionsComparandDTO(v *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) AuthorizeEditorDataConditionsComparandDTO {
+	return AuthorizeEditorDataConditionsComparandDTO{
+		AuthorizeEditorDataConditionsComparandsConstantComparandDTO: v,
+	}
 }
 
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataConditionsComparandDTO) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataConditionsComparandDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataConditionsComparandsAttributeComparandDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsComparandsAttributeComparandDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO)
+		if string(jsonAuthorizeEditorDataConditionsComparandsAttributeComparandDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataConditionsComparandDTO) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+	// try to unmarshal data into AuthorizeEditorDataConditionsComparandsConstantComparandDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsComparandsConstantComparandDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO)
+		if string(jsonAuthorizeEditorDataConditionsComparandsConstantComparandDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
 	}
-	return &o.Type, true
-}
 
-// SetType sets field value
-func (o *AuthorizeEditorDataConditionsComparandDTO) SetType(v string) {
-	o.Type = v
-}
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
+		dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
 
-func (o AuthorizeEditorDataConditionsComparandDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataConditionsComparandDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataConditionsComparandDTO)")
 	}
-	return json.Marshal(toSerialize)
 }
 
-func (o AuthorizeEditorDataConditionsComparandDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataConditionsComparandDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO)
+	}
+
+	if src.AuthorizeEditorDataConditionsComparandsConstantComparandDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsComparandsConstantComparandDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AuthorizeEditorDataConditionsComparandDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO != nil {
+		return obj.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO
+	}
+
+	if obj.AuthorizeEditorDataConditionsComparandsConstantComparandDTO != nil {
+		return obj.AuthorizeEditorDataConditionsComparandsConstantComparandDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataConditionsComparandDTO struct {

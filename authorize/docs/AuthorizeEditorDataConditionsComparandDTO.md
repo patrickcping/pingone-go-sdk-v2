@@ -5,12 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | 
+**Id** | **string** |  | 
+**Value** | **string** |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataConditionsComparandDTO
 
-`func NewAuthorizeEditorDataConditionsComparandDTO(type_ string, ) *AuthorizeEditorDataConditionsComparandDTO`
+`func NewAuthorizeEditorDataConditionsComparandDTO(type_ string, id string, value string, ) *AuthorizeEditorDataConditionsComparandDTO`
 
 NewAuthorizeEditorDataConditionsComparandDTO instantiates a new AuthorizeEditorDataConditionsComparandDTO object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +45,46 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataConditionsComparandDTO) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetId
+
+`func (o *AuthorizeEditorDataConditionsComparandDTO) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AuthorizeEditorDataConditionsComparandDTO) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AuthorizeEditorDataConditionsComparandDTO) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetValue
+
+`func (o *AuthorizeEditorDataConditionsComparandDTO) GetValue() string`
+
+GetValue returns the Value field if non-nil, zero value otherwise.
+
+### GetValueOk
+
+`func (o *AuthorizeEditorDataConditionsComparandDTO) GetValueOk() (*string, bool)`
+
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValue
+
+`func (o *AuthorizeEditorDataConditionsComparandDTO) SetValue(v string)`
+
+SetValue sets Value field to given value.
 
 
 
