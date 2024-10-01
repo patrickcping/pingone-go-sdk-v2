@@ -20,14 +20,14 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversSystemResolverDTO{}
 // AuthorizeEditorDataAttributeResolversSystemResolverDTO struct for AuthorizeEditorDataAttributeResolversSystemResolverDTO
 type AuthorizeEditorDataAttributeResolversSystemResolverDTO struct {
 	AuthorizeEditorDataResolverDTO
-	Value string `json:"value"`
+	Value EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue `json:"value"`
 }
 
 // NewAuthorizeEditorDataAttributeResolversSystemResolverDTO instantiates a new AuthorizeEditorDataAttributeResolversSystemResolverDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAttributeResolversSystemResolverDTO(value string, type_ EnumAuthorizeEditorDataResolverDTOType) *AuthorizeEditorDataAttributeResolversSystemResolverDTO {
+func NewAuthorizeEditorDataAttributeResolversSystemResolverDTO(value EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue, type_ EnumAuthorizeEditorDataResolverDTOType) *AuthorizeEditorDataAttributeResolversSystemResolverDTO {
 	this := AuthorizeEditorDataAttributeResolversSystemResolverDTO{}
 	this.Type = type_
 	this.Value = value
@@ -43,9 +43,9 @@ func NewAuthorizeEditorDataAttributeResolversSystemResolverDTOWithDefaults() *Au
 }
 
 // GetValue returns the Value field value
-func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetValue() string {
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetValue() EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue
 		return ret
 	}
 
@@ -54,7 +54,7 @@ func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetValue() stri
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetValueOk() (*string, bool) {
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetValueOk() (*EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) GetValueOk() (*
 }
 
 // SetValue sets field value
-func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) SetValue(v string) {
+func (o *AuthorizeEditorDataAttributeResolversSystemResolverDTO) SetValue(v EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue) {
 	o.Value = v
 }
 

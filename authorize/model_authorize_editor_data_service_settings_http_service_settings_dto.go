@@ -23,7 +23,7 @@ type AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO struct {
 	MaximumRequestsPerSecond *float64 `json:"maximumRequestsPerSecond,omitempty"`
 	TimeoutMilliseconds *int32 `json:"timeoutMilliseconds,omitempty"`
 	Url string `json:"url"`
-	Verb string `json:"verb"`
+	Verb EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb `json:"verb"`
 	Body *string `json:"body,omitempty"`
 	ContentType *string `json:"contentType,omitempty"`
 	Headers []AuthorizeEditorDataHttpRequestHeaderDTO `json:"headers,omitempty"`
@@ -35,7 +35,7 @@ type AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO(url string, verb string, authentication AuthorizeEditorDataAuthenticationDTO, tlsSettings AuthorizeEditorDataTlsSettingsDTO) *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO {
+func NewAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO(url string, verb EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb, authentication AuthorizeEditorDataAuthenticationDTO, tlsSettings AuthorizeEditorDataTlsSettingsDTO) *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO {
 	this := AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO{}
 	this.Url = url
 	this.Verb = verb
@@ -173,9 +173,9 @@ func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) SetUrl(v stri
 }
 
 // GetVerb returns the Verb field value
-func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerb() string {
+func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerb() EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb
 		return ret
 	}
 
@@ -184,7 +184,7 @@ func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerb() str
 
 // GetVerbOk returns a tuple with the Verb field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerbOk() (*string, bool) {
+func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerbOk() (*EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -192,7 +192,7 @@ func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerbOk() (
 }
 
 // SetVerb sets field value
-func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) SetVerb(v string) {
+func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) SetVerb(v EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb) {
 	o.Verb = v
 }
 

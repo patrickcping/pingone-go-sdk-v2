@@ -19,14 +19,14 @@ var _ MappedNullable = &AuthorizeEditorDataPoliciesCombiningAlgorithmDTO{}
 
 // AuthorizeEditorDataPoliciesCombiningAlgorithmDTO struct for AuthorizeEditorDataPoliciesCombiningAlgorithmDTO
 type AuthorizeEditorDataPoliciesCombiningAlgorithmDTO struct {
-	Algorithm string `json:"algorithm"`
+	Algorithm EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm `json:"algorithm"`
 }
 
 // NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO instantiates a new AuthorizeEditorDataPoliciesCombiningAlgorithmDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO(algorithm string) *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO {
+func NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO(algorithm EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm) *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO {
 	this := AuthorizeEditorDataPoliciesCombiningAlgorithmDTO{}
 	this.Algorithm = algorithm
 	return &this
@@ -41,9 +41,9 @@ func NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTOWithDefaults() *Authoriz
 }
 
 // GetAlgorithm returns the Algorithm field value
-func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) GetAlgorithm() string {
+func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) GetAlgorithm() EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) GetAlgorithm() string
 
 // GetAlgorithmOk returns a tuple with the Algorithm field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) GetAlgorithmOk() (*string, bool) {
+func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) GetAlgorithmOk() (*EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) GetAlgorithmOk() (*st
 }
 
 // SetAlgorithm sets field value
-func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) SetAlgorithm(v string) {
+func (o *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) SetAlgorithm(v EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm) {
 	o.Algorithm = v
 }
 

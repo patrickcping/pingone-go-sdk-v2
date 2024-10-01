@@ -34,7 +34,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the statement.
-    authorizeEditorDataStatementsStatementDTO := *openapiclient.NewAuthorizeEditorDataStatementsStatementDTO("Name_example", "Code_example", "AppliesTo_example", "AppliesIf_example", "Payload_example", []openapiclient.AuthorizeEditorDataReferenceObjectDTO{*openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example")}) // AuthorizeEditorDataStatementsStatementDTO | 
+    authorizeEditorDataStatementsStatementDTO := *openapiclient.NewAuthorizeEditorDataStatementsStatementDTO("Name_example", "Code_example", openapiclient.EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo("ANYTHING"), openapiclient.EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf("ANYTHING"), "Payload_example", []openapiclient.AuthorizeEditorDataReferenceObjectDTO{*openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example")}) // AuthorizeEditorDataStatementsStatementDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -329,7 +329,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the statement.
     statementID := "statementID_example" // string | The ID of the statement to be updated
-    authorizeEditorDataStatementsReferenceableStatementDTO := *openapiclient.NewAuthorizeEditorDataStatementsReferenceableStatementDTO("Id_example", "Name_example", "Code_example", "AppliesTo_example", "AppliesIf_example", "Payload_example", []openapiclient.AuthorizeEditorDataReferenceObjectDTO{*openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example")}, "Version_example") // AuthorizeEditorDataStatementsReferenceableStatementDTO | 
+    authorizeEditorDataStatementsReferenceableStatementDTO := *openapiclient.NewAuthorizeEditorDataStatementsReferenceableStatementDTO("Id_example", "Name_example", "Code_example", openapiclient.EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo("ANYTHING"), openapiclient.EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf("ANYTHING"), "Payload_example", []openapiclient.AuthorizeEditorDataReferenceObjectDTO{*openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example")}, "Version_example") // AuthorizeEditorDataStatementsReferenceableStatementDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()

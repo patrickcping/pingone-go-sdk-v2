@@ -20,7 +20,7 @@ var _ MappedNullable = &AuthorizeEditorDataChangeDetailsDTO{}
 // AuthorizeEditorDataChangeDetailsDTO struct for AuthorizeEditorDataChangeDetailsDTO
 type AuthorizeEditorDataChangeDetailsDTO struct {
 	ChangedResource *TypedRelationship `json:"changedResource,omitempty"`
-	ChangeType *string `json:"changeType,omitempty"`
+	ChangeType *EnumAuthorizeEditorDataChangeDetailsDTOChangeType `json:"changeType,omitempty"`
 	ChangedEntityName *string `json:"changedEntityName,omitempty"`
 	ChangedEntityType *string `json:"changedEntityType,omitempty"`
 	User *AuthorizeEditorDataUserDTO `json:"user,omitempty"`
@@ -76,9 +76,9 @@ func (o *AuthorizeEditorDataChangeDetailsDTO) SetChangedResource(v TypedRelation
 }
 
 // GetChangeType returns the ChangeType field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeType() string {
+func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeType() EnumAuthorizeEditorDataChangeDetailsDTOChangeType {
 	if o == nil || IsNil(o.ChangeType) {
-		var ret string
+		var ret EnumAuthorizeEditorDataChangeDetailsDTOChangeType
 		return ret
 	}
 	return *o.ChangeType
@@ -86,7 +86,7 @@ func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeType() string {
 
 // GetChangeTypeOk returns a tuple with the ChangeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeTypeOk() (*EnumAuthorizeEditorDataChangeDetailsDTOChangeType, bool) {
 	if o == nil || IsNil(o.ChangeType) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *AuthorizeEditorDataChangeDetailsDTO) HasChangeType() bool {
 	return false
 }
 
-// SetChangeType gets a reference to the given string and assigns it to the ChangeType field.
-func (o *AuthorizeEditorDataChangeDetailsDTO) SetChangeType(v string) {
+// SetChangeType gets a reference to the given EnumAuthorizeEditorDataChangeDetailsDTOChangeType and assigns it to the ChangeType field.
+func (o *AuthorizeEditorDataChangeDetailsDTO) SetChangeType(v EnumAuthorizeEditorDataChangeDetailsDTOChangeType) {
 	o.ChangeType = &v
 }
 

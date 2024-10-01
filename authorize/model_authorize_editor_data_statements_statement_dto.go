@@ -28,8 +28,8 @@ type AuthorizeEditorDataStatementsStatementDTO struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Code string `json:"code"`
-	AppliesTo string `json:"appliesTo"`
-	AppliesIf string `json:"appliesIf"`
+	AppliesTo EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo `json:"appliesTo"`
+	AppliesIf EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf `json:"appliesIf"`
 	Payload string `json:"payload"`
 	Obligatory *bool `json:"obligatory,omitempty"`
 	Attributes []AuthorizeEditorDataReferenceObjectDTO `json:"attributes"`
@@ -39,7 +39,7 @@ type AuthorizeEditorDataStatementsStatementDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataStatementsStatementDTO(name string, code string, appliesTo string, appliesIf string, payload string, attributes []AuthorizeEditorDataReferenceObjectDTO) *AuthorizeEditorDataStatementsStatementDTO {
+func NewAuthorizeEditorDataStatementsStatementDTO(name string, code string, appliesTo EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo, appliesIf EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf, payload string, attributes []AuthorizeEditorDataReferenceObjectDTO) *AuthorizeEditorDataStatementsStatementDTO {
 	this := AuthorizeEditorDataStatementsStatementDTO{}
 	this.Name = name
 	this.Code = code
@@ -267,9 +267,9 @@ func (o *AuthorizeEditorDataStatementsStatementDTO) SetCode(v string) {
 }
 
 // GetAppliesTo returns the AppliesTo field value
-func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesTo() string {
+func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesTo() EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo
 		return ret
 	}
 
@@ -278,7 +278,7 @@ func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesTo() string {
 
 // GetAppliesToOk returns a tuple with the AppliesTo field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesToOk() (*string, bool) {
+func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesToOk() (*EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -286,14 +286,14 @@ func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesToOk() (*string, b
 }
 
 // SetAppliesTo sets field value
-func (o *AuthorizeEditorDataStatementsStatementDTO) SetAppliesTo(v string) {
+func (o *AuthorizeEditorDataStatementsStatementDTO) SetAppliesTo(v EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo) {
 	o.AppliesTo = v
 }
 
 // GetAppliesIf returns the AppliesIf field value
-func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesIf() string {
+func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesIf() EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf
 		return ret
 	}
 
@@ -302,7 +302,7 @@ func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesIf() string {
 
 // GetAppliesIfOk returns a tuple with the AppliesIf field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesIfOk() (*string, bool) {
+func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesIfOk() (*EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -310,7 +310,7 @@ func (o *AuthorizeEditorDataStatementsStatementDTO) GetAppliesIfOk() (*string, b
 }
 
 // SetAppliesIf sets field value
-func (o *AuthorizeEditorDataStatementsStatementDTO) SetAppliesIf(v string) {
+func (o *AuthorizeEditorDataStatementsStatementDTO) SetAppliesIf(v EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf) {
 	o.AppliesIf = v
 }
 

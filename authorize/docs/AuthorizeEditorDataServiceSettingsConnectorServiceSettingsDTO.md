@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **MaximumConcurrentRequests** | Pointer to **int32** |  | [optional] 
 **MaximumRequestsPerSecond** | Pointer to **float64** |  | [optional] 
 **TimeoutMilliseconds** | Pointer to **int32** |  | [optional] 
-**Channel** | **string** |  | 
-**Code** | **string** |  | 
+**Channel** | [**EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel**](EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel.md) |  | 
+**Code** | [**EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode**](EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode.md) |  | 
 **Capability** | **string** |  | 
 **SchemaVersion** | Pointer to **int32** |  | [optional] 
 **InputMappings** | [**[]AuthorizeEditorDataInputMappingDTO**](AuthorizeEditorDataInputMappingDTO.md) |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO
 
-`func NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(channel string, code string, capability string, inputMappings []AuthorizeEditorDataInputMappingDTO, ) *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO`
+`func NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(channel EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel, code EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode, capability string, inputMappings []AuthorizeEditorDataInputMappingDTO, ) *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO`
 
 NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO instantiates a new AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO object
 This constructor will assign default values to properties that have it defined,
@@ -109,40 +109,40 @@ HasTimeoutMilliseconds returns a boolean if a field has been set.
 
 ### GetChannel
 
-`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannel() string`
+`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannel() EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel`
 
 GetChannel returns the Channel field if non-nil, zero value otherwise.
 
 ### GetChannelOk
 
-`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannelOk() (*string, bool)`
+`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannelOk() (*EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel, bool)`
 
 GetChannelOk returns a tuple with the Channel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChannel
 
-`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetChannel(v string)`
+`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetChannel(v EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel)`
 
 SetChannel sets Channel field to given value.
 
 
 ### GetCode
 
-`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCode() string`
+`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCode() EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCodeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCodeOk() (*EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetCode(v string)`
+`func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetCode(v EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode)`
 
 SetCode sets Code field to given value.
 

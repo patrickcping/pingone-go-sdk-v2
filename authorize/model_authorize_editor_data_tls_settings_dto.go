@@ -19,14 +19,14 @@ var _ MappedNullable = &AuthorizeEditorDataTlsSettingsDTO{}
 
 // AuthorizeEditorDataTlsSettingsDTO struct for AuthorizeEditorDataTlsSettingsDTO
 type AuthorizeEditorDataTlsSettingsDTO struct {
-	TlsValidationType string `json:"tlsValidationType"`
+	TlsValidationType EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType `json:"tlsValidationType"`
 }
 
 // NewAuthorizeEditorDataTlsSettingsDTO instantiates a new AuthorizeEditorDataTlsSettingsDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataTlsSettingsDTO(tlsValidationType string) *AuthorizeEditorDataTlsSettingsDTO {
+func NewAuthorizeEditorDataTlsSettingsDTO(tlsValidationType EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType) *AuthorizeEditorDataTlsSettingsDTO {
 	this := AuthorizeEditorDataTlsSettingsDTO{}
 	this.TlsValidationType = tlsValidationType
 	return &this
@@ -41,9 +41,9 @@ func NewAuthorizeEditorDataTlsSettingsDTOWithDefaults() *AuthorizeEditorDataTlsS
 }
 
 // GetTlsValidationType returns the TlsValidationType field value
-func (o *AuthorizeEditorDataTlsSettingsDTO) GetTlsValidationType() string {
+func (o *AuthorizeEditorDataTlsSettingsDTO) GetTlsValidationType() EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *AuthorizeEditorDataTlsSettingsDTO) GetTlsValidationType() string {
 
 // GetTlsValidationTypeOk returns a tuple with the TlsValidationType field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataTlsSettingsDTO) GetTlsValidationTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataTlsSettingsDTO) GetTlsValidationTypeOk() (*EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *AuthorizeEditorDataTlsSettingsDTO) GetTlsValidationTypeOk() (*string, b
 }
 
 // SetTlsValidationType sets field value
-func (o *AuthorizeEditorDataTlsSettingsDTO) SetTlsValidationType(v string) {
+func (o *AuthorizeEditorDataTlsSettingsDTO) SetTlsValidationType(v EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType) {
 	o.TlsValidationType = v
 }
 

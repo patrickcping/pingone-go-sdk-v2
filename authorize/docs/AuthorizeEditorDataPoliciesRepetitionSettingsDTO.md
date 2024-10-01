@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Source** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
-**Decision** | **string** |  | 
+**Decision** | [**EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision**](EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataPoliciesRepetitionSettingsDTO
 
-`func NewAuthorizeEditorDataPoliciesRepetitionSettingsDTO(source AuthorizeEditorDataReferenceObjectDTO, decision string, ) *AuthorizeEditorDataPoliciesRepetitionSettingsDTO`
+`func NewAuthorizeEditorDataPoliciesRepetitionSettingsDTO(source AuthorizeEditorDataReferenceObjectDTO, decision EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision, ) *AuthorizeEditorDataPoliciesRepetitionSettingsDTO`
 
 NewAuthorizeEditorDataPoliciesRepetitionSettingsDTO instantiates a new AuthorizeEditorDataPoliciesRepetitionSettingsDTO object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetSource sets Source field to given value.
 
 ### GetDecision
 
-`func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecision() string`
+`func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecision() EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision`
 
 GetDecision returns the Decision field if non-nil, zero value otherwise.
 
 ### GetDecisionOk
 
-`func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecisionOk() (*string, bool)`
+`func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecisionOk() (*EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision, bool)`
 
 GetDecisionOk returns a tuple with the Decision field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDecision
 
-`func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) SetDecision(v string)`
+`func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) SetDecision(v EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision)`
 
 SetDecision sets Decision field to given value.
 

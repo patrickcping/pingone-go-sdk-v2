@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChangedResource** | Pointer to [**TypedRelationship**](TypedRelationship.md) |  | [optional] 
-**ChangeType** | Pointer to **string** |  | [optional] 
+**ChangeType** | Pointer to [**EnumAuthorizeEditorDataChangeDetailsDTOChangeType**](EnumAuthorizeEditorDataChangeDetailsDTOChangeType.md) |  | [optional] 
 **ChangedEntityName** | Pointer to **string** |  | [optional] 
 **ChangedEntityType** | Pointer to **string** |  | [optional] 
 **User** | Pointer to [**AuthorizeEditorDataUserDTO**](AuthorizeEditorDataUserDTO.md) |  | [optional] 
@@ -56,20 +56,20 @@ HasChangedResource returns a boolean if a field has been set.
 
 ### GetChangeType
 
-`func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeType() string`
+`func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeType() EnumAuthorizeEditorDataChangeDetailsDTOChangeType`
 
 GetChangeType returns the ChangeType field if non-nil, zero value otherwise.
 
 ### GetChangeTypeOk
 
-`func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeTypeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataChangeDetailsDTO) GetChangeTypeOk() (*EnumAuthorizeEditorDataChangeDetailsDTOChangeType, bool)`
 
 GetChangeTypeOk returns a tuple with the ChangeType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChangeType
 
-`func (o *AuthorizeEditorDataChangeDetailsDTO) SetChangeType(v string)`
+`func (o *AuthorizeEditorDataChangeDetailsDTO) SetChangeType(v EnumAuthorizeEditorDataChangeDetailsDTOChangeType)`
 
 SetChangeType sets ChangeType field to given value.
 

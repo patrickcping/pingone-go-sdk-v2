@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **MaximumRequestsPerSecond** | Pointer to **float64** |  | [optional] 
 **TimeoutMilliseconds** | Pointer to **int32** |  | [optional] 
 **Url** | **string** |  | 
-**Verb** | **string** |  | 
+**Verb** | [**EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb**](EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb.md) |  | 
 **Body** | Pointer to **string** |  | [optional] 
 **ContentType** | Pointer to **string** |  | [optional] 
 **Headers** | Pointer to [**[]AuthorizeEditorDataHttpRequestHeaderDTO**](AuthorizeEditorDataHttpRequestHeaderDTO.md) |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO
 
-`func NewAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO(url string, verb string, authentication AuthorizeEditorDataAuthenticationDTO, tlsSettings AuthorizeEditorDataTlsSettingsDTO, ) *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO`
+`func NewAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO(url string, verb EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb, authentication AuthorizeEditorDataAuthenticationDTO, tlsSettings AuthorizeEditorDataTlsSettingsDTO, ) *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO`
 
 NewAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO instantiates a new AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO object
 This constructor will assign default values to properties that have it defined,
@@ -131,20 +131,20 @@ SetUrl sets Url field to given value.
 
 ### GetVerb
 
-`func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerb() string`
+`func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerb() EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb`
 
 GetVerb returns the Verb field if non-nil, zero value otherwise.
 
 ### GetVerbOk
 
-`func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerbOk() (*string, bool)`
+`func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) GetVerbOk() (*EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb, bool)`
 
 GetVerbOk returns a tuple with the Verb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerb
 
-`func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) SetVerb(v string)`
+`func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) SetVerb(v EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb)`
 
 SetVerb sets Verb field to given value.
 

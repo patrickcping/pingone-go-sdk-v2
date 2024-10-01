@@ -25,8 +25,8 @@ type AuthorizeEditorDataStatementsReferenceableStatementDTO struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Code string `json:"code"`
-	AppliesTo string `json:"appliesTo"`
-	AppliesIf string `json:"appliesIf"`
+	AppliesTo EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo `json:"appliesTo"`
+	AppliesIf EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf `json:"appliesIf"`
 	Payload string `json:"payload"`
 	Obligatory *bool `json:"obligatory,omitempty"`
 	Attributes []AuthorizeEditorDataReferenceObjectDTO `json:"attributes"`
@@ -37,7 +37,7 @@ type AuthorizeEditorDataStatementsReferenceableStatementDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataStatementsReferenceableStatementDTO(id string, name string, code string, appliesTo string, appliesIf string, payload string, attributes []AuthorizeEditorDataReferenceObjectDTO, version string) *AuthorizeEditorDataStatementsReferenceableStatementDTO {
+func NewAuthorizeEditorDataStatementsReferenceableStatementDTO(id string, name string, code string, appliesTo EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo, appliesIf EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf, payload string, attributes []AuthorizeEditorDataReferenceObjectDTO, version string) *AuthorizeEditorDataStatementsReferenceableStatementDTO {
 	this := AuthorizeEditorDataStatementsReferenceableStatementDTO{}
 	this.Id = id
 	this.Name = name
@@ -195,9 +195,9 @@ func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetCode(v strin
 }
 
 // GetAppliesTo returns the AppliesTo field value
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesTo() string {
+func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesTo() EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo
 		return ret
 	}
 
@@ -206,7 +206,7 @@ func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesTo() 
 
 // GetAppliesToOk returns a tuple with the AppliesTo field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesToOk() (*string, bool) {
+func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesToOk() (*EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -214,14 +214,14 @@ func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesToOk(
 }
 
 // SetAppliesTo sets field value
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesTo(v string) {
+func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesTo(v EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo) {
 	o.AppliesTo = v
 }
 
 // GetAppliesIf returns the AppliesIf field value
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIf() string {
+func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIf() EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf
 		return ret
 	}
 
@@ -230,7 +230,7 @@ func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIf() 
 
 // GetAppliesIfOk returns a tuple with the AppliesIf field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIfOk() (*string, bool) {
+func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIfOk() (*EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -238,7 +238,7 @@ func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIfOk(
 }
 
 // SetAppliesIf sets field value
-func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesIf(v string) {
+func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesIf(v EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf) {
 	o.AppliesIf = v
 }
 

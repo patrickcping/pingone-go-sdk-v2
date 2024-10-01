@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataEntityTestingOverrideDTO{}
 
 // AuthorizeEditorDataEntityTestingOverrideDTO struct for AuthorizeEditorDataEntityTestingOverrideDTO
 type AuthorizeEditorDataEntityTestingOverrideDTO struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataEntityTestingOverrideDTOType `json:"type"`
 	Value AuthorizeEditorDataOverrideObjectDTO `json:"value"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataEntityTestingOverrideDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataEntityTestingOverrideDTO(type_ string, value AuthorizeEditorDataOverrideObjectDTO) *AuthorizeEditorDataEntityTestingOverrideDTO {
+func NewAuthorizeEditorDataEntityTestingOverrideDTO(type_ EnumAuthorizeEditorDataEntityTestingOverrideDTOType, value AuthorizeEditorDataOverrideObjectDTO) *AuthorizeEditorDataEntityTestingOverrideDTO {
 	this := AuthorizeEditorDataEntityTestingOverrideDTO{}
 	this.Type = type_
 	this.Value = value
@@ -43,9 +43,9 @@ func NewAuthorizeEditorDataEntityTestingOverrideDTOWithDefaults() *AuthorizeEdit
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataEntityTestingOverrideDTO) GetType() string {
+func (o *AuthorizeEditorDataEntityTestingOverrideDTO) GetType() EnumAuthorizeEditorDataEntityTestingOverrideDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataEntityTestingOverrideDTOType
 		return ret
 	}
 
@@ -54,7 +54,7 @@ func (o *AuthorizeEditorDataEntityTestingOverrideDTO) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataEntityTestingOverrideDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataEntityTestingOverrideDTO) GetTypeOk() (*EnumAuthorizeEditorDataEntityTestingOverrideDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *AuthorizeEditorDataEntityTestingOverrideDTO) GetTypeOk() (*string, bool
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataEntityTestingOverrideDTO) SetType(v string) {
+func (o *AuthorizeEditorDataEntityTestingOverrideDTO) SetType(v EnumAuthorizeEditorDataEntityTestingOverrideDTOType) {
 	o.Type = v
 }
 

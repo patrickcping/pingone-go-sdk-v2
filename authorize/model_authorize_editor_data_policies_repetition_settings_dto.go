@@ -20,14 +20,14 @@ var _ MappedNullable = &AuthorizeEditorDataPoliciesRepetitionSettingsDTO{}
 // AuthorizeEditorDataPoliciesRepetitionSettingsDTO struct for AuthorizeEditorDataPoliciesRepetitionSettingsDTO
 type AuthorizeEditorDataPoliciesRepetitionSettingsDTO struct {
 	Source AuthorizeEditorDataReferenceObjectDTO `json:"source"`
-	Decision string `json:"decision"`
+	Decision EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision `json:"decision"`
 }
 
 // NewAuthorizeEditorDataPoliciesRepetitionSettingsDTO instantiates a new AuthorizeEditorDataPoliciesRepetitionSettingsDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataPoliciesRepetitionSettingsDTO(source AuthorizeEditorDataReferenceObjectDTO, decision string) *AuthorizeEditorDataPoliciesRepetitionSettingsDTO {
+func NewAuthorizeEditorDataPoliciesRepetitionSettingsDTO(source AuthorizeEditorDataReferenceObjectDTO, decision EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision) *AuthorizeEditorDataPoliciesRepetitionSettingsDTO {
 	this := AuthorizeEditorDataPoliciesRepetitionSettingsDTO{}
 	this.Source = source
 	this.Decision = decision
@@ -67,9 +67,9 @@ func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) SetSource(v Authorize
 }
 
 // GetDecision returns the Decision field value
-func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecision() string {
+func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecision() EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision
 		return ret
 	}
 
@@ -78,7 +78,7 @@ func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecision() string 
 
 // GetDecisionOk returns a tuple with the Decision field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecisionOk() (*string, bool) {
+func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecisionOk() (*EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,7 +86,7 @@ func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) GetDecisionOk() (*str
 }
 
 // SetDecision sets field value
-func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) SetDecision(v string) {
+func (o *AuthorizeEditorDataPoliciesRepetitionSettingsDTO) SetDecision(v EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision) {
 	o.Decision = v
 }
 

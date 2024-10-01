@@ -22,8 +22,8 @@ type AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO struct {
 	MaximumConcurrentRequests *int32 `json:"maximumConcurrentRequests,omitempty"`
 	MaximumRequestsPerSecond *float64 `json:"maximumRequestsPerSecond,omitempty"`
 	TimeoutMilliseconds *int32 `json:"timeoutMilliseconds,omitempty"`
-	Channel string `json:"channel"`
-	Code string `json:"code"`
+	Channel EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel `json:"channel"`
+	Code EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode `json:"code"`
 	Capability string `json:"capability"`
 	SchemaVersion *int32 `json:"schemaVersion,omitempty"`
 	InputMappings []AuthorizeEditorDataInputMappingDTO `json:"inputMappings"`
@@ -33,7 +33,7 @@ type AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(channel string, code string, capability string, inputMappings []AuthorizeEditorDataInputMappingDTO) *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO {
+func NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(channel EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel, code EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode, capability string, inputMappings []AuthorizeEditorDataInputMappingDTO) *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO {
 	this := AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO{}
 	this.Channel = channel
 	this.Code = code
@@ -147,9 +147,9 @@ func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetTimeo
 }
 
 // GetChannel returns the Channel field value
-func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannel() string {
+func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannel() EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel
 		return ret
 	}
 
@@ -158,7 +158,7 @@ func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChann
 
 // GetChannelOk returns a tuple with the Channel field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannelOk() (*string, bool) {
+func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChannelOk() (*EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -166,14 +166,14 @@ func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetChann
 }
 
 // SetChannel sets field value
-func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetChannel(v string) {
+func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetChannel(v EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel) {
 	o.Channel = v
 }
 
 // GetCode returns the Code field value
-func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCode() string {
+func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCode() EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode
 		return ret
 	}
 
@@ -182,7 +182,7 @@ func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCode(
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCodeOk() (*string, bool) {
+func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCodeOk() (*EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -190,7 +190,7 @@ func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) GetCodeO
 }
 
 // SetCode sets field value
-func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetCode(v string) {
+func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetCode(v EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode) {
 	o.Code = v
 }
 

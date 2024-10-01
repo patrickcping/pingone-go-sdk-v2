@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Code** | **string** |  | 
-**AppliesTo** | **string** |  | 
-**AppliesIf** | **string** |  | 
+**AppliesTo** | [**EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo**](EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo.md) |  | 
+**AppliesIf** | [**EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf**](EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf.md) |  | 
 **Payload** | **string** |  | 
 **Obligatory** | Pointer to **bool** |  | [optional] 
 **Attributes** | [**[]AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataStatementsReferenceableStatementDTO
 
-`func NewAuthorizeEditorDataStatementsReferenceableStatementDTO(id string, name string, code string, appliesTo string, appliesIf string, payload string, attributes []AuthorizeEditorDataReferenceObjectDTO, version string, ) *AuthorizeEditorDataStatementsReferenceableStatementDTO`
+`func NewAuthorizeEditorDataStatementsReferenceableStatementDTO(id string, name string, code string, appliesTo EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo, appliesIf EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf, payload string, attributes []AuthorizeEditorDataReferenceObjectDTO, version string, ) *AuthorizeEditorDataStatementsReferenceableStatementDTO`
 
 NewAuthorizeEditorDataStatementsReferenceableStatementDTO instantiates a new AuthorizeEditorDataStatementsReferenceableStatementDTO object
 This constructor will assign default values to properties that have it defined,
@@ -147,40 +147,40 @@ SetCode sets Code field to given value.
 
 ### GetAppliesTo
 
-`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesTo() string`
+`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesTo() EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo`
 
 GetAppliesTo returns the AppliesTo field if non-nil, zero value otherwise.
 
 ### GetAppliesToOk
 
-`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesToOk() (*string, bool)`
+`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesToOk() (*EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo, bool)`
 
 GetAppliesToOk returns a tuple with the AppliesTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAppliesTo
 
-`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesTo(v string)`
+`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesTo(v EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo)`
 
 SetAppliesTo sets AppliesTo field to given value.
 
 
 ### GetAppliesIf
 
-`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIf() string`
+`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIf() EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf`
 
 GetAppliesIf returns the AppliesIf field if non-nil, zero value otherwise.
 
 ### GetAppliesIfOk
 
-`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIfOk() (*string, bool)`
+`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) GetAppliesIfOk() (*EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf, bool)`
 
 GetAppliesIfOk returns a tuple with the AppliesIf field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAppliesIf
 
-`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesIf(v string)`
+`func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetAppliesIf(v EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf)`
 
 SetAppliesIf sets AppliesIf field to given value.
 

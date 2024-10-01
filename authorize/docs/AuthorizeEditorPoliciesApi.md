@@ -35,7 +35,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the policy.
-    authorizeEditorDataPoliciesPolicyDTO := *openapiclient.NewAuthorizeEditorDataPoliciesPolicyDTO("Name_example", *openapiclient.NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO("Algorithm_example")) // AuthorizeEditorDataPoliciesPolicyDTO | 
+    authorizeEditorDataPoliciesPolicyDTO := *openapiclient.NewAuthorizeEditorDataPoliciesPolicyDTO("Name_example", *openapiclient.NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO(openapiclient.EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm("PERMIT_OVERRIDES"))) // AuthorizeEditorDataPoliciesPolicyDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -405,7 +405,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the policy.
     policyID := "policyID_example" // string | The ID of the policy to be updated
-    authorizeEditorDataPoliciesReferenceablePolicyDTO := *openapiclient.NewAuthorizeEditorDataPoliciesReferenceablePolicyDTO(*openapiclient.NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO("Algorithm_example"), "Version_example") // AuthorizeEditorDataPoliciesReferenceablePolicyDTO | 
+    authorizeEditorDataPoliciesReferenceablePolicyDTO := *openapiclient.NewAuthorizeEditorDataPoliciesReferenceablePolicyDTO(*openapiclient.NewAuthorizeEditorDataPoliciesCombiningAlgorithmDTO(openapiclient.EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm("PERMIT_OVERRIDES")), "Version_example") // AuthorizeEditorDataPoliciesReferenceablePolicyDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()

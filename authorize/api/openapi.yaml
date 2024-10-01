@@ -7189,7 +7189,7 @@ components:
         policy:
           id: id
         status:
-          code: POLICIES_CREATE_IN_PROGRESS
+          code: null
           error:
             code: code
             id: id
@@ -7217,6 +7217,23 @@ components:
         status:
           $ref: '#/components/schemas/APIServerDeployment_status'
       type: object
+    EnumAPIServerDeploymentStatusCode:
+      description: "The deployment status code.\n- `POLICIES_CREATE_IN_PROGRESS`\t\
+        The policy bundle for the API service's managed policies is being created.\n\
+        - `DECISION_ENDPOINT_CREATE_IN_PROGRESS`\tA decision endpoint is being created\
+        \ for the API service.\n- `DECISION_ENDPOINT_UPDATE_IN_PROGRESS`\tThe API\
+        \ service's decision endpoint is being updated.\n- `DEPLOYMENT_SUCCESSFUL`\t\
+        The API service's policies have been successfully deployed.\n- `DEPLOYMENT_FAILED`\t\
+        HAP-MGMT was unable to deploy the API service's Policies\n- `DEPLOYMENT_UNINITIALIZED`\t\
+        A deployment has not yet been attempted.\n"
+      enum:
+      - POLICIES_CREATE_IN_PROGRESS
+      - DECISION_ENDPOINT_CREATE_IN_PROGRESS
+      - DECISION_ENDPOINT_UPDATE_IN_PROGRESS
+      - DEPLOYMENT_SUCCESSFUL
+      - DEPLOYMENT_FAILED
+      - DEPLOYMENT_UNINITIALIZED
+      type: string
     APIServerOperation:
       example:
         accessControl:
@@ -7523,10 +7540,10 @@ components:
           key:
             href: https://openapi-generator.tech
         payload: payload
-        appliesIf: ANYTHING
+        appliesIf: null
         name: name
         description: description
-        appliesTo: ANYTHING
+        appliesTo: null
         attributes:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -7550,19 +7567,9 @@ components:
         code:
           type: string
         appliesTo:
-          enum:
-          - ANYTHING
-          - PERMIT
-          - DENY
-          - PERMIT_OR_DENY
-          - INDETERMINATE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo'
         appliesIf:
-          enum:
-          - ANYTHING
-          - FINAL_DECISION_MATCHES
-          - PATH_MATCHES
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf'
         payload:
           type: string
         obligatory:
@@ -7584,6 +7591,20 @@ components:
       - payload
       - version
       type: object
+    EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo:
+      enum:
+      - ANYTHING
+      - PERMIT
+      - DENY
+      - PERMIT_OR_DENY
+      - INDETERMINATE
+      type: string
+    EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf:
+      enum:
+      - ANYTHING
+      - FINAL_DECISION_MATCHES
+      - PATH_MATCHES
+      type: string
     AuthorizeEditorDataAuthenticationDTO:
       discriminator:
         mapping:
@@ -7682,13 +7703,15 @@ components:
     AuthorizeEditorDataTlsSettingsDTO:
       properties:
         tlsValidationType:
-          enum:
-          - DEFAULT
-          - NONE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType'
       required:
       - tlsValidationType
       type: object
+    EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType:
+      enum:
+      - DEFAULT
+      - NONE
+      type: string
     EnumAuthorizeEditorDataValueTypeDTO:
       enum:
       - BOOLEAN
@@ -7896,13 +7919,9 @@ components:
           format: int32
           type: integer
         channel:
-          enum:
-          - AUTHORIZE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel'
         code:
-          enum:
-          - P1_RISK
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode'
         capability:
           type: string
         schemaVersion:
@@ -7918,6 +7937,14 @@ components:
       - code
       - inputMappings
       type: object
+    EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel:
+      enum:
+      - AUTHORIZE
+      type: string
+    EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode:
+      enum:
+      - P1_RISK
+      type: string
     AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO:
       properties:
         maximumConcurrentRequests:
@@ -7932,13 +7959,7 @@ components:
         url:
           type: string
         verb:
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb'
         body:
           type: string
         contentType:
@@ -7957,6 +7978,14 @@ components:
       - url
       - verb
       type: object
+    EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb:
+      enum:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - HEAD
+      type: string
     AuthorizeEditorDataConditionDTO:
       discriminator:
         mapping:
@@ -8272,20 +8301,22 @@ components:
       type: object
     AuthorizeEditorDataPoliciesCombiningAlgorithmDTO:
       example:
-        algorithm: PERMIT_OVERRIDES
+        algorithm: null
       properties:
         algorithm:
-          enum:
-          - PERMIT_OVERRIDES
-          - DENY_OVERRIDES
-          - PERMIT_UNLESS_DENY
-          - DENY_UNLESS_PERMIT
-          - FIRST_APPLICABLE
-          - ONLY_ONE_APPLICABLE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm'
       required:
       - algorithm
       type: object
+    EnumAuthorizeEditorDataPoliciesCombiningAlgorithmDTOAlgorithm:
+      enum:
+      - PERMIT_OVERRIDES
+      - DENY_OVERRIDES
+      - PERMIT_UNLESS_DENY
+      - DENY_UNLESS_PERMIT
+      - FIRST_APPLICABLE
+      - ONLY_ONE_APPLICABLE
+      type: string
     AuthorizeEditorDataPoliciesPolicyChild:
       type: object
     AuthorizeEditorDataPoliciesReferenceablePolicyDTO:
@@ -8305,7 +8336,7 @@ components:
         condition:
           type: null
         combiningAlgorithm:
-          algorithm: PERMIT_OVERRIDES
+          algorithm: null
         _links:
           key:
             href: https://openapi-generator.tech
@@ -8313,7 +8344,7 @@ components:
         - null
         - null
         repetitionSettings:
-          decision: PERMIT
+          decision: null
           source:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -8346,23 +8377,25 @@ components:
       type: object
     AuthorizeEditorDataPoliciesRepetitionSettingsDTO:
       example:
-        decision: PERMIT
+        decision: null
         source:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         source:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         decision:
-          enum:
-          - PERMIT
-          - DENY
-          - NOT_APPLICABLE
-          - INDETERMINATE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision'
       required:
       - decision
       - source
       type: object
+    EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision:
+      enum:
+      - PERMIT
+      - DENY
+      - NOT_APPLICABLE
+      - INDETERMINATE
+      type: string
     AuthorizeEditorDataDefinitionsConditionDefinitionDTO:
       example:
         parent:
@@ -8507,13 +8540,15 @@ components:
       - $ref: '#/components/schemas/AuthorizeEditorDataResolverDTO'
       - properties:
           value:
-            enum:
-            - "NULL"
-            - CURRENT_DATE_TIME
-            type: string
+            $ref: '#/components/schemas/EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue'
         type: object
       required:
       - value
+    EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue:
+      enum:
+      - "NULL"
+      - CURRENT_DATE_TIME
+      type: string
     AuthorizeEditorDataAttributeResolversUserQueryDTO:
       discriminator:
         propertyName: type
@@ -8649,10 +8684,10 @@ components:
         _embedded:
           key: "{}"
         payload: payload
-        appliesIf: ANYTHING
+        appliesIf: null
         name: name
         description: description
-        appliesTo: ANYTHING
+        appliesTo: null
         attributes:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -8685,19 +8720,9 @@ components:
         code:
           type: string
         appliesTo:
-          enum:
-          - ANYTHING
-          - PERMIT
-          - DENY
-          - PERMIT_OR_DENY
-          - INDETERMINATE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo'
         appliesIf:
-          enum:
-          - ANYTHING
-          - FINAL_DECISION_MATCHES
-          - PATH_MATCHES
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf'
         payload:
           type: string
         obligatory:
@@ -8714,14 +8739,28 @@ components:
       - name
       - payload
       type: object
+    EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo:
+      enum:
+      - ANYTHING
+      - PERMIT
+      - DENY
+      - PERMIT_OR_DENY
+      - INDETERMINATE
+      type: string
+    EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf:
+      enum:
+      - ANYTHING
+      - FINAL_DECISION_MATCHES
+      - PATH_MATCHES
+      type: string
     AuthorizeEditorDataEntityTestRequestDTO:
       example:
         overrides:
-        - type: ATTRIBUTE
+        - type: null
           value:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             override: override
-        - type: ATTRIBUTE
+        - type: null
           value:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             override: override
@@ -8763,22 +8802,24 @@ components:
       type: object
     AuthorizeEditorDataEntityTestingOverrideDTO:
       example:
-        type: ATTRIBUTE
+        type: null
         value:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           override: override
       properties:
         type:
-          enum:
-          - ATTRIBUTE
-          - SERVICE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataEntityTestingOverrideDTOType'
         value:
           $ref: '#/components/schemas/AuthorizeEditorDataOverrideObjectDTO'
       required:
       - type
       - value
       type: object
+    EnumAuthorizeEditorDataEntityTestingOverrideDTOType:
+      enum:
+      - ATTRIBUTE
+      - SERVICE
+      type: string
     AuthorizeEditorDataEntityTestingParameterDTO:
       example:
         value: value
@@ -8807,11 +8848,11 @@ components:
           value: value
         request:
           overrides:
-          - type: ATTRIBUTE
+          - type: null
             value:
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               override: override
-          - type: ATTRIBUTE
+          - type: null
             value:
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               override: override
@@ -8959,14 +9000,14 @@ components:
           id: id
         condition: null
         combiningAlgorithm:
-          algorithm: PERMIT_OVERRIDES
+          algorithm: null
         _embedded:
           key: "{}"
         children:
         - null
         - null
         repetitionSettings:
-          decision: PERMIT
+          decision: null
           source:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -9074,7 +9115,7 @@ components:
         changeDetails:
           changedEntityName: changedEntityName
           changedEntityType: changedEntityType
-          changeType: CREATE
+          changeType: null
           user:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             envId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -9113,7 +9154,7 @@ components:
       example:
         changedEntityName: changedEntityName
         changedEntityType: changedEntityType
-        changeType: CREATE
+        changeType: null
         user:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           envId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -9124,12 +9165,7 @@ components:
         changedResource:
           $ref: '#/components/schemas/TypedRelationship'
         changeType:
-          enum:
-          - CREATE
-          - UPDATE
-          - DELETE
-          - NONE
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataChangeDetailsDTOChangeType'
         changedEntityName:
           type: string
         changedEntityType:
@@ -9137,6 +9173,13 @@ components:
         user:
           $ref: '#/components/schemas/AuthorizeEditorDataUserDTO'
       type: object
+    EnumAuthorizeEditorDataChangeDetailsDTOChangeType:
+      enum:
+      - CREATE
+      - UPDATE
+      - DELETE
+      - NONE
+      type: string
     AuthorizeEditorDataEnvironmentDTO:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10345,29 +10388,14 @@ components:
       type: object
     APIServerDeployment_status:
       example:
-        code: POLICIES_CREATE_IN_PROGRESS
+        code: null
         error:
           code: code
           id: id
           message: message
       properties:
         code:
-          description: "The deployment status code.\n- `POLICIES_CREATE_IN_PROGRESS`\t\
-            The policy bundle for the API service's managed policies is being created.\n\
-            - `DECISION_ENDPOINT_CREATE_IN_PROGRESS`\tA decision endpoint is being\
-            \ created for the API service.\n- `DECISION_ENDPOINT_UPDATE_IN_PROGRESS`\t\
-            The API service's decision endpoint is being updated.\n- `DEPLOYMENT_SUCCESSFUL`\t\
-            The API service's policies have been successfully deployed.\n- `DEPLOYMENT_FAILED`\t\
-            HAP-MGMT was unable to deploy the API service's Policies\n- `DEPLOYMENT_UNINITIALIZED`\t\
-            A deployment has not yet been attempted.\n"
-          enum:
-          - POLICIES_CREATE_IN_PROGRESS
-          - DECISION_ENDPOINT_CREATE_IN_PROGRESS
-          - DECISION_ENDPOINT_UPDATE_IN_PROGRESS
-          - DEPLOYMENT_SUCCESSFUL
-          - DEPLOYMENT_FAILED
-          - DEPLOYMENT_UNINITIALIZED
-          type: string
+          $ref: '#/components/schemas/EnumAPIServerDeploymentStatusCode'
         error:
           $ref: '#/components/schemas/APIServerDeployment_status_error'
       type: object
