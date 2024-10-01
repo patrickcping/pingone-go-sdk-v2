@@ -8562,6 +8562,8 @@ components:
       type: string
     AuthorizeEditorDataAttributeResolversUserQueryDTO:
       discriminator:
+        mapping:
+          USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO'
         propertyName: type
       properties:
         type:
@@ -9347,7 +9349,7 @@ components:
             $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorCapability'
           type: array
       type: object
-    AuthorizeEditorDataAttributeResolversuserqueries.UserIdQueryDTO:
+    AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryDTO'
       - properties:
