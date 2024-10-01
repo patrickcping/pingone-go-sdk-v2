@@ -26,7 +26,7 @@ type AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO(type_ string) *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO {
+func NewAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO(type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType) *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO {
 	this := AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO{}
 	this.Type = type_
 	return &this

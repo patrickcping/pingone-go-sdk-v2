@@ -975,9 +975,21 @@ components:
       type: object
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataRulesEffectSettingsDTOType'
       discriminator:
         propertyName: type
+        mapping:
+          CONDITIONAL_DENY_ELSE_PERMIT: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
+          CONDITIONAL_PERMIT_ELSE_DENY: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
+          UNCONDITIONAL_DENY: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
+          UNCONDITIONAL_PERMIT: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
+    EnumAuthorizeEditorDataRulesEffectSettingsDTOType:
+      type: string
+      enum:
+      - CONDITIONAL_DENY_ELSE_PERMIT
+      - CONDITIONAL_PERMIT_ELSE_DENY
+      - UNCONDITIONAL_DENY
+      - UNCONDITIONAL_PERMIT
     AuthorizeEditorDataRulesReferenceableRuleDTO:
       required:
       - effectSettings

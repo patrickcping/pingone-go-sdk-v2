@@ -27,7 +27,7 @@ type AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(condition AuthorizeEditorDataConditionDTO, type_ string) *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO {
+func NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(condition AuthorizeEditorDataConditionDTO, type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType) *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO {
 	this := AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO{}
 	this.Type = type_
 	this.Condition = condition

@@ -8073,22 +8073,34 @@ components:
       - reference
     AuthorizeEditorDataRulesEffectSettingsDTO:
       discriminator:
+        mapping:
+          CONDITIONAL_DENY_ELSE_PERMIT: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
+          CONDITIONAL_PERMIT_ELSE_DENY: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
+          UNCONDITIONAL_DENY: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
+          UNCONDITIONAL_PERMIT: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
         propertyName: type
       example:
-        type: type
+        type: null
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataRulesEffectSettingsDTOType'
       required:
       - type
       type: object
+    EnumAuthorizeEditorDataRulesEffectSettingsDTOType:
+      enum:
+      - CONDITIONAL_DENY_ELSE_PERMIT
+      - CONDITIONAL_PERMIT_ELSE_DENY
+      - UNCONDITIONAL_DENY
+      - UNCONDITIONAL_PERMIT
+      type: string
     AuthorizeEditorDataRulesReferenceableRuleDTO:
       example:
         _links:
           key:
             href: https://openapi-generator.tech
         effectSettings:
-          type: type
+          type: null
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         _links:

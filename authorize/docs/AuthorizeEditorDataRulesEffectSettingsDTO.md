@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
+**Type** | [**EnumAuthorizeEditorDataRulesEffectSettingsDTOType**](EnumAuthorizeEditorDataRulesEffectSettingsDTOType.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataRulesEffectSettingsDTO
 
-`func NewAuthorizeEditorDataRulesEffectSettingsDTO(type_ string, ) *AuthorizeEditorDataRulesEffectSettingsDTO`
+`func NewAuthorizeEditorDataRulesEffectSettingsDTO(type_ EnumAuthorizeEditorDataRulesEffectSettingsDTOType, ) *AuthorizeEditorDataRulesEffectSettingsDTO`
 
 NewAuthorizeEditorDataRulesEffectSettingsDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsDTO object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetType() string`
+`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetType() EnumAuthorizeEditorDataRulesEffectSettingsDTOType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetTypeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) GetTypeOk() (*EnumAuthorizeEditorDataRulesEffectSettingsDTOType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) SetType(v string)`
+`func (o *AuthorizeEditorDataRulesEffectSettingsDTO) SetType(v EnumAuthorizeEditorDataRulesEffectSettingsDTOType)`
 
 SetType sets Type field to given value.
 

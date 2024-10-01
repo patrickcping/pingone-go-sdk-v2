@@ -35,7 +35,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the rule.
-    authorizeEditorDataRulesRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesRuleDTO("Name_example", openapiclient.AuthorizeEditorDataRulesRuleDTO_effectSettings{AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO: openapiclient.NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(*openapiclient.NewAuthorizeEditorDataConditionDTO(openapiclient.EnumAuthorizeEditorDataConditionDTOType("AND")), "Type_example")}) // AuthorizeEditorDataRulesRuleDTO | 
+    authorizeEditorDataRulesRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesRuleDTO("Name_example", openapiclient.AuthorizeEditorDataRulesRuleDTO_effectSettings{AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO: openapiclient.NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(*openapiclient.NewAuthorizeEditorDataConditionDTO(openapiclient.EnumAuthorizeEditorDataConditionDTOType("AND")), openapiclient.EnumAuthorizeEditorDataRulesEffectSettingsDTOType("CONDITIONAL_DENY_ELSE_PERMIT"))}) // AuthorizeEditorDataRulesRuleDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -405,7 +405,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the rule.
     ruleID := "ruleID_example" // string | The ID of the rule to be updated
-    authorizeEditorDataRulesReferenceableRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesReferenceableRuleDTO(*openapiclient.NewAuthorizeEditorDataRulesEffectSettingsDTO("Type_example"), "Version_example") // AuthorizeEditorDataRulesReferenceableRuleDTO | 
+    authorizeEditorDataRulesReferenceableRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesReferenceableRuleDTO(*openapiclient.NewAuthorizeEditorDataRulesEffectSettingsDTO(openapiclient.EnumAuthorizeEditorDataRulesEffectSettingsDTOType("CONDITIONAL_DENY_ELSE_PERMIT")), "Version_example") // AuthorizeEditorDataRulesReferenceableRuleDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
