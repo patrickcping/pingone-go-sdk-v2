@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md) |  | [optional] 
 **CacheSettings** | Pointer to [**AuthorizeEditorDataCacheSettingsDTO**](AuthorizeEditorDataCacheSettingsDTO.md) |  | [optional] 
 **ServiceType** | **string** |  | 
+**Processor** | Pointer to [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | [optional] 
 **ValueType** | [**AuthorizeEditorDataValueTypeDTO**](AuthorizeEditorDataValueTypeDTO.md) |  | 
 **ServiceSettings** | [**AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO**](AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO.md) |  | 
 
@@ -301,6 +302,31 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
+
+### GetProcessor
+
+`func (o *CreateService201Response) GetProcessor() AuthorizeEditorDataProcessorDTO`
+
+GetProcessor returns the Processor field if non-nil, zero value otherwise.
+
+### GetProcessorOk
+
+`func (o *CreateService201Response) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool)`
+
+GetProcessorOk returns a tuple with the Processor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessor
+
+`func (o *CreateService201Response) SetProcessor(v AuthorizeEditorDataProcessorDTO)`
+
+SetProcessor sets Processor field to given value.
+
+### HasProcessor
+
+`func (o *CreateService201Response) HasProcessor() bool`
+
+HasProcessor returns a boolean if a field has been set.
 
 ### GetValueType
 

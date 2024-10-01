@@ -15,12 +15,15 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md) |  | [optional] 
 **CacheSettings** | Pointer to [**AuthorizeEditorDataCacheSettingsDTO**](AuthorizeEditorDataCacheSettingsDTO.md) |  | [optional] 
 **ServiceType** | **string** |  | 
+**Processor** | Pointer to [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | [optional] 
+**ValueType** | [**AuthorizeEditorDataValueTypeDTO**](AuthorizeEditorDataValueTypeDTO.md) |  | 
+**ServiceSettings** | [**AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO**](AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataDefinitionsServiceDefinitionDTO
 
-`func NewAuthorizeEditorDataDefinitionsServiceDefinitionDTO(name string, serviceType string, ) *AuthorizeEditorDataDefinitionsServiceDefinitionDTO`
+`func NewAuthorizeEditorDataDefinitionsServiceDefinitionDTO(name string, serviceType string, valueType AuthorizeEditorDataValueTypeDTO, serviceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO, ) *AuthorizeEditorDataDefinitionsServiceDefinitionDTO`
 
 NewAuthorizeEditorDataDefinitionsServiceDefinitionDTO instantiates a new AuthorizeEditorDataDefinitionsServiceDefinitionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -298,6 +301,71 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetServiceType(v string)`
 
 SetServiceType sets ServiceType field to given value.
+
+
+### GetProcessor
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetProcessor() AuthorizeEditorDataProcessorDTO`
+
+GetProcessor returns the Processor field if non-nil, zero value otherwise.
+
+### GetProcessorOk
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool)`
+
+GetProcessorOk returns a tuple with the Processor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessor
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetProcessor(v AuthorizeEditorDataProcessorDTO)`
+
+SetProcessor sets Processor field to given value.
+
+### HasProcessor
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) HasProcessor() bool`
+
+HasProcessor returns a boolean if a field has been set.
+
+### GetValueType
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetValueType() AuthorizeEditorDataValueTypeDTO`
+
+GetValueType returns the ValueType field if non-nil, zero value otherwise.
+
+### GetValueTypeOk
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetValueTypeOk() (*AuthorizeEditorDataValueTypeDTO, bool)`
+
+GetValueTypeOk returns a tuple with the ValueType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValueType
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetValueType(v AuthorizeEditorDataValueTypeDTO)`
+
+SetValueType sets ValueType field to given value.
+
+
+### GetServiceSettings
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetServiceSettings() AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO`
+
+GetServiceSettings returns the ServiceSettings field if non-nil, zero value otherwise.
+
+### GetServiceSettingsOk
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetServiceSettingsOk() (*AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO, bool)`
+
+GetServiceSettingsOk returns a tuple with the ServiceSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceSettings
+
+`func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) SetServiceSettings(v AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO)`
+
+SetServiceSettings sets ServiceSettings field to given value.
 
 
 

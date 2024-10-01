@@ -655,7 +655,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/EnumAuthorizeEditorDataValueTypeDTO'
-    AuthorizeEditorDataDefinitionsServiceDefinitionDTO:
+    AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon:
       required:
       - name
       - serviceType
@@ -687,12 +687,17 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataCacheSettingsDTO'
         serviceType:
           type: string
+    AuthorizeEditorDataDefinitionsServiceDefinitionDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
       discriminator:
         propertyName: serviceType
         mapping:
-          NONE: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
-          HTTP: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
           CONNECTOR: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
+          HTTP: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
+          NONE: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
     EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType:
       type: string
       enum:
@@ -786,7 +791,7 @@ components:
       - serviceSettings
       - valueType
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon'
       - type: object
         properties:
           '_links':
@@ -803,7 +808,7 @@ components:
       - serviceSettings
       - valueType
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon'
       - type: object
         properties:
           '_links':
@@ -816,7 +821,7 @@ components:
       required:
       - name
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon'
       - type: object
         properties:
           '_links':

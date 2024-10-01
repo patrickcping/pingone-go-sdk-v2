@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthorizeEditorDataServicesHttpServiceDefinitionDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataServicesHttpServiceDefinitionDTO{}
+// checks if the AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon{}
 
-// AuthorizeEditorDataServicesHttpServiceDefinitionDTO struct for AuthorizeEditorDataServicesHttpServiceDefinitionDTO
-type AuthorizeEditorDataServicesHttpServiceDefinitionDTO struct {
+// AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon struct for AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon
+type AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The resource's unique identifier
@@ -31,33 +31,29 @@ type AuthorizeEditorDataServicesHttpServiceDefinitionDTO struct {
 	Type *EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType `json:"type,omitempty"`
 	CacheSettings *AuthorizeEditorDataCacheSettingsDTO `json:"cacheSettings,omitempty"`
 	ServiceType string `json:"serviceType"`
-	ValueType AuthorizeEditorDataValueTypeDTO `json:"valueType"`
-	ServiceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO `json:"serviceSettings"`
 }
 
-// NewAuthorizeEditorDataServicesHttpServiceDefinitionDTO instantiates a new AuthorizeEditorDataServicesHttpServiceDefinitionDTO object
+// NewAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon instantiates a new AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataServicesHttpServiceDefinitionDTO(name string, serviceType string, valueType AuthorizeEditorDataValueTypeDTO, serviceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) *AuthorizeEditorDataServicesHttpServiceDefinitionDTO {
-	this := AuthorizeEditorDataServicesHttpServiceDefinitionDTO{}
+func NewAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon(name string, serviceType string) *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon {
+	this := AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon{}
 	this.Name = name
 	this.ServiceType = serviceType
-	this.ValueType = valueType
-	this.ServiceSettings = serviceSettings
 	return &this
 }
 
-// NewAuthorizeEditorDataServicesHttpServiceDefinitionDTOWithDefaults instantiates a new AuthorizeEditorDataServicesHttpServiceDefinitionDTO object
+// NewAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommonWithDefaults instantiates a new AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataServicesHttpServiceDefinitionDTOWithDefaults() *AuthorizeEditorDataServicesHttpServiceDefinitionDTO {
-	this := AuthorizeEditorDataServicesHttpServiceDefinitionDTO{}
+func NewAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommonWithDefaults() *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon {
+	this := AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetLinks() map[string]LinksHATEOASValue {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
 		var ret map[string]LinksHATEOASValue
 		return ret
@@ -67,7 +63,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetLinks() map[str
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -75,7 +71,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetLinksOk() (*map
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasLinks() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -84,12 +80,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetLinks(v map[string]LinksHATEOASValue) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetEnvironment() ObjectEnvironment {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
@@ -99,7 +95,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetEnvironment() O
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -107,7 +103,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetEnvironmentOk()
 }
 
 // HasEnvironment returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasEnvironment() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasEnvironment() bool {
 	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
@@ -116,12 +112,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasEnvironment() b
 }
 
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetEnvironment(v ObjectEnvironment) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetId() string {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -131,7 +127,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetIdOk() (*string, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -139,7 +135,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetIdOk() (*string
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasId() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -148,12 +144,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetId(v string) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetId(v string) {
 	o.Id = &v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetVersion() string {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetVersion() string {
 	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
@@ -163,7 +159,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetVersion() strin
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetVersionOk() (*string, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
@@ -171,7 +167,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetVersionOk() (*s
 }
 
 // HasVersion returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasVersion() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasVersion() bool {
 	if o != nil && !IsNil(o.Version) {
 		return true
 	}
@@ -180,12 +176,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasVersion() bool 
 }
 
 // SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetVersion(v string) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetVersion(v string) {
 	o.Version = &v
 }
 
 // GetName returns the Name field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetName() string {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -196,7 +192,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetNameOk() (*string, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -204,12 +200,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetNameOk() (*stri
 }
 
 // SetName sets field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetName(v string) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetName(v string) {
 	o.Name = v
 }
 
 // GetFullName returns the FullName field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetFullName() string {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetFullName() string {
 	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
@@ -219,7 +215,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetFullName() stri
 
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetFullNameOk() (*string, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetFullNameOk() (*string, bool) {
 	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
@@ -227,7 +223,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetFullNameOk() (*
 }
 
 // HasFullName returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasFullName() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasFullName() bool {
 	if o != nil && !IsNil(o.FullName) {
 		return true
 	}
@@ -236,12 +232,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasFullName() bool
 }
 
 // SetFullName gets a reference to the given string and assigns it to the FullName field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetFullName(v string) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetFullName(v string) {
 	o.FullName = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetDescription() string {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -251,7 +247,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetDescription() s
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetDescriptionOk() (*string, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -259,7 +255,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetDescriptionOk()
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasDescription() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -268,12 +264,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasDescription() b
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetDescription(v string) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetParent returns the Parent field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetParent() AuthorizeEditorDataReferenceObjectDTO {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetParent() AuthorizeEditorDataReferenceObjectDTO {
 	if o == nil || IsNil(o.Parent) {
 		var ret AuthorizeEditorDataReferenceObjectDTO
 		return ret
@@ -283,7 +279,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetParent() Author
 
 // GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetParentOk() (*AuthorizeEditorDataReferenceObjectDTO, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetParentOk() (*AuthorizeEditorDataReferenceObjectDTO, bool) {
 	if o == nil || IsNil(o.Parent) {
 		return nil, false
 	}
@@ -291,7 +287,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetParentOk() (*Au
 }
 
 // HasParent returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasParent() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasParent() bool {
 	if o != nil && !IsNil(o.Parent) {
 		return true
 	}
@@ -300,12 +296,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasParent() bool {
 }
 
 // SetParent gets a reference to the given AuthorizeEditorDataReferenceObjectDTO and assigns it to the Parent field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetParent(v AuthorizeEditorDataReferenceObjectDTO) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetParent(v AuthorizeEditorDataReferenceObjectDTO) {
 	o.Parent = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetType() EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetType() EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType {
 	if o == nil || IsNil(o.Type) {
 		var ret EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType
 		return ret
@@ -315,7 +311,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetType() EnumAuth
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -323,7 +319,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetTypeOk() (*Enum
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasType() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -332,12 +328,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasType() bool {
 }
 
 // SetType gets a reference to the given EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType and assigns it to the Type field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetType(v EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetType(v EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType) {
 	o.Type = &v
 }
 
 // GetCacheSettings returns the CacheSettings field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetCacheSettings() AuthorizeEditorDataCacheSettingsDTO {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetCacheSettings() AuthorizeEditorDataCacheSettingsDTO {
 	if o == nil || IsNil(o.CacheSettings) {
 		var ret AuthorizeEditorDataCacheSettingsDTO
 		return ret
@@ -347,7 +343,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetCacheSettings()
 
 // GetCacheSettingsOk returns a tuple with the CacheSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetCacheSettingsOk() (*AuthorizeEditorDataCacheSettingsDTO, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetCacheSettingsOk() (*AuthorizeEditorDataCacheSettingsDTO, bool) {
 	if o == nil || IsNil(o.CacheSettings) {
 		return nil, false
 	}
@@ -355,7 +351,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetCacheSettingsOk
 }
 
 // HasCacheSettings returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasCacheSettings() bool {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) HasCacheSettings() bool {
 	if o != nil && !IsNil(o.CacheSettings) {
 		return true
 	}
@@ -364,12 +360,12 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasCacheSettings()
 }
 
 // SetCacheSettings gets a reference to the given AuthorizeEditorDataCacheSettingsDTO and assigns it to the CacheSettings field.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetCacheSettings(v AuthorizeEditorDataCacheSettingsDTO) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetCacheSettings(v AuthorizeEditorDataCacheSettingsDTO) {
 	o.CacheSettings = &v
 }
 
 // GetServiceType returns the ServiceType field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetServiceType() string {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetServiceType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -380,7 +376,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetServiceType() s
 
 // GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetServiceTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) GetServiceTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -388,59 +384,11 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetServiceTypeOk()
 }
 
 // SetServiceType sets field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetServiceType(v string) {
+func (o *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) SetServiceType(v string) {
 	o.ServiceType = v
 }
 
-// GetValueType returns the ValueType field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetValueType() AuthorizeEditorDataValueTypeDTO {
-	if o == nil {
-		var ret AuthorizeEditorDataValueTypeDTO
-		return ret
-	}
-
-	return o.ValueType
-}
-
-// GetValueTypeOk returns a tuple with the ValueType field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetValueTypeOk() (*AuthorizeEditorDataValueTypeDTO, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ValueType, true
-}
-
-// SetValueType sets field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetValueType(v AuthorizeEditorDataValueTypeDTO) {
-	o.ValueType = v
-}
-
-// GetServiceSettings returns the ServiceSettings field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetServiceSettings() AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO {
-	if o == nil {
-		var ret AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO
-		return ret
-	}
-
-	return o.ServiceSettings
-}
-
-// GetServiceSettingsOk returns a tuple with the ServiceSettings field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetServiceSettingsOk() (*AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ServiceSettings, true
-}
-
-// SetServiceSettings sets field value
-func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetServiceSettings(v AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) {
-	o.ServiceSettings = v
-}
-
-func (o AuthorizeEditorDataServicesHttpServiceDefinitionDTO) MarshalJSON() ([]byte, error) {
+func (o AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -448,7 +396,7 @@ func (o AuthorizeEditorDataServicesHttpServiceDefinitionDTO) MarshalJSON() ([]by
 	return json.Marshal(toSerialize)
 }
 
-func (o AuthorizeEditorDataServicesHttpServiceDefinitionDTO) ToMap() (map[string]interface{}, error) {
+func (o AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
@@ -479,43 +427,41 @@ func (o AuthorizeEditorDataServicesHttpServiceDefinitionDTO) ToMap() (map[string
 		toSerialize["cacheSettings"] = o.CacheSettings
 	}
 	toSerialize["serviceType"] = o.ServiceType
-	toSerialize["valueType"] = o.ValueType
-	toSerialize["serviceSettings"] = o.ServiceSettings
 	return toSerialize, nil
 }
 
-type NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO struct {
-	value *AuthorizeEditorDataServicesHttpServiceDefinitionDTO
+type NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon struct {
+	value *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon
 	isSet bool
 }
 
-func (v NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO) Get() *AuthorizeEditorDataServicesHttpServiceDefinitionDTO {
+func (v NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) Get() *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon {
 	return v.value
 }
 
-func (v *NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO) Set(val *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) {
+func (v *NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) Set(val *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO) IsSet() bool {
+func (v NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO) Unset() {
+func (v *NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO(val *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) *NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO {
-	return &NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO{value: val, isSet: true}
+func NewNullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon(val *AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) *NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon {
+	return &NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon{value: val, isSet: true}
 }
 
-func (v NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO) MarshalJSON() ([]byte, error) {
+func (v NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO) UnmarshalJSON(src []byte) error {
+func (v *NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

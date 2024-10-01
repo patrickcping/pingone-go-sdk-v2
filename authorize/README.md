@@ -229,6 +229,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataDefinitionsConditionDefinitionDTO](docs/AuthorizeEditorDataDefinitionsConditionDefinitionDTO.md)
  - [AuthorizeEditorDataDefinitionsProcessorDefinitionDTO](docs/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO.md)
  - [AuthorizeEditorDataDefinitionsServiceDefinitionDTO](docs/AuthorizeEditorDataDefinitionsServiceDefinitionDTO.md)
+ - [AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon](docs/AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon.md)
  - [AuthorizeEditorDataEntityTestRequestDTO](docs/AuthorizeEditorDataEntityTestRequestDTO.md)
  - [AuthorizeEditorDataEntityTestResponseDTO](docs/AuthorizeEditorDataEntityTestResponseDTO.md)
  - [AuthorizeEditorDataEntityTestingDecisionResultDTO](docs/AuthorizeEditorDataEntityTestingDecisionResultDTO.md)

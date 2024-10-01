@@ -7769,13 +7769,7 @@ components:
       required:
       - type
       type: object
-    AuthorizeEditorDataDefinitionsServiceDefinitionDTO:
-      discriminator:
-        mapping:
-          NONE: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
-          HTTP: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-          CONNECTOR: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-        propertyName: serviceType
+    AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon:
       properties:
         _links:
           additionalProperties:
@@ -7810,6 +7804,17 @@ components:
       - name
       - serviceType
       type: object
+    AuthorizeEditorDataDefinitionsServiceDefinitionDTO:
+      discriminator:
+        mapping:
+          CONNECTOR: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
+          HTTP: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
+          NONE: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+        propertyName: serviceType
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
     EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType:
       enum:
       - NONE
@@ -7899,7 +7904,7 @@ components:
       - valueType
     AuthorizeEditorDataServicesConnectorServiceDefinitionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon'
       - properties:
           _links:
             $ref: '#/components/schemas/LinksHATEOAS'
@@ -7916,7 +7921,7 @@ components:
       - valueType
     AuthorizeEditorDataServicesHttpServiceDefinitionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon'
       - properties:
           _links:
             $ref: '#/components/schemas/LinksHATEOAS'
@@ -7931,7 +7936,7 @@ components:
       - valueType
     AuthorizeEditorDataServicesNoneServiceDefinitionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon'
       - properties:
           _links:
             $ref: '#/components/schemas/LinksHATEOAS'
