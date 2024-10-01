@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | [**EnumAuthorizeEditorDataConditionDTOType**](EnumAuthorizeEditorDataConditionDTOType.md) |  | 
 **Left** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
 **Right** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
 **Comparator** | [**EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator**](EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md) |  | 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataConditionsComparisonConditionDTO
 
-`func NewAuthorizeEditorDataConditionsComparisonConditionDTO(left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, ) *AuthorizeEditorDataConditionsComparisonConditionDTO`
+`func NewAuthorizeEditorDataConditionsComparisonConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, ) *AuthorizeEditorDataConditionsComparisonConditionDTO`
 
 NewAuthorizeEditorDataConditionsComparisonConditionDTO instantiates a new AuthorizeEditorDataConditionsComparisonConditionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewAuthorizeEditorDataConditionsComparisonConditionDTOWithDefaults instantiates a new AuthorizeEditorDataConditionsComparisonConditionDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetType() EnumAuthorizeEditorDataConditionDTOType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionDTOType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType)`
+
+SetType sets Type field to given value.
+
 
 ### GetLeft
 

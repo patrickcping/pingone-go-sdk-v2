@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumAuthorizeEditorDataConditionDTOType**](EnumAuthorizeEditorDataConditionDTOType.md) |  | 
+**Conditions** | [**[]AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
 **Left** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
 **Right** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
 **Comparator** | [**EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator**](EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md) |  | 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataRulesRuleDTOCondition
 
-`func NewAuthorizeEditorDataRulesRuleDTOCondition(type_ EnumAuthorizeEditorDataConditionDTOType, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, condition AuthorizeEditorDataConditionDTO, reference AuthorizeEditorDataReferenceObjectDTO, ) *AuthorizeEditorDataRulesRuleDTOCondition`
+`func NewAuthorizeEditorDataRulesRuleDTOCondition(type_ EnumAuthorizeEditorDataConditionDTOType, conditions []AuthorizeEditorDataConditionDTO, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, condition AuthorizeEditorDataConditionDTO, reference AuthorizeEditorDataReferenceObjectDTO, ) *AuthorizeEditorDataRulesRuleDTOCondition`
 
 NewAuthorizeEditorDataRulesRuleDTOCondition instantiates a new AuthorizeEditorDataRulesRuleDTOCondition object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +49,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataRulesRuleDTOCondition) SetType(v EnumAuthorizeEditorDataConditionDTOType)`
 
 SetType sets Type field to given value.
+
+
+### GetConditions
+
+`func (o *AuthorizeEditorDataRulesRuleDTOCondition) GetConditions() []AuthorizeEditorDataConditionDTO`
+
+GetConditions returns the Conditions field if non-nil, zero value otherwise.
+
+### GetConditionsOk
+
+`func (o *AuthorizeEditorDataRulesRuleDTOCondition) GetConditionsOk() (*[]AuthorizeEditorDataConditionDTO, bool)`
+
+GetConditionsOk returns a tuple with the Conditions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConditions
+
+`func (o *AuthorizeEditorDataRulesRuleDTOCondition) SetConditions(v []AuthorizeEditorDataConditionDTO)`
+
+SetConditions sets Conditions field to given value.
 
 
 ### GetLeft

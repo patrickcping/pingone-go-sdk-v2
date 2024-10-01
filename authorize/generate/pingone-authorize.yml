@@ -905,13 +905,21 @@ components:
       - PUT
       - DELETE
       - HEAD
-    AuthorizeEditorDataConditionDTO:
+    AuthorizeEditorDataConditionDTOCommon:
       required:
       - type
       type: object
       properties:
         type:
           $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionDTOType'
+    AuthorizeEditorDataConditionDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsAndConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparisonConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsEmptyConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsNotConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -934,7 +942,7 @@ components:
       required:
       - conditions
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - type: object
         properties:
           conditions:
@@ -959,7 +967,7 @@ components:
       - left
       - right
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - type: object
         properties:
           left:
@@ -995,24 +1003,24 @@ components:
       - HAS_PERMISSION
     AuthorizeEditorDataConditionsEmptyConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
     AuthorizeEditorDataConditionsNotConditionDTO:
       required:
       - condition
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - type: object
         properties:
           condition:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
     AuthorizeEditorDataConditionsOrConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
     AuthorizeEditorDataConditionsReferenceConditionDTO:
       required:
       - reference
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - type: object
         properties:
           reference:

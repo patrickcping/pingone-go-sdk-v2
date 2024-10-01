@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsComparisonConditionDTO{}
 
 // AuthorizeEditorDataConditionsComparisonConditionDTO struct for AuthorizeEditorDataConditionsComparisonConditionDTO
 type AuthorizeEditorDataConditionsComparisonConditionDTO struct {
-	AuthorizeEditorDataConditionDTO
+	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
 	Left AuthorizeEditorDataConditionsComparandDTO `json:"left"`
 	Right AuthorizeEditorDataConditionsComparandDTO `json:"right"`
 	Comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator `json:"comparator"`
@@ -29,7 +29,7 @@ type AuthorizeEditorDataConditionsComparisonConditionDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsComparisonConditionDTO(left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, type_ EnumAuthorizeEditorDataConditionDTOType) *AuthorizeEditorDataConditionsComparisonConditionDTO {
+func NewAuthorizeEditorDataConditionsComparisonConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator) *AuthorizeEditorDataConditionsComparisonConditionDTO {
 	this := AuthorizeEditorDataConditionsComparisonConditionDTO{}
 	this.Type = type_
 	this.Left = left
@@ -44,6 +44,30 @@ func NewAuthorizeEditorDataConditionsComparisonConditionDTO(left AuthorizeEditor
 func NewAuthorizeEditorDataConditionsComparisonConditionDTOWithDefaults() *AuthorizeEditorDataConditionsComparisonConditionDTO {
 	this := AuthorizeEditorDataConditionsComparisonConditionDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetType() EnumAuthorizeEditorDataConditionDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataConditionDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType) {
+	o.Type = v
 }
 
 // GetLeft returns the Left field value
@@ -128,14 +152,7 @@ func (o AuthorizeEditorDataConditionsComparisonConditionDTO) MarshalJSON() ([]by
 
 func (o AuthorizeEditorDataConditionsComparisonConditionDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataConditionDTO, errAuthorizeEditorDataConditionDTO := json.Marshal(o.AuthorizeEditorDataConditionDTO)
-	if errAuthorizeEditorDataConditionDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionDTO
-	}
-	errAuthorizeEditorDataConditionDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataConditionDTO), &toSerialize)
-	if errAuthorizeEditorDataConditionDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["left"] = o.Left
 	toSerialize["right"] = o.Right
 	toSerialize["comparator"] = o.Comparator

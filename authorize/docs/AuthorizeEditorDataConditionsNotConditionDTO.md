@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | [**EnumAuthorizeEditorDataConditionDTOType**](EnumAuthorizeEditorDataConditionDTOType.md) |  | 
 **Condition** | [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataConditionsNotConditionDTO
 
-`func NewAuthorizeEditorDataConditionsNotConditionDTO(condition AuthorizeEditorDataConditionDTO, ) *AuthorizeEditorDataConditionsNotConditionDTO`
+`func NewAuthorizeEditorDataConditionsNotConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, condition AuthorizeEditorDataConditionDTO, ) *AuthorizeEditorDataConditionsNotConditionDTO`
 
 NewAuthorizeEditorDataConditionsNotConditionDTO instantiates a new AuthorizeEditorDataConditionsNotConditionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -24,6 +25,26 @@ will change when the set of required properties is changed
 NewAuthorizeEditorDataConditionsNotConditionDTOWithDefaults instantiates a new AuthorizeEditorDataConditionsNotConditionDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AuthorizeEditorDataConditionsNotConditionDTO) GetType() EnumAuthorizeEditorDataConditionDTOType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataConditionsNotConditionDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionDTOType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataConditionsNotConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType)`
+
+SetType sets Type field to given value.
+
 
 ### GetCondition
 

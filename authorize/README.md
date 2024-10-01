@@ -213,6 +213,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataCacheSettingsDTO](docs/AuthorizeEditorDataCacheSettingsDTO.md)
  - [AuthorizeEditorDataChangeDetailsDTO](docs/AuthorizeEditorDataChangeDetailsDTO.md)
  - [AuthorizeEditorDataConditionDTO](docs/AuthorizeEditorDataConditionDTO.md)
+ - [AuthorizeEditorDataConditionDTOCommon](docs/AuthorizeEditorDataConditionDTOCommon.md)
  - [AuthorizeEditorDataConditionsAndConditionDTO](docs/AuthorizeEditorDataConditionsAndConditionDTO.md)
  - [AuthorizeEditorDataConditionsComparandDTO](docs/AuthorizeEditorDataConditionsComparandDTO.md)
  - [AuthorizeEditorDataConditionsComparandsAttributeComparandDTO](docs/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO.md)

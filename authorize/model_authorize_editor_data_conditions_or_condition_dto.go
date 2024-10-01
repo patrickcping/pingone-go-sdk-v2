@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsOrConditionDTO{}
 
 // AuthorizeEditorDataConditionsOrConditionDTO struct for AuthorizeEditorDataConditionsOrConditionDTO
 type AuthorizeEditorDataConditionsOrConditionDTO struct {
-	AuthorizeEditorDataConditionDTO
+	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataConditionsOrConditionDTO instantiates a new AuthorizeEditorDataConditionsOrConditionDTO object
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataConditionsOrConditionDTOWithDefaults() *AuthorizeEdit
 	return &this
 }
 
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataConditionsOrConditionDTO) GetType() EnumAuthorizeEditorDataConditionDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataConditionDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataConditionsOrConditionDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataConditionsOrConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType) {
+	o.Type = v
+}
+
 func (o AuthorizeEditorDataConditionsOrConditionDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -50,14 +74,7 @@ func (o AuthorizeEditorDataConditionsOrConditionDTO) MarshalJSON() ([]byte, erro
 
 func (o AuthorizeEditorDataConditionsOrConditionDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataConditionDTO, errAuthorizeEditorDataConditionDTO := json.Marshal(o.AuthorizeEditorDataConditionDTO)
-	if errAuthorizeEditorDataConditionDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionDTO
-	}
-	errAuthorizeEditorDataConditionDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataConditionDTO), &toSerialize)
-	if errAuthorizeEditorDataConditionDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionDTO
-	}
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 

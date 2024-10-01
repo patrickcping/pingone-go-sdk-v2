@@ -8022,6 +8022,13 @@ components:
       - DELETE
       - HEAD
       type: string
+    AuthorizeEditorDataConditionDTOCommon:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionDTOType'
+      required:
+      - type
+      type: object
     AuthorizeEditorDataConditionDTO:
       discriminator:
         mapping:
@@ -8032,14 +8039,13 @@ components:
           OR: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
           REFERENCE: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
         propertyName: type
-      example:
-        type: null
-      properties:
-        type:
-          $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionDTOType'
-      required:
-      - type
-      type: object
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsAndConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparisonConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsEmptyConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsNotConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
     EnumAuthorizeEditorDataConditionDTOType:
       enum:
       - AND
@@ -8051,7 +8057,7 @@ components:
       type: string
     AuthorizeEditorDataConditionsAndConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - properties:
           conditions:
             items:
@@ -8074,7 +8080,7 @@ components:
       type: object
     AuthorizeEditorDataConditionsComparisonConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - properties:
           left:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
@@ -8114,10 +8120,10 @@ components:
       type: string
     AuthorizeEditorDataConditionsEmptyConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
     AuthorizeEditorDataConditionsNotConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - properties:
           condition:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
@@ -8126,10 +8132,10 @@ components:
       - condition
     AuthorizeEditorDataConditionsOrConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
     AuthorizeEditorDataConditionsReferenceConditionDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
       - properties:
           reference:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
@@ -8370,8 +8376,7 @@ components:
           restrictions:
             disallowChildren: true
             readOnly: true
-        condition:
-          type: null
+        condition: null
         combiningAlgorithm:
           algorithm: null
         _links:
@@ -8439,8 +8444,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         environment:
           id: id
-        condition:
-          type: null
+        condition: null
         _links:
           key:
             href: https://openapi-generator.tech
@@ -8502,8 +8506,7 @@ components:
           USER: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserResolverDTO'
         propertyName: type
       example:
-        condition:
-          type: null
+        condition: null
         name: name
         type: null
         processor: null
@@ -8621,13 +8624,11 @@ components:
             disallowChildren: true
             readOnly: true
         resolvers:
-        - condition:
-            type: null
+        - condition: null
           name: name
           type: null
           processor: null
-        - condition:
-            type: null
+        - condition: null
           name: name
           type: null
           processor: null

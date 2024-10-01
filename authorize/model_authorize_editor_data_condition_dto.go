@@ -12,70 +12,221 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataConditionDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataConditionDTO{}
-
-// AuthorizeEditorDataConditionDTO struct for AuthorizeEditorDataConditionDTO
+// AuthorizeEditorDataConditionDTO - struct for AuthorizeEditorDataConditionDTO
 type AuthorizeEditorDataConditionDTO struct {
-	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
+	AuthorizeEditorDataConditionsAndConditionDTO *AuthorizeEditorDataConditionsAndConditionDTO
+	AuthorizeEditorDataConditionsComparisonConditionDTO *AuthorizeEditorDataConditionsComparisonConditionDTO
+	AuthorizeEditorDataConditionsEmptyConditionDTO *AuthorizeEditorDataConditionsEmptyConditionDTO
+	AuthorizeEditorDataConditionsNotConditionDTO *AuthorizeEditorDataConditionsNotConditionDTO
+	AuthorizeEditorDataConditionsOrConditionDTO *AuthorizeEditorDataConditionsOrConditionDTO
+	AuthorizeEditorDataConditionsReferenceConditionDTO *AuthorizeEditorDataConditionsReferenceConditionDTO
 }
 
-// NewAuthorizeEditorDataConditionDTO instantiates a new AuthorizeEditorDataConditionDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType) *AuthorizeEditorDataConditionDTO {
-	this := AuthorizeEditorDataConditionDTO{}
-	this.Type = type_
-	return &this
+// AuthorizeEditorDataConditionsAndConditionDTOAsAuthorizeEditorDataConditionDTO is a convenience function that returns AuthorizeEditorDataConditionsAndConditionDTO wrapped in AuthorizeEditorDataConditionDTO
+func AuthorizeEditorDataConditionsAndConditionDTOAsAuthorizeEditorDataConditionDTO(v *AuthorizeEditorDataConditionsAndConditionDTO) AuthorizeEditorDataConditionDTO {
+	return AuthorizeEditorDataConditionDTO{
+		AuthorizeEditorDataConditionsAndConditionDTO: v,
+	}
 }
 
-// NewAuthorizeEditorDataConditionDTOWithDefaults instantiates a new AuthorizeEditorDataConditionDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataConditionDTOWithDefaults() *AuthorizeEditorDataConditionDTO {
-	this := AuthorizeEditorDataConditionDTO{}
-	return &this
+// AuthorizeEditorDataConditionsComparisonConditionDTOAsAuthorizeEditorDataConditionDTO is a convenience function that returns AuthorizeEditorDataConditionsComparisonConditionDTO wrapped in AuthorizeEditorDataConditionDTO
+func AuthorizeEditorDataConditionsComparisonConditionDTOAsAuthorizeEditorDataConditionDTO(v *AuthorizeEditorDataConditionsComparisonConditionDTO) AuthorizeEditorDataConditionDTO {
+	return AuthorizeEditorDataConditionDTO{
+		AuthorizeEditorDataConditionsComparisonConditionDTO: v,
+	}
 }
 
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataConditionDTO) GetType() EnumAuthorizeEditorDataConditionDTOType {
-	if o == nil {
-		var ret EnumAuthorizeEditorDataConditionDTOType
-		return ret
+// AuthorizeEditorDataConditionsEmptyConditionDTOAsAuthorizeEditorDataConditionDTO is a convenience function that returns AuthorizeEditorDataConditionsEmptyConditionDTO wrapped in AuthorizeEditorDataConditionDTO
+func AuthorizeEditorDataConditionsEmptyConditionDTOAsAuthorizeEditorDataConditionDTO(v *AuthorizeEditorDataConditionsEmptyConditionDTO) AuthorizeEditorDataConditionDTO {
+	return AuthorizeEditorDataConditionDTO{
+		AuthorizeEditorDataConditionsEmptyConditionDTO: v,
+	}
+}
+
+// AuthorizeEditorDataConditionsNotConditionDTOAsAuthorizeEditorDataConditionDTO is a convenience function that returns AuthorizeEditorDataConditionsNotConditionDTO wrapped in AuthorizeEditorDataConditionDTO
+func AuthorizeEditorDataConditionsNotConditionDTOAsAuthorizeEditorDataConditionDTO(v *AuthorizeEditorDataConditionsNotConditionDTO) AuthorizeEditorDataConditionDTO {
+	return AuthorizeEditorDataConditionDTO{
+		AuthorizeEditorDataConditionsNotConditionDTO: v,
+	}
+}
+
+// AuthorizeEditorDataConditionsOrConditionDTOAsAuthorizeEditorDataConditionDTO is a convenience function that returns AuthorizeEditorDataConditionsOrConditionDTO wrapped in AuthorizeEditorDataConditionDTO
+func AuthorizeEditorDataConditionsOrConditionDTOAsAuthorizeEditorDataConditionDTO(v *AuthorizeEditorDataConditionsOrConditionDTO) AuthorizeEditorDataConditionDTO {
+	return AuthorizeEditorDataConditionDTO{
+		AuthorizeEditorDataConditionsOrConditionDTO: v,
+	}
+}
+
+// AuthorizeEditorDataConditionsReferenceConditionDTOAsAuthorizeEditorDataConditionDTO is a convenience function that returns AuthorizeEditorDataConditionsReferenceConditionDTO wrapped in AuthorizeEditorDataConditionDTO
+func AuthorizeEditorDataConditionsReferenceConditionDTOAsAuthorizeEditorDataConditionDTO(v *AuthorizeEditorDataConditionsReferenceConditionDTO) AuthorizeEditorDataConditionDTO {
+	return AuthorizeEditorDataConditionDTO{
+		AuthorizeEditorDataConditionsReferenceConditionDTO: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataConditionDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataConditionsAndConditionDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsAndConditionDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsAndConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsAndConditionDTO)
+		if string(jsonAuthorizeEditorDataConditionsAndConditionDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataConditionDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionDTOType, bool) {
-	if o == nil {
-		return nil, false
+	// try to unmarshal data into AuthorizeEditorDataConditionsComparisonConditionDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsComparisonConditionDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsComparisonConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsComparisonConditionDTO)
+		if string(jsonAuthorizeEditorDataConditionsComparisonConditionDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
 	}
-	return &o.Type, true
-}
 
-// SetType sets field value
-func (o *AuthorizeEditorDataConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType) {
-	o.Type = v
-}
-
-func (o AuthorizeEditorDataConditionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	// try to unmarshal data into AuthorizeEditorDataConditionsEmptyConditionDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsEmptyConditionDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsEmptyConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsEmptyConditionDTO)
+		if string(jsonAuthorizeEditorDataConditionsEmptyConditionDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
 	}
-	return json.Marshal(toSerialize)
+
+	// try to unmarshal data into AuthorizeEditorDataConditionsNotConditionDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsNotConditionDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsNotConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsNotConditionDTO)
+		if string(jsonAuthorizeEditorDataConditionsNotConditionDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataConditionsOrConditionDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsOrConditionDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsOrConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsOrConditionDTO)
+		if string(jsonAuthorizeEditorDataConditionsOrConditionDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
+	}
+
+	// try to unmarshal data into AuthorizeEditorDataConditionsReferenceConditionDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsReferenceConditionDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataConditionsReferenceConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsReferenceConditionDTO)
+		if string(jsonAuthorizeEditorDataConditionsReferenceConditionDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
+		dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
+		dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
+		dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
+		dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
+		dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataConditionDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataConditionDTO)")
+	}
 }
 
-func (o AuthorizeEditorDataConditionDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataConditionDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataConditionsAndConditionDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsAndConditionDTO)
+	}
+
+	if src.AuthorizeEditorDataConditionsComparisonConditionDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsComparisonConditionDTO)
+	}
+
+	if src.AuthorizeEditorDataConditionsEmptyConditionDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsEmptyConditionDTO)
+	}
+
+	if src.AuthorizeEditorDataConditionsNotConditionDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsNotConditionDTO)
+	}
+
+	if src.AuthorizeEditorDataConditionsOrConditionDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsOrConditionDTO)
+	}
+
+	if src.AuthorizeEditorDataConditionsReferenceConditionDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataConditionsReferenceConditionDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AuthorizeEditorDataConditionDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataConditionsAndConditionDTO != nil {
+		return obj.AuthorizeEditorDataConditionsAndConditionDTO
+	}
+
+	if obj.AuthorizeEditorDataConditionsComparisonConditionDTO != nil {
+		return obj.AuthorizeEditorDataConditionsComparisonConditionDTO
+	}
+
+	if obj.AuthorizeEditorDataConditionsEmptyConditionDTO != nil {
+		return obj.AuthorizeEditorDataConditionsEmptyConditionDTO
+	}
+
+	if obj.AuthorizeEditorDataConditionsNotConditionDTO != nil {
+		return obj.AuthorizeEditorDataConditionsNotConditionDTO
+	}
+
+	if obj.AuthorizeEditorDataConditionsOrConditionDTO != nil {
+		return obj.AuthorizeEditorDataConditionsOrConditionDTO
+	}
+
+	if obj.AuthorizeEditorDataConditionsReferenceConditionDTO != nil {
+		return obj.AuthorizeEditorDataConditionsReferenceConditionDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataConditionDTO struct {

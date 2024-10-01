@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsAndConditionDTO{}
 
 // AuthorizeEditorDataConditionsAndConditionDTO struct for AuthorizeEditorDataConditionsAndConditionDTO
 type AuthorizeEditorDataConditionsAndConditionDTO struct {
-	AuthorizeEditorDataConditionDTO
+	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
 	Conditions []AuthorizeEditorDataConditionDTO `json:"conditions"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataConditionsAndConditionDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsAndConditionDTO(conditions []AuthorizeEditorDataConditionDTO, type_ EnumAuthorizeEditorDataConditionDTOType) *AuthorizeEditorDataConditionsAndConditionDTO {
+func NewAuthorizeEditorDataConditionsAndConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, conditions []AuthorizeEditorDataConditionDTO) *AuthorizeEditorDataConditionsAndConditionDTO {
 	this := AuthorizeEditorDataConditionsAndConditionDTO{}
 	this.Type = type_
 	this.Conditions = conditions
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataConditionsAndConditionDTO(conditions []AuthorizeEdito
 func NewAuthorizeEditorDataConditionsAndConditionDTOWithDefaults() *AuthorizeEditorDataConditionsAndConditionDTO {
 	this := AuthorizeEditorDataConditionsAndConditionDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataConditionsAndConditionDTO) GetType() EnumAuthorizeEditorDataConditionDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataConditionDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataConditionsAndConditionDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataConditionsAndConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType) {
+	o.Type = v
 }
 
 // GetConditions returns the Conditions field value
@@ -76,14 +100,7 @@ func (o AuthorizeEditorDataConditionsAndConditionDTO) MarshalJSON() ([]byte, err
 
 func (o AuthorizeEditorDataConditionsAndConditionDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataConditionDTO, errAuthorizeEditorDataConditionDTO := json.Marshal(o.AuthorizeEditorDataConditionDTO)
-	if errAuthorizeEditorDataConditionDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionDTO
-	}
-	errAuthorizeEditorDataConditionDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataConditionDTO), &toSerialize)
-	if errAuthorizeEditorDataConditionDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataConditionDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["conditions"] = o.Conditions
 	return toSerialize, nil
 }

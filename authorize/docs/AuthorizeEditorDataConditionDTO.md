@@ -5,12 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumAuthorizeEditorDataConditionDTOType**](EnumAuthorizeEditorDataConditionDTOType.md) |  | 
+**Conditions** | [**[]AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
+**Left** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
+**Right** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
+**Comparator** | [**EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator**](EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md) |  | 
+**Condition** | [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
+**Reference** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataConditionDTO
 
-`func NewAuthorizeEditorDataConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, ) *AuthorizeEditorDataConditionDTO`
+`func NewAuthorizeEditorDataConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, conditions []AuthorizeEditorDataConditionDTO, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, condition AuthorizeEditorDataConditionDTO, reference AuthorizeEditorDataReferenceObjectDTO, ) *AuthorizeEditorDataConditionDTO`
 
 NewAuthorizeEditorDataConditionDTO instantiates a new AuthorizeEditorDataConditionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +49,126 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType)`
 
 SetType sets Type field to given value.
+
+
+### GetConditions
+
+`func (o *AuthorizeEditorDataConditionDTO) GetConditions() []AuthorizeEditorDataConditionDTO`
+
+GetConditions returns the Conditions field if non-nil, zero value otherwise.
+
+### GetConditionsOk
+
+`func (o *AuthorizeEditorDataConditionDTO) GetConditionsOk() (*[]AuthorizeEditorDataConditionDTO, bool)`
+
+GetConditionsOk returns a tuple with the Conditions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConditions
+
+`func (o *AuthorizeEditorDataConditionDTO) SetConditions(v []AuthorizeEditorDataConditionDTO)`
+
+SetConditions sets Conditions field to given value.
+
+
+### GetLeft
+
+`func (o *AuthorizeEditorDataConditionDTO) GetLeft() AuthorizeEditorDataConditionsComparandDTO`
+
+GetLeft returns the Left field if non-nil, zero value otherwise.
+
+### GetLeftOk
+
+`func (o *AuthorizeEditorDataConditionDTO) GetLeftOk() (*AuthorizeEditorDataConditionsComparandDTO, bool)`
+
+GetLeftOk returns a tuple with the Left field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLeft
+
+`func (o *AuthorizeEditorDataConditionDTO) SetLeft(v AuthorizeEditorDataConditionsComparandDTO)`
+
+SetLeft sets Left field to given value.
+
+
+### GetRight
+
+`func (o *AuthorizeEditorDataConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandDTO`
+
+GetRight returns the Right field if non-nil, zero value otherwise.
+
+### GetRightOk
+
+`func (o *AuthorizeEditorDataConditionDTO) GetRightOk() (*AuthorizeEditorDataConditionsComparandDTO, bool)`
+
+GetRightOk returns a tuple with the Right field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRight
+
+`func (o *AuthorizeEditorDataConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandDTO)`
+
+SetRight sets Right field to given value.
+
+
+### GetComparator
+
+`func (o *AuthorizeEditorDataConditionDTO) GetComparator() EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator`
+
+GetComparator returns the Comparator field if non-nil, zero value otherwise.
+
+### GetComparatorOk
+
+`func (o *AuthorizeEditorDataConditionDTO) GetComparatorOk() (*EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, bool)`
+
+GetComparatorOk returns a tuple with the Comparator field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComparator
+
+`func (o *AuthorizeEditorDataConditionDTO) SetComparator(v EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator)`
+
+SetComparator sets Comparator field to given value.
+
+
+### GetCondition
+
+`func (o *AuthorizeEditorDataConditionDTO) GetCondition() AuthorizeEditorDataConditionDTO`
+
+GetCondition returns the Condition field if non-nil, zero value otherwise.
+
+### GetConditionOk
+
+`func (o *AuthorizeEditorDataConditionDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
+
+GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCondition
+
+`func (o *AuthorizeEditorDataConditionDTO) SetCondition(v AuthorizeEditorDataConditionDTO)`
+
+SetCondition sets Condition field to given value.
+
+
+### GetReference
+
+`func (o *AuthorizeEditorDataConditionDTO) GetReference() AuthorizeEditorDataReferenceObjectDTO`
+
+GetReference returns the Reference field if non-nil, zero value otherwise.
+
+### GetReferenceOk
+
+`func (o *AuthorizeEditorDataConditionDTO) GetReferenceOk() (*AuthorizeEditorDataReferenceObjectDTO, bool)`
+
+GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReference
+
+`func (o *AuthorizeEditorDataConditionDTO) SetReference(v AuthorizeEditorDataReferenceObjectDTO)`
+
+SetReference sets Reference field to given value.
 
 
 
