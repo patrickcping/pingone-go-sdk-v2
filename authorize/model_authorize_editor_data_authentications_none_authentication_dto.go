@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO{
 
 // AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO struct for AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO
 type AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO struct {
-	AuthorizeEditorDataAuthenticationDTO
+	Type EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataAuthenticationsNoneAuthenticationDTO instantiates a new AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO object
@@ -40,6 +40,30 @@ func NewAuthorizeEditorDataAuthenticationsNoneAuthenticationDTOWithDefaults() *A
 	return &this
 }
 
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) GetType() EnumAuthorizeEditorDataAuthenticationDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataAuthenticationDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) GetTypeOk() (*EnumAuthorizeEditorDataAuthenticationDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) SetType(v EnumAuthorizeEditorDataAuthenticationDTOType) {
+	o.Type = v
+}
+
 func (o AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -50,14 +74,7 @@ func (o AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) MarshalJSON() (
 
 func (o AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataAuthenticationDTO, errAuthorizeEditorDataAuthenticationDTO := json.Marshal(o.AuthorizeEditorDataAuthenticationDTO)
-	if errAuthorizeEditorDataAuthenticationDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataAuthenticationDTO
-	}
-	errAuthorizeEditorDataAuthenticationDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataAuthenticationDTO), &toSerialize)
-	if errAuthorizeEditorDataAuthenticationDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataAuthenticationDTO
-	}
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | [**EnumAuthorizeEditorDataAuthenticationDTOType**](EnumAuthorizeEditorDataAuthenticationDTOType.md) |  | 
 **Name** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
 **Password** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
 
-`func NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO(name AuthorizeEditorDataReferenceObjectDTO, password AuthorizeEditorDataReferenceObjectDTO, ) *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO`
+`func NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO(type_ EnumAuthorizeEditorDataAuthenticationDTOType, name AuthorizeEditorDataReferenceObjectDTO, password AuthorizeEditorDataReferenceObjectDTO, ) *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO`
 
 NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO instantiates a new AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTOWithDefaults instantiates a new AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) GetType() EnumAuthorizeEditorDataAuthenticationDTOType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) GetTypeOk() (*EnumAuthorizeEditorDataAuthenticationDTOType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) SetType(v EnumAuthorizeEditorDataAuthenticationDTOType)`
+
+SetType sets Type field to given value.
+
 
 ### GetName
 

@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO](docs/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO.md)
  - [AuthorizeEditorDataAttributeResolversUserResolverDTO](docs/AuthorizeEditorDataAttributeResolversUserResolverDTO.md)
  - [AuthorizeEditorDataAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationDTO.md)
+ - [AuthorizeEditorDataAuthenticationDTOCommon](docs/AuthorizeEditorDataAuthenticationDTOCommon.md)
  - [AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO.md)
  - [AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO.md)
  - [AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO](docs/AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO.md)

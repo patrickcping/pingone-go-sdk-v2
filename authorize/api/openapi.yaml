@@ -7605,6 +7605,13 @@ components:
       - FINAL_DECISION_MATCHES
       - PATH_MATCHES
       type: string
+    AuthorizeEditorDataAuthenticationDTOCommon:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataAuthenticationDTOType'
+      required:
+      - type
+      type: object
     AuthorizeEditorDataAuthenticationDTO:
       discriminator:
         mapping:
@@ -7613,12 +7620,11 @@ components:
           NONE: '#/components/schemas/AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO'
           TOKEN: '#/components/schemas/AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO'
         propertyName: type
-      properties:
-        type:
-          $ref: '#/components/schemas/EnumAuthorizeEditorDataAuthenticationDTOType'
-      required:
-      - type
-      type: object
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO'
     EnumAuthorizeEditorDataAuthenticationDTOType:
       enum:
       - BASIC
@@ -9382,7 +9388,7 @@ components:
       - value
     AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
       - properties:
           name:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
@@ -9394,7 +9400,7 @@ components:
       - password
     AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
       - properties:
           tokenEndpoint:
             type: string
@@ -9412,10 +9418,10 @@ components:
       - tokenEndpoint
     AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
     AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
       - properties:
           token:
             $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'

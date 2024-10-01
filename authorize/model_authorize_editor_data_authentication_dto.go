@@ -12,70 +12,161 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataAuthenticationDTO type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataAuthenticationDTO{}
-
-// AuthorizeEditorDataAuthenticationDTO struct for AuthorizeEditorDataAuthenticationDTO
+// AuthorizeEditorDataAuthenticationDTO - struct for AuthorizeEditorDataAuthenticationDTO
 type AuthorizeEditorDataAuthenticationDTO struct {
-	Type EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
+	AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
+	AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO
+	AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO
+	AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO *AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
 }
 
-// NewAuthorizeEditorDataAuthenticationDTO instantiates a new AuthorizeEditorDataAuthenticationDTO object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataAuthenticationDTO(type_ EnumAuthorizeEditorDataAuthenticationDTOType) *AuthorizeEditorDataAuthenticationDTO {
-	this := AuthorizeEditorDataAuthenticationDTO{}
-	this.Type = type_
-	return &this
+// AuthorizeEditorDataAuthenticationsBasicAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO is a convenience function that returns AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO wrapped in AuthorizeEditorDataAuthenticationDTO
+func AuthorizeEditorDataAuthenticationsBasicAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO(v *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) AuthorizeEditorDataAuthenticationDTO {
+	return AuthorizeEditorDataAuthenticationDTO{
+		AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO: v,
+	}
 }
 
-// NewAuthorizeEditorDataAuthenticationDTOWithDefaults instantiates a new AuthorizeEditorDataAuthenticationDTO object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataAuthenticationDTOWithDefaults() *AuthorizeEditorDataAuthenticationDTO {
-	this := AuthorizeEditorDataAuthenticationDTO{}
-	return &this
+// AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO is a convenience function that returns AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO wrapped in AuthorizeEditorDataAuthenticationDTO
+func AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO(v *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) AuthorizeEditorDataAuthenticationDTO {
+	return AuthorizeEditorDataAuthenticationDTO{
+		AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO: v,
+	}
 }
 
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataAuthenticationDTO) GetType() EnumAuthorizeEditorDataAuthenticationDTOType {
-	if o == nil {
-		var ret EnumAuthorizeEditorDataAuthenticationDTOType
-		return ret
+// AuthorizeEditorDataAuthenticationsNoneAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO is a convenience function that returns AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO wrapped in AuthorizeEditorDataAuthenticationDTO
+func AuthorizeEditorDataAuthenticationsNoneAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO(v *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) AuthorizeEditorDataAuthenticationDTO {
+	return AuthorizeEditorDataAuthenticationDTO{
+		AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO: v,
+	}
+}
+
+// AuthorizeEditorDataAuthenticationsTokenAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO is a convenience function that returns AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO wrapped in AuthorizeEditorDataAuthenticationDTO
+func AuthorizeEditorDataAuthenticationsTokenAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO(v *AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO) AuthorizeEditorDataAuthenticationDTO {
+	return AuthorizeEditorDataAuthenticationDTO{
+		AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataAuthenticationDTO) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO)
+		if string(jsonAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataAuthenticationDTO) GetTypeOk() (*EnumAuthorizeEditorDataAuthenticationDTOType, bool) {
-	if o == nil {
-		return nil, false
+	// try to unmarshal data into AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO)
+		if string(jsonAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
 	}
-	return &o.Type, true
-}
 
-// SetType sets field value
-func (o *AuthorizeEditorDataAuthenticationDTO) SetType(v EnumAuthorizeEditorDataAuthenticationDTOType) {
-	o.Type = v
-}
-
-func (o AuthorizeEditorDataAuthenticationDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	// try to unmarshal data into AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAuthenticationsNoneAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO)
+		if string(jsonAuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
 	}
-	return json.Marshal(toSerialize)
+
+	// try to unmarshal data into AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO)
+	if err == nil {
+		jsonAuthorizeEditorDataAuthenticationsTokenAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO)
+		if string(jsonAuthorizeEditorDataAuthenticationsTokenAuthenticationDTO) == "{}" { // empty struct
+			dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
+		dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
+		dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
+		dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataAuthenticationDTO)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataAuthenticationDTO)")
+	}
 }
 
-func (o AuthorizeEditorDataAuthenticationDTO) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataAuthenticationDTO) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO)
+	}
+
+	if src.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO)
+	}
+
+	if src.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO)
+	}
+
+	if src.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO != nil {
+		return json.Marshal(&src.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AuthorizeEditorDataAuthenticationDTO) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO != nil {
+		return obj.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
+	}
+
+	if obj.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO != nil {
+		return obj.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO
+	}
+
+	if obj.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO != nil {
+		return obj.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO
+	}
+
+	if obj.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO != nil {
+		return obj.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataAuthenticationDTO struct {

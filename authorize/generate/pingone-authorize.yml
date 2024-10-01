@@ -497,13 +497,19 @@ components:
       - ANYTHING
       - FINAL_DECISION_MATCHES
       - PATH_MATCHES
-    AuthorizeEditorDataAuthenticationDTO:
+    AuthorizeEditorDataAuthenticationDTOCommon:
       required:
       - type
       type: object
       properties:
         type:
           $ref: '#/components/schemas/EnumAuthorizeEditorDataAuthenticationDTOType'
+    AuthorizeEditorDataAuthenticationDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO'
       discriminator:
         propertyName: type
         mapping:
@@ -1818,7 +1824,7 @@ components:
       - name
       - password
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
       - type: object
         properties:
           name:
@@ -1832,7 +1838,7 @@ components:
       - scope
       - tokenEndpoint
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
       - type: object
         properties:
           tokenEndpoint:
@@ -1845,12 +1851,12 @@ components:
             type: string
     AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO:
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
     AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO:
       required:
       - token
       allOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTO'
+      - $ref: '#/components/schemas/AuthorizeEditorDataAuthenticationDTOCommon'
       - type: object
         properties:
           token:

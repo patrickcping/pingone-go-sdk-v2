@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
 
 // AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO struct for AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
 type AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO struct {
-	AuthorizeEditorDataAuthenticationDTO
+	Type EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
 	Name AuthorizeEditorDataReferenceObjectDTO `json:"name"`
 	Password AuthorizeEditorDataReferenceObjectDTO `json:"password"`
 }
@@ -28,7 +28,7 @@ type AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO(name AuthorizeEditorDataReferenceObjectDTO, password AuthorizeEditorDataReferenceObjectDTO, type_ EnumAuthorizeEditorDataAuthenticationDTOType) *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO {
+func NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO(type_ EnumAuthorizeEditorDataAuthenticationDTOType, name AuthorizeEditorDataReferenceObjectDTO, password AuthorizeEditorDataReferenceObjectDTO) *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO {
 	this := AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO{}
 	this.Type = type_
 	this.Name = name
@@ -42,6 +42,30 @@ func NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO(name AuthorizeE
 func NewAuthorizeEditorDataAuthenticationsBasicAuthenticationDTOWithDefaults() *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO {
 	this := AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) GetType() EnumAuthorizeEditorDataAuthenticationDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataAuthenticationDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) GetTypeOk() (*EnumAuthorizeEditorDataAuthenticationDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) SetType(v EnumAuthorizeEditorDataAuthenticationDTOType) {
+	o.Type = v
 }
 
 // GetName returns the Name field value
@@ -102,14 +126,7 @@ func (o AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) MarshalJSON() 
 
 func (o AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAuthorizeEditorDataAuthenticationDTO, errAuthorizeEditorDataAuthenticationDTO := json.Marshal(o.AuthorizeEditorDataAuthenticationDTO)
-	if errAuthorizeEditorDataAuthenticationDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataAuthenticationDTO
-	}
-	errAuthorizeEditorDataAuthenticationDTO = json.Unmarshal([]byte(serializedAuthorizeEditorDataAuthenticationDTO), &toSerialize)
-	if errAuthorizeEditorDataAuthenticationDTO != nil {
-		return map[string]interface{}{}, errAuthorizeEditorDataAuthenticationDTO
-	}
+	toSerialize["type"] = o.Type
 	toSerialize["name"] = o.Name
 	toSerialize["password"] = o.Password
 	return toSerialize, nil

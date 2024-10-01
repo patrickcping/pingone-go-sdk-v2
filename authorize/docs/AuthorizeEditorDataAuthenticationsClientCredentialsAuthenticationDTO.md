@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | [**EnumAuthorizeEditorDataAuthenticationDTOType**](EnumAuthorizeEditorDataAuthenticationDTOType.md) |  | 
 **TokenEndpoint** | **string** |  | 
 **ClientId** | **string** |  | 
 **ClientSecret** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO
 
-`func NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO(tokenEndpoint string, clientId string, clientSecret AuthorizeEditorDataReferenceObjectDTO, scope string, ) *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO`
+`func NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO(type_ EnumAuthorizeEditorDataAuthenticationDTOType, tokenEndpoint string, clientId string, clientSecret AuthorizeEditorDataReferenceObjectDTO, scope string, ) *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO`
 
 NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO instantiates a new AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +28,26 @@ will change when the set of required properties is changed
 NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTOWithDefaults instantiates a new AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) GetType() EnumAuthorizeEditorDataAuthenticationDTOType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) GetTypeOk() (*EnumAuthorizeEditorDataAuthenticationDTOType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) SetType(v EnumAuthorizeEditorDataAuthenticationDTOType)`
+
+SetType sets Type field to given value.
+
 
 ### GetTokenEndpoint
 
