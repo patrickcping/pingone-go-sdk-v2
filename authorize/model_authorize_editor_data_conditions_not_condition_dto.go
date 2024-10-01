@@ -27,7 +27,7 @@ type AuthorizeEditorDataConditionsNotConditionDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsNotConditionDTO(condition AuthorizeEditorDataConditionDTO, type_ string) *AuthorizeEditorDataConditionsNotConditionDTO {
+func NewAuthorizeEditorDataConditionsNotConditionDTO(condition AuthorizeEditorDataConditionDTO, type_ EnumAuthorizeEditorDataConditionDTOType) *AuthorizeEditorDataConditionsNotConditionDTO {
 	this := AuthorizeEditorDataConditionsNotConditionDTO{}
 	this.Type = type_
 	this.Condition = condition

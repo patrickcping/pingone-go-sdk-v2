@@ -19,14 +19,14 @@ var _ MappedNullable = &AuthorizeEditorDataConditionDTO{}
 
 // AuthorizeEditorDataConditionDTO struct for AuthorizeEditorDataConditionDTO
 type AuthorizeEditorDataConditionDTO struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataConditionDTO instantiates a new AuthorizeEditorDataConditionDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionDTO(type_ string) *AuthorizeEditorDataConditionDTO {
+func NewAuthorizeEditorDataConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType) *AuthorizeEditorDataConditionDTO {
 	this := AuthorizeEditorDataConditionDTO{}
 	this.Type = type_
 	return &this
@@ -41,9 +41,9 @@ func NewAuthorizeEditorDataConditionDTOWithDefaults() *AuthorizeEditorDataCondit
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataConditionDTO) GetType() string {
+func (o *AuthorizeEditorDataConditionDTO) GetType() EnumAuthorizeEditorDataConditionDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataConditionDTOType
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *AuthorizeEditorDataConditionDTO) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataConditionDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataConditionDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *AuthorizeEditorDataConditionDTO) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataConditionDTO) SetType(v string) {
+func (o *AuthorizeEditorDataConditionDTO) SetType(v EnumAuthorizeEditorDataConditionDTOType) {
 	o.Type = v
 }
 

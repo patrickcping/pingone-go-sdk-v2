@@ -7959,15 +7959,31 @@ components:
       type: object
     AuthorizeEditorDataConditionDTO:
       discriminator:
+        mapping:
+          AND: '#/components/schemas/AuthorizeEditorDataConditionsAndConditionDTO'
+          COMPARISON: '#/components/schemas/AuthorizeEditorDataConditionsComparisonConditionDTO'
+          EMPTY: '#/components/schemas/AuthorizeEditorDataConditionsEmptyConditionDTO'
+          NOT: '#/components/schemas/AuthorizeEditorDataConditionsNotConditionDTO'
+          OR: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
+          REFERENCE: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
         propertyName: type
       example:
-        type: type
+        type: null
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionDTOType'
       required:
       - type
       type: object
+    EnumAuthorizeEditorDataConditionDTOType:
+      enum:
+      - AND
+      - COMPARISON
+      - EMPTY
+      - NOT
+      - OR
+      - REFERENCE
+      type: string
     AuthorizeEditorDataConditionsAndConditionDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
@@ -7981,6 +7997,9 @@ components:
       - conditions
     AuthorizeEditorDataConditionsComparandDTO:
       discriminator:
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
         propertyName: type
       properties:
         type:
@@ -7994,38 +8013,40 @@ components:
       - properties:
           left:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
-          comparator:
-            enum:
-            - IS_MEMBER_OF
-            - IS_NOT_MEMBER_OF
-            - CONTAINS
-            - NOT_CONTAINS
-            - EQUALS
-            - NOT_EQUALS
-            - GREATER_THAN
-            - GREATER_THAN_OR_EQUAL
-            - LESSER_THAN
-            - LESSER_THAN_OR_EQUAL
-            - REGULAR_EXPRESSION
-            - STARTS_WITH
-            - NOT_STARTS_WITH
-            - ENDS_WITH
-            - NOT_ENDS_WITH
-            - MATCHES
-            - NOT_MATCHES
-            - IS_IN
-            - IS_NOT_IN
-            - IN_CIDR_BLOCK
-            - NOT_IN_CIDR_BLOCK
-            - HAS_PERMISSION
-            type: string
           right:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+          comparator:
+            $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator'
         type: object
       required:
       - comparator
       - left
       - right
+    EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator:
+      enum:
+      - IS_MEMBER_OF
+      - IS_NOT_MEMBER_OF
+      - CONTAINS
+      - NOT_CONTAINS
+      - EQUALS
+      - NOT_EQUALS
+      - GREATER_THAN
+      - GREATER_THAN_OR_EQUAL
+      - LESSER_THAN
+      - LESSER_THAN_OR_EQUAL
+      - REGULAR_EXPRESSION
+      - STARTS_WITH
+      - NOT_STARTS_WITH
+      - ENDS_WITH
+      - NOT_ENDS_WITH
+      - MATCHES
+      - NOT_MATCHES
+      - IS_IN
+      - IS_NOT_IN
+      - IN_CIDR_BLOCK
+      - NOT_IN_CIDR_BLOCK
+      - HAS_PERMISSION
+      type: string
     AuthorizeEditorDataConditionsEmptyConditionDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
@@ -8270,7 +8291,7 @@ components:
             disallowChildren: true
             readOnly: true
         condition:
-          type: type
+          type: null
         combiningAlgorithm:
           algorithm: PERMIT_OVERRIDES
         _links:
@@ -8337,7 +8358,7 @@ components:
         environment:
           id: id
         condition:
-          type: type
+          type: null
         _links:
           key:
             href: https://openapi-generator.tech
@@ -8391,7 +8412,7 @@ components:
         propertyName: type
       example:
         condition:
-          type: type
+          type: null
         name: name
         type: type
         processor:
@@ -8496,14 +8517,14 @@ components:
             readOnly: true
         resolvers:
         - condition:
-            type: type
+            type: null
           name: name
           type: type
           processor:
             name: name
             type: null
         - condition:
-            type: type
+            type: null
           name: name
           type: type
           processor:

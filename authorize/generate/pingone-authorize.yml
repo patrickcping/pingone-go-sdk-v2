@@ -863,9 +863,25 @@ components:
       type: object
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionDTOType'
       discriminator:
         propertyName: type
+        mapping:
+          AND: '#/components/schemas/AuthorizeEditorDataConditionsAndConditionDTO'
+          COMPARISON: '#/components/schemas/AuthorizeEditorDataConditionsComparisonConditionDTO'
+          EMPTY: '#/components/schemas/AuthorizeEditorDataConditionsEmptyConditionDTO'
+          NOT: '#/components/schemas/AuthorizeEditorDataConditionsNotConditionDTO'
+          OR: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
+          REFERENCE: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
+    EnumAuthorizeEditorDataConditionDTOType:
+      type: string
+      enum:
+      - AND
+      - COMPARISON
+      - EMPTY
+      - NOT
+      - OR
+      - REFERENCE
     AuthorizeEditorDataConditionsAndConditionDTO:
       required:
       - conditions
@@ -886,6 +902,9 @@ components:
           type: string
       discriminator:
         propertyName: type
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
+          CONSTANT: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
     AuthorizeEditorDataConditionsComparisonConditionDTO:
       required:
       - comparator
@@ -897,33 +916,35 @@ components:
         properties:
           left:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
-          comparator:
-            type: string
-            enum:
-            - IS_MEMBER_OF
-            - IS_NOT_MEMBER_OF
-            - CONTAINS
-            - NOT_CONTAINS
-            - EQUALS
-            - NOT_EQUALS
-            - GREATER_THAN
-            - GREATER_THAN_OR_EQUAL
-            - LESSER_THAN
-            - LESSER_THAN_OR_EQUAL
-            - REGULAR_EXPRESSION
-            - STARTS_WITH
-            - NOT_STARTS_WITH
-            - ENDS_WITH
-            - NOT_ENDS_WITH
-            - MATCHES
-            - NOT_MATCHES
-            - IS_IN
-            - IS_NOT_IN
-            - IN_CIDR_BLOCK
-            - NOT_IN_CIDR_BLOCK
-            - HAS_PERMISSION
           right:
             $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+          comparator:
+            $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator'
+    EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator:
+      type: string
+      enum:
+      - IS_MEMBER_OF
+      - IS_NOT_MEMBER_OF
+      - CONTAINS
+      - NOT_CONTAINS
+      - EQUALS
+      - NOT_EQUALS
+      - GREATER_THAN
+      - GREATER_THAN_OR_EQUAL
+      - LESSER_THAN
+      - LESSER_THAN_OR_EQUAL
+      - REGULAR_EXPRESSION
+      - STARTS_WITH
+      - NOT_STARTS_WITH
+      - ENDS_WITH
+      - NOT_ENDS_WITH
+      - MATCHES
+      - NOT_MATCHES
+      - IS_IN
+      - IS_NOT_IN
+      - IN_CIDR_BLOCK
+      - NOT_IN_CIDR_BLOCK
+      - HAS_PERMISSION
     AuthorizeEditorDataConditionsEmptyConditionDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'

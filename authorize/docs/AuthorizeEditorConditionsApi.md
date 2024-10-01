@@ -35,7 +35,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the condition.
-    authorizeEditorDataDefinitionsConditionDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsConditionDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataConditionDTO("Type_example")) // AuthorizeEditorDataDefinitionsConditionDefinitionDTO | 
+    authorizeEditorDataDefinitionsConditionDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsConditionDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataConditionDTO(openapiclient.EnumAuthorizeEditorDataConditionDTOType("AND"))) // AuthorizeEditorDataDefinitionsConditionDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -403,7 +403,7 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the condition.
     conditionID := "conditionID_example" // string | The ID of the condition to be updated
-    authorizeEditorDataDefinitionsConditionDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsConditionDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataConditionDTO("Type_example")) // AuthorizeEditorDataDefinitionsConditionDefinitionDTO | 
+    authorizeEditorDataDefinitionsConditionDefinitionDTO := *openapiclient.NewAuthorizeEditorDataDefinitionsConditionDefinitionDTO("Name_example", *openapiclient.NewAuthorizeEditorDataConditionDTO(openapiclient.EnumAuthorizeEditorDataConditionDTOType("AND"))) // AuthorizeEditorDataDefinitionsConditionDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

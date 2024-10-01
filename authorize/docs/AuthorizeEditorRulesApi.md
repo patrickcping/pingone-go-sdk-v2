@@ -35,7 +35,7 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the rule.
-    authorizeEditorDataRulesRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesRuleDTO("Name_example", openapiclient.AuthorizeEditorDataRulesRuleDTO_effectSettings{AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO: openapiclient.NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(*openapiclient.NewAuthorizeEditorDataConditionDTO("Type_example"), "Type_example")}) // AuthorizeEditorDataRulesRuleDTO | 
+    authorizeEditorDataRulesRuleDTO := *openapiclient.NewAuthorizeEditorDataRulesRuleDTO("Name_example", openapiclient.AuthorizeEditorDataRulesRuleDTO_effectSettings{AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO: openapiclient.NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO(*openapiclient.NewAuthorizeEditorDataConditionDTO(openapiclient.EnumAuthorizeEditorDataConditionDTOType("AND")), "Type_example")}) // AuthorizeEditorDataRulesRuleDTO | 
     accept := "accept_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
