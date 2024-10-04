@@ -21,7 +21,6 @@ type EnumAuthorizeEditorDataResolverDTOType string
 // List of EnumAuthorizeEditorDataResolverDTOType
 const (
 	ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_ATTRIBUTE EnumAuthorizeEditorDataResolverDTOType = "ATTRIBUTE"
-	ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CONFIGURATION EnumAuthorizeEditorDataResolverDTOType = "CONFIGURATION"
 	ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CONSTANT EnumAuthorizeEditorDataResolverDTOType = "CONSTANT"
 	ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CURRENT_REPETITION_VALUE EnumAuthorizeEditorDataResolverDTOType = "CURRENT_REPETITION_VALUE"
 	ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CURRENT_USER_ID EnumAuthorizeEditorDataResolverDTOType = "CURRENT_USER_ID"
@@ -34,7 +33,6 @@ const (
 // All allowed values of EnumAuthorizeEditorDataResolverDTOType enum
 var AllowedEnumAuthorizeEditorDataResolverDTOTypeEnumValues = []EnumAuthorizeEditorDataResolverDTOType{
 	"ATTRIBUTE",
-	"CONFIGURATION",
 	"CONSTANT",
 	"CURRENT_REPETITION_VALUE",
 	"CURRENT_USER_ID",

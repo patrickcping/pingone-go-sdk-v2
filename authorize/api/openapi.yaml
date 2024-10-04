@@ -8534,7 +8534,6 @@ components:
     EnumAuthorizeEditorDataResolverDTOType:
       enum:
       - ATTRIBUTE
-      - CONFIGURATION
       - CONSTANT
       - CURRENT_REPETITION_VALUE
       - CURRENT_USER_ID
