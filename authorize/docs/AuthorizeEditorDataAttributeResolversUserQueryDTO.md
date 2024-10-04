@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
+**Type** | [**EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType**](EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType.md) |  | 
 **UserId** | **string** |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataAttributeResolversUserQueryDTO
 
-`func NewAuthorizeEditorDataAttributeResolversUserQueryDTO(type_ string, userId string, ) *AuthorizeEditorDataAttributeResolversUserQueryDTO`
+`func NewAuthorizeEditorDataAttributeResolversUserQueryDTO(type_ EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType, userId string, ) *AuthorizeEditorDataAttributeResolversUserQueryDTO`
 
 NewAuthorizeEditorDataAttributeResolversUserQueryDTO instantiates a new AuthorizeEditorDataAttributeResolversUserQueryDTO object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetType() string`
+`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetType() EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetTypeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetTypeOk() (*EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) SetType(v string)`
+`func (o *AuthorizeEditorDataAttributeResolversUserQueryDTO) SetType(v EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType)`
 
 SetType sets Type field to given value.
 

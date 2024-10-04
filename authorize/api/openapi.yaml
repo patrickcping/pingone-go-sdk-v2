@@ -8599,10 +8599,14 @@ components:
     AuthorizeEditorDataAttributeResolversUserQueryDTOCommon:
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType'
       required:
       - type
       type: object
+    EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType:
+      enum:
+      - USER_ID
+      type: string
     AuthorizeEditorDataAttributeResolversUserQueryDTO:
       discriminator:
         mapping:

@@ -1299,7 +1299,6 @@ components:
         propertyName: type
         mapping:
           ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataAttributeResolversAttributeResolverDTO'
-          # CONFIGURATION: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
           CONSTANT: '#/components/schemas/AuthorizeEditorDataAttributeResolversConstantResolverDTO'
           CURRENT_REPETITION_VALUE: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO'
           CURRENT_USER_ID: '#/components/schemas/AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO'
@@ -1311,7 +1310,6 @@ components:
       type: string
       enum:
         - ATTRIBUTE
-        - CONFIGURATION
         - CONSTANT
         - CURRENT_REPETITION_VALUE
         - CURRENT_USER_ID
@@ -1378,7 +1376,10 @@ components:
       type: object
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType'
+    EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType:
+      type: string
+      enum: [USER_ID]
     AuthorizeEditorDataAttributeResolversUserQueryDTO:
       oneOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO'

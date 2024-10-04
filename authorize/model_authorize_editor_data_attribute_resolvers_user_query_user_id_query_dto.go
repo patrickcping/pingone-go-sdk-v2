@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversUserQueryUserIdQuer
 
 // AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct for AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO
 type AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType `json:"type"`
 	UserId string `json:"userId"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO(type_ string, userId string) *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO {
+func NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO(type_ EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType, userId string) *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO {
 	this := AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO{}
 	this.Type = type_
 	this.UserId = userId
@@ -43,9 +43,9 @@ func NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTOWithDefaults
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetType() string {
+func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetType() EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType
 		return ret
 	}
 
@@ -54,7 +54,7 @@ func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetType()
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetTypeOk() (*EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) GetTypeOk
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) SetType(v string) {
+func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) SetType(v EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType) {
 	o.Type = v
 }
 

@@ -19,14 +19,14 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversUserQueryDTOCommon{
 
 // AuthorizeEditorDataAttributeResolversUserQueryDTOCommon struct for AuthorizeEditorDataAttributeResolversUserQueryDTOCommon
 type AuthorizeEditorDataAttributeResolversUserQueryDTOCommon struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataAttributeResolversUserQueryDTOCommon instantiates a new AuthorizeEditorDataAttributeResolversUserQueryDTOCommon object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataAttributeResolversUserQueryDTOCommon(type_ string) *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon {
+func NewAuthorizeEditorDataAttributeResolversUserQueryDTOCommon(type_ EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType) *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon {
 	this := AuthorizeEditorDataAttributeResolversUserQueryDTOCommon{}
 	this.Type = type_
 	return &this
@@ -41,9 +41,9 @@ func NewAuthorizeEditorDataAttributeResolversUserQueryDTOCommonWithDefaults() *A
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) GetType() string {
+func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) GetType() EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) GetType() stri
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) GetTypeOk() (*EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) GetTypeOk() (*
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) SetType(v string) {
+func (o *AuthorizeEditorDataAttributeResolversUserQueryDTOCommon) SetType(v EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType) {
 	o.Type = v
 }
 

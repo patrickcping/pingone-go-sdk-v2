@@ -310,6 +310,7 @@ Class | Method | HTTP request | Description
  - [EnumAPIServerPatternType](docs/EnumAPIServerPatternType.md)
  - [EnumApplicationResourceParentType](docs/EnumApplicationResourceParentType.md)
  - [EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue](docs/EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue.md)
+ - [EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType](docs/EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType.md)
  - [EnumAuthorizeEditorDataAuthenticationDTOType](docs/EnumAuthorizeEditorDataAuthenticationDTOType.md)
  - [EnumAuthorizeEditorDataChangeDetailsDTOChangeType](docs/EnumAuthorizeEditorDataChangeDetailsDTOChangeType.md)
  - [EnumAuthorizeEditorDataConditionDTOType](docs/EnumAuthorizeEditorDataConditionDTOType.md)
