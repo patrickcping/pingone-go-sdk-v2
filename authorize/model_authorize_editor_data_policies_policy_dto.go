@@ -30,7 +30,7 @@ type AuthorizeEditorDataPoliciesPolicyDTO struct {
 	Description *string `json:"description,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataRulesRuleDTOCondition `json:"condition,omitempty"`
+	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
 	CombiningAlgorithm AuthorizeEditorDataPoliciesCombiningAlgorithmDTO `json:"combiningAlgorithm"`
 	Children []map[string]interface{} `json:"children,omitempty"`
 	RepetitionSettings *AuthorizeEditorDataPoliciesRepetitionSettingsDTO `json:"repetitionSettings,omitempty"`
@@ -337,9 +337,9 @@ func (o *AuthorizeEditorDataPoliciesPolicyDTO) SetStatements(v []map[string]inte
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetCondition() AuthorizeEditorDataRulesRuleDTOCondition {
+func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetCondition() AuthorizeEditorDataConditionDTO {
 	if o == nil || IsNil(o.Condition) {
-		var ret AuthorizeEditorDataRulesRuleDTOCondition
+		var ret AuthorizeEditorDataConditionDTO
 		return ret
 	}
 	return *o.Condition
@@ -347,7 +347,7 @@ func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetCondition() AuthorizeEditorDat
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetConditionOk() (*AuthorizeEditorDataRulesRuleDTOCondition, bool) {
+func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -363,8 +363,8 @@ func (o *AuthorizeEditorDataPoliciesPolicyDTO) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given AuthorizeEditorDataRulesRuleDTOCondition and assigns it to the Condition field.
-func (o *AuthorizeEditorDataPoliciesPolicyDTO) SetCondition(v AuthorizeEditorDataRulesRuleDTOCondition) {
+// SetCondition gets a reference to the given AuthorizeEditorDataConditionDTO and assigns it to the Condition field.
+func (o *AuthorizeEditorDataPoliciesPolicyDTO) SetCondition(v AuthorizeEditorDataConditionDTO) {
 	o.Condition = &v
 }
 

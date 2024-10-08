@@ -13,14 +13,14 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Statements** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**Condition** | Pointer to [**AuthorizeEditorDataRulesRuleDTOCondition**](AuthorizeEditorDataRulesRuleDTOCondition.md) |  | [optional] 
-**EffectSettings** | [**AuthorizeEditorDataRulesRuleDTOEffectSettings**](AuthorizeEditorDataRulesRuleDTOEffectSettings.md) |  | 
+**Condition** | Pointer to [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | [optional] 
+**EffectSettings** | [**AuthorizeEditorDataRulesEffectSettingsDTO**](AuthorizeEditorDataRulesEffectSettingsDTO.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataRulesRuleDTO
 
-`func NewAuthorizeEditorDataRulesRuleDTO(name string, effectSettings AuthorizeEditorDataRulesRuleDTOEffectSettings, ) *AuthorizeEditorDataRulesRuleDTO`
+`func NewAuthorizeEditorDataRulesRuleDTO(name string, effectSettings AuthorizeEditorDataRulesEffectSettingsDTO, ) *AuthorizeEditorDataRulesRuleDTO`
 
 NewAuthorizeEditorDataRulesRuleDTO instantiates a new AuthorizeEditorDataRulesRuleDTO object
 This constructor will assign default values to properties that have it defined,
@@ -257,20 +257,20 @@ HasStatements returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *AuthorizeEditorDataRulesRuleDTO) GetCondition() AuthorizeEditorDataRulesRuleDTOCondition`
+`func (o *AuthorizeEditorDataRulesRuleDTO) GetCondition() AuthorizeEditorDataConditionDTO`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *AuthorizeEditorDataRulesRuleDTO) GetConditionOk() (*AuthorizeEditorDataRulesRuleDTOCondition, bool)`
+`func (o *AuthorizeEditorDataRulesRuleDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *AuthorizeEditorDataRulesRuleDTO) SetCondition(v AuthorizeEditorDataRulesRuleDTOCondition)`
+`func (o *AuthorizeEditorDataRulesRuleDTO) SetCondition(v AuthorizeEditorDataConditionDTO)`
 
 SetCondition sets Condition field to given value.
 
@@ -282,20 +282,20 @@ HasCondition returns a boolean if a field has been set.
 
 ### GetEffectSettings
 
-`func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettings() AuthorizeEditorDataRulesRuleDTOEffectSettings`
+`func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettings() AuthorizeEditorDataRulesEffectSettingsDTO`
 
 GetEffectSettings returns the EffectSettings field if non-nil, zero value otherwise.
 
 ### GetEffectSettingsOk
 
-`func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettingsOk() (*AuthorizeEditorDataRulesRuleDTOEffectSettings, bool)`
+`func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettingsOk() (*AuthorizeEditorDataRulesEffectSettingsDTO, bool)`
 
 GetEffectSettingsOk returns a tuple with the EffectSettings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEffectSettings
 
-`func (o *AuthorizeEditorDataRulesRuleDTO) SetEffectSettings(v AuthorizeEditorDataRulesRuleDTOEffectSettings)`
+`func (o *AuthorizeEditorDataRulesRuleDTO) SetEffectSettings(v AuthorizeEditorDataRulesEffectSettingsDTO)`
 
 SetEffectSettings sets EffectSettings field to given value.
 

@@ -31,6 +31,7 @@ type AuthorizeEditorDataServicesHttpServiceDefinitionDTO struct {
 	Type *EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType `json:"type,omitempty"`
 	CacheSettings *AuthorizeEditorDataCacheSettingsDTO `json:"cacheSettings,omitempty"`
 	ServiceType string `json:"serviceType"`
+	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
 	ValueType AuthorizeEditorDataValueTypeDTO `json:"valueType"`
 	ServiceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO `json:"serviceSettings"`
 }
@@ -392,6 +393,38 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetServiceType(v s
 	o.ServiceType = v
 }
 
+// GetProcessor returns the Processor field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetProcessor() AuthorizeEditorDataProcessorDTO {
+	if o == nil || IsNil(o.Processor) {
+		var ret AuthorizeEditorDataProcessorDTO
+		return ret
+	}
+	return *o.Processor
+}
+
+// GetProcessorOk returns a tuple with the Processor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool) {
+	if o == nil || IsNil(o.Processor) {
+		return nil, false
+	}
+	return o.Processor, true
+}
+
+// HasProcessor returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) HasProcessor() bool {
+	if o != nil && !IsNil(o.Processor) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessor gets a reference to the given AuthorizeEditorDataProcessorDTO and assigns it to the Processor field.
+func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetProcessor(v AuthorizeEditorDataProcessorDTO) {
+	o.Processor = &v
+}
+
 // GetValueType returns the ValueType field value
 func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) GetValueType() AuthorizeEditorDataValueTypeDTO {
 	if o == nil {
@@ -479,6 +512,9 @@ func (o AuthorizeEditorDataServicesHttpServiceDefinitionDTO) ToMap() (map[string
 		toSerialize["cacheSettings"] = o.CacheSettings
 	}
 	toSerialize["serviceType"] = o.ServiceType
+	if !IsNil(o.Processor) {
+		toSerialize["processor"] = o.Processor
+	}
 	toSerialize["valueType"] = o.ValueType
 	toSerialize["serviceSettings"] = o.ServiceSettings
 	return toSerialize, nil

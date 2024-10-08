@@ -27,11 +27,11 @@ type ApiCreateServiceRequest struct {
 	ctx context.Context
 	ApiService *AuthorizeEditorServicesApiService
 	environmentID string
-	createServiceRequest *CreateServiceRequest
+	authorizeEditorDataDefinitionsServiceDefinitionDTO *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 }
 
-func (r ApiCreateServiceRequest) CreateServiceRequest(createServiceRequest CreateServiceRequest) ApiCreateServiceRequest {
-	r.createServiceRequest = &createServiceRequest
+func (r ApiCreateServiceRequest) AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO AuthorizeEditorDataDefinitionsServiceDefinitionDTO) ApiCreateServiceRequest {
+	r.authorizeEditorDataDefinitionsServiceDefinitionDTO = &authorizeEditorDataDefinitionsServiceDefinitionDTO
 	return r
 }
 
@@ -93,8 +93,8 @@ func (a *AuthorizeEditorServicesApiService) internalCreateServiceExecute(r ApiCr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createServiceRequest == nil {
-		return localVarReturnValue, nil, reportError("createServiceRequest is required and must be specified")
+	if r.authorizeEditorDataDefinitionsServiceDefinitionDTO == nil {
+		return localVarReturnValue, nil, reportError("authorizeEditorDataDefinitionsServiceDefinitionDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -115,7 +115,7 @@ func (a *AuthorizeEditorServicesApiService) internalCreateServiceExecute(r ApiCr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createServiceRequest
+	localVarPostBody = r.authorizeEditorDataDefinitionsServiceDefinitionDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -457,7 +457,7 @@ type ApiGetServiceRequest struct {
 	serviceID string
 }
 
-func (r ApiGetServiceRequest) Execute() (*CreateService201Response, *http.Response, error) {
+func (r ApiGetServiceRequest) Execute() (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	return r.ApiService.GetServiceExecute(r)
 }
 
@@ -481,12 +481,12 @@ func (a *AuthorizeEditorServicesApiService) GetService(ctx context.Context, envi
 }
 
 // Execute executes the request
-//  @return CreateService201Response
-func (a *AuthorizeEditorServicesApiService) GetServiceExecute(r ApiGetServiceRequest) (*CreateService201Response, *http.Response, error) {
+//  @return AuthorizeEditorDataDefinitionsServiceDefinitionDTO
+func (a *AuthorizeEditorServicesApiService) GetServiceExecute(r ApiGetServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *CreateService201Response
+		localVarReturnValue  *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 	)
 	
 	response, err = processResponse(
@@ -498,12 +498,12 @@ func (a *AuthorizeEditorServicesApiService) GetServiceExecute(r ApiGetServiceReq
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorServicesApiService) internalGetServiceExecute(r ApiGetServiceRequest) (*CreateService201Response, *http.Response, error) {
+func (a *AuthorizeEditorServicesApiService) internalGetServiceExecute(r ApiGetServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateService201Response
+		localVarReturnValue  *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorServicesApiService.GetService")
@@ -1158,15 +1158,15 @@ type ApiUpdateServiceRequest struct {
 	ApiService *AuthorizeEditorServicesApiService
 	environmentID string
 	serviceID string
-	updateServiceRequest *UpdateServiceRequest
+	authorizeEditorDataDefinitionsServiceDefinitionDTO *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 }
 
-func (r ApiUpdateServiceRequest) UpdateServiceRequest(updateServiceRequest UpdateServiceRequest) ApiUpdateServiceRequest {
-	r.updateServiceRequest = &updateServiceRequest
+func (r ApiUpdateServiceRequest) AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO AuthorizeEditorDataDefinitionsServiceDefinitionDTO) ApiUpdateServiceRequest {
+	r.authorizeEditorDataDefinitionsServiceDefinitionDTO = &authorizeEditorDataDefinitionsServiceDefinitionDTO
 	return r
 }
 
-func (r ApiUpdateServiceRequest) Execute() (*CreateService201Response, *http.Response, error) {
+func (r ApiUpdateServiceRequest) Execute() (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	return r.ApiService.UpdateServiceExecute(r)
 }
 
@@ -1190,12 +1190,12 @@ func (a *AuthorizeEditorServicesApiService) UpdateService(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return CreateService201Response
-func (a *AuthorizeEditorServicesApiService) UpdateServiceExecute(r ApiUpdateServiceRequest) (*CreateService201Response, *http.Response, error) {
+//  @return AuthorizeEditorDataDefinitionsServiceDefinitionDTO
+func (a *AuthorizeEditorServicesApiService) UpdateServiceExecute(r ApiUpdateServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *CreateService201Response
+		localVarReturnValue  *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 	)
 	
 	response, err = processResponse(
@@ -1207,12 +1207,12 @@ func (a *AuthorizeEditorServicesApiService) UpdateServiceExecute(r ApiUpdateServ
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorServicesApiService) internalUpdateServiceExecute(r ApiUpdateServiceRequest) (*CreateService201Response, *http.Response, error) {
+func (a *AuthorizeEditorServicesApiService) internalUpdateServiceExecute(r ApiUpdateServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateService201Response
+		localVarReturnValue  *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorServicesApiService.UpdateService")
@@ -1227,8 +1227,8 @@ func (a *AuthorizeEditorServicesApiService) internalUpdateServiceExecute(r ApiUp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateServiceRequest == nil {
-		return localVarReturnValue, nil, reportError("updateServiceRequest is required and must be specified")
+	if r.authorizeEditorDataDefinitionsServiceDefinitionDTO == nil {
+		return localVarReturnValue, nil, reportError("authorizeEditorDataDefinitionsServiceDefinitionDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1249,7 +1249,7 @@ func (a *AuthorizeEditorServicesApiService) internalUpdateServiceExecute(r ApiUp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateServiceRequest
+	localVarPostBody = r.authorizeEditorDataDefinitionsServiceDefinitionDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

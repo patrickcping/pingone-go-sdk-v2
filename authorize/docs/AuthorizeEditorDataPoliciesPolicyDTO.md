@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Statements** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**Condition** | Pointer to [**AuthorizeEditorDataRulesRuleDTOCondition**](AuthorizeEditorDataRulesRuleDTOCondition.md) |  | [optional] 
+**Condition** | Pointer to [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | [optional] 
 **CombiningAlgorithm** | [**AuthorizeEditorDataPoliciesCombiningAlgorithmDTO**](AuthorizeEditorDataPoliciesCombiningAlgorithmDTO.md) |  | 
 **Children** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **RepetitionSettings** | Pointer to [**AuthorizeEditorDataPoliciesRepetitionSettingsDTO**](AuthorizeEditorDataPoliciesRepetitionSettingsDTO.md) |  | [optional] 
@@ -260,20 +260,20 @@ HasStatements returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetCondition() AuthorizeEditorDataRulesRuleDTOCondition`
+`func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetCondition() AuthorizeEditorDataConditionDTO`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetConditionOk() (*AuthorizeEditorDataRulesRuleDTOCondition, bool)`
+`func (o *AuthorizeEditorDataPoliciesPolicyDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *AuthorizeEditorDataPoliciesPolicyDTO) SetCondition(v AuthorizeEditorDataRulesRuleDTOCondition)`
+`func (o *AuthorizeEditorDataPoliciesPolicyDTO) SetCondition(v AuthorizeEditorDataConditionDTO)`
 
 SetCondition sets Condition field to given value.
 

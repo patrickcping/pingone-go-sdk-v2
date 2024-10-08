@@ -20,6 +20,16 @@ var _ MappedNullable = &AuthorizeEditorDataRulesReferenceableRuleDTO{}
 // AuthorizeEditorDataRulesReferenceableRuleDTO struct for AuthorizeEditorDataRulesReferenceableRuleDTO
 type AuthorizeEditorDataRulesReferenceableRuleDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	// HAL embedded resources
+	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
+	// The resource's unique identifier
+	Id string `json:"id"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Statements []map[string]interface{} `json:"statements,omitempty"`
+	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
 	EffectSettings AuthorizeEditorDataRulesEffectSettingsDTO `json:"effectSettings"`
 	Version string `json:"version"`
 }
@@ -28,8 +38,10 @@ type AuthorizeEditorDataRulesReferenceableRuleDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataRulesReferenceableRuleDTO(effectSettings AuthorizeEditorDataRulesEffectSettingsDTO, version string) *AuthorizeEditorDataRulesReferenceableRuleDTO {
+func NewAuthorizeEditorDataRulesReferenceableRuleDTO(id string, name string, effectSettings AuthorizeEditorDataRulesEffectSettingsDTO, version string) *AuthorizeEditorDataRulesReferenceableRuleDTO {
 	this := AuthorizeEditorDataRulesReferenceableRuleDTO{}
+	this.Id = id
+	this.Name = name
 	this.EffectSettings = effectSettings
 	this.Version = version
 	return &this
@@ -73,6 +85,246 @@ func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) HasLinks() bool {
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
+}
+
+// GetEmbedded returns the Embedded field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetEmbedded() map[string]map[string]interface{} {
+	if o == nil || IsNil(o.Embedded) {
+		var ret map[string]map[string]interface{}
+		return ret
+	}
+	return o.Embedded
+}
+
+// GetEmbeddedOk returns a tuple with the Embedded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetEmbeddedOk() (map[string]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Embedded) {
+		return map[string]map[string]interface{}{}, false
+	}
+	return o.Embedded, true
+}
+
+// HasEmbedded returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) HasEmbedded() bool {
+	if o != nil && !IsNil(o.Embedded) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmbedded gets a reference to the given map[string]map[string]interface{} and assigns it to the Embedded field.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetEmbedded(v map[string]map[string]interface{}) {
+	o.Embedded = v
+}
+
+// GetId returns the Id field value
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetId(v string) {
+	o.Id = v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetName returns the Name field value
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetName(v string) {
+	o.Name = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
+// GetStatements returns the Statements field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetStatements() []map[string]interface{} {
+	if o == nil || IsNil(o.Statements) {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.Statements
+}
+
+// GetStatementsOk returns a tuple with the Statements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetStatementsOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Statements) {
+		return nil, false
+	}
+	return o.Statements, true
+}
+
+// HasStatements returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) HasStatements() bool {
+	if o != nil && !IsNil(o.Statements) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatements gets a reference to the given []map[string]interface{} and assigns it to the Statements field.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetStatements(v []map[string]interface{}) {
+	o.Statements = v
+}
+
+// GetCondition returns the Condition field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetCondition() AuthorizeEditorDataConditionDTO {
+	if o == nil || IsNil(o.Condition) {
+		var ret AuthorizeEditorDataConditionDTO
+		return ret
+	}
+	return *o.Condition
+}
+
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool) {
+	if o == nil || IsNil(o.Condition) {
+		return nil, false
+	}
+	return o.Condition, true
+}
+
+// HasCondition returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) HasCondition() bool {
+	if o != nil && !IsNil(o.Condition) {
+		return true
+	}
+
+	return false
+}
+
+// SetCondition gets a reference to the given AuthorizeEditorDataConditionDTO and assigns it to the Condition field.
+func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetCondition(v AuthorizeEditorDataConditionDTO) {
+	o.Condition = &v
 }
 
 // GetEffectSettings returns the EffectSettings field value
@@ -135,6 +387,26 @@ func (o AuthorizeEditorDataRulesReferenceableRuleDTO) ToMap() (map[string]interf
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.Embedded) {
+		toSerialize["_embedded"] = o.Embedded
+	}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Statements) {
+		toSerialize["statements"] = o.Statements
+	}
+	if !IsNil(o.Condition) {
+		toSerialize["condition"] = o.Condition
 	}
 	toSerialize["effectSettings"] = o.EffectSettings
 	toSerialize["version"] = o.Version

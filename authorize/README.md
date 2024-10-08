@@ -279,8 +279,6 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO](docs/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO.md)
  - [AuthorizeEditorDataRulesReferenceableRuleDTO](docs/AuthorizeEditorDataRulesReferenceableRuleDTO.md)
  - [AuthorizeEditorDataRulesRuleDTO](docs/AuthorizeEditorDataRulesRuleDTO.md)
- - [AuthorizeEditorDataRulesRuleDTOCondition](docs/AuthorizeEditorDataRulesRuleDTOCondition.md)
- - [AuthorizeEditorDataRulesRuleDTOEffectSettings](docs/AuthorizeEditorDataRulesRuleDTOEffectSettings.md)
  - [AuthorizeEditorDataServiceObjectDTO](docs/AuthorizeEditorDataServiceObjectDTO.md)
  - [AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO](docs/AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO.md)
  - [AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO](docs/AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO.md)
@@ -295,7 +293,6 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataUserDTO](docs/AuthorizeEditorDataUserDTO.md)
  - [AuthorizeEditorDataValueTypeDTO](docs/AuthorizeEditorDataValueTypeDTO.md)
  - [CreateService201Response](docs/CreateService201Response.md)
- - [CreateServiceRequest](docs/CreateServiceRequest.md)
  - [DecisionEndpoint](docs/DecisionEndpoint.md)
  - [DecisionEndpointAuthorizationVersion](docs/DecisionEndpointAuthorizationVersion.md)
  - [DecisionEndpointRecentDecisions](docs/DecisionEndpointRecentDecisions.md)
@@ -314,6 +311,7 @@ Class | Method | HTTP request | Description
  - [EnumAuthorizeEditorDataAuthenticationDTOType](docs/EnumAuthorizeEditorDataAuthenticationDTOType.md)
  - [EnumAuthorizeEditorDataChangeDetailsDTOChangeType](docs/EnumAuthorizeEditorDataChangeDetailsDTOChangeType.md)
  - [EnumAuthorizeEditorDataConditionDTOType](docs/EnumAuthorizeEditorDataConditionDTOType.md)
+ - [EnumAuthorizeEditorDataConditionsComparandDTOType](docs/EnumAuthorizeEditorDataConditionsComparandDTOType.md)
  - [EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator](docs/EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md)
  - [EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType](docs/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md)
  - [EnumAuthorizeEditorDataEntityTestingOverrideDTOType](docs/EnumAuthorizeEditorDataEntityTestingOverrideDTOType.md)
@@ -361,7 +359,6 @@ Class | Method | HTTP request | Description
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
  - [TypedRelationship](docs/TypedRelationship.md)
- - [UpdateServiceRequest](docs/UpdateServiceRequest.md)
 
 
 ## Documentation For Authorization

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateService
 
-> CreateService201Response CreateService(ctx, environmentID).CreateServiceRequest(createServiceRequest).Execute()
+> CreateService201Response CreateService(ctx, environmentID).AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO).Execute()
 
 Create a Service
 
@@ -35,11 +35,11 @@ import (
 
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create the service.
-    createServiceRequest := openapiclient.createService_request{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO("Name_example", "ServiceType_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN")), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel("AUTHORIZE"), openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode("P1_RISK"), "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{openapiclient.AuthorizeEditorDataInputMappingDTO{AuthorizeEditorDataInputMappingsAttributeInputMappingDTO: openapiclient.NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO("Property_example", openapiclient.EnumAuthorizeEditorDataInputMappingDTOType("ATTRIBUTE"), *openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example"))}}))} // CreateServiceRequest | 
+    authorizeEditorDataDefinitionsServiceDefinitionDTO := openapiclient.AuthorizeEditorDataDefinitionsServiceDefinitionDTO{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO("Name_example", "ServiceType_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN")), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel("AUTHORIZE"), openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode("P1_RISK"), "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{openapiclient.AuthorizeEditorDataInputMappingDTO{AuthorizeEditorDataInputMappingsAttributeInputMappingDTO: openapiclient.NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO("Property_example", openapiclient.EnumAuthorizeEditorDataInputMappingDTOType("ATTRIBUTE"), *openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example"))}}))} // AuthorizeEditorDataDefinitionsServiceDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizeEditorServicesApi.CreateService(context.Background(), environmentID).CreateServiceRequest(createServiceRequest).Execute()
+    resp, r, err := apiClient.AuthorizeEditorServicesApi.CreateService(context.Background(), environmentID).AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorServicesApi.CreateService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiCreateServiceRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createServiceRequest** | [**CreateServiceRequest**](CreateServiceRequest.md) |  | 
+ **authorizeEditorDataDefinitionsServiceDefinitionDTO** | [**AuthorizeEditorDataDefinitionsServiceDefinitionDTO**](AuthorizeEditorDataDefinitionsServiceDefinitionDTO.md) |  | 
 
 ### Return type
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## GetService
 
-> CreateService201Response GetService(ctx, environmentID, serviceID).Execute()
+> AuthorizeEditorDataDefinitionsServiceDefinitionDTO GetService(ctx, environmentID, serviceID).Execute()
 
 Get a Service by ID
 
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorServicesApi.GetService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetService`: CreateService201Response
+    // response from `GetService`: AuthorizeEditorDataDefinitionsServiceDefinitionDTO
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorServicesApi.GetService`: %v\n", resp)
 }
 ```
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateService201Response**](CreateService201Response.md)
+[**AuthorizeEditorDataDefinitionsServiceDefinitionDTO**](AuthorizeEditorDataDefinitionsServiceDefinitionDTO.md)
 
 ### Authorization
 
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## UpdateService
 
-> CreateService201Response UpdateService(ctx, environmentID, serviceID).UpdateServiceRequest(updateServiceRequest).Execute()
+> AuthorizeEditorDataDefinitionsServiceDefinitionDTO UpdateService(ctx, environmentID, serviceID).AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO).Execute()
 
 Update a Service
 
@@ -403,16 +403,16 @@ import (
 func main() {
     environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to update the service.
     serviceID := "serviceID_example" // string | The ID of the service to be updated
-    updateServiceRequest := openapiclient.updateService_request{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO("Name_example", "ServiceType_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN")), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel("AUTHORIZE"), openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode("P1_RISK"), "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{openapiclient.AuthorizeEditorDataInputMappingDTO{AuthorizeEditorDataInputMappingsAttributeInputMappingDTO: openapiclient.NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO("Property_example", openapiclient.EnumAuthorizeEditorDataInputMappingDTOType("ATTRIBUTE"), *openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example"))}}))} // UpdateServiceRequest | 
+    authorizeEditorDataDefinitionsServiceDefinitionDTO := openapiclient.AuthorizeEditorDataDefinitionsServiceDefinitionDTO{AuthorizeEditorDataServicesConnectorServiceDefinitionDTO: openapiclient.NewAuthorizeEditorDataServicesConnectorServiceDefinitionDTO("Name_example", "ServiceType_example", *openapiclient.NewAuthorizeEditorDataValueTypeDTO(openapiclient.EnumAuthorizeEditorDataValueTypeDTO("BOOLEAN")), *openapiclient.NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO(openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel("AUTHORIZE"), openapiclient.EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode("P1_RISK"), "Capability_example", []openapiclient.AuthorizeEditorDataInputMappingDTO{openapiclient.AuthorizeEditorDataInputMappingDTO{AuthorizeEditorDataInputMappingsAttributeInputMappingDTO: openapiclient.NewAuthorizeEditorDataInputMappingsAttributeInputMappingDTO("Property_example", openapiclient.EnumAuthorizeEditorDataInputMappingDTOType("ATTRIBUTE"), *openapiclient.NewAuthorizeEditorDataReferenceObjectDTO("Id_example"))}}))} // AuthorizeEditorDataDefinitionsServiceDefinitionDTO | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizeEditorServicesApi.UpdateService(context.Background(), environmentID, serviceID).UpdateServiceRequest(updateServiceRequest).Execute()
+    resp, r, err := apiClient.AuthorizeEditorServicesApi.UpdateService(context.Background(), environmentID, serviceID).AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorServicesApi.UpdateService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateService`: CreateService201Response
+    // response from `UpdateService`: AuthorizeEditorDataDefinitionsServiceDefinitionDTO
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorServicesApi.UpdateService`: %v\n", resp)
 }
 ```
@@ -435,11 +435,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **updateServiceRequest** | [**UpdateServiceRequest**](UpdateServiceRequest.md) |  | 
+ **authorizeEditorDataDefinitionsServiceDefinitionDTO** | [**AuthorizeEditorDataDefinitionsServiceDefinitionDTO**](AuthorizeEditorDataDefinitionsServiceDefinitionDTO.md) |  | 
 
 ### Return type
 
-[**CreateService201Response**](CreateService201Response.md)
+[**AuthorizeEditorDataDefinitionsServiceDefinitionDTO**](AuthorizeEditorDataDefinitionsServiceDefinitionDTO.md)
 
 ### Authorization
 

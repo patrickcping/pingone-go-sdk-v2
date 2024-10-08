@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsComparandsAttributeComparan
 
 // AuthorizeEditorDataConditionsComparandsAttributeComparandDTO struct for AuthorizeEditorDataConditionsComparandsAttributeComparandDTO
 type AuthorizeEditorDataConditionsComparandsAttributeComparandDTO struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataConditionsComparandDTOType `json:"type"`
 	Id string `json:"id"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataConditionsComparandsAttributeComparandDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsComparandsAttributeComparandDTO(type_ string, id string) *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO {
+func NewAuthorizeEditorDataConditionsComparandsAttributeComparandDTO(type_ EnumAuthorizeEditorDataConditionsComparandDTOType, id string) *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO {
 	this := AuthorizeEditorDataConditionsComparandsAttributeComparandDTO{}
 	this.Type = type_
 	this.Id = id
@@ -43,9 +43,9 @@ func NewAuthorizeEditorDataConditionsComparandsAttributeComparandDTOWithDefaults
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetType() string {
+func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetType() EnumAuthorizeEditorDataConditionsComparandDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataConditionsComparandDTOType
 		return ret
 	}
 
@@ -54,7 +54,7 @@ func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetType()
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetTypeOk() (*EnumAuthorizeEditorDataConditionsComparandDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) GetTypeOk
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) SetType(v string) {
+func (o *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO) SetType(v EnumAuthorizeEditorDataConditionsComparandDTOType) {
 	o.Type = v
 }
 

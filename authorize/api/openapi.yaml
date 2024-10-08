@@ -5182,7 +5182,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createService_request'
+              $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
         required: true
       responses:
         "201":
@@ -5359,10 +5359,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/createService_201_response'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
             application/json:
               schema:
-                $ref: '#/components/schemas/createService_201_response'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
           description: Service found
         "400":
           content:
@@ -5543,17 +5543,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateService_request'
+              $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
         required: true
       responses:
         "200":
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/createService_201_response'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
             application/json:
               schema:
-                $ref: '#/components/schemas/createService_201_response'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
           description: Service updated
         "400":
           description: Bad request (e.g. attempt was made to update an outdated version
@@ -7925,6 +7925,8 @@ components:
       - properties:
           _links:
             $ref: '#/components/schemas/LinksHATEOAS'
+          processor:
+            $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
           valueType:
             $ref: '#/components/schemas/AuthorizeEditorDataValueTypeDTO'
           serviceSettings:
@@ -8069,10 +8071,15 @@ components:
     AuthorizeEditorDataConditionsComparandDTOCommon:
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionsComparandDTOType'
       required:
       - type
       type: object
+    EnumAuthorizeEditorDataConditionsComparandDTOType:
+      enum:
+      - ATTRIBUTE
+      - CONSTANT
+      type: string
     AuthorizeEditorDataConditionsComparandDTO:
       discriminator:
         mapping:
@@ -8175,17 +8182,56 @@ components:
       type: string
     AuthorizeEditorDataRulesReferenceableRuleDTO:
       example:
+        environment:
+          id: id
+        condition: null
         _links:
           key:
             href: https://openapi-generator.tech
+        _embedded:
+          key: "{}"
+        name: name
+        description: description
         effectSettings: null
+        statements:
+        - null
+        - null
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
+        _embedded:
+          additionalProperties:
+            description: HAL embedded resources
+            readOnly: true
+            type: object
+          description: HAL embedded resources
+          readOnly: true
+          type: object
+        id:
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        statements:
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
+          type: array
+        condition:
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         effectSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
         version:
@@ -8380,12 +8426,22 @@ components:
           restrictions:
             disallowChildren: true
             readOnly: true
-        condition: null
-        combiningAlgorithm:
-          algorithm: null
         _links:
           key:
             href: https://openapi-generator.tech
+        description: description
+        statements:
+        - null
+        - null
+        version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
+        environment:
+          id: id
+        condition: null
+        combiningAlgorithm:
+          algorithm: null
+        _embedded:
+          key: "{}"
         children:
         - null
         - null
@@ -8393,13 +8449,39 @@ components:
           decision: null
           source:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
+        _embedded:
+          additionalProperties:
+            description: HAL embedded resources
+            readOnly: true
+            type: object
+          description: HAL embedded resources
+          readOnly: true
+          type: object
+        id:
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        statements:
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
+          type: array
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         combiningAlgorithm:
@@ -9006,9 +9088,9 @@ components:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
           type: array
         condition:
-          $ref: '#/components/schemas/AuthorizeEditorDataRulesRuleDTO_condition'
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         effectSettings:
-          $ref: '#/components/schemas/AuthorizeEditorDataRulesRuleDTO_effectSettings'
+          $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
       required:
       - effectSettings
       - name
@@ -9087,7 +9169,7 @@ components:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
           type: array
         condition:
-          $ref: '#/components/schemas/AuthorizeEditorDataRulesRuleDTO_condition'
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         combiningAlgorithm:
           $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
         children:
@@ -10184,19 +10266,7 @@ components:
           format: int32
           type: integer
       type: object
-    createService_request:
-      description: "The service to create, without ID or Version properties"
-      oneOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
     createService_201_response:
-      oneOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
-    updateService_request:
-      description: "The service to be updated, with ID and Version parameters"
       oneOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
@@ -10608,20 +10678,6 @@ components:
           type: string
       readOnly: true
       type: object
-    AuthorizeEditorDataRulesRuleDTO_condition:
-      oneOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsAndConditionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparisonConditionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsEmptyConditionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsNotConditionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
-    AuthorizeEditorDataRulesRuleDTO_effectSettings:
-      oneOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
     DecisionEndpoint_authorizationVersion:
       example:
         id: id

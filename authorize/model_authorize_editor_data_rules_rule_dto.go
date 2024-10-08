@@ -30,15 +30,15 @@ type AuthorizeEditorDataRulesRuleDTO struct {
 	Description *string `json:"description,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataRulesRuleDTOCondition `json:"condition,omitempty"`
-	EffectSettings AuthorizeEditorDataRulesRuleDTOEffectSettings `json:"effectSettings"`
+	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
+	EffectSettings AuthorizeEditorDataRulesEffectSettingsDTO `json:"effectSettings"`
 }
 
 // NewAuthorizeEditorDataRulesRuleDTO instantiates a new AuthorizeEditorDataRulesRuleDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataRulesRuleDTO(name string, effectSettings AuthorizeEditorDataRulesRuleDTOEffectSettings) *AuthorizeEditorDataRulesRuleDTO {
+func NewAuthorizeEditorDataRulesRuleDTO(name string, effectSettings AuthorizeEditorDataRulesEffectSettingsDTO) *AuthorizeEditorDataRulesRuleDTO {
 	this := AuthorizeEditorDataRulesRuleDTO{}
 	this.Name = name
 	this.EffectSettings = effectSettings
@@ -334,9 +334,9 @@ func (o *AuthorizeEditorDataRulesRuleDTO) SetStatements(v []map[string]interface
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataRulesRuleDTO) GetCondition() AuthorizeEditorDataRulesRuleDTOCondition {
+func (o *AuthorizeEditorDataRulesRuleDTO) GetCondition() AuthorizeEditorDataConditionDTO {
 	if o == nil || IsNil(o.Condition) {
-		var ret AuthorizeEditorDataRulesRuleDTOCondition
+		var ret AuthorizeEditorDataConditionDTO
 		return ret
 	}
 	return *o.Condition
@@ -344,7 +344,7 @@ func (o *AuthorizeEditorDataRulesRuleDTO) GetCondition() AuthorizeEditorDataRule
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataRulesRuleDTO) GetConditionOk() (*AuthorizeEditorDataRulesRuleDTOCondition, bool) {
+func (o *AuthorizeEditorDataRulesRuleDTO) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -360,15 +360,15 @@ func (o *AuthorizeEditorDataRulesRuleDTO) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given AuthorizeEditorDataRulesRuleDTOCondition and assigns it to the Condition field.
-func (o *AuthorizeEditorDataRulesRuleDTO) SetCondition(v AuthorizeEditorDataRulesRuleDTOCondition) {
+// SetCondition gets a reference to the given AuthorizeEditorDataConditionDTO and assigns it to the Condition field.
+func (o *AuthorizeEditorDataRulesRuleDTO) SetCondition(v AuthorizeEditorDataConditionDTO) {
 	o.Condition = &v
 }
 
 // GetEffectSettings returns the EffectSettings field value
-func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettings() AuthorizeEditorDataRulesRuleDTOEffectSettings {
+func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettings() AuthorizeEditorDataRulesEffectSettingsDTO {
 	if o == nil {
-		var ret AuthorizeEditorDataRulesRuleDTOEffectSettings
+		var ret AuthorizeEditorDataRulesEffectSettingsDTO
 		return ret
 	}
 
@@ -377,7 +377,7 @@ func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettings() AuthorizeEditorDat
 
 // GetEffectSettingsOk returns a tuple with the EffectSettings field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettingsOk() (*AuthorizeEditorDataRulesRuleDTOEffectSettings, bool) {
+func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettingsOk() (*AuthorizeEditorDataRulesEffectSettingsDTO, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -385,7 +385,7 @@ func (o *AuthorizeEditorDataRulesRuleDTO) GetEffectSettingsOk() (*AuthorizeEdito
 }
 
 // SetEffectSettings sets field value
-func (o *AuthorizeEditorDataRulesRuleDTO) SetEffectSettings(v AuthorizeEditorDataRulesRuleDTOEffectSettings) {
+func (o *AuthorizeEditorDataRulesRuleDTO) SetEffectSettings(v AuthorizeEditorDataRulesEffectSettingsDTO) {
 	o.EffectSettings = v
 }
 

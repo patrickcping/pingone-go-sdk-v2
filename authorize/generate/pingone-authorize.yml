@@ -813,6 +813,8 @@ components:
         properties:
           '_links':
             $ref: '#/components/schemas/LinksHATEOAS'
+          processor:
+            $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
           valueType:
             $ref: '#/components/schemas/AuthorizeEditorDataValueTypeDTO'
           serviceSettings:
@@ -955,7 +957,10 @@ components:
       type: object
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionsComparandDTOType'
+    EnumAuthorizeEditorDataConditionsComparandDTOType:
+      type: string
+      enum: [ATTRIBUTE, CONSTANT]
     AuthorizeEditorDataConditionsComparandDTO:
       oneOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
@@ -1066,6 +1071,33 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            description: HAL embedded resources
+            readOnly: true
+          description: HAL embedded resources
+          readOnly: true
+        id:
+          type: string
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        statements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
+        condition:
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         effectSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
         version:
@@ -1204,6 +1236,31 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        _embedded:
+          type: object
+          additionalProperties:
+            type: object
+            description: HAL embedded resources
+            readOnly: true
+          description: HAL embedded resources
+          readOnly: true
+        id:
+          type: string
+          description: The resource's unique identifier
+          format: uuid
+          readOnly: true
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        statements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         combiningAlgorithm:
@@ -1631,19 +1688,9 @@ components:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
-          oneOf:
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsAndConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparisonConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsEmptyConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsNotConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         effectSettings:
-          oneOf:
-          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO'
+          $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
       description: "The rule to create, without ID or Version properties"
     AuthorizeEditorDataPoliciesPolicyDTO:
       required:
@@ -1681,13 +1728,7 @@ components:
           items:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
-          oneOf:
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsAndConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparisonConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsEmptyConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsNotConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsOrConditionDTO'
-          - $ref: '#/components/schemas/AuthorizeEditorDataConditionsReferenceConditionDTO'
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
         combiningAlgorithm:
           $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
         children:
@@ -5326,10 +5367,7 @@ paths:
           application/json:
             schema:
               description: "The service to create, without ID or Version properties"
-              oneOf:
-              - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-              - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-              - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+              $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
         required: true
       responses:
         "201":
@@ -5392,16 +5430,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
             application/json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -5445,10 +5477,7 @@ paths:
           application/json:
             schema:
               description: "The service to be updated, with ID and Version parameters"
-              oneOf:
-              - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-              - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-              - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+              $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
         required: true
       responses:
         "200":
@@ -5456,16 +5485,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
             application/json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-                - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
         "400":
           description: Bad request (e.g. attempt was made to update an outdated version
             of the service)
