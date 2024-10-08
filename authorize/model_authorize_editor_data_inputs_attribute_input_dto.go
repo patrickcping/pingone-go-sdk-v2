@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataInputsAttributeInputDTO{}
 
 // AuthorizeEditorDataInputsAttributeInputDTO struct for AuthorizeEditorDataInputsAttributeInputDTO
 type AuthorizeEditorDataInputsAttributeInputDTO struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataInputDTOType `json:"type"`
 	Attribute AuthorizeEditorDataReferenceObjectDTO `json:"attribute"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataInputsAttributeInputDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputsAttributeInputDTO(type_ string, attribute AuthorizeEditorDataReferenceObjectDTO) *AuthorizeEditorDataInputsAttributeInputDTO {
+func NewAuthorizeEditorDataInputsAttributeInputDTO(type_ EnumAuthorizeEditorDataInputDTOType, attribute AuthorizeEditorDataReferenceObjectDTO) *AuthorizeEditorDataInputsAttributeInputDTO {
 	this := AuthorizeEditorDataInputsAttributeInputDTO{}
 	this.Type = type_
 	this.Attribute = attribute
@@ -43,9 +43,9 @@ func NewAuthorizeEditorDataInputsAttributeInputDTOWithDefaults() *AuthorizeEdito
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetType() string {
+func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetType() EnumAuthorizeEditorDataInputDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataInputDTOType
 		return ret
 	}
 
@@ -54,7 +54,7 @@ func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetTypeOk() (*EnumAuthorizeEditorDataInputDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *AuthorizeEditorDataInputsAttributeInputDTO) GetTypeOk() (*string, bool)
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataInputsAttributeInputDTO) SetType(v string) {
+func (o *AuthorizeEditorDataInputsAttributeInputDTO) SetType(v EnumAuthorizeEditorDataInputDTOType) {
 	o.Type = v
 }
 

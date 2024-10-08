@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
+**Type** | [**EnumAuthorizeEditorDataInputDTOType**](EnumAuthorizeEditorDataInputDTOType.md) |  | 
 **Attribute** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
 **Value** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataInputDTO
 
-`func NewAuthorizeEditorDataInputDTO(type_ string, attribute AuthorizeEditorDataReferenceObjectDTO, value string, ) *AuthorizeEditorDataInputDTO`
+`func NewAuthorizeEditorDataInputDTO(type_ EnumAuthorizeEditorDataInputDTOType, attribute AuthorizeEditorDataReferenceObjectDTO, value string, ) *AuthorizeEditorDataInputDTO`
 
 NewAuthorizeEditorDataInputDTO instantiates a new AuthorizeEditorDataInputDTO object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AuthorizeEditorDataInputDTO) GetType() string`
+`func (o *AuthorizeEditorDataInputDTO) GetType() EnumAuthorizeEditorDataInputDTOType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AuthorizeEditorDataInputDTO) GetTypeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataInputDTO) GetTypeOk() (*EnumAuthorizeEditorDataInputDTOType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AuthorizeEditorDataInputDTO) SetType(v string)`
+`func (o *AuthorizeEditorDataInputDTO) SetType(v EnumAuthorizeEditorDataInputDTOType)`
 
 SetType sets Type field to given value.
 

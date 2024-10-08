@@ -7650,7 +7650,7 @@ components:
     AuthorizeEditorDataInputDTOCommon:
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataInputDTOType'
       required:
       - type
       type: object

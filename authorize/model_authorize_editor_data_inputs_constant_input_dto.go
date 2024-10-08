@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataInputsConstantInputDTO{}
 
 // AuthorizeEditorDataInputsConstantInputDTO struct for AuthorizeEditorDataInputsConstantInputDTO
 type AuthorizeEditorDataInputsConstantInputDTO struct {
-	Type string `json:"type"`
+	Type EnumAuthorizeEditorDataInputDTOType `json:"type"`
 	Value string `json:"value"`
 }
 
@@ -27,7 +27,7 @@ type AuthorizeEditorDataInputsConstantInputDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataInputsConstantInputDTO(type_ string, value string) *AuthorizeEditorDataInputsConstantInputDTO {
+func NewAuthorizeEditorDataInputsConstantInputDTO(type_ EnumAuthorizeEditorDataInputDTOType, value string) *AuthorizeEditorDataInputsConstantInputDTO {
 	this := AuthorizeEditorDataInputsConstantInputDTO{}
 	this.Type = type_
 	this.Value = value
@@ -43,9 +43,9 @@ func NewAuthorizeEditorDataInputsConstantInputDTOWithDefaults() *AuthorizeEditor
 }
 
 // GetType returns the Type field value
-func (o *AuthorizeEditorDataInputsConstantInputDTO) GetType() string {
+func (o *AuthorizeEditorDataInputsConstantInputDTO) GetType() EnumAuthorizeEditorDataInputDTOType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataInputDTOType
 		return ret
 	}
 
@@ -54,7 +54,7 @@ func (o *AuthorizeEditorDataInputsConstantInputDTO) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataInputsConstantInputDTO) GetTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataInputsConstantInputDTO) GetTypeOk() (*EnumAuthorizeEditorDataInputDTOType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *AuthorizeEditorDataInputsConstantInputDTO) GetTypeOk() (*string, bool) 
 }
 
 // SetType sets field value
-func (o *AuthorizeEditorDataInputsConstantInputDTO) SetType(v string) {
+func (o *AuthorizeEditorDataInputsConstantInputDTO) SetType(v EnumAuthorizeEditorDataInputDTOType) {
 	o.Type = v
 }
 

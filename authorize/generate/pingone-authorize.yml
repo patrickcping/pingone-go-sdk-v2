@@ -545,7 +545,7 @@ components:
       type: object
       properties:
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataInputDTOType'
     AuthorizeEditorDataInputDTO:
       oneOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataInputsAttributeInputDTO'
