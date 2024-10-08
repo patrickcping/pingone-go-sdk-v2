@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The resource&#39;s unique identifier | [optional] [readonly] 
 **Version** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
+**Type** | [**EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType.md) |  | 
 **FullName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Parent** | Pointer to [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO
 
-`func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, processor AuthorizeEditorDataProcessorDTO, ) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO`
+`func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, type_ EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType, processor AuthorizeEditorDataProcessorDTO, ) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO`
 
 NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO instantiates a new AuthorizeEditorDataDefinitionsProcessorDefinitionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -177,6 +178,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetType
+
+`func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) GetType() EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) SetType(v EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType)`
+
+SetType sets Type field to given value.
 
 
 ### GetFullName

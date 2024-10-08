@@ -27,6 +27,7 @@ type AuthorizeEditorDataDefinitionsProcessorDefinitionDTO struct {
 	Id *string `json:"id,omitempty"`
 	Version *string `json:"version,omitempty"`
 	Name string `json:"name"`
+	Type EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType `json:"type"`
 	FullName *string `json:"fullName,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
@@ -37,9 +38,10 @@ type AuthorizeEditorDataDefinitionsProcessorDefinitionDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, processor AuthorizeEditorDataProcessorDTO) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO {
+func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, type_ EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType, processor AuthorizeEditorDataProcessorDTO) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO {
 	this := AuthorizeEditorDataDefinitionsProcessorDefinitionDTO{}
 	this.Name = name
+	this.Type = type_
 	this.Processor = processor
 	return &this
 }
@@ -236,6 +238,30 @@ func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) SetName(v string)
 	o.Name = v
 }
 
+// GetType returns the Type field value
+func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) GetType() EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType {
+	if o == nil {
+		var ret EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) SetType(v EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType) {
+	o.Type = v
+}
+
 // GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) GetFullName() string {
 	if o == nil || IsNil(o.FullName) {
@@ -382,6 +408,7 @@ func (o AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) ToMap() (map[strin
 		toSerialize["version"] = o.Version
 	}
 	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 	if !IsNil(o.FullName) {
 		toSerialize["fullName"] = o.FullName
 	}

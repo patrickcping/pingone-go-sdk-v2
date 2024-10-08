@@ -1133,6 +1133,7 @@ components:
       required:
       - name
       - processor
+      - type
       type: object
       properties:
         '_links':
@@ -1157,6 +1158,8 @@ components:
           format: uuid
         name:
           type: string
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType'
         fullName:
           type: string
         description:
@@ -1165,6 +1168,9 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         processor:
           $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
+    EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType:
+      type: string
+      enum: [PROCESSOR]
     AuthorizeEditorDataManagedEntityDTO:
       required:
       - owner
