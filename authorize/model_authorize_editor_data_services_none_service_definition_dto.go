@@ -30,14 +30,14 @@ type AuthorizeEditorDataServicesNoneServiceDefinitionDTO struct {
 	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
 	Type *EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType `json:"type,omitempty"`
 	CacheSettings *AuthorizeEditorDataCacheSettingsDTO `json:"cacheSettings,omitempty"`
-	ServiceType string `json:"serviceType"`
+	ServiceType EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType `json:"serviceType"`
 }
 
 // NewAuthorizeEditorDataServicesNoneServiceDefinitionDTO instantiates a new AuthorizeEditorDataServicesNoneServiceDefinitionDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataServicesNoneServiceDefinitionDTO(name string, serviceType string) *AuthorizeEditorDataServicesNoneServiceDefinitionDTO {
+func NewAuthorizeEditorDataServicesNoneServiceDefinitionDTO(name string, serviceType EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType) *AuthorizeEditorDataServicesNoneServiceDefinitionDTO {
 	this := AuthorizeEditorDataServicesNoneServiceDefinitionDTO{}
 	this.Name = name
 	this.ServiceType = serviceType
@@ -365,9 +365,9 @@ func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) SetCacheSettings(v
 }
 
 // GetServiceType returns the ServiceType field value
-func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceType() string {
+func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceType() EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType {
 	if o == nil {
-		var ret string
+		var ret EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType
 		return ret
 	}
 
@@ -376,7 +376,7 @@ func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceType() s
 
 // GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceTypeOk() (*string, bool) {
+func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceTypeOk() (*EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -384,7 +384,7 @@ func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceTypeOk()
 }
 
 // SetServiceType sets field value
-func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) SetServiceType(v string) {
+func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) SetServiceType(v EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType) {
 	o.ServiceType = v
 }
 

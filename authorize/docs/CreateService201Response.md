@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Parent** | Pointer to [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | [optional] 
 **Type** | Pointer to [**EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md) |  | [optional] 
 **CacheSettings** | Pointer to [**AuthorizeEditorDataCacheSettingsDTO**](AuthorizeEditorDataCacheSettingsDTO.md) |  | [optional] 
-**ServiceType** | **string** |  | 
+**ServiceType** | [**EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType**](EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType.md) |  | 
 **Processor** | Pointer to [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | [optional] 
 **ValueType** | [**AuthorizeEditorDataValueTypeDTO**](AuthorizeEditorDataValueTypeDTO.md) |  | 
 **ServiceSettings** | [**AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO**](AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO.md) |  | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewCreateService201Response
 
-`func NewCreateService201Response(name string, serviceType string, valueType AuthorizeEditorDataValueTypeDTO, serviceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO, ) *CreateService201Response`
+`func NewCreateService201Response(name string, serviceType EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType, valueType AuthorizeEditorDataValueTypeDTO, serviceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO, ) *CreateService201Response`
 
 NewCreateService201Response instantiates a new CreateService201Response object
 This constructor will assign default values to properties that have it defined,
@@ -285,20 +285,20 @@ HasCacheSettings returns a boolean if a field has been set.
 
 ### GetServiceType
 
-`func (o *CreateService201Response) GetServiceType() string`
+`func (o *CreateService201Response) GetServiceType() EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *CreateService201Response) GetServiceTypeOk() (*string, bool)`
+`func (o *CreateService201Response) GetServiceTypeOk() (*EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *CreateService201Response) SetServiceType(v string)`
+`func (o *CreateService201Response) SetServiceType(v EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 

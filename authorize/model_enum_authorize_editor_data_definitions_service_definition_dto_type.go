@@ -20,16 +20,12 @@ type EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType string
 
 // List of EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType
 const (
-	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOTYPE_NONE EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType = "NONE"
-	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOTYPE_HTTP EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType = "HTTP"
-	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOTYPE_CONNECTOR EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType = "CONNECTOR"
+	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOTYPE_SERVICE EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType = "SERVICE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType enum
 var AllowedEnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOTypeEnumValues = []EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType{
-	"NONE",
-	"HTTP",
-	"CONNECTOR",
+	"SERVICE",
 }
 
 func (v *EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType) UnmarshalJSON(src []byte) error {

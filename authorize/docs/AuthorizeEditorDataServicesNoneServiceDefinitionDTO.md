@@ -14,13 +14,13 @@ Name | Type | Description | Notes
 **Parent** | Pointer to [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | [optional] 
 **Type** | Pointer to [**EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType.md) |  | [optional] 
 **CacheSettings** | Pointer to [**AuthorizeEditorDataCacheSettingsDTO**](AuthorizeEditorDataCacheSettingsDTO.md) |  | [optional] 
-**ServiceType** | **string** |  | 
+**ServiceType** | [**EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType**](EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataServicesNoneServiceDefinitionDTO
 
-`func NewAuthorizeEditorDataServicesNoneServiceDefinitionDTO(name string, serviceType string, ) *AuthorizeEditorDataServicesNoneServiceDefinitionDTO`
+`func NewAuthorizeEditorDataServicesNoneServiceDefinitionDTO(name string, serviceType EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType, ) *AuthorizeEditorDataServicesNoneServiceDefinitionDTO`
 
 NewAuthorizeEditorDataServicesNoneServiceDefinitionDTO instantiates a new AuthorizeEditorDataServicesNoneServiceDefinitionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -282,20 +282,20 @@ HasCacheSettings returns a boolean if a field has been set.
 
 ### GetServiceType
 
-`func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceType() string`
+`func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceType() EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceTypeOk() (*string, bool)`
+`func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) GetServiceTypeOk() (*EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) SetServiceType(v string)`
+`func (o *AuthorizeEditorDataServicesNoneServiceDefinitionDTO) SetServiceType(v EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 

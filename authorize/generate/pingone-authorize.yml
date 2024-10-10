@@ -686,7 +686,7 @@ components:
         cacheSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataCacheSettingsDTO'
         serviceType:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType'
     AuthorizeEditorDataDefinitionsServiceDefinitionDTO:
       oneOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
@@ -699,6 +699,10 @@ components:
           HTTP: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
           NONE: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
     EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType:
+      type: string
+      readOnly: true
+      enum: [SERVICE]
+    EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType:
       type: string
       enum:
       - NONE
@@ -1133,7 +1137,6 @@ components:
       required:
       - name
       - processor
-      - type
       type: object
       properties:
         '_links':
@@ -1170,6 +1173,7 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
     EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType:
       type: string
+      readOnly: true
       enum: [PROCESSOR]
     AuthorizeEditorDataManagedEntityDTO:
       required:
@@ -1331,10 +1335,16 @@ components:
           type: string
         description:
           type: string
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType'
         parent:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+    EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType:
+      type: string
+      readOnly: true
+      enum: [CONDITION]
     AuthorizeEditorDataResolverDTOCommon:
       required:
       - type
@@ -1491,6 +1501,8 @@ components:
           type: string
         description:
           type: string
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType'
         parent:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         resolvers:
@@ -1509,6 +1521,10 @@ components:
           type: string
         managedEntity:
           $ref: '#/components/schemas/AuthorizeEditorDataManagedEntityDTO'
+    EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType:
+      type: string
+      readOnly: true
+      enum: [ATTRIBUTE]
     AuthorizeEditorDataStatementsStatementDTO:
       required:
       - appliesIf

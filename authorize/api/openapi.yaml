@@ -7799,7 +7799,7 @@ components:
         cacheSettings:
           $ref: '#/components/schemas/AuthorizeEditorDataCacheSettingsDTO'
         serviceType:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType'
       required:
       - name
       - serviceType
@@ -7816,6 +7816,11 @@ components:
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
     EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType:
+      enum:
+      - SERVICE
+      readOnly: true
+      type: string
+    EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType:
       enum:
       - NONE
       - HTTP
@@ -8326,11 +8331,11 @@ components:
       required:
       - name
       - processor
-      - type
       type: object
     EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType:
       enum:
       - PROCESSOR
+      readOnly: true
       type: string
     AuthorizeEditorDataManagedEntityDTO:
       example:
@@ -8548,6 +8553,7 @@ components:
         fullName: fullName
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: null
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         _links:
@@ -8579,6 +8585,8 @@ components:
           type: string
         description:
           type: string
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType'
         parent:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         condition:
@@ -8587,6 +8595,11 @@ components:
       - condition
       - name
       type: object
+    EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType:
+      enum:
+      - CONDITION
+      readOnly: true
+      type: string
     AuthorizeEditorDataResolverDTOCommon:
       properties:
         name:
@@ -8739,6 +8752,7 @@ components:
         defaultValue: defaultValue
         fullName: fullName
         description: description
+        type: null
         version: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         processor: null
         valueSchema: valueSchema
@@ -8780,6 +8794,8 @@ components:
           type: string
         description:
           type: string
+        type:
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType'
         parent:
           $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         resolvers:
@@ -8802,6 +8818,11 @@ components:
       - name
       - valueType
       type: object
+    EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType:
+      enum:
+      - ATTRIBUTE
+      readOnly: true
+      type: string
     AuthorizeEditorDataStatementsStatementDTO:
       description: "The statement to create, without ID or Version properties"
       example:

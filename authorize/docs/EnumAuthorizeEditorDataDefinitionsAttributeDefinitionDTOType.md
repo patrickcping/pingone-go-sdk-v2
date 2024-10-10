@@ -1,9 +1,9 @@
-# EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType
+# EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType
 
 ## Enum
 
 
-* `SERVICE` (value: `"SERVICE"`)
+* `ATTRIBUTE` (value: `"ATTRIBUTE"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

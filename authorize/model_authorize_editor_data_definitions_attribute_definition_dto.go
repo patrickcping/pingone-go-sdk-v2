@@ -29,6 +29,7 @@ type AuthorizeEditorDataDefinitionsAttributeDefinitionDTO struct {
 	Name string `json:"name"`
 	FullName *string `json:"fullName,omitempty"`
 	Description *string `json:"description,omitempty"`
+	Type *EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType `json:"type,omitempty"`
 	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
 	Resolvers []AuthorizeEditorDataResolverDTO `json:"resolvers,omitempty"`
 	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
@@ -304,6 +305,38 @@ func (o *AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) HasDescription() 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) GetType() EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType {
+	if o == nil || IsNil(o.Type) {
+		var ret EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType and assigns it to the Type field.
+func (o *AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) SetType(v EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType) {
+	o.Type = &v
 }
 
 // GetParent returns the Parent field value if set, zero value otherwise.
@@ -585,6 +618,9 @@ func (o AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) ToMap() (map[strin
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Parent) {
 		toSerialize["parent"] = o.Parent

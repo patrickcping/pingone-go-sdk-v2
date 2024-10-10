@@ -78,115 +78,54 @@ func AuthorizeEditorDataProcessorsXPathProcessorDTOAsAuthorizeEditorDataProcesso
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataProcessorDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataProcessorsChainProcessorDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsChainProcessorDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataProcessorsChainProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsChainProcessorDTO)
-		if string(jsonAuthorizeEditorDataProcessorsChainProcessorDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
-		} else {
-			match++
+	
+	var common AuthorizeEditorDataProcessorDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_CHAIN:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsChainProcessorDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataProcessorsCollectionFilterProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO)
-		if string(jsonAuthorizeEditorDataProcessorsCollectionFilterProcessorDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_COLLECTION_FILTER:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataProcessorsCollectionTransformProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO)
-		if string(jsonAuthorizeEditorDataProcessorsCollectionTransformProcessorDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_COLLECTION_TRANSFORM:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataProcessorsJsonPathProcessorDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataProcessorsJsonPathProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO)
-		if string(jsonAuthorizeEditorDataProcessorsJsonPathProcessorDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_JSON_PATH:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataProcessorsReferenceProcessorDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataProcessorsReferenceProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO)
-		if string(jsonAuthorizeEditorDataProcessorsReferenceProcessorDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_REFERENCE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataProcessorsSpelProcessorDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsSpelProcessorDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataProcessorsSpelProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsSpelProcessorDTO)
-		if string(jsonAuthorizeEditorDataProcessorsSpelProcessorDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_SPEL:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsSpelProcessorDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataProcessorsXPathProcessorDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataProcessorsXPathProcessorDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataProcessorsXPathProcessorDTO, _ := json.Marshal(dst.AuthorizeEditorDataProcessorsXPathProcessorDTO)
-		if string(jsonAuthorizeEditorDataProcessorsXPathProcessorDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_XPATH:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsXPathProcessorDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataProcessorDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
-		dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
-		dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
-		dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
-		dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
-		dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
-		dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataProcessorDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataProcessorDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

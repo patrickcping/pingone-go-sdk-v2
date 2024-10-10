@@ -29,6 +29,7 @@ type AuthorizeEditorDataDefinitionsConditionDefinitionDTO struct {
 	Name string `json:"name"`
 	FullName *string `json:"fullName,omitempty"`
 	Description *string `json:"description,omitempty"`
+	Type *EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType `json:"type,omitempty"`
 	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
 	Condition AuthorizeEditorDataConditionDTO `json:"condition"`
 }
@@ -300,6 +301,38 @@ func (o *AuthorizeEditorDataDefinitionsConditionDefinitionDTO) SetDescription(v 
 	o.Description = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AuthorizeEditorDataDefinitionsConditionDefinitionDTO) GetType() EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType {
+	if o == nil || IsNil(o.Type) {
+		var ret EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataDefinitionsConditionDefinitionDTO) GetTypeOk() (*EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataDefinitionsConditionDefinitionDTO) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType and assigns it to the Type field.
+func (o *AuthorizeEditorDataDefinitionsConditionDefinitionDTO) SetType(v EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType) {
+	o.Type = &v
+}
+
 // GetParent returns the Parent field value if set, zero value otherwise.
 func (o *AuthorizeEditorDataDefinitionsConditionDefinitionDTO) GetParent() AuthorizeEditorDataReferenceObjectDTO {
 	if o == nil || IsNil(o.Parent) {
@@ -387,6 +420,9 @@ func (o AuthorizeEditorDataDefinitionsConditionDefinitionDTO) ToMap() (map[strin
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Parent) {
 		toSerialize["parent"] = o.Parent

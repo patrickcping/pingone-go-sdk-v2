@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The resource&#39;s unique identifier | [optional] [readonly] 
 **Version** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
-**Type** | [**EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType.md) |  | 
+**Type** | Pointer to [**EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType**](EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType.md) |  | [optional] 
 **FullName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Parent** | Pointer to [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO
 
-`func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, type_ EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType, processor AuthorizeEditorDataProcessorDTO, ) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO`
+`func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, processor AuthorizeEditorDataProcessorDTO, ) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO`
 
 NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO instantiates a new AuthorizeEditorDataDefinitionsProcessorDefinitionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -199,6 +199,11 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetFullName
 
