@@ -78,7 +78,7 @@ func AuthorizeEditorDataProcessorsXPathProcessorDTOAsAuthorizeEditorDataProcesso
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataProcessorDTO) UnmarshalJSON(data []byte) error {
-	
+
 	var common AuthorizeEditorDataProcessorDTOCommon
 
 	if err := json.Unmarshal(data, &common); err != nil { // simple model
