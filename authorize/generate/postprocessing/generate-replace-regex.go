@@ -95,5 +95,63 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// AuthorizeEditorDataProcessorDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_processor_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataProcessorDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataProcessorDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataProcessorDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataProcessorsChainProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsSpelProcessorDTO = nil
+	dst.AuthorizeEditorDataProcessorsXPathProcessorDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_CHAIN:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsChainProcessorDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_COLLECTION_FILTER:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_COLLECTION_TRANSFORM:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_JSON_PATH:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsJsonPathProcessorDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_REFERENCE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsReferenceProcessorDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_SPEL:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsSpelProcessorDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_XPATH:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataProcessorsXPathProcessorDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataProcessorDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )
