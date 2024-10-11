@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## ListConnectorTemplates
 
-> ListConnectorTemplates200Response ListConnectorTemplates(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
+> EntityArray ListConnectorTemplates(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
 
 List Connector Templates
 
@@ -114,7 +114,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorConnectorTemplatesApi.ListConnectorTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListConnectorTemplates`: ListConnectorTemplates200Response
+    // response from `ListConnectorTemplates`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorConnectorTemplatesApi.ListConnectorTemplates`: %v\n", resp)
 }
 ```
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListConnectorTemplates200Response**](ListConnectorTemplates200Response.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

@@ -709,7 +709,7 @@ func (r ApiListStatementsRequest) Cursor(cursor string) ApiListStatementsRequest
 	return r
 }
 
-func (r ApiListStatementsRequest) Execute() (*ListStatements200Response, *http.Response, error) {
+func (r ApiListStatementsRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ListStatementsExecute(r)
 }
 
@@ -731,12 +731,12 @@ func (a *AuthorizeEditorStatementsApiService) ListStatements(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ListStatements200Response
-func (a *AuthorizeEditorStatementsApiService) ListStatementsExecute(r ApiListStatementsRequest) (*ListStatements200Response, *http.Response, error) {
+//  @return EntityArray
+func (a *AuthorizeEditorStatementsApiService) ListStatementsExecute(r ApiListStatementsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *ListStatements200Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -748,12 +748,12 @@ func (a *AuthorizeEditorStatementsApiService) ListStatementsExecute(r ApiListSta
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorStatementsApiService) internalListStatementsExecute(r ApiListStatementsRequest) (*ListStatements200Response, *http.Response, error) {
+func (a *AuthorizeEditorStatementsApiService) internalListStatementsExecute(r ApiListStatementsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListStatements200Response
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorStatementsApiService.ListStatements")

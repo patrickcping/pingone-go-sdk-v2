@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## ListRules
 
-> ListRules200Response ListRules(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
+> EntityArray ListRules(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
 
 List Rules
 
@@ -265,7 +265,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorRulesApi.ListRules``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListRules`: ListRules200Response
+    // response from `ListRules`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorRulesApi.ListRules`: %v\n", resp)
 }
 ```
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListRules200Response**](ListRules200Response.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

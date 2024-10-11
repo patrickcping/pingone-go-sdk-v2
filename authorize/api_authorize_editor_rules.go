@@ -709,7 +709,7 @@ func (r ApiListRulesRequest) Cursor(cursor string) ApiListRulesRequest {
 	return r
 }
 
-func (r ApiListRulesRequest) Execute() (*ListRules200Response, *http.Response, error) {
+func (r ApiListRulesRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ListRulesExecute(r)
 }
 
@@ -731,12 +731,12 @@ func (a *AuthorizeEditorRulesApiService) ListRules(ctx context.Context, environm
 }
 
 // Execute executes the request
-//  @return ListRules200Response
-func (a *AuthorizeEditorRulesApiService) ListRulesExecute(r ApiListRulesRequest) (*ListRules200Response, *http.Response, error) {
+//  @return EntityArray
+func (a *AuthorizeEditorRulesApiService) ListRulesExecute(r ApiListRulesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *ListRules200Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -748,12 +748,12 @@ func (a *AuthorizeEditorRulesApiService) ListRulesExecute(r ApiListRulesRequest)
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorRulesApiService) internalListRulesExecute(r ApiListRulesRequest) (*ListRules200Response, *http.Response, error) {
+func (a *AuthorizeEditorRulesApiService) internalListRulesExecute(r ApiListRulesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListRules200Response
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorRulesApiService.ListRules")

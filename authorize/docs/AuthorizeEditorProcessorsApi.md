@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## ListProcessors
 
-> ListProcessors200Response ListProcessors(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArray ListProcessors(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 List Processors
 
@@ -261,7 +261,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorProcessorsApi.ListProcessors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListProcessors`: ListProcessors200Response
+    // response from `ListProcessors`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorProcessorsApi.ListProcessors`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListProcessors200Response**](ListProcessors200Response.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

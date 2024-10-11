@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## ListConditions
 
-> ListConditions200Response ListConditions(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArray ListConditions(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 List Conditions
 
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorConditionsApi.ListConditions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListConditions`: ListConditions200Response
+    // response from `ListConditions`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorConditionsApi.ListConditions`: %v\n", resp)
 }
 ```
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListConditions200Response**](ListConditions200Response.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

@@ -709,7 +709,7 @@ func (r ApiListRootPoliciesRequest) Cursor(cursor string) ApiListRootPoliciesReq
 	return r
 }
 
-func (r ApiListRootPoliciesRequest) Execute() (*ListRootPolicies200Response, *http.Response, error) {
+func (r ApiListRootPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ListRootPoliciesExecute(r)
 }
 
@@ -731,12 +731,12 @@ func (a *AuthorizeEditorPoliciesApiService) ListRootPolicies(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ListRootPolicies200Response
-func (a *AuthorizeEditorPoliciesApiService) ListRootPoliciesExecute(r ApiListRootPoliciesRequest) (*ListRootPolicies200Response, *http.Response, error) {
+//  @return EntityArray
+func (a *AuthorizeEditorPoliciesApiService) ListRootPoliciesExecute(r ApiListRootPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *ListRootPolicies200Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -748,12 +748,12 @@ func (a *AuthorizeEditorPoliciesApiService) ListRootPoliciesExecute(r ApiListRoo
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorPoliciesApiService) internalListRootPoliciesExecute(r ApiListRootPoliciesRequest) (*ListRootPolicies200Response, *http.Response, error) {
+func (a *AuthorizeEditorPoliciesApiService) internalListRootPoliciesExecute(r ApiListRootPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListRootPolicies200Response
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorPoliciesApiService.ListRootPolicies")

@@ -264,7 +264,7 @@ func (r ApiListConnectorTemplatesRequest) Cursor(cursor string) ApiListConnector
 	return r
 }
 
-func (r ApiListConnectorTemplatesRequest) Execute() (*ListConnectorTemplates200Response, *http.Response, error) {
+func (r ApiListConnectorTemplatesRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ListConnectorTemplatesExecute(r)
 }
 
@@ -286,12 +286,12 @@ func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplates(ctx
 }
 
 // Execute executes the request
-//  @return ListConnectorTemplates200Response
-func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplatesExecute(r ApiListConnectorTemplatesRequest) (*ListConnectorTemplates200Response, *http.Response, error) {
+//  @return EntityArray
+func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplatesExecute(r ApiListConnectorTemplatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *ListConnectorTemplates200Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -303,12 +303,12 @@ func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplatesExec
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorConnectorTemplatesApiService) internalListConnectorTemplatesExecute(r ApiListConnectorTemplatesRequest) (*ListConnectorTemplates200Response, *http.Response, error) {
+func (a *AuthorizeEditorConnectorTemplatesApiService) internalListConnectorTemplatesExecute(r ApiListConnectorTemplatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListConnectorTemplates200Response
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorConnectorTemplatesApiService.ListConnectorTemplates")

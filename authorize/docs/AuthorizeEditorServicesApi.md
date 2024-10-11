@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## ListServices
 
-> ListServices200Response ListServices(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArray ListServices(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 List Services
 
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorServicesApi.ListServices``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListServices`: ListServices200Response
+    // response from `ListServices`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorServicesApi.ListServices`: %v\n", resp)
 }
 ```
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListServices200Response**](ListServices200Response.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

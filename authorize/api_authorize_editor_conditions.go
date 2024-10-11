@@ -698,7 +698,7 @@ func (r ApiListConditionsRequest) Cursor(cursor string) ApiListConditionsRequest
 	return r
 }
 
-func (r ApiListConditionsRequest) Execute() (*ListConditions200Response, *http.Response, error) {
+func (r ApiListConditionsRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ListConditionsExecute(r)
 }
 
@@ -720,12 +720,12 @@ func (a *AuthorizeEditorConditionsApiService) ListConditions(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ListConditions200Response
-func (a *AuthorizeEditorConditionsApiService) ListConditionsExecute(r ApiListConditionsRequest) (*ListConditions200Response, *http.Response, error) {
+//  @return EntityArray
+func (a *AuthorizeEditorConditionsApiService) ListConditionsExecute(r ApiListConditionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *ListConditions200Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -737,12 +737,12 @@ func (a *AuthorizeEditorConditionsApiService) ListConditionsExecute(r ApiListCon
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorConditionsApiService) internalListConditionsExecute(r ApiListConditionsRequest) (*ListConditions200Response, *http.Response, error) {
+func (a *AuthorizeEditorConditionsApiService) internalListConditionsExecute(r ApiListConditionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListConditions200Response
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorConditionsApiService.ListConditions")

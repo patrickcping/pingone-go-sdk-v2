@@ -2122,6 +2122,51 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ApplicationRoleAssignment'
+            authorizationAttributes:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
+            authorizationConditions:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
+            authorizationConnectorTemplates:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorTemplateDTO'
+            authorizationPolicies:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
+            authorizationProcessors:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
+            authorizationRules:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
+            authorizationServices:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+            authorizationStatements:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
+            authorizationVersions:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
             decisionEndpoints:
               type: array
               items:
@@ -3459,44 +3504,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationAttributes:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationAttributes:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -3810,44 +3821,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationConditions:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationConditions:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -4151,44 +4128,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationConnectorTemplates:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorTemplateDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationConnectorTemplates:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorTemplateDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -4294,44 +4237,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationPolicies:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationPolicies:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -4660,44 +4569,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationProcessors:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationProcessors:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -4948,44 +4823,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationRules:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationRules:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -5314,44 +5155,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationServices:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationServices:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -5662,44 +5469,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationStatements:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationStatements:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -5979,44 +5752,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationVersions:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                type: object
-                properties:
-                  '_links':
-                    $ref: '#/components/schemas/LinksHATEOAS'
-                  _embedded:
-                    type: object
-                    properties:
-                      authorizationVersions:
-                        type: array
-                        items:
-                          allOf:
-                          - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
-                  count:
-                    type: integer
-                    format: int32
-                  size:
-                    type: integer
-                    format: int32
+                $ref: '#/components/schemas/EntityArray'
         '400':
           $ref: '#/components/responses/400'
         '401':

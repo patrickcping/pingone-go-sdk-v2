@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## ListRootPolicies
 
-> ListRootPolicies200Response ListRootPolicies(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
+> EntityArray ListRootPolicies(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
 
 List Root Policies
 
@@ -265,7 +265,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorPoliciesApi.ListRootPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListRootPolicies`: ListRootPolicies200Response
+    // response from `ListRootPolicies`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorPoliciesApi.ListRootPolicies`: %v\n", resp)
 }
 ```
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListRootPolicies200Response**](ListRootPolicies200Response.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 

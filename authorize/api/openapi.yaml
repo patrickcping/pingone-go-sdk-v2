@@ -2160,10 +2160,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listAttributes_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listAttributes_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Attributes listed
         "400":
           content:
@@ -2723,10 +2723,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listConditions_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listConditions_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Conditions listed
         "400":
           content:
@@ -3274,10 +3274,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listConnectorTemplates_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listConnectorTemplates_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Connector templates listed
         "400":
           content:
@@ -3471,10 +3471,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listRootPolicies_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listRootPolicies_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Root Policies listed
         "400":
           content:
@@ -4058,10 +4058,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listProcessors_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listProcessors_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Processors listed
         "400":
           content:
@@ -4514,10 +4514,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listRules_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listRules_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Rules listed
         "400":
           content:
@@ -5101,10 +5101,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listServices_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listServices_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Services listed
         "400":
           content:
@@ -5651,10 +5651,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listStatements_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listStatements_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Statements listed
         "400":
           content:
@@ -6147,10 +6147,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/listVersions_200_response'
+                $ref: '#/components/schemas/EntityArray'
             application/json:
               schema:
-                $ref: '#/components/schemas/listVersions_200_response'
+                $ref: '#/components/schemas/EntityArray'
           description: Versions listed
         "400":
           content:
@@ -9754,6 +9754,86 @@ components:
                 href: https://openapi-generator.tech
             subject: "{}"
             id: id
+          authorizationServices:
+          - ""
+          - ""
+          roles:
+          - _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+          - _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+          authorizationRules:
+          - ""
+          - ""
+          resources:
+          - parent:
+              id: id
+              type: null
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+          - parent:
+              id: id
+              type: null
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+          apiServers:
+          - accessControl:
+              custom:
+                enabled: true
+            baseUrls:
+            - baseUrls
+            - baseUrls
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            authorizationServer:
+              resource:
+                id: id
+              type: null
+            name: name
+            id: id
+            directory:
+              type: null
+            policy:
+              id: id
+          - accessControl:
+              custom:
+                enabled: true
+            baseUrls:
+            - baseUrls
+            - baseUrls
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            authorizationServer:
+              resource:
+                id: id
+              type: null
+            name: name
+            id: id
+            directory:
+              type: null
+            policy:
+              id: id
+          authorizationConditions:
+          - ""
+          - ""
           operations:
           - accessControl:
               scope:
@@ -9836,77 +9916,12 @@ components:
           permissions:
           - null
           - null
-          roles:
-          - _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          - _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          resources:
-          - parent:
-              id: id
-              type: null
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          - parent:
-              id: id
-              type: null
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          apiServers:
-          - accessControl:
-              custom:
-                enabled: true
-            baseUrls:
-            - baseUrls
-            - baseUrls
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            authorizationServer:
-              resource:
-                id: id
-              type: null
-            name: name
-            id: id
-            directory:
-              type: null
-            policy:
-              id: id
-          - accessControl:
-              custom:
-                enabled: true
-            baseUrls:
-            - baseUrls
-            - baseUrls
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            authorizationServer:
-              resource:
-                id: id
-              type: null
-            name: name
-            id: id
-            directory:
-              type: null
-            policy:
-              id: id
+          authorizationStatements:
+          - ""
+          - ""
+          authorizationAttributes:
+          - ""
+          - ""
           decisionEndpoints:
           - alternateId: alternateId
             provenance: provenance
@@ -9950,6 +9965,18 @@ components:
               href: href
               title: title
               type: type
+          authorizationConnectorTemplates:
+          - ""
+          - ""
+          authorizationPolicies:
+          - ""
+          - ""
+          authorizationProcessors:
+          - ""
+          - ""
+          authorizationVersions:
+          - ""
+          - ""
         count: 0.8008281904610115
       properties:
         _links:
@@ -10029,353 +10056,11 @@ components:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
       type: object
-    listAttributes_200_response__embedded:
-      example:
-        authorizationAttributes:
-        - ""
-        - ""
-      properties:
-        authorizationAttributes:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
-          type: array
-      type: object
-    listAttributes_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationAttributes:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listAttributes_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
-    listConditions_200_response__embedded:
-      example:
-        authorizationConditions:
-        - ""
-        - ""
-      properties:
-        authorizationConditions:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
-          type: array
-      type: object
-    listConditions_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationConditions:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listConditions_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
-    listConnectorTemplates_200_response__embedded:
-      example:
-        authorizationConnectorTemplates:
-        - ""
-        - ""
-      properties:
-        authorizationConnectorTemplates:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorTemplateDTO'
-          type: array
-      type: object
-    listConnectorTemplates_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationConnectorTemplates:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listConnectorTemplates_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
-    listRootPolicies_200_response__embedded:
-      example:
-        authorizationPolicies:
-        - ""
-        - ""
-      properties:
-        authorizationPolicies:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
-          type: array
-      type: object
-    listRootPolicies_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationPolicies:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listRootPolicies_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
-    listProcessors_200_response__embedded:
-      example:
-        authorizationProcessors:
-        - ""
-        - ""
-      properties:
-        authorizationProcessors:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
-          type: array
-      type: object
-    listProcessors_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationProcessors:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listProcessors_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
-    listRules_200_response__embedded:
-      example:
-        authorizationRules:
-        - ""
-        - ""
-      properties:
-        authorizationRules:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
-          type: array
-      type: object
-    listRules_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationRules:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listRules_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
-    listServices_200_response__embedded:
-      example:
-        authorizationServices:
-        - ""
-        - ""
-      properties:
-        authorizationServices:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
-          type: array
-      type: object
-    listServices_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationServices:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listServices_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
     createService_201_response:
       oneOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
       - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
-    listStatements_200_response__embedded:
-      example:
-        authorizationStatements:
-        - ""
-        - ""
-      properties:
-        authorizationStatements:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
-          type: array
-      type: object
-    listStatements_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationStatements:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listStatements_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
-    listVersions_200_response__embedded:
-      example:
-        authorizationVersions:
-        - ""
-        - ""
-      properties:
-        authorizationVersions:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
-          type: array
-      type: object
-    listVersions_200_response:
-      example:
-        size: 6
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          authorizationVersions:
-          - ""
-          - ""
-        count: 0
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/listVersions_200_response__embedded'
-        count:
-          format: int32
-          type: integer
-        size:
-          format: int32
-          type: integer
-      type: object
     LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
@@ -10771,6 +10456,86 @@ components:
               href: https://openapi-generator.tech
           subject: "{}"
           id: id
+        authorizationServices:
+        - ""
+        - ""
+        roles:
+        - _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+        - _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+        authorizationRules:
+        - ""
+        - ""
+        resources:
+        - parent:
+            id: id
+            type: null
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+        - parent:
+            id: id
+            type: null
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+        apiServers:
+        - accessControl:
+            custom:
+              enabled: true
+          baseUrls:
+          - baseUrls
+          - baseUrls
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          authorizationServer:
+            resource:
+              id: id
+            type: null
+          name: name
+          id: id
+          directory:
+            type: null
+          policy:
+            id: id
+        - accessControl:
+            custom:
+              enabled: true
+          baseUrls:
+          - baseUrls
+          - baseUrls
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          authorizationServer:
+            resource:
+              id: id
+            type: null
+          name: name
+          id: id
+          directory:
+            type: null
+          policy:
+            id: id
+        authorizationConditions:
+        - ""
+        - ""
         operations:
         - accessControl:
             scope:
@@ -10853,77 +10618,12 @@ components:
         permissions:
         - null
         - null
-        roles:
-        - _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        - _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        resources:
-        - parent:
-            id: id
-            type: null
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        - parent:
-            id: id
-            type: null
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        apiServers:
-        - accessControl:
-            custom:
-              enabled: true
-          baseUrls:
-          - baseUrls
-          - baseUrls
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          authorizationServer:
-            resource:
-              id: id
-            type: null
-          name: name
-          id: id
-          directory:
-            type: null
-          policy:
-            id: id
-        - accessControl:
-            custom:
-              enabled: true
-          baseUrls:
-          - baseUrls
-          - baseUrls
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          authorizationServer:
-            resource:
-              id: id
-            type: null
-          name: name
-          id: id
-          directory:
-            type: null
-          policy:
-            id: id
+        authorizationStatements:
+        - ""
+        - ""
+        authorizationAttributes:
+        - ""
+        - ""
         decisionEndpoints:
         - alternateId: alternateId
           provenance: provenance
@@ -10967,6 +10667,18 @@ components:
             href: href
             title: title
             type: type
+        authorizationConnectorTemplates:
+        - ""
+        - ""
+        authorizationPolicies:
+        - ""
+        - ""
+        authorizationProcessors:
+        - ""
+        - ""
+        authorizationVersions:
+        - ""
+        - ""
       properties:
         apiServers:
           items:
@@ -10975,6 +10687,51 @@ components:
         assignments:
           items:
             $ref: '#/components/schemas/ApplicationRoleAssignment'
+          type: array
+        authorizationAttributes:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
+          type: array
+        authorizationConditions:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
+          type: array
+        authorizationConnectorTemplates:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataConnectorsConnectorTemplateDTO'
+          type: array
+        authorizationPolicies:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
+          type: array
+        authorizationProcessors:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
+          type: array
+        authorizationRules:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
+          type: array
+        authorizationServices:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
+          type: array
+        authorizationStatements:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
+          type: array
+        authorizationVersions:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AuthorizeEditorDataAuthorizationVersionDTO'
           type: array
         decisionEndpoints:
           items:

@@ -933,7 +933,7 @@ func (r ApiListVersionsRequest) Filter2(filter2 Filter) ApiListVersionsRequest {
 	return r
 }
 
-func (r ApiListVersionsRequest) Execute() (*ListVersions200Response, *http.Response, error) {
+func (r ApiListVersionsRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ListVersionsExecute(r)
 }
 
@@ -955,12 +955,12 @@ func (a *AuthorizationVersionsApiService) ListVersions(ctx context.Context, envi
 }
 
 // Execute executes the request
-//  @return ListVersions200Response
-func (a *AuthorizationVersionsApiService) ListVersionsExecute(r ApiListVersionsRequest) (*ListVersions200Response, *http.Response, error) {
+//  @return EntityArray
+func (a *AuthorizationVersionsApiService) ListVersionsExecute(r ApiListVersionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *ListVersions200Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -972,12 +972,12 @@ func (a *AuthorizationVersionsApiService) ListVersionsExecute(r ApiListVersionsR
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizationVersionsApiService) internalListVersionsExecute(r ApiListVersionsRequest) (*ListVersions200Response, *http.Response, error) {
+func (a *AuthorizationVersionsApiService) internalListVersionsExecute(r ApiListVersionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListVersions200Response
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizationVersionsApiService.ListVersions")

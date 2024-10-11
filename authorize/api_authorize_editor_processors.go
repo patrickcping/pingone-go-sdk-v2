@@ -698,7 +698,7 @@ func (r ApiListProcessorsRequest) Cursor(cursor string) ApiListProcessorsRequest
 	return r
 }
 
-func (r ApiListProcessorsRequest) Execute() (*ListProcessors200Response, *http.Response, error) {
+func (r ApiListProcessorsRequest) Execute() (*EntityArray, *http.Response, error) {
 	return r.ApiService.ListProcessorsExecute(r)
 }
 
@@ -720,12 +720,12 @@ func (a *AuthorizeEditorProcessorsApiService) ListProcessors(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ListProcessors200Response
-func (a *AuthorizeEditorProcessorsApiService) ListProcessorsExecute(r ApiListProcessorsRequest) (*ListProcessors200Response, *http.Response, error) {
+//  @return EntityArray
+func (a *AuthorizeEditorProcessorsApiService) ListProcessorsExecute(r ApiListProcessorsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *ListProcessors200Response
+		localVarReturnValue  *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -737,12 +737,12 @@ func (a *AuthorizeEditorProcessorsApiService) ListProcessorsExecute(r ApiListPro
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorProcessorsApiService) internalListProcessorsExecute(r ApiListProcessorsRequest) (*ListProcessors200Response, *http.Response, error) {
+func (a *AuthorizeEditorProcessorsApiService) internalListProcessorsExecute(r ApiListProcessorsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListProcessors200Response
+		localVarReturnValue  *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorProcessorsApiService.ListProcessors")

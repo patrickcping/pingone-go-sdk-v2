@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## ListVersions
 
-> ListVersions200Response ListVersions(ctx, environmentId).Filter(filter).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
+> EntityArray ListVersions(ctx, environmentId).Filter(filter).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
 
 List Authorize Versions
 
@@ -340,7 +340,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.ListVersions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListVersions`: ListVersions200Response
+    // response from `ListVersions`: EntityArray
     fmt.Fprintf(os.Stdout, "Response from `AuthorizationVersionsApi.ListVersions`: %v\n", resp)
 }
 ```
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListVersions200Response**](ListVersions200Response.md)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
