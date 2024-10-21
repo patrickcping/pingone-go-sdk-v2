@@ -3557,7 +3557,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
         "400":
-          description: Bad request (e.g. name cannot be blank
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -3661,8 +3661,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the attribute)
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -3874,7 +3873,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
         "400":
-          description: Bad request (e.g. name cannot be blank
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -3978,8 +3977,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the condition)
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -4296,7 +4294,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
         "400":
-          description: Bad request (e.g. name cannot be blank
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -4411,8 +4409,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the policy)
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -4622,7 +4619,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
         "400":
-          description: Bad request (e.g. name cannot be blank
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -4726,8 +4723,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the processor)
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -4882,7 +4878,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
         "400":
-          description: Bad request (e.g. name cannot be blank
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -4997,8 +4993,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the rule)
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -5215,7 +5210,7 @@ paths:
                 - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
                 - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
         "400":
-          description: Bad request (e.g. name cannot be blank
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -5319,8 +5314,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the service)
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -5528,7 +5522,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
         "400":
-          description: Bad request (e.g. name cannot be blank
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -5643,8 +5637,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the statement)
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
