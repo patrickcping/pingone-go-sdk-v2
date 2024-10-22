@@ -2254,7 +2254,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
           description: Attribute created successfully
         "400":
-          description: Bad request (e.g. name cannot be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2616,8 +2621,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsAttributeDefinitionDTO'
           description: Attribute updated
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the attribute)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -2817,7 +2826,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
           description: Condition created successfully
         "400":
-          description: Bad request (e.g. name cannot be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3179,8 +3193,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsConditionDefinitionDTO'
           description: Condition updated
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the condition)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3574,7 +3592,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
           description: Policy created successfully
         "400":
-          description: Bad request (e.g. name cannot be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -3951,8 +3974,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataPoliciesReferenceablePolicyDTO'
           description: Policy updated
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the policy)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4152,7 +4179,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
           description: Processor created successfully
         "400":
-          description: Bad request (e.g. name cannot be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4419,8 +4451,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsProcessorDefinitionDTO'
           description: Processor updated
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the processor)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4617,7 +4653,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
           description: Rule created successfully
         "400":
-          description: Bad request (e.g. name cannot be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -4994,8 +5035,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataRulesReferenceableRuleDTO'
           description: Rule updated
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the rule)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5195,7 +5240,12 @@ paths:
                 $ref: '#/components/schemas/createService_201_response'
           description: Service created successfully
         "400":
-          description: Bad request (e.g. name cannot be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5556,8 +5606,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
           description: Service updated
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the service)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -5754,7 +5808,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
           description: Statement created successfully
         "400":
-          description: Bad request (e.g. name cannot be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -6038,8 +6097,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeEditorDataStatementsReferenceableStatementDTO'
           description: Statement updated
         "400":
-          description: Bad request (e.g. attempt was made to update an outdated version
-            of the statement)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:

@@ -70,101 +70,49 @@ func AuthorizeEditorDataConditionsReferenceConditionDTOAsAuthorizeEditorDataCond
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataConditionDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataConditionsAndConditionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsAndConditionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsAndConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsAndConditionDTO)
-		if string(jsonAuthorizeEditorDataConditionsAndConditionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataConditionDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_AND:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsAndConditionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataConditionsComparisonConditionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsComparisonConditionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsComparisonConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsComparisonConditionDTO)
-		if string(jsonAuthorizeEditorDataConditionsComparisonConditionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_COMPARISON:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsComparisonConditionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataConditionsEmptyConditionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsEmptyConditionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsEmptyConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsEmptyConditionDTO)
-		if string(jsonAuthorizeEditorDataConditionsEmptyConditionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_EMPTY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsEmptyConditionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataConditionsNotConditionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsNotConditionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsNotConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsNotConditionDTO)
-		if string(jsonAuthorizeEditorDataConditionsNotConditionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_NOT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsNotConditionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataConditionsOrConditionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsOrConditionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsOrConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsOrConditionDTO)
-		if string(jsonAuthorizeEditorDataConditionsOrConditionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_OR:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsOrConditionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataConditionsReferenceConditionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsReferenceConditionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsReferenceConditionDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsReferenceConditionDTO)
-		if string(jsonAuthorizeEditorDataConditionsReferenceConditionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_REFERENCE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsReferenceConditionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataConditionDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
-		dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
-		dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
-		dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
-		dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
-		dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataConditionDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataConditionDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

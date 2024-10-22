@@ -153,5 +153,58 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// AuthorizeEditorDataConditionDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_condition_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataConditionDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataConditionDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataConditionDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataConditionsAndConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsComparisonConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsEmptyConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsNotConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsOrConditionDTO = nil
+	dst.AuthorizeEditorDataConditionsReferenceConditionDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_AND:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsAndConditionDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_COMPARISON:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsComparisonConditionDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_EMPTY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsEmptyConditionDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_NOT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsNotConditionDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_OR:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsOrConditionDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_REFERENCE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsReferenceConditionDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataConditionDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )
