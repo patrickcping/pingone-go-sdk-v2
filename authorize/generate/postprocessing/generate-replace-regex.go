@@ -206,5 +206,43 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// AuthorizeEditorDataDefinitionsServiceDefinitionDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_definitions_service_definition_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataDefinitionsServiceDefinitionDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO = nil
+	dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO = nil
+	dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO = nil
+
+	switch common.GetServiceType() {
+	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_CONNECTOR:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_HTTP:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_NONE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataDefinitionsServiceDefinitionDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )

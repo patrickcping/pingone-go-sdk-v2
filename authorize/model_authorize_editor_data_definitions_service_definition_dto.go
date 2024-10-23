@@ -46,59 +46,34 @@ func AuthorizeEditorDataServicesNoneServiceDefinitionDTOAsAuthorizeEditorDataDef
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataServicesConnectorServiceDefinitionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataServicesConnectorServiceDefinitionDTO, _ := json.Marshal(dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO)
-		if string(jsonAuthorizeEditorDataServicesConnectorServiceDefinitionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataDefinitionsServiceDefinitionDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO = nil
+	dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO = nil
+	dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO = nil
+
+	switch common.GetServiceType() {
+	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_CONNECTOR:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataServicesHttpServiceDefinitionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataServicesHttpServiceDefinitionDTO, _ := json.Marshal(dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO)
-		if string(jsonAuthorizeEditorDataServicesHttpServiceDefinitionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_HTTP:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataServicesNoneServiceDefinitionDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataServicesNoneServiceDefinitionDTO, _ := json.Marshal(dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO)
-		if string(jsonAuthorizeEditorDataServicesNoneServiceDefinitionDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_NONE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataDefinitionsServiceDefinitionDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO = nil
-		dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO = nil
-		dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataDefinitionsServiceDefinitionDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataDefinitionsServiceDefinitionDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
