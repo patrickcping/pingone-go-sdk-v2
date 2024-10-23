@@ -35,7 +35,7 @@ func (r ApiCreateServiceRequest) AuthorizeEditorDataDefinitionsServiceDefinition
 	return r
 }
 
-func (r ApiCreateServiceRequest) Execute() (*CreateService201Response, *http.Response, error) {
+func (r ApiCreateServiceRequest) Execute() (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	return r.ApiService.CreateServiceExecute(r)
 }
 
@@ -57,12 +57,12 @@ func (a *AuthorizeEditorServicesApiService) CreateService(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return CreateService201Response
-func (a *AuthorizeEditorServicesApiService) CreateServiceExecute(r ApiCreateServiceRequest) (*CreateService201Response, *http.Response, error) {
+//  @return AuthorizeEditorDataDefinitionsServiceDefinitionDTO
+func (a *AuthorizeEditorServicesApiService) CreateServiceExecute(r ApiCreateServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *CreateService201Response
+		localVarReturnValue  *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 	)
 	
 	response, err = processResponse(
@@ -74,12 +74,12 @@ func (a *AuthorizeEditorServicesApiService) CreateServiceExecute(r ApiCreateServ
 	return localVarReturnValue, response, err
 }
 			
-func (a *AuthorizeEditorServicesApiService) internalCreateServiceExecute(r ApiCreateServiceRequest) (*CreateService201Response, *http.Response, error) {
+func (a *AuthorizeEditorServicesApiService) internalCreateServiceExecute(r ApiCreateServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateService201Response
+		localVarReturnValue  *AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizeEditorServicesApiService.CreateService")

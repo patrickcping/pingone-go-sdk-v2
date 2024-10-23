@@ -292,7 +292,6 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataTlsSettingsDTO](docs/AuthorizeEditorDataTlsSettingsDTO.md)
  - [AuthorizeEditorDataUserDTO](docs/AuthorizeEditorDataUserDTO.md)
  - [AuthorizeEditorDataValueTypeDTO](docs/AuthorizeEditorDataValueTypeDTO.md)
- - [CreateService201Response](docs/CreateService201Response.md)
  - [DecisionEndpoint](docs/DecisionEndpoint.md)
  - [DecisionEndpointAuthorizationVersion](docs/DecisionEndpointAuthorizationVersion.md)
  - [DecisionEndpointRecentDecisions](docs/DecisionEndpointRecentDecisions.md)

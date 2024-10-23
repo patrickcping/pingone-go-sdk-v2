@@ -166,7 +166,6 @@ docs/AuthorizeEditorProcessorsApi.md
 docs/AuthorizeEditorRulesApi.md
 docs/AuthorizeEditorServicesApi.md
 docs/AuthorizeEditorStatementsApi.md
-docs/CreateService201Response.md
 docs/DecisionEndpoint.md
 docs/DecisionEndpointAuthorizationVersion.md
 docs/DecisionEndpointRecentDecisions.md
@@ -352,7 +351,6 @@ model_authorize_editor_data_tag_response_dto.go
 model_authorize_editor_data_tls_settings_dto.go
 model_authorize_editor_data_user_dto.go
 model_authorize_editor_data_value_type_dto.go
-model_create_service_201_response.go
 model_decision_endpoint.go
 model_decision_endpoint_authorization_version.go
 model_decision_endpoint_recent_decisions.go

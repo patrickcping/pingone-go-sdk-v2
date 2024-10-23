@@ -5234,10 +5234,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/createService_201_response'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
             application/json:
               schema:
-                $ref: '#/components/schemas/createService_201_response'
+                $ref: '#/components/schemas/AuthorizeEditorDataDefinitionsServiceDefinitionDTO'
           description: Service created successfully
         "400":
           content:
@@ -10127,11 +10127,6 @@ components:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
       type: object
-    createService_201_response:
-      oneOf:
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesConnectorServiceDefinitionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesHttpServiceDefinitionDTO'
-      - $ref: '#/components/schemas/AuthorizeEditorDataServicesNoneServiceDefinitionDTO'
     LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech

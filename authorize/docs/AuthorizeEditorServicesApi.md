@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateService
 
-> CreateService201Response CreateService(ctx, environmentID).AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO).Execute()
+> AuthorizeEditorDataDefinitionsServiceDefinitionDTO CreateService(ctx, environmentID).AuthorizeEditorDataDefinitionsServiceDefinitionDTO(authorizeEditorDataDefinitionsServiceDefinitionDTO).Execute()
 
 Create a Service
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorServicesApi.CreateService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateService`: CreateService201Response
+    // response from `CreateService`: AuthorizeEditorDataDefinitionsServiceDefinitionDTO
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorServicesApi.CreateService`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateService201Response**](CreateService201Response.md)
+[**AuthorizeEditorDataDefinitionsServiceDefinitionDTO**](AuthorizeEditorDataDefinitionsServiceDefinitionDTO.md)
 
 ### Authorization
 
