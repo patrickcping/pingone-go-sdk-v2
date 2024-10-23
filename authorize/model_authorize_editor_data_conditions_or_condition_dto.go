@@ -20,15 +20,17 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsOrConditionDTO{}
 // AuthorizeEditorDataConditionsOrConditionDTO struct for AuthorizeEditorDataConditionsOrConditionDTO
 type AuthorizeEditorDataConditionsOrConditionDTO struct {
 	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
+	Conditions []AuthorizeEditorDataConditionDTO `json:"conditions"`
 }
 
 // NewAuthorizeEditorDataConditionsOrConditionDTO instantiates a new AuthorizeEditorDataConditionsOrConditionDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsOrConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType) *AuthorizeEditorDataConditionsOrConditionDTO {
+func NewAuthorizeEditorDataConditionsOrConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, conditions []AuthorizeEditorDataConditionDTO) *AuthorizeEditorDataConditionsOrConditionDTO {
 	this := AuthorizeEditorDataConditionsOrConditionDTO{}
 	this.Type = type_
+	this.Conditions = conditions
 	return &this
 }
 
@@ -64,6 +66,30 @@ func (o *AuthorizeEditorDataConditionsOrConditionDTO) SetType(v EnumAuthorizeEdi
 	o.Type = v
 }
 
+// GetConditions returns the Conditions field value
+func (o *AuthorizeEditorDataConditionsOrConditionDTO) GetConditions() []AuthorizeEditorDataConditionDTO {
+	if o == nil {
+		var ret []AuthorizeEditorDataConditionDTO
+		return ret
+	}
+
+	return o.Conditions
+}
+
+// GetConditionsOk returns a tuple with the Conditions field value
+// and a boolean to check if the value has been set.
+func (o *AuthorizeEditorDataConditionsOrConditionDTO) GetConditionsOk() ([]AuthorizeEditorDataConditionDTO, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Conditions, true
+}
+
+// SetConditions sets field value
+func (o *AuthorizeEditorDataConditionsOrConditionDTO) SetConditions(v []AuthorizeEditorDataConditionDTO) {
+	o.Conditions = v
+}
+
 func (o AuthorizeEditorDataConditionsOrConditionDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -75,6 +101,7 @@ func (o AuthorizeEditorDataConditionsOrConditionDTO) MarshalJSON() ([]byte, erro
 func (o AuthorizeEditorDataConditionsOrConditionDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
+	toSerialize["conditions"] = o.Conditions
 	return toSerialize, nil
 }
 

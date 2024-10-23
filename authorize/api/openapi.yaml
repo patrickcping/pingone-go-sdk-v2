@@ -8212,6 +8212,14 @@ components:
     AuthorizeEditorDataConditionsOrConditionDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
+      - properties:
+          conditions:
+            items:
+              $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+            type: array
+        type: object
+      required:
+      - conditions
     AuthorizeEditorDataConditionsReferenceConditionDTO:
       allOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionDTOCommon'
