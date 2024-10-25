@@ -245,37 +245,62 @@ var (
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
 
-		// CreateService201Response model
+		// AuthorizeEditorDataResolverDTO model
 		{
-			fileSelectPattern: "model_create_service_201_response.go",
-			pattern:           `(func \(dst \*CreateService201Response\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
-			repl: `func (dst *CreateService201Response) UnmarshalJSON(data []byte) error {
+			fileSelectPattern: "model_authorize_editor_data_resolver_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataResolverDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataResolverDTO) UnmarshalJSON(data []byte) error {
 
-	var common CreateService201ResponseCommon
+	var common AuthorizeEditorDataResolverDTOCommon
 
 	if err := json.Unmarshal(data, &common); err != nil { // simple model
 		return err
 	}
 
-	dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO = nil
-	dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO = nil
-	dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
 
-	switch common.GetServiceType() {
-	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_CONNECTOR:
-		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesConnectorServiceDefinitionDTO); err != nil { // simple model
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_ATTRIBUTE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO); err != nil { // simple model
 			return err
 		}
-	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_HTTP:
-		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesHttpServiceDefinitionDTO); err != nil { // simple model
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CONSTANT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO); err != nil { // simple model
 			return err
 		}
-	case ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_NONE:
-		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataServicesNoneServiceDefinitionDTO); err != nil { // simple model
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CURRENT_REPETITION_VALUE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CURRENT_USER_ID:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_REQUEST:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_SERVICE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_SYSTEM:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_USER:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversUserResolverDTO); err != nil { // simple model
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(CreateService201Response)")
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataResolverDTO)")
 	}
 	return nil
 }

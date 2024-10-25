@@ -86,129 +86,59 @@ func AuthorizeEditorDataAttributeResolversUserResolverDTOAsAuthorizeEditorDataRe
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataResolverDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversAttributeResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversAttributeResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversAttributeResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataResolverDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
+	dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_ATTRIBUTE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversConstantResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversConstantResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversConstantResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CONSTANT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CURRENT_REPETITION_VALUE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_CURRENT_USER_ID:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversRequestResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversRequestResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversRequestResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_REQUEST:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversServiceResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversServiceResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversServiceResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_SERVICE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversSystemResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversSystemResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversSystemResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_SYSTEM:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversUserResolverDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversUserResolverDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversUserResolverDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversUserResolverDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversUserResolverDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARESOLVERDTOTYPE_USER:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversUserResolverDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataResolverDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataAttributeResolversAttributeResolverDTO = nil
-		dst.AuthorizeEditorDataAttributeResolversConstantResolverDTO = nil
-		dst.AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO = nil
-		dst.AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO = nil
-		dst.AuthorizeEditorDataAttributeResolversRequestResolverDTO = nil
-		dst.AuthorizeEditorDataAttributeResolversServiceResolverDTO = nil
-		dst.AuthorizeEditorDataAttributeResolversSystemResolverDTO = nil
-		dst.AuthorizeEditorDataAttributeResolversUserResolverDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataResolverDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataResolverDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
