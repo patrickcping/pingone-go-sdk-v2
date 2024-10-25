@@ -54,73 +54,39 @@ func AuthorizeEditorDataAuthenticationsTokenAuthenticationDTOAsAuthorizeEditorDa
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataAuthenticationDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO)
-		if string(jsonAuthorizeEditorDataAuthenticationsBasicAuthenticationDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataAuthenticationDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
+	dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
+	dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
+	dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_BASIC:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO)
-		if string(jsonAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_CLIENT_CREDENTIALS:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAuthenticationsNoneAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO)
-		if string(jsonAuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_NONE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAuthenticationsTokenAuthenticationDTO, _ := json.Marshal(dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO)
-		if string(jsonAuthorizeEditorDataAuthenticationsTokenAuthenticationDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_TOKEN:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataAuthenticationDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
-		dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
-		dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
-		dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataAuthenticationDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataAuthenticationDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

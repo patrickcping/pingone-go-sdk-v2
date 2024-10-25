@@ -307,5 +307,218 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// AuthorizeEditorDataRulesEffectSettingsDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_rules_effect_settings_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataRulesEffectSettingsDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataRulesEffectSettingsDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataRulesEffectSettingsDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
+	dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
+	dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
+	dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_CONDITIONAL_DENY_ELSE_PERMIT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_CONDITIONAL_PERMIT_ELSE_DENY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_UNCONDITIONAL_DENY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_UNCONDITIONAL_PERMIT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataRulesEffectSettingsDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// AuthorizeEditorDataAttributeResolversUserQueryDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_attribute_resolvers_user_query_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataAttributeResolversUserQueryDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataAttributeResolversUserQueryDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataAttributeResolversUserQueryDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAATTRIBUTERESOLVERSUSERQUERYDTOTYPE_USER_ID:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataAttributeResolversUserQueryDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// AuthorizeEditorDataAuthenticationDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_authentication_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataAuthenticationDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataAuthenticationDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataAuthenticationDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO = nil
+	dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO = nil
+	dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO = nil
+	dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_BASIC:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_CLIENT_CREDENTIALS:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_NONE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_TOKEN:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataAuthenticationDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// AuthorizeEditorDataConditionsComparandDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_conditions_comparand_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataConditionsComparandDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataConditionsComparandDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataConditionsComparandDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
+	dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATACONDITIONSCOMPARANDDTOTYPE_ATTRIBUTE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATACONDITIONSCOMPARANDDTOTYPE_CONSTANT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataConditionsComparandDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// AuthorizeEditorDataInputDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_input_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataInputDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataInputDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataInputDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
+	dst.AuthorizeEditorDataInputsConstantInputDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAINPUTDTOTYPE_ATTRIBUTE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataInputsAttributeInputDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAINPUTDTOTYPE_CONSTANT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataInputsConstantInputDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataInputDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// AuthorizeEditorDataInputMappingDTO model
+		{
+			fileSelectPattern: "model_authorize_editor_data_input_dto.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataInputMappingDTO\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataInputMappingDTO) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataInputMappingDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO = nil
+	dst.AuthorizeEditorDataInputMappingsInputInputMappingDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAINPUTMAPPINGDTOTYPE_ATTRIBUTE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataInputMappingsAttributeInputMappingDTO); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAINPUTMAPPINGDTOTYPE_INPUT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataInputMappingsInputInputMappingDTO); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataInputMappingDTO)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )

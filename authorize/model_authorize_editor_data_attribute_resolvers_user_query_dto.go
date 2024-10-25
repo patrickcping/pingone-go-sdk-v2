@@ -30,31 +30,24 @@ func AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTOAsAuthorizeEdit
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataAttributeResolversUserQueryDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO, _ := json.Marshal(dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO)
-		if string(jsonAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataAttributeResolversUserQueryDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAATTRIBUTERESOLVERSUSERQUERYDTOTYPE_USER_ID:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataAttributeResolversUserQueryDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataAttributeResolversUserQueryDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataAttributeResolversUserQueryDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

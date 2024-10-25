@@ -38,45 +38,29 @@ func AuthorizeEditorDataInputsConstantInputDTOAsAuthorizeEditorDataInputDTO(v *A
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataInputDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataInputsAttributeInputDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataInputsAttributeInputDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataInputsAttributeInputDTO, _ := json.Marshal(dst.AuthorizeEditorDataInputsAttributeInputDTO)
-		if string(jsonAuthorizeEditorDataInputsAttributeInputDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataInputDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
+	dst.AuthorizeEditorDataInputsConstantInputDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAINPUTDTOTYPE_ATTRIBUTE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataInputsAttributeInputDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataInputsConstantInputDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataInputsConstantInputDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataInputsConstantInputDTO, _ := json.Marshal(dst.AuthorizeEditorDataInputsConstantInputDTO)
-		if string(jsonAuthorizeEditorDataInputsConstantInputDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataInputsConstantInputDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAINPUTDTOTYPE_CONSTANT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataInputsConstantInputDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataInputsConstantInputDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataInputDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataInputsAttributeInputDTO = nil
-		dst.AuthorizeEditorDataInputsConstantInputDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataInputDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataInputDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

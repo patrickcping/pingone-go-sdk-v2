@@ -54,73 +54,39 @@ func AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOAsAuthorizeEdit
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataRulesEffectSettingsDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO)
-		if string(jsonAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataRulesEffectSettingsDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
+	dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
+	dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
+	dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_CONDITIONAL_DENY_ELSE_PERMIT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO)
-		if string(jsonAuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_CONDITIONAL_PERMIT_ELSE_DENY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO)
-		if string(jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_UNCONDITIONAL_DENY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO, _ := json.Marshal(dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO)
-		if string(jsonAuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATARULESEFFECTSETTINGSDTOTYPE_UNCONDITIONAL_PERMIT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataRulesEffectSettingsDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO = nil
-		dst.AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO = nil
-		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO = nil
-		dst.AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataRulesEffectSettingsDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataRulesEffectSettingsDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

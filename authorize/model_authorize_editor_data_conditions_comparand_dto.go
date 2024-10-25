@@ -38,45 +38,29 @@ func AuthorizeEditorDataConditionsComparandsConstantComparandDTOAsAuthorizeEdito
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataConditionsComparandDTO) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataConditionsComparandsAttributeComparandDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsComparandsAttributeComparandDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO)
-		if string(jsonAuthorizeEditorDataConditionsComparandsAttributeComparandDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataConditionsComparandDTOCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
+	dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATACONDITIONSCOMPARANDDTOTYPE_ATTRIBUTE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataConditionsComparandsConstantComparandDTO
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO)
-	if err == nil {
-		jsonAuthorizeEditorDataConditionsComparandsConstantComparandDTO, _ := json.Marshal(dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO)
-		if string(jsonAuthorizeEditorDataConditionsComparandsConstantComparandDTO) == "{}" { // empty struct
-			dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATACONDITIONSCOMPARANDDTOTYPE_CONSTANT:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataConditionsComparandDTO)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataConditionsComparandsAttributeComparandDTO = nil
-		dst.AuthorizeEditorDataConditionsComparandsConstantComparandDTO = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataConditionsComparandDTO)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataConditionsComparandDTO)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
