@@ -377,6 +377,26 @@ components:
     EnumMobileIntegrityDetectionPlatform:
       type: string
       enum: [IOS, GOOGLE]
+    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod:
+      type: string
+      description: Use the value `BASIC` if your authentication with the email provider uses a username and password. Use `BEARER` if your authentication is based on the use of a bearer token.
+      enum: [BASIC, BEARER]
+    EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol:
+      type: string
+      enum: [HTTP]
+      description: Set to `HTTP` when configuring an external email provider.
+    EnumNotificationsSettingsEmailDeliverySettingsCustomProvider:
+      type: string
+      enum: [CUSTOM_PROVIDER]
+      description: Must be set to `CUSTOM_PROVIDER`.
+    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod:
+      type: string
+      enum: [EMAIL]
+      description: Should be set to EMAIL.
+    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod:
+      type: string
+      enum: [GET, POST]
+      description: Use method to specify the type of API request the email provider requires. Valid values are `GET` and `POST`.
     EnumNotificationsPolicyCountryLimitDeliveryMethod:
       type: string
       enum: [SMS, Voice]
@@ -4487,50 +4507,148 @@ components:
                 required:
                   - id
     NotificationsSettingsEmailDeliverySettings:
+      oneOf:
+        - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCustom'
+        - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsSMTP'
+    NotificationsSettingsEmailDeliverySettingsCommon:
       type: object
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        host:
-          type: string
-          description: A string that specifies the organization's SMTP server.
-        port:
-          type: integer
-          description: An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
-          default: 465
-        protocol:
-          type: string
-          description: A string that specifies the organization's SMTP server's protocol.
-          readOnly: true
-        username:
-          type: string
-          description: A string that specifies the organization's SMTP server's username.
-        password:
-          type: string
-          format: password
-          description: A string that specifies the organization's SMTP server's password.
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
-        from:
-          type: object
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was last updated.
+    NotificationsSettingsEmailDeliverySettingsCustom:
+      allOf:
+        - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCommon'
+        - type: object
           properties:
+            authentication:
+              type: object
+              description: Contains the information for authenticating with the email provider.
+              properties:
+                method:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod'
+                authToken:
+                  type: string
+                  description: If you specified `BEARER` as the authentication method, use authToken to provide the bearer token to use.
+                username:
+                  type: string
+                  description: If you specified `BASIC` as the authentication method, use username to provide the username for authenticating with the email provider.
+                password:
+                  type: string
+                  format: password
+                  description: If you specified `BASIC` as the authentication method, use password to provide the password for authenticating with the email provider.
+              required:
+                - method
+            from:
+              type: object
+              description: Contains the "from" information to use for the notifications.
+              properties:
+                name:
+                  type: string
+                  description: The "from" name to use in the notifications that are sent.
+                address:
+                  type: string
+                  description: The "from" address to use in the notifications that are sent.
             name:
               type: string
-              description: A string that specifies the email's "from" name.
-            address:
-              type: string
-              description: A string that specifies the email's "from" address.
+              description: Name to use to identify the provider.
+            protocol:
+              $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol'
+            provider:
+              $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomProvider'
+            replyTo:
+              type: object
+              description: Contains the "reply-to" information to use for the notifications.
+              properties:
+                name:
+                  type: string
+                  description: The "reply-to" name to use in the notifications that are sent.
+                address:
+                  type: string
+                  description: The "reply-to" address to use in the notifications that are sent.
+            requests:
+              type: array
+              description: Contains the object that is used to configure the API requests sent to the email provider.
+              items:
+                type: object
+                properties:
+                  body:
+                    type: string
+                    description: |
+                      Required if method is set to `POST`. Use body to provide the content of the body for the request sent to the email provider. The body that you define must include the mandatory PingOne variables for notifications: `${from}`, `${to}`, and `${message}`. You can also include any optional notification variables.
+                      If you are including the header `content-type: application/json` in `headers`:
+                      - The content of `body` must be valid JSON
+                      - You must enclose the JSON object in quotation marks and escape all quotation marks within the string, for example, `"{\"From\": \"${from}\",\"To\": \"${to}\",\"message2\": \"${message}\"}"`.
+                  deliveryMethod:
+                    $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod'
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    description: Use this object to specify the headers that your email provider's API expects.
+                  method:
+                    $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod'
+                  url:
+                    type: string
+                    description: Use url to specify the endpoint for your email provider, for example, `https://api.example.com/email`. If `method` is set to `GET`, append to the URL the various query parameters that the email provider's API requires. The URL must also include the required PingOne variables, as described for the body parameter.
+                required:
+                  - deliveryMethod
+                  - method
+                  - url
           required:
-            - address
-        replyTo:
-          type: object
+            - authentication
+            - name
+            - protocol
+            - requests
+    NotificationsSettingsEmailDeliverySettingsSMTP:
+      allOf:
+        - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCommon'
+        - type: object
           properties:
-            name:
+            host:
               type: string
-              description: A string that specifies the email's "reply to" name.
-            address:
+              description: A string that specifies the organization's SMTP server.
+            port:
+              type: integer
+              description: An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
+              default: 465
+            protocol:
               type: string
-              description: A string that specifies the email's "reply to" address.
+              description: A string that specifies the organization's SMTP server's protocol.
+              readOnly: true
+            username:
+              type: string
+              description: A string that specifies the organization's SMTP server's username.
+            password:
+              type: string
+              format: password
+              description: A string that specifies the organization's SMTP server's password.
+            from:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A string that specifies the email's "from" name.
+                address:
+                  type: string
+                  description: A string that specifies the email's "from" address.
+              required:
+                - address
+            replyTo:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A string that specifies the email's "reply to" name.
+                address:
+                  type: string
+                  description: A string that specifies the email's "reply to" address.
     NotificationsSettingsPhoneDeliverySettings:
       oneOf:
         - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom'
