@@ -60,6 +60,8 @@ type ApplicationSAML struct {
 	NameIdFormat *string `json:"nameIdFormat,omitempty"`
 	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is `false`.
 	ResponseSigned *bool `json:"responseSigned,omitempty"`
+	// Update this value if the SAML application requires a different `SessionNotOnOrAfter` attribute value within the `AuthnStatement` element than the `NotOnOrAfter` value set by the `assertionDuration` property.
+	SessionNotOnOrAfterDuration *int32 `json:"sessionNotOnOrAfterDuration,omitempty"`
 	SloBinding *EnumApplicationSAMLSloBinding `json:"sloBinding,omitempty"`
 	// A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error.
 	SloEndpoint *string `json:"sloEndpoint,omitempty"`
@@ -830,6 +832,38 @@ func (o *ApplicationSAML) SetResponseSigned(v bool) {
 	o.ResponseSigned = &v
 }
 
+// GetSessionNotOnOrAfterDuration returns the SessionNotOnOrAfterDuration field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetSessionNotOnOrAfterDuration() int32 {
+	if o == nil || IsNil(o.SessionNotOnOrAfterDuration) {
+		var ret int32
+		return ret
+	}
+	return *o.SessionNotOnOrAfterDuration
+}
+
+// GetSessionNotOnOrAfterDurationOk returns a tuple with the SessionNotOnOrAfterDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetSessionNotOnOrAfterDurationOk() (*int32, bool) {
+	if o == nil || IsNil(o.SessionNotOnOrAfterDuration) {
+		return nil, false
+	}
+	return o.SessionNotOnOrAfterDuration, true
+}
+
+// HasSessionNotOnOrAfterDuration returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasSessionNotOnOrAfterDuration() bool {
+	if o != nil && !IsNil(o.SessionNotOnOrAfterDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetSessionNotOnOrAfterDuration gets a reference to the given int32 and assigns it to the SessionNotOnOrAfterDuration field.
+func (o *ApplicationSAML) SetSessionNotOnOrAfterDuration(v int32) {
+	o.SessionNotOnOrAfterDuration = &v
+}
+
 // GetSloBinding returns the SloBinding field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetSloBinding() EnumApplicationSAMLSloBinding {
 	if o == nil || IsNil(o.SloBinding) {
@@ -1147,6 +1181,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ResponseSigned) {
 		toSerialize["responseSigned"] = o.ResponseSigned
+	}
+	if !IsNil(o.SessionNotOnOrAfterDuration) {
+		toSerialize["sessionNotOnOrAfterDuration"] = o.SessionNotOnOrAfterDuration
 	}
 	if !IsNil(o.SloBinding) {
 		toSerialize["sloBinding"] = o.SloBinding
