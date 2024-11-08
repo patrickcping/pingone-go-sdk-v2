@@ -882,6 +882,11 @@ components:
     RiskPredictorBotDetection:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
+        - type: object
+          properties:
+            includeRepeatedEventsWithoutSdk:
+              type: boolean
+              description: Set the value of `includeRepeatedEventsWithoutSdk` to `true` to expand the range of bot activity that PingOne Protect can detect.
     RiskPredictorComposite:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'

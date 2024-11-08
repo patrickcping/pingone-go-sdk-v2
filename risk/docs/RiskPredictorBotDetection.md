@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
+**IncludeRepeatedEventsWithoutSdk** | Pointer to **bool** | Set the value of &#x60;includeRepeatedEventsWithoutSdk&#x60; to &#x60;true&#x60; to expand the range of bot activity that PingOne Protect can detect. | [optional] 
 
 ## Methods
 
@@ -320,6 +321,31 @@ SetCondition sets Condition field to given value.
 `func (o *RiskPredictorBotDetection) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
+
+### GetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictorBotDetection) GetIncludeRepeatedEventsWithoutSdk() bool`
+
+GetIncludeRepeatedEventsWithoutSdk returns the IncludeRepeatedEventsWithoutSdk field if non-nil, zero value otherwise.
+
+### GetIncludeRepeatedEventsWithoutSdkOk
+
+`func (o *RiskPredictorBotDetection) GetIncludeRepeatedEventsWithoutSdkOk() (*bool, bool)`
+
+GetIncludeRepeatedEventsWithoutSdkOk returns a tuple with the IncludeRepeatedEventsWithoutSdk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictorBotDetection) SetIncludeRepeatedEventsWithoutSdk(v bool)`
+
+SetIncludeRepeatedEventsWithoutSdk sets IncludeRepeatedEventsWithoutSdk field to given value.
+
+### HasIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictorBotDetection) HasIncludeRepeatedEventsWithoutSdk() bool`
+
+HasIncludeRepeatedEventsWithoutSdk returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
