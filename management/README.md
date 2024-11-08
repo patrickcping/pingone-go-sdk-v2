@@ -172,6 +172,11 @@ Class | Method | HTTP request | Description
 *CertificateManagementApi* | [**GetKeys**](docs/CertificateManagementApi.md#getkeys) | **Get** /environments/{environmentID}/keys | GET Keys
 *CertificateManagementApi* | [**ImportCSRResponse**](docs/CertificateManagementApi.md#importcsrresponse) | **Post** /environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
 *CertificateManagementApi* | [**UpdateKey**](docs/CertificateManagementApi.md#updatekey) | **Put** /environments/{environmentID}/keys/{keyID} | UPDATE Key
+*CustomAdminRolesApi* | [**CreateCustomAdminRole**](docs/CustomAdminRolesApi.md#createcustomadminrole) | **Post** /environments/{environmentID}/roles | CREATE Custom Role
+*CustomAdminRolesApi* | [**DeleteCustomAdminRole**](docs/CustomAdminRolesApi.md#deletecustomadminrole) | **Delete** /environments/{environmentID}/roles/{customRoleID} | DELETE Custom Role
+*CustomAdminRolesApi* | [**ReadAllCustomAdminRoles**](docs/CustomAdminRolesApi.md#readallcustomadminroles) | **Get** /environments/{environmentID}/roles | READ All Custom Admin Roles
+*CustomAdminRolesApi* | [**ReadOneCustomAdminRole**](docs/CustomAdminRolesApi.md#readonecustomadminrole) | **Get** /environments/{environmentID}/roles/{customRoleID} | READ One Custom Role
+*CustomAdminRolesApi* | [**UpdateCustomAdminRole**](docs/CustomAdminRolesApi.md#updatecustomadminrole) | **Put** /environments/{environmentID}/roles/{customRoleID} | UPDATE Custom Role
 *CustomDomainsApi* | [**CreateDomain**](docs/CustomDomainsApi.md#createdomain) | **Post** /environments/{environmentID}/customDomains | CREATE Domain
 *CustomDomainsApi* | [**DeleteDomain**](docs/CustomDomainsApi.md#deletedomain) | **Delete** /environments/{environmentID}/customDomains/{customDomainID} | DELETE Domain
 *CustomDomainsApi* | [**ReadAllDomains**](docs/CustomDomainsApi.md#readalldomains) | **Get** /environments/{environmentID}/customDomains | READ All Domains
@@ -512,6 +517,9 @@ Class | Method | HTTP request | Description
  - [CreateApplicationRequest](docs/CreateApplicationRequest.md)
  - [CreateGateway201Response](docs/CreateGateway201Response.md)
  - [CreateGatewayRequest](docs/CreateGatewayRequest.md)
+ - [CustomAdminRole](docs/CustomAdminRole.md)
+ - [CustomAdminRoleCanAssignInner](docs/CustomAdminRoleCanAssignInner.md)
+ - [CustomAdminRolePermissionsInner](docs/CustomAdminRolePermissionsInner.md)
  - [CustomDomain](docs/CustomDomain.md)
  - [CustomDomainCertificate](docs/CustomDomainCertificate.md)
  - [CustomDomainCertificateRequest](docs/CustomDomainCertificateRequest.md)
@@ -566,6 +574,8 @@ Class | Method | HTTP request | Description
  - [EnumCertificateKeyStatus](docs/EnumCertificateKeyStatus.md)
  - [EnumCertificateKeyUsageType](docs/EnumCertificateKeyUsageType.md)
  - [EnumCreateCertificateAcceptHeader](docs/EnumCreateCertificateAcceptHeader.md)
+ - [EnumCustomAdminRoleApplicableTo](docs/EnumCustomAdminRoleApplicableTo.md)
+ - [EnumCustomAdminRoleType](docs/EnumCustomAdminRoleType.md)
  - [EnumCustomDomainPostHeader](docs/EnumCustomDomainPostHeader.md)
  - [EnumCustomDomainStatus](docs/EnumCustomDomainStatus.md)
  - [EnumDurationUnitMinsHours](docs/EnumDurationUnitMinsHours.md)

@@ -21,6 +21,7 @@ api_bill_of_materials_bom.go
 api_branding_settings.go
 api_branding_themes.go
 api_capabilities.go
+api_custom_admin_roles.go
 api_custom_domains.go
 api_enable_users.go
 api_environments.go
@@ -176,6 +177,10 @@ docs/CreateApplication201Response.md
 docs/CreateApplicationRequest.md
 docs/CreateGateway201Response.md
 docs/CreateGatewayRequest.md
+docs/CustomAdminRole.md
+docs/CustomAdminRoleCanAssignInner.md
+docs/CustomAdminRolePermissionsInner.md
+docs/CustomAdminRolesApi.md
 docs/CustomDomain.md
 docs/CustomDomainCertificate.md
 docs/CustomDomainCertificateRequest.md
@@ -232,6 +237,8 @@ docs/EnumCertificateKeySignagureAlgorithm.md
 docs/EnumCertificateKeyStatus.md
 docs/EnumCertificateKeyUsageType.md
 docs/EnumCreateCertificateAcceptHeader.md
+docs/EnumCustomAdminRoleApplicableTo.md
+docs/EnumCustomAdminRoleType.md
 docs/EnumCustomDomainPostHeader.md
 docs/EnumCustomDomainStatus.md
 docs/EnumDurationUnitMinsHours.md
@@ -780,6 +787,9 @@ model_branding_theme_configuration_logo.go
 model_branding_theme_default.go
 model_certificate.go
 model_certificate_key_update.go
+model_custom_admin_role.go
+model_custom_admin_role_can_assign_inner.go
+model_custom_admin_role_permissions_inner.go
 model_custom_domain.go
 model_custom_domain_certificate.go
 model_custom_domain_certificate_request.go
@@ -832,6 +842,8 @@ model_enum_certificate_key_usage_type.go
 model_enum_create_certificate_accept_header.go
 model_enum_csr_export_header.go
 model_enum_csr_response_import_header.go
+model_enum_custom_admin_role_applicable_to.go
+model_enum_custom_admin_role_type.go
 model_enum_custom_domain_post_header.go
 model_enum_custom_domain_status.go
 model_enum_duration_unit_mins_hours.go
