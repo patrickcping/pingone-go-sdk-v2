@@ -27,6 +27,7 @@ type RiskPredictor struct {
 	RiskPredictorEmailReputation *RiskPredictorEmailReputation
 	RiskPredictorGeovelocity *RiskPredictorGeovelocity
 	RiskPredictorIPReputation *RiskPredictorIPReputation
+	RiskPredictorTrafficAnomaly *RiskPredictorTrafficAnomaly
 	RiskPredictorUserLocationAnomaly *RiskPredictorUserLocationAnomaly
 	RiskPredictorUserRiskBehavior *RiskPredictorUserRiskBehavior
 	RiskPredictorVelocity *RiskPredictorVelocity
@@ -99,6 +100,13 @@ func RiskPredictorGeovelocityAsRiskPredictor(v *RiskPredictorGeovelocity) RiskPr
 func RiskPredictorIPReputationAsRiskPredictor(v *RiskPredictorIPReputation) RiskPredictor {
 	return RiskPredictor{
 		RiskPredictorIPReputation: v,
+	}
+}
+
+// RiskPredictorTrafficAnomalyAsRiskPredictor is a convenience function that returns RiskPredictorTrafficAnomaly wrapped in RiskPredictor
+func RiskPredictorTrafficAnomalyAsRiskPredictor(v *RiskPredictorTrafficAnomaly) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorTrafficAnomaly: v,
 	}
 }
 
@@ -250,6 +258,10 @@ func (src RiskPredictor) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RiskPredictorIPReputation)
 	}
 
+	if src.RiskPredictorTrafficAnomaly != nil {
+		return json.Marshal(&src.RiskPredictorTrafficAnomaly)
+	}
+
 	if src.RiskPredictorUserLocationAnomaly != nil {
 		return json.Marshal(&src.RiskPredictorUserLocationAnomaly)
 	}
@@ -308,6 +320,10 @@ func (obj *RiskPredictor) GetActualInstance() (interface{}) {
 
 	if obj.RiskPredictorIPReputation != nil {
 		return obj.RiskPredictorIPReputation
+	}
+
+	if obj.RiskPredictorTrafficAnomaly != nil {
+		return obj.RiskPredictorTrafficAnomaly
 	}
 
 	if obj.RiskPredictorUserLocationAnomaly != nil {

@@ -1330,11 +1330,12 @@ components:
       - ANONYMOUS_NETWORK
       - BOT
       - COMPOSITE
+      - DEVICE
       - EMAIL_REPUTATION
       - GEO_VELOCITY
       - IP_REPUTATION
       - MAP
-      - DEVICE
+      - TRAFFIC_ANOMALY
       - USER_LOCATION_ANOMALY
       - USER_RISK_BEHAVIOR
       - VELOCITY
@@ -2098,10 +2099,11 @@ components:
       - $ref: '#/components/schemas/RiskPredictorBotDetection'
       - $ref: '#/components/schemas/RiskPredictorComposite'
       - $ref: '#/components/schemas/RiskPredictorCustom'
+      - $ref: '#/components/schemas/RiskPredictorDevice'
       - $ref: '#/components/schemas/RiskPredictorEmailReputation'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity'
       - $ref: '#/components/schemas/RiskPredictorIPReputation'
-      - $ref: '#/components/schemas/RiskPredictorDevice'
+      - $ref: '#/components/schemas/RiskPredictorTrafficAnomaly'
       - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
       - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
       - $ref: '#/components/schemas/RiskPredictorVelocity'
@@ -2377,6 +2379,30 @@ components:
             type: string
         required:
         - detect
+        type: object
+    EnumRiskPredictorTrafficAnomalyRuleIntervalUnit:
+      description: The time unit for defining the timeframe for tracking number of
+        users on the device - can be `DAY` or `HOUR`
+      enum:
+      - DAY
+      - HOUR
+      type: string
+    EnumRiskPredictorTrafficAnomalyRuleType:
+      description: The type of rule. Currently the only valid value is `UNIQUES_USERS_PER_DEVICE`
+        - for tracking the number of unique users for a device over a defined timeframe.
+      enum:
+      - UNIQUES_USERS_PER_DEVICE
+      type: string
+    RiskPredictorTrafficAnomaly:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictorCommon'
+      - properties:
+          rules:
+            items:
+              $ref: '#/components/schemas/RiskPredictorTrafficAnomaly_allOf_rules'
+            type: array
+        required:
+        - rules
         type: object
     RiskPredictorUserLocationAnomaly:
       allOf:
@@ -3433,6 +3459,55 @@ components:
       - maxScore
       - minScore
       type: object
+    RiskPredictorTrafficAnomaly_allOf_interval:
+      description: Object that contains the fields used to define the timeframe to
+        consider. The timeframe can be between 1 hour and 14 days.
+      properties:
+        unit:
+          $ref: '#/components/schemas/EnumRiskPredictorTrafficAnomalyRuleIntervalUnit'
+        quantity:
+          description: The number of days or hours for the timeframe for tracking
+            number of users on the device.
+          type: integer
+      required:
+      - quantity
+      - unit
+      type: object
+      example: null
+    RiskPredictorTrafficAnomaly_allOf_threshold:
+      description: Object that contains the fields used to define the risk thresholds.
+      properties:
+        medium:
+          description: Number of users during the defined timeframe that will be considered
+            Medium risk.
+          type: integer
+        high:
+          description: Number of users during the defined timeframe that will be considered
+            High risk.
+          type: integer
+      required:
+      - high
+      - medium
+      type: object
+      example: null
+    RiskPredictorTrafficAnomaly_allOf_rules:
+      properties:
+        enabled:
+          description: Set to true to use the defined rule in the predictor.
+          type: boolean
+        interval:
+          $ref: '#/components/schemas/RiskPredictorTrafficAnomaly_allOf_interval'
+        threshold:
+          $ref: '#/components/schemas/RiskPredictorTrafficAnomaly_allOf_threshold'
+        type:
+          $ref: '#/components/schemas/EnumRiskPredictorTrafficAnomalyRuleType'
+      required:
+      - enabled
+      - interval
+      - threshold
+      - type
+      type: object
+      example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:
       properties:
         distance:
