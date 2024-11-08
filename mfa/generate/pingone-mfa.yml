@@ -107,6 +107,12 @@ components:
               required:
                 - count
                 - coolDown
+            otpLength:
+              type: integer
+              description: Used to specify the length of the OTP that is shown to users. Minimum length is `6` digits and maximum is `10` digits. If the parameter is not provided, the default is `6` digits.
+              default: 6
+              minimum: 6
+              maximum: 10
           required:
             - lifeTime
             - failure
