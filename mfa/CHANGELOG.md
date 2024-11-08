@@ -1,6 +1,7 @@
-# v0.20.1 (Unreleased)
+# v0.21.0 (Unreleased)
 
 * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
+* **Enhancement** Added the `UriParameters` field to the `DeviceAuthenticationPolicyTotp` data model.
 
 # v0.20.0 (2024-07-04)
 
