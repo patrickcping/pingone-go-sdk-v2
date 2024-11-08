@@ -13,7 +13,7 @@
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
     * **Feature** Added support for the Administrator Security API. [#381](https://github.com/patrickcping/pingone-go-sdk-v2/pull/381)
     * **Feature** Added support for custom email notification providers. [#386](https://github.com/patrickcping/pingone-go-sdk-v2/pull/386)
-    * **Feature** Added support for the Custom Admin Roles API.
+    * **Feature** Added support for the Custom Admin Roles API. [#388](https://github.com/patrickcping/pingone-go-sdk-v2/pull/388)
     * **Enhancement** Added the `SessionNotOnOrAfterDuration` field to the `ApplicationSAML` data model. [#387](https://github.com/patrickcping/pingone-go-sdk-v2/pull/387)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.21.0](./mfa/CHANGELOG.md)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
