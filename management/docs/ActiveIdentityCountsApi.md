@@ -31,7 +31,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     filter := "startDate ge "2019-05-01T19:00:00Z" and samplingPeriod eq "10"" // string |  (optional)
-    limit := int32(10) // int32 |  (optional)
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     order := "-startDate" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **filter** | **string** |  | 
- **limit** | **int32** |  | 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **order** | **string** |  | 
 
 ### Return type

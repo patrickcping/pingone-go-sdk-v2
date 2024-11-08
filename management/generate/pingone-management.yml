@@ -7979,7 +7979,9 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+            minimum: 1
+            maximum: 100
+          description: Adding a paging value to limit the number of resources displayed per page
         - name: order
           in: query
           schema:
@@ -10301,6 +10303,11 @@ paths:
         - Audit Activities
       summary: GET User Activities
       parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Adding a paging value to limit the number of resources displayed per page
         - name: filter
           in: query
           schema:
@@ -10417,7 +10424,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '1'
+          description: Adding a paging value to limit the number of resources displayed per page
         - name: samplePeriod
           in: query
           schema:
@@ -13171,7 +13178,9 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+            minimum: 1
+            maximum: 1000
+          description: Adding a paging value to limit the number of resources displayed per page
         - name: cursor
           in: query
           schema:
@@ -16190,6 +16199,11 @@ paths:
       summary: READ All Templates
       operationId: readAllTemplates
       parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Adding a paging value to limit the number of resources displayed per page
         - name: filter
           in: query
           schema:
@@ -16281,6 +16295,11 @@ paths:
           schema:
             $ref: '#/components/schemas/EnumTemplateName'
           required: true
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Adding a paging value to limit the number of resources displayed per page
       responses:
         '400':
           $ref: '#/components/responses/400'
@@ -20175,7 +20194,9 @@ paths:
           in: query
           schema:
             type: integer
-          example: '100'
+            minimum: 1
+            maximum: 1000
+          description: Adding a paging value to limit the number of resources displayed per page
         - name: cursor
           in: query
           schema:
@@ -22097,7 +22118,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '1'
+          description: Adding a paging value to limit the number of resources displayed per page
       responses:
         '400':
           $ref: '#/components/responses/400'

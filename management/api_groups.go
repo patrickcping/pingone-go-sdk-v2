@@ -845,6 +845,7 @@ func (r ApiReadAllGroupsRequest) Filter(filter string) ApiReadAllGroupsRequest {
 	return r
 }
 
+// Adding a paging value to limit the number of resources displayed per page
 func (r ApiReadAllGroupsRequest) Limit(limit int32) ApiReadAllGroupsRequest {
 	r.limit = &limit
 	return r

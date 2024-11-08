@@ -847,6 +847,13 @@ type ApiReadAllTemplateContentsRequest struct {
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
 	templateName EnumTemplateName
+	limit *int32
+}
+
+// Adding a paging value to limit the number of resources displayed per page
+func (r ApiReadAllTemplateContentsRequest) Limit(limit int32) ApiReadAllTemplateContentsRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiReadAllTemplateContentsRequest) Execute() (*EntityArray, *http.Response, error) {
@@ -909,6 +916,9 @@ func (a *NotificationsTemplatesApiService) internalReadAllTemplateContentsExecut
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1044,8 +1054,15 @@ type ApiReadAllTemplatesRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
+	limit *int32
 	filter *string
 	order *string
+}
+
+// Adding a paging value to limit the number of resources displayed per page
+func (r ApiReadAllTemplatesRequest) Limit(limit int32) ApiReadAllTemplatesRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiReadAllTemplatesRequest) Filter(filter string) ApiReadAllTemplatesRequest {
@@ -1115,6 +1132,9 @@ func (a *NotificationsTemplatesApiService) internalReadAllTemplatesExecute(r Api
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
 	}

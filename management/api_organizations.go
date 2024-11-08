@@ -29,6 +29,7 @@ type ApiReadAllOrganizationsRequest struct {
 	limit *int32
 }
 
+// Adding a paging value to limit the number of resources displayed per page
 func (r ApiReadAllOrganizationsRequest) Limit(limit int32) ApiReadAllOrganizationsRequest {
 	r.limit = &limit
 	return r

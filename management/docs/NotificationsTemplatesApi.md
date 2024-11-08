@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllTemplateContents
 
-> EntityArray ReadAllTemplateContents(ctx, environmentID, templateName).Execute()
+> EntityArray ReadAllTemplateContents(ctx, environmentID, templateName).Limit(limit).Execute()
 
 READ All Contents
 
@@ -328,10 +328,11 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplateContents(context.Background(), environmentID, templateName).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplateContents(context.Background(), environmentID, templateName).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplateContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,6 +360,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
 
 ### Return type
 
@@ -380,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllTemplates
 
-> EntityArray ReadAllTemplates(ctx, environmentID).Filter(filter).Order(order).Execute()
+> EntityArray ReadAllTemplates(ctx, environmentID).Limit(limit).Filter(filter).Order(order).Execute()
 
 READ All Templates
 
@@ -398,12 +400,13 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     filter := "(createdAt lt "2018-08-30") and (updatedAt gt "2018-07-30")" // string |  (optional)
     order := "-createdAt" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplates(context.Background(), environmentID).Filter(filter).Order(order).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplates(context.Background(), environmentID).Limit(limit).Filter(filter).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -429,6 +432,7 @@ Other parameters are passed through a pointer to a apiReadAllTemplatesRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **filter** | **string** |  | 
  **order** | **string** |  | 
 

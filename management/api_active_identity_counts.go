@@ -37,6 +37,7 @@ func (r ApiEnvironmentsEnvironmentIDActiveIdentityCountsGetRequest) Filter(filte
 	return r
 }
 
+// Adding a paging value to limit the number of resources displayed per page
 func (r ApiEnvironmentsEnvironmentIDActiveIdentityCountsGetRequest) Limit(limit int32) ApiEnvironmentsEnvironmentIDActiveIdentityCountsGetRequest {
 	r.limit = &limit
 	return r

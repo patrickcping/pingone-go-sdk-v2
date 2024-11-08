@@ -1210,6 +1210,7 @@ func (r ApiReadAllUsersRequest) Filter(filter string) ApiReadAllUsersRequest {
 	return r
 }
 
+// Adding a paging value to limit the number of resources displayed per page
 func (r ApiReadAllUsersRequest) Limit(limit int32) ApiReadAllUsersRequest {
 	r.limit = &limit
 	return r
