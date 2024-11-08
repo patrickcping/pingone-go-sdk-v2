@@ -638,6 +638,138 @@ paths:
       summary: READ Active Identity Counts by Date Range
       tags:
       - Active Identity Counts
+  /environments/{environmentID}/adminConfig:
+    get:
+      operationId: readAdministratorSecurity
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdministratorSecurity'
+          description: Successful response
+      summary: READ Administrator Security
+      tags:
+      - Administrator Security
+    put:
+      operationId: updateAdministratorSecurity
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdministratorSecurity'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdministratorSecurity'
+          description: Successful response
+      summary: UPDATE Administrator Security
+      tags:
+      - Administrator Security
   /environments/{environmentID}/agreements:
     get:
       operationId: readAllAgreements
@@ -26396,6 +26528,34 @@ components:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
       type: object
+    EnumAdministratorSecurityAllowedMethods:
+      description: "Indicates the methods to enable or disable for admin sign-on.\
+        \ Possible values are `TOTP` (temporary one-time password), `FIDO2`, or `EMAIL`."
+      enum:
+      - TOTP
+      - FIDO2
+      - EMAIL
+      type: string
+    EnumAdministratorSecurityAuthenticationMethod:
+      default: PINGONE
+      description: "Indicates whether to use PingOne MFA, an external IdP, or a combination\
+        \ of both for admin sign-on. Possible values are `PINGONE`, `EXTERNAL`, or\
+        \ `HYBRID`. The default is `PINGONE`."
+      enum:
+      - PINGONE
+      - EXTERNAL
+      - HYBRID
+      type: string
+    EnumAdministratorSecurityMfaStatus:
+      default: OPT_OUT
+      description: "This applies only to the specified environment, and can be either\
+        \ `OPT_IN` (indicating MFA is to be used for administrator sign-ons), or `OPT_OUT`\
+        \ (indicating MFA is not to be used for administrator sign-ons). This currently\
+        \ defaults to `OPT_OUT`."
+      enum:
+      - OPT_IN
+      - OPT_OUT
+      type: string
     EnumAgreementRevisionContentType:
       description: "An immutable string that specifies the content type of text. Options\
         \ are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1)\
@@ -27683,6 +27843,51 @@ components:
       - ENABLED
       - DISABLED
       type: string
+    AdministratorSecurity:
+      example:
+        mfaStatus: null
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
+        authenticationMethod: null
+        provider:
+          id: id
+        allowedMethods: null
+        recovery: true
+        policy:
+          id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        allowedMethods:
+          $ref: '#/components/schemas/EnumAdministratorSecurityAllowedMethods'
+        authenticationMethod:
+          $ref: '#/components/schemas/EnumAdministratorSecurityAuthenticationMethod'
+        createdAt:
+          description: The time the resource was created.
+          format: date-time
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        mfaStatus:
+          $ref: '#/components/schemas/EnumAdministratorSecurityMfaStatus'
+        policy:
+          $ref: '#/components/schemas/AdministratorSecurity_policy'
+        provider:
+          $ref: '#/components/schemas/AdministratorSecurity_provider'
+        recovery:
+          description: Indicates whether to allow account recovery within the admin
+            policy.
+          type: boolean
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - authenticationMethod
+      - recovery
+      type: object
     Agreement:
       example:
         environment:
@@ -36220,6 +36425,26 @@ components:
           type: string
       required:
       - href
+      type: object
+    AdministratorSecurity_policy:
+      example:
+        id: id
+      properties:
+        id:
+          description: The admin sign-on policy ID.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    AdministratorSecurity_provider:
+      example:
+        id: id
+      properties:
+        id:
+          description: "The UUID of the external IdP, if applicable."
+          type: string
+      required:
+      - id
       type: object
     AgreementLanguage_agreement:
       example:

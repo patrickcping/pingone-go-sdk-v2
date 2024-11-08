@@ -1,6 +1,7 @@
 README.md
 api/openapi.yaml
 api_active_identity_counts.go
+api_administrator_security.go
 api_agreement_languages_resources.go
 api_agreement_revisions_resources.go
 api_agreements_resources.go
@@ -79,6 +80,10 @@ api_user_role_assignments.go
 api_users.go
 configuration.go
 docs/ActiveIdentityCountsApi.md
+docs/AdministratorSecurity.md
+docs/AdministratorSecurityApi.md
+docs/AdministratorSecurityPolicy.md
+docs/AdministratorSecurityProvider.md
 docs/Agreement.md
 docs/AgreementLanguage.md
 docs/AgreementLanguageAgreement.md
@@ -192,6 +197,9 @@ docs/EntityArrayEmbeddedGatewaysInner.md
 docs/EntityArrayEmbeddedLanguagesInner.md
 docs/EntityArrayEmbeddedResourcesInner.md
 docs/EntityArrayEmbeddedRolesInner.md
+docs/EnumAdministratorSecurityAllowedMethods.md
+docs/EnumAdministratorSecurityAuthenticationMethod.md
+docs/EnumAdministratorSecurityMfaStatus.md
 docs/EnumAgreementRevisionContentType.md
 docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
@@ -688,6 +696,9 @@ docs/UserRoleAssignmentsApi.md
 docs/UsersApi.md
 go.mod
 go.sum
+model_administrator_security.go
+model_administrator_security_policy.go
+model_administrator_security_provider.go
 model_agreement.go
 model_agreement_language.go
 model_agreement_language_agreement.go
@@ -774,6 +785,9 @@ model_entity_array__embedded.go
 model_entity_array__embedded_gateways_inner.go
 model_entity_array__embedded_resources_inner.go
 model_entity_array__embedded_roles_inner.go
+model_enum_administrator_security_allowed_methods.go
+model_enum_administrator_security_authentication_method.go
+model_enum_administrator_security_mfa_status.go
 model_enum_agreement_revision_content_type.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
