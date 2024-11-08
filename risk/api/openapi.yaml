@@ -1357,6 +1357,19 @@ components:
       enum:
       - POISSON_WITH_MAX
       type: string
+    EnumRiskPredictorTrafficAnomalyRuleIntervalUnit:
+      description: The time unit for defining the timeframe for tracking number of
+        users on the device - can be `DAY` or `HOUR`
+      enum:
+      - DAY
+      - HOUR
+      type: string
+    EnumRiskPredictorTrafficAnomalyRuleType:
+      description: The type of rule. Currently the only valid value is `UNIQUE_USERS_PER_DEVICE`
+        - for tracking the number of unique users for a device over a defined timeframe.
+      enum:
+      - UNIQUE_USERS_PER_DEVICE
+      type: string
     EnumResultType:
       description: A string that specifies the risk evaluation result type. Options
         are `VALUE`.
@@ -2380,19 +2393,6 @@ components:
         required:
         - detect
         type: object
-    EnumRiskPredictorTrafficAnomalyRuleIntervalUnit:
-      description: The time unit for defining the timeframe for tracking number of
-        users on the device - can be `DAY` or `HOUR`
-      enum:
-      - DAY
-      - HOUR
-      type: string
-    EnumRiskPredictorTrafficAnomalyRuleType:
-      description: The type of rule. Currently the only valid value is `UNIQUES_USERS_PER_DEVICE`
-        - for tracking the number of unique users for a device over a defined timeframe.
-      enum:
-      - UNIQUES_USERS_PER_DEVICE
-      type: string
     RiskPredictorTrafficAnomaly:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'

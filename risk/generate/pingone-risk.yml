@@ -135,8 +135,8 @@ components:
       description: The time unit for defining the timeframe for tracking number of users on the device - can be `DAY` or `HOUR`
     EnumRiskPredictorTrafficAnomalyRuleType:
       type: string
-      enum: [UNIQUES_USERS_PER_DEVICE]
-      description: The type of rule. Currently the only valid value is `UNIQUES_USERS_PER_DEVICE` - for tracking the number of unique users for a device over a defined timeframe.
+      enum: [UNIQUE_USERS_PER_DEVICE]
+      description: The type of rule. Currently the only valid value is `UNIQUE_USERS_PER_DEVICE` - for tracking the number of unique users for a device over a defined timeframe.
     EnumResultType:
       type: string
       enum: [VALUE]

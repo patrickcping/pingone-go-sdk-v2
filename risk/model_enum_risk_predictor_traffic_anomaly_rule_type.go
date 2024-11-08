@@ -15,17 +15,17 @@ import (
 	"fmt"
 )
 
-// EnumRiskPredictorTrafficAnomalyRuleType The type of rule. Currently the only valid value is `UNIQUES_USERS_PER_DEVICE` - for tracking the number of unique users for a device over a defined timeframe.
+// EnumRiskPredictorTrafficAnomalyRuleType The type of rule. Currently the only valid value is `UNIQUE_USERS_PER_DEVICE` - for tracking the number of unique users for a device over a defined timeframe.
 type EnumRiskPredictorTrafficAnomalyRuleType string
 
 // List of EnumRiskPredictorTrafficAnomalyRuleType
 const (
-	ENUMRISKPREDICTORTRAFFICANOMALYRULETYPE_UNIQUES_USERS_PER_DEVICE EnumRiskPredictorTrafficAnomalyRuleType = "UNIQUES_USERS_PER_DEVICE"
+	ENUMRISKPREDICTORTRAFFICANOMALYRULETYPE_UNIQUE_USERS_PER_DEVICE EnumRiskPredictorTrafficAnomalyRuleType = "UNIQUE_USERS_PER_DEVICE"
 )
 
 // All allowed values of EnumRiskPredictorTrafficAnomalyRuleType enum
 var AllowedEnumRiskPredictorTrafficAnomalyRuleTypeEnumValues = []EnumRiskPredictorTrafficAnomalyRuleType{
-	"UNIQUES_USERS_PER_DEVICE",
+	"UNIQUE_USERS_PER_DEVICE",
 }
 
 func (v *EnumRiskPredictorTrafficAnomalyRuleType) UnmarshalJSON(src []byte) error {
