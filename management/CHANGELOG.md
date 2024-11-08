@@ -1,9 +1,9 @@
 # v0.44.0 (Unreleased)
 
-* **Breaking change** Model `NotificationsSettingsEmailDeliverySettings` is now a compound model supporting both SMTP and custom notification models.
+* **Breaking change** Model `NotificationsSettingsEmailDeliverySettings` is now a compound model supporting both SMTP and custom notification models. [#386](https://github.com/patrickcping/pingone-go-sdk-v2/pull/386)
 * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 * **Feature** Added support for the Administrator Security API. [#381](https://github.com/patrickcping/pingone-go-sdk-v2/pull/381)
-* **Feature** Added support for custom email notification providers.
+* **Feature** Added support for custom email notification providers. [#386](https://github.com/patrickcping/pingone-go-sdk-v2/pull/386)
 
 # v0.43.0 (2024-07-22)
 

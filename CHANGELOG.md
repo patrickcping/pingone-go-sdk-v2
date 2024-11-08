@@ -9,10 +9,10 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.9.1](./credentials/CHANGELOG.md)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.44.0](./management/CHANGELOG.md)
-    * **Breaking change** Model `NotificationsSettingsEmailDeliverySettings` is now a compound model supporting both SMTP and custom notification models.
+    * **Breaking change** Model `NotificationsSettingsEmailDeliverySettings` is now a compound model supporting both SMTP and custom notification models. [#386](https://github.com/patrickcping/pingone-go-sdk-v2/pull/386)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
     * **Feature** Added support for the Administrator Security API. [#381](https://github.com/patrickcping/pingone-go-sdk-v2/pull/381)
-    * **Feature** Added support for custom email notification providers.
+    * **Feature** Added support for custom email notification providers. [#386](https://github.com/patrickcping/pingone-go-sdk-v2/pull/386)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.21.0](./mfa/CHANGELOG.md)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
     * **Enhancement** Added the `UriParameters` field to the `DeviceAuthenticationPolicyTotp` data model. [#384](https://github.com/patrickcping/pingone-go-sdk-v2/pull/384)
