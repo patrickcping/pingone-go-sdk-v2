@@ -2,6 +2,7 @@
 
 * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 * **Enhancement** Added the `ShouldValidatePayloadSignature` field to the `RiskPredictorDevice` model. [#380](https://github.com/patrickcping/pingone-go-sdk-v2/pull/380)
+* **Enhancement** Added the `IncludeRepeatedEventsWithoutSdk` field to the `RiskPredictorBotDetection` model. [#382](https://github.com/patrickcping/pingone-go-sdk-v2/pull/382)
 
 # v0.16.0 (2024-07-04)
 

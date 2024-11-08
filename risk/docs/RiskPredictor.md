@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
 **DomainWhiteList** | Pointer to **[]string** | A list of strings that specify legitimate domains that users will access for restricted resources. | [optional] 
 **WhiteList** | Pointer to **[]string** | A list of IP addresses (CDIRs) that are ignored for the predictor results. | [optional] 
+**IncludeRepeatedEventsWithoutSdk** | Pointer to **bool** | Set the value of &#x60;includeRepeatedEventsWithoutSdk&#x60; to &#x60;true&#x60; to expand the range of bot activity that PingOne Protect can detect. | [optional] 
 **Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
 **Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
 **Map** | [**RiskPredictorCustomAllOfMap**](RiskPredictorCustomAllOfMap.md) |  | 
@@ -389,6 +390,31 @@ SetWhiteList sets WhiteList field to given value.
 `func (o *RiskPredictor) HasWhiteList() bool`
 
 HasWhiteList returns a boolean if a field has been set.
+
+### GetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictor) GetIncludeRepeatedEventsWithoutSdk() bool`
+
+GetIncludeRepeatedEventsWithoutSdk returns the IncludeRepeatedEventsWithoutSdk field if non-nil, zero value otherwise.
+
+### GetIncludeRepeatedEventsWithoutSdkOk
+
+`func (o *RiskPredictor) GetIncludeRepeatedEventsWithoutSdkOk() (*bool, bool)`
+
+GetIncludeRepeatedEventsWithoutSdkOk returns a tuple with the IncludeRepeatedEventsWithoutSdk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictor) SetIncludeRepeatedEventsWithoutSdk(v bool)`
+
+SetIncludeRepeatedEventsWithoutSdk sets IncludeRepeatedEventsWithoutSdk field to given value.
+
+### HasIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictor) HasIncludeRepeatedEventsWithoutSdk() bool`
+
+HasIncludeRepeatedEventsWithoutSdk returns a boolean if a field has been set.
 
 ### GetComposition
 
