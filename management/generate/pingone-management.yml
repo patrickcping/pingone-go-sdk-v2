@@ -49,6 +49,20 @@ components:
             description: The HREF of the link.
         required:
           - href 
+    EnumAdministratorSecurityAllowedMethods:
+      type: string
+      description: Indicates the methods to enable or disable for admin sign-on. Possible values are `TOTP` (temporary one-time password), `FIDO2`, or `EMAIL`.
+      enum: [TOTP, FIDO2, EMAIL]
+    EnumAdministratorSecurityAuthenticationMethod:
+      type: string
+      description: Indicates whether to use PingOne MFA, an external IdP, or a combination of both for admin sign-on. Possible values are `PINGONE`, `EXTERNAL`, or `HYBRID`. The default is `PINGONE`.
+      enum: [PINGONE, EXTERNAL, HYBRID]
+      default: PINGONE
+    EnumAdministratorSecurityMfaStatus:
+      type: string
+      description: This applies only to the specified environment, and can be either `OPT_IN` (indicating MFA is to be used for administrator sign-ons), or `OPT_OUT` (indicating MFA is not to be used for administrator sign-ons). This currently defaults to `OPT_OUT`.
+      default: OPT_OUT
+      enum: [OPT_IN, OPT_OUT]
     EnumAgreementRevisionContentType:
       type: string
       description: An immutable string that specifies the content type of text. Options are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1) and [Media Types/text](https://www.iana.org/assignments/media-types/media-types.xhtml#text). This attribute is supported in POST requests only.
@@ -686,6 +700,49 @@ components:
       type: string
       enum: [NOT_INITIATED, ENABLED, DISABLED]
       description: Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED.
+    AdministratorSecurity:
+      type: object
+      properties:
+        allowedMethods:
+          $ref: '#/components/schemas/EnumAdministratorSecurityAllowedMethods'
+        authenticationMethod:
+          $ref: '#/components/schemas/EnumAdministratorSecurityAuthenticationMethod'
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was created.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        mfaStatus:
+          $ref: '#/components/schemas/EnumAdministratorSecurityMfaStatus'
+        policy:
+          type: object
+          readOnly: true
+          properties:
+            id:
+              type: string
+              readOnly: true
+              description: The admin sign-on policy ID.
+        provider:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The UUID of the external IdP, if applicable.
+          required:
+            - id
+        recovery:
+          type: boolean
+          description: Indicates whether to allow account recovery within the admin policy.
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was last updated.
+      required:
+        - authenticationMethod
+        - recovery
     Agreement:
       type: object
       properties:
@@ -7807,6 +7864,76 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /environments/{environmentID}/adminConfig:
+    get:
+      tags:
+        - Administrator Security
+      summary: READ Administrator Security
+      operationId: readAdministratorSecurity
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdministratorSecurity'
+    put:
+      tags:
+        - Administrator Security
+      summary: UPDATE Administrator Security
+      operationId: updateAdministratorSecurity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdministratorSecurity'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdministratorSecurity'
   /environments/{environmentID}/agreements:
     post:
       tags:

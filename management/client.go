@@ -45,6 +45,8 @@ type APIClient struct {
 
 	ActiveIdentityCountsApi *ActiveIdentityCountsApiService
 
+	AdministratorSecurityApi *AdministratorSecurityApiService
+
 	AgreementLanguagesResourcesApi *AgreementLanguagesResourcesApiService
 
 	AgreementRevisionsResourcesApi *AgreementRevisionsResourcesApiService
@@ -243,6 +245,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ActiveIdentityCountsApi = (*ActiveIdentityCountsApiService)(&c.common)
+	c.AdministratorSecurityApi = (*AdministratorSecurityApiService)(&c.common)
 	c.AgreementLanguagesResourcesApi = (*AgreementLanguagesResourcesApiService)(&c.common)
 	c.AgreementRevisionsResourcesApi = (*AgreementRevisionsResourcesApiService)(&c.common)
 	c.AgreementsResourcesApi = (*AgreementsResourcesApiService)(&c.common)
