@@ -22,6 +22,8 @@ docs/EnumRiskLevel.md
 docs/EnumRiskPolicyConditionType.md
 docs/EnumRiskPolicyResultLevel.md
 docs/EnumRiskPolicySetTriggerType.md
+docs/EnumRiskPredictorTrafficAnomalyRuleIntervalUnit.md
+docs/EnumRiskPredictorTrafficAnomalyRuleType.md
 docs/EnumThresholdSource.md
 docs/EnumUserRiskBehaviorRiskModel.md
 docs/EnumUserType.md
@@ -97,6 +99,10 @@ docs/RiskPredictorDevice.md
 docs/RiskPredictorEmailReputation.md
 docs/RiskPredictorGeovelocity.md
 docs/RiskPredictorIPReputation.md
+docs/RiskPredictorTrafficAnomaly.md
+docs/RiskPredictorTrafficAnomalyAllOfInterval.md
+docs/RiskPredictorTrafficAnomalyAllOfRules.md
+docs/RiskPredictorTrafficAnomalyAllOfThreshold.md
 docs/RiskPredictorUserLocationAnomaly.md
 docs/RiskPredictorUserLocationAnomalyAllOfRadius.md
 docs/RiskPredictorUserRiskBehavior.md
@@ -127,6 +133,8 @@ model_enum_risk_level.go
 model_enum_risk_policy_condition_type.go
 model_enum_risk_policy_result_level.go
 model_enum_risk_policy_set_trigger_type.go
+model_enum_risk_predictor_traffic_anomaly_rule_interval_unit.go
+model_enum_risk_predictor_traffic_anomaly_rule_type.go
 model_enum_threshold_source.go
 model_enum_user_risk_behavior_risk_model.go
 model_enum_user_type.go
@@ -199,6 +207,10 @@ model_risk_predictor_device.go
 model_risk_predictor_email_reputation.go
 model_risk_predictor_geovelocity.go
 model_risk_predictor_ip_reputation.go
+model_risk_predictor_traffic_anomaly.go
+model_risk_predictor_traffic_anomaly_all_of_interval.go
+model_risk_predictor_traffic_anomaly_all_of_rules.go
+model_risk_predictor_traffic_anomaly_all_of_threshold.go
 model_risk_predictor_user_location_anomaly.go
 model_risk_predictor_user_location_anomaly_all_of_radius.go
 model_risk_predictor_user_risk_behavior.go
