@@ -164,7 +164,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    notificationsSettingsEmailDeliverySettings := *openapiclient.NewNotificationsSettingsEmailDeliverySettings() // NotificationsSettingsEmailDeliverySettings |  (optional)
+    notificationsSettingsEmailDeliverySettings := openapiclient.NotificationsSettingsEmailDeliverySettings{NotificationsSettingsEmailDeliverySettingsCustom: openapiclient.NewNotificationsSettingsEmailDeliverySettingsCustom(*openapiclient.NewNotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication(openapiclient.EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod("BASIC")), "Name_example", openapiclient.EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol("HTTP"), []openapiclient.NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests{*openapiclient.NewNotificationsSettingsEmailDeliverySettingsCustomAllOfRequests(openapiclient.EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod("EMAIL"), openapiclient.EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod("GET"), "Url_example")})} // NotificationsSettingsEmailDeliverySettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
