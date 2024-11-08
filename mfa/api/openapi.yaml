@@ -3091,6 +3091,7 @@ components:
       example:
         pairingDisabled: true
         otp:
+          otpLength: 8
           failure:
             count: 6
             coolDown:
@@ -3127,6 +3128,7 @@ components:
         voice:
           pairingDisabled: true
           otp:
+            otpLength: 8
             failure:
               count: 6
               coolDown:
@@ -3174,11 +3176,11 @@ components:
               extraVerification: null
               enabled: true
             pairingKeyLifetime:
-              duration: 2
+              duration: 7
               timeUnit: null
             integrityDetection: null
             pushTimeout:
-              duration: 102
+              duration: 65
               timeUnit: null
             otp:
               enabled: true
@@ -3187,11 +3189,11 @@ components:
               enabled: true
             pushLimit:
               lockDuration:
-                duration: 9
-                timeUnit: null
-              count: 35
-              timePeriod:
                 duration: 3
+                timeUnit: null
+              count: 46
+              timePeriod:
+                duration: 2
                 timeUnit: null
           - autoEnrollment:
               enabled: true
@@ -3200,11 +3202,11 @@ components:
               extraVerification: null
               enabled: true
             pairingKeyLifetime:
-              duration: 2
+              duration: 7
               timeUnit: null
             integrityDetection: null
             pushTimeout:
-              duration: 102
+              duration: 65
               timeUnit: null
             otp:
               enabled: true
@@ -3213,11 +3215,11 @@ components:
               enabled: true
             pushLimit:
               lockDuration:
-                duration: 9
-                timeUnit: null
-              count: 35
-              timePeriod:
                 duration: 3
+                timeUnit: null
+              count: 46
+              timePeriod:
+                duration: 2
                 timeUnit: null
         fido2:
           fido2PolicyId: fido2PolicyId
@@ -3236,6 +3238,7 @@ components:
         sms:
           pairingDisabled: true
           otp:
+            otpLength: 8
             failure:
               count: 6
               coolDown:
@@ -3254,6 +3257,7 @@ components:
         email:
           pairingDisabled: true
           otp:
+            otpLength: 8
             failure:
               count: 6
               coolDown:
@@ -3354,7 +3358,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 4.145608029883936
+        size: 7.386281948385884
         _links:
           key:
             href: https://openapi-generator.tech
@@ -3501,6 +3505,7 @@ components:
           - voice:
               pairingDisabled: true
               otp:
+                otpLength: 8
                 failure:
                   count: 6
                   coolDown:
@@ -3548,11 +3553,11 @@ components:
                   extraVerification: null
                   enabled: true
                 pairingKeyLifetime:
-                  duration: 2
+                  duration: 7
                   timeUnit: null
                 integrityDetection: null
                 pushTimeout:
-                  duration: 102
+                  duration: 65
                   timeUnit: null
                 otp:
                   enabled: true
@@ -3561,11 +3566,11 @@ components:
                   enabled: true
                 pushLimit:
                   lockDuration:
-                    duration: 9
-                    timeUnit: null
-                  count: 35
-                  timePeriod:
                     duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
                     timeUnit: null
               - autoEnrollment:
                   enabled: true
@@ -3574,11 +3579,11 @@ components:
                   extraVerification: null
                   enabled: true
                 pairingKeyLifetime:
-                  duration: 2
+                  duration: 7
                   timeUnit: null
                 integrityDetection: null
                 pushTimeout:
-                  duration: 102
+                  duration: 65
                   timeUnit: null
                 otp:
                   enabled: true
@@ -3587,11 +3592,11 @@ components:
                   enabled: true
                 pushLimit:
                   lockDuration:
-                    duration: 9
-                    timeUnit: null
-                  count: 35
-                  timePeriod:
                     duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
                     timeUnit: null
             fido2:
               fido2PolicyId: fido2PolicyId
@@ -3610,6 +3615,7 @@ components:
             sms:
               pairingDisabled: true
               otp:
+                otpLength: 8
                 failure:
                   count: 6
                   coolDown:
@@ -3628,6 +3634,7 @@ components:
             email:
               pairingDisabled: true
               otp:
+                otpLength: 8
                 failure:
                   count: 6
                   coolDown:
@@ -3644,6 +3651,7 @@ components:
           - voice:
               pairingDisabled: true
               otp:
+                otpLength: 8
                 failure:
                   count: 6
                   coolDown:
@@ -3691,11 +3699,11 @@ components:
                   extraVerification: null
                   enabled: true
                 pairingKeyLifetime:
-                  duration: 2
+                  duration: 7
                   timeUnit: null
                 integrityDetection: null
                 pushTimeout:
-                  duration: 102
+                  duration: 65
                   timeUnit: null
                 otp:
                   enabled: true
@@ -3704,11 +3712,11 @@ components:
                   enabled: true
                 pushLimit:
                   lockDuration:
-                    duration: 9
-                    timeUnit: null
-                  count: 35
-                  timePeriod:
                     duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
                     timeUnit: null
               - autoEnrollment:
                   enabled: true
@@ -3717,11 +3725,11 @@ components:
                   extraVerification: null
                   enabled: true
                 pairingKeyLifetime:
-                  duration: 2
+                  duration: 7
                   timeUnit: null
                 integrityDetection: null
                 pushTimeout:
-                  duration: 102
+                  duration: 65
                   timeUnit: null
                 otp:
                   enabled: true
@@ -3730,11 +3738,11 @@ components:
                   enabled: true
                 pushLimit:
                   lockDuration:
-                    duration: 9
-                    timeUnit: null
-                  count: 35
-                  timePeriod:
                     duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
                     timeUnit: null
             fido2:
               fido2PolicyId: fido2PolicyId
@@ -3753,6 +3761,7 @@ components:
             sms:
               pairingDisabled: true
               otp:
+                otpLength: 8
                 failure:
                   count: 6
                   coolDown:
@@ -3771,6 +3780,7 @@ components:
             email:
               pairingDisabled: true
               otp:
+                otpLength: 8
                 failure:
                   count: 6
                   coolDown:
@@ -3784,7 +3794,7 @@ components:
             authentication:
               deviceSelection: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-        count: 2.027123023002322
+        count: 4.145608029883936
       properties:
         _links:
           additionalProperties:
@@ -4455,6 +4465,7 @@ components:
       type: object
     DeviceAuthenticationPolicyOfflineDevice_otp:
       example:
+        otpLength: 8
         failure:
           count: 6
           coolDown:
@@ -4468,6 +4479,14 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime'
         failure:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp_failure'
+        otpLength:
+          default: 6
+          description: "Used to specify the length of the OTP that is shown to users.\
+            \ Minimum length is `6` digits and maximum is `10` digits. If the parameter\
+            \ is not provided, the default is `6` digits."
+          maximum: 10
+          minimum: 6
+          type: integer
       required:
       - failure
       - lifeTime
@@ -4568,7 +4587,7 @@ components:
       type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pushTimeout:
       example:
-        duration: 102
+        duration: 65
         timeUnit: null
       properties:
         duration:
@@ -4587,7 +4606,7 @@ components:
       type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pairingKeyLifetime:
       example:
-        duration: 2
+        duration: 7
         timeUnit: null
       properties:
         duration:
@@ -4604,7 +4623,7 @@ components:
       type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_lockDuration:
       example:
-        duration: 9
+        duration: 3
         timeUnit: null
       properties:
         duration:
@@ -4622,7 +4641,7 @@ components:
       type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_timePeriod:
       example:
-        duration: 3
+        duration: 2
         timeUnit: null
       properties:
         duration:
@@ -4641,11 +4660,11 @@ components:
     DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit:
       example:
         lockDuration:
-          duration: 9
-          timeUnit: null
-        count: 35
-        timePeriod:
           duration: 3
+          timeUnit: null
+        count: 46
+        timePeriod:
+          duration: 2
           timeUnit: null
       properties:
         count:
@@ -4710,11 +4729,11 @@ components:
           extraVerification: null
           enabled: true
         pairingKeyLifetime:
-          duration: 2
+          duration: 7
           timeUnit: null
         integrityDetection: null
         pushTimeout:
-          duration: 102
+          duration: 65
           timeUnit: null
         otp:
           enabled: true
@@ -4723,11 +4742,11 @@ components:
           enabled: true
         pushLimit:
           lockDuration:
-            duration: 9
-            timeUnit: null
-          count: 35
-          timePeriod:
             duration: 3
+            timeUnit: null
+          count: 46
+          timePeriod:
+            duration: 2
             timeUnit: null
       properties:
         id:
@@ -4782,11 +4801,11 @@ components:
             extraVerification: null
             enabled: true
           pairingKeyLifetime:
-            duration: 2
+            duration: 7
             timeUnit: null
           integrityDetection: null
           pushTimeout:
-            duration: 102
+            duration: 65
             timeUnit: null
           otp:
             enabled: true
@@ -4795,11 +4814,11 @@ components:
             enabled: true
           pushLimit:
             lockDuration:
-              duration: 9
-              timeUnit: null
-            count: 35
-            timePeriod:
               duration: 3
+              timeUnit: null
+            count: 46
+            timePeriod:
+              duration: 2
               timeUnit: null
         - autoEnrollment:
             enabled: true
@@ -4808,11 +4827,11 @@ components:
             extraVerification: null
             enabled: true
           pairingKeyLifetime:
-            duration: 2
+            duration: 7
             timeUnit: null
           integrityDetection: null
           pushTimeout:
-            duration: 102
+            duration: 65
             timeUnit: null
           otp:
             enabled: true
@@ -4821,11 +4840,11 @@ components:
             enabled: true
           pushLimit:
             lockDuration:
-              duration: 9
-              timeUnit: null
-            count: 35
-            timePeriod:
               duration: 3
+              timeUnit: null
+            count: 46
+            timePeriod:
+              duration: 2
               timeUnit: null
       properties:
         enabled:
@@ -5049,6 +5068,7 @@ components:
         - voice:
             pairingDisabled: true
             otp:
+              otpLength: 8
               failure:
                 count: 6
                 coolDown:
@@ -5096,11 +5116,11 @@ components:
                 extraVerification: null
                 enabled: true
               pairingKeyLifetime:
-                duration: 2
+                duration: 7
                 timeUnit: null
               integrityDetection: null
               pushTimeout:
-                duration: 102
+                duration: 65
                 timeUnit: null
               otp:
                 enabled: true
@@ -5109,11 +5129,11 @@ components:
                 enabled: true
               pushLimit:
                 lockDuration:
-                  duration: 9
-                  timeUnit: null
-                count: 35
-                timePeriod:
                   duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
                   timeUnit: null
             - autoEnrollment:
                 enabled: true
@@ -5122,11 +5142,11 @@ components:
                 extraVerification: null
                 enabled: true
               pairingKeyLifetime:
-                duration: 2
+                duration: 7
                 timeUnit: null
               integrityDetection: null
               pushTimeout:
-                duration: 102
+                duration: 65
                 timeUnit: null
               otp:
                 enabled: true
@@ -5135,11 +5155,11 @@ components:
                 enabled: true
               pushLimit:
                 lockDuration:
-                  duration: 9
-                  timeUnit: null
-                count: 35
-                timePeriod:
                   duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
                   timeUnit: null
           fido2:
             fido2PolicyId: fido2PolicyId
@@ -5158,6 +5178,7 @@ components:
           sms:
             pairingDisabled: true
             otp:
+              otpLength: 8
               failure:
                 count: 6
                 coolDown:
@@ -5176,6 +5197,7 @@ components:
           email:
             pairingDisabled: true
             otp:
+              otpLength: 8
               failure:
                 count: 6
                 coolDown:
@@ -5192,6 +5214,7 @@ components:
         - voice:
             pairingDisabled: true
             otp:
+              otpLength: 8
               failure:
                 count: 6
                 coolDown:
@@ -5239,11 +5262,11 @@ components:
                 extraVerification: null
                 enabled: true
               pairingKeyLifetime:
-                duration: 2
+                duration: 7
                 timeUnit: null
               integrityDetection: null
               pushTimeout:
-                duration: 102
+                duration: 65
                 timeUnit: null
               otp:
                 enabled: true
@@ -5252,11 +5275,11 @@ components:
                 enabled: true
               pushLimit:
                 lockDuration:
-                  duration: 9
-                  timeUnit: null
-                count: 35
-                timePeriod:
                   duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
                   timeUnit: null
             - autoEnrollment:
                 enabled: true
@@ -5265,11 +5288,11 @@ components:
                 extraVerification: null
                 enabled: true
               pairingKeyLifetime:
-                duration: 2
+                duration: 7
                 timeUnit: null
               integrityDetection: null
               pushTimeout:
-                duration: 102
+                duration: 65
                 timeUnit: null
               otp:
                 enabled: true
@@ -5278,11 +5301,11 @@ components:
                 enabled: true
               pushLimit:
                 lockDuration:
-                  duration: 9
-                  timeUnit: null
-                count: 35
-                timePeriod:
                   duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
                   timeUnit: null
           fido2:
             fido2PolicyId: fido2PolicyId
@@ -5301,6 +5324,7 @@ components:
           sms:
             pairingDisabled: true
             otp:
+              otpLength: 8
               failure:
                 count: 6
                 coolDown:
@@ -5319,6 +5343,7 @@ components:
           email:
             pairingDisabled: true
             otp:
+              otpLength: 8
               failure:
                 count: 6
                 coolDown:
