@@ -20,6 +20,7 @@ var _ MappedNullable = &AdministratorSecurity{}
 
 // AdministratorSecurity struct for AdministratorSecurity
 type AdministratorSecurity struct {
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AllowedMethods *EnumAdministratorSecurityAllowedMethods `json:"allowedMethods,omitempty"`
 	AuthenticationMethod EnumAdministratorSecurityAuthenticationMethod `json:"authenticationMethod"`
 	// The time the resource was created.
@@ -57,6 +58,38 @@ func NewAdministratorSecurityWithDefaults() *AdministratorSecurity {
 	var mfaStatus EnumAdministratorSecurityMfaStatus = ENUMADMINISTRATORSECURITYMFASTATUS_OUT
 	this.MfaStatus = &mfaStatus
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *AdministratorSecurity) GetLinks() map[string]LinksHATEOASValue {
+	if o == nil || IsNil(o.Links) {
+		var ret map[string]LinksHATEOASValue
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdministratorSecurity) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *AdministratorSecurity) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *AdministratorSecurity) SetLinks(v map[string]LinksHATEOASValue) {
+	o.Links = &v
 }
 
 // GetAllowedMethods returns the AllowedMethods field value if set, zero value otherwise.
@@ -341,6 +374,9 @@ func (o AdministratorSecurity) MarshalJSON() ([]byte, error) {
 
 func (o AdministratorSecurity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.AllowedMethods) {
 		toSerialize["allowedMethods"] = o.AllowedMethods
 	}

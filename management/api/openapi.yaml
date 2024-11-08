@@ -28246,6 +28246,9 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
+        _links:
+          key:
+            href: https://openapi-generator.tech
         authenticationMethod: null
         provider:
           id: id
@@ -28255,6 +28258,11 @@ components:
           id: id
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
         allowedMethods:
           $ref: '#/components/schemas/EnumAdministratorSecurityAllowedMethods'
         authenticationMethod:
