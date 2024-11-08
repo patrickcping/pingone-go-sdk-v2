@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
 **Detect** | [**EnumPredictorNewDeviceDetectType**](EnumPredictorNewDeviceDetectType.md) |  | 
+**ShouldValidatePayloadSignature** | Pointer to **bool** | Relevant only for Suspicious Device predictors. If &#x60;shouldValidatePayloadSignature&#x60; is set to &#x60;true&#x60;, then any risk policies that include this predictor will require that the Signals SDK payload be provided as a signed JWT whose signature will be verified before proceeding with risk evaluation. You instruct the Signals SDK to provide the payload as a signed JWT by using the &#x60;universalDeviceIdentification&#x60; flag during initialization of the SDK, or by selecting the relevant setting for the &#x60;skrisk&#x60; component in DaVinci flows. | [optional] 
 **ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
 
 ## Methods
@@ -342,6 +343,31 @@ and a boolean to check if the value has been set.
 
 SetDetect sets Detect field to given value.
 
+
+### GetShouldValidatePayloadSignature
+
+`func (o *RiskPredictorDevice) GetShouldValidatePayloadSignature() bool`
+
+GetShouldValidatePayloadSignature returns the ShouldValidatePayloadSignature field if non-nil, zero value otherwise.
+
+### GetShouldValidatePayloadSignatureOk
+
+`func (o *RiskPredictorDevice) GetShouldValidatePayloadSignatureOk() (*bool, bool)`
+
+GetShouldValidatePayloadSignatureOk returns a tuple with the ShouldValidatePayloadSignature field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShouldValidatePayloadSignature
+
+`func (o *RiskPredictorDevice) SetShouldValidatePayloadSignature(v bool)`
+
+SetShouldValidatePayloadSignature sets ShouldValidatePayloadSignature field to given value.
+
+### HasShouldValidatePayloadSignature
+
+`func (o *RiskPredictorDevice) HasShouldValidatePayloadSignature() bool`
+
+HasShouldValidatePayloadSignature returns a boolean if a field has been set.
 
 ### GetActivationAt
 
