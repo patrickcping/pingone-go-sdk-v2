@@ -10,7 +10,7 @@
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.44.0](./management/CHANGELOG.md)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
-    * **Feature** Added support for the Administrator Security API.
+    * **Feature** Added support for the Administrator Security API. [#381](https://github.com/patrickcping/pingone-go-sdk-v2/pull/381)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.20.1](./mfa/CHANGELOG.md)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.17.0](./risk/CHANGELOG.md)
