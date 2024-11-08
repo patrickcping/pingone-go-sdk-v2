@@ -732,6 +732,8 @@ components:
     AdministratorSecurity:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         allowedMethods:
           $ref: '#/components/schemas/EnumAdministratorSecurityAllowedMethods'
         authenticationMethod:
