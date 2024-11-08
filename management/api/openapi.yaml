@@ -27250,6 +27250,36 @@ components:
       - IOS
       - GOOGLE
       type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod:
+      description: Use the value `BASIC` if your authentication with the email provider
+        uses a username and password. Use `BEARER` if your authentication is based
+        on the use of a bearer token.
+      enum:
+      - BASIC
+      - BEARER
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol:
+      description: Set to `HTTP` when configuring an external email provider.
+      enum:
+      - HTTP
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomProvider:
+      description: Must be set to `CUSTOM_PROVIDER`.
+      enum:
+      - CUSTOM_PROVIDER
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod:
+      description: Should be set to EMAIL.
+      enum:
+      - EMAIL
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod:
+      description: Use method to specify the type of API request the email provider
+        requires. Valid values are `GET` and `POST`.
+      enum:
+      - GET
+      - POST
+      type: string
     EnumNotificationsPolicyCountryLimitDeliveryMethod:
       description: "The delivery method that the defined limitation should be applied\
         \ to.  Options are `SMS`, `Voice`."
@@ -28306,6 +28336,11 @@ components:
             description: A boolean that specifies whether the SAML assertion response
               itself should be signed. The default value is `false`.
             type: boolean
+          sessionNotOnOrAfterDuration:
+            description: Update this value if the SAML application requires a different
+              `SessionNotOnOrAfter` attribute value within the `AuthnStatement` element
+              than the `NotOnOrAfter` value set by the `assertionDuration` property.
+            type: integer
           sloBinding:
             $ref: '#/components/schemas/EnumApplicationSAMLSloBinding'
           sloEndpoint:
@@ -33175,36 +33210,6 @@ components:
             $ref: '#/components/schemas/NotificationsSettings_whitelist_inner'
           type: array
       type: object
-    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod:
-      description: Use the value `BASIC` if your authentication with the email provider
-        uses a username and password. Use `BEARER` if your authentication is based
-        on the use of a bearer token.
-      enum:
-      - BASIC
-      - BEARER
-      type: string
-    EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol:
-      description: Set to `HTTP` when configuring an external email provider.
-      enum:
-      - HTTP
-      type: string
-    EnumNotificationsSettingsEmailDeliverySettingsCustomProvider:
-      description: Must be set to `CUSTOM_PROVIDER`.
-      enum:
-      - CUSTOM_PROVIDER
-      type: string
-    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod:
-      description: Should be set to EMAIL.
-      enum:
-      - EMAIL
-      type: string
-    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod:
-      description: Use method to specify the type of API request the email provider
-        requires. Valid values are `GET` and `POST`.
-      enum:
-      - GET
-      - POST
-      type: string
     NotificationsSettingsEmailDeliverySettings:
       oneOf:
       - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCustom'

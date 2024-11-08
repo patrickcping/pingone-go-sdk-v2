@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **IdpSigning** | Pointer to [**ApplicationSAMLAllOfIdpSigning**](ApplicationSAMLAllOfIdpSigning.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is &#x60;false&#x60;. | [optional] [default to false]
+**SessionNotOnOrAfterDuration** | Pointer to **int32** | Update this value if the SAML application requires a different &#x60;SessionNotOnOrAfter&#x60; attribute value within the &#x60;AuthnStatement&#x60; element than the &#x60;NotOnOrAfter&#x60; value set by the &#x60;assertionDuration&#x60; property. | [optional] 
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] [default to ENUMAPPLICATIONSAMLSLOBINDING_POST]
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
@@ -625,6 +626,31 @@ SetResponseSigned sets ResponseSigned field to given value.
 `func (o *ApplicationSAML) HasResponseSigned() bool`
 
 HasResponseSigned returns a boolean if a field has been set.
+
+### GetSessionNotOnOrAfterDuration
+
+`func (o *ApplicationSAML) GetSessionNotOnOrAfterDuration() int32`
+
+GetSessionNotOnOrAfterDuration returns the SessionNotOnOrAfterDuration field if non-nil, zero value otherwise.
+
+### GetSessionNotOnOrAfterDurationOk
+
+`func (o *ApplicationSAML) GetSessionNotOnOrAfterDurationOk() (*int32, bool)`
+
+GetSessionNotOnOrAfterDurationOk returns a tuple with the SessionNotOnOrAfterDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionNotOnOrAfterDuration
+
+`func (o *ApplicationSAML) SetSessionNotOnOrAfterDuration(v int32)`
+
+SetSessionNotOnOrAfterDuration sets SessionNotOnOrAfterDuration field to given value.
+
+### HasSessionNotOnOrAfterDuration
+
+`func (o *ApplicationSAML) HasSessionNotOnOrAfterDuration() bool`
+
+HasSessionNotOnOrAfterDuration returns a boolean if a field has been set.
 
 ### GetSloBinding
 

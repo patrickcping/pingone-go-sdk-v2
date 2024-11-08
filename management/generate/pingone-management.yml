@@ -1106,6 +1106,9 @@ components:
               type: boolean
               description: A boolean that specifies whether the SAML assertion response itself should be signed. The default value is `false`.
               default: false
+            sessionNotOnOrAfterDuration:
+              type: integer
+              description: Update this value if the SAML application requires a different `SessionNotOnOrAfter` attribute value within the `AuthnStatement` element than the `NotOnOrAfter` value set by the `assertionDuration` property.
             sloBinding:
               $ref: '#/components/schemas/EnumApplicationSAMLSloBinding'
             sloEndpoint:
