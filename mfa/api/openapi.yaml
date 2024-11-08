@@ -3139,6 +3139,8 @@ components:
           promptForNicknameOnPairing: true
         totp:
           pairingDisabled: true
+          uriParameters:
+            key: uriParameters
           otp:
             failure:
               count: 6
@@ -3511,6 +3513,8 @@ components:
               promptForNicknameOnPairing: true
             totp:
               pairingDisabled: true
+              uriParameters:
+                key: uriParameters
               otp:
                 failure:
                   count: 6
@@ -3652,6 +3656,8 @@ components:
               promptForNicknameOnPairing: true
             totp:
               pairingDisabled: true
+              uriParameters:
+                key: uriParameters
               otp:
                 failure:
                   count: 6
@@ -4857,6 +4863,8 @@ components:
       description: TOTP device authentication policy settings.
       example:
         pairingDisabled: true
+        uriParameters:
+          key: uriParameters
         otp:
           failure:
             count: 6
@@ -4882,6 +4890,17 @@ components:
           description: Set to `true` if you want to allow users to provide nicknames
             for devices during pairing.
           type: boolean
+        uriParameters:
+          additionalProperties:
+            type: string
+          description: "Object that you can use to provide key:value pairs for `otpauth`\
+            \ URI parameters. For example, if you provide a value for the `issuer`\
+            \ parameter, then authenticators that support that parameter will display\
+            \ the text you specify together with the OTP (in addition to the username).\
+            \ This can help users recognize which application the OTP is for. If you\
+            \ intend on using the same MFA policy for multiple applications, choose\
+            \ a name that reflects the group of applications."
+          type: object
       required:
       - enabled
       - otp
@@ -5042,6 +5061,8 @@ components:
             promptForNicknameOnPairing: true
           totp:
             pairingDisabled: true
+            uriParameters:
+              key: uriParameters
             otp:
               failure:
                 count: 6
@@ -5183,6 +5204,8 @@ components:
             promptForNicknameOnPairing: true
           totp:
             pairingDisabled: true
+            uriParameters:
+              key: uriParameters
             otp:
               failure:
                 count: 6

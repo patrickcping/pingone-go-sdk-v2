@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **PairingDisabled** | Pointer to **bool** | You can set &#x60;pairingDisabled&#x60; to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices. | [optional] 
 **Otp** | [**DeviceAuthenticationPolicyTotpOtp**](DeviceAuthenticationPolicyTotpOtp.md) |  | 
 **PromptForNicknameOnPairing** | Pointer to **bool** | Set to &#x60;true&#x60; if you want to allow users to provide nicknames for devices during pairing. | [optional] 
+**UriParameters** | Pointer to **map[string]string** | Object that you can use to provide key:value pairs for &#x60;otpauth&#x60; URI parameters. For example, if you provide a value for the &#x60;issuer&#x60; parameter, then authenticators that support that parameter will display the text you specify together with the OTP (in addition to the username). This can help users recognize which application the OTP is for. If you intend on using the same MFA policy for multiple applications, choose a name that reflects the group of applications. | [optional] 
 
 ## Methods
 
@@ -117,6 +118,31 @@ SetPromptForNicknameOnPairing sets PromptForNicknameOnPairing field to given val
 `func (o *DeviceAuthenticationPolicyTotp) HasPromptForNicknameOnPairing() bool`
 
 HasPromptForNicknameOnPairing returns a boolean if a field has been set.
+
+### GetUriParameters
+
+`func (o *DeviceAuthenticationPolicyTotp) GetUriParameters() map[string]string`
+
+GetUriParameters returns the UriParameters field if non-nil, zero value otherwise.
+
+### GetUriParametersOk
+
+`func (o *DeviceAuthenticationPolicyTotp) GetUriParametersOk() (*map[string]string, bool)`
+
+GetUriParametersOk returns a tuple with the UriParameters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUriParameters
+
+`func (o *DeviceAuthenticationPolicyTotp) SetUriParameters(v map[string]string)`
+
+SetUriParameters sets UriParameters field to given value.
+
+### HasUriParameters
+
+`func (o *DeviceAuthenticationPolicyTotp) HasUriParameters() bool`
+
+HasUriParameters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
