@@ -5,18 +5,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**ApplicableTo** | Pointer to [**[]EnumRoleAssignmentScopeType**](EnumRoleAssignmentScopeType.md) | A set of strings that specifies the scopes to which the role applies. | [optional] [readonly] 
-**Description** | Pointer to **string** | Specifies the description of the application role assigned to the user. | [optional] 
-**Id** | **string** | Specifies the application role ID to assign to the specified user. | 
-**Name** | Pointer to **string** | Specifies the name of the application role assigned to the user. | [optional] 
-**Permissions** | Pointer to [**[]RolePermissionsInner**](RolePermissionsInner.md) | A set of permissions assigned to the role. | [optional] [readonly] 
+**ApplicableTo** | Pointer to [**[]EnumCustomAdminRoleApplicableTo**](EnumCustomAdminRoleApplicableTo.md) | The scope types to which the role can be applied. | [optional] 
+**Description** | Pointer to **string** | The description of the role. | [optional] 
+**Id** | **string** | A string that specifies the resource’s unique identifier. | [readonly] 
+**Name** | **string** | The role name. | 
+**Permissions** | [**[]CustomAdminRolePermissionsInner**](CustomAdminRolePermissionsInner.md) | The set of permissions assigned to the role. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**CanAssign** | Pointer to [**[]CustomAdminRoleCanAssignInner**](CustomAdminRoleCanAssignInner.md) | A relationship that specifies if an actor is assigned the current custom role for a jurisdiction, then the actor can assign any of this set of roles to another actor for the same jurisdiction or sub-jurisdiction. This capability is dreived from the canBeAssignedBy property. | [optional] [readonly] 
+**CanBeAssignedBy** | [**[]CustomAdminRoleCanAssignInner**](CustomAdminRoleCanAssignInner.md) | A relationship that determines whether a user assigned to one of this set of roles for a jurisdiction can assign the current custom role to another user for the same jurisdiction or sub-jurisdiction. | 
+**Type** | Pointer to [**EnumCustomAdminRoleType**](EnumCustomAdminRoleType.md) |  | [optional] 
 
 ## Methods
 
 ### NewEntityArrayEmbeddedRolesInner
 
-`func NewEntityArrayEmbeddedRolesInner(id string, ) *EntityArrayEmbeddedRolesInner`
+`func NewEntityArrayEmbeddedRolesInner(id string, name string, permissions []CustomAdminRolePermissionsInner, canBeAssignedBy []CustomAdminRoleCanAssignInner, ) *EntityArrayEmbeddedRolesInner`
 
 NewEntityArrayEmbeddedRolesInner instantiates a new EntityArrayEmbeddedRolesInner object
 This constructor will assign default values to properties that have it defined,
@@ -58,20 +61,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetApplicableTo
 
-`func (o *EntityArrayEmbeddedRolesInner) GetApplicableTo() []EnumRoleAssignmentScopeType`
+`func (o *EntityArrayEmbeddedRolesInner) GetApplicableTo() []EnumCustomAdminRoleApplicableTo`
 
 GetApplicableTo returns the ApplicableTo field if non-nil, zero value otherwise.
 
 ### GetApplicableToOk
 
-`func (o *EntityArrayEmbeddedRolesInner) GetApplicableToOk() (*[]EnumRoleAssignmentScopeType, bool)`
+`func (o *EntityArrayEmbeddedRolesInner) GetApplicableToOk() (*[]EnumCustomAdminRoleApplicableTo, bool)`
 
 GetApplicableToOk returns a tuple with the ApplicableTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplicableTo
 
-`func (o *EntityArrayEmbeddedRolesInner) SetApplicableTo(v []EnumRoleAssignmentScopeType)`
+`func (o *EntityArrayEmbeddedRolesInner) SetApplicableTo(v []EnumCustomAdminRoleApplicableTo)`
 
 SetApplicableTo sets ApplicableTo field to given value.
 
@@ -145,36 +148,26 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *EntityArrayEmbeddedRolesInner) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetPermissions
 
-`func (o *EntityArrayEmbeddedRolesInner) GetPermissions() []RolePermissionsInner`
+`func (o *EntityArrayEmbeddedRolesInner) GetPermissions() []CustomAdminRolePermissionsInner`
 
 GetPermissions returns the Permissions field if non-nil, zero value otherwise.
 
 ### GetPermissionsOk
 
-`func (o *EntityArrayEmbeddedRolesInner) GetPermissionsOk() (*[]RolePermissionsInner, bool)`
+`func (o *EntityArrayEmbeddedRolesInner) GetPermissionsOk() (*[]CustomAdminRolePermissionsInner, bool)`
 
 GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPermissions
 
-`func (o *EntityArrayEmbeddedRolesInner) SetPermissions(v []RolePermissionsInner)`
+`func (o *EntityArrayEmbeddedRolesInner) SetPermissions(v []CustomAdminRolePermissionsInner)`
 
 SetPermissions sets Permissions field to given value.
 
-### HasPermissions
-
-`func (o *EntityArrayEmbeddedRolesInner) HasPermissions() bool`
-
-HasPermissions returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -200,6 +193,76 @@ SetEnvironment sets Environment field to given value.
 `func (o *EntityArrayEmbeddedRolesInner) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetCanAssign
+
+`func (o *EntityArrayEmbeddedRolesInner) GetCanAssign() []CustomAdminRoleCanAssignInner`
+
+GetCanAssign returns the CanAssign field if non-nil, zero value otherwise.
+
+### GetCanAssignOk
+
+`func (o *EntityArrayEmbeddedRolesInner) GetCanAssignOk() (*[]CustomAdminRoleCanAssignInner, bool)`
+
+GetCanAssignOk returns a tuple with the CanAssign field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCanAssign
+
+`func (o *EntityArrayEmbeddedRolesInner) SetCanAssign(v []CustomAdminRoleCanAssignInner)`
+
+SetCanAssign sets CanAssign field to given value.
+
+### HasCanAssign
+
+`func (o *EntityArrayEmbeddedRolesInner) HasCanAssign() bool`
+
+HasCanAssign returns a boolean if a field has been set.
+
+### GetCanBeAssignedBy
+
+`func (o *EntityArrayEmbeddedRolesInner) GetCanBeAssignedBy() []CustomAdminRoleCanAssignInner`
+
+GetCanBeAssignedBy returns the CanBeAssignedBy field if non-nil, zero value otherwise.
+
+### GetCanBeAssignedByOk
+
+`func (o *EntityArrayEmbeddedRolesInner) GetCanBeAssignedByOk() (*[]CustomAdminRoleCanAssignInner, bool)`
+
+GetCanBeAssignedByOk returns a tuple with the CanBeAssignedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCanBeAssignedBy
+
+`func (o *EntityArrayEmbeddedRolesInner) SetCanBeAssignedBy(v []CustomAdminRoleCanAssignInner)`
+
+SetCanBeAssignedBy sets CanBeAssignedBy field to given value.
+
+
+### GetType
+
+`func (o *EntityArrayEmbeddedRolesInner) GetType() EnumCustomAdminRoleType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *EntityArrayEmbeddedRolesInner) GetTypeOk() (*EnumCustomAdminRoleType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *EntityArrayEmbeddedRolesInner) SetType(v EnumCustomAdminRoleType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *EntityArrayEmbeddedRolesInner) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

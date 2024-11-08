@@ -37756,6 +37756,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/Role'
       - $ref: '#/components/schemas/UserApplicationRoleAssignment'
+      - $ref: '#/components/schemas/CustomAdminRole'
     EntityArray__embedded:
       example:
         flowPolicies:

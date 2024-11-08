@@ -2377,6 +2377,7 @@ components:
                 oneOf:
                   - $ref: '#/components/schemas/Role'
                   - $ref: '#/components/schemas/UserApplicationRoleAssignment'
+                  - $ref: '#/components/schemas/CustomAdminRole'
             schemas:
               type: array
               items:
