@@ -14,7 +14,7 @@
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.17.0](./risk/CHANGELOG.md)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
-    * **Enhancement** Added the `ShouldValidatePayloadSignature` field to the `RiskPredictorDevice` model.
+    * **Enhancement** Added the `ShouldValidatePayloadSignature` field to the `RiskPredictorDevice` model. [#380](https://github.com/patrickcping/pingone-go-sdk-v2/pull/380)
 * `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.7.1](./verify/CHANGELOG.md)
     * **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 
