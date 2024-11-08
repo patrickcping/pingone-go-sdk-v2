@@ -19927,6 +19927,357 @@ paths:
       summary: UPDATE PingOne access control scope
       tags:
       - Resource Scopes
+  /environments/{environmentID}/roles:
+    get:
+      operationId: readAllCustomAdminRoles
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Custom Admin Roles
+      tags:
+      - Custom Admin Roles
+    post:
+      operationId: createCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomAdminRole'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAdminRole'
+          description: Successful response
+      summary: CREATE Custom Role
+      tags:
+      - Custom Admin Roles
+  /environments/{environmentID}/roles/{customRoleID}:
+    delete:
+      operationId: deleteCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: customRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Custom Role
+      tags:
+      - Custom Admin Roles
+    get:
+      operationId: readOneCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: customRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAdminRole'
+          description: Successful response
+      summary: READ One Custom Role
+      tags:
+      - Custom Admin Roles
+    put:
+      operationId: updateCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: customRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomAdminRole'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAdminRole'
+          description: Successful response
+      summary: UPDATE Custom Role
+      tags:
+      - Custom Admin Roles
   /environments/{environmentID}/schemas:
     get:
       operationId: readAllSchemas
@@ -26836,6 +27187,22 @@ components:
       enum:
       - application/x-pem-file
       type: string
+    EnumCustomAdminRoleApplicableTo:
+      description: "The scope types to which the role can be applied. Options are\
+        \ ORGANIZATION, ENVIRONMENT, and POPULATION."
+      enum:
+      - ORGANIZATION
+      - ENVIRONMENT
+      - POPULATION
+      type: string
+    EnumCustomAdminRoleType:
+      description: A value that indicates whether the role is a built-in role or a
+        custom role. Options are PLATFORM and CUSTOM.
+      enum:
+      - PLATFORM
+      - CUSTOM
+      readOnly: true
+      type: string
     EnumCustomDomainPostHeader:
       enum:
       - application/vnd.pingidentity.certificate.import+json
@@ -29143,6 +29510,80 @@ components:
       required:
       - default
       - usageType
+      type: object
+    CustomAdminRole:
+      example:
+        environment:
+          id: id
+        canAssign:
+        - id: id
+        - id: id
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        permissions:
+        - id: id
+        - id: id
+        name: name
+        canBeAssignedBy:
+        - id: id
+        - id: id
+        description: description
+        applicableTo:
+        - null
+        - null
+        id: id
+        type: null
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        applicableTo:
+          description: The scope types to which the role can be applied.
+          items:
+            $ref: '#/components/schemas/EnumCustomAdminRoleApplicableTo'
+          type: array
+        canAssign:
+          description: "A relationship that specifies if an actor is assigned the\
+            \ current custom role for a jurisdiction, then the actor can assign any\
+            \ of this set of roles to another actor for the same jurisdiction or sub-jurisdiction.\
+            \ This capability is dreived from the canBeAssignedBy property."
+          items:
+            $ref: '#/components/schemas/CustomAdminRole_canAssign_inner'
+          readOnly: true
+          type: array
+        canBeAssignedBy:
+          description: A relationship that determines whether a user assigned to one
+            of this set of roles for a jurisdiction can assign the current custom
+            role to another user for the same jurisdiction or sub-jurisdiction.
+          items:
+            $ref: '#/components/schemas/CustomAdminRole_canAssign_inner'
+          type: array
+        description:
+          description: The description of the role.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The role name.
+          type: string
+        permissions:
+          description: The set of permissions assigned to the role.
+          items:
+            $ref: '#/components/schemas/CustomAdminRole_permissions_inner'
+          type: array
+        type:
+          $ref: '#/components/schemas/EnumCustomAdminRoleType'
+      required:
+      - canBeAssignedBy
+      - name
+      - permissions
       type: object
     CustomDomain:
       example:
@@ -37195,6 +37636,26 @@ components:
       - linkTextColor
       - logoType
       type: object
+    CustomAdminRole_canAssign_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: The unique identifier of the actor.
+          type: string
+      required:
+      - id
+      type: object
+    CustomAdminRole_permissions_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: The unique identifier of the permission (e.g. `permissions:read:userRoleAssignments`).
+          type: string
+      required:
+      - id
+      type: object
     CustomDomain_certificate:
       description: "An object that specifies information about the SSL certificate\
         \ used by this custom domain. If this property is not present, it indicates\
@@ -37295,6 +37756,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/Role'
       - $ref: '#/components/schemas/UserApplicationRoleAssignment'
+      - $ref: '#/components/schemas/CustomAdminRole'
     EntityArray__embedded:
       example:
         flowPolicies:

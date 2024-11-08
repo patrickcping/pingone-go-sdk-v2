@@ -87,6 +87,8 @@ type APIClient struct {
 
 	CertificateManagementApi *CertificateManagementApiService
 
+	CustomAdminRolesApi *CustomAdminRolesApiService
+
 	CustomDomainsApi *CustomDomainsApiService
 
 	EnableUsersApi *EnableUsersApiService
@@ -266,6 +268,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BrandingThemesApi = (*BrandingThemesApiService)(&c.common)
 	c.CapabilitiesApi = (*CapabilitiesApiService)(&c.common)
 	c.CertificateManagementApi = (*CertificateManagementApiService)(&c.common)
+	c.CustomAdminRolesApi = (*CustomAdminRolesApiService)(&c.common)
 	c.CustomDomainsApi = (*CustomDomainsApiService)(&c.common)
 	c.EnableUsersApi = (*EnableUsersApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
