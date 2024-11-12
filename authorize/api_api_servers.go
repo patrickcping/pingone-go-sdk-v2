@@ -71,7 +71,7 @@ func (a *APIServersApiService) CreateAPIServerExecute(r ApiCreateAPIServerReques
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServersApiService) internalCreateAPIServerExecute(r ApiCreateAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *APIServersApiService) DeleteAPIServerExecute(r ApiDeleteAPIServerReques
 	)
 	return response, err
 }
-			
+
 func (a *APIServersApiService) internalDeleteAPIServerExecute(r ApiDeleteAPIServerRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllAPIServersRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllAPIServersRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllAPIServersRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllAPIServersExecute(r)
+}
+
+func (r ApiReadAllAPIServersRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllAPIServersExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *APIServersApiService) ReadAllAPIServers(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return EntityArray
-func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
+func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *APIServersApiService) ReadAllAPIServersExecuteInitialPage(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServersApiService) internalReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *APIServersApiService) ReadOneAPIServerExecute(r ApiReadOneAPIServerRequ
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServersApiService) internalReadOneAPIServerExecute(r ApiReadOneAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *APIServersApiService) UpdateAPIServerExecute(r ApiUpdateAPIServerReques
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServersApiService) internalUpdateAPIServerExecute(r ApiUpdateAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

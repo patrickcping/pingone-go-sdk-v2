@@ -74,7 +74,7 @@ func (a *APIServerOperationsApiService) CreateAPIServerOperationExecute(r ApiCre
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(r ApiCreateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *APIServerOperationsApiService) DeleteAPIServerOperationExecute(r ApiDel
 	)
 	return response, err
 }
-			
+
 func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(r ApiDeleteAPIServerOperationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllAPIServerOperationsRequest struct {
 	apiServerID string
 }
 
-func (r ApiReadAllAPIServerOperationsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllAPIServerOperationsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllAPIServerOperationsExecute(r)
+}
+
+func (r ApiReadAllAPIServerOperationsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllAPIServerOperationsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *APIServerOperationsApiService) ReadAllAPIServerOperations(ctx context.C
 
 // Execute executes the request
 //  @return EntityArray
-func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecute(r ApiReadAllAPIServerOperationsRequest) (*EntityArray, *http.Response, error) {
+func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecute(r ApiReadAllAPIServerOperationsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecuteInitialPage(r ApiReadAllAPIServerOperationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecute(r ApiR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecute(r ApiReadAllAPIServerOperationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *APIServerOperationsApiService) ReadOneAPIServerOperationExecute(r ApiRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute(r ApiReadOneAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *APIServerOperationsApiService) UpdateAPIServerOperationExecute(r ApiUpd
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(r ApiUpdateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

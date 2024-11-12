@@ -71,7 +71,7 @@ func (a *CustomAdminRolesApiService) CreateCustomAdminRoleExecute(r ApiCreateCus
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomAdminRolesApiService) internalCreateCustomAdminRoleExecute(r ApiCreateCustomAdminRoleRequest) (*CustomAdminRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *CustomAdminRolesApiService) DeleteCustomAdminRoleExecute(r ApiDeleteCus
 	)
 	return response, err
 }
-			
+
 func (a *CustomAdminRolesApiService) internalDeleteCustomAdminRoleExecute(r ApiDeleteCustomAdminRoleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllCustomAdminRolesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllCustomAdminRolesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllCustomAdminRolesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllCustomAdminRolesExecute(r)
+}
+
+func (r ApiReadAllCustomAdminRolesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllCustomAdminRolesExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *CustomAdminRolesApiService) ReadAllCustomAdminRoles(ctx context.Context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *CustomAdminRolesApiService) ReadAllCustomAdminRolesExecute(r ApiReadAllCustomAdminRolesRequest) (*EntityArray, *http.Response, error) {
+func (a *CustomAdminRolesApiService) ReadAllCustomAdminRolesExecute(r ApiReadAllCustomAdminRolesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *CustomAdminRolesApiService) ReadAllCustomAdminRolesExecuteInitialPage(r ApiReadAllCustomAdminRolesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *CustomAdminRolesApiService) ReadAllCustomAdminRolesExecute(r ApiReadAll
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomAdminRolesApiService) internalReadAllCustomAdminRolesExecute(r ApiReadAllCustomAdminRolesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *CustomAdminRolesApiService) ReadOneCustomAdminRoleExecute(r ApiReadOneC
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomAdminRolesApiService) internalReadOneCustomAdminRoleExecute(r ApiReadOneCustomAdminRoleRequest) (*CustomAdminRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *CustomAdminRolesApiService) UpdateCustomAdminRoleExecute(r ApiUpdateCus
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomAdminRolesApiService) internalUpdateCustomAdminRoleExecute(r ApiUpdateCustomAdminRoleRequest) (*CustomAdminRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

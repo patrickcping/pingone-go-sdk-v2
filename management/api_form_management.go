@@ -71,7 +71,7 @@ func (a *FormManagementApiService) CreateFormExecute(r ApiCreateFormRequest) (*F
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FormManagementApiService) internalCreateFormExecute(r ApiCreateFormRequest) (*Form, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *FormManagementApiService) DeleteFormExecute(r ApiDeleteFormRequest) (*h
 	)
 	return response, err
 }
-			
+
 func (a *FormManagementApiService) internalDeleteFormExecute(r ApiDeleteFormRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllFormsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllFormsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllFormsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllFormsExecute(r)
+}
+
+func (r ApiReadAllFormsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllFormsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *FormManagementApiService) ReadAllForms(ctx context.Context, environment
 
 // Execute executes the request
 //  @return EntityArray
-func (a *FormManagementApiService) ReadAllFormsExecute(r ApiReadAllFormsRequest) (*EntityArray, *http.Response, error) {
+func (a *FormManagementApiService) ReadAllFormsExecute(r ApiReadAllFormsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *FormManagementApiService) ReadAllFormsExecuteInitialPage(r ApiReadAllFormsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *FormManagementApiService) ReadAllFormsExecute(r ApiReadAllFormsRequest)
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FormManagementApiService) internalReadAllFormsExecute(r ApiReadAllFormsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -668,7 +676,7 @@ func (a *FormManagementApiService) ReadFormExecute(r ApiReadFormRequest) (*Form,
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FormManagementApiService) internalReadFormExecute(r ApiReadFormRequest) (*Form, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -875,7 +883,7 @@ func (a *FormManagementApiService) UpdateFormExecute(r ApiUpdateFormRequest) (*F
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FormManagementApiService) internalUpdateFormExecute(r ApiUpdateFormRequest) (*Form, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

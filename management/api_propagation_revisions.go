@@ -70,7 +70,7 @@ func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRev
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -256,7 +256,7 @@ func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRev
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropagationRevisionsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -459,7 +459,7 @@ func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRev
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

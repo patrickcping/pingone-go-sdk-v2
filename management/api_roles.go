@@ -28,8 +28,12 @@ type ApiReadAllRolesRequest struct {
 	ApiService *RolesApiService
 }
 
-func (r ApiReadAllRolesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllRolesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllRolesExecute(r)
+}
+
+func (r ApiReadAllRolesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllRolesExecuteInitialPage(r)
 }
 
 /*
@@ -47,7 +51,11 @@ func (a *RolesApiService) ReadAllRoles(ctx context.Context) ApiReadAllRolesReque
 
 // Execute executes the request
 //  @return EntityArray
-func (a *RolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
+func (a *RolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *RolesApiService) ReadAllRolesExecuteInitialPage(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -62,7 +70,7 @@ func (a *RolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) (*Entity
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RolesApiService) internalReadAllRolesExecute(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -255,7 +263,7 @@ func (a *RolesApiService) ReadOneRoleExecute(r ApiReadOneRoleRequest) (*Role, *h
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RolesApiService) internalReadOneRoleExecute(r ApiReadOneRoleRequest) (*Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

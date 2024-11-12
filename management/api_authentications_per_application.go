@@ -89,7 +89,7 @@ func (a *AuthenticationsPerApplicationApiService) EnvironmentsEnvironmentIDAppli
 	)
 	return response, err
 }
-			
+
 func (a *AuthenticationsPerApplicationApiService) internalEnvironmentsEnvironmentIDApplicationSignonsGetExecute(r ApiEnvironmentsEnvironmentIDApplicationSignonsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

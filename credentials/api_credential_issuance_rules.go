@@ -83,7 +83,7 @@ func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedCha
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleStagedChangesExecute(r ApiApplyCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -293,7 +293,7 @@ func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRuleExecute(
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRuleExecute(r ApiCreateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -495,7 +495,7 @@ func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRuleExecute(
 	)
 	return response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRuleExecute(r ApiDeleteCredentialIssuanceRuleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -646,8 +646,12 @@ type ApiReadAllCredentialIssuanceRulesRequest struct {
 	credentialTypeID string
 }
 
-func (r ApiReadAllCredentialIssuanceRulesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllCredentialIssuanceRulesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllCredentialIssuanceRulesExecute(r)
+}
+
+func (r ApiReadAllCredentialIssuanceRulesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllCredentialIssuanceRulesExecuteInitialPage(r)
 }
 
 /*
@@ -669,7 +673,11 @@ func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRules(ctx c
 
 // Execute executes the request
 //  @return EntityArray
-func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) (*EntityArray, *http.Response, error) {
+func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecuteInitialPage(r ApiReadAllCredentialIssuanceRulesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -684,7 +692,7 @@ func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecut
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChan
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleStagedChangesExecute(r ApiReadCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1087,7 +1095,7 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCount
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUsageCountsExecute(r ApiReadCredentialIssuanceRuleUsageCountsRequest) (*CredentialIssuanceRuleUsageCounts, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1289,7 +1297,7 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetai
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUsageDetailsExecute(r ApiReadCredentialIssuanceRuleUsageDetailsRequest) (*CredentialIssuanceRuleUsageDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1491,7 +1499,7 @@ func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRuleExecute
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRuleExecute(r ApiReadOneCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1699,7 +1707,7 @@ func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRuleExecute(
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRuleExecute(r ApiUpdateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

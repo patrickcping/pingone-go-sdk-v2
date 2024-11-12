@@ -71,7 +71,7 @@ func (a *CustomDomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomDomainsApiService) internalCreateDomainExecute(r ApiCreateDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *CustomDomainsApiService) DeleteDomainExecute(r ApiDeleteDomainRequest) 
 	)
 	return response, err
 }
-			
+
 func (a *CustomDomainsApiService) internalDeleteDomainExecute(r ApiDeleteDomainRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllDomainsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllDomainsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllDomainsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllDomainsExecute(r)
+}
+
+func (r ApiReadAllDomainsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllDomainsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *CustomDomainsApiService) ReadAllDomains(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return EntityArray
-func (a *CustomDomainsApiService) ReadAllDomainsExecute(r ApiReadAllDomainsRequest) (*EntityArray, *http.Response, error) {
+func (a *CustomDomainsApiService) ReadAllDomainsExecute(r ApiReadAllDomainsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *CustomDomainsApiService) ReadAllDomainsExecuteInitialPage(r ApiReadAllDomainsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *CustomDomainsApiService) ReadAllDomainsExecute(r ApiReadAllDomainsReque
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomDomainsApiService) internalReadAllDomainsExecute(r ApiReadAllDomainsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *CustomDomainsApiService) ReadOneDomainExecute(r ApiReadOneDomainRequest
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomDomainsApiService) internalReadOneDomainExecute(r ApiReadOneDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -872,7 +880,7 @@ func (a *CustomDomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CustomDomainsApiService) internalUpdateDomainExecute(r ApiUpdateDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

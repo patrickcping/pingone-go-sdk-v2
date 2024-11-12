@@ -71,7 +71,7 @@ func (a *KeyRotationPoliciesApiService) CreateKeyRotationPolicyExecute(r ApiCrea
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *KeyRotationPoliciesApiService) internalCreateKeyRotationPolicyExecute(r ApiCreateKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *KeyRotationPoliciesApiService) DeleteKeyRotationPolicyExecute(r ApiDele
 	)
 	return response, err
 }
-			
+
 func (a *KeyRotationPoliciesApiService) internalDeleteKeyRotationPolicyExecute(r ApiDeleteKeyRotationPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiGetKeyRotationPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiGetKeyRotationPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiGetKeyRotationPoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.GetKeyRotationPoliciesExecute(r)
+}
+
+func (r ApiGetKeyRotationPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.GetKeyRotationPoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *KeyRotationPoliciesApiService) GetKeyRotationPolicies(ctx context.Conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *KeyRotationPoliciesApiService) GetKeyRotationPoliciesExecute(r ApiGetKeyRotationPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *KeyRotationPoliciesApiService) GetKeyRotationPoliciesExecute(r ApiGetKeyRotationPoliciesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *KeyRotationPoliciesApiService) GetKeyRotationPoliciesExecuteInitialPage(r ApiGetKeyRotationPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *KeyRotationPoliciesApiService) GetKeyRotationPoliciesExecute(r ApiGetKe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *KeyRotationPoliciesApiService) internalGetKeyRotationPoliciesExecute(r ApiGetKeyRotationPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *KeyRotationPoliciesApiService) GetKeyRotationPolicyExecute(r ApiGetKeyR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *KeyRotationPoliciesApiService) internalGetKeyRotationPolicyExecute(r ApiGetKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *KeyRotationPoliciesApiService) UpdateKeyRotationPolicyExecute(r ApiUpda
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *KeyRotationPoliciesApiService) internalUpdateKeyRotationPolicyExecute(r ApiUpdateKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

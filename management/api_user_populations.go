@@ -68,7 +68,7 @@ func (a *UserPopulationsApiService) ReadUserPopulationExecute(r ApiReadUserPopul
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserPopulationsApiService) internalReadUserPopulationExecute(r ApiReadUserPopulationRequest) (*UserPopulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -272,7 +272,7 @@ func (a *UserPopulationsApiService) UpdateUserPopulationExecute(r ApiUpdateUserP
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserPopulationsApiService) internalUpdateUserPopulationExecute(r ApiUpdateUserPopulationRequest) (*UserPopulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

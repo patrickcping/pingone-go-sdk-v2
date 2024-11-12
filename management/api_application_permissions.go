@@ -30,8 +30,12 @@ type ApiReadAllApplicationPermissionsRequest struct {
 	resourceID string
 }
 
-func (r ApiReadAllApplicationPermissionsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllApplicationPermissionsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllApplicationPermissionsExecute(r)
+}
+
+func (r ApiReadAllApplicationPermissionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllApplicationPermissionsExecuteInitialPage(r)
 }
 
 /*
@@ -53,7 +57,11 @@ func (a *ApplicationPermissionsApiService) ReadAllApplicationPermissions(ctx con
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationPermissionsApiService) ReadAllApplicationPermissionsExecute(r ApiReadAllApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationPermissionsApiService) ReadAllApplicationPermissionsExecute(r ApiReadAllApplicationPermissionsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationPermissionsApiService) ReadAllApplicationPermissionsExecuteInitialPage(r ApiReadAllApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -68,7 +76,7 @@ func (a *ApplicationPermissionsApiService) ReadAllApplicationPermissionsExecute(
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationPermissionsApiService) internalReadAllApplicationPermissionsExecute(r ApiReadAllApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

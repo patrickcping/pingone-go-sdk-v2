@@ -74,7 +74,7 @@ func (a *DigitalWalletsApiService) CreateDigitalWalletExecute(r ApiCreateDigital
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreateDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -276,7 +276,7 @@ func (a *DigitalWalletsApiService) DeleteDigitalWalletExecute(r ApiDeleteDigital
 	)
 	return response, err
 }
-			
+
 func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDeleteDigitalWalletRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -427,8 +427,12 @@ type ApiReadAllDigitalWalletsRequest struct {
 	userID string
 }
 
-func (r ApiReadAllDigitalWalletsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllDigitalWalletsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllDigitalWalletsExecute(r)
+}
+
+func (r ApiReadAllDigitalWalletsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllDigitalWalletsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *DigitalWalletsApiService) ReadAllDigitalWallets(ctx context.Context, en
 
 // Execute executes the request
 //  @return EntityArray
-func (a *DigitalWalletsApiService) ReadAllDigitalWalletsExecute(r ApiReadAllDigitalWalletsRequest) (*EntityArray, *http.Response, error) {
+func (a *DigitalWalletsApiService) ReadAllDigitalWalletsExecute(r ApiReadAllDigitalWalletsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *DigitalWalletsApiService) ReadAllDigitalWalletsExecuteInitialPage(r ApiReadAllDigitalWalletsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *DigitalWalletsApiService) ReadAllDigitalWalletsExecute(r ApiReadAllDigi
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiReadAllDigitalWalletsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -666,7 +674,7 @@ func (a *DigitalWalletsApiService) ReadOneDigitalWalletExecute(r ApiReadOneDigit
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiReadOneDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -828,8 +836,12 @@ type ApiReadOneDigitalWalletCredentialRequest struct {
 	digitalWalletID string
 }
 
-func (r ApiReadOneDigitalWalletCredentialRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadOneDigitalWalletCredentialRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadOneDigitalWalletCredentialExecute(r)
+}
+
+func (r ApiReadOneDigitalWalletCredentialRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadOneDigitalWalletCredentialExecuteInitialPage(r)
 }
 
 /*
@@ -853,7 +865,11 @@ func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredential(ctx context.Co
 
 // Execute executes the request
 //  @return EntityArray
-func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredentialExecute(r ApiReadOneDigitalWalletCredentialRequest) (*EntityArray, *http.Response, error) {
+func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredentialExecute(r ApiReadOneDigitalWalletCredentialRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredentialExecuteInitialPage(r ApiReadOneDigitalWalletCredentialRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -868,7 +884,7 @@ func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredentialExecute(r ApiRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute(r ApiReadOneDigitalWalletCredentialRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1076,7 +1092,7 @@ func (a *DigitalWalletsApiService) UpdateDigitalWalletExecute(r ApiUpdateDigital
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdateDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

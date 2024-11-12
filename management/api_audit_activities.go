@@ -67,7 +67,7 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesActivityI
 	)
 	return response, err
 }
-			
+
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesActivityIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -264,7 +264,7 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesGetExecut
 	)
 	return response, err
 }
-			
+
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -459,7 +459,7 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesPostExecu
 	)
 	return response, err
 }
-			
+
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesPostExecute(r ApiEnvironmentsEnvironmentIDActivitiesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

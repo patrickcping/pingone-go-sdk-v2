@@ -35,8 +35,12 @@ func (r ApiReadAllFlowPoliciesRequest) Filter(filter string) ApiReadAllFlowPolic
 	return r
 }
 
-func (r ApiReadAllFlowPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllFlowPoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllFlowPoliciesExecute(r)
+}
+
+func (r ApiReadAllFlowPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllFlowPoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -56,7 +60,11 @@ func (a *FlowPoliciesApiService) ReadAllFlowPolicies(ctx context.Context, enviro
 
 // Execute executes the request
 //  @return EntityArray
-func (a *FlowPoliciesApiService) ReadAllFlowPoliciesExecute(r ApiReadAllFlowPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *FlowPoliciesApiService) ReadAllFlowPoliciesExecute(r ApiReadAllFlowPoliciesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *FlowPoliciesApiService) ReadAllFlowPoliciesExecuteInitialPage(r ApiReadAllFlowPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -71,7 +79,7 @@ func (a *FlowPoliciesApiService) ReadAllFlowPoliciesExecute(r ApiReadAllFlowPoli
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FlowPoliciesApiService) internalReadAllFlowPoliciesExecute(r ApiReadAllFlowPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -271,7 +279,7 @@ func (a *FlowPoliciesApiService) ReadOneFlowPolicyExecute(r ApiReadOneFlowPolicy
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FlowPoliciesApiService) internalReadOneFlowPolicyExecute(r ApiReadOneFlowPolicyRequest) (*FlowPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

@@ -71,7 +71,7 @@ func (a *PhoneDeliverySettingsApiService) CreatePhoneDeliverySettingsExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PhoneDeliverySettingsApiService) internalCreatePhoneDeliverySettingsExecute(r ApiCreatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *PhoneDeliverySettingsApiService) DeletePhoneDeliverySettingsExecute(r A
 	)
 	return response, err
 }
-			
+
 func (a *PhoneDeliverySettingsApiService) internalDeletePhoneDeliverySettingsExecute(r ApiDeletePhoneDeliverySettingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllPhoneDeliverySettingsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllPhoneDeliverySettingsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllPhoneDeliverySettingsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllPhoneDeliverySettingsExecute(r)
+}
+
+func (r ApiReadAllPhoneDeliverySettingsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllPhoneDeliverySettingsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettings(ctx conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettingsExecute(r ApiReadAllPhoneDeliverySettingsRequest) (*EntityArray, *http.Response, error) {
+func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettingsExecute(r ApiReadAllPhoneDeliverySettingsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettingsExecuteInitialPage(r ApiReadAllPhoneDeliverySettingsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettingsExecute(r 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PhoneDeliverySettingsApiService) internalReadAllPhoneDeliverySettingsExecute(r ApiReadAllPhoneDeliverySettingsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *PhoneDeliverySettingsApiService) ReadOnePhoneDeliverySettingsExecute(r 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PhoneDeliverySettingsApiService) internalReadOnePhoneDeliverySettingsExecute(r ApiReadOnePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *PhoneDeliverySettingsApiService) UpdatePhoneDeliverySettingsExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PhoneDeliverySettingsApiService) internalUpdatePhoneDeliverySettingsExecute(r ApiUpdatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

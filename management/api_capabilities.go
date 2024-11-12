@@ -64,7 +64,7 @@ func (a *CapabilitiesApiService) EnvironmentsEnvironmentIDCapabilitiesGetExecute
 	)
 	return response, err
 }
-			
+
 func (a *CapabilitiesApiService) internalEnvironmentsEnvironmentIDCapabilitiesGetExecute(r ApiEnvironmentsEnvironmentIDCapabilitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -247,7 +247,7 @@ func (a *CapabilitiesApiService) OrganizationsOrganizationIDCapabilitiesGetExecu
 	)
 	return response, err
 }
-			
+
 func (a *CapabilitiesApiService) internalOrganizationsOrganizationIDCapabilitiesGetExecute(r ApiOrganizationsOrganizationIDCapabilitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

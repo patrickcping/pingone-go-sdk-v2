@@ -35,8 +35,12 @@ func (r ApiReadAllOrganizationsRequest) Limit(limit int32) ApiReadAllOrganizatio
 	return r
 }
 
-func (r ApiReadAllOrganizationsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllOrganizationsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllOrganizationsExecute(r)
+}
+
+func (r ApiReadAllOrganizationsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllOrganizationsExecuteInitialPage(r)
 }
 
 /*
@@ -54,7 +58,11 @@ func (a *OrganizationsApiService) ReadAllOrganizations(ctx context.Context) ApiR
 
 // Execute executes the request
 //  @return EntityArray
-func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
+func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *OrganizationsApiService) ReadAllOrganizationsExecuteInitialPage(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -69,7 +77,7 @@ func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrgani
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *OrganizationsApiService) internalReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -265,7 +273,7 @@ func (a *OrganizationsApiService) ReadOneOrganizationExecute(r ApiReadOneOrganiz
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *OrganizationsApiService) internalReadOneOrganizationExecute(r ApiReadOneOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

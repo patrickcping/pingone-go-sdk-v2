@@ -71,7 +71,7 @@ func (a *VoicePhrasesApiService) CreateVoicePhraseExecute(r ApiCreateVoicePhrase
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *VoicePhrasesApiService) DeleteVoicePhraseExecute(r ApiDeleteVoicePhrase
 	)
 	return response, err
 }
-			
+
 func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoicePhraseRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllVoicePhrasesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllVoicePhrasesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllVoicePhrasesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllVoicePhrasesExecute(r)
+}
+
+func (r ApiReadAllVoicePhrasesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllVoicePhrasesExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *VoicePhrasesApiService) ReadAllVoicePhrases(ctx context.Context, enviro
 
 // Execute executes the request
 //  @return EntityArray
-func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecute(r ApiReadAllVoicePhrasesRequest) (*EntityArray, *http.Response, error) {
+func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecute(r ApiReadAllVoicePhrasesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecuteInitialPage(r ApiReadAllVoicePhrasesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecute(r ApiReadAllVoicePhr
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAllVoicePhrasesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *VoicePhrasesApiService) ReadOneVoicePhraseExecute(r ApiReadOneVoicePhra
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *VoicePhrasesApiService) UpdateVoicePhraseExecute(r ApiUpdateVoicePhrase
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -83,7 +83,7 @@ func (a *ActiveIdentityCountsApiService) EnvironmentsEnvironmentIDActiveIdentity
 	)
 	return response, err
 }
-			
+
 func (a *ActiveIdentityCountsApiService) internalEnvironmentsEnvironmentIDActiveIdentityCountsGetExecute(r ApiEnvironmentsEnvironmentIDActiveIdentityCountsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -299,7 +299,7 @@ func (a *ActiveIdentityCountsApiService) EnvironmentsEnvironmentIDMetricsActiveI
 	)
 	return response, err
 }
-			
+
 func (a *ActiveIdentityCountsApiService) internalEnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetExecute(r ApiEnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -515,7 +515,7 @@ func (a *ActiveIdentityCountsApiService) ReadActiveIdentityCountExecute(r ApiRea
 	)
 	return response, err
 }
-			
+
 func (a *ActiveIdentityCountsApiService) internalReadActiveIdentityCountExecute(r ApiReadActiveIdentityCountRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

@@ -447,8 +447,12 @@ type ApiReadAllPasswordPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllPasswordPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllPasswordPoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllPasswordPoliciesExecute(r)
+}
+
+func (r ApiReadAllPasswordPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllPasswordPoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -469,7 +473,11 @@ func (a *PasswordPoliciesApiService) ReadAllPasswordPolicies(ctx context.Context
 // Execute executes the request
 //
 //	@return EntityArray
-func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecute(r ApiReadAllPasswordPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecute(r ApiReadAllPasswordPoliciesRequest) EntityArrayPagedIterator {
+	return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecuteInitialPage(r ApiReadAllPasswordPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                 error
 		response            *http.Response

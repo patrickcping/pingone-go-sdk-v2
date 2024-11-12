@@ -80,7 +80,7 @@ func (a *UserAccountsApiService) UserAccountExecute(r ApiUserAccountRequest) (*U
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserAccountsApiService) internalUserAccountExecute(r ApiUserAccountRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

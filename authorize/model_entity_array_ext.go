@@ -1,11 +1,5 @@
 package authorize
 
-const (
-	PAGINATION_HAL_LINK_INDEX_SELF = "self"
-	PAGINATION_HAL_LINK_INDEX_NEXT = "next"
-	PAGINATION_HAL_LINK_INDEX_PREV = "prev"
-)
-
 func (o *EntityArray) hasHalLink(linkIndex string) bool {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
 		links := *l

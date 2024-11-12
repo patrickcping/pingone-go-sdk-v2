@@ -71,7 +71,7 @@ func (a *AlertingApiService) CreateAlertChannelExecute(r ApiCreateAlertChannelRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AlertingApiService) internalCreateAlertChannelExecute(r ApiCreateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *AlertingApiService) DeleteAlertChannelExecute(r ApiDeleteAlertChannelRe
 	)
 	return response, err
 }
-			
+
 func (a *AlertingApiService) internalDeleteAlertChannelExecute(r ApiDeleteAlertChannelRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllAlertChannelsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllAlertChannelsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllAlertChannelsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllAlertChannelsExecute(r)
+}
+
+func (r ApiReadAllAlertChannelsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllAlertChannelsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *AlertingApiService) ReadAllAlertChannels(ctx context.Context, environme
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AlertingApiService) ReadAllAlertChannelsExecute(r ApiReadAllAlertChannelsRequest) (*EntityArray, *http.Response, error) {
+func (a *AlertingApiService) ReadAllAlertChannelsExecute(r ApiReadAllAlertChannelsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AlertingApiService) ReadAllAlertChannelsExecuteInitialPage(r ApiReadAllAlertChannelsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *AlertingApiService) ReadAllAlertChannelsExecute(r ApiReadAllAlertChanne
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AlertingApiService) internalReadAllAlertChannelsExecute(r ApiReadAllAlertChannelsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -668,7 +676,7 @@ func (a *AlertingApiService) UpdateAlertChannelExecute(r ApiUpdateAlertChannelRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AlertingApiService) internalUpdateAlertChannelExecute(r ApiUpdateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

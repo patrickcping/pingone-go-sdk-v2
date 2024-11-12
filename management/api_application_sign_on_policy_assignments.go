@@ -74,7 +74,7 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) CreateSignOnPolicyAssignm
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalCreateSignOnPolicyAssignmentExecute(r ApiCreateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) DeleteSignOnPolicyAssignm
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalDeleteSignOnPolicyAssignmentExecute(r ApiDeleteSignOnPolicyAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllSignOnPolicyAssignmentsRequest struct {
 	applicationID string
 }
 
-func (r ApiReadAllSignOnPolicyAssignmentsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllSignOnPolicyAssignmentsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllSignOnPolicyAssignmentsExecute(r)
+}
+
+func (r ApiReadAllSignOnPolicyAssignmentsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllSignOnPolicyAssignmentsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssign
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssignmentsExecuteInitialPage(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssign
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadOneSignOnPolicyAssign
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadOneSignOnPolicyAssignmentExecute(r ApiReadOneSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) UpdateSignOnPolicyAssignm
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalUpdateSignOnPolicyAssignmentExecute(r ApiUpdateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

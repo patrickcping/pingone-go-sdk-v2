@@ -74,7 +74,7 @@ func (a *SchemasApiService) CreateAttributeExecute(r ApiCreateAttributeRequest) 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SchemasApiService) internalCreateAttributeExecute(r ApiCreateAttributeRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *SchemasApiService) DeleteAttributeExecute(r ApiDeleteAttributeRequest) 
 	)
 	return response, err
 }
-			
+
 func (a *SchemasApiService) internalDeleteAttributeExecute(r ApiDeleteAttributeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllSchemaAttributesRequest struct {
 	schemaID string
 }
 
-func (r ApiReadAllSchemaAttributesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllSchemaAttributesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllSchemaAttributesExecute(r)
+}
+
+func (r ApiReadAllSchemaAttributesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllSchemaAttributesExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *SchemasApiService) ReadAllSchemaAttributes(ctx context.Context, environ
 
 // Execute executes the request
 //  @return EntityArray
-func (a *SchemasApiService) ReadAllSchemaAttributesExecute(r ApiReadAllSchemaAttributesRequest) (*EntityArray, *http.Response, error) {
+func (a *SchemasApiService) ReadAllSchemaAttributesExecute(r ApiReadAllSchemaAttributesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *SchemasApiService) ReadAllSchemaAttributesExecuteInitialPage(r ApiReadAllSchemaAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *SchemasApiService) ReadAllSchemaAttributesExecute(r ApiReadAllSchemaAtt
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SchemasApiService) internalReadAllSchemaAttributesExecute(r ApiReadAllSchemaAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -635,8 +643,12 @@ type ApiReadAllSchemasRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllSchemasRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllSchemasRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllSchemasExecute(r)
+}
+
+func (r ApiReadAllSchemasRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllSchemasExecuteInitialPage(r)
 }
 
 /*
@@ -656,7 +668,11 @@ func (a *SchemasApiService) ReadAllSchemas(ctx context.Context, environmentID st
 
 // Execute executes the request
 //  @return EntityArray
-func (a *SchemasApiService) ReadAllSchemasExecute(r ApiReadAllSchemasRequest) (*EntityArray, *http.Response, error) {
+func (a *SchemasApiService) ReadAllSchemasExecute(r ApiReadAllSchemasRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *SchemasApiService) ReadAllSchemasExecuteInitialPage(r ApiReadAllSchemasRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -671,7 +687,7 @@ func (a *SchemasApiService) ReadAllSchemasExecute(r ApiReadAllSchemasRequest) (*
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SchemasApiService) internalReadAllSchemasExecute(r ApiReadAllSchemasRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -871,7 +887,7 @@ func (a *SchemasApiService) ReadOneAttributeExecute(r ApiReadOneAttributeRequest
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SchemasApiService) internalReadOneAttributeExecute(r ApiReadOneAttributeRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1070,7 +1086,7 @@ func (a *SchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchemaRequest) (*Sc
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SchemasApiService) internalReadOneSchemaExecute(r ApiReadOneSchemaRequest) (*Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1277,7 +1293,7 @@ func (a *SchemasApiService) UpdateAttributePatchExecute(r ApiUpdateAttributePatc
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SchemasApiService) internalUpdateAttributePatchExecute(r ApiUpdateAttributePatchRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -1487,7 +1503,7 @@ func (a *SchemasApiService) UpdateAttributePutExecute(r ApiUpdateAttributePutReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SchemasApiService) internalUpdateAttributePutExecute(r ApiUpdateAttributePutRequest) (*SchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

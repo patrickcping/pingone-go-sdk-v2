@@ -71,7 +71,7 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApiService) internalCreateApplicationExecute(r ApiCreateApplicationRequest) (*CreateApplication201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *ApplicationsApiService) DeleteApplicationExecute(r ApiDeleteApplication
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationsApiService) internalDeleteApplicationExecute(r ApiDeleteApplicationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllApplicationsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllApplicationsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllApplicationsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllApplicationsExecute(r)
+}
+
+func (r ApiReadAllApplicationsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllApplicationsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *ApplicationsApiService) ReadAllApplications(ctx context.Context, enviro
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationsApiService) ReadAllApplicationsExecute(r ApiReadAllApplicationsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationsApiService) ReadAllApplicationsExecute(r ApiReadAllApplicationsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationsApiService) ReadAllApplicationsExecuteInitialPage(r ApiReadAllApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *ApplicationsApiService) ReadAllApplicationsExecute(r ApiReadAllApplicat
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApiService) internalReadAllApplicationsExecute(r ApiReadAllApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *ApplicationsApiService) ReadOneApplicationExecute(r ApiReadOneApplicati
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApiService) internalReadOneApplicationExecute(r ApiReadOneApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplication
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApiService) internalUpdateApplicationExecute(r ApiUpdateApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

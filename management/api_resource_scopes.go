@@ -74,7 +74,7 @@ func (a *ResourceScopesApiService) CreateResourceScopeExecute(r ApiCreateResourc
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ResourceScopesApiService) internalCreateResourceScopeExecute(r ApiCreateResourceScopeRequest) (*ResourceScope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ResourceScopesApiService) DeleteResourceScopeExecute(r ApiDeleteResourc
 	)
 	return response, err
 }
-			
+
 func (a *ResourceScopesApiService) internalDeleteResourceScopeExecute(r ApiDeleteResourceScopeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllResourceScopesRequest struct {
 	resourceID string
 }
 
-func (r ApiReadAllResourceScopesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllResourceScopesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllResourceScopesExecute(r)
+}
+
+func (r ApiReadAllResourceScopesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllResourceScopesExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ResourceScopesApiService) ReadAllResourceScopes(ctx context.Context, en
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ResourceScopesApiService) ReadAllResourceScopesExecute(r ApiReadAllResourceScopesRequest) (*EntityArray, *http.Response, error) {
+func (a *ResourceScopesApiService) ReadAllResourceScopesExecute(r ApiReadAllResourceScopesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ResourceScopesApiService) ReadAllResourceScopesExecuteInitialPage(r ApiReadAllResourceScopesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ResourceScopesApiService) ReadAllResourceScopesExecute(r ApiReadAllReso
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ResourceScopesApiService) internalReadAllResourceScopesExecute(r ApiReadAllResourceScopesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *ResourceScopesApiService) ReadOneResourceScopeExecute(r ApiReadOneResou
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ResourceScopesApiService) internalReadOneResourceScopeExecute(r ApiReadOneResourceScopeRequest) (*ResourceScope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *ResourceScopesApiService) UpdateResourceScopeExecute(r ApiUpdateResourc
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ResourceScopesApiService) internalUpdateResourceScopeExecute(r ApiUpdateResourceScopeRequest) (*ResourceScope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

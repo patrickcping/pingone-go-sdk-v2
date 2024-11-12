@@ -67,7 +67,7 @@ func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsGetExec
 	)
 	return response, err
 }
-			
+
 func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSessionsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -257,7 +257,7 @@ func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsSession
 	)
 	return response, err
 }
-			
+
 func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -448,7 +448,7 @@ func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsSession
 	)
 	return response, err
 }
-			
+
 func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

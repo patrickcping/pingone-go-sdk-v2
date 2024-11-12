@@ -74,7 +74,7 @@ func (a *ApplicationResourcePermissionsApiService) CreateApplicationPermissionEx
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcePermissionsApiService) internalCreateApplicationPermissionExecute(r ApiCreateApplicationPermissionRequest) (*ApplicationResourcePermission, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ApplicationResourcePermissionsApiService) DeleteApplicationPermissionEx
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationResourcePermissionsApiService) internalDeleteApplicationPermissionExecute(r ApiDeleteApplicationPermissionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadApplicationPermissionsRequest struct {
 	applicationResourceID string
 }
 
-func (r ApiReadApplicationPermissionsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadApplicationPermissionsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadApplicationPermissionsExecute(r)
+}
+
+func (r ApiReadApplicationPermissionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadApplicationPermissionsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissions(ct
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecuteInitialPage(r ApiReadApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcePermissionsApiService) internalReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *ApplicationResourcePermissionsApiService) ReadOneApplicationPermissionE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcePermissionsApiService) internalReadOneApplicationPermissionExecute(r ApiReadOneApplicationPermissionRequest) (*ApplicationResourcePermission, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *ApplicationResourcePermissionsApiService) UpdateApplicationPermissionEx
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcePermissionsApiService) internalUpdateApplicationPermissionExecute(r ApiUpdateApplicationPermissionRequest) (*ApplicationResourcePermission, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -29,8 +29,12 @@ type ApiReadApplicationResourcesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadApplicationResourcesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadApplicationResourcesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadApplicationResourcesExecute(r)
+}
+
+func (r ApiReadApplicationResourcesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadApplicationResourcesExecuteInitialPage(r)
 }
 
 /*
@@ -50,7 +54,11 @@ func (a *ApplicationResourcesApiService) ReadApplicationResources(ctx context.Co
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialPage(r ApiReadApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -65,7 +73,7 @@ func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -262,7 +270,7 @@ func (a *ApplicationResourcesApiService) ReadOneApplicationResourceExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecute(r ApiReadOneApplicationResourceRequest) (*ApplicationResource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

@@ -71,7 +71,7 @@ func (a *NotificationsPoliciesApiService) CreateNotificationsPolicyExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsPoliciesApiService) internalCreateNotificationsPolicyExecute(r ApiCreateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -269,7 +269,7 @@ func (a *NotificationsPoliciesApiService) DeleteNotificationsPolicyExecute(r Api
 	)
 	return response, err
 }
-			
+
 func (a *NotificationsPoliciesApiService) internalDeleteNotificationsPolicyExecute(r ApiDeleteNotificationsPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -418,8 +418,12 @@ type ApiReadAllNotificationsPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllNotificationsPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllNotificationsPoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllNotificationsPoliciesExecute(r)
+}
+
+func (r ApiReadAllNotificationsPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllNotificationsPoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -439,7 +443,11 @@ func (a *NotificationsPoliciesApiService) ReadAllNotificationsPolicies(ctx conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *NotificationsPoliciesApiService) ReadAllNotificationsPoliciesExecute(r ApiReadAllNotificationsPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *NotificationsPoliciesApiService) ReadAllNotificationsPoliciesExecute(r ApiReadAllNotificationsPoliciesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *NotificationsPoliciesApiService) ReadAllNotificationsPoliciesExecuteInitialPage(r ApiReadAllNotificationsPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -454,7 +462,7 @@ func (a *NotificationsPoliciesApiService) ReadAllNotificationsPoliciesExecute(r 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsPoliciesApiService) internalReadAllNotificationsPoliciesExecute(r ApiReadAllNotificationsPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -651,7 +659,7 @@ func (a *NotificationsPoliciesApiService) ReadOneNotificationsPolicyExecute(r Ap
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsPoliciesApiService) internalReadOneNotificationsPolicyExecute(r ApiReadOneNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -855,7 +863,7 @@ func (a *NotificationsPoliciesApiService) UpdateNotificationsPolicyExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsPoliciesApiService) internalUpdateNotificationsPolicyExecute(r ApiUpdateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -68,7 +68,7 @@ func (a *EnableUsersApiService) ReadUserEnabledExecute(r ApiReadUserEnabledReque
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnableUsersApiService) internalReadUserEnabledExecute(r ApiReadUserEnabledRequest) (*UserEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -272,7 +272,7 @@ func (a *EnableUsersApiService) UpdateUserEnabledExecute(r ApiUpdateUserEnabledR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnableUsersApiService) internalUpdateUserEnabledExecute(r ApiUpdateUserEnabledRequest) (*UserEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

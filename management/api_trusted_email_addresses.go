@@ -74,7 +74,7 @@ func (a *TrustedEmailAddressesApiService) CreateTrustedEmailAddressExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *TrustedEmailAddressesApiService) internalCreateTrustedEmailAddressExecute(r ApiCreateTrustedEmailAddressRequest) (*EmailDomainTrustedEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *TrustedEmailAddressesApiService) DeleteTrustedEmailAddressExecute(r Api
 	)
 	return response, err
 }
-			
+
 func (a *TrustedEmailAddressesApiService) internalDeleteTrustedEmailAddressExecute(r ApiDeleteTrustedEmailAddressRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllTrustedEmailAddressesRequest struct {
 	emailDomainID string
 }
 
-func (r ApiReadAllTrustedEmailAddressesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllTrustedEmailAddressesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllTrustedEmailAddressesExecute(r)
+}
+
+func (r ApiReadAllTrustedEmailAddressesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllTrustedEmailAddressesExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *TrustedEmailAddressesApiService) ReadAllTrustedEmailAddresses(ctx conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *TrustedEmailAddressesApiService) ReadAllTrustedEmailAddressesExecute(r ApiReadAllTrustedEmailAddressesRequest) (*EntityArray, *http.Response, error) {
+func (a *TrustedEmailAddressesApiService) ReadAllTrustedEmailAddressesExecute(r ApiReadAllTrustedEmailAddressesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *TrustedEmailAddressesApiService) ReadAllTrustedEmailAddressesExecuteInitialPage(r ApiReadAllTrustedEmailAddressesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *TrustedEmailAddressesApiService) ReadAllTrustedEmailAddressesExecute(r 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *TrustedEmailAddressesApiService) internalReadAllTrustedEmailAddressesExecute(r ApiReadAllTrustedEmailAddressesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *TrustedEmailAddressesApiService) ReadOneTrustedEmailAddressExecute(r Ap
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *TrustedEmailAddressesApiService) internalReadOneTrustedEmailAddressExecute(r ApiReadOneTrustedEmailAddressRequest) (*EmailDomainTrustedEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *TrustedEmailAddressesApiService) ResendVerificationCodeToEmailExecute(r
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *TrustedEmailAddressesApiService) internalResendVerificationCodeToEmailExecute(r ApiResendVerificationCodeToEmailRequest) (*EmailDomainTrustedEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

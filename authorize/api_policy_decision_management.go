@@ -71,7 +71,7 @@ func (a *PolicyDecisionManagementApiService) CreateDecisionEndpointExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpointExecute(r Api
 	)
 	return response, err
 }
-			
+
 func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllDecisionEndpointsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllDecisionEndpointsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllDecisionEndpointsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllDecisionEndpointsExecute(r)
+}
+
+func (r ApiReadAllDecisionEndpointsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllDecisionEndpointsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpoints(ctx contex
 
 // Execute executes the request
 //  @return EntityArray
-func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
+func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInitialPage(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpointExecute(r Ap
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpointExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -1328,8 +1328,12 @@ type ApiGetCertificateApplicationsRequest struct {
 	certID        string
 }
 
-func (r ApiGetCertificateApplicationsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiGetCertificateApplicationsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.GetCertificateApplicationsExecute(r)
+}
+
+func (r ApiGetCertificateApplicationsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.GetCertificateApplicationsExecuteInitialPage(r)
 }
 
 /*
@@ -1352,7 +1356,11 @@ func (a *CertificateManagementApiService) GetCertificateApplications(ctx context
 // Execute executes the request
 //
 //	@return EntityArray
-func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
+func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) EntityArrayPagedIterator {
+	return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *CertificateManagementApiService) GetCertificateApplicationsExecuteInitialPage(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                 error
 		response            *http.Response
