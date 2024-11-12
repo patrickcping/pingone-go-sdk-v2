@@ -178,7 +178,7 @@ func (c *Configuration) SetServerVariableDefaultValue(serverIndex int, variable 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 		},
 
@@ -201,7 +201,7 @@ func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 	)
 	return response, err
 }
-			
+
 func ($1) internal$2$3($4) (*http.Response, error) {`,
 		},
 
@@ -210,6 +210,37 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 			fileSelectPattern: "api_*.go",
 			pattern:           `	localVarHTTPResponse\.Body\.Close\(\)`,
 			repl:              `	_ = localVarHTTPResponse.Body.Close()`,
+		},
+
+		// Add paging to EntityArray APIs (Execute function)
+		{
+			fileSelectPattern: "api_*.go",
+			pattern:           `func \(([a-zA-Z0-9\* ]+)\) Execute\(([a-zA-Z0-9 ]*)\) \(\*EntityArray, \*http\.Response, error\) \{\n(.*)\(r\)\n*\}`,
+			repl: `func ($1) Execute($2) EntityArrayPagedIterator {
+$3(r)
+}
+
+func ($1) ExecuteInitialPage($2) (*EntityArray, *http.Response, error) {
+$3))InitialPage(r)
+}`,
+		},
+
+		// Add paging to EntityArray APIs (...Execute function)
+		{
+			fileSelectPattern: "api_*.go",
+			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([A-Z]{1})([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(\*EntityArray, \*http\.Response, error\) \{`,
+			repl: `func ($1) $2$3($4) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func ($1) $2$3))InitialPage($4) (*EntityArray, *http.Response, error) {`,
+		},
+
+		// Add paging to EntityArray APIs (Execute function fix)
+		{
+			fileSelectPattern: "api_*.go",
+			pattern:           `Execute\)\)InitialPage`,
+			repl:              `ExecuteInitialPage`,
 		},
 
 		/////////////////////////

@@ -27,6 +27,14 @@ else
         template=${template//PACKAGENAME/$3}
         echo "$template" > "api_hal_ext.go"
 
+        template=$(cat ../scripts/templates/model_paged_cursor_ext.go.tmpl)
+        template=${template//PACKAGENAME/$3}
+        echo "$template" > "model_paged_cursor_ext.go"
+
+        template=$(cat ../scripts/templates/api_utils_pagination_ext.go.tmpl)
+        template=${template//PACKAGENAME/$3}
+        echo "$template" > "api_utils_pagination_ext.go"
+
         echo "==> Applying common postprocessing..."
         go run ../scripts/generate-replace-regex.go .
 
