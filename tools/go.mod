@@ -1,11 +1,11 @@
 module github.com/patrickcping/pingone-go-sdk-v2/tools
 
-go 1.22.7
+go 1.23.3
 
 require (
-	github.com/golangci/golangci-lint v1.55.1
+	github.com/golangci/golangci-lint v1.62.0
 	github.com/pavius/impi v0.0.3
-	github.com/securego/gosec/v2 v2.18.2
+	github.com/securego/gosec/v2 v2.21.4
 )
 
 require (
