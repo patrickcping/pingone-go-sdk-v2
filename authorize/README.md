@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedPermissionsInner](docs/EntityArrayEmbeddedPermissionsInner.md)
+ - [EntityArrayPagedIterator](docs/EntityArrayPagedIterator.md)
  - [EnumAPIServerAuthorizationServerType](docs/EnumAPIServerAuthorizationServerType.md)
  - [EnumAPIServerOperationMatchType](docs/EnumAPIServerOperationMatchType.md)
  - [EnumAPIServerOperationMethod](docs/EnumAPIServerOperationMethod.md)
@@ -165,6 +166,7 @@ Class | Method | HTTP request | Description
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
+ - [PagedCursor](docs/PagedCursor.md)
 
 
 ## Documentation For Authorization

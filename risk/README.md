@@ -122,6 +122,7 @@ Class | Method | HTTP request | Description
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
+ - [PagedCursor](docs/PagedCursor.md)
  - [RiskEvaluation](docs/RiskEvaluation.md)
  - [RiskEvaluationDetails](docs/RiskEvaluationDetails.md)
  - [RiskEvaluationDetailsIpAddressReputation](docs/RiskEvaluationDetailsIpAddressReputation.md)

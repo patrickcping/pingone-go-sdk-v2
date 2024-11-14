@@ -153,9 +153,16 @@ Name | Type | Description  | Notes
 
 ## ReadAllAPIServers
 
-> EntityArray ReadAllAPIServers(ctx, environmentID).Execute()
-
 READ All API Servers
+
+### Paged Response
+
+> EntityArrayPagedIterator ReadAllAPIServers(ctx, environmentID).Execute()
+
+### Initial Page Response
+
+> EntityArray ReadAllAPIServers(ctx, environmentID).ExecuteInitialPage()
+
 
 ### Example
 
@@ -179,7 +186,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.ReadAllAPIServers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllAPIServers`: EntityArray
+    // response from `ReadAllAPIServers`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `APIServersApi.ReadAllAPIServers`: %v\n", resp)
 }
 ```
@@ -203,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

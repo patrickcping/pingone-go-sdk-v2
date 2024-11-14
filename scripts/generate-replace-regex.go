@@ -224,7 +224,39 @@ func ($1) ExecuteInitialPage($2) (*EntityArray, *http.Response, error) {
 $3))InitialPage(r)
 }`,
 		},
+		{
+			fileSelectPattern: "API*Api.md",
+			pattern:           `EntityArray`,
+			repl: `EntityArrayPagedIterator`,
+		},
+		{
+			fileSelectPattern: "API*Api.md",
+			pattern:           `## ([a-zA-Z0-9]+)\n\n> EntityArrayPagedIterator ([a-zA-Z0-9]+)\(([a-zA-Z0-9, ]*)\)\.Execute\(\)\n\n([a-zA-Z0-9, ]*)`,
+			repl: `## $1
 
+$4
+
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator $2($3).Execute()
+
+### Initial Page Response
+
+> EntityArray $2($3).ExecuteInitialPage()`,
+		},
+		{
+			fileSelectPattern: "README.md",
+			pattern:           ` - \[EntityArrayEmbeddedPermissionsInner\]\(docs\/EntityArrayEmbeddedPermissionsInner\.md\)`,
+			repl: ` - [EntityArrayEmbeddedPermissionsInner](docs/EntityArrayEmbeddedPermissionsInner.md)
+ - [EntityArrayPagedIterator](docs/EntityArrayPagedIterator.md)`,
+		},
+		{
+			fileSelectPattern: "README.md",
+			pattern:           ` - \[P1ErrorDetailsInnerInnerError\]\(docs\/P1ErrorDetailsInnerInnerError\.md\)`,
+			repl: ` - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
+ - [PagedCursor](docs/PagedCursor.md)`,
+		},
+		
 		// Add paging to EntityArray APIs (...Execute function)
 		{
 			fileSelectPattern: "api_*.go",
