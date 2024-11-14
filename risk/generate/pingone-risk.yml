@@ -770,10 +770,10 @@ components:
         - level
     RiskPredictor:
       oneOf:
-        - $ref: '#/components/schemas/RiskPredictorCommon'
         - $ref: '#/components/schemas/RiskPredictorAdversaryInTheMiddle'
         - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
         - $ref: '#/components/schemas/RiskPredictorBotDetection'
+        - $ref: '#/components/schemas/RiskPredictorCommon'
         - $ref: '#/components/schemas/RiskPredictorComposite'
         - $ref: '#/components/schemas/RiskPredictorCustom'
         - $ref: '#/components/schemas/RiskPredictorDevice'
@@ -1163,10 +1163,12 @@ components:
                     description: Object that contains the fields used to define the risk thresholds.
                     properties:
                       medium:
-                        type: integer
+                        type: number
+                        format: float
                         description: Number of users during the defined timeframe that will be considered Medium risk.
                       high:
-                        type: integer
+                        type: number
+                        format: float
                         description: Number of users during the defined timeframe that will be considered High risk.
                     required:
                       - medium
