@@ -20,16 +20,16 @@ var _ MappedNullable = &RiskPredictorTrafficAnomalyAllOfThreshold{}
 // RiskPredictorTrafficAnomalyAllOfThreshold Object that contains the fields used to define the risk thresholds.
 type RiskPredictorTrafficAnomalyAllOfThreshold struct {
 	// Number of users during the defined timeframe that will be considered Medium risk.
-	Medium int32 `json:"medium"`
+	Medium float32 `json:"medium"`
 	// Number of users during the defined timeframe that will be considered High risk.
-	High int32 `json:"high"`
+	High float32 `json:"high"`
 }
 
 // NewRiskPredictorTrafficAnomalyAllOfThreshold instantiates a new RiskPredictorTrafficAnomalyAllOfThreshold object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorTrafficAnomalyAllOfThreshold(medium int32, high int32) *RiskPredictorTrafficAnomalyAllOfThreshold {
+func NewRiskPredictorTrafficAnomalyAllOfThreshold(medium float32, high float32) *RiskPredictorTrafficAnomalyAllOfThreshold {
 	this := RiskPredictorTrafficAnomalyAllOfThreshold{}
 	this.Medium = medium
 	this.High = high
@@ -45,9 +45,9 @@ func NewRiskPredictorTrafficAnomalyAllOfThresholdWithDefaults() *RiskPredictorTr
 }
 
 // GetMedium returns the Medium field value
-func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetMedium() int32 {
+func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetMedium() float32 {
 	if o == nil {
-		var ret int32
+		var ret float32
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetMedium() int32 {
 
 // GetMediumOk returns a tuple with the Medium field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetMediumOk() (*int32, bool) {
+func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetMediumOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,14 +64,14 @@ func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetMediumOk() (*int32, bool)
 }
 
 // SetMedium sets field value
-func (o *RiskPredictorTrafficAnomalyAllOfThreshold) SetMedium(v int32) {
+func (o *RiskPredictorTrafficAnomalyAllOfThreshold) SetMedium(v float32) {
 	o.Medium = v
 }
 
 // GetHigh returns the High field value
-func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetHigh() int32 {
+func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetHigh() float32 {
 	if o == nil {
-		var ret int32
+		var ret float32
 		return ret
 	}
 
@@ -80,7 +80,7 @@ func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetHigh() int32 {
 
 // GetHighOk returns a tuple with the High field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetHighOk() (*int32, bool) {
+func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetHighOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *RiskPredictorTrafficAnomalyAllOfThreshold) GetHighOk() (*int32, bool) {
 }
 
 // SetHigh sets field value
-func (o *RiskPredictorTrafficAnomalyAllOfThreshold) SetHigh(v int32) {
+func (o *RiskPredictorTrafficAnomalyAllOfThreshold) SetHigh(v float32) {
 	o.High = v
 }
 

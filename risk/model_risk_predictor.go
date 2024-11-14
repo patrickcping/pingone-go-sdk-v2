@@ -146,13 +146,14 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 	dst.RiskPredictorBotDetection = nil
 	dst.RiskPredictorCommon = nil
 	dst.RiskPredictorComposite = nil
-	dst.RiskPredictorEmailReputation = nil
 	dst.RiskPredictorCustom = nil
+	dst.RiskPredictorDevice = nil
+	dst.RiskPredictorEmailReputation = nil
 	dst.RiskPredictorGeovelocity = nil
 	dst.RiskPredictorIPReputation = nil
-	dst.RiskPredictorDevice = nil
-	dst.RiskPredictorUserRiskBehavior = nil
+	dst.RiskPredictorTrafficAnomaly = nil
 	dst.RiskPredictorUserLocationAnomaly = nil
+	dst.RiskPredictorUserRiskBehavior = nil
 	dst.RiskPredictorVelocity = nil
 
 	objType := common.GetType()
@@ -178,12 +179,16 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil {
 			return err
 		}
-	case ENUMPREDICTORTYPE_EMAIL_REPUTATION:
-		if err := json.Unmarshal(data, &dst.RiskPredictorEmailReputation); err != nil {
+	case ENUMPREDICTORTYPE_MAP: // custom
+		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil {
 			return err
 		}
-	case ENUMPREDICTORTYPE_MAP:
-		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil {
+	case ENUMPREDICTORTYPE_DEVICE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorDevice); err != nil {
+			return err
+		}
+	case ENUMPREDICTORTYPE_EMAIL_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorEmailReputation); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_GEO_VELOCITY:
@@ -194,16 +199,16 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil {
 			return err
 		}
-	case ENUMPREDICTORTYPE_DEVICE:
-		if err := json.Unmarshal(data, &dst.RiskPredictorDevice); err != nil {
-			return err
-		}
-	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
-		if err := json.Unmarshal(data, &dst.RiskPredictorUserRiskBehavior); err != nil {
+	case ENUMPREDICTORTYPE_TRAFFIC_ANOMALY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorTrafficAnomaly); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
 		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil {
+			return err
+		}
+	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserRiskBehavior); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_VELOCITY:
