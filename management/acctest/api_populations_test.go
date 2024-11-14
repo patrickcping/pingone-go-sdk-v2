@@ -1,4 +1,4 @@
-package management_test
+package acctest
 
 import (
 	"context"
