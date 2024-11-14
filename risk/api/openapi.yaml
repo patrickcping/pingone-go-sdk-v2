@@ -2106,10 +2106,10 @@ components:
       type: object
     RiskPredictor:
       oneOf:
-      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorAdversaryInTheMiddle'
       - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
       - $ref: '#/components/schemas/RiskPredictorBotDetection'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorComposite'
       - $ref: '#/components/schemas/RiskPredictorCustom'
       - $ref: '#/components/schemas/RiskPredictorDevice'
@@ -3480,11 +3480,13 @@ components:
         medium:
           description: Number of users during the defined timeframe that will be considered
             Medium risk.
-          type: integer
+          format: float
+          type: number
         high:
           description: Number of users during the defined timeframe that will be considered
             High risk.
-          type: integer
+          format: float
+          type: number
       required:
       - high
       - medium
