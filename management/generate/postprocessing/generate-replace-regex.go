@@ -412,11 +412,10 @@ var (
 	// try to unmarshal JSON data into CustomAdminRole
 	err = json.Unmarshal(data, &dst.CustomAdminRole)
 	if err == nil {
-		jsonCustomAdminRole, _ := json.Marshal(dst.CustomAdminRole)
-		if string(jsonCustomAdminRole) == "{}" { // empty struct
-			dst.CustomAdminRole = nil
+		if dst.CustomAdminRole.Type != nil && *dst.CustomAdminRole.Type == ENUMCUSTOMADMINROLETYPE_CUSTOM { // custom role type
+			return nil // data stored in dst.CustomAdminRole, return on the first match
 		} else {
-				return nil // data stored in dst.CustomAdminRole, return on the first match
+			dst.CustomAdminRole = nil
 		}
 	} else {
 		dst.CustomAdminRole = nil
