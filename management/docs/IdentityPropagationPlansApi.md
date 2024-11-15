@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllPlans
 
-> EntityArray ReadAllPlans(ctx, environmentID).Accept(accept).Execute()
+> EntityArrayPagedIterator ReadAllPlans(ctx, environmentID).Accept(accept).Execute()
 
 READ All Plans
 
@@ -182,7 +182,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityPropagationPlansApi.ReadAllPlans``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllPlans`: EntityArray
+    // response from `ReadAllPlans`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `IdentityPropagationPlansApi.ReadAllPlans`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllGroups
 
-> EntityArray ReadAllGroups(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ReadAllGroups(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 READ All Groups
 
@@ -331,7 +331,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupsApi.ReadAllGroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllGroups`: EntityArray
+    // response from `ReadAllGroups`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `GroupsApi.ReadAllGroups`: %v\n", resp)
 }
 ```
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -376,11 +376,50 @@ Name | Type | Description  | Notes
 
 ## ReadGroupNesting
 
-> EntityArray ReadGroupNesting(ctx, environmentID, groupID).Execute()
-
 READ Group Nesting
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadGroupNesting(ctx, environmentID, groupID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadGroupNesting(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadGroupNesting``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadGroupNesting`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadGroupNesting`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadGroupNesting(ctx, environmentID, groupID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -403,7 +442,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupsApi.ReadGroupNesting``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadGroupNesting`: EntityArray
+    // response from `ReadGroupNesting`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `GroupsApi.ReadGroupNesting`: %v\n", resp)
 }
 ```
@@ -429,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

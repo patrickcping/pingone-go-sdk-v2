@@ -161,16 +161,48 @@ Name | Type | Description  | Notes
 
 READ All API Server Operations
 
-### Paged Response
+### Paged Response (Recommended)
 
 > EntityArrayPagedIterator ReadAllAPIServerOperations(ctx, environmentID, apiServerID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllAPIServerOperations(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllAPIServerOperations``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllAPIServerOperations`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllAPIServerOperations`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
 
 ### Initial Page Response
 
 > EntityArray ReadAllAPIServerOperations(ctx, environmentID, apiServerID).ExecuteInitialPage()
 
-
-### Example
+#### Example
 
 ```go
 package main

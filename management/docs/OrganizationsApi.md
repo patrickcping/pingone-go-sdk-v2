@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ReadAllOrganizations
 
-> EntityArray ReadAllOrganizations(ctx).Limit(limit).Execute()
+> EntityArrayPagedIterator ReadAllOrganizations(ctx).Limit(limit).Execute()
 
 READ All Organizations
 
@@ -37,7 +37,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ReadAllOrganizations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllOrganizations`: EntityArray
+    // response from `ReadAllOrganizations`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ReadAllOrganizations`: %v\n", resp)
 }
 ```
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

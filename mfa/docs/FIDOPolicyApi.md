@@ -153,11 +153,50 @@ Name | Type | Description  | Notes
 
 ## ReadFidoPolicies
 
-> EntityArray ReadFidoPolicies(ctx, environmentID).Execute()
-
 READ FIDO Policies
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadFidoPolicies(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadFidoPolicies(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadFidoPolicies``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadFidoPolicies`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadFidoPolicies`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadFidoPolicies(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -179,7 +218,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.ReadFidoPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadFidoPolicies`: EntityArray
+    // response from `ReadFidoPolicies`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.ReadFidoPolicies`: %v\n", resp)
 }
 ```
@@ -203,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

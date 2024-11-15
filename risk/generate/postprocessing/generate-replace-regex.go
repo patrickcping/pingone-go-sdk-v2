@@ -50,6 +50,12 @@ var (
 		repl              string
 	}{
 
+		{
+			fileSelectPattern: "*Api.md",
+			pattern:           `PACKAGENAME`,
+			repl:              `risk`,
+		},
+
 		// RiskPredictor model
 		{
 			fileSelectPattern: "model_risk_predictor.go",

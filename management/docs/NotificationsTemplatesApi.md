@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## PatchBulkVariantContents
 
-> EntityArray PatchBulkVariantContents(ctx, environmentID, templateName).Filter(filter).Body(body).Execute()
+> EntityArrayPagedIterator PatchBulkVariantContents(ctx, environmentID, templateName).Filter(filter).Body(body).Execute()
 
 PATCH Bulk Variant Contents
 
@@ -263,7 +263,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.PatchBulkVariantContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchBulkVariantContents`: EntityArray
+    // response from `PatchBulkVariantContents`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.PatchBulkVariantContents`: %v\n", resp)
 }
 ```
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllTemplateContents
 
-> EntityArray ReadAllTemplateContents(ctx, environmentID, templateName).Limit(limit).Execute()
+> EntityArrayPagedIterator ReadAllTemplateContents(ctx, environmentID, templateName).Limit(limit).Execute()
 
 READ All Contents
 
@@ -337,7 +337,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplateContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllTemplateContents`: EntityArray
+    // response from `ReadAllTemplateContents`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadAllTemplateContents`: %v\n", resp)
 }
 ```
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllTemplates
 
-> EntityArray ReadAllTemplates(ctx, environmentID).Limit(limit).Filter(filter).Order(order).Execute()
+> EntityArrayPagedIterator ReadAllTemplates(ctx, environmentID).Limit(limit).Filter(filter).Order(order).Execute()
 
 READ All Templates
 
@@ -411,7 +411,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllTemplates`: EntityArray
+    // response from `ReadAllTemplates`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadAllTemplates`: %v\n", resp)
 }
 ```
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

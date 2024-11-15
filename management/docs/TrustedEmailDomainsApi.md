@@ -155,11 +155,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllTrustedEmailDomains
 
-> EntityArray ReadAllTrustedEmailDomains(ctx, environmentID).Execute()
-
 READ All Trusted Email Domains
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllTrustedEmailDomains(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllTrustedEmailDomains(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllTrustedEmailDomains``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllTrustedEmailDomains`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllTrustedEmailDomains`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllTrustedEmailDomains(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -181,7 +220,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailDomainsApi.ReadAllTrustedEmailDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllTrustedEmailDomains`: EntityArray
+    // response from `ReadAllTrustedEmailDomains`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `TrustedEmailDomainsApi.ReadAllTrustedEmailDomains`: %v\n", resp)
 }
 ```
@@ -205,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

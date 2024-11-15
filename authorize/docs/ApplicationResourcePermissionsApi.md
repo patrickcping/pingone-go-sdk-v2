@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadApplicationPermissions
 
-> EntityArray ReadApplicationPermissions(ctx, environmentID, applicationResourceID).Execute()
-
 READ Application Permissions
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadApplicationPermissions(ctx, environmentID, applicationResourceID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadApplicationPermissions(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadApplicationPermissions``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadApplicationPermissions`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadApplicationPermissions`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadApplicationPermissions(ctx, environmentID, applicationResourceID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.ReadApplicationPermissions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadApplicationPermissions`: EntityArray
+    // response from `ReadApplicationPermissions`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.ReadApplicationPermissions`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

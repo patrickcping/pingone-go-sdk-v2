@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllSignOnPolicyAssignments
 
-> EntityArray ReadAllSignOnPolicyAssignments(ctx, environmentID, applicationID).Execute()
-
 READ All SOP Assignments
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllSignOnPolicyAssignments(ctx, environmentID, applicationID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllSignOnPolicyAssignments(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllSignOnPolicyAssignments``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllSignOnPolicyAssignments`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllSignOnPolicyAssignments`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllSignOnPolicyAssignments(ctx, environmentID, applicationID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSignOnPolicyAssignmentsApi.ReadAllSignOnPolicyAssignments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllSignOnPolicyAssignments`: EntityArray
+    // response from `ReadAllSignOnPolicyAssignments`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `ApplicationSignOnPolicyAssignmentsApi.ReadAllSignOnPolicyAssignments`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

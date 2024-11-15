@@ -50,6 +50,12 @@ var (
 		repl              string
 	}{
 
+		{
+			fileSelectPattern: "*Api.md",
+			pattern:           `PACKAGENAME`,
+			repl:              `credentials`,
+		},
+
 		// EntityArrayEmbeddedItemsInner model
 		{
 			fileSelectPattern: "model_entity_array__embedded_items_inner.go",

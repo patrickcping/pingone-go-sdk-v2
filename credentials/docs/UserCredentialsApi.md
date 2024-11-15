@@ -87,11 +87,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllUserCredentials
 
-> EntityArray ReadAllUserCredentials(ctx, environmentID, userID).Execute()
-
 Read All User Credentials
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllUserCredentials(ctx, environmentID, userID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllUserCredentials(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllUserCredentials``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllUserCredentials`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllUserCredentials`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllUserCredentials(ctx, environmentID, userID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -114,7 +153,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadAllUserCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllUserCredentials`: EntityArray
+    // response from `ReadAllUserCredentials`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadAllUserCredentials`: %v\n", resp)
 }
 ```
@@ -140,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -232,11 +271,50 @@ Name | Type | Description  | Notes
 
 ## ReadOneUserCredentialWallet
 
-> EntityArray ReadOneUserCredentialWallet(ctx, environmentID, userID, credentialID).Execute()
-
 Read One User Credential Wallet
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadOneUserCredentialWallet(ctx, environmentID, userID, credentialID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadOneUserCredentialWallet(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadOneUserCredentialWallet``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadOneUserCredentialWallet`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadOneUserCredentialWallet`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadOneUserCredentialWallet(ctx, environmentID, userID, credentialID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -260,7 +338,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadOneUserCredentialWallet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneUserCredentialWallet`: EntityArray
+    // response from `ReadOneUserCredentialWallet`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadOneUserCredentialWallet`: %v\n", resp)
 }
 ```
@@ -288,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
