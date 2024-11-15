@@ -71,7 +71,7 @@ func (a *FIDO2PolicyApiService) CreateFIDO2PolicyExecute(r ApiCreateFIDO2PolicyR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *FIDO2PolicyApiService) DeleteFIDO2PolicyExecute(r ApiDeleteFIDO2PolicyR
 	)
 	return response, err
 }
-			
+
 func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO2PolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadFIDO2PoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadFIDO2PoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadFIDO2PoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadFIDO2PoliciesExecute(r)
+}
+
+func (r ApiReadFIDO2PoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadFIDO2PoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *FIDO2PolicyApiService) ReadFIDO2Policies(ctx context.Context, environme
 
 // Execute executes the request
 //  @return EntityArray
-func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecuteInitialPage(r ApiReadFIDO2PoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -668,7 +676,7 @@ func (a *FIDO2PolicyApiService) ReadOneFIDO2PolicyExecute(r ApiReadOneFIDO2Polic
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -875,7 +883,7 @@ func (a *FIDO2PolicyApiService) UpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

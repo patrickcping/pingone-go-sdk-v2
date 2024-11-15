@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllApplicationGrants
 
-> EntityArray ReadAllApplicationGrants(ctx, environmentID, applicationID).Execute()
-
 READ All Grants for an Application
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllApplicationGrants(ctx, environmentID, applicationID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllApplicationGrants(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllApplicationGrants``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllApplicationGrants`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllApplicationGrants`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllApplicationGrants(ctx, environmentID, applicationID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourceGrantsApi.ReadAllApplicationGrants``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllApplicationGrants`: EntityArray
+    // response from `ReadAllApplicationGrants`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `ApplicationResourceGrantsApi.ReadAllApplicationGrants`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

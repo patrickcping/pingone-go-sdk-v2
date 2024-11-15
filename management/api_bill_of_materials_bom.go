@@ -65,7 +65,7 @@ func (a *BillOfMaterialsBOMApiService) ReadOneBillOfMaterialsExecute(r ApiReadOn
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BillOfMaterialsBOMApiService) internalReadOneBillOfMaterialsExecute(r ApiReadOneBillOfMaterialsRequest) (*BillOfMaterials, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -265,7 +265,7 @@ func (a *BillOfMaterialsBOMApiService) UpdateBillOfMaterialsExecute(r ApiUpdateB
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BillOfMaterialsBOMApiService) internalUpdateBillOfMaterialsExecute(r ApiUpdateBillOfMaterialsRequest) (*BillOfMaterials, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

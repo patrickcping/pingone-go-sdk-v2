@@ -71,7 +71,7 @@ func (a *PopulationsApiService) CreatePopulationExecute(r ApiCreatePopulationReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PopulationsApiService) internalCreatePopulationExecute(r ApiCreatePopulationRequest) (*Population, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -283,7 +283,7 @@ func (a *PopulationsApiService) DeletePopulationExecute(r ApiDeletePopulationReq
 	)
 	return response, err
 }
-			
+
 func (a *PopulationsApiService) internalDeletePopulationExecute(r ApiDeletePopulationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -453,8 +453,12 @@ func (r ApiReadAllPopulationsRequest) Cursor(cursor string) ApiReadAllPopulation
 	return r
 }
 
-func (r ApiReadAllPopulationsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllPopulationsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllPopulationsExecute(r)
+}
+
+func (r ApiReadAllPopulationsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllPopulationsExecuteInitialPage(r)
 }
 
 /*
@@ -474,7 +478,11 @@ func (a *PopulationsApiService) ReadAllPopulations(ctx context.Context, environm
 
 // Execute executes the request
 //  @return EntityArray
-func (a *PopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
+func (a *PopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *PopulationsApiService) ReadAllPopulationsExecuteInitialPage(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -489,7 +497,7 @@ func (a *PopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulation
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PopulationsApiService) internalReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -695,7 +703,7 @@ func (a *PopulationsApiService) ReadOnePopulationExecute(r ApiReadOnePopulationR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PopulationsApiService) internalReadOnePopulationExecute(r ApiReadOnePopulationRequest) (*Population, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -893,7 +901,7 @@ func (a *PopulationsApiService) ReadOnePopulationDefaultIdpExecute(r ApiReadOneP
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PopulationsApiService) internalReadOnePopulationDefaultIdpExecute(r ApiReadOnePopulationDefaultIdpRequest) (*PopulationDefaultIdp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1097,7 +1105,7 @@ func (a *PopulationsApiService) UpdatePopulationExecute(r ApiUpdatePopulationReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PopulationsApiService) internalUpdatePopulationExecute(r ApiUpdatePopulationRequest) (*Population, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -1303,7 +1311,7 @@ func (a *PopulationsApiService) UpdatePopulationDefaultIdpExecute(r ApiUpdatePop
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PopulationsApiService) internalUpdatePopulationDefaultIdpExecute(r ApiUpdatePopulationDefaultIdpRequest) (*PopulationDefaultIdp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

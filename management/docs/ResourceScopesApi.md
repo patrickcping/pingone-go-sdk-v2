@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllResourceScopes
 
-> EntityArray ReadAllResourceScopes(ctx, environmentID, resourceID).Execute()
+> EntityArrayPagedIterator ReadAllResourceScopes(ctx, environmentID, resourceID).Execute()
 
 READ All Scopes (Resource)
 
@@ -186,7 +186,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceScopesApi.ReadAllResourceScopes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllResourceScopes`: EntityArray
+    // response from `ReadAllResourceScopes`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `ResourceScopesApi.ReadAllResourceScopes`: %v\n", resp)
 }
 ```
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

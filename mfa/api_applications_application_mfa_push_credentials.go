@@ -74,7 +74,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -293,7 +293,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAPushCredentialExecute(r ApiDeleteMFAPushCredentialRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -447,8 +447,12 @@ type ApiReadAllMFAPushCredentialsRequest struct {
 	applicationID string
 }
 
-func (r ApiReadAllMFAPushCredentialsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllMFAPushCredentialsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllMFAPushCredentialsExecute(r)
+}
+
+func (r ApiReadAllMFAPushCredentialsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllMFAPushCredentialsExecuteInitialPage(r)
 }
 
 /*
@@ -470,7 +474,11 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecuteInitialPage(r ApiReadAllMFAPushCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -485,7 +493,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -686,7 +694,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -894,7 +902,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCrede
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

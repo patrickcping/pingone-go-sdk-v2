@@ -77,7 +77,7 @@ func (a *AgreementRevisionsResourcesApiService) CreateAgreementLanguageRevisionE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementRevisionsResourcesApiService) internalCreateAgreementLanguageRevisionExecute(r ApiCreateAgreementLanguageRevisionRequest) (*AgreementLanguageRevision, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -294,7 +294,7 @@ func (a *AgreementRevisionsResourcesApiService) DeleteAgreementLanguageRevisionE
 	)
 	return response, err
 }
-			
+
 func (a *AgreementRevisionsResourcesApiService) internalDeleteAgreementLanguageRevisionExecute(r ApiDeleteAgreementLanguageRevisionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -447,8 +447,12 @@ type ApiReadAllAgreementLanguageRevisionsRequest struct {
 	languageID string
 }
 
-func (r ApiReadAllAgreementLanguageRevisionsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllAgreementLanguageRevisionsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllAgreementLanguageRevisionsExecute(r)
+}
+
+func (r ApiReadAllAgreementLanguageRevisionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllAgreementLanguageRevisionsExecuteInitialPage(r)
 }
 
 /*
@@ -472,7 +476,11 @@ func (a *AgreementRevisionsResourcesApiService) ReadAllAgreementLanguageRevision
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AgreementRevisionsResourcesApiService) ReadAllAgreementLanguageRevisionsExecute(r ApiReadAllAgreementLanguageRevisionsRequest) (*EntityArray, *http.Response, error) {
+func (a *AgreementRevisionsResourcesApiService) ReadAllAgreementLanguageRevisionsExecute(r ApiReadAllAgreementLanguageRevisionsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AgreementRevisionsResourcesApiService) ReadAllAgreementLanguageRevisionsExecuteInitialPage(r ApiReadAllAgreementLanguageRevisionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -487,7 +495,7 @@ func (a *AgreementRevisionsResourcesApiService) ReadAllAgreementLanguageRevision
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementRevisionsResourcesApiService) internalReadAllAgreementLanguageRevisionsExecute(r ApiReadAllAgreementLanguageRevisionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -692,7 +700,7 @@ func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevision
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguageRevisionExecute(r ApiReadOneAgreementLanguageRevisionRequest) (*AgreementLanguageRevision, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

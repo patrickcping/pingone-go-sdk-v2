@@ -73,7 +73,7 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMapp
 	)
 	return response, err
 }
-			
+
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -269,7 +269,7 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMapp
 	)
 	return response, err
 }
-			
+
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationMappingsMappingIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingsMappingIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -465,7 +465,7 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMapp
 	)
 	return response, err
 }
-			
+
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationMappingsMappingIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingsMappingIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -666,7 +666,7 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationRule
 	)
 	return response, err
 }
-			
+
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -865,7 +865,7 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationRule
 	)
 	return response, err
 }
-			
+
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

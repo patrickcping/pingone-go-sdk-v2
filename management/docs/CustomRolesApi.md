@@ -1,4 +1,4 @@
-# \CustomRolesApi
+`# \CustomRolesApi
 
 All URIs are relative to *https://api.pingone.com/v1*
 
@@ -153,9 +153,15 @@ Name | Type | Description  | Notes
 
 ## ReadAllCustomAdminRoles
 
-> EntityArray ReadAllCustomAdminRoles(ctx, environmentID).Execute()
-
 READ All Custom Roles
+
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllCustomAdminRoles(ctx, environmentID).Execute()
+
+### Initial Page Response
+
+> EntityArray ReadAllCustomAdminRoles(ctx, environmentID).ExecuteInitialPage()
 
 ### Example
 
@@ -179,7 +185,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomRolesApi.ReadAllCustomAdminRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllCustomAdminRoles`: EntityArray
+    // response from `ReadAllCustomAdminRoles`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CustomRolesApi.ReadAllCustomAdminRoles`: %v\n", resp)
 }
 ```
@@ -203,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

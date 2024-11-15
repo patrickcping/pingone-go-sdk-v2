@@ -65,7 +65,7 @@ func (a *AdministratorSecurityApiService) ReadAdministratorSecurityExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AdministratorSecurityApiService) internalReadAdministratorSecurityExecute(r ApiReadAdministratorSecurityRequest) (*AdministratorSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -265,7 +265,7 @@ func (a *AdministratorSecurityApiService) UpdateAdministratorSecurityExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AdministratorSecurityApiService) internalUpdateAdministratorSecurityExecute(r ApiUpdateAdministratorSecurityRequest) (*AdministratorSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

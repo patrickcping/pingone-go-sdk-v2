@@ -71,7 +71,7 @@ func (a *BrandingThemesApiService) CreateBrandingThemeExecute(r ApiCreateBrandin
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingThemesApiService) internalCreateBrandingThemeExecute(r ApiCreateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *BrandingThemesApiService) DeleteBrandingThemeExecute(r ApiDeleteBrandin
 	)
 	return response, err
 }
-			
+
 func (a *BrandingThemesApiService) internalDeleteBrandingThemeExecute(r ApiDeleteBrandingThemeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -468,7 +468,7 @@ func (a *BrandingThemesApiService) ReadBrandingThemeDefaultExecute(r ApiReadBran
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingThemesApiService) internalReadBrandingThemeDefaultExecute(r ApiReadBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -627,8 +627,12 @@ type ApiReadBrandingThemesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadBrandingThemesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadBrandingThemesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadBrandingThemesExecute(r)
+}
+
+func (r ApiReadBrandingThemesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadBrandingThemesExecuteInitialPage(r)
 }
 
 /*
@@ -648,7 +652,11 @@ func (a *BrandingThemesApiService) ReadBrandingThemes(ctx context.Context, envir
 
 // Execute executes the request
 //  @return EntityArray
-func (a *BrandingThemesApiService) ReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
+func (a *BrandingThemesApiService) ReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *BrandingThemesApiService) ReadBrandingThemesExecuteInitialPage(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -663,7 +671,7 @@ func (a *BrandingThemesApiService) ReadBrandingThemesExecute(r ApiReadBrandingTh
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingThemesApiService) internalReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -860,7 +868,7 @@ func (a *BrandingThemesApiService) ReadOneBrandingThemeExecute(r ApiReadOneBrand
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingThemesApiService) internalReadOneBrandingThemeExecute(r ApiReadOneBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1064,7 +1072,7 @@ func (a *BrandingThemesApiService) UpdateBrandingThemeExecute(r ApiUpdateBrandin
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingThemesApiService) internalUpdateBrandingThemeExecute(r ApiUpdateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -1270,7 +1278,7 @@ func (a *BrandingThemesApiService) UpdateBrandingThemeDefaultExecute(r ApiUpdate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingThemesApiService) internalUpdateBrandingThemeDefaultExecute(r ApiUpdateBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

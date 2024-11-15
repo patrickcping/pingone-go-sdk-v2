@@ -28,7 +28,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    limit := int32(1) // int32 |  (optional)
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     samplePeriod := int32(1) // int32 |  (optional)
     samplePeriodCount := int32(100) // int32 |  (optional)
     filter := "occurredAt ge "2019-10-03T00:00:00Z""" // string |  (optional)
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **int32** |  | 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **samplePeriod** | **int32** |  | 
  **samplePeriodCount** | **int32** |  | 
  **filter** | **string** |  | 

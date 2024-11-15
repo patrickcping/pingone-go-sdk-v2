@@ -50,6 +50,12 @@ var (
 		repl              string
 	}{
 
+		{
+			fileSelectPattern: "*Api.md",
+			pattern:           `PACKAGENAME`,
+			repl:              `management`,
+		},
+
 		// Password policy model
 		{
 			fileSelectPattern: "model_password_policy_min_characters.go",

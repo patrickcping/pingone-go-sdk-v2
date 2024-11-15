@@ -74,7 +74,7 @@ func (a *LanguageLocalizationStatusApiService) CreateLanguageLocalizationStatusE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguageLocalizationStatusApiService) internalCreateLanguageLocalizationStatusExecute(r ApiCreateLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *LanguageLocalizationStatusApiService) DeleteLanguageLocalizationStatusE
 	)
 	return response, err
 }
-			
+
 func (a *LanguageLocalizationStatusApiService) internalDeleteLanguageLocalizationStatusExecute(r ApiDeleteLanguageLocalizationStatusRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -476,7 +476,7 @@ func (a *LanguageLocalizationStatusApiService) ReadLanguageLocalizationStatusExe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguageLocalizationStatusApiService) internalReadLanguageLocalizationStatusExecute(r ApiReadLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +677,7 @@ func (a *LanguageLocalizationStatusApiService) ReadOneLanguageLocalizationStatus
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguageLocalizationStatusApiService) internalReadOneLanguageLocalizationStatusExecute(r ApiReadOneLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +885,7 @@ func (a *LanguageLocalizationStatusApiService) UpdateLanguageLocalizationStatusE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguageLocalizationStatusApiService) internalUpdateLanguageLocalizationStatusExecute(r ApiUpdateLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

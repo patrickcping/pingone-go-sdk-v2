@@ -70,7 +70,7 @@ func (a *TotalIdentitiesApiService) EnvironmentsEnvironmentIDTotalIdentitiesGetE
 	)
 	return response, err
 }
-			
+
 func (a *TotalIdentitiesApiService) internalEnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r ApiEnvironmentsEnvironmentIDTotalIdentitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

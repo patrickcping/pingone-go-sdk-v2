@@ -74,7 +74,7 @@ func (a *ApplicationRolePermissionsApiService) CreateApplicationRolePermissionEx
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePermissionExecute(r ApiCreateApplicationRolePermissionRequest) (*ApplicationRolePermission, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ApplicationRolePermissionsApiService) DeleteApplicationRolePermissionEx
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePermissionExecute(r ApiDeleteApplicationRolePermissionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadApplicationRolePermissionsRequest struct {
 	applicationRoleID string
 }
 
-func (r ApiReadApplicationRolePermissionsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadApplicationRolePermissionsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadApplicationRolePermissionsExecute(r)
+}
+
+func (r ApiReadApplicationRolePermissionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadApplicationRolePermissionsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissions(ct
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecuteInitialPage(r ApiReadApplicationRolePermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

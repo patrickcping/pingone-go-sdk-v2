@@ -71,7 +71,7 @@ func (a *RiskEvaluationsApiService) CreateRiskEvaluationExecute(r ApiCreateRiskE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCreateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -281,7 +281,7 @@ func (a *RiskEvaluationsApiService) ReadOneRiskEvaluationExecute(r ApiReadOneRis
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiReadOneRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -485,7 +485,7 @@ func (a *RiskEvaluationsApiService) UpdateRiskEvaluationExecute(r ApiUpdateRiskE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpdateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

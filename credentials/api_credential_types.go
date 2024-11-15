@@ -71,7 +71,7 @@ func (a *CredentialTypesApiService) CreateCredentialTypeExecute(r ApiCreateCrede
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCreateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -269,7 +269,7 @@ func (a *CredentialTypesApiService) DeleteCredentialTypeExecute(r ApiDeleteCrede
 	)
 	return response, err
 }
-			
+
 func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -418,8 +418,12 @@ type ApiReadAllCredentialTypesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllCredentialTypesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllCredentialTypesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllCredentialTypesExecute(r)
+}
+
+func (r ApiReadAllCredentialTypesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllCredentialTypesExecuteInitialPage(r)
 }
 
 /*
@@ -439,7 +443,11 @@ func (a *CredentialTypesApiService) ReadAllCredentialTypes(ctx context.Context, 
 
 // Execute executes the request
 //  @return EntityArray
-func (a *CredentialTypesApiService) ReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) (*EntityArray, *http.Response, error) {
+func (a *CredentialTypesApiService) ReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *CredentialTypesApiService) ReadAllCredentialTypesExecuteInitialPage(r ApiReadAllCredentialTypesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -454,7 +462,7 @@ func (a *CredentialTypesApiService) ReadAllCredentialTypesExecute(r ApiReadAllCr
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -651,7 +659,7 @@ func (a *CredentialTypesApiService) ReadOneCredentialTypeExecute(r ApiReadOneCre
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiReadOneCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -855,7 +863,7 @@ func (a *CredentialTypesApiService) UpdateCredentialTypeExecute(r ApiUpdateCrede
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

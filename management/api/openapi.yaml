@@ -471,12 +471,15 @@ paths:
         schema:
           type: string
         style: form
-      - example: "10"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          maximum: 100
+          minimum: 1
           type: integer
         style: form
       - example: -startDate
@@ -4541,6 +4544,15 @@ paths:
   /environments/{environmentID}/activities:
     get:
       parameters:
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       - example: recordedat gt "2018-08-20T00:00:00Z" AND recordedat lt "2018-08-22T23:59:00Z"
         explode: true
         in: query
@@ -4753,7 +4765,8 @@ paths:
   /environments/{environmentID}/applicationSignons:
     get:
       parameters:
-      - example: "1"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
@@ -9819,12 +9832,15 @@ paths:
         schema:
           type: string
         style: form
-      - example: "10"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          maximum: 1000
+          minimum: 1
           type: integer
         style: form
       - description: "Adding a cursor value to retrieve the next page of results,\
@@ -15279,6 +15295,15 @@ paths:
     get:
       operationId: readAllTemplates
       parameters:
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       - example: (createdAt lt "2018-08-30") and (updatedAt gt "2018-07-30")
         explode: true
         in: query
@@ -15518,6 +15543,15 @@ paths:
         schema:
           $ref: '#/components/schemas/EnumTemplateName'
         style: simple
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "400":
           content:
@@ -22616,12 +22650,15 @@ paths:
         schema:
           type: string
         style: form
-      - example: "100"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          maximum: 1000
+          minimum: 1
           type: integer
         style: form
       - description: "Adding a cursor value to retrieve the next page of results,\
@@ -26125,7 +26162,8 @@ paths:
     get:
       operationId: readAllOrganizations
       parameters:
-      - example: "1"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit

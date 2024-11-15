@@ -71,7 +71,7 @@ func (a *GroupsApiService) CreateGroupExecute(r ApiCreateGroupRequest) (*Group, 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupsApiService) internalCreateGroupExecute(r ApiCreateGroupRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *GroupsApiService) CreateGroupNestingExecute(r ApiCreateGroupNestingRequ
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupsApiService) internalCreateGroupNestingExecute(r ApiCreateGroupNestingRequest) (*GroupNesting, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -497,7 +497,7 @@ func (a *GroupsApiService) DeleteGroupExecute(r ApiDeleteGroupRequest) (*http.Re
 	)
 	return response, err
 }
-			
+
 func (a *GroupsApiService) internalDeleteGroupExecute(r ApiDeleteGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -687,7 +687,7 @@ func (a *GroupsApiService) DeleteGroupNestingExecute(r ApiDeleteGroupNestingRequ
 	)
 	return response, err
 }
-			
+
 func (a *GroupsApiService) internalDeleteGroupNestingExecute(r ApiDeleteGroupNestingRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -845,6 +845,7 @@ func (r ApiReadAllGroupsRequest) Filter(filter string) ApiReadAllGroupsRequest {
 	return r
 }
 
+// Adding a paging value to limit the number of resources displayed per page
 func (r ApiReadAllGroupsRequest) Limit(limit int32) ApiReadAllGroupsRequest {
 	r.limit = &limit
 	return r
@@ -856,8 +857,12 @@ func (r ApiReadAllGroupsRequest) Cursor(cursor string) ApiReadAllGroupsRequest {
 	return r
 }
 
-func (r ApiReadAllGroupsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllGroupsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllGroupsExecute(r)
+}
+
+func (r ApiReadAllGroupsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllGroupsExecuteInitialPage(r)
 }
 
 /*
@@ -877,7 +882,11 @@ func (a *GroupsApiService) ReadAllGroups(ctx context.Context, environmentID stri
 
 // Execute executes the request
 //  @return EntityArray
-func (a *GroupsApiService) ReadAllGroupsExecute(r ApiReadAllGroupsRequest) (*EntityArray, *http.Response, error) {
+func (a *GroupsApiService) ReadAllGroupsExecute(r ApiReadAllGroupsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *GroupsApiService) ReadAllGroupsExecuteInitialPage(r ApiReadAllGroupsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -892,7 +901,7 @@ func (a *GroupsApiService) ReadAllGroupsExecute(r ApiReadAllGroupsRequest) (*Ent
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupsApiService) internalReadAllGroupsExecute(r ApiReadAllGroupsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1060,8 +1069,12 @@ type ApiReadGroupNestingRequest struct {
 	groupID string
 }
 
-func (r ApiReadGroupNestingRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadGroupNestingRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadGroupNestingExecute(r)
+}
+
+func (r ApiReadGroupNestingRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadGroupNestingExecuteInitialPage(r)
 }
 
 /*
@@ -1083,7 +1096,11 @@ func (a *GroupsApiService) ReadGroupNesting(ctx context.Context, environmentID s
 
 // Execute executes the request
 //  @return EntityArray
-func (a *GroupsApiService) ReadGroupNestingExecute(r ApiReadGroupNestingRequest) (*EntityArray, *http.Response, error) {
+func (a *GroupsApiService) ReadGroupNestingExecute(r ApiReadGroupNestingRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *GroupsApiService) ReadGroupNestingExecuteInitialPage(r ApiReadGroupNestingRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -1098,7 +1115,7 @@ func (a *GroupsApiService) ReadGroupNestingExecute(r ApiReadGroupNestingRequest)
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupsApiService) internalReadGroupNestingExecute(r ApiReadGroupNestingRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1302,7 +1319,7 @@ func (a *GroupsApiService) ReadOneGroupExecute(r ApiReadOneGroupRequest) (*Group
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupsApiService) internalReadOneGroupExecute(r ApiReadOneGroupRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1506,7 +1523,7 @@ func (a *GroupsApiService) ReadOneGroupNestingExecute(r ApiReadOneGroupNestingRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupsApiService) internalReadOneGroupNestingExecute(r ApiReadOneGroupNestingRequest) (*GroupNesting, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1711,7 +1728,7 @@ func (a *GroupsApiService) UpdateGroupExecute(r ApiUpdateGroupRequest) (*Group, 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupsApiService) internalUpdateGroupExecute(r ApiUpdateGroupRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

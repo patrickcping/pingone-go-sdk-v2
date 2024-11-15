@@ -161,11 +161,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllMFAPushCredentials
 
-> EntityArray ReadAllMFAPushCredentials(ctx, environmentID, applicationID).Execute()
-
 READ All MFA Push Credentials
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllMFAPushCredentials(ctx, environmentID, applicationID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllMFAPushCredentials(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllMFAPushCredentials``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllMFAPushCredentials`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllMFAPushCredentials`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllMFAPushCredentials(ctx, environmentID, applicationID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -188,7 +227,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllMFAPushCredentials`: EntityArray
+    // response from `ReadAllMFAPushCredentials`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials`: %v\n", resp)
 }
 ```
@@ -214,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

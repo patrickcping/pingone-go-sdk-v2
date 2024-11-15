@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadGatewayRoleAssignments
 
-> EntityArray ReadGatewayRoleAssignments(ctx, environmentID, gatewayID).Execute()
-
 READ Gateway Role Assignments
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadGatewayRoleAssignments(ctx, environmentID, gatewayID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadGatewayRoleAssignments(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadGatewayRoleAssignments``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadGatewayRoleAssignments`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadGatewayRoleAssignments`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadGatewayRoleAssignments(ctx, environmentID, gatewayID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GatewayRoleAssignmentsApi.ReadGatewayRoleAssignments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadGatewayRoleAssignments`: EntityArray
+    // response from `ReadGatewayRoleAssignments`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `GatewayRoleAssignmentsApi.ReadGatewayRoleAssignments`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

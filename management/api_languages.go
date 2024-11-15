@@ -71,7 +71,7 @@ func (a *LanguagesApiService) CreateLanguageExecute(r ApiCreateLanguageRequest) 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguagesApiService) internalCreateLanguageExecute(r ApiCreateLanguageRequest) (*Language, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *LanguagesApiService) DeleteLanguageExecute(r ApiDeleteLanguageRequest) 
 	)
 	return response, err
 }
-			
+
 func (a *LanguagesApiService) internalDeleteLanguageExecute(r ApiDeleteLanguageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadLanguagesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadLanguagesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadLanguagesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadLanguagesExecute(r)
+}
+
+func (r ApiReadLanguagesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadLanguagesExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *LanguagesApiService) ReadLanguages(ctx context.Context, environmentID s
 
 // Execute executes the request
 //  @return EntityArray
-func (a *LanguagesApiService) ReadLanguagesExecute(r ApiReadLanguagesRequest) (*EntityArray, *http.Response, error) {
+func (a *LanguagesApiService) ReadLanguagesExecute(r ApiReadLanguagesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *LanguagesApiService) ReadLanguagesExecuteInitialPage(r ApiReadLanguagesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *LanguagesApiService) ReadLanguagesExecute(r ApiReadLanguagesRequest) (*
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguagesApiService) internalReadLanguagesExecute(r ApiReadLanguagesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *LanguagesApiService) ReadOneLanguageExecute(r ApiReadOneLanguageRequest
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguagesApiService) internalReadOneLanguageExecute(r ApiReadOneLanguageRequest) (*Language, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *LanguagesApiService) UpdateLanguageExecute(r ApiUpdateLanguageRequest) 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LanguagesApiService) internalUpdateLanguageExecute(r ApiUpdateLanguageRequest) (*Language, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -157,11 +157,50 @@ Name | Type | Description  | Notes
 
 ## ReadApplicationRolePermissions
 
-> EntityArray ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).Execute()
-
 READ Application Role Permissions
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadApplicationRolePermissions(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadApplicationRolePermissions``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadApplicationRolePermissions`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadApplicationRolePermissions`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -184,7 +223,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolePermissionsApi.ReadApplicationRolePermissions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadApplicationRolePermissions`: EntityArray
+    // response from `ReadApplicationRolePermissions`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `ApplicationRolePermissionsApi.ReadApplicationRolePermissions`: %v\n", resp)
 }
 ```
@@ -210,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

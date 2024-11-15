@@ -153,11 +153,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllRiskPredictors
 
-> EntityArray ReadAllRiskPredictors(ctx, environmentID).Execute()
-
 READ All Risk Predictors
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllRiskPredictors(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllRiskPredictors(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllRiskPredictors``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllRiskPredictors`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllRiskPredictors`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllRiskPredictors(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -179,7 +218,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.ReadAllRiskPredictors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllRiskPredictors`: EntityArray
+    // response from `ReadAllRiskPredictors`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.ReadAllRiskPredictors`: %v\n", resp)
 }
 ```
@@ -203,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

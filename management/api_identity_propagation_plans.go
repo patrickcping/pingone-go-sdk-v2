@@ -71,7 +71,7 @@ func (a *IdentityPropagationPlansApiService) CreatePlanExecute(r ApiCreatePlanRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityPropagationPlansApiService) internalCreatePlanExecute(r ApiCreatePlanRequest) (*IdentityPropagationPlan, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -286,7 +286,7 @@ func (a *IdentityPropagationPlansApiService) DeletePlanExecute(r ApiDeletePlanRe
 	)
 	return response, err
 }
-			
+
 func (a *IdentityPropagationPlansApiService) internalDeletePlanExecute(r ApiDeletePlanRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -444,8 +444,12 @@ func (r ApiReadAllPlansRequest) Accept(accept string) ApiReadAllPlansRequest {
 	return r
 }
 
-func (r ApiReadAllPlansRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllPlansRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllPlansExecute(r)
+}
+
+func (r ApiReadAllPlansRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllPlansExecuteInitialPage(r)
 }
 
 /*
@@ -465,7 +469,11 @@ func (a *IdentityPropagationPlansApiService) ReadAllPlans(ctx context.Context, e
 
 // Execute executes the request
 //  @return EntityArray
-func (a *IdentityPropagationPlansApiService) ReadAllPlansExecute(r ApiReadAllPlansRequest) (*EntityArray, *http.Response, error) {
+func (a *IdentityPropagationPlansApiService) ReadAllPlansExecute(r ApiReadAllPlansRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *IdentityPropagationPlansApiService) ReadAllPlansExecuteInitialPage(r ApiReadAllPlansRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -480,7 +488,7 @@ func (a *IdentityPropagationPlansApiService) ReadAllPlansExecute(r ApiReadAllPla
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityPropagationPlansApiService) internalReadAllPlansExecute(r ApiReadAllPlansRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -686,7 +694,7 @@ func (a *IdentityPropagationPlansApiService) ReadOnePlanExecute(r ApiReadOnePlan
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityPropagationPlansApiService) internalReadOnePlanExecute(r ApiReadOnePlanRequest) (*IdentityPropagationPlan, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -893,7 +901,7 @@ func (a *IdentityPropagationPlansApiService) UpdatePlanExecute(r ApiUpdatePlanRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityPropagationPlansApiService) internalUpdatePlanExecute(r ApiUpdatePlanRequest) (*IdentityPropagationPlan, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

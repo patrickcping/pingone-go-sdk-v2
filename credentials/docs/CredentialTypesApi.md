@@ -153,11 +153,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllCredentialTypes
 
-> EntityArray ReadAllCredentialTypes(ctx, environmentID).Execute()
-
 Read All Credential Types
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllCredentialTypes(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllCredentialTypes(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllCredentialTypes``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllCredentialTypes`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllCredentialTypes`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllCredentialTypes(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -179,7 +218,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.ReadAllCredentialTypes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllCredentialTypes`: EntityArray
+    // response from `ReadAllCredentialTypes`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.ReadAllCredentialTypes`: %v\n", resp)
 }
 ```
@@ -203,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

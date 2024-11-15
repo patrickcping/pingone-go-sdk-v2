@@ -67,7 +67,7 @@ func (a *ResourceClientSecretApiService) DeletePreviousResourceSecretExecute(r A
 	)
 	return response, err
 }
-			
+
 func (a *ResourceClientSecretApiService) internalDeletePreviousResourceSecretExecute(r ApiDeletePreviousResourceSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -255,7 +255,7 @@ func (a *ResourceClientSecretApiService) ReadResourceSecretExecute(r ApiReadReso
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ResourceClientSecretApiService) internalReadResourceSecretExecute(r ApiReadResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -459,7 +459,7 @@ func (a *ResourceClientSecretApiService) UpdateResourceSecretExecute(r ApiUpdate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ResourceClientSecretApiService) internalUpdateResourceSecretExecute(r ApiUpdateResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

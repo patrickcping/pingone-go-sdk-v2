@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ReadAllOrganizations
 
-> EntityArray ReadAllOrganizations(ctx).Limit(limit).Execute()
+> EntityArrayPagedIterator ReadAllOrganizations(ctx).Limit(limit).Execute()
 
 READ All Organizations
 
@@ -28,7 +28,7 @@ import (
 )
 
 func main() {
-    limit := int32(1) // int32 |  (optional)
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -37,7 +37,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ReadAllOrganizations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllOrganizations`: EntityArray
+    // response from `ReadAllOrganizations`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ReadAllOrganizations`: %v\n", resp)
 }
 ```
@@ -53,11 +53,11 @@ Other parameters are passed through a pointer to a apiReadAllOrganizationsReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

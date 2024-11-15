@@ -264,7 +264,7 @@ func (a *FIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequ
 	)
 	return response, err
 }
-			
+
 func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -413,8 +413,12 @@ type ApiReadFidoDevicesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadFidoDevicesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadFidoDevicesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadFidoDevicesExecute(r)
+}
+
+func (r ApiReadFidoDevicesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadFidoDevicesExecuteInitialPage(r)
 }
 
 /*
@@ -434,7 +438,11 @@ func (a *FIDODeviceApiService) ReadFidoDevices(ctx context.Context, environmentI
 
 // Execute executes the request
 //  @return EntityArray
-func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *FIDODeviceApiService) ReadFidoDevicesExecuteInitialPage(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -449,7 +457,7 @@ func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesReques
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

@@ -74,7 +74,7 @@ func (a *ApplicationAttributeMappingApiService) CreateApplicationAttributeMappin
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationAttributeMappingApiService) internalCreateApplicationAttributeMappingExecute(r ApiCreateApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ApplicationAttributeMappingApiService) DeleteApplicationAttributeMappin
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationAttributeMappingApiService) internalDeleteApplicationAttributeMappingExecute(r ApiDeleteApplicationAttributeMappingRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllApplicationAttributeMappingsRequest struct {
 	applicationID string
 }
 
-func (r ApiReadAllApplicationAttributeMappingsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllApplicationAttributeMappingsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllApplicationAttributeMappingsExecute(r)
+}
+
+func (r ApiReadAllApplicationAttributeMappingsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllApplicationAttributeMappingsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ApplicationAttributeMappingApiService) ReadAllApplicationAttributeMappi
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationAttributeMappingApiService) ReadAllApplicationAttributeMappingsExecute(r ApiReadAllApplicationAttributeMappingsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationAttributeMappingApiService) ReadAllApplicationAttributeMappingsExecute(r ApiReadAllApplicationAttributeMappingsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationAttributeMappingApiService) ReadAllApplicationAttributeMappingsExecuteInitialPage(r ApiReadAllApplicationAttributeMappingsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ApplicationAttributeMappingApiService) ReadAllApplicationAttributeMappi
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationAttributeMappingApiService) internalReadAllApplicationAttributeMappingsExecute(r ApiReadAllApplicationAttributeMappingsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *ApplicationAttributeMappingApiService) ReadOneApplicationAttributeMappi
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationAttributeMappingApiService) internalReadOneApplicationAttributeMappingExecute(r ApiReadOneApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *ApplicationAttributeMappingApiService) UpdateApplicationAttributeMappin
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationAttributeMappingApiService) internalUpdateApplicationAttributeMappingExecute(r ApiUpdateApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

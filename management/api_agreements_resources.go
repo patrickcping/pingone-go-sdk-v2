@@ -71,7 +71,7 @@ func (a *AgreementsResourcesApiService) CreateAgreementExecute(r ApiCreateAgreem
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementsResourcesApiService) internalCreateAgreementExecute(r ApiCreateAgreementRequest) (*Agreement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *AgreementsResourcesApiService) DeleteAgreementExecute(r ApiDeleteAgreem
 	)
 	return response, err
 }
-			
+
 func (a *AgreementsResourcesApiService) internalDeleteAgreementExecute(r ApiDeleteAgreementRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllAgreementsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllAgreementsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllAgreementsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllAgreementsExecute(r)
+}
+
+func (r ApiReadAllAgreementsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllAgreementsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *AgreementsResourcesApiService) ReadAllAgreements(ctx context.Context, e
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AgreementsResourcesApiService) ReadAllAgreementsExecute(r ApiReadAllAgreementsRequest) (*EntityArray, *http.Response, error) {
+func (a *AgreementsResourcesApiService) ReadAllAgreementsExecute(r ApiReadAllAgreementsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AgreementsResourcesApiService) ReadAllAgreementsExecuteInitialPage(r ApiReadAllAgreementsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *AgreementsResourcesApiService) ReadAllAgreementsExecute(r ApiReadAllAgr
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementsResourcesApiService) internalReadAllAgreementsExecute(r ApiReadAllAgreementsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *AgreementsResourcesApiService) ReadOneAgreementExecute(r ApiReadOneAgre
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementsResourcesApiService) internalReadOneAgreementExecute(r ApiReadOneAgreementRequest) (*Agreement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *AgreementsResourcesApiService) UpdateAgreementExecute(r ApiUpdateAgreem
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementsResourcesApiService) internalUpdateAgreementExecute(r ApiUpdateAgreementRequest) (*Agreement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

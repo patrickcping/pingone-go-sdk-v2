@@ -232,11 +232,50 @@ Name | Type | Description  | Notes
 
 ## ReadUserRoleAssignments
 
-> EntityArray ReadUserRoleAssignments(ctx, environmentID, userID).Execute()
-
 READ Role Assignments
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadUserRoleAssignments(ctx, environmentID, userID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadUserRoleAssignments(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadUserRoleAssignments``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadUserRoleAssignments`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadUserRoleAssignments`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadUserRoleAssignments(ctx, environmentID, userID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -259,7 +298,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserRoleAssignmentsApi.ReadUserRoleAssignments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadUserRoleAssignments`: EntityArray
+    // response from `ReadUserRoleAssignments`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `UserRoleAssignmentsApi.ReadUserRoleAssignments`: %v\n", resp)
 }
 ```
@@ -285,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

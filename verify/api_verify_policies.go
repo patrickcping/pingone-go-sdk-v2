@@ -71,7 +71,7 @@ func (a *VerifyPoliciesApiService) CreateVerifyPolicyExecute(r ApiCreateVerifyPo
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPo
 	)
 	return response, err
 }
-			
+
 func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllVerifyPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllVerifyPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllVerifyPoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllVerifyPoliciesExecute(r)
+}
+
+func (r ApiReadAllVerifyPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllVerifyPoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPolicies(ctx context.Context, en
 
 // Execute executes the request
 //  @return EntityArray
-func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecuteInitialPage(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVeri
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *VerifyPoliciesApiService) ReadOneVerifyPolicyExecute(r ApiReadOneVerify
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *VerifyPoliciesApiService) UpdateVerifyPolicyExecute(r ApiUpdateVerifyPo
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

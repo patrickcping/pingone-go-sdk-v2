@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllApplicationAttributeMappings
 
-> EntityArray ReadAllApplicationAttributeMappings(ctx, environmentID, applicationID).Execute()
-
 READ All Application Attribute Mappings
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllApplicationAttributeMappings(ctx, environmentID, applicationID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllApplicationAttributeMappings(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllApplicationAttributeMappings``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllApplicationAttributeMappings`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllApplicationAttributeMappings`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllApplicationAttributeMappings(ctx, environmentID, applicationID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllApplicationAttributeMappings`: EntityArray
+    // response from `ReadAllApplicationAttributeMappings`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `ApplicationAttributeMappingApi.ReadAllApplicationAttributeMappings`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

@@ -67,7 +67,7 @@ func (a *ApplicationSecretApiService) DeletePreviousApplicationSecretExecute(r A
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationSecretApiService) internalDeletePreviousApplicationSecretExecute(r ApiDeletePreviousApplicationSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -255,7 +255,7 @@ func (a *ApplicationSecretApiService) ReadApplicationSecretExecute(r ApiReadAppl
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationSecretApiService) internalReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -459,7 +459,7 @@ func (a *ApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

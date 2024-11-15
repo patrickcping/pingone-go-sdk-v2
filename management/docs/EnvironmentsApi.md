@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllEnvironments
 
-> EntityArray ReadAllEnvironments(ctx).Limit(limit).Cursor(cursor).Filter(filter).Execute()
+> EntityArrayPagedIterator ReadAllEnvironments(ctx).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 
 READ All Environments
 
@@ -173,7 +173,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsApi.ReadAllEnvironments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllEnvironments`: EntityArray
+    // response from `ReadAllEnvironments`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentsApi.ReadAllEnvironments`: %v\n", resp)
 }
 ```
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllIntegrationMetadata
 
-> EntityArray ReadAllIntegrationMetadata(ctx, environmentID).Filter(filter).Expand(expand).Execute()
+> EntityArrayPagedIterator ReadAllIntegrationMetadata(ctx, environmentID).Filter(filter).Expand(expand).Execute()
 
 READ All Integration Metadata
 
@@ -118,7 +118,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadAllIntegrationMetadata``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllIntegrationMetadata`: EntityArray
+    // response from `ReadAllIntegrationMetadata`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadAllIntegrationMetadata`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllIntegrationVersionAttributes
 
-> EntityArray ReadAllIntegrationVersionAttributes(ctx, environmentID, integrationID, integrationVersionID).Execute()
+> EntityArrayPagedIterator ReadAllIntegrationVersionAttributes(ctx, environmentID, integrationID, integrationVersionID).Execute()
 
 Read All Attributes of an Integration Version (SAML only)
 
@@ -190,7 +190,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadAllIntegrationVersionAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllIntegrationVersionAttributes`: EntityArray
+    // response from `ReadAllIntegrationVersionAttributes`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadAllIntegrationVersionAttributes`: %v\n", resp)
 }
 ```
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -236,11 +236,50 @@ Name | Type | Description  | Notes
 
 ## ReadIntegrationVersionMetadata
 
-> EntityArray ReadIntegrationVersionMetadata(ctx, environmentID, integrationID).Execute()
-
 Read All Integration Versions Metadata
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadIntegrationVersionMetadata(ctx, environmentID, integrationID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadIntegrationVersionMetadata(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadIntegrationVersionMetadata``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadIntegrationVersionMetadata`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadIntegrationVersionMetadata`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadIntegrationVersionMetadata(ctx, environmentID, integrationID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -263,7 +302,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.ReadIntegrationVersionMetadata``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadIntegrationVersionMetadata`: EntityArray
+    // response from `ReadIntegrationVersionMetadata`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `IntegrationCatalogApi.ReadIntegrationVersionMetadata`: %v\n", resp)
 }
 ```
@@ -289,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

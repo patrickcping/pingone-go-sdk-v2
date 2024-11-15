@@ -70,7 +70,7 @@ func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAg
 	)
 	return response, err
 }
-			
+
 func (a *UserAgreementConsentsApiService) internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -267,7 +267,7 @@ func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAg
 	)
 	return response, err
 }
-			
+
 func (a *UserAgreementConsentsApiService) internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -469,7 +469,7 @@ func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAg
 	)
 	return response, err
 }
-			
+
 func (a *UserAgreementConsentsApiService) internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

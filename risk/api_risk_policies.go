@@ -71,7 +71,7 @@ func (a *RiskPoliciesApiService) CreateRiskPolicySetExecute(r ApiCreateRiskPolic
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *RiskPoliciesApiService) DeleteRiskPolicySetExecute(r ApiDeleteRiskPolic
 	)
 	return response, err
 }
-			
+
 func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -468,7 +468,7 @@ func (a *RiskPoliciesApiService) ReadOneRiskPolicySetExecute(r ApiReadOneRiskPol
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -627,8 +627,12 @@ type ApiReadRiskPolicySetsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadRiskPolicySetsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadRiskPolicySetsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadRiskPolicySetsExecute(r)
+}
+
+func (r ApiReadRiskPolicySetsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadRiskPolicySetsExecuteInitialPage(r)
 }
 
 /*
@@ -648,7 +652,11 @@ func (a *RiskPoliciesApiService) ReadRiskPolicySets(ctx context.Context, environ
 
 // Execute executes the request
 //  @return EntityArray
-func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
+func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecuteInitialPage(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -663,7 +671,7 @@ func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *RiskPoliciesApiService) UpdateRiskPolicySetExecute(r ApiUpdateRiskPolic
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
