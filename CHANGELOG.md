@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2024-11-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.4
     * **Note** Upgraded go version to 1.23 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#395](https://github.com/patrickcping/pingone-go-sdk-v2/pull/395)
