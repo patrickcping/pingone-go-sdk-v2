@@ -157,11 +157,11 @@ READ All Custom Roles
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIteratorPagedIteratorPagedIteratorPagedIterator ReadAllCustomAdminRoles(ctx, environmentID).Execute()
+> EntityArrayPagedIterator ReadAllCustomAdminRoles(ctx, environmentID).Execute()
 
 ### Initial Page Response
 
-> EntityArrayPagedIteratorPagedIteratorPagedIterator ReadAllCustomAdminRoles(ctx, environmentID).ExecuteInitialPage()
+> EntityArray ReadAllCustomAdminRoles(ctx, environmentID).ExecuteInitialPage()
 
 ### Example
 
@@ -185,7 +185,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomRolesApi.ReadAllCustomAdminRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllCustomAdminRoles`: EntityArrayPagedIteratorPagedIteratorPagedIteratorPagedIterator
+    // response from `ReadAllCustomAdminRoles`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CustomRolesApi.ReadAllCustomAdminRoles`: %v\n", resp)
 }
 ```
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIteratorPagedIteratorPagedIteratorPagedIterator**](EntityArrayPagedIteratorPagedIteratorPagedIteratorPagedIterator.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
