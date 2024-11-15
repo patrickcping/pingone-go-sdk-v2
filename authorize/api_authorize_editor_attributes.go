@@ -73,7 +73,7 @@ func (a *AuthorizeEditorAttributesApiService) CreateAttributeExecute(r ApiCreate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorAttributesApiService) internalCreateAttributeExecute(r ApiCreateAttributeRequest) (*AuthorizeEditorDataDefinitionsAttributeDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -297,7 +297,7 @@ func (a *AuthorizeEditorAttributesApiService) DeleteAttributeExecute(r ApiDelete
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizeEditorAttributesApiService) internalDeleteAttributeExecute(r ApiDeleteAttributeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -508,7 +508,7 @@ func (a *AuthorizeEditorAttributesApiService) GetAttributeExecute(r ApiGetAttrib
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorAttributesApiService) internalGetAttributeExecute(r ApiGetAttributeRequest) (*AuthorizeEditorDataDefinitionsAttributeDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -709,8 +709,12 @@ func (r ApiListAttributesRequest) Cursor(cursor string) ApiListAttributesRequest
 	return r
 }
 
-func (r ApiListAttributesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListAttributesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListAttributesExecute(r)
+}
+
+func (r ApiListAttributesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListAttributesExecuteInitialPage(r)
 }
 
 /*
@@ -732,7 +736,11 @@ func (a *AuthorizeEditorAttributesApiService) ListAttributes(ctx context.Context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorAttributesApiService) ListAttributesExecute(r ApiListAttributesRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorAttributesApiService) ListAttributesExecute(r ApiListAttributesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorAttributesApiService) ListAttributesExecuteInitialPage(r ApiListAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -747,7 +755,7 @@ func (a *AuthorizeEditorAttributesApiService) ListAttributesExecute(r ApiListAtt
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorAttributesApiService) internalListAttributesExecute(r ApiListAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -985,7 +993,7 @@ func (a *AuthorizeEditorAttributesApiService) TestAttributeExecute(r ApiTestAttr
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorAttributesApiService) internalTestAttributeExecute(r ApiTestAttributeRequest) (*AuthorizeEditorDataEntityTestResponseDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1217,7 +1225,7 @@ func (a *AuthorizeEditorAttributesApiService) UpdateAttributeExecute(r ApiUpdate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorAttributesApiService) internalUpdateAttributeExecute(r ApiUpdateAttributeRequest) (*AuthorizeEditorDataDefinitionsAttributeDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

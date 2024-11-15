@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## ListRules
 
-> EntityArray ListRules(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ListRules(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
 
 List Rules
 
@@ -265,7 +265,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorRulesApi.ListRules``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListRules`: EntityArray
+    // response from `ListRules`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorRulesApi.ListRules`: %v\n", resp)
 }
 ```
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

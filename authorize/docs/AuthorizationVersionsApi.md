@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## ListVersions
 
-> EntityArray ListVersions(ctx, environmentId).Filter(filter).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
+> EntityArrayPagedIterator ListVersions(ctx, environmentId).Filter(filter).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
 
 List Authorize Versions
 
@@ -340,7 +340,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.ListVersions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListVersions`: EntityArray
+    // response from `ListVersions`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `AuthorizationVersionsApi.ListVersions`: %v\n", resp)
 }
 ```
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

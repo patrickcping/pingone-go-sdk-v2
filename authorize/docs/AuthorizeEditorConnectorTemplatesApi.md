@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## ListConnectorTemplates
 
-> EntityArray ListConnectorTemplates(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ListConnectorTemplates(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
 
 List Connector Templates
 
@@ -114,7 +114,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorConnectorTemplatesApi.ListConnectorTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListConnectorTemplates`: EntityArray
+    // response from `ListConnectorTemplates`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorConnectorTemplatesApi.ListConnectorTemplates`: %v\n", resp)
 }
 ```
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

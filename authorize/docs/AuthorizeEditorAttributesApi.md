@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## ListAttributes
 
-> EntityArray ListAttributes(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ListAttributes(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 List Attributes
 
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorAttributesApi.ListAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAttributes`: EntityArray
+    // response from `ListAttributes`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorAttributesApi.ListAttributes`: %v\n", resp)
 }
 ```
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

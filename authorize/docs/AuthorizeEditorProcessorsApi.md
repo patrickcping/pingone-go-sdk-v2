@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## ListProcessors
 
-> EntityArray ListProcessors(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ListProcessors(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 List Processors
 
@@ -261,7 +261,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorProcessorsApi.ListProcessors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListProcessors`: EntityArray
+    // response from `ListProcessors`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorProcessorsApi.ListProcessors`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

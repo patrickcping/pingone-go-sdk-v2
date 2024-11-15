@@ -73,7 +73,7 @@ func (a *AuthorizeEditorConditionsApiService) CreateConditionExecute(r ApiCreate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorConditionsApiService) internalCreateConditionExecute(r ApiCreateConditionRequest) (*AuthorizeEditorDataDefinitionsConditionDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -297,7 +297,7 @@ func (a *AuthorizeEditorConditionsApiService) DeleteConditionExecute(r ApiDelete
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizeEditorConditionsApiService) internalDeleteConditionExecute(r ApiDeleteConditionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -508,7 +508,7 @@ func (a *AuthorizeEditorConditionsApiService) GetConditionExecute(r ApiGetCondit
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorConditionsApiService) internalGetConditionExecute(r ApiGetConditionRequest) (*AuthorizeEditorDataDefinitionsConditionDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -709,8 +709,12 @@ func (r ApiListConditionsRequest) Cursor(cursor string) ApiListConditionsRequest
 	return r
 }
 
-func (r ApiListConditionsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListConditionsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListConditionsExecute(r)
+}
+
+func (r ApiListConditionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListConditionsExecuteInitialPage(r)
 }
 
 /*
@@ -732,7 +736,11 @@ func (a *AuthorizeEditorConditionsApiService) ListConditions(ctx context.Context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorConditionsApiService) ListConditionsExecute(r ApiListConditionsRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorConditionsApiService) ListConditionsExecute(r ApiListConditionsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorConditionsApiService) ListConditionsExecuteInitialPage(r ApiListConditionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -747,7 +755,7 @@ func (a *AuthorizeEditorConditionsApiService) ListConditionsExecute(r ApiListCon
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorConditionsApiService) internalListConditionsExecute(r ApiListConditionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -985,7 +993,7 @@ func (a *AuthorizeEditorConditionsApiService) TestConditionExecute(r ApiTestCond
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorConditionsApiService) internalTestConditionExecute(r ApiTestConditionRequest) (*AuthorizeEditorDataEntityTestResponseDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1217,7 +1225,7 @@ func (a *AuthorizeEditorConditionsApiService) UpdateConditionExecute(r ApiUpdate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorConditionsApiService) internalUpdateConditionExecute(r ApiUpdateConditionRequest) (*AuthorizeEditorDataDefinitionsConditionDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

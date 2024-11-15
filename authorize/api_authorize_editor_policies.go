@@ -79,7 +79,7 @@ func (a *AuthorizeEditorPoliciesApiService) CreatePolicyExecute(r ApiCreatePolic
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorPoliciesApiService) internalCreatePolicyExecute(r ApiCreatePolicyRequest) (*AuthorizeEditorDataPoliciesReferenceablePolicyDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -306,7 +306,7 @@ func (a *AuthorizeEditorPoliciesApiService) DeletePolicyExecute(r ApiDeletePolic
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizeEditorPoliciesApiService) internalDeletePolicyExecute(r ApiDeletePolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -523,7 +523,7 @@ func (a *AuthorizeEditorPoliciesApiService) GetPolicyExecute(r ApiGetPolicyReque
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorPoliciesApiService) internalGetPolicyExecute(r ApiGetPolicyRequest) (*AuthorizeEditorDataPoliciesReferenceablePolicyDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -720,8 +720,12 @@ func (r ApiListRootPoliciesRequest) Cursor(cursor string) ApiListRootPoliciesReq
 	return r
 }
 
-func (r ApiListRootPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListRootPoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListRootPoliciesExecute(r)
+}
+
+func (r ApiListRootPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListRootPoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -743,7 +747,11 @@ func (a *AuthorizeEditorPoliciesApiService) ListRootPolicies(ctx context.Context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorPoliciesApiService) ListRootPoliciesExecute(r ApiListRootPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorPoliciesApiService) ListRootPoliciesExecute(r ApiListRootPoliciesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorPoliciesApiService) ListRootPoliciesExecuteInitialPage(r ApiListRootPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -758,7 +766,7 @@ func (a *AuthorizeEditorPoliciesApiService) ListRootPoliciesExecute(r ApiListRoo
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorPoliciesApiService) internalListRootPoliciesExecute(r ApiListRootPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -993,7 +1001,7 @@ func (a *AuthorizeEditorPoliciesApiService) TestPolicyExecute(r ApiTestPolicyReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorPoliciesApiService) internalTestPolicyExecute(r ApiTestPolicyRequest) (*AuthorizeEditorDataEntityTestResponseDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1231,7 +1239,7 @@ func (a *AuthorizeEditorPoliciesApiService) UpdatePolicyExecute(r ApiUpdatePolic
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorPoliciesApiService) internalUpdatePolicyExecute(r ApiUpdatePolicyRequest) (*AuthorizeEditorDataPoliciesReferenceablePolicyDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

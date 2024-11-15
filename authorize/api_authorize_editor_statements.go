@@ -79,7 +79,7 @@ func (a *AuthorizeEditorStatementsApiService) CreateStatementExecute(r ApiCreate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorStatementsApiService) internalCreateStatementExecute(r ApiCreateStatementRequest) (*AuthorizeEditorDataStatementsReferenceableStatementDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -306,7 +306,7 @@ func (a *AuthorizeEditorStatementsApiService) DeleteStatementExecute(r ApiDelete
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizeEditorStatementsApiService) internalDeleteStatementExecute(r ApiDeleteStatementRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -523,7 +523,7 @@ func (a *AuthorizeEditorStatementsApiService) GetStatementExecute(r ApiGetStatem
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorStatementsApiService) internalGetStatementExecute(r ApiGetStatementRequest) (*AuthorizeEditorDataStatementsReferenceableStatementDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -720,8 +720,12 @@ func (r ApiListStatementsRequest) Cursor(cursor string) ApiListStatementsRequest
 	return r
 }
 
-func (r ApiListStatementsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListStatementsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListStatementsExecute(r)
+}
+
+func (r ApiListStatementsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListStatementsExecuteInitialPage(r)
 }
 
 /*
@@ -743,7 +747,11 @@ func (a *AuthorizeEditorStatementsApiService) ListStatements(ctx context.Context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorStatementsApiService) ListStatementsExecute(r ApiListStatementsRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorStatementsApiService) ListStatementsExecute(r ApiListStatementsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorStatementsApiService) ListStatementsExecuteInitialPage(r ApiListStatementsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -758,7 +766,7 @@ func (a *AuthorizeEditorStatementsApiService) ListStatementsExecute(r ApiListSta
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorStatementsApiService) internalListStatementsExecute(r ApiListStatementsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -999,7 +1007,7 @@ func (a *AuthorizeEditorStatementsApiService) UpdateStatementExecute(r ApiUpdate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorStatementsApiService) internalUpdateStatementExecute(r ApiUpdateStatementRequest) (*AuthorizeEditorDataStatementsReferenceableStatementDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

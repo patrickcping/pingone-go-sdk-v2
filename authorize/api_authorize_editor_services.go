@@ -73,7 +73,7 @@ func (a *AuthorizeEditorServicesApiService) CreateServiceExecute(r ApiCreateServ
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorServicesApiService) internalCreateServiceExecute(r ApiCreateServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -297,7 +297,7 @@ func (a *AuthorizeEditorServicesApiService) DeleteServiceExecute(r ApiDeleteServ
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizeEditorServicesApiService) internalDeleteServiceExecute(r ApiDeleteServiceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -508,7 +508,7 @@ func (a *AuthorizeEditorServicesApiService) GetServiceExecute(r ApiGetServiceReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorServicesApiService) internalGetServiceExecute(r ApiGetServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -709,8 +709,12 @@ func (r ApiListServicesRequest) Cursor(cursor string) ApiListServicesRequest {
 	return r
 }
 
-func (r ApiListServicesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListServicesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListServicesExecute(r)
+}
+
+func (r ApiListServicesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListServicesExecuteInitialPage(r)
 }
 
 /*
@@ -732,7 +736,11 @@ func (a *AuthorizeEditorServicesApiService) ListServices(ctx context.Context, en
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorServicesApiService) ListServicesExecute(r ApiListServicesRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorServicesApiService) ListServicesExecute(r ApiListServicesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorServicesApiService) ListServicesExecuteInitialPage(r ApiListServicesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -747,7 +755,7 @@ func (a *AuthorizeEditorServicesApiService) ListServicesExecute(r ApiListService
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorServicesApiService) internalListServicesExecute(r ApiListServicesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -985,7 +993,7 @@ func (a *AuthorizeEditorServicesApiService) TestServiceExecute(r ApiTestServiceR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorServicesApiService) internalTestServiceExecute(r ApiTestServiceRequest) (*AuthorizeEditorDataEntityTestResponseDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1217,7 +1225,7 @@ func (a *AuthorizeEditorServicesApiService) UpdateServiceExecute(r ApiUpdateServ
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorServicesApiService) internalUpdateServiceExecute(r ApiUpdateServiceRequest) (*AuthorizeEditorDataDefinitionsServiceDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

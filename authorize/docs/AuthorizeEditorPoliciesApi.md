@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## ListRootPolicies
 
-> EntityArray ListRootPolicies(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ListRootPolicies(ctx, environmentID).Limit(limit).Cursor(cursor).Execute()
 
 List Root Policies
 
@@ -265,7 +265,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizeEditorPoliciesApi.ListRootPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListRootPolicies`: EntityArray
+    // response from `ListRootPolicies`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `AuthorizeEditorPoliciesApi.ListRootPolicies`: %v\n", resp)
 }
 ```
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

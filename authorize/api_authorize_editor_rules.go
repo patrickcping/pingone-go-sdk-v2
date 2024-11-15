@@ -79,7 +79,7 @@ func (a *AuthorizeEditorRulesApiService) CreateRuleExecute(r ApiCreateRuleReques
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorRulesApiService) internalCreateRuleExecute(r ApiCreateRuleRequest) (*AuthorizeEditorDataRulesReferenceableRuleDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -306,7 +306,7 @@ func (a *AuthorizeEditorRulesApiService) DeleteRuleExecute(r ApiDeleteRuleReques
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizeEditorRulesApiService) internalDeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -523,7 +523,7 @@ func (a *AuthorizeEditorRulesApiService) GetRuleExecute(r ApiGetRuleRequest) (*A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorRulesApiService) internalGetRuleExecute(r ApiGetRuleRequest) (*AuthorizeEditorDataRulesReferenceableRuleDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -720,8 +720,12 @@ func (r ApiListRulesRequest) Cursor(cursor string) ApiListRulesRequest {
 	return r
 }
 
-func (r ApiListRulesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListRulesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListRulesExecute(r)
+}
+
+func (r ApiListRulesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListRulesExecuteInitialPage(r)
 }
 
 /*
@@ -743,7 +747,11 @@ func (a *AuthorizeEditorRulesApiService) ListRules(ctx context.Context, environm
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorRulesApiService) ListRulesExecute(r ApiListRulesRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorRulesApiService) ListRulesExecute(r ApiListRulesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorRulesApiService) ListRulesExecuteInitialPage(r ApiListRulesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -758,7 +766,7 @@ func (a *AuthorizeEditorRulesApiService) ListRulesExecute(r ApiListRulesRequest)
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorRulesApiService) internalListRulesExecute(r ApiListRulesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -993,7 +1001,7 @@ func (a *AuthorizeEditorRulesApiService) TestRuleExecute(r ApiTestRuleRequest) (
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorRulesApiService) internalTestRuleExecute(r ApiTestRuleRequest) (*AuthorizeEditorDataEntityTestResponseDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1231,7 +1239,7 @@ func (a *AuthorizeEditorRulesApiService) UpdateRuleExecute(r ApiUpdateRuleReques
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorRulesApiService) internalUpdateRuleExecute(r ApiUpdateRuleRequest) (*AuthorizeEditorDataRulesReferenceableRuleDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

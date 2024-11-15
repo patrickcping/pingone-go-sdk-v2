@@ -70,7 +70,7 @@ func (a *AuthorizeEditorConnectorTemplatesApiService) GetConnectorTemplateExecut
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorConnectorTemplatesApiService) internalGetConnectorTemplateExecute(r ApiGetConnectorTemplateRequest) (*AuthorizeEditorDataConnectorsConnectorTemplateDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -264,8 +264,12 @@ func (r ApiListConnectorTemplatesRequest) Cursor(cursor string) ApiListConnector
 	return r
 }
 
-func (r ApiListConnectorTemplatesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListConnectorTemplatesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListConnectorTemplatesExecute(r)
+}
+
+func (r ApiListConnectorTemplatesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListConnectorTemplatesExecuteInitialPage(r)
 }
 
 /*
@@ -287,7 +291,11 @@ func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplates(ctx
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplatesExecute(r ApiListConnectorTemplatesRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplatesExecute(r ApiListConnectorTemplatesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplatesExecuteInitialPage(r ApiListConnectorTemplatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -302,7 +310,7 @@ func (a *AuthorizeEditorConnectorTemplatesApiService) ListConnectorTemplatesExec
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorConnectorTemplatesApiService) internalListConnectorTemplatesExecute(r ApiListConnectorTemplatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

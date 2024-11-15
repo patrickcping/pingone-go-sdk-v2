@@ -73,7 +73,7 @@ func (a *AuthorizeEditorProcessorsApiService) CreateProcessorExecute(r ApiCreate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorProcessorsApiService) internalCreateProcessorExecute(r ApiCreateProcessorRequest) (*AuthorizeEditorDataDefinitionsProcessorDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -297,7 +297,7 @@ func (a *AuthorizeEditorProcessorsApiService) DeleteProcessorExecute(r ApiDelete
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizeEditorProcessorsApiService) internalDeleteProcessorExecute(r ApiDeleteProcessorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -508,7 +508,7 @@ func (a *AuthorizeEditorProcessorsApiService) GetProcessorExecute(r ApiGetProces
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorProcessorsApiService) internalGetProcessorExecute(r ApiGetProcessorRequest) (*AuthorizeEditorDataDefinitionsProcessorDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -709,8 +709,12 @@ func (r ApiListProcessorsRequest) Cursor(cursor string) ApiListProcessorsRequest
 	return r
 }
 
-func (r ApiListProcessorsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListProcessorsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListProcessorsExecute(r)
+}
+
+func (r ApiListProcessorsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListProcessorsExecuteInitialPage(r)
 }
 
 /*
@@ -732,7 +736,11 @@ func (a *AuthorizeEditorProcessorsApiService) ListProcessors(ctx context.Context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizeEditorProcessorsApiService) ListProcessorsExecute(r ApiListProcessorsRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizeEditorProcessorsApiService) ListProcessorsExecute(r ApiListProcessorsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizeEditorProcessorsApiService) ListProcessorsExecuteInitialPage(r ApiListProcessorsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -747,7 +755,7 @@ func (a *AuthorizeEditorProcessorsApiService) ListProcessorsExecute(r ApiListPro
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorProcessorsApiService) internalListProcessorsExecute(r ApiListProcessorsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -985,7 +993,7 @@ func (a *AuthorizeEditorProcessorsApiService) UpdateProcessorExecute(r ApiUpdate
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizeEditorProcessorsApiService) internalUpdateProcessorExecute(r ApiUpdateProcessorRequest) (*AuthorizeEditorDataDefinitionsProcessorDefinitionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

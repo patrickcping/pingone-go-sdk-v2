@@ -69,7 +69,7 @@ func (a *AuthorizationVersionsApiService) DeleteTagExecute(r ApiDeleteTagRequest
 	)
 	return response, err
 }
-			
+
 func (a *AuthorizationVersionsApiService) internalDeleteTagExecute(r ApiDeleteTagRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -283,7 +283,7 @@ func (a *AuthorizationVersionsApiService) GetPolicyInVersionExecute(r ApiGetPoli
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizationVersionsApiService) internalGetPolicyInVersionExecute(r ApiGetPolicyInVersionRequest) (*AuthorizeEditorDataPoliciesReferenceablePolicyDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -505,7 +505,7 @@ func (a *AuthorizationVersionsApiService) GetTagExecute(r ApiGetTagRequest) (*Au
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizationVersionsApiService) internalGetTagExecute(r ApiGetTagRequest) (*AuthorizeEditorDataTagResponseDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -726,7 +726,7 @@ func (a *AuthorizationVersionsApiService) GetVersionExecute(r ApiGetVersionReque
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizationVersionsApiService) internalGetVersionExecute(r ApiGetVersionRequest) (*AuthorizeEditorDataAuthorizationVersionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -933,8 +933,12 @@ func (r ApiListVersionsRequest) Filter2(filter2 Filter) ApiListVersionsRequest {
 	return r
 }
 
-func (r ApiListVersionsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiListVersionsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ListVersionsExecute(r)
+}
+
+func (r ApiListVersionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ListVersionsExecuteInitialPage(r)
 }
 
 /*
@@ -956,7 +960,11 @@ func (a *AuthorizationVersionsApiService) ListVersions(ctx context.Context, envi
 
 // Execute executes the request
 //  @return EntityArray
-func (a *AuthorizationVersionsApiService) ListVersionsExecute(r ApiListVersionsRequest) (*EntityArray, *http.Response, error) {
+func (a *AuthorizationVersionsApiService) ListVersionsExecute(r ApiListVersionsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *AuthorizationVersionsApiService) ListVersionsExecuteInitialPage(r ApiListVersionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -971,7 +979,7 @@ func (a *AuthorizationVersionsApiService) ListVersionsExecute(r ApiListVersionsR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizationVersionsApiService) internalListVersionsExecute(r ApiListVersionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1212,7 +1220,7 @@ func (a *AuthorizationVersionsApiService) UpdateTagExecute(r ApiUpdateTagRequest
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AuthorizationVersionsApiService) internalUpdateTagExecute(r ApiUpdateTagRequest) (*AuthorizeEditorDataTagResponseDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
