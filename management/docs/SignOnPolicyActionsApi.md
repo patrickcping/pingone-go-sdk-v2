@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllSignOnPolicyActions
 
-> EntityArray ReadAllSignOnPolicyActions(ctx, environmentID, policyID).Execute()
+> EntityArrayPagedIterator ReadAllSignOnPolicyActions(ctx, environmentID, policyID).Execute()
 
 READ All Sign-On Policy Actions
 
@@ -186,7 +186,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SignOnPolicyActionsApi.ReadAllSignOnPolicyActions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllSignOnPolicyActions`: EntityArray
+    // response from `ReadAllSignOnPolicyActions`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `SignOnPolicyActionsApi.ReadAllSignOnPolicyActions`: %v\n", resp)
 }
 ```
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

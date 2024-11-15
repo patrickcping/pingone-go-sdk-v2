@@ -67,7 +67,7 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesActivityI
 	)
 	return response, err
 }
-			
+
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesActivityIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -214,7 +214,14 @@ type ApiEnvironmentsEnvironmentIDActivitiesGetRequest struct {
 	ctx context.Context
 	ApiService *AuditActivitiesApiService
 	environmentID string
+	limit *int32
 	filter *string
+}
+
+// Adding a paging value to limit the number of resources displayed per page
+func (r ApiEnvironmentsEnvironmentIDActivitiesGetRequest) Limit(limit int32) ApiEnvironmentsEnvironmentIDActivitiesGetRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiEnvironmentsEnvironmentIDActivitiesGetRequest) Filter(filter string) ApiEnvironmentsEnvironmentIDActivitiesGetRequest {
@@ -257,7 +264,7 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesGetExecut
 	)
 	return response, err
 }
-			
+
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -277,6 +284,9 @@ func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesG
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
 	}
@@ -449,7 +459,7 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesPostExecu
 	)
 	return response, err
 }
-			
+
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesPostExecute(r ApiEnvironmentsEnvironmentIDActivitiesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

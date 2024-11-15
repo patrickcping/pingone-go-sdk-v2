@@ -68,7 +68,7 @@ func (a *GatewayCredentialsApiService) CreateGatewayCredentialExecute(r ApiCreat
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewayCredentialsApiService) internalCreateGatewayCredentialExecute(r ApiCreateGatewayCredentialRequest) (*GatewayCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -279,7 +279,7 @@ func (a *GatewayCredentialsApiService) DeleteGatewayCredentialExecute(r ApiDelet
 	)
 	return response, err
 }
-			
+
 func (a *GatewayCredentialsApiService) internalDeleteGatewayCredentialExecute(r ApiDeleteGatewayCredentialRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -430,8 +430,12 @@ type ApiReadAllGatewayCredentialsRequest struct {
 	gatewayID string
 }
 
-func (r ApiReadAllGatewayCredentialsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllGatewayCredentialsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllGatewayCredentialsExecute(r)
+}
+
+func (r ApiReadAllGatewayCredentialsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllGatewayCredentialsExecuteInitialPage(r)
 }
 
 /*
@@ -453,7 +457,11 @@ func (a *GatewayCredentialsApiService) ReadAllGatewayCredentials(ctx context.Con
 
 // Execute executes the request
 //  @return EntityArray
-func (a *GatewayCredentialsApiService) ReadAllGatewayCredentialsExecute(r ApiReadAllGatewayCredentialsRequest) (*EntityArray, *http.Response, error) {
+func (a *GatewayCredentialsApiService) ReadAllGatewayCredentialsExecute(r ApiReadAllGatewayCredentialsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *GatewayCredentialsApiService) ReadAllGatewayCredentialsExecuteInitialPage(r ApiReadAllGatewayCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -468,7 +476,7 @@ func (a *GatewayCredentialsApiService) ReadAllGatewayCredentialsExecute(r ApiRea
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewayCredentialsApiService) internalReadAllGatewayCredentialsExecute(r ApiReadAllGatewayCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -669,7 +677,7 @@ func (a *GatewayCredentialsApiService) ReadOneGatewayCredentialExecute(r ApiRead
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewayCredentialsApiService) internalReadOneGatewayCredentialExecute(r ApiReadOneGatewayCredentialRequest) (*GatewayCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

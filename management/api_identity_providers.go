@@ -71,7 +71,7 @@ func (a *IdentityProvidersApiService) CreateIdentityProviderExecute(r ApiCreateI
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityProvidersApiService) internalCreateIdentityProviderExecute(r ApiCreateIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *IdentityProvidersApiService) DeleteIdentityProviderExecute(r ApiDeleteI
 	)
 	return response, err
 }
-			
+
 func (a *IdentityProvidersApiService) internalDeleteIdentityProviderExecute(r ApiDeleteIdentityProviderRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllIdentityProvidersRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllIdentityProvidersRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllIdentityProvidersRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllIdentityProvidersExecute(r)
+}
+
+func (r ApiReadAllIdentityProvidersRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllIdentityProvidersExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *IdentityProvidersApiService) ReadAllIdentityProviders(ctx context.Conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *IdentityProvidersApiService) ReadAllIdentityProvidersExecute(r ApiReadAllIdentityProvidersRequest) (*EntityArray, *http.Response, error) {
+func (a *IdentityProvidersApiService) ReadAllIdentityProvidersExecute(r ApiReadAllIdentityProvidersRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *IdentityProvidersApiService) ReadAllIdentityProvidersExecuteInitialPage(r ApiReadAllIdentityProvidersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *IdentityProvidersApiService) ReadAllIdentityProvidersExecute(r ApiReadA
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityProvidersApiService) internalReadAllIdentityProvidersExecute(r ApiReadAllIdentityProvidersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *IdentityProvidersApiService) ReadOneIdentityProviderExecute(r ApiReadOn
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityProvidersApiService) internalReadOneIdentityProviderExecute(r ApiReadOneIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *IdentityProvidersApiService) UpdateIdentityProviderExecute(r ApiUpdateI
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *IdentityProvidersApiService) internalUpdateIdentityProviderExecute(r ApiUpdateIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -77,7 +77,7 @@ func (a *UsersApiService) CreateUserExecute(r ApiCreateUserRequest) (*User, *htt
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UsersApiService) internalCreateUserExecute(r ApiCreateUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -289,7 +289,7 @@ func (a *UsersApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Respo
 	)
 	return response, err
 }
-			
+
 func (a *UsersApiService) internalDeleteUserExecute(r ApiDeleteUserRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -476,7 +476,7 @@ func (a *UsersApiService) EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGe
 	)
 	return response, err
 }
-			
+
 func (a *UsersApiService) internalEnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -669,7 +669,7 @@ func (a *UsersApiService) EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPu
 	)
 	return response, err
 }
-			
+
 func (a *UsersApiService) internalEnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -858,7 +858,7 @@ func (a *UsersApiService) EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExe
 	)
 	return response, err
 }
-			
+
 func (a *UsersApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1051,7 +1051,7 @@ func (a *UsersApiService) EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExe
 	)
 	return response, err
 }
-			
+
 func (a *UsersApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -1210,6 +1210,7 @@ func (r ApiReadAllUsersRequest) Filter(filter string) ApiReadAllUsersRequest {
 	return r
 }
 
+// Adding a paging value to limit the number of resources displayed per page
 func (r ApiReadAllUsersRequest) Limit(limit int32) ApiReadAllUsersRequest {
 	r.limit = &limit
 	return r
@@ -1221,8 +1222,12 @@ func (r ApiReadAllUsersRequest) Cursor(cursor string) ApiReadAllUsersRequest {
 	return r
 }
 
-func (r ApiReadAllUsersRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllUsersRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllUsersExecute(r)
+}
+
+func (r ApiReadAllUsersRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllUsersExecuteInitialPage(r)
 }
 
 /*
@@ -1242,7 +1247,11 @@ func (a *UsersApiService) ReadAllUsers(ctx context.Context, environmentID string
 
 // Execute executes the request
 //  @return EntityArray
-func (a *UsersApiService) ReadAllUsersExecute(r ApiReadAllUsersRequest) (*EntityArray, *http.Response, error) {
+func (a *UsersApiService) ReadAllUsersExecute(r ApiReadAllUsersRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *UsersApiService) ReadAllUsersExecuteInitialPage(r ApiReadAllUsersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -1257,7 +1266,7 @@ func (a *UsersApiService) ReadAllUsersExecute(r ApiReadAllUsersRequest) (*Entity
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UsersApiService) internalReadAllUsersExecute(r ApiReadAllUsersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1469,7 +1478,7 @@ func (a *UsersApiService) ReadUserExecute(r ApiReadUserRequest) (*User, *http.Re
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UsersApiService) internalReadUserExecute(r ApiReadUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1676,7 +1685,7 @@ func (a *UsersApiService) UpdateUserPatchExecute(r ApiUpdateUserPatchRequest) (*
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UsersApiService) internalUpdateUserPatchExecute(r ApiUpdateUserPatchRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -1882,7 +1891,7 @@ func (a *UsersApiService) UpdateUserPutExecute(r ApiUpdateUserPutRequest) (*User
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UsersApiService) internalUpdateUserPutExecute(r ApiUpdateUserPutRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## PatchBulkVariantContents
 
-> EntityArray PatchBulkVariantContents(ctx, environmentID, templateName).Filter(filter).Body(body).Execute()
+> EntityArrayPagedIterator PatchBulkVariantContents(ctx, environmentID, templateName).Filter(filter).Body(body).Execute()
 
 PATCH Bulk Variant Contents
 
@@ -263,7 +263,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.PatchBulkVariantContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchBulkVariantContents`: EntityArray
+    // response from `PatchBulkVariantContents`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.PatchBulkVariantContents`: %v\n", resp)
 }
 ```
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllTemplateContents
 
-> EntityArray ReadAllTemplateContents(ctx, environmentID, templateName).Execute()
+> EntityArrayPagedIterator ReadAllTemplateContents(ctx, environmentID, templateName).Limit(limit).Execute()
 
 READ All Contents
 
@@ -328,15 +328,16 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplateContents(context.Background(), environmentID, templateName).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplateContents(context.Background(), environmentID, templateName).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplateContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllTemplateContents`: EntityArray
+    // response from `ReadAllTemplateContents`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadAllTemplateContents`: %v\n", resp)
 }
 ```
@@ -359,10 +360,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -380,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllTemplates
 
-> EntityArray ReadAllTemplates(ctx, environmentID).Filter(filter).Order(order).Execute()
+> EntityArrayPagedIterator ReadAllTemplates(ctx, environmentID).Limit(limit).Filter(filter).Order(order).Execute()
 
 READ All Templates
 
@@ -398,17 +400,18 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     filter := "(createdAt lt "2018-08-30") and (updatedAt gt "2018-07-30")" // string |  (optional)
     order := "-createdAt" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplates(context.Background(), environmentID).Filter(filter).Order(order).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplates(context.Background(), environmentID).Limit(limit).Filter(filter).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllTemplates`: EntityArray
+    // response from `ReadAllTemplates`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadAllTemplates`: %v\n", resp)
 }
 ```
@@ -429,12 +432,13 @@ Other parameters are passed through a pointer to a apiReadAllTemplatesRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **filter** | **string** |  | 
  **order** | **string** |  | 
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

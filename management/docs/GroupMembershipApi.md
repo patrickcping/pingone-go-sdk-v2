@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllGroupMembershipsForUser
 
-> EntityArray ReadAllGroupMembershipsForUser(ctx, environmentID, userID).Expand(expand).Limit(limit).Cursor(cursor).Filter(filter).Execute()
+> EntityArrayPagedIterator ReadAllGroupMembershipsForUser(ctx, environmentID, userID).Expand(expand).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 
 READ All Group Memberships for User
 
@@ -117,7 +117,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupMembershipApi.ReadAllGroupMembershipsForUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllGroupMembershipsForUser`: EntityArray
+    // response from `ReadAllGroupMembershipsForUser`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `GroupMembershipApi.ReadAllGroupMembershipsForUser`: %v\n", resp)
 }
 ```
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

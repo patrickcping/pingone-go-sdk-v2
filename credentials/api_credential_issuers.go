@@ -71,7 +71,7 @@ func (a *CredentialIssuersApiService) CreateCredentialIssuerProfileExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuersApiService) internalCreateCredentialIssuerProfileExecute(r ApiCreateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -267,7 +267,7 @@ func (a *CredentialIssuersApiService) ReadCredentialIssuerProfileExecute(r ApiRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuersApiService) internalReadCredentialIssuerProfileExecute(r ApiReadCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -467,7 +467,7 @@ func (a *CredentialIssuersApiService) UpdateCredentialIssuerProfileExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *CredentialIssuersApiService) internalUpdateCredentialIssuerProfileExecute(r ApiUpdateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

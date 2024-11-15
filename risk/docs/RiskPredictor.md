@@ -18,11 +18,14 @@ Name | Type | Description | Notes
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
 **DomainWhiteList** | Pointer to **[]string** | A list of strings that specify legitimate domains that users will access for restricted resources. | [optional] 
 **WhiteList** | Pointer to **[]string** | A list of IP addresses (CDIRs) that are ignored for the predictor results. | [optional] 
+**IncludeRepeatedEventsWithoutSdk** | Pointer to **bool** | Set the value of &#x60;includeRepeatedEventsWithoutSdk&#x60; to &#x60;true&#x60; to expand the range of bot activity that PingOne Protect can detect. | [optional] 
 **Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
 **Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
 **Map** | [**RiskPredictorCustomAllOfMap**](RiskPredictorCustomAllOfMap.md) |  | 
 **Detect** | [**EnumPredictorNewDeviceDetectType**](EnumPredictorNewDeviceDetectType.md) |  | 
+**ShouldValidatePayloadSignature** | Pointer to **bool** | Relevant only for Suspicious Device predictors. If &#x60;shouldValidatePayloadSignature&#x60; is set to &#x60;true&#x60;, then any risk policies that include this predictor will require that the Signals SDK payload be provided as a signed JWT whose signature will be verified before proceeding with risk evaluation. You instruct the Signals SDK to provide the payload as a signed JWT by using the &#x60;universalDeviceIdentification&#x60; flag during initialization of the SDK, or by selecting the relevant setting for the &#x60;skrisk&#x60; component in DaVinci flows. | [optional] 
 **ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
+**Rules** | [**[]RiskPredictorTrafficAnomalyAllOfRules**](RiskPredictorTrafficAnomalyAllOfRules.md) |  | 
 **Days** | **int32** |  | 
 **Radius** | [**RiskPredictorUserLocationAnomalyAllOfRadius**](RiskPredictorUserLocationAnomalyAllOfRadius.md) |  | 
 **PredictionModel** | [**RiskPredictorUserRiskBehaviorAllOfPredictionModel**](RiskPredictorUserRiskBehaviorAllOfPredictionModel.md) |  | 
@@ -39,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictor
 
-`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
+`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, rules []RiskPredictorTrafficAnomalyAllOfRules, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
 
 NewRiskPredictor instantiates a new RiskPredictor object
 This constructor will assign default values to properties that have it defined,
@@ -389,6 +392,31 @@ SetWhiteList sets WhiteList field to given value.
 
 HasWhiteList returns a boolean if a field has been set.
 
+### GetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictor) GetIncludeRepeatedEventsWithoutSdk() bool`
+
+GetIncludeRepeatedEventsWithoutSdk returns the IncludeRepeatedEventsWithoutSdk field if non-nil, zero value otherwise.
+
+### GetIncludeRepeatedEventsWithoutSdkOk
+
+`func (o *RiskPredictor) GetIncludeRepeatedEventsWithoutSdkOk() (*bool, bool)`
+
+GetIncludeRepeatedEventsWithoutSdkOk returns a tuple with the IncludeRepeatedEventsWithoutSdk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictor) SetIncludeRepeatedEventsWithoutSdk(v bool)`
+
+SetIncludeRepeatedEventsWithoutSdk sets IncludeRepeatedEventsWithoutSdk field to given value.
+
+### HasIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictor) HasIncludeRepeatedEventsWithoutSdk() bool`
+
+HasIncludeRepeatedEventsWithoutSdk returns a boolean if a field has been set.
+
 ### GetComposition
 
 `func (o *RiskPredictor) GetComposition() RiskPredictorCompositeAllOfComposition`
@@ -474,6 +502,31 @@ and a boolean to check if the value has been set.
 SetDetect sets Detect field to given value.
 
 
+### GetShouldValidatePayloadSignature
+
+`func (o *RiskPredictor) GetShouldValidatePayloadSignature() bool`
+
+GetShouldValidatePayloadSignature returns the ShouldValidatePayloadSignature field if non-nil, zero value otherwise.
+
+### GetShouldValidatePayloadSignatureOk
+
+`func (o *RiskPredictor) GetShouldValidatePayloadSignatureOk() (*bool, bool)`
+
+GetShouldValidatePayloadSignatureOk returns a tuple with the ShouldValidatePayloadSignature field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShouldValidatePayloadSignature
+
+`func (o *RiskPredictor) SetShouldValidatePayloadSignature(v bool)`
+
+SetShouldValidatePayloadSignature sets ShouldValidatePayloadSignature field to given value.
+
+### HasShouldValidatePayloadSignature
+
+`func (o *RiskPredictor) HasShouldValidatePayloadSignature() bool`
+
+HasShouldValidatePayloadSignature returns a boolean if a field has been set.
+
 ### GetActivationAt
 
 `func (o *RiskPredictor) GetActivationAt() time.Time`
@@ -498,6 +551,26 @@ SetActivationAt sets ActivationAt field to given value.
 `func (o *RiskPredictor) HasActivationAt() bool`
 
 HasActivationAt returns a boolean if a field has been set.
+
+### GetRules
+
+`func (o *RiskPredictor) GetRules() []RiskPredictorTrafficAnomalyAllOfRules`
+
+GetRules returns the Rules field if non-nil, zero value otherwise.
+
+### GetRulesOk
+
+`func (o *RiskPredictor) GetRulesOk() (*[]RiskPredictorTrafficAnomalyAllOfRules, bool)`
+
+GetRulesOk returns a tuple with the Rules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRules
+
+`func (o *RiskPredictor) SetRules(v []RiskPredictorTrafficAnomalyAllOfRules)`
+
+SetRules sets Rules field to given value.
+
 
 ### GetDays
 

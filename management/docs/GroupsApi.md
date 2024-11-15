@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllGroups
 
-> EntityArray ReadAllGroups(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ReadAllGroups(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 READ All Groups
 
@@ -321,7 +321,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     filter := "name eq "Training"" // string |  (optional)
-    limit := int32(10) // int32 |  (optional)
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -331,7 +331,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupsApi.ReadAllGroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllGroups`: EntityArray
+    // response from `ReadAllGroups`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `GroupsApi.ReadAllGroups`: %v\n", resp)
 }
 ```
@@ -353,12 +353,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **filter** | **string** |  | 
- **limit** | **int32** |  | 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -376,11 +376,50 @@ Name | Type | Description  | Notes
 
 ## ReadGroupNesting
 
-> EntityArray ReadGroupNesting(ctx, environmentID, groupID).Execute()
-
 READ Group Nesting
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadGroupNesting(ctx, environmentID, groupID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadGroupNesting(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadGroupNesting``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadGroupNesting`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadGroupNesting`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadGroupNesting(ctx, environmentID, groupID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -403,7 +442,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupsApi.ReadGroupNesting``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadGroupNesting`: EntityArray
+    // response from `ReadGroupNesting`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `GroupsApi.ReadGroupNesting`: %v\n", resp)
 }
 ```
@@ -429,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

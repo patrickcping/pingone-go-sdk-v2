@@ -74,7 +74,7 @@ func (a *UserCredentialsApiService) CreateAUserCredentialExecute(r ApiCreateAUse
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserCredentialsApiService) internalCreateAUserCredentialExecute(r ApiCreateAUserCredentialRequest) (*UserCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -236,8 +236,12 @@ type ApiReadAllUserCredentialsRequest struct {
 	userID string
 }
 
-func (r ApiReadAllUserCredentialsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllUserCredentialsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllUserCredentialsExecute(r)
+}
+
+func (r ApiReadAllUserCredentialsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllUserCredentialsExecuteInitialPage(r)
 }
 
 /*
@@ -259,7 +263,11 @@ func (a *UserCredentialsApiService) ReadAllUserCredentials(ctx context.Context, 
 
 // Execute executes the request
 //  @return EntityArray
-func (a *UserCredentialsApiService) ReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) (*EntityArray, *http.Response, error) {
+func (a *UserCredentialsApiService) ReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *UserCredentialsApiService) ReadAllUserCredentialsExecuteInitialPage(r ApiReadAllUserCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -274,7 +282,7 @@ func (a *UserCredentialsApiService) ReadAllUserCredentialsExecute(r ApiReadAllUs
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserCredentialsApiService) internalReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -475,7 +483,7 @@ func (a *UserCredentialsApiService) ReadOneUserCredentialExecute(r ApiReadOneUse
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserCredentialsApiService) internalReadOneUserCredentialExecute(r ApiReadOneUserCredentialRequest) (*UserCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -637,8 +645,12 @@ type ApiReadOneUserCredentialWalletRequest struct {
 	credentialID string
 }
 
-func (r ApiReadOneUserCredentialWalletRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadOneUserCredentialWalletRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadOneUserCredentialWalletExecute(r)
+}
+
+func (r ApiReadOneUserCredentialWalletRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadOneUserCredentialWalletExecuteInitialPage(r)
 }
 
 /*
@@ -662,7 +674,11 @@ func (a *UserCredentialsApiService) ReadOneUserCredentialWallet(ctx context.Cont
 
 // Execute executes the request
 //  @return EntityArray
-func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) (*EntityArray, *http.Response, error) {
+func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecuteInitialPage(r ApiReadOneUserCredentialWalletRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -677,7 +693,7 @@ func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecute(r ApiRead
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserCredentialsApiService) internalReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +901,7 @@ func (a *UserCredentialsApiService) UpdateUserCredentialExecute(r ApiUpdateUserC
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserCredentialsApiService) internalUpdateUserCredentialExecute(r ApiUpdateUserCredentialRequest) (*UserCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

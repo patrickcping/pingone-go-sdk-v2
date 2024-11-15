@@ -153,11 +153,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllDomains
 
-> EntityArray ReadAllDomains(ctx, environmentID).Execute()
-
 READ All Domains
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllDomains(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllDomains(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllDomains``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllDomains`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllDomains`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllDomains(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -179,7 +218,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainsApi.ReadAllDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllDomains`: EntityArray
+    // response from `ReadAllDomains`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CustomDomainsApi.ReadAllDomains`: %v\n", resp)
 }
 ```
@@ -203,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

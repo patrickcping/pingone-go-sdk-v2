@@ -153,11 +153,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllGateways
 
-> EntityArray ReadAllGateways(ctx, environmentID).Execute()
-
 READ All Gateways
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllGateways(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllGateways(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllGateways``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllGateways`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllGateways`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllGateways(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -179,7 +218,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GatewaysApi.ReadAllGateways``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllGateways`: EntityArray
+    // response from `ReadAllGateways`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `GatewaysApi.ReadAllGateways`: %v\n", resp)
 }
 ```
@@ -203,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

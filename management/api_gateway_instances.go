@@ -30,8 +30,12 @@ type ApiReadAllGatewayInstancesRequest struct {
 	gatewayID string
 }
 
-func (r ApiReadAllGatewayInstancesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllGatewayInstancesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllGatewayInstancesExecute(r)
+}
+
+func (r ApiReadAllGatewayInstancesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllGatewayInstancesExecuteInitialPage(r)
 }
 
 /*
@@ -53,7 +57,11 @@ func (a *GatewayInstancesApiService) ReadAllGatewayInstances(ctx context.Context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *GatewayInstancesApiService) ReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
+func (a *GatewayInstancesApiService) ReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *GatewayInstancesApiService) ReadAllGatewayInstancesExecuteInitialPage(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -68,7 +76,7 @@ func (a *GatewayInstancesApiService) ReadAllGatewayInstancesExecute(r ApiReadAll
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewayInstancesApiService) internalReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -269,7 +277,7 @@ func (a *GatewayInstancesApiService) ReadOneGatewayInstanceExecute(r ApiReadOneG
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewayInstancesApiService) internalReadOneGatewayInstanceExecute(r ApiReadOneGatewayInstanceRequest) (*GatewayInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

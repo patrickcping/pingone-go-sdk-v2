@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllPopulations
 
-> EntityArray ReadAllPopulations(ctx, environmentID).Limit(limit).Filter(filter).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ReadAllPopulations(ctx, environmentID).Limit(limit).Filter(filter).Cursor(cursor).Execute()
 
 READ All Populations
 
@@ -184,7 +184,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PopulationsApi.ReadAllPopulations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllPopulations`: EntityArray
+    // response from `ReadAllPopulations`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `PopulationsApi.ReadAllPopulations`: %v\n", resp)
 }
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

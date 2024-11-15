@@ -71,7 +71,7 @@ func (a *RiskAdvancedPredictorsApiService) CreateRiskPredictorExecute(r ApiCreat
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r ApiCreateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *RiskAdvancedPredictorsApiService) DeleteRiskAdvancedPredictorExecute(r 
 	)
 	return response, err
 }
-			
+
 func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorExecute(r ApiDeleteRiskAdvancedPredictorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllRiskPredictorsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllRiskPredictorsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllRiskPredictorsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllRiskPredictorsExecute(r)
+}
+
+func (r ApiReadAllRiskPredictorsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllRiskPredictorsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictors(ctx context.Con
 
 // Execute executes the request
 //  @return EntityArray
-func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) (*EntityArray, *http.Response, error) {
+func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecuteInitialPage(r ApiReadAllRiskPredictorsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecute(r ApiRea
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *RiskAdvancedPredictorsApiService) ReadOneRiskPredictorExecute(r ApiRead
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r ApiReadOneRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *RiskAdvancedPredictorsApiService) UpdateRiskPredictorExecute(r ApiUpdat
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r ApiUpdateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

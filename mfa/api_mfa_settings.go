@@ -65,7 +65,7 @@ func (a *MFASettingsApiService) ReadMFASettingsExecute(r ApiReadMFASettingsReque
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -259,7 +259,7 @@ func (a *MFASettingsApiService) ResetMFASettingsExecute(r ApiResetMFASettingsReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -459,7 +459,7 @@ func (a *MFASettingsApiService) UpdateMFASettingsExecute(r ApiUpdateMFASettingsR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

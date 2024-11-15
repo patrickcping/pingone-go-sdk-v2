@@ -49,6 +49,11 @@ var (
 		pattern           string
 		repl              string
 	}{
+		{
+			fileSelectPattern: "*Api.md",
+			pattern:           `PACKAGENAME`,
+			repl:              `authorize`,
+		},
 		// EntityArrayEmbeddedPermissionsInner model
 		{
 			fileSelectPattern: "model_entity_array__embedded_permissions_inner.go",

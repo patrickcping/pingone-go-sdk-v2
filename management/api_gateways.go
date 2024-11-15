@@ -71,7 +71,7 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*C
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewaysApiService) internalCreateGatewayExecute(r ApiCreateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*h
 	)
 	return response, err
 }
-			
+
 func (a *GatewaysApiService) internalDeleteGatewayExecute(r ApiDeleteGatewayRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllGatewaysRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllGatewaysRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllGatewaysRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllGatewaysExecute(r)
+}
+
+func (r ApiReadAllGatewaysRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllGatewaysExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *GatewaysApiService) ReadAllGateways(ctx context.Context, environmentID 
 
 // Execute executes the request
 //  @return EntityArray
-func (a *GatewaysApiService) ReadAllGatewaysExecute(r ApiReadAllGatewaysRequest) (*EntityArray, *http.Response, error) {
+func (a *GatewaysApiService) ReadAllGatewaysExecute(r ApiReadAllGatewaysRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *GatewaysApiService) ReadAllGatewaysExecuteInitialPage(r ApiReadAllGatewaysRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *GatewaysApiService) ReadAllGatewaysExecute(r ApiReadAllGatewaysRequest)
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewaysApiService) internalReadAllGatewaysExecute(r ApiReadAllGatewaysRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *GatewaysApiService) ReadOneGatewayExecute(r ApiReadOneGatewayRequest) (
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewaysApiService) internalReadOneGatewayExecute(r ApiReadOneGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*C
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GatewaysApiService) internalUpdateGatewayExecute(r ApiUpdateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

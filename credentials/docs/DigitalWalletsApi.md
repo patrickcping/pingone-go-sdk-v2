@@ -160,11 +160,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllDigitalWallets
 
-> EntityArray ReadAllDigitalWallets(ctx, environmentID, userID).Execute()
-
 Read All Digital Wallets
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllDigitalWallets(ctx, environmentID, userID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllDigitalWallets(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllDigitalWallets``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllDigitalWallets`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllDigitalWallets`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllDigitalWallets(ctx, environmentID, userID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -187,7 +226,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadAllDigitalWallets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllDigitalWallets`: EntityArray
+    // response from `ReadAllDigitalWallets`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadAllDigitalWallets`: %v\n", resp)
 }
 ```
@@ -213,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -305,11 +344,50 @@ Name | Type | Description  | Notes
 
 ## ReadOneDigitalWalletCredential
 
-> EntityArray ReadOneDigitalWalletCredential(ctx, environmentID, userID, digitalWalletID).Execute()
-
 Read One Digital Wallet Credential
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadOneDigitalWalletCredential(ctx, environmentID, userID, digitalWalletID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadOneDigitalWalletCredential(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadOneDigitalWalletCredential``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadOneDigitalWalletCredential`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadOneDigitalWalletCredential`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadOneDigitalWalletCredential(ctx, environmentID, userID, digitalWalletID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -333,7 +411,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadOneDigitalWalletCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneDigitalWalletCredential`: EntityArray
+    // response from `ReadOneDigitalWalletCredential`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadOneDigitalWalletCredential`: %v\n", resp)
 }
 ```
@@ -361,7 +439,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

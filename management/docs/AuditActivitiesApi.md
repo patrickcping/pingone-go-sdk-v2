@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## EnvironmentsEnvironmentIDActivitiesGet
 
-> EnvironmentsEnvironmentIDActivitiesGet(ctx, environmentID).Filter(filter).Execute()
+> EnvironmentsEnvironmentIDActivitiesGet(ctx, environmentID).Limit(limit).Filter(filter).Execute()
 
 GET User Activities
 
@@ -99,11 +99,12 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     filter := "recordedat gt "2018-08-20T00:00:00Z" AND recordedat lt "2018-08-22T23:59:00Z"" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesGet(context.Background(), environmentID).Filter(filter).Execute()
+    r, err := apiClient.AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesGet(context.Background(), environmentID).Limit(limit).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,6 +128,7 @@ Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **filter** | **string** |  | 
 
 ### Return type

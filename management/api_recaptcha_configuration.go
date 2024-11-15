@@ -64,7 +64,7 @@ func (a *RecaptchaConfigurationApiService) DeleteRecaptchaConfigurationExecute(r
 	)
 	return response, err
 }
-			
+
 func (a *RecaptchaConfigurationApiService) internalDeleteRecaptchaConfigurationExecute(r ApiDeleteRecaptchaConfigurationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -248,7 +248,7 @@ func (a *RecaptchaConfigurationApiService) ReadRecaptchaConfigurationExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RecaptchaConfigurationApiService) internalReadRecaptchaConfigurationExecute(r ApiReadRecaptchaConfigurationRequest) (*RecaptchaConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -448,7 +448,7 @@ func (a *RecaptchaConfigurationApiService) UpdateRecaptchaConfigurationExecute(r
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *RecaptchaConfigurationApiService) internalUpdateRecaptchaConfigurationExecute(r ApiUpdateRecaptchaConfigurationRequest) (*RecaptchaConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

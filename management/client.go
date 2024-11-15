@@ -45,6 +45,8 @@ type APIClient struct {
 
 	ActiveIdentityCountsApi *ActiveIdentityCountsApiService
 
+	AdministratorSecurityApi *AdministratorSecurityApiService
+
 	AgreementLanguagesResourcesApi *AgreementLanguagesResourcesApiService
 
 	AgreementRevisionsResourcesApi *AgreementRevisionsResourcesApiService
@@ -84,6 +86,8 @@ type APIClient struct {
 	CapabilitiesApi *CapabilitiesApiService
 
 	CertificateManagementApi *CertificateManagementApiService
+
+	CustomAdminRolesApi *CustomAdminRolesApiService
 
 	CustomDomainsApi *CustomDomainsApiService
 
@@ -243,6 +247,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ActiveIdentityCountsApi = (*ActiveIdentityCountsApiService)(&c.common)
+	c.AdministratorSecurityApi = (*AdministratorSecurityApiService)(&c.common)
 	c.AgreementLanguagesResourcesApi = (*AgreementLanguagesResourcesApiService)(&c.common)
 	c.AgreementRevisionsResourcesApi = (*AgreementRevisionsResourcesApiService)(&c.common)
 	c.AgreementsResourcesApi = (*AgreementsResourcesApiService)(&c.common)
@@ -263,6 +268,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BrandingThemesApi = (*BrandingThemesApiService)(&c.common)
 	c.CapabilitiesApi = (*CapabilitiesApiService)(&c.common)
 	c.CertificateManagementApi = (*CertificateManagementApiService)(&c.common)
+	c.CustomAdminRolesApi = (*CustomAdminRolesApiService)(&c.common)
 	c.CustomDomainsApi = (*CustomDomainsApiService)(&c.common)
 	c.EnableUsersApi = (*EnableUsersApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)

@@ -71,7 +71,7 @@ func (a *PropagationStoresApiService) CreatePropagationStoreExecute(r ApiCreateP
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PropagationStoresApiService) internalCreatePropagationStoreExecute(r ApiCreatePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *PropagationStoresApiService) DeletePropagationStoreExecute(r ApiDeleteP
 	)
 	return response, err
 }
-			
+
 func (a *PropagationStoresApiService) internalDeletePropagationStoreExecute(r ApiDeletePropagationStoreRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllStoresRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllStoresRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllStoresRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllStoresExecute(r)
+}
+
+func (r ApiReadAllStoresRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllStoresExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *PropagationStoresApiService) ReadAllStores(ctx context.Context, environ
 
 // Execute executes the request
 //  @return EntityArray
-func (a *PropagationStoresApiService) ReadAllStoresExecute(r ApiReadAllStoresRequest) (*EntityArray, *http.Response, error) {
+func (a *PropagationStoresApiService) ReadAllStoresExecute(r ApiReadAllStoresRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *PropagationStoresApiService) ReadAllStoresExecuteInitialPage(r ApiReadAllStoresRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *PropagationStoresApiService) ReadAllStoresExecute(r ApiReadAllStoresReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PropagationStoresApiService) internalReadAllStoresExecute(r ApiReadAllStoresRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *PropagationStoresApiService) ReadOnePropagationStoreExecute(r ApiReadOn
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PropagationStoresApiService) internalReadOnePropagationStoreExecute(r ApiReadOnePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -868,7 +876,7 @@ func (a *PropagationStoresApiService) TestConnectionConfigurationExecute(r ApiTe
 	)
 	return response, err
 }
-			
+
 func (a *PropagationStoresApiService) internalTestConnectionConfigurationExecute(r ApiTestConnectionConfigurationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1077,7 +1085,7 @@ func (a *PropagationStoresApiService) UpdatePropagationStoreExecute(r ApiUpdateP
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *PropagationStoresApiService) internalUpdatePropagationStoreExecute(r ApiUpdatePropagationStoreRequest) (*PropagationStore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

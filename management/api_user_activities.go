@@ -70,7 +70,7 @@ func (a *UserActivitiesApiService) EnvironmentsEnvironmentIDUserActivitiesGetExe
 	)
 	return response, err
 }
-			
+
 func (a *UserActivitiesApiService) internalEnvironmentsEnvironmentIDUserActivitiesGetExecute(r ApiEnvironmentsEnvironmentIDUserActivitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

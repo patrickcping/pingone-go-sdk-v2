@@ -71,7 +71,7 @@ func (a *SubscriptionsWebhooksApiService) CreateSubscriptionExecute(r ApiCreateS
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SubscriptionsWebhooksApiService) internalCreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -280,7 +280,7 @@ func (a *SubscriptionsWebhooksApiService) DeleteSubscriptionExecute(r ApiDeleteS
 	)
 	return response, err
 }
-			
+
 func (a *SubscriptionsWebhooksApiService) internalDeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -429,8 +429,12 @@ type ApiReadAllSubscriptionsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllSubscriptionsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllSubscriptionsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllSubscriptionsExecute(r)
+}
+
+func (r ApiReadAllSubscriptionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllSubscriptionsExecuteInitialPage(r)
 }
 
 /*
@@ -450,7 +454,11 @@ func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptions(ctx context.Conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
+func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptionsExecuteInitialPage(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -465,7 +473,7 @@ func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptionsExecute(r ApiReadA
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SubscriptionsWebhooksApiService) internalReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -662,7 +670,7 @@ func (a *SubscriptionsWebhooksApiService) ReadOneSubscriptionExecute(r ApiReadOn
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SubscriptionsWebhooksApiService) internalReadOneSubscriptionExecute(r ApiReadOneSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -866,7 +874,7 @@ func (a *SubscriptionsWebhooksApiService) UpdateSubscriptionExecute(r ApiUpdateS
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *SubscriptionsWebhooksApiService) internalUpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

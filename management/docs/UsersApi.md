@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllUsers
 
-> EntityArray ReadAllUsers(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
+> EntityArrayPagedIterator ReadAllUsers(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 READ All Users
 
@@ -459,7 +459,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     filter := "memberOfGroups[id eq "{{groupID}}"] and name.family eq "demo"" // string |  (optional)
-    limit := int32(100) // int32 |  (optional)
+    limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -469,7 +469,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.ReadAllUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllUsers`: EntityArray
+    // response from `ReadAllUsers`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `UsersApi.ReadAllUsers`: %v\n", resp)
 }
 ```
@@ -491,12 +491,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **filter** | **string** |  | 
- **limit** | **int32** |  | 
+ **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

@@ -11,6 +11,8 @@
 
 * `COMPOSITE` (value: `"COMPOSITE"`)
 
+* `DEVICE` (value: `"DEVICE"`)
+
 * `EMAIL_REPUTATION` (value: `"EMAIL_REPUTATION"`)
 
 * `GEO_VELOCITY` (value: `"GEO_VELOCITY"`)
@@ -19,7 +21,7 @@
 
 * `MAP` (value: `"MAP"`)
 
-* `DEVICE` (value: `"DEVICE"`)
+* `TRAFFIC_ANOMALY` (value: `"TRAFFIC_ANOMALY"`)
 
 * `USER_LOCATION_ANOMALY` (value: `"USER_LOCATION_ANOMALY"`)
 

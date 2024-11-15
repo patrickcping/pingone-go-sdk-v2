@@ -41,6 +41,8 @@ type RiskPredictorDevice struct {
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	Detect EnumPredictorNewDeviceDetectType `json:"detect"`
+	// Relevant only for Suspicious Device predictors. If `shouldValidatePayloadSignature` is set to `true`, then any risk policies that include this predictor will require that the Signals SDK payload be provided as a signed JWT whose signature will be verified before proceeding with risk evaluation. You instruct the Signals SDK to provide the payload as a signed JWT by using the `universalDeviceIdentification` flag during initialization of the SDK, or by selecting the relevant setting for the `skrisk` component in DaVinci flows.
+	ShouldValidatePayloadSignature *bool `json:"shouldValidatePayloadSignature,omitempty"`
 	// You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
 	ActivationAt *time.Time `json:"activationAt,omitempty"`
 }
@@ -450,6 +452,38 @@ func (o *RiskPredictorDevice) SetDetect(v EnumPredictorNewDeviceDetectType) {
 	o.Detect = v
 }
 
+// GetShouldValidatePayloadSignature returns the ShouldValidatePayloadSignature field value if set, zero value otherwise.
+func (o *RiskPredictorDevice) GetShouldValidatePayloadSignature() bool {
+	if o == nil || IsNil(o.ShouldValidatePayloadSignature) {
+		var ret bool
+		return ret
+	}
+	return *o.ShouldValidatePayloadSignature
+}
+
+// GetShouldValidatePayloadSignatureOk returns a tuple with the ShouldValidatePayloadSignature field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorDevice) GetShouldValidatePayloadSignatureOk() (*bool, bool) {
+	if o == nil || IsNil(o.ShouldValidatePayloadSignature) {
+		return nil, false
+	}
+	return o.ShouldValidatePayloadSignature, true
+}
+
+// HasShouldValidatePayloadSignature returns a boolean if a field has been set.
+func (o *RiskPredictorDevice) HasShouldValidatePayloadSignature() bool {
+	if o != nil && !IsNil(o.ShouldValidatePayloadSignature) {
+		return true
+	}
+
+	return false
+}
+
+// SetShouldValidatePayloadSignature gets a reference to the given bool and assigns it to the ShouldValidatePayloadSignature field.
+func (o *RiskPredictorDevice) SetShouldValidatePayloadSignature(v bool) {
+	o.ShouldValidatePayloadSignature = &v
+}
+
 // GetActivationAt returns the ActivationAt field value if set, zero value otherwise.
 func (o *RiskPredictorDevice) GetActivationAt() time.Time {
 	if o == nil || IsNil(o.ActivationAt) {
@@ -523,6 +557,9 @@ func (o RiskPredictorDevice) ToMap() (map[string]interface{}, error) {
 		toSerialize["condition"] = o.Condition
 	}
 	toSerialize["detect"] = o.Detect
+	if !IsNil(o.ShouldValidatePayloadSignature) {
+		toSerialize["shouldValidatePayloadSignature"] = o.ShouldValidatePayloadSignature
+	}
 	if !IsNil(o.ActivationAt) {
 		toSerialize["activationAt"] = o.ActivationAt
 	}

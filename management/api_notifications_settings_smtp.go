@@ -64,7 +64,7 @@ func (a *NotificationsSettingsSMTPApiService) DeleteEmailDeliverySettingsExecute
 	)
 	return response, err
 }
-			
+
 func (a *NotificationsSettingsSMTPApiService) internalDeleteEmailDeliverySettingsExecute(r ApiDeleteEmailDeliverySettingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -248,7 +248,7 @@ func (a *NotificationsSettingsSMTPApiService) ReadEmailNotificationsSettingsExec
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsSettingsSMTPApiService) internalReadEmailNotificationsSettingsExecute(r ApiReadEmailNotificationsSettingsRequest) (*NotificationsSettingsEmailDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -448,7 +448,7 @@ func (a *NotificationsSettingsSMTPApiService) UpdateEmailNotificationsSettingsEx
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsSettingsSMTPApiService) internalUpdateEmailNotificationsSettingsExecute(r ApiUpdateEmailNotificationsSettingsRequest) (*NotificationsSettingsEmailDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ReadAllFlowPolicies
 
-> EntityArray ReadAllFlowPolicies(ctx, environmentID).Filter(filter).Execute()
+> EntityArrayPagedIterator ReadAllFlowPolicies(ctx, environmentID).Filter(filter).Execute()
 
 READ All Flow Policies
 
@@ -38,7 +38,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowPoliciesApi.ReadAllFlowPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllFlowPolicies`: EntityArray
+    // response from `ReadAllFlowPolicies`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `FlowPoliciesApi.ReadAllFlowPolicies`: %v\n", resp)
 }
 ```
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

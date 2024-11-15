@@ -241,11 +241,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllCredentialIssuanceRules
 
-> EntityArray ReadAllCredentialIssuanceRules(ctx, environmentID, credentialTypeID).Execute()
-
 Read All Credential Issuance Rules
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllCredentialIssuanceRules(ctx, environmentID, credentialTypeID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllCredentialIssuanceRules(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllCredentialIssuanceRules``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllCredentialIssuanceRules`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllCredentialIssuanceRules`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllCredentialIssuanceRules(ctx, environmentID, credentialTypeID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -268,7 +307,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllCredentialIssuanceRules`: EntityArray
+    // response from `ReadAllCredentialIssuanceRules`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules`: %v\n", resp)
 }
 ```
@@ -294,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

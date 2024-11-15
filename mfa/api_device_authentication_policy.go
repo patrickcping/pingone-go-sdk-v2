@@ -77,7 +77,7 @@ func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPolicie
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -289,7 +289,7 @@ func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicyE
 	)
 	return response, err
 }
-			
+
 func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadDeviceAuthenticationPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadDeviceAuthenticationPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadDeviceAuthenticationPoliciesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadDeviceAuthenticationPoliciesExecute(r)
+}
+
+func (r ApiReadDeviceAuthenticationPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadDeviceAuthenticationPoliciesExecuteInitialPage(r)
 }
 
 /*
@@ -459,7 +463,11 @@ func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPolicies(
 
 // Execute executes the request
 //  @return EntityArray
-func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecuteInitialPage(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -474,7 +482,7 @@ func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -671,7 +679,7 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -875,7 +883,7 @@ func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicyE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -40,6 +40,8 @@ type RiskPredictorBotDetection struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
+	// Set the value of `includeRepeatedEventsWithoutSdk` to `true` to expand the range of bot activity that PingOne Protect can detect.
+	IncludeRepeatedEventsWithoutSdk *bool `json:"includeRepeatedEventsWithoutSdk,omitempty"`
 }
 
 // NewRiskPredictorBotDetection instantiates a new RiskPredictorBotDetection object
@@ -422,6 +424,38 @@ func (o *RiskPredictorBotDetection) SetCondition(v RiskPredictorCommonCondition)
 	o.Condition = &v
 }
 
+// GetIncludeRepeatedEventsWithoutSdk returns the IncludeRepeatedEventsWithoutSdk field value if set, zero value otherwise.
+func (o *RiskPredictorBotDetection) GetIncludeRepeatedEventsWithoutSdk() bool {
+	if o == nil || IsNil(o.IncludeRepeatedEventsWithoutSdk) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeRepeatedEventsWithoutSdk
+}
+
+// GetIncludeRepeatedEventsWithoutSdkOk returns a tuple with the IncludeRepeatedEventsWithoutSdk field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorBotDetection) GetIncludeRepeatedEventsWithoutSdkOk() (*bool, bool) {
+	if o == nil || IsNil(o.IncludeRepeatedEventsWithoutSdk) {
+		return nil, false
+	}
+	return o.IncludeRepeatedEventsWithoutSdk, true
+}
+
+// HasIncludeRepeatedEventsWithoutSdk returns a boolean if a field has been set.
+func (o *RiskPredictorBotDetection) HasIncludeRepeatedEventsWithoutSdk() bool {
+	if o != nil && !IsNil(o.IncludeRepeatedEventsWithoutSdk) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeRepeatedEventsWithoutSdk gets a reference to the given bool and assigns it to the IncludeRepeatedEventsWithoutSdk field.
+func (o *RiskPredictorBotDetection) SetIncludeRepeatedEventsWithoutSdk(v bool) {
+	o.IncludeRepeatedEventsWithoutSdk = &v
+}
+
 func (o RiskPredictorBotDetection) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -461,6 +495,9 @@ func (o RiskPredictorBotDetection) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
+	}
+	if !IsNil(o.IncludeRepeatedEventsWithoutSdk) {
+		toSerialize["includeRepeatedEventsWithoutSdk"] = o.IncludeRepeatedEventsWithoutSdk
 	}
 	return toSerialize, nil
 }

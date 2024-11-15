@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllTrustedEmailAddresses
 
-> EntityArray ReadAllTrustedEmailAddresses(ctx, environmentID, emailDomainID).Execute()
-
 READ All Trusted Email Addresses
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllTrustedEmailAddresses(ctx, environmentID, emailDomainID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllTrustedEmailAddresses(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllTrustedEmailAddresses``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllTrustedEmailAddresses`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllTrustedEmailAddresses`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllTrustedEmailAddresses(ctx, environmentID, emailDomainID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.ReadAllTrustedEmailAddresses``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllTrustedEmailAddresses`: EntityArray
+    // response from `ReadAllTrustedEmailAddresses`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `TrustedEmailAddressesApi.ReadAllTrustedEmailAddresses`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

@@ -71,7 +71,7 @@ func (a *DigitalWalletAppsApiService) CreateDigitalWalletAppExecute(r ApiCreateD
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletAppsApiService) internalCreateDigitalWalletAppExecute(r ApiCreateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -269,7 +269,7 @@ func (a *DigitalWalletAppsApiService) DeleteDigitalWalletAppExecute(r ApiDeleteD
 	)
 	return response, err
 }
-			
+
 func (a *DigitalWalletAppsApiService) internalDeleteDigitalWalletAppExecute(r ApiDeleteDigitalWalletAppRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -418,8 +418,12 @@ type ApiReadAllDigitalWalletAppsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllDigitalWalletAppsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllDigitalWalletAppsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllDigitalWalletAppsExecute(r)
+}
+
+func (r ApiReadAllDigitalWalletAppsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllDigitalWalletAppsExecuteInitialPage(r)
 }
 
 /*
@@ -439,7 +443,11 @@ func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletApps(ctx context.Conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) (*EntityArray, *http.Response, error) {
+func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecuteInitialPage(r ApiReadAllDigitalWalletAppsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -454,7 +462,7 @@ func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecute(r ApiReadA
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletAppsApiService) internalReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -651,7 +659,7 @@ func (a *DigitalWalletAppsApiService) ReadOneDigitalWalletAppExecute(r ApiReadOn
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletAppsApiService) internalReadOneDigitalWalletAppExecute(r ApiReadOneDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -855,7 +863,7 @@ func (a *DigitalWalletAppsApiService) UpdateDigitalWalletAppExecute(r ApiUpdateD
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *DigitalWalletAppsApiService) internalUpdateDigitalWalletAppExecute(r ApiUpdateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

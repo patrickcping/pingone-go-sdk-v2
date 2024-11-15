@@ -74,7 +74,7 @@ func (a *GroupRoleAssignmentsApiService) CreateGroupRoleAssignmentExecute(r ApiC
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupRoleAssignmentsApiService) internalCreateGroupRoleAssignmentExecute(r ApiCreateGroupRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *GroupRoleAssignmentsApiService) DeleteGroupRoleAssignmentExecute(r ApiD
 	)
 	return response, err
 }
-			
+
 func (a *GroupRoleAssignmentsApiService) internalDeleteGroupRoleAssignmentExecute(r ApiDeleteGroupRoleAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadGroupRoleAssignmentsRequest struct {
 	groupID string
 }
 
-func (r ApiReadGroupRoleAssignmentsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadGroupRoleAssignmentsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadGroupRoleAssignmentsExecute(r)
+}
+
+func (r ApiReadGroupRoleAssignmentsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadGroupRoleAssignmentsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *GroupRoleAssignmentsApiService) ReadGroupRoleAssignments(ctx context.Co
 
 // Execute executes the request
 //  @return EntityArray
-func (a *GroupRoleAssignmentsApiService) ReadGroupRoleAssignmentsExecute(r ApiReadGroupRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
+func (a *GroupRoleAssignmentsApiService) ReadGroupRoleAssignmentsExecute(r ApiReadGroupRoleAssignmentsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *GroupRoleAssignmentsApiService) ReadGroupRoleAssignmentsExecuteInitialPage(r ApiReadGroupRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *GroupRoleAssignmentsApiService) ReadGroupRoleAssignmentsExecute(r ApiRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupRoleAssignmentsApiService) internalReadGroupRoleAssignmentsExecute(r ApiReadGroupRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *GroupRoleAssignmentsApiService) ReadOneGroupRoleAssignmentExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupRoleAssignmentsApiService) internalReadOneGroupRoleAssignmentExecute(r ApiReadOneGroupRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

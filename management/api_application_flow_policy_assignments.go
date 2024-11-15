@@ -74,7 +74,7 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) CreateFlowPolicyAssignmentE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalCreateFlowPolicyAssignmentExecute(r ApiCreateFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) DeleteFlowPolicyAssignmentE
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalDeleteFlowPolicyAssignmentExecute(r ApiDeleteFlowPolicyAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllFlowPolicyAssignmentsRequest struct {
 	applicationID string
 }
 
-func (r ApiReadAllFlowPolicyAssignmentsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllFlowPolicyAssignmentsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllFlowPolicyAssignmentsExecute(r)
+}
+
+func (r ApiReadAllFlowPolicyAssignmentsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllFlowPolicyAssignmentsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) ReadAllFlowPolicyAssignment
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationFlowPolicyAssignmentsApiService) ReadAllFlowPolicyAssignmentsExecute(r ApiReadAllFlowPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationFlowPolicyAssignmentsApiService) ReadAllFlowPolicyAssignmentsExecute(r ApiReadAllFlowPolicyAssignmentsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationFlowPolicyAssignmentsApiService) ReadAllFlowPolicyAssignmentsExecuteInitialPage(r ApiReadAllFlowPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) ReadAllFlowPolicyAssignment
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalReadAllFlowPolicyAssignmentsExecute(r ApiReadAllFlowPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) ReadOneFlowPolicyAssignment
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalReadOneFlowPolicyAssignmentExecute(r ApiReadOneFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) UpdateFlowPolicyAssignmentE
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalUpdateFlowPolicyAssignmentExecute(r ApiUpdateFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllSchemaAttributes
 
-> EntityArray ReadAllSchemaAttributes(ctx, environmentID, schemaID).Execute()
+> EntityArrayPagedIterator ReadAllSchemaAttributes(ctx, environmentID, schemaID).Execute()
 
 READ All (Schema) Attributes
 
@@ -189,7 +189,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.ReadAllSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllSchemaAttributes`: EntityArray
+    // response from `ReadAllSchemaAttributes`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `SchemasApi.ReadAllSchemaAttributes`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -233,11 +233,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllSchemas
 
-> EntityArray ReadAllSchemas(ctx, environmentID).Execute()
-
 READ All Schemas
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllSchemas(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllSchemas(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllSchemas``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllSchemas`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllSchemas`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllSchemas(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -259,7 +298,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.ReadAllSchemas``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllSchemas`: EntityArray
+    // response from `ReadAllSchemas`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `SchemasApi.ReadAllSchemas`: %v\n", resp)
 }
 ```
@@ -283,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

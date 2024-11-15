@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## ReadAllLicenses
 
-> EntityArray ReadAllLicenses(ctx, organizationID).Filter(filter).Order(order).Execute()
+> EntityArrayPagedIterator ReadAllLicenses(ctx, organizationID).Filter(filter).Order(order).Execute()
 
 READ All Licenses
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.ReadAllLicenses``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllLicenses`: EntityArray
+    // response from `ReadAllLicenses`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `LicensesApi.ReadAllLicenses`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

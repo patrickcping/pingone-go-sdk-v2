@@ -74,7 +74,7 @@ func (a *UserApplicationRoleAssignmentsApiService) CreateUserApplicationRoleAssi
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserApplicationRoleAssignmentsApiService) internalCreateUserApplicationRoleAssignmentExecute(r ApiCreateUserApplicationRoleAssignmentRequest) (*UserApplicationRoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *UserApplicationRoleAssignmentsApiService) DeleteUserApplicationRoleAssi
 	)
 	return response, err
 }
-			
+
 func (a *UserApplicationRoleAssignmentsApiService) internalDeleteUserApplicationRoleAssignmentExecute(r ApiDeleteUserApplicationRoleAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadUserApplicationRoleAssignmentsRequest struct {
 	userID string
 }
 
-func (r ApiReadUserApplicationRoleAssignmentsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadUserApplicationRoleAssignmentsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadUserApplicationRoleAssignmentsExecute(r)
+}
+
+func (r ApiReadUserApplicationRoleAssignmentsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadUserApplicationRoleAssignmentsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssign
 
 // Execute executes the request
 //  @return EntityArray
-func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssignmentsExecute(r ApiReadUserApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
+func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssignmentsExecute(r ApiReadUserApplicationRoleAssignmentsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssignmentsExecuteInitialPage(r ApiReadUserApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssign
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *UserApplicationRoleAssignmentsApiService) internalReadUserApplicationRoleAssignmentsExecute(r ApiReadUserApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

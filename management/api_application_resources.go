@@ -74,7 +74,7 @@ func (a *ApplicationResourcesApiService) CreateApplicationResourceExecute(r ApiC
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcesApiService) internalCreateApplicationResourceExecute(r ApiCreateApplicationResourceRequest) (*ResourceApplicationResource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ApplicationResourcesApiService) DeleteApplicationResourceExecute(r ApiD
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationResourcesApiService) internalDeleteApplicationResourceExecute(r ApiDeleteApplicationResourceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllApplicationResourcesRequest struct {
 	resourceID string
 }
 
-func (r ApiReadAllApplicationResourcesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllApplicationResourcesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllApplicationResourcesExecute(r)
+}
+
+func (r ApiReadAllApplicationResourcesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllApplicationResourcesExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ApplicationResourcesApiService) ReadAllApplicationResources(ctx context
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationResourcesApiService) ReadAllApplicationResourcesExecute(r ApiReadAllApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationResourcesApiService) ReadAllApplicationResourcesExecute(r ApiReadAllApplicationResourcesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationResourcesApiService) ReadAllApplicationResourcesExecuteInitialPage(r ApiReadAllApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ApplicationResourcesApiService) ReadAllApplicationResourcesExecute(r Ap
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcesApiService) internalReadAllApplicationResourcesExecute(r ApiReadAllApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *ApplicationResourcesApiService) ReadOneApplicationResourceExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecute(r ApiReadOneApplicationResourceRequest) (*ResourceApplicationResource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *ApplicationResourcesApiService) UpdateApplicationResourceExecute(r ApiU
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourcesApiService) internalUpdateApplicationResourceExecute(r ApiUpdateApplicationResourceRequest) (*ResourceApplicationResource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

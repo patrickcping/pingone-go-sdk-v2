@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllVoicePhraseContents
 
-> EntityArray ReadAllVoicePhraseContents(ctx, environmentID, voicePhraseID).Execute()
-
 READ All Voice Phrase Contents
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllVoicePhraseContents(ctx, environmentID, voicePhraseID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllVoicePhraseContents(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllVoicePhraseContents``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllVoicePhraseContents`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllVoicePhraseContents`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllVoicePhraseContents(ctx, environmentID, voicePhraseID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.ReadAllVoicePhraseContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllVoicePhraseContents`: EntityArray
+    // response from `ReadAllVoicePhraseContents`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.ReadAllVoicePhraseContents`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

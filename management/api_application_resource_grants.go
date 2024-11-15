@@ -74,7 +74,7 @@ func (a *ApplicationResourceGrantsApiService) CreateApplicationGrantExecute(r Ap
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourceGrantsApiService) internalCreateApplicationGrantExecute(r ApiCreateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *ApplicationResourceGrantsApiService) DeleteApplicationGrantExecute(r Ap
 	)
 	return response, err
 }
-			
+
 func (a *ApplicationResourceGrantsApiService) internalDeleteApplicationGrantExecute(r ApiDeleteApplicationGrantRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -438,8 +438,12 @@ type ApiReadAllApplicationGrantsRequest struct {
 	applicationID string
 }
 
-func (r ApiReadAllApplicationGrantsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllApplicationGrantsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllApplicationGrantsExecute(r)
+}
+
+func (r ApiReadAllApplicationGrantsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllApplicationGrantsExecuteInitialPage(r)
 }
 
 /*
@@ -461,7 +465,11 @@ func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrants(ctx conte
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrantsExecuteInitialPage(r ApiReadAllApplicationGrantsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -476,7 +484,7 @@ func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrantsExecute(r 
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourceGrantsApiService) internalReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *ApplicationResourceGrantsApiService) ReadOneApplicationGrantExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourceGrantsApiService) internalReadOneApplicationGrantExecute(r ApiReadOneApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -885,7 +893,7 @@ func (a *ApplicationResourceGrantsApiService) UpdateApplicationGrantExecute(r Ap
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *ApplicationResourceGrantsApiService) internalUpdateApplicationGrantExecute(r ApiUpdateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

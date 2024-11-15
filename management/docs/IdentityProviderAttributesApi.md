@@ -159,11 +159,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllIdentityProviderAttributes
 
-> EntityArray ReadAllIdentityProviderAttributes(ctx, environmentID, providerID).Execute()
-
 READ All Identity Provider Attributes
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllIdentityProviderAttributes(ctx, environmentID, providerID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllIdentityProviderAttributes(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllIdentityProviderAttributes``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllIdentityProviderAttributes`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllIdentityProviderAttributes`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllIdentityProviderAttributes(ctx, environmentID, providerID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -186,7 +225,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderAttributesApi.ReadAllIdentityProviderAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllIdentityProviderAttributes`: EntityArray
+    // response from `ReadAllIdentityProviderAttributes`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `IdentityProviderAttributesApi.ReadAllIdentityProviderAttributes`: %v\n", resp)
 }
 ```
@@ -212,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

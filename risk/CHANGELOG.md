@@ -1,6 +1,11 @@
-# v0.16.1 (Unreleased)
+# v0.17.0 (2024-11-15)
 
-* **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
+* **Breaking change** `(Api[a-zA-Z]Request).Execute()` and `(*Api[a-zA-Z]Request).[a-zA-Z]Execute()` API functions now returns the `EntityArrayPagedIterator` data type to for code clients to implement paging of results. [#392](https://github.com/patrickcping/pingone-go-sdk-v2/pull/392)
+* **Note** Upgraded go version to 1.23 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#395](https://github.com/patrickcping/pingone-go-sdk-v2/pull/395)
+* **Enhancement** Added `(Api[a-zA-Z]Request).ExecuteInitialPage()` and `(*Api[a-zA-Z]Request).[a-zA-Z]ExecuteInitialPage()` API functions to just return the initial page of a paged response. [#392](https://github.com/patrickcping/pingone-go-sdk-v2/pull/392)
+* **Enhancement** Added the `ShouldValidatePayloadSignature` field to the `RiskPredictorDevice` model. [#380](https://github.com/patrickcping/pingone-go-sdk-v2/pull/380)
+* **Enhancement** Added the `IncludeRepeatedEventsWithoutSdk` field to the `RiskPredictorBotDetection` model. [#382](https://github.com/patrickcping/pingone-go-sdk-v2/pull/382)
+* **Enhancement** Support the `TRAFFIC_ANOMALY` risk predictor type (new `RiskPredictorTrafficAnomaly` model). [#383](https://github.com/patrickcping/pingone-go-sdk-v2/pull/383)
 
 # v0.16.0 (2024-07-04)
 

@@ -67,7 +67,7 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 	)
 	return response, err
 }
-			
+
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -254,7 +254,7 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 	)
 	return response, err
 }
-			
+
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -455,7 +455,7 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 	)
 	return response, err
 }
-			
+
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -646,7 +646,7 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 	)
 	return response, err
 }
-			
+
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -843,7 +843,7 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 	)
 	return response, err
 }
-			
+
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

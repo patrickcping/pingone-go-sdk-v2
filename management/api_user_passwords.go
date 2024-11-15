@@ -67,7 +67,7 @@ func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordGe
 	)
 	return response, err
 }
-			
+
 func (a *UserPasswordsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPasswordGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -266,7 +266,7 @@ func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordPo
 	)
 	return response, err
 }
-			
+
 func (a *UserPasswordsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPasswordPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -481,7 +481,7 @@ func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordPu
 	)
 	return response, err
 }
-			
+
 func (a *UserPasswordsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPasswordPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

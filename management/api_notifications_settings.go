@@ -65,7 +65,7 @@ func (a *NotificationsSettingsApiService) DeleteNotificationsSettingsExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsSettingsApiService) internalDeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -259,7 +259,7 @@ func (a *NotificationsSettingsApiService) ReadNotificationsSettingsExecute(r Api
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsSettingsApiService) internalReadNotificationsSettingsExecute(r ApiReadNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -459,7 +459,7 @@ func (a *NotificationsSettingsApiService) UpdateNotificationsSettingsExecute(r A
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *NotificationsSettingsApiService) internalUpdateNotificationsSettingsExecute(r ApiUpdateNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -1,6 +1,6 @@
 module github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement
 
-go 1.22.7
+go 1.23.3
 
 retract (
     v0.1.0 // Major loss of function

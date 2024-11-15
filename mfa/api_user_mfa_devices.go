@@ -73,7 +73,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -266,7 +266,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -457,7 +457,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -654,7 +654,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -853,7 +853,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -1058,7 +1058,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1262,7 +1262,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGe
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1461,7 +1461,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPo
 	)
 	return response, err
 }
-			
+
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

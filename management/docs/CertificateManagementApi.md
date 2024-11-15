@@ -726,11 +726,50 @@ Name | Type | Description  | Notes
 
 ## GetCertificateApplications
 
-> EntityArray GetCertificateApplications(ctx, environmentID, certID).Execute()
-
 GET Certificate Applications
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator GetCertificateApplications(ctx, environmentID, certID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.GetCertificateApplications(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.GetCertificateApplications``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `GetCertificateApplications`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.GetCertificateApplications`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray GetCertificateApplications(ctx, environmentID, certID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -753,7 +792,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.GetCertificateApplications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCertificateApplications`: EntityArray
+    // response from `GetCertificateApplications`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CertificateManagementApi.GetCertificateApplications`: %v\n", resp)
 }
 ```
@@ -779,7 +818,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -797,11 +836,50 @@ Name | Type | Description  | Notes
 
 ## GetCertificates
 
-> EntityArray GetCertificates(ctx, environmentID).Execute()
-
 GET Certificates
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator GetCertificates(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.GetCertificates(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.GetCertificates``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `GetCertificates`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.GetCertificates`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray GetCertificates(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -823,7 +901,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.GetCertificates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCertificates`: EntityArray
+    // response from `GetCertificates`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CertificateManagementApi.GetCertificates`: %v\n", resp)
 }
 ```
@@ -847,7 +925,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -938,11 +1016,50 @@ Name | Type | Description  | Notes
 
 ## GetKeyApplications
 
-> EntityArray GetKeyApplications(ctx, environmentID, keyID).Execute()
-
 GET Key Applications
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator GetKeyApplications(ctx, environmentID, keyID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.GetKeyApplications(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.GetKeyApplications``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `GetKeyApplications`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.GetKeyApplications`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray GetKeyApplications(ctx, environmentID, keyID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -965,7 +1082,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.GetKeyApplications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetKeyApplications`: EntityArray
+    // response from `GetKeyApplications`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CertificateManagementApi.GetKeyApplications`: %v\n", resp)
 }
 ```
@@ -991,7 +1108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -1009,11 +1126,50 @@ Name | Type | Description  | Notes
 
 ## GetKeys
 
-> EntityArray GetKeys(ctx, environmentID).Execute()
-
 GET Keys
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator GetKeys(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.GetKeys(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.GetKeys``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `GetKeys`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.GetKeys`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray GetKeys(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -1035,7 +1191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.GetKeys``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetKeys`: EntityArray
+    // response from `GetKeys`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `CertificateManagementApi.GetKeys`: %v\n", resp)
 }
 ```
@@ -1059,7 +1215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

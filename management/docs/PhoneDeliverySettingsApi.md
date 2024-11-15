@@ -153,11 +153,50 @@ Name | Type | Description  | Notes
 
 ## ReadAllPhoneDeliverySettings
 
-> EntityArray ReadAllPhoneDeliverySettings(ctx, environmentID).Execute()
-
 READ All Phone Delivery Settings
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllPhoneDeliverySettings(ctx, environmentID).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllPhoneDeliverySettings(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllPhoneDeliverySettings``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllPhoneDeliverySettings`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllPhoneDeliverySettings`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllPhoneDeliverySettings(ctx, environmentID).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -179,7 +218,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.ReadAllPhoneDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllPhoneDeliverySettings`: EntityArray
+    // response from `ReadAllPhoneDeliverySettings`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `PhoneDeliverySettingsApi.ReadAllPhoneDeliverySettings`: %v\n", resp)
 }
 ```
@@ -203,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

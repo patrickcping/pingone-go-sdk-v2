@@ -471,12 +471,15 @@ paths:
         schema:
           type: string
         style: form
-      - example: "10"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          maximum: 100
+          minimum: 1
           type: integer
         style: form
       - example: -startDate
@@ -638,6 +641,138 @@ paths:
       summary: READ Active Identity Counts by Date Range
       tags:
       - Active Identity Counts
+  /environments/{environmentID}/adminConfig:
+    get:
+      operationId: readAdministratorSecurity
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdministratorSecurity'
+          description: Successful response
+      summary: READ Administrator Security
+      tags:
+      - Administrator Security
+    put:
+      operationId: updateAdministratorSecurity
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdministratorSecurity'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdministratorSecurity'
+          description: Successful response
+      summary: UPDATE Administrator Security
+      tags:
+      - Administrator Security
   /environments/{environmentID}/agreements:
     get:
       operationId: readAllAgreements
@@ -4409,6 +4544,15 @@ paths:
   /environments/{environmentID}/activities:
     get:
       parameters:
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       - example: recordedat gt "2018-08-20T00:00:00Z" AND recordedat lt "2018-08-22T23:59:00Z"
         explode: true
         in: query
@@ -4621,7 +4765,8 @@ paths:
   /environments/{environmentID}/applicationSignons:
     get:
       parameters:
-      - example: "1"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
@@ -9687,12 +9832,15 @@ paths:
         schema:
           type: string
         style: form
-      - example: "10"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          maximum: 1000
+          minimum: 1
           type: integer
         style: form
       - description: "Adding a cursor value to retrieve the next page of results,\
@@ -15147,6 +15295,15 @@ paths:
     get:
       operationId: readAllTemplates
       parameters:
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       - example: (createdAt lt "2018-08-30") and (updatedAt gt "2018-07-30")
         explode: true
         in: query
@@ -15386,6 +15543,15 @@ paths:
         schema:
           $ref: '#/components/schemas/EnumTemplateName'
         style: simple
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "400":
           content:
@@ -19795,6 +19961,357 @@ paths:
       summary: UPDATE PingOne access control scope
       tags:
       - Resource Scopes
+  /environments/{environmentID}/roles:
+    get:
+      operationId: readAllCustomAdminRoles
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Custom Admin Roles
+      tags:
+      - Custom Admin Roles
+    post:
+      operationId: createCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomAdminRole'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAdminRole'
+          description: Successful response
+      summary: CREATE Custom Role
+      tags:
+      - Custom Admin Roles
+  /environments/{environmentID}/roles/{customRoleID}:
+    delete:
+      operationId: deleteCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: customRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Custom Role
+      tags:
+      - Custom Admin Roles
+    get:
+      operationId: readOneCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: customRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAdminRole'
+          description: Successful response
+      summary: READ One Custom Role
+      tags:
+      - Custom Admin Roles
+    put:
+      operationId: updateCustomAdminRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: customRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomAdminRole'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAdminRole'
+          description: Successful response
+      summary: UPDATE Custom Role
+      tags:
+      - Custom Admin Roles
   /environments/{environmentID}/schemas:
     get:
       operationId: readAllSchemas
@@ -22133,12 +22650,15 @@ paths:
         schema:
           type: string
         style: form
-      - example: "100"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          maximum: 1000
+          minimum: 1
           type: integer
         style: form
       - description: "Adding a cursor value to retrieve the next page of results,\
@@ -25642,7 +26162,8 @@ paths:
     get:
       operationId: readAllOrganizations
       parameters:
-      - example: "1"
+      - description: Adding a paging value to limit the number of resources displayed
+          per page
         explode: true
         in: query
         name: limit
@@ -26396,6 +26917,34 @@ components:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
       type: object
+    EnumAdministratorSecurityAllowedMethods:
+      description: "Indicates the methods to enable or disable for admin sign-on.\
+        \ Possible values are `TOTP` (temporary one-time password), `FIDO2`, or `EMAIL`."
+      enum:
+      - TOTP
+      - FIDO2
+      - EMAIL
+      type: string
+    EnumAdministratorSecurityAuthenticationMethod:
+      default: PINGONE
+      description: "Indicates whether to use PingOne MFA, an external IdP, or a combination\
+        \ of both for admin sign-on. Possible values are `PINGONE`, `EXTERNAL`, or\
+        \ `HYBRID`. The default is `PINGONE`."
+      enum:
+      - PINGONE
+      - EXTERNAL
+      - HYBRID
+      type: string
+    EnumAdministratorSecurityMfaStatus:
+      default: OPT_OUT
+      description: "This applies only to the specified environment, and can be either\
+        \ `OPT_IN` (indicating MFA is to be used for administrator sign-ons), or `OPT_OUT`\
+        \ (indicating MFA is not to be used for administrator sign-ons). This currently\
+        \ defaults to `OPT_OUT`."
+      enum:
+      - OPT_IN
+      - OPT_OUT
+      type: string
     EnumAgreementRevisionContentType:
       description: "An immutable string that specifies the content type of text. Options\
         \ are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1)\
@@ -26675,6 +27224,22 @@ components:
     EnumCSRResponseImportHeader:
       enum:
       - application/x-pem-file
+      type: string
+    EnumCustomAdminRoleApplicableTo:
+      description: "The scope types to which the role can be applied. Options are\
+        \ ORGANIZATION, ENVIRONMENT, and POPULATION."
+      enum:
+      - ORGANIZATION
+      - ENVIRONMENT
+      - POPULATION
+      type: string
+    EnumCustomAdminRoleType:
+      description: A value that indicates whether the role is a built-in role or a
+        custom role. Options are PLATFORM and CUSTOM.
+      enum:
+      - PLATFORM
+      - CUSTOM
+      readOnly: true
       type: string
     EnumCustomDomainPostHeader:
       enum:
@@ -27089,6 +27654,36 @@ components:
       enum:
       - IOS
       - GOOGLE
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod:
+      description: Use the value `BASIC` if your authentication with the email provider
+        uses a username and password. Use `BEARER` if your authentication is based
+        on the use of a bearer token.
+      enum:
+      - BASIC
+      - BEARER
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol:
+      description: Set to `HTTP` when configuring an external email provider.
+      enum:
+      - HTTP
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomProvider:
+      description: Must be set to `CUSTOM_PROVIDER`.
+      enum:
+      - CUSTOM_PROVIDER
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod:
+      description: Should be set to EMAIL.
+      enum:
+      - EMAIL
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod:
+      description: Use method to specify the type of API request the email provider
+        requires. Valid values are `GET` and `POST`.
+      enum:
+      - GET
+      - POST
       type: string
     EnumNotificationsPolicyCountryLimitDeliveryMethod:
       description: "The delivery method that the defined limitation should be applied\
@@ -27683,6 +28278,59 @@ components:
       - ENABLED
       - DISABLED
       type: string
+    AdministratorSecurity:
+      example:
+        mfaStatus: null
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        authenticationMethod: null
+        provider:
+          id: id
+        allowedMethods: null
+        recovery: true
+        policy:
+          id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        allowedMethods:
+          $ref: '#/components/schemas/EnumAdministratorSecurityAllowedMethods'
+        authenticationMethod:
+          $ref: '#/components/schemas/EnumAdministratorSecurityAuthenticationMethod'
+        createdAt:
+          description: The time the resource was created.
+          format: date-time
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        mfaStatus:
+          $ref: '#/components/schemas/EnumAdministratorSecurityMfaStatus'
+        policy:
+          $ref: '#/components/schemas/AdministratorSecurity_policy'
+        provider:
+          $ref: '#/components/schemas/AdministratorSecurity_provider'
+        recovery:
+          description: Indicates whether to allow account recovery within the admin
+            policy.
+          type: boolean
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - authenticationMethod
+      - recovery
+      type: object
     Agreement:
       example:
         environment:
@@ -28101,6 +28749,11 @@ components:
             description: A boolean that specifies whether the SAML assertion response
               itself should be signed. The default value is `false`.
             type: boolean
+          sessionNotOnOrAfterDuration:
+            description: Update this value if the SAML application requires a different
+              `SessionNotOnOrAfter` attribute value within the `AuthnStatement` element
+              than the `NotOnOrAfter` value set by the `assertionDuration` property.
+            type: integer
           sloBinding:
             $ref: '#/components/schemas/EnumApplicationSAMLSloBinding'
           sloEndpoint:
@@ -28903,6 +29556,80 @@ components:
       required:
       - default
       - usageType
+      type: object
+    CustomAdminRole:
+      example:
+        environment:
+          id: id
+        canAssign:
+        - id: id
+        - id: id
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        permissions:
+        - id: id
+        - id: id
+        name: name
+        canBeAssignedBy:
+        - id: id
+        - id: id
+        description: description
+        applicableTo:
+        - null
+        - null
+        id: id
+        type: null
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        applicableTo:
+          description: The scope types to which the role can be applied.
+          items:
+            $ref: '#/components/schemas/EnumCustomAdminRoleApplicableTo'
+          type: array
+        canAssign:
+          description: "A relationship that specifies if an actor is assigned the\
+            \ current custom role for a jurisdiction, then the actor can assign any\
+            \ of this set of roles to another actor for the same jurisdiction or sub-jurisdiction.\
+            \ This capability is dreived from the canBeAssignedBy property."
+          items:
+            $ref: '#/components/schemas/CustomAdminRole_canAssign_inner'
+          readOnly: true
+          type: array
+        canBeAssignedBy:
+          description: A relationship that determines whether a user assigned to one
+            of this set of roles for a jurisdiction can assign the current custom
+            role to another user for the same jurisdiction or sub-jurisdiction.
+          items:
+            $ref: '#/components/schemas/CustomAdminRole_canAssign_inner'
+          type: array
+        description:
+          description: The description of the role.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The role name.
+          type: string
+        permissions:
+          description: The set of permissions assigned to the role.
+          items:
+            $ref: '#/components/schemas/CustomAdminRole_permissions_inner'
+          type: array
+        type:
+          $ref: '#/components/schemas/EnumCustomAdminRoleType'
+      required:
+      - canBeAssignedBy
+      - name
+      - permissions
       type: object
     CustomDomain:
       example:
@@ -32971,57 +33698,86 @@ components:
           type: array
       type: object
     NotificationsSettingsEmailDeliverySettings:
-      example:
-        protocol: protocol
-        password: password
-        environment:
-          id: id
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        port: 0
-        host: host
-        replyTo:
-          address: address
-          name: name
-        from:
-          address: address
-          name: name
-        username: username
+      oneOf:
+      - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCustom'
+      - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsSMTP'
+    NotificationsSettingsEmailDeliverySettingsCommon:
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        host:
-          description: A string that specifies the organization's SMTP server.
-          type: string
-        port:
-          default: 465
-          description: "An integer that specifies the port used by the organization's\
-            \ SMTP server to send emails (default `465`). Note that the protocol used\
-            \ depends upon the port specified. If you specify port `25`, `587`, or\
-            \ `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used."
-          type: integer
-        protocol:
-          description: A string that specifies the organization's SMTP server's protocol.
-          readOnly: true
-          type: string
-        username:
-          description: A string that specifies the organization's SMTP server's username.
-          type: string
-        password:
-          description: A string that specifies the organization's SMTP server's password.
-          format: password
-          type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
-        from:
-          $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings_from'
-        replyTo:
-          $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings_replyTo'
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
       type: object
+    NotificationsSettingsEmailDeliverySettingsCustom:
+      allOf:
+      - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCommon'
+      - properties:
+          authentication:
+            $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCustom_allOf_authentication'
+          from:
+            $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCustom_allOf_from'
+          name:
+            description: Name to use to identify the provider.
+            type: string
+          protocol:
+            $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol'
+          provider:
+            $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomProvider'
+          replyTo:
+            $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCustom_allOf_replyTo'
+          requests:
+            description: Contains the object that is used to configure the API requests
+              sent to the email provider.
+            items:
+              $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCustom_allOf_requests'
+            type: array
+        required:
+        - authentication
+        - name
+        - protocol
+        - requests
+        type: object
+    NotificationsSettingsEmailDeliverySettingsSMTP:
+      allOf:
+      - $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsCommon'
+      - properties:
+          host:
+            description: A string that specifies the organization's SMTP server.
+            type: string
+          port:
+            default: 465
+            description: "An integer that specifies the port used by the organization's\
+              \ SMTP server to send emails (default `465`). Note that the protocol\
+              \ used depends upon the port specified. If you specify port `25`, `587`,\
+              \ or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used."
+            type: integer
+          protocol:
+            description: A string that specifies the organization's SMTP server's
+              protocol.
+            readOnly: true
+            type: string
+          username:
+            description: A string that specifies the organization's SMTP server's
+              username.
+            type: string
+          password:
+            description: A string that specifies the organization's SMTP server's
+              password.
+            format: password
+            type: string
+          from:
+            $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsSMTP_allOf_from'
+          replyTo:
+            $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettingsSMTP_allOf_replyTo'
+        type: object
     NotificationsSettingsPhoneDeliverySettings:
       oneOf:
       - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom'
@@ -36221,6 +36977,26 @@ components:
       required:
       - href
       type: object
+    AdministratorSecurity_policy:
+      example:
+        id: id
+      properties:
+        id:
+          description: The admin sign-on policy ID.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    AdministratorSecurity_provider:
+      example:
+        id: id
+      properties:
+        id:
+          description: "The UUID of the external IdP, if applicable."
+          type: string
+      required:
+      - id
+      type: object
     AgreementLanguage_agreement:
       example:
         id: id
@@ -36906,6 +37682,26 @@ components:
       - linkTextColor
       - logoType
       type: object
+    CustomAdminRole_canAssign_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: The unique identifier of the actor.
+          type: string
+      required:
+      - id
+      type: object
+    CustomAdminRole_permissions_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: The unique identifier of the permission (e.g. `permissions:read:userRoleAssignments`).
+          type: string
+      required:
+      - id
+      type: object
     CustomDomain_certificate:
       description: "An object that specifies information about the SSL certificate\
         \ used by this custom domain. If this property is not present, it indicates\
@@ -37006,6 +37802,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/Role'
       - $ref: '#/components/schemas/UserApplicationRoleAssignment'
+      - $ref: '#/components/schemas/CustomAdminRole'
     EntityArray__embedded:
       example:
         flowPolicies:
@@ -39942,10 +40739,84 @@ components:
         user:
           $ref: '#/components/schemas/Application_accessControl_group_groups_inner'
       type: object
-    NotificationsSettingsEmailDeliverySettings_from:
-      example:
-        address: address
-        name: name
+    NotificationsSettingsEmailDeliverySettingsCustom_allOf_authentication:
+      description: Contains the information for authenticating with the email provider.
+      properties:
+        method:
+          $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod'
+        authToken:
+          description: "If you specified `BEARER` as the authentication method, use\
+            \ authToken to provide the bearer token to use."
+          type: string
+        username:
+          description: "If you specified `BASIC` as the authentication method, use\
+            \ username to provide the username for authenticating with the email provider."
+          type: string
+        password:
+          description: "If you specified `BASIC` as the authentication method, use\
+            \ password to provide the password for authenticating with the email provider."
+          format: password
+          type: string
+      required:
+      - method
+      type: object
+      example: null
+    NotificationsSettingsEmailDeliverySettingsCustom_allOf_from:
+      description: Contains the "from" information to use for the notifications.
+      properties:
+        name:
+          description: The "from" name to use in the notifications that are sent.
+          type: string
+        address:
+          description: The "from" address to use in the notifications that are sent.
+          type: string
+      type: object
+      example: null
+    NotificationsSettingsEmailDeliverySettingsCustom_allOf_replyTo:
+      description: Contains the "reply-to" information to use for the notifications.
+      properties:
+        name:
+          description: The "reply-to" name to use in the notifications that are sent.
+          type: string
+        address:
+          description: The "reply-to" address to use in the notifications that are
+            sent.
+          type: string
+      type: object
+      example: null
+    NotificationsSettingsEmailDeliverySettingsCustom_allOf_requests:
+      properties:
+        body:
+          description: |
+            Required if method is set to `POST`. Use body to provide the content of the body for the request sent to the email provider. The body that you define must include the mandatory PingOne variables for notifications: `${from}`, `${to}`, and `${message}`. You can also include any optional notification variables.
+            If you are including the header `content-type: application/json` in `headers`:
+            - The content of `body` must be valid JSON
+            - You must enclose the JSON object in quotation marks and escape all quotation marks within the string, for example, `"{\"From\": \"${from}\",\"To\": \"${to}\",\"message2\": \"${message}\"}"`.
+          type: string
+        deliveryMethod:
+          $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod'
+        headers:
+          additionalProperties:
+            type: string
+          description: Use this object to specify the headers that your email provider's
+            API expects.
+          type: object
+        method:
+          $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod'
+        url:
+          description: "Use url to specify the endpoint for your email provider, for\
+            \ example, `https://api.example.com/email`. If `method` is set to `GET`,\
+            \ append to the URL the various query parameters that the email provider's\
+            \ API requires. The URL must also include the required PingOne variables,\
+            \ as described for the body parameter."
+          type: string
+      required:
+      - deliveryMethod
+      - method
+      - url
+      type: object
+      example: null
+    NotificationsSettingsEmailDeliverySettingsSMTP_allOf_from:
       properties:
         name:
           description: A string that specifies the email's "from" name.
@@ -39956,10 +40827,8 @@ components:
       required:
       - address
       type: object
-    NotificationsSettingsEmailDeliverySettings_replyTo:
-      example:
-        address: address
-        name: name
+      example: null
+    NotificationsSettingsEmailDeliverySettingsSMTP_allOf_replyTo:
       properties:
         name:
           description: A string that specifies the email's "reply to" name.
@@ -39968,6 +40837,7 @@ components:
           description: A string that specifies the email's "reply to" address.
           type: string
       type: object
+      example: null
     NotificationsSettingsPhoneDeliverySettingsCustom_allOf_authentication:
       properties:
         method:

@@ -11,11 +11,50 @@ Method | HTTP request | Description
 
 ## ReadAllRoles
 
-> EntityArray ReadAllRoles(ctx).Execute()
-
 READ All Roles
 
-### Example
+### Paged Response (Recommended)
+
+> EntityArrayPagedIterator ReadAllRoles(ctx).Execute()
+
+#### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+	// ... other parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+	api := apiClient. // .... API function
+    pagedIterator := api.ReadAllRoles(context.Background(), environmentID, /* ... other parameters */).Execute()
+	for pageCursor, err := range pagedIterator {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllRoles``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
+			break
+		}
+
+		// response from `ReadAllRoles`: EntityArrayPagedIterator
+		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllRoles`: %v\n", pageCursor.EntityArray)
+	}
+}
+```
+
+### Initial Page Response
+
+> EntityArray ReadAllRoles(ctx).ExecuteInitialPage()
+
+#### Example
 
 ```go
 package main
@@ -36,7 +75,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ReadAllRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadAllRoles`: EntityArray
+    // response from `ReadAllRoles`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `RolesApi.ReadAllRoles`: %v\n", resp)
 }
 ```
@@ -52,7 +91,7 @@ Other parameters are passed through a pointer to a apiReadAllRolesRequest struct
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 

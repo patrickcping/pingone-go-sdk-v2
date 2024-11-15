@@ -70,7 +70,7 @@ func (a *MFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKe
 	)
 	return response, err
 }
-			
+
 func (a *MFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -261,7 +261,7 @@ func (a *MFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKe
 	)
 	return response, err
 }
-			
+
 func (a *MFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -455,7 +455,7 @@ func (a *MFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKe
 	)
 	return response, err
 }
-			
+
 func (a *MFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

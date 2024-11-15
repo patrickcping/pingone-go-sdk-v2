@@ -74,7 +74,7 @@ func (a *APIServerDeploymentApiService) DeployAPIServerExecute(r ApiDeployAPISer
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDeployAPIServerRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -287,7 +287,7 @@ func (a *APIServerDeploymentApiService) ReadDeploymentStatusExecute(r ApiReadDep
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r ApiReadDeploymentStatusRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

@@ -68,7 +68,7 @@ func (a *EnableUsersMFAApiService) ReadUserMFAEnabledExecute(r ApiReadUserMFAEna
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -272,7 +272,7 @@ func (a *EnableUsersMFAApiService) UpdateUserMFAEnabledExecute(r ApiUpdateUserMF
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpdateUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

@@ -74,7 +74,7 @@ func (a *GroupMembershipApiService) AddUserToGroupExecute(r ApiAddUserToGroupReq
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupMembershipApiService) internalAddUserToGroupExecute(r ApiAddUserToGroupRequest) (*GroupMembership, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -272,8 +272,12 @@ func (r ApiReadAllGroupMembershipsForUserRequest) Filter(filter string) ApiReadA
 	return r
 }
 
-func (r ApiReadAllGroupMembershipsForUserRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllGroupMembershipsForUserRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllGroupMembershipsForUserExecute(r)
+}
+
+func (r ApiReadAllGroupMembershipsForUserRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllGroupMembershipsForUserExecuteInitialPage(r)
 }
 
 /*
@@ -295,7 +299,11 @@ func (a *GroupMembershipApiService) ReadAllGroupMembershipsForUser(ctx context.C
 
 // Execute executes the request
 //  @return EntityArray
-func (a *GroupMembershipApiService) ReadAllGroupMembershipsForUserExecute(r ApiReadAllGroupMembershipsForUserRequest) (*EntityArray, *http.Response, error) {
+func (a *GroupMembershipApiService) ReadAllGroupMembershipsForUserExecute(r ApiReadAllGroupMembershipsForUserRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *GroupMembershipApiService) ReadAllGroupMembershipsForUserExecuteInitialPage(r ApiReadAllGroupMembershipsForUserRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -310,7 +318,7 @@ func (a *GroupMembershipApiService) ReadAllGroupMembershipsForUserExecute(r ApiR
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupMembershipApiService) internalReadAllGroupMembershipsForUserExecute(r ApiReadAllGroupMembershipsForUserRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -529,7 +537,7 @@ func (a *GroupMembershipApiService) ReadOneGroupMembershipForUserExecute(r ApiRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *GroupMembershipApiService) internalReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*GroupMembership, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -733,7 +741,7 @@ func (a *GroupMembershipApiService) RemoveUserFromGroupExecute(r ApiRemoveUserFr
 	)
 	return response, err
 }
-			
+
 func (a *GroupMembershipApiService) internalRemoveUserFromGroupExecute(r ApiRemoveUserFromGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete

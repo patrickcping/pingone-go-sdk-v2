@@ -42,8 +42,12 @@ func (r ApiReadAllLicensesRequest) Order(order string) ApiReadAllLicensesRequest
 	return r
 }
 
-func (r ApiReadAllLicensesRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllLicensesRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllLicensesExecute(r)
+}
+
+func (r ApiReadAllLicensesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllLicensesExecuteInitialPage(r)
 }
 
 /*
@@ -63,7 +67,11 @@ func (a *LicensesApiService) ReadAllLicenses(ctx context.Context, organizationID
 
 // Execute executes the request
 //  @return EntityArray
-func (a *LicensesApiService) ReadAllLicensesExecute(r ApiReadAllLicensesRequest) (*EntityArray, *http.Response, error) {
+func (a *LicensesApiService) ReadAllLicensesExecute(r ApiReadAllLicensesRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *LicensesApiService) ReadAllLicensesExecuteInitialPage(r ApiReadAllLicensesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -78,7 +86,7 @@ func (a *LicensesApiService) ReadAllLicensesExecute(r ApiReadAllLicensesRequest)
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LicensesApiService) internalReadAllLicensesExecute(r ApiReadAllLicensesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -281,7 +289,7 @@ func (a *LicensesApiService) ReadOneLicenseExecute(r ApiReadOneLicenseRequest) (
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LicensesApiService) internalReadOneLicenseExecute(r ApiReadOneLicenseRequest) (*License, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -479,7 +487,7 @@ func (a *LicensesApiService) ReadOneLicenseNameExecute(r ApiReadOneLicenseNameRe
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LicensesApiService) internalReadOneLicenseNameExecute(r ApiReadOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -683,7 +691,7 @@ func (a *LicensesApiService) UpdateOneLicenseNameExecute(r ApiUpdateOneLicenseNa
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *LicensesApiService) internalUpdateOneLicenseNameExecute(r ApiUpdateOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

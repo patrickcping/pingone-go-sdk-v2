@@ -79,7 +79,7 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationPlansPl
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -281,7 +281,7 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesGe
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -476,7 +476,7 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesPo
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -681,7 +681,7 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesRu
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -877,7 +877,7 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesRu
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1073,7 +1073,7 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesSt
 	)
 	return response, err
 }
-			
+
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesStoreIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesStoreIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

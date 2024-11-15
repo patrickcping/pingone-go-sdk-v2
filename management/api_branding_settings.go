@@ -65,7 +65,7 @@ func (a *BrandingSettingsApiService) ReadBrandingSettingsExecute(r ApiReadBrandi
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingSettingsApiService) internalReadBrandingSettingsExecute(r ApiReadBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -265,7 +265,7 @@ func (a *BrandingSettingsApiService) UpdateBrandingSettingsExecute(r ApiUpdateBr
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *BrandingSettingsApiService) internalUpdateBrandingSettingsExecute(r ApiUpdateBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

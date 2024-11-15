@@ -68,7 +68,7 @@ func (a *EnvironmentsApiService) CreateEnvironmentActiveLicenseExecute(r ApiCrea
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnvironmentsApiService) internalCreateEnvironmentActiveLicenseExecute(r ApiCreateEnvironmentActiveLicenseRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -273,7 +273,7 @@ func (a *EnvironmentsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironment
 	)
 	return response, err
 }
-			
+
 func (a *EnvironmentsApiService) internalDeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -441,8 +441,12 @@ func (r ApiReadAllEnvironmentsRequest) Filter(filter string) ApiReadAllEnvironme
 	return r
 }
 
-func (r ApiReadAllEnvironmentsRequest) Execute() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllEnvironmentsRequest) Execute() EntityArrayPagedIterator {
 	return r.ApiService.ReadAllEnvironmentsExecute(r)
+}
+
+func (r ApiReadAllEnvironmentsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllEnvironmentsExecuteInitialPage(r)
 }
 
 /*
@@ -460,7 +464,11 @@ func (a *EnvironmentsApiService) ReadAllEnvironments(ctx context.Context) ApiRea
 
 // Execute executes the request
 //  @return EntityArray
-func (a *EnvironmentsApiService) ReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) (*EntityArray, *http.Response, error) {
+func (a *EnvironmentsApiService) ReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) EntityArrayPagedIterator {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+
+func (a *EnvironmentsApiService) ReadAllEnvironmentsExecuteInitialPage(r ApiReadAllEnvironmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -475,7 +483,7 @@ func (a *EnvironmentsApiService) ReadAllEnvironmentsExecute(r ApiReadAllEnvironm
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnvironmentsApiService) internalReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -677,7 +685,7 @@ func (a *EnvironmentsApiService) ReadOneEnvironmentExecute(r ApiReadOneEnvironme
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnvironmentsApiService) internalReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -877,7 +885,7 @@ func (a *EnvironmentsApiService) UpdateEnvironmentExecute(r ApiUpdateEnvironment
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnvironmentsApiService) internalUpdateEnvironmentExecute(r ApiUpdateEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -1079,7 +1087,7 @@ func (a *EnvironmentsApiService) UpdateEnvironmentTypeExecute(r ApiUpdateEnviron
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *EnvironmentsApiService) internalUpdateEnvironmentTypeExecute(r ApiUpdateEnvironmentTypeRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
