@@ -1,3 +1,14 @@
+# v0.8.0 (Unreleased)
+
+* **Feature** Add support for Authorize Editor Attributes API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Conditions API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Connector Templates API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Policies API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Processors API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Rules API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Services API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+* **Feature** Add support for Authorize Editor Statements API. [#372](https://github.com/patrickcping/pingone-go-sdk-v2/pull/372)
+
 # v0.7.0 (2024-11-15)
 
 * **Breaking change** `(Api[a-zA-Z]Request).Execute()` and `(*Api[a-zA-Z]Request).[a-zA-Z]Execute()` API functions now returns the `EntityArrayPagedIterator` data type to for code clients to implement paging of results. [#392](https://github.com/patrickcping/pingone-go-sdk-v2/pull/392)
