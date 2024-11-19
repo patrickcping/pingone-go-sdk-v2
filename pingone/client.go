@@ -3,11 +3,6 @@ package pingone
 import (
 	"context"
 	"fmt"
-	"log"
-	"net/http"
-	"net/url"
-	"regexp"
-	"time"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
 	"github.com/patrickcping/pingone-go-sdk-v2/credentials"
@@ -17,7 +12,6 @@ import (
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
 	"github.com/patrickcping/pingone-go-sdk-v2/verify"
 	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/clientcredentials"
 )
 
 type Client struct {
@@ -577,136 +571,4 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 	}
 
 	return client, nil
-}
-
-func (c *Config) getToken(ctx context.Context) error {
-
-	if !checkForValue(c.AccessToken) {
-
-		if !checkForValue(c.ClientID) || !checkForValue(c.ClientSecret) || !checkForValue(c.EnvironmentID) || (!checkForValue(c.Region) && !checkForValue(c.RegionCode)) {
-			return fmt.Errorf("Required parameter missing.  Must provide ClientID, ClientSecret, EnvironmentID and Region.")
-		}
-
-		var region model.RegionMapping
-		if c.Region != "" {
-			region = model.FindRegionByName(c.Region) //nolint:staticcheck
-		}
-
-		if v := c.RegionCode; v != nil {
-			region = model.FindRegionByAPICode(*v)
-		}
-
-		regionSuffix := region.URLSuffix
-
-		//Get URL from SDK
-		authURL := fmt.Sprintf("https://auth.pingone.%s", regionSuffix)
-		if checkForValue(c.AuthHostnameOverride) {
-			authURL = fmt.Sprintf("https://%s", *c.AuthHostnameOverride)
-		}
-
-		//OAuth 2.0 config for client creds
-		config := clientcredentials.Config{
-			ClientID:     *c.ClientID,
-			ClientSecret: *c.ClientSecret,
-			TokenURL:     fmt.Sprintf("%s/%s/as/token", authURL, *c.EnvironmentID),
-			AuthStyle:    oauth2.AuthStyleAutoDetect,
-		}
-
-		token, err := processResponse(func() (*oauth2.Token, error) {
-
-			if v := c.ProxyURL; v != nil && *v != "" {
-
-				// Parse the proxy URL
-				proxyURLParsed, err := url.Parse(*v)
-				if err != nil {
-					return nil, fmt.Errorf("Failed to parse proxy URL: %s", err)
-				}
-
-				// Create a new Transport object with the proxy settings
-				transport := &http.Transport{
-					Proxy: http.ProxyURL(proxyURLParsed),
-				}
-
-				// Create a new HTTP client using the custom Transport
-				httpClient := &http.Client{
-					Transport: transport,
-				}
-				ctx = context.WithValue(ctx, oauth2.HTTPClient, httpClient)
-			}
-
-			return config.Token(ctx)
-		})
-		if err != nil {
-			return err
-		}
-
-		c.accessTokenObject = token
-
-		return nil
-
-	} else {
-		c.accessTokenObject = &oauth2.Token{
-			AccessToken: *c.AccessToken,
-			TokenType:   "Bearer",
-		}
-		return nil
-	}
-}
-
-var (
-	maxRetries = 5
-)
-
-func processResponse(f func() (*oauth2.Token, error)) (*oauth2.Token, error) {
-	return exponentialBackOffRetry(f)
-}
-
-func exponentialBackOffRetry(f func() (*oauth2.Token, error)) (*oauth2.Token, error) {
-	var token *oauth2.Token
-	var err error
-	backOffTime := time.Second
-	var isRetryable bool
-
-	for i := 0; i < maxRetries; i++ {
-		token, err = f()
-
-		if err != nil {
-			backOffTime, isRetryable = testForRetryable(err, backOffTime)
-
-			if isRetryable {
-				log.Printf("Attempt %d failed: %v, backing off by %s.", i+1, err, backOffTime.String())
-				time.Sleep(backOffTime)
-				continue
-			}
-		}
-
-		return token, err
-	}
-
-	log.Printf("Request failed after %d attempts", maxRetries)
-
-	return token, err // output the final error
-}
-
-func testForRetryable(err error, currentBackoff time.Duration) (time.Duration, bool) {
-
-	backoff := currentBackoff * 2
-
-	retryAbleCodes := []int{
-		429,
-		500,
-		501,
-		502,
-		503,
-		504,
-	}
-
-	for _, v := range retryAbleCodes {
-		if m, mErr := regexp.MatchString(fmt.Sprintf("%d ", v), err.Error()); mErr == nil && m {
-			log.Printf("HTTP status code %d detected, available for retry", v)
-			return backoff, true
-		}
-	}
-
-	return backoff, false
 }
