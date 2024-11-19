@@ -20,6 +20,7 @@ type Config struct {
 	AuthHostnameOverride *string
 	ClientID             *string
 	ClientSecret         *string
+	PrivateKey           *[]byte
 	EnvironmentID        *string
 	ProxyURL             *string
 	// Deprecated: Use RegionCode instead
