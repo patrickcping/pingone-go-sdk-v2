@@ -50,6 +50,15 @@ func (c *Config) getToken(ctx context.Context) error {
 	}
 
 	// here, do client ID/secret or JWT bearer
+	if !checkForValue(c.PrivateKey) {
+		return c.getTokenJWTBearer(ctx)
+	}
+
+	if !checkForValue(c.ClientSecret) {
+		return c.getTokenClientIDClientSecret(ctx)
+	}
+
+	return fmt.Errorf("Required parameter missing.  Must provide either Private Key (for JWT Bearer auth) or Client Secret (for Client Credentials auth).")
 }
 
 func (c *Config) getTokenClientIDClientSecret(ctx context.Context) error {
@@ -142,7 +151,14 @@ func (c *Config) getTokenJWTBearer(ctx context.Context) error {
 		formData.Add("client_assertion", *requestJwt)
 		formData.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")
 
-		httpResp, err := httpClient.Post(c.tokenUrl(), "application/x-www-form-urlencoded", strings.NewReader(formData.Encode()))
+		req, err := http.NewRequestWithContext(ctx, "POST", c.tokenUrl(), strings.NewReader(formData.Encode()))
+		if err != nil {
+			return nil, fmt.Errorf("failed to create HTTP request: %w", err)
+		}
+
+		req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+
+		httpResp, err := httpClient.Do(req)
 		if err != nil {
 			return nil, fmt.Errorf("failed to request access token with service account: %w", err)
 		}
