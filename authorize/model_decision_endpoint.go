@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DecisionEndpoint type satisfies the MappedNullable interface at compile time
@@ -19,7 +21,7 @@ var _ MappedNullable = &DecisionEndpoint{}
 
 // DecisionEndpoint struct for DecisionEndpoint
 type DecisionEndpoint struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies alternative unique identifier for the endpoint, which provides a method for locating the resource by a known, fixed identifier.
 	AlternateId *string `json:"alternateId,omitempty"`
 	AuthorizationVersion *DecisionEndpointAuthorizationVersion `json:"authorizationVersion,omitempty"`
@@ -41,6 +43,8 @@ type DecisionEndpoint struct {
 	// A boolean that specifies whether to record a limited history of recent decision requests and responses, which can be queried through a separate API.
 	RecordRecentRequests bool `json:"recordRecentRequests"`
 }
+
+type _DecisionEndpoint DecisionEndpoint
 
 // NewDecisionEndpoint instantiates a new DecisionEndpoint object
 // This constructor will assign default values to properties that have it defined,
@@ -68,14 +72,14 @@ func (o *DecisionEndpoint) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DecisionEndpoint) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *DecisionEndpoint) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -91,7 +95,7 @@ func (o *DecisionEndpoint) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *DecisionEndpoint) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetAlternateId returns the AlternateId field value if set, zero value otherwise.
@@ -463,6 +467,45 @@ func (o DecisionEndpoint) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["recordRecentRequests"] = o.RecordRecentRequests
 	return toSerialize, nil
+}
+
+func (o *DecisionEndpoint) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"description",
+		"name",
+		"recordRecentRequests",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDecisionEndpoint := _DecisionEndpoint{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDecisionEndpoint)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DecisionEndpoint(varDecisionEndpoint)
+
+	return err
 }
 
 type NullableDecisionEndpoint struct {

@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ApplicationResource type satisfies the MappedNullable interface at compile time
@@ -19,7 +21,7 @@ var _ MappedNullable = &ApplicationResource{}
 
 // ApplicationResource struct for ApplicationResource
 type ApplicationResource struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The application resource's description.
 	Description *string `json:"description,omitempty"`
 	// The resource's unique identifier.
@@ -28,6 +30,8 @@ type ApplicationResource struct {
 	Name string `json:"name"`
 	Parent *ApplicationResourceParent `json:"parent,omitempty"`
 }
+
+type _ApplicationResource ApplicationResource
 
 // NewApplicationResource instantiates a new ApplicationResource object
 // This constructor will assign default values to properties that have it defined,
@@ -53,14 +57,14 @@ func (o *ApplicationResource) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResource) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *ApplicationResource) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -76,7 +80,7 @@ func (o *ApplicationResource) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *ApplicationResource) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -223,6 +227,43 @@ func (o ApplicationResource) ToMap() (map[string]interface{}, error) {
 		toSerialize["parent"] = o.Parent
 	}
 	return toSerialize, nil
+}
+
+func (o *ApplicationResource) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationResource := _ApplicationResource{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varApplicationResource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationResource(varApplicationResource)
+
+	return err
 }
 
 type NullableApplicationResource struct {

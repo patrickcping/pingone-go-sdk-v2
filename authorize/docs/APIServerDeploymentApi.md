@@ -21,26 +21,26 @@ Deploy API Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
-    contentType := "contentType_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
+	contentType := "contentType_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServerDeploymentApi.DeployAPIServer(context.Background(), environmentID, apiServerID).ContentType(contentType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServerDeploymentApi.DeployAPIServer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployAPIServer`: APIServerDeployment
-    fmt.Fprintf(os.Stdout, "Response from `APIServerDeploymentApi.DeployAPIServer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServerDeploymentApi.DeployAPIServer(context.Background(), environmentID, apiServerID).ContentType(contentType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServerDeploymentApi.DeployAPIServer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployAPIServer`: APIServerDeployment
+	fmt.Fprintf(os.Stdout, "Response from `APIServerDeploymentApi.DeployAPIServer`: %v\n", resp)
 }
 ```
 
@@ -94,25 +94,25 @@ READ API Server Deployment Status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServerDeploymentApi.ReadDeploymentStatus(context.Background(), environmentID, apiServerID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServerDeploymentApi.ReadDeploymentStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadDeploymentStatus`: APIServerDeployment
-    fmt.Fprintf(os.Stdout, "Response from `APIServerDeploymentApi.ReadDeploymentStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServerDeploymentApi.ReadDeploymentStatus(context.Background(), environmentID, apiServerID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServerDeploymentApi.ReadDeploymentStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadDeploymentStatus`: APIServerDeployment
+	fmt.Fprintf(os.Stdout, "Response from `APIServerDeploymentApi.ReadDeploymentStatus`: %v\n", resp)
 }
 ```
 

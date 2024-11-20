@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the APIServerOperationAccessControlScopeScopesInner type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type APIServerOperationAccessControlScopeScopesInner struct {
 	// The ID of the scope.
 	Id string `json:"id"`
 }
+
+type _APIServerOperationAccessControlScopeScopesInner APIServerOperationAccessControlScopeScopesInner
 
 // NewAPIServerOperationAccessControlScopeScopesInner instantiates a new APIServerOperationAccessControlScopeScopesInner object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o APIServerOperationAccessControlScopeScopesInner) ToMap() (map[string]int
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *APIServerOperationAccessControlScopeScopesInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAPIServerOperationAccessControlScopeScopesInner := _APIServerOperationAccessControlScopeScopesInner{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAPIServerOperationAccessControlScopeScopesInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = APIServerOperationAccessControlScopeScopesInner(varAPIServerOperationAccessControlScopeScopesInner)
+
+	return err
 }
 
 type NullableAPIServerOperationAccessControlScopeScopesInner struct {

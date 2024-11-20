@@ -19,7 +19,7 @@ var _ MappedNullable = &EntityArray{}
 
 // EntityArray struct for EntityArray
 type EntityArray struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Embedded *EntityArrayEmbedded `json:"_embedded,omitempty"`
 	Count *float32 `json:"count,omitempty"`
 	Size *float32 `json:"size,omitempty"`
@@ -48,14 +48,14 @@ func (o *EntityArray) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArray) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *EntityArray) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -71,7 +71,7 @@ func (o *EntityArray) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *EntityArray) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetEmbedded returns the Embedded field value if set, zero value otherwise.

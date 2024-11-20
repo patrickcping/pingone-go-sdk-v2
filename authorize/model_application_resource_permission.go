@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ApplicationResourcePermission type satisfies the MappedNullable interface at compile time
@@ -19,7 +21,7 @@ var _ MappedNullable = &ApplicationResourcePermission{}
 
 // ApplicationResourcePermission struct for ApplicationResourcePermission
 type ApplicationResourcePermission struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The action associated with this permission.
 	Action string `json:"action"`
 	// The resource's description.
@@ -29,6 +31,8 @@ type ApplicationResourcePermission struct {
 	Id *string `json:"id,omitempty"`
 	Resource *ApplicationResourcePermissionResource `json:"resource,omitempty"`
 }
+
+type _ApplicationResourcePermission ApplicationResourcePermission
 
 // NewApplicationResourcePermission instantiates a new ApplicationResourcePermission object
 // This constructor will assign default values to properties that have it defined,
@@ -54,14 +58,14 @@ func (o *ApplicationResourcePermission) GetLinks() map[string]LinksHATEOASValue 
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResourcePermission) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *ApplicationResourcePermission) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -77,7 +81,7 @@ func (o *ApplicationResourcePermission) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *ApplicationResourcePermission) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetAction returns the Action field value
@@ -259,6 +263,43 @@ func (o ApplicationResourcePermission) ToMap() (map[string]interface{}, error) {
 		toSerialize["resource"] = o.Resource
 	}
 	return toSerialize, nil
+}
+
+func (o *ApplicationResourcePermission) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"action",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationResourcePermission := _ApplicationResourcePermission{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varApplicationResourcePermission)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationResourcePermission(varApplicationResourcePermission)
+
+	return err
 }
 
 type NullableApplicationResourcePermission struct {

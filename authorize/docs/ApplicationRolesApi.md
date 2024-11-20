@@ -24,25 +24,25 @@ CREATE Application Roles
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationRole := *openapiclient.NewApplicationRole("Name_example") // ApplicationRole |  (optional)
+	environmentID := "environmentID_example" // string | 
+	applicationRole := *openapiclient.NewApplicationRole("Name_example") // ApplicationRole |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationRolesApi.CreateApplicationRoles(context.Background(), environmentID).ApplicationRole(applicationRole).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.CreateApplicationRoles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateApplicationRoles`: ApplicationRole
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.CreateApplicationRoles`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationRolesApi.CreateApplicationRoles(context.Background(), environmentID).ApplicationRole(applicationRole).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.CreateApplicationRoles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateApplicationRoles`: ApplicationRole
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.CreateApplicationRoles`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ DELETE Application Role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationRoleID := "applicationRoleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationRoleID := "applicationRoleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationRolesApi.DeleteApplicationRole(context.Background(), environmentID, applicationRoleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.DeleteApplicationRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApplicationRolesApi.DeleteApplicationRole(context.Background(), environmentID, applicationRoleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.DeleteApplicationRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -202,24 +202,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationRolesApi.ReadApplicationRoles(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.ReadApplicationRoles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadApplicationRoles`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.ReadApplicationRoles`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationRolesApi.ReadApplicationRoles(context.Background(), environmentID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.ReadApplicationRoles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadApplicationRoles`: EntityArrayPagedIterator
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.ReadApplicationRoles`: %v\n", resp)
 }
 ```
 
@@ -270,25 +270,25 @@ READ One Application Role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationRoleID := "applicationRoleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationRoleID := "applicationRoleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationRolesApi.ReadOneApplicationRole(context.Background(), environmentID, applicationRoleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.ReadOneApplicationRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneApplicationRole`: ApplicationRole
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.ReadOneApplicationRole`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationRolesApi.ReadOneApplicationRole(context.Background(), environmentID, applicationRoleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.ReadOneApplicationRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneApplicationRole`: ApplicationRole
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.ReadOneApplicationRole`: %v\n", resp)
 }
 ```
 
@@ -341,26 +341,26 @@ UPDATE Application Role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationRoleID := "applicationRoleID_example" // string | 
-    applicationRole := *openapiclient.NewApplicationRole("Name_example") // ApplicationRole |  (optional)
+	environmentID := "environmentID_example" // string | 
+	applicationRoleID := "applicationRoleID_example" // string | 
+	applicationRole := *openapiclient.NewApplicationRole("Name_example") // ApplicationRole |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationRolesApi.UpdateApplicationRole(context.Background(), environmentID, applicationRoleID).ApplicationRole(applicationRole).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.UpdateApplicationRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateApplicationRole`: ApplicationRole
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.UpdateApplicationRole`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationRolesApi.UpdateApplicationRole(context.Background(), environmentID, applicationRoleID).ApplicationRole(applicationRole).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.UpdateApplicationRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateApplicationRole`: ApplicationRole
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.UpdateApplicationRole`: %v\n", resp)
 }
 ```
 

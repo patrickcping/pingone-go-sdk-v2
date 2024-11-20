@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the APIServerOperationAccessControlPermission type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type APIServerOperationAccessControlPermission struct {
 	// An application permission ID that defines the access requirements for the operation. The end user must be entitled to the specified application permission to gain access to the operation. This is a required property if `accessControl.permission` is set.
 	Id string `json:"id"`
 }
+
+type _APIServerOperationAccessControlPermission APIServerOperationAccessControlPermission
 
 // NewAPIServerOperationAccessControlPermission instantiates a new APIServerOperationAccessControlPermission object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o APIServerOperationAccessControlPermission) ToMap() (map[string]interface
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *APIServerOperationAccessControlPermission) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAPIServerOperationAccessControlPermission := _APIServerOperationAccessControlPermission{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAPIServerOperationAccessControlPermission)
+
+	if err != nil {
+		return err
+	}
+
+	*o = APIServerOperationAccessControlPermission(varAPIServerOperationAccessControlPermission)
+
+	return err
 }
 
 type NullableAPIServerOperationAccessControlPermission struct {

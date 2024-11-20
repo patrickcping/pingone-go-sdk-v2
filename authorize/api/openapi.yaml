@@ -2521,7 +2521,7 @@ components:
         authorizationServer:
           resource:
             id: id
-          type: null
+          type: PINGONE_SSO
         name: name
         id: id
         directory:
@@ -2619,7 +2619,7 @@ components:
       example:
         accessControl:
           scope:
-            matchType: null
+            matchType: ANY
             scopes:
             - id: id
             - id: id
@@ -2636,22 +2636,22 @@ components:
           key:
             href: https://openapi-generator.tech
         methods:
-        - null
-        - null
-        - null
-        - null
-        - null
+        - GET
+        - GET
+        - GET
+        - GET
+        - GET
         paths:
         - pattern: pattern
-          type: null
+          type: EXACT
         - pattern: pattern
-          type: null
+          type: EXACT
         - pattern: pattern
-          type: null
+          type: EXACT
         - pattern: pattern
-          type: null
+          type: EXACT
         - pattern: pattern
-          type: null
+          type: EXACT
         name: name
         id: id
         policy:
@@ -2703,7 +2703,7 @@ components:
       example:
         parent:
           id: id
-          type: null
+          type: PING_ONE_RESOURCE
         _links:
           key:
             href: https://openapi-generator.tech
@@ -2992,7 +2992,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 6.027456183070403
+        size: 5.637376656633329
         _links:
           key:
             href: https://openapi-generator.tech
@@ -3013,7 +3013,7 @@ components:
           operations:
           - accessControl:
               scope:
-                matchType: null
+                matchType: ANY
                 scopes:
                 - id: id
                 - id: id
@@ -3030,29 +3030,29 @@ components:
               key:
                 href: https://openapi-generator.tech
             methods:
-            - null
-            - null
-            - null
-            - null
-            - null
+            - GET
+            - GET
+            - GET
+            - GET
+            - GET
             paths:
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             name: name
             id: id
             policy:
               id: id
           - accessControl:
               scope:
-                matchType: null
+                matchType: ANY
                 scopes:
                 - id: id
                 - id: id
@@ -3069,29 +3069,49 @@ components:
               key:
                 href: https://openapi-generator.tech
             methods:
-            - null
-            - null
-            - null
-            - null
-            - null
+            - GET
+            - GET
+            - GET
+            - GET
+            - GET
             paths:
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             - pattern: pattern
-              type: null
+              type: EXACT
             name: name
             id: id
             policy:
               id: id
           permissions:
-          - null
-          - null
+          - environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            resource:
+              name: name
+              id: id
+            action: action
+            description: description
+            id: id
+          - environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            resource:
+              name: name
+              id: id
+            action: action
+            description: description
+            id: id
           roles:
           - _links:
               key:
@@ -3108,7 +3128,7 @@ components:
           resources:
           - parent:
               id: id
-              type: null
+              type: PING_ONE_RESOURCE
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -3117,7 +3137,7 @@ components:
             id: id
           - parent:
               id: id
-              type: null
+              type: PING_ONE_RESOURCE
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -3137,7 +3157,7 @@ components:
             authorizationServer:
               resource:
                 id: id
-              type: null
+              type: PINGONE_SSO
             name: name
             id: id
             directory:
@@ -3156,7 +3176,7 @@ components:
             authorizationServer:
               resource:
                 id: id
-              type: null
+              type: PINGONE_SSO
             name: name
             id: id
             directory:
@@ -3206,7 +3226,7 @@ components:
               href: href
               title: title
               type: type
-        count: 0.8008281904610115
+        count: 5.962133916683182
       properties:
         _links:
           additionalProperties:
@@ -3259,6 +3279,39 @@ components:
       readOnly: true
       type: object
     P1Error:
+      example:
+        code: code
+        details:
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        id: id
+        message: message
       properties:
         id:
           description: "A unique identifier that is stored in log files and always\
@@ -3334,7 +3387,7 @@ components:
       example:
         resource:
           id: id
-        type: null
+        type: PINGONE_SSO
       properties:
         resource:
           $ref: '#/components/schemas/APIServer_authorizationServer_resource'
@@ -3527,7 +3580,7 @@ components:
     APIServerOperation_accessControl_scope:
       description: Defines the scope membership requirements for the operation.
       example:
-        matchType: null
+        matchType: ANY
         scopes:
         - id: id
         - id: id
@@ -3548,7 +3601,7 @@ components:
       description: The access control configuration for the operation.
       example:
         scope:
-          matchType: null
+          matchType: ANY
           scopes:
           - id: id
           - id: id
@@ -3572,7 +3625,7 @@ components:
     APIServerOperation_paths_inner:
       example:
         pattern: pattern
-        type: null
+        type: EXACT
       properties:
         pattern:
           description: |
@@ -3589,7 +3642,7 @@ components:
       description: The application resource's parent.
       example:
         id: id
-        type: null
+        type: PING_ONE_RESOURCE
       properties:
         type:
           $ref: '#/components/schemas/EnumApplicationResourceParentType'
@@ -3696,7 +3749,7 @@ components:
         operations:
         - accessControl:
             scope:
-              matchType: null
+              matchType: ANY
               scopes:
               - id: id
               - id: id
@@ -3713,29 +3766,29 @@ components:
             key:
               href: https://openapi-generator.tech
           methods:
-          - null
-          - null
-          - null
-          - null
-          - null
+          - GET
+          - GET
+          - GET
+          - GET
+          - GET
           paths:
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           name: name
           id: id
           policy:
             id: id
         - accessControl:
             scope:
-              matchType: null
+              matchType: ANY
               scopes:
               - id: id
               - id: id
@@ -3752,29 +3805,49 @@ components:
             key:
               href: https://openapi-generator.tech
           methods:
-          - null
-          - null
-          - null
-          - null
-          - null
+          - GET
+          - GET
+          - GET
+          - GET
+          - GET
           paths:
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           - pattern: pattern
-            type: null
+            type: EXACT
           name: name
           id: id
           policy:
             id: id
         permissions:
-        - null
-        - null
+        - environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          resource:
+            name: name
+            id: id
+          action: action
+          description: description
+          id: id
+        - environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          resource:
+            name: name
+            id: id
+          action: action
+          description: description
+          id: id
         roles:
         - _links:
             key:
@@ -3791,7 +3864,7 @@ components:
         resources:
         - parent:
             id: id
-            type: null
+            type: PING_ONE_RESOURCE
           _links:
             key:
               href: https://openapi-generator.tech
@@ -3800,7 +3873,7 @@ components:
           id: id
         - parent:
             id: id
-            type: null
+            type: PING_ONE_RESOURCE
           _links:
             key:
               href: https://openapi-generator.tech
@@ -3820,7 +3893,7 @@ components:
           authorizationServer:
             resource:
               id: id
-            type: null
+            type: PINGONE_SSO
           name: name
           id: id
           directory:
@@ -3839,7 +3912,7 @@ components:
           authorizationServer:
             resource:
               id: id
-            type: null
+            type: PINGONE_SSO
           name: name
           id: id
           directory:
@@ -3922,6 +3995,17 @@ components:
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).
+      example:
+        allowedValues:
+        - allowedValues
+        - allowedValues
+        rangeMaximumValue: 6
+        referencedValues:
+        - referencedValues
+        - referencedValues
+        allowedPattern: allowedPattern
+        maximumValue: 1
+        rangeMinimumValue: 0
       properties:
         rangeMinimumValue:
           description: Errors that failed due to range violation. This attribute represents
@@ -3947,6 +4031,21 @@ components:
           type: array
       type: object
     P1Error_details_inner:
+      example:
+        code: code
+        innerError:
+          allowedValues:
+          - allowedValues
+          - allowedValues
+          rangeMaximumValue: 6
+          referencedValues:
+          - referencedValues
+          - referencedValues
+          allowedPattern: allowedPattern
+          maximumValue: 1
+          rangeMinimumValue: 0
+        message: message
+        target: target
       properties:
         code:
           description: A general fault code which the client must handle to provide

@@ -24,26 +24,26 @@ CREATE API Server Operation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
-    aPIServerOperation := *openapiclient.NewAPIServerOperation("Name_example", []openapiclient.APIServerOperationPathsInner{*openapiclient.NewAPIServerOperationPathsInner("Pattern_example", openapiclient.EnumAPIServerOperationPathPatternType("EXACT"))}) // APIServerOperation |  (optional)
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
+	aPIServerOperation := *openapiclient.NewAPIServerOperation("Name_example", []openapiclient.APIServerOperationPathsInner{*openapiclient.NewAPIServerOperationPathsInner("Pattern_example", openapiclient.EnumAPIServerOperationPathPatternType("EXACT"))}) // APIServerOperation |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServerOperationsApi.CreateAPIServerOperation(context.Background(), environmentID, apiServerID).APIServerOperation(aPIServerOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.CreateAPIServerOperation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAPIServerOperation`: APIServerOperation
-    fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.CreateAPIServerOperation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServerOperationsApi.CreateAPIServerOperation(context.Background(), environmentID, apiServerID).APIServerOperation(aPIServerOperation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.CreateAPIServerOperation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAPIServerOperation`: APIServerOperation
+	fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.CreateAPIServerOperation`: %v\n", resp)
 }
 ```
 
@@ -97,24 +97,24 @@ DELETE API Server Operation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
-    apiServerOperationID := "apiServerOperationID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
+	apiServerOperationID := "apiServerOperationID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.APIServerOperationsApi.DeleteAPIServerOperation(context.Background(), environmentID, apiServerID, apiServerOperationID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.DeleteAPIServerOperation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.APIServerOperationsApi.DeleteAPIServerOperation(context.Background(), environmentID, apiServerID, apiServerOperationID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.DeleteAPIServerOperation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -208,25 +208,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServerOperationsApi.ReadAllAPIServerOperations(context.Background(), environmentID, apiServerID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.ReadAllAPIServerOperations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllAPIServerOperations`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadAllAPIServerOperations`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServerOperationsApi.ReadAllAPIServerOperations(context.Background(), environmentID, apiServerID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.ReadAllAPIServerOperations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllAPIServerOperations`: EntityArrayPagedIterator
+	fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadAllAPIServerOperations`: %v\n", resp)
 }
 ```
 
@@ -279,26 +279,26 @@ READ One API Server Operation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
-    apiServerOperationID := "apiServerOperationID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
+	apiServerOperationID := "apiServerOperationID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServerOperationsApi.ReadOneAPIServerOperation(context.Background(), environmentID, apiServerID, apiServerOperationID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.ReadOneAPIServerOperation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneAPIServerOperation`: APIServerOperation
-    fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadOneAPIServerOperation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServerOperationsApi.ReadOneAPIServerOperation(context.Background(), environmentID, apiServerID, apiServerOperationID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.ReadOneAPIServerOperation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneAPIServerOperation`: APIServerOperation
+	fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadOneAPIServerOperation`: %v\n", resp)
 }
 ```
 
@@ -353,27 +353,27 @@ UPDATE API Server Operation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
-    apiServerOperationID := "apiServerOperationID_example" // string | 
-    aPIServerOperation := *openapiclient.NewAPIServerOperation("Name_example", []openapiclient.APIServerOperationPathsInner{*openapiclient.NewAPIServerOperationPathsInner("Pattern_example", openapiclient.EnumAPIServerOperationPathPatternType("EXACT"))}) // APIServerOperation |  (optional)
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
+	apiServerOperationID := "apiServerOperationID_example" // string | 
+	aPIServerOperation := *openapiclient.NewAPIServerOperation("Name_example", []openapiclient.APIServerOperationPathsInner{*openapiclient.NewAPIServerOperationPathsInner("Pattern_example", openapiclient.EnumAPIServerOperationPathPatternType("EXACT"))}) // APIServerOperation |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServerOperationsApi.UpdateAPIServerOperation(context.Background(), environmentID, apiServerID, apiServerOperationID).APIServerOperation(aPIServerOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.UpdateAPIServerOperation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateAPIServerOperation`: APIServerOperation
-    fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.UpdateAPIServerOperation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServerOperationsApi.UpdateAPIServerOperation(context.Background(), environmentID, apiServerID, apiServerOperationID).APIServerOperation(aPIServerOperation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.UpdateAPIServerOperation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateAPIServerOperation`: APIServerOperation
+	fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.UpdateAPIServerOperation`: %v\n", resp)
 }
 ```
 

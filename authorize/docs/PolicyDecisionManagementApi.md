@@ -24,25 +24,25 @@ CREATE Decision Endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    decisionEndpoint := *openapiclient.NewDecisionEndpoint("Description_example", "Name_example", false) // DecisionEndpoint |  (optional)
+	environmentID := "environmentID_example" // string | 
+	decisionEndpoint := *openapiclient.NewDecisionEndpoint("Description_example", "Name_example", false) // DecisionEndpoint |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PolicyDecisionManagementApi.CreateDecisionEndpoint(context.Background(), environmentID).DecisionEndpoint(decisionEndpoint).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.CreateDecisionEndpoint``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDecisionEndpoint`: DecisionEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.CreateDecisionEndpoint`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PolicyDecisionManagementApi.CreateDecisionEndpoint(context.Background(), environmentID).DecisionEndpoint(decisionEndpoint).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.CreateDecisionEndpoint``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateDecisionEndpoint`: DecisionEndpoint
+	fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.CreateDecisionEndpoint`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ DELETE Decision Endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    decisionEndpointID := "decisionEndpointID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	decisionEndpointID := "decisionEndpointID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PolicyDecisionManagementApi.DeleteDecisionEndpoint(context.Background(), environmentID, decisionEndpointID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.DeleteDecisionEndpoint``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PolicyDecisionManagementApi.DeleteDecisionEndpoint(context.Background(), environmentID, decisionEndpointID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.DeleteDecisionEndpoint``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -202,24 +202,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PolicyDecisionManagementApi.ReadAllDecisionEndpoints(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.ReadAllDecisionEndpoints``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllDecisionEndpoints`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.ReadAllDecisionEndpoints`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PolicyDecisionManagementApi.ReadAllDecisionEndpoints(context.Background(), environmentID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.ReadAllDecisionEndpoints``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllDecisionEndpoints`: EntityArrayPagedIterator
+	fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.ReadAllDecisionEndpoints`: %v\n", resp)
 }
 ```
 
@@ -270,25 +270,25 @@ READ One Decision Endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    decisionEndpointID := "decisionEndpointID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	decisionEndpointID := "decisionEndpointID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PolicyDecisionManagementApi.ReadOneDecisionEndpoint(context.Background(), environmentID, decisionEndpointID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.ReadOneDecisionEndpoint``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneDecisionEndpoint`: DecisionEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.ReadOneDecisionEndpoint`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PolicyDecisionManagementApi.ReadOneDecisionEndpoint(context.Background(), environmentID, decisionEndpointID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.ReadOneDecisionEndpoint``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneDecisionEndpoint`: DecisionEndpoint
+	fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.ReadOneDecisionEndpoint`: %v\n", resp)
 }
 ```
 
@@ -341,26 +341,26 @@ UPDATE Decision Endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    decisionEndpointID := "decisionEndpointID_example" // string | 
-    decisionEndpoint := *openapiclient.NewDecisionEndpoint("Description_example", "Name_example", false) // DecisionEndpoint |  (optional)
+	environmentID := "environmentID_example" // string | 
+	decisionEndpointID := "decisionEndpointID_example" // string | 
+	decisionEndpoint := *openapiclient.NewDecisionEndpoint("Description_example", "Name_example", false) // DecisionEndpoint |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PolicyDecisionManagementApi.UpdateDecisionEndpoint(context.Background(), environmentID, decisionEndpointID).DecisionEndpoint(decisionEndpoint).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.UpdateDecisionEndpoint``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateDecisionEndpoint`: DecisionEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.UpdateDecisionEndpoint`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PolicyDecisionManagementApi.UpdateDecisionEndpoint(context.Background(), environmentID, decisionEndpointID).DecisionEndpoint(decisionEndpoint).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.UpdateDecisionEndpoint``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateDecisionEndpoint`: DecisionEndpoint
+	fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.UpdateDecisionEndpoint`: %v\n", resp)
 }
 ```
 

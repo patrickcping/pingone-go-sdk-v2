@@ -24,26 +24,26 @@ CREATE Application Permission
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationResourceID := "applicationResourceID_example" // string | 
-    applicationResourcePermission := *openapiclient.NewApplicationResourcePermission("Action_example") // ApplicationResourcePermission |  (optional)
+	environmentID := "environmentID_example" // string | 
+	applicationResourceID := "applicationResourceID_example" // string | 
+	applicationResourcePermission := *openapiclient.NewApplicationResourcePermission("Action_example") // ApplicationResourcePermission |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationResourcePermissionsApi.CreateApplicationPermission(context.Background(), environmentID, applicationResourceID).ApplicationResourcePermission(applicationResourcePermission).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.CreateApplicationPermission``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateApplicationPermission`: ApplicationResourcePermission
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.CreateApplicationPermission`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationResourcePermissionsApi.CreateApplicationPermission(context.Background(), environmentID, applicationResourceID).ApplicationResourcePermission(applicationResourcePermission).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.CreateApplicationPermission``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateApplicationPermission`: ApplicationResourcePermission
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.CreateApplicationPermission`: %v\n", resp)
 }
 ```
 
@@ -97,24 +97,24 @@ DELETE Application Permission
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationResourceID := "applicationResourceID_example" // string | 
-    applicationResourcePermissionID := "applicationResourcePermissionID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationResourceID := "applicationResourceID_example" // string | 
+	applicationResourcePermissionID := "applicationResourcePermissionID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationResourcePermissionsApi.DeleteApplicationPermission(context.Background(), environmentID, applicationResourceID, applicationResourcePermissionID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.DeleteApplicationPermission``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApplicationResourcePermissionsApi.DeleteApplicationPermission(context.Background(), environmentID, applicationResourceID, applicationResourcePermissionID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.DeleteApplicationPermission``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -208,25 +208,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationResourceID := "applicationResourceID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationResourceID := "applicationResourceID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationResourcePermissionsApi.ReadApplicationPermissions(context.Background(), environmentID, applicationResourceID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.ReadApplicationPermissions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadApplicationPermissions`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.ReadApplicationPermissions`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationResourcePermissionsApi.ReadApplicationPermissions(context.Background(), environmentID, applicationResourceID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.ReadApplicationPermissions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadApplicationPermissions`: EntityArrayPagedIterator
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.ReadApplicationPermissions`: %v\n", resp)
 }
 ```
 
@@ -279,26 +279,26 @@ READ One Application Permission
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationResourceID := "applicationResourceID_example" // string | 
-    applicationResourcePermissionID := "applicationResourcePermissionID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationResourceID := "applicationResourceID_example" // string | 
+	applicationResourcePermissionID := "applicationResourcePermissionID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationResourcePermissionsApi.ReadOneApplicationPermission(context.Background(), environmentID, applicationResourceID, applicationResourcePermissionID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.ReadOneApplicationPermission``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneApplicationPermission`: ApplicationResourcePermission
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.ReadOneApplicationPermission`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationResourcePermissionsApi.ReadOneApplicationPermission(context.Background(), environmentID, applicationResourceID, applicationResourcePermissionID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.ReadOneApplicationPermission``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneApplicationPermission`: ApplicationResourcePermission
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.ReadOneApplicationPermission`: %v\n", resp)
 }
 ```
 
@@ -353,27 +353,27 @@ UPDATE Application Permission
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationResourceID := "applicationResourceID_example" // string | 
-    applicationResourcePermissionID := "applicationResourcePermissionID_example" // string | 
-    applicationResourcePermission := *openapiclient.NewApplicationResourcePermission("Action_example") // ApplicationResourcePermission |  (optional)
+	environmentID := "environmentID_example" // string | 
+	applicationResourceID := "applicationResourceID_example" // string | 
+	applicationResourcePermissionID := "applicationResourcePermissionID_example" // string | 
+	applicationResourcePermission := *openapiclient.NewApplicationResourcePermission("Action_example") // ApplicationResourcePermission |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationResourcePermissionsApi.UpdateApplicationPermission(context.Background(), environmentID, applicationResourceID, applicationResourcePermissionID).ApplicationResourcePermission(applicationResourcePermission).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.UpdateApplicationPermission``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateApplicationPermission`: ApplicationResourcePermission
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.UpdateApplicationPermission`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationResourcePermissionsApi.UpdateApplicationPermission(context.Background(), environmentID, applicationResourceID, applicationResourcePermissionID).ApplicationResourcePermission(applicationResourcePermission).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.UpdateApplicationPermission``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateApplicationPermission`: ApplicationResourcePermission
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.UpdateApplicationPermission`: %v\n", resp)
 }
 ```
 

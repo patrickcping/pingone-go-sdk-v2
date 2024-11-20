@@ -59,25 +59,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationRoleID := "applicationRoleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationRoleID := "applicationRoleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments(context.Background(), environmentID, applicationRoleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadApplicationRoleAssignments`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments(context.Background(), environmentID, applicationRoleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadApplicationRoleAssignments`: EntityArrayPagedIterator
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments`: %v\n", resp)
 }
 ```
 

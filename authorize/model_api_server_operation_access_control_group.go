@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the APIServerOperationAccessControlGroup type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type APIServerOperationAccessControlGroup struct {
 	// The list of groups that define the access requirements for the operation. The end user must be a member of one or more of these groups to gain access to the operation. This is a required property if `accessControl.group` is set. The ID must reference a group that exists at the time the data is persisted. There is no referential integrity between a group and this configuration. If a group is subsequently deleted, the access control configuration will continue to reference that group.
 	Groups []APIServerOperationAccessControlGroupGroupsInner `json:"groups"`
 }
+
+type _APIServerOperationAccessControlGroup APIServerOperationAccessControlGroup
 
 // NewAPIServerOperationAccessControlGroup instantiates a new APIServerOperationAccessControlGroup object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o APIServerOperationAccessControlGroup) ToMap() (map[string]interface{}, e
 	toSerialize := map[string]interface{}{}
 	toSerialize["groups"] = o.Groups
 	return toSerialize, nil
+}
+
+func (o *APIServerOperationAccessControlGroup) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"groups",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAPIServerOperationAccessControlGroup := _APIServerOperationAccessControlGroup{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAPIServerOperationAccessControlGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = APIServerOperationAccessControlGroup(varAPIServerOperationAccessControlGroup)
+
+	return err
 }
 
 type NullableAPIServerOperationAccessControlGroup struct {

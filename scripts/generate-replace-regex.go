@@ -50,110 +50,9 @@ var (
 		repl              string
 	}{
 
-		{
-			fileSelectPattern: "go.mod",
-			pattern:           `go 1.18`,
-			repl:              `go 1.23.3`,
-		},
-
 		/////////////////////////
 		// ALL configuration.go
 		/////////////////////////
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `\/\/ AddDefaultHeader adds a new HTTP header to the default header in the request`,
-			repl: `func (c *Configuration) SetDebug(debug bool) {
-	c.Debug = debug
-}
-
-func (c *Configuration) SetUserAgent(userAgent string) {
-	c.UserAgent = userAgent
-}
-
-func (c *Configuration) AppendUserAgent(userAgent string) {
-	c.UserAgent += fmt.Sprintf(" %s", userAgent)
-}
-
-func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {
-	c.DefaultServerIndex = defaultServerIndex
-}
-
-func (c *Configuration) SetDefaultServerVariableDefaultValue(variable string, value string) error {
-	return c.SetServerVariableDefaultValue(c.DefaultServerIndex, variable, value)
-}
-
-func (c *Configuration) SetServerVariableDefaultValue(serverIndex int, variable string, value string) error {
-	if serverIndex >= 0 && serverIndex < len(c.Servers) {
-		if entry, ok := c.Servers[serverIndex].Variables[variable]; ok {
-			entry.DefaultValue = value
-			c.Servers[serverIndex].Variables[variable] = entry
-			return nil
-		} else {
-			return fmt.Errorf("variable %v not defined in server %v", variable, serverIndex)
-		}
-	} else {
-		return fmt.Errorf("server index %v out of range %v", serverIndex, len(c.Servers)-1)
-	}
-}
-
-// AddDefaultHeader adds a new HTTP header to the default header in the request`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `\n	Servers          ServerConfigurations\n`,
-			repl: `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `
-	DefaultServerIndex int             ` + "`" + `json:"defaultServerIndex,omitempty"` + "`" + `
-	ProxyURL         *string           ` + "`" + `json:"proxyURL,omitempty"` + "`" + `
-	Servers          ServerConfigurations
-`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `Debug:            false,\n		Servers:          ServerConfigurations{\n`,
-			repl: `Debug:            false,
-		DefaultServerIndex: 0,
-		Servers:          ServerConfigurations{
-`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `return 0`,
-			repl:              `return defaultServerIndex`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `func getServerIndex\(ctx context.Context\) \(int, error\)`,
-			repl:              `func getServerIndex(ctx context.Context, defaultServerIndex int) (int, error)`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `func getServerOperationIndex\(ctx context.Context, endpoint string\) \(int, error\)`,
-			repl:              `func getServerOperationIndex(ctx context.Context, endpoint string, defaultServerIndex int) (int, error)`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `return getServerIndex\(ctx\)`,
-			repl:              `return getServerIndex(ctx, defaultServerIndex)`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `return sc.URL\(0,`,
-			repl:              `return sc.URL(c.DefaultServerIndex,`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `getServerOperationIndex\(ctx, endpoint\)`,
-			repl:              `getServerOperationIndex(ctx, endpoint, c.DefaultServerIndex)`,
-		},
 
 		/////////////////////////
 		// ALL API
@@ -203,13 +102,6 @@ func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 }
 
 func ($1) internal$2$3($4) (*http.Response, error) {`,
-		},
-
-		// Handle errors for Github code scanning
-		{
-			fileSelectPattern: "api_*.go",
-			pattern:           `	localVarHTTPResponse\.Body\.Close\(\)`,
-			repl:              `	_ = localVarHTTPResponse.Body.Close()`,
 		},
 
 		// Add paging to EntityArray APIs (Execute function)
@@ -282,7 +174,7 @@ func main() {
 		{
 			fileSelectPattern: "*Api.md",
 			pattern:           `\^\^\^`,
-			repl: "`",
+			repl:              "`",
 		},
 		{
 			fileSelectPattern: "README.md",
@@ -313,17 +205,6 @@ func ($1) $2$3))InitialPage($4) (*EntityArray, *http.Response, error) {`,
 			fileSelectPattern: "api_*.go",
 			pattern:           `Execute\)\)InitialPage`,
 			repl:              `ExecuteInitialPage`,
-		},
-
-		/////////////////////////
-		// ALL ENUM Models
-		/////////////////////////
-		// Suppress enum unmarshalling errors
-		{
-			fileSelectPattern: "model_enum_*.go",
-			pattern:           `return fmt\.Errorf\("%\+v is not a valid (Enum[a-zA-Z]+)", value\)`,
-			repl: `*v = $1(fmt.Sprintf("%s", "UNKNOWN"))
-	return nil`,
 		},
 	}
 )

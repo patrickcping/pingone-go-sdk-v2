@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the APIServerOperation type satisfies the MappedNullable interface at compile time
@@ -19,7 +21,7 @@ var _ MappedNullable = &APIServerOperation{}
 
 // APIServerOperation struct for APIServerOperation
 type APIServerOperation struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The ID of the API service operation. This is randomly generated when the operation is created.
 	Id *string `json:"id,omitempty"`
 	// The name of the API service operation.
@@ -31,6 +33,8 @@ type APIServerOperation struct {
 	Paths []APIServerOperationPathsInner `json:"paths"`
 	Policy *APIServerPolicy `json:"policy,omitempty"`
 }
+
+type _APIServerOperation APIServerOperation
 
 // NewAPIServerOperation instantiates a new APIServerOperation object
 // This constructor will assign default values to properties that have it defined,
@@ -57,14 +61,14 @@ func (o *APIServerOperation) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *APIServerOperation) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *APIServerOperation) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -80,7 +84,7 @@ func (o *APIServerOperation) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *APIServerOperation) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -287,6 +291,44 @@ func (o APIServerOperation) ToMap() (map[string]interface{}, error) {
 		toSerialize["policy"] = o.Policy
 	}
 	return toSerialize, nil
+}
+
+func (o *APIServerOperation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"paths",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAPIServerOperation := _APIServerOperation{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAPIServerOperation)
+
+	if err != nil {
+		return err
+	}
+
+	*o = APIServerOperation(varAPIServerOperation)
+
+	return err
 }
 
 type NullableAPIServerOperation struct {

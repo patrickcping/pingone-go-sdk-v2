@@ -12,6 +12,8 @@ package authorize
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ApplicationRolePermission type satisfies the MappedNullable interface at compile time
@@ -19,7 +21,7 @@ var _ MappedNullable = &ApplicationRolePermission{}
 
 // ApplicationRolePermission struct for ApplicationRolePermission
 type ApplicationRolePermission struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The ID of the application resource permission to associate with this role.
 	Id string `json:"id"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -29,6 +31,8 @@ type ApplicationRolePermission struct {
 	Action *string `json:"action,omitempty"`
 	Resource *ApplicationRolePermissionResource `json:"resource,omitempty"`
 }
+
+type _ApplicationRolePermission ApplicationRolePermission
 
 // NewApplicationRolePermission instantiates a new ApplicationRolePermission object
 // This constructor will assign default values to properties that have it defined,
@@ -54,14 +58,14 @@ func (o *ApplicationRolePermission) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRolePermission) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *ApplicationRolePermission) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -77,7 +81,7 @@ func (o *ApplicationRolePermission) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *ApplicationRolePermission) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetId returns the Id field value
@@ -294,6 +298,43 @@ func (o ApplicationRolePermission) ToMap() (map[string]interface{}, error) {
 		toSerialize["resource"] = o.Resource
 	}
 	return toSerialize, nil
+}
+
+func (o *ApplicationRolePermission) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationRolePermission := _ApplicationRolePermission{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varApplicationRolePermission)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationRolePermission(varApplicationRolePermission)
+
+	return err
 }
 
 type NullableApplicationRolePermission struct {

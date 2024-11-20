@@ -24,25 +24,25 @@ CREATE API Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(openapiclient.EnumAPIServerAuthorizationServerType("PINGONE_SSO")), []string{"BaseUrls_example"}, "Name_example") // APIServer |  (optional)
+	environmentID := "environmentID_example" // string | 
+	aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(openapiclient.EnumAPIServerAuthorizationServerType("PINGONE_SSO")), []string{"BaseUrls_example"}, "Name_example") // APIServer |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServersApi.CreateAPIServer(context.Background(), environmentID).APIServer(aPIServer).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.CreateAPIServer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAPIServer`: APIServer
-    fmt.Fprintf(os.Stdout, "Response from `APIServersApi.CreateAPIServer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServersApi.CreateAPIServer(context.Background(), environmentID).APIServer(aPIServer).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.CreateAPIServer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAPIServer`: APIServer
+	fmt.Fprintf(os.Stdout, "Response from `APIServersApi.CreateAPIServer`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ DELETE API Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.APIServersApi.DeleteAPIServer(context.Background(), environmentID, apiServerID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.DeleteAPIServer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.APIServersApi.DeleteAPIServer(context.Background(), environmentID, apiServerID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.DeleteAPIServer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -202,24 +202,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServersApi.ReadAllAPIServers(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.ReadAllAPIServers``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllAPIServers`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `APIServersApi.ReadAllAPIServers`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServersApi.ReadAllAPIServers(context.Background(), environmentID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.ReadAllAPIServers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllAPIServers`: EntityArrayPagedIterator
+	fmt.Fprintf(os.Stdout, "Response from `APIServersApi.ReadAllAPIServers`: %v\n", resp)
 }
 ```
 
@@ -270,25 +270,25 @@ READ One API Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServersApi.ReadOneAPIServer(context.Background(), environmentID, apiServerID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.ReadOneAPIServer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneAPIServer`: APIServer
-    fmt.Fprintf(os.Stdout, "Response from `APIServersApi.ReadOneAPIServer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServersApi.ReadOneAPIServer(context.Background(), environmentID, apiServerID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.ReadOneAPIServer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneAPIServer`: APIServer
+	fmt.Fprintf(os.Stdout, "Response from `APIServersApi.ReadOneAPIServer`: %v\n", resp)
 }
 ```
 
@@ -341,26 +341,26 @@ UPDATE API Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    apiServerID := "apiServerID_example" // string | 
-    aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(openapiclient.EnumAPIServerAuthorizationServerType("PINGONE_SSO")), []string{"BaseUrls_example"}, "Name_example") // APIServer |  (optional)
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
+	aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(openapiclient.EnumAPIServerAuthorizationServerType("PINGONE_SSO")), []string{"BaseUrls_example"}, "Name_example") // APIServer |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIServersApi.UpdateAPIServer(context.Background(), environmentID, apiServerID).APIServer(aPIServer).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.UpdateAPIServer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateAPIServer`: APIServer
-    fmt.Fprintf(os.Stdout, "Response from `APIServersApi.UpdateAPIServer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.APIServersApi.UpdateAPIServer(context.Background(), environmentID, apiServerID).APIServer(aPIServer).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.UpdateAPIServer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateAPIServer`: APIServer
+	fmt.Fprintf(os.Stdout, "Response from `APIServersApi.UpdateAPIServer`: %v\n", resp)
 }
 ```
 

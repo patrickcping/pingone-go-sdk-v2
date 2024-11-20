@@ -60,24 +60,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationResourcesApi.ReadApplicationResources(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcesApi.ReadApplicationResources``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadApplicationResources`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcesApi.ReadApplicationResources`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationResourcesApi.ReadApplicationResources(context.Background(), environmentID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcesApi.ReadApplicationResources``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadApplicationResources`: EntityArrayPagedIterator
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcesApi.ReadApplicationResources`: %v\n", resp)
 }
 ```
 
@@ -128,25 +128,25 @@ READ One Application Resource
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationResourceID := "applicationResourceID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationResourceID := "applicationResourceID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationResourcesApi.ReadOneApplicationResource(context.Background(), environmentID, applicationResourceID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcesApi.ReadOneApplicationResource``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneApplicationResource`: ApplicationResource
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcesApi.ReadOneApplicationResource`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationResourcesApi.ReadOneApplicationResource(context.Background(), environmentID, applicationResourceID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcesApi.ReadOneApplicationResource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneApplicationResource`: ApplicationResource
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcesApi.ReadOneApplicationResource`: %v\n", resp)
 }
 ```
 

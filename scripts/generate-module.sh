@@ -9,10 +9,10 @@ else
     # Generate from OpenAPI
     version=$(head -n 1 .version)
 
-    if [[ -f "generate/pingone-$3.yml" ]]; then \
+    if [[ -f "../.generate/pingone-$3.yml" ]]; then \
         echo "==> Running codegen-$3..."
-        openapi-generator-cli version-manager set 7.0.1
-        openapi-generator-cli generate -i generate/pingone-$3.yml -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api -o . --git-repo-id $2 --git-user-id $1 --http-user-agent \"pingtools PingOne-GOLANG-SDK-$3/$version\"; \
+        # openapi-generator-cli version-manager set 7.0.1
+        openapi-generator-cli generate -i ../.generate/pingone-$3.yml -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api -o . --git-repo-id $2 --git-user-id $1 --http-user-agent \"pingtools PingOne-GOLANG-SDK-$3/$version\" -t ../.generate/templates; \
 
         echo "==> Copying custom templated files..."
         template=$(cat ../scripts/templates/client_ext.go.tmpl)
@@ -42,6 +42,10 @@ else
         template=$(cat ../scripts/templates/EntityArrayPagedIterator.md.tmpl)
         template=${template//PACKAGENAME/$3}
         echo "$template" > "docs/EntityArrayPagedIterator.md"
+
+        go get -u ./...
+        go mod tidy
+        go work vendor
 
         echo "==> Applying common postprocessing..."
         go run ../scripts/generate-replace-regex.go .
