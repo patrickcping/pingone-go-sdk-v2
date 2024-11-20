@@ -58,7 +58,7 @@ func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignments(ct
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) PagedIterator[EntityArray] {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)

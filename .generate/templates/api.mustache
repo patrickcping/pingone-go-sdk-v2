@@ -116,7 +116,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams
 // Deprecated
 {{/isDeprecated}}
 func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) PagedIterator[{{returnType}}] {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 {{/vendorExtensions.x-pingidentity-paginatedresponse}}
 

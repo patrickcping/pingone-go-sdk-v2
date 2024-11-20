@@ -466,7 +466,7 @@ func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissions(ct
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) PagedIterator[EntityArray] {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
