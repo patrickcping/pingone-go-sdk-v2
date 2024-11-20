@@ -74,9 +74,15 @@ func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/s
 
 {{/isPathParam}}
 {{/allParams}}
-func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) Execute() ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
+func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) Execute() {{#vendorExtensions.x-pingidentity-paginatedresponse}}PagedIterator[{{returnType}}]{{/vendorExtensions.x-pingidentity-paginatedresponse}}{{^vendorExtensions.x-pingidentity-paginatedresponse}}({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error){{/vendorExtensions.x-pingidentity-paginatedresponse}} {
 	return r.ApiService.{{nickname}}Execute(r)
 }
+{{#vendorExtensions.x-pingidentity-paginatedresponse}}
+
+func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) ExecuteInitialPage() ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
+	return r.ApiService.{{nickname}}ExecuteInitialPage(r)
+}
+{{/vendorExtensions.x-pingidentity-paginatedresponse}}
 
 /*
 {{operationId}} {{{summary}}}{{^summary}}Method for {{operationId}}{{/summary}}
@@ -102,13 +108,24 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams
 		{{/pathParams}}
 	}
 }
+{{#vendorExtensions.x-pingidentity-paginatedresponse}}
 
 // Execute executes the request{{#returnType}}
 //  @return {{{.}}}{{/returnType}}
 {{#isDeprecated}}
 // Deprecated
 {{/isDeprecated}}
-func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
+func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) PagedIterator[{{returnType}}] {
+  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+}
+{{/vendorExtensions.x-pingidentity-paginatedresponse}}
+
+// Execute executes the request{{#vendorExtensions.x-pingidentity-paginatedresponse}} (returning the initial page of the paged response only){{/vendorExtensions.x-pingidentity-paginatedresponse}}{{#returnType}}
+//  @return {{{.}}}{{/returnType}}
+{{#isDeprecated}}
+// Deprecated
+{{/isDeprecated}}
+func (a *{{{classname}}}Service) {{nickname}}Execute{{#vendorExtensions.x-pingidentity-paginatedresponse}}InitialPage{{/vendorExtensions.x-pingidentity-paginatedresponse}}(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
 	var (
 		err error
 		response *http.Response
