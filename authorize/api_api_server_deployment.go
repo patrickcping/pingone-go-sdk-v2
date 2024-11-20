@@ -61,9 +61,9 @@ func (a *APIServerDeploymentApiService) DeployAPIServer(ctx context.Context, env
 //  @return APIServerDeployment
 func (a *APIServerDeploymentApiService) DeployAPIServerExecute(r ApiDeployAPIServerRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServerDeployment
+		err error
+		response *http.Response
+		localVarReturnValue *APIServerDeployment
 	)
 	
 	response, err = processResponse(
@@ -274,9 +274,9 @@ func (a *APIServerDeploymentApiService) ReadDeploymentStatus(ctx context.Context
 //  @return APIServerDeployment
 func (a *APIServerDeploymentApiService) ReadDeploymentStatusExecute(r ApiReadDeploymentStatusRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServerDeployment
+		err error
+		response *http.Response
+		localVarReturnValue *APIServerDeployment
 	)
 	
 	response, err = processResponse(

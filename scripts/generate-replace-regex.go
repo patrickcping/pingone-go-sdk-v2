@@ -58,52 +58,6 @@ var (
 		// ALL API
 		/////////////////////////
 
-		// Add retryability to typed output
-		{
-			fileSelectPattern: "api_*.go",
-			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([a-zA-Z])([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(([\*a-zA-Z0-9]*), \*http\.Response, error\) {`,
-			repl: `func ($1) $2$3($4) ($5, *http.Response, error) {
-	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  $5
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			return r.ApiService.internal$2$3(r)
-		},
-		&localVarReturnValue,
-	)
-	return localVarReturnValue, response, err
-}
-
-func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
-		},
-
-		// Add retryability to non-typed outputs
-		{
-			fileSelectPattern: "api_*.go",
-			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([a-zA-Z])([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(\*http\.Response, error\) {`,
-			repl: `func ($1) $2$3($4) (*http.Response, error) {
-	var (
-		err      error
-		response *http.Response
-	)
-	
-	response, err = processResponse(
-		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internal$2$3(r)
-			return nil, resp, err
-		},
-		nil,
-	)
-	return response, err
-}
-
-func ($1) internal$2$3($4) (*http.Response, error) {`,
-		},
-
 		// Add paging to EntityArray APIs (Execute function)
 		{
 			fileSelectPattern: "api_*.go",

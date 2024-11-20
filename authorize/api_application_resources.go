@@ -60,9 +60,9 @@ func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiRe
 
 func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialPage(r ApiReadApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -257,9 +257,9 @@ func (a *ApplicationResourcesApiService) ReadOneApplicationResource(ctx context.
 //  @return ApplicationResource
 func (a *ApplicationResourcesApiService) ReadOneApplicationResourceExecute(r ApiReadOneApplicationResourceRequest) (*ApplicationResource, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *ApplicationResource
+		err error
+		response *http.Response
+		localVarReturnValue *ApplicationResource
 	)
 	
 	response, err = processResponse(

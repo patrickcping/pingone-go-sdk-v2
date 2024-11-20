@@ -58,9 +58,9 @@ func (a *APIServersApiService) CreateAPIServer(ctx context.Context, environmentI
 //  @return APIServer
 func (a *APIServersApiService) CreateAPIServerExecute(r ApiCreateAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServer
+		err error
+		response *http.Response
+		localVarReturnValue *APIServer
 	)
 	
 	response, err = processResponse(
@@ -267,7 +267,7 @@ func (a *APIServersApiService) DeleteAPIServer(ctx context.Context, environmentI
 // Execute executes the request
 func (a *APIServersApiService) DeleteAPIServerExecute(r ApiDeleteAPIServerRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -460,9 +460,9 @@ func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRe
 
 func (a *APIServersApiService) ReadAllAPIServersExecuteInitialPage(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -657,9 +657,9 @@ func (a *APIServersApiService) ReadOneAPIServer(ctx context.Context, environment
 //  @return APIServer
 func (a *APIServersApiService) ReadOneAPIServerExecute(r ApiReadOneAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServer
+		err error
+		response *http.Response
+		localVarReturnValue *APIServer
 	)
 	
 	response, err = processResponse(
@@ -861,9 +861,9 @@ func (a *APIServersApiService) UpdateAPIServer(ctx context.Context, environmentI
 //  @return APIServer
 func (a *APIServersApiService) UpdateAPIServerExecute(r ApiUpdateAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServer
+		err error
+		response *http.Response
+		localVarReturnValue *APIServer
 	)
 	
 	response, err = processResponse(

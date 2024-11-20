@@ -58,9 +58,9 @@ func (a *PolicyDecisionManagementApiService) CreateDecisionEndpoint(ctx context.
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) CreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DecisionEndpoint
+		err error
+		response *http.Response
+		localVarReturnValue *DecisionEndpoint
 	)
 	
 	response, err = processResponse(
@@ -267,7 +267,7 @@ func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpoint(ctx context.
 // Execute executes the request
 func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -460,9 +460,9 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r A
 
 func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInitialPage(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -657,9 +657,9 @@ func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpoint(ctx context
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DecisionEndpoint
+		err error
+		response *http.Response
+		localVarReturnValue *DecisionEndpoint
 	)
 	
 	response, err = processResponse(
@@ -861,9 +861,9 @@ func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpoint(ctx context.
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DecisionEndpoint
+		err error
+		response *http.Response
+		localVarReturnValue *DecisionEndpoint
 	)
 	
 	response, err = processResponse(

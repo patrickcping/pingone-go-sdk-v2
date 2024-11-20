@@ -61,9 +61,9 @@ func (a *APIServerOperationsApiService) CreateAPIServerOperation(ctx context.Con
 //  @return APIServerOperation
 func (a *APIServerOperationsApiService) CreateAPIServerOperationExecute(r ApiCreateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServerOperation
+		err error
+		response *http.Response
+		localVarReturnValue *APIServerOperation
 	)
 	
 	response, err = processResponse(
@@ -274,7 +274,7 @@ func (a *APIServerOperationsApiService) DeleteAPIServerOperation(ctx context.Con
 // Execute executes the request
 func (a *APIServerOperationsApiService) DeleteAPIServerOperationExecute(r ApiDeleteAPIServerOperationRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -471,9 +471,9 @@ func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecute(r ApiR
 
 func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecuteInitialPage(r ApiReadAllAPIServerOperationsRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -672,9 +672,9 @@ func (a *APIServerOperationsApiService) ReadOneAPIServerOperation(ctx context.Co
 //  @return APIServerOperation
 func (a *APIServerOperationsApiService) ReadOneAPIServerOperationExecute(r ApiReadOneAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServerOperation
+		err error
+		response *http.Response
+		localVarReturnValue *APIServerOperation
 	)
 	
 	response, err = processResponse(
@@ -880,9 +880,9 @@ func (a *APIServerOperationsApiService) UpdateAPIServerOperation(ctx context.Con
 //  @return APIServerOperation
 func (a *APIServerOperationsApiService) UpdateAPIServerOperationExecute(r ApiUpdateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *APIServerOperation
+		err error
+		response *http.Response
+		localVarReturnValue *APIServerOperation
 	)
 	
 	response, err = processResponse(

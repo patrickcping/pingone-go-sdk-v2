@@ -110,6 +110,27 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams
 {{/isDeprecated}}
 func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
 	var (
+		err error
+		response *http.Response
+		{{#returnType}}
+		localVarReturnValue {{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}
+		{{/returnType}}
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			{{#returnType}}return{{/returnType}}{{^returnType}}resp, err :={{/returnType}} r.ApiService.internal{{nickname}}Execute(r)
+			{{^returnType}}
+			return nil, resp, err
+			{{/returnType}}
+		},
+		{{#returnType}}&localVarReturnValue,{{/returnType}}{{^returnType}}nil,{{/returnType}}
+	)
+	return {{#returnType}}localVarReturnValue, {{/returnType}}response, err
+}
+
+func (a *{{{classname}}}Service) internal{{nickname}}Execute(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
+	var (
 		localVarHTTPMethod   = http.Method{{httpMethod}}
 		localVarPostBody     interface{}
 		formFiles            []formFile

@@ -58,9 +58,9 @@ func (a *ApplicationRolesApiService) CreateApplicationRoles(ctx context.Context,
 //  @return ApplicationRole
 func (a *ApplicationRolesApiService) CreateApplicationRolesExecute(r ApiCreateApplicationRolesRequest) (*ApplicationRole, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *ApplicationRole
+		err error
+		response *http.Response
+		localVarReturnValue *ApplicationRole
 	)
 	
 	response, err = processResponse(
@@ -267,7 +267,7 @@ func (a *ApplicationRolesApiService) DeleteApplicationRole(ctx context.Context, 
 // Execute executes the request
 func (a *ApplicationRolesApiService) DeleteApplicationRoleExecute(r ApiDeleteApplicationRoleRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -460,9 +460,9 @@ func (a *ApplicationRolesApiService) ReadApplicationRolesExecute(r ApiReadApplic
 
 func (a *ApplicationRolesApiService) ReadApplicationRolesExecuteInitialPage(r ApiReadApplicationRolesRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *EntityArray
 	)
 	
 	response, err = processResponse(
@@ -657,9 +657,9 @@ func (a *ApplicationRolesApiService) ReadOneApplicationRole(ctx context.Context,
 //  @return ApplicationRole
 func (a *ApplicationRolesApiService) ReadOneApplicationRoleExecute(r ApiReadOneApplicationRoleRequest) (*ApplicationRole, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *ApplicationRole
+		err error
+		response *http.Response
+		localVarReturnValue *ApplicationRole
 	)
 	
 	response, err = processResponse(
@@ -861,9 +861,9 @@ func (a *ApplicationRolesApiService) UpdateApplicationRole(ctx context.Context, 
 //  @return ApplicationRole
 func (a *ApplicationRolesApiService) UpdateApplicationRoleExecute(r ApiUpdateApplicationRoleRequest) (*ApplicationRole, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *ApplicationRole
+		err error
+		response *http.Response
+		localVarReturnValue *ApplicationRole
 	)
 	
 	response, err = processResponse(

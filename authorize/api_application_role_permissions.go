@@ -61,9 +61,9 @@ func (a *ApplicationRolePermissionsApiService) CreateApplicationRolePermission(c
 //  @return ApplicationRolePermission
 func (a *ApplicationRolePermissionsApiService) CreateApplicationRolePermissionExecute(r ApiCreateApplicationRolePermissionRequest) (*ApplicationRolePermission, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *ApplicationRolePermission
+		err error
+		response *http.Response
+		localVarReturnValue *ApplicationRolePermission
 	)
 	
 	response, err = processResponse(
@@ -274,7 +274,7 @@ func (a *ApplicationRolePermissionsApiService) DeleteApplicationRolePermission(c
 // Execute executes the request
 func (a *ApplicationRolePermissionsApiService) DeleteApplicationRolePermissionExecute(r ApiDeleteApplicationRolePermissionRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -471,9 +471,9 @@ func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExe
 
 func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecuteInitialPage(r ApiReadApplicationRolePermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *EntityArray
 	)
 	
 	response, err = processResponse(

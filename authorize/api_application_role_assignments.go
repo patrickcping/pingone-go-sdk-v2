@@ -63,9 +63,9 @@ func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExe
 
 func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecuteInitialPage(r ApiReadApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *EntityArray
 	)
 	
 	response, err = processResponse(
