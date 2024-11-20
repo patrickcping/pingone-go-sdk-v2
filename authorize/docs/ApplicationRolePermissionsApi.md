@@ -161,7 +161,7 @@ READ Application Role Permissions
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).Execute()
+> PagedIterator[EntityArray] ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).Execute()
 
 #### Example
 
@@ -169,29 +169,28 @@ READ Application Role Permissions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	applicationRoleID := "applicationRoleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadApplicationRolePermissions(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.ApplicationRolePermissionsApi.ReadApplicationRolePermissions(context.Background(), environmentID, applicationRoleID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadApplicationRolePermissions``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolePermissionsApi.ReadApplicationRolePermissions``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadApplicationRolePermissions`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadApplicationRolePermissions`: %v\n", pageCursor.EntityArray)
+		// response from `ReadApplicationRolePermissions` page iteration: EntityArray
+		fmt.Fprintf(os.Stdout, "Response from `ApplicationRolePermissionsApi.ReadApplicationRolePermissions` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
@@ -218,12 +217,12 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationRolePermissionsApi.ReadApplicationRolePermissions(context.Background(), environmentID, applicationRoleID).Execute()
+	resp, r, err := apiClient.ApplicationRolePermissionsApi.ReadApplicationRolePermissions(context.Background(), environmentID, applicationRoleID).ExecuteInitialPage()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolePermissionsApi.ReadApplicationRolePermissions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadApplicationRolePermissions`: EntityArrayPagedIterator
+	// response from `ReadApplicationRolePermissions`: EntityArray
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationRolePermissionsApi.ReadApplicationRolePermissions`: %v\n", resp)
 }
 ```
@@ -249,7 +248,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+
+PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**EntityArray**](EntityArray.md)
 
 ### Authorization
 

@@ -163,7 +163,7 @@ READ All API Server Operations
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllAPIServerOperations(ctx, environmentID, apiServerID).Execute()
+> PagedIterator[EntityArray] ReadAllAPIServerOperations(ctx, environmentID, apiServerID).Execute()
 
 #### Example
 
@@ -171,29 +171,28 @@ READ All API Server Operations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/authorize"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	apiServerID := "apiServerID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllAPIServerOperations(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.APIServerOperationsApi.ReadAllAPIServerOperations(context.Background(), environmentID, apiServerID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllAPIServerOperations``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.ReadAllAPIServerOperations``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllAPIServerOperations`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllAPIServerOperations`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllAPIServerOperations` page iteration: EntityArray
+		fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadAllAPIServerOperations` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
@@ -220,12 +219,12 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.APIServerOperationsApi.ReadAllAPIServerOperations(context.Background(), environmentID, apiServerID).Execute()
+	resp, r, err := apiClient.APIServerOperationsApi.ReadAllAPIServerOperations(context.Background(), environmentID, apiServerID).ExecuteInitialPage()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.ReadAllAPIServerOperations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadAllAPIServerOperations`: EntityArrayPagedIterator
+	// response from `ReadAllAPIServerOperations`: EntityArray
 	fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadAllAPIServerOperations`: %v\n", resp)
 }
 ```
@@ -251,7 +250,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+
+PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**EntityArray**](EntityArray.md)
 
 ### Authorization
 

@@ -26,17 +26,9 @@ else
         template=${template//PACKAGENAME/$3}
         echo "$template" > "api_utils_pagination_ext.go"
 
-        template=$(cat ../scripts/templates/PagedCursor.md.tmpl)
-        template=${template//PACKAGENAME/$3}
-        echo "$template" > "docs/PagedCursor.md"
-
         go get -u ./...
         go mod tidy
         go work vendor
-
-        echo "==> Applying common postprocessing..."
-        go run ../scripts/generate-replace-regex.go .
-        go run ../scripts/generate-replace-regex.go ./docs
         
         echo "==> Applying module specific postprocessing..."
         go run generate/postprocessing/generate-replace-regex.go .
