@@ -59,11 +59,13 @@ func Test_authorize_APIServerOperationsApiService(t *testing.T) {
 		var environmentID string
 		var apiServerID string
 
-		resp, httpRes, err := apiClient.APIServerOperationsApi.ReadAllAPIServerOperations(context.Background(), environmentID, apiServerID).Execute()
+		pagedIterator := apiClient.APIServerOperationsApi.ReadAllAPIServerOperations(context.Background(), environmentID, apiServerID).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		for pageCursor, err := range pagedIterator {
+			require.Nil(t, err)
+			require.NotNil(t, pageCursor.Data)
+			assert.Equal(t, 200, pageCursor.HTTPResponse.StatusCode)
+		}
 
 	})
 

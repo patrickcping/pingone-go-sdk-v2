@@ -59,11 +59,13 @@ func Test_authorize_ApplicationResourcePermissionsApiService(t *testing.T) {
 		var environmentID string
 		var applicationResourceID string
 
-		resp, httpRes, err := apiClient.ApplicationResourcePermissionsApi.ReadApplicationPermissions(context.Background(), environmentID, applicationResourceID).Execute()
+		pagedIterator := apiClient.ApplicationResourcePermissionsApi.ReadApplicationPermissions(context.Background(), environmentID, applicationResourceID).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		for pageCursor, err := range pagedIterator {
+			require.Nil(t, err)
+			require.NotNil(t, pageCursor.Data)
+			assert.Equal(t, 200, pageCursor.HTTPResponse.StatusCode)
+		}
 
 	})
 

@@ -56,11 +56,13 @@ func Test_authorize_PolicyDecisionManagementApiService(t *testing.T) {
 
 		var environmentID string
 
-		resp, httpRes, err := apiClient.PolicyDecisionManagementApi.ReadAllDecisionEndpoints(context.Background(), environmentID).Execute()
+		pagedIterator := apiClient.PolicyDecisionManagementApi.ReadAllDecisionEndpoints(context.Background(), environmentID).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		for pageCursor, err := range pagedIterator {
+			require.Nil(t, err)
+			require.NotNil(t, pageCursor.Data)
+			assert.Equal(t, 200, pageCursor.HTTPResponse.StatusCode)
+		}
 
 	})
 

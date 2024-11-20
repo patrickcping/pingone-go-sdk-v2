@@ -28,11 +28,13 @@ func Test_authorize_ApplicationResourcesApiService(t *testing.T) {
 
 		var environmentID string
 
-		resp, httpRes, err := apiClient.ApplicationResourcesApi.ReadApplicationResources(context.Background(), environmentID).Execute()
+		pagedIterator := apiClient.ApplicationResourcesApi.ReadApplicationResources(context.Background(), environmentID).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		for pageCursor, err := range pagedIterator {
+			require.Nil(t, err)
+			require.NotNil(t, pageCursor.Data)
+			assert.Equal(t, 200, pageCursor.HTTPResponse.StatusCode)
+		}
 
 	})
 
