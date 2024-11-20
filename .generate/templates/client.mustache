@@ -55,6 +55,9 @@ type APIClient struct {
 {{/operations}}
 {{/apis}}
 {{/apiInfo}}
+
+	// Static APIs
+	HALApi *HALApiService
 }
 
 type service struct {
@@ -80,6 +83,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 {{/operations}}
 {{/apis}}
 {{/apiInfo}}
+
+	// Static APIs
+	c.HALApi = (*HALApiService)(&c.common)
 
 	return c
 }
