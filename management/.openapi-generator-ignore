@@ -28,10 +28,6 @@ git_push.sh
 CHANGELOG.md
 GNUmakefile
 .version
-test/*
-generate/*
-
-client.go
 
 docs/Certificate.md
 docs/PasswordPolicyMinCharacters.md
