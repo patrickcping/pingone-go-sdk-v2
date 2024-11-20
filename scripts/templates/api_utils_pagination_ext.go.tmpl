@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-type EntityArrayPagedIterator iter.Seq2[PagedCursor, error]
+type PagedIterator[T any] iter.Seq2[PagedCursor[T], error]
 
 func (a *APIClient) paginationIterator(ctx context.Context, initialPageAPIFunc func() (*EntityArray, *http.Response, error)) EntityArrayPagedIterator {
 	var err error

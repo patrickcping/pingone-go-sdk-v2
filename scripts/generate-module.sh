@@ -34,10 +34,6 @@ else
         template=${template//PACKAGENAME/$3}
         echo "$template" > "docs/PagedCursor.md"
 
-        template=$(cat ../scripts/templates/EntityArrayPagedIterator.md.tmpl)
-        template=${template//PACKAGENAME/$3}
-        echo "$template" > "docs/EntityArrayPagedIterator.md"
-
         go get -u ./...
         go mod tidy
         go work vendor

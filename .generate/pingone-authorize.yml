@@ -679,6 +679,7 @@ paths:
       tags:
         - Policy Decision Management
       summary: READ All Decision Endpoints
+      x-pingidentity-paginatedresponse: true
       operationId: readAllDecisionEndpoints
       parameters:
         - name: environmentID
@@ -864,6 +865,7 @@ paths:
       tags:
         - API Servers
       summary: READ All API Servers
+      x-pingidentity-paginatedresponse: true
       operationId: readAllAPIServers
       parameters:
         - name: environmentID
@@ -1133,6 +1135,7 @@ paths:
         - API Server Operations
       summary: READ All API Server Operations
       operationId: readAllAPIServerOperations
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1343,6 +1346,7 @@ paths:
         - Application Resources
       summary: READ Application Resources
       operationId: readApplicationResources
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1414,6 +1418,7 @@ paths:
         - Application Resource Permissions
       summary: READ Application Permissions
       operationId: readApplicationPermissions
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1624,6 +1629,7 @@ paths:
         - Application Roles
       summary: READ Application Roles
       operationId: readApplicationRoles
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1809,6 +1815,7 @@ paths:
         - Application Role Permissions
       summary: READ Application Role Permissions
       operationId: readApplicationRolePermissions
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1930,6 +1937,7 @@ paths:
         - Application Role Assignments
       summary: READ Application Role Assignments
       operationId: readApplicationRoleAssignments
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path

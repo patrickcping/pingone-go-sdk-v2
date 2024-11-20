@@ -429,7 +429,7 @@ type ApiReadAllAPIServersRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllAPIServersRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllAPIServersRequest) Execute() PagedIterator[EntityArray] {
 	return r.ApiService.ReadAllAPIServersExecute(r)
 }
 
@@ -454,10 +454,12 @@ func (a *APIServersApiService) ReadAllAPIServers(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return EntityArray
-func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) EntityArrayPagedIterator {
+func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) PagedIterator[EntityArray] {
   return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
 }
 
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return EntityArray
 func (a *APIServersApiService) ReadAllAPIServersExecuteInitialPage(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err error

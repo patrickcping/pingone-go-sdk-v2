@@ -60,17 +60,6 @@ var (
 
 		// Add paging to EntityArray APIs (Execute function)
 		{
-			fileSelectPattern: "api_*.go",
-			pattern:           `func \(([a-zA-Z0-9\* ]+)\) Execute\(([a-zA-Z0-9 ]*)\) \(\*EntityArray, \*http\.Response, error\) \{\n(.*)\(r\)\n*\}`,
-			repl: `func ($1) Execute($2) EntityArrayPagedIterator {
-$3(r)
-}
-
-func ($1) ExecuteInitialPage($2) (*EntityArray, *http.Response, error) {
-$3))InitialPage(r)
-}`,
-		},
-		{
 			fileSelectPattern: "*Api.md",
 			pattern:           `EntityArray`,
 			repl:              `EntityArrayPagedIterator`,
@@ -126,39 +115,10 @@ func main() {
 #`,
 		},
 		{
-			fileSelectPattern: "*Api.md",
-			pattern:           `\^\^\^`,
-			repl:              "`",
-		},
-		{
-			fileSelectPattern: "README.md",
-			pattern:           ` - \[EntityArrayEmbeddedPermissionsInner\]\(docs\/EntityArrayEmbeddedPermissionsInner\.md\)`,
-			repl: ` - [EntityArrayEmbeddedPermissionsInner](docs/EntityArrayEmbeddedPermissionsInner.md)
- - [EntityArrayPagedIterator](docs/EntityArrayPagedIterator.md)`,
-		},
-		{
 			fileSelectPattern: "README.md",
 			pattern:           ` - \[P1ErrorDetailsInnerInnerError\]\(docs\/P1ErrorDetailsInnerInnerError\.md\)`,
 			repl: ` - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
  - [PagedCursor](docs/PagedCursor.md)`,
-		},
-
-		// Add paging to EntityArray APIs (...Execute function)
-		{
-			fileSelectPattern: "api_*.go",
-			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([A-Z]{1})([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(\*EntityArray, \*http\.Response, error\) \{`,
-			repl: `func ($1) $2$3($4) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
-}
-
-func ($1) $2$3))InitialPage($4) (*EntityArray, *http.Response, error) {`,
-		},
-
-		// Add paging to EntityArray APIs (Execute function fix)
-		{
-			fileSelectPattern: "api_*.go",
-			pattern:           `Execute\)\)InitialPage`,
-			repl:              `ExecuteInitialPage`,
 		},
 	}
 )

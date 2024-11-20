@@ -29,7 +29,7 @@ type ApiReadApplicationResourcesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadApplicationResourcesRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadApplicationResourcesRequest) Execute() PagedIterator[EntityArray] {
 	return r.ApiService.ReadApplicationResourcesExecute(r)
 }
 
@@ -54,10 +54,12 @@ func (a *ApplicationResourcesApiService) ReadApplicationResources(ctx context.Co
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) EntityArrayPagedIterator {
+func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) PagedIterator[EntityArray] {
   return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
 }
 
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return EntityArray
 func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialPage(r ApiReadApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err error

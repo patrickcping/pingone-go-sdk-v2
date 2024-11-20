@@ -438,7 +438,7 @@ type ApiReadAllAPIServerOperationsRequest struct {
 	apiServerID string
 }
 
-func (r ApiReadAllAPIServerOperationsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllAPIServerOperationsRequest) Execute() PagedIterator[EntityArray] {
 	return r.ApiService.ReadAllAPIServerOperationsExecute(r)
 }
 
@@ -465,10 +465,12 @@ func (a *APIServerOperationsApiService) ReadAllAPIServerOperations(ctx context.C
 
 // Execute executes the request
 //  @return EntityArray
-func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecute(r ApiReadAllAPIServerOperationsRequest) EntityArrayPagedIterator {
+func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecute(r ApiReadAllAPIServerOperationsRequest) PagedIterator[EntityArray] {
   return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
 }
 
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return EntityArray
 func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecuteInitialPage(r ApiReadAllAPIServerOperationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err error

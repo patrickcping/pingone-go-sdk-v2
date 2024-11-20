@@ -438,7 +438,7 @@ type ApiReadApplicationPermissionsRequest struct {
 	applicationResourceID string
 }
 
-func (r ApiReadApplicationPermissionsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadApplicationPermissionsRequest) Execute() PagedIterator[EntityArray] {
 	return r.ApiService.ReadApplicationPermissionsExecute(r)
 }
 
@@ -465,10 +465,12 @@ func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissions(ct
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) EntityArrayPagedIterator {
+func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) PagedIterator[EntityArray] {
   return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
 }
 
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return EntityArray
 func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecuteInitialPage(r ApiReadApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err error

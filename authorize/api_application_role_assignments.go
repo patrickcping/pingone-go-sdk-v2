@@ -30,7 +30,7 @@ type ApiReadApplicationRoleAssignmentsRequest struct {
 	applicationRoleID string
 }
 
-func (r ApiReadApplicationRoleAssignmentsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadApplicationRoleAssignmentsRequest) Execute() PagedIterator[EntityArray] {
 	return r.ApiService.ReadApplicationRoleAssignmentsExecute(r)
 }
 
@@ -57,10 +57,12 @@ func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignments(ct
 
 // Execute executes the request
 //  @return EntityArray
-func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) EntityArrayPagedIterator {
+func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) PagedIterator[EntityArray] {
   return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
 }
 
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return EntityArray
 func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecuteInitialPage(r ApiReadApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err error

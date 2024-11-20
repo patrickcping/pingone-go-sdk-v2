@@ -11,18 +11,18 @@ const (
 )
 
 
-type PagedCursor struct {
-	EntityArray  *EntityArray
+type PagedCursor[T any] struct {
+	Data  *T
 	HTTPResponse *http.Response
 }
 
-func (o *PagedCursor) hasHalLink(linkIndex string) bool {
+func (o *PagedCursor[T]) hasHalLink(linkIndex string) bool {
 
-	if o.EntityArray == nil {
+	if o.Data == nil {
 		return false
 	}
 
-	if l, ok := o.EntityArray.GetLinksOk(); ok && l != nil {
+	if l, ok := o.Data.GetLinksOk(); ok && l != nil {
 		links := *l
 		if v, ok := links[linkIndex]; ok {
 			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
@@ -33,14 +33,14 @@ func (o *PagedCursor) hasHalLink(linkIndex string) bool {
 	return false
 }
 
-func (o *PagedCursor) getHalLink(linkIndex string) LinksHATEOASValue {
+func (o *PagedCursor[T]) getHalLink(linkIndex string) LinksHATEOASValue {
 
 	var ret LinksHATEOASValue
-	if o.EntityArray == nil {
+	if o.Data == nil {
 		return ret
 	}
 
-	if l, ok := o.EntityArray.GetLinksOk(); ok && l != nil {
+	if l, ok := o.Data.GetLinksOk(); ok && l != nil {
 		links := *l
 		if v, ok := links[linkIndex]; ok {
 			return v
@@ -50,13 +50,13 @@ func (o *PagedCursor) getHalLink(linkIndex string) LinksHATEOASValue {
 	return ret
 }
 
-func (o *PagedCursor) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
+func (o *PagedCursor[T]) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
 
-	if o.EntityArray == nil {
+	if o.Data == nil {
 		return nil, false
 	}
 
-	if l, ok := o.EntityArray.GetLinksOk(); ok && l != nil {
+	if l, ok := o.Data.GetLinksOk(); ok && l != nil {
 		links := *l
 		if v, ok := links[linkIndex]; ok {
 			return &v, true
@@ -66,42 +66,42 @@ func (o *PagedCursor) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) 
 	return nil, false
 }
 
-func (o *PagedCursor) IsPaginated() bool {
+func (o *PagedCursor[T]) IsPaginated() bool {
 	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT) || o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
 }
 
-func (o *PagedCursor) HasPaginationSelf() bool {
+func (o *PagedCursor[T]) HasPaginationSelf() bool {
 	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
 }
 
-func (o *PagedCursor) GetPaginationSelfLink() LinksHATEOASValue {
+func (o *PagedCursor[T]) GetPaginationSelfLink() LinksHATEOASValue {
 	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
 }
 
-func (o *PagedCursor) GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool) {
+func (o *PagedCursor[T]) GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool) {
 	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_SELF)
 }
 
-func (o *PagedCursor) HasPaginationNext() bool {
+func (o *PagedCursor[T]) HasPaginationNext() bool {
 	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
 }
 
-func (o *PagedCursor) GetPaginationNextLink() LinksHATEOASValue {
+func (o *PagedCursor[T]) GetPaginationNextLink() LinksHATEOASValue {
 	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
 }
 
-func (o *PagedCursor) GetPaginationNextLinkOk() (*LinksHATEOASValue, bool) {
+func (o *PagedCursor[T]) GetPaginationNextLinkOk() (*LinksHATEOASValue, bool) {
 	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_NEXT)
 }
 
-func (o *PagedCursor) HasPaginationPrevious() bool {
+func (o *PagedCursor[T]) HasPaginationPrevious() bool {
 	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
 }
 
-func (o *PagedCursor) GetPaginationPreviousLink() LinksHATEOASValue {
+func (o *PagedCursor[T]) GetPaginationPreviousLink() LinksHATEOASValue {
 	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
 }
 
-func (o *PagedCursor) GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool) {
+func (o *PagedCursor[T]) GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool) {
 	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_PREV)
 }

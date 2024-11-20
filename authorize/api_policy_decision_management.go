@@ -429,7 +429,7 @@ type ApiReadAllDecisionEndpointsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllDecisionEndpointsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllDecisionEndpointsRequest) Execute() PagedIterator[EntityArray] {
 	return r.ApiService.ReadAllDecisionEndpointsExecute(r)
 }
 
@@ -454,10 +454,12 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpoints(ctx contex
 
 // Execute executes the request
 //  @return EntityArray
-func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) EntityArrayPagedIterator {
+func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) PagedIterator[EntityArray] {
   return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
 }
 
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return EntityArray
 func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInitialPage(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err error

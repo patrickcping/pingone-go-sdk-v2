@@ -152,7 +152,6 @@ Class | Method | HTTP request | Description
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedPermissionsInner](docs/EntityArrayEmbeddedPermissionsInner.md)
- - [EntityArrayPagedIterator](docs/EntityArrayPagedIterator.md)
  - [EnumAPIServerAuthorizationServerType](docs/EnumAPIServerAuthorizationServerType.md)
  - [EnumAPIServerOperationMatchType](docs/EnumAPIServerOperationMatchType.md)
  - [EnumAPIServerOperationMethod](docs/EnumAPIServerOperationMethod.md)
