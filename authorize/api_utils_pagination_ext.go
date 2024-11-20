@@ -8,9 +8,22 @@ import (
 	"net/http"
 )
 
-type PagedIterator[T any] iter.Seq2[PagedCursor[T], error]
+type PagedResponseModel interface {
+	IsPaginated() bool
+	HasPaginationSelf() bool
+	GetPaginationSelfLink() LinksHATEOASValue
+	GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool)
+	HasPaginationNext() bool
+	GetPaginationNextLink() LinksHATEOASValue
+	GetPaginationNextLinkOk() (*LinksHATEOASValue, bool)
+	HasPaginationPrevious() bool
+	GetPaginationPreviousLink() LinksHATEOASValue
+	GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool)
+}
 
-func paginationIterator[T any](ctx context.Context, apiClient *APIClient, initialPageAPIFunc func() (*T, *http.Response, error)) PagedIterator[T] {
+type PagedIterator[T PagedResponseModel] iter.Seq2[PagedCursor[T], error]
+
+func paginationIterator[T PagedResponseModel](ctx context.Context, apiClient *APIClient, initialPageAPIFunc func() (*T, *http.Response, error)) PagedIterator[T] {
 	var err error
 	return func(yield func(PagedCursor[T], error) bool) {
 

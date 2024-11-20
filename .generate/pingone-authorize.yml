@@ -493,6 +493,7 @@ components:
        - description
        - recordRecentRequests
     EntityArray:
+      x-pingidentity-paginatedresponse: true
       type: object
       properties:
         '_links':

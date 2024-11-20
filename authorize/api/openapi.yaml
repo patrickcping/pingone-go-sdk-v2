@@ -2235,6 +2235,7 @@ components:
           type: number
         size:
           type: number
+      x-pingidentity-paginatedresponse: true
     ObjectApplication:
       properties:
         id:
