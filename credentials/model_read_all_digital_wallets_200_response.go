@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadAllDigitalWallets200Response{}
 
 // ReadAllDigitalWallets200Response struct for ReadAllDigitalWallets200Response
 type ReadAllDigitalWallets200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue              `json:"_links,omitempty"`
 	Embedded *ReadAllDigitalWallets200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                                  `json:"count,omitempty"`
+	Size     *float32                                  `json:"size,omitempty"`
 }
 
 // NewReadAllDigitalWallets200Response instantiates a new ReadAllDigitalWallets200Response object
@@ -246,7 +246,7 @@ func (o *ReadAllDigitalWallets200Response) SetSize(v float32) {
 }
 
 func (o ReadAllDigitalWallets200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadAllDigitalWallets200Response) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

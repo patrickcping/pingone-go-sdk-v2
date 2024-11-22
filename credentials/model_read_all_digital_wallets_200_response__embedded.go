@@ -72,7 +72,7 @@ func (o *ReadAllDigitalWallets200ResponseEmbedded) SetDigitalWallets(v []Credent
 }
 
 func (o ReadAllDigitalWallets200ResponseEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableReadAllDigitalWallets200ResponseEmbedded) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

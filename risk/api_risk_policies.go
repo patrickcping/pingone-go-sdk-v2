@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // RiskPoliciesApiService RiskPoliciesApi service
 type RiskPoliciesApiService service
 
 type ApiCreateRiskPolicySetRequest struct {
-	ctx context.Context
-	ApiService *RiskPoliciesApiService
+	ctx           context.Context
+	ApiService    *RiskPoliciesApiService
 	environmentID string
 	riskPolicySet *RiskPolicySet
 }
@@ -42,27 +41,28 @@ func (r ApiCreateRiskPolicySetRequest) Execute() (*RiskPolicySet, *http.Response
 /*
 CreateRiskPolicySet CREATE Risk Policy Set
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateRiskPolicySetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateRiskPolicySetRequest
 */
 func (a *RiskPoliciesApiService) CreateRiskPolicySet(ctx context.Context, environmentID string) ApiCreateRiskPolicySetRequest {
 	return ApiCreateRiskPolicySetRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskPolicySet
+//
+//	@return RiskPolicySet
 func (a *RiskPoliciesApiService) CreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskPolicySet
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateRiskPolicySetExecute(r)
@@ -74,10 +74,10 @@ func (a *RiskPoliciesApiService) CreateRiskPolicySetExecute(r ApiCreateRiskPolic
 
 func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskPolicySet
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskPolicySet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskPoliciesApiService.CreateRiskPolicySet")
@@ -140,8 +140,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,9 +237,9 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 }
 
 type ApiDeleteRiskPolicySetRequest struct {
-	ctx context.Context
-	ApiService *RiskPoliciesApiService
-	environmentID string
+	ctx             context.Context
+	ApiService      *RiskPoliciesApiService
+	environmentID   string
 	riskPolicySetID string
 }
 
@@ -248,18 +248,18 @@ func (r ApiDeleteRiskPolicySetRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteRiskPolicySet DELETE Risk Policy Set 
+DeleteRiskPolicySet DELETE Risk Policy Set
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskPolicySetID
- @return ApiDeleteRiskPolicySetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskPolicySetID
+	@return ApiDeleteRiskPolicySetRequest
 */
 func (a *RiskPoliciesApiService) DeleteRiskPolicySet(ctx context.Context, environmentID string, riskPolicySetID string) ApiDeleteRiskPolicySetRequest {
 	return ApiDeleteRiskPolicySetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
 		riskPolicySetID: riskPolicySetID,
 	}
 }
@@ -267,10 +267,10 @@ func (a *RiskPoliciesApiService) DeleteRiskPolicySet(ctx context.Context, enviro
 // Execute executes the request
 func (a *RiskPoliciesApiService) DeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteRiskPolicySetExecute(r)
@@ -283,9 +283,9 @@ func (a *RiskPoliciesApiService) DeleteRiskPolicySetExecute(r ApiDeleteRiskPolic
 
 func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskPoliciesApiService.DeleteRiskPolicySet")
@@ -347,8 +347,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -358,8 +358,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -369,8 +369,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -380,8 +380,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -391,8 +391,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -402,8 +402,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -413,8 +413,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -424,9 +424,9 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 }
 
 type ApiReadOneRiskPolicySetRequest struct {
-	ctx context.Context
-	ApiService *RiskPoliciesApiService
-	environmentID string
+	ctx             context.Context
+	ApiService      *RiskPoliciesApiService
+	environmentID   string
 	riskPolicySetID string
 }
 
@@ -437,29 +437,30 @@ func (r ApiReadOneRiskPolicySetRequest) Execute() (*RiskPolicySet, *http.Respons
 /*
 ReadOneRiskPolicySet READ One Risk Policy Set
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskPolicySetID
- @return ApiReadOneRiskPolicySetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskPolicySetID
+	@return ApiReadOneRiskPolicySetRequest
 */
 func (a *RiskPoliciesApiService) ReadOneRiskPolicySet(ctx context.Context, environmentID string, riskPolicySetID string) ApiReadOneRiskPolicySetRequest {
 	return ApiReadOneRiskPolicySetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
 		riskPolicySetID: riskPolicySetID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskPolicySet
+//
+//	@return RiskPolicySet
 func (a *RiskPoliciesApiService) ReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskPolicySet
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneRiskPolicySetExecute(r)
@@ -471,10 +472,10 @@ func (a *RiskPoliciesApiService) ReadOneRiskPolicySetExecute(r ApiReadOneRiskPol
 
 func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskPolicySet
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskPolicySet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskPoliciesApiService.ReadOneRiskPolicySet")
@@ -536,8 +537,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -547,8 +548,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -558,8 +559,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -569,8 +570,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -580,8 +581,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -591,8 +592,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -602,8 +603,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -622,8 +623,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 }
 
 type ApiReadRiskPolicySetsRequest struct {
-	ctx context.Context
-	ApiService *RiskPoliciesApiService
+	ctx           context.Context
+	ApiService    *RiskPoliciesApiService
 	environmentID string
 }
 
@@ -638,33 +639,35 @@ func (r ApiReadRiskPolicySetsRequest) ExecuteInitialPage() (*ReadRiskPolicySets2
 /*
 ReadRiskPolicySets READ Risk Policy Sets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadRiskPolicySetsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadRiskPolicySetsRequest
 */
 func (a *RiskPoliciesApiService) ReadRiskPolicySets(ctx context.Context, environmentID string) ApiReadRiskPolicySetsRequest {
 	return ApiReadRiskPolicySetsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadRiskPolicySets200Response
+//
+//	@return ReadRiskPolicySets200Response
 func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) PagedIterator[ReadRiskPolicySets200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadRiskPolicySets200Response
+//
+//	@return ReadRiskPolicySets200Response
 func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecuteInitialPage(r ApiReadRiskPolicySetsRequest) (*ReadRiskPolicySets200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadRiskPolicySets200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadRiskPolicySetsExecute(r)
@@ -676,10 +679,10 @@ func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecuteInitialPage(r ApiReadR
 
 func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*ReadRiskPolicySets200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadRiskPolicySets200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadRiskPolicySets200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskPoliciesApiService.ReadRiskPolicySets")
@@ -740,8 +743,8 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -751,8 +754,8 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -762,8 +765,8 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -773,8 +776,8 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -784,8 +787,8 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -795,8 +798,8 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -806,8 +809,8 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -826,11 +829,11 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 }
 
 type ApiUpdateRiskPolicySetRequest struct {
-	ctx context.Context
-	ApiService *RiskPoliciesApiService
-	environmentID string
+	ctx             context.Context
+	ApiService      *RiskPoliciesApiService
+	environmentID   string
 	riskPolicySetID string
-	riskPolicySet *RiskPolicySet
+	riskPolicySet   *RiskPolicySet
 }
 
 func (r ApiUpdateRiskPolicySetRequest) RiskPolicySet(riskPolicySet RiskPolicySet) ApiUpdateRiskPolicySetRequest {
@@ -845,29 +848,30 @@ func (r ApiUpdateRiskPolicySetRequest) Execute() (*RiskPolicySet, *http.Response
 /*
 UpdateRiskPolicySet UPDATE Risk Policy Set
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskPolicySetID
- @return ApiUpdateRiskPolicySetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskPolicySetID
+	@return ApiUpdateRiskPolicySetRequest
 */
 func (a *RiskPoliciesApiService) UpdateRiskPolicySet(ctx context.Context, environmentID string, riskPolicySetID string) ApiUpdateRiskPolicySetRequest {
 	return ApiUpdateRiskPolicySetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
 		riskPolicySetID: riskPolicySetID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskPolicySet
+//
+//	@return RiskPolicySet
 func (a *RiskPoliciesApiService) UpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskPolicySet
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateRiskPolicySetExecute(r)
@@ -879,10 +883,10 @@ func (a *RiskPoliciesApiService) UpdateRiskPolicySetExecute(r ApiUpdateRiskPolic
 
 func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskPolicySet
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskPolicySet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskPoliciesApiService.UpdateRiskPolicySet")
@@ -946,8 +950,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -957,8 +961,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -968,8 +972,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -979,8 +983,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -990,8 +994,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1001,8 +1005,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1012,8 +1016,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

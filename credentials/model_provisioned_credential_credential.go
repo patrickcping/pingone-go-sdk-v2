@@ -72,7 +72,7 @@ func (o *ProvisionedCredentialCredential) SetId(v string) {
 }
 
 func (o ProvisionedCredentialCredential) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableProvisionedCredentialCredential) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

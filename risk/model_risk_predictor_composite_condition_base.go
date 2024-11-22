@@ -13,13 +13,14 @@ package risk
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // RiskPredictorCompositeConditionBase - struct for RiskPredictorCompositeConditionBase
 type RiskPredictorCompositeConditionBase struct {
 	RiskPredictorCompositeAnd *RiskPredictorCompositeAnd
 	RiskPredictorCompositeNot *RiskPredictorCompositeNot
-	RiskPredictorCompositeOr *RiskPredictorCompositeOr
+	RiskPredictorCompositeOr  *RiskPredictorCompositeOr
 }
 
 // RiskPredictorCompositeAndAsRiskPredictorCompositeConditionBase is a convenience function that returns RiskPredictorCompositeAnd wrapped in RiskPredictorCompositeConditionBase
@@ -42,7 +43,6 @@ func RiskPredictorCompositeOrAsRiskPredictorCompositeConditionBase(v *RiskPredic
 		RiskPredictorCompositeOr: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictorCompositeConditionBase) UnmarshalJSON(data []byte) error {
@@ -111,7 +111,7 @@ func (src RiskPredictorCompositeConditionBase) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RiskPredictorCompositeConditionBase) GetActualInstance() (interface{}) {
+func (obj *RiskPredictorCompositeConditionBase) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -166,5 +166,3 @@ func (v *NullableRiskPredictorCompositeConditionBase) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,16 +19,15 @@ import (
 	"strings"
 )
 
-
 // UserMFAPairingKeysApiService UserMFAPairingKeysApi service
 type UserMFAPairingKeysApiService service
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest struct {
-	ctx context.Context
-	ApiService *UserMFAPairingKeysApiService
+	ctx           context.Context
+	ApiService    *UserMFAPairingKeysApiService
 	environmentID string
-	userID string
-	pairingKeyID string
+	userID        string
+	pairingKeyID  string
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) Execute() (*http.Response, error) {
@@ -38,29 +37,29 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequ
 /*
 EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete DELETE MFA Pairing Key
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param pairingKeyID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param pairingKeyID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest
 */
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
-		pairingKeyID: pairingKeyID,
+		userID:        userID,
+		pairingKeyID:  pairingKeyID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r)
@@ -73,9 +72,9 @@ func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairi
 
 func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFAPairingKeysApiService.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete")
@@ -138,8 +137,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +148,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +159,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +170,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -182,8 +181,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -193,8 +192,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -204,8 +203,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -215,11 +214,11 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest struct {
-	ctx context.Context
-	ApiService *UserMFAPairingKeysApiService
+	ctx           context.Context
+	ApiService    *UserMFAPairingKeysApiService
 	environmentID string
-	userID string
-	pairingKeyID string
+	userID        string
+	pairingKeyID  string
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) Execute() (*http.Response, error) {
@@ -229,29 +228,29 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest
 /*
 EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet READ One MFA Pairing Key
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param pairingKeyID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param pairingKeyID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest
 */
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
-		pairingKeyID: pairingKeyID,
+		userID:        userID,
+		pairingKeyID:  pairingKeyID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r)
@@ -264,9 +263,9 @@ func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairi
 
 func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFAPairingKeysApiService.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet")
@@ -329,8 +328,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -340,8 +339,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -351,8 +350,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -362,8 +361,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -373,8 +372,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -384,8 +383,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -395,8 +394,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -406,11 +405,11 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest struct {
-	ctx context.Context
-	ApiService *UserMFAPairingKeysApiService
+	ctx           context.Context
+	ApiService    *UserMFAPairingKeysApiService
 	environmentID string
-	userID string
-	body *map[string]interface{}
+	userID        string
+	body          *map[string]interface{}
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest {
@@ -425,27 +424,27 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) Execute()
 /*
 EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost CREATE MFA Pairing Key
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest
 */
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(ctx context.Context, environmentID string, userID string) ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r)
@@ -458,9 +457,9 @@ func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairi
 
 func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFAPairingKeysApiService.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost")
@@ -524,8 +523,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -535,8 +534,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -546,8 +545,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -557,8 +556,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -568,8 +567,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -579,8 +578,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -590,8 +589,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -601,8 +600,8 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr

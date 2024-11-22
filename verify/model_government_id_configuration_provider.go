@@ -19,7 +19,7 @@ var _ MappedNullable = &GovernmentIdConfigurationProvider{}
 
 // GovernmentIdConfigurationProvider struct for GovernmentIdConfigurationProvider
 type GovernmentIdConfigurationProvider struct {
-	Auto *EnumProviderAuto `json:"auto,omitempty"`
+	Auto   *EnumProviderAuto   `json:"auto,omitempty"`
 	Manual *EnumProviderManual `json:"manual,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *GovernmentIdConfigurationProvider) SetManual(v EnumProviderManual) {
 }
 
 func (o GovernmentIdConfigurationProvider) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableGovernmentIdConfigurationProvider) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

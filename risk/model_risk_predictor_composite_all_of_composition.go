@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &RiskPredictorCompositeAllOfComposition{}
 // RiskPredictorCompositeAllOfComposition struct for RiskPredictorCompositeAllOfComposition
 type RiskPredictorCompositeAllOfComposition struct {
 	Condition RiskPredictorCompositeConditionBase `json:"condition"`
-	Level EnumRiskLevel `json:"level"`
+	Level     EnumRiskLevel                       `json:"level"`
 }
 
 type _RiskPredictorCompositeAllOfComposition RiskPredictorCompositeAllOfComposition
@@ -95,7 +95,7 @@ func (o *RiskPredictorCompositeAllOfComposition) SetLevel(v EnumRiskLevel) {
 }
 
 func (o RiskPredictorCompositeAllOfComposition) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,10 +123,10 @@ func (o *RiskPredictorCompositeAllOfComposition) UnmarshalJSON(data []byte) (err
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -182,5 +182,3 @@ func (v *NullableRiskPredictorCompositeAllOfComposition) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

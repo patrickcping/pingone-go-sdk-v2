@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPairing
 // DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime struct for DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime
 type DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime struct {
 	// The amount of time an issued pairing key can be used until it expires. Minimum is 1 minute and maximum is 48 hours. If this parameter is not provided, the duration is set to 10 minutes.
-	Duration int32 `json:"duration"`
+	Duration int32                          `json:"duration"`
 	TimeUnit EnumTimeUnitPairingKeyLifetime `json:"timeUnit"`
 }
 
@@ -98,7 +98,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) Se
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -126,10 +126,10 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) Un
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -185,5 +185,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLife
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

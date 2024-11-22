@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadAllVerifyPolicies200Response{}
 
 // ReadAllVerifyPolicies200Response struct for ReadAllVerifyPolicies200Response
 type ReadAllVerifyPolicies200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue              `json:"_links,omitempty"`
 	Embedded *ReadAllVerifyPolicies200ResponseEmbedded `json:"_embedded,omitempty"`
-	Size *float32 `json:"size,omitempty"`
-	Count *float32 `json:"count,omitempty"`
+	Size     *float32                                  `json:"size,omitempty"`
+	Count    *float32                                  `json:"count,omitempty"`
 }
 
 // NewReadAllVerifyPolicies200Response instantiates a new ReadAllVerifyPolicies200Response object
@@ -246,7 +246,7 @@ func (o *ReadAllVerifyPolicies200Response) SetCount(v float32) {
 }
 
 func (o ReadAllVerifyPolicies200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadAllVerifyPolicies200Response) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

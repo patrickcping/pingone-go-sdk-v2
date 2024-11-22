@@ -15,16 +15,16 @@ import (
 	"fmt"
 )
 
-// EnumFIDO2PolicyMDSAuthenticatorOption Use `option` to specify the types of devices you want to allow on the basis of the attestation provided. Can be one of the following values: - `NONE` - do not request attestation, allow all FIDO devices - `AUDIT_ONLY` - attestation is requested and the information is used for logging purposes, but the information is not used for filtering authenticators - `GLOBAL` - allow use of all FIDO authenticators listed in the Global Authenticators table. - `CERTIFIED` - allow only FIDO Certified authenticators - `SPECIFIC` - allow only the authenticators specified with the `mdsAuthenticatorsRequirements.allowedAuthenticators` parameter. 
+// EnumFIDO2PolicyMDSAuthenticatorOption Use `option` to specify the types of devices you want to allow on the basis of the attestation provided. Can be one of the following values: - `NONE` - do not request attestation, allow all FIDO devices - `AUDIT_ONLY` - attestation is requested and the information is used for logging purposes, but the information is not used for filtering authenticators - `GLOBAL` - allow use of all FIDO authenticators listed in the Global Authenticators table. - `CERTIFIED` - allow only FIDO Certified authenticators - `SPECIFIC` - allow only the authenticators specified with the `mdsAuthenticatorsRequirements.allowedAuthenticators` parameter.
 type EnumFIDO2PolicyMDSAuthenticatorOption string
 
 // List of EnumFIDO2PolicyMDSAuthenticatorOption
 const (
-	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_NONE EnumFIDO2PolicyMDSAuthenticatorOption = "NONE"
+	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_NONE       EnumFIDO2PolicyMDSAuthenticatorOption = "NONE"
 	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_AUDIT_ONLY EnumFIDO2PolicyMDSAuthenticatorOption = "AUDIT_ONLY"
-	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_GLOBAL EnumFIDO2PolicyMDSAuthenticatorOption = "GLOBAL"
-	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_CERTIFIED EnumFIDO2PolicyMDSAuthenticatorOption = "CERTIFIED"
-	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_SPECIFIC EnumFIDO2PolicyMDSAuthenticatorOption = "SPECIFIC"
+	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_GLOBAL     EnumFIDO2PolicyMDSAuthenticatorOption = "GLOBAL"
+	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_CERTIFIED  EnumFIDO2PolicyMDSAuthenticatorOption = "CERTIFIED"
+	ENUMFIDO2POLICYMDSAUTHENTICATOROPTION_SPECIFIC   EnumFIDO2PolicyMDSAuthenticatorOption = "SPECIFIC"
 )
 
 // All allowed values of EnumFIDO2PolicyMDSAuthenticatorOption enum
@@ -115,4 +115,3 @@ func (v *NullableEnumFIDO2PolicyMDSAuthenticatorOption) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

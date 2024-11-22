@@ -11,10 +11,10 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the DeviceAuthenticationPolicy type satisfies the MappedNullable interface at compile time
@@ -22,20 +22,20 @@ var _ MappedNullable = &DeviceAuthenticationPolicy{}
 
 // DeviceAuthenticationPolicy struct for DeviceAuthenticationPolicy
 type DeviceAuthenticationPolicy struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Environment *ObjectEnvironment           `json:"environment,omitempty"`
 	// Device authentication policy's UUID.
 	Id *string `json:"id,omitempty"`
 	// Device authentication policy's name.
-	Name string `json:"name"`
+	Name                  string                                    `json:"name"`
 	NewDeviceNotification *EnumMFADevicePolicyNewDeviceNotification `json:"newDeviceNotification,omitempty"`
-	Authentication *DeviceAuthenticationPolicyAuthentication `json:"authentication,omitempty"`
-	Sms DeviceAuthenticationPolicyOfflineDevice `json:"sms"`
-	Voice DeviceAuthenticationPolicyOfflineDevice `json:"voice"`
-	Email DeviceAuthenticationPolicyOfflineDevice `json:"email"`
-	Fido2 *DeviceAuthenticationPolicyFido2 `json:"fido2,omitempty"`
-	Mobile DeviceAuthenticationPolicyMobile `json:"mobile"`
-	Totp DeviceAuthenticationPolicyTotp `json:"totp"`
+	Authentication        *DeviceAuthenticationPolicyAuthentication `json:"authentication,omitempty"`
+	Sms                   DeviceAuthenticationPolicyOfflineDevice   `json:"sms"`
+	Voice                 DeviceAuthenticationPolicyOfflineDevice   `json:"voice"`
+	Email                 DeviceAuthenticationPolicyOfflineDevice   `json:"email"`
+	Fido2                 *DeviceAuthenticationPolicyFido2          `json:"fido2,omitempty"`
+	Mobile                DeviceAuthenticationPolicyMobile          `json:"mobile"`
+	Totp                  DeviceAuthenticationPolicyTotp            `json:"totp"`
 	// Deprecated
 	SecurityKey *DeviceAuthenticationPolicyFIDODevice `json:"securityKey,omitempty"`
 	// Deprecated
@@ -640,7 +640,7 @@ func (o *DeviceAuthenticationPolicy) SetUpdatedAt(v time.Time) {
 }
 
 func (o DeviceAuthenticationPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -707,10 +707,10 @@ func (o *DeviceAuthenticationPolicy) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -766,5 +766,3 @@ func (v *NullableDeviceAuthenticationPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // EnableUsersMFAApiService EnableUsersMFAApi service
 type EnableUsersMFAApiService service
 
 type ApiReadUserMFAEnabledRequest struct {
-	ctx context.Context
-	ApiService *EnableUsersMFAApiService
+	ctx           context.Context
+	ApiService    *EnableUsersMFAApiService
 	environmentID string
-	userID string
+	userID        string
 }
 
 func (r ApiReadUserMFAEnabledRequest) Execute() (*UserMFAEnabled, *http.Response, error) {
@@ -37,29 +36,30 @@ func (r ApiReadUserMFAEnabledRequest) Execute() (*UserMFAEnabled, *http.Response
 /*
 ReadUserMFAEnabled READ User MFA Enabled
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiReadUserMFAEnabledRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiReadUserMFAEnabledRequest
 */
 func (a *EnableUsersMFAApiService) ReadUserMFAEnabled(ctx context.Context, environmentID string, userID string) ApiReadUserMFAEnabledRequest {
 	return ApiReadUserMFAEnabledRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
-//  @return UserMFAEnabled
+//
+//	@return UserMFAEnabled
 func (a *EnableUsersMFAApiService) ReadUserMFAEnabledExecute(r ApiReadUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *UserMFAEnabled
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadUserMFAEnabledExecute(r)
@@ -71,10 +71,10 @@ func (a *EnableUsersMFAApiService) ReadUserMFAEnabledExecute(r ApiReadUserMFAEna
 
 func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserMFAEnabled
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserMFAEnabled
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnableUsersMFAApiService.ReadUserMFAEnabled")
@@ -136,8 +136,8 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -147,8 +147,8 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -158,8 +158,8 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -169,8 +169,8 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -180,8 +180,8 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -191,8 +191,8 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -202,8 +202,8 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -222,10 +222,10 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 }
 
 type ApiUpdateUserMFAEnabledRequest struct {
-	ctx context.Context
-	ApiService *EnableUsersMFAApiService
-	environmentID string
-	userID string
+	ctx            context.Context
+	ApiService     *EnableUsersMFAApiService
+	environmentID  string
+	userID         string
 	userMFAEnabled *UserMFAEnabled
 }
 
@@ -241,29 +241,30 @@ func (r ApiUpdateUserMFAEnabledRequest) Execute() (*UserMFAEnabled, *http.Respon
 /*
 UpdateUserMFAEnabled UPDATE User MFA Enabled
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiUpdateUserMFAEnabledRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiUpdateUserMFAEnabledRequest
 */
 func (a *EnableUsersMFAApiService) UpdateUserMFAEnabled(ctx context.Context, environmentID string, userID string) ApiUpdateUserMFAEnabledRequest {
 	return ApiUpdateUserMFAEnabledRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
-//  @return UserMFAEnabled
+//
+//	@return UserMFAEnabled
 func (a *EnableUsersMFAApiService) UpdateUserMFAEnabledExecute(r ApiUpdateUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *UserMFAEnabled
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateUserMFAEnabledExecute(r)
@@ -275,10 +276,10 @@ func (a *EnableUsersMFAApiService) UpdateUserMFAEnabledExecute(r ApiUpdateUserMF
 
 func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpdateUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserMFAEnabled
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserMFAEnabled
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnableUsersMFAApiService.UpdateUserMFAEnabled")
@@ -342,8 +343,8 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -353,8 +354,8 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -364,8 +365,8 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -375,8 +376,8 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -386,8 +387,8 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -397,8 +398,8 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -408,8 +409,8 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

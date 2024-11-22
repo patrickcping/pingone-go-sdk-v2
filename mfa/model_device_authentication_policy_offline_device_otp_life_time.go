@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime{}
 // DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime struct for DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime
 type DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime struct {
 	// The duration (number of time units) that the passcode is valid before it expires.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -96,7 +96,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) SetTimeUnit(v EnumT
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -124,10 +124,10 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) UnmarshalJSON(data 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -183,5 +183,3 @@ func (v *NullableDeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) UnmarshalJS
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

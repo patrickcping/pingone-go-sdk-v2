@@ -28,7 +28,7 @@ type P1ErrorDetailsInnerInnerError struct {
 	// A list describing acceptable values.
 	AllowedValues []string `json:"allowedValues,omitempty"`
 	// The maximum value allowed for the request.
-	MaximumValue *int32 `json:"maximumValue,omitempty"`
+	MaximumValue     *int32   `json:"maximumValue,omitempty"`
 	ReferencedValues []string `json:"referencedValues,omitempty"`
 }
 
@@ -242,7 +242,7 @@ func (o *P1ErrorDetailsInnerInnerError) SetReferencedValues(v []string) {
 }
 
 func (o P1ErrorDetailsInnerInnerError) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,5 +307,3 @@ func (v *NullableP1ErrorDetailsInnerInnerError) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

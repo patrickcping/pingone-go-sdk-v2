@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &RiskPredictorCustomItemBetween{}
 
 // RiskPredictorCustomItemBetween The mapping of risk levels for numerical values in a minimum, maxiumum boundary.
 type RiskPredictorCustomItemBetween struct {
-	Contains string `json:"contains"`
-	Type *string `json:"type,omitempty"`
-	Between RiskPredictorCustomItemBetweenBetween `json:"between"`
+	Contains string                                `json:"contains"`
+	Type     *string                               `json:"type,omitempty"`
+	Between  RiskPredictorCustomItemBetweenBetween `json:"between"`
 }
 
 type _RiskPredictorCustomItemBetween RiskPredictorCustomItemBetween
@@ -128,7 +128,7 @@ func (o *RiskPredictorCustomItemBetween) SetBetween(v RiskPredictorCustomItemBet
 }
 
 func (o RiskPredictorCustomItemBetween) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,10 +159,10 @@ func (o *RiskPredictorCustomItemBetween) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -218,5 +218,3 @@ func (v *NullableRiskPredictorCustomItemBetween) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

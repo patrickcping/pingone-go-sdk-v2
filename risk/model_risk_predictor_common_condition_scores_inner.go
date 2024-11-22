@@ -19,7 +19,7 @@ var _ MappedNullable = &RiskPredictorCommonConditionScoresInner{}
 
 // RiskPredictorCommonConditionScoresInner struct for RiskPredictorCommonConditionScoresInner
 type RiskPredictorCommonConditionScoresInner struct {
-	Name *string `json:"name,omitempty"`
+	Name  *string `json:"name,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *RiskPredictorCommonConditionScoresInner) SetValue(v string) {
 }
 
 func (o RiskPredictorCommonConditionScoresInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableRiskPredictorCommonConditionScoresInner) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

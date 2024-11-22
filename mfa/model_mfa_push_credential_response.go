@@ -22,7 +22,7 @@ var _ MappedNullable = &MFAPushCredentialResponse{}
 type MFAPushCredentialResponse struct {
 	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the push credential ID.
-	Id *string `json:"id,omitempty"`
+	Id   *string                        `json:"id,omitempty"`
 	Type *EnumMFAPushCredentialAttrType `json:"type,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -283,7 +283,7 @@ func (o *MFAPushCredentialResponse) SetUpdatedAt(v time.Time) {
 }
 
 func (o MFAPushCredentialResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,5 +345,3 @@ func (v *NullableMFAPushCredentialResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

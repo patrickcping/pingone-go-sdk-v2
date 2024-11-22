@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadApplicationResources200Response{}
 
 // ReadApplicationResources200Response struct for ReadApplicationResources200Response
 type ReadApplicationResources200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue                 `json:"_links,omitempty"`
 	Embedded *ReadApplicationResources200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                                     `json:"count,omitempty"`
+	Size     *float32                                     `json:"size,omitempty"`
 }
 
 // NewReadApplicationResources200Response instantiates a new ReadApplicationResources200Response object
@@ -246,7 +246,7 @@ func (o *ReadApplicationResources200Response) SetSize(v float32) {
 }
 
 func (o ReadApplicationResources200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadApplicationResources200Response) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

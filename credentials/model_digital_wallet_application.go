@@ -11,10 +11,10 @@ API version: 2023-06-29
 package credentials
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the DigitalWalletApplication type satisfies the MappedNullable interface at compile time
@@ -22,17 +22,17 @@ var _ MappedNullable = &DigitalWalletApplication{}
 
 // DigitalWalletApplication struct for DigitalWalletApplication
 type DigitalWalletApplication struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Application ObjectApplication `json:"application"`
+	Links       map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Application ObjectApplication            `json:"application"`
 	// A string that specifies the URL sent in notifications to the user to communicate with the service.
 	AppOpenUrl string `json:"appOpenUrl"`
 	// A string that specifies the date and time the credential digital wallet app was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt   *time.Time         `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential digital wallet app.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the name associated with the digital wallet app.
-	Name string `json:"name"`
+	Name      string     `json:"name"`
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether the user's wallet app uses the PingOne Wallet SDK.
 	UsesPingOneWalletSDK *bool `json:"usesPingOneWalletSDK,omitempty"`
@@ -400,7 +400,7 @@ func (o *DigitalWalletApplication) SetUsesPingOneWalletSDK(v bool) {
 }
 
 func (o DigitalWalletApplication) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -448,10 +448,10 @@ func (o *DigitalWalletApplication) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -507,5 +507,3 @@ func (v *NullableDigitalWalletApplication) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

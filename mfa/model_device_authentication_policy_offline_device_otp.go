@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtp{}
 // DeviceAuthenticationPolicyOfflineDeviceOtp struct for DeviceAuthenticationPolicyOfflineDeviceOtp
 type DeviceAuthenticationPolicyOfflineDeviceOtp struct {
 	LifeTime DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime `json:"lifeTime"`
-	Failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure"`
+	Failure  DeviceAuthenticationPolicyOfflineDeviceOtpFailure  `json:"failure"`
 	// Used to specify the length of the OTP that is shown to users. Minimum length is `6` digits and maximum is `10` digits. If the parameter is not provided, the default is `6` digits.
 	OtpLength *int32 `json:"otpLength,omitempty"`
 }
@@ -133,7 +133,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetOtpLength(v int32) {
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtp) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -164,10 +164,10 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) UnmarshalJSON(data []byte) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -223,5 +223,3 @@ func (v *NullableDeviceAuthenticationPolicyOfflineDeviceOtp) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadAllAPIServers200Response{}
 
 // ReadAllAPIServers200Response struct for ReadAllAPIServers200Response
 type ReadAllAPIServers200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue          `json:"_links,omitempty"`
 	Embedded *ReadAllAPIServers200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                              `json:"count,omitempty"`
+	Size     *float32                              `json:"size,omitempty"`
 }
 
 // NewReadAllAPIServers200Response instantiates a new ReadAllAPIServers200Response object
@@ -246,7 +246,7 @@ func (o *ReadAllAPIServers200Response) SetSize(v float32) {
 }
 
 func (o ReadAllAPIServers200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadAllAPIServers200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

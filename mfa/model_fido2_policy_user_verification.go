@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &FIDO2PolicyUserVerification{}
 // FIDO2PolicyUserVerification Used to control whether the user must perform a gesture (such as a public key credential, fingerprint scan, or a PIN code) when registering or authenticating with their FIDO device.
 type FIDO2PolicyUserVerification struct {
 	// Set to `true` if you want the device characteristics related to user verification to be checked again at each authentication attempt and not just once during registration. Set to `false` to have them checked only at registration.
-	EnforceDuringAuthentication bool `json:"enforceDuringAuthentication"`
-	Option EnumFIDO2PolicyUserVerificationOption `json:"option"`
+	EnforceDuringAuthentication bool                                  `json:"enforceDuringAuthentication"`
+	Option                      EnumFIDO2PolicyUserVerificationOption `json:"option"`
 }
 
 type _FIDO2PolicyUserVerification FIDO2PolicyUserVerification
@@ -96,7 +96,7 @@ func (o *FIDO2PolicyUserVerification) SetOption(v EnumFIDO2PolicyUserVerificatio
 }
 
 func (o FIDO2PolicyUserVerification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -124,10 +124,10 @@ func (o *FIDO2PolicyUserVerification) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -183,5 +183,3 @@ func (v *NullableFIDO2PolicyUserVerification) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

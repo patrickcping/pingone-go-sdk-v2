@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadFidoPolicies200Response{}
 
 // ReadFidoPolicies200Response struct for ReadFidoPolicies200Response
 type ReadFidoPolicies200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue         `json:"_links,omitempty"`
 	Embedded *ReadFidoPolicies200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                             `json:"count,omitempty"`
+	Size     *float32                             `json:"size,omitempty"`
 }
 
 // NewReadFidoPolicies200Response instantiates a new ReadFidoPolicies200Response object
@@ -246,7 +246,7 @@ func (o *ReadFidoPolicies200Response) SetSize(v float32) {
 }
 
 func (o ReadFidoPolicies200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadFidoPolicies200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

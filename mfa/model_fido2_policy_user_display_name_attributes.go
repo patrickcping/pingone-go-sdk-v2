@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &FIDO2PolicyUserDisplayNameAttributes{}
 
 // FIDO2PolicyUserDisplayNameAttributes Used to specify the string associated with the users's account that is displayed during registration and authentication.
 type FIDO2PolicyUserDisplayNameAttributes struct {
-	// List of strings associated with the users's account that can be displayed during registration and authentication. Each object in the array is a name:value pair where the first part is \"name\" and the second is the name of the user attribute, for example, `{\"name\": \"username\"}`, `{\"name\": \"email\"}`. If you want to use the \"name\" attribute for the user, you must also specify the \"subAttributes\", which can be either the \"given\" and \"family\" user attributes or the \"formatted\" user attribute. For example, `{\"name\": “name”, “subAttributes”:[{“name”: “given”}, {“name”: “family”}]}, {\"name\": \"email\"}` or `{\"name\": “name”, “subAttributes”:[{“name”: “formatted”}]}, {\"name\": \"email\"}`. - The content of the list should reflect the preferred order. - If the first attribute is empty for the user, PingOne will continue through the list until a non-empty attribute is found. - You can specify any user attribute (including custom attributes) that meet the following criteria: attribute type must be String, validation cannot be set to enumerated values. - The array must contain the user attribute \"username\" - to ensure that there is at least one non-empty attribute. - You can have a maximum of six user attributes in the list. 
+	// List of strings associated with the users's account that can be displayed during registration and authentication. Each object in the array is a name:value pair where the first part is \"name\" and the second is the name of the user attribute, for example, `{\"name\": \"username\"}`, `{\"name\": \"email\"}`. If you want to use the \"name\" attribute for the user, you must also specify the \"subAttributes\", which can be either the \"given\" and \"family\" user attributes or the \"formatted\" user attribute. For example, `{\"name\": “name”, “subAttributes”:[{“name”: “given”}, {“name”: “family”}]}, {\"name\": \"email\"}` or `{\"name\": “name”, “subAttributes”:[{“name”: “formatted”}]}, {\"name\": \"email\"}`. - The content of the list should reflect the preferred order. - If the first attribute is empty for the user, PingOne will continue through the list until a non-empty attribute is found. - You can specify any user attribute (including custom attributes) that meet the following criteria: attribute type must be String, validation cannot be set to enumerated values. - The array must contain the user attribute \"username\" - to ensure that there is at least one non-empty attribute. - You can have a maximum of six user attributes in the list.
 	Attributes []FIDO2PolicyUserDisplayNameAttributesAttributesInner `json:"attributes"`
 }
 
@@ -70,7 +70,7 @@ func (o *FIDO2PolicyUserDisplayNameAttributes) SetAttributes(v []FIDO2PolicyUser
 }
 
 func (o FIDO2PolicyUserDisplayNameAttributes) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -96,10 +96,10 @@ func (o *FIDO2PolicyUserDisplayNameAttributes) UnmarshalJSON(data []byte) (err e
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -155,5 +155,3 @@ func (v *NullableFIDO2PolicyUserDisplayNameAttributes) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

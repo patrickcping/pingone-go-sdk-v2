@@ -11,8 +11,8 @@ API version: 2023-06-29
 package authorize
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -27,7 +27,7 @@ type ApplicationResource struct {
 	// The resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	// The application resource name. The name value must be unique.
-	Name string `json:"name"`
+	Name   string                     `json:"name"`
 	Parent *ApplicationResourceParent `json:"parent,omitempty"`
 }
 
@@ -279,7 +279,7 @@ func (o *ApplicationResource) SetParent(v ApplicationResourceParent) {
 }
 
 func (o ApplicationResource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -317,10 +317,10 @@ func (o *ApplicationResource) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -376,5 +376,3 @@ func (v *NullableApplicationResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

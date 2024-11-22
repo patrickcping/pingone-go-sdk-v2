@@ -24,7 +24,7 @@ type P1ErrorDetailsInner struct {
 	// The item that caused the error (such as a form field ID or an attribute inside a JSON object).
 	Target *string `json:"target,omitempty"`
 	// A short description of the error. This message is intended to assist with debugging and is returned in English only.
-	Message *string `json:"message,omitempty"`
+	Message    *string                        `json:"message,omitempty"`
 	InnerError *P1ErrorDetailsInnerInnerError `json:"innerError,omitempty"`
 }
 
@@ -174,7 +174,7 @@ func (o *P1ErrorDetailsInner) SetInnerError(v P1ErrorDetailsInnerInnerError) {
 }
 
 func (o P1ErrorDetailsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableP1ErrorDetailsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

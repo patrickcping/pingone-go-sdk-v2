@@ -22,9 +22,9 @@ type RiskEvaluationDetailsIpVelocityByUser struct {
 	// An enum indicating whether the number of distinct IPs for the user in the past hour is flagged as LOW, MEDIUM, or HIGH.
 	Level *EnumRiskLevel `json:"level,omitempty"`
 	// A string indicating the reason the user was flagged. For example \"More than 13 IPs were accessed by John during the last 1 hour.\"
-	Reason *string `json:"reason,omitempty"`
+	Reason    *string                                         `json:"reason,omitempty"`
 	Threshold *RiskEvaluationDetailsIpVelocityByUserThreshold `json:"threshold,omitempty"`
-	Velocity *RiskEvaluationDetailsIpVelocityByUserVelocity `json:"velocity,omitempty"`
+	Velocity  *RiskEvaluationDetailsIpVelocityByUserVelocity  `json:"velocity,omitempty"`
 }
 
 // NewRiskEvaluationDetailsIpVelocityByUser instantiates a new RiskEvaluationDetailsIpVelocityByUser object
@@ -173,7 +173,7 @@ func (o *RiskEvaluationDetailsIpVelocityByUser) SetVelocity(v RiskEvaluationDeta
 }
 
 func (o RiskEvaluationDetailsIpVelocityByUser) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -232,5 +232,3 @@ func (v *NullableRiskEvaluationDetailsIpVelocityByUser) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

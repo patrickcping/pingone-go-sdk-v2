@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,18 +21,18 @@ var _ MappedNullable = &RiskEvaluationEvent{}
 
 // RiskEvaluationEvent struct for RiskEvaluationEvent
 type RiskEvaluationEvent struct {
-	Browser *RiskEvaluationEventBrowser `json:"browser,omitempty"`
-	CompletionStatus *EnumCompletionStatus `json:"completionStatus,omitempty"`
+	Browser          *RiskEvaluationEventBrowser          `json:"browser,omitempty"`
+	CompletionStatus *EnumCompletionStatus                `json:"completionStatus,omitempty"`
 	EvaluatedFactors *RiskEvaluationEventEvaluatedFactors `json:"evaluatedFactors,omitempty"`
 	// A string that specifies the origin IP address of the authentication flow. This is a required property.
-	Ip string `json:"ip"`
+	Ip   string                   `json:"ip"`
 	Flow *RiskEvaluationEventFlow `json:"flow,omitempty"`
 	// A string that specifies the calling service.
-	Origin *string `json:"origin,omitempty"`
-	Session *RiskEvaluationEventSession `json:"session,omitempty"`
+	Origin         *string                            `json:"origin,omitempty"`
+	Session        *RiskEvaluationEventSession        `json:"session,omitempty"`
 	TargetResource *RiskEvaluationEventTargetResource `json:"targetResource,omitempty"`
-	User RiskEvaluationEventUser `json:"user"`
-	SharingType *EnumEventSharingType `json:"sharingType,omitempty"`
+	User           RiskEvaluationEventUser            `json:"user"`
+	SharingType    *EnumEventSharingType              `json:"sharingType,omitempty"`
 }
 
 type _RiskEvaluationEvent RiskEvaluationEvent
@@ -361,7 +361,7 @@ func (o *RiskEvaluationEvent) SetSharingType(v EnumEventSharingType) {
 }
 
 func (o RiskEvaluationEvent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -413,10 +413,10 @@ func (o *RiskEvaluationEvent) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -472,5 +472,3 @@ func (v *NullableRiskEvaluationEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

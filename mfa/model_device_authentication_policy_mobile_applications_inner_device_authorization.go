@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerDeviceA
 // DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization struct for DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization
 type DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization struct {
 	// Specifies the enabled or disabled state of automatic MFA for native devices paired with the user, for the specified application.
-	Enabled bool `json:"enabled"`
+	Enabled           bool                                        `json:"enabled"`
 	ExtraVerification *EnumMFADevicePolicyMobileExtraVerification `json:"extraVerification,omitempty"`
 }
 
@@ -103,7 +103,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) S
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -132,10 +132,10 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) U
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -191,5 +191,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthoriz
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

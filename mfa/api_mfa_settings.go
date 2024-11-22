@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // MFASettingsApiService MFASettingsApi service
 type MFASettingsApiService service
 
 type ApiReadMFASettingsRequest struct {
-	ctx context.Context
-	ApiService *MFASettingsApiService
+	ctx           context.Context
+	ApiService    *MFASettingsApiService
 	environmentID string
 }
 
@@ -36,27 +35,28 @@ func (r ApiReadMFASettingsRequest) Execute() (*MFASettings, *http.Response, erro
 /*
 ReadMFASettings READ MFA Settings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadMFASettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadMFASettingsRequest
 */
 func (a *MFASettingsApiService) ReadMFASettings(ctx context.Context, environmentID string) ApiReadMFASettingsRequest {
 	return ApiReadMFASettingsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return MFASettings
+//
+//	@return MFASettings
 func (a *MFASettingsApiService) ReadMFASettingsExecute(r ApiReadMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *MFASettings
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadMFASettingsExecute(r)
@@ -68,10 +68,10 @@ func (a *MFASettingsApiService) ReadMFASettingsExecute(r ApiReadMFASettingsReque
 
 func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MFASettings
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MFASettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.ReadMFASettings")
@@ -132,8 +132,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +143,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +154,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +165,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -176,8 +176,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -187,8 +187,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -198,8 +198,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -218,8 +218,8 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 }
 
 type ApiResetMFASettingsRequest struct {
-	ctx context.Context
-	ApiService *MFASettingsApiService
+	ctx           context.Context
+	ApiService    *MFASettingsApiService
 	environmentID string
 }
 
@@ -230,27 +230,28 @@ func (r ApiResetMFASettingsRequest) Execute() (*MFASettings, *http.Response, err
 /*
 ResetMFASettings RESET MFA Settings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiResetMFASettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiResetMFASettingsRequest
 */
 func (a *MFASettingsApiService) ResetMFASettings(ctx context.Context, environmentID string) ApiResetMFASettingsRequest {
 	return ApiResetMFASettingsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return MFASettings
+//
+//	@return MFASettings
 func (a *MFASettingsApiService) ResetMFASettingsExecute(r ApiResetMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *MFASettings
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalResetMFASettingsExecute(r)
@@ -262,10 +263,10 @@ func (a *MFASettingsApiService) ResetMFASettingsExecute(r ApiResetMFASettingsReq
 
 func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MFASettings
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MFASettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.ResetMFASettings")
@@ -326,8 +327,8 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -337,8 +338,8 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -348,8 +349,8 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -359,8 +360,8 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -370,8 +371,8 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -381,8 +382,8 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -392,8 +393,8 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -412,10 +413,10 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 }
 
 type ApiUpdateMFASettingsRequest struct {
-	ctx context.Context
-	ApiService *MFASettingsApiService
+	ctx           context.Context
+	ApiService    *MFASettingsApiService
 	environmentID string
-	mFASettings *MFASettings
+	mFASettings   *MFASettings
 }
 
 func (r ApiUpdateMFASettingsRequest) MFASettings(mFASettings MFASettings) ApiUpdateMFASettingsRequest {
@@ -430,27 +431,28 @@ func (r ApiUpdateMFASettingsRequest) Execute() (*MFASettings, *http.Response, er
 /*
 UpdateMFASettings UPDATE MFA Settings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiUpdateMFASettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiUpdateMFASettingsRequest
 */
 func (a *MFASettingsApiService) UpdateMFASettings(ctx context.Context, environmentID string) ApiUpdateMFASettingsRequest {
 	return ApiUpdateMFASettingsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return MFASettings
+//
+//	@return MFASettings
 func (a *MFASettingsApiService) UpdateMFASettingsExecute(r ApiUpdateMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *MFASettings
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateMFASettingsExecute(r)
@@ -462,10 +464,10 @@ func (a *MFASettingsApiService) UpdateMFASettingsExecute(r ApiUpdateMFASettingsR
 
 func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MFASettings
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MFASettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.UpdateMFASettings")
@@ -528,8 +530,8 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -539,8 +541,8 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -550,8 +552,8 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -561,8 +563,8 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -572,8 +574,8 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -583,8 +585,8 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -594,8 +596,8 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

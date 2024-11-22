@@ -72,7 +72,7 @@ func (o *ReadFidoDevices200ResponseEmbedded) SetFidoDevicesMetadata(v []map[stri
 }
 
 func (o ReadFidoDevices200ResponseEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableReadFidoDevices200ResponseEmbedded) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

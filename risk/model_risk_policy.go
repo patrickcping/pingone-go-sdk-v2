@@ -11,10 +11,10 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the RiskPolicy type satisfies the MappedNullable interface at compile time
@@ -22,20 +22,20 @@ var _ MappedNullable = &RiskPolicy{}
 
 // RiskPolicy struct for RiskPolicy
 type RiskPolicy struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition RiskPolicyCondition `json:"condition"`
+	Links     map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Condition RiskPolicyCondition          `json:"condition"`
 	// The time the resource was first created (format ISO-8061).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies a name for this risk policy. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters.
 	Name string `json:"name"`
 	// An integer that specifies priority of the policy inside a risk policy set, designating which policy should run first. This is a read-only value. The priority is determined by the order in which policies are listed in the policy set. The first policy in the list is assigned priority 1 and is evaluated first. The next policy in the list is assigned priority 2 and so on.
-	Priority *int32 `json:"priority,omitempty"`
-	Result RiskPolicyResult `json:"result"`
+	Priority *int32           `json:"priority,omitempty"`
+	Result   RiskPolicyResult `json:"result"`
 	// The time the resource was last updated (format ISO-8061).
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -434,7 +434,7 @@ func (o *RiskPolicy) SetUpdatedAt(v time.Time) {
 }
 
 func (o RiskPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -485,10 +485,10 @@ func (o *RiskPolicy) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -544,5 +544,3 @@ func (v *NullableRiskPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

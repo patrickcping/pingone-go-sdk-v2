@@ -72,7 +72,7 @@ func (o *ReadFidoPolicies200ResponseEmbedded) SetFidoPolicies(v []FIDOPolicy) {
 }
 
 func (o ReadFidoPolicies200ResponseEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableReadFidoPolicies200ResponseEmbedded) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // VerifyPoliciesApiService VerifyPoliciesApi service
 type VerifyPoliciesApiService service
 
 type ApiCreateVerifyPolicyRequest struct {
-	ctx context.Context
-	ApiService *VerifyPoliciesApiService
+	ctx           context.Context
+	ApiService    *VerifyPoliciesApiService
 	environmentID string
-	verifyPolicy *VerifyPolicy
+	verifyPolicy  *VerifyPolicy
 }
 
 func (r ApiCreateVerifyPolicyRequest) VerifyPolicy(verifyPolicy VerifyPolicy) ApiCreateVerifyPolicyRequest {
@@ -42,27 +41,28 @@ func (r ApiCreateVerifyPolicyRequest) Execute() (*VerifyPolicy, *http.Response, 
 /*
 CreateVerifyPolicy CREATE Verify Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateVerifyPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateVerifyPolicyRequest
 */
 func (a *VerifyPoliciesApiService) CreateVerifyPolicy(ctx context.Context, environmentID string) ApiCreateVerifyPolicyRequest {
 	return ApiCreateVerifyPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return VerifyPolicy
+//
+//	@return VerifyPolicy
 func (a *VerifyPoliciesApiService) CreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *VerifyPolicy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateVerifyPolicyExecute(r)
@@ -74,10 +74,10 @@ func (a *VerifyPoliciesApiService) CreateVerifyPolicyExecute(r ApiCreateVerifyPo
 
 func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VerifyPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VerifyPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.CreateVerifyPolicy")
@@ -140,8 +140,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,9 +237,9 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 }
 
 type ApiDeleteVerifyPolicyRequest struct {
-	ctx context.Context
-	ApiService *VerifyPoliciesApiService
-	environmentID string
+	ctx            context.Context
+	ApiService     *VerifyPoliciesApiService
+	environmentID  string
 	verifyPolicyID string
 }
 
@@ -250,16 +250,16 @@ func (r ApiDeleteVerifyPolicyRequest) Execute() (*http.Response, error) {
 /*
 DeleteVerifyPolicy Delete Verify Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param verifyPolicyID
- @return ApiDeleteVerifyPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param verifyPolicyID
+	@return ApiDeleteVerifyPolicyRequest
 */
 func (a *VerifyPoliciesApiService) DeleteVerifyPolicy(ctx context.Context, environmentID string, verifyPolicyID string) ApiDeleteVerifyPolicyRequest {
 	return ApiDeleteVerifyPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:     a,
+		ctx:            ctx,
+		environmentID:  environmentID,
 		verifyPolicyID: verifyPolicyID,
 	}
 }
@@ -267,10 +267,10 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicy(ctx context.Context, envir
 // Execute executes the request
 func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteVerifyPolicyExecute(r)
@@ -283,9 +283,9 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPo
 
 func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.DeleteVerifyPolicy")
@@ -347,8 +347,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -358,8 +358,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -369,8 +369,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -380,8 +380,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -391,8 +391,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -402,8 +402,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -413,8 +413,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -424,8 +424,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 }
 
 type ApiReadAllVerifyPoliciesRequest struct {
-	ctx context.Context
-	ApiService *VerifyPoliciesApiService
+	ctx           context.Context
+	ApiService    *VerifyPoliciesApiService
 	environmentID string
 }
 
@@ -440,33 +440,35 @@ func (r ApiReadAllVerifyPoliciesRequest) ExecuteInitialPage() (*ReadAllVerifyPol
 /*
 ReadAllVerifyPolicies READ All Verify Policies
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadAllVerifyPoliciesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadAllVerifyPoliciesRequest
 */
 func (a *VerifyPoliciesApiService) ReadAllVerifyPolicies(ctx context.Context, environmentID string) ApiReadAllVerifyPoliciesRequest {
 	return ApiReadAllVerifyPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllVerifyPolicies200Response
+//
+//	@return ReadAllVerifyPolicies200Response
 func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) PagedIterator[ReadAllVerifyPolicies200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllVerifyPolicies200Response
+//
+//	@return ReadAllVerifyPolicies200Response
 func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecuteInitialPage(r ApiReadAllVerifyPoliciesRequest) (*ReadAllVerifyPolicies200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllVerifyPolicies200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllVerifyPoliciesExecute(r)
@@ -478,10 +480,10 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecuteInitialPage(r Api
 
 func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*ReadAllVerifyPolicies200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllVerifyPolicies200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllVerifyPolicies200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.ReadAllVerifyPolicies")
@@ -542,8 +544,8 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -553,8 +555,8 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -564,8 +566,8 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -575,8 +577,8 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -586,8 +588,8 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -597,8 +599,8 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -608,8 +610,8 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -628,9 +630,9 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 }
 
 type ApiReadOneVerifyPolicyRequest struct {
-	ctx context.Context
-	ApiService *VerifyPoliciesApiService
-	environmentID string
+	ctx            context.Context
+	ApiService     *VerifyPoliciesApiService
+	environmentID  string
 	verifyPolicyID string
 }
 
@@ -641,29 +643,30 @@ func (r ApiReadOneVerifyPolicyRequest) Execute() (*VerifyPolicy, *http.Response,
 /*
 ReadOneVerifyPolicy READ One Verify Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param verifyPolicyID
- @return ApiReadOneVerifyPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param verifyPolicyID
+	@return ApiReadOneVerifyPolicyRequest
 */
 func (a *VerifyPoliciesApiService) ReadOneVerifyPolicy(ctx context.Context, environmentID string, verifyPolicyID string) ApiReadOneVerifyPolicyRequest {
 	return ApiReadOneVerifyPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:     a,
+		ctx:            ctx,
+		environmentID:  environmentID,
 		verifyPolicyID: verifyPolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return VerifyPolicy
+//
+//	@return VerifyPolicy
 func (a *VerifyPoliciesApiService) ReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *VerifyPolicy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneVerifyPolicyExecute(r)
@@ -675,10 +678,10 @@ func (a *VerifyPoliciesApiService) ReadOneVerifyPolicyExecute(r ApiReadOneVerify
 
 func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VerifyPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VerifyPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.ReadOneVerifyPolicy")
@@ -740,8 +743,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -751,8 +754,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -762,8 +765,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -773,8 +776,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -784,8 +787,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -795,8 +798,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -806,8 +809,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -826,11 +829,11 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 }
 
 type ApiUpdateVerifyPolicyRequest struct {
-	ctx context.Context
-	ApiService *VerifyPoliciesApiService
-	environmentID string
+	ctx            context.Context
+	ApiService     *VerifyPoliciesApiService
+	environmentID  string
 	verifyPolicyID string
-	verifyPolicy *VerifyPolicy
+	verifyPolicy   *VerifyPolicy
 }
 
 func (r ApiUpdateVerifyPolicyRequest) VerifyPolicy(verifyPolicy VerifyPolicy) ApiUpdateVerifyPolicyRequest {
@@ -845,29 +848,30 @@ func (r ApiUpdateVerifyPolicyRequest) Execute() (*VerifyPolicy, *http.Response, 
 /*
 UpdateVerifyPolicy UPDATE Verify Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param verifyPolicyID
- @return ApiUpdateVerifyPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param verifyPolicyID
+	@return ApiUpdateVerifyPolicyRequest
 */
 func (a *VerifyPoliciesApiService) UpdateVerifyPolicy(ctx context.Context, environmentID string, verifyPolicyID string) ApiUpdateVerifyPolicyRequest {
 	return ApiUpdateVerifyPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:     a,
+		ctx:            ctx,
+		environmentID:  environmentID,
 		verifyPolicyID: verifyPolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return VerifyPolicy
+//
+//	@return VerifyPolicy
 func (a *VerifyPoliciesApiService) UpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *VerifyPolicy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateVerifyPolicyExecute(r)
@@ -879,10 +883,10 @@ func (a *VerifyPoliciesApiService) UpdateVerifyPolicyExecute(r ApiUpdateVerifyPo
 
 func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VerifyPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VerifyPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.UpdateVerifyPolicy")
@@ -946,8 +950,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -957,8 +961,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -968,8 +972,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -979,8 +983,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -990,8 +994,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1001,8 +1005,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1012,8 +1016,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadAllMFAPushCredentials200Response{}
 
 // ReadAllMFAPushCredentials200Response struct for ReadAllMFAPushCredentials200Response
 type ReadAllMFAPushCredentials200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue                  `json:"_links,omitempty"`
 	Embedded *ReadAllMFAPushCredentials200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                                      `json:"count,omitempty"`
+	Size     *float32                                      `json:"size,omitempty"`
 }
 
 // NewReadAllMFAPushCredentials200Response instantiates a new ReadAllMFAPushCredentials200Response object
@@ -246,7 +246,7 @@ func (o *ReadAllMFAPushCredentials200Response) SetSize(v float32) {
 }
 
 func (o ReadAllMFAPushCredentials200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadAllMFAPushCredentials200Response) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

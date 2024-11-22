@@ -20,18 +20,18 @@ var _ MappedNullable = &ProvisionedCredential{}
 
 // ProvisionedCredential struct for ProvisionedCredential
 type ProvisionedCredential struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links          map[string]LinksHATEOASValue         `json:"_links,omitempty"`
 	ClaimReference *ProvisionedCredentialClaimReference `json:"claimReference,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	Credential *ProvisionedCredentialCredential `json:"credential,omitempty"`
-	DigitalWallet *ProvisionedCredentialCredential `json:"digitalWallet,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	CreatedAt      *time.Time                           `json:"createdAt,omitempty"`
+	Credential     *ProvisionedCredentialCredential     `json:"credential,omitempty"`
+	DigitalWallet  *ProvisionedCredentialCredential     `json:"digitalWallet,omitempty"`
+	Environment    *ObjectEnvironment                   `json:"environment,omitempty"`
 	// A string that specifies the date that the provisioned credential expires. If this value is null, the provisioned credential never expires.
 	ExpiredAt *time.Time `json:"expiredAt,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id        *string    `json:"id,omitempty"`
 	// A string that specifies the tatus of the provisioned credential.
-	Status *string `json:"status,omitempty"`
-	User *ProvisionedCredentialUser `json:"user,omitempty"`
+	Status        *string                                   `json:"status,omitempty"`
+	User          *ProvisionedCredentialUser                `json:"user,omitempty"`
 	WalletActions []ProvisionedCredentialWalletActionsInner `json:"walletActions,omitempty"`
 }
 
@@ -480,7 +480,7 @@ func (o *ProvisionedCredential) SetWalletActions(v []ProvisionedCredentialWallet
 }
 
 func (o ProvisionedCredential) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -560,5 +560,3 @@ func (v *NullableProvisionedCredential) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

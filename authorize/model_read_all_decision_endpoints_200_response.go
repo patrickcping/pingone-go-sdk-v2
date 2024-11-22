@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadAllDecisionEndpoints200Response{}
 
 // ReadAllDecisionEndpoints200Response struct for ReadAllDecisionEndpoints200Response
 type ReadAllDecisionEndpoints200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue                 `json:"_links,omitempty"`
 	Embedded *ReadAllDecisionEndpoints200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                                     `json:"count,omitempty"`
+	Size     *float32                                     `json:"size,omitempty"`
 }
 
 // NewReadAllDecisionEndpoints200Response instantiates a new ReadAllDecisionEndpoints200Response object
@@ -246,7 +246,7 @@ func (o *ReadAllDecisionEndpoints200Response) SetSize(v float32) {
 }
 
 func (o ReadAllDecisionEndpoints200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadAllDecisionEndpoints200Response) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

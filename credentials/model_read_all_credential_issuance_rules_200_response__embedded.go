@@ -72,7 +72,7 @@ func (o *ReadAllCredentialIssuanceRules200ResponseEmbedded) SetIssuanceRules(v [
 }
 
 func (o ReadAllCredentialIssuanceRules200ResponseEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableReadAllCredentialIssuanceRules200ResponseEmbedded) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

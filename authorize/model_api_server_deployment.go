@@ -20,14 +20,14 @@ var _ MappedNullable = &APIServerDeployment{}
 
 // APIServerDeployment struct for APIServerDeployment
 type APIServerDeployment struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AccessControl *APIServerDeploymentAccessControl `json:"accessControl,omitempty"`
+	Links                map[string]LinksHATEOASValue             `json:"_links,omitempty"`
+	AccessControl        *APIServerDeploymentAccessControl        `json:"accessControl,omitempty"`
 	AuthorizationVersion *APIServerDeploymentAuthorizationVersion `json:"authorizationVersion,omitempty"`
-	DecisionEndpoint *APIServerDeploymentDecisionEndpoint `json:"decisionEndpoint,omitempty"`
+	DecisionEndpoint     *APIServerDeploymentDecisionEndpoint     `json:"decisionEndpoint,omitempty"`
 	// The time of most recent successful deployment. Null if the API service has never been successfully deployed.
-	DeployedAt *time.Time `json:"deployedAt,omitempty"`
-	Policy *APIServerDeploymentPolicy `json:"policy,omitempty"`
-	Status *APIServerDeploymentStatus `json:"status,omitempty"`
+	DeployedAt *time.Time                 `json:"deployedAt,omitempty"`
+	Policy     *APIServerDeploymentPolicy `json:"policy,omitempty"`
+	Status     *APIServerDeploymentStatus `json:"status,omitempty"`
 }
 
 // NewAPIServerDeployment instantiates a new APIServerDeployment object
@@ -347,7 +347,7 @@ func (o *APIServerDeployment) SetStatus(v APIServerDeploymentStatus) {
 }
 
 func (o APIServerDeployment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -415,5 +415,3 @@ func (v *NullableAPIServerDeployment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,8 +11,8 @@ API version: 2023-07-20
 package verify
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,11 +21,11 @@ var _ MappedNullable = &VoiceConfiguration{}
 
 // VoiceConfiguration struct for VoiceConfiguration
 type VoiceConfiguration struct {
-	Verify EnumVerify `json:"verify"`
-	Enrollment bool `json:"enrollment"`
+	Verify        EnumVerify                       `json:"verify"`
+	Enrollment    bool                             `json:"enrollment"`
 	TextDependent *VoiceConfigurationTextDependent `json:"textDependent,omitempty"`
-	Comparison VoiceConfigurationThreshold `json:"comparison"`
-	Liveness VoiceConfigurationThreshold `json:"liveness"`
+	Comparison    VoiceConfigurationThreshold      `json:"comparison"`
+	Liveness      VoiceConfigurationThreshold      `json:"liveness"`
 	ReferenceData *VoiceConfigurationReferenceData `json:"referenceData,omitempty"`
 }
 
@@ -213,7 +213,7 @@ func (o *VoiceConfiguration) SetReferenceData(v VoiceConfigurationReferenceData)
 }
 
 func (o VoiceConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -251,10 +251,10 @@ func (o *VoiceConfiguration) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -310,5 +310,3 @@ func (v *NullableVoiceConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

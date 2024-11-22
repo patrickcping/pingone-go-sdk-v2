@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // APIServerOperationsApiService APIServerOperationsApi service
 type APIServerOperationsApiService service
 
 type ApiCreateAPIServerOperationRequest struct {
-	ctx context.Context
-	ApiService *APIServerOperationsApiService
-	environmentID string
-	apiServerID string
+	ctx                context.Context
+	ApiService         *APIServerOperationsApiService
+	environmentID      string
+	apiServerID        string
 	aPIServerOperation *APIServerOperation
 }
 
@@ -43,29 +42,30 @@ func (r ApiCreateAPIServerOperationRequest) Execute() (*APIServerOperation, *htt
 /*
 CreateAPIServerOperation CREATE API Server Operation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param apiServerID
- @return ApiCreateAPIServerOperationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param apiServerID
+	@return ApiCreateAPIServerOperationRequest
 */
 func (a *APIServerOperationsApiService) CreateAPIServerOperation(ctx context.Context, environmentID string, apiServerID string) ApiCreateAPIServerOperationRequest {
 	return ApiCreateAPIServerOperationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		apiServerID: apiServerID,
+		apiServerID:   apiServerID,
 	}
 }
 
 // Execute executes the request
-//  @return APIServerOperation
+//
+//	@return APIServerOperation
 func (a *APIServerOperationsApiService) CreateAPIServerOperationExecute(r ApiCreateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *APIServerOperation
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateAPIServerOperationExecute(r)
@@ -77,10 +77,10 @@ func (a *APIServerOperationsApiService) CreateAPIServerOperationExecute(r ApiCre
 
 func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(r ApiCreateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *APIServerOperation
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *APIServerOperation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServerOperationsApiService.CreateAPIServerOperation")
@@ -144,8 +144,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -155,8 +155,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -166,8 +166,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -177,8 +177,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -188,8 +188,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -199,8 +199,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -210,8 +210,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -221,8 +221,8 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -241,10 +241,10 @@ func (a *APIServerOperationsApiService) internalCreateAPIServerOperationExecute(
 }
 
 type ApiDeleteAPIServerOperationRequest struct {
-	ctx context.Context
-	ApiService *APIServerOperationsApiService
-	environmentID string
-	apiServerID string
+	ctx                  context.Context
+	ApiService           *APIServerOperationsApiService
+	environmentID        string
+	apiServerID          string
 	apiServerOperationID string
 }
 
@@ -255,18 +255,18 @@ func (r ApiDeleteAPIServerOperationRequest) Execute() (*http.Response, error) {
 /*
 DeleteAPIServerOperation DELETE API Server Operation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param apiServerID
- @param apiServerOperationID
- @return ApiDeleteAPIServerOperationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param apiServerID
+	@param apiServerOperationID
+	@return ApiDeleteAPIServerOperationRequest
 */
 func (a *APIServerOperationsApiService) DeleteAPIServerOperation(ctx context.Context, environmentID string, apiServerID string, apiServerOperationID string) ApiDeleteAPIServerOperationRequest {
 	return ApiDeleteAPIServerOperationRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		apiServerID: apiServerID,
+		ApiService:           a,
+		ctx:                  ctx,
+		environmentID:        environmentID,
+		apiServerID:          apiServerID,
 		apiServerOperationID: apiServerOperationID,
 	}
 }
@@ -274,10 +274,10 @@ func (a *APIServerOperationsApiService) DeleteAPIServerOperation(ctx context.Con
 // Execute executes the request
 func (a *APIServerOperationsApiService) DeleteAPIServerOperationExecute(r ApiDeleteAPIServerOperationRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteAPIServerOperationExecute(r)
@@ -290,9 +290,9 @@ func (a *APIServerOperationsApiService) DeleteAPIServerOperationExecute(r ApiDel
 
 func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(r ApiDeleteAPIServerOperationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServerOperationsApiService.DeleteAPIServerOperation")
@@ -355,8 +355,8 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -366,8 +366,8 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -377,8 +377,8 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -388,8 +388,8 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -399,8 +399,8 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -410,8 +410,8 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -421,8 +421,8 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -432,10 +432,10 @@ func (a *APIServerOperationsApiService) internalDeleteAPIServerOperationExecute(
 }
 
 type ApiReadAllAPIServerOperationsRequest struct {
-	ctx context.Context
-	ApiService *APIServerOperationsApiService
+	ctx           context.Context
+	ApiService    *APIServerOperationsApiService
 	environmentID string
-	apiServerID string
+	apiServerID   string
 }
 
 func (r ApiReadAllAPIServerOperationsRequest) Execute() PagedIterator[ReadAllAPIServerOperations200Response] {
@@ -449,35 +449,37 @@ func (r ApiReadAllAPIServerOperationsRequest) ExecuteInitialPage() (*ReadAllAPIS
 /*
 ReadAllAPIServerOperations READ All API Server Operations
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param apiServerID
- @return ApiReadAllAPIServerOperationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param apiServerID
+	@return ApiReadAllAPIServerOperationsRequest
 */
 func (a *APIServerOperationsApiService) ReadAllAPIServerOperations(ctx context.Context, environmentID string, apiServerID string) ApiReadAllAPIServerOperationsRequest {
 	return ApiReadAllAPIServerOperationsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		apiServerID: apiServerID,
+		apiServerID:   apiServerID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllAPIServerOperations200Response
+//
+//	@return ReadAllAPIServerOperations200Response
 func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecute(r ApiReadAllAPIServerOperationsRequest) PagedIterator[ReadAllAPIServerOperations200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllAPIServerOperations200Response
+//
+//	@return ReadAllAPIServerOperations200Response
 func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecuteInitialPage(r ApiReadAllAPIServerOperationsRequest) (*ReadAllAPIServerOperations200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllAPIServerOperations200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllAPIServerOperationsExecute(r)
@@ -489,10 +491,10 @@ func (a *APIServerOperationsApiService) ReadAllAPIServerOperationsExecuteInitial
 
 func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecute(r ApiReadAllAPIServerOperationsRequest) (*ReadAllAPIServerOperations200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllAPIServerOperations200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllAPIServerOperations200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServerOperationsApiService.ReadAllAPIServerOperations")
@@ -554,8 +556,8 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -565,8 +567,8 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -576,8 +578,8 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -587,8 +589,8 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -598,8 +600,8 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -609,8 +611,8 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -620,8 +622,8 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -640,10 +642,10 @@ func (a *APIServerOperationsApiService) internalReadAllAPIServerOperationsExecut
 }
 
 type ApiReadOneAPIServerOperationRequest struct {
-	ctx context.Context
-	ApiService *APIServerOperationsApiService
-	environmentID string
-	apiServerID string
+	ctx                  context.Context
+	ApiService           *APIServerOperationsApiService
+	environmentID        string
+	apiServerID          string
 	apiServerOperationID string
 }
 
@@ -654,31 +656,32 @@ func (r ApiReadOneAPIServerOperationRequest) Execute() (*APIServerOperation, *ht
 /*
 ReadOneAPIServerOperation READ One API Server Operation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param apiServerID
- @param apiServerOperationID
- @return ApiReadOneAPIServerOperationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param apiServerID
+	@param apiServerOperationID
+	@return ApiReadOneAPIServerOperationRequest
 */
 func (a *APIServerOperationsApiService) ReadOneAPIServerOperation(ctx context.Context, environmentID string, apiServerID string, apiServerOperationID string) ApiReadOneAPIServerOperationRequest {
 	return ApiReadOneAPIServerOperationRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		apiServerID: apiServerID,
+		ApiService:           a,
+		ctx:                  ctx,
+		environmentID:        environmentID,
+		apiServerID:          apiServerID,
 		apiServerOperationID: apiServerOperationID,
 	}
 }
 
 // Execute executes the request
-//  @return APIServerOperation
+//
+//	@return APIServerOperation
 func (a *APIServerOperationsApiService) ReadOneAPIServerOperationExecute(r ApiReadOneAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *APIServerOperation
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneAPIServerOperationExecute(r)
@@ -690,10 +693,10 @@ func (a *APIServerOperationsApiService) ReadOneAPIServerOperationExecute(r ApiRe
 
 func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute(r ApiReadOneAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *APIServerOperation
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *APIServerOperation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServerOperationsApiService.ReadOneAPIServerOperation")
@@ -756,8 +759,8 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -767,8 +770,8 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -778,8 +781,8 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -789,8 +792,8 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -800,8 +803,8 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -811,8 +814,8 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -822,8 +825,8 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -842,12 +845,12 @@ func (a *APIServerOperationsApiService) internalReadOneAPIServerOperationExecute
 }
 
 type ApiUpdateAPIServerOperationRequest struct {
-	ctx context.Context
-	ApiService *APIServerOperationsApiService
-	environmentID string
-	apiServerID string
+	ctx                  context.Context
+	ApiService           *APIServerOperationsApiService
+	environmentID        string
+	apiServerID          string
 	apiServerOperationID string
-	aPIServerOperation *APIServerOperation
+	aPIServerOperation   *APIServerOperation
 }
 
 func (r ApiUpdateAPIServerOperationRequest) APIServerOperation(aPIServerOperation APIServerOperation) ApiUpdateAPIServerOperationRequest {
@@ -862,31 +865,32 @@ func (r ApiUpdateAPIServerOperationRequest) Execute() (*APIServerOperation, *htt
 /*
 UpdateAPIServerOperation UPDATE API Server Operation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param apiServerID
- @param apiServerOperationID
- @return ApiUpdateAPIServerOperationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param apiServerID
+	@param apiServerOperationID
+	@return ApiUpdateAPIServerOperationRequest
 */
 func (a *APIServerOperationsApiService) UpdateAPIServerOperation(ctx context.Context, environmentID string, apiServerID string, apiServerOperationID string) ApiUpdateAPIServerOperationRequest {
 	return ApiUpdateAPIServerOperationRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		apiServerID: apiServerID,
+		ApiService:           a,
+		ctx:                  ctx,
+		environmentID:        environmentID,
+		apiServerID:          apiServerID,
 		apiServerOperationID: apiServerOperationID,
 	}
 }
 
 // Execute executes the request
-//  @return APIServerOperation
+//
+//	@return APIServerOperation
 func (a *APIServerOperationsApiService) UpdateAPIServerOperationExecute(r ApiUpdateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *APIServerOperation
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateAPIServerOperationExecute(r)
@@ -898,10 +902,10 @@ func (a *APIServerOperationsApiService) UpdateAPIServerOperationExecute(r ApiUpd
 
 func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(r ApiUpdateAPIServerOperationRequest) (*APIServerOperation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *APIServerOperation
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *APIServerOperation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServerOperationsApiService.UpdateAPIServerOperation")
@@ -966,8 +970,8 @@ func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -977,8 +981,8 @@ func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -988,8 +992,8 @@ func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -999,8 +1003,8 @@ func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1010,8 +1014,8 @@ func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1021,8 +1025,8 @@ func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1032,8 +1036,8 @@ func (a *APIServerOperationsApiService) internalUpdateAPIServerOperationExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

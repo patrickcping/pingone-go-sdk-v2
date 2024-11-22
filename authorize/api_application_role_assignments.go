@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // ApplicationRoleAssignmentsApiService ApplicationRoleAssignmentsApi service
 type ApplicationRoleAssignmentsApiService service
 
 type ApiReadApplicationRoleAssignmentsRequest struct {
-	ctx context.Context
-	ApiService *ApplicationRoleAssignmentsApiService
-	environmentID string
+	ctx               context.Context
+	ApiService        *ApplicationRoleAssignmentsApiService
+	environmentID     string
 	applicationRoleID string
 }
 
@@ -41,35 +40,37 @@ func (r ApiReadApplicationRoleAssignmentsRequest) ExecuteInitialPage() (*ReadApp
 /*
 ReadApplicationRoleAssignments READ Application Role Assignments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationRoleID
- @return ApiReadApplicationRoleAssignmentsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationRoleID
+	@return ApiReadApplicationRoleAssignmentsRequest
 */
 func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignments(ctx context.Context, environmentID string, applicationRoleID string) ApiReadApplicationRoleAssignmentsRequest {
 	return ApiReadApplicationRoleAssignmentsRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:        a,
+		ctx:               ctx,
+		environmentID:     environmentID,
 		applicationRoleID: applicationRoleID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadApplicationRoleAssignments200Response
+//
+//	@return ReadApplicationRoleAssignments200Response
 func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) PagedIterator[ReadApplicationRoleAssignments200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadApplicationRoleAssignments200Response
+//
+//	@return ReadApplicationRoleAssignments200Response
 func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecuteInitialPage(r ApiReadApplicationRoleAssignmentsRequest) (*ReadApplicationRoleAssignments200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadApplicationRoleAssignments200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadApplicationRoleAssignmentsExecute(r)
@@ -81,10 +82,10 @@ func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExe
 
 func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) (*ReadApplicationRoleAssignments200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadApplicationRoleAssignments200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadApplicationRoleAssignments200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationRoleAssignmentsApiService.ReadApplicationRoleAssignments")
@@ -146,8 +147,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -157,8 +158,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -168,8 +169,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -179,8 +180,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -190,8 +191,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -201,8 +202,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -212,8 +213,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

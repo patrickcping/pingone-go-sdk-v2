@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // ApplicationResourcesApiService ApplicationResourcesApi service
 type ApplicationResourcesApiService service
 
 type ApiReadApplicationResourcesRequest struct {
-	ctx context.Context
-	ApiService *ApplicationResourcesApiService
+	ctx           context.Context
+	ApiService    *ApplicationResourcesApiService
 	environmentID string
 }
 
@@ -40,33 +39,35 @@ func (r ApiReadApplicationResourcesRequest) ExecuteInitialPage() (*ReadApplicati
 /*
 ReadApplicationResources READ Application Resources
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadApplicationResourcesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadApplicationResourcesRequest
 */
 func (a *ApplicationResourcesApiService) ReadApplicationResources(ctx context.Context, environmentID string) ApiReadApplicationResourcesRequest {
 	return ApiReadApplicationResourcesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadApplicationResources200Response
+//
+//	@return ReadApplicationResources200Response
 func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) PagedIterator[ReadApplicationResources200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadApplicationResources200Response
+//
+//	@return ReadApplicationResources200Response
 func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialPage(r ApiReadApplicationResourcesRequest) (*ReadApplicationResources200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadApplicationResources200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadApplicationResourcesExecute(r)
@@ -78,10 +79,10 @@ func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialP
 
 func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) (*ReadApplicationResources200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadApplicationResources200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadApplicationResources200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationResourcesApiService.ReadApplicationResources")
@@ -142,8 +143,8 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -153,8 +154,8 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -164,8 +165,8 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -175,8 +176,8 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -186,8 +187,8 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -197,8 +198,8 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -208,8 +209,8 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -228,9 +229,9 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 }
 
 type ApiReadOneApplicationResourceRequest struct {
-	ctx context.Context
-	ApiService *ApplicationResourcesApiService
-	environmentID string
+	ctx                   context.Context
+	ApiService            *ApplicationResourcesApiService
+	environmentID         string
 	applicationResourceID string
 }
 
@@ -241,29 +242,30 @@ func (r ApiReadOneApplicationResourceRequest) Execute() (*ApplicationResource, *
 /*
 ReadOneApplicationResource READ One Application Resource
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationResourceID
- @return ApiReadOneApplicationResourceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationResourceID
+	@return ApiReadOneApplicationResourceRequest
 */
 func (a *ApplicationResourcesApiService) ReadOneApplicationResource(ctx context.Context, environmentID string, applicationResourceID string) ApiReadOneApplicationResourceRequest {
 	return ApiReadOneApplicationResourceRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:            a,
+		ctx:                   ctx,
+		environmentID:         environmentID,
 		applicationResourceID: applicationResourceID,
 	}
 }
 
 // Execute executes the request
-//  @return ApplicationResource
+//
+//	@return ApplicationResource
 func (a *ApplicationResourcesApiService) ReadOneApplicationResourceExecute(r ApiReadOneApplicationResourceRequest) (*ApplicationResource, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ApplicationResource
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneApplicationResourceExecute(r)
@@ -275,10 +277,10 @@ func (a *ApplicationResourcesApiService) ReadOneApplicationResourceExecute(r Api
 
 func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecute(r ApiReadOneApplicationResourceRequest) (*ApplicationResource, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApplicationResource
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationResource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationResourcesApiService.ReadOneApplicationResource")
@@ -340,8 +342,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -351,8 +353,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -362,8 +364,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -373,8 +375,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -384,8 +386,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -395,8 +397,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -406,8 +408,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

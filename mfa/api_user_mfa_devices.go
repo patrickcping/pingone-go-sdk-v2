@@ -19,16 +19,15 @@ import (
 	"strings"
 )
 
-
 // UserMFADevicesApiService UserMFADevicesApi service
 type UserMFADevicesApiService service
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
-	contentType *string
+	userID        string
+	contentType   *string
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) ContentType(contentType string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest {
@@ -43,27 +42,27 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) Execute() (
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesDelete DELETE Device Order
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(ctx context.Context, environmentID string, userID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r)
@@ -76,9 +75,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesDelete")
@@ -143,8 +142,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -154,8 +153,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -165,8 +164,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -176,8 +175,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -187,8 +186,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -198,8 +197,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -209,8 +208,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -220,11 +219,11 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
-	deviceID string
+	userID        string
+	deviceID      string
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) Execute() (*http.Response, error) {
@@ -234,29 +233,29 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) Exe
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete DELETE MFA User Device
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param deviceID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param deviceID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(ctx context.Context, environmentID string, userID string, deviceID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
-		deviceID: deviceID,
+		userID:        userID,
+		deviceID:      deviceID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r)
@@ -269,9 +268,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete")
@@ -334,8 +333,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -345,8 +344,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -356,8 +355,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -367,8 +366,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -378,8 +377,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -389,8 +388,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -400,8 +399,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -411,11 +410,11 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
-	deviceID string
+	userID        string
+	deviceID      string
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) Execute() (*http.Response, error) {
@@ -425,29 +424,29 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) Execut
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet READ One MFA User Device
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param deviceID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param deviceID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(ctx context.Context, environmentID string, userID string, deviceID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
-		deviceID: deviceID,
+		userID:        userID,
+		deviceID:      deviceID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r)
@@ -460,9 +459,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet")
@@ -525,8 +524,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -536,8 +535,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -547,8 +546,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -558,8 +557,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -569,8 +568,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -580,8 +579,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -591,8 +590,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -602,12 +601,12 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
-	deviceID string
-	body *map[string]interface{}
+	userID        string
+	deviceID      string
+	body          *map[string]interface{}
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest {
@@ -622,29 +621,29 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) Ex
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut SEND MFA Device Logs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param deviceID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param deviceID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(ctx context.Context, environmentID string, userID string, deviceID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
-		deviceID: deviceID,
+		userID:        userID,
+		deviceID:      deviceID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r)
@@ -657,9 +656,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut")
@@ -724,8 +723,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -735,8 +734,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -746,8 +745,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -757,8 +756,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -768,8 +767,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -779,8 +778,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -790,8 +789,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -801,12 +800,12 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
-	deviceID string
-	body *map[string]interface{}
+	userID        string
+	deviceID      string
+	body          *map[string]interface{}
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
@@ -821,29 +820,29 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut UPDATE Device Nickname
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param deviceID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param deviceID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(ctx context.Context, environmentID string, userID string, deviceID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
-		deviceID: deviceID,
+		userID:        userID,
+		deviceID:      deviceID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r)
@@ -856,9 +855,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut")
@@ -923,8 +922,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -934,8 +933,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -945,8 +944,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -956,8 +955,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -967,8 +966,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -978,8 +977,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -989,8 +988,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -1000,13 +999,13 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
-	deviceID string
-	contentType *string
-	body *map[string]interface{}
+	userID        string
+	deviceID      string
+	contentType   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) ContentType(contentType string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest {
@@ -1026,29 +1025,29 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) Execu
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost ACTIVATE MFA User Device
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param deviceID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param deviceID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(ctx context.Context, environmentID string, userID string, deviceID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
-		deviceID: deviceID,
+		userID:        userID,
+		deviceID:      deviceID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r)
@@ -1061,9 +1060,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost")
@@ -1131,8 +1130,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1142,8 +1141,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1153,8 +1152,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1164,8 +1163,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -1175,8 +1174,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1186,8 +1185,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1197,8 +1196,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1208,8 +1207,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -1219,10 +1218,10 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
+	userID        string
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) Execute() (*http.Response, error) {
@@ -1232,27 +1231,27 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) Execute() (*ht
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesGet READ All MFA User Devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGet(ctx context.Context, environmentID string, userID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r)
@@ -1265,9 +1264,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGe
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesGet")
@@ -1329,8 +1328,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1340,8 +1339,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1351,8 +1350,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1362,8 +1361,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1373,8 +1372,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1384,8 +1383,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1395,8 +1394,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -1406,12 +1405,12 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 }
 
 type ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest struct {
-	ctx context.Context
-	ApiService *UserMFADevicesApiService
+	ctx           context.Context
+	ApiService    *UserMFADevicesApiService
 	environmentID string
-	userID string
-	contentType *string
-	body *map[string]interface{}
+	userID        string
+	contentType   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) ContentType(contentType string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest {
@@ -1431,27 +1430,27 @@ func (r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) Execute() (*h
 /*
 EnvironmentsEnvironmentIDUsersUserIDDevicesPost SET Device Order
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest
 */
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPost(ctx context.Context, environmentID string, userID string) ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest {
 	return ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r)
@@ -1464,9 +1463,9 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPo
 
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.EnvironmentsEnvironmentIDUsersUserIDDevicesPost")
@@ -1533,8 +1532,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1544,8 +1543,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1555,8 +1554,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1566,8 +1565,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -1577,8 +1576,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1588,8 +1587,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1599,8 +1598,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1610,8 +1609,8 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr

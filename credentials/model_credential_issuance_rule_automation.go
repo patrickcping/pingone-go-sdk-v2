@@ -11,8 +11,8 @@ API version: 2023-06-29
 package credentials
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &CredentialIssuanceRuleAutomation{}
 
 // CredentialIssuanceRuleAutomation struct for CredentialIssuanceRuleAutomation
 type CredentialIssuanceRuleAutomation struct {
-	Issue EnumCredentialIssuanceRuleAutomationMethod `json:"issue"`
+	Issue  EnumCredentialIssuanceRuleAutomationMethod `json:"issue"`
 	Update EnumCredentialIssuanceRuleAutomationMethod `json:"update"`
 	Revoke EnumCredentialIssuanceRuleAutomationMethod `json:"revoke"`
 }
@@ -121,7 +121,7 @@ func (o *CredentialIssuanceRuleAutomation) SetRevoke(v EnumCredentialIssuanceRul
 }
 
 func (o CredentialIssuanceRuleAutomation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,10 +151,10 @@ func (o *CredentialIssuanceRuleAutomation) UnmarshalJSON(data []byte) (err error
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -210,5 +210,3 @@ func (v *NullableCredentialIssuanceRuleAutomation) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

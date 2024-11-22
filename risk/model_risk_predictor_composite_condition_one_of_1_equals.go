@@ -12,13 +12,13 @@ package risk
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // RiskPredictorCompositeConditionOneOf1Equals - struct for RiskPredictorCompositeConditionOneOf1Equals
 type RiskPredictorCompositeConditionOneOf1Equals struct {
-	Int32 *int32
+	Int32  *int32
 	String *string
 }
 
@@ -35,7 +35,6 @@ func StringAsRiskPredictorCompositeConditionOneOf1Equals(v *string) RiskPredicto
 		String: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictorCompositeConditionOneOf1Equals) UnmarshalJSON(data []byte) error {
@@ -102,7 +101,7 @@ func (src RiskPredictorCompositeConditionOneOf1Equals) MarshalJSON() ([]byte, er
 }
 
 // Get the actual instance
-func (obj *RiskPredictorCompositeConditionOneOf1Equals) GetActualInstance() (interface{}) {
+func (obj *RiskPredictorCompositeConditionOneOf1Equals) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -153,5 +152,3 @@ func (v *NullableRiskPredictorCompositeConditionOneOf1Equals) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

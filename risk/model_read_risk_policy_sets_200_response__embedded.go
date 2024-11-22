@@ -72,7 +72,7 @@ func (o *ReadRiskPolicySets200ResponseEmbedded) SetRiskPolicySets(v []RiskPolicy
 }
 
 func (o ReadRiskPolicySets200ResponseEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableReadRiskPolicySets200ResponseEmbedded) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -25,12 +25,12 @@ type RiskEvaluation struct {
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A details object that provides additional information about the risk evaluation.
-	Details *RiskEvaluationDetails `json:"details,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Details     *RiskEvaluationDetails `json:"details,omitempty"`
+	Environment *ObjectEnvironment     `json:"environment,omitempty"`
 	// An object that specifies the attributes to identify the event. This is a required property. For more information about event attributes, see the Event Data Model table.
 	Event RiskEvaluationEvent `json:"event"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id            *string                      `json:"id,omitempty"`
 	RiskPolicySet *RiskEvaluationRiskPolicySet `json:"riskPolicySet,omitempty"`
 	// A result object that specifies the result that corresponds to the risk policy that evaluates as true. If there are several risk policies that evaluate as true, the result that corresponds to the highest priority risk policy is returned. If no risk policy evaluates as true, the result is the defaultResult of the policy set.
 	Result *RiskEvaluationResult `json:"result,omitempty"`
@@ -414,7 +414,7 @@ func (o *RiskEvaluation) SetUpdatedAt(v string) {
 }
 
 func (o RiskEvaluation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -464,10 +464,10 @@ func (o *RiskEvaluation) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -523,5 +523,3 @@ func (v *NullableRiskEvaluation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

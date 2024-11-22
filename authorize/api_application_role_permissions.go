@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // ApplicationRolePermissionsApiService ApplicationRolePermissionsApi service
 type ApplicationRolePermissionsApiService service
 
 type ApiCreateApplicationRolePermissionRequest struct {
-	ctx context.Context
-	ApiService *ApplicationRolePermissionsApiService
-	environmentID string
-	applicationRoleID string
+	ctx                       context.Context
+	ApiService                *ApplicationRolePermissionsApiService
+	environmentID             string
+	applicationRoleID         string
 	applicationRolePermission *ApplicationRolePermission
 }
 
@@ -43,29 +42,30 @@ func (r ApiCreateApplicationRolePermissionRequest) Execute() (*ApplicationRolePe
 /*
 CreateApplicationRolePermission CREATE Application Role Permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationRoleID
- @return ApiCreateApplicationRolePermissionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationRoleID
+	@return ApiCreateApplicationRolePermissionRequest
 */
 func (a *ApplicationRolePermissionsApiService) CreateApplicationRolePermission(ctx context.Context, environmentID string, applicationRoleID string) ApiCreateApplicationRolePermissionRequest {
 	return ApiCreateApplicationRolePermissionRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:        a,
+		ctx:               ctx,
+		environmentID:     environmentID,
 		applicationRoleID: applicationRoleID,
 	}
 }
 
 // Execute executes the request
-//  @return ApplicationRolePermission
+//
+//	@return ApplicationRolePermission
 func (a *ApplicationRolePermissionsApiService) CreateApplicationRolePermissionExecute(r ApiCreateApplicationRolePermissionRequest) (*ApplicationRolePermission, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ApplicationRolePermission
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateApplicationRolePermissionExecute(r)
@@ -77,10 +77,10 @@ func (a *ApplicationRolePermissionsApiService) CreateApplicationRolePermissionEx
 
 func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePermissionExecute(r ApiCreateApplicationRolePermissionRequest) (*ApplicationRolePermission, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApplicationRolePermission
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationRolePermission
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationRolePermissionsApiService.CreateApplicationRolePermission")
@@ -144,8 +144,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -155,8 +155,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -166,8 +166,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -177,8 +177,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -188,8 +188,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -199,8 +199,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -210,8 +210,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -221,8 +221,8 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -241,10 +241,10 @@ func (a *ApplicationRolePermissionsApiService) internalCreateApplicationRolePerm
 }
 
 type ApiDeleteApplicationRolePermissionRequest struct {
-	ctx context.Context
-	ApiService *ApplicationRolePermissionsApiService
-	environmentID string
-	applicationRoleID string
+	ctx                         context.Context
+	ApiService                  *ApplicationRolePermissionsApiService
+	environmentID               string
+	applicationRoleID           string
 	applicationRolePermissionID string
 }
 
@@ -255,18 +255,18 @@ func (r ApiDeleteApplicationRolePermissionRequest) Execute() (*http.Response, er
 /*
 DeleteApplicationRolePermission DELETE Application Role Permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationRoleID
- @param applicationRolePermissionID
- @return ApiDeleteApplicationRolePermissionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationRoleID
+	@param applicationRolePermissionID
+	@return ApiDeleteApplicationRolePermissionRequest
 */
 func (a *ApplicationRolePermissionsApiService) DeleteApplicationRolePermission(ctx context.Context, environmentID string, applicationRoleID string, applicationRolePermissionID string) ApiDeleteApplicationRolePermissionRequest {
 	return ApiDeleteApplicationRolePermissionRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		applicationRoleID: applicationRoleID,
+		ApiService:                  a,
+		ctx:                         ctx,
+		environmentID:               environmentID,
+		applicationRoleID:           applicationRoleID,
 		applicationRolePermissionID: applicationRolePermissionID,
 	}
 }
@@ -274,10 +274,10 @@ func (a *ApplicationRolePermissionsApiService) DeleteApplicationRolePermission(c
 // Execute executes the request
 func (a *ApplicationRolePermissionsApiService) DeleteApplicationRolePermissionExecute(r ApiDeleteApplicationRolePermissionRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteApplicationRolePermissionExecute(r)
@@ -290,9 +290,9 @@ func (a *ApplicationRolePermissionsApiService) DeleteApplicationRolePermissionEx
 
 func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePermissionExecute(r ApiDeleteApplicationRolePermissionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationRolePermissionsApiService.DeleteApplicationRolePermission")
@@ -355,8 +355,8 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -366,8 +366,8 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -377,8 +377,8 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -388,8 +388,8 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -399,8 +399,8 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -410,8 +410,8 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -421,8 +421,8 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -432,9 +432,9 @@ func (a *ApplicationRolePermissionsApiService) internalDeleteApplicationRolePerm
 }
 
 type ApiReadApplicationRolePermissionsRequest struct {
-	ctx context.Context
-	ApiService *ApplicationRolePermissionsApiService
-	environmentID string
+	ctx               context.Context
+	ApiService        *ApplicationRolePermissionsApiService
+	environmentID     string
 	applicationRoleID string
 }
 
@@ -449,35 +449,37 @@ func (r ApiReadApplicationRolePermissionsRequest) ExecuteInitialPage() (*ReadApp
 /*
 ReadApplicationRolePermissions READ Application Role Permissions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationRoleID
- @return ApiReadApplicationRolePermissionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationRoleID
+	@return ApiReadApplicationRolePermissionsRequest
 */
 func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissions(ctx context.Context, environmentID string, applicationRoleID string) ApiReadApplicationRolePermissionsRequest {
 	return ApiReadApplicationRolePermissionsRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:        a,
+		ctx:               ctx,
+		environmentID:     environmentID,
 		applicationRoleID: applicationRoleID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadApplicationRolePermissions200Response
+//
+//	@return ReadApplicationRolePermissions200Response
 func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) PagedIterator[ReadApplicationRolePermissions200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadApplicationRolePermissions200Response
+//
+//	@return ReadApplicationRolePermissions200Response
 func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecuteInitialPage(r ApiReadApplicationRolePermissionsRequest) (*ReadApplicationRolePermissions200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadApplicationRolePermissions200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadApplicationRolePermissionsExecute(r)
@@ -489,10 +491,10 @@ func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExe
 
 func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) (*ReadApplicationRolePermissions200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadApplicationRolePermissions200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadApplicationRolePermissions200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationRolePermissionsApiService.ReadApplicationRolePermissions")
@@ -554,8 +556,8 @@ func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -565,8 +567,8 @@ func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -576,8 +578,8 @@ func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -587,8 +589,8 @@ func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -598,8 +600,8 @@ func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -609,8 +611,8 @@ func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -620,8 +622,8 @@ func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &MFASettingsPairing{}
 // MFASettingsPairing An object that contains pairing settings.
 type MFASettingsPairing struct {
 	// An integer that defines the maximum number of MFA devices each user can have. This can be any number up to 15. The default value is 5.
-	MaxAllowedDevices int32 `json:"maxAllowedDevices"`
-	PairingKeyFormat EnumMFASettingsPairingKeyFormat `json:"pairingKeyFormat"`
+	MaxAllowedDevices int32                           `json:"maxAllowedDevices"`
+	PairingKeyFormat  EnumMFASettingsPairingKeyFormat `json:"pairingKeyFormat"`
 }
 
 type _MFASettingsPairing MFASettingsPairing
@@ -98,7 +98,7 @@ func (o *MFASettingsPairing) SetPairingKeyFormat(v EnumMFASettingsPairingKeyForm
 }
 
 func (o MFASettingsPairing) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -126,10 +126,10 @@ func (o *MFASettingsPairing) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -185,5 +185,3 @@ func (v *NullableMFASettingsPairing) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

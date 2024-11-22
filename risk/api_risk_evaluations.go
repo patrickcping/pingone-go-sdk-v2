@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // RiskEvaluationsApiService RiskEvaluationsApi service
 type RiskEvaluationsApiService service
 
 type ApiCreateRiskEvaluationRequest struct {
-	ctx context.Context
-	ApiService *RiskEvaluationsApiService
-	environmentID string
+	ctx            context.Context
+	ApiService     *RiskEvaluationsApiService
+	environmentID  string
 	riskEvaluation *RiskEvaluation
 }
 
@@ -42,27 +41,28 @@ func (r ApiCreateRiskEvaluationRequest) Execute() (*RiskEvaluation, *http.Respon
 /*
 CreateRiskEvaluation CREATE Risk Evaluation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateRiskEvaluationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateRiskEvaluationRequest
 */
 func (a *RiskEvaluationsApiService) CreateRiskEvaluation(ctx context.Context, environmentID string) ApiCreateRiskEvaluationRequest {
 	return ApiCreateRiskEvaluationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskEvaluation
+//
+//	@return RiskEvaluation
 func (a *RiskEvaluationsApiService) CreateRiskEvaluationExecute(r ApiCreateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskEvaluation
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateRiskEvaluationExecute(r)
@@ -74,10 +74,10 @@ func (a *RiskEvaluationsApiService) CreateRiskEvaluationExecute(r ApiCreateRiskE
 
 func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCreateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskEvaluation
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskEvaluation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskEvaluationsApiService.CreateRiskEvaluation")
@@ -140,8 +140,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,9 +237,9 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 }
 
 type ApiReadOneRiskEvaluationRequest struct {
-	ctx context.Context
-	ApiService *RiskEvaluationsApiService
-	environmentID string
+	ctx              context.Context
+	ApiService       *RiskEvaluationsApiService
+	environmentID    string
 	riskEvaluationID string
 }
 
@@ -250,29 +250,30 @@ func (r ApiReadOneRiskEvaluationRequest) Execute() (*RiskEvaluation, *http.Respo
 /*
 ReadOneRiskEvaluation READ One Risk Evaluation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskEvaluationID
- @return ApiReadOneRiskEvaluationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskEvaluationID
+	@return ApiReadOneRiskEvaluationRequest
 */
 func (a *RiskEvaluationsApiService) ReadOneRiskEvaluation(ctx context.Context, environmentID string, riskEvaluationID string) ApiReadOneRiskEvaluationRequest {
 	return ApiReadOneRiskEvaluationRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
 		riskEvaluationID: riskEvaluationID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskEvaluation
+//
+//	@return RiskEvaluation
 func (a *RiskEvaluationsApiService) ReadOneRiskEvaluationExecute(r ApiReadOneRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskEvaluation
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneRiskEvaluationExecute(r)
@@ -284,10 +285,10 @@ func (a *RiskEvaluationsApiService) ReadOneRiskEvaluationExecute(r ApiReadOneRis
 
 func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiReadOneRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskEvaluation
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskEvaluation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskEvaluationsApiService.ReadOneRiskEvaluation")
@@ -349,8 +350,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -360,8 +361,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -371,8 +372,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -382,8 +383,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -393,8 +394,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -404,8 +405,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -415,8 +416,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -435,10 +436,10 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 }
 
 type ApiUpdateRiskEvaluationRequest struct {
-	ctx context.Context
-	ApiService *RiskEvaluationsApiService
-	environmentID string
-	riskEvaluationID string
+	ctx                 context.Context
+	ApiService          *RiskEvaluationsApiService
+	environmentID       string
+	riskEvaluationID    string
 	riskEvaluationEvent *RiskEvaluationEvent
 }
 
@@ -454,29 +455,30 @@ func (r ApiUpdateRiskEvaluationRequest) Execute() (*RiskEvaluation, *http.Respon
 /*
 UpdateRiskEvaluation UPDATE Risk Evaluation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskEvaluationID
- @return ApiUpdateRiskEvaluationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskEvaluationID
+	@return ApiUpdateRiskEvaluationRequest
 */
 func (a *RiskEvaluationsApiService) UpdateRiskEvaluation(ctx context.Context, environmentID string, riskEvaluationID string) ApiUpdateRiskEvaluationRequest {
 	return ApiUpdateRiskEvaluationRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
 		riskEvaluationID: riskEvaluationID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskEvaluation
+//
+//	@return RiskEvaluation
 func (a *RiskEvaluationsApiService) UpdateRiskEvaluationExecute(r ApiUpdateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskEvaluation
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateRiskEvaluationExecute(r)
@@ -488,10 +490,10 @@ func (a *RiskEvaluationsApiService) UpdateRiskEvaluationExecute(r ApiUpdateRiskE
 
 func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpdateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskEvaluation
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskEvaluation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskEvaluationsApiService.UpdateRiskEvaluation")
@@ -555,8 +557,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -566,8 +568,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -577,8 +579,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -588,8 +590,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -599,8 +601,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -610,8 +612,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -621,8 +623,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

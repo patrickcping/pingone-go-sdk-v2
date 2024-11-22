@@ -20,7 +20,7 @@ type EnumMFADevicePolicyMobileIntegrityDetection string
 
 // List of EnumMFADevicePolicyMobileIntegrityDetection
 const (
-	ENUMMFADEVICEPOLICYMOBILEINTEGRITYDETECTION_PERMISSIVE EnumMFADevicePolicyMobileIntegrityDetection = "permissive"
+	ENUMMFADEVICEPOLICYMOBILEINTEGRITYDETECTION_PERMISSIVE  EnumMFADevicePolicyMobileIntegrityDetection = "permissive"
 	ENUMMFADEVICEPOLICYMOBILEINTEGRITYDETECTION_RESTRICTIVE EnumMFADevicePolicyMobileIntegrityDetection = "restrictive"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumMFADevicePolicyMobileIntegrityDetection) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

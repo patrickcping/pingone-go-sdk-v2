@@ -11,10 +11,10 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the RiskPredictorDevice type satisfies the MappedNullable interface at compile time
@@ -28,8 +28,8 @@ type RiskPredictorDevice struct {
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
 	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
-	CompactName string `json:"compactName"`
-	Type EnumPredictorType `json:"type"`
+	CompactName string            `json:"compactName"`
+	Type        EnumPredictorType `json:"type"`
 	// A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
@@ -39,10 +39,10 @@ type RiskPredictorDevice struct {
 	// Indicates whether PingOne Risk is licensed for the environment.
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
-	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
-	Detect EnumPredictorNewDeviceDetectType `json:"detect"`
+	Deletable *bool                            `json:"deletable,omitempty"`
+	Default   *RiskPredictorCommonDefault      `json:"default,omitempty"`
+	Condition *RiskPredictorCommonCondition    `json:"condition,omitempty"`
+	Detect    EnumPredictorNewDeviceDetectType `json:"detect"`
 	// Relevant only for Suspicious Device predictors. If `shouldValidatePayloadSignature` is set to `true`, then any risk policies that include this predictor will require that the Signals SDK payload be provided as a signed JWT whose signature will be verified before proceeding with risk evaluation. You instruct the Signals SDK to provide the payload as a signed JWT by using the `universalDeviceIdentification` flag during initialization of the SDK, or by selecting the relevant setting for the `skrisk` component in DaVinci flows.
 	ShouldValidatePayloadSignature *bool `json:"shouldValidatePayloadSignature,omitempty"`
 	// You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
@@ -596,7 +596,7 @@ func (o *RiskPredictorDevice) SetActivationAt(v time.Time) {
 }
 
 func (o RiskPredictorDevice) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -661,10 +661,10 @@ func (o *RiskPredictorDevice) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -720,5 +720,3 @@ func (v *NullableRiskPredictorDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

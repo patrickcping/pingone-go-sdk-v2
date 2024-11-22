@@ -11,8 +11,8 @@ API version: 2023-07-20
 package verify
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &OTPDeviceConfigurationOtp{}
 
 // OTPDeviceConfigurationOtp struct for OTPDeviceConfigurationOtp
 type OTPDeviceConfigurationOtp struct {
-	Attempts OTPDeviceConfigurationOtpAttempts `json:"attempts"`
-	Deliveries OTPDeviceConfigurationOtpDeliveries `json:"deliveries"`
-	LifeTime OTPDeviceConfigurationOtpLifeTime `json:"lifeTime"`
+	Attempts     OTPDeviceConfigurationOtpAttempts     `json:"attempts"`
+	Deliveries   OTPDeviceConfigurationOtpDeliveries   `json:"deliveries"`
+	LifeTime     OTPDeviceConfigurationOtpLifeTime     `json:"lifeTime"`
 	Notification OTPDeviceConfigurationOtpNotification `json:"notification"`
 }
 
@@ -147,7 +147,7 @@ func (o *OTPDeviceConfigurationOtp) SetNotification(v OTPDeviceConfigurationOtpN
 }
 
 func (o OTPDeviceConfigurationOtp) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,10 +179,10 @@ func (o *OTPDeviceConfigurationOtp) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -238,5 +238,3 @@ func (v *NullableOTPDeviceConfigurationOtp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

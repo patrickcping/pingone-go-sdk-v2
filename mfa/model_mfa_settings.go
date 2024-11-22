@@ -11,10 +11,10 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the MFASettings type satisfies the MappedNullable interface at compile time
@@ -22,16 +22,16 @@ var _ MappedNullable = &MFASettings{}
 
 // MFASettings struct for MFASettings
 type MFASettings struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Environment *ObjectEnvironment           `json:"environment,omitempty"`
 	// Deprecated
-	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
-	Lockout *MFASettingsLockout `json:"lockout,omitempty"`
-	Pairing MFASettingsPairing `json:"pairing"`
+	Authentication  *MFASettingsAuthentication  `json:"authentication,omitempty"`
+	Lockout         *MFASettingsLockout         `json:"lockout,omitempty"`
+	Pairing         MFASettingsPairing          `json:"pairing"`
 	PhoneExtensions *MFASettingsPhoneExtensions `json:"phoneExtensions,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Users *MFASettingsUsers `json:"users,omitempty"`
+	UpdatedAt *time.Time        `json:"updatedAt,omitempty"`
+	Users     *MFASettingsUsers `json:"users,omitempty"`
 }
 
 type _MFASettings MFASettings
@@ -381,7 +381,7 @@ func (o *MFASettings) SetUsers(v MFASettingsUsers) {
 }
 
 func (o MFASettings) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -428,10 +428,10 @@ func (o *MFASettings) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -487,5 +487,3 @@ func (v *NullableMFASettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

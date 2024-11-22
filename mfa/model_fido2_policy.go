@@ -11,10 +11,10 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the FIDO2Policy type satisfies the MappedNullable interface at compile time
@@ -24,15 +24,15 @@ var _ MappedNullable = &FIDO2Policy{}
 type FIDO2Policy struct {
 	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// FIDO policy's UUID.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt               *time.Time                             `json:"updatedAt,omitempty"`
 	AttestationRequirements EnumFIDO2PolicyAttestationRequirements `json:"attestationRequirements"`
 	AuthenticatorAttachment EnumFIDO2PolicyAuthenticatorAttachment `json:"authenticatorAttachment"`
-	BackupEligibility FIDO2PolicyBackupEligibility `json:"backupEligibility"`
+	BackupEligibility       FIDO2PolicyBackupEligibility           `json:"backupEligibility"`
 	// Whether this policy should serve as the default FIDO policy.
 	Default *bool `json:"default,omitempty"`
 	// Description of the FIDO policy.
@@ -40,15 +40,15 @@ type FIDO2Policy struct {
 	// The device authentication policies that use the relevant FIDO policy. If you include the parameter `expand=deviceAuthenticationPolicies` in the URL of the request, this array is included in the response when reading FIDO policies. Each object in the array contains the ID and the name of the device authentication policy.
 	DeviceAuthenticationPolicies []string `json:"deviceAuthenticationPolicies,omitempty"`
 	// The name to display for the device in registration and authentication windows. Can be up to 100 characters. If you want to use translatable text, you can use any of the keys listed on the *FIDO Policy* page of the *Self-Service* module and the *Sign On Policy* module. The value of the parameter should include only the part of the key name that comes after the module name, for example, `fidoPolicy.deviceDisplayName01` or `fidoPolicy.deviceDisplayName07`. See the pages in the UI for the full list of keys. For more information on translatable keys, see [Modifying translatable keys](https://docs.pingidentity.com/access/sources/dita/topic?category=p1&resourceid=pingone_modifying_translatable_keys) in the PingOne documentation.
-	DeviceDisplayName string `json:"deviceDisplayName"`
-	DiscoverableCredentials EnumFIDO2PolicyDiscoverableCredentials `json:"discoverableCredentials"`
+	DeviceDisplayName             string                                   `json:"deviceDisplayName"`
+	DiscoverableCredentials       EnumFIDO2PolicyDiscoverableCredentials   `json:"discoverableCredentials"`
 	MdsAuthenticatorsRequirements FIDO2PolicyMdsAuthenticatorsRequirements `json:"mdsAuthenticatorsRequirements"`
 	// The name to use for the FIDO policy. Can be up to 256 characters.
 	Name string `json:"name"`
 	// The ID of the relying party. The value should be a domain name, such as `example.com` (in lower-case characters).
-	RelyingPartyId string `json:"relyingPartyId"`
+	RelyingPartyId            string                               `json:"relyingPartyId"`
 	UserDisplayNameAttributes FIDO2PolicyUserDisplayNameAttributes `json:"userDisplayNameAttributes"`
-	UserVerification FIDO2PolicyUserVerification `json:"userVerification"`
+	UserVerification          FIDO2PolicyUserVerification          `json:"userVerification"`
 }
 
 type _FIDO2Policy FIDO2Policy
@@ -652,7 +652,7 @@ func (o *FIDO2Policy) SetUserVerification(v FIDO2PolicyUserVerification) {
 }
 
 func (o FIDO2Policy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -720,10 +720,10 @@ func (o *FIDO2Policy) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -779,5 +779,3 @@ func (v *NullableFIDO2Policy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

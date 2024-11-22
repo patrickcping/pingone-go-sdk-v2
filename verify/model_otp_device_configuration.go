@@ -11,8 +11,8 @@ API version: 2023-07-20
 package verify
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -24,8 +24,8 @@ type OTPDeviceConfiguration struct {
 	// Controls if email or phone verification is REQUIRED, OPTIONAL, or DISABLED.
 	Verify EnumVerify `json:"verify"`
 	// When enabled, PingOne Verify registers the email address or phone number with PingOne MFA as a verified MFA device.
-	CreateMfaDevice *bool `json:"createMfaDevice,omitempty"`
-	Otp *OTPDeviceConfigurationOtp `json:"otp,omitempty"`
+	CreateMfaDevice *bool                      `json:"createMfaDevice,omitempty"`
+	Otp             *OTPDeviceConfigurationOtp `json:"otp,omitempty"`
 }
 
 type _OTPDeviceConfiguration OTPDeviceConfiguration
@@ -137,7 +137,7 @@ func (o *OTPDeviceConfiguration) SetOtp(v OTPDeviceConfigurationOtp) {
 }
 
 func (o OTPDeviceConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,10 +169,10 @@ func (o *OTPDeviceConfiguration) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -228,5 +228,3 @@ func (v *NullableOTPDeviceConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

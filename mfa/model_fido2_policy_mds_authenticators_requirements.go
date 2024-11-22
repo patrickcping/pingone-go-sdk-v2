@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -24,8 +24,8 @@ type FIDO2PolicyMdsAuthenticatorsRequirements struct {
 	// If you set `mdsAuthenticatorsRequirements.option` to `SPECIFIC`, use this array to specify the authenticators that you want to allow.
 	AllowedAuthenticators []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner `json:"allowedAuthenticators,omitempty"`
 	// Set to true if you want the device characteristics related to attestation to be checked again at each authentication attempt and not just once during registration. Set to false to have them checked only at registration.
-	EnforceDuringAuthentication bool `json:"enforceDuringAuthentication"`
-	Option EnumFIDO2PolicyMDSAuthenticatorOption `json:"option"`
+	EnforceDuringAuthentication bool                                  `json:"enforceDuringAuthentication"`
+	Option                      EnumFIDO2PolicyMDSAuthenticatorOption `json:"option"`
 }
 
 type _FIDO2PolicyMdsAuthenticatorsRequirements FIDO2PolicyMdsAuthenticatorsRequirements
@@ -130,7 +130,7 @@ func (o *FIDO2PolicyMdsAuthenticatorsRequirements) SetOption(v EnumFIDO2PolicyMD
 }
 
 func (o FIDO2PolicyMdsAuthenticatorsRequirements) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,10 +161,10 @@ func (o *FIDO2PolicyMdsAuthenticatorsRequirements) UnmarshalJSON(data []byte) (e
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -220,5 +220,3 @@ func (v *NullableFIDO2PolicyMdsAuthenticatorsRequirements) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ type EnumAPIServerPatternType string
 
 // List of EnumAPIServerPatternType
 const (
-	ENUMAPISERVERPATTERNTYPE_EXACT EnumAPIServerPatternType = "EXACT"
+	ENUMAPISERVERPATTERNTYPE_EXACT     EnumAPIServerPatternType = "EXACT"
 	ENUMAPISERVERPATTERNTYPE_PARAMETER EnumAPIServerPatternType = "PARAMETER"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumAPIServerPatternType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

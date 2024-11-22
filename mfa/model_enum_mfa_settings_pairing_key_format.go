@@ -20,7 +20,7 @@ type EnumMFASettingsPairingKeyFormat string
 
 // List of EnumMFASettingsPairingKeyFormat
 const (
-	ENUMMFASETTINGSPAIRINGKEYFORMAT_NUMERIC EnumMFASettingsPairingKeyFormat = "NUMERIC"
+	ENUMMFASETTINGSPAIRINGKEYFORMAT_NUMERIC      EnumMFASettingsPairingKeyFormat = "NUMERIC"
 	ENUMMFASETTINGSPAIRINGKEYFORMAT_ALPHANUMERIC EnumMFASettingsPairingKeyFormat = "ALPHANUMERIC"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumMFASettingsPairingKeyFormat) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

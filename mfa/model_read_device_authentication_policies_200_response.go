@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadDeviceAuthenticationPolicies200Response{}
 
 // ReadDeviceAuthenticationPolicies200Response struct for ReadDeviceAuthenticationPolicies200Response
 type ReadDeviceAuthenticationPolicies200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue                         `json:"_links,omitempty"`
 	Embedded *ReadDeviceAuthenticationPolicies200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                                             `json:"count,omitempty"`
+	Size     *float32                                             `json:"size,omitempty"`
 }
 
 // NewReadDeviceAuthenticationPolicies200Response instantiates a new ReadDeviceAuthenticationPolicies200Response object
@@ -246,7 +246,7 @@ func (o *ReadDeviceAuthenticationPolicies200Response) SetSize(v float32) {
 }
 
 func (o ReadDeviceAuthenticationPolicies200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadDeviceAuthenticationPolicies200Response) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

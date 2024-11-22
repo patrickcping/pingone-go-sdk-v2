@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // FIDODeviceApiService FIDODeviceApi service
 type FIDODeviceApiService service
 
 type ApiCreateFidoDeviceRequest struct {
-	ctx context.Context
-	ApiService *FIDODeviceApiService
+	ctx           context.Context
+	ApiService    *FIDODeviceApiService
 	environmentID string
-	body *map[string]interface{}
+	body          *map[string]interface{}
 }
 
 func (r ApiCreateFidoDeviceRequest) Body(body map[string]interface{}) ApiCreateFidoDeviceRequest {
@@ -42,27 +41,28 @@ func (r ApiCreateFidoDeviceRequest) Execute() (map[string]interface{}, *http.Res
 /*
 CreateFidoDevice CREATE FIDO Device
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateFidoDeviceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateFidoDeviceRequest
 */
 func (a *FIDODeviceApiService) CreateFidoDevice(ctx context.Context, environmentID string) ApiCreateFidoDeviceRequest {
 	return ApiCreateFidoDeviceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *FIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue map[string]interface{}
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateFidoDeviceExecute(r)
@@ -74,10 +74,10 @@ func (a *FIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDeviceRequ
 
 func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.CreateFidoDevice")
@@ -140,8 +140,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,10 +237,10 @@ func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDe
 }
 
 type ApiDeleteFidoDeviceRequest struct {
-	ctx context.Context
-	ApiService *FIDODeviceApiService
+	ctx           context.Context
+	ApiService    *FIDODeviceApiService
 	environmentID string
-	fidoDeviceID string
+	fidoDeviceID  string
 }
 
 func (r ApiDeleteFidoDeviceRequest) Execute() (*http.Response, error) {
@@ -250,27 +250,27 @@ func (r ApiDeleteFidoDeviceRequest) Execute() (*http.Response, error) {
 /*
 DeleteFidoDevice DELETE FIDO Device
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param fidoDeviceID
- @return ApiDeleteFidoDeviceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param fidoDeviceID
+	@return ApiDeleteFidoDeviceRequest
 */
 func (a *FIDODeviceApiService) DeleteFidoDevice(ctx context.Context, environmentID string, fidoDeviceID string) ApiDeleteFidoDeviceRequest {
 	return ApiDeleteFidoDeviceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		fidoDeviceID: fidoDeviceID,
+		fidoDeviceID:  fidoDeviceID,
 	}
 }
 
 // Execute executes the request
 func (a *FIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteFidoDeviceExecute(r)
@@ -283,9 +283,9 @@ func (a *FIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequ
 
 func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.DeleteFidoDevice")
@@ -347,8 +347,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -358,8 +358,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -369,8 +369,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -380,8 +380,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -391,8 +391,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -402,8 +402,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -413,8 +413,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -424,8 +424,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 }
 
 type ApiReadFidoDevicesRequest struct {
-	ctx context.Context
-	ApiService *FIDODeviceApiService
+	ctx           context.Context
+	ApiService    *FIDODeviceApiService
 	environmentID string
 }
 
@@ -440,33 +440,35 @@ func (r ApiReadFidoDevicesRequest) ExecuteInitialPage() (*ReadFidoDevices200Resp
 /*
 ReadFidoDevices READ All FIDO Devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadFidoDevicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadFidoDevicesRequest
 */
 func (a *FIDODeviceApiService) ReadFidoDevices(ctx context.Context, environmentID string) ApiReadFidoDevicesRequest {
 	return ApiReadFidoDevicesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadFidoDevices200Response
+//
+//	@return ReadFidoDevices200Response
 func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) PagedIterator[ReadFidoDevices200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadFidoDevices200Response
+//
+//	@return ReadFidoDevices200Response
 func (a *FIDODeviceApiService) ReadFidoDevicesExecuteInitialPage(r ApiReadFidoDevicesRequest) (*ReadFidoDevices200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadFidoDevices200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadFidoDevicesExecute(r)
@@ -478,10 +480,10 @@ func (a *FIDODeviceApiService) ReadFidoDevicesExecuteInitialPage(r ApiReadFidoDe
 
 func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*ReadFidoDevices200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadFidoDevices200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadFidoDevices200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.ReadFidoDevices")
@@ -542,8 +544,8 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -553,8 +555,8 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -564,8 +566,8 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -575,8 +577,8 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -586,8 +588,8 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -597,8 +599,8 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -608,8 +610,8 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -628,10 +630,10 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 }
 
 type ApiReadOneFidoDeviceRequest struct {
-	ctx context.Context
-	ApiService *FIDODeviceApiService
+	ctx           context.Context
+	ApiService    *FIDODeviceApiService
 	environmentID string
-	fidoDeviceID string
+	fidoDeviceID  string
 }
 
 func (r ApiReadOneFidoDeviceRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -641,29 +643,30 @@ func (r ApiReadOneFidoDeviceRequest) Execute() (map[string]interface{}, *http.Re
 /*
 ReadOneFidoDevice READ One FIDO Device
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param fidoDeviceID
- @return ApiReadOneFidoDeviceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param fidoDeviceID
+	@return ApiReadOneFidoDeviceRequest
 */
 func (a *FIDODeviceApiService) ReadOneFidoDevice(ctx context.Context, environmentID string, fidoDeviceID string) ApiReadOneFidoDeviceRequest {
 	return ApiReadOneFidoDeviceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		fidoDeviceID: fidoDeviceID,
+		fidoDeviceID:  fidoDeviceID,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *FIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue map[string]interface{}
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneFidoDeviceExecute(r)
@@ -675,10 +678,10 @@ func (a *FIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRe
 
 func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.ReadOneFidoDevice")
@@ -740,8 +743,8 @@ func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFido
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -751,8 +754,8 @@ func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFido
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -762,8 +765,8 @@ func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFido
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -773,8 +776,8 @@ func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFido
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -784,8 +787,8 @@ func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFido
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -795,8 +798,8 @@ func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFido
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -806,8 +809,8 @@ func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFido
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

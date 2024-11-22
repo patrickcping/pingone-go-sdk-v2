@@ -11,8 +11,8 @@ API version: 2023-06-29
 package authorize
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -25,13 +25,13 @@ type APIServerOperation struct {
 	// The ID of the API service operation. This is randomly generated when the operation is created.
 	Id *string `json:"id,omitempty"`
 	// The name of the API service operation.
-	Name string `json:"name"`
+	Name          string                           `json:"name"`
 	AccessControl *APIServerOperationAccessControl `json:"accessControl,omitempty"`
 	// The methods that define the operation. No duplicates are allowed. Each element must be a valid HTTP token, according to [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230), and cannot exceed 64 characters. An empty array is not valid. To indicate that an operation is defined for every method, the `methods` array should be set to null. The `methods` array is limited to 10 entries.
 	Methods []EnumAPIServerOperationMethod `json:"methods,omitempty"`
 	// The paths that define the operation. The same literal pattern is not allowed within the same operation (the pattern of a `paths` element must be unique as compared to all other patterns in the same `paths` array). However, the same literal pattern is allowed in different operations (for example, OperationA, `/path1`, OperationB, `/path1` is valid). The `paths` array is limited to 10 entries.
-	Paths []APIServerOperationPathsInner `json:"paths"`
-	Policy *APIServerPolicy `json:"policy,omitempty"`
+	Paths  []APIServerOperationPathsInner `json:"paths"`
+	Policy *APIServerPolicy               `json:"policy,omitempty"`
 }
 
 type _APIServerOperation APIServerOperation
@@ -339,7 +339,7 @@ func (o *APIServerOperation) SetPolicy(v APIServerPolicy) {
 }
 
 func (o APIServerOperation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -382,10 +382,10 @@ func (o *APIServerOperation) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -441,5 +441,3 @@ func (v *NullableAPIServerOperation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// EnumFIDO2PolicyDiscoverableCredentials Use this field to specify when registered users can authenticate without providing credentials. The possible values are: - `DISCOURAGED` - discoverable credentials are not used, even when supported by the FIDO device. In cases where use of discoverable credentials is required by the FIDO device itself, this setting does not override the device setting. - `REQUIRED` - require the use of discoverable credentials. This option is required for usernameless authentication. - `PREFERRED` - use discoverable credentials where possible. 
+// EnumFIDO2PolicyDiscoverableCredentials Use this field to specify when registered users can authenticate without providing credentials. The possible values are: - `DISCOURAGED` - discoverable credentials are not used, even when supported by the FIDO device. In cases where use of discoverable credentials is required by the FIDO device itself, this setting does not override the device setting. - `REQUIRED` - require the use of discoverable credentials. This option is required for usernameless authentication. - `PREFERRED` - use discoverable credentials where possible.
 type EnumFIDO2PolicyDiscoverableCredentials string
 
 // List of EnumFIDO2PolicyDiscoverableCredentials
 const (
 	ENUMFIDO2POLICYDISCOVERABLECREDENTIALS_DISCOURAGED EnumFIDO2PolicyDiscoverableCredentials = "DISCOURAGED"
-	ENUMFIDO2POLICYDISCOVERABLECREDENTIALS_REQUIRED EnumFIDO2PolicyDiscoverableCredentials = "REQUIRED"
-	ENUMFIDO2POLICYDISCOVERABLECREDENTIALS_PREFERRED EnumFIDO2PolicyDiscoverableCredentials = "PREFERRED"
+	ENUMFIDO2POLICYDISCOVERABLECREDENTIALS_REQUIRED    EnumFIDO2PolicyDiscoverableCredentials = "REQUIRED"
+	ENUMFIDO2POLICYDISCOVERABLECREDENTIALS_PREFERRED   EnumFIDO2PolicyDiscoverableCredentials = "PREFERRED"
 )
 
 // All allowed values of EnumFIDO2PolicyDiscoverableCredentials enum
@@ -111,4 +111,3 @@ func (v *NullableEnumFIDO2PolicyDiscoverableCredentials) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

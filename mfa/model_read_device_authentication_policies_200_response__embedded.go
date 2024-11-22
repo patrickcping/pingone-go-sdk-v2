@@ -72,7 +72,7 @@ func (o *ReadDeviceAuthenticationPolicies200ResponseEmbedded) SetDeviceAuthentic
 }
 
 func (o ReadDeviceAuthenticationPolicies200ResponseEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableReadDeviceAuthenticationPolicies200ResponseEmbedded) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

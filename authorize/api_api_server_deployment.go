@@ -19,16 +19,15 @@ import (
 	"strings"
 )
 
-
 // APIServerDeploymentApiService APIServerDeploymentApi service
 type APIServerDeploymentApiService service
 
 type ApiDeployAPIServerRequest struct {
-	ctx context.Context
-	ApiService *APIServerDeploymentApiService
+	ctx           context.Context
+	ApiService    *APIServerDeploymentApiService
 	environmentID string
-	apiServerID string
-	contentType *string
+	apiServerID   string
+	contentType   *string
 }
 
 func (r ApiDeployAPIServerRequest) ContentType(contentType string) ApiDeployAPIServerRequest {
@@ -43,29 +42,30 @@ func (r ApiDeployAPIServerRequest) Execute() (*APIServerDeployment, *http.Respon
 /*
 DeployAPIServer Deploy API Server
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param apiServerID
- @return ApiDeployAPIServerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param apiServerID
+	@return ApiDeployAPIServerRequest
 */
 func (a *APIServerDeploymentApiService) DeployAPIServer(ctx context.Context, environmentID string, apiServerID string) ApiDeployAPIServerRequest {
 	return ApiDeployAPIServerRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		apiServerID: apiServerID,
+		apiServerID:   apiServerID,
 	}
 }
 
 // Execute executes the request
-//  @return APIServerDeployment
+//
+//	@return APIServerDeployment
 func (a *APIServerDeploymentApiService) DeployAPIServerExecute(r ApiDeployAPIServerRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *APIServerDeployment
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalDeployAPIServerExecute(r)
@@ -77,10 +77,10 @@ func (a *APIServerDeploymentApiService) DeployAPIServerExecute(r ApiDeployAPISer
 
 func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDeployAPIServerRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *APIServerDeployment
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *APIServerDeployment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServerDeploymentApiService.DeployAPIServer")
@@ -146,8 +146,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -157,8 +157,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -168,8 +168,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -179,8 +179,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -190,8 +190,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -201,8 +201,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -212,8 +212,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -223,8 +223,8 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -243,10 +243,10 @@ func (a *APIServerDeploymentApiService) internalDeployAPIServerExecute(r ApiDepl
 }
 
 type ApiReadDeploymentStatusRequest struct {
-	ctx context.Context
-	ApiService *APIServerDeploymentApiService
+	ctx           context.Context
+	ApiService    *APIServerDeploymentApiService
 	environmentID string
-	apiServerID string
+	apiServerID   string
 }
 
 func (r ApiReadDeploymentStatusRequest) Execute() (*APIServerDeployment, *http.Response, error) {
@@ -256,29 +256,30 @@ func (r ApiReadDeploymentStatusRequest) Execute() (*APIServerDeployment, *http.R
 /*
 ReadDeploymentStatus READ API Server Deployment Status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param apiServerID
- @return ApiReadDeploymentStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param apiServerID
+	@return ApiReadDeploymentStatusRequest
 */
 func (a *APIServerDeploymentApiService) ReadDeploymentStatus(ctx context.Context, environmentID string, apiServerID string) ApiReadDeploymentStatusRequest {
 	return ApiReadDeploymentStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		apiServerID: apiServerID,
+		apiServerID:   apiServerID,
 	}
 }
 
 // Execute executes the request
-//  @return APIServerDeployment
+//
+//	@return APIServerDeployment
 func (a *APIServerDeploymentApiService) ReadDeploymentStatusExecute(r ApiReadDeploymentStatusRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *APIServerDeployment
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadDeploymentStatusExecute(r)
@@ -290,10 +291,10 @@ func (a *APIServerDeploymentApiService) ReadDeploymentStatusExecute(r ApiReadDep
 
 func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r ApiReadDeploymentStatusRequest) (*APIServerDeployment, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *APIServerDeployment
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *APIServerDeployment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServerDeploymentApiService.ReadDeploymentStatus")
@@ -355,8 +356,8 @@ func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -366,8 +367,8 @@ func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -377,8 +378,8 @@ func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -388,8 +389,8 @@ func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -399,8 +400,8 @@ func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -410,8 +411,8 @@ func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -421,8 +422,8 @@ func (a *APIServerDeploymentApiService) internalReadDeploymentStatusExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // DeviceAuthenticationPolicyApiService DeviceAuthenticationPolicyApi service
 type DeviceAuthenticationPolicyApiService service
 
 type ApiCreateDeviceAuthenticationPoliciesRequest struct {
-	ctx context.Context
-	ApiService *DeviceAuthenticationPolicyApiService
-	environmentID string
-	contentType *EnumDeviceAuthenticationPolicyPostContentType
+	ctx                            context.Context
+	ApiService                     *DeviceAuthenticationPolicyApiService
+	environmentID                  string
+	contentType                    *EnumDeviceAuthenticationPolicyPostContentType
 	deviceAuthenticationPolicyPost *DeviceAuthenticationPolicyPost
 }
 
@@ -48,27 +47,28 @@ func (r ApiCreateDeviceAuthenticationPoliciesRequest) Execute() (*DeviceAuthenti
 /*
 CreateDeviceAuthenticationPolicies CREATE Device Authentication Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateDeviceAuthenticationPoliciesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateDeviceAuthenticationPoliciesRequest
 */
 func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPolicies(ctx context.Context, environmentID string) ApiCreateDeviceAuthenticationPoliciesRequest {
 	return ApiCreateDeviceAuthenticationPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return DeviceAuthenticationPolicyPostResponse
+//
+//	@return DeviceAuthenticationPolicyPostResponse
 func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *DeviceAuthenticationPolicyPostResponse
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateDeviceAuthenticationPoliciesExecute(r)
@@ -80,10 +80,10 @@ func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPolicie
 
 func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeviceAuthenticationPolicyPostResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeviceAuthenticationPolicyPostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.CreateDeviceAuthenticationPolicies")
@@ -149,8 +149,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -160,8 +160,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -171,8 +171,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -182,8 +182,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -193,8 +193,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -204,8 +204,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -215,8 +215,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -226,8 +226,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -246,9 +246,9 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 }
 
 type ApiDeleteDeviceAuthenticationPolicyRequest struct {
-	ctx context.Context
-	ApiService *DeviceAuthenticationPolicyApiService
-	environmentID string
+	ctx                          context.Context
+	ApiService                   *DeviceAuthenticationPolicyApiService
+	environmentID                string
 	deviceAuthenticationPolicyID string
 }
 
@@ -259,16 +259,16 @@ func (r ApiDeleteDeviceAuthenticationPolicyRequest) Execute() (*http.Response, e
 /*
 DeleteDeviceAuthenticationPolicy DELETE Device Authentication Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param deviceAuthenticationPolicyID
- @return ApiDeleteDeviceAuthenticationPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param deviceAuthenticationPolicyID
+	@return ApiDeleteDeviceAuthenticationPolicyRequest
 */
 func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicy(ctx context.Context, environmentID string, deviceAuthenticationPolicyID string) ApiDeleteDeviceAuthenticationPolicyRequest {
 	return ApiDeleteDeviceAuthenticationPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:                   a,
+		ctx:                          ctx,
+		environmentID:                environmentID,
 		deviceAuthenticationPolicyID: deviceAuthenticationPolicyID,
 	}
 }
@@ -276,10 +276,10 @@ func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicy(
 // Execute executes the request
 func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteDeviceAuthenticationPolicyExecute(r)
@@ -292,9 +292,9 @@ func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicyE
 
 func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.DeleteDeviceAuthenticationPolicy")
@@ -356,8 +356,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -367,8 +367,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -378,8 +378,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -389,8 +389,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -400,8 +400,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -411,8 +411,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -422,8 +422,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -433,8 +433,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 }
 
 type ApiReadDeviceAuthenticationPoliciesRequest struct {
-	ctx context.Context
-	ApiService *DeviceAuthenticationPolicyApiService
+	ctx           context.Context
+	ApiService    *DeviceAuthenticationPolicyApiService
 	environmentID string
 }
 
@@ -449,33 +449,35 @@ func (r ApiReadDeviceAuthenticationPoliciesRequest) ExecuteInitialPage() (*ReadD
 /*
 ReadDeviceAuthenticationPolicies READ Device Authentication Policies
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadDeviceAuthenticationPoliciesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadDeviceAuthenticationPoliciesRequest
 */
 func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPolicies(ctx context.Context, environmentID string) ApiReadDeviceAuthenticationPoliciesRequest {
 	return ApiReadDeviceAuthenticationPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadDeviceAuthenticationPolicies200Response
+//
+//	@return ReadDeviceAuthenticationPolicies200Response
 func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) PagedIterator[ReadDeviceAuthenticationPolicies200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadDeviceAuthenticationPolicies200Response
+//
+//	@return ReadDeviceAuthenticationPolicies200Response
 func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecuteInitialPage(r ApiReadDeviceAuthenticationPoliciesRequest) (*ReadDeviceAuthenticationPolicies200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadDeviceAuthenticationPolicies200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadDeviceAuthenticationPoliciesExecute(r)
@@ -487,10 +489,10 @@ func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesE
 
 func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*ReadDeviceAuthenticationPolicies200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadDeviceAuthenticationPolicies200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadDeviceAuthenticationPolicies200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.ReadDeviceAuthenticationPolicies")
@@ -551,8 +553,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -562,8 +564,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -573,8 +575,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -584,8 +586,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -595,8 +597,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -606,8 +608,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -617,8 +619,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -637,9 +639,9 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 }
 
 type ApiReadOneDeviceAuthenticationPolicyRequest struct {
-	ctx context.Context
-	ApiService *DeviceAuthenticationPolicyApiService
-	environmentID string
+	ctx                          context.Context
+	ApiService                   *DeviceAuthenticationPolicyApiService
+	environmentID                string
 	deviceAuthenticationPolicyID string
 }
 
@@ -650,29 +652,30 @@ func (r ApiReadOneDeviceAuthenticationPolicyRequest) Execute() (*DeviceAuthentic
 /*
 ReadOneDeviceAuthenticationPolicy READ One Device Authentication Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param deviceAuthenticationPolicyID
- @return ApiReadOneDeviceAuthenticationPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param deviceAuthenticationPolicyID
+	@return ApiReadOneDeviceAuthenticationPolicyRequest
 */
 func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy(ctx context.Context, environmentID string, deviceAuthenticationPolicyID string) ApiReadOneDeviceAuthenticationPolicyRequest {
 	return ApiReadOneDeviceAuthenticationPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:                   a,
+		ctx:                          ctx,
+		environmentID:                environmentID,
 		deviceAuthenticationPolicyID: deviceAuthenticationPolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return DeviceAuthenticationPolicy
+//
+//	@return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *DeviceAuthenticationPolicy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneDeviceAuthenticationPolicyExecute(r)
@@ -684,10 +687,10 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 
 func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeviceAuthenticationPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeviceAuthenticationPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.ReadOneDeviceAuthenticationPolicy")
@@ -749,8 +752,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -760,8 +763,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -771,8 +774,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -782,8 +785,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -793,8 +796,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -804,8 +807,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -815,8 +818,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -835,11 +838,11 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 }
 
 type ApiUpdateDeviceAuthenticationPolicyRequest struct {
-	ctx context.Context
-	ApiService *DeviceAuthenticationPolicyApiService
-	environmentID string
+	ctx                          context.Context
+	ApiService                   *DeviceAuthenticationPolicyApiService
+	environmentID                string
 	deviceAuthenticationPolicyID string
-	deviceAuthenticationPolicy *DeviceAuthenticationPolicy
+	deviceAuthenticationPolicy   *DeviceAuthenticationPolicy
 }
 
 func (r ApiUpdateDeviceAuthenticationPolicyRequest) DeviceAuthenticationPolicy(deviceAuthenticationPolicy DeviceAuthenticationPolicy) ApiUpdateDeviceAuthenticationPolicyRequest {
@@ -854,29 +857,30 @@ func (r ApiUpdateDeviceAuthenticationPolicyRequest) Execute() (*DeviceAuthentica
 /*
 UpdateDeviceAuthenticationPolicy UPDATE Device Authentication Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param deviceAuthenticationPolicyID
- @return ApiUpdateDeviceAuthenticationPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param deviceAuthenticationPolicyID
+	@return ApiUpdateDeviceAuthenticationPolicyRequest
 */
 func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicy(ctx context.Context, environmentID string, deviceAuthenticationPolicyID string) ApiUpdateDeviceAuthenticationPolicyRequest {
 	return ApiUpdateDeviceAuthenticationPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:                   a,
+		ctx:                          ctx,
+		environmentID:                environmentID,
 		deviceAuthenticationPolicyID: deviceAuthenticationPolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return DeviceAuthenticationPolicy
+//
+//	@return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *DeviceAuthenticationPolicy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateDeviceAuthenticationPolicyExecute(r)
@@ -888,10 +892,10 @@ func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicyE
 
 func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeviceAuthenticationPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeviceAuthenticationPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.UpdateDeviceAuthenticationPolicy")
@@ -955,8 +959,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -966,8 +970,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -977,8 +981,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -988,8 +992,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -999,8 +1003,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1010,8 +1014,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1021,8 +1025,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

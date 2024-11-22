@@ -19,9 +19,9 @@ var _ MappedNullable = &RiskPredictorVelocityAllOfUse{}
 
 // RiskPredictorVelocityAllOfUse struct for RiskPredictorVelocityAllOfUse
 type RiskPredictorVelocityAllOfUse struct {
-	High *float32 `json:"high,omitempty"`
-	Medium *float32 `json:"medium,omitempty"`
-	Type *EnumPredictorVelocityUseType `json:"type,omitempty"`
+	High   *float32                      `json:"high,omitempty"`
+	Medium *float32                      `json:"medium,omitempty"`
+	Type   *EnumPredictorVelocityUseType `json:"type,omitempty"`
 }
 
 // NewRiskPredictorVelocityAllOfUse instantiates a new RiskPredictorVelocityAllOfUse object
@@ -138,7 +138,7 @@ func (o *RiskPredictorVelocityAllOfUse) SetType(v EnumPredictorVelocityUseType) 
 }
 
 func (o RiskPredictorVelocityAllOfUse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableRiskPredictorVelocityAllOfUse) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

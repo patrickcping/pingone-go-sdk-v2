@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadRiskPolicySets200Response{}
 
 // ReadRiskPolicySets200Response struct for ReadRiskPolicySets200Response
 type ReadRiskPolicySets200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue           `json:"_links,omitempty"`
 	Embedded *ReadRiskPolicySets200ResponseEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Count    *float32                               `json:"count,omitempty"`
+	Size     *float32                               `json:"size,omitempty"`
 }
 
 // NewReadRiskPolicySets200Response instantiates a new ReadRiskPolicySets200Response object
@@ -246,7 +246,7 @@ func (o *ReadRiskPolicySets200Response) SetSize(v float32) {
 }
 
 func (o ReadRiskPolicySets200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadRiskPolicySets200Response) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

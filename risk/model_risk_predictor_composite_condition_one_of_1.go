@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,14 +21,14 @@ var _ MappedNullable = &RiskPredictorCompositeConditionOneOf1{}
 
 // RiskPredictorCompositeConditionOneOf1 struct for RiskPredictorCompositeConditionOneOf1
 type RiskPredictorCompositeConditionOneOf1 struct {
-	Equals *RiskPredictorCompositeConditionOneOf1Equals `json:"equals,omitempty"`
-	NotEquals *RiskPredictorCompositeConditionOneOf1Equals `json:"notEquals,omitempty"`
-	Greater *int32 `json:"greater,omitempty"`
-	GreaterEquals *int32 `json:"greaterEquals,omitempty"`
-	Lower *int32 `json:"lower,omitempty"`
-	LowerEquals *int32 `json:"lowerEquals,omitempty"`
-	Value string `json:"value"`
-	Type *EnumPredictorCompositeConditionType `json:"type,omitempty"`
+	Equals        *RiskPredictorCompositeConditionOneOf1Equals `json:"equals,omitempty"`
+	NotEquals     *RiskPredictorCompositeConditionOneOf1Equals `json:"notEquals,omitempty"`
+	Greater       *int32                                       `json:"greater,omitempty"`
+	GreaterEquals *int32                                       `json:"greaterEquals,omitempty"`
+	Lower         *int32                                       `json:"lower,omitempty"`
+	LowerEquals   *int32                                       `json:"lowerEquals,omitempty"`
+	Value         string                                       `json:"value"`
+	Type          *EnumPredictorCompositeConditionType         `json:"type,omitempty"`
 }
 
 type _RiskPredictorCompositeConditionOneOf1 RiskPredictorCompositeConditionOneOf1
@@ -300,7 +300,7 @@ func (o *RiskPredictorCompositeConditionOneOf1) SetType(v EnumPredictorComposite
 }
 
 func (o RiskPredictorCompositeConditionOneOf1) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,10 +347,10 @@ func (o *RiskPredictorCompositeConditionOneOf1) UnmarshalJSON(data []byte) (err 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -406,5 +406,3 @@ func (v *NullableRiskPredictorCompositeConditionOneOf1) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

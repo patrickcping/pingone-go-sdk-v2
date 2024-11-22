@@ -107,7 +107,7 @@ func (o *RiskEvaluationEventTargetResource) SetName(v string) {
 }
 
 func (o RiskEvaluationEventTargetResource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,5 +160,3 @@ func (v *NullableRiskEvaluationEventTargetResource) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

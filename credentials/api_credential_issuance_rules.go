@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 // CredentialIssuanceRulesApiService CredentialIssuanceRulesApi service
 type CredentialIssuanceRulesApiService service
 
 type ApiApplyCredentialIssuanceRuleStagedChangesRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
-	credentialIssuanceRuleID string
-	contentType *string
+	ctx                                context.Context
+	ApiService                         *CredentialIssuanceRulesApiService
+	environmentID                      string
+	credentialTypeID                   string
+	credentialIssuanceRuleID           string
+	contentType                        *string
 	credentialIssuanceRuleStagedChange *CredentialIssuanceRuleStagedChange
 }
 
@@ -50,31 +49,32 @@ func (r ApiApplyCredentialIssuanceRuleStagedChangesRequest) Execute() (*Credenti
 /*
 ApplyCredentialIssuanceRuleStagedChanges Apply Credential Issuance Rule Staged Changes
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @param credentialIssuanceRuleID
- @return ApiApplyCredentialIssuanceRuleStagedChangesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@param credentialIssuanceRuleID
+	@return ApiApplyCredentialIssuanceRuleStagedChangesRequest
 */
 func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedChanges(ctx context.Context, environmentID string, credentialTypeID string, credentialIssuanceRuleID string) ApiApplyCredentialIssuanceRuleStagedChangesRequest {
 	return ApiApplyCredentialIssuanceRuleStagedChangesRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		credentialTypeID: credentialTypeID,
+		ApiService:               a,
+		ctx:                      ctx,
+		environmentID:            environmentID,
+		credentialTypeID:         credentialTypeID,
 		credentialIssuanceRuleID: credentialIssuanceRuleID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialIssuanceRuleStagedChange
+//
+//	@return CredentialIssuanceRuleStagedChange
 func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedChangesExecute(r ApiApplyCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialIssuanceRuleStagedChange
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalApplyCredentialIssuanceRuleStagedChangesExecute(r)
@@ -86,10 +86,10 @@ func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedCha
 
 func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleStagedChangesExecute(r ApiApplyCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialIssuanceRuleStagedChange
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialIssuanceRuleStagedChange
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.ApplyCredentialIssuanceRuleStagedChanges")
@@ -157,8 +157,8 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -168,8 +168,8 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -179,8 +179,8 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -190,8 +190,8 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -201,8 +201,8 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -212,8 +212,8 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -223,8 +223,8 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -243,10 +243,10 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 }
 
 type ApiCreateCredentialIssuanceRuleRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
+	ctx                    context.Context
+	ApiService             *CredentialIssuanceRulesApiService
+	environmentID          string
+	credentialTypeID       string
 	credentialIssuanceRule *CredentialIssuanceRule
 }
 
@@ -262,29 +262,30 @@ func (r ApiCreateCredentialIssuanceRuleRequest) Execute() (*CredentialIssuanceRu
 /*
 CreateCredentialIssuanceRule Create Credential Issuance Rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @return ApiCreateCredentialIssuanceRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@return ApiCreateCredentialIssuanceRuleRequest
 */
 func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRule(ctx context.Context, environmentID string, credentialTypeID string) ApiCreateCredentialIssuanceRuleRequest {
 	return ApiCreateCredentialIssuanceRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
 		credentialTypeID: credentialTypeID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialIssuanceRule
+//
+//	@return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRuleExecute(r ApiCreateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialIssuanceRule
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateCredentialIssuanceRuleExecute(r)
@@ -296,10 +297,10 @@ func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRuleExecute(
 
 func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRuleExecute(r ApiCreateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialIssuanceRule
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialIssuanceRule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.CreateCredentialIssuanceRule")
@@ -363,8 +364,8 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -374,8 +375,8 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -385,8 +386,8 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -396,8 +397,8 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -407,8 +408,8 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -418,8 +419,8 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -429,8 +430,8 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -449,10 +450,10 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 }
 
 type ApiDeleteCredentialIssuanceRuleRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
+	ctx                      context.Context
+	ApiService               *CredentialIssuanceRulesApiService
+	environmentID            string
+	credentialTypeID         string
 	credentialIssuanceRuleID string
 }
 
@@ -463,18 +464,18 @@ func (r ApiDeleteCredentialIssuanceRuleRequest) Execute() (*http.Response, error
 /*
 DeleteCredentialIssuanceRule Delete Credential Issuance Rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @param credentialIssuanceRuleID
- @return ApiDeleteCredentialIssuanceRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@param credentialIssuanceRuleID
+	@return ApiDeleteCredentialIssuanceRuleRequest
 */
 func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRule(ctx context.Context, environmentID string, credentialTypeID string, credentialIssuanceRuleID string) ApiDeleteCredentialIssuanceRuleRequest {
 	return ApiDeleteCredentialIssuanceRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		credentialTypeID: credentialTypeID,
+		ApiService:               a,
+		ctx:                      ctx,
+		environmentID:            environmentID,
+		credentialTypeID:         credentialTypeID,
 		credentialIssuanceRuleID: credentialIssuanceRuleID,
 	}
 }
@@ -482,10 +483,10 @@ func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRule(ctx con
 // Execute executes the request
 func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRuleExecute(r ApiDeleteCredentialIssuanceRuleRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteCredentialIssuanceRuleExecute(r)
@@ -498,9 +499,9 @@ func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRuleExecute(
 
 func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRuleExecute(r ApiDeleteCredentialIssuanceRuleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.DeleteCredentialIssuanceRule")
@@ -563,8 +564,8 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -574,8 +575,8 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -585,8 +586,8 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -596,8 +597,8 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -607,8 +608,8 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -618,8 +619,8 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -629,8 +630,8 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -640,9 +641,9 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 }
 
 type ApiReadAllCredentialIssuanceRulesRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
+	ctx              context.Context
+	ApiService       *CredentialIssuanceRulesApiService
+	environmentID    string
 	credentialTypeID string
 }
 
@@ -657,35 +658,37 @@ func (r ApiReadAllCredentialIssuanceRulesRequest) ExecuteInitialPage() (*ReadAll
 /*
 ReadAllCredentialIssuanceRules Read All Credential Issuance Rules
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @return ApiReadAllCredentialIssuanceRulesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@return ApiReadAllCredentialIssuanceRulesRequest
 */
 func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRules(ctx context.Context, environmentID string, credentialTypeID string) ApiReadAllCredentialIssuanceRulesRequest {
 	return ApiReadAllCredentialIssuanceRulesRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
 		credentialTypeID: credentialTypeID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllCredentialIssuanceRules200Response
+//
+//	@return ReadAllCredentialIssuanceRules200Response
 func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) PagedIterator[ReadAllCredentialIssuanceRules200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllCredentialIssuanceRules200Response
+//
+//	@return ReadAllCredentialIssuanceRules200Response
 func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecuteInitialPage(r ApiReadAllCredentialIssuanceRulesRequest) (*ReadAllCredentialIssuanceRules200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllCredentialIssuanceRules200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllCredentialIssuanceRulesExecute(r)
@@ -697,10 +700,10 @@ func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecut
 
 func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) (*ReadAllCredentialIssuanceRules200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllCredentialIssuanceRules200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllCredentialIssuanceRules200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.ReadAllCredentialIssuanceRules")
@@ -762,8 +765,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -773,8 +776,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -784,8 +787,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -795,8 +798,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -806,8 +809,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -817,8 +820,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -828,8 +831,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -848,10 +851,10 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 }
 
 type ApiReadCredentialIssuanceRuleStagedChangesRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
+	ctx                      context.Context
+	ApiService               *CredentialIssuanceRulesApiService
+	environmentID            string
+	credentialTypeID         string
 	credentialIssuanceRuleID string
 }
 
@@ -862,31 +865,32 @@ func (r ApiReadCredentialIssuanceRuleStagedChangesRequest) Execute() (*Credentia
 /*
 ReadCredentialIssuanceRuleStagedChanges Read Credential Issuance Rule Staged Changes
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @param credentialIssuanceRuleID
- @return ApiReadCredentialIssuanceRuleStagedChangesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@param credentialIssuanceRuleID
+	@return ApiReadCredentialIssuanceRuleStagedChangesRequest
 */
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChanges(ctx context.Context, environmentID string, credentialTypeID string, credentialIssuanceRuleID string) ApiReadCredentialIssuanceRuleStagedChangesRequest {
 	return ApiReadCredentialIssuanceRuleStagedChangesRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		credentialTypeID: credentialTypeID,
+		ApiService:               a,
+		ctx:                      ctx,
+		environmentID:            environmentID,
+		credentialTypeID:         credentialTypeID,
 		credentialIssuanceRuleID: credentialIssuanceRuleID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialIssuanceRuleStagedChange
+//
+//	@return CredentialIssuanceRuleStagedChange
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChangesExecute(r ApiReadCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialIssuanceRuleStagedChange
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadCredentialIssuanceRuleStagedChangesExecute(r)
@@ -898,10 +902,10 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChan
 
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleStagedChangesExecute(r ApiReadCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialIssuanceRuleStagedChange
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialIssuanceRuleStagedChange
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.ReadCredentialIssuanceRuleStagedChanges")
@@ -964,8 +968,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -975,8 +979,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -986,8 +990,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -997,8 +1001,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1008,8 +1012,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1019,8 +1023,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1030,8 +1034,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1050,10 +1054,10 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 }
 
 type ApiReadCredentialIssuanceRuleUsageCountsRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
+	ctx                      context.Context
+	ApiService               *CredentialIssuanceRulesApiService
+	environmentID            string
+	credentialTypeID         string
 	credentialIssuanceRuleID string
 }
 
@@ -1064,31 +1068,32 @@ func (r ApiReadCredentialIssuanceRuleUsageCountsRequest) Execute() (*CredentialI
 /*
 ReadCredentialIssuanceRuleUsageCounts Read Credential Issuance Rule Usage Counts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @param credentialIssuanceRuleID
- @return ApiReadCredentialIssuanceRuleUsageCountsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@param credentialIssuanceRuleID
+	@return ApiReadCredentialIssuanceRuleUsageCountsRequest
 */
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCounts(ctx context.Context, environmentID string, credentialTypeID string, credentialIssuanceRuleID string) ApiReadCredentialIssuanceRuleUsageCountsRequest {
 	return ApiReadCredentialIssuanceRuleUsageCountsRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		credentialTypeID: credentialTypeID,
+		ApiService:               a,
+		ctx:                      ctx,
+		environmentID:            environmentID,
+		credentialTypeID:         credentialTypeID,
 		credentialIssuanceRuleID: credentialIssuanceRuleID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialIssuanceRuleUsageCounts
+//
+//	@return CredentialIssuanceRuleUsageCounts
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCountsExecute(r ApiReadCredentialIssuanceRuleUsageCountsRequest) (*CredentialIssuanceRuleUsageCounts, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialIssuanceRuleUsageCounts
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadCredentialIssuanceRuleUsageCountsExecute(r)
@@ -1100,10 +1105,10 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCount
 
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUsageCountsExecute(r ApiReadCredentialIssuanceRuleUsageCountsRequest) (*CredentialIssuanceRuleUsageCounts, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialIssuanceRuleUsageCounts
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialIssuanceRuleUsageCounts
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.ReadCredentialIssuanceRuleUsageCounts")
@@ -1166,8 +1171,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1177,8 +1182,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1188,8 +1193,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1199,8 +1204,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1210,8 +1215,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1221,8 +1226,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1232,8 +1237,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1252,10 +1257,10 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 }
 
 type ApiReadCredentialIssuanceRuleUsageDetailsRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
+	ctx                      context.Context
+	ApiService               *CredentialIssuanceRulesApiService
+	environmentID            string
+	credentialTypeID         string
 	credentialIssuanceRuleID string
 }
 
@@ -1266,31 +1271,32 @@ func (r ApiReadCredentialIssuanceRuleUsageDetailsRequest) Execute() (*Credential
 /*
 ReadCredentialIssuanceRuleUsageDetails Read Credential Issuance Rule Usage Details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @param credentialIssuanceRuleID
- @return ApiReadCredentialIssuanceRuleUsageDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@param credentialIssuanceRuleID
+	@return ApiReadCredentialIssuanceRuleUsageDetailsRequest
 */
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetails(ctx context.Context, environmentID string, credentialTypeID string, credentialIssuanceRuleID string) ApiReadCredentialIssuanceRuleUsageDetailsRequest {
 	return ApiReadCredentialIssuanceRuleUsageDetailsRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		credentialTypeID: credentialTypeID,
+		ApiService:               a,
+		ctx:                      ctx,
+		environmentID:            environmentID,
+		credentialTypeID:         credentialTypeID,
 		credentialIssuanceRuleID: credentialIssuanceRuleID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialIssuanceRuleUsageDetails
+//
+//	@return CredentialIssuanceRuleUsageDetails
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetailsExecute(r ApiReadCredentialIssuanceRuleUsageDetailsRequest) (*CredentialIssuanceRuleUsageDetails, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialIssuanceRuleUsageDetails
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadCredentialIssuanceRuleUsageDetailsExecute(r)
@@ -1302,10 +1308,10 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetai
 
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUsageDetailsExecute(r ApiReadCredentialIssuanceRuleUsageDetailsRequest) (*CredentialIssuanceRuleUsageDetails, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialIssuanceRuleUsageDetails
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialIssuanceRuleUsageDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.ReadCredentialIssuanceRuleUsageDetails")
@@ -1368,8 +1374,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1379,8 +1385,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1390,8 +1396,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1401,8 +1407,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1412,8 +1418,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1423,8 +1429,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1434,8 +1440,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1454,10 +1460,10 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 }
 
 type ApiReadOneCredentialIssuanceRuleRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
+	ctx                      context.Context
+	ApiService               *CredentialIssuanceRulesApiService
+	environmentID            string
+	credentialTypeID         string
 	credentialIssuanceRuleID string
 }
 
@@ -1468,31 +1474,32 @@ func (r ApiReadOneCredentialIssuanceRuleRequest) Execute() (*CredentialIssuanceR
 /*
 ReadOneCredentialIssuanceRule Read One Credential Issuance Rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @param credentialIssuanceRuleID
- @return ApiReadOneCredentialIssuanceRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@param credentialIssuanceRuleID
+	@return ApiReadOneCredentialIssuanceRuleRequest
 */
 func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRule(ctx context.Context, environmentID string, credentialTypeID string, credentialIssuanceRuleID string) ApiReadOneCredentialIssuanceRuleRequest {
 	return ApiReadOneCredentialIssuanceRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		credentialTypeID: credentialTypeID,
+		ApiService:               a,
+		ctx:                      ctx,
+		environmentID:            environmentID,
+		credentialTypeID:         credentialTypeID,
 		credentialIssuanceRuleID: credentialIssuanceRuleID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialIssuanceRule
+//
+//	@return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRuleExecute(r ApiReadOneCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialIssuanceRule
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneCredentialIssuanceRuleExecute(r)
@@ -1504,10 +1511,10 @@ func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRuleExecute
 
 func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRuleExecute(r ApiReadOneCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialIssuanceRule
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialIssuanceRule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.ReadOneCredentialIssuanceRule")
@@ -1570,8 +1577,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1581,8 +1588,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1592,8 +1599,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1603,8 +1610,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1614,8 +1621,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1625,8 +1632,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1636,8 +1643,8 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1656,12 +1663,12 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 }
 
 type ApiUpdateCredentialIssuanceRuleRequest struct {
-	ctx context.Context
-	ApiService *CredentialIssuanceRulesApiService
-	environmentID string
-	credentialTypeID string
+	ctx                      context.Context
+	ApiService               *CredentialIssuanceRulesApiService
+	environmentID            string
+	credentialTypeID         string
 	credentialIssuanceRuleID string
-	credentialIssuanceRule *CredentialIssuanceRule
+	credentialIssuanceRule   *CredentialIssuanceRule
 }
 
 func (r ApiUpdateCredentialIssuanceRuleRequest) CredentialIssuanceRule(credentialIssuanceRule CredentialIssuanceRule) ApiUpdateCredentialIssuanceRuleRequest {
@@ -1676,31 +1683,32 @@ func (r ApiUpdateCredentialIssuanceRuleRequest) Execute() (*CredentialIssuanceRu
 /*
 UpdateCredentialIssuanceRule Update Credential Issuance Rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @param credentialIssuanceRuleID
- @return ApiUpdateCredentialIssuanceRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@param credentialIssuanceRuleID
+	@return ApiUpdateCredentialIssuanceRuleRequest
 */
 func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRule(ctx context.Context, environmentID string, credentialTypeID string, credentialIssuanceRuleID string) ApiUpdateCredentialIssuanceRuleRequest {
 	return ApiUpdateCredentialIssuanceRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		credentialTypeID: credentialTypeID,
+		ApiService:               a,
+		ctx:                      ctx,
+		environmentID:            environmentID,
+		credentialTypeID:         credentialTypeID,
 		credentialIssuanceRuleID: credentialIssuanceRuleID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialIssuanceRule
+//
+//	@return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRuleExecute(r ApiUpdateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialIssuanceRule
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateCredentialIssuanceRuleExecute(r)
@@ -1712,10 +1720,10 @@ func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRuleExecute(
 
 func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRuleExecute(r ApiUpdateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialIssuanceRule
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialIssuanceRule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.UpdateCredentialIssuanceRule")
@@ -1780,8 +1788,8 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1791,8 +1799,8 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1802,8 +1810,8 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1813,8 +1821,8 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1824,8 +1832,8 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1835,8 +1843,8 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1846,8 +1854,8 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

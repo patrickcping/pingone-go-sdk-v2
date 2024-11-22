@@ -19,10 +19,10 @@ var _ MappedNullable = &ReadAllVoicePhraseContents200Response{}
 
 // ReadAllVoicePhraseContents200Response struct for ReadAllVoicePhraseContents200Response
 type ReadAllVoicePhraseContents200Response struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links    map[string]LinksHATEOASValue                   `json:"_links,omitempty"`
 	Embedded *ReadAllVoicePhraseContents200ResponseEmbedded `json:"_embedded,omitempty"`
-	Size *float32 `json:"size,omitempty"`
-	Count *float32 `json:"count,omitempty"`
+	Size     *float32                                       `json:"size,omitempty"`
+	Count    *float32                                       `json:"count,omitempty"`
 }
 
 // NewReadAllVoicePhraseContents200Response instantiates a new ReadAllVoicePhraseContents200Response object
@@ -246,7 +246,7 @@ func (o *ReadAllVoicePhraseContents200Response) SetCount(v float32) {
 }
 
 func (o ReadAllVoicePhraseContents200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,5 +305,3 @@ func (v *NullableReadAllVoicePhraseContents200Response) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

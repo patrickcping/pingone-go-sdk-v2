@@ -13,14 +13,15 @@ package mfa
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // MFAPushCredentialRequest - struct for MFAPushCredentialRequest
 type MFAPushCredentialRequest struct {
-	MFAPushCredentialAPNS *MFAPushCredentialAPNS
-	MFAPushCredentialFCM *MFAPushCredentialFCM
+	MFAPushCredentialAPNS      *MFAPushCredentialAPNS
+	MFAPushCredentialFCM       *MFAPushCredentialFCM
 	MFAPushCredentialFCMHTTPV1 *MFAPushCredentialFCMHTTPV1
-	MFAPushCredentialHMS *MFAPushCredentialHMS
+	MFAPushCredentialHMS       *MFAPushCredentialHMS
 }
 
 // MFAPushCredentialAPNSAsMFAPushCredentialRequest is a convenience function that returns MFAPushCredentialAPNS wrapped in MFAPushCredentialRequest
@@ -50,7 +51,6 @@ func MFAPushCredentialHMSAsMFAPushCredentialRequest(v *MFAPushCredentialHMS) MFA
 		MFAPushCredentialHMS: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *MFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
@@ -117,7 +117,7 @@ func (src MFAPushCredentialRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *MFAPushCredentialRequest) GetActualInstance() (interface{}) {
+func (obj *MFAPushCredentialRequest) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -176,5 +176,3 @@ func (v *NullableMFAPushCredentialRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

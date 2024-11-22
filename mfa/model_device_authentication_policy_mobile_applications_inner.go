@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,16 +22,16 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInner{}
 // DeviceAuthenticationPolicyMobileApplicationsInner struct for DeviceAuthenticationPolicyMobileApplicationsInner
 type DeviceAuthenticationPolicyMobileApplicationsInner struct {
 	// The application's ID.
-	Id string `json:"id"`
-	Push *DeviceAuthenticationPolicyMobileApplicationsInnerPush `json:"push,omitempty"`
-	PushTimeout *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout `json:"pushTimeout,omitempty"`
-	PairingKeyLifetime *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime `json:"pairingKeyLifetime,omitempty"`
-	PushLimit *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit `json:"pushLimit,omitempty"`
-	Otp *DeviceAuthenticationPolicyMobileApplicationsInnerOtp `json:"otp,omitempty"`
+	Id                  string                                                                `json:"id"`
+	Push                *DeviceAuthenticationPolicyMobileApplicationsInnerPush                `json:"push,omitempty"`
+	PushTimeout         *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout         `json:"pushTimeout,omitempty"`
+	PairingKeyLifetime  *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime  `json:"pairingKeyLifetime,omitempty"`
+	PushLimit           *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit           `json:"pushLimit,omitempty"`
+	Otp                 *DeviceAuthenticationPolicyMobileApplicationsInnerOtp                 `json:"otp,omitempty"`
 	DeviceAuthorization *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization `json:"deviceAuthorization,omitempty"`
-	AutoEnrollment *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment `json:"autoEnrollment,omitempty"`
+	AutoEnrollment      *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment      `json:"autoEnrollment,omitempty"`
 	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
-	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
+	PairingDisabled    *bool                                        `json:"pairingDisabled,omitempty"`
 	IntegrityDetection *EnumMFADevicePolicyMobileIntegrityDetection `json:"integrityDetection,omitempty"`
 }
 
@@ -368,7 +368,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetIntegrityDetectio
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -421,10 +421,10 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInner) UnmarshalJSON(data [
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -480,5 +480,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInner) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

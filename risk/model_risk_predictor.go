@@ -13,24 +13,25 @@ package risk
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // RiskPredictor - struct for RiskPredictor
 type RiskPredictor struct {
 	RiskPredictorAdversaryInTheMiddle *RiskPredictorAdversaryInTheMiddle
-	RiskPredictorAnonymousNetwork *RiskPredictorAnonymousNetwork
-	RiskPredictorBotDetection *RiskPredictorBotDetection
-	RiskPredictorCommon *RiskPredictorCommon
-	RiskPredictorComposite *RiskPredictorComposite
-	RiskPredictorCustom *RiskPredictorCustom
-	RiskPredictorDevice *RiskPredictorDevice
-	RiskPredictorEmailReputation *RiskPredictorEmailReputation
-	RiskPredictorGeovelocity *RiskPredictorGeovelocity
-	RiskPredictorIPReputation *RiskPredictorIPReputation
-	RiskPredictorTrafficAnomaly *RiskPredictorTrafficAnomaly
-	RiskPredictorUserLocationAnomaly *RiskPredictorUserLocationAnomaly
-	RiskPredictorUserRiskBehavior *RiskPredictorUserRiskBehavior
-	RiskPredictorVelocity *RiskPredictorVelocity
+	RiskPredictorAnonymousNetwork     *RiskPredictorAnonymousNetwork
+	RiskPredictorBotDetection         *RiskPredictorBotDetection
+	RiskPredictorCommon               *RiskPredictorCommon
+	RiskPredictorComposite            *RiskPredictorComposite
+	RiskPredictorCustom               *RiskPredictorCustom
+	RiskPredictorDevice               *RiskPredictorDevice
+	RiskPredictorEmailReputation      *RiskPredictorEmailReputation
+	RiskPredictorGeovelocity          *RiskPredictorGeovelocity
+	RiskPredictorIPReputation         *RiskPredictorIPReputation
+	RiskPredictorTrafficAnomaly       *RiskPredictorTrafficAnomaly
+	RiskPredictorUserLocationAnomaly  *RiskPredictorUserLocationAnomaly
+	RiskPredictorUserRiskBehavior     *RiskPredictorUserRiskBehavior
+	RiskPredictorVelocity             *RiskPredictorVelocity
 }
 
 // RiskPredictorAdversaryInTheMiddleAsRiskPredictor is a convenience function that returns RiskPredictorAdversaryInTheMiddle wrapped in RiskPredictor
@@ -130,7 +131,6 @@ func RiskPredictorVelocityAsRiskPredictor(v *RiskPredictorVelocity) RiskPredicto
 		RiskPredictorVelocity: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
@@ -283,7 +283,7 @@ func (src RiskPredictor) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RiskPredictor) GetActualInstance() (interface{}) {
+func (obj *RiskPredictor) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -382,5 +382,3 @@ func (v *NullableRiskPredictor) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

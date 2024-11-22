@@ -11,8 +11,8 @@ API version: 2023-07-20
 package verify
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -24,9 +24,9 @@ type GovernmentIdConfiguration struct {
 	// Indicates whether verification should fail if the ID is expired.
 	FailExpiredId *bool `json:"failExpiredId,omitempty"`
 	// Determines whether document authentication is automated, manual, or a combination of both where manual authentication is performed if automated inspection fails. Can be AUTOMATIC, MANUAL, or STEP_UP.
-	InspectionType *EnumInspectionType `json:"inspectionType,omitempty"`
-	Provider *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
-	Retry *ObjectRetry `json:"retry,omitempty"`
+	InspectionType *EnumInspectionType                `json:"inspectionType,omitempty"`
+	Provider       *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
+	Retry          *ObjectRetry                       `json:"retry,omitempty"`
 	// Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED.
 	Verify EnumVerify `json:"verify"`
 }
@@ -204,7 +204,7 @@ func (o *GovernmentIdConfiguration) SetVerify(v EnumVerify) {
 }
 
 func (o GovernmentIdConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,10 +242,10 @@ func (o *GovernmentIdConfiguration) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -301,5 +301,3 @@ func (v *NullableGovernmentIdConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // CredentialTypesApiService CredentialTypesApi service
 type CredentialTypesApiService service
 
 type ApiCreateCredentialTypeRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypesApiService
-	environmentID string
+	ctx            context.Context
+	ApiService     *CredentialTypesApiService
+	environmentID  string
 	credentialType *CredentialType
 }
 
@@ -42,27 +41,28 @@ func (r ApiCreateCredentialTypeRequest) Execute() (*CredentialType, *http.Respon
 /*
 CreateCredentialType Create Credential Type
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateCredentialTypeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateCredentialTypeRequest
 */
 func (a *CredentialTypesApiService) CreateCredentialType(ctx context.Context, environmentID string) ApiCreateCredentialTypeRequest {
 	return ApiCreateCredentialTypeRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialType
+//
+//	@return CredentialType
 func (a *CredentialTypesApiService) CreateCredentialTypeExecute(r ApiCreateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialType
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateCredentialTypeExecute(r)
@@ -74,10 +74,10 @@ func (a *CredentialTypesApiService) CreateCredentialTypeExecute(r ApiCreateCrede
 
 func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCreateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialType
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.CreateCredentialType")
@@ -140,8 +140,8 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -184,8 +184,8 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -195,8 +195,8 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -206,8 +206,8 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -226,9 +226,9 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 }
 
 type ApiDeleteCredentialTypeRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypesApiService
-	environmentID string
+	ctx              context.Context
+	ApiService       *CredentialTypesApiService
+	environmentID    string
 	credentialTypeID string
 }
 
@@ -239,16 +239,16 @@ func (r ApiDeleteCredentialTypeRequest) Execute() (*http.Response, error) {
 /*
 DeleteCredentialType Delete a Credential Type
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @return ApiDeleteCredentialTypeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@return ApiDeleteCredentialTypeRequest
 */
 func (a *CredentialTypesApiService) DeleteCredentialType(ctx context.Context, environmentID string, credentialTypeID string) ApiDeleteCredentialTypeRequest {
 	return ApiDeleteCredentialTypeRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
 		credentialTypeID: credentialTypeID,
 	}
 }
@@ -256,10 +256,10 @@ func (a *CredentialTypesApiService) DeleteCredentialType(ctx context.Context, en
 // Execute executes the request
 func (a *CredentialTypesApiService) DeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteCredentialTypeExecute(r)
@@ -272,9 +272,9 @@ func (a *CredentialTypesApiService) DeleteCredentialTypeExecute(r ApiDeleteCrede
 
 func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.DeleteCredentialType")
@@ -336,8 +336,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -347,8 +347,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -358,8 +358,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -369,8 +369,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -380,8 +380,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -391,8 +391,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -402,8 +402,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -413,8 +413,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 }
 
 type ApiReadAllCredentialTypesRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypesApiService
+	ctx           context.Context
+	ApiService    *CredentialTypesApiService
 	environmentID string
 }
 
@@ -429,33 +429,35 @@ func (r ApiReadAllCredentialTypesRequest) ExecuteInitialPage() (*ReadAllCredenti
 /*
 ReadAllCredentialTypes Read All Credential Types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadAllCredentialTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadAllCredentialTypesRequest
 */
 func (a *CredentialTypesApiService) ReadAllCredentialTypes(ctx context.Context, environmentID string) ApiReadAllCredentialTypesRequest {
 	return ApiReadAllCredentialTypesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllCredentialTypes200Response
+//
+//	@return ReadAllCredentialTypes200Response
 func (a *CredentialTypesApiService) ReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) PagedIterator[ReadAllCredentialTypes200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllCredentialTypes200Response
+//
+//	@return ReadAllCredentialTypes200Response
 func (a *CredentialTypesApiService) ReadAllCredentialTypesExecuteInitialPage(r ApiReadAllCredentialTypesRequest) (*ReadAllCredentialTypes200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllCredentialTypes200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllCredentialTypesExecute(r)
@@ -467,10 +469,10 @@ func (a *CredentialTypesApiService) ReadAllCredentialTypesExecuteInitialPage(r A
 
 func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) (*ReadAllCredentialTypes200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllCredentialTypes200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllCredentialTypes200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.ReadAllCredentialTypes")
@@ -531,8 +533,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -542,8 +544,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -553,8 +555,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -564,8 +566,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -575,8 +577,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -586,8 +588,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -597,8 +599,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -617,9 +619,9 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 }
 
 type ApiReadOneCredentialTypeRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypesApiService
-	environmentID string
+	ctx              context.Context
+	ApiService       *CredentialTypesApiService
+	environmentID    string
 	credentialTypeID string
 }
 
@@ -630,29 +632,30 @@ func (r ApiReadOneCredentialTypeRequest) Execute() (*CredentialType, *http.Respo
 /*
 ReadOneCredentialType Read One Credential Type
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @return ApiReadOneCredentialTypeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@return ApiReadOneCredentialTypeRequest
 */
 func (a *CredentialTypesApiService) ReadOneCredentialType(ctx context.Context, environmentID string, credentialTypeID string) ApiReadOneCredentialTypeRequest {
 	return ApiReadOneCredentialTypeRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
 		credentialTypeID: credentialTypeID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialType
+//
+//	@return CredentialType
 func (a *CredentialTypesApiService) ReadOneCredentialTypeExecute(r ApiReadOneCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialType
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneCredentialTypeExecute(r)
@@ -664,10 +667,10 @@ func (a *CredentialTypesApiService) ReadOneCredentialTypeExecute(r ApiReadOneCre
 
 func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiReadOneCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.ReadOneCredentialType")
@@ -729,8 +732,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -740,8 +743,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -751,8 +754,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -762,8 +765,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -773,8 +776,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -784,8 +787,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -795,8 +798,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -815,11 +818,11 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 }
 
 type ApiUpdateCredentialTypeRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypesApiService
-	environmentID string
+	ctx              context.Context
+	ApiService       *CredentialTypesApiService
+	environmentID    string
 	credentialTypeID string
-	credentialType *CredentialType
+	credentialType   *CredentialType
 }
 
 func (r ApiUpdateCredentialTypeRequest) CredentialType(credentialType CredentialType) ApiUpdateCredentialTypeRequest {
@@ -834,29 +837,30 @@ func (r ApiUpdateCredentialTypeRequest) Execute() (*CredentialType, *http.Respon
 /*
 UpdateCredentialType Update a Credential Type
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param credentialTypeID
- @return ApiUpdateCredentialTypeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param credentialTypeID
+	@return ApiUpdateCredentialTypeRequest
 */
 func (a *CredentialTypesApiService) UpdateCredentialType(ctx context.Context, environmentID string, credentialTypeID string) ApiUpdateCredentialTypeRequest {
 	return ApiUpdateCredentialTypeRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
 		credentialTypeID: credentialTypeID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialType
+//
+//	@return CredentialType
 func (a *CredentialTypesApiService) UpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialType
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateCredentialTypeExecute(r)
@@ -868,10 +872,10 @@ func (a *CredentialTypesApiService) UpdateCredentialTypeExecute(r ApiUpdateCrede
 
 func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialType
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.UpdateCredentialType")
@@ -935,8 +939,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -946,8 +950,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -957,8 +961,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -968,8 +972,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -979,8 +983,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -990,8 +994,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1001,8 +1005,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

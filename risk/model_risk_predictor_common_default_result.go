@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &RiskPredictorCommonDefaultResult{}
 // RiskPredictorCommonDefaultResult This specifies the result assigned to the predictor if the predictor could not be calculated during the risk evaluation. If this field is not provided, and the predictor could not be calculated during risk evaluation, the following options are: If the predictor is used in an override, the override is skipped. In the weighted policy, the predictor will have a weight of 0.
 type RiskPredictorCommonDefaultResult struct {
 	Level *EnumRiskLevel `json:"level,omitempty"`
-	Type EnumResultType `json:"type"`
+	Type  EnumResultType `json:"type"`
 }
 
 type _RiskPredictorCommonDefaultResult RiskPredictorCommonDefaultResult
@@ -102,7 +102,7 @@ func (o *RiskPredictorCommonDefaultResult) SetType(v EnumResultType) {
 }
 
 func (o RiskPredictorCommonDefaultResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,10 +131,10 @@ func (o *RiskPredictorCommonDefaultResult) UnmarshalJSON(data []byte) (err error
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -190,5 +190,3 @@ func (v *NullableRiskPredictorCommonDefaultResult) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

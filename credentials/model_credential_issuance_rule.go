@@ -11,10 +11,10 @@ API version: 2023-06-29
 package credentials
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the CredentialIssuanceRule type satisfies the MappedNullable interface at compile time
@@ -22,18 +22,18 @@ var _ MappedNullable = &CredentialIssuanceRule{}
 
 // CredentialIssuanceRule struct for CredentialIssuanceRule
 type CredentialIssuanceRule struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links      map[string]LinksHATEOASValue     `json:"_links,omitempty"`
 	Automation CredentialIssuanceRuleAutomation `json:"automation"`
 	// A string that specifies the date and time the credential issuance rule was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	CredentialType *CredentialIssuanceRuleCredentialType `json:"credentialType,omitempty"`
+	CreatedAt                *time.Time                                      `json:"createdAt,omitempty"`
+	CredentialType           *CredentialIssuanceRuleCredentialType           `json:"credentialType,omitempty"`
 	DigitalWalletApplication *CredentialIssuanceRuleDigitalWalletApplication `json:"digitalWalletApplication,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Filter *CredentialIssuanceRuleFilter `json:"filter,omitempty"`
+	Environment              *ObjectEnvironment                              `json:"environment,omitempty"`
+	Filter                   *CredentialIssuanceRuleFilter                   `json:"filter,omitempty"`
 	// A string that specifies the identifier (UUID) of the credential issuance rule.
-	Id *string `json:"id,omitempty"`
+	Id           *string                             `json:"id,omitempty"`
 	Notification *CredentialIssuanceRuleNotification `json:"notification,omitempty"`
-	Status EnumCredentialIssuanceRuleStatus `json:"status"`
+	Status       EnumCredentialIssuanceRuleStatus    `json:"status"`
 	// A string that specifies the date and time the credential issuance rule was last updated; can be null.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -471,7 +471,7 @@ func (o *CredentialIssuanceRule) SetUpdatedAt(v time.Time) {
 }
 
 func (o CredentialIssuanceRule) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -526,10 +526,10 @@ func (o *CredentialIssuanceRule) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -585,5 +585,3 @@ func (v *NullableCredentialIssuanceRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

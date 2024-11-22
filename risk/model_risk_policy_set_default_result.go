@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &RiskPolicySetDefaultResult{}
 // RiskPolicySetDefaultResult A result object that specifies the default result returned if none of the conditions in the policy set are evaluated to true. At this time, the defaultResultLevel value must be LOW.
 type RiskPolicySetDefaultResult struct {
 	Level EnumRiskPolicyResultLevel `json:"level"`
-	Type *EnumResultType `json:"type,omitempty"`
+	Type  *EnumResultType           `json:"type,omitempty"`
 }
 
 type _RiskPolicySetDefaultResult RiskPolicySetDefaultResult
@@ -102,7 +102,7 @@ func (o *RiskPolicySetDefaultResult) SetType(v EnumResultType) {
 }
 
 func (o RiskPolicySetDefaultResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,10 +131,10 @@ func (o *RiskPolicySetDefaultResult) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -190,5 +190,3 @@ func (v *NullableRiskPolicySetDefaultResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,8 +11,8 @@ API version: 2023-06-29
 package authorize
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -23,12 +23,12 @@ var _ MappedNullable = &ApplicationRolePermission{}
 type ApplicationRolePermission struct {
 	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The ID of the application resource permission to associate with this role.
-	Id string `json:"id"`
+	Id          string             `json:"id"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Key *string `json:"key,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Key         *string            `json:"key,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	// The action associated with this permission.
-	Action *string `json:"action,omitempty"`
+	Action   *string                            `json:"action,omitempty"`
 	Resource *ApplicationRolePermissionResource `json:"resource,omitempty"`
 }
 
@@ -344,7 +344,7 @@ func (o *ApplicationRolePermission) SetResource(v ApplicationRolePermissionResou
 }
 
 func (o ApplicationRolePermission) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -388,10 +388,10 @@ func (o *ApplicationRolePermission) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -447,5 +447,3 @@ func (v *NullableApplicationRolePermission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,8 +11,8 @@ API version: 2023-07-20
 package verify
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &OTPDeviceConfigurationOtpNotification{}
 
 // OTPDeviceConfigurationOtpNotification OTP notification template configuration.
 type OTPDeviceConfigurationOtpNotification struct {
-	TemplateName string `json:"templateName"`
-	VariantName *string `json:"variantName,omitempty"`
+	TemplateName string  `json:"templateName"`
+	VariantName  *string `json:"variantName,omitempty"`
 }
 
 type _OTPDeviceConfigurationOtpNotification OTPDeviceConfigurationOtpNotification
@@ -102,7 +102,7 @@ func (o *OTPDeviceConfigurationOtpNotification) SetVariantName(v string) {
 }
 
 func (o OTPDeviceConfigurationOtpNotification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,10 +131,10 @@ func (o *OTPDeviceConfigurationOtpNotification) UnmarshalJSON(data []byte) (err 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -190,5 +190,3 @@ func (v *NullableOTPDeviceConfigurationOtpNotification) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

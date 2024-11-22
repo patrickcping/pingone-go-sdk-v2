@@ -11,10 +11,10 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the RiskPredictorUserRiskBehavior type satisfies the MappedNullable interface at compile time
@@ -28,8 +28,8 @@ type RiskPredictorUserRiskBehavior struct {
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
 	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
-	CompactName string `json:"compactName"`
-	Type EnumPredictorType `json:"type"`
+	CompactName string            `json:"compactName"`
+	Type        EnumPredictorType `json:"type"`
 	// A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
@@ -39,9 +39,9 @@ type RiskPredictorUserRiskBehavior struct {
 	// Indicates whether PingOne Risk is licensed for the environment.
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
-	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
+	Deletable       *bool                                             `json:"deletable,omitempty"`
+	Default         *RiskPredictorCommonDefault                       `json:"default,omitempty"`
+	Condition       *RiskPredictorCommonCondition                     `json:"condition,omitempty"`
 	PredictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel `json:"predictionModel"`
 }
 
@@ -528,7 +528,7 @@ func (o *RiskPredictorUserRiskBehavior) SetPredictionModel(v RiskPredictorUserRi
 }
 
 func (o RiskPredictorUserRiskBehavior) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -587,10 +587,10 @@ func (o *RiskPredictorUserRiskBehavior) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -646,5 +646,3 @@ func (v *NullableRiskPredictorUserRiskBehavior) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

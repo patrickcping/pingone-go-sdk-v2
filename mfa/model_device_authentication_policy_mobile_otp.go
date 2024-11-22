@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileOtp{}
 // DeviceAuthenticationPolicyMobileOtp struct for DeviceAuthenticationPolicyMobileOtp
 type DeviceAuthenticationPolicyMobileOtp struct {
 	Failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure"`
-	Window *DeviceAuthenticationPolicyMobileOtpWindow `json:"window,omitempty"`
+	Window  *DeviceAuthenticationPolicyMobileOtpWindow        `json:"window,omitempty"`
 }
 
 type _DeviceAuthenticationPolicyMobileOtp DeviceAuthenticationPolicyMobileOtp
@@ -102,7 +102,7 @@ func (o *DeviceAuthenticationPolicyMobileOtp) SetWindow(v DeviceAuthenticationPo
 }
 
 func (o DeviceAuthenticationPolicyMobileOtp) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,10 +131,10 @@ func (o *DeviceAuthenticationPolicyMobileOtp) UnmarshalJSON(data []byte) (err er
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -190,5 +190,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileOtp) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

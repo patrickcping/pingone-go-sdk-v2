@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // RiskAdvancedPredictorsApiService RiskAdvancedPredictorsApi service
 type RiskAdvancedPredictorsApiService service
 
 type ApiCreateRiskPredictorRequest struct {
-	ctx context.Context
-	ApiService *RiskAdvancedPredictorsApiService
+	ctx           context.Context
+	ApiService    *RiskAdvancedPredictorsApiService
 	environmentID string
 	riskPredictor *RiskPredictor
 }
@@ -42,27 +41,28 @@ func (r ApiCreateRiskPredictorRequest) Execute() (*RiskPredictor, *http.Response
 /*
 CreateRiskPredictor CREATE Risk Predictor
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateRiskPredictorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateRiskPredictorRequest
 */
 func (a *RiskAdvancedPredictorsApiService) CreateRiskPredictor(ctx context.Context, environmentID string) ApiCreateRiskPredictorRequest {
 	return ApiCreateRiskPredictorRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskPredictor
+//
+//	@return RiskPredictor
 func (a *RiskAdvancedPredictorsApiService) CreateRiskPredictorExecute(r ApiCreateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskPredictor
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateRiskPredictorExecute(r)
@@ -74,10 +74,10 @@ func (a *RiskAdvancedPredictorsApiService) CreateRiskPredictorExecute(r ApiCreat
 
 func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r ApiCreateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskPredictor
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskPredictor
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskAdvancedPredictorsApiService.CreateRiskPredictor")
@@ -140,8 +140,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,9 +237,9 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 }
 
 type ApiDeleteRiskAdvancedPredictorRequest struct {
-	ctx context.Context
-	ApiService *RiskAdvancedPredictorsApiService
-	environmentID string
+	ctx             context.Context
+	ApiService      *RiskAdvancedPredictorsApiService
+	environmentID   string
 	riskPredictorID string
 }
 
@@ -250,16 +250,16 @@ func (r ApiDeleteRiskAdvancedPredictorRequest) Execute() (*http.Response, error)
 /*
 DeleteRiskAdvancedPredictor DELETE Risk Advanced Predictor
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskPredictorID
- @return ApiDeleteRiskAdvancedPredictorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskPredictorID
+	@return ApiDeleteRiskAdvancedPredictorRequest
 */
 func (a *RiskAdvancedPredictorsApiService) DeleteRiskAdvancedPredictor(ctx context.Context, environmentID string, riskPredictorID string) ApiDeleteRiskAdvancedPredictorRequest {
 	return ApiDeleteRiskAdvancedPredictorRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
 		riskPredictorID: riskPredictorID,
 	}
 }
@@ -267,10 +267,10 @@ func (a *RiskAdvancedPredictorsApiService) DeleteRiskAdvancedPredictor(ctx conte
 // Execute executes the request
 func (a *RiskAdvancedPredictorsApiService) DeleteRiskAdvancedPredictorExecute(r ApiDeleteRiskAdvancedPredictorRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteRiskAdvancedPredictorExecute(r)
@@ -283,9 +283,9 @@ func (a *RiskAdvancedPredictorsApiService) DeleteRiskAdvancedPredictorExecute(r 
 
 func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorExecute(r ApiDeleteRiskAdvancedPredictorRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskAdvancedPredictorsApiService.DeleteRiskAdvancedPredictor")
@@ -347,8 +347,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -358,8 +358,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -369,8 +369,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -380,8 +380,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -391,8 +391,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -402,8 +402,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -413,8 +413,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -424,8 +424,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 }
 
 type ApiReadAllRiskPredictorsRequest struct {
-	ctx context.Context
-	ApiService *RiskAdvancedPredictorsApiService
+	ctx           context.Context
+	ApiService    *RiskAdvancedPredictorsApiService
 	environmentID string
 }
 
@@ -440,33 +440,35 @@ func (r ApiReadAllRiskPredictorsRequest) ExecuteInitialPage() (*ReadAllRiskPredi
 /*
 ReadAllRiskPredictors READ All Risk Predictors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadAllRiskPredictorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadAllRiskPredictorsRequest
 */
 func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictors(ctx context.Context, environmentID string) ApiReadAllRiskPredictorsRequest {
 	return ApiReadAllRiskPredictorsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllRiskPredictors200Response
+//
+//	@return ReadAllRiskPredictors200Response
 func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) PagedIterator[ReadAllRiskPredictors200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllRiskPredictors200Response
+//
+//	@return ReadAllRiskPredictors200Response
 func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecuteInitialPage(r ApiReadAllRiskPredictorsRequest) (*ReadAllRiskPredictors200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllRiskPredictors200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllRiskPredictorsExecute(r)
@@ -478,10 +480,10 @@ func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecuteInitialPa
 
 func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) (*ReadAllRiskPredictors200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllRiskPredictors200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllRiskPredictors200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskAdvancedPredictorsApiService.ReadAllRiskPredictors")
@@ -542,8 +544,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -553,8 +555,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -564,8 +566,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -575,8 +577,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -586,8 +588,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -597,8 +599,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -608,8 +610,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -628,9 +630,9 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 }
 
 type ApiReadOneRiskPredictorRequest struct {
-	ctx context.Context
-	ApiService *RiskAdvancedPredictorsApiService
-	environmentID string
+	ctx             context.Context
+	ApiService      *RiskAdvancedPredictorsApiService
+	environmentID   string
 	riskPredictorID string
 }
 
@@ -641,29 +643,30 @@ func (r ApiReadOneRiskPredictorRequest) Execute() (*RiskPredictor, *http.Respons
 /*
 ReadOneRiskPredictor READ One Risk Predictor
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskPredictorID
- @return ApiReadOneRiskPredictorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskPredictorID
+	@return ApiReadOneRiskPredictorRequest
 */
 func (a *RiskAdvancedPredictorsApiService) ReadOneRiskPredictor(ctx context.Context, environmentID string, riskPredictorID string) ApiReadOneRiskPredictorRequest {
 	return ApiReadOneRiskPredictorRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
 		riskPredictorID: riskPredictorID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskPredictor
+//
+//	@return RiskPredictor
 func (a *RiskAdvancedPredictorsApiService) ReadOneRiskPredictorExecute(r ApiReadOneRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskPredictor
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneRiskPredictorExecute(r)
@@ -675,10 +678,10 @@ func (a *RiskAdvancedPredictorsApiService) ReadOneRiskPredictorExecute(r ApiRead
 
 func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r ApiReadOneRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskPredictor
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskPredictor
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskAdvancedPredictorsApiService.ReadOneRiskPredictor")
@@ -740,8 +743,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -751,8 +754,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -762,8 +765,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -773,8 +776,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -784,8 +787,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -795,8 +798,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -806,8 +809,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -826,11 +829,11 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 }
 
 type ApiUpdateRiskPredictorRequest struct {
-	ctx context.Context
-	ApiService *RiskAdvancedPredictorsApiService
-	environmentID string
+	ctx             context.Context
+	ApiService      *RiskAdvancedPredictorsApiService
+	environmentID   string
 	riskPredictorID string
-	riskPredictor *RiskPredictor
+	riskPredictor   *RiskPredictor
 }
 
 func (r ApiUpdateRiskPredictorRequest) RiskPredictor(riskPredictor RiskPredictor) ApiUpdateRiskPredictorRequest {
@@ -845,29 +848,30 @@ func (r ApiUpdateRiskPredictorRequest) Execute() (*RiskPredictor, *http.Response
 /*
 UpdateRiskPredictor UPDATE Risk Predictor
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param riskPredictorID
- @return ApiUpdateRiskPredictorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param riskPredictorID
+	@return ApiUpdateRiskPredictorRequest
 */
 func (a *RiskAdvancedPredictorsApiService) UpdateRiskPredictor(ctx context.Context, environmentID string, riskPredictorID string) ApiUpdateRiskPredictorRequest {
 	return ApiUpdateRiskPredictorRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
 		riskPredictorID: riskPredictorID,
 	}
 }
 
 // Execute executes the request
-//  @return RiskPredictor
+//
+//	@return RiskPredictor
 func (a *RiskAdvancedPredictorsApiService) UpdateRiskPredictorExecute(r ApiUpdateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *RiskPredictor
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateRiskPredictorExecute(r)
@@ -879,10 +883,10 @@ func (a *RiskAdvancedPredictorsApiService) UpdateRiskPredictorExecute(r ApiUpdat
 
 func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r ApiUpdateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskPredictor
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskPredictor
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskAdvancedPredictorsApiService.UpdateRiskPredictor")
@@ -946,8 +950,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -957,8 +961,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -968,8 +972,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -979,8 +983,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -990,8 +994,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1001,8 +1005,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1012,8 +1016,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

@@ -20,17 +20,17 @@ var _ MappedNullable = &UserCredential{}
 
 // UserCredential struct for UserCredential
 type UserCredential struct {
-	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	Links          map[string]LinksHATEOASValue                                 `json:"_links,omitempty"`
+	CreatedAt      *time.Time                                                   `json:"createdAt,omitempty"`
 	CredentialType *CredentialDigitalWalletNotificationResultsInnerNotification `json:"credentialType,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Notification *CredentialDigitalWalletNotification `json:"notification,omitempty"`
-	Status *string `json:"status,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	User *CredentialDigitalWalletNotificationResultsInnerNotification `json:"user,omitempty"`
-	Userdata *UserCredentialUserdata `json:"userdata,omitempty"`
+	Environment    *ObjectEnvironment                                           `json:"environment,omitempty"`
+	ExpiresAt      *time.Time                                                   `json:"expiresAt,omitempty"`
+	Id             *string                                                      `json:"id,omitempty"`
+	Notification   *CredentialDigitalWalletNotification                         `json:"notification,omitempty"`
+	Status         *string                                                      `json:"status,omitempty"`
+	UpdatedAt      *time.Time                                                   `json:"updatedAt,omitempty"`
+	User           *CredentialDigitalWalletNotificationResultsInnerNotification `json:"user,omitempty"`
+	Userdata       *UserCredentialUserdata                                      `json:"userdata,omitempty"`
 }
 
 // NewUserCredential instantiates a new UserCredential object
@@ -478,7 +478,7 @@ func (o *UserCredential) SetUserdata(v UserCredentialUserdata) {
 }
 
 func (o UserCredential) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -558,5 +558,3 @@ func (v *NullableUserCredential) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // FIDO2PolicyApiService FIDO2PolicyApi service
 type FIDO2PolicyApiService service
 
 type ApiCreateFIDO2PolicyRequest struct {
-	ctx context.Context
-	ApiService *FIDO2PolicyApiService
+	ctx           context.Context
+	ApiService    *FIDO2PolicyApiService
 	environmentID string
-	fIDO2Policy *FIDO2Policy
+	fIDO2Policy   *FIDO2Policy
 }
 
 func (r ApiCreateFIDO2PolicyRequest) FIDO2Policy(fIDO2Policy FIDO2Policy) ApiCreateFIDO2PolicyRequest {
@@ -42,27 +41,28 @@ func (r ApiCreateFIDO2PolicyRequest) Execute() (*FIDO2Policy, *http.Response, er
 /*
 CreateFIDO2Policy CREATE FIDO2 Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateFIDO2PolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateFIDO2PolicyRequest
 */
 func (a *FIDO2PolicyApiService) CreateFIDO2Policy(ctx context.Context, environmentID string) ApiCreateFIDO2PolicyRequest {
 	return ApiCreateFIDO2PolicyRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return FIDO2Policy
+//
+//	@return FIDO2Policy
 func (a *FIDO2PolicyApiService) CreateFIDO2PolicyExecute(r ApiCreateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *FIDO2Policy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateFIDO2PolicyExecute(r)
@@ -74,10 +74,10 @@ func (a *FIDO2PolicyApiService) CreateFIDO2PolicyExecute(r ApiCreateFIDO2PolicyR
 
 func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FIDO2Policy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FIDO2Policy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.CreateFIDO2Policy")
@@ -140,8 +140,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,8 +237,8 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 }
 
 type ApiDeleteFIDO2PolicyRequest struct {
-	ctx context.Context
-	ApiService *FIDO2PolicyApiService
+	ctx           context.Context
+	ApiService    *FIDO2PolicyApiService
 	environmentID string
 	fido2PolicyID string
 }
@@ -250,15 +250,15 @@ func (r ApiDeleteFIDO2PolicyRequest) Execute() (*http.Response, error) {
 /*
 DeleteFIDO2Policy DELETE FIDO2 Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param fido2PolicyID
- @return ApiDeleteFIDO2PolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param fido2PolicyID
+	@return ApiDeleteFIDO2PolicyRequest
 */
 func (a *FIDO2PolicyApiService) DeleteFIDO2Policy(ctx context.Context, environmentID string, fido2PolicyID string) ApiDeleteFIDO2PolicyRequest {
 	return ApiDeleteFIDO2PolicyRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		fido2PolicyID: fido2PolicyID,
 	}
@@ -267,10 +267,10 @@ func (a *FIDO2PolicyApiService) DeleteFIDO2Policy(ctx context.Context, environme
 // Execute executes the request
 func (a *FIDO2PolicyApiService) DeleteFIDO2PolicyExecute(r ApiDeleteFIDO2PolicyRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteFIDO2PolicyExecute(r)
@@ -283,9 +283,9 @@ func (a *FIDO2PolicyApiService) DeleteFIDO2PolicyExecute(r ApiDeleteFIDO2PolicyR
 
 func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO2PolicyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.DeleteFIDO2Policy")
@@ -347,8 +347,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -358,8 +358,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -369,8 +369,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -380,8 +380,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -391,8 +391,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -402,8 +402,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -413,8 +413,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -424,8 +424,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 }
 
 type ApiReadFIDO2PoliciesRequest struct {
-	ctx context.Context
-	ApiService *FIDO2PolicyApiService
+	ctx           context.Context
+	ApiService    *FIDO2PolicyApiService
 	environmentID string
 }
 
@@ -440,33 +440,35 @@ func (r ApiReadFIDO2PoliciesRequest) ExecuteInitialPage() (*ReadFIDO2Policies200
 /*
 ReadFIDO2Policies READ FIDO2 Policies
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadFIDO2PoliciesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadFIDO2PoliciesRequest
 */
 func (a *FIDO2PolicyApiService) ReadFIDO2Policies(ctx context.Context, environmentID string) ApiReadFIDO2PoliciesRequest {
 	return ApiReadFIDO2PoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadFIDO2Policies200Response
+//
+//	@return ReadFIDO2Policies200Response
 func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) PagedIterator[ReadFIDO2Policies200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadFIDO2Policies200Response
+//
+//	@return ReadFIDO2Policies200Response
 func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecuteInitialPage(r ApiReadFIDO2PoliciesRequest) (*ReadFIDO2Policies200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadFIDO2Policies200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadFIDO2PoliciesExecute(r)
@@ -478,10 +480,10 @@ func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecuteInitialPage(r ApiReadFID
 
 func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) (*ReadFIDO2Policies200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadFIDO2Policies200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadFIDO2Policies200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.ReadFIDO2Policies")
@@ -542,8 +544,8 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -553,8 +555,8 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -564,8 +566,8 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -575,8 +577,8 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -586,8 +588,8 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -597,8 +599,8 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -608,8 +610,8 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -628,11 +630,11 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 }
 
 type ApiReadOneFIDO2PolicyRequest struct {
-	ctx context.Context
-	ApiService *FIDO2PolicyApiService
+	ctx           context.Context
+	ApiService    *FIDO2PolicyApiService
 	environmentID string
 	fido2PolicyID string
-	expand *string
+	expand        *string
 }
 
 func (r ApiReadOneFIDO2PolicyRequest) Expand(expand string) ApiReadOneFIDO2PolicyRequest {
@@ -647,29 +649,30 @@ func (r ApiReadOneFIDO2PolicyRequest) Execute() (*FIDO2Policy, *http.Response, e
 /*
 ReadOneFIDO2Policy READ One FIDO2 Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param fido2PolicyID
- @return ApiReadOneFIDO2PolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param fido2PolicyID
+	@return ApiReadOneFIDO2PolicyRequest
 */
 func (a *FIDO2PolicyApiService) ReadOneFIDO2Policy(ctx context.Context, environmentID string, fido2PolicyID string) ApiReadOneFIDO2PolicyRequest {
 	return ApiReadOneFIDO2PolicyRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		fido2PolicyID: fido2PolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return FIDO2Policy
+//
+//	@return FIDO2Policy
 func (a *FIDO2PolicyApiService) ReadOneFIDO2PolicyExecute(r ApiReadOneFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *FIDO2Policy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneFIDO2PolicyExecute(r)
@@ -681,10 +684,10 @@ func (a *FIDO2PolicyApiService) ReadOneFIDO2PolicyExecute(r ApiReadOneFIDO2Polic
 
 func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FIDO2Policy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FIDO2Policy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.ReadOneFIDO2Policy")
@@ -749,8 +752,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -760,8 +763,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -771,8 +774,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -782,8 +785,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -793,8 +796,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -804,8 +807,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -815,8 +818,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -835,11 +838,11 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 }
 
 type ApiUpdateFIDO2PolicyRequest struct {
-	ctx context.Context
-	ApiService *FIDO2PolicyApiService
+	ctx           context.Context
+	ApiService    *FIDO2PolicyApiService
 	environmentID string
 	fido2PolicyID string
-	fIDO2Policy *FIDO2Policy
+	fIDO2Policy   *FIDO2Policy
 }
 
 func (r ApiUpdateFIDO2PolicyRequest) FIDO2Policy(fIDO2Policy FIDO2Policy) ApiUpdateFIDO2PolicyRequest {
@@ -854,29 +857,30 @@ func (r ApiUpdateFIDO2PolicyRequest) Execute() (*FIDO2Policy, *http.Response, er
 /*
 UpdateFIDO2Policy UPDATE FIDO2 Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param fido2PolicyID
- @return ApiUpdateFIDO2PolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param fido2PolicyID
+	@return ApiUpdateFIDO2PolicyRequest
 */
 func (a *FIDO2PolicyApiService) UpdateFIDO2Policy(ctx context.Context, environmentID string, fido2PolicyID string) ApiUpdateFIDO2PolicyRequest {
 	return ApiUpdateFIDO2PolicyRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		fido2PolicyID: fido2PolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return FIDO2Policy
+//
+//	@return FIDO2Policy
 func (a *FIDO2PolicyApiService) UpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *FIDO2Policy
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateFIDO2PolicyExecute(r)
@@ -888,10 +892,10 @@ func (a *FIDO2PolicyApiService) UpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyR
 
 func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FIDO2Policy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FIDO2Policy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.UpdateFIDO2Policy")
@@ -955,8 +959,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -966,8 +970,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -977,8 +981,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -988,8 +992,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -999,8 +1003,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1010,8 +1014,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1021,8 +1025,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

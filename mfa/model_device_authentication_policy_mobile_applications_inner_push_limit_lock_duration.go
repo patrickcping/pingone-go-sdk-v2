@@ -11,8 +11,8 @@ API version: 2023-06-29
 package mfa
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPushLim
 // DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration struct for DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration
 type DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration struct {
 	// The length of time that push notifications should be blocked for the application if the defined limit has been reached. The minimum value is 1 minute and the maximum value is 120 minutes. If this parameter is not provided, the default value is 30 minutes.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -98,7 +98,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration)
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -126,10 +126,10 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration)
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -185,5 +185,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockD
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

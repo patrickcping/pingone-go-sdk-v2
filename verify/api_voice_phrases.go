@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // VoicePhrasesApiService VoicePhrasesApi service
 type VoicePhrasesApiService service
 
 type ApiCreateVoicePhraseRequest struct {
-	ctx context.Context
-	ApiService *VoicePhrasesApiService
+	ctx           context.Context
+	ApiService    *VoicePhrasesApiService
 	environmentID string
-	voicePhrase *VoicePhrase
+	voicePhrase   *VoicePhrase
 }
 
 func (r ApiCreateVoicePhraseRequest) VoicePhrase(voicePhrase VoicePhrase) ApiCreateVoicePhraseRequest {
@@ -42,27 +41,28 @@ func (r ApiCreateVoicePhraseRequest) Execute() (*VoicePhrase, *http.Response, er
 /*
 CreateVoicePhrase CREATE Voice Phrase
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateVoicePhraseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateVoicePhraseRequest
 */
 func (a *VoicePhrasesApiService) CreateVoicePhrase(ctx context.Context, environmentID string) ApiCreateVoicePhraseRequest {
 	return ApiCreateVoicePhraseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return VoicePhrase
+//
+//	@return VoicePhrase
 func (a *VoicePhrasesApiService) CreateVoicePhraseExecute(r ApiCreateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *VoicePhrase
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateVoicePhraseExecute(r)
@@ -74,10 +74,10 @@ func (a *VoicePhrasesApiService) CreateVoicePhraseExecute(r ApiCreateVoicePhrase
 
 func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VoicePhrase
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VoicePhrase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhrasesApiService.CreateVoicePhrase")
@@ -140,8 +140,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,8 +237,8 @@ func (a *VoicePhrasesApiService) internalCreateVoicePhraseExecute(r ApiCreateVoi
 }
 
 type ApiDeleteVoicePhraseRequest struct {
-	ctx context.Context
-	ApiService *VoicePhrasesApiService
+	ctx           context.Context
+	ApiService    *VoicePhrasesApiService
 	environmentID string
 	voicePhraseID string
 }
@@ -250,15 +250,15 @@ func (r ApiDeleteVoicePhraseRequest) Execute() (*http.Response, error) {
 /*
 DeleteVoicePhrase Delete Voice Phrase
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param voicePhraseID
- @return ApiDeleteVoicePhraseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param voicePhraseID
+	@return ApiDeleteVoicePhraseRequest
 */
 func (a *VoicePhrasesApiService) DeleteVoicePhrase(ctx context.Context, environmentID string, voicePhraseID string) ApiDeleteVoicePhraseRequest {
 	return ApiDeleteVoicePhraseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		voicePhraseID: voicePhraseID,
 	}
@@ -267,10 +267,10 @@ func (a *VoicePhrasesApiService) DeleteVoicePhrase(ctx context.Context, environm
 // Execute executes the request
 func (a *VoicePhrasesApiService) DeleteVoicePhraseExecute(r ApiDeleteVoicePhraseRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteVoicePhraseExecute(r)
@@ -283,9 +283,9 @@ func (a *VoicePhrasesApiService) DeleteVoicePhraseExecute(r ApiDeleteVoicePhrase
 
 func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoicePhraseRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhrasesApiService.DeleteVoicePhrase")
@@ -347,8 +347,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -358,8 +358,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -369,8 +369,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -380,8 +380,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -391,8 +391,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -402,8 +402,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -413,8 +413,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -424,8 +424,8 @@ func (a *VoicePhrasesApiService) internalDeleteVoicePhraseExecute(r ApiDeleteVoi
 }
 
 type ApiReadAllVoicePhrasesRequest struct {
-	ctx context.Context
-	ApiService *VoicePhrasesApiService
+	ctx           context.Context
+	ApiService    *VoicePhrasesApiService
 	environmentID string
 }
 
@@ -440,33 +440,35 @@ func (r ApiReadAllVoicePhrasesRequest) ExecuteInitialPage() (*ReadAllVoicePhrase
 /*
 ReadAllVoicePhrases READ All Voice Phrases
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadAllVoicePhrasesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadAllVoicePhrasesRequest
 */
 func (a *VoicePhrasesApiService) ReadAllVoicePhrases(ctx context.Context, environmentID string) ApiReadAllVoicePhrasesRequest {
 	return ApiReadAllVoicePhrasesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllVoicePhrases200Response
+//
+//	@return ReadAllVoicePhrases200Response
 func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecute(r ApiReadAllVoicePhrasesRequest) PagedIterator[ReadAllVoicePhrases200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllVoicePhrases200Response
+//
+//	@return ReadAllVoicePhrases200Response
 func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecuteInitialPage(r ApiReadAllVoicePhrasesRequest) (*ReadAllVoicePhrases200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllVoicePhrases200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllVoicePhrasesExecute(r)
@@ -478,10 +480,10 @@ func (a *VoicePhrasesApiService) ReadAllVoicePhrasesExecuteInitialPage(r ApiRead
 
 func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAllVoicePhrasesRequest) (*ReadAllVoicePhrases200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllVoicePhrases200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllVoicePhrases200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhrasesApiService.ReadAllVoicePhrases")
@@ -542,8 +544,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -553,8 +555,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -564,8 +566,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -575,8 +577,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -586,8 +588,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -597,8 +599,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -608,8 +610,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -628,8 +630,8 @@ func (a *VoicePhrasesApiService) internalReadAllVoicePhrasesExecute(r ApiReadAll
 }
 
 type ApiReadOneVoicePhraseRequest struct {
-	ctx context.Context
-	ApiService *VoicePhrasesApiService
+	ctx           context.Context
+	ApiService    *VoicePhrasesApiService
 	environmentID string
 	voicePhraseID string
 }
@@ -641,29 +643,30 @@ func (r ApiReadOneVoicePhraseRequest) Execute() (*VoicePhrase, *http.Response, e
 /*
 ReadOneVoicePhrase READ One Voice Phrase
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param voicePhraseID
- @return ApiReadOneVoicePhraseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param voicePhraseID
+	@return ApiReadOneVoicePhraseRequest
 */
 func (a *VoicePhrasesApiService) ReadOneVoicePhrase(ctx context.Context, environmentID string, voicePhraseID string) ApiReadOneVoicePhraseRequest {
 	return ApiReadOneVoicePhraseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		voicePhraseID: voicePhraseID,
 	}
 }
 
 // Execute executes the request
-//  @return VoicePhrase
+//
+//	@return VoicePhrase
 func (a *VoicePhrasesApiService) ReadOneVoicePhraseExecute(r ApiReadOneVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *VoicePhrase
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneVoicePhraseExecute(r)
@@ -675,10 +678,10 @@ func (a *VoicePhrasesApiService) ReadOneVoicePhraseExecute(r ApiReadOneVoicePhra
 
 func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VoicePhrase
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VoicePhrase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhrasesApiService.ReadOneVoicePhrase")
@@ -740,8 +743,8 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -751,8 +754,8 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -762,8 +765,8 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -773,8 +776,8 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -784,8 +787,8 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -795,8 +798,8 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -806,8 +809,8 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -826,11 +829,11 @@ func (a *VoicePhrasesApiService) internalReadOneVoicePhraseExecute(r ApiReadOneV
 }
 
 type ApiUpdateVoicePhraseRequest struct {
-	ctx context.Context
-	ApiService *VoicePhrasesApiService
+	ctx           context.Context
+	ApiService    *VoicePhrasesApiService
 	environmentID string
 	voicePhraseID string
-	voicePhrase *VoicePhrase
+	voicePhrase   *VoicePhrase
 }
 
 func (r ApiUpdateVoicePhraseRequest) VoicePhrase(voicePhrase VoicePhrase) ApiUpdateVoicePhraseRequest {
@@ -845,29 +848,30 @@ func (r ApiUpdateVoicePhraseRequest) Execute() (*VoicePhrase, *http.Response, er
 /*
 UpdateVoicePhrase UPDATE Voice Phrase
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param voicePhraseID
- @return ApiUpdateVoicePhraseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param voicePhraseID
+	@return ApiUpdateVoicePhraseRequest
 */
 func (a *VoicePhrasesApiService) UpdateVoicePhrase(ctx context.Context, environmentID string, voicePhraseID string) ApiUpdateVoicePhraseRequest {
 	return ApiUpdateVoicePhraseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		voicePhraseID: voicePhraseID,
 	}
 }
 
 // Execute executes the request
-//  @return VoicePhrase
+//
+//	@return VoicePhrase
 func (a *VoicePhrasesApiService) UpdateVoicePhraseExecute(r ApiUpdateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *VoicePhrase
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateVoicePhraseExecute(r)
@@ -879,10 +883,10 @@ func (a *VoicePhrasesApiService) UpdateVoicePhraseExecute(r ApiUpdateVoicePhrase
 
 func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoicePhraseRequest) (*VoicePhrase, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VoicePhrase
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VoicePhrase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhrasesApiService.UpdateVoicePhrase")
@@ -946,8 +950,8 @@ func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -957,8 +961,8 @@ func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -968,8 +972,8 @@ func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -979,8 +983,8 @@ func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -990,8 +994,8 @@ func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1001,8 +1005,8 @@ func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1012,8 +1016,8 @@ func (a *VoicePhrasesApiService) internalUpdateVoicePhraseExecute(r ApiUpdateVoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

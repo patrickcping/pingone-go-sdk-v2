@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &RiskPolicyResult{}
 
 // RiskPolicyResult A result object that specifies the result returned if the policy is evaluated as true. If several policies are evaluated as true, the result related to the highest priority policy is returned. for more information, see the Result attribute data model in the Risk Evaluations topic.
 type RiskPolicyResult struct {
-	Level EnumRiskLevel `json:"level"`
-	Type *EnumResultType `json:"type,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Level EnumRiskLevel   `json:"level"`
+	Type  *EnumResultType `json:"type,omitempty"`
+	Value *string         `json:"value,omitempty"`
 }
 
 type _RiskPolicyResult RiskPolicyResult
@@ -135,7 +135,7 @@ func (o *RiskPolicyResult) SetValue(v string) {
 }
 
 func (o RiskPolicyResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,10 +167,10 @@ func (o *RiskPolicyResult) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -226,5 +226,3 @@ func (v *NullableRiskPolicyResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

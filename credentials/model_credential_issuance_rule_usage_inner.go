@@ -20,7 +20,7 @@ var _ MappedNullable = &CredentialIssuanceRuleUsageInner{}
 
 // CredentialIssuanceRuleUsageInner struct for CredentialIssuanceRuleUsageInner
 type CredentialIssuanceRuleUsageInner struct {
-	User *CredentialIssuanceRuleUsageInnerUser `json:"user,omitempty"`
+	User       *CredentialIssuanceRuleUsageInnerUser       `json:"user,omitempty"`
 	Credential *CredentialIssuanceRuleUsageInnerCredential `json:"credential,omitempty"`
 	// A string representing the date and time the credential was issued by the service.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -140,7 +140,7 @@ func (o *CredentialIssuanceRuleUsageInner) SetCreatedAt(v time.Time) {
 }
 
 func (o CredentialIssuanceRuleUsageInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,5 +196,3 @@ func (v *NullableCredentialIssuanceRuleUsageInner) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

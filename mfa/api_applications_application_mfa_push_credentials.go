@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // ApplicationsApplicationMFAPushCredentialsApiService ApplicationsApplicationMFAPushCredentialsApi service
 type ApplicationsApplicationMFAPushCredentialsApiService service
 
 type ApiCreateMFAPushCredentialRequest struct {
-	ctx context.Context
-	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	environmentID string
-	applicationID string
+	ctx                      context.Context
+	ApiService               *ApplicationsApplicationMFAPushCredentialsApiService
+	environmentID            string
+	applicationID            string
 	mFAPushCredentialRequest *MFAPushCredentialRequest
 }
 
@@ -43,29 +42,30 @@ func (r ApiCreateMFAPushCredentialRequest) Execute() (*MFAPushCredentialResponse
 /*
 CreateMFAPushCredential CREATE MFA Push Credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationID
- @return ApiCreateMFAPushCredentialRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationID
+	@return ApiCreateMFAPushCredentialRequest
 */
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredential(ctx context.Context, environmentID string, applicationID string) ApiCreateMFAPushCredentialRequest {
 	return ApiCreateMFAPushCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		applicationID: applicationID,
 	}
 }
 
 // Execute executes the request
-//  @return MFAPushCredentialResponse
+//
+//	@return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *MFAPushCredentialResponse
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateMFAPushCredentialExecute(r)
@@ -77,10 +77,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MFAPushCredentialResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MFAPushCredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.CreateMFAPushCredential")
@@ -144,8 +144,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -155,8 +155,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -166,8 +166,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -177,8 +177,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -188,8 +188,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -199,8 +199,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -210,8 +210,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -221,8 +221,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -241,12 +241,12 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 }
 
 type ApiDeleteMFAPushCredentialRequest struct {
-	ctx context.Context
-	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	environmentID string
-	applicationID string
+	ctx              context.Context
+	ApiService       *ApplicationsApplicationMFAPushCredentialsApiService
+	environmentID    string
+	applicationID    string
 	pushCredentialID string
-	authorization *string
+	authorization    *string
 }
 
 func (r ApiDeleteMFAPushCredentialRequest) Authorization(authorization string) ApiDeleteMFAPushCredentialRequest {
@@ -261,18 +261,18 @@ func (r ApiDeleteMFAPushCredentialRequest) Execute() (*http.Response, error) {
 /*
 DeleteMFAPushCredential DELETE MFA Push Credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationID
- @param pushCredentialID
- @return ApiDeleteMFAPushCredentialRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationID
+	@param pushCredentialID
+	@return ApiDeleteMFAPushCredentialRequest
 */
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredential(ctx context.Context, environmentID string, applicationID string, pushCredentialID string) ApiDeleteMFAPushCredentialRequest {
 	return ApiDeleteMFAPushCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		applicationID: applicationID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
+		applicationID:    applicationID,
 		pushCredentialID: pushCredentialID,
 	}
 }
@@ -280,10 +280,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 // Execute executes the request
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredentialExecute(r ApiDeleteMFAPushCredentialRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteMFAPushCredentialExecute(r)
@@ -296,9 +296,9 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAPushCredentialExecute(r ApiDeleteMFAPushCredentialRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.DeleteMFAPushCredential")
@@ -364,8 +364,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -375,8 +375,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -386,8 +386,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -397,8 +397,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -408,8 +408,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -419,8 +419,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -430,8 +430,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -441,8 +441,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 }
 
 type ApiReadAllMFAPushCredentialsRequest struct {
-	ctx context.Context
-	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
+	ctx           context.Context
+	ApiService    *ApplicationsApplicationMFAPushCredentialsApiService
 	environmentID string
 	applicationID string
 }
@@ -458,35 +458,37 @@ func (r ApiReadAllMFAPushCredentialsRequest) ExecuteInitialPage() (*ReadAllMFAPu
 /*
 ReadAllMFAPushCredentials READ All MFA Push Credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationID
- @return ApiReadAllMFAPushCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationID
+	@return ApiReadAllMFAPushCredentialsRequest
 */
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentials(ctx context.Context, environmentID string, applicationID string) ApiReadAllMFAPushCredentialsRequest {
 	return ApiReadAllMFAPushCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 		applicationID: applicationID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllMFAPushCredentials200Response
+//
+//	@return ReadAllMFAPushCredentials200Response
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) PagedIterator[ReadAllMFAPushCredentials200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllMFAPushCredentials200Response
+//
+//	@return ReadAllMFAPushCredentials200Response
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecuteInitialPage(r ApiReadAllMFAPushCredentialsRequest) (*ReadAllMFAPushCredentials200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllMFAPushCredentials200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllMFAPushCredentialsExecute(r)
@@ -498,10 +500,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (*ReadAllMFAPushCredentials200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllMFAPushCredentials200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllMFAPushCredentials200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.ReadAllMFAPushCredentials")
@@ -563,8 +565,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -574,8 +576,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -585,8 +587,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -596,8 +598,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -607,8 +609,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -618,8 +620,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -629,8 +631,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -649,10 +651,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 }
 
 type ApiReadOneMFAPushCredentialRequest struct {
-	ctx context.Context
-	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	environmentID string
-	applicationID string
+	ctx              context.Context
+	ApiService       *ApplicationsApplicationMFAPushCredentialsApiService
+	environmentID    string
+	applicationID    string
 	pushCredentialID string
 }
 
@@ -663,31 +665,32 @@ func (r ApiReadOneMFAPushCredentialRequest) Execute() (*MFAPushCredentialRespons
 /*
 ReadOneMFAPushCredential READ One MFA Push Credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationID
- @param pushCredentialID
- @return ApiReadOneMFAPushCredentialRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationID
+	@param pushCredentialID
+	@return ApiReadOneMFAPushCredentialRequest
 */
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredential(ctx context.Context, environmentID string, applicationID string, pushCredentialID string) ApiReadOneMFAPushCredentialRequest {
 	return ApiReadOneMFAPushCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		applicationID: applicationID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
+		applicationID:    applicationID,
 		pushCredentialID: pushCredentialID,
 	}
 }
 
 // Execute executes the request
-//  @return MFAPushCredentialResponse
+//
+//	@return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *MFAPushCredentialResponse
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneMFAPushCredentialExecute(r)
@@ -699,10 +702,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MFAPushCredentialResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MFAPushCredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.ReadOneMFAPushCredential")
@@ -765,8 +768,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -776,8 +779,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -787,8 +790,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -798,8 +801,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -809,8 +812,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -820,8 +823,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -831,8 +834,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -851,11 +854,11 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 }
 
 type ApiUpdateMFAPushCredentialRequest struct {
-	ctx context.Context
-	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	environmentID string
-	applicationID string
-	pushCredentialID string
+	ctx                      context.Context
+	ApiService               *ApplicationsApplicationMFAPushCredentialsApiService
+	environmentID            string
+	applicationID            string
+	pushCredentialID         string
 	mFAPushCredentialRequest *MFAPushCredentialRequest
 }
 
@@ -871,31 +874,32 @@ func (r ApiUpdateMFAPushCredentialRequest) Execute() (*MFAPushCredentialResponse
 /*
 UpdateMFAPushCredential UPDATE MFA Push Credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param applicationID
- @param pushCredentialID
- @return ApiUpdateMFAPushCredentialRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param applicationID
+	@param pushCredentialID
+	@return ApiUpdateMFAPushCredentialRequest
 */
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredential(ctx context.Context, environmentID string, applicationID string, pushCredentialID string) ApiUpdateMFAPushCredentialRequest {
 	return ApiUpdateMFAPushCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		applicationID: applicationID,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentID:    environmentID,
+		applicationID:    applicationID,
 		pushCredentialID: pushCredentialID,
 	}
 }
 
 // Execute executes the request
-//  @return MFAPushCredentialResponse
+//
+//	@return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *MFAPushCredentialResponse
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateMFAPushCredentialExecute(r)
@@ -907,10 +911,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCrede
 
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MFAPushCredentialResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MFAPushCredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.UpdateMFAPushCredential")
@@ -975,8 +979,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -986,8 +990,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -997,8 +1001,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1008,8 +1012,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1019,8 +1023,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1030,8 +1034,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1041,8 +1045,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

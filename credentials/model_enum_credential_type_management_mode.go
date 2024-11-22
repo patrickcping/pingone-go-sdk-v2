@@ -21,7 +21,7 @@ type EnumCredentialTypeManagementMode string
 // List of EnumCredentialTypeManagementMode
 const (
 	ENUMCREDENTIALTYPEMANAGEMENTMODE_AUTOMATED EnumCredentialTypeManagementMode = "AUTOMATED"
-	ENUMCREDENTIALTYPEMANAGEMENTMODE_MANAGED EnumCredentialTypeManagementMode = "MANAGED"
+	ENUMCREDENTIALTYPEMANAGEMENTMODE_MANAGED   EnumCredentialTypeManagementMode = "MANAGED"
 )
 
 // All allowed values of EnumCredentialTypeManagementMode enum
@@ -109,4 +109,3 @@ func (v *NullableEnumCredentialTypeManagementMode) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

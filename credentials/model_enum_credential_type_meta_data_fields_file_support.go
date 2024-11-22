@@ -15,13 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumCredentialTypeMetaDataFieldsFileSupport Specifies the type of data in the defined field within a credential type: `BASE64_STRING` - indicates the image stored in the field is base64-encoded and is stored directly in the credential `INCLUDE_FILE` - indicates the image stored in the field is binary and is stored directly in the credential `REFERENCE_FILE` - indicates the value is a URL referencing an image is in the credential and the image binary remains stored external to the credential 
+// EnumCredentialTypeMetaDataFieldsFileSupport Specifies the type of data in the defined field within a credential type: `BASE64_STRING` - indicates the image stored in the field is base64-encoded and is stored directly in the credential `INCLUDE_FILE` - indicates the image stored in the field is binary and is stored directly in the credential `REFERENCE_FILE` - indicates the value is a URL referencing an image is in the credential and the image binary remains stored external to the credential
 type EnumCredentialTypeMetaDataFieldsFileSupport string
 
 // List of EnumCredentialTypeMetaDataFieldsFileSupport
 const (
-	ENUMCREDENTIALTYPEMETADATAFIELDSFILESUPPORT_BASE64_STRING EnumCredentialTypeMetaDataFieldsFileSupport = "BASE64_STRING"
-	ENUMCREDENTIALTYPEMETADATAFIELDSFILESUPPORT_INCLUDE_FILE EnumCredentialTypeMetaDataFieldsFileSupport = "INCLUDE_FILE"
+	ENUMCREDENTIALTYPEMETADATAFIELDSFILESUPPORT_BASE64_STRING  EnumCredentialTypeMetaDataFieldsFileSupport = "BASE64_STRING"
+	ENUMCREDENTIALTYPEMETADATAFIELDSFILESUPPORT_INCLUDE_FILE   EnumCredentialTypeMetaDataFieldsFileSupport = "INCLUDE_FILE"
 	ENUMCREDENTIALTYPEMETADATAFIELDSFILESUPPORT_REFERENCE_FILE EnumCredentialTypeMetaDataFieldsFileSupport = "REFERENCE_FILE"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumCredentialTypeMetaDataFieldsFileSupport) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

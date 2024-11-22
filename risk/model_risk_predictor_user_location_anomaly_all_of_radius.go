@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &RiskPredictorUserLocationAnomalyAllOfRadius{}
 // RiskPredictorUserLocationAnomalyAllOfRadius struct for RiskPredictorUserLocationAnomalyAllOfRadius
 type RiskPredictorUserLocationAnomalyAllOfRadius struct {
 	// A value to apply to the distance radius.  Minimum of 10 miles (16 km) and maximum of 100 miles (160 km)
-	Distance int32 `json:"distance"`
-	Unit EnumDistanceUnit `json:"unit"`
+	Distance int32            `json:"distance"`
+	Unit     EnumDistanceUnit `json:"unit"`
 }
 
 type _RiskPredictorUserLocationAnomalyAllOfRadius RiskPredictorUserLocationAnomalyAllOfRadius
@@ -96,7 +96,7 @@ func (o *RiskPredictorUserLocationAnomalyAllOfRadius) SetUnit(v EnumDistanceUnit
 }
 
 func (o RiskPredictorUserLocationAnomalyAllOfRadius) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -124,10 +124,10 @@ func (o *RiskPredictorUserLocationAnomalyAllOfRadius) UnmarshalJSON(data []byte)
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -183,5 +183,3 @@ func (v *NullableRiskPredictorUserLocationAnomalyAllOfRadius) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

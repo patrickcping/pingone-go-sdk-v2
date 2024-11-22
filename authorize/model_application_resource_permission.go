@@ -11,8 +11,8 @@ API version: 2023-06-29
 package authorize
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -25,10 +25,10 @@ type ApplicationResourcePermission struct {
 	// The action associated with this permission.
 	Action string `json:"action"`
 	// The resource's description.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The resource's unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id       *string                                `json:"id,omitempty"`
 	Resource *ApplicationResourcePermissionResource `json:"resource,omitempty"`
 }
 
@@ -312,7 +312,7 @@ func (o *ApplicationResourcePermission) SetResource(v ApplicationResourcePermiss
 }
 
 func (o ApplicationResourcePermission) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -353,10 +353,10 @@ func (o *ApplicationResourcePermission) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -412,5 +412,3 @@ func (v *NullableApplicationResourcePermission) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

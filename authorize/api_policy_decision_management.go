@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // PolicyDecisionManagementApiService PolicyDecisionManagementApi service
 type PolicyDecisionManagementApiService service
 
 type ApiCreateDecisionEndpointRequest struct {
-	ctx context.Context
-	ApiService *PolicyDecisionManagementApiService
-	environmentID string
+	ctx              context.Context
+	ApiService       *PolicyDecisionManagementApiService
+	environmentID    string
 	decisionEndpoint *DecisionEndpoint
 }
 
@@ -42,27 +41,28 @@ func (r ApiCreateDecisionEndpointRequest) Execute() (*DecisionEndpoint, *http.Re
 /*
 CreateDecisionEndpoint CREATE Decision Endpoint
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateDecisionEndpointRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateDecisionEndpointRequest
 */
 func (a *PolicyDecisionManagementApiService) CreateDecisionEndpoint(ctx context.Context, environmentID string) ApiCreateDecisionEndpointRequest {
 	return ApiCreateDecisionEndpointRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return DecisionEndpoint
+//
+//	@return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) CreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *DecisionEndpoint
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateDecisionEndpointExecute(r)
@@ -74,10 +74,10 @@ func (a *PolicyDecisionManagementApiService) CreateDecisionEndpointExecute(r Api
 
 func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DecisionEndpoint
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DecisionEndpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PolicyDecisionManagementApiService.CreateDecisionEndpoint")
@@ -140,8 +140,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -184,8 +184,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -195,8 +195,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -206,8 +206,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -217,8 +217,8 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,9 +237,9 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 }
 
 type ApiDeleteDecisionEndpointRequest struct {
-	ctx context.Context
-	ApiService *PolicyDecisionManagementApiService
-	environmentID string
+	ctx                context.Context
+	ApiService         *PolicyDecisionManagementApiService
+	environmentID      string
 	decisionEndpointID string
 }
 
@@ -250,16 +250,16 @@ func (r ApiDeleteDecisionEndpointRequest) Execute() (*http.Response, error) {
 /*
 DeleteDecisionEndpoint DELETE Decision Endpoint
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param decisionEndpointID
- @return ApiDeleteDecisionEndpointRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param decisionEndpointID
+	@return ApiDeleteDecisionEndpointRequest
 */
 func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpoint(ctx context.Context, environmentID string, decisionEndpointID string) ApiDeleteDecisionEndpointRequest {
 	return ApiDeleteDecisionEndpointRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:         a,
+		ctx:                ctx,
+		environmentID:      environmentID,
 		decisionEndpointID: decisionEndpointID,
 	}
 }
@@ -267,10 +267,10 @@ func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpoint(ctx context.
 // Execute executes the request
 func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteDecisionEndpointExecute(r)
@@ -283,9 +283,9 @@ func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpointExecute(r Api
 
 func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PolicyDecisionManagementApiService.DeleteDecisionEndpoint")
@@ -347,8 +347,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -358,8 +358,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -369,8 +369,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -380,8 +380,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -391,8 +391,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -402,8 +402,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -413,8 +413,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -424,8 +424,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 }
 
 type ApiReadAllDecisionEndpointsRequest struct {
-	ctx context.Context
-	ApiService *PolicyDecisionManagementApiService
+	ctx           context.Context
+	ApiService    *PolicyDecisionManagementApiService
 	environmentID string
 }
 
@@ -440,33 +440,35 @@ func (r ApiReadAllDecisionEndpointsRequest) ExecuteInitialPage() (*ReadAllDecisi
 /*
 ReadAllDecisionEndpoints READ All Decision Endpoints
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadAllDecisionEndpointsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadAllDecisionEndpointsRequest
 */
 func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpoints(ctx context.Context, environmentID string) ApiReadAllDecisionEndpointsRequest {
 	return ApiReadAllDecisionEndpointsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllDecisionEndpoints200Response
+//
+//	@return ReadAllDecisionEndpoints200Response
 func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) PagedIterator[ReadAllDecisionEndpoints200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllDecisionEndpoints200Response
+//
+//	@return ReadAllDecisionEndpoints200Response
 func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInitialPage(r ApiReadAllDecisionEndpointsRequest) (*ReadAllDecisionEndpoints200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllDecisionEndpoints200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllDecisionEndpointsExecute(r)
@@ -478,10 +480,10 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInit
 
 func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*ReadAllDecisionEndpoints200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllDecisionEndpoints200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllDecisionEndpoints200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PolicyDecisionManagementApiService.ReadAllDecisionEndpoints")
@@ -542,8 +544,8 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -553,8 +555,8 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -564,8 +566,8 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -575,8 +577,8 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -586,8 +588,8 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -597,8 +599,8 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -608,8 +610,8 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -628,9 +630,9 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 }
 
 type ApiReadOneDecisionEndpointRequest struct {
-	ctx context.Context
-	ApiService *PolicyDecisionManagementApiService
-	environmentID string
+	ctx                context.Context
+	ApiService         *PolicyDecisionManagementApiService
+	environmentID      string
 	decisionEndpointID string
 }
 
@@ -641,29 +643,30 @@ func (r ApiReadOneDecisionEndpointRequest) Execute() (*DecisionEndpoint, *http.R
 /*
 ReadOneDecisionEndpoint READ One Decision Endpoint
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param decisionEndpointID
- @return ApiReadOneDecisionEndpointRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param decisionEndpointID
+	@return ApiReadOneDecisionEndpointRequest
 */
 func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpoint(ctx context.Context, environmentID string, decisionEndpointID string) ApiReadOneDecisionEndpointRequest {
 	return ApiReadOneDecisionEndpointRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:         a,
+		ctx:                ctx,
+		environmentID:      environmentID,
 		decisionEndpointID: decisionEndpointID,
 	}
 }
 
 // Execute executes the request
-//  @return DecisionEndpoint
+//
+//	@return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *DecisionEndpoint
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneDecisionEndpointExecute(r)
@@ -675,10 +678,10 @@ func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpointExecute(r Ap
 
 func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DecisionEndpoint
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DecisionEndpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PolicyDecisionManagementApiService.ReadOneDecisionEndpoint")
@@ -740,8 +743,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -751,8 +754,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -762,8 +765,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -773,8 +776,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -784,8 +787,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -795,8 +798,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -806,8 +809,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -826,11 +829,11 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 }
 
 type ApiUpdateDecisionEndpointRequest struct {
-	ctx context.Context
-	ApiService *PolicyDecisionManagementApiService
-	environmentID string
+	ctx                context.Context
+	ApiService         *PolicyDecisionManagementApiService
+	environmentID      string
 	decisionEndpointID string
-	decisionEndpoint *DecisionEndpoint
+	decisionEndpoint   *DecisionEndpoint
 }
 
 func (r ApiUpdateDecisionEndpointRequest) DecisionEndpoint(decisionEndpoint DecisionEndpoint) ApiUpdateDecisionEndpointRequest {
@@ -845,29 +848,30 @@ func (r ApiUpdateDecisionEndpointRequest) Execute() (*DecisionEndpoint, *http.Re
 /*
 UpdateDecisionEndpoint UPDATE Decision Endpoint
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param decisionEndpointID
- @return ApiUpdateDecisionEndpointRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param decisionEndpointID
+	@return ApiUpdateDecisionEndpointRequest
 */
 func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpoint(ctx context.Context, environmentID string, decisionEndpointID string) ApiUpdateDecisionEndpointRequest {
 	return ApiUpdateDecisionEndpointRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
+		ApiService:         a,
+		ctx:                ctx,
+		environmentID:      environmentID,
 		decisionEndpointID: decisionEndpointID,
 	}
 }
 
 // Execute executes the request
-//  @return DecisionEndpoint
+//
+//	@return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *DecisionEndpoint
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateDecisionEndpointExecute(r)
@@ -879,10 +883,10 @@ func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpointExecute(r Api
 
 func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DecisionEndpoint
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DecisionEndpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PolicyDecisionManagementApiService.UpdateDecisionEndpoint")
@@ -946,8 +950,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -957,8 +961,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -968,8 +972,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -979,8 +983,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -990,8 +994,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1001,8 +1005,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1012,8 +1016,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

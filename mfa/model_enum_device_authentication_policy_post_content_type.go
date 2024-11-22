@@ -20,7 +20,7 @@ type EnumDeviceAuthenticationPolicyPostContentType string
 
 // List of EnumDeviceAuthenticationPolicyPostContentType
 const (
-	ENUMDEVICEAUTHENTICATIONPOLICYPOSTCONTENTTYPE_JSON EnumDeviceAuthenticationPolicyPostContentType = "application/json"
+	ENUMDEVICEAUTHENTICATIONPOLICYPOSTCONTENTTYPE_JSON                                                            EnumDeviceAuthenticationPolicyPostContentType = "application/json"
 	ENUMDEVICEAUTHENTICATIONPOLICYPOSTCONTENTTYPE_VND_PINGIDENTITY_DEVICE_AUTHENTICATION_POLICY_FIDO2_MIGRATEJSON EnumDeviceAuthenticationPolicyPostContentType = "application/vnd.pingidentity.deviceAuthenticationPolicy.fido2.migrate+json"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumDeviceAuthenticationPolicyPostContentType) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

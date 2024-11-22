@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // DigitalWalletsApiService DigitalWalletsApi service
 type DigitalWalletsApiService service
 
 type ApiCreateDigitalWalletRequest struct {
-	ctx context.Context
-	ApiService *DigitalWalletsApiService
-	environmentID string
-	userID string
+	ctx                     context.Context
+	ApiService              *DigitalWalletsApiService
+	environmentID           string
+	userID                  string
 	credentialDigitalWallet *CredentialDigitalWallet
 }
 
@@ -43,29 +42,30 @@ func (r ApiCreateDigitalWalletRequest) Execute() (*CredentialDigitalWallet, *htt
 /*
 CreateDigitalWallet Create Digital Wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiCreateDigitalWalletRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiCreateDigitalWalletRequest
 */
 func (a *DigitalWalletsApiService) CreateDigitalWallet(ctx context.Context, environmentID string, userID string) ApiCreateDigitalWalletRequest {
 	return ApiCreateDigitalWalletRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialDigitalWallet
+//
+//	@return CredentialDigitalWallet
 func (a *DigitalWalletsApiService) CreateDigitalWalletExecute(r ApiCreateDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialDigitalWallet
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateDigitalWalletExecute(r)
@@ -77,10 +77,10 @@ func (a *DigitalWalletsApiService) CreateDigitalWalletExecute(r ApiCreateDigital
 
 func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreateDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialDigitalWallet
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialDigitalWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalWalletsApiService.CreateDigitalWallet")
@@ -144,8 +144,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -155,8 +155,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -166,8 +166,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -177,8 +177,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -188,8 +188,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -199,8 +199,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -210,8 +210,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -230,10 +230,10 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 }
 
 type ApiDeleteDigitalWalletRequest struct {
-	ctx context.Context
-	ApiService *DigitalWalletsApiService
-	environmentID string
-	userID string
+	ctx             context.Context
+	ApiService      *DigitalWalletsApiService
+	environmentID   string
+	userID          string
 	digitalWalletID string
 }
 
@@ -244,18 +244,18 @@ func (r ApiDeleteDigitalWalletRequest) Execute() (*http.Response, error) {
 /*
 DeleteDigitalWallet Delete Digital Wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param digitalWalletID
- @return ApiDeleteDigitalWalletRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param digitalWalletID
+	@return ApiDeleteDigitalWalletRequest
 */
 func (a *DigitalWalletsApiService) DeleteDigitalWallet(ctx context.Context, environmentID string, userID string, digitalWalletID string) ApiDeleteDigitalWalletRequest {
 	return ApiDeleteDigitalWalletRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		userID: userID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
+		userID:          userID,
 		digitalWalletID: digitalWalletID,
 	}
 }
@@ -263,10 +263,10 @@ func (a *DigitalWalletsApiService) DeleteDigitalWallet(ctx context.Context, envi
 // Execute executes the request
 func (a *DigitalWalletsApiService) DeleteDigitalWalletExecute(r ApiDeleteDigitalWalletRequest) (*http.Response, error) {
 	var (
-		err error
+		err      error
 		response *http.Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteDigitalWalletExecute(r)
@@ -279,9 +279,9 @@ func (a *DigitalWalletsApiService) DeleteDigitalWalletExecute(r ApiDeleteDigital
 
 func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDeleteDigitalWalletRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalWalletsApiService.DeleteDigitalWallet")
@@ -344,8 +344,8 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -355,8 +355,8 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -366,8 +366,8 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -377,8 +377,8 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -388,8 +388,8 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -399,8 +399,8 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -410,8 +410,8 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -421,10 +421,10 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 }
 
 type ApiReadAllDigitalWalletsRequest struct {
-	ctx context.Context
-	ApiService *DigitalWalletsApiService
+	ctx           context.Context
+	ApiService    *DigitalWalletsApiService
 	environmentID string
-	userID string
+	userID        string
 }
 
 func (r ApiReadAllDigitalWalletsRequest) Execute() PagedIterator[ReadAllDigitalWallets200Response] {
@@ -438,35 +438,37 @@ func (r ApiReadAllDigitalWalletsRequest) ExecuteInitialPage() (*ReadAllDigitalWa
 /*
 ReadAllDigitalWallets Read All Digital Wallets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiReadAllDigitalWalletsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiReadAllDigitalWalletsRequest
 */
 func (a *DigitalWalletsApiService) ReadAllDigitalWallets(ctx context.Context, environmentID string, userID string) ApiReadAllDigitalWalletsRequest {
 	return ApiReadAllDigitalWalletsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadAllDigitalWallets200Response
+//
+//	@return ReadAllDigitalWallets200Response
 func (a *DigitalWalletsApiService) ReadAllDigitalWalletsExecute(r ApiReadAllDigitalWalletsRequest) PagedIterator[ReadAllDigitalWallets200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadAllDigitalWallets200Response
+//
+//	@return ReadAllDigitalWallets200Response
 func (a *DigitalWalletsApiService) ReadAllDigitalWalletsExecuteInitialPage(r ApiReadAllDigitalWalletsRequest) (*ReadAllDigitalWallets200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadAllDigitalWallets200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllDigitalWalletsExecute(r)
@@ -478,10 +480,10 @@ func (a *DigitalWalletsApiService) ReadAllDigitalWalletsExecuteInitialPage(r Api
 
 func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiReadAllDigitalWalletsRequest) (*ReadAllDigitalWallets200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadAllDigitalWallets200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadAllDigitalWallets200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalWalletsApiService.ReadAllDigitalWallets")
@@ -543,8 +545,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -554,8 +556,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -565,8 +567,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -576,8 +578,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -587,8 +589,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -598,8 +600,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -609,8 +611,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -629,10 +631,10 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 }
 
 type ApiReadOneDigitalWalletRequest struct {
-	ctx context.Context
-	ApiService *DigitalWalletsApiService
-	environmentID string
-	userID string
+	ctx             context.Context
+	ApiService      *DigitalWalletsApiService
+	environmentID   string
+	userID          string
 	digitalWalletID string
 }
 
@@ -643,31 +645,32 @@ func (r ApiReadOneDigitalWalletRequest) Execute() (*CredentialDigitalWallet, *ht
 /*
 ReadOneDigitalWallet Read One Digital Wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param digitalWalletID
- @return ApiReadOneDigitalWalletRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param digitalWalletID
+	@return ApiReadOneDigitalWalletRequest
 */
 func (a *DigitalWalletsApiService) ReadOneDigitalWallet(ctx context.Context, environmentID string, userID string, digitalWalletID string) ApiReadOneDigitalWalletRequest {
 	return ApiReadOneDigitalWalletRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		userID: userID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
+		userID:          userID,
 		digitalWalletID: digitalWalletID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialDigitalWallet
+//
+//	@return CredentialDigitalWallet
 func (a *DigitalWalletsApiService) ReadOneDigitalWalletExecute(r ApiReadOneDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialDigitalWallet
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneDigitalWalletExecute(r)
@@ -679,10 +682,10 @@ func (a *DigitalWalletsApiService) ReadOneDigitalWalletExecute(r ApiReadOneDigit
 
 func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiReadOneDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialDigitalWallet
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialDigitalWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalWalletsApiService.ReadOneDigitalWallet")
@@ -745,8 +748,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -756,8 +759,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -767,8 +770,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -778,8 +781,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -789,8 +792,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -800,8 +803,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -811,8 +814,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -831,10 +834,10 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 }
 
 type ApiReadOneDigitalWalletCredentialRequest struct {
-	ctx context.Context
-	ApiService *DigitalWalletsApiService
-	environmentID string
-	userID string
+	ctx             context.Context
+	ApiService      *DigitalWalletsApiService
+	environmentID   string
+	userID          string
 	digitalWalletID string
 }
 
@@ -849,37 +852,39 @@ func (r ApiReadOneDigitalWalletCredentialRequest) ExecuteInitialPage() (*ReadOne
 /*
 ReadOneDigitalWalletCredential Read One Digital Wallet Credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param digitalWalletID
- @return ApiReadOneDigitalWalletCredentialRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param digitalWalletID
+	@return ApiReadOneDigitalWalletCredentialRequest
 */
 func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredential(ctx context.Context, environmentID string, userID string, digitalWalletID string) ApiReadOneDigitalWalletCredentialRequest {
 	return ApiReadOneDigitalWalletCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		userID: userID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
+		userID:          userID,
 		digitalWalletID: digitalWalletID,
 	}
 }
 
 // Execute executes the request
-//  @return ReadOneDigitalWalletCredential200Response
+//
+//	@return ReadOneDigitalWalletCredential200Response
 func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredentialExecute(r ApiReadOneDigitalWalletCredentialRequest) PagedIterator[ReadOneDigitalWalletCredential200Response] {
-  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
+	return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return ReadOneDigitalWalletCredential200Response
+//
+//	@return ReadOneDigitalWalletCredential200Response
 func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredentialExecuteInitialPage(r ApiReadOneDigitalWalletCredentialRequest) (*ReadOneDigitalWalletCredential200Response, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *ReadOneDigitalWalletCredential200Response
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneDigitalWalletCredentialExecute(r)
@@ -891,10 +896,10 @@ func (a *DigitalWalletsApiService) ReadOneDigitalWalletCredentialExecuteInitialP
 
 func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute(r ApiReadOneDigitalWalletCredentialRequest) (*ReadOneDigitalWalletCredential200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReadOneDigitalWalletCredential200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReadOneDigitalWalletCredential200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalWalletsApiService.ReadOneDigitalWalletCredential")
@@ -957,8 +962,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -968,8 +973,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -979,8 +984,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -990,8 +995,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1001,8 +1006,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1012,8 +1017,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1023,8 +1028,8 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1043,11 +1048,11 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 }
 
 type ApiUpdateDigitalWalletRequest struct {
-	ctx context.Context
-	ApiService *DigitalWalletsApiService
-	environmentID string
-	userID string
-	digitalWalletID string
+	ctx                     context.Context
+	ApiService              *DigitalWalletsApiService
+	environmentID           string
+	userID                  string
+	digitalWalletID         string
 	credentialDigitalWallet *CredentialDigitalWallet
 }
 
@@ -1063,31 +1068,32 @@ func (r ApiUpdateDigitalWalletRequest) Execute() (*CredentialDigitalWallet, *htt
 /*
 UpdateDigitalWallet Update Digital Wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param digitalWalletID
- @return ApiUpdateDigitalWalletRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param digitalWalletID
+	@return ApiUpdateDigitalWalletRequest
 */
 func (a *DigitalWalletsApiService) UpdateDigitalWallet(ctx context.Context, environmentID string, userID string, digitalWalletID string) ApiUpdateDigitalWalletRequest {
 	return ApiUpdateDigitalWalletRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		userID: userID,
+		ApiService:      a,
+		ctx:             ctx,
+		environmentID:   environmentID,
+		userID:          userID,
 		digitalWalletID: digitalWalletID,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialDigitalWallet
+//
+//	@return CredentialDigitalWallet
 func (a *DigitalWalletsApiService) UpdateDigitalWalletExecute(r ApiUpdateDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
-		err error
-		response *http.Response
+		err                 error
+		response            *http.Response
 		localVarReturnValue *CredentialDigitalWallet
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateDigitalWalletExecute(r)
@@ -1099,10 +1105,10 @@ func (a *DigitalWalletsApiService) UpdateDigitalWalletExecute(r ApiUpdateDigital
 
 func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdateDigitalWalletRequest) (*CredentialDigitalWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialDigitalWallet
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialDigitalWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalWalletsApiService.UpdateDigitalWallet")
@@ -1167,8 +1173,8 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1178,8 +1184,8 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1189,8 +1195,8 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1200,8 +1206,8 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1211,8 +1217,8 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1222,8 +1228,8 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1233,8 +1239,8 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

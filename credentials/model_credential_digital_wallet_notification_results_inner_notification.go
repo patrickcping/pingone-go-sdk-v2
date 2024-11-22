@@ -11,8 +11,8 @@ API version: 2023-06-29
 package credentials
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -69,7 +69,7 @@ func (o *CredentialDigitalWalletNotificationResultsInnerNotification) SetId(v st
 }
 
 func (o CredentialDigitalWalletNotificationResultsInnerNotification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,10 +95,10 @@ func (o *CredentialDigitalWalletNotificationResultsInnerNotification) UnmarshalJ
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -154,5 +154,3 @@ func (v *NullableCredentialDigitalWalletNotificationResultsInnerNotification) Un
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,8 +11,8 @@ API version: 2023-06-29
 package risk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &RiskPredictorCommonDefault{}
 // RiskPredictorCommonDefault Contains the default values used for a new risk predictor.
 type RiskPredictorCommonDefault struct {
 	// An integer type. This specifies the weight assigned to the risk predictor in a new policy by default.
-	Weight int32 `json:"weight"`
-	Score *int32 `json:"score,omitempty"`
-	Evaluated *bool `json:"evaluated,omitempty"`
-	Result *RiskPredictorCommonDefaultResult `json:"result,omitempty"`
+	Weight    int32                             `json:"weight"`
+	Score     *int32                            `json:"score,omitempty"`
+	Evaluated *bool                             `json:"evaluated,omitempty"`
+	Result    *RiskPredictorCommonDefaultResult `json:"result,omitempty"`
 }
 
 type _RiskPredictorCommonDefault RiskPredictorCommonDefault
@@ -169,7 +169,7 @@ func (o *RiskPredictorCommonDefault) SetResult(v RiskPredictorCommonDefaultResul
 }
 
 func (o RiskPredictorCommonDefault) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -204,10 +204,10 @@ func (o *RiskPredictorCommonDefault) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -263,5 +263,3 @@ func (v *NullableRiskPredictorCommonDefault) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

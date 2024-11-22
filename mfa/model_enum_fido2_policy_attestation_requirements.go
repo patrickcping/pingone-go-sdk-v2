@@ -21,7 +21,7 @@ type EnumFIDO2PolicyAttestationRequirements string
 // List of EnumFIDO2PolicyAttestationRequirements
 const (
 	ENUMFIDO2POLICYATTESTATIONREQUIREMENTS_DIRECT EnumFIDO2PolicyAttestationRequirements = "DIRECT"
-	ENUMFIDO2POLICYATTESTATIONREQUIREMENTS_NONE EnumFIDO2PolicyAttestationRequirements = "NONE"
+	ENUMFIDO2POLICYATTESTATIONREQUIREMENTS_NONE   EnumFIDO2PolicyAttestationRequirements = "NONE"
 )
 
 // All allowed values of EnumFIDO2PolicyAttestationRequirements enum
@@ -109,4 +109,3 @@ func (v *NullableEnumFIDO2PolicyAttestationRequirements) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
