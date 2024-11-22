@@ -29,11 +29,11 @@ type ApiReadApplicationResourcesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadApplicationResourcesRequest) Execute() PagedIterator[EntityArray] {
+func (r ApiReadApplicationResourcesRequest) Execute() PagedIterator[ReadApplicationResources200Response] {
 	return r.ApiService.ReadApplicationResourcesExecute(r)
 }
 
-func (r ApiReadApplicationResourcesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadApplicationResourcesRequest) ExecuteInitialPage() (*ReadApplicationResources200Response, *http.Response, error) {
 	return r.ApiService.ReadApplicationResourcesExecuteInitialPage(r)
 }
 
@@ -53,18 +53,18 @@ func (a *ApplicationResourcesApiService) ReadApplicationResources(ctx context.Co
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) PagedIterator[EntityArray] {
+//  @return ReadApplicationResources200Response
+func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) PagedIterator[ReadApplicationResources200Response] {
   return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return EntityArray
-func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialPage(r ApiReadApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
+//  @return ReadApplicationResources200Response
+func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialPage(r ApiReadApplicationResourcesRequest) (*ReadApplicationResources200Response, *http.Response, error) {
 	var (
 		err error
 		response *http.Response
-		localVarReturnValue *EntityArray
+		localVarReturnValue *ReadApplicationResources200Response
 	)
 	
 	response, err = processResponse(
@@ -76,12 +76,12 @@ func (a *ApplicationResourcesApiService) ReadApplicationResourcesExecuteInitialP
 	return localVarReturnValue, response, err
 }
 
-func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute(r ApiReadApplicationResourcesRequest) (*ReadApplicationResources200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadApplicationResources200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationResourcesApiService.ReadApplicationResources")

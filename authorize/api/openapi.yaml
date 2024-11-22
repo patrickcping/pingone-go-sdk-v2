@@ -66,7 +66,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllDecisionEndpoints_200_response'
           description: Successful response
       summary: READ All Decision Endpoints
       tags:
@@ -268,7 +268,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllAPIServers_200_response'
           description: Successful response
       summary: READ All API Servers
       tags:
@@ -571,7 +571,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllAPIServerOperations_200_response'
           description: Successful response
       summary: READ All API Server Operations
       tags:
@@ -801,7 +801,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readApplicationResources_200_response'
           description: Successful response
       summary: READ Application Resources
       tags:
@@ -886,7 +886,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readApplicationPermissions_200_response'
           description: Successful response
       summary: READ Application Permissions
       tags:
@@ -1116,7 +1116,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readApplicationRoles_200_response'
           description: Successful response
       summary: READ Application Roles
       tags:
@@ -1325,7 +1325,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readApplicationRolePermissions_200_response'
           description: Successful response
       summary: READ Application Role Permissions
       tags:
@@ -1461,7 +1461,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readApplicationRoleAssignments_200_response'
           description: Successful response
       summary: READ Application Role Assignments
       tags:
@@ -1522,6 +1522,7 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
+      x-pingidentity-paginatedresponse-links: true
     APIServer:
       example:
         accessControl:
@@ -1548,6 +1549,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         accessControl:
           $ref: '#/components/schemas/APIServer_accessControl'
         authorizationServer:
@@ -1610,6 +1612,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         accessControl:
           $ref: '#/components/schemas/APIServerDeployment_accessControl'
         authorizationVersion:
@@ -1672,6 +1675,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         id:
           description: The ID of the API service operation. This is randomly generated
             when the operation is created.
@@ -1724,6 +1728,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         description:
           description: The application resource's description.
           type: string
@@ -1756,6 +1761,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         action:
           description: The action associated with this permission.
           type: string
@@ -1785,6 +1791,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         description:
           description: The description of the application role.
           type: string
@@ -1816,6 +1823,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         id:
           description: The ID of the application resource permission to associate
             with this role.
@@ -1849,6 +1857,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         id:
           description: The ID of the API server operation. This is randomly generated
             when the operation is created.
@@ -1940,6 +1949,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
+          x-pingidentity-paginatedresponse-links: true
         alternateId:
           description: "A string that specifies alternative unique identifier for\
             \ the endpoint, which provides a method for locating the resource by a\
@@ -1987,255 +1997,6 @@ components:
       - description
       - name
       - recordRecentRequests
-    EntityArray:
-      example:
-        size: 5.637376656633329
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          assignments:
-          - role: "{}"
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            subject: "{}"
-            id: id
-          - role: "{}"
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            subject: "{}"
-            id: id
-          operations:
-          - accessControl:
-              scope:
-                matchType: ANY
-                scopes:
-                - id: id
-                - id: id
-              permission:
-                id: id
-              group:
-                groups:
-                - id: id
-                - id: id
-                - id: id
-                - id: id
-                - id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            methods:
-            - GET
-            - GET
-            - GET
-            - GET
-            - GET
-            paths:
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            name: name
-            id: id
-            policy:
-              id: id
-          - accessControl:
-              scope:
-                matchType: ANY
-                scopes:
-                - id: id
-                - id: id
-              permission:
-                id: id
-              group:
-                groups:
-                - id: id
-                - id: id
-                - id: id
-                - id: id
-                - id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            methods:
-            - GET
-            - GET
-            - GET
-            - GET
-            - GET
-            paths:
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            - pattern: pattern
-              type: EXACT
-            name: name
-            id: id
-            policy:
-              id: id
-          permissions:
-          - environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            resource:
-              name: name
-              id: id
-            action: action
-            description: description
-            id: id
-          - environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            resource:
-              name: name
-              id: id
-            action: action
-            description: description
-            id: id
-          roles:
-          - _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          - _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          resources:
-          - parent:
-              id: id
-              type: PING_ONE_RESOURCE
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          - parent:
-              id: id
-              type: PING_ONE_RESOURCE
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-          apiServers:
-          - accessControl:
-              custom:
-                enabled: true
-            baseUrls:
-            - baseUrls
-            - baseUrls
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            authorizationServer:
-              resource:
-                id: id
-              type: PINGONE_SSO
-            name: name
-            id: id
-            directory:
-              type: null
-            policy:
-              id: id
-          - accessControl:
-              custom:
-                enabled: true
-            baseUrls:
-            - baseUrls
-            - baseUrls
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            authorizationServer:
-              resource:
-                id: id
-              type: PINGONE_SSO
-            name: name
-            id: id
-            directory:
-              type: null
-            policy:
-              id: id
-          decisionEndpoints:
-          - alternateId: alternateId
-            provenance: provenance
-            policyId: policyId
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            owned: true
-            name: name
-            authorizationVersion:
-              id: id
-              href: href
-              title: title
-              type: type
-            description: description
-            recordRecentRequests: true
-            id: id
-            recentDecisionsEnabled: true
-            recentDecisions:
-              href: href
-              title: title
-              type: type
-          - alternateId: alternateId
-            provenance: provenance
-            policyId: policyId
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            owned: true
-            name: name
-            authorizationVersion:
-              id: id
-              href: href
-              title: title
-              type: type
-            description: description
-            recordRecentRequests: true
-            id: id
-            recentDecisionsEnabled: true
-            recentDecisions:
-              href: href
-              title: title
-              type: type
-        count: 5.962133916683182
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-        _embedded:
-          $ref: '#/components/schemas/EntityArray__embedded'
-        count:
-          type: number
-        size:
-          type: number
-      x-pingidentity-paginatedresponse: true
     ObjectApplication:
       properties:
         id:
@@ -2327,6 +2088,738 @@ components:
           items:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
+    readAllDecisionEndpoints_200_response__embedded:
+      example:
+        decisionEndpoints:
+        - alternateId: alternateId
+          provenance: provenance
+          policyId: policyId
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          owned: true
+          name: name
+          authorizationVersion:
+            id: id
+            href: href
+            title: title
+            type: type
+          description: description
+          recordRecentRequests: true
+          id: id
+          recentDecisionsEnabled: true
+          recentDecisions:
+            href: href
+            title: title
+            type: type
+        - alternateId: alternateId
+          provenance: provenance
+          policyId: policyId
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          owned: true
+          name: name
+          authorizationVersion:
+            id: id
+            href: href
+            title: title
+            type: type
+          description: description
+          recordRecentRequests: true
+          id: id
+          recentDecisionsEnabled: true
+          recentDecisions:
+            href: href
+            title: title
+            type: type
+      properties:
+        decisionEndpoints:
+          items:
+            $ref: '#/components/schemas/DecisionEndpoint'
+          type: array
+    readAllDecisionEndpoints_200_response:
+      example:
+        size: 5.637376656633329
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          decisionEndpoints:
+          - alternateId: alternateId
+            provenance: provenance
+            policyId: policyId
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            owned: true
+            name: name
+            authorizationVersion:
+              id: id
+              href: href
+              title: title
+              type: type
+            description: description
+            recordRecentRequests: true
+            id: id
+            recentDecisionsEnabled: true
+            recentDecisions:
+              href: href
+              title: title
+              type: type
+          - alternateId: alternateId
+            provenance: provenance
+            policyId: policyId
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            owned: true
+            name: name
+            authorizationVersion:
+              id: id
+              href: href
+              title: title
+              type: type
+            description: description
+            recordRecentRequests: true
+            id: id
+            recentDecisionsEnabled: true
+            recentDecisions:
+              href: href
+              title: title
+              type: type
+        count: 5.962133916683182
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllDecisionEndpoints_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readAllAPIServers_200_response__embedded:
+      example:
+        apiServers:
+        - accessControl:
+            custom:
+              enabled: true
+          baseUrls:
+          - baseUrls
+          - baseUrls
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          authorizationServer:
+            resource:
+              id: id
+            type: PINGONE_SSO
+          name: name
+          id: id
+          directory:
+            type: null
+          policy:
+            id: id
+        - accessControl:
+            custom:
+              enabled: true
+          baseUrls:
+          - baseUrls
+          - baseUrls
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          authorizationServer:
+            resource:
+              id: id
+            type: PINGONE_SSO
+          name: name
+          id: id
+          directory:
+            type: null
+          policy:
+            id: id
+      properties:
+        apiServers:
+          items:
+            $ref: '#/components/schemas/APIServer'
+          type: array
+    readAllAPIServers_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          apiServers:
+          - accessControl:
+              custom:
+                enabled: true
+            baseUrls:
+            - baseUrls
+            - baseUrls
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            authorizationServer:
+              resource:
+                id: id
+              type: PINGONE_SSO
+            name: name
+            id: id
+            directory:
+              type: null
+            policy:
+              id: id
+          - accessControl:
+              custom:
+                enabled: true
+            baseUrls:
+            - baseUrls
+            - baseUrls
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            authorizationServer:
+              resource:
+                id: id
+              type: PINGONE_SSO
+            name: name
+            id: id
+            directory:
+              type: null
+            policy:
+              id: id
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllAPIServers_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readAllAPIServerOperations_200_response__embedded:
+      example:
+        operations:
+        - accessControl:
+            scope:
+              matchType: ANY
+              scopes:
+              - id: id
+              - id: id
+            permission:
+              id: id
+            group:
+              groups:
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          methods:
+          - GET
+          - GET
+          - GET
+          - GET
+          - GET
+          paths:
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          name: name
+          id: id
+          policy:
+            id: id
+        - accessControl:
+            scope:
+              matchType: ANY
+              scopes:
+              - id: id
+              - id: id
+            permission:
+              id: id
+            group:
+              groups:
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          methods:
+          - GET
+          - GET
+          - GET
+          - GET
+          - GET
+          paths:
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          - pattern: pattern
+            type: EXACT
+          name: name
+          id: id
+          policy:
+            id: id
+      properties:
+        operations:
+          items:
+            $ref: '#/components/schemas/APIServerOperation'
+          type: array
+    readAllAPIServerOperations_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          operations:
+          - accessControl:
+              scope:
+                matchType: ANY
+                scopes:
+                - id: id
+                - id: id
+              permission:
+                id: id
+              group:
+                groups:
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            methods:
+            - GET
+            - GET
+            - GET
+            - GET
+            - GET
+            paths:
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            name: name
+            id: id
+            policy:
+              id: id
+          - accessControl:
+              scope:
+                matchType: ANY
+                scopes:
+                - id: id
+                - id: id
+              permission:
+                id: id
+              group:
+                groups:
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            methods:
+            - GET
+            - GET
+            - GET
+            - GET
+            - GET
+            paths:
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            - pattern: pattern
+              type: EXACT
+            name: name
+            id: id
+            policy:
+              id: id
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllAPIServerOperations_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readApplicationResources_200_response__embedded:
+      example:
+        resources:
+        - parent:
+            id: id
+            type: PING_ONE_RESOURCE
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+        - parent:
+            id: id
+            type: PING_ONE_RESOURCE
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+      properties:
+        resources:
+          items:
+            $ref: '#/components/schemas/ApplicationResource'
+          type: array
+    readApplicationResources_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          resources:
+          - parent:
+              id: id
+              type: PING_ONE_RESOURCE
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+          - parent:
+              id: id
+              type: PING_ONE_RESOURCE
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readApplicationResources_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readApplicationPermissions_200_response__embedded:
+      example:
+        permissions:
+        - environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          resource:
+            name: name
+            id: id
+          action: action
+          description: description
+          id: id
+        - environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          resource:
+            name: name
+            id: id
+          action: action
+          description: description
+          id: id
+      properties:
+        permissions:
+          items:
+            $ref: '#/components/schemas/ApplicationResourcePermission'
+          type: array
+    readApplicationPermissions_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          permissions:
+          - environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            resource:
+              name: name
+              id: id
+            action: action
+            description: description
+            id: id
+          - environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            resource:
+              name: name
+              id: id
+            action: action
+            description: description
+            id: id
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readApplicationPermissions_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readApplicationRoles_200_response__embedded:
+      example:
+        roles:
+        - _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+        - _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+      properties:
+        roles:
+          items:
+            $ref: '#/components/schemas/ApplicationRole'
+          type: array
+    readApplicationRoles_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          roles:
+          - _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+          - _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readApplicationRoles_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readApplicationRolePermissions_200_response__embedded:
+      example:
+        permissions:
+        - environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          resource:
+            name: name
+            id: id
+          description: description
+          action: action
+          id: id
+          key: key
+        - environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          resource:
+            name: name
+            id: id
+          description: description
+          action: action
+          id: id
+          key: key
+      properties:
+        permissions:
+          items:
+            $ref: '#/components/schemas/ApplicationRolePermission'
+          type: array
+    readApplicationRolePermissions_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          permissions:
+          - environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            resource:
+              name: name
+              id: id
+            description: description
+            action: action
+            id: id
+            key: key
+          - environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            resource:
+              name: name
+              id: id
+            description: description
+            action: action
+            id: id
+            key: key
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readApplicationRolePermissions_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readApplicationRoleAssignments_200_response__embedded:
+      example:
+        assignments:
+        - role: "{}"
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          subject: "{}"
+          id: id
+        - role: "{}"
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          subject: "{}"
+          id: id
+      properties:
+        assignments:
+          items:
+            $ref: '#/components/schemas/ApplicationRoleAssignment'
+          type: array
+    readApplicationRoleAssignments_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          assignments:
+          - role: "{}"
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            subject: "{}"
+            id: id
+          - role: "{}"
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            subject: "{}"
+            id: id
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readApplicationRoleAssignments_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
     LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
@@ -2692,270 +3185,6 @@ components:
           description: A string that specifies the content type for the recent decisions
             response.
           type: string
-    EntityArray__embedded_permissions_inner:
-      oneOf:
-      - $ref: '#/components/schemas/ApplicationResourcePermission'
-      - $ref: '#/components/schemas/ApplicationRolePermission'
-    EntityArray__embedded:
-      example:
-        assignments:
-        - role: "{}"
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          subject: "{}"
-          id: id
-        - role: "{}"
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          subject: "{}"
-          id: id
-        operations:
-        - accessControl:
-            scope:
-              matchType: ANY
-              scopes:
-              - id: id
-              - id: id
-            permission:
-              id: id
-            group:
-              groups:
-              - id: id
-              - id: id
-              - id: id
-              - id: id
-              - id: id
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          methods:
-          - GET
-          - GET
-          - GET
-          - GET
-          - GET
-          paths:
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          name: name
-          id: id
-          policy:
-            id: id
-        - accessControl:
-            scope:
-              matchType: ANY
-              scopes:
-              - id: id
-              - id: id
-            permission:
-              id: id
-            group:
-              groups:
-              - id: id
-              - id: id
-              - id: id
-              - id: id
-              - id: id
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          methods:
-          - GET
-          - GET
-          - GET
-          - GET
-          - GET
-          paths:
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          - pattern: pattern
-            type: EXACT
-          name: name
-          id: id
-          policy:
-            id: id
-        permissions:
-        - environment:
-            id: id
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          resource:
-            name: name
-            id: id
-          action: action
-          description: description
-          id: id
-        - environment:
-            id: id
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          resource:
-            name: name
-            id: id
-          action: action
-          description: description
-          id: id
-        roles:
-        - _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        - _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        resources:
-        - parent:
-            id: id
-            type: PING_ONE_RESOURCE
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        - parent:
-            id: id
-            type: PING_ONE_RESOURCE
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-        apiServers:
-        - accessControl:
-            custom:
-              enabled: true
-          baseUrls:
-          - baseUrls
-          - baseUrls
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          authorizationServer:
-            resource:
-              id: id
-            type: PINGONE_SSO
-          name: name
-          id: id
-          directory:
-            type: null
-          policy:
-            id: id
-        - accessControl:
-            custom:
-              enabled: true
-          baseUrls:
-          - baseUrls
-          - baseUrls
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          authorizationServer:
-            resource:
-              id: id
-            type: PINGONE_SSO
-          name: name
-          id: id
-          directory:
-            type: null
-          policy:
-            id: id
-        decisionEndpoints:
-        - alternateId: alternateId
-          provenance: provenance
-          policyId: policyId
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          owned: true
-          name: name
-          authorizationVersion:
-            id: id
-            href: href
-            title: title
-            type: type
-          description: description
-          recordRecentRequests: true
-          id: id
-          recentDecisionsEnabled: true
-          recentDecisions:
-            href: href
-            title: title
-            type: type
-        - alternateId: alternateId
-          provenance: provenance
-          policyId: policyId
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          owned: true
-          name: name
-          authorizationVersion:
-            id: id
-            href: href
-            title: title
-            type: type
-          description: description
-          recordRecentRequests: true
-          id: id
-          recentDecisionsEnabled: true
-          recentDecisions:
-            href: href
-            title: title
-            type: type
-      properties:
-        apiServers:
-          items:
-            $ref: '#/components/schemas/APIServer'
-          type: array
-        assignments:
-          items:
-            $ref: '#/components/schemas/ApplicationRoleAssignment'
-          type: array
-        decisionEndpoints:
-          items:
-            $ref: '#/components/schemas/DecisionEndpoint'
-          type: array
-        operations:
-          items:
-            $ref: '#/components/schemas/APIServerOperation'
-          type: array
-        permissions:
-          items:
-            $ref: '#/components/schemas/EntityArray__embedded_permissions_inner'
-          type: array
-        resources:
-          items:
-            $ref: '#/components/schemas/ApplicationResource'
-          type: array
-        roles:
-          items:
-            $ref: '#/components/schemas/ApplicationRole'
-          type: array
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).

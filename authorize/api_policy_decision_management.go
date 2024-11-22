@@ -429,11 +429,11 @@ type ApiReadAllDecisionEndpointsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllDecisionEndpointsRequest) Execute() PagedIterator[EntityArray] {
+func (r ApiReadAllDecisionEndpointsRequest) Execute() PagedIterator[ReadAllDecisionEndpoints200Response] {
 	return r.ApiService.ReadAllDecisionEndpointsExecute(r)
 }
 
-func (r ApiReadAllDecisionEndpointsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllDecisionEndpointsRequest) ExecuteInitialPage() (*ReadAllDecisionEndpoints200Response, *http.Response, error) {
 	return r.ApiService.ReadAllDecisionEndpointsExecuteInitialPage(r)
 }
 
@@ -453,18 +453,18 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpoints(ctx contex
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) PagedIterator[EntityArray] {
+//  @return ReadAllDecisionEndpoints200Response
+func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) PagedIterator[ReadAllDecisionEndpoints200Response] {
   return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return EntityArray
-func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInitialPage(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
+//  @return ReadAllDecisionEndpoints200Response
+func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInitialPage(r ApiReadAllDecisionEndpointsRequest) (*ReadAllDecisionEndpoints200Response, *http.Response, error) {
 	var (
 		err error
 		response *http.Response
-		localVarReturnValue *EntityArray
+		localVarReturnValue *ReadAllDecisionEndpoints200Response
 	)
 	
 	response, err = processResponse(
@@ -476,12 +476,12 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecuteInit
 	return localVarReturnValue, response, err
 }
 
-func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
+func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*ReadAllDecisionEndpoints200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllDecisionEndpoints200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PolicyDecisionManagementApiService.ReadAllDecisionEndpoints")

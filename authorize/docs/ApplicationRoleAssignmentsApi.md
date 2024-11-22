@@ -14,7 +14,7 @@ READ Application Role Assignments
 
 ### Paged Response (Recommended)
 
-> PagedIterator[EntityArray] ReadApplicationRoleAssignments(ctx, environmentID, applicationRoleID).Execute()
+> PagedIterator[ReadApplicationRoleAssignments200Response] ReadApplicationRoleAssignments(ctx, environmentID, applicationRoleID).Execute()
 
 #### Example
 
@@ -42,7 +42,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
 		}
 
-		// response from `ReadApplicationRoleAssignments` page iteration: EntityArray
+		// response from `ReadApplicationRoleAssignments` page iteration: ReadApplicationRoleAssignments200Response
 		fmt.Fprintf(os.Stdout, "Response from `ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments` page iteration: %v\n", pageCursor.Data)
 	}
 }
@@ -50,7 +50,7 @@ func main() {
 
 ### Initial Page Response
 
-> EntityArray ReadApplicationRoleAssignments(ctx, environmentID, applicationRoleID).ExecuteInitialPage()
+> ReadApplicationRoleAssignments200Response ReadApplicationRoleAssignments(ctx, environmentID, applicationRoleID).ExecuteInitialPage()
 
 #### Example
 
@@ -75,7 +75,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadApplicationRoleAssignments`: EntityArray
+	// response from `ReadApplicationRoleAssignments`: ReadApplicationRoleAssignments200Response
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationRoleAssignmentsApi.ReadApplicationRoleAssignments`: %v\n", resp)
 }
 ```
@@ -101,11 +101,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+Page Iterator: PagedIterator[[**ReadApplicationRoleAssignments200Response**](ReadApplicationRoleAssignments200Response.md)]
 
-PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+PagedIterator[ReadApplicationRoleAssignments200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadApplicationRoleAssignments200Response**](ReadApplicationRoleAssignments200Response.md)], error] using the standard `iter` package in go `1.23`.
 
-Page Data: [**EntityArray**](EntityArray.md)
+Page Data: [**ReadApplicationRoleAssignments200Response**](ReadApplicationRoleAssignments200Response.md)
 
 ### Authorization
 

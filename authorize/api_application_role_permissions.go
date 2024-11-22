@@ -438,11 +438,11 @@ type ApiReadApplicationRolePermissionsRequest struct {
 	applicationRoleID string
 }
 
-func (r ApiReadApplicationRolePermissionsRequest) Execute() PagedIterator[EntityArray] {
+func (r ApiReadApplicationRolePermissionsRequest) Execute() PagedIterator[ReadApplicationRolePermissions200Response] {
 	return r.ApiService.ReadApplicationRolePermissionsExecute(r)
 }
 
-func (r ApiReadApplicationRolePermissionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadApplicationRolePermissionsRequest) ExecuteInitialPage() (*ReadApplicationRolePermissions200Response, *http.Response, error) {
 	return r.ApiService.ReadApplicationRolePermissionsExecuteInitialPage(r)
 }
 
@@ -464,18 +464,18 @@ func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissions(ct
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) PagedIterator[EntityArray] {
+//  @return ReadApplicationRolePermissions200Response
+func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) PagedIterator[ReadApplicationRolePermissions200Response] {
   return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return EntityArray
-func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecuteInitialPage(r ApiReadApplicationRolePermissionsRequest) (*EntityArray, *http.Response, error) {
+//  @return ReadApplicationRolePermissions200Response
+func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExecuteInitialPage(r ApiReadApplicationRolePermissionsRequest) (*ReadApplicationRolePermissions200Response, *http.Response, error) {
 	var (
 		err error
 		response *http.Response
-		localVarReturnValue *EntityArray
+		localVarReturnValue *ReadApplicationRolePermissions200Response
 	)
 	
 	response, err = processResponse(
@@ -487,12 +487,12 @@ func (a *ApplicationRolePermissionsApiService) ReadApplicationRolePermissionsExe
 	return localVarReturnValue, response, err
 }
 
-func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationRolePermissionsApiService) internalReadApplicationRolePermissionsExecute(r ApiReadApplicationRolePermissionsRequest) (*ReadApplicationRolePermissions200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadApplicationRolePermissions200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationRolePermissionsApiService.ReadApplicationRolePermissions")

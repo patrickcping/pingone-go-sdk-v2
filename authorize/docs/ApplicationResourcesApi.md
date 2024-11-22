@@ -15,7 +15,7 @@ READ Application Resources
 
 ### Paged Response (Recommended)
 
-> PagedIterator[EntityArray] ReadApplicationResources(ctx, environmentID).Execute()
+> PagedIterator[ReadApplicationResources200Response] ReadApplicationResources(ctx, environmentID).Execute()
 
 #### Example
 
@@ -42,7 +42,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
 		}
 
-		// response from `ReadApplicationResources` page iteration: EntityArray
+		// response from `ReadApplicationResources` page iteration: ReadApplicationResources200Response
 		fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcesApi.ReadApplicationResources` page iteration: %v\n", pageCursor.Data)
 	}
 }
@@ -50,7 +50,7 @@ func main() {
 
 ### Initial Page Response
 
-> EntityArray ReadApplicationResources(ctx, environmentID).ExecuteInitialPage()
+> ReadApplicationResources200Response ReadApplicationResources(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -74,7 +74,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcesApi.ReadApplicationResources``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadApplicationResources`: EntityArray
+	// response from `ReadApplicationResources`: ReadApplicationResources200Response
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcesApi.ReadApplicationResources`: %v\n", resp)
 }
 ```
@@ -98,11 +98,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+Page Iterator: PagedIterator[[**ReadApplicationResources200Response**](ReadApplicationResources200Response.md)]
 
-PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+PagedIterator[ReadApplicationResources200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadApplicationResources200Response**](ReadApplicationResources200Response.md)], error] using the standard `iter` package in go `1.23`.
 
-Page Data: [**EntityArray**](EntityArray.md)
+Page Data: [**ReadApplicationResources200Response**](ReadApplicationResources200Response.md)
 
 ### Authorization
 

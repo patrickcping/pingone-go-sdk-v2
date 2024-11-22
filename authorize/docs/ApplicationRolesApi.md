@@ -157,7 +157,7 @@ READ Application Roles
 
 ### Paged Response (Recommended)
 
-> PagedIterator[EntityArray] ReadApplicationRoles(ctx, environmentID).Execute()
+> PagedIterator[ReadApplicationRoles200Response] ReadApplicationRoles(ctx, environmentID).Execute()
 
 #### Example
 
@@ -184,7 +184,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
 		}
 
-		// response from `ReadApplicationRoles` page iteration: EntityArray
+		// response from `ReadApplicationRoles` page iteration: ReadApplicationRoles200Response
 		fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.ReadApplicationRoles` page iteration: %v\n", pageCursor.Data)
 	}
 }
@@ -192,7 +192,7 @@ func main() {
 
 ### Initial Page Response
 
-> EntityArray ReadApplicationRoles(ctx, environmentID).ExecuteInitialPage()
+> ReadApplicationRoles200Response ReadApplicationRoles(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -216,7 +216,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolesApi.ReadApplicationRoles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadApplicationRoles`: EntityArray
+	// response from `ReadApplicationRoles`: ReadApplicationRoles200Response
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationRolesApi.ReadApplicationRoles`: %v\n", resp)
 }
 ```
@@ -240,11 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+Page Iterator: PagedIterator[[**ReadApplicationRoles200Response**](ReadApplicationRoles200Response.md)]
 
-PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+PagedIterator[ReadApplicationRoles200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadApplicationRoles200Response**](ReadApplicationRoles200Response.md)], error] using the standard `iter` package in go `1.23`.
 
-Page Data: [**EntityArray**](EntityArray.md)
+Page Data: [**ReadApplicationRoles200Response**](ReadApplicationRoles200Response.md)
 
 ### Authorization
 

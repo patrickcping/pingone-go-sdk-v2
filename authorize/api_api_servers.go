@@ -429,11 +429,11 @@ type ApiReadAllAPIServersRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllAPIServersRequest) Execute() PagedIterator[EntityArray] {
+func (r ApiReadAllAPIServersRequest) Execute() PagedIterator[ReadAllAPIServers200Response] {
 	return r.ApiService.ReadAllAPIServersExecute(r)
 }
 
-func (r ApiReadAllAPIServersRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllAPIServersRequest) ExecuteInitialPage() (*ReadAllAPIServers200Response, *http.Response, error) {
 	return r.ApiService.ReadAllAPIServersExecuteInitialPage(r)
 }
 
@@ -453,18 +453,18 @@ func (a *APIServersApiService) ReadAllAPIServers(ctx context.Context, environmen
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) PagedIterator[EntityArray] {
+//  @return ReadAllAPIServers200Response
+func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) PagedIterator[ReadAllAPIServers200Response] {
   return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return EntityArray
-func (a *APIServersApiService) ReadAllAPIServersExecuteInitialPage(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
+//  @return ReadAllAPIServers200Response
+func (a *APIServersApiService) ReadAllAPIServersExecuteInitialPage(r ApiReadAllAPIServersRequest) (*ReadAllAPIServers200Response, *http.Response, error) {
 	var (
 		err error
 		response *http.Response
-		localVarReturnValue *EntityArray
+		localVarReturnValue *ReadAllAPIServers200Response
 	)
 	
 	response, err = processResponse(
@@ -476,12 +476,12 @@ func (a *APIServersApiService) ReadAllAPIServersExecuteInitialPage(r ApiReadAllA
 	return localVarReturnValue, response, err
 }
 
-func (a *APIServersApiService) internalReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
+func (a *APIServersApiService) internalReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*ReadAllAPIServers200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllAPIServers200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIServersApiService.ReadAllAPIServers")

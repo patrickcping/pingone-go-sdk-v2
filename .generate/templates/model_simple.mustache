@@ -93,6 +93,83 @@ func New{{classname}}WithDefaults() *{{classname}} {
 }
 
 {{#vars}}
+{{#vendorExtensions.x-pingidentity-paginatedresponse-links}}
+func (o {{{classname}}}) hasHalLink(linkIndex string) bool {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}l
+		if v, ok := links[linkIndex]; ok {
+			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (o {{{classname}}}) getHalLink(linkIndex string) {{{complexType}}} {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}l
+		if v, ok := links[linkIndex]; ok {
+			return v
+		}
+	}
+
+	var ret {{{complexType}}}
+	return ret
+}
+
+func (o {{{classname}}}) getHalLinkOk(linkIndex string) (*{{{complexType}}}, bool) {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}l
+		if v, ok := links[linkIndex]; ok {
+			return &v, true
+		}
+	}
+
+	return nil, false
+}
+
+func (o {{{classname}}}) IsPaginated() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT) || o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o {{{classname}}}) HasPaginationSelf() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o {{{classname}}}) GetPaginationSelfLink() {{{complexType}}} {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o {{{classname}}}) GetPaginationSelfLinkOk() (*{{{complexType}}}, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o {{{classname}}}) HasPaginationNext() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o {{{classname}}}) GetPaginationNextLink() {{{complexType}}} {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o {{{classname}}}) GetPaginationNextLinkOk() (*{{{complexType}}}, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o {{{classname}}}) HasPaginationPrevious() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o {{{classname}}}) GetPaginationPreviousLink() {{{complexType}}} {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o {{{classname}}}) GetPaginationPreviousLinkOk() (*{{{complexType}}}, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+{{/vendorExtensions.x-pingidentity-paginatedresponse-links}}
 {{#required}}
 // Get{{name}} returns the {{name}} field value
 {{#isNullable}}

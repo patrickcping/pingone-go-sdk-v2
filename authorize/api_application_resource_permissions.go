@@ -438,11 +438,11 @@ type ApiReadApplicationPermissionsRequest struct {
 	applicationResourceID string
 }
 
-func (r ApiReadApplicationPermissionsRequest) Execute() PagedIterator[EntityArray] {
+func (r ApiReadApplicationPermissionsRequest) Execute() PagedIterator[ReadApplicationPermissions200Response] {
 	return r.ApiService.ReadApplicationPermissionsExecute(r)
 }
 
-func (r ApiReadApplicationPermissionsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadApplicationPermissionsRequest) ExecuteInitialPage() (*ReadApplicationPermissions200Response, *http.Response, error) {
 	return r.ApiService.ReadApplicationPermissionsExecuteInitialPage(r)
 }
 
@@ -464,18 +464,18 @@ func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissions(ct
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) PagedIterator[EntityArray] {
+//  @return ReadApplicationPermissions200Response
+func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) PagedIterator[ReadApplicationPermissions200Response] {
   return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return EntityArray
-func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecuteInitialPage(r ApiReadApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
+//  @return ReadApplicationPermissions200Response
+func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExecuteInitialPage(r ApiReadApplicationPermissionsRequest) (*ReadApplicationPermissions200Response, *http.Response, error) {
 	var (
 		err error
 		response *http.Response
-		localVarReturnValue *EntityArray
+		localVarReturnValue *ReadApplicationPermissions200Response
 	)
 	
 	response, err = processResponse(
@@ -487,12 +487,12 @@ func (a *ApplicationResourcePermissionsApiService) ReadApplicationPermissionsExe
 	return localVarReturnValue, response, err
 }
 
-func (a *ApplicationResourcePermissionsApiService) internalReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationResourcePermissionsApiService) internalReadApplicationPermissionsExecute(r ApiReadApplicationPermissionsRequest) (*ReadApplicationPermissions200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadApplicationPermissions200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationResourcePermissionsApiService.ReadApplicationPermissions")

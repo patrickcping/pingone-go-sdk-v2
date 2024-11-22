@@ -157,7 +157,7 @@ READ All API Servers
 
 ### Paged Response (Recommended)
 
-> PagedIterator[EntityArray] ReadAllAPIServers(ctx, environmentID).Execute()
+> PagedIterator[ReadAllAPIServers200Response] ReadAllAPIServers(ctx, environmentID).Execute()
 
 #### Example
 
@@ -184,7 +184,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
 		}
 
-		// response from `ReadAllAPIServers` page iteration: EntityArray
+		// response from `ReadAllAPIServers` page iteration: ReadAllAPIServers200Response
 		fmt.Fprintf(os.Stdout, "Response from `APIServersApi.ReadAllAPIServers` page iteration: %v\n", pageCursor.Data)
 	}
 }
@@ -192,7 +192,7 @@ func main() {
 
 ### Initial Page Response
 
-> EntityArray ReadAllAPIServers(ctx, environmentID).ExecuteInitialPage()
+> ReadAllAPIServers200Response ReadAllAPIServers(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -216,7 +216,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIServersApi.ReadAllAPIServers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadAllAPIServers`: EntityArray
+	// response from `ReadAllAPIServers`: ReadAllAPIServers200Response
 	fmt.Fprintf(os.Stdout, "Response from `APIServersApi.ReadAllAPIServers`: %v\n", resp)
 }
 ```
@@ -240,11 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+Page Iterator: PagedIterator[[**ReadAllAPIServers200Response**](ReadAllAPIServers200Response.md)]
 
-PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+PagedIterator[ReadAllAPIServers200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllAPIServers200Response**](ReadAllAPIServers200Response.md)], error] using the standard `iter` package in go `1.23`.
 
-Page Data: [**EntityArray**](EntityArray.md)
+Page Data: [**ReadAllAPIServers200Response**](ReadAllAPIServers200Response.md)
 
 ### Authorization
 

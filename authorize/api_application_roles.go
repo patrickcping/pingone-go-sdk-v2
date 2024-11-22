@@ -429,11 +429,11 @@ type ApiReadApplicationRolesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadApplicationRolesRequest) Execute() PagedIterator[EntityArray] {
+func (r ApiReadApplicationRolesRequest) Execute() PagedIterator[ReadApplicationRoles200Response] {
 	return r.ApiService.ReadApplicationRolesExecute(r)
 }
 
-func (r ApiReadApplicationRolesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadApplicationRolesRequest) ExecuteInitialPage() (*ReadApplicationRoles200Response, *http.Response, error) {
 	return r.ApiService.ReadApplicationRolesExecuteInitialPage(r)
 }
 
@@ -453,18 +453,18 @@ func (a *ApplicationRolesApiService) ReadApplicationRoles(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *ApplicationRolesApiService) ReadApplicationRolesExecute(r ApiReadApplicationRolesRequest) PagedIterator[EntityArray] {
+//  @return ReadApplicationRoles200Response
+func (a *ApplicationRolesApiService) ReadApplicationRolesExecute(r ApiReadApplicationRolesRequest) PagedIterator[ReadApplicationRoles200Response] {
   return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
 // Execute executes the request (returning the initial page of the paged response only)
-//  @return EntityArray
-func (a *ApplicationRolesApiService) ReadApplicationRolesExecuteInitialPage(r ApiReadApplicationRolesRequest) (*EntityArray, *http.Response, error) {
+//  @return ReadApplicationRoles200Response
+func (a *ApplicationRolesApiService) ReadApplicationRolesExecuteInitialPage(r ApiReadApplicationRolesRequest) (*ReadApplicationRoles200Response, *http.Response, error) {
 	var (
 		err error
 		response *http.Response
-		localVarReturnValue *EntityArray
+		localVarReturnValue *ReadApplicationRoles200Response
 	)
 	
 	response, err = processResponse(
@@ -476,12 +476,12 @@ func (a *ApplicationRolesApiService) ReadApplicationRolesExecuteInitialPage(r Ap
 	return localVarReturnValue, response, err
 }
 
-func (a *ApplicationRolesApiService) internalReadApplicationRolesExecute(r ApiReadApplicationRolesRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationRolesApiService) internalReadApplicationRolesExecute(r ApiReadApplicationRolesRequest) (*ReadApplicationRoles200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadApplicationRoles200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationRolesApiService.ReadApplicationRoles")

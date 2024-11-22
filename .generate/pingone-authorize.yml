@@ -38,6 +38,7 @@ components:
       description: OAuth bearer token (see documentation)
   schemas:
     LinksHATEOAS:
+      x-pingidentity-paginatedresponse-links: true
       type: object
       readOnly: true
       additionalProperties:
@@ -492,49 +493,6 @@ components:
        - name
        - description
        - recordRecentRequests
-    EntityArray:
-      x-pingidentity-paginatedresponse: true
-      type: object
-      properties:
-        '_links':
-          $ref: '#/components/schemas/LinksHATEOAS'
-        '_embedded':
-          type: object
-          properties:
-            apiServers:
-              type: array
-              items:
-                $ref: '#/components/schemas/APIServer'
-            assignments:
-              type: array
-              items:
-                $ref: '#/components/schemas/ApplicationRoleAssignment'
-            decisionEndpoints:
-              type: array
-              items:
-                $ref: '#/components/schemas/DecisionEndpoint'
-            operations:
-              type: array
-              items:
-                $ref: '#/components/schemas/APIServerOperation'
-            permissions:
-              type: array
-              items:
-                oneOf:
-                  - $ref: '#/components/schemas/ApplicationResourcePermission'
-                  - $ref: '#/components/schemas/ApplicationRolePermission'
-            resources:
-              type: array
-              items:
-                $ref: '#/components/schemas/ApplicationResource'
-            roles:
-              type: array
-              items:
-                $ref: '#/components/schemas/ApplicationRole'
-        count:
-          type: number
-        size:
-          type: number
     ObjectApplication:
       type: object
       readOnly: true
@@ -708,7 +666,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      decisionEndpoints:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/DecisionEndpoint'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - Policy Decision Management
@@ -894,7 +867,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      apiServers:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/APIServer'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - API Servers
@@ -1168,7 +1156,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      operations:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/APIServerOperation'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - API Server Operations
@@ -1374,7 +1377,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      resources:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ApplicationResource'
+                  count:
+                    type: number
+                  size:
+                    type: number
   /environments/{environmentID}/applicationResources/{applicationResourceID}:
     get:
       tags:
@@ -1451,7 +1469,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      permissions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ApplicationResourcePermission'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - Application Resource Permissions
@@ -1657,7 +1690,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      roles:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ApplicationRole'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - Application Roles
@@ -1848,7 +1896,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      permissions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ApplicationRolePermission'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - Application Role Permissions
@@ -1970,4 +2033,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      assignments:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ApplicationRoleAssignment'
+                  count:
+                    type: number
+                  size:
+                    type: number

@@ -157,7 +157,7 @@ READ All Decision Endpoints
 
 ### Paged Response (Recommended)
 
-> PagedIterator[EntityArray] ReadAllDecisionEndpoints(ctx, environmentID).Execute()
+> PagedIterator[ReadAllDecisionEndpoints200Response] ReadAllDecisionEndpoints(ctx, environmentID).Execute()
 
 #### Example
 
@@ -184,7 +184,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
 		}
 
-		// response from `ReadAllDecisionEndpoints` page iteration: EntityArray
+		// response from `ReadAllDecisionEndpoints` page iteration: ReadAllDecisionEndpoints200Response
 		fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.ReadAllDecisionEndpoints` page iteration: %v\n", pageCursor.Data)
 	}
 }
@@ -192,7 +192,7 @@ func main() {
 
 ### Initial Page Response
 
-> EntityArray ReadAllDecisionEndpoints(ctx, environmentID).ExecuteInitialPage()
+> ReadAllDecisionEndpoints200Response ReadAllDecisionEndpoints(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -216,7 +216,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PolicyDecisionManagementApi.ReadAllDecisionEndpoints``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadAllDecisionEndpoints`: EntityArray
+	// response from `ReadAllDecisionEndpoints`: ReadAllDecisionEndpoints200Response
 	fmt.Fprintf(os.Stdout, "Response from `PolicyDecisionManagementApi.ReadAllDecisionEndpoints`: %v\n", resp)
 }
 ```
@@ -240,11 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+Page Iterator: PagedIterator[[**ReadAllDecisionEndpoints200Response**](ReadAllDecisionEndpoints200Response.md)]
 
-PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+PagedIterator[ReadAllDecisionEndpoints200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllDecisionEndpoints200Response**](ReadAllDecisionEndpoints200Response.md)], error] using the standard `iter` package in go `1.23`.
 
-Page Data: [**EntityArray**](EntityArray.md)
+Page Data: [**ReadAllDecisionEndpoints200Response**](ReadAllDecisionEndpoints200Response.md)
 
 ### Authorization
 

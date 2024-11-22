@@ -161,7 +161,7 @@ READ Application Role Permissions
 
 ### Paged Response (Recommended)
 
-> PagedIterator[EntityArray] ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).Execute()
+> PagedIterator[ReadApplicationRolePermissions200Response] ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).Execute()
 
 #### Example
 
@@ -189,7 +189,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
 		}
 
-		// response from `ReadApplicationRolePermissions` page iteration: EntityArray
+		// response from `ReadApplicationRolePermissions` page iteration: ReadApplicationRolePermissions200Response
 		fmt.Fprintf(os.Stdout, "Response from `ApplicationRolePermissionsApi.ReadApplicationRolePermissions` page iteration: %v\n", pageCursor.Data)
 	}
 }
@@ -197,7 +197,7 @@ func main() {
 
 ### Initial Page Response
 
-> EntityArray ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).ExecuteInitialPage()
+> ReadApplicationRolePermissions200Response ReadApplicationRolePermissions(ctx, environmentID, applicationRoleID).ExecuteInitialPage()
 
 #### Example
 
@@ -222,7 +222,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationRolePermissionsApi.ReadApplicationRolePermissions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadApplicationRolePermissions`: EntityArray
+	// response from `ReadApplicationRolePermissions`: ReadApplicationRolePermissions200Response
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationRolePermissionsApi.ReadApplicationRolePermissions`: %v\n", resp)
 }
 ```
@@ -248,11 +248,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+Page Iterator: PagedIterator[[**ReadApplicationRolePermissions200Response**](ReadApplicationRolePermissions200Response.md)]
 
-PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+PagedIterator[ReadApplicationRolePermissions200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadApplicationRolePermissions200Response**](ReadApplicationRolePermissions200Response.md)], error] using the standard `iter` package in go `1.23`.
 
-Page Data: [**EntityArray**](EntityArray.md)
+Page Data: [**ReadApplicationRolePermissions200Response**](ReadApplicationRolePermissions200Response.md)
 
 ### Authorization
 

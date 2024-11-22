@@ -163,7 +163,7 @@ READ All API Server Operations
 
 ### Paged Response (Recommended)
 
-> PagedIterator[EntityArray] ReadAllAPIServerOperations(ctx, environmentID, apiServerID).Execute()
+> PagedIterator[ReadAllAPIServerOperations200Response] ReadAllAPIServerOperations(ctx, environmentID, apiServerID).Execute()
 
 #### Example
 
@@ -191,7 +191,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
 		}
 
-		// response from `ReadAllAPIServerOperations` page iteration: EntityArray
+		// response from `ReadAllAPIServerOperations` page iteration: ReadAllAPIServerOperations200Response
 		fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadAllAPIServerOperations` page iteration: %v\n", pageCursor.Data)
 	}
 }
@@ -199,7 +199,7 @@ func main() {
 
 ### Initial Page Response
 
-> EntityArray ReadAllAPIServerOperations(ctx, environmentID, apiServerID).ExecuteInitialPage()
+> ReadAllAPIServerOperations200Response ReadAllAPIServerOperations(ctx, environmentID, apiServerID).ExecuteInitialPage()
 
 #### Example
 
@@ -224,7 +224,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIServerOperationsApi.ReadAllAPIServerOperations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReadAllAPIServerOperations`: EntityArray
+	// response from `ReadAllAPIServerOperations`: ReadAllAPIServerOperations200Response
 	fmt.Fprintf(os.Stdout, "Response from `APIServerOperationsApi.ReadAllAPIServerOperations`: %v\n", resp)
 }
 ```
@@ -250,11 +250,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Page Iterator: PagedIterator[[**EntityArray**](EntityArray.md)]
+Page Iterator: PagedIterator[[**ReadAllAPIServerOperations200Response**](ReadAllAPIServerOperations200Response.md)]
 
-PagedIterator[EntityArray] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**EntityArray**](EntityArray.md)], error] using the standard `iter` package in go `1.23`.
+PagedIterator[ReadAllAPIServerOperations200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllAPIServerOperations200Response**](ReadAllAPIServerOperations200Response.md)], error] using the standard `iter` package in go `1.23`.
 
-Page Data: [**EntityArray**](EntityArray.md)
+Page Data: [**ReadAllAPIServerOperations200Response**](ReadAllAPIServerOperations200Response.md)
 
 ### Authorization
 
