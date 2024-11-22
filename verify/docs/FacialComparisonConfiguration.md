@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
-**Threshold** | [**EnumThreshold**](EnumThreshold.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) | Controls if facial comparison is REQUIRED, OPTIONAL, or DISABLED. | 
+**Threshold** | [**EnumThreshold**](EnumThreshold.md) | Threshold for successful facial comparison; can be LOW, MEDIUM, or HIGH (for which PingOne Verify uses industry and vendor recommended definitions). | 
 
 ## Methods
 

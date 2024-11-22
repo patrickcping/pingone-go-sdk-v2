@@ -24,25 +24,25 @@ CREATE Voice Phrase
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhrase := *openapiclient.NewVoicePhrase("DisplayName_example") // VoicePhrase |  (optional)
+	environmentID := "environmentID_example" // string | 
+	voicePhrase := *openapiclient.NewVoicePhrase("DisplayName_example") // VoicePhrase |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhrasesApi.CreateVoicePhrase(context.Background(), environmentID).VoicePhrase(voicePhrase).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.CreateVoicePhrase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateVoicePhrase`: VoicePhrase
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.CreateVoicePhrase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhrasesApi.CreateVoicePhrase(context.Background(), environmentID).VoicePhrase(voicePhrase).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.CreateVoicePhrase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateVoicePhrase`: VoicePhrase
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.CreateVoicePhrase`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ Delete Voice Phrase
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.VoicePhrasesApi.DeleteVoicePhrase(context.Background(), environmentID, voicePhraseID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.DeleteVoicePhrase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VoicePhrasesApi.DeleteVoicePhrase(context.Background(), environmentID, voicePhraseID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.DeleteVoicePhrase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -157,7 +157,7 @@ READ All Voice Phrases
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllVoicePhrases(ctx, environmentID).Execute()
+> PagedIterator[ReadAllVoicePhrases200Response] ReadAllVoicePhrases(ctx, environmentID).Execute()
 
 #### Example
 
@@ -165,36 +165,34 @@ READ All Voice Phrases
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllVoicePhrases(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.VoicePhrasesApi.ReadAllVoicePhrases(context.Background(), environmentID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllVoicePhrases``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.ReadAllVoicePhrases``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllVoicePhrases`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllVoicePhrases`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllVoicePhrases` page iteration: ReadAllVoicePhrases200Response
+		fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.ReadAllVoicePhrases` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllVoicePhrases(ctx, environmentID).ExecuteInitialPage()
+> ReadAllVoicePhrases200Response ReadAllVoicePhrases(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -202,24 +200,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhrasesApi.ReadAllVoicePhrases(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.ReadAllVoicePhrases``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllVoicePhrases`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.ReadAllVoicePhrases`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhrasesApi.ReadAllVoicePhrases(context.Background(), environmentID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.ReadAllVoicePhrases``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllVoicePhrases`: ReadAllVoicePhrases200Response
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.ReadAllVoicePhrases`: %v\n", resp)
 }
 ```
 
@@ -242,7 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllVoicePhrases200Response**](ReadAllVoicePhrases200Response.md)]
+
+PagedIterator[ReadAllVoicePhrases200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllVoicePhrases200Response**](ReadAllVoicePhrases200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllVoicePhrases200Response**](ReadAllVoicePhrases200Response.md)
 
 ### Authorization
 
@@ -270,25 +272,25 @@ READ One Voice Phrase
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhrasesApi.ReadOneVoicePhrase(context.Background(), environmentID, voicePhraseID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.ReadOneVoicePhrase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneVoicePhrase`: VoicePhrase
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.ReadOneVoicePhrase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhrasesApi.ReadOneVoicePhrase(context.Background(), environmentID, voicePhraseID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.ReadOneVoicePhrase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneVoicePhrase`: VoicePhrase
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.ReadOneVoicePhrase`: %v\n", resp)
 }
 ```
 
@@ -341,26 +343,26 @@ UPDATE Voice Phrase
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
-    voicePhrase := *openapiclient.NewVoicePhrase("DisplayName_example") // VoicePhrase |  (optional)
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
+	voicePhrase := *openapiclient.NewVoicePhrase("DisplayName_example") // VoicePhrase |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhrasesApi.UpdateVoicePhrase(context.Background(), environmentID, voicePhraseID).VoicePhrase(voicePhrase).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.UpdateVoicePhrase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateVoicePhrase`: VoicePhrase
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.UpdateVoicePhrase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhrasesApi.UpdateVoicePhrase(context.Background(), environmentID, voicePhraseID).VoicePhrase(voicePhrase).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhrasesApi.UpdateVoicePhrase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateVoicePhrase`: VoicePhrase
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhrasesApi.UpdateVoicePhrase`: %v\n", resp)
 }
 ```
 

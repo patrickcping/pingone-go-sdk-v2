@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | **int32** | Cooldown duration configuration. | 
-**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
+**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) | Time unit of cooldown duration. Options are SECONDS or MINUTES. | 
 
 ## Methods
 

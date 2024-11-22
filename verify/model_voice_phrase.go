@@ -13,6 +13,8 @@ package verify
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VoicePhrase type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type VoicePhrase struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
+
+type _VoicePhrase VoicePhrase
 
 // NewVoicePhrase instantiates a new VoicePhrase object
 // This constructor will assign default values to properties that have it defined,
@@ -221,6 +225,43 @@ func (o VoicePhrase) ToMap() (map[string]interface{}, error) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	return toSerialize, nil
+}
+
+func (o *VoicePhrase) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVoicePhrase := _VoicePhrase{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVoicePhrase)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VoicePhrase(varVoicePhrase)
+
+	return err
 }
 
 type NullableVoicePhrase struct {

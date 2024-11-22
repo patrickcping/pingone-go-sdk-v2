@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | **int32** | OTP duration configuration. | 
-**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
+**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) | Time unit of OTP duration configuration. Options are SECONDS or MINUTES. | 
 
 ## Methods
 

@@ -61,9 +61,9 @@ func (a *VoicePhraseContentsApiService) CreateVoicePhraseContent(ctx context.Con
 //  @return VoicePhraseContents
 func (a *VoicePhraseContentsApiService) CreateVoicePhraseContentExecute(r ApiCreateVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VoicePhraseContents
+		err error
+		response *http.Response
+		localVarReturnValue *VoicePhraseContents
 	)
 	
 	response, err = processResponse(
@@ -126,7 +126,7 @@ func (a *VoicePhraseContentsApiService) internalCreateVoicePhraseContentExecute(
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -274,7 +274,7 @@ func (a *VoicePhraseContentsApiService) DeleteVoicePhraseContent(ctx context.Con
 // Execute executes the request
 func (a *VoicePhraseContentsApiService) DeleteVoicePhraseContentExecute(r ApiDeleteVoicePhraseContentRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -337,7 +337,7 @@ func (a *VoicePhraseContentsApiService) internalDeleteVoicePhraseContentExecute(
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -438,11 +438,11 @@ type ApiReadAllVoicePhraseContentsRequest struct {
 	voicePhraseID string
 }
 
-func (r ApiReadAllVoicePhraseContentsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllVoicePhraseContentsRequest) Execute() PagedIterator[ReadAllVoicePhraseContents200Response] {
 	return r.ApiService.ReadAllVoicePhraseContentsExecute(r)
 }
 
-func (r ApiReadAllVoicePhraseContentsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllVoicePhraseContentsRequest) ExecuteInitialPage() (*ReadAllVoicePhraseContents200Response, *http.Response, error) {
 	return r.ApiService.ReadAllVoicePhraseContentsExecuteInitialPage(r)
 }
 
@@ -464,16 +464,18 @@ func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContents(ctx context.C
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContentsExecute(r ApiReadAllVoicePhraseContentsRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadAllVoicePhraseContents200Response
+func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContentsExecute(r ApiReadAllVoicePhraseContentsRequest) PagedIterator[ReadAllVoicePhraseContents200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContentsExecuteInitialPage(r ApiReadAllVoicePhraseContentsRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadAllVoicePhraseContents200Response
+func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContentsExecuteInitialPage(r ApiReadAllVoicePhraseContentsRequest) (*ReadAllVoicePhraseContents200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadAllVoicePhraseContents200Response
 	)
 	
 	response, err = processResponse(
@@ -485,12 +487,12 @@ func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContentsExecuteInitial
 	return localVarReturnValue, response, err
 }
 
-func (a *VoicePhraseContentsApiService) internalReadAllVoicePhraseContentsExecute(r ApiReadAllVoicePhraseContentsRequest) (*EntityArray, *http.Response, error) {
+func (a *VoicePhraseContentsApiService) internalReadAllVoicePhraseContentsExecute(r ApiReadAllVoicePhraseContentsRequest) (*ReadAllVoicePhraseContents200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllVoicePhraseContents200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhraseContentsApiService.ReadAllVoicePhraseContents")
@@ -534,7 +536,7 @@ func (a *VoicePhraseContentsApiService) internalReadAllVoicePhraseContentsExecut
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -672,9 +674,9 @@ func (a *VoicePhraseContentsApiService) ReadOneVoicePhraseContent(ctx context.Co
 //  @return VoicePhraseContents
 func (a *VoicePhraseContentsApiService) ReadOneVoicePhraseContentExecute(r ApiReadOneVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VoicePhraseContents
+		err error
+		response *http.Response
+		localVarReturnValue *VoicePhraseContents
 	)
 	
 	response, err = processResponse(
@@ -736,7 +738,7 @@ func (a *VoicePhraseContentsApiService) internalReadOneVoicePhraseContentExecute
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -880,9 +882,9 @@ func (a *VoicePhraseContentsApiService) UpdateVoicePhraseContent(ctx context.Con
 //  @return VoicePhraseContents
 func (a *VoicePhraseContentsApiService) UpdateVoicePhraseContentExecute(r ApiUpdateVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VoicePhraseContents
+		err error
+		response *http.Response
+		localVarReturnValue *VoicePhraseContents
 	)
 	
 	response, err = processResponse(
@@ -946,7 +948,7 @@ func (a *VoicePhraseContentsApiService) internalUpdateVoicePhraseContentExecute(
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

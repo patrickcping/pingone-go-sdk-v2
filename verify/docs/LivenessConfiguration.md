@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
-**Threshold** | [**EnumThreshold**](EnumThreshold.md) |  | 
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Threshold** | [**EnumThreshold**](EnumThreshold.md) | Threshold for successful facial comparison; can be LOW, MEDIUM, or HIGH (for which PingOne Verify uses industry and vendor recommended definitions). | 
+**Verify** | [**EnumVerify**](EnumVerify.md) | Controls if liveness check is REQUIRED, OPTIONAL, or DISABLED. | 
 
 ## Methods
 

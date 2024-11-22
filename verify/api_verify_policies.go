@@ -58,9 +58,9 @@ func (a *VerifyPoliciesApiService) CreateVerifyPolicy(ctx context.Context, envir
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) CreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *VerifyPolicy
 	)
 	
 	response, err = processResponse(
@@ -122,7 +122,7 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -267,7 +267,7 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicy(ctx context.Context, envir
 // Execute executes the request
 func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -329,7 +329,7 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -429,11 +429,11 @@ type ApiReadAllVerifyPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllVerifyPoliciesRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllVerifyPoliciesRequest) Execute() PagedIterator[ReadAllVerifyPolicies200Response] {
 	return r.ApiService.ReadAllVerifyPoliciesExecute(r)
 }
 
-func (r ApiReadAllVerifyPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllVerifyPoliciesRequest) ExecuteInitialPage() (*ReadAllVerifyPolicies200Response, *http.Response, error) {
 	return r.ApiService.ReadAllVerifyPoliciesExecuteInitialPage(r)
 }
 
@@ -453,16 +453,18 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPolicies(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadAllVerifyPolicies200Response
+func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) PagedIterator[ReadAllVerifyPolicies200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecuteInitialPage(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadAllVerifyPolicies200Response
+func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecuteInitialPage(r ApiReadAllVerifyPoliciesRequest) (*ReadAllVerifyPolicies200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadAllVerifyPolicies200Response
 	)
 	
 	response, err = processResponse(
@@ -474,12 +476,12 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecuteInitialPage(r Api
 	return localVarReturnValue, response, err
 }
 
-func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*ReadAllVerifyPolicies200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllVerifyPolicies200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.ReadAllVerifyPolicies")
@@ -522,7 +524,7 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -657,9 +659,9 @@ func (a *VerifyPoliciesApiService) ReadOneVerifyPolicy(ctx context.Context, envi
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) ReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *VerifyPolicy
 	)
 	
 	response, err = processResponse(
@@ -720,7 +722,7 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -861,9 +863,9 @@ func (a *VerifyPoliciesApiService) UpdateVerifyPolicy(ctx context.Context, envir
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) UpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *VerifyPolicy
 	)
 	
 	response, err = processResponse(
@@ -926,7 +928,7 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

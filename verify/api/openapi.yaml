@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   description: The PingOne Platform API covering the PingOne Verify service
   title: PingOne Platform API - PingOne Verify
@@ -47,57 +47,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllVerifyPolicies_200_response'
           description: Successful response
       summary: READ All Verify Policies
       tags:
       - Verify Policies
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createVerifyPolicy
       parameters:
@@ -168,55 +140,21 @@ paths:
               $ref: '#/components/schemas/VerifyPolicy'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -246,48 +184,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: Delete Verify Policy
@@ -312,48 +221,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -399,48 +279,19 @@ paths:
               $ref: '#/components/schemas/VerifyPolicy'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -463,57 +314,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllVoicePhrases_200_response'
           description: Successful response
       summary: READ All Voice Phrases
       tags:
       - Voice Phrases
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createVoicePhrase
       parameters:
@@ -533,55 +356,21 @@ paths:
               $ref: '#/components/schemas/VoicePhrase'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -611,48 +400,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: Delete Voice Phrase
@@ -677,48 +437,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -754,48 +485,19 @@ paths:
               $ref: '#/components/schemas/VoicePhrase'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -825,57 +527,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllVoicePhraseContents_200_response'
           description: Successful response
       summary: READ All Voice Phrase Contents
       tags:
       - Voice Phrase Contents
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createVoicePhraseContent
       parameters:
@@ -903,55 +577,21 @@ paths:
               $ref: '#/components/schemas/VoicePhraseContents'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -988,48 +628,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: Delete Voice Phrase Content
@@ -1061,48 +672,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1146,48 +728,19 @@ paths:
               $ref: '#/components/schemas/VoicePhraseContents'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1252,230 +805,7 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
-      type: object
-    EntityArray:
-      example:
-        size: 9.301444243932576
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          contents:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            id: id
-            voicePhrase:
-              id: id
-            locale: locale
-            content: content
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            id: id
-            voicePhrase:
-              id: id
-            locale: locale
-            content: content
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          verifyPolicies:
-          - voice:
-              verify: null
-              enrollment: true
-              textDependent:
-                samples: null
-                phrase:
-                  id: id
-              comparison:
-                threshold: null
-              liveness:
-                threshold: null
-              referenceData:
-                retainOriginalRecordings: true
-                updateOnReenrollment: true
-                updateOnVerification: true
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            liveness:
-              verify: null
-              threshold: null
-              retry:
-                attempts: 0
-            description: description
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            default: true
-            phone:
-              createMfaDevice: true
-              verify: null
-              otp:
-                notification:
-                  templateName: templateName
-                  variantName: variantName
-                lifeTime:
-                  duration: 5
-                  timeUnit: null
-                attempts:
-                  count: 6
-                deliveries:
-                  count: 1
-                  cooldown:
-                    duration: 5
-                    timeUnit: null
-            name: name
-            facialComparison:
-              verify: null
-              threshold: null
-            id: id
-            email:
-              createMfaDevice: true
-              verify: null
-              otp:
-                notification:
-                  templateName: templateName
-                  variantName: variantName
-                lifeTime:
-                  duration: 5
-                  timeUnit: null
-                attempts:
-                  count: 6
-                deliveries:
-                  count: 1
-                  cooldown:
-                    duration: 5
-                    timeUnit: null
-            transaction:
-              dataCollectionOnly: true
-              timeout:
-                duration: 2
-                timeUnit: null
-              dataCollection:
-                timeout:
-                  duration: 7
-                  timeUnit: null
-            governmentId:
-              provider:
-                auto: null
-                manual: null
-              inspectionType: null
-              verify: null
-              failExpiredId: true
-              retry:
-                attempts: 0
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - voice:
-              verify: null
-              enrollment: true
-              textDependent:
-                samples: null
-                phrase:
-                  id: id
-              comparison:
-                threshold: null
-              liveness:
-                threshold: null
-              referenceData:
-                retainOriginalRecordings: true
-                updateOnReenrollment: true
-                updateOnVerification: true
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            liveness:
-              verify: null
-              threshold: null
-              retry:
-                attempts: 0
-            description: description
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            default: true
-            phone:
-              createMfaDevice: true
-              verify: null
-              otp:
-                notification:
-                  templateName: templateName
-                  variantName: variantName
-                lifeTime:
-                  duration: 5
-                  timeUnit: null
-                attempts:
-                  count: 6
-                deliveries:
-                  count: 1
-                  cooldown:
-                    duration: 5
-                    timeUnit: null
-            name: name
-            facialComparison:
-              verify: null
-              threshold: null
-            id: id
-            email:
-              createMfaDevice: true
-              verify: null
-              otp:
-                notification:
-                  templateName: templateName
-                  variantName: variantName
-                lifeTime:
-                  duration: 5
-                  timeUnit: null
-                attempts:
-                  count: 6
-                deliveries:
-                  count: 1
-                  cooldown:
-                    duration: 5
-                    timeUnit: null
-            transaction:
-              dataCollectionOnly: true
-              timeout:
-                duration: 2
-                timeUnit: null
-              dataCollection:
-                timeout:
-                  duration: 7
-                  timeUnit: null
-            governmentId:
-              provider:
-                auto: null
-                manual: null
-              inspectionType: null
-              verify: null
-              failExpiredId: true
-              retry:
-                attempts: 0
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          voicePhrases:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            displayName: displayName
-            id: id
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            displayName: displayName
-            id: id
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/EntityArray__embedded'
-        size:
-          type: number
-      type: object
+      x-pingidentity-paginatedresponse-links: true
     EnumInspectionType:
       description: "A string that defines the mechanism used to authenticate a `governmentId`\
         \ document.  Options are `AUTOMATIC`, `MANUAL`, or `STEP_UP`."
@@ -1523,7 +853,7 @@ components:
     FacialComparisonConfiguration:
       example:
         verify: null
-        threshold: null
+        threshold: LOW
       properties:
         verify:
           $ref: '#/components/schemas/EnumVerify'
@@ -1532,17 +862,16 @@ components:
       required:
       - threshold
       - verify
-      type: object
     GovernmentIdConfiguration:
       example:
         provider:
-          auto: null
-          manual: null
-        inspectionType: null
-        verify: null
+          auto: MITEK
+          manual: MITEK
+        inspectionType: AUTOMATIC
+        verify: REQUIRED
         failExpiredId: true
         retry:
-          attempts: 0
+          attempts: 5
       properties:
         failExpiredId:
           description: Indicates whether verification should fail if the ID is expired.
@@ -1557,13 +886,12 @@ components:
           $ref: '#/components/schemas/EnumVerify'
       required:
       - verify
-      type: object
     LivenessConfiguration:
       example:
         verify: null
         threshold: null
         retry:
-          attempts: 0
+          attempts: 5
       properties:
         retry:
           $ref: '#/components/schemas/ObjectRetry'
@@ -1574,7 +902,6 @@ components:
       required:
       - threshold
       - verify
-      type: object
     ObjectEnvironment:
       example:
         id: id
@@ -1585,15 +912,13 @@ components:
           readOnly: true
           type: string
       readOnly: true
-      type: object
     ObjectRetry:
       example:
-        attempts: 0
+        attempts: 5
       properties:
         attempts:
           description: The number of retries permitted.
           type: integer
-      type: object
     OTPDeviceConfiguration:
       example:
         createMfaDevice: true
@@ -1603,15 +928,15 @@ components:
             templateName: templateName
             variantName: variantName
           lifeTime:
-            duration: 5
+            duration: 9
             timeUnit: null
           attempts:
-            count: 6
+            count: 5
           deliveries:
-            count: 1
+            count: 2
             cooldown:
-              duration: 5
-              timeUnit: null
+              duration: 7
+              timeUnit: SECONDS
       properties:
         verify:
           $ref: '#/components/schemas/EnumVerify'
@@ -1623,8 +948,40 @@ components:
           $ref: '#/components/schemas/OTPDeviceConfiguration_otp'
       required:
       - verify
-      type: object
     P1Error:
+      example:
+        code: code
+        details:
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        id: id
+        message: message
       properties:
         id:
           description: "A unique identifier that is stored in log files and always\
@@ -1648,16 +1005,15 @@ components:
           items:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
-      type: object
     TransactionConfiguration:
       example:
         dataCollectionOnly: true
         timeout:
-          duration: 2
+          duration: 3
           timeUnit: null
         dataCollection:
           timeout:
-            duration: 7
+            duration: 2
             timeUnit: null
       properties:
         timeout:
@@ -1666,7 +1022,6 @@ components:
           $ref: '#/components/schemas/TransactionConfiguration_dataCollection'
         dataCollectionOnly:
           type: boolean
-      type: object
     VoiceConfiguration:
       example:
         verify: null
@@ -1689,20 +1044,19 @@ components:
         enrollment:
           type: boolean
         textDependent:
-          $ref: '#/components/schemas/VoiceConfiguration_textDependent'
+          $ref: '#/components/schemas/VoiceConfigurationTextDependent'
         comparison:
-          $ref: '#/components/schemas/VoiceConfiguration_threshold'
+          $ref: '#/components/schemas/VoiceConfigurationThreshold'
         liveness:
-          $ref: '#/components/schemas/VoiceConfiguration_threshold'
+          $ref: '#/components/schemas/VoiceConfigurationThreshold'
         referenceData:
-          $ref: '#/components/schemas/VoiceConfiguration_referenceData'
+          $ref: '#/components/schemas/VoiceConfigurationReferenceData'
       required:
       - comparison
       - enrollment
       - liveness
       - verify
-      type: object
-    VoiceConfiguration_referenceData:
+    VoiceConfigurationReferenceData:
       example:
         retainOriginalRecordings: true
         updateOnReenrollment: true
@@ -1714,8 +1068,7 @@ components:
           type: boolean
         updateOnVerification:
           type: boolean
-      type: object
-    VoiceConfiguration_threshold:
+    VoiceConfigurationThreshold:
       example:
         threshold: null
       properties:
@@ -1723,8 +1076,7 @@ components:
           $ref: '#/components/schemas/EnumThreshold'
       required:
       - threshold
-      type: object
-    VoiceConfiguration_textDependent_phrase:
+    VoiceConfigurationTextDependentPhrase:
       example:
         id: id
       properties:
@@ -1732,8 +1084,7 @@ components:
           type: string
       required:
       - id
-      type: object
-    VoiceConfiguration_textDependent:
+    VoiceConfigurationTextDependent:
       example:
         samples: null
         phrase:
@@ -1742,11 +1093,10 @@ components:
         samples:
           type: integer
         phrase:
-          $ref: '#/components/schemas/VoiceConfiguration_textDependent_phrase'
+          $ref: '#/components/schemas/VoiceConfigurationTextDependentPhrase'
       required:
       - phrase
       - samples
-      type: object
     VoicePhrase:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -1773,7 +1123,6 @@ components:
           type: string
       required:
       - displayName
-      type: object
     VoicePhraseContents:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -1809,7 +1158,6 @@ components:
       - content
       - locale
       - voicePhrase
-      type: object
     VerifyPolicy:
       example:
         voice:
@@ -1834,7 +1182,7 @@ components:
           verify: null
           threshold: null
           retry:
-            attempts: 0
+            attempts: 5
         description: description
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -1848,19 +1196,19 @@ components:
               templateName: templateName
               variantName: variantName
             lifeTime:
-              duration: 5
+              duration: 9
               timeUnit: null
             attempts:
-              count: 6
+              count: 5
             deliveries:
-              count: 1
+              count: 2
               cooldown:
-                duration: 5
-                timeUnit: null
+                duration: 7
+                timeUnit: SECONDS
         name: name
         facialComparison:
           verify: null
-          threshold: null
+          threshold: LOW
         id: id
         email:
           createMfaDevice: true
@@ -1870,40 +1218,40 @@ components:
               templateName: templateName
               variantName: variantName
             lifeTime:
-              duration: 5
+              duration: 9
               timeUnit: null
             attempts:
-              count: 6
+              count: 5
             deliveries:
-              count: 1
+              count: 2
               cooldown:
-                duration: 5
-                timeUnit: null
+                duration: 7
+                timeUnit: SECONDS
         transaction:
           dataCollectionOnly: true
           timeout:
-            duration: 2
+            duration: 3
             timeUnit: null
           dataCollection:
             timeout:
-              duration: 7
+              duration: 2
               timeUnit: null
         governmentId:
           provider:
-            auto: null
-            manual: null
-          inspectionType: null
-          verify: null
+            auto: MITEK
+            manual: MITEK
+          inspectionType: AUTOMATIC
+          verify: REQUIRED
           failExpiredId: true
           retry:
-            attempts: 0
+            attempts: 5
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         id:
           readOnly: true
           type: string
@@ -1943,7 +1291,500 @@ components:
           type: string
       required:
       - name
-      type: object
+    readAllVerifyPolicies_200_response__embedded:
+      example:
+        verifyPolicies:
+        - voice:
+            verify: null
+            enrollment: true
+            textDependent:
+              samples: null
+              phrase:
+                id: id
+            comparison:
+              threshold: null
+            liveness:
+              threshold: null
+            referenceData:
+              retainOriginalRecordings: true
+              updateOnReenrollment: true
+              updateOnVerification: true
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          liveness:
+            verify: null
+            threshold: null
+            retry:
+              attempts: 5
+          description: description
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          phone:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 9
+                timeUnit: null
+              attempts:
+                count: 5
+              deliveries:
+                count: 2
+                cooldown:
+                  duration: 7
+                  timeUnit: SECONDS
+          name: name
+          facialComparison:
+            verify: null
+            threshold: LOW
+          id: id
+          email:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 9
+                timeUnit: null
+              attempts:
+                count: 5
+              deliveries:
+                count: 2
+                cooldown:
+                  duration: 7
+                  timeUnit: SECONDS
+          transaction:
+            dataCollectionOnly: true
+            timeout:
+              duration: 3
+              timeUnit: null
+            dataCollection:
+              timeout:
+                duration: 2
+                timeUnit: null
+          governmentId:
+            provider:
+              auto: MITEK
+              manual: MITEK
+            inspectionType: AUTOMATIC
+            verify: REQUIRED
+            failExpiredId: true
+            retry:
+              attempts: 5
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - voice:
+            verify: null
+            enrollment: true
+            textDependent:
+              samples: null
+              phrase:
+                id: id
+            comparison:
+              threshold: null
+            liveness:
+              threshold: null
+            referenceData:
+              retainOriginalRecordings: true
+              updateOnReenrollment: true
+              updateOnVerification: true
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          liveness:
+            verify: null
+            threshold: null
+            retry:
+              attempts: 5
+          description: description
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          phone:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 9
+                timeUnit: null
+              attempts:
+                count: 5
+              deliveries:
+                count: 2
+                cooldown:
+                  duration: 7
+                  timeUnit: SECONDS
+          name: name
+          facialComparison:
+            verify: null
+            threshold: LOW
+          id: id
+          email:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 9
+                timeUnit: null
+              attempts:
+                count: 5
+              deliveries:
+                count: 2
+                cooldown:
+                  duration: 7
+                  timeUnit: SECONDS
+          transaction:
+            dataCollectionOnly: true
+            timeout:
+              duration: 3
+              timeUnit: null
+            dataCollection:
+              timeout:
+                duration: 2
+                timeUnit: null
+          governmentId:
+            provider:
+              auto: MITEK
+              manual: MITEK
+            inspectionType: AUTOMATIC
+            verify: REQUIRED
+            failExpiredId: true
+            retry:
+              attempts: 5
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        verifyPolicies:
+          items:
+            $ref: '#/components/schemas/VerifyPolicy'
+          type: array
+    readAllVerifyPolicies_200_response:
+      example:
+        size: 4.145608029883936
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          verifyPolicies:
+          - voice:
+              verify: null
+              enrollment: true
+              textDependent:
+                samples: null
+                phrase:
+                  id: id
+              comparison:
+                threshold: null
+              liveness:
+                threshold: null
+              referenceData:
+                retainOriginalRecordings: true
+                updateOnReenrollment: true
+                updateOnVerification: true
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            liveness:
+              verify: null
+              threshold: null
+              retry:
+                attempts: 5
+            description: description
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            default: true
+            phone:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 9
+                  timeUnit: null
+                attempts:
+                  count: 5
+                deliveries:
+                  count: 2
+                  cooldown:
+                    duration: 7
+                    timeUnit: SECONDS
+            name: name
+            facialComparison:
+              verify: null
+              threshold: LOW
+            id: id
+            email:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 9
+                  timeUnit: null
+                attempts:
+                  count: 5
+                deliveries:
+                  count: 2
+                  cooldown:
+                    duration: 7
+                    timeUnit: SECONDS
+            transaction:
+              dataCollectionOnly: true
+              timeout:
+                duration: 3
+                timeUnit: null
+              dataCollection:
+                timeout:
+                  duration: 2
+                  timeUnit: null
+            governmentId:
+              provider:
+                auto: MITEK
+                manual: MITEK
+              inspectionType: AUTOMATIC
+              verify: REQUIRED
+              failExpiredId: true
+              retry:
+                attempts: 5
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - voice:
+              verify: null
+              enrollment: true
+              textDependent:
+                samples: null
+                phrase:
+                  id: id
+              comparison:
+                threshold: null
+              liveness:
+                threshold: null
+              referenceData:
+                retainOriginalRecordings: true
+                updateOnReenrollment: true
+                updateOnVerification: true
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            liveness:
+              verify: null
+              threshold: null
+              retry:
+                attempts: 5
+            description: description
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            default: true
+            phone:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 9
+                  timeUnit: null
+                attempts:
+                  count: 5
+                deliveries:
+                  count: 2
+                  cooldown:
+                    duration: 7
+                    timeUnit: SECONDS
+            name: name
+            facialComparison:
+              verify: null
+              threshold: LOW
+            id: id
+            email:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 9
+                  timeUnit: null
+                attempts:
+                  count: 5
+                deliveries:
+                  count: 2
+                  cooldown:
+                    duration: 7
+                    timeUnit: SECONDS
+            transaction:
+              dataCollectionOnly: true
+              timeout:
+                duration: 3
+                timeUnit: null
+              dataCollection:
+                timeout:
+                  duration: 2
+                  timeUnit: null
+            governmentId:
+              provider:
+                auto: MITEK
+                manual: MITEK
+              inspectionType: AUTOMATIC
+              verify: REQUIRED
+              failExpiredId: true
+              retry:
+                attempts: 5
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 7.386281948385884
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllVerifyPolicies_200_response__embedded'
+        size:
+          type: number
+        count:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readAllVoicePhrases_200_response__embedded:
+      example:
+        voicePhrases:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          displayName: displayName
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          displayName: displayName
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        voicePhrases:
+          items:
+            $ref: '#/components/schemas/VoicePhrase'
+          type: array
+    readAllVoicePhrases_200_response:
+      example:
+        size: 0.8008281904610115
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          voicePhrases:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            displayName: displayName
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            displayName: displayName
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 6.027456183070403
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllVoicePhrases_200_response__embedded'
+        size:
+          type: number
+        count:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readAllVoicePhraseContents_200_response__embedded:
+      example:
+        contents:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          id: id
+          voicePhrase:
+            id: id
+          locale: locale
+          content: content
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          id: id
+          voicePhrase:
+            id: id
+          locale: locale
+          content: content
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        contents:
+          items:
+            $ref: '#/components/schemas/VoicePhraseContents'
+          type: array
+    readAllVoicePhraseContents_200_response:
+      example:
+        size: 0.8008281904610115
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          contents:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            id: id
+            voicePhrase:
+              id: id
+            locale: locale
+            content: content
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            id: id
+            voicePhrase:
+              id: id
+            locale: locale
+            content: content
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 6.027456183070403
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllVoicePhraseContents_200_response__embedded'
+        size:
+          type: number
+        count:
+          type: number
+      x-pingidentity-paginatedresponse: true
     LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
@@ -1954,254 +1795,30 @@ components:
           type: string
       required:
       - href
-      type: object
-    EntityArray__embedded:
-      example:
-        contents:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          id: id
-          voicePhrase:
-            id: id
-          locale: locale
-          content: content
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          id: id
-          voicePhrase:
-            id: id
-          locale: locale
-          content: content
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        verifyPolicies:
-        - voice:
-            verify: null
-            enrollment: true
-            textDependent:
-              samples: null
-              phrase:
-                id: id
-            comparison:
-              threshold: null
-            liveness:
-              threshold: null
-            referenceData:
-              retainOriginalRecordings: true
-              updateOnReenrollment: true
-              updateOnVerification: true
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          liveness:
-            verify: null
-            threshold: null
-            retry:
-              attempts: 0
-          description: description
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          phone:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 6
-              deliveries:
-                count: 1
-                cooldown:
-                  duration: 5
-                  timeUnit: null
-          name: name
-          facialComparison:
-            verify: null
-            threshold: null
-          id: id
-          email:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 6
-              deliveries:
-                count: 1
-                cooldown:
-                  duration: 5
-                  timeUnit: null
-          transaction:
-            dataCollectionOnly: true
-            timeout:
-              duration: 2
-              timeUnit: null
-            dataCollection:
-              timeout:
-                duration: 7
-                timeUnit: null
-          governmentId:
-            provider:
-              auto: null
-              manual: null
-            inspectionType: null
-            verify: null
-            failExpiredId: true
-            retry:
-              attempts: 0
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - voice:
-            verify: null
-            enrollment: true
-            textDependent:
-              samples: null
-              phrase:
-                id: id
-            comparison:
-              threshold: null
-            liveness:
-              threshold: null
-            referenceData:
-              retainOriginalRecordings: true
-              updateOnReenrollment: true
-              updateOnVerification: true
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          liveness:
-            verify: null
-            threshold: null
-            retry:
-              attempts: 0
-          description: description
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          phone:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 6
-              deliveries:
-                count: 1
-                cooldown:
-                  duration: 5
-                  timeUnit: null
-          name: name
-          facialComparison:
-            verify: null
-            threshold: null
-          id: id
-          email:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 6
-              deliveries:
-                count: 1
-                cooldown:
-                  duration: 5
-                  timeUnit: null
-          transaction:
-            dataCollectionOnly: true
-            timeout:
-              duration: 2
-              timeUnit: null
-            dataCollection:
-              timeout:
-                duration: 7
-                timeUnit: null
-          governmentId:
-            provider:
-              auto: null
-              manual: null
-            inspectionType: null
-            verify: null
-            failExpiredId: true
-            retry:
-              attempts: 0
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        voicePhrases:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          displayName: displayName
-          id: id
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          displayName: displayName
-          id: id
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        verifyPolicies:
-          items:
-            $ref: '#/components/schemas/VerifyPolicy'
-          type: array
-        voicePhrases:
-          items:
-            $ref: '#/components/schemas/VoicePhrase'
-          type: array
-        contents:
-          items:
-            $ref: '#/components/schemas/VoicePhraseContents'
-          type: array
-      type: object
     GovernmentIdConfiguration_provider:
       example:
-        auto: null
-        manual: null
+        auto: MITEK
+        manual: MITEK
       properties:
         auto:
           $ref: '#/components/schemas/EnumProviderAuto'
         manual:
           $ref: '#/components/schemas/EnumProviderManual'
-      type: object
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.
       example:
-        count: 6
+        count: 5
       properties:
         count:
           description: Count of OTP failures.
           type: integer
       required:
       - count
-      type: object
     OTPDeviceConfiguration_otp_deliveries_cooldown:
       description: Cooldown (waiting period between OTP attempts) configuration.
       example:
-        duration: 5
-        timeUnit: null
+        duration: 7
+        timeUnit: SECONDS
       properties:
         duration:
           description: Cooldown duration configuration.
@@ -2211,14 +1828,13 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     OTPDeviceConfiguration_otp_deliveries:
       description: OTP delivery configuration.
       example:
-        count: 1
+        count: 2
         cooldown:
-          duration: 5
-          timeUnit: null
+          duration: 7
+          timeUnit: SECONDS
       properties:
         count:
           description: Count of OTP deliveries.
@@ -2228,11 +1844,10 @@ components:
       required:
       - cooldown
       - count
-      type: object
     OTPDeviceConfiguration_otp_lifeTime:
       description: The length of time for which the OTP is valid.
       example:
-        duration: 5
+        duration: 9
         timeUnit: null
       properties:
         duration:
@@ -2243,7 +1858,6 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     OTPDeviceConfiguration_otp_notification:
       description: OTP notification template configuration.
       example:
@@ -2256,22 +1870,21 @@ components:
           type: string
       required:
       - templateName
-      type: object
     OTPDeviceConfiguration_otp:
       example:
         notification:
           templateName: templateName
           variantName: variantName
         lifeTime:
-          duration: 5
+          duration: 9
           timeUnit: null
         attempts:
-          count: 6
+          count: 5
         deliveries:
-          count: 1
+          count: 2
           cooldown:
-            duration: 5
-            timeUnit: null
+            duration: 7
+            timeUnit: SECONDS
       properties:
         attempts:
           $ref: '#/components/schemas/OTPDeviceConfiguration_otp_attempts'
@@ -2286,10 +1899,20 @@ components:
       - deliveries
       - lifeTime
       - notification
-      type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).
+      example:
+        allowedValues:
+        - allowedValues
+        - allowedValues
+        rangeMaximumValue: 6
+        referencedValues:
+        - referencedValues
+        - referencedValues
+        allowedPattern: allowedPattern
+        maximumValue: 1
+        rangeMinimumValue: 0
       properties:
         rangeMinimumValue:
           description: Errors that failed due to range violation. This attribute represents
@@ -2313,8 +1936,22 @@ components:
           items:
             type: string
           type: array
-      type: object
     P1Error_details_inner:
+      example:
+        code: code
+        innerError:
+          allowedValues:
+          - allowedValues
+          - allowedValues
+          rangeMaximumValue: 6
+          referencedValues:
+          - referencedValues
+          - referencedValues
+          allowedPattern: allowedPattern
+          maximumValue: 1
+          rangeMinimumValue: 0
+        message: message
+        target: target
       properties:
         code:
           description: A general fault code which the client must handle to provide
@@ -2332,10 +1969,9 @@ components:
           type: string
         innerError:
           $ref: '#/components/schemas/P1Error_details_inner_innerError'
-      type: object
     TransactionConfiguration_timeout:
       example:
-        duration: 2
+        duration: 3
         timeUnit: null
       properties:
         duration:
@@ -2347,10 +1983,9 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     TransactionConfiguration_dataCollection_timeout:
       example:
-        duration: 7
+        duration: 2
         timeUnit: null
       properties:
         duration:
@@ -2362,18 +1997,16 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     TransactionConfiguration_dataCollection:
       example:
         timeout:
-          duration: 7
+          duration: 2
           timeUnit: null
       properties:
         timeout:
           $ref: '#/components/schemas/TransactionConfiguration_dataCollection_timeout'
       required:
       - timeout
-      type: object
     VoicePhraseContents_voicePhrase:
       example:
         id: id

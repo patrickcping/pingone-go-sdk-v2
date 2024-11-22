@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) | Controls if email or phone verification is REQUIRED, OPTIONAL, or DISABLED. | 
 **CreateMfaDevice** | Pointer to **bool** | When enabled, PingOne Verify registers the email address or phone number with PingOne MFA as a verified MFA device. | [optional] 
 **Otp** | Pointer to [**OTPDeviceConfigurationOtp**](OTPDeviceConfigurationOtp.md) |  | [optional] 
 

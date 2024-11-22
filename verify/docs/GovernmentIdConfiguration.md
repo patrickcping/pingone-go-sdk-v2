@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FailExpiredId** | Pointer to **bool** | Indicates whether verification should fail if the ID is expired. | [optional] 
-**InspectionType** | Pointer to [**EnumInspectionType**](EnumInspectionType.md) |  | [optional] 
+**InspectionType** | Pointer to [**EnumInspectionType**](EnumInspectionType.md) | Determines whether document authentication is automated, manual, or a combination of both where manual authentication is performed if automated inspection fails. Can be AUTOMATIC, MANUAL, or STEP_UP. | [optional] 
 **Provider** | Pointer to [**GovernmentIdConfigurationProvider**](GovernmentIdConfigurationProvider.md) |  | [optional] 
 **Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) | Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED. | 
 
 ## Methods
 

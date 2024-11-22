@@ -3,9 +3,8 @@ api/openapi.yaml
 api_verify_policies.go
 api_voice_phrase_contents.go
 api_voice_phrases.go
+client.go
 configuration.go
-docs/EntityArray.md
-docs/EntityArrayEmbedded.md
 docs/EnumInspectionType.md
 docs/EnumProviderAuto.md
 docs/EnumProviderManual.md
@@ -29,6 +28,12 @@ docs/ObjectRetry.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
 docs/P1ErrorDetailsInnerInnerError.md
+docs/ReadAllVerifyPolicies200Response.md
+docs/ReadAllVerifyPolicies200ResponseEmbedded.md
+docs/ReadAllVoicePhraseContents200Response.md
+docs/ReadAllVoicePhraseContents200ResponseEmbedded.md
+docs/ReadAllVoicePhrases200Response.md
+docs/ReadAllVoicePhrases200ResponseEmbedded.md
 docs/TransactionConfiguration.md
 docs/TransactionConfigurationDataCollection.md
 docs/TransactionConfigurationDataCollectionTimeout.md
@@ -47,8 +52,6 @@ docs/VoicePhraseContentsVoicePhrase.md
 docs/VoicePhrasesApi.md
 go.mod
 go.sum
-model_entity_array.go
-model_entity_array__embedded.go
 model_enum_inspection_type.go
 model_enum_provider_auto.go
 model_enum_provider_manual.go
@@ -72,6 +75,12 @@ model_otp_device_configuration_otp_notification.go
 model_p1_error.go
 model_p1_error_details_inner.go
 model_p1_error_details_inner_inner_error.go
+model_read_all_verify_policies_200_response.go
+model_read_all_verify_policies_200_response__embedded.go
+model_read_all_voice_phrase_contents_200_response.go
+model_read_all_voice_phrase_contents_200_response__embedded.go
+model_read_all_voice_phrases_200_response.go
+model_read_all_voice_phrases_200_response__embedded.go
 model_transaction_configuration.go
 model_transaction_configuration_data_collection.go
 model_transaction_configuration_data_collection_timeout.go

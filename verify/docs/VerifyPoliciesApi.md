@@ -24,25 +24,25 @@ CREATE Verify Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    verifyPolicy := *openapiclient.NewVerifyPolicy("Name_example") // VerifyPolicy |  (optional)
+	environmentID := "environmentID_example" // string | 
+	verifyPolicy := *openapiclient.NewVerifyPolicy("Name_example") // VerifyPolicy |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VerifyPoliciesApi.CreateVerifyPolicy(context.Background(), environmentID).VerifyPolicy(verifyPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.CreateVerifyPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateVerifyPolicy`: VerifyPolicy
-    fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.CreateVerifyPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VerifyPoliciesApi.CreateVerifyPolicy(context.Background(), environmentID).VerifyPolicy(verifyPolicy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.CreateVerifyPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateVerifyPolicy`: VerifyPolicy
+	fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.CreateVerifyPolicy`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ Delete Verify Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    verifyPolicyID := "verifyPolicyID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	verifyPolicyID := "verifyPolicyID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.VerifyPoliciesApi.DeleteVerifyPolicy(context.Background(), environmentID, verifyPolicyID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.DeleteVerifyPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VerifyPoliciesApi.DeleteVerifyPolicy(context.Background(), environmentID, verifyPolicyID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.DeleteVerifyPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -157,7 +157,7 @@ READ All Verify Policies
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllVerifyPolicies(ctx, environmentID).Execute()
+> PagedIterator[ReadAllVerifyPolicies200Response] ReadAllVerifyPolicies(ctx, environmentID).Execute()
 
 #### Example
 
@@ -165,36 +165,34 @@ READ All Verify Policies
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllVerifyPolicies(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.VerifyPoliciesApi.ReadAllVerifyPolicies(context.Background(), environmentID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllVerifyPolicies``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.ReadAllVerifyPolicies``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllVerifyPolicies`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllVerifyPolicies`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllVerifyPolicies` page iteration: ReadAllVerifyPolicies200Response
+		fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.ReadAllVerifyPolicies` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllVerifyPolicies(ctx, environmentID).ExecuteInitialPage()
+> ReadAllVerifyPolicies200Response ReadAllVerifyPolicies(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -202,24 +200,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VerifyPoliciesApi.ReadAllVerifyPolicies(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.ReadAllVerifyPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllVerifyPolicies`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.ReadAllVerifyPolicies`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VerifyPoliciesApi.ReadAllVerifyPolicies(context.Background(), environmentID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.ReadAllVerifyPolicies``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllVerifyPolicies`: ReadAllVerifyPolicies200Response
+	fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.ReadAllVerifyPolicies`: %v\n", resp)
 }
 ```
 
@@ -242,7 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllVerifyPolicies200Response**](ReadAllVerifyPolicies200Response.md)]
+
+PagedIterator[ReadAllVerifyPolicies200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllVerifyPolicies200Response**](ReadAllVerifyPolicies200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllVerifyPolicies200Response**](ReadAllVerifyPolicies200Response.md)
 
 ### Authorization
 
@@ -270,25 +272,25 @@ READ One Verify Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    verifyPolicyID := "verifyPolicyID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	verifyPolicyID := "verifyPolicyID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VerifyPoliciesApi.ReadOneVerifyPolicy(context.Background(), environmentID, verifyPolicyID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.ReadOneVerifyPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneVerifyPolicy`: VerifyPolicy
-    fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.ReadOneVerifyPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VerifyPoliciesApi.ReadOneVerifyPolicy(context.Background(), environmentID, verifyPolicyID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.ReadOneVerifyPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneVerifyPolicy`: VerifyPolicy
+	fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.ReadOneVerifyPolicy`: %v\n", resp)
 }
 ```
 
@@ -341,26 +343,26 @@ UPDATE Verify Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    verifyPolicyID := "verifyPolicyID_example" // string | 
-    verifyPolicy := *openapiclient.NewVerifyPolicy("Name_example") // VerifyPolicy |  (optional)
+	environmentID := "environmentID_example" // string | 
+	verifyPolicyID := "verifyPolicyID_example" // string | 
+	verifyPolicy := *openapiclient.NewVerifyPolicy("Name_example") // VerifyPolicy |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VerifyPoliciesApi.UpdateVerifyPolicy(context.Background(), environmentID, verifyPolicyID).VerifyPolicy(verifyPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.UpdateVerifyPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateVerifyPolicy`: VerifyPolicy
-    fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.UpdateVerifyPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VerifyPoliciesApi.UpdateVerifyPolicy(context.Background(), environmentID, verifyPolicyID).VerifyPolicy(verifyPolicy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VerifyPoliciesApi.UpdateVerifyPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateVerifyPolicy`: VerifyPolicy
+	fmt.Fprintf(os.Stdout, "Response from `VerifyPoliciesApi.UpdateVerifyPolicy`: %v\n", resp)
 }
 ```
 

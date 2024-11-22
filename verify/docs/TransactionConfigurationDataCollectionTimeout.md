@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | **int32** | Length of time before data collection timeout expires; range is 0-30 minutes or 0-1800 seconds. | 
-**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
+**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) | Time unit of transaction timeout; can be SECONDS, MINUTES. | 
 
 ## Methods
 

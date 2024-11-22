@@ -12,6 +12,8 @@ package verify
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LivenessConfiguration type satisfies the MappedNullable interface at compile time
@@ -20,9 +22,13 @@ var _ MappedNullable = &LivenessConfiguration{}
 // LivenessConfiguration struct for LivenessConfiguration
 type LivenessConfiguration struct {
 	Retry *ObjectRetry `json:"retry,omitempty"`
+	// Threshold for successful facial comparison; can be LOW, MEDIUM, or HIGH (for which PingOne Verify uses industry and vendor recommended definitions).
 	Threshold EnumThreshold `json:"threshold"`
+	// Controls if liveness check is REQUIRED, OPTIONAL, or DISABLED.
 	Verify EnumVerify `json:"verify"`
 }
+
+type _LivenessConfiguration LivenessConfiguration
 
 // NewLivenessConfiguration instantiates a new LivenessConfiguration object
 // This constructor will assign default values to properties that have it defined,
@@ -139,6 +145,44 @@ func (o LivenessConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize["threshold"] = o.Threshold
 	toSerialize["verify"] = o.Verify
 	return toSerialize, nil
+}
+
+func (o *LivenessConfiguration) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"threshold",
+		"verify",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLivenessConfiguration := _LivenessConfiguration{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLivenessConfiguration)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LivenessConfiguration(varLivenessConfiguration)
+
+	return err
 }
 
 type NullableLivenessConfiguration struct {

@@ -12,6 +12,8 @@ package verify
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the GovernmentIdConfiguration type satisfies the MappedNullable interface at compile time
@@ -21,11 +23,15 @@ var _ MappedNullable = &GovernmentIdConfiguration{}
 type GovernmentIdConfiguration struct {
 	// Indicates whether verification should fail if the ID is expired.
 	FailExpiredId *bool `json:"failExpiredId,omitempty"`
+	// Determines whether document authentication is automated, manual, or a combination of both where manual authentication is performed if automated inspection fails. Can be AUTOMATIC, MANUAL, or STEP_UP.
 	InspectionType *EnumInspectionType `json:"inspectionType,omitempty"`
 	Provider *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
 	Retry *ObjectRetry `json:"retry,omitempty"`
+	// Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED.
 	Verify EnumVerify `json:"verify"`
 }
+
+type _GovernmentIdConfiguration GovernmentIdConfiguration
 
 // NewGovernmentIdConfiguration instantiates a new GovernmentIdConfiguration object
 // This constructor will assign default values to properties that have it defined,
@@ -221,6 +227,43 @@ func (o GovernmentIdConfiguration) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["verify"] = o.Verify
 	return toSerialize, nil
+}
+
+func (o *GovernmentIdConfiguration) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"verify",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGovernmentIdConfiguration := _GovernmentIdConfiguration{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGovernmentIdConfiguration)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GovernmentIdConfiguration(varGovernmentIdConfiguration)
+
+	return err
 }
 
 type NullableGovernmentIdConfiguration struct {

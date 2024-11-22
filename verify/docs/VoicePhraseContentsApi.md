@@ -24,26 +24,26 @@ CREATE Voice Phrase Content
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
-    voicePhraseContents := *openapiclient.NewVoicePhraseContents(*openapiclient.NewVoicePhraseContentsVoicePhrase("Id_example"), "Locale_example", "Content_example") // VoicePhraseContents |  (optional)
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
+	voicePhraseContents := *openapiclient.NewVoicePhraseContents(*openapiclient.NewVoicePhraseContentsVoicePhrase("Id_example"), "Locale_example", "Content_example") // VoicePhraseContents |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhraseContentsApi.CreateVoicePhraseContent(context.Background(), environmentID, voicePhraseID).VoicePhraseContents(voicePhraseContents).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.CreateVoicePhraseContent``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateVoicePhraseContent`: VoicePhraseContents
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.CreateVoicePhraseContent`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhraseContentsApi.CreateVoicePhraseContent(context.Background(), environmentID, voicePhraseID).VoicePhraseContents(voicePhraseContents).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.CreateVoicePhraseContent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateVoicePhraseContent`: VoicePhraseContents
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.CreateVoicePhraseContent`: %v\n", resp)
 }
 ```
 
@@ -97,24 +97,24 @@ Delete Voice Phrase Content
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
-    voiceContentsID := "voiceContentsID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
+	voiceContentsID := "voiceContentsID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.VoicePhraseContentsApi.DeleteVoicePhraseContent(context.Background(), environmentID, voicePhraseID, voiceContentsID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.DeleteVoicePhraseContent``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VoicePhraseContentsApi.DeleteVoicePhraseContent(context.Background(), environmentID, voicePhraseID, voiceContentsID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.DeleteVoicePhraseContent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -163,7 +163,7 @@ READ All Voice Phrase Contents
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllVoicePhraseContents(ctx, environmentID, voicePhraseID).Execute()
+> PagedIterator[ReadAllVoicePhraseContents200Response] ReadAllVoicePhraseContents(ctx, environmentID, voicePhraseID).Execute()
 
 #### Example
 
@@ -171,36 +171,35 @@ READ All Voice Phrase Contents
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllVoicePhraseContents(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.VoicePhraseContentsApi.ReadAllVoicePhraseContents(context.Background(), environmentID, voicePhraseID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllVoicePhraseContents``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.ReadAllVoicePhraseContents``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllVoicePhraseContents`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllVoicePhraseContents`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllVoicePhraseContents` page iteration: ReadAllVoicePhraseContents200Response
+		fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.ReadAllVoicePhraseContents` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllVoicePhraseContents(ctx, environmentID, voicePhraseID).ExecuteInitialPage()
+> ReadAllVoicePhraseContents200Response ReadAllVoicePhraseContents(ctx, environmentID, voicePhraseID).ExecuteInitialPage()
 
 #### Example
 
@@ -208,25 +207,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhraseContentsApi.ReadAllVoicePhraseContents(context.Background(), environmentID, voicePhraseID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.ReadAllVoicePhraseContents``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllVoicePhraseContents`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.ReadAllVoicePhraseContents`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhraseContentsApi.ReadAllVoicePhraseContents(context.Background(), environmentID, voicePhraseID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.ReadAllVoicePhraseContents``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllVoicePhraseContents`: ReadAllVoicePhraseContents200Response
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.ReadAllVoicePhraseContents`: %v\n", resp)
 }
 ```
 
@@ -251,7 +250,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllVoicePhraseContents200Response**](ReadAllVoicePhraseContents200Response.md)]
+
+PagedIterator[ReadAllVoicePhraseContents200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllVoicePhraseContents200Response**](ReadAllVoicePhraseContents200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllVoicePhraseContents200Response**](ReadAllVoicePhraseContents200Response.md)
 
 ### Authorization
 
@@ -279,26 +282,26 @@ READ One Voice Phrase Content
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
-    voiceContentsID := "voiceContentsID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
+	voiceContentsID := "voiceContentsID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhraseContentsApi.ReadOneVoicePhraseContent(context.Background(), environmentID, voicePhraseID, voiceContentsID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.ReadOneVoicePhraseContent``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneVoicePhraseContent`: VoicePhraseContents
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.ReadOneVoicePhraseContent`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhraseContentsApi.ReadOneVoicePhraseContent(context.Background(), environmentID, voicePhraseID, voiceContentsID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.ReadOneVoicePhraseContent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneVoicePhraseContent`: VoicePhraseContents
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.ReadOneVoicePhraseContent`: %v\n", resp)
 }
 ```
 
@@ -353,27 +356,27 @@ UPDATE Voice Phrase Content
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    voicePhraseID := "voicePhraseID_example" // string | 
-    voiceContentsID := "voiceContentsID_example" // string | 
-    voicePhraseContents := *openapiclient.NewVoicePhraseContents(*openapiclient.NewVoicePhraseContentsVoicePhrase("Id_example"), "Locale_example", "Content_example") // VoicePhraseContents |  (optional)
+	environmentID := "environmentID_example" // string | 
+	voicePhraseID := "voicePhraseID_example" // string | 
+	voiceContentsID := "voiceContentsID_example" // string | 
+	voicePhraseContents := *openapiclient.NewVoicePhraseContents(*openapiclient.NewVoicePhraseContentsVoicePhrase("Id_example"), "Locale_example", "Content_example") // VoicePhraseContents |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VoicePhraseContentsApi.UpdateVoicePhraseContent(context.Background(), environmentID, voicePhraseID, voiceContentsID).VoicePhraseContents(voicePhraseContents).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.UpdateVoicePhraseContent``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateVoicePhraseContent`: VoicePhraseContents
-    fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.UpdateVoicePhraseContent`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VoicePhraseContentsApi.UpdateVoicePhraseContent(context.Background(), environmentID, voicePhraseID, voiceContentsID).VoicePhraseContents(voicePhraseContents).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VoicePhraseContentsApi.UpdateVoicePhraseContent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateVoicePhraseContent`: VoicePhraseContents
+	fmt.Fprintf(os.Stdout, "Response from `VoicePhraseContentsApi.UpdateVoicePhraseContent`: %v\n", resp)
 }
 ```
 
