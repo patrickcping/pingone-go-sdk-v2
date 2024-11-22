@@ -28,28 +28,28 @@ Apply Credential Issuance Rule Staged Changes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
-    contentType := "application/vnd.pingidentity.credentials.applyStagedChanges+json" // string |  (optional)
-    credentialIssuanceRuleStagedChange := *openapiclient.NewCredentialIssuanceRuleStagedChange() // CredentialIssuanceRuleStagedChange |  (optional)
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
+	contentType := "application/vnd.pingidentity.credentials.applyStagedChanges+json" // string |  (optional)
+	credentialIssuanceRuleStagedChange := *openapiclient.NewCredentialIssuanceRuleStagedChange() // CredentialIssuanceRuleStagedChange |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.ApplyCredentialIssuanceRuleStagedChanges(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).ContentType(contentType).CredentialIssuanceRuleStagedChange(credentialIssuanceRuleStagedChange).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ApplyCredentialIssuanceRuleStagedChanges``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApplyCredentialIssuanceRuleStagedChanges`: CredentialIssuanceRuleStagedChange
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ApplyCredentialIssuanceRuleStagedChanges`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.ApplyCredentialIssuanceRuleStagedChanges(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).ContentType(contentType).CredentialIssuanceRuleStagedChange(credentialIssuanceRuleStagedChange).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ApplyCredentialIssuanceRuleStagedChanges``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApplyCredentialIssuanceRuleStagedChanges`: CredentialIssuanceRuleStagedChange
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ApplyCredentialIssuanceRuleStagedChanges`: %v\n", resp)
 }
 ```
 
@@ -106,26 +106,26 @@ Create Credential Issuance Rule
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRule := *openapiclient.NewCredentialIssuanceRule(*openapiclient.NewCredentialIssuanceRuleAutomation(openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC")), openapiclient.EnumCredentialIssuanceRuleStatus("ACTIVE")) // CredentialIssuanceRule |  (optional)
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRule := *openapiclient.NewCredentialIssuanceRule(*openapiclient.NewCredentialIssuanceRuleAutomation(openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC")), openapiclient.EnumCredentialIssuanceRuleStatus("ACTIVE")) // CredentialIssuanceRule |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.CreateCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID).CredentialIssuanceRule(credentialIssuanceRule).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.CreateCredentialIssuanceRule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCredentialIssuanceRule`: CredentialIssuanceRule
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.CreateCredentialIssuanceRule`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.CreateCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID).CredentialIssuanceRule(credentialIssuanceRule).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.CreateCredentialIssuanceRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCredentialIssuanceRule`: CredentialIssuanceRule
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.CreateCredentialIssuanceRule`: %v\n", resp)
 }
 ```
 
@@ -179,24 +179,24 @@ Delete Credential Issuance Rule
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CredentialIssuanceRulesApi.DeleteCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.DeleteCredentialIssuanceRule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CredentialIssuanceRulesApi.DeleteCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.DeleteCredentialIssuanceRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -245,7 +245,7 @@ Read All Credential Issuance Rules
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllCredentialIssuanceRules(ctx, environmentID, credentialTypeID).Execute()
+> PagedIterator[ReadAllCredentialIssuanceRules200Response] ReadAllCredentialIssuanceRules(ctx, environmentID, credentialTypeID).Execute()
 
 #### Example
 
@@ -253,36 +253,35 @@ Read All Credential Issuance Rules
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllCredentialIssuanceRules(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules(context.Background(), environmentID, credentialTypeID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllCredentialIssuanceRules``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllCredentialIssuanceRules`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllCredentialIssuanceRules`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllCredentialIssuanceRules` page iteration: ReadAllCredentialIssuanceRules200Response
+		fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllCredentialIssuanceRules(ctx, environmentID, credentialTypeID).ExecuteInitialPage()
+> ReadAllCredentialIssuanceRules200Response ReadAllCredentialIssuanceRules(ctx, environmentID, credentialTypeID).ExecuteInitialPage()
 
 #### Example
 
@@ -290,25 +289,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules(context.Background(), environmentID, credentialTypeID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllCredentialIssuanceRules`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules(context.Background(), environmentID, credentialTypeID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllCredentialIssuanceRules`: ReadAllCredentialIssuanceRules200Response
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadAllCredentialIssuanceRules`: %v\n", resp)
 }
 ```
 
@@ -333,7 +332,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllCredentialIssuanceRules200Response**](ReadAllCredentialIssuanceRules200Response.md)]
+
+PagedIterator[ReadAllCredentialIssuanceRules200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllCredentialIssuanceRules200Response**](ReadAllCredentialIssuanceRules200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllCredentialIssuanceRules200Response**](ReadAllCredentialIssuanceRules200Response.md)
 
 ### Authorization
 
@@ -361,26 +364,26 @@ Read Credential Issuance Rule Staged Changes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleStagedChanges(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleStagedChanges``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadCredentialIssuanceRuleStagedChanges`: CredentialIssuanceRuleStagedChange
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleStagedChanges`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleStagedChanges(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleStagedChanges``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadCredentialIssuanceRuleStagedChanges`: CredentialIssuanceRuleStagedChange
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleStagedChanges`: %v\n", resp)
 }
 ```
 
@@ -435,26 +438,26 @@ Read Credential Issuance Rule Usage Counts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageCounts(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageCounts``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadCredentialIssuanceRuleUsageCounts`: CredentialIssuanceRuleUsageCounts
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageCounts`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageCounts(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageCounts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadCredentialIssuanceRuleUsageCounts`: CredentialIssuanceRuleUsageCounts
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageCounts`: %v\n", resp)
 }
 ```
 
@@ -509,26 +512,26 @@ Read Credential Issuance Rule Usage Details
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageDetails(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageDetails``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadCredentialIssuanceRuleUsageDetails`: CredentialIssuanceRuleUsageDetails
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageDetails`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageDetails(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageDetails``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadCredentialIssuanceRuleUsageDetails`: CredentialIssuanceRuleUsageDetails
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadCredentialIssuanceRuleUsageDetails`: %v\n", resp)
 }
 ```
 
@@ -583,26 +586,26 @@ Read One Credential Issuance Rule
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadOneCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadOneCredentialIssuanceRule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneCredentialIssuanceRule`: CredentialIssuanceRule
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadOneCredentialIssuanceRule`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.ReadOneCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.ReadOneCredentialIssuanceRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneCredentialIssuanceRule`: CredentialIssuanceRule
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.ReadOneCredentialIssuanceRule`: %v\n", resp)
 }
 ```
 
@@ -657,27 +660,27 @@ Update Credential Issuance Rule
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
-    credentialIssuanceRule := *openapiclient.NewCredentialIssuanceRule(*openapiclient.NewCredentialIssuanceRuleAutomation(openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC")), openapiclient.EnumCredentialIssuanceRuleStatus("ACTIVE")) // CredentialIssuanceRule |  (optional)
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialIssuanceRuleID := "credentialIssuanceRuleID_example" // string | 
+	credentialIssuanceRule := *openapiclient.NewCredentialIssuanceRule(*openapiclient.NewCredentialIssuanceRuleAutomation(openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC"), openapiclient.EnumCredentialIssuanceRuleAutomationMethod("PERIODIC")), openapiclient.EnumCredentialIssuanceRuleStatus("ACTIVE")) // CredentialIssuanceRule |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuanceRulesApi.UpdateCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).CredentialIssuanceRule(credentialIssuanceRule).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.UpdateCredentialIssuanceRule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCredentialIssuanceRule`: CredentialIssuanceRule
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.UpdateCredentialIssuanceRule`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuanceRulesApi.UpdateCredentialIssuanceRule(context.Background(), environmentID, credentialTypeID, credentialIssuanceRuleID).CredentialIssuanceRule(credentialIssuanceRule).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuanceRulesApi.UpdateCredentialIssuanceRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateCredentialIssuanceRule`: CredentialIssuanceRule
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuanceRulesApi.UpdateCredentialIssuanceRule`: %v\n", resp)
 }
 ```
 

@@ -13,6 +13,8 @@ package credentials
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CredentialType type satisfies the MappedNullable interface at compile time
@@ -46,6 +48,8 @@ type CredentialType struct {
 	// A string that specifies the date and time the credential type was last updated; can be null.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
+
+type _CredentialType CredentialType
 
 // NewCredentialType instantiates a new CredentialType object
 // This constructor will assign default values to properties that have it defined,
@@ -608,6 +612,45 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	return toSerialize, nil
+}
+
+func (o *CredentialType) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"cardDesignTemplate",
+		"metadata",
+		"title",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCredentialType := _CredentialType{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCredentialType)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CredentialType(varCredentialType)
+
+	return err
 }
 
 type NullableCredentialType struct {

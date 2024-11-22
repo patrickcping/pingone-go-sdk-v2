@@ -12,6 +12,8 @@ package credentials
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CredentialIssuanceRuleAutomation type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type CredentialIssuanceRuleAutomation struct {
 	Update EnumCredentialIssuanceRuleAutomationMethod `json:"update"`
 	Revoke EnumCredentialIssuanceRuleAutomationMethod `json:"revoke"`
 }
+
+type _CredentialIssuanceRuleAutomation CredentialIssuanceRuleAutomation
 
 // NewCredentialIssuanceRuleAutomation instantiates a new CredentialIssuanceRuleAutomation object
 // This constructor will assign default values to properties that have it defined,
@@ -130,6 +134,45 @@ func (o CredentialIssuanceRuleAutomation) ToMap() (map[string]interface{}, error
 	toSerialize["update"] = o.Update
 	toSerialize["revoke"] = o.Revoke
 	return toSerialize, nil
+}
+
+func (o *CredentialIssuanceRuleAutomation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"issue",
+		"update",
+		"revoke",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCredentialIssuanceRuleAutomation := _CredentialIssuanceRuleAutomation{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCredentialIssuanceRuleAutomation)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CredentialIssuanceRuleAutomation(varCredentialIssuanceRuleAutomation)
+
+	return err
 }
 
 type NullableCredentialIssuanceRuleAutomation struct {

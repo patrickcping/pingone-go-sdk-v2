@@ -22,25 +22,25 @@ Create Credential Issuer Profile
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialIssuerProfile := *openapiclient.NewCredentialIssuerProfile("Name_example") // CredentialIssuerProfile |  (optional)
+	environmentID := "environmentID_example" // string | 
+	credentialIssuerProfile := *openapiclient.NewCredentialIssuerProfile("Name_example") // CredentialIssuerProfile |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuersApi.CreateCredentialIssuerProfile(context.Background(), environmentID).CredentialIssuerProfile(credentialIssuerProfile).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuersApi.CreateCredentialIssuerProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCredentialIssuerProfile`: CredentialIssuerProfile
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuersApi.CreateCredentialIssuerProfile`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuersApi.CreateCredentialIssuerProfile(context.Background(), environmentID).CredentialIssuerProfile(credentialIssuerProfile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuersApi.CreateCredentialIssuerProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCredentialIssuerProfile`: CredentialIssuerProfile
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuersApi.CreateCredentialIssuerProfile`: %v\n", resp)
 }
 ```
 
@@ -92,24 +92,24 @@ Read Credential Issuer Profile
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuersApi.ReadCredentialIssuerProfile(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuersApi.ReadCredentialIssuerProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadCredentialIssuerProfile`: CredentialIssuerProfile
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuersApi.ReadCredentialIssuerProfile`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuersApi.ReadCredentialIssuerProfile(context.Background(), environmentID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuersApi.ReadCredentialIssuerProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadCredentialIssuerProfile`: CredentialIssuerProfile
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuersApi.ReadCredentialIssuerProfile`: %v\n", resp)
 }
 ```
 
@@ -160,25 +160,25 @@ Update Credential Issuer Profile
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialIssuerProfile := *openapiclient.NewCredentialIssuerProfile("Name_example") // CredentialIssuerProfile |  (optional)
+	environmentID := "environmentID_example" // string | 
+	credentialIssuerProfile := *openapiclient.NewCredentialIssuerProfile("Name_example") // CredentialIssuerProfile |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialIssuersApi.UpdateCredentialIssuerProfile(context.Background(), environmentID).CredentialIssuerProfile(credentialIssuerProfile).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuersApi.UpdateCredentialIssuerProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCredentialIssuerProfile`: CredentialIssuerProfile
-    fmt.Fprintf(os.Stdout, "Response from `CredentialIssuersApi.UpdateCredentialIssuerProfile`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialIssuersApi.UpdateCredentialIssuerProfile(context.Background(), environmentID).CredentialIssuerProfile(credentialIssuerProfile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialIssuersApi.UpdateCredentialIssuerProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateCredentialIssuerProfile`: CredentialIssuerProfile
+	fmt.Fprintf(os.Stdout, "Response from `CredentialIssuersApi.UpdateCredentialIssuerProfile`: %v\n", resp)
 }
 ```
 

@@ -24,25 +24,25 @@ Create Credential Type
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialType := *openapiclient.NewCredentialType("CardDesignTemplate_example", *openapiclient.NewCredentialTypeMetaData(), "Title_example") // CredentialType |  (optional)
+	environmentID := "environmentID_example" // string | 
+	credentialType := *openapiclient.NewCredentialType("CardDesignTemplate_example", *openapiclient.NewCredentialTypeMetaData(), "Title_example") // CredentialType |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialTypesApi.CreateCredentialType(context.Background(), environmentID).CredentialType(credentialType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.CreateCredentialType``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCredentialType`: CredentialType
-    fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.CreateCredentialType`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialTypesApi.CreateCredentialType(context.Background(), environmentID).CredentialType(credentialType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.CreateCredentialType``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCredentialType`: CredentialType
+	fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.CreateCredentialType`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ Delete a Credential Type
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CredentialTypesApi.DeleteCredentialType(context.Background(), environmentID, credentialTypeID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.DeleteCredentialType``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CredentialTypesApi.DeleteCredentialType(context.Background(), environmentID, credentialTypeID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.DeleteCredentialType``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -157,7 +157,7 @@ Read All Credential Types
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllCredentialTypes(ctx, environmentID).Execute()
+> PagedIterator[ReadAllCredentialTypes200Response] ReadAllCredentialTypes(ctx, environmentID).Execute()
 
 #### Example
 
@@ -165,36 +165,34 @@ Read All Credential Types
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllCredentialTypes(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.CredentialTypesApi.ReadAllCredentialTypes(context.Background(), environmentID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllCredentialTypes``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.ReadAllCredentialTypes``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllCredentialTypes`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllCredentialTypes`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllCredentialTypes` page iteration: ReadAllCredentialTypes200Response
+		fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.ReadAllCredentialTypes` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllCredentialTypes(ctx, environmentID).ExecuteInitialPage()
+> ReadAllCredentialTypes200Response ReadAllCredentialTypes(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -202,24 +200,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialTypesApi.ReadAllCredentialTypes(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.ReadAllCredentialTypes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllCredentialTypes`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.ReadAllCredentialTypes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialTypesApi.ReadAllCredentialTypes(context.Background(), environmentID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.ReadAllCredentialTypes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllCredentialTypes`: ReadAllCredentialTypes200Response
+	fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.ReadAllCredentialTypes`: %v\n", resp)
 }
 ```
 
@@ -242,7 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllCredentialTypes200Response**](ReadAllCredentialTypes200Response.md)]
+
+PagedIterator[ReadAllCredentialTypes200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllCredentialTypes200Response**](ReadAllCredentialTypes200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllCredentialTypes200Response**](ReadAllCredentialTypes200Response.md)
 
 ### Authorization
 
@@ -270,25 +272,25 @@ Read One Credential Type
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialTypesApi.ReadOneCredentialType(context.Background(), environmentID, credentialTypeID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.ReadOneCredentialType``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneCredentialType`: CredentialType
-    fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.ReadOneCredentialType`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialTypesApi.ReadOneCredentialType(context.Background(), environmentID, credentialTypeID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.ReadOneCredentialType``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneCredentialType`: CredentialType
+	fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.ReadOneCredentialType`: %v\n", resp)
 }
 ```
 
@@ -341,26 +343,26 @@ Update a Credential Type
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    credentialTypeID := "credentialTypeID_example" // string | 
-    credentialType := *openapiclient.NewCredentialType("CardDesignTemplate_example", *openapiclient.NewCredentialTypeMetaData(), "Title_example") // CredentialType |  (optional)
+	environmentID := "environmentID_example" // string | 
+	credentialTypeID := "credentialTypeID_example" // string | 
+	credentialType := *openapiclient.NewCredentialType("CardDesignTemplate_example", *openapiclient.NewCredentialTypeMetaData(), "Title_example") // CredentialType |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialTypesApi.UpdateCredentialType(context.Background(), environmentID, credentialTypeID).CredentialType(credentialType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.UpdateCredentialType``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCredentialType`: CredentialType
-    fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.UpdateCredentialType`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CredentialTypesApi.UpdateCredentialType(context.Background(), environmentID, credentialTypeID).CredentialType(credentialType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.UpdateCredentialType``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateCredentialType`: CredentialType
+	fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.UpdateCredentialType`: %v\n", resp)
 }
 ```
 

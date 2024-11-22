@@ -58,9 +58,9 @@ func (a *DigitalWalletAppsApiService) CreateDigitalWalletApp(ctx context.Context
 //  @return DigitalWalletApplication
 func (a *DigitalWalletAppsApiService) CreateDigitalWalletAppExecute(r ApiCreateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DigitalWalletApplication
+		err error
+		response *http.Response
+		localVarReturnValue *DigitalWalletApplication
 	)
 	
 	response, err = processResponse(
@@ -122,7 +122,7 @@ func (a *DigitalWalletAppsApiService) internalCreateDigitalWalletAppExecute(r Ap
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -256,7 +256,7 @@ func (a *DigitalWalletAppsApiService) DeleteDigitalWalletApp(ctx context.Context
 // Execute executes the request
 func (a *DigitalWalletAppsApiService) DeleteDigitalWalletAppExecute(r ApiDeleteDigitalWalletAppRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -318,7 +318,7 @@ func (a *DigitalWalletAppsApiService) internalDeleteDigitalWalletAppExecute(r Ap
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -418,11 +418,11 @@ type ApiReadAllDigitalWalletAppsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllDigitalWalletAppsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllDigitalWalletAppsRequest) Execute() PagedIterator[ReadAllDigitalWalletApps200Response] {
 	return r.ApiService.ReadAllDigitalWalletAppsExecute(r)
 }
 
-func (r ApiReadAllDigitalWalletAppsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllDigitalWalletAppsRequest) ExecuteInitialPage() (*ReadAllDigitalWalletApps200Response, *http.Response, error) {
 	return r.ApiService.ReadAllDigitalWalletAppsExecuteInitialPage(r)
 }
 
@@ -442,16 +442,18 @@ func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletApps(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadAllDigitalWalletApps200Response
+func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) PagedIterator[ReadAllDigitalWalletApps200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecuteInitialPage(r ApiReadAllDigitalWalletAppsRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadAllDigitalWalletApps200Response
+func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecuteInitialPage(r ApiReadAllDigitalWalletAppsRequest) (*ReadAllDigitalWalletApps200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadAllDigitalWalletApps200Response
 	)
 	
 	response, err = processResponse(
@@ -463,12 +465,12 @@ func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecuteInitialPage
 	return localVarReturnValue, response, err
 }
 
-func (a *DigitalWalletAppsApiService) internalReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) (*EntityArray, *http.Response, error) {
+func (a *DigitalWalletAppsApiService) internalReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) (*ReadAllDigitalWalletApps200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllDigitalWalletApps200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalWalletAppsApiService.ReadAllDigitalWalletApps")
@@ -511,7 +513,7 @@ func (a *DigitalWalletAppsApiService) internalReadAllDigitalWalletAppsExecute(r 
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -646,9 +648,9 @@ func (a *DigitalWalletAppsApiService) ReadOneDigitalWalletApp(ctx context.Contex
 //  @return DigitalWalletApplication
 func (a *DigitalWalletAppsApiService) ReadOneDigitalWalletAppExecute(r ApiReadOneDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DigitalWalletApplication
+		err error
+		response *http.Response
+		localVarReturnValue *DigitalWalletApplication
 	)
 	
 	response, err = processResponse(
@@ -709,7 +711,7 @@ func (a *DigitalWalletAppsApiService) internalReadOneDigitalWalletAppExecute(r A
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -850,9 +852,9 @@ func (a *DigitalWalletAppsApiService) UpdateDigitalWalletApp(ctx context.Context
 //  @return DigitalWalletApplication
 func (a *DigitalWalletAppsApiService) UpdateDigitalWalletAppExecute(r ApiUpdateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DigitalWalletApplication
+		err error
+		response *http.Response
+		localVarReturnValue *DigitalWalletApplication
 	)
 	
 	response, err = processResponse(
@@ -915,7 +917,7 @@ func (a *DigitalWalletAppsApiService) internalUpdateDigitalWalletAppExecute(r Ap
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

@@ -61,9 +61,9 @@ func (a *UserCredentialsApiService) CreateAUserCredential(ctx context.Context, e
 //  @return UserCredential
 func (a *UserCredentialsApiService) CreateAUserCredentialExecute(r ApiCreateAUserCredentialRequest) (*UserCredential, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *UserCredential
+		err error
+		response *http.Response
+		localVarReturnValue *UserCredential
 	)
 	
 	response, err = processResponse(
@@ -126,7 +126,7 @@ func (a *UserCredentialsApiService) internalCreateAUserCredentialExecute(r ApiCr
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -236,11 +236,11 @@ type ApiReadAllUserCredentialsRequest struct {
 	userID string
 }
 
-func (r ApiReadAllUserCredentialsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllUserCredentialsRequest) Execute() PagedIterator[ReadAllUserCredentials200Response] {
 	return r.ApiService.ReadAllUserCredentialsExecute(r)
 }
 
-func (r ApiReadAllUserCredentialsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllUserCredentialsRequest) ExecuteInitialPage() (*ReadAllUserCredentials200Response, *http.Response, error) {
 	return r.ApiService.ReadAllUserCredentialsExecuteInitialPage(r)
 }
 
@@ -262,16 +262,18 @@ func (a *UserCredentialsApiService) ReadAllUserCredentials(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *UserCredentialsApiService) ReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadAllUserCredentials200Response
+func (a *UserCredentialsApiService) ReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) PagedIterator[ReadAllUserCredentials200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *UserCredentialsApiService) ReadAllUserCredentialsExecuteInitialPage(r ApiReadAllUserCredentialsRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadAllUserCredentials200Response
+func (a *UserCredentialsApiService) ReadAllUserCredentialsExecuteInitialPage(r ApiReadAllUserCredentialsRequest) (*ReadAllUserCredentials200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadAllUserCredentials200Response
 	)
 	
 	response, err = processResponse(
@@ -283,12 +285,12 @@ func (a *UserCredentialsApiService) ReadAllUserCredentialsExecuteInitialPage(r A
 	return localVarReturnValue, response, err
 }
 
-func (a *UserCredentialsApiService) internalReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) (*EntityArray, *http.Response, error) {
+func (a *UserCredentialsApiService) internalReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) (*ReadAllUserCredentials200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllUserCredentials200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserCredentialsApiService.ReadAllUserCredentials")
@@ -332,7 +334,7 @@ func (a *UserCredentialsApiService) internalReadAllUserCredentialsExecute(r ApiR
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -470,9 +472,9 @@ func (a *UserCredentialsApiService) ReadOneUserCredential(ctx context.Context, e
 //  @return UserCredential
 func (a *UserCredentialsApiService) ReadOneUserCredentialExecute(r ApiReadOneUserCredentialRequest) (*UserCredential, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *UserCredential
+		err error
+		response *http.Response
+		localVarReturnValue *UserCredential
 	)
 	
 	response, err = processResponse(
@@ -534,7 +536,7 @@ func (a *UserCredentialsApiService) internalReadOneUserCredentialExecute(r ApiRe
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -645,11 +647,11 @@ type ApiReadOneUserCredentialWalletRequest struct {
 	credentialID string
 }
 
-func (r ApiReadOneUserCredentialWalletRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadOneUserCredentialWalletRequest) Execute() PagedIterator[ReadOneDigitalWalletCredential200Response] {
 	return r.ApiService.ReadOneUserCredentialWalletExecute(r)
 }
 
-func (r ApiReadOneUserCredentialWalletRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadOneUserCredentialWalletRequest) ExecuteInitialPage() (*ReadOneDigitalWalletCredential200Response, *http.Response, error) {
 	return r.ApiService.ReadOneUserCredentialWalletExecuteInitialPage(r)
 }
 
@@ -673,16 +675,18 @@ func (a *UserCredentialsApiService) ReadOneUserCredentialWallet(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadOneDigitalWalletCredential200Response
+func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) PagedIterator[ReadOneDigitalWalletCredential200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecuteInitialPage(r ApiReadOneUserCredentialWalletRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadOneDigitalWalletCredential200Response
+func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecuteInitialPage(r ApiReadOneUserCredentialWalletRequest) (*ReadOneDigitalWalletCredential200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadOneDigitalWalletCredential200Response
 	)
 	
 	response, err = processResponse(
@@ -694,12 +698,12 @@ func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecuteInitialPag
 	return localVarReturnValue, response, err
 }
 
-func (a *UserCredentialsApiService) internalReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) (*EntityArray, *http.Response, error) {
+func (a *UserCredentialsApiService) internalReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) (*ReadOneDigitalWalletCredential200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadOneDigitalWalletCredential200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserCredentialsApiService.ReadOneUserCredentialWallet")
@@ -744,7 +748,7 @@ func (a *UserCredentialsApiService) internalReadOneUserCredentialWalletExecute(r
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -888,9 +892,9 @@ func (a *UserCredentialsApiService) UpdateUserCredential(ctx context.Context, en
 //  @return UserCredential
 func (a *UserCredentialsApiService) UpdateUserCredentialExecute(r ApiUpdateUserCredentialRequest) (*UserCredential, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *UserCredential
+		err error
+		response *http.Response
+		localVarReturnValue *UserCredential
 	)
 	
 	response, err = processResponse(
@@ -954,7 +958,7 @@ func (a *UserCredentialsApiService) internalUpdateUserCredentialExecute(r ApiUpd
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

@@ -79,7 +79,6 @@ type Configuration struct {
 	Scheme           string            `json:"scheme,omitempty"`
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
-	Debug            bool              `json:"debug,omitempty"`
 	DefaultServerIndex int             `json:"defaultServerIndex,omitempty"`
 	ProxyURL         *string           `json:"proxyURL,omitempty"`
 	Servers          ServerConfigurations
@@ -92,7 +91,6 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "pingtools PingOne-GOLANG-SDK-credentials/0.10.0",
-		Debug:            false,
 		DefaultServerIndex: 0,
 		Servers:          ServerConfigurations{
 			{
@@ -139,10 +137,6 @@ func NewConfiguration() *Configuration {
 		},
 	}
 	return cfg
-}
-
-func (c *Configuration) SetDebug(debug bool) {
-	c.Debug = debug
 }
 
 func (c *Configuration) SetUserAgent(userAgent string) {

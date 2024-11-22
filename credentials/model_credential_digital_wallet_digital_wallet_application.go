@@ -12,6 +12,8 @@ package credentials
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CredentialDigitalWalletDigitalWalletApplication type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type CredentialDigitalWalletDigitalWalletApplication struct {
 	// A string that specifies the identifier (UUID) of the customer's digital wallet app that will interact with the user's digital wallet.
 	Id string `json:"id"`
 }
+
+type _CredentialDigitalWalletDigitalWalletApplication CredentialDigitalWalletDigitalWalletApplication
 
 // NewCredentialDigitalWalletDigitalWalletApplication instantiates a new CredentialDigitalWalletDigitalWalletApplication object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o CredentialDigitalWalletDigitalWalletApplication) ToMap() (map[string]int
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *CredentialDigitalWalletDigitalWalletApplication) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCredentialDigitalWalletDigitalWalletApplication := _CredentialDigitalWalletDigitalWalletApplication{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCredentialDigitalWalletDigitalWalletApplication)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CredentialDigitalWalletDigitalWalletApplication(varCredentialDigitalWalletDigitalWalletApplication)
+
+	return err
 }
 
 type NullableCredentialDigitalWalletDigitalWalletApplication struct {

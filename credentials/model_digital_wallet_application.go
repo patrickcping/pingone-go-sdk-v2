@@ -13,6 +13,8 @@ package credentials
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DigitalWalletApplication type satisfies the MappedNullable interface at compile time
@@ -35,6 +37,8 @@ type DigitalWalletApplication struct {
 	// A boolean that specifies whether the user's wallet app uses the PingOne Wallet SDK.
 	UsesPingOneWalletSDK *bool `json:"usesPingOneWalletSDK,omitempty"`
 }
+
+type _DigitalWalletApplication DigitalWalletApplication
 
 // NewDigitalWalletApplication instantiates a new DigitalWalletApplication object
 // This constructor will assign default values to properties that have it defined,
@@ -352,6 +356,45 @@ func (o DigitalWalletApplication) ToMap() (map[string]interface{}, error) {
 		toSerialize["usesPingOneWalletSDK"] = o.UsesPingOneWalletSDK
 	}
 	return toSerialize, nil
+}
+
+func (o *DigitalWalletApplication) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"application",
+		"appOpenUrl",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDigitalWalletApplication := _DigitalWalletApplication{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDigitalWalletApplication)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DigitalWalletApplication(varDigitalWalletApplication)
+
+	return err
 }
 
 type NullableDigitalWalletApplication struct {

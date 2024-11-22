@@ -58,9 +58,9 @@ func (a *CredentialIssuersApiService) CreateCredentialIssuerProfile(ctx context.
 //  @return CredentialIssuerProfile
 func (a *CredentialIssuersApiService) CreateCredentialIssuerProfileExecute(r ApiCreateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuerProfile
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuerProfile
 	)
 	
 	response, err = processResponse(
@@ -122,7 +122,7 @@ func (a *CredentialIssuersApiService) internalCreateCredentialIssuerProfileExecu
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -254,9 +254,9 @@ func (a *CredentialIssuersApiService) ReadCredentialIssuerProfile(ctx context.Co
 //  @return CredentialIssuerProfile
 func (a *CredentialIssuersApiService) ReadCredentialIssuerProfileExecute(r ApiReadCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuerProfile
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuerProfile
 	)
 	
 	response, err = processResponse(
@@ -316,7 +316,7 @@ func (a *CredentialIssuersApiService) internalReadCredentialIssuerProfileExecute
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -454,9 +454,9 @@ func (a *CredentialIssuersApiService) UpdateCredentialIssuerProfile(ctx context.
 //  @return CredentialIssuerProfile
 func (a *CredentialIssuersApiService) UpdateCredentialIssuerProfileExecute(r ApiUpdateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuerProfile
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuerProfile
 	)
 	
 	response, err = processResponse(
@@ -518,7 +518,7 @@ func (a *CredentialIssuersApiService) internalUpdateCredentialIssuerProfileExecu
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

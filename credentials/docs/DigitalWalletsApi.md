@@ -25,26 +25,26 @@ Create Digital Wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    credentialDigitalWallet := *openapiclient.NewCredentialDigitalWallet() // CredentialDigitalWallet |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	credentialDigitalWallet := *openapiclient.NewCredentialDigitalWallet() // CredentialDigitalWallet |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DigitalWalletsApi.CreateDigitalWallet(context.Background(), environmentID, userID).CredentialDigitalWallet(credentialDigitalWallet).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.CreateDigitalWallet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDigitalWallet`: CredentialDigitalWallet
-    fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.CreateDigitalWallet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DigitalWalletsApi.CreateDigitalWallet(context.Background(), environmentID, userID).CredentialDigitalWallet(credentialDigitalWallet).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.CreateDigitalWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateDigitalWallet`: CredentialDigitalWallet
+	fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.CreateDigitalWallet`: %v\n", resp)
 }
 ```
 
@@ -98,24 +98,24 @@ Delete Digital Wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    digitalWalletID := "digitalWalletID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	digitalWalletID := "digitalWalletID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DigitalWalletsApi.DeleteDigitalWallet(context.Background(), environmentID, userID, digitalWalletID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.DeleteDigitalWallet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DigitalWalletsApi.DeleteDigitalWallet(context.Background(), environmentID, userID, digitalWalletID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.DeleteDigitalWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -164,7 +164,7 @@ Read All Digital Wallets
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllDigitalWallets(ctx, environmentID, userID).Execute()
+> PagedIterator[ReadAllDigitalWallets200Response] ReadAllDigitalWallets(ctx, environmentID, userID).Execute()
 
 #### Example
 
@@ -172,36 +172,35 @@ Read All Digital Wallets
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllDigitalWallets(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.DigitalWalletsApi.ReadAllDigitalWallets(context.Background(), environmentID, userID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllDigitalWallets``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadAllDigitalWallets``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllDigitalWallets`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllDigitalWallets`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllDigitalWallets` page iteration: ReadAllDigitalWallets200Response
+		fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadAllDigitalWallets` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllDigitalWallets(ctx, environmentID, userID).ExecuteInitialPage()
+> ReadAllDigitalWallets200Response ReadAllDigitalWallets(ctx, environmentID, userID).ExecuteInitialPage()
 
 #### Example
 
@@ -209,25 +208,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DigitalWalletsApi.ReadAllDigitalWallets(context.Background(), environmentID, userID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadAllDigitalWallets``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllDigitalWallets`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadAllDigitalWallets`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DigitalWalletsApi.ReadAllDigitalWallets(context.Background(), environmentID, userID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadAllDigitalWallets``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllDigitalWallets`: ReadAllDigitalWallets200Response
+	fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadAllDigitalWallets`: %v\n", resp)
 }
 ```
 
@@ -252,7 +251,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllDigitalWallets200Response**](ReadAllDigitalWallets200Response.md)]
+
+PagedIterator[ReadAllDigitalWallets200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllDigitalWallets200Response**](ReadAllDigitalWallets200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllDigitalWallets200Response**](ReadAllDigitalWallets200Response.md)
 
 ### Authorization
 
@@ -280,26 +283,26 @@ Read One Digital Wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    digitalWalletID := "digitalWalletID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	digitalWalletID := "digitalWalletID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DigitalWalletsApi.ReadOneDigitalWallet(context.Background(), environmentID, userID, digitalWalletID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadOneDigitalWallet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneDigitalWallet`: CredentialDigitalWallet
-    fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadOneDigitalWallet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DigitalWalletsApi.ReadOneDigitalWallet(context.Background(), environmentID, userID, digitalWalletID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadOneDigitalWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneDigitalWallet`: CredentialDigitalWallet
+	fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadOneDigitalWallet`: %v\n", resp)
 }
 ```
 
@@ -348,7 +351,7 @@ Read One Digital Wallet Credential
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadOneDigitalWalletCredential(ctx, environmentID, userID, digitalWalletID).Execute()
+> PagedIterator[ReadOneDigitalWalletCredential200Response] ReadOneDigitalWalletCredential(ctx, environmentID, userID, digitalWalletID).Execute()
 
 #### Example
 
@@ -356,36 +359,36 @@ Read One Digital Wallet Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	digitalWalletID := "digitalWalletID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadOneDigitalWalletCredential(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.DigitalWalletsApi.ReadOneDigitalWalletCredential(context.Background(), environmentID, userID, digitalWalletID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadOneDigitalWalletCredential``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadOneDigitalWalletCredential``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadOneDigitalWalletCredential`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadOneDigitalWalletCredential`: %v\n", pageCursor.EntityArray)
+		// response from `ReadOneDigitalWalletCredential` page iteration: ReadOneDigitalWalletCredential200Response
+		fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadOneDigitalWalletCredential` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadOneDigitalWalletCredential(ctx, environmentID, userID, digitalWalletID).ExecuteInitialPage()
+> ReadOneDigitalWalletCredential200Response ReadOneDigitalWalletCredential(ctx, environmentID, userID, digitalWalletID).ExecuteInitialPage()
 
 #### Example
 
@@ -393,26 +396,26 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    digitalWalletID := "digitalWalletID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	digitalWalletID := "digitalWalletID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DigitalWalletsApi.ReadOneDigitalWalletCredential(context.Background(), environmentID, userID, digitalWalletID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadOneDigitalWalletCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneDigitalWalletCredential`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadOneDigitalWalletCredential`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DigitalWalletsApi.ReadOneDigitalWalletCredential(context.Background(), environmentID, userID, digitalWalletID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.ReadOneDigitalWalletCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneDigitalWalletCredential`: ReadOneDigitalWalletCredential200Response
+	fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.ReadOneDigitalWalletCredential`: %v\n", resp)
 }
 ```
 
@@ -439,7 +442,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadOneDigitalWalletCredential200Response**](ReadOneDigitalWalletCredential200Response.md)]
+
+PagedIterator[ReadOneDigitalWalletCredential200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadOneDigitalWalletCredential200Response**](ReadOneDigitalWalletCredential200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadOneDigitalWalletCredential200Response**](ReadOneDigitalWalletCredential200Response.md)
 
 ### Authorization
 
@@ -467,27 +474,27 @@ Update Digital Wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    digitalWalletID := "digitalWalletID_example" // string | 
-    credentialDigitalWallet := *openapiclient.NewCredentialDigitalWallet() // CredentialDigitalWallet |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	digitalWalletID := "digitalWalletID_example" // string | 
+	credentialDigitalWallet := *openapiclient.NewCredentialDigitalWallet() // CredentialDigitalWallet |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DigitalWalletsApi.UpdateDigitalWallet(context.Background(), environmentID, userID, digitalWalletID).CredentialDigitalWallet(credentialDigitalWallet).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.UpdateDigitalWallet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateDigitalWallet`: CredentialDigitalWallet
-    fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.UpdateDigitalWallet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DigitalWalletsApi.UpdateDigitalWallet(context.Background(), environmentID, userID, digitalWalletID).CredentialDigitalWallet(credentialDigitalWallet).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalWalletsApi.UpdateDigitalWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateDigitalWallet`: CredentialDigitalWallet
+	fmt.Fprintf(os.Stdout, "Response from `DigitalWalletsApi.UpdateDigitalWallet`: %v\n", resp)
 }
 ```
 

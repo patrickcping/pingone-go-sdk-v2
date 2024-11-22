@@ -70,9 +70,9 @@ func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedCha
 //  @return CredentialIssuanceRuleStagedChange
 func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedChangesExecute(r ApiApplyCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuanceRuleStagedChange
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuanceRuleStagedChange
 	)
 	
 	response, err = processResponse(
@@ -124,7 +124,7 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.credentialIssuanceRuleStagedChange
@@ -139,7 +139,7 @@ func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleS
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -280,9 +280,9 @@ func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRule(ctx con
 //  @return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRuleExecute(r ApiCreateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuanceRule
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuanceRule
 	)
 	
 	response, err = processResponse(
@@ -345,7 +345,7 @@ func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRule
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -482,7 +482,7 @@ func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRule(ctx con
 // Execute executes the request
 func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRuleExecute(r ApiDeleteCredentialIssuanceRuleRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -545,7 +545,7 @@ func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRule
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -646,11 +646,11 @@ type ApiReadAllCredentialIssuanceRulesRequest struct {
 	credentialTypeID string
 }
 
-func (r ApiReadAllCredentialIssuanceRulesRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllCredentialIssuanceRulesRequest) Execute() PagedIterator[ReadAllCredentialIssuanceRules200Response] {
 	return r.ApiService.ReadAllCredentialIssuanceRulesExecute(r)
 }
 
-func (r ApiReadAllCredentialIssuanceRulesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllCredentialIssuanceRulesRequest) ExecuteInitialPage() (*ReadAllCredentialIssuanceRules200Response, *http.Response, error) {
 	return r.ApiService.ReadAllCredentialIssuanceRulesExecuteInitialPage(r)
 }
 
@@ -672,16 +672,18 @@ func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRules(ctx c
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadAllCredentialIssuanceRules200Response
+func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) PagedIterator[ReadAllCredentialIssuanceRules200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecuteInitialPage(r ApiReadAllCredentialIssuanceRulesRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadAllCredentialIssuanceRules200Response
+func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecuteInitialPage(r ApiReadAllCredentialIssuanceRulesRequest) (*ReadAllCredentialIssuanceRules200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadAllCredentialIssuanceRules200Response
 	)
 	
 	response, err = processResponse(
@@ -693,12 +695,12 @@ func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecut
 	return localVarReturnValue, response, err
 }
 
-func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) (*EntityArray, *http.Response, error) {
+func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) (*ReadAllCredentialIssuanceRules200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllCredentialIssuanceRules200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialIssuanceRulesApiService.ReadAllCredentialIssuanceRules")
@@ -742,7 +744,7 @@ func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRul
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -880,9 +882,9 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChan
 //  @return CredentialIssuanceRuleStagedChange
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChangesExecute(r ApiReadCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuanceRuleStagedChange
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuanceRuleStagedChange
 	)
 	
 	response, err = processResponse(
@@ -944,7 +946,7 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleSt
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1082,9 +1084,9 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCount
 //  @return CredentialIssuanceRuleUsageCounts
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCountsExecute(r ApiReadCredentialIssuanceRuleUsageCountsRequest) (*CredentialIssuanceRuleUsageCounts, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuanceRuleUsageCounts
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuanceRuleUsageCounts
 	)
 	
 	response, err = processResponse(
@@ -1146,7 +1148,7 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1284,9 +1286,9 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetai
 //  @return CredentialIssuanceRuleUsageDetails
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetailsExecute(r ApiReadCredentialIssuanceRuleUsageDetailsRequest) (*CredentialIssuanceRuleUsageDetails, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuanceRuleUsageDetails
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuanceRuleUsageDetails
 	)
 	
 	response, err = processResponse(
@@ -1348,7 +1350,7 @@ func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUs
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1486,9 +1488,9 @@ func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRule(ctx co
 //  @return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRuleExecute(r ApiReadOneCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuanceRule
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuanceRule
 	)
 	
 	response, err = processResponse(
@@ -1550,7 +1552,7 @@ func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRul
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1694,9 +1696,9 @@ func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRule(ctx con
 //  @return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRuleExecute(r ApiUpdateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *CredentialIssuanceRule
+		err error
+		response *http.Response
+		localVarReturnValue *CredentialIssuanceRule
 	)
 	
 	response, err = processResponse(
@@ -1760,7 +1762,7 @@ func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRule
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

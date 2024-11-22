@@ -24,26 +24,26 @@ Create a User Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    userCredential := *openapiclient.NewUserCredential() // UserCredential |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	userCredential := *openapiclient.NewUserCredential() // UserCredential |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserCredentialsApi.CreateAUserCredential(context.Background(), environmentID, userID).UserCredential(userCredential).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.CreateAUserCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAUserCredential`: UserCredential
-    fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.CreateAUserCredential`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserCredentialsApi.CreateAUserCredential(context.Background(), environmentID, userID).UserCredential(userCredential).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.CreateAUserCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAUserCredential`: UserCredential
+	fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.CreateAUserCredential`: %v\n", resp)
 }
 ```
 
@@ -91,7 +91,7 @@ Read All User Credentials
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllUserCredentials(ctx, environmentID, userID).Execute()
+> PagedIterator[ReadAllUserCredentials200Response] ReadAllUserCredentials(ctx, environmentID, userID).Execute()
 
 #### Example
 
@@ -99,36 +99,35 @@ Read All User Credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllUserCredentials(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.UserCredentialsApi.ReadAllUserCredentials(context.Background(), environmentID, userID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllUserCredentials``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadAllUserCredentials``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllUserCredentials`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllUserCredentials`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllUserCredentials` page iteration: ReadAllUserCredentials200Response
+		fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadAllUserCredentials` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllUserCredentials(ctx, environmentID, userID).ExecuteInitialPage()
+> ReadAllUserCredentials200Response ReadAllUserCredentials(ctx, environmentID, userID).ExecuteInitialPage()
 
 #### Example
 
@@ -136,25 +135,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserCredentialsApi.ReadAllUserCredentials(context.Background(), environmentID, userID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadAllUserCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllUserCredentials`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadAllUserCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserCredentialsApi.ReadAllUserCredentials(context.Background(), environmentID, userID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadAllUserCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllUserCredentials`: ReadAllUserCredentials200Response
+	fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadAllUserCredentials`: %v\n", resp)
 }
 ```
 
@@ -179,7 +178,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllUserCredentials200Response**](ReadAllUserCredentials200Response.md)]
+
+PagedIterator[ReadAllUserCredentials200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllUserCredentials200Response**](ReadAllUserCredentials200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllUserCredentials200Response**](ReadAllUserCredentials200Response.md)
 
 ### Authorization
 
@@ -207,26 +210,26 @@ Read One User Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    credentialID := "credentialID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	credentialID := "credentialID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserCredentialsApi.ReadOneUserCredential(context.Background(), environmentID, userID, credentialID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadOneUserCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneUserCredential`: UserCredential
-    fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadOneUserCredential`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserCredentialsApi.ReadOneUserCredential(context.Background(), environmentID, userID, credentialID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadOneUserCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneUserCredential`: UserCredential
+	fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadOneUserCredential`: %v\n", resp)
 }
 ```
 
@@ -275,7 +278,7 @@ Read One User Credential Wallet
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadOneUserCredentialWallet(ctx, environmentID, userID, credentialID).Execute()
+> PagedIterator[ReadOneDigitalWalletCredential200Response] ReadOneUserCredentialWallet(ctx, environmentID, userID, credentialID).Execute()
 
 #### Example
 
@@ -283,36 +286,36 @@ Read One User Credential Wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	credentialID := "credentialID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadOneUserCredentialWallet(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.UserCredentialsApi.ReadOneUserCredentialWallet(context.Background(), environmentID, userID, credentialID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadOneUserCredentialWallet``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadOneUserCredentialWallet``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadOneUserCredentialWallet`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadOneUserCredentialWallet`: %v\n", pageCursor.EntityArray)
+		// response from `ReadOneUserCredentialWallet` page iteration: ReadOneDigitalWalletCredential200Response
+		fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadOneUserCredentialWallet` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadOneUserCredentialWallet(ctx, environmentID, userID, credentialID).ExecuteInitialPage()
+> ReadOneDigitalWalletCredential200Response ReadOneUserCredentialWallet(ctx, environmentID, userID, credentialID).ExecuteInitialPage()
 
 #### Example
 
@@ -320,26 +323,26 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    credentialID := "credentialID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	credentialID := "credentialID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserCredentialsApi.ReadOneUserCredentialWallet(context.Background(), environmentID, userID, credentialID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadOneUserCredentialWallet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneUserCredentialWallet`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadOneUserCredentialWallet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserCredentialsApi.ReadOneUserCredentialWallet(context.Background(), environmentID, userID, credentialID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.ReadOneUserCredentialWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneUserCredentialWallet`: ReadOneDigitalWalletCredential200Response
+	fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.ReadOneUserCredentialWallet`: %v\n", resp)
 }
 ```
 
@@ -366,7 +369,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadOneDigitalWalletCredential200Response**](ReadOneDigitalWalletCredential200Response.md)]
+
+PagedIterator[ReadOneDigitalWalletCredential200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadOneDigitalWalletCredential200Response**](ReadOneDigitalWalletCredential200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadOneDigitalWalletCredential200Response**](ReadOneDigitalWalletCredential200Response.md)
 
 ### Authorization
 
@@ -394,27 +401,27 @@ Update a User Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    credentialID := "credentialID_example" // string | 
-    userCredential := *openapiclient.NewUserCredential() // UserCredential |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	credentialID := "credentialID_example" // string | 
+	userCredential := *openapiclient.NewUserCredential() // UserCredential |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserCredentialsApi.UpdateUserCredential(context.Background(), environmentID, userID, credentialID).UserCredential(userCredential).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.UpdateUserCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateUserCredential`: UserCredential
-    fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.UpdateUserCredential`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserCredentialsApi.UpdateUserCredential(context.Background(), environmentID, userID, credentialID).UserCredential(userCredential).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.UpdateUserCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateUserCredential`: UserCredential
+	fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.UpdateUserCredential`: %v\n", resp)
 }
 ```
 
