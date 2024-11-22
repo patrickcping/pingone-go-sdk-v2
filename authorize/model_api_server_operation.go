@@ -319,7 +319,7 @@ func (o *APIServerOperation) UnmarshalJSON(data []byte) (err error) {
 	varAPIServerOperation := _APIServerOperation{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAPIServerOperation)
 
 	if err != nil {

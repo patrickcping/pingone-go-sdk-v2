@@ -254,7 +254,7 @@ func (o *ApplicationResource) UnmarshalJSON(data []byte) (err error) {
 	varApplicationResource := _ApplicationResource{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varApplicationResource)
 
 	if err != nil {

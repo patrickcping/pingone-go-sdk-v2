@@ -496,7 +496,7 @@ func (o *DecisionEndpoint) UnmarshalJSON(data []byte) (err error) {
 	varDecisionEndpoint := _DecisionEndpoint{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varDecisionEndpoint)
 
 	if err != nil {

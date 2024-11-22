@@ -144,7 +144,7 @@ func (o *APIServerOperationAccessControlScope) UnmarshalJSON(data []byte) (err e
 	varAPIServerOperationAccessControlScope := _APIServerOperationAccessControlScope{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAPIServerOperationAccessControlScope)
 
 	if err != nil {

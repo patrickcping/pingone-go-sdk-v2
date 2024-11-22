@@ -108,7 +108,7 @@ func (o *APIServerOperationAccessControlGroupGroupsInner) UnmarshalJSON(data []b
 	varAPIServerOperationAccessControlGroupGroupsInner := _APIServerOperationAccessControlGroupGroupsInner{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAPIServerOperationAccessControlGroupGroupsInner)
 
 	if err != nil {

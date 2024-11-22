@@ -108,7 +108,7 @@ func (o *APIServerAuthorizationServerResource) UnmarshalJSON(data []byte) (err e
 	varAPIServerAuthorizationServerResource := _APIServerAuthorizationServerResource{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAPIServerAuthorizationServerResource)
 
 	if err != nil {

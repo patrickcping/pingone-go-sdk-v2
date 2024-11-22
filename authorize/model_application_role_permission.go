@@ -325,7 +325,7 @@ func (o *ApplicationRolePermission) UnmarshalJSON(data []byte) (err error) {
 	varApplicationRolePermission := _ApplicationRolePermission{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varApplicationRolePermission)
 
 	if err != nil {

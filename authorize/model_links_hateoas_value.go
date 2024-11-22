@@ -108,7 +108,7 @@ func (o *LinksHATEOASValue) UnmarshalJSON(data []byte) (err error) {
 	varLinksHATEOASValue := _LinksHATEOASValue{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varLinksHATEOASValue)
 
 	if err != nil {

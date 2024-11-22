@@ -218,7 +218,7 @@ func (o *ApplicationRole) UnmarshalJSON(data []byte) (err error) {
 	varApplicationRole := _ApplicationRole{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varApplicationRole)
 
 	if err != nil {

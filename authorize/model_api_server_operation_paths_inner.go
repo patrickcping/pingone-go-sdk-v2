@@ -136,7 +136,7 @@ func (o *APIServerOperationPathsInner) UnmarshalJSON(data []byte) (err error) {
 	varAPIServerOperationPathsInner := _APIServerOperationPathsInner{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAPIServerOperationPathsInner)
 
 	if err != nil {

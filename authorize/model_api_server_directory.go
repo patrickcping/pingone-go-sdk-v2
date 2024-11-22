@@ -107,7 +107,7 @@ func (o *APIServerDirectory) UnmarshalJSON(data []byte) (err error) {
 	varAPIServerDirectory := _APIServerDirectory{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAPIServerDirectory)
 
 	if err != nil {
