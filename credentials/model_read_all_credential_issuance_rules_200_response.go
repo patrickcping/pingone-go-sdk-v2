@@ -19,7 +19,7 @@ var _ MappedNullable = &ReadAllCredentialIssuanceRules200Response{}
 
 // ReadAllCredentialIssuanceRules200Response struct for ReadAllCredentialIssuanceRules200Response
 type ReadAllCredentialIssuanceRules200Response struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Embedded *ReadAllCredentialIssuanceRules200ResponseEmbedded `json:"_embedded,omitempty"`
 	Count *float32 `json:"count,omitempty"`
 	Size *float32 `json:"size,omitempty"`
@@ -44,7 +44,7 @@ func NewReadAllCredentialIssuanceRules200ResponseWithDefaults() *ReadAllCredenti
 
 func (o ReadAllCredentialIssuanceRules200Response) hasHalLink(linkIndex string) bool {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
 				return true
@@ -56,7 +56,7 @@ func (o ReadAllCredentialIssuanceRules200Response) hasHalLink(linkIndex string) 
 
 func (o ReadAllCredentialIssuanceRules200Response) getHalLink(linkIndex string) LinksHATEOASValue {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return v
 		}
@@ -68,7 +68,7 @@ func (o ReadAllCredentialIssuanceRules200Response) getHalLink(linkIndex string) 
 
 func (o ReadAllCredentialIssuanceRules200Response) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return &v, true
 		}
@@ -123,14 +123,14 @@ func (o *ReadAllCredentialIssuanceRules200Response) GetLinks() map[string]LinksH
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReadAllCredentialIssuanceRules200Response) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *ReadAllCredentialIssuanceRules200Response) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -146,7 +146,7 @@ func (o *ReadAllCredentialIssuanceRules200Response) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *ReadAllCredentialIssuanceRules200Response) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetEmbedded returns the Embedded field value if set, zero value otherwise.

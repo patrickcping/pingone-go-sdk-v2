@@ -22,7 +22,7 @@ var _ MappedNullable = &CredentialIssuanceRule{}
 
 // CredentialIssuanceRule struct for CredentialIssuanceRule
 type CredentialIssuanceRule struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Automation CredentialIssuanceRuleAutomation `json:"automation"`
 	// A string that specifies the date and time the credential issuance rule was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -61,7 +61,7 @@ func NewCredentialIssuanceRuleWithDefaults() *CredentialIssuanceRule {
 
 func (o CredentialIssuanceRule) hasHalLink(linkIndex string) bool {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
 				return true
@@ -73,7 +73,7 @@ func (o CredentialIssuanceRule) hasHalLink(linkIndex string) bool {
 
 func (o CredentialIssuanceRule) getHalLink(linkIndex string) LinksHATEOASValue {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return v
 		}
@@ -85,7 +85,7 @@ func (o CredentialIssuanceRule) getHalLink(linkIndex string) LinksHATEOASValue {
 
 func (o CredentialIssuanceRule) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return &v, true
 		}
@@ -140,14 +140,14 @@ func (o *CredentialIssuanceRule) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRule) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *CredentialIssuanceRule) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -163,7 +163,7 @@ func (o *CredentialIssuanceRule) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *CredentialIssuanceRule) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetAutomation returns the Automation field value

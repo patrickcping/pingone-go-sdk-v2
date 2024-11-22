@@ -22,7 +22,7 @@ var _ MappedNullable = &CredentialType{}
 
 // CredentialType struct for CredentialType
 type CredentialType struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image.
 	CardDesignTemplate string `json:"cardDesignTemplate"`
 	// A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance.
@@ -73,7 +73,7 @@ func NewCredentialTypeWithDefaults() *CredentialType {
 
 func (o CredentialType) hasHalLink(linkIndex string) bool {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
 				return true
@@ -85,7 +85,7 @@ func (o CredentialType) hasHalLink(linkIndex string) bool {
 
 func (o CredentialType) getHalLink(linkIndex string) LinksHATEOASValue {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return v
 		}
@@ -97,7 +97,7 @@ func (o CredentialType) getHalLink(linkIndex string) LinksHATEOASValue {
 
 func (o CredentialType) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return &v, true
 		}
@@ -152,14 +152,14 @@ func (o *CredentialType) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *CredentialType) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -175,7 +175,7 @@ func (o *CredentialType) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *CredentialType) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetCardDesignTemplate returns the CardDesignTemplate field value

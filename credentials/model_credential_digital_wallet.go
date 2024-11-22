@@ -20,7 +20,7 @@ var _ MappedNullable = &CredentialDigitalWallet{}
 
 // CredentialDigitalWallet struct for CredentialDigitalWallet
 type CredentialDigitalWallet struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Application *CredentialDigitalWalletApplication `json:"application,omitempty"`
 	// A string that specifies the date and time the credential digital wallet was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -56,7 +56,7 @@ func NewCredentialDigitalWalletWithDefaults() *CredentialDigitalWallet {
 
 func (o CredentialDigitalWallet) hasHalLink(linkIndex string) bool {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
 				return true
@@ -68,7 +68,7 @@ func (o CredentialDigitalWallet) hasHalLink(linkIndex string) bool {
 
 func (o CredentialDigitalWallet) getHalLink(linkIndex string) LinksHATEOASValue {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return v
 		}
@@ -80,7 +80,7 @@ func (o CredentialDigitalWallet) getHalLink(linkIndex string) LinksHATEOASValue 
 
 func (o CredentialDigitalWallet) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
 	if l, ok := o.GetLinksOk(); ok && l != nil {
-		links := *l
+		links := l
 		if v, ok := links[linkIndex]; ok {
 			return &v, true
 		}
@@ -135,14 +135,14 @@ func (o *CredentialDigitalWallet) GetLinks() map[string]LinksHATEOASValue {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialDigitalWallet) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *CredentialDigitalWallet) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -158,7 +158,7 @@ func (o *CredentialDigitalWallet) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *CredentialDigitalWallet) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetApplication returns the Application field value if set, zero value otherwise.
