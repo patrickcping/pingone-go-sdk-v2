@@ -29,7 +29,7 @@ type {{classname}} interface {
 	@return {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request
 	{{#isDeprecated}}
 
-	Deprecated
+	Deprecated{{#vendorExtensions.x-pingidentity-go-deprecated-message}}: {{.}}{{/vendorExtensions.x-pingidentity-go-deprecated-message}}
 	{{/isDeprecated}}
 	*/
 	{{{nickname}}}(ctx context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request
@@ -37,7 +37,7 @@ type {{classname}} interface {
 	// {{nickname}}Execute executes the request{{#returnType}}
 	//  @return {{{.}}}{{/returnType}}
 	{{#isDeprecated}}
-	// Deprecated
+	// Deprecated{{#vendorExtensions.x-pingidentity-go-deprecated-message}}: {{.}}{{/vendorExtensions.x-pingidentity-go-deprecated-message}}
 	{{/isDeprecated}}
 	{{nickname}}Execute(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error)
 	{{/operation}}
@@ -65,7 +65,7 @@ type {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/stru
 // {{.}}
 {{/description}}
 {{#isDeprecated}}
-// Deprecated
+// Deprecated{{#vendorExtensions.x-pingidentity-go-deprecated-message}}: {{.}}{{/vendorExtensions.x-pingidentity-go-deprecated-message}}
 {{/isDeprecated}}
 func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) {{vendorExtensions.x-export-param-name}}({{paramName}} {{{dataType}}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request {
 	r.{{paramName}} = {{^isFile}}&{{/isFile}}{{paramName}}
@@ -96,7 +96,7 @@ func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/s
  @return {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request
 {{#isDeprecated}}
 
-Deprecated
+Deprecated{{#vendorExtensions.x-pingidentity-go-deprecated-message}}: {{.}}{{/vendorExtensions.x-pingidentity-go-deprecated-message}}
 {{/isDeprecated}}
 */
 func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request {
@@ -113,7 +113,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams
 // Execute executes the request{{#returnType}}
 //  @return {{{.}}}{{/returnType}}
 {{#isDeprecated}}
-// Deprecated
+// Deprecated{{#vendorExtensions.x-pingidentity-go-deprecated-message}}: {{.}}{{/vendorExtensions.x-pingidentity-go-deprecated-message}}
 {{/isDeprecated}}
 func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) PagedIterator[{{returnType}}] {
   return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
@@ -123,7 +123,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 // Execute executes the request{{#vendorExtensions.x-pingidentity-paginatedresponse}} (returning the initial page of the paged response only){{/vendorExtensions.x-pingidentity-paginatedresponse}}{{#returnType}}
 //  @return {{{.}}}{{/returnType}}
 {{#isDeprecated}}
-// Deprecated
+// Deprecated{{#vendorExtensions.x-pingidentity-go-deprecated-message}}: {{.}}{{/vendorExtensions.x-pingidentity-go-deprecated-message}}
 {{/isDeprecated}}
 func (a *{{{classname}}}Service) {{nickname}}Execute{{#vendorExtensions.x-pingidentity-paginatedresponse}}InitialPage{{/vendorExtensions.x-pingidentity-paginatedresponse}}(r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
 	var (
