@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceAuthenticationPolicyFido2 type satisfies the MappedNullable interface at compile time
@@ -28,6 +30,8 @@ type DeviceAuthenticationPolicyFido2 struct {
 	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 }
+
+type _DeviceAuthenticationPolicyFido2 DeviceAuthenticationPolicyFido2
 
 // NewDeviceAuthenticationPolicyFido2 instantiates a new DeviceAuthenticationPolicyFido2 object
 // This constructor will assign default values to properties that have it defined,
@@ -188,6 +192,43 @@ func (o DeviceAuthenticationPolicyFido2) ToMap() (map[string]interface{}, error)
 		toSerialize["promptForNicknameOnPairing"] = o.PromptForNicknameOnPairing
 	}
 	return toSerialize, nil
+}
+
+func (o *DeviceAuthenticationPolicyFido2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceAuthenticationPolicyFido2 := _DeviceAuthenticationPolicyFido2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceAuthenticationPolicyFido2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceAuthenticationPolicyFido2(varDeviceAuthenticationPolicyFido2)
+
+	return err
 }
 
 type NullableDeviceAuthenticationPolicyFido2 struct {

@@ -22,24 +22,24 @@ DELETE MFA Pairing Key
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    pairingKeyID := "pairingKeyID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	pairingKeyID := "pairingKeyID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), environmentID, userID, pairingKeyID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), environmentID, userID, pairingKeyID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,24 +94,24 @@ READ One MFA Pairing Key
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    pairingKeyID := "pairingKeyID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	pairingKeyID := "pairingKeyID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), environmentID, userID, pairingKeyID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), environmentID, userID, pairingKeyID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -166,24 +166,24 @@ CREATE MFA Pairing Key
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(context.Background(), environmentID, userID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(context.Background(), environmentID, userID).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

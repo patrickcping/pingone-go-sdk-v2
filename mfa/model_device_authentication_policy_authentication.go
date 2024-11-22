@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceAuthenticationPolicyAuthentication type satisfies the MappedNullable interface at compile time
@@ -21,6 +23,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyAuthentication{}
 type DeviceAuthenticationPolicyAuthentication struct {
 	DeviceSelection EnumMFADevicePolicySelection `json:"deviceSelection"`
 }
+
+type _DeviceAuthenticationPolicyAuthentication DeviceAuthenticationPolicyAuthentication
 
 // NewDeviceAuthenticationPolicyAuthentication instantiates a new DeviceAuthenticationPolicyAuthentication object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +80,43 @@ func (o DeviceAuthenticationPolicyAuthentication) ToMap() (map[string]interface{
 	toSerialize := map[string]interface{}{}
 	toSerialize["deviceSelection"] = o.DeviceSelection
 	return toSerialize, nil
+}
+
+func (o *DeviceAuthenticationPolicyAuthentication) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"deviceSelection",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceAuthenticationPolicyAuthentication := _DeviceAuthenticationPolicyAuthentication{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceAuthenticationPolicyAuthentication)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceAuthenticationPolicyAuthentication(varDeviceAuthenticationPolicyAuthentication)
+
+	return err
 }
 
 type NullableDeviceAuthenticationPolicyAuthentication struct {

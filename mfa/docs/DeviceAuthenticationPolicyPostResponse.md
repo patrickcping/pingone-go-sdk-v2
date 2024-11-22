@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Default** | **bool** | A boolean that specifies whether the policy is the default for the environment. | 
 **ForSignOnPolicy** | **bool** |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
-**Embedded** | Pointer to [**EntityArrayEmbedded**](EntityArrayEmbedded.md) |  | [optional] 
+**Embedded** | Pointer to [**ReadDeviceAuthenticationPolicies200ResponseEmbedded**](ReadDeviceAuthenticationPolicies200ResponseEmbedded.md) |  | [optional] 
 **Count** | Pointer to **float32** |  | [optional] 
 **Size** | Pointer to **float32** |  | [optional] 
 
@@ -431,20 +431,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetEmbedded
 
-`func (o *DeviceAuthenticationPolicyPostResponse) GetEmbedded() EntityArrayEmbedded`
+`func (o *DeviceAuthenticationPolicyPostResponse) GetEmbedded() ReadDeviceAuthenticationPolicies200ResponseEmbedded`
 
 GetEmbedded returns the Embedded field if non-nil, zero value otherwise.
 
 ### GetEmbeddedOk
 
-`func (o *DeviceAuthenticationPolicyPostResponse) GetEmbeddedOk() (*EntityArrayEmbedded, bool)`
+`func (o *DeviceAuthenticationPolicyPostResponse) GetEmbeddedOk() (*ReadDeviceAuthenticationPolicies200ResponseEmbedded, bool)`
 
 GetEmbeddedOk returns a tuple with the Embedded field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEmbedded
 
-`func (o *DeviceAuthenticationPolicyPostResponse) SetEmbedded(v EntityArrayEmbedded)`
+`func (o *DeviceAuthenticationPolicyPostResponse) SetEmbedded(v ReadDeviceAuthenticationPolicies200ResponseEmbedded)`
 
 SetEmbedded sets Embedded field to given value.
 

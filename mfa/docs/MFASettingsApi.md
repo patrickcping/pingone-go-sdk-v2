@@ -22,24 +22,24 @@ READ MFA Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFASettingsApi.ReadMFASettings(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.ReadMFASettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadMFASettings`: MFASettings
-    fmt.Fprintf(os.Stdout, "Response from `MFASettingsApi.ReadMFASettings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MFASettingsApi.ReadMFASettings(context.Background(), environmentID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.ReadMFASettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadMFASettings`: MFASettings
+	fmt.Fprintf(os.Stdout, "Response from `MFASettingsApi.ReadMFASettings`: %v\n", resp)
 }
 ```
 
@@ -90,24 +90,24 @@ RESET MFA Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFASettingsApi.ResetMFASettings(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.ResetMFASettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ResetMFASettings`: MFASettings
-    fmt.Fprintf(os.Stdout, "Response from `MFASettingsApi.ResetMFASettings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MFASettingsApi.ResetMFASettings(context.Background(), environmentID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.ResetMFASettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ResetMFASettings`: MFASettings
+	fmt.Fprintf(os.Stdout, "Response from `MFASettingsApi.ResetMFASettings`: %v\n", resp)
 }
 ```
 
@@ -158,25 +158,25 @@ UPDATE MFA Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    mFASettings := *openapiclient.NewMFASettings(*openapiclient.NewMFASettingsPairing(int32(123), openapiclient.EnumMFASettingsPairingKeyFormat("NUMERIC"))) // MFASettings |  (optional)
+	environmentID := "environmentID_example" // string | 
+	mFASettings := *openapiclient.NewMFASettings(*openapiclient.NewMFASettingsPairing(int32(123), openapiclient.EnumMFASettingsPairingKeyFormat("NUMERIC"))) // MFASettings |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFASettingsApi.UpdateMFASettings(context.Background(), environmentID).MFASettings(mFASettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.UpdateMFASettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateMFASettings`: MFASettings
-    fmt.Fprintf(os.Stdout, "Response from `MFASettingsApi.UpdateMFASettings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MFASettingsApi.UpdateMFASettings(context.Background(), environmentID).MFASettings(mFASettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.UpdateMFASettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateMFASettings`: MFASettings
+	fmt.Fprintf(os.Stdout, "Response from `MFASettingsApi.UpdateMFASettings`: %v\n", resp)
 }
 ```
 

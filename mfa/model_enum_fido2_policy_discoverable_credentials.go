@@ -46,7 +46,8 @@ func (v *EnumFIDO2PolicyDiscoverableCredentials) UnmarshalJSON(src []byte) error
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFIDO2PolicyDiscoverableCredentials", value)
+	*v = EnumFIDO2PolicyDiscoverableCredentials(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFIDO2PolicyDiscoverableCredentialsFromValue returns a pointer to a valid EnumFIDO2PolicyDiscoverableCredentials

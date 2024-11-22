@@ -46,7 +46,7 @@ CreateFidoPolicy CREATE FIDO Policy
  @param environmentID
  @return ApiCreateFidoPolicyRequest
 
-Deprecated
+Deprecated: Replaced with &#x60;FIDO2PolicyApi.CreateFIDO2Policy&#x60;.
 */
 func (a *FIDOPolicyApiService) CreateFidoPolicy(ctx context.Context, environmentID string) ApiCreateFidoPolicyRequest {
 	return ApiCreateFidoPolicyRequest{
@@ -58,12 +58,12 @@ func (a *FIDOPolicyApiService) CreateFidoPolicy(ctx context.Context, environment
 
 // Execute executes the request
 //  @return FIDOPolicy
-// Deprecated
+// Deprecated: Replaced with &#x60;FIDO2PolicyApi.CreateFIDO2Policy&#x60;.
 func (a *FIDOPolicyApiService) CreateFidoPolicyExecute(r ApiCreateFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *FIDOPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *FIDOPolicy
 	)
 	
 	response, err = processResponse(
@@ -125,7 +125,7 @@ func (a *FIDOPolicyApiService) internalCreateFidoPolicyExecute(r ApiCreateFidoPo
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -258,7 +258,7 @@ DeleteFidoPolicy DELETE FIDO Policy
  @param fidoPolicyID
  @return ApiDeleteFidoPolicyRequest
 
-Deprecated
+Deprecated: Replaced with &#x60;FIDO2PolicyApi.DeleteFIDO2Policy&#x60;.
 */
 func (a *FIDOPolicyApiService) DeleteFidoPolicy(ctx context.Context, environmentID string, fidoPolicyID string) ApiDeleteFidoPolicyRequest {
 	return ApiDeleteFidoPolicyRequest{
@@ -270,10 +270,10 @@ func (a *FIDOPolicyApiService) DeleteFidoPolicy(ctx context.Context, environment
 }
 
 // Execute executes the request
-// Deprecated
+// Deprecated: Replaced with &#x60;FIDO2PolicyApi.DeleteFIDO2Policy&#x60;.
 func (a *FIDOPolicyApiService) DeleteFidoPolicyExecute(r ApiDeleteFidoPolicyRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -335,7 +335,7 @@ func (a *FIDOPolicyApiService) internalDeleteFidoPolicyExecute(r ApiDeleteFidoPo
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -435,11 +435,11 @@ type ApiReadFidoPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadFidoPoliciesRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadFidoPoliciesRequest) Execute() PagedIterator[ReadFidoPolicies200Response] {
 	return r.ApiService.ReadFidoPoliciesExecute(r)
 }
 
-func (r ApiReadFidoPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadFidoPoliciesRequest) ExecuteInitialPage() (*ReadFidoPolicies200Response, *http.Response, error) {
 	return r.ApiService.ReadFidoPoliciesExecuteInitialPage(r)
 }
 
@@ -450,7 +450,7 @@ ReadFidoPolicies READ FIDO Policies
  @param environmentID
  @return ApiReadFidoPoliciesRequest
 
-Deprecated
+Deprecated: Replaced with &#x60;FIDO2PolicyApi.ReadFIDO2Policies&#x60;.
 */
 func (a *FIDOPolicyApiService) ReadFidoPolicies(ctx context.Context, environmentID string) ApiReadFidoPoliciesRequest {
 	return ApiReadFidoPoliciesRequest{
@@ -461,17 +461,20 @@ func (a *FIDOPolicyApiService) ReadFidoPolicies(ctx context.Context, environment
 }
 
 // Execute executes the request
-//  @return EntityArray
-// Deprecated
-func (a *FIDOPolicyApiService) ReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadFidoPolicies200Response
+// Deprecated: Replaced with &#x60;FIDO2PolicyApi.ReadFIDO2Policies&#x60;.
+func (a *FIDOPolicyApiService) ReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) PagedIterator[ReadFidoPolicies200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *FIDOPolicyApiService) ReadFidoPoliciesExecuteInitialPage(r ApiReadFidoPoliciesRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadFidoPolicies200Response
+// Deprecated: Replaced with &#x60;FIDO2PolicyApi.ReadFIDO2Policies&#x60;.
+func (a *FIDOPolicyApiService) ReadFidoPoliciesExecuteInitialPage(r ApiReadFidoPoliciesRequest) (*ReadFidoPolicies200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadFidoPolicies200Response
 	)
 	
 	response, err = processResponse(
@@ -483,12 +486,12 @@ func (a *FIDOPolicyApiService) ReadFidoPoliciesExecuteInitialPage(r ApiReadFidoP
 	return localVarReturnValue, response, err
 }
 
-func (a *FIDOPolicyApiService) internalReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDOPolicyApiService) internalReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) (*ReadFidoPolicies200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadFidoPolicies200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDOPolicyApiService.ReadFidoPolicies")
@@ -531,7 +534,7 @@ func (a *FIDOPolicyApiService) internalReadFidoPoliciesExecute(r ApiReadFidoPoli
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -653,7 +656,7 @@ ReadOneFidoPolicy READ One FIDO Policy
  @param fidoPolicyID
  @return ApiReadOneFidoPolicyRequest
 
-Deprecated
+Deprecated: Replaced with &#x60;FIDO2PolicyApi.ReadOneFIDO2Policy&#x60;.
 */
 func (a *FIDOPolicyApiService) ReadOneFidoPolicy(ctx context.Context, environmentID string, fidoPolicyID string) ApiReadOneFidoPolicyRequest {
 	return ApiReadOneFidoPolicyRequest{
@@ -666,12 +669,12 @@ func (a *FIDOPolicyApiService) ReadOneFidoPolicy(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return FIDOPolicy
-// Deprecated
+// Deprecated: Replaced with &#x60;FIDO2PolicyApi.ReadOneFIDO2Policy&#x60;.
 func (a *FIDOPolicyApiService) ReadOneFidoPolicyExecute(r ApiReadOneFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *FIDOPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *FIDOPolicy
 	)
 	
 	response, err = processResponse(
@@ -732,7 +735,7 @@ func (a *FIDOPolicyApiService) internalReadOneFidoPolicyExecute(r ApiReadOneFido
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -860,7 +863,7 @@ UpdateFIDOPolicy UPDATE FIDO Policy
  @param fidoPolicyID
  @return ApiUpdateFIDOPolicyRequest
 
-Deprecated
+Deprecated: Replaced with &#x60;FIDO2PolicyApi.UpdateFIDO2Policy&#x60;.
 */
 func (a *FIDOPolicyApiService) UpdateFIDOPolicy(ctx context.Context, environmentID string, fidoPolicyID string) ApiUpdateFIDOPolicyRequest {
 	return ApiUpdateFIDOPolicyRequest{
@@ -873,12 +876,12 @@ func (a *FIDOPolicyApiService) UpdateFIDOPolicy(ctx context.Context, environment
 
 // Execute executes the request
 //  @return FIDOPolicy
-// Deprecated
+// Deprecated: Replaced with &#x60;FIDO2PolicyApi.UpdateFIDO2Policy&#x60;.
 func (a *FIDOPolicyApiService) UpdateFIDOPolicyExecute(r ApiUpdateFIDOPolicyRequest) (*FIDOPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *FIDOPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *FIDOPolicy
 	)
 	
 	response, err = processResponse(
@@ -941,7 +944,7 @@ func (a *FIDOPolicyApiService) internalUpdateFIDOPolicyExecute(r ApiUpdateFIDOPo
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

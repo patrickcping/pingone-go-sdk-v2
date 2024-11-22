@@ -27,24 +27,24 @@ DELETE Device Order
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    contentType := "application/vnd.pingidentity.devices.order.remove+json" // string |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	contentType := "application/vnd.pingidentity.devices.order.remove+json" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(context.Background(), environmentID, userID).ContentType(contentType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(context.Background(), environmentID, userID).ContentType(contentType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -98,24 +98,24 @@ DELETE MFA User Device
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    deviceID := "deviceID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	deviceID := "deviceID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(context.Background(), environmentID, userID, deviceID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(context.Background(), environmentID, userID, deviceID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -170,24 +170,24 @@ READ One MFA User Device
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    deviceID := "deviceID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	deviceID := "deviceID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(context.Background(), environmentID, userID, deviceID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(context.Background(), environmentID, userID, deviceID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -242,25 +242,25 @@ SEND MFA Device Logs
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    deviceID := "deviceID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	deviceID := "deviceID_example" // string | 
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -316,25 +316,25 @@ UPDATE Device Nickname
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    deviceID := "deviceID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	deviceID := "deviceID_example" // string | 
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -390,26 +390,26 @@ ACTIVATE MFA User Device
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    deviceID := "deviceID_example" // string | 
-    contentType := "application/vnd.pingidentity.device.activate+json" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	deviceID := "deviceID_example" // string | 
+	contentType := "application/vnd.pingidentity.device.activate+json" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(context.Background(), environmentID, userID, deviceID).ContentType(contentType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(context.Background(), environmentID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -466,23 +466,23 @@ READ All MFA User Devices
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesGet(context.Background(), environmentID, userID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesGet(context.Background(), environmentID, userID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -535,25 +535,25 @@ SET Device Order
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    contentType := "application/vnd.pingidentity.devices.reorder+json" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	contentType := "application/vnd.pingidentity.devices.reorder+json" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.EnvironmentsEnvironmentIDUsersUserIDDevicesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

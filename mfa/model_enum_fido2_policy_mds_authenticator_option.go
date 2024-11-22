@@ -50,7 +50,8 @@ func (v *EnumFIDO2PolicyMDSAuthenticatorOption) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFIDO2PolicyMDSAuthenticatorOption", value)
+	*v = EnumFIDO2PolicyMDSAuthenticatorOption(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFIDO2PolicyMDSAuthenticatorOptionFromValue returns a pointer to a valid EnumFIDO2PolicyMDSAuthenticatorOption

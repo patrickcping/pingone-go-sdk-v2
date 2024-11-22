@@ -55,9 +55,9 @@ func (a *EnableUsersMFAApiService) ReadUserMFAEnabled(ctx context.Context, envir
 //  @return UserMFAEnabled
 func (a *EnableUsersMFAApiService) ReadUserMFAEnabledExecute(r ApiReadUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *UserMFAEnabled
+		err error
+		response *http.Response
+		localVarReturnValue *UserMFAEnabled
 	)
 	
 	response, err = processResponse(
@@ -118,7 +118,7 @@ func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUs
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -259,9 +259,9 @@ func (a *EnableUsersMFAApiService) UpdateUserMFAEnabled(ctx context.Context, env
 //  @return UserMFAEnabled
 func (a *EnableUsersMFAApiService) UpdateUserMFAEnabledExecute(r ApiUpdateUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *UserMFAEnabled
+		err error
+		response *http.Response
+		localVarReturnValue *UserMFAEnabled
 	)
 	
 	response, err = processResponse(
@@ -324,7 +324,7 @@ func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpda
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

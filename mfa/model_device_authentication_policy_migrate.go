@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceAuthenticationPolicyMigrate type satisfies the MappedNullable interface at compile time
@@ -21,6 +23,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMigrate{}
 type DeviceAuthenticationPolicyMigrate struct {
 	MigrationData []DeviceAuthenticationPolicyMigrateData `json:"migrationData"`
 }
+
+type _DeviceAuthenticationPolicyMigrate DeviceAuthenticationPolicyMigrate
 
 // NewDeviceAuthenticationPolicyMigrate instantiates a new DeviceAuthenticationPolicyMigrate object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +80,43 @@ func (o DeviceAuthenticationPolicyMigrate) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	toSerialize["migrationData"] = o.MigrationData
 	return toSerialize, nil
+}
+
+func (o *DeviceAuthenticationPolicyMigrate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"migrationData",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceAuthenticationPolicyMigrate := _DeviceAuthenticationPolicyMigrate{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceAuthenticationPolicyMigrate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceAuthenticationPolicyMigrate(varDeviceAuthenticationPolicyMigrate)
+
+	return err
 }
 
 type NullableDeviceAuthenticationPolicyMigrate struct {

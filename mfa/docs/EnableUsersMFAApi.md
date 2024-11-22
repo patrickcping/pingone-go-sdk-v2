@@ -21,25 +21,25 @@ READ User MFA Enabled
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnableUsersMFAApi.ReadUserMFAEnabled(context.Background(), environmentID, userID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnableUsersMFAApi.ReadUserMFAEnabled``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadUserMFAEnabled`: UserMFAEnabled
-    fmt.Fprintf(os.Stdout, "Response from `EnableUsersMFAApi.ReadUserMFAEnabled`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnableUsersMFAApi.ReadUserMFAEnabled(context.Background(), environmentID, userID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnableUsersMFAApi.ReadUserMFAEnabled``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadUserMFAEnabled`: UserMFAEnabled
+	fmt.Fprintf(os.Stdout, "Response from `EnableUsersMFAApi.ReadUserMFAEnabled`: %v\n", resp)
 }
 ```
 
@@ -92,26 +92,26 @@ UPDATE User MFA Enabled
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    userMFAEnabled := *openapiclient.NewUserMFAEnabled(false) // UserMFAEnabled |  (optional)
+	environmentID := "environmentID_example" // string | 
+	userID := "userID_example" // string | 
+	userMFAEnabled := *openapiclient.NewUserMFAEnabled(false) // UserMFAEnabled |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnableUsersMFAApi.UpdateUserMFAEnabled(context.Background(), environmentID, userID).UserMFAEnabled(userMFAEnabled).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnableUsersMFAApi.UpdateUserMFAEnabled``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateUserMFAEnabled`: UserMFAEnabled
-    fmt.Fprintf(os.Stdout, "Response from `EnableUsersMFAApi.UpdateUserMFAEnabled`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnableUsersMFAApi.UpdateUserMFAEnabled(context.Background(), environmentID, userID).UserMFAEnabled(userMFAEnabled).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnableUsersMFAApi.UpdateUserMFAEnabled``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateUserMFAEnabled`: UserMFAEnabled
+	fmt.Fprintf(os.Stdout, "Response from `EnableUsersMFAApi.UpdateUserMFAEnabled`: %v\n", resp)
 }
 ```
 

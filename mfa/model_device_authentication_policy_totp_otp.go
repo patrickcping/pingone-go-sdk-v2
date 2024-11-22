@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceAuthenticationPolicyTotpOtp type satisfies the MappedNullable interface at compile time
@@ -21,6 +23,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyTotpOtp{}
 type DeviceAuthenticationPolicyTotpOtp struct {
 	Failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure"`
 }
+
+type _DeviceAuthenticationPolicyTotpOtp DeviceAuthenticationPolicyTotpOtp
 
 // NewDeviceAuthenticationPolicyTotpOtp instantiates a new DeviceAuthenticationPolicyTotpOtp object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +80,43 @@ func (o DeviceAuthenticationPolicyTotpOtp) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	toSerialize["failure"] = o.Failure
 	return toSerialize, nil
+}
+
+func (o *DeviceAuthenticationPolicyTotpOtp) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"failure",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceAuthenticationPolicyTotpOtp := _DeviceAuthenticationPolicyTotpOtp{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceAuthenticationPolicyTotpOtp)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceAuthenticationPolicyTotpOtp(varDeviceAuthenticationPolicyTotpOtp)
+
+	return err
 }
 
 type NullableDeviceAuthenticationPolicyTotpOtp struct {

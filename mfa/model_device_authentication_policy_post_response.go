@@ -18,7 +18,7 @@ import (
 // DeviceAuthenticationPolicyPostResponse - struct for DeviceAuthenticationPolicyPostResponse
 type DeviceAuthenticationPolicyPostResponse struct {
 	DeviceAuthenticationPolicy *DeviceAuthenticationPolicy
-	EntityArray *EntityArray
+	ReadDeviceAuthenticationPolicies200Response *ReadDeviceAuthenticationPolicies200Response
 }
 
 // DeviceAuthenticationPolicyAsDeviceAuthenticationPolicyPostResponse is a convenience function that returns DeviceAuthenticationPolicy wrapped in DeviceAuthenticationPolicyPostResponse
@@ -28,10 +28,10 @@ func DeviceAuthenticationPolicyAsDeviceAuthenticationPolicyPostResponse(v *Devic
 	}
 }
 
-// EntityArrayAsDeviceAuthenticationPolicyPostResponse is a convenience function that returns EntityArray wrapped in DeviceAuthenticationPolicyPostResponse
-func EntityArrayAsDeviceAuthenticationPolicyPostResponse(v *EntityArray) DeviceAuthenticationPolicyPostResponse {
+// ReadDeviceAuthenticationPolicies200ResponseAsDeviceAuthenticationPolicyPostResponse is a convenience function that returns ReadDeviceAuthenticationPolicies200Response wrapped in DeviceAuthenticationPolicyPostResponse
+func ReadDeviceAuthenticationPolicies200ResponseAsDeviceAuthenticationPolicyPostResponse(v *ReadDeviceAuthenticationPolicies200Response) DeviceAuthenticationPolicyPostResponse {
 	return DeviceAuthenticationPolicyPostResponse{
-		EntityArray: v,
+		ReadDeviceAuthenticationPolicies200Response: v,
 	}
 }
 
@@ -52,22 +52,22 @@ func (dst *DeviceAuthenticationPolicyPostResponse) UnmarshalJSON(data []byte) er
 		dst.DeviceAuthenticationPolicy = nil
 	}
 
-	// try to unmarshal data into EntityArray
-	err = json.Unmarshal(data, &dst.EntityArray)
+	// try to unmarshal data into ReadDeviceAuthenticationPolicies200Response
+	err = json.Unmarshal(data, &dst.ReadDeviceAuthenticationPolicies200Response)
 	if err == nil {
-		if v, ok := dst.EntityArray.GetEmbeddedOk(); ok && v != nil {
+		if v, ok := dst.ReadDeviceAuthenticationPolicies200Response.GetEmbeddedOk(); ok && v != nil {
 			match++
 		} else {
-			dst.EntityArray = nil
+			dst.ReadDeviceAuthenticationPolicies200Response = nil
 		}
 	} else {
-		dst.EntityArray = nil
+		dst.ReadDeviceAuthenticationPolicies200Response = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.DeviceAuthenticationPolicy = nil
-		dst.EntityArray = nil
+		dst.ReadDeviceAuthenticationPolicies200Response = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(DeviceAuthenticationPolicyPostResponse)")
 	} else if match == 1 {
@@ -83,8 +83,8 @@ func (src DeviceAuthenticationPolicyPostResponse) MarshalJSON() ([]byte, error) 
 		return json.Marshal(&src.DeviceAuthenticationPolicy)
 	}
 
-	if src.EntityArray != nil {
-		return json.Marshal(&src.EntityArray)
+	if src.ReadDeviceAuthenticationPolicies200Response != nil {
+		return json.Marshal(&src.ReadDeviceAuthenticationPolicies200Response)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -99,8 +99,8 @@ func (obj *DeviceAuthenticationPolicyPostResponse) GetActualInstance() (interfac
 		return obj.DeviceAuthenticationPolicy
 	}
 
-	if obj.EntityArray != nil {
-		return obj.EntityArray
+	if obj.ReadDeviceAuthenticationPolicies200Response != nil {
+		return obj.ReadDeviceAuthenticationPolicies200Response
 	}
 
 	// all schemas are nil

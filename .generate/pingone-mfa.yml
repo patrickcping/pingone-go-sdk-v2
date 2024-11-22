@@ -38,6 +38,7 @@ components:
       description: OAuth bearer token (see documentation)
   schemas:
     LinksHATEOAS:
+      x-pingidentity-paginatedresponse-links: true
       type: object
       readOnly: true
       additionalProperties:
@@ -409,7 +410,22 @@ components:
     DeviceAuthenticationPolicyPostResponse:
       oneOf:
         - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
-        - $ref: '#/components/schemas/EntityArray'
+        - x-pingidentity-paginatedresponse: true
+          type: object
+          properties:
+            '_links':
+              $ref: '#/components/schemas/LinksHATEOAS'
+            '_embedded':
+              type: object
+              properties:
+                deviceAuthenticationPolicies:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+            count:
+              type: number
+            size:
+              type: number
     DeviceAuthenticationPolicyMigrate:
       type: object
       properties:
@@ -430,39 +446,6 @@ components:
           description: The ID of the FIDO2 policy.
       required:
         - deviceAuthenticationPolicyId
-    EntityArray:
-      type: object
-      properties:
-        '_links':
-          $ref: '#/components/schemas/LinksHATEOAS'
-        '_embedded':
-          type: object
-          properties:
-            pushCredentials:
-              type: array
-              items:
-                $ref: '#/components/schemas/MFAPushCredentialResponse'
-            deviceAuthenticationPolicies:
-              type: array
-              items:
-                $ref: '#/components/schemas/DeviceAuthenticationPolicy'
-            fidoDevicesMetadata:
-              type: array
-              items:
-                $ref: '#/components/schemas/FIDODevice'
-            fidoPolicies:
-              type: array
-              deprecated: true
-              items:
-                $ref: '#/components/schemas/FIDOPolicy'
-            fido2Policies:
-              type: array
-              items:
-                $ref: '#/components/schemas/FIDO2Policy'
-        count:
-          type: number
-        size:
-          type: number
     EnumDeviceAuthenticationPolicyPostContentType:
       type: string
       enum: [application/json, application/vnd.pingidentity.deviceAuthenticationPolicy.fido2.migrate+json]
@@ -1073,6 +1056,7 @@ paths:
         - Applications > Application MFA Push Credentials
       summary: READ All MFA Push Credentials
       operationId: readAllMFAPushCredentials
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1104,7 +1088,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      pushCredentials:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/MFAPushCredentialResponse'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - Applications > Application MFA Push Credentials
@@ -1299,6 +1298,7 @@ paths:
         - Device Authentication Policy
       summary: READ Device Authentication Policies
       operationId: readDeviceAuthenticationPolicies
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1325,7 +1325,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      deviceAuthenticationPolicies:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - Device Authentication Policy
@@ -1497,6 +1512,7 @@ paths:
         - FIDO Device
       summary: READ All FIDO Devices
       operationId: readFidoDevices
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1523,7 +1539,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      fidoDevicesMetadata:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/FIDODevice'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - FIDO Device
@@ -1637,10 +1668,12 @@ paths:
   /environments/{environmentID}/fidoPolicies:
     get:
       deprecated: true
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.ReadFIDO2Policies`.
       tags:
         - FIDO Policy
       summary: READ FIDO Policies
       operationId: readFidoPolicies
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1667,9 +1700,26 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      fidoPolicies:
+                        type: array
+                        deprecated: true
+                        items:
+                          $ref: '#/components/schemas/FIDOPolicy'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       deprecated: true
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.CreateFIDO2Policy`.
       tags:
         - FIDO Policy
       summary: CREATE FIDO Policy
@@ -1711,6 +1761,7 @@ paths:
   /environments/{environmentID}/fidoPolicies/{fidoPolicyID}:
     get:
       deprecated: true
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.ReadOneFIDO2Policy`.
       tags:
         - FIDO Policy
       summary: READ One FIDO Policy
@@ -1749,6 +1800,7 @@ paths:
                 $ref: '#/components/schemas/FIDOPolicy'
     put:
       deprecated: true
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.UpdateFIDO2Policy`.
       tags:
         - FIDO Policy
       summary: UPDATE FIDO Policy
@@ -1792,6 +1844,7 @@ paths:
                 $ref: '#/components/schemas/FIDOPolicy'
     delete:
       deprecated: true
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.DeleteFIDO2Policy`.
       tags:
         - FIDO Policy
       summary: DELETE FIDO Policy
@@ -1830,6 +1883,7 @@ paths:
         - FIDO2 Policy
       summary: READ FIDO2 Policies
       operationId: readFIDO2Policies
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1856,7 +1910,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                x-pingidentity-paginatedresponse: true
+                type: object
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      fido2Policies:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/FIDO2Policy'
+                  count:
+                    type: number
+                  size:
+                    type: number
     post:
       tags:
         - FIDO2 Policy

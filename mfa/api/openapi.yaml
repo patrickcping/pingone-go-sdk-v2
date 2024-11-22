@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   description: The PingOne Platform API covering the PingOne MFA service
   title: PingOne Platform API - PingOne MFA
@@ -61,57 +61,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllMFAPushCredentials_200_response'
           description: Successful response
       summary: READ All MFA Push Credentials
       tags:
       - Applications > Application MFA Push Credentials
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createMFAPushCredential
       parameters:
@@ -136,55 +108,21 @@ paths:
               $ref: '#/components/schemas/MFAPushCredentialRequest'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -229,48 +167,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE MFA Push Credential
@@ -302,48 +211,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -384,48 +264,19 @@ paths:
               $ref: '#/components/schemas/MFAPushCredentialRequest'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -448,57 +299,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readDeviceAuthenticationPolicies_200_response'
           description: Successful response
       summary: READ Device Authentication Policies
       tags:
       - Device Authentication Policy
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createDeviceAuthenticationPolicies
       parameters:
@@ -526,55 +349,21 @@ paths:
               $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -610,48 +399,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE Device Authentication Policy
@@ -676,48 +436,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -751,48 +482,19 @@ paths:
               $ref: '#/components/schemas/DeviceAuthenticationPolicy'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -815,57 +517,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readFidoDevices_200_response'
           description: Successful response
       summary: READ All FIDO Devices
       tags:
       - FIDO Device
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createFidoDevice
       parameters:
@@ -883,55 +557,21 @@ paths:
               $ref: '#/components/schemas/FIDOCustomDeviceMetadata'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -961,48 +601,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE FIDO Device
@@ -1027,48 +638,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1092,57 +674,30 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readFidoPolicies_200_response'
           description: Successful response
       summary: READ FIDO Policies
       tags:
       - FIDO Policy
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.ReadFIDO2Policies`.
+      x-pingidentity-paginatedresponse: true
     post:
       deprecated: true
       operationId: createFidoPolicy
@@ -1161,55 +716,21 @@ paths:
               $ref: '#/components/schemas/FIDOPolicy'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -1219,6 +740,7 @@ paths:
       summary: CREATE FIDO Policy
       tags:
       - FIDO Policy
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.CreateFIDO2Policy`.
   /environments/{environmentID}/fidoPolicies/{fidoPolicyID}:
     delete:
       deprecated: true
@@ -1240,53 +762,25 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE FIDO Policy
       tags:
       - FIDO Policy
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.DeleteFIDO2Policy`.
     get:
       deprecated: true
       operationId: readOneFidoPolicy
@@ -1307,48 +801,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1358,6 +823,7 @@ paths:
       summary: READ One FIDO Policy
       tags:
       - FIDO Policy
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.ReadOneFIDO2Policy`.
     put:
       deprecated: true
       operationId: updateFIDOPolicy
@@ -1383,48 +849,19 @@ paths:
               $ref: '#/components/schemas/FIDOPolicy'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1434,6 +871,7 @@ paths:
       summary: UPDATE FIDO Policy
       tags:
       - FIDO Policy
+      x-pingidentity-go-deprecated-message: Replaced with `FIDO2PolicyApi.UpdateFIDO2Policy`.
   /environments/{environmentID}/fido2Policies:
     get:
       operationId: readFIDO2Policies
@@ -1447,57 +885,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readFIDO2Policies_200_response'
           description: Successful response
       summary: READ FIDO2 Policies
       tags:
       - FIDO2 Policy
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createFIDO2Policy
       parameters:
@@ -1515,55 +925,21 @@ paths:
               $ref: '#/components/schemas/FIDO2Policy'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -1593,48 +969,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE FIDO2 Policy
@@ -1668,48 +1015,19 @@ paths:
         style: form
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1743,48 +1061,19 @@ paths:
               $ref: '#/components/schemas/FIDO2Policy'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1807,48 +1096,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           content:
             application/json:
@@ -1870,48 +1130,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1938,48 +1169,19 @@ paths:
               $ref: '#/components/schemas/MFASettings'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -2016,48 +1218,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE Device Order
@@ -2081,48 +1254,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json: {}
@@ -2168,55 +1312,21 @@ paths:
               type: object
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json: {}
@@ -2250,48 +1360,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE MFA User Device
@@ -2322,48 +1403,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json: {}
@@ -2411,55 +1463,21 @@ paths:
               type: object
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json: {}
@@ -2500,48 +1518,19 @@ paths:
               type: object
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json: {}
@@ -2582,48 +1571,19 @@ paths:
               type: object
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json: {}
@@ -2651,48 +1611,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -2726,48 +1657,19 @@ paths:
               $ref: '#/components/schemas/UserMFAEnabled'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -2803,48 +1705,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE MFA Pairing Key
@@ -2875,48 +1748,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json: {}
@@ -2951,55 +1795,21 @@ paths:
               type: object
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json: {}
@@ -3062,7 +1872,7 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
-      type: object
+      x-pingidentity-paginatedresponse-links: true
     DeviceAuthenticationPolicyFIDODevice:
       deprecated: true
       example:
@@ -3086,7 +1896,6 @@ components:
           type: string
       required:
       - enabled
-      type: object
     DeviceAuthenticationPolicyOfflineDevice:
       example:
         pairingDisabled: true
@@ -3099,7 +1908,7 @@ components:
               timeUnit: null
           lifeTime:
             duration: 0
-            timeUnit: null
+            timeUnit: MINUTES
         enabled: true
         promptForNicknameOnPairing: true
       properties:
@@ -3122,7 +1931,6 @@ components:
       required:
       - enabled
       - otp
-      type: object
     DeviceAuthenticationPolicy:
       example:
         voice:
@@ -3136,7 +1944,7 @@ components:
                 timeUnit: null
             lifeTime:
               duration: 0
-              timeUnit: null
+              timeUnit: MINUTES
           enabled: true
           promptForNicknameOnPairing: true
         totp:
@@ -3151,7 +1959,7 @@ components:
                 timeUnit: null
           enabled: true
           promptForNicknameOnPairing: true
-        newDeviceNotification: null
+        newDeviceNotification: NONE
         _links:
           key:
             href: https://openapi-generator.tech
@@ -3173,15 +1981,15 @@ components:
               enabled: true
             pairingDisabled: true
             deviceAuthorization:
-              extraVerification: null
+              extraVerification: permissive
               enabled: true
             pairingKeyLifetime:
               duration: 7
-              timeUnit: null
-            integrityDetection: null
+              timeUnit: MINUTES
+            integrityDetection: permissive
             pushTimeout:
               duration: 65
-              timeUnit: null
+              timeUnit: SECONDS
             otp:
               enabled: true
             id: id
@@ -3199,15 +2007,15 @@ components:
               enabled: true
             pairingDisabled: true
             deviceAuthorization:
-              extraVerification: null
+              extraVerification: permissive
               enabled: true
             pairingKeyLifetime:
               duration: 7
-              timeUnit: null
-            integrityDetection: null
+              timeUnit: MINUTES
+            integrityDetection: permissive
             pushTimeout:
               duration: 65
-              timeUnit: null
+              timeUnit: SECONDS
             otp:
               enabled: true
             id: id
@@ -3246,7 +2054,7 @@ components:
                 timeUnit: null
             lifeTime:
               duration: 0
-              timeUnit: null
+              timeUnit: MINUTES
           enabled: true
           promptForNicknameOnPairing: true
         id: id
@@ -3265,18 +2073,18 @@ components:
                 timeUnit: null
             lifeTime:
               duration: 0
-              timeUnit: null
+              timeUnit: MINUTES
           enabled: true
           promptForNicknameOnPairing: true
         authentication:
-          deviceSelection: null
+          deviceSelection: DEFAULT_TO_FIRST
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         id:
@@ -3327,7 +2135,6 @@ components:
       - sms
       - totp
       - voice
-      type: object
     DeviceAuthenticationPolicyPost:
       oneOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
@@ -3335,7 +2142,7 @@ components:
     DeviceAuthenticationPolicyPostResponse:
       oneOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
-      - $ref: '#/components/schemas/EntityArray'
+      - $ref: '#/components/schemas/readDeviceAuthenticationPolicies_200_response'
     DeviceAuthenticationPolicyMigrate:
       properties:
         migrationData:
@@ -3344,7 +2151,6 @@ components:
           type: array
       required:
       - migrationData
-      type: object
     DeviceAuthenticationPolicyMigrateData:
       properties:
         deviceAuthenticationPolicyId:
@@ -3355,459 +2161,6 @@ components:
           type: string
       required:
       - deviceAuthenticationPolicyId
-      type: object
-    EntityArray:
-      example:
-        size: 7.386281948385884
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          fidoDevicesMetadata:
-          - null
-          - null
-          fido2Policies:
-          - authenticatorAttachment: null
-            userVerification:
-              enforceDuringAuthentication: true
-              option: null
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            userDisplayNameAttributes:
-              attributes:
-              - name: name
-                subAttributes:
-                - name: name
-                - name: name
-              - name: name
-                subAttributes:
-                - name: name
-                - name: name
-            description: description
-            backupEligibility:
-              allow: true
-              enforceDuringAuthentication: true
-            mdsAuthenticatorsRequirements:
-              enforceDuringAuthentication: true
-              allowedAuthenticators:
-              - id: id
-              - id: id
-              option: null
-            relyingPartyId: relyingPartyId
-            deviceDisplayName: deviceDisplayName
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            default: true
-            name: name
-            attestationRequirements: null
-            id: id
-            deviceAuthenticationPolicies:
-            - deviceAuthenticationPolicies
-            - deviceAuthenticationPolicies
-            discoverableCredentials: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - authenticatorAttachment: null
-            userVerification:
-              enforceDuringAuthentication: true
-              option: null
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            userDisplayNameAttributes:
-              attributes:
-              - name: name
-                subAttributes:
-                - name: name
-                - name: name
-              - name: name
-                subAttributes:
-                - name: name
-                - name: name
-            description: description
-            backupEligibility:
-              allow: true
-              enforceDuringAuthentication: true
-            mdsAuthenticatorsRequirements:
-              enforceDuringAuthentication: true
-              allowedAuthenticators:
-              - id: id
-              - id: id
-              option: null
-            relyingPartyId: relyingPartyId
-            deviceDisplayName: deviceDisplayName
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            default: true
-            name: name
-            attestationRequirements: null
-            id: id
-            deviceAuthenticationPolicies:
-            - deviceAuthenticationPolicies
-            - deviceAuthenticationPolicies
-            discoverableCredentials: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          pushCredentials:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            id: id
-            type: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            id: id
-            type: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          fidoPolicies:
-          - _links:
-              key:
-                href: https://openapi-generator.tech
-            description: description
-            enforceDuringAuthentication: false
-            allowedAuthenticators:
-            - id: id
-            - id: id
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            default: true
-            _embedded: "{}"
-            name: name
-            attestationRequirements: null
-            id: id
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-            residentKeyRequirement: null
-          - _links:
-              key:
-                href: https://openapi-generator.tech
-            description: description
-            enforceDuringAuthentication: false
-            allowedAuthenticators:
-            - id: id
-            - id: id
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            default: true
-            _embedded: "{}"
-            name: name
-            attestationRequirements: null
-            id: id
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-            residentKeyRequirement: null
-          deviceAuthenticationPolicies:
-          - voice:
-              pairingDisabled: true
-              otp:
-                otpLength: 8
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                lifeTime:
-                  duration: 0
-                  timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            totp:
-              pairingDisabled: true
-              uriParameters:
-                key: uriParameters
-              otp:
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            newDeviceNotification: null
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            mobile:
-              otp:
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                window:
-                  stepSize:
-                    duration: 5
-                    timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-              applications:
-              - autoEnrollment:
-                  enabled: true
-                pairingDisabled: true
-                deviceAuthorization:
-                  extraVerification: null
-                  enabled: true
-                pairingKeyLifetime:
-                  duration: 7
-                  timeUnit: null
-                integrityDetection: null
-                pushTimeout:
-                  duration: 65
-                  timeUnit: null
-                otp:
-                  enabled: true
-                id: id
-                push:
-                  enabled: true
-                pushLimit:
-                  lockDuration:
-                    duration: 3
-                    timeUnit: null
-                  count: 46
-                  timePeriod:
-                    duration: 2
-                    timeUnit: null
-              - autoEnrollment:
-                  enabled: true
-                pairingDisabled: true
-                deviceAuthorization:
-                  extraVerification: null
-                  enabled: true
-                pairingKeyLifetime:
-                  duration: 7
-                  timeUnit: null
-                integrityDetection: null
-                pushTimeout:
-                  duration: 65
-                  timeUnit: null
-                otp:
-                  enabled: true
-                id: id
-                push:
-                  enabled: true
-                pushLimit:
-                  lockDuration:
-                    duration: 3
-                    timeUnit: null
-                  count: 46
-                  timePeriod:
-                    duration: 2
-                    timeUnit: null
-            fido2:
-              fido2PolicyId: fido2PolicyId
-              pairingDisabled: true
-              enabled: true
-              promptForNicknameOnPairing: true
-            platform:
-              pairingDisabled: true
-              enabled: true
-              fidoPolicyId: fidoPolicyId
-            forSignOnPolicy: true
-            environment:
-              id: id
-            default: true
-            name: name
-            sms:
-              pairingDisabled: true
-              otp:
-                otpLength: 8
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                lifeTime:
-                  duration: 0
-                  timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            id: id
-            securityKey:
-              pairingDisabled: true
-              enabled: true
-              fidoPolicyId: fidoPolicyId
-            email:
-              pairingDisabled: true
-              otp:
-                otpLength: 8
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                lifeTime:
-                  duration: 0
-                  timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            authentication:
-              deviceSelection: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - voice:
-              pairingDisabled: true
-              otp:
-                otpLength: 8
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                lifeTime:
-                  duration: 0
-                  timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            totp:
-              pairingDisabled: true
-              uriParameters:
-                key: uriParameters
-              otp:
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            newDeviceNotification: null
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            mobile:
-              otp:
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                window:
-                  stepSize:
-                    duration: 5
-                    timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-              applications:
-              - autoEnrollment:
-                  enabled: true
-                pairingDisabled: true
-                deviceAuthorization:
-                  extraVerification: null
-                  enabled: true
-                pairingKeyLifetime:
-                  duration: 7
-                  timeUnit: null
-                integrityDetection: null
-                pushTimeout:
-                  duration: 65
-                  timeUnit: null
-                otp:
-                  enabled: true
-                id: id
-                push:
-                  enabled: true
-                pushLimit:
-                  lockDuration:
-                    duration: 3
-                    timeUnit: null
-                  count: 46
-                  timePeriod:
-                    duration: 2
-                    timeUnit: null
-              - autoEnrollment:
-                  enabled: true
-                pairingDisabled: true
-                deviceAuthorization:
-                  extraVerification: null
-                  enabled: true
-                pairingKeyLifetime:
-                  duration: 7
-                  timeUnit: null
-                integrityDetection: null
-                pushTimeout:
-                  duration: 65
-                  timeUnit: null
-                otp:
-                  enabled: true
-                id: id
-                push:
-                  enabled: true
-                pushLimit:
-                  lockDuration:
-                    duration: 3
-                    timeUnit: null
-                  count: 46
-                  timePeriod:
-                    duration: 2
-                    timeUnit: null
-            fido2:
-              fido2PolicyId: fido2PolicyId
-              pairingDisabled: true
-              enabled: true
-              promptForNicknameOnPairing: true
-            platform:
-              pairingDisabled: true
-              enabled: true
-              fidoPolicyId: fidoPolicyId
-            forSignOnPolicy: true
-            environment:
-              id: id
-            default: true
-            name: name
-            sms:
-              pairingDisabled: true
-              otp:
-                otpLength: 8
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                lifeTime:
-                  duration: 0
-                  timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            id: id
-            securityKey:
-              pairingDisabled: true
-              enabled: true
-              fidoPolicyId: fidoPolicyId
-            email:
-              pairingDisabled: true
-              otp:
-                otpLength: 8
-                failure:
-                  count: 6
-                  coolDown:
-                    duration: 1
-                    timeUnit: null
-                lifeTime:
-                  duration: 0
-                  timeUnit: null
-              enabled: true
-              promptForNicknameOnPairing: true
-            authentication:
-              deviceSelection: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-        count: 4.145608029883936
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/EntityArray__embedded'
-        count:
-          type: number
-        size:
-          type: number
-      type: object
     EnumDeviceAuthenticationPolicyPostContentType:
       enum:
       - application/json
@@ -4003,16 +2356,16 @@ components:
         default: true
         _embedded: "{}"
         name: name
-        attestationRequirements: null
+        attestationRequirements: NONE
         id: id
         updatedAt: 2000-01-23T04:56:07.000+00:00
-        residentKeyRequirement: null
+        residentKeyRequirement: DISCOURAGED
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         id:
           description: FIDO policy's UUID.
           readOnly: true
@@ -4062,13 +2415,12 @@ components:
       - attestationRequirements
       - name
       - residentKeyRequirement
-      type: object
     FIDO2Policy:
       example:
-        authenticatorAttachment: null
+        authenticatorAttachment: PLATFORM
         userVerification:
           enforceDuringAuthentication: true
-          option: null
+          option: REQUIRED
         _links:
           key:
             href: https://openapi-generator.tech
@@ -4091,7 +2443,7 @@ components:
           allowedAuthenticators:
           - id: id
           - id: id
-          option: null
+          option: NONE
         relyingPartyId: relyingPartyId
         deviceDisplayName: deviceDisplayName
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -4099,19 +2451,19 @@ components:
           id: id
         default: true
         name: name
-        attestationRequirements: null
+        attestationRequirements: DIRECT
         id: id
         deviceAuthenticationPolicies:
         - deviceAuthenticationPolicies
         - deviceAuthenticationPolicies
-        discoverableCredentials: null
+        discoverableCredentials: DISCOURAGED
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         id:
           description: FIDO policy's UUID.
           readOnly: true
@@ -4148,7 +2500,6 @@ components:
             \ the name of the device authentication policy."
           items:
             type: string
-          readOnly: true
           type: array
         deviceDisplayName:
           description: "The name to display for the device in registration and authentication\
@@ -4190,14 +2541,12 @@ components:
       - relyingPartyId
       - userDisplayNameAttributes
       - userVerification
-      type: object
     MFAPushCredential:
       properties:
         type:
           $ref: '#/components/schemas/EnumMFAPushCredentialAttrType'
       required:
       - type
-      type: object
     MFAPushCredentialAPNS:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
@@ -4220,7 +2569,11 @@ components:
         - key
         - teamId
         - token
-        type: object
+      example:
+        teamId: teamId
+        type: APNS
+        key: key
+        token: token
     MFAPushCredentialFCM:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
@@ -4234,7 +2587,6 @@ components:
             type: string
         required:
         - key
-        type: object
       deprecated: true
     MFAPushCredentialFCMHTTPV1:
       allOf:
@@ -4248,7 +2600,6 @@ components:
             type: string
         required:
         - googleServiceAccountCredentials
-        type: object
     MFAPushCredentialHMS:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
@@ -4265,7 +2616,6 @@ components:
         required:
         - clientId
         - clientSecret
-        type: object
     MFAPushCredentialRequest:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
@@ -4279,14 +2629,14 @@ components:
           key:
             href: https://openapi-generator.tech
         id: id
-        type: null
+        type: APNS
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         id:
           description: A string that specifies the push credential ID.
           readOnly: true
@@ -4303,7 +2653,6 @@ components:
           format: date-time
           readOnly: true
           type: string
-      type: object
     MFASettings:
       example:
         environment:
@@ -4317,19 +2666,19 @@ components:
           key:
             href: https://openapi-generator.tech
         pairing:
-          pairingKeyFormat: null
+          pairingKeyFormat: NUMERIC
           maxAllowedDevices: 2
         users:
           mfaEnabled: true
         authentication:
-          deviceSelection: null
+          deviceSelection: DEFAULT_TO_FIRST
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         authentication:
@@ -4349,7 +2698,6 @@ components:
           $ref: '#/components/schemas/MFASettings_users'
       required:
       - pairing
-      type: object
     ObjectEnvironment:
       example:
         id: id
@@ -4360,8 +2708,40 @@ components:
           readOnly: true
           type: string
       readOnly: true
-      type: object
     P1Error:
+      example:
+        code: code
+        details:
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        id: id
+        message: message
       properties:
         id:
           description: "A unique identifier that is stored in log files and always\
@@ -4385,7 +2765,6 @@ components:
           items:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
-      type: object
     UserMFAEnabled:
       example:
         _links:
@@ -4397,14 +2776,1015 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         mfaEnabled:
           description: Whether multi-factor authentication is enabled. This attribute
             is set to `false` by default when the user is created.
           type: boolean
       required:
       - mfaEnabled
-      type: object
+    readAllMFAPushCredentials_200_response__embedded:
+      example:
+        pushCredentials:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          id: id
+          type: APNS
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          id: id
+          type: APNS
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        pushCredentials:
+          items:
+            $ref: '#/components/schemas/MFAPushCredentialResponse'
+          type: array
+    readAllMFAPushCredentials_200_response:
+      example:
+        size: 5.637376656633329
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          pushCredentials:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            id: id
+            type: APNS
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            id: id
+            type: APNS
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 5.962133916683182
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllMFAPushCredentials_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readDeviceAuthenticationPolicies_200_response__embedded:
+      example:
+        deviceAuthenticationPolicies:
+        - voice:
+            pairingDisabled: true
+            otp:
+              otpLength: 8
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              lifeTime:
+                duration: 0
+                timeUnit: MINUTES
+            enabled: true
+            promptForNicknameOnPairing: true
+          totp:
+            pairingDisabled: true
+            uriParameters:
+              key: uriParameters
+            otp:
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+            enabled: true
+            promptForNicknameOnPairing: true
+          newDeviceNotification: NONE
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          mobile:
+            otp:
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              window:
+                stepSize:
+                  duration: 5
+                  timeUnit: null
+            enabled: true
+            promptForNicknameOnPairing: true
+            applications:
+            - autoEnrollment:
+                enabled: true
+              pairingDisabled: true
+              deviceAuthorization:
+                extraVerification: permissive
+                enabled: true
+              pairingKeyLifetime:
+                duration: 7
+                timeUnit: MINUTES
+              integrityDetection: permissive
+              pushTimeout:
+                duration: 65
+                timeUnit: SECONDS
+              otp:
+                enabled: true
+              id: id
+              push:
+                enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
+                  timeUnit: null
+            - autoEnrollment:
+                enabled: true
+              pairingDisabled: true
+              deviceAuthorization:
+                extraVerification: permissive
+                enabled: true
+              pairingKeyLifetime:
+                duration: 7
+                timeUnit: MINUTES
+              integrityDetection: permissive
+              pushTimeout:
+                duration: 65
+                timeUnit: SECONDS
+              otp:
+                enabled: true
+              id: id
+              push:
+                enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
+                  timeUnit: null
+          fido2:
+            fido2PolicyId: fido2PolicyId
+            pairingDisabled: true
+            enabled: true
+            promptForNicknameOnPairing: true
+          platform:
+            pairingDisabled: true
+            enabled: true
+            fidoPolicyId: fidoPolicyId
+          forSignOnPolicy: true
+          environment:
+            id: id
+          default: true
+          name: name
+          sms:
+            pairingDisabled: true
+            otp:
+              otpLength: 8
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              lifeTime:
+                duration: 0
+                timeUnit: MINUTES
+            enabled: true
+            promptForNicknameOnPairing: true
+          id: id
+          securityKey:
+            pairingDisabled: true
+            enabled: true
+            fidoPolicyId: fidoPolicyId
+          email:
+            pairingDisabled: true
+            otp:
+              otpLength: 8
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              lifeTime:
+                duration: 0
+                timeUnit: MINUTES
+            enabled: true
+            promptForNicknameOnPairing: true
+          authentication:
+            deviceSelection: DEFAULT_TO_FIRST
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - voice:
+            pairingDisabled: true
+            otp:
+              otpLength: 8
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              lifeTime:
+                duration: 0
+                timeUnit: MINUTES
+            enabled: true
+            promptForNicknameOnPairing: true
+          totp:
+            pairingDisabled: true
+            uriParameters:
+              key: uriParameters
+            otp:
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+            enabled: true
+            promptForNicknameOnPairing: true
+          newDeviceNotification: NONE
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          mobile:
+            otp:
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              window:
+                stepSize:
+                  duration: 5
+                  timeUnit: null
+            enabled: true
+            promptForNicknameOnPairing: true
+            applications:
+            - autoEnrollment:
+                enabled: true
+              pairingDisabled: true
+              deviceAuthorization:
+                extraVerification: permissive
+                enabled: true
+              pairingKeyLifetime:
+                duration: 7
+                timeUnit: MINUTES
+              integrityDetection: permissive
+              pushTimeout:
+                duration: 65
+                timeUnit: SECONDS
+              otp:
+                enabled: true
+              id: id
+              push:
+                enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
+                  timeUnit: null
+            - autoEnrollment:
+                enabled: true
+              pairingDisabled: true
+              deviceAuthorization:
+                extraVerification: permissive
+                enabled: true
+              pairingKeyLifetime:
+                duration: 7
+                timeUnit: MINUTES
+              integrityDetection: permissive
+              pushTimeout:
+                duration: 65
+                timeUnit: SECONDS
+              otp:
+                enabled: true
+              id: id
+              push:
+                enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 3
+                  timeUnit: null
+                count: 46
+                timePeriod:
+                  duration: 2
+                  timeUnit: null
+          fido2:
+            fido2PolicyId: fido2PolicyId
+            pairingDisabled: true
+            enabled: true
+            promptForNicknameOnPairing: true
+          platform:
+            pairingDisabled: true
+            enabled: true
+            fidoPolicyId: fidoPolicyId
+          forSignOnPolicy: true
+          environment:
+            id: id
+          default: true
+          name: name
+          sms:
+            pairingDisabled: true
+            otp:
+              otpLength: 8
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              lifeTime:
+                duration: 0
+                timeUnit: MINUTES
+            enabled: true
+            promptForNicknameOnPairing: true
+          id: id
+          securityKey:
+            pairingDisabled: true
+            enabled: true
+            fidoPolicyId: fidoPolicyId
+          email:
+            pairingDisabled: true
+            otp:
+              otpLength: 8
+              failure:
+                count: 6
+                coolDown:
+                  duration: 1
+                  timeUnit: null
+              lifeTime:
+                duration: 0
+                timeUnit: MINUTES
+            enabled: true
+            promptForNicknameOnPairing: true
+          authentication:
+            deviceSelection: DEFAULT_TO_FIRST
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        deviceAuthenticationPolicies:
+          items:
+            $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+          type: array
+    readDeviceAuthenticationPolicies_200_response:
+      example:
+        size: 7.386281948385884
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          deviceAuthenticationPolicies:
+          - voice:
+              pairingDisabled: true
+              otp:
+                otpLength: 8
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                lifeTime:
+                  duration: 0
+                  timeUnit: MINUTES
+              enabled: true
+              promptForNicknameOnPairing: true
+            totp:
+              pairingDisabled: true
+              uriParameters:
+                key: uriParameters
+              otp:
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+              enabled: true
+              promptForNicknameOnPairing: true
+            newDeviceNotification: NONE
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            mobile:
+              otp:
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                window:
+                  stepSize:
+                    duration: 5
+                    timeUnit: null
+              enabled: true
+              promptForNicknameOnPairing: true
+              applications:
+              - autoEnrollment:
+                  enabled: true
+                pairingDisabled: true
+                deviceAuthorization:
+                  extraVerification: permissive
+                  enabled: true
+                pairingKeyLifetime:
+                  duration: 7
+                  timeUnit: MINUTES
+                integrityDetection: permissive
+                pushTimeout:
+                  duration: 65
+                  timeUnit: SECONDS
+                otp:
+                  enabled: true
+                id: id
+                push:
+                  enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
+                    timeUnit: null
+              - autoEnrollment:
+                  enabled: true
+                pairingDisabled: true
+                deviceAuthorization:
+                  extraVerification: permissive
+                  enabled: true
+                pairingKeyLifetime:
+                  duration: 7
+                  timeUnit: MINUTES
+                integrityDetection: permissive
+                pushTimeout:
+                  duration: 65
+                  timeUnit: SECONDS
+                otp:
+                  enabled: true
+                id: id
+                push:
+                  enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
+                    timeUnit: null
+            fido2:
+              fido2PolicyId: fido2PolicyId
+              pairingDisabled: true
+              enabled: true
+              promptForNicknameOnPairing: true
+            platform:
+              pairingDisabled: true
+              enabled: true
+              fidoPolicyId: fidoPolicyId
+            forSignOnPolicy: true
+            environment:
+              id: id
+            default: true
+            name: name
+            sms:
+              pairingDisabled: true
+              otp:
+                otpLength: 8
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                lifeTime:
+                  duration: 0
+                  timeUnit: MINUTES
+              enabled: true
+              promptForNicknameOnPairing: true
+            id: id
+            securityKey:
+              pairingDisabled: true
+              enabled: true
+              fidoPolicyId: fidoPolicyId
+            email:
+              pairingDisabled: true
+              otp:
+                otpLength: 8
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                lifeTime:
+                  duration: 0
+                  timeUnit: MINUTES
+              enabled: true
+              promptForNicknameOnPairing: true
+            authentication:
+              deviceSelection: DEFAULT_TO_FIRST
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - voice:
+              pairingDisabled: true
+              otp:
+                otpLength: 8
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                lifeTime:
+                  duration: 0
+                  timeUnit: MINUTES
+              enabled: true
+              promptForNicknameOnPairing: true
+            totp:
+              pairingDisabled: true
+              uriParameters:
+                key: uriParameters
+              otp:
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+              enabled: true
+              promptForNicknameOnPairing: true
+            newDeviceNotification: NONE
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            mobile:
+              otp:
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                window:
+                  stepSize:
+                    duration: 5
+                    timeUnit: null
+              enabled: true
+              promptForNicknameOnPairing: true
+              applications:
+              - autoEnrollment:
+                  enabled: true
+                pairingDisabled: true
+                deviceAuthorization:
+                  extraVerification: permissive
+                  enabled: true
+                pairingKeyLifetime:
+                  duration: 7
+                  timeUnit: MINUTES
+                integrityDetection: permissive
+                pushTimeout:
+                  duration: 65
+                  timeUnit: SECONDS
+                otp:
+                  enabled: true
+                id: id
+                push:
+                  enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
+                    timeUnit: null
+              - autoEnrollment:
+                  enabled: true
+                pairingDisabled: true
+                deviceAuthorization:
+                  extraVerification: permissive
+                  enabled: true
+                pairingKeyLifetime:
+                  duration: 7
+                  timeUnit: MINUTES
+                integrityDetection: permissive
+                pushTimeout:
+                  duration: 65
+                  timeUnit: SECONDS
+                otp:
+                  enabled: true
+                id: id
+                push:
+                  enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 3
+                    timeUnit: null
+                  count: 46
+                  timePeriod:
+                    duration: 2
+                    timeUnit: null
+            fido2:
+              fido2PolicyId: fido2PolicyId
+              pairingDisabled: true
+              enabled: true
+              promptForNicknameOnPairing: true
+            platform:
+              pairingDisabled: true
+              enabled: true
+              fidoPolicyId: fidoPolicyId
+            forSignOnPolicy: true
+            environment:
+              id: id
+            default: true
+            name: name
+            sms:
+              pairingDisabled: true
+              otp:
+                otpLength: 8
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                lifeTime:
+                  duration: 0
+                  timeUnit: MINUTES
+              enabled: true
+              promptForNicknameOnPairing: true
+            id: id
+            securityKey:
+              pairingDisabled: true
+              enabled: true
+              fidoPolicyId: fidoPolicyId
+            email:
+              pairingDisabled: true
+              otp:
+                otpLength: 8
+                failure:
+                  count: 6
+                  coolDown:
+                    duration: 1
+                    timeUnit: null
+                lifeTime:
+                  duration: 0
+                  timeUnit: MINUTES
+              enabled: true
+              promptForNicknameOnPairing: true
+            authentication:
+              deviceSelection: DEFAULT_TO_FIRST
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 4.145608029883936
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readDeviceAuthenticationPolicies_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readFidoDevices_200_response__embedded:
+      example:
+        fidoDevicesMetadata:
+        - null
+        - null
+      properties:
+        fidoDevicesMetadata:
+          items:
+            $ref: '#/components/schemas/FIDODevice'
+          type: array
+    readFidoDevices_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          fidoDevicesMetadata:
+          - null
+          - null
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readFidoDevices_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readFidoPolicies_200_response__embedded:
+      example:
+        fidoPolicies:
+        - _links:
+            key:
+              href: https://openapi-generator.tech
+          description: description
+          enforceDuringAuthentication: false
+          allowedAuthenticators:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          _embedded: "{}"
+          name: name
+          attestationRequirements: NONE
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          residentKeyRequirement: DISCOURAGED
+        - _links:
+            key:
+              href: https://openapi-generator.tech
+          description: description
+          enforceDuringAuthentication: false
+          allowedAuthenticators:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          _embedded: "{}"
+          name: name
+          attestationRequirements: NONE
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          residentKeyRequirement: DISCOURAGED
+      properties:
+        fidoPolicies:
+          items:
+            $ref: '#/components/schemas/FIDOPolicy'
+          type: array
+    readFidoPolicies_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          fidoPolicies:
+          - _links:
+              key:
+                href: https://openapi-generator.tech
+            description: description
+            enforceDuringAuthentication: false
+            allowedAuthenticators:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            default: true
+            _embedded: "{}"
+            name: name
+            attestationRequirements: NONE
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            residentKeyRequirement: DISCOURAGED
+          - _links:
+              key:
+                href: https://openapi-generator.tech
+            description: description
+            enforceDuringAuthentication: false
+            allowedAuthenticators:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            default: true
+            _embedded: "{}"
+            name: name
+            attestationRequirements: NONE
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            residentKeyRequirement: DISCOURAGED
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readFidoPolicies_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readFIDO2Policies_200_response__embedded:
+      example:
+        fido2Policies:
+        - authenticatorAttachment: PLATFORM
+          userVerification:
+            enforceDuringAuthentication: true
+            option: REQUIRED
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          userDisplayNameAttributes:
+            attributes:
+            - name: name
+              subAttributes:
+              - name: name
+              - name: name
+            - name: name
+              subAttributes:
+              - name: name
+              - name: name
+          description: description
+          backupEligibility:
+            allow: true
+            enforceDuringAuthentication: true
+          mdsAuthenticatorsRequirements:
+            enforceDuringAuthentication: true
+            allowedAuthenticators:
+            - id: id
+            - id: id
+            option: NONE
+          relyingPartyId: relyingPartyId
+          deviceDisplayName: deviceDisplayName
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          name: name
+          attestationRequirements: DIRECT
+          id: id
+          deviceAuthenticationPolicies:
+          - deviceAuthenticationPolicies
+          - deviceAuthenticationPolicies
+          discoverableCredentials: DISCOURAGED
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - authenticatorAttachment: PLATFORM
+          userVerification:
+            enforceDuringAuthentication: true
+            option: REQUIRED
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          userDisplayNameAttributes:
+            attributes:
+            - name: name
+              subAttributes:
+              - name: name
+              - name: name
+            - name: name
+              subAttributes:
+              - name: name
+              - name: name
+          description: description
+          backupEligibility:
+            allow: true
+            enforceDuringAuthentication: true
+          mdsAuthenticatorsRequirements:
+            enforceDuringAuthentication: true
+            allowedAuthenticators:
+            - id: id
+            - id: id
+            option: NONE
+          relyingPartyId: relyingPartyId
+          deviceDisplayName: deviceDisplayName
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          name: name
+          attestationRequirements: DIRECT
+          id: id
+          deviceAuthenticationPolicies:
+          - deviceAuthenticationPolicies
+          - deviceAuthenticationPolicies
+          discoverableCredentials: DISCOURAGED
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        fido2Policies:
+          items:
+            $ref: '#/components/schemas/FIDO2Policy'
+          type: array
+    readFIDO2Policies_200_response:
+      example:
+        size: 6.027456183070403
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          fido2Policies:
+          - authenticatorAttachment: PLATFORM
+            userVerification:
+              enforceDuringAuthentication: true
+              option: REQUIRED
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            userDisplayNameAttributes:
+              attributes:
+              - name: name
+                subAttributes:
+                - name: name
+                - name: name
+              - name: name
+                subAttributes:
+                - name: name
+                - name: name
+            description: description
+            backupEligibility:
+              allow: true
+              enforceDuringAuthentication: true
+            mdsAuthenticatorsRequirements:
+              enforceDuringAuthentication: true
+              allowedAuthenticators:
+              - id: id
+              - id: id
+              option: NONE
+            relyingPartyId: relyingPartyId
+            deviceDisplayName: deviceDisplayName
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            default: true
+            name: name
+            attestationRequirements: DIRECT
+            id: id
+            deviceAuthenticationPolicies:
+            - deviceAuthenticationPolicies
+            - deviceAuthenticationPolicies
+            discoverableCredentials: DISCOURAGED
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - authenticatorAttachment: PLATFORM
+            userVerification:
+              enforceDuringAuthentication: true
+              option: REQUIRED
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            userDisplayNameAttributes:
+              attributes:
+              - name: name
+                subAttributes:
+                - name: name
+                - name: name
+              - name: name
+                subAttributes:
+                - name: name
+                - name: name
+            description: description
+            backupEligibility:
+              allow: true
+              enforceDuringAuthentication: true
+            mdsAuthenticatorsRequirements:
+              enforceDuringAuthentication: true
+              allowedAuthenticators:
+              - id: id
+              - id: id
+              option: NONE
+            relyingPartyId: relyingPartyId
+            deviceDisplayName: deviceDisplayName
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            default: true
+            name: name
+            attestationRequirements: DIRECT
+            id: id
+            deviceAuthenticationPolicies:
+            - deviceAuthenticationPolicies
+            - deviceAuthenticationPolicies
+            discoverableCredentials: DISCOURAGED
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 0.8008281904610115
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readFIDO2Policies_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
     LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
@@ -4415,11 +3795,10 @@ components:
           type: string
       required:
       - href
-      type: object
     DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime:
       example:
         duration: 0
-        timeUnit: null
+        timeUnit: MINUTES
       properties:
         duration:
           description: The duration (number of time units) that the passcode is valid
@@ -4430,7 +3809,6 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     DeviceAuthenticationPolicyOfflineDevice_otp_failure_coolDown:
       example:
         duration: 1
@@ -4445,7 +3823,6 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     DeviceAuthenticationPolicyOfflineDevice_otp_failure:
       example:
         count: 6
@@ -4462,7 +3839,6 @@ components:
       required:
       - coolDown
       - count
-      type: object
     DeviceAuthenticationPolicyOfflineDevice_otp:
       example:
         otpLength: 8
@@ -4473,7 +3849,7 @@ components:
             timeUnit: null
         lifeTime:
           duration: 0
-          timeUnit: null
+          timeUnit: MINUTES
       properties:
         lifeTime:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime'
@@ -4490,17 +3866,15 @@ components:
       required:
       - failure
       - lifeTime
-      type: object
     DeviceAuthenticationPolicy_authentication:
       description: An object that contains the device selection settings.
       example:
-        deviceSelection: null
+        deviceSelection: DEFAULT_TO_FIRST
       properties:
         deviceSelection:
           $ref: '#/components/schemas/EnumMFADevicePolicySelection'
       required:
       - deviceSelection
-      type: object
     DeviceAuthenticationPolicy_fido2:
       example:
         fido2PolicyId: fido2PolicyId
@@ -4530,7 +3904,6 @@ components:
           type: boolean
       required:
       - enabled
-      type: object
     DeviceAuthenticationPolicy_mobile_otp_window_stepSize:
       example:
         duration: 5
@@ -4543,7 +3916,6 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     DeviceAuthenticationPolicy_mobile_otp_window:
       example:
         stepSize:
@@ -4554,7 +3926,6 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_otp_window_stepSize'
       required:
       - stepSize
-      type: object
     DeviceAuthenticationPolicy_mobile_otp:
       example:
         failure:
@@ -4573,7 +3944,6 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_otp_window'
       required:
       - failure
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_push:
       example:
         enabled: true
@@ -4584,11 +3954,10 @@ components:
           type: boolean
       required:
       - enabled
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pushTimeout:
       example:
         duration: 65
-        timeUnit: null
+        timeUnit: SECONDS
       properties:
         duration:
           default: 40
@@ -4603,11 +3972,10 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pairingKeyLifetime:
       example:
         duration: 7
-        timeUnit: null
+        timeUnit: MINUTES
       properties:
         duration:
           default: 10
@@ -4620,7 +3988,6 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_lockDuration:
       example:
         duration: 3
@@ -4638,7 +4005,6 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_timePeriod:
       example:
         duration: 2
@@ -4656,7 +4022,6 @@ components:
       required:
       - duration
       - timeUnit
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit:
       example:
         lockDuration:
@@ -4681,7 +4046,6 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_lockDuration'
         timePeriod:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_timePeriod'
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_otp:
       example:
         enabled: true
@@ -4692,10 +4056,9 @@ components:
           type: boolean
       required:
       - enabled
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_deviceAuthorization:
       example:
-        extraVerification: null
+        extraVerification: permissive
         enabled: true
       properties:
         enabled:
@@ -4706,7 +4069,6 @@ components:
           $ref: '#/components/schemas/EnumMFADevicePolicyMobileExtraVerification'
       required:
       - enabled
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_autoEnrollment:
       example:
         enabled: true
@@ -4719,22 +4081,21 @@ components:
           type: boolean
       required:
       - enabled
-      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner:
       example:
         autoEnrollment:
           enabled: true
         pairingDisabled: true
         deviceAuthorization:
-          extraVerification: null
+          extraVerification: permissive
           enabled: true
         pairingKeyLifetime:
           duration: 7
-          timeUnit: null
-        integrityDetection: null
+          timeUnit: MINUTES
+        integrityDetection: permissive
         pushTimeout:
           duration: 65
-          timeUnit: null
+          timeUnit: SECONDS
         otp:
           enabled: true
         id: id
@@ -4777,7 +4138,6 @@ components:
           $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
       required:
       - id
-      type: object
     DeviceAuthenticationPolicy_mobile:
       description: Mobile device authentication policy settings.
       example:
@@ -4798,15 +4158,15 @@ components:
             enabled: true
           pairingDisabled: true
           deviceAuthorization:
-            extraVerification: null
+            extraVerification: permissive
             enabled: true
           pairingKeyLifetime:
             duration: 7
-            timeUnit: null
-          integrityDetection: null
+            timeUnit: MINUTES
+          integrityDetection: permissive
           pushTimeout:
             duration: 65
-            timeUnit: null
+            timeUnit: SECONDS
           otp:
             enabled: true
           id: id
@@ -4824,15 +4184,15 @@ components:
             enabled: true
           pairingDisabled: true
           deviceAuthorization:
-            extraVerification: null
+            extraVerification: permissive
             enabled: true
           pairingKeyLifetime:
             duration: 7
-            timeUnit: null
-          integrityDetection: null
+            timeUnit: MINUTES
+          integrityDetection: permissive
           pushTimeout:
             duration: 65
-            timeUnit: null
+            timeUnit: SECONDS
           otp:
             enabled: true
           id: id
@@ -4864,7 +4224,6 @@ components:
       required:
       - enabled
       - otp
-      type: object
     DeviceAuthenticationPolicy_totp_otp:
       example:
         failure:
@@ -4877,7 +4236,6 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp_failure'
       required:
       - failure
-      type: object
     DeviceAuthenticationPolicy_totp:
       description: TOTP device authentication policy settings.
       example:
@@ -4919,467 +4277,9 @@ components:
             \ This can help users recognize which application the OTP is for. If you\
             \ intend on using the same MFA policy for multiple applications, choose\
             \ a name that reflects the group of applications."
-          type: object
       required:
       - enabled
       - otp
-      type: object
-    EntityArray__embedded:
-      example:
-        fidoDevicesMetadata:
-        - null
-        - null
-        fido2Policies:
-        - authenticatorAttachment: null
-          userVerification:
-            enforceDuringAuthentication: true
-            option: null
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          userDisplayNameAttributes:
-            attributes:
-            - name: name
-              subAttributes:
-              - name: name
-              - name: name
-            - name: name
-              subAttributes:
-              - name: name
-              - name: name
-          description: description
-          backupEligibility:
-            allow: true
-            enforceDuringAuthentication: true
-          mdsAuthenticatorsRequirements:
-            enforceDuringAuthentication: true
-            allowedAuthenticators:
-            - id: id
-            - id: id
-            option: null
-          relyingPartyId: relyingPartyId
-          deviceDisplayName: deviceDisplayName
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          name: name
-          attestationRequirements: null
-          id: id
-          deviceAuthenticationPolicies:
-          - deviceAuthenticationPolicies
-          - deviceAuthenticationPolicies
-          discoverableCredentials: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - authenticatorAttachment: null
-          userVerification:
-            enforceDuringAuthentication: true
-            option: null
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          userDisplayNameAttributes:
-            attributes:
-            - name: name
-              subAttributes:
-              - name: name
-              - name: name
-            - name: name
-              subAttributes:
-              - name: name
-              - name: name
-          description: description
-          backupEligibility:
-            allow: true
-            enforceDuringAuthentication: true
-          mdsAuthenticatorsRequirements:
-            enforceDuringAuthentication: true
-            allowedAuthenticators:
-            - id: id
-            - id: id
-            option: null
-          relyingPartyId: relyingPartyId
-          deviceDisplayName: deviceDisplayName
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          name: name
-          attestationRequirements: null
-          id: id
-          deviceAuthenticationPolicies:
-          - deviceAuthenticationPolicies
-          - deviceAuthenticationPolicies
-          discoverableCredentials: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        pushCredentials:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          id: id
-          type: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          id: id
-          type: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        fidoPolicies:
-        - _links:
-            key:
-              href: https://openapi-generator.tech
-          description: description
-          enforceDuringAuthentication: false
-          allowedAuthenticators:
-          - id: id
-          - id: id
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          _embedded: "{}"
-          name: name
-          attestationRequirements: null
-          id: id
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-          residentKeyRequirement: null
-        - _links:
-            key:
-              href: https://openapi-generator.tech
-          description: description
-          enforceDuringAuthentication: false
-          allowedAuthenticators:
-          - id: id
-          - id: id
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          _embedded: "{}"
-          name: name
-          attestationRequirements: null
-          id: id
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-          residentKeyRequirement: null
-        deviceAuthenticationPolicies:
-        - voice:
-            pairingDisabled: true
-            otp:
-              otpLength: 8
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              lifeTime:
-                duration: 0
-                timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          totp:
-            pairingDisabled: true
-            uriParameters:
-              key: uriParameters
-            otp:
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          newDeviceNotification: null
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          mobile:
-            otp:
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              window:
-                stepSize:
-                  duration: 5
-                  timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-            applications:
-            - autoEnrollment:
-                enabled: true
-              pairingDisabled: true
-              deviceAuthorization:
-                extraVerification: null
-                enabled: true
-              pairingKeyLifetime:
-                duration: 7
-                timeUnit: null
-              integrityDetection: null
-              pushTimeout:
-                duration: 65
-                timeUnit: null
-              otp:
-                enabled: true
-              id: id
-              push:
-                enabled: true
-              pushLimit:
-                lockDuration:
-                  duration: 3
-                  timeUnit: null
-                count: 46
-                timePeriod:
-                  duration: 2
-                  timeUnit: null
-            - autoEnrollment:
-                enabled: true
-              pairingDisabled: true
-              deviceAuthorization:
-                extraVerification: null
-                enabled: true
-              pairingKeyLifetime:
-                duration: 7
-                timeUnit: null
-              integrityDetection: null
-              pushTimeout:
-                duration: 65
-                timeUnit: null
-              otp:
-                enabled: true
-              id: id
-              push:
-                enabled: true
-              pushLimit:
-                lockDuration:
-                  duration: 3
-                  timeUnit: null
-                count: 46
-                timePeriod:
-                  duration: 2
-                  timeUnit: null
-          fido2:
-            fido2PolicyId: fido2PolicyId
-            pairingDisabled: true
-            enabled: true
-            promptForNicknameOnPairing: true
-          platform:
-            pairingDisabled: true
-            enabled: true
-            fidoPolicyId: fidoPolicyId
-          forSignOnPolicy: true
-          environment:
-            id: id
-          default: true
-          name: name
-          sms:
-            pairingDisabled: true
-            otp:
-              otpLength: 8
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              lifeTime:
-                duration: 0
-                timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          id: id
-          securityKey:
-            pairingDisabled: true
-            enabled: true
-            fidoPolicyId: fidoPolicyId
-          email:
-            pairingDisabled: true
-            otp:
-              otpLength: 8
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              lifeTime:
-                duration: 0
-                timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          authentication:
-            deviceSelection: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - voice:
-            pairingDisabled: true
-            otp:
-              otpLength: 8
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              lifeTime:
-                duration: 0
-                timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          totp:
-            pairingDisabled: true
-            uriParameters:
-              key: uriParameters
-            otp:
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          newDeviceNotification: null
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          mobile:
-            otp:
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              window:
-                stepSize:
-                  duration: 5
-                  timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-            applications:
-            - autoEnrollment:
-                enabled: true
-              pairingDisabled: true
-              deviceAuthorization:
-                extraVerification: null
-                enabled: true
-              pairingKeyLifetime:
-                duration: 7
-                timeUnit: null
-              integrityDetection: null
-              pushTimeout:
-                duration: 65
-                timeUnit: null
-              otp:
-                enabled: true
-              id: id
-              push:
-                enabled: true
-              pushLimit:
-                lockDuration:
-                  duration: 3
-                  timeUnit: null
-                count: 46
-                timePeriod:
-                  duration: 2
-                  timeUnit: null
-            - autoEnrollment:
-                enabled: true
-              pairingDisabled: true
-              deviceAuthorization:
-                extraVerification: null
-                enabled: true
-              pairingKeyLifetime:
-                duration: 7
-                timeUnit: null
-              integrityDetection: null
-              pushTimeout:
-                duration: 65
-                timeUnit: null
-              otp:
-                enabled: true
-              id: id
-              push:
-                enabled: true
-              pushLimit:
-                lockDuration:
-                  duration: 3
-                  timeUnit: null
-                count: 46
-                timePeriod:
-                  duration: 2
-                  timeUnit: null
-          fido2:
-            fido2PolicyId: fido2PolicyId
-            pairingDisabled: true
-            enabled: true
-            promptForNicknameOnPairing: true
-          platform:
-            pairingDisabled: true
-            enabled: true
-            fidoPolicyId: fidoPolicyId
-          forSignOnPolicy: true
-          environment:
-            id: id
-          default: true
-          name: name
-          sms:
-            pairingDisabled: true
-            otp:
-              otpLength: 8
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              lifeTime:
-                duration: 0
-                timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          id: id
-          securityKey:
-            pairingDisabled: true
-            enabled: true
-            fidoPolicyId: fidoPolicyId
-          email:
-            pairingDisabled: true
-            otp:
-              otpLength: 8
-              failure:
-                count: 6
-                coolDown:
-                  duration: 1
-                  timeUnit: null
-              lifeTime:
-                duration: 0
-                timeUnit: null
-            enabled: true
-            promptForNicknameOnPairing: true
-          authentication:
-            deviceSelection: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        pushCredentials:
-          items:
-            $ref: '#/components/schemas/MFAPushCredentialResponse'
-          type: array
-        deviceAuthenticationPolicies:
-          items:
-            $ref: '#/components/schemas/DeviceAuthenticationPolicy'
-          type: array
-        fidoDevicesMetadata:
-          items:
-            $ref: '#/components/schemas/FIDODevice'
-          type: array
-        fidoPolicies:
-          deprecated: true
-          items:
-            $ref: '#/components/schemas/FIDOPolicy'
-          type: array
-        fido2Policies:
-          items:
-            $ref: '#/components/schemas/FIDO2Policy'
-          type: array
-      type: object
     FIDOPolicy_allowedAuthenticators_inner:
       example:
         id: id
@@ -5389,7 +4289,6 @@ components:
           type: string
       required:
       - id
-      type: object
     FIDO2Policy_backupEligibility:
       description: "Used to control whether users should be allowed to register and\
         \ authenticate with a device that uses cloud-synced credentials, such as a\
@@ -5411,7 +4310,6 @@ components:
       required:
       - allow
       - enforceDuringAuthentication
-      type: object
     FIDO2Policy_mdsAuthenticatorsRequirements_allowedAuthenticators_inner:
       example:
         id: id
@@ -5421,7 +4319,6 @@ components:
           type: string
       required:
       - id
-      type: object
     FIDO2Policy_mdsAuthenticatorsRequirements:
       description: "Used to specify whether attestation is requested from the authenticator,\
         \ and whether this information is used to restrict authenticator usage."
@@ -5430,7 +4327,7 @@ components:
         allowedAuthenticators:
         - id: id
         - id: id
-        option: null
+        option: NONE
       properties:
         allowedAuthenticators:
           description: "If you set `mdsAuthenticatorsRequirements.option` to `SPECIFIC`,\
@@ -5449,7 +4346,6 @@ components:
       required:
       - enforceDuringAuthentication
       - option
-      type: object
     FIDO2Policy_userDisplayNameAttributes_attributes_inner_subAttributes_inner:
       example:
         name: name
@@ -5459,7 +4355,6 @@ components:
           type: string
       required:
       - name
-      type: object
     FIDO2Policy_userDisplayNameAttributes_attributes_inner:
       example:
         name: name
@@ -5477,7 +4372,6 @@ components:
           type: array
       required:
       - name
-      type: object
     FIDO2Policy_userDisplayNameAttributes:
       description: Used to specify the string associated with the users's account
         that is displayed during registration and authentication.
@@ -5505,14 +4399,13 @@ components:
           type: array
       required:
       - attributes
-      type: object
     FIDO2Policy_userVerification:
       description: "Used to control whether the user must perform a gesture (such\
         \ as a public key credential, fingerprint scan, or a PIN code) when registering\
         \ or authenticating with their FIDO device."
       example:
         enforceDuringAuthentication: true
-        option: null
+        option: REQUIRED
       properties:
         enforceDuringAuthentication:
           description: Set to `true` if you want the device characteristics related
@@ -5525,18 +4418,16 @@ components:
       required:
       - enforceDuringAuthentication
       - option
-      type: object
     MFASettings_authentication:
       deprecated: true
       description: An object that contains the device selection settings.
       example:
-        deviceSelection: null
+        deviceSelection: DEFAULT_TO_FIRST
       properties:
         deviceSelection:
           $ref: '#/components/schemas/EnumMFASettingsDeviceSelection'
       required:
       - deviceSelection
-      type: object
     MFASettings_lockout:
       description: An object that contains lockout settings.
       example:
@@ -5553,11 +4444,10 @@ components:
           type: integer
       required:
       - failureCount
-      type: object
     MFASettings_pairing:
       description: An object that contains pairing settings.
       example:
-        pairingKeyFormat: null
+        pairingKeyFormat: NUMERIC
         maxAllowedDevices: 2
       properties:
         maxAllowedDevices:
@@ -5571,7 +4461,6 @@ components:
       required:
       - maxAllowedDevices
       - pairingKeyFormat
-      type: object
     MFASettings_phoneExtensions:
       description: Contains settings for phone extension support.
       example:
@@ -5583,7 +4472,6 @@ components:
             \ disable support for phone numbers with extensions. By default, support\
             \ for extensions is disabled."
           type: boolean
-      type: object
     MFASettings_users:
       description: Contains information about the default settings for new users.
       example:
@@ -5593,10 +4481,20 @@ components:
           description: Set `mfaEnabled` to `true` if you want MFA to be enabled by
             default for new users.
           type: boolean
-      type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).
+      example:
+        allowedValues:
+        - allowedValues
+        - allowedValues
+        rangeMaximumValue: 6
+        referencedValues:
+        - referencedValues
+        - referencedValues
+        allowedPattern: allowedPattern
+        maximumValue: 1
+        rangeMinimumValue: 0
       properties:
         rangeMinimumValue:
           description: Errors that failed due to range violation. This attribute represents
@@ -5620,8 +4518,22 @@ components:
           items:
             type: string
           type: array
-      type: object
     P1Error_details_inner:
+      example:
+        code: code
+        innerError:
+          allowedValues:
+          - allowedValues
+          - allowedValues
+          rangeMaximumValue: 6
+          referencedValues:
+          - referencedValues
+          - referencedValues
+          allowedPattern: allowedPattern
+          maximumValue: 1
+          rangeMinimumValue: 0
+        message: message
+        target: target
       properties:
         code:
           description: A general fault code which the client must handle to provide
@@ -5639,7 +4551,6 @@ components:
           type: string
         innerError:
           $ref: '#/components/schemas/P1Error_details_inner_innerError'
-      type: object
   securitySchemes:
     bearer:
       bearerFormat: JWT

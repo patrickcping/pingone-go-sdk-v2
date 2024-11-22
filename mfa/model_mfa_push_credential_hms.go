@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MFAPushCredentialHMS type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type MFAPushCredentialHMS struct {
 	// Used only if type is set to HMS. The client secret associated with the OAuth 2.0 Client ID.
 	ClientSecret string `json:"clientSecret"`
 }
+
+type _MFAPushCredentialHMS MFAPushCredentialHMS
 
 // NewMFAPushCredentialHMS instantiates a new MFAPushCredentialHMS object
 // This constructor will assign default values to properties that have it defined,
@@ -132,6 +136,45 @@ func (o MFAPushCredentialHMS) ToMap() (map[string]interface{}, error) {
 	toSerialize["clientId"] = o.ClientId
 	toSerialize["clientSecret"] = o.ClientSecret
 	return toSerialize, nil
+}
+
+func (o *MFAPushCredentialHMS) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"clientId",
+		"clientSecret",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMFAPushCredentialHMS := _MFAPushCredentialHMS{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMFAPushCredentialHMS)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MFAPushCredentialHMS(varMFAPushCredentialHMS)
+
+	return err
 }
 
 type NullableMFAPushCredentialHMS struct {

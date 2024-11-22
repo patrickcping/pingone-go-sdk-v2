@@ -64,9 +64,9 @@ func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPolicie
 //  @return DeviceAuthenticationPolicyPostResponse
 func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DeviceAuthenticationPolicyPostResponse
+		err error
+		response *http.Response
+		localVarReturnValue *DeviceAuthenticationPolicyPostResponse
 	)
 	
 	response, err = processResponse(
@@ -116,7 +116,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.deviceAuthenticationPolicyPost
@@ -131,7 +131,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -276,7 +276,7 @@ func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicy(
 // Execute executes the request
 func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -338,7 +338,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -438,11 +438,11 @@ type ApiReadDeviceAuthenticationPoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadDeviceAuthenticationPoliciesRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadDeviceAuthenticationPoliciesRequest) Execute() PagedIterator[ReadDeviceAuthenticationPolicies200Response] {
 	return r.ApiService.ReadDeviceAuthenticationPoliciesExecute(r)
 }
 
-func (r ApiReadDeviceAuthenticationPoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadDeviceAuthenticationPoliciesRequest) ExecuteInitialPage() (*ReadDeviceAuthenticationPolicies200Response, *http.Response, error) {
 	return r.ApiService.ReadDeviceAuthenticationPoliciesExecuteInitialPage(r)
 }
 
@@ -462,16 +462,18 @@ func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPolicies(
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadDeviceAuthenticationPolicies200Response
+func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) PagedIterator[ReadDeviceAuthenticationPolicies200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecuteInitialPage(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadDeviceAuthenticationPolicies200Response
+func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecuteInitialPage(r ApiReadDeviceAuthenticationPoliciesRequest) (*ReadDeviceAuthenticationPolicies200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadDeviceAuthenticationPolicies200Response
 	)
 	
 	response, err = processResponse(
@@ -483,12 +485,12 @@ func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesE
 	return localVarReturnValue, response, err
 }
 
-func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*ReadDeviceAuthenticationPolicies200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadDeviceAuthenticationPolicies200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.ReadDeviceAuthenticationPolicies")
@@ -531,7 +533,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -666,9 +668,9 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 //  @return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DeviceAuthenticationPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *DeviceAuthenticationPolicy
 	)
 	
 	response, err = processResponse(
@@ -729,7 +731,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -870,9 +872,9 @@ func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicy(
 //  @return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *DeviceAuthenticationPolicy
+		err error
+		response *http.Response
+		localVarReturnValue *DeviceAuthenticationPolicy
 	)
 	
 	response, err = processResponse(
@@ -935,7 +937,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

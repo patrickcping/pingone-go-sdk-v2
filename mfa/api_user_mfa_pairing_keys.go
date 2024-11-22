@@ -57,7 +57,7 @@ func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairi
 // Execute executes the request
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -120,7 +120,7 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -248,7 +248,7 @@ func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairi
 // Execute executes the request
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -311,7 +311,7 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -442,7 +442,7 @@ func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairi
 // Execute executes the request
 func (a *UserMFAPairingKeysApiService) EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -506,7 +506,7 @@ func (a *UserMFAPairingKeysApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

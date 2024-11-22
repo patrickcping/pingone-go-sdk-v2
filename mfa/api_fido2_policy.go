@@ -58,9 +58,9 @@ func (a *FIDO2PolicyApiService) CreateFIDO2Policy(ctx context.Context, environme
 //  @return FIDO2Policy
 func (a *FIDO2PolicyApiService) CreateFIDO2PolicyExecute(r ApiCreateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *FIDO2Policy
+		err error
+		response *http.Response
+		localVarReturnValue *FIDO2Policy
 	)
 	
 	response, err = processResponse(
@@ -122,7 +122,7 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -267,7 +267,7 @@ func (a *FIDO2PolicyApiService) DeleteFIDO2Policy(ctx context.Context, environme
 // Execute executes the request
 func (a *FIDO2PolicyApiService) DeleteFIDO2PolicyExecute(r ApiDeleteFIDO2PolicyRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -329,7 +329,7 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -429,11 +429,11 @@ type ApiReadFIDO2PoliciesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadFIDO2PoliciesRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadFIDO2PoliciesRequest) Execute() PagedIterator[ReadFIDO2Policies200Response] {
 	return r.ApiService.ReadFIDO2PoliciesExecute(r)
 }
 
-func (r ApiReadFIDO2PoliciesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadFIDO2PoliciesRequest) ExecuteInitialPage() (*ReadFIDO2Policies200Response, *http.Response, error) {
 	return r.ApiService.ReadFIDO2PoliciesExecuteInitialPage(r)
 }
 
@@ -453,16 +453,18 @@ func (a *FIDO2PolicyApiService) ReadFIDO2Policies(ctx context.Context, environme
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadFIDO2Policies200Response
+func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) PagedIterator[ReadFIDO2Policies200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecuteInitialPage(r ApiReadFIDO2PoliciesRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadFIDO2Policies200Response
+func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecuteInitialPage(r ApiReadFIDO2PoliciesRequest) (*ReadFIDO2Policies200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadFIDO2Policies200Response
 	)
 	
 	response, err = processResponse(
@@ -474,12 +476,12 @@ func (a *FIDO2PolicyApiService) ReadFIDO2PoliciesExecuteInitialPage(r ApiReadFID
 	return localVarReturnValue, response, err
 }
 
-func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2PoliciesRequest) (*ReadFIDO2Policies200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadFIDO2Policies200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.ReadFIDO2Policies")
@@ -522,7 +524,7 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -663,9 +665,9 @@ func (a *FIDO2PolicyApiService) ReadOneFIDO2Policy(ctx context.Context, environm
 //  @return FIDO2Policy
 func (a *FIDO2PolicyApiService) ReadOneFIDO2PolicyExecute(r ApiReadOneFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *FIDO2Policy
+		err error
+		response *http.Response
+		localVarReturnValue *FIDO2Policy
 	)
 	
 	response, err = processResponse(
@@ -699,7 +701,7 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 	localVarFormParams := url.Values{}
 
 	if r.expand != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "expand", r.expand, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "expand", r.expand, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -729,7 +731,7 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -870,9 +872,9 @@ func (a *FIDO2PolicyApiService) UpdateFIDO2Policy(ctx context.Context, environme
 //  @return FIDO2Policy
 func (a *FIDO2PolicyApiService) UpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *FIDO2Policy
+		err error
+		response *http.Response
+		localVarReturnValue *FIDO2Policy
 	)
 	
 	response, err = processResponse(
@@ -935,7 +937,7 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

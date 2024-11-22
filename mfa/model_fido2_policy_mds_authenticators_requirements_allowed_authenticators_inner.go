@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner struct {
 	// The mdsIdentitfer of the authenticator to allow.
 	Id string `json:"id"`
 }
+
+type _FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner
 
 // NewFIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner instantiates a new FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner) ToMa
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner := _FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner(varFIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner)
+
+	return err
 }
 
 type NullableFIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner struct {

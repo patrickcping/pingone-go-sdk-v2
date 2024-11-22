@@ -23,25 +23,25 @@ CREATE FIDO Device
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	environmentID := "environmentID_example" // string | 
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDODeviceApi.CreateFidoDevice(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.CreateFidoDevice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateFidoDevice`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `FIDODeviceApi.CreateFidoDevice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FIDODeviceApi.CreateFidoDevice(context.Background(), environmentID).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.CreateFidoDevice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateFidoDevice`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `FIDODeviceApi.CreateFidoDevice`: %v\n", resp)
 }
 ```
 
@@ -93,23 +93,23 @@ DELETE FIDO Device
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    fidoDeviceID := "fidoDeviceID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	fidoDeviceID := "fidoDeviceID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.FIDODeviceApi.DeleteFidoDevice(context.Background(), environmentID, fidoDeviceID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.DeleteFidoDevice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.FIDODeviceApi.DeleteFidoDevice(context.Background(), environmentID, fidoDeviceID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.DeleteFidoDevice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -156,7 +156,7 @@ READ All FIDO Devices
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadFidoDevices(ctx, environmentID).Execute()
+> PagedIterator[ReadFidoDevices200Response] ReadFidoDevices(ctx, environmentID).Execute()
 
 #### Example
 
@@ -164,36 +164,34 @@ READ All FIDO Devices
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadFidoDevices(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.FIDODeviceApi.ReadFidoDevices(context.Background(), environmentID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadFidoDevices``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.ReadFidoDevices``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadFidoDevices`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadFidoDevices`: %v\n", pageCursor.EntityArray)
+		// response from `ReadFidoDevices` page iteration: ReadFidoDevices200Response
+		fmt.Fprintf(os.Stdout, "Response from `FIDODeviceApi.ReadFidoDevices` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadFidoDevices(ctx, environmentID).ExecuteInitialPage()
+> ReadFidoDevices200Response ReadFidoDevices(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -201,24 +199,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDODeviceApi.ReadFidoDevices(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.ReadFidoDevices``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadFidoDevices`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `FIDODeviceApi.ReadFidoDevices`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FIDODeviceApi.ReadFidoDevices(context.Background(), environmentID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.ReadFidoDevices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadFidoDevices`: ReadFidoDevices200Response
+	fmt.Fprintf(os.Stdout, "Response from `FIDODeviceApi.ReadFidoDevices`: %v\n", resp)
 }
 ```
 
@@ -241,7 +239,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadFidoDevices200Response**](ReadFidoDevices200Response.md)]
+
+PagedIterator[ReadFidoDevices200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadFidoDevices200Response**](ReadFidoDevices200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadFidoDevices200Response**](ReadFidoDevices200Response.md)
 
 ### Authorization
 
@@ -269,25 +271,25 @@ READ One FIDO Device
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    fidoDeviceID := "fidoDeviceID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	fidoDeviceID := "fidoDeviceID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDODeviceApi.ReadOneFidoDevice(context.Background(), environmentID, fidoDeviceID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.ReadOneFidoDevice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneFidoDevice`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `FIDODeviceApi.ReadOneFidoDevice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FIDODeviceApi.ReadOneFidoDevice(context.Background(), environmentID, fidoDeviceID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDODeviceApi.ReadOneFidoDevice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneFidoDevice`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `FIDODeviceApi.ReadOneFidoDevice`: %v\n", resp)
 }
 ```
 

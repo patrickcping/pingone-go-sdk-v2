@@ -46,7 +46,8 @@ func (v *EnumFIDO2PolicyUserVerificationOption) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFIDO2PolicyUserVerificationOption", value)
+	*v = EnumFIDO2PolicyUserVerificationOption(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFIDO2PolicyUserVerificationOptionFromValue returns a pointer to a valid EnumFIDO2PolicyUserVerificationOption

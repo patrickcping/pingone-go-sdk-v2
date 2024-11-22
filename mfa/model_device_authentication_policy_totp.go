@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceAuthenticationPolicyTotp type satisfies the MappedNullable interface at compile time
@@ -27,8 +29,10 @@ type DeviceAuthenticationPolicyTotp struct {
 	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 	// Object that you can use to provide key:value pairs for `otpauth` URI parameters. For example, if you provide a value for the `issuer` parameter, then authenticators that support that parameter will display the text you specify together with the OTP (in addition to the username). This can help users recognize which application the OTP is for. If you intend on using the same MFA policy for multiple applications, choose a name that reflects the group of applications.
-	UriParameters *map[string]string `json:"uriParameters,omitempty"`
+	UriParameters map[string]string `json:"uriParameters,omitempty"`
 }
+
+type _DeviceAuthenticationPolicyTotp DeviceAuthenticationPolicyTotp
 
 // NewDeviceAuthenticationPolicyTotp instantiates a new DeviceAuthenticationPolicyTotp object
 // This constructor will assign default values to properties that have it defined,
@@ -167,14 +171,14 @@ func (o *DeviceAuthenticationPolicyTotp) GetUriParameters() map[string]string {
 		var ret map[string]string
 		return ret
 	}
-	return *o.UriParameters
+	return o.UriParameters
 }
 
 // GetUriParametersOk returns a tuple with the UriParameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyTotp) GetUriParametersOk() (*map[string]string, bool) {
+func (o *DeviceAuthenticationPolicyTotp) GetUriParametersOk() (map[string]string, bool) {
 	if o == nil || IsNil(o.UriParameters) {
-		return nil, false
+		return map[string]string{}, false
 	}
 	return o.UriParameters, true
 }
@@ -190,7 +194,7 @@ func (o *DeviceAuthenticationPolicyTotp) HasUriParameters() bool {
 
 // SetUriParameters gets a reference to the given map[string]string and assigns it to the UriParameters field.
 func (o *DeviceAuthenticationPolicyTotp) SetUriParameters(v map[string]string) {
-	o.UriParameters = &v
+	o.UriParameters = v
 }
 
 func (o DeviceAuthenticationPolicyTotp) MarshalJSON() ([]byte, error) {
@@ -215,6 +219,44 @@ func (o DeviceAuthenticationPolicyTotp) ToMap() (map[string]interface{}, error) 
 		toSerialize["uriParameters"] = o.UriParameters
 	}
 	return toSerialize, nil
+}
+
+func (o *DeviceAuthenticationPolicyTotp) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+		"otp",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceAuthenticationPolicyTotp := _DeviceAuthenticationPolicyTotp{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceAuthenticationPolicyTotp)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceAuthenticationPolicyTotp(varDeviceAuthenticationPolicyTotp)
+
+	return err
 }
 
 type NullableDeviceAuthenticationPolicyTotp struct {

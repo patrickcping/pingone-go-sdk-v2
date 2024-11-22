@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MFASettingsPairing type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type MFASettingsPairing struct {
 	MaxAllowedDevices int32 `json:"maxAllowedDevices"`
 	PairingKeyFormat EnumMFASettingsPairingKeyFormat `json:"pairingKeyFormat"`
 }
+
+type _MFASettingsPairing MFASettingsPairing
 
 // NewMFASettingsPairing instantiates a new MFASettingsPairing object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +110,44 @@ func (o MFASettingsPairing) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxAllowedDevices"] = o.MaxAllowedDevices
 	toSerialize["pairingKeyFormat"] = o.PairingKeyFormat
 	return toSerialize, nil
+}
+
+func (o *MFASettingsPairing) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"maxAllowedDevices",
+		"pairingKeyFormat",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMFASettingsPairing := _MFASettingsPairing{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMFASettingsPairing)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MFASettingsPairing(varMFASettingsPairing)
+
+	return err
 }
 
 type NullableMFASettingsPairing struct {

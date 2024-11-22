@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MFAPushCredentialAPNS type satisfies the MappedNullable interface at compile time
@@ -27,6 +29,8 @@ type MFAPushCredentialAPNS struct {
 	// A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format.
 	Token string `json:"token"`
 }
+
+type _MFAPushCredentialAPNS MFAPushCredentialAPNS
 
 // NewMFAPushCredentialAPNS instantiates a new MFAPushCredentialAPNS object
 // This constructor will assign default values to properties that have it defined,
@@ -160,6 +164,46 @@ func (o MFAPushCredentialAPNS) ToMap() (map[string]interface{}, error) {
 	toSerialize["teamId"] = o.TeamId
 	toSerialize["token"] = o.Token
 	return toSerialize, nil
+}
+
+func (o *MFAPushCredentialAPNS) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"key",
+		"teamId",
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMFAPushCredentialAPNS := _MFAPushCredentialAPNS{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMFAPushCredentialAPNS)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MFAPushCredentialAPNS(varMFAPushCredentialAPNS)
+
+	return err
 }
 
 type NullableMFAPushCredentialAPNS struct {

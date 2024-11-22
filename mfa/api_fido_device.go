@@ -58,6 +58,22 @@ func (a *FIDODeviceApiService) CreateFidoDevice(ctx context.Context, environment
 //  @return map[string]interface{}
 func (a *FIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
+		err error
+		response *http.Response
+		localVarReturnValue map[string]interface{}
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateFidoDeviceExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *FIDODeviceApiService) internalCreateFidoDeviceExecute(r ApiCreateFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
+	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -106,7 +122,7 @@ func (a *FIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDeviceRequ
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -251,7 +267,7 @@ func (a *FIDODeviceApiService) DeleteFidoDevice(ctx context.Context, environment
 // Execute executes the request
 func (a *FIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -313,7 +329,7 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -413,11 +429,11 @@ type ApiReadFidoDevicesRequest struct {
 	environmentID string
 }
 
-func (r ApiReadFidoDevicesRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadFidoDevicesRequest) Execute() PagedIterator[ReadFidoDevices200Response] {
 	return r.ApiService.ReadFidoDevicesExecute(r)
 }
 
-func (r ApiReadFidoDevicesRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadFidoDevicesRequest) ExecuteInitialPage() (*ReadFidoDevices200Response, *http.Response, error) {
 	return r.ApiService.ReadFidoDevicesExecuteInitialPage(r)
 }
 
@@ -437,16 +453,18 @@ func (a *FIDODeviceApiService) ReadFidoDevices(ctx context.Context, environmentI
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadFidoDevices200Response
+func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) PagedIterator[ReadFidoDevices200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *FIDODeviceApiService) ReadFidoDevicesExecuteInitialPage(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadFidoDevices200Response
+func (a *FIDODeviceApiService) ReadFidoDevicesExecuteInitialPage(r ApiReadFidoDevicesRequest) (*ReadFidoDevices200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadFidoDevices200Response
 	)
 	
 	response, err = processResponse(
@@ -458,12 +476,12 @@ func (a *FIDODeviceApiService) ReadFidoDevicesExecuteInitialPage(r ApiReadFidoDe
 	return localVarReturnValue, response, err
 }
 
-func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*ReadFidoDevices200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadFidoDevices200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.ReadFidoDevices")
@@ -506,7 +524,7 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -641,6 +659,22 @@ func (a *FIDODeviceApiService) ReadOneFidoDevice(ctx context.Context, environmen
 //  @return map[string]interface{}
 func (a *FIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
+		err error
+		response *http.Response
+		localVarReturnValue map[string]interface{}
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalReadOneFidoDeviceExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *FIDODeviceApiService) internalReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
+	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
@@ -688,7 +722,7 @@ func (a *FIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRe
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

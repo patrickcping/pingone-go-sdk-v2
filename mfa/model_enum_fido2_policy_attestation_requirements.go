@@ -44,7 +44,8 @@ func (v *EnumFIDO2PolicyAttestationRequirements) UnmarshalJSON(src []byte) error
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFIDO2PolicyAttestationRequirements", value)
+	*v = EnumFIDO2PolicyAttestationRequirements(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFIDO2PolicyAttestationRequirementsFromValue returns a pointer to a valid EnumFIDO2PolicyAttestationRequirements

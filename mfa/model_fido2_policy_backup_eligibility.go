@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the FIDO2PolicyBackupEligibility type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type FIDO2PolicyBackupEligibility struct {
 	// Set to `true` if you want the backup eligibility of the device to be checked again at each authentication attempt and not just once during registration. Set to `false` to have it checked only at registration.
 	EnforceDuringAuthentication bool `json:"enforceDuringAuthentication"`
 }
+
+type _FIDO2PolicyBackupEligibility FIDO2PolicyBackupEligibility
 
 // NewFIDO2PolicyBackupEligibility instantiates a new FIDO2PolicyBackupEligibility object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +109,44 @@ func (o FIDO2PolicyBackupEligibility) ToMap() (map[string]interface{}, error) {
 	toSerialize["allow"] = o.Allow
 	toSerialize["enforceDuringAuthentication"] = o.EnforceDuringAuthentication
 	return toSerialize, nil
+}
+
+func (o *FIDO2PolicyBackupEligibility) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"allow",
+		"enforceDuringAuthentication",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFIDO2PolicyBackupEligibility := _FIDO2PolicyBackupEligibility{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFIDO2PolicyBackupEligibility)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FIDO2PolicyBackupEligibility(varFIDO2PolicyBackupEligibility)
+
+	return err
 }
 
 type NullableFIDO2PolicyBackupEligibility struct {

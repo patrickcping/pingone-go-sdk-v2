@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceAuthenticationPolicyFIDODevice type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type DeviceAuthenticationPolicyFIDODevice struct {
 	// Specifies the FIDO policy UUID. This property can be null. When null, the environment's default FIDO Policy is used.
 	FidoPolicyId *string `json:"fidoPolicyId,omitempty"`
 }
+
+type _DeviceAuthenticationPolicyFIDODevice DeviceAuthenticationPolicyFIDODevice
 
 // NewDeviceAuthenticationPolicyFIDODevice instantiates a new DeviceAuthenticationPolicyFIDODevice object
 // This constructor will assign default values to properties that have it defined,
@@ -151,6 +155,43 @@ func (o DeviceAuthenticationPolicyFIDODevice) ToMap() (map[string]interface{}, e
 		toSerialize["fidoPolicyId"] = o.FidoPolicyId
 	}
 	return toSerialize, nil
+}
+
+func (o *DeviceAuthenticationPolicyFIDODevice) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceAuthenticationPolicyFIDODevice := _DeviceAuthenticationPolicyFIDODevice{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceAuthenticationPolicyFIDODevice)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceAuthenticationPolicyFIDODevice(varDeviceAuthenticationPolicyFIDODevice)
+
+	return err
 }
 
 type NullableDeviceAuthenticationPolicyFIDODevice struct {

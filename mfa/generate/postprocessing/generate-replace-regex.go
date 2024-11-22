@@ -59,6 +59,11 @@ var (
 		// MFAPushCredentialRequest model
 		{
 			fileSelectPattern: "model_mfa_push_credential_request.go",
+			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
+			repl: `"encoding/json"`,
+		},
+		{
+			fileSelectPattern: "model_mfa_push_credential_request.go",
 			pattern:           `(func \(dst \*MFAPushCredentialRequest\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *MFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
 
@@ -108,6 +113,11 @@ var (
 		// DeviceAuthenticationPolicyPost model
 		{
 			fileSelectPattern: "model_device_authentication_policy_post.go",
+			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
+			repl: `"encoding/json"`,
+		},
+		{
+			fileSelectPattern: "model_device_authentication_policy_post.go",
 			pattern:           `(func \(dst \*DeviceAuthenticationPolicyPost\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *DeviceAuthenticationPolicyPost) UnmarshalJSON(data []byte) error {
 	var err error
@@ -155,6 +165,11 @@ var (
 		// DeviceAuthenticationPolicyPostResponse model
 		{
 			fileSelectPattern: "model_device_authentication_policy_post_response.go",
+			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
+			repl: `"encoding/json"`,
+		},
+		{
+			fileSelectPattern: "model_device_authentication_policy_post_response.go",
 			pattern:           `(func \(dst \*DeviceAuthenticationPolicyPostResponse\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *DeviceAuthenticationPolicyPostResponse) UnmarshalJSON(data []byte) error {
 	var err error
@@ -171,22 +186,22 @@ var (
 		dst.DeviceAuthenticationPolicy = nil
 	}
 
-	// try to unmarshal data into EntityArray
-	err = json.Unmarshal(data, &dst.EntityArray)
+	// try to unmarshal data into ReadDeviceAuthenticationPolicies200Response
+	err = json.Unmarshal(data, &dst.ReadDeviceAuthenticationPolicies200Response)
 	if err == nil {
-		if v, ok := dst.EntityArray.GetEmbeddedOk(); ok && v != nil {
+		if v, ok := dst.ReadDeviceAuthenticationPolicies200Response.GetEmbeddedOk(); ok && v != nil {
 			match++
 		} else {
-			dst.EntityArray = nil
+			dst.ReadDeviceAuthenticationPolicies200Response = nil
 		}
 	} else {
-		dst.EntityArray = nil
+		dst.ReadDeviceAuthenticationPolicies200Response = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.DeviceAuthenticationPolicy = nil
-		dst.EntityArray = nil
+		dst.ReadDeviceAuthenticationPolicies200Response = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(DeviceAuthenticationPolicyPostResponse)")
 	} else if match == 1 {

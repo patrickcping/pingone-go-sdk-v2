@@ -12,6 +12,8 @@ package mfa
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MFAPushCredentialFCMHTTPV1 type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type MFAPushCredentialFCMHTTPV1 struct {
 	// Used when `type` is set to `FCM_HTTP_V1`. The value should be the contents of the JSON file that represents your Service Account Credentials.
 	GoogleServiceAccountCredentials string `json:"googleServiceAccountCredentials"`
 }
+
+type _MFAPushCredentialFCMHTTPV1 MFAPushCredentialFCMHTTPV1
 
 // NewMFAPushCredentialFCMHTTPV1 instantiates a new MFAPushCredentialFCMHTTPV1 object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o MFAPushCredentialFCMHTTPV1) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["googleServiceAccountCredentials"] = o.GoogleServiceAccountCredentials
 	return toSerialize, nil
+}
+
+func (o *MFAPushCredentialFCMHTTPV1) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"googleServiceAccountCredentials",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMFAPushCredentialFCMHTTPV1 := _MFAPushCredentialFCMHTTPV1{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMFAPushCredentialFCMHTTPV1)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MFAPushCredentialFCMHTTPV1(varMFAPushCredentialFCMHTTPV1)
+
+	return err
 }
 
 type NullableMFAPushCredentialFCMHTTPV1 struct {

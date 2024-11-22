@@ -61,9 +61,9 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 //  @return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *MFAPushCredentialResponse
+		err error
+		response *http.Response
+		localVarReturnValue *MFAPushCredentialResponse
 	)
 	
 	response, err = processResponse(
@@ -126,7 +126,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -280,7 +280,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 // Execute executes the request
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredentialExecute(r ApiDeleteMFAPushCredentialRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -333,7 +333,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -346,7 +346,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAP
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -447,11 +447,11 @@ type ApiReadAllMFAPushCredentialsRequest struct {
 	applicationID string
 }
 
-func (r ApiReadAllMFAPushCredentialsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllMFAPushCredentialsRequest) Execute() PagedIterator[ReadAllMFAPushCredentials200Response] {
 	return r.ApiService.ReadAllMFAPushCredentialsExecute(r)
 }
 
-func (r ApiReadAllMFAPushCredentialsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllMFAPushCredentialsRequest) ExecuteInitialPage() (*ReadAllMFAPushCredentials200Response, *http.Response, error) {
 	return r.ApiService.ReadAllMFAPushCredentialsExecuteInitialPage(r)
 }
 
@@ -473,16 +473,18 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadAllMFAPushCredentials200Response
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) PagedIterator[ReadAllMFAPushCredentials200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecuteInitialPage(r ApiReadAllMFAPushCredentialsRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadAllMFAPushCredentials200Response
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecuteInitialPage(r ApiReadAllMFAPushCredentialsRequest) (*ReadAllMFAPushCredentials200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadAllMFAPushCredentials200Response
 	)
 	
 	response, err = processResponse(
@@ -494,12 +496,12 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 	return localVarReturnValue, response, err
 }
 
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (*EntityArray, *http.Response, error) {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (*ReadAllMFAPushCredentials200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllMFAPushCredentials200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.ReadAllMFAPushCredentials")
@@ -543,7 +545,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFA
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -681,9 +683,9 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 //  @return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *MFAPushCredentialResponse
+		err error
+		response *http.Response
+		localVarReturnValue *MFAPushCredentialResponse
 	)
 	
 	response, err = processResponse(
@@ -745,7 +747,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFA
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -889,9 +891,9 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCrede
 //  @return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *MFAPushCredentialResponse
+		err error
+		response *http.Response
+		localVarReturnValue *MFAPushCredentialResponse
 	)
 	
 	response, err = processResponse(
@@ -955,7 +957,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

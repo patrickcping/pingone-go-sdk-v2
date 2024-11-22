@@ -24,25 +24,25 @@ CREATE FIDO Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    fIDOPolicy := *openapiclient.NewFIDOPolicy("Name_example", openapiclient.EnumFIDOAttestationRequirements("NONE"), openapiclient.EnumFIDOResidentKeyRequirement("DISCOURAGED")) // FIDOPolicy |  (optional)
+	environmentID := "environmentID_example" // string | 
+	fIDOPolicy := *openapiclient.NewFIDOPolicy("Name_example", openapiclient.EnumFIDOAttestationRequirements("NONE"), openapiclient.EnumFIDOResidentKeyRequirement("DISCOURAGED")) // FIDOPolicy |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDOPolicyApi.CreateFidoPolicy(context.Background(), environmentID).FIDOPolicy(fIDOPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.CreateFidoPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateFidoPolicy`: FIDOPolicy
-    fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.CreateFidoPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FIDOPolicyApi.CreateFidoPolicy(context.Background(), environmentID).FIDOPolicy(fIDOPolicy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.CreateFidoPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateFidoPolicy`: FIDOPolicy
+	fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.CreateFidoPolicy`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ DELETE FIDO Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    fidoPolicyID := "fidoPolicyID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	fidoPolicyID := "fidoPolicyID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.FIDOPolicyApi.DeleteFidoPolicy(context.Background(), environmentID, fidoPolicyID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.DeleteFidoPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.FIDOPolicyApi.DeleteFidoPolicy(context.Background(), environmentID, fidoPolicyID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.DeleteFidoPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -157,7 +157,7 @@ READ FIDO Policies
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadFidoPolicies(ctx, environmentID).Execute()
+> PagedIterator[ReadFidoPolicies200Response] ReadFidoPolicies(ctx, environmentID).Execute()
 
 #### Example
 
@@ -165,36 +165,34 @@ READ FIDO Policies
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadFidoPolicies(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.FIDOPolicyApi.ReadFidoPolicies(context.Background(), environmentID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadFidoPolicies``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.ReadFidoPolicies``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadFidoPolicies`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadFidoPolicies`: %v\n", pageCursor.EntityArray)
+		// response from `ReadFidoPolicies` page iteration: ReadFidoPolicies200Response
+		fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.ReadFidoPolicies` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadFidoPolicies(ctx, environmentID).ExecuteInitialPage()
+> ReadFidoPolicies200Response ReadFidoPolicies(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -202,24 +200,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDOPolicyApi.ReadFidoPolicies(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.ReadFidoPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadFidoPolicies`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.ReadFidoPolicies`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FIDOPolicyApi.ReadFidoPolicies(context.Background(), environmentID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.ReadFidoPolicies``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadFidoPolicies`: ReadFidoPolicies200Response
+	fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.ReadFidoPolicies`: %v\n", resp)
 }
 ```
 
@@ -242,7 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadFidoPolicies200Response**](ReadFidoPolicies200Response.md)]
+
+PagedIterator[ReadFidoPolicies200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadFidoPolicies200Response**](ReadFidoPolicies200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadFidoPolicies200Response**](ReadFidoPolicies200Response.md)
 
 ### Authorization
 
@@ -270,25 +272,25 @@ READ One FIDO Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    fidoPolicyID := "fidoPolicyID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	fidoPolicyID := "fidoPolicyID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDOPolicyApi.ReadOneFidoPolicy(context.Background(), environmentID, fidoPolicyID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.ReadOneFidoPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneFidoPolicy`: FIDOPolicy
-    fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.ReadOneFidoPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FIDOPolicyApi.ReadOneFidoPolicy(context.Background(), environmentID, fidoPolicyID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.ReadOneFidoPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneFidoPolicy`: FIDOPolicy
+	fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.ReadOneFidoPolicy`: %v\n", resp)
 }
 ```
 
@@ -341,26 +343,26 @@ UPDATE FIDO Policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    fidoPolicyID := "fidoPolicyID_example" // string | 
-    fIDOPolicy := *openapiclient.NewFIDOPolicy("Name_example", openapiclient.EnumFIDOAttestationRequirements("NONE"), openapiclient.EnumFIDOResidentKeyRequirement("DISCOURAGED")) // FIDOPolicy |  (optional)
+	environmentID := "environmentID_example" // string | 
+	fidoPolicyID := "fidoPolicyID_example" // string | 
+	fIDOPolicy := *openapiclient.NewFIDOPolicy("Name_example", openapiclient.EnumFIDOAttestationRequirements("NONE"), openapiclient.EnumFIDOResidentKeyRequirement("DISCOURAGED")) // FIDOPolicy |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDOPolicyApi.UpdateFIDOPolicy(context.Background(), environmentID, fidoPolicyID).FIDOPolicy(fIDOPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.UpdateFIDOPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateFIDOPolicy`: FIDOPolicy
-    fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.UpdateFIDOPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FIDOPolicyApi.UpdateFIDOPolicy(context.Background(), environmentID, fidoPolicyID).FIDOPolicy(fIDOPolicy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FIDOPolicyApi.UpdateFIDOPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateFIDOPolicy`: FIDOPolicy
+	fmt.Fprintf(os.Stdout, "Response from `FIDOPolicyApi.UpdateFIDOPolicy`: %v\n", resp)
 }
 ```
 

@@ -60,7 +60,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -112,7 +112,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -125,7 +125,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -253,7 +253,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -316,7 +316,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -444,7 +444,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -507,7 +507,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -641,7 +641,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -706,7 +706,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -840,7 +840,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -905,7 +905,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -1045,7 +1045,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -1098,7 +1098,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -1113,7 +1113,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -1249,7 +1249,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGe
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -1311,7 +1311,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -1448,7 +1448,7 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPo
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -1500,7 +1500,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -1515,7 +1515,7 @@ func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDD
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

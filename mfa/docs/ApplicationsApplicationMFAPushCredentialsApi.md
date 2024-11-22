@@ -24,26 +24,26 @@ CREATE MFA Push Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationID := "applicationID_example" // string | 
-    mFAPushCredentialRequest := openapiclient.MFAPushCredentialRequest{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // MFAPushCredentialRequest |  (optional)
+	environmentID := "environmentID_example" // string | 
+	applicationID := "applicationID_example" // string | 
+	mFAPushCredentialRequest := openapiclient.MFAPushCredentialRequest{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // MFAPushCredentialRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), environmentID, applicationID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateMFAPushCredential`: MFAPushCredentialResponse
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), environmentID, applicationID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateMFAPushCredential`: MFAPushCredentialResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential`: %v\n", resp)
 }
 ```
 
@@ -97,25 +97,25 @@ DELETE MFA Push Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationID := "applicationID_example" // string | 
-    pushCredentialID := "pushCredentialID_example" // string | 
-    authorization := "Bearer {{accessToken}}" // string |  (optional)
+	environmentID := "environmentID_example" // string | 
+	applicationID := "applicationID_example" // string | 
+	pushCredentialID := "pushCredentialID_example" // string | 
+	authorization := "Bearer {{accessToken}}" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).Authorization(authorization).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).Authorization(authorization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -165,7 +165,7 @@ READ All MFA Push Credentials
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllMFAPushCredentials(ctx, environmentID, applicationID).Execute()
+> PagedIterator[ReadAllMFAPushCredentials200Response] ReadAllMFAPushCredentials(ctx, environmentID, applicationID).Execute()
 
 #### Example
 
@@ -173,36 +173,35 @@ READ All MFA Push Credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
+	applicationID := "applicationID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllMFAPushCredentials(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials(context.Background(), environmentID, applicationID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllMFAPushCredentials``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllMFAPushCredentials`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllMFAPushCredentials`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllMFAPushCredentials` page iteration: ReadAllMFAPushCredentials200Response
+		fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllMFAPushCredentials(ctx, environmentID, applicationID).ExecuteInitialPage()
+> ReadAllMFAPushCredentials200Response ReadAllMFAPushCredentials(ctx, environmentID, applicationID).ExecuteInitialPage()
 
 #### Example
 
@@ -210,25 +209,25 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationID := "applicationID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationID := "applicationID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials(context.Background(), environmentID, applicationID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllMFAPushCredentials`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials(context.Background(), environmentID, applicationID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllMFAPushCredentials`: ReadAllMFAPushCredentials200Response
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials`: %v\n", resp)
 }
 ```
 
@@ -253,7 +252,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllMFAPushCredentials200Response**](ReadAllMFAPushCredentials200Response.md)]
+
+PagedIterator[ReadAllMFAPushCredentials200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllMFAPushCredentials200Response**](ReadAllMFAPushCredentials200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllMFAPushCredentials200Response**](ReadAllMFAPushCredentials200Response.md)
 
 ### Authorization
 
@@ -281,26 +284,26 @@ READ One MFA Push Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationID := "applicationID_example" // string | 
-    pushCredentialID := "pushCredentialID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	applicationID := "applicationID_example" // string | 
+	pushCredentialID := "pushCredentialID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneMFAPushCredential`: MFAPushCredentialResponse
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneMFAPushCredential`: MFAPushCredentialResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential`: %v\n", resp)
 }
 ```
 
@@ -355,27 +358,27 @@ UPDATE MFA Push Credential
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/mfa"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    applicationID := "applicationID_example" // string | 
-    pushCredentialID := "pushCredentialID_example" // string | 
-    mFAPushCredentialRequest := openapiclient.MFAPushCredentialRequest{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // MFAPushCredentialRequest |  (optional)
+	environmentID := "environmentID_example" // string | 
+	applicationID := "applicationID_example" // string | 
+	pushCredentialID := "pushCredentialID_example" // string | 
+	mFAPushCredentialRequest := openapiclient.MFAPushCredentialRequest{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // MFAPushCredentialRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateMFAPushCredential`: MFAPushCredentialResponse
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateMFAPushCredential`: MFAPushCredentialResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential`: %v\n", resp)
 }
 ```
 

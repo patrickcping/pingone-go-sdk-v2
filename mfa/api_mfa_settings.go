@@ -52,9 +52,9 @@ func (a *MFASettingsApiService) ReadMFASettings(ctx context.Context, environment
 //  @return MFASettings
 func (a *MFASettingsApiService) ReadMFASettingsExecute(r ApiReadMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *MFASettings
+		err error
+		response *http.Response
+		localVarReturnValue *MFASettings
 	)
 	
 	response, err = processResponse(
@@ -114,7 +114,7 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -246,9 +246,9 @@ func (a *MFASettingsApiService) ResetMFASettings(ctx context.Context, environmen
 //  @return MFASettings
 func (a *MFASettingsApiService) ResetMFASettingsExecute(r ApiResetMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *MFASettings
+		err error
+		response *http.Response
+		localVarReturnValue *MFASettings
 	)
 	
 	response, err = processResponse(
@@ -308,7 +308,7 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -446,9 +446,9 @@ func (a *MFASettingsApiService) UpdateMFASettings(ctx context.Context, environme
 //  @return MFASettings
 func (a *MFASettingsApiService) UpdateMFASettingsExecute(r ApiUpdateMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *MFASettings
+		err error
+		response *http.Response
+		localVarReturnValue *MFASettings
 	)
 	
 	response, err = processResponse(
@@ -510,7 +510,7 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
