@@ -125,13 +125,4 @@ model_p1_error.go
 model_p1_error_details_inner.go
 model_p1_error_details_inner_inner_error.go
 response.go
-test/api_api_server_deployment_test.go
-test/api_api_server_operations_test.go
-test/api_api_servers_test.go
-test/api_application_resource_permissions_test.go
-test/api_application_resources_test.go
-test/api_application_role_assignments_test.go
-test/api_application_role_permissions_test.go
-test/api_application_roles_test.go
-test/api_policy_decision_management_test.go
 utils.go

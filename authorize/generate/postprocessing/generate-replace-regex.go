@@ -57,6 +57,11 @@ var (
 		// EntityArrayEmbeddedPermissionsInner model
 		{
 			fileSelectPattern: "model_entity_array__embedded_permissions_inner.go",
+			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
+			repl:              `"encoding/json"`,
+		},
+		{
+			fileSelectPattern: "model_entity_array__embedded_permissions_inner.go",
 			pattern:           `(func \(dst \*EntityArrayEmbeddedPermissionsInner\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *EntityArrayEmbeddedPermissionsInner) UnmarshalJSON(data []byte) error {
 
