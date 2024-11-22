@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: PingOne Platform API - PingOne MFA
   description: The PingOne Platform API covering the PingOne MFA service
