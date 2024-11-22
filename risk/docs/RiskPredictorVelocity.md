@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **MaxDelay** | Pointer to [**RiskPredictorVelocityAllOfMaxDelay**](RiskPredictorVelocityAllOfMaxDelay.md) |  | [optional] 
 **Measure** | Pointer to [**EnumPredictorVelocityMeasure**](EnumPredictorVelocityMeasure.md) |  | [optional] 
 **Of** | Pointer to **string** |  | [optional] 
-**SlidingWindow** | Pointer to [**RiskPredictorVelocityAllOfSlidingWindow**](RiskPredictorVelocityAllOfSlidingWindow.md) |  | [optional] 
+**SlidingWindow** | Pointer to [**RiskPredictorVelocityAllOfEvery**](RiskPredictorVelocityAllOfEvery.md) |  | [optional] 
 **Use** | Pointer to [**RiskPredictorVelocityAllOfUse**](RiskPredictorVelocityAllOfUse.md) |  | [optional] 
 
 ## Methods
@@ -481,20 +481,20 @@ HasOf returns a boolean if a field has been set.
 
 ### GetSlidingWindow
 
-`func (o *RiskPredictorVelocity) GetSlidingWindow() RiskPredictorVelocityAllOfSlidingWindow`
+`func (o *RiskPredictorVelocity) GetSlidingWindow() RiskPredictorVelocityAllOfEvery`
 
 GetSlidingWindow returns the SlidingWindow field if non-nil, zero value otherwise.
 
 ### GetSlidingWindowOk
 
-`func (o *RiskPredictorVelocity) GetSlidingWindowOk() (*RiskPredictorVelocityAllOfSlidingWindow, bool)`
+`func (o *RiskPredictorVelocity) GetSlidingWindowOk() (*RiskPredictorVelocityAllOfEvery, bool)`
 
 GetSlidingWindowOk returns a tuple with the SlidingWindow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSlidingWindow
 
-`func (o *RiskPredictorVelocity) SetSlidingWindow(v RiskPredictorVelocityAllOfSlidingWindow)`
+`func (o *RiskPredictorVelocity) SetSlidingWindow(v RiskPredictorVelocityAllOfEvery)`
 
 SetSlidingWindow sets SlidingWindow field to given value.
 

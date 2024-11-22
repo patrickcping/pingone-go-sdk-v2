@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) | An enum indicating whether the number of distinct IPs for the user in the past hour is flagged as LOW, MEDIUM, or HIGH. | [optional] 
 **Reason** | Pointer to **string** | A string indicating the reason the user was flagged. For example \&quot;More than 13 IPs were accessed by John during the last 1 hour.\&quot; | [optional] 
 **Threshold** | Pointer to [**RiskEvaluationDetailsIpVelocityByUserThreshold**](RiskEvaluationDetailsIpVelocityByUserThreshold.md) |  | [optional] 
 **Velocity** | Pointer to [**RiskEvaluationDetailsIpVelocityByUserVelocity**](RiskEvaluationDetailsIpVelocityByUserVelocity.md) |  | [optional] 

@@ -17,13 +17,13 @@ Name | Type | Description | Notes
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
 **Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
-**Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
+**Compositions** | [**[]RiskPredictorCompositeAllOfCompositions**](RiskPredictorCompositeAllOfCompositions.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
 
 ## Methods
 
 ### NewRiskPredictorComposite
 
-`func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner, ) *RiskPredictorComposite`
+`func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositions, ) *RiskPredictorComposite`
 
 NewRiskPredictorComposite instantiates a new RiskPredictorComposite object
 This constructor will assign default values to properties that have it defined,
@@ -350,20 +350,20 @@ HasComposition returns a boolean if a field has been set.
 
 ### GetCompositions
 
-`func (o *RiskPredictorComposite) GetCompositions() []RiskPredictorCompositeAllOfCompositionsInner`
+`func (o *RiskPredictorComposite) GetCompositions() []RiskPredictorCompositeAllOfCompositions`
 
 GetCompositions returns the Compositions field if non-nil, zero value otherwise.
 
 ### GetCompositionsOk
 
-`func (o *RiskPredictorComposite) GetCompositionsOk() (*[]RiskPredictorCompositeAllOfCompositionsInner, bool)`
+`func (o *RiskPredictorComposite) GetCompositionsOk() (*[]RiskPredictorCompositeAllOfCompositions, bool)`
 
 GetCompositionsOk returns a tuple with the Compositions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompositions
 
-`func (o *RiskPredictorComposite) SetCompositions(v []RiskPredictorCompositeAllOfCompositionsInner)`
+`func (o *RiskPredictorComposite) SetCompositions(v []RiskPredictorCompositeAllOfCompositions)`
 
 SetCompositions sets Compositions field to given value.
 

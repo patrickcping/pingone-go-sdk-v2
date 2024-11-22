@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] 
-**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
+**Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] [readonly] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) | A string that specifies the risk evaluation result level. Options are HIGH, MEDIUM, and LOW. | [optional] [readonly] 
 **Value** | Pointer to **string** | A string that specifies any custom attribute the administrator defines. | [optional] [readonly] 
 
 ## Methods

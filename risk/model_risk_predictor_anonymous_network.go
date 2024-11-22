@@ -13,6 +13,8 @@ package risk
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskPredictorAnonymousNetwork type satisfies the MappedNullable interface at compile time
@@ -20,7 +22,7 @@ var _ MappedNullable = &RiskPredictorAnonymousNetwork{}
 
 // RiskPredictorAnonymousNetwork struct for RiskPredictorAnonymousNetwork
 type RiskPredictorAnonymousNetwork struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -44,6 +46,8 @@ type RiskPredictorAnonymousNetwork struct {
 	WhiteList []string `json:"whiteList,omitempty"`
 }
 
+type _RiskPredictorAnonymousNetwork RiskPredictorAnonymousNetwork
+
 // NewRiskPredictorAnonymousNetwork instantiates a new RiskPredictorAnonymousNetwork object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -64,20 +68,95 @@ func NewRiskPredictorAnonymousNetworkWithDefaults() *RiskPredictorAnonymousNetwo
 	return &this
 }
 
+func (o RiskPredictorAnonymousNetwork) hasHalLink(linkIndex string) bool {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (o RiskPredictorAnonymousNetwork) getHalLink(linkIndex string) LinksHATEOASValue {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return v
+		}
+	}
+
+	var ret LinksHATEOASValue
+	return ret
+}
+
+func (o RiskPredictorAnonymousNetwork) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return &v, true
+		}
+	}
+
+	return nil, false
+}
+
+func (o RiskPredictorAnonymousNetwork) IsPaginated() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT) || o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorAnonymousNetwork) HasPaginationSelf() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorAnonymousNetwork) GetPaginationSelfLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorAnonymousNetwork) GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorAnonymousNetwork) HasPaginationNext() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorAnonymousNetwork) GetPaginationNextLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorAnonymousNetwork) GetPaginationNextLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorAnonymousNetwork) HasPaginationPrevious() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorAnonymousNetwork) GetPaginationPreviousLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorAnonymousNetwork) GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *RiskPredictorAnonymousNetwork) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *RiskPredictorAnonymousNetwork) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -93,7 +172,7 @@ func (o *RiskPredictorAnonymousNetwork) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *RiskPredictorAnonymousNetwork) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -500,6 +579,45 @@ func (o RiskPredictorAnonymousNetwork) ToMap() (map[string]interface{}, error) {
 		toSerialize["whiteList"] = o.WhiteList
 	}
 	return toSerialize, nil
+}
+
+func (o *RiskPredictorAnonymousNetwork) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"compactName",
+		"type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskPredictorAnonymousNetwork := _RiskPredictorAnonymousNetwork{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskPredictorAnonymousNetwork)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskPredictorAnonymousNetwork(varRiskPredictorAnonymousNetwork)
+
+	return err
 }
 
 type NullableRiskPredictorAnonymousNetwork struct {

@@ -58,9 +58,9 @@ func (a *RiskPoliciesApiService) CreateRiskPolicySet(ctx context.Context, enviro
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) CreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskPolicySet
+		err error
+		response *http.Response
+		localVarReturnValue *RiskPolicySet
 	)
 	
 	response, err = processResponse(
@@ -122,7 +122,7 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -267,7 +267,7 @@ func (a *RiskPoliciesApiService) DeleteRiskPolicySet(ctx context.Context, enviro
 // Execute executes the request
 func (a *RiskPoliciesApiService) DeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -329,7 +329,7 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -455,9 +455,9 @@ func (a *RiskPoliciesApiService) ReadOneRiskPolicySet(ctx context.Context, envir
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) ReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskPolicySet
+		err error
+		response *http.Response
+		localVarReturnValue *RiskPolicySet
 	)
 	
 	response, err = processResponse(
@@ -518,7 +518,7 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -627,11 +627,11 @@ type ApiReadRiskPolicySetsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadRiskPolicySetsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadRiskPolicySetsRequest) Execute() PagedIterator[ReadRiskPolicySets200Response] {
 	return r.ApiService.ReadRiskPolicySetsExecute(r)
 }
 
-func (r ApiReadRiskPolicySetsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadRiskPolicySetsRequest) ExecuteInitialPage() (*ReadRiskPolicySets200Response, *http.Response, error) {
 	return r.ApiService.ReadRiskPolicySetsExecuteInitialPage(r)
 }
 
@@ -651,16 +651,18 @@ func (a *RiskPoliciesApiService) ReadRiskPolicySets(ctx context.Context, environ
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadRiskPolicySets200Response
+func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) PagedIterator[ReadRiskPolicySets200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecuteInitialPage(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadRiskPolicySets200Response
+func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecuteInitialPage(r ApiReadRiskPolicySetsRequest) (*ReadRiskPolicySets200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadRiskPolicySets200Response
 	)
 	
 	response, err = processResponse(
@@ -672,12 +674,12 @@ func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecuteInitialPage(r ApiReadR
 	return localVarReturnValue, response, err
 }
 
-func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
+func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*ReadRiskPolicySets200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadRiskPolicySets200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskPoliciesApiService.ReadRiskPolicySets")
@@ -720,7 +722,7 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -861,9 +863,9 @@ func (a *RiskPoliciesApiService) UpdateRiskPolicySet(ctx context.Context, enviro
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) UpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskPolicySet
+		err error
+		response *http.Response
+		localVarReturnValue *RiskPolicySet
 	)
 	
 	response, err = processResponse(
@@ -926,7 +928,7 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

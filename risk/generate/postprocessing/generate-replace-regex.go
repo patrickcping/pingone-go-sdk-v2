@@ -59,6 +59,11 @@ var (
 		// RiskPredictor model
 		{
 			fileSelectPattern: "model_risk_predictor.go",
+			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
+			repl: `"encoding/json"`,
+		},
+		{
+			fileSelectPattern: "model_risk_predictor.go",
 			pattern:           `(func \(dst \*RiskPredictor\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 
@@ -154,6 +159,11 @@ var (
 		// RiskPredictorCompositeCondition model
 		{
 			fileSelectPattern: "model_risk_predictor_composite_condition.go",
+			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
+			repl: `"encoding/json"`,
+		},
+		{
+			fileSelectPattern: "model_risk_predictor_composite_condition.go",
 			pattern:           `(func \(dst \*RiskPredictorCompositeCondition\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 
@@ -225,6 +235,11 @@ var (
 		},
 
 		// RiskPredictorCompositeConditionBase model
+		{
+			fileSelectPattern: "model_risk_predictor_composite_condition_base.go",
+			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
+			repl: `"encoding/json"`,
+		},
 		{
 			fileSelectPattern: "model_risk_predictor_composite_condition_base.go",
 			pattern:           `(func \(dst \*RiskPredictorCompositeConditionBase\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,

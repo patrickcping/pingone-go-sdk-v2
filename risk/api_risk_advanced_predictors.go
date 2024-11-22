@@ -58,9 +58,9 @@ func (a *RiskAdvancedPredictorsApiService) CreateRiskPredictor(ctx context.Conte
 //  @return RiskPredictor
 func (a *RiskAdvancedPredictorsApiService) CreateRiskPredictorExecute(r ApiCreateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskPredictor
+		err error
+		response *http.Response
+		localVarReturnValue *RiskPredictor
 	)
 	
 	response, err = processResponse(
@@ -122,7 +122,7 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -267,7 +267,7 @@ func (a *RiskAdvancedPredictorsApiService) DeleteRiskAdvancedPredictor(ctx conte
 // Execute executes the request
 func (a *RiskAdvancedPredictorsApiService) DeleteRiskAdvancedPredictorExecute(r ApiDeleteRiskAdvancedPredictorRequest) (*http.Response, error) {
 	var (
-		err      error
+		err error
 		response *http.Response
 	)
 	
@@ -329,7 +329,7 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -429,11 +429,11 @@ type ApiReadAllRiskPredictorsRequest struct {
 	environmentID string
 }
 
-func (r ApiReadAllRiskPredictorsRequest) Execute() EntityArrayPagedIterator {
+func (r ApiReadAllRiskPredictorsRequest) Execute() PagedIterator[ReadAllRiskPredictors200Response] {
 	return r.ApiService.ReadAllRiskPredictorsExecute(r)
 }
 
-func (r ApiReadAllRiskPredictorsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
+func (r ApiReadAllRiskPredictorsRequest) ExecuteInitialPage() (*ReadAllRiskPredictors200Response, *http.Response, error) {
 	return r.ApiService.ReadAllRiskPredictorsExecuteInitialPage(r)
 }
 
@@ -453,16 +453,18 @@ func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictors(ctx context.Con
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
+//  @return ReadAllRiskPredictors200Response
+func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) PagedIterator[ReadAllRiskPredictors200Response] {
+  return paginationIterator(r.ctx, a.client, r.ExecuteInitialPage)
 }
 
-func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecuteInitialPage(r ApiReadAllRiskPredictorsRequest) (*EntityArray, *http.Response, error) {
+// Execute executes the request (returning the initial page of the paged response only)
+//  @return ReadAllRiskPredictors200Response
+func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecuteInitialPage(r ApiReadAllRiskPredictorsRequest) (*ReadAllRiskPredictors200Response, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *EntityArray
+		err error
+		response *http.Response
+		localVarReturnValue *ReadAllRiskPredictors200Response
 	)
 	
 	response, err = processResponse(
@@ -474,12 +476,12 @@ func (a *RiskAdvancedPredictorsApiService) ReadAllRiskPredictorsExecuteInitialPa
 	return localVarReturnValue, response, err
 }
 
-func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) (*EntityArray, *http.Response, error) {
+func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(r ApiReadAllRiskPredictorsRequest) (*ReadAllRiskPredictors200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *ReadAllRiskPredictors200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskAdvancedPredictorsApiService.ReadAllRiskPredictors")
@@ -522,7 +524,7 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -657,9 +659,9 @@ func (a *RiskAdvancedPredictorsApiService) ReadOneRiskPredictor(ctx context.Cont
 //  @return RiskPredictor
 func (a *RiskAdvancedPredictorsApiService) ReadOneRiskPredictorExecute(r ApiReadOneRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskPredictor
+		err error
+		response *http.Response
+		localVarReturnValue *RiskPredictor
 	)
 	
 	response, err = processResponse(
@@ -720,7 +722,7 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -861,9 +863,9 @@ func (a *RiskAdvancedPredictorsApiService) UpdateRiskPredictor(ctx context.Conte
 //  @return RiskPredictor
 func (a *RiskAdvancedPredictorsApiService) UpdateRiskPredictorExecute(r ApiUpdateRiskPredictorRequest) (*RiskPredictor, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskPredictor
+		err error
+		response *http.Response
+		localVarReturnValue *RiskPredictor
 	)
 	
 	response, err = processResponse(
@@ -926,7 +928,7 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

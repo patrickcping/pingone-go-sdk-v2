@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   description: The PingOne Platform API covering the PingOne Risk service
   title: PingOne Platform API - PingOne Risk
@@ -50,57 +50,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readRiskPolicySets_200_response'
           description: Successful response
       summary: READ Risk Policy Sets
       tags:
       - Risk Policies
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createRiskPolicySet
       parameters:
@@ -118,55 +90,21 @@ paths:
               $ref: '#/components/schemas/RiskPolicySet'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -196,48 +134,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: 'DELETE Risk Policy Set '
@@ -262,48 +171,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -337,48 +217,19 @@ paths:
               $ref: '#/components/schemas/RiskPolicySet'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -406,55 +257,21 @@ paths:
               $ref: '#/components/schemas/RiskEvaluation'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -484,48 +301,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -560,48 +348,19 @@ paths:
               $ref: '#/components/schemas/RiskEvaluationEvent'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -624,57 +383,29 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/readAllRiskPredictors_200_response'
           description: Successful response
       summary: READ All Risk Predictors
       tags:
       - Risk Advanced Predictors
+      x-pingidentity-paginatedresponse: true
     post:
       operationId: createRiskPredictor
       parameters:
@@ -692,55 +423,21 @@ paths:
               $ref: '#/components/schemas/RiskPredictor'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/405'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "201":
           content:
             application/json:
@@ -770,48 +467,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "204":
           description: Successful response
       summary: DELETE Risk Advanced Predictor
@@ -836,48 +504,19 @@ paths:
         style: simple
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -911,48 +550,19 @@ paths:
               $ref: '#/components/schemas/RiskPredictor'
       responses:
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
+          $ref: '#/components/responses/400'
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/401'
         "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
+          $ref: '#/components/responses/403'
         "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
+          $ref: '#/components/responses/404'
         "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Conflict.
+          $ref: '#/components/responses/409'
         "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
+          $ref: '#/components/responses/429'
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
+          $ref: '#/components/responses/500'
         "200":
           content:
             application/json:
@@ -1017,230 +627,7 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
-      type: object
-    EntityArray:
-      example:
-        size: 7.061401241503109
-        _links:
-          key:
-            href: https://openapi-generator.tech
-        _embedded:
-          riskPolicySets:
-          - evaluatedPredictors:
-            - id: id
-            - id: id
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            default: true
-            environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-            riskPolicies:
-            - result:
-                level: null
-                type: null
-                value: value
-              createdAt: 2000-01-23T04:56:07.000+00:00
-              condition:
-                aggregatedWeights:
-                - weight: 0
-                  value: value
-                - weight: 0
-                  value: value
-                contains: contains
-                equals: null
-                aggregatedScores:
-                - score: 6
-                  value: value
-                - score: 6
-                  value: value
-                ipRange:
-                - ipRange
-                - ipRange
-                type: null
-                value: value
-                between:
-                  minScore: 146
-                  maxScore: 596
-              environment:
-                id: id
-              _links:
-                key:
-                  href: https://openapi-generator.tech
-              name: name
-              description: description
-              id: id
-              priority: 5
-              updatedAt: 2000-01-23T04:56:07.000+00:00
-            - result:
-                level: null
-                type: null
-                value: value
-              createdAt: 2000-01-23T04:56:07.000+00:00
-              condition:
-                aggregatedWeights:
-                - weight: 0
-                  value: value
-                - weight: 0
-                  value: value
-                contains: contains
-                equals: null
-                aggregatedScores:
-                - score: 6
-                  value: value
-                - score: 6
-                  value: value
-                ipRange:
-                - ipRange
-                - ipRange
-                type: null
-                value: value
-                between:
-                  minScore: 146
-                  maxScore: 596
-              environment:
-                id: id
-              _links:
-                key:
-                  href: https://openapi-generator.tech
-              name: name
-              description: description
-              id: id
-              priority: 5
-              updatedAt: 2000-01-23T04:56:07.000+00:00
-            triggers:
-            - type: null
-              policySet:
-                id: id
-              expiresAt: 2000-01-23T04:56:07.000+00:00
-            - type: null
-              policySet:
-                id: id
-              expiresAt: 2000-01-23T04:56:07.000+00:00
-            defaultResult:
-              level: null
-              type: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - evaluatedPredictors:
-            - id: id
-            - id: id
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            default: true
-            environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-            riskPolicies:
-            - result:
-                level: null
-                type: null
-                value: value
-              createdAt: 2000-01-23T04:56:07.000+00:00
-              condition:
-                aggregatedWeights:
-                - weight: 0
-                  value: value
-                - weight: 0
-                  value: value
-                contains: contains
-                equals: null
-                aggregatedScores:
-                - score: 6
-                  value: value
-                - score: 6
-                  value: value
-                ipRange:
-                - ipRange
-                - ipRange
-                type: null
-                value: value
-                between:
-                  minScore: 146
-                  maxScore: 596
-              environment:
-                id: id
-              _links:
-                key:
-                  href: https://openapi-generator.tech
-              name: name
-              description: description
-              id: id
-              priority: 5
-              updatedAt: 2000-01-23T04:56:07.000+00:00
-            - result:
-                level: null
-                type: null
-                value: value
-              createdAt: 2000-01-23T04:56:07.000+00:00
-              condition:
-                aggregatedWeights:
-                - weight: 0
-                  value: value
-                - weight: 0
-                  value: value
-                contains: contains
-                equals: null
-                aggregatedScores:
-                - score: 6
-                  value: value
-                - score: 6
-                  value: value
-                ipRange:
-                - ipRange
-                - ipRange
-                type: null
-                value: value
-                between:
-                  minScore: 146
-                  maxScore: 596
-              environment:
-                id: id
-              _links:
-                key:
-                  href: https://openapi-generator.tech
-              name: name
-              description: description
-              id: id
-              priority: 5
-              updatedAt: 2000-01-23T04:56:07.000+00:00
-            triggers:
-            - type: null
-              policySet:
-                id: id
-              expiresAt: 2000-01-23T04:56:07.000+00:00
-            - type: null
-              policySet:
-                id: id
-              expiresAt: 2000-01-23T04:56:07.000+00:00
-            defaultResult:
-              level: null
-              type: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          riskPredictors:
-          - null
-          - null
-        count: 2.3021358869347655
-      properties:
-        _links:
-          additionalProperties:
-            $ref: '#/components/schemas/LinksHATEOAS_value'
-          readOnly: true
-          type: object
-        _embedded:
-          $ref: '#/components/schemas/EntityArray__embedded'
-        count:
-          type: number
-        size:
-          type: number
-      type: object
+      x-pingidentity-paginatedresponse-links: true
     EnumCompletionStatus:
       description: "A string that specifies the state of the transaction. Options\
         \ are `FAILED`, `IN_PROGRESS`, and `SUCCESS`. If a value is not provided,\
@@ -1428,8 +815,40 @@ components:
           readOnly: true
           type: string
       readOnly: true
-      type: object
     P1Error:
+      example:
+        code: code
+        details:
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        - code: code
+          innerError:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            rangeMaximumValue: 6
+            referencedValues:
+            - referencedValues
+            - referencedValues
+            allowedPattern: allowedPattern
+            maximumValue: 1
+            rangeMinimumValue: 0
+          message: message
+          target: target
+        id: id
+        message: message
       properties:
         id:
           description: "A unique identifier that is stored in log files and always\
@@ -1453,12 +872,11 @@ components:
           items:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
-      type: object
     RiskEvaluation:
       example:
         result:
           level: null
-          type: null
+          type: VALUE
           value: value
         createdAt: createdAt
         environment:
@@ -1472,7 +890,7 @@ components:
         details:
           ipAddressReputation:
             score: 0
-            level: null
+            level: LOW
           country: country
           ipVelocityByUser:
             reason: reason
@@ -1480,7 +898,7 @@ components:
             threshold:
               high: 6
               medium: 1
-              source: null
+              source: MIN_NOT_REACHED
               calculatedAt: calculatedAt
               expiresAt: expiresAt
             velocity:
@@ -1571,24 +989,24 @@ components:
           targetResource:
             name: name
             id: id
-          completionStatus: null
-          sharingType: null
+          completionStatus: FAILED
+          sharingType: UNSPECIFIED
           user:
             name: name
             groups:
             - name: name
             - name: name
             id: id
-            type: null
+            type: EXTERNAL
           flow:
-            type: null
+            type: AUTHENTICATION
         updatedAt: updatedAt
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         createdAt:
           description: The time the resource was created (format ISO-8061).
           readOnly: true
@@ -1613,12 +1031,11 @@ components:
           type: string
       required:
       - event
-      type: object
     RiskEvaluationDetails:
       example:
         ipAddressReputation:
           score: 0
-          level: null
+          level: LOW
         country: country
         ipVelocityByUser:
           reason: reason
@@ -1626,7 +1043,7 @@ components:
           threshold:
             high: 6
             medium: 1
-            source: null
+            source: MIN_NOT_REACHED
             calculatedAt: calculatedAt
             expiresAt: expiresAt
           velocity:
@@ -1720,7 +1137,6 @@ components:
         userRiskBehavior:
           $ref: '#/components/schemas/RiskEvaluationDetails_userRiskBehavior'
       readOnly: true
-      type: object
     RiskEvaluationEvent:
       example:
         evaluatedFactors:
@@ -1774,17 +1190,17 @@ components:
         targetResource:
           name: name
           id: id
-        completionStatus: null
-        sharingType: null
+        completionStatus: FAILED
+        sharingType: UNSPECIFIED
         user:
           name: name
           groups:
           - name: name
           - name: name
           id: id
-          type: null
+          type: EXTERNAL
         flow:
-          type: null
+          type: AUTHENTICATION
       properties:
         browser:
           $ref: '#/components/schemas/RiskEvaluationEvent_browser'
@@ -1812,11 +1228,10 @@ components:
       required:
       - ip
       - user
-      type: object
     RiskEvaluationResult:
       example:
         level: null
-        type: null
+        type: VALUE
         value: value
       properties:
         type:
@@ -1828,35 +1243,34 @@ components:
             defines.
           readOnly: true
           type: string
-      type: object
     RiskPolicy:
       example:
         result:
-          level: null
+          level: LOW
           type: null
           value: value
         createdAt: 2000-01-23T04:56:07.000+00:00
         condition:
           aggregatedWeights:
-          - weight: 0
+          - weight: 5
             value: value
-          - weight: 0
+          - weight: 5
             value: value
           contains: contains
-          equals: null
+          equals: RiskPolicy_condition_equals
           aggregatedScores:
-          - score: 6
+          - score: 5
             value: value
-          - score: 6
+          - score: 5
             value: value
           ipRange:
           - ipRange
           - ipRange
-          type: null
+          type: AGGREGATED_WEIGHTS
           value: value
           between:
-            minScore: 146
-            maxScore: 596
+            minScore: 230
+            maxScore: 706
         environment:
           id: id
         _links:
@@ -1865,14 +1279,14 @@ components:
         name: name
         description: description
         id: id
-        priority: 5
+        priority: 9
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         condition:
           $ref: '#/components/schemas/RiskPolicy_condition'
         createdAt:
@@ -1917,7 +1331,6 @@ components:
       - condition
       - name
       - result
-      type: object
     RiskPolicySet:
       example:
         evaluatedPredictors:
@@ -1935,31 +1348,31 @@ components:
         id: id
         riskPolicies:
         - result:
-            level: null
+            level: LOW
             type: null
             value: value
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
-            - weight: 0
+            - weight: 5
               value: value
-            - weight: 0
+            - weight: 5
               value: value
             contains: contains
-            equals: null
+            equals: RiskPolicy_condition_equals
             aggregatedScores:
-            - score: 6
+            - score: 5
               value: value
-            - score: 6
+            - score: 5
               value: value
             ipRange:
             - ipRange
             - ipRange
-            type: null
+            type: AGGREGATED_WEIGHTS
             value: value
             between:
-              minScore: 146
-              maxScore: 596
+              minScore: 230
+              maxScore: 706
           environment:
             id: id
           _links:
@@ -1968,34 +1381,34 @@ components:
           name: name
           description: description
           id: id
-          priority: 5
+          priority: 9
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - result:
-            level: null
+            level: LOW
             type: null
             value: value
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
-            - weight: 0
+            - weight: 5
               value: value
-            - weight: 0
+            - weight: 5
               value: value
             contains: contains
-            equals: null
+            equals: RiskPolicy_condition_equals
             aggregatedScores:
-            - score: 6
+            - score: 5
               value: value
-            - score: 6
+            - score: 5
               value: value
             ipRange:
             - ipRange
             - ipRange
-            type: null
+            type: AGGREGATED_WEIGHTS
             value: value
             between:
-              minScore: 146
-              maxScore: 596
+              minScore: 230
+              maxScore: 706
           environment:
             id: id
           _links:
@@ -2004,27 +1417,27 @@ components:
           name: name
           description: description
           id: id
-          priority: 5
+          priority: 9
           updatedAt: 2000-01-23T04:56:07.000+00:00
         triggers:
-        - type: null
+        - type: POLICY_SET_STAGING
           policySet:
             id: id
           expiresAt: 2000-01-23T04:56:07.000+00:00
-        - type: null
+        - type: POLICY_SET_STAGING
           policySet:
             id: id
           expiresAt: 2000-01-23T04:56:07.000+00:00
         defaultResult:
-          level: null
-          type: null
+          level: LOW
+          type: VALUE
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         createdAt:
           description: The time the resource was created (format ISO-8061).
           format: date-time
@@ -2084,14 +1497,13 @@ components:
           type: array
       required:
       - name
-      type: object
     RiskPolicyResult:
       description: "A result object that specifies the result returned if the policy\
         \ is evaluated as true. If several policies are evaluated as true, the result\
         \ related to the highest priority policy is returned. for more information,\
         \ see the Result attribute data model in the Risk Evaluations topic."
       example:
-        level: null
+        level: LOW
         type: null
         value: value
       properties:
@@ -2103,7 +1515,6 @@ components:
           type: string
       required:
       - level
-      type: object
     RiskPredictor:
       oneOf:
       - $ref: '#/components/schemas/RiskPredictorAdversaryInTheMiddle'
@@ -2126,7 +1537,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
-          type: object
+          x-pingidentity-paginatedresponse-links: true
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -2178,7 +1589,6 @@ components:
       - compactName
       - name
       - type
-      type: object
     RiskPredictorAdversaryInTheMiddle:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2189,7 +1599,35 @@ components:
             items:
               type: string
             type: array
-        type: object
+      example:
+        licensed: true
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        domainWhiteList:
+        - domainWhiteList
+        - domainWhiteList
+        deletable: true
+        description: description
+        type: ADVERSARY_IN_THE_MIDDLE
+        compactName: compactName
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        default:
+          result:
+            level: LOW
+            type: VALUE
+          score: 6
+          weight: 0
+          evaluated: true
+        condition:
+          scores:
+          - name: name
+            value: value
+          - name: name
+            value: value
+        name: name
+        id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
     RiskPredictorAnonymousNetwork:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2201,7 +1639,6 @@ components:
               format: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
               type: string
             type: array
-        type: object
     RiskPredictorBotDetection:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2210,7 +1647,6 @@ components:
             description: Set the value of `includeRepeatedEventsWithoutSdk` to `true`
               to expand the range of bot activity that PingOne Protect can detect.
             type: boolean
-        type: object
     RiskPredictorComposite:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2222,11 +1658,10 @@ components:
               and the risk level that should be assigned if the conditions are met.
               The array can contain a maximum of three elements.
             items:
-              $ref: '#/components/schemas/RiskPredictorComposite_allOf_compositions_inner'
+              $ref: '#/components/schemas/RiskPredictorComposite_allOf_compositions'
             type: array
         required:
         - compositions
-        type: object
     RiskPredictorCompositeAnd:
       properties:
         and:
@@ -2237,7 +1672,6 @@ components:
           $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - and
-      type: object
     RiskPredictorCompositeConditionBase:
       oneOf:
       - $ref: '#/components/schemas/RiskPredictorCompositeNot'
@@ -2258,7 +1692,6 @@ components:
           $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - not
-      type: object
     RiskPredictorCompositeOr:
       properties:
         or:
@@ -2269,7 +1702,6 @@ components:
           $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - or
-      type: object
     RiskPredictorCustom:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2278,7 +1710,6 @@ components:
             $ref: '#/components/schemas/RiskPredictorCustom_allOf_map'
         required:
         - map
-        type: object
     RiskPredictorCustomItem:
       oneOf:
       - $ref: '#/components/schemas/RiskPredictorCustomItemIPRange'
@@ -2302,7 +1733,6 @@ components:
       required:
       - contains
       - ipRange
-      type: object
     RiskPredictorCustomItemBetween:
       description: "The mapping of risk levels for numerical values in a minimum,\
         \ maxiumum boundary."
@@ -2318,7 +1748,6 @@ components:
       required:
       - between
       - contains
-      type: object
     RiskPredictorCustomItemList:
       description: The mapping of risk levels for the list of all results.
       properties:
@@ -2337,7 +1766,6 @@ components:
       required:
       - contains
       - list
-      type: object
     RiskPredictorEmailReputation:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2352,7 +1780,6 @@ components:
               pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
               type: string
             type: array
-        type: object
     RiskPredictorIPReputation:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2364,7 +1791,6 @@ components:
               pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
               type: string
             type: array
-        type: object
     RiskPredictorDevice:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2392,7 +1818,6 @@ components:
             type: string
         required:
         - detect
-        type: object
     RiskPredictorTrafficAnomaly:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2403,7 +1828,6 @@ components:
             type: array
         required:
         - rules
-        type: object
     RiskPredictorUserLocationAnomaly:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2415,7 +1839,6 @@ components:
         required:
         - days
         - radius
-        type: object
     RiskPredictorUserRiskBehavior:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2424,7 +1847,6 @@ components:
             $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf_predictionModel'
         required:
         - predictionModel
-        type: object
     RiskPredictorVelocity:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2446,10 +1868,577 @@ components:
             format: "^\\${event\\.user\\.id}$|^\\${event\\.ip}$"
             type: string
           slidingWindow:
-            $ref: '#/components/schemas/RiskPredictorVelocity_allOf_slidingWindow'
+            $ref: '#/components/schemas/RiskPredictorVelocity_allOf_every'
           use:
             $ref: '#/components/schemas/RiskPredictorVelocity_allOf_use'
-        type: object
+    readRiskPolicySets_200_response__embedded:
+      example:
+        riskPolicySets:
+        - evaluatedPredictors:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default: true
+          environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+          riskPolicies:
+          - result:
+              level: LOW
+              type: null
+              value: value
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            condition:
+              aggregatedWeights:
+              - weight: 5
+                value: value
+              - weight: 5
+                value: value
+              contains: contains
+              equals: RiskPolicy_condition_equals
+              aggregatedScores:
+              - score: 5
+                value: value
+              - score: 5
+                value: value
+              ipRange:
+              - ipRange
+              - ipRange
+              type: AGGREGATED_WEIGHTS
+              value: value
+              between:
+                minScore: 230
+                maxScore: 706
+            environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+            priority: 9
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - result:
+              level: LOW
+              type: null
+              value: value
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            condition:
+              aggregatedWeights:
+              - weight: 5
+                value: value
+              - weight: 5
+                value: value
+              contains: contains
+              equals: RiskPolicy_condition_equals
+              aggregatedScores:
+              - score: 5
+                value: value
+              - score: 5
+                value: value
+              ipRange:
+              - ipRange
+              - ipRange
+              type: AGGREGATED_WEIGHTS
+              value: value
+              between:
+                minScore: 230
+                maxScore: 706
+            environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+            priority: 9
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: POLICY_SET_STAGING
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: POLICY_SET_STAGING
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          defaultResult:
+            level: LOW
+            type: VALUE
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - evaluatedPredictors:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default: true
+          environment:
+            id: id
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          name: name
+          description: description
+          id: id
+          riskPolicies:
+          - result:
+              level: LOW
+              type: null
+              value: value
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            condition:
+              aggregatedWeights:
+              - weight: 5
+                value: value
+              - weight: 5
+                value: value
+              contains: contains
+              equals: RiskPolicy_condition_equals
+              aggregatedScores:
+              - score: 5
+                value: value
+              - score: 5
+                value: value
+              ipRange:
+              - ipRange
+              - ipRange
+              type: AGGREGATED_WEIGHTS
+              value: value
+              between:
+                minScore: 230
+                maxScore: 706
+            environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+            priority: 9
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - result:
+              level: LOW
+              type: null
+              value: value
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            condition:
+              aggregatedWeights:
+              - weight: 5
+                value: value
+              - weight: 5
+                value: value
+              contains: contains
+              equals: RiskPolicy_condition_equals
+              aggregatedScores:
+              - score: 5
+                value: value
+              - score: 5
+                value: value
+              ipRange:
+              - ipRange
+              - ipRange
+              type: AGGREGATED_WEIGHTS
+              value: value
+              between:
+                minScore: 230
+                maxScore: 706
+            environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+            priority: 9
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: POLICY_SET_STAGING
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: POLICY_SET_STAGING
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          defaultResult:
+            level: LOW
+            type: VALUE
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        riskPolicySets:
+          items:
+            $ref: '#/components/schemas/RiskPolicySet'
+          type: array
+    readRiskPolicySets_200_response:
+      example:
+        size: 2.027123023002322
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          riskPolicySets:
+          - evaluatedPredictors:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+            riskPolicies:
+            - result:
+                level: LOW
+                type: null
+                value: value
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              condition:
+                aggregatedWeights:
+                - weight: 5
+                  value: value
+                - weight: 5
+                  value: value
+                contains: contains
+                equals: RiskPolicy_condition_equals
+                aggregatedScores:
+                - score: 5
+                  value: value
+                - score: 5
+                  value: value
+                ipRange:
+                - ipRange
+                - ipRange
+                type: AGGREGATED_WEIGHTS
+                value: value
+                between:
+                  minScore: 230
+                  maxScore: 706
+              environment:
+                id: id
+              _links:
+                key:
+                  href: https://openapi-generator.tech
+              name: name
+              description: description
+              id: id
+              priority: 9
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            - result:
+                level: LOW
+                type: null
+                value: value
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              condition:
+                aggregatedWeights:
+                - weight: 5
+                  value: value
+                - weight: 5
+                  value: value
+                contains: contains
+                equals: RiskPolicy_condition_equals
+                aggregatedScores:
+                - score: 5
+                  value: value
+                - score: 5
+                  value: value
+                ipRange:
+                - ipRange
+                - ipRange
+                type: AGGREGATED_WEIGHTS
+                value: value
+                between:
+                  minScore: 230
+                  maxScore: 706
+              environment:
+                id: id
+              _links:
+                key:
+                  href: https://openapi-generator.tech
+              name: name
+              description: description
+              id: id
+              priority: 9
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: POLICY_SET_STAGING
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: POLICY_SET_STAGING
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            defaultResult:
+              level: LOW
+              type: VALUE
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - evaluatedPredictors:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            environment:
+              id: id
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            name: name
+            description: description
+            id: id
+            riskPolicies:
+            - result:
+                level: LOW
+                type: null
+                value: value
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              condition:
+                aggregatedWeights:
+                - weight: 5
+                  value: value
+                - weight: 5
+                  value: value
+                contains: contains
+                equals: RiskPolicy_condition_equals
+                aggregatedScores:
+                - score: 5
+                  value: value
+                - score: 5
+                  value: value
+                ipRange:
+                - ipRange
+                - ipRange
+                type: AGGREGATED_WEIGHTS
+                value: value
+                between:
+                  minScore: 230
+                  maxScore: 706
+              environment:
+                id: id
+              _links:
+                key:
+                  href: https://openapi-generator.tech
+              name: name
+              description: description
+              id: id
+              priority: 9
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            - result:
+                level: LOW
+                type: null
+                value: value
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              condition:
+                aggregatedWeights:
+                - weight: 5
+                  value: value
+                - weight: 5
+                  value: value
+                contains: contains
+                equals: RiskPolicy_condition_equals
+                aggregatedScores:
+                - score: 5
+                  value: value
+                - score: 5
+                  value: value
+                ipRange:
+                - ipRange
+                - ipRange
+                type: AGGREGATED_WEIGHTS
+                value: value
+                between:
+                  minScore: 230
+                  maxScore: 706
+              environment:
+                id: id
+              _links:
+                key:
+                  href: https://openapi-generator.tech
+              name: name
+              description: description
+              id: id
+              priority: 9
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: POLICY_SET_STAGING
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: POLICY_SET_STAGING
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            defaultResult:
+              level: LOW
+              type: VALUE
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 3.616076749251911
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readRiskPolicySets_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
+    readAllRiskPredictors_200_response__embedded:
+      example:
+        riskPredictors:
+        - licensed: true
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          domainWhiteList:
+          - domainWhiteList
+          - domainWhiteList
+          deletable: true
+          description: description
+          type: ADVERSARY_IN_THE_MIDDLE
+          compactName: compactName
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default:
+            result:
+              level: LOW
+              type: VALUE
+            score: 6
+            weight: 0
+            evaluated: true
+          condition:
+            scores:
+            - name: name
+              value: value
+            - name: name
+              value: value
+          name: name
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - licensed: true
+          _links:
+            key:
+              href: https://openapi-generator.tech
+          domainWhiteList:
+          - domainWhiteList
+          - domainWhiteList
+          deletable: true
+          description: description
+          type: ADVERSARY_IN_THE_MIDDLE
+          compactName: compactName
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default:
+            result:
+              level: LOW
+              type: VALUE
+            score: 6
+            weight: 0
+            evaluated: true
+          condition:
+            scores:
+            - name: name
+              value: value
+            - name: name
+              value: value
+          name: name
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        riskPredictors:
+          items:
+            $ref: '#/components/schemas/RiskPredictor'
+          type: array
+    readAllRiskPredictors_200_response:
+      example:
+        size: 5.962133916683182
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        _embedded:
+          riskPredictors:
+          - licensed: true
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            domainWhiteList:
+            - domainWhiteList
+            - domainWhiteList
+            deletable: true
+            description: description
+            type: ADVERSARY_IN_THE_MIDDLE
+            compactName: compactName
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default:
+              result:
+                level: LOW
+                type: VALUE
+              score: 6
+              weight: 0
+              evaluated: true
+            condition:
+              scores:
+              - name: name
+                value: value
+              - name: name
+                value: value
+            name: name
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - licensed: true
+            _links:
+              key:
+                href: https://openapi-generator.tech
+            domainWhiteList:
+            - domainWhiteList
+            - domainWhiteList
+            deletable: true
+            description: description
+            type: ADVERSARY_IN_THE_MIDDLE
+            compactName: compactName
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default:
+              result:
+                level: LOW
+                type: VALUE
+              score: 6
+              weight: 0
+              evaluated: true
+            condition:
+              scores:
+              - name: name
+                value: value
+              - name: name
+                value: value
+            name: name
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 1.4658129805029452
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          x-pingidentity-paginatedresponse-links: true
+        _embedded:
+          $ref: '#/components/schemas/readAllRiskPredictors_200_response__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      x-pingidentity-paginatedresponse: true
     LinksHATEOAS_value:
       example:
         href: https://openapi-generator.tech
@@ -2460,224 +2449,20 @@ components:
           type: string
       required:
       - href
-      type: object
-    EntityArray__embedded:
-      example:
-        riskPolicySets:
-        - evaluatedPredictors:
-          - id: id
-          - id: id
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          default: true
-          environment:
-            id: id
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-          riskPolicies:
-          - result:
-              level: null
-              type: null
-              value: value
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            condition:
-              aggregatedWeights:
-              - weight: 0
-                value: value
-              - weight: 0
-                value: value
-              contains: contains
-              equals: null
-              aggregatedScores:
-              - score: 6
-                value: value
-              - score: 6
-                value: value
-              ipRange:
-              - ipRange
-              - ipRange
-              type: null
-              value: value
-              between:
-                minScore: 146
-                maxScore: 596
-            environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-            priority: 5
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - result:
-              level: null
-              type: null
-              value: value
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            condition:
-              aggregatedWeights:
-              - weight: 0
-                value: value
-              - weight: 0
-                value: value
-              contains: contains
-              equals: null
-              aggregatedScores:
-              - score: 6
-                value: value
-              - score: 6
-                value: value
-              ipRange:
-              - ipRange
-              - ipRange
-              type: null
-              value: value
-              between:
-                minScore: 146
-                maxScore: 596
-            environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-            priority: 5
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          triggers:
-          - type: null
-            policySet:
-              id: id
-            expiresAt: 2000-01-23T04:56:07.000+00:00
-          - type: null
-            policySet:
-              id: id
-            expiresAt: 2000-01-23T04:56:07.000+00:00
-          defaultResult:
-            level: null
-            type: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - evaluatedPredictors:
-          - id: id
-          - id: id
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          default: true
-          environment:
-            id: id
-          _links:
-            key:
-              href: https://openapi-generator.tech
-          name: name
-          description: description
-          id: id
-          riskPolicies:
-          - result:
-              level: null
-              type: null
-              value: value
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            condition:
-              aggregatedWeights:
-              - weight: 0
-                value: value
-              - weight: 0
-                value: value
-              contains: contains
-              equals: null
-              aggregatedScores:
-              - score: 6
-                value: value
-              - score: 6
-                value: value
-              ipRange:
-              - ipRange
-              - ipRange
-              type: null
-              value: value
-              between:
-                minScore: 146
-                maxScore: 596
-            environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-            priority: 5
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - result:
-              level: null
-              type: null
-              value: value
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            condition:
-              aggregatedWeights:
-              - weight: 0
-                value: value
-              - weight: 0
-                value: value
-              contains: contains
-              equals: null
-              aggregatedScores:
-              - score: 6
-                value: value
-              - score: 6
-                value: value
-              ipRange:
-              - ipRange
-              - ipRange
-              type: null
-              value: value
-              between:
-                minScore: 146
-                maxScore: 596
-            environment:
-              id: id
-            _links:
-              key:
-                href: https://openapi-generator.tech
-            name: name
-            description: description
-            id: id
-            priority: 5
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          triggers:
-          - type: null
-            policySet:
-              id: id
-            expiresAt: 2000-01-23T04:56:07.000+00:00
-          - type: null
-            policySet:
-              id: id
-            expiresAt: 2000-01-23T04:56:07.000+00:00
-          defaultResult:
-            level: null
-            type: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        riskPredictors:
-        - null
-        - null
-      properties:
-        riskPolicySets:
-          items:
-            $ref: '#/components/schemas/RiskPolicySet'
-          type: array
-        riskPredictors:
-          items:
-            $ref: '#/components/schemas/RiskPredictor'
-          type: array
-      type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).
+      example:
+        allowedValues:
+        - allowedValues
+        - allowedValues
+        rangeMaximumValue: 6
+        referencedValues:
+        - referencedValues
+        - referencedValues
+        allowedPattern: allowedPattern
+        maximumValue: 1
+        rangeMinimumValue: 0
       properties:
         rangeMinimumValue:
           description: Errors that failed due to range violation. This attribute represents
@@ -2701,8 +2486,22 @@ components:
           items:
             type: string
           type: array
-      type: object
     P1Error_details_inner:
+      example:
+        code: code
+        innerError:
+          allowedValues:
+          - allowedValues
+          - allowedValues
+          rangeMaximumValue: 6
+          referencedValues:
+          - referencedValues
+          - referencedValues
+          allowedPattern: allowedPattern
+          maximumValue: 1
+          rangeMinimumValue: 0
+        message: message
+        target: target
       properties:
         code:
           description: A general fault code which the client must handle to provide
@@ -2720,7 +2519,6 @@ components:
           type: string
         innerError:
           $ref: '#/components/schemas/P1Error_details_inner_innerError'
-      type: object
     RiskEvaluation_riskPolicySet:
       example:
         name: name
@@ -2740,11 +2538,10 @@ components:
             \ is used. If the risk policy set name and ID are not specified, the environment's\
             \ default risk policy set is used."
           type: string
-      type: object
     RiskEvaluationDetails_ipAddressReputation:
       example:
         score: 0
-        level: null
+        level: LOW
       properties:
         level:
           $ref: '#/components/schemas/EnumRiskLevel'
@@ -2755,13 +2552,12 @@ components:
             \ a high-risk IP address. If the IP address reputation score is not available\
             \ for the specific IP address, NULL is returned."
           type: integer
-      type: object
     RiskEvaluationDetails_ipVelocityByUser_threshold:
       description: The information about the threshold used.
       example:
         high: 6
         medium: 1
-        source: null
+        source: MIN_NOT_REACHED
         calculatedAt: calculatedAt
         expiresAt: expiresAt
       properties:
@@ -2784,7 +2580,6 @@ components:
           description: A date-time indicating when the threshold will be recalculated.
             The recalculation will happen before this time.
           type: string
-      type: object
     RiskEvaluationDetails_ipVelocityByUser_velocity:
       description: Integer values for the measures used to calculate velocity.
       example:
@@ -2798,7 +2593,6 @@ components:
         during:
           description: The interval (in seconds) during which the velocity is calculated.
           type: integer
-      type: object
     RiskEvaluationDetails_ipVelocityByUser:
       example:
         reason: reason
@@ -2806,7 +2600,7 @@ components:
         threshold:
           high: 6
           medium: 1
-          source: null
+          source: MIN_NOT_REACHED
           calculatedAt: calculatedAt
           expiresAt: expiresAt
         velocity:
@@ -2823,7 +2617,6 @@ components:
           $ref: '#/components/schemas/RiskEvaluationDetails_ipVelocityByUser_threshold'
         velocity:
           $ref: '#/components/schemas/RiskEvaluationDetails_ipVelocityByUser_velocity'
-      type: object
     RiskEvaluationDetails_userVelocityByIp_threshold:
       description: The information about the calculated threshold used.
       example:
@@ -2852,7 +2645,6 @@ components:
           description: A date-time indicating when the threshold will be recalculated.
             The recalculation will happen before this time.
           type: string
-      type: object
     RiskEvaluationDetails_userVelocityByIp_velocity:
       description: Integer values for the measures used to calculate velocity.
       example:
@@ -2866,7 +2658,6 @@ components:
         during:
           description: The interval (in seconds) during which the velocity is calculated.
           type: integer
-      type: object
     RiskEvaluationDetails_userVelocityByIp:
       example:
         reason: reason
@@ -2891,7 +2682,6 @@ components:
           $ref: '#/components/schemas/RiskEvaluationDetails_userVelocityByIp_threshold'
         velocity:
           $ref: '#/components/schemas/RiskEvaluationDetails_userVelocityByIp_velocity'
-      type: object
     RiskEvaluationDetails_previousSuccessfulTransaction:
       example:
         country: country
@@ -2928,7 +2718,6 @@ components:
           description: A date that specifies the timestamp of the transaction. Information
             is available twenty-four hours after the last successful transaction.
           type: string
-      type: object
     RiskEvaluationDetails_userBasedRiskBehavior:
       example:
         reason: reason
@@ -2944,7 +2733,6 @@ components:
             \ to indicate how much it deviates from normal user behavior, and its\
             \ effect in calculating the overall user behavior risk score."
           type: string
-      type: object
     RiskEvaluationDetails_userRiskBehavior:
       example:
         reason: reason
@@ -2961,7 +2749,6 @@ components:
             \ from normal user behavior, and its effect in calculating the overall\
             \ user behavior risk score."
           type: string
-      type: object
     RiskEvaluationEvent_browser:
       description: "An object that specifies the browser fingerprint attributes. Browser\
         \ data can be retrieved using browser fingerprint JS. For more information,\
@@ -3076,7 +2863,6 @@ components:
           type: array
         audio:
           type: string
-      type: object
     RiskEvaluationEvent_evaluatedFactors:
       example:
         type: type
@@ -3087,14 +2873,12 @@ components:
         type:
           description: A string that specifies the transaction type.
           type: string
-      type: object
     RiskEvaluationEvent_flow:
       example:
-        type: null
+        type: AUTHENTICATION
       properties:
         type:
           $ref: '#/components/schemas/EnumFlowType'
-      type: object
     RiskEvaluationEvent_session:
       example:
         id: id
@@ -3105,7 +2889,6 @@ components:
           type: string
       required:
       - id
-      type: object
     RiskEvaluationEvent_targetResource:
       example:
         name: name
@@ -3117,7 +2900,6 @@ components:
         name:
           description: A string that specifies the name of the target application.
           type: string
-      type: object
     RiskEvaluationEvent_user_groups_inner:
       example:
         name: name
@@ -3126,7 +2908,6 @@ components:
           description: A string that specifies the name of the group (maximum size
             1024 characters).
           type: string
-      type: object
     RiskEvaluationEvent_user:
       example:
         name: name
@@ -3134,7 +2915,7 @@ components:
         - name: name
         - name: name
         id: id
-        type: null
+        type: EXTERNAL
       properties:
         id:
           description: A string that specifies the ID of the user associated with
@@ -3154,14 +2935,13 @@ components:
       required:
       - id
       - type
-      type: object
     RiskPolicy_condition_equals:
       oneOf:
       - type: string
       - type: boolean
     RiskPolicy_condition_aggregatedWeights_inner:
       example:
-        weight: 0
+        weight: 5
         value: value
       properties:
         value:
@@ -3179,10 +2959,9 @@ components:
       required:
       - value
       - weight
-      type: object
     RiskPolicy_condition_aggregatedScores_inner:
       example:
-        score: 6
+        score: 5
         value: value
       properties:
         value:
@@ -3200,11 +2979,10 @@ components:
       required:
       - score
       - value
-      type: object
     RiskPolicy_condition_between:
       example:
-        minScore: 146
-        maxScore: 596
+        minScore: 230
+        maxScore: 706
       properties:
         minScore:
           description: Required for policies of type `AGGREGATED_SCORES` or `AGGREGATED_WEIGHTS`.
@@ -3223,31 +3001,30 @@ components:
       required:
       - maxScore
       - minScore
-      type: object
     RiskPolicy_condition:
       description: Contains the condition logic that determines when a policy is evaluated
         to true and when it is evaluated to false.
       example:
         aggregatedWeights:
-        - weight: 0
+        - weight: 5
           value: value
-        - weight: 0
+        - weight: 5
           value: value
         contains: contains
-        equals: null
+        equals: RiskPolicy_condition_equals
         aggregatedScores:
-        - score: 6
+        - score: 5
           value: value
-        - score: 6
+        - score: 5
           value: value
         ipRange:
         - ipRange
         - ipRange
-        type: null
+        type: AGGREGATED_WEIGHTS
         value: value
         between:
-          minScore: 146
-          maxScore: 596
+          minScore: 230
+          maxScore: 706
       properties:
         type:
           $ref: '#/components/schemas/EnumRiskPolicyConditionType'
@@ -3279,14 +3056,13 @@ components:
           type: array
         between:
           $ref: '#/components/schemas/RiskPolicy_condition_between'
-      type: object
     RiskPolicySet_defaultResult:
       description: "A result object that specifies the default result returned if\
         \ none of the conditions in the policy set are evaluated to true. At this\
         \ time, the defaultResultLevel value must be LOW."
       example:
-        level: null
-        type: null
+        level: LOW
+        type: VALUE
       properties:
         level:
           $ref: '#/components/schemas/EnumRiskPolicyResultLevel'
@@ -3294,7 +3070,6 @@ components:
           $ref: '#/components/schemas/EnumResultType'
       required:
       - level
-      type: object
     RiskPolicySet_evaluatedPredictors_inner:
       example:
         id: id
@@ -3304,10 +3079,9 @@ components:
           type: string
       required:
       - id
-      type: object
     RiskPolicySet_triggers_inner:
       example:
-        type: null
+        type: POLICY_SET_STAGING
         policySet:
           id: id
         expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -3324,7 +3098,6 @@ components:
       - expiresAt
       - policySet
       - type
-      type: object
     RiskPredictorCommon_default_result:
       description: "This specifies the result assigned to the predictor if the predictor\
         \ could not be calculated during the risk evaluation. If this field is not\
@@ -3332,6 +3105,9 @@ components:
         \ the following options are: If the predictor is used in an override, the\
         \ override is skipped. In the weighted policy, the predictor will have a weight\
         \ of 0."
+      example:
+        level: LOW
+        type: VALUE
       properties:
         level:
           $ref: '#/components/schemas/EnumRiskLevel'
@@ -3339,9 +3115,15 @@ components:
           $ref: '#/components/schemas/EnumResultType'
       required:
       - type
-      type: object
     RiskPredictorCommon_default:
       description: Contains the default values used for a new risk predictor.
+      example:
+        result:
+          level: LOW
+          type: VALUE
+        score: 6
+        weight: 0
+        evaluated: true
       properties:
         weight:
           description: An integer type. This specifies the weight assigned to the
@@ -3355,22 +3137,28 @@ components:
           $ref: '#/components/schemas/RiskPredictorCommon_default_result'
       required:
       - weight
-      type: object
     RiskPredictorCommon_condition_scores_inner:
+      example:
+        name: name
+        value: value
       properties:
         name:
           type: string
         value:
           type: string
-      type: object
     RiskPredictorCommon_condition:
+      example:
+        scores:
+        - name: name
+          value: value
+        - name: name
+          value: value
       properties:
         scores:
           items:
             $ref: '#/components/schemas/RiskPredictorCommon_condition_scores_inner'
           type: array
       readOnly: true
-      type: object
     RiskPredictorComposite_allOf_composition:
       deprecated: true
       properties:
@@ -3381,9 +3169,7 @@ components:
       required:
       - condition
       - level
-      type: object
-      example: null
-    RiskPredictorComposite_allOf_compositions_inner:
+    RiskPredictorComposite_allOf_compositions:
       properties:
         condition:
           $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
@@ -3407,7 +3193,6 @@ components:
       - contains
       - list
       - type
-      type: object
     RiskPredictorCompositeCondition_oneOf_1_equals:
       oneOf:
       - type: string
@@ -3433,7 +3218,6 @@ components:
           $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - value
-      type: object
     RiskPredictorCustom_allOf_map:
       description: An object that defines the mapping of risk levels for the list
         of all results.
@@ -3444,8 +3228,6 @@ components:
           $ref: '#/components/schemas/RiskPredictorCustomItem'
         low:
           $ref: '#/components/schemas/RiskPredictorCustomItem'
-      type: object
-      example: null
     RiskPredictorCustomItemBetween_between:
       description: Minimum and maximum boundaries
       properties:
@@ -3458,7 +3240,6 @@ components:
       required:
       - maxScore
       - minScore
-      type: object
     RiskPredictorTrafficAnomaly_allOf_interval:
       description: Object that contains the fields used to define the timeframe to
         consider. The timeframe can be between 1 hour and 14 days.
@@ -3472,8 +3253,6 @@ components:
       required:
       - quantity
       - unit
-      type: object
-      example: null
     RiskPredictorTrafficAnomaly_allOf_threshold:
       description: Object that contains the fields used to define the risk thresholds.
       properties:
@@ -3490,8 +3269,6 @@ components:
       required:
       - high
       - medium
-      type: object
-      example: null
     RiskPredictorTrafficAnomaly_allOf_rules:
       properties:
         enabled:
@@ -3508,8 +3285,6 @@ components:
       - interval
       - threshold
       - type
-      type: object
-      example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:
       properties:
         distance:
@@ -3523,16 +3298,12 @@ components:
       required:
       - distance
       - unit
-      type: object
-      example: null
     RiskPredictorUserRiskBehavior_allOf_predictionModel:
       properties:
         name:
           $ref: '#/components/schemas/EnumUserRiskBehaviorRiskModel'
       required:
       - name
-      type: object
-      example: null
     RiskPredictorVelocity_allOf_every:
       properties:
         unit:
@@ -3541,8 +3312,6 @@ components:
           type: integer
         minSample:
           type: integer
-      type: object
-      example: null
     RiskPredictorVelocity_allOf_fallback:
       properties:
         strategy:
@@ -3553,26 +3322,12 @@ components:
         medium:
           format: float
           type: number
-      type: object
-      example: null
     RiskPredictorVelocity_allOf_maxDelay:
       properties:
         unit:
           $ref: '#/components/schemas/EnumPredictorUnit'
         quantity:
           type: integer
-      type: object
-      example: null
-    RiskPredictorVelocity_allOf_slidingWindow:
-      properties:
-        minSample:
-          type: integer
-        quantity:
-          type: integer
-        unit:
-          $ref: '#/components/schemas/EnumPredictorUnit'
-      type: object
-      example: null
     RiskPredictorVelocity_allOf_use:
       properties:
         high:
@@ -3583,8 +3338,6 @@ components:
           type: number
         type:
           $ref: '#/components/schemas/EnumPredictorVelocityUseType'
-      type: object
-      example: null
   securitySchemes:
     bearer:
       bearerFormat: JWT

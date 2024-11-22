@@ -19,6 +19,7 @@ var _ MappedNullable = &RiskEvaluationDetailsUserRiskBehavior{}
 
 // RiskEvaluationDetailsUserRiskBehavior struct for RiskEvaluationDetailsUserRiskBehavior
 type RiskEvaluationDetailsUserRiskBehavior struct {
+	// A string that specifies the risk score calculated for the user behavior within the organization associated with the accessing device, and for the current authentication attempt. Options are LOW, MEDIUM, and HIGH. This information is available only if customers have agreed to data consent and the intelligence.allowDataConsent property in the PingOne license is set to true.
 	Level *EnumRiskLevel `json:"level,omitempty"`
 	// A string that describes the reason (or reasons) provided for the user behavior risk score classification within the organization (for example, the operating system or browser type used by the device, and country in which the accessing device is located). Each reason is classified as Unusual or Very Unusual, to indicate how much it deviates from normal user behavior, and its effect in calculating the overall user behavior risk score.
 	Reason *string `json:"reason,omitempty"`

@@ -12,6 +12,8 @@ package risk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskEvaluation type satisfies the MappedNullable interface at compile time
@@ -19,19 +21,24 @@ var _ MappedNullable = &RiskEvaluation{}
 
 // RiskEvaluation struct for RiskEvaluation
 type RiskEvaluation struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *string `json:"createdAt,omitempty"`
+	// A details object that provides additional information about the risk evaluation.
 	Details *RiskEvaluationDetails `json:"details,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// An object that specifies the attributes to identify the event. This is a required property. For more information about event attributes, see the Event Data Model table.
 	Event RiskEvaluationEvent `json:"event"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	RiskPolicySet *RiskEvaluationRiskPolicySet `json:"riskPolicySet,omitempty"`
+	// A result object that specifies the result that corresponds to the risk policy that evaluates as true. If there are several risk policies that evaluate as true, the result that corresponds to the highest priority risk policy is returned. If no risk policy evaluates as true, the result is the defaultResult of the policy set.
 	Result *RiskEvaluationResult `json:"result,omitempty"`
 	// The time the resource was last updated (format ISO-8061).
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
+
+type _RiskEvaluation RiskEvaluation
 
 // NewRiskEvaluation instantiates a new RiskEvaluation object
 // This constructor will assign default values to properties that have it defined,
@@ -51,20 +58,95 @@ func NewRiskEvaluationWithDefaults() *RiskEvaluation {
 	return &this
 }
 
+func (o RiskEvaluation) hasHalLink(linkIndex string) bool {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (o RiskEvaluation) getHalLink(linkIndex string) LinksHATEOASValue {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return v
+		}
+	}
+
+	var ret LinksHATEOASValue
+	return ret
+}
+
+func (o RiskEvaluation) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return &v, true
+		}
+	}
+
+	return nil, false
+}
+
+func (o RiskEvaluation) IsPaginated() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT) || o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskEvaluation) HasPaginationSelf() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskEvaluation) GetPaginationSelfLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskEvaluation) GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskEvaluation) HasPaginationNext() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskEvaluation) GetPaginationNextLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskEvaluation) GetPaginationNextLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskEvaluation) HasPaginationPrevious() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskEvaluation) GetPaginationPreviousLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskEvaluation) GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *RiskEvaluation) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluation) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *RiskEvaluation) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -80,7 +162,7 @@ func (o *RiskEvaluation) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *RiskEvaluation) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -367,6 +449,43 @@ func (o RiskEvaluation) ToMap() (map[string]interface{}, error) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	return toSerialize, nil
+}
+
+func (o *RiskEvaluation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"event",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskEvaluation := _RiskEvaluation{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskEvaluation)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskEvaluation(varRiskEvaluation)
+
+	return err
 }
 
 type NullableRiskEvaluation struct {

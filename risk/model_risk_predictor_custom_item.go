@@ -12,6 +12,7 @@ package risk
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -55,7 +56,11 @@ func (dst *RiskPredictorCustomItem) UnmarshalJSON(data []byte) error {
 		if string(jsonRiskPredictorCustomItemBetween) == "{}" { // empty struct
 			dst.RiskPredictorCustomItemBetween = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.RiskPredictorCustomItemBetween); err != nil {
+				dst.RiskPredictorCustomItemBetween = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.RiskPredictorCustomItemBetween = nil
@@ -68,7 +73,11 @@ func (dst *RiskPredictorCustomItem) UnmarshalJSON(data []byte) error {
 		if string(jsonRiskPredictorCustomItemIPRange) == "{}" { // empty struct
 			dst.RiskPredictorCustomItemIPRange = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.RiskPredictorCustomItemIPRange); err != nil {
+				dst.RiskPredictorCustomItemIPRange = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.RiskPredictorCustomItemIPRange = nil
@@ -81,7 +90,11 @@ func (dst *RiskPredictorCustomItem) UnmarshalJSON(data []byte) error {
 		if string(jsonRiskPredictorCustomItemList) == "{}" { // empty struct
 			dst.RiskPredictorCustomItemList = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.RiskPredictorCustomItemList); err != nil {
+				dst.RiskPredictorCustomItemList = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.RiskPredictorCustomItemList = nil

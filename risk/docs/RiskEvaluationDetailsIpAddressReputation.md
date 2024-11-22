@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) | A string that specifies the risk level of the evaluated IP address. Options are LOW, MEDIUM, and HIGH. If the score is less than 55, the level is LOW; if the score is greater than 77, the level is HIGH; if the score is between 55 and 77, the level is MEDIUM. Note that these guidelines could change based on data analytics and product consideration. If the ipAddressReputation.score is unknown, NULL is returned. | [optional] 
 **Score** | Pointer to **int32** | An integer that represents the calculated score of the IP address involved in the transaction. Scores range between 0 and 100. A score of 0 indicates a non-risky IP address; a score of 100 indicates a high-risk IP address. If the IP address reputation score is not available for the specific IP address, NULL is returned. | [optional] 
 
 ## Methods

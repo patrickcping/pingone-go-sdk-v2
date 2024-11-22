@@ -3,9 +3,8 @@ api/openapi.yaml
 api_risk_advanced_predictors.go
 api_risk_evaluations.go
 api_risk_policies.go
+client.go
 configuration.go
-docs/EntityArray.md
-docs/EntityArrayEmbedded.md
 docs/EnumCompletionStatus.md
 docs/EnumDistanceUnit.md
 docs/EnumEventSharingType.md
@@ -32,6 +31,10 @@ docs/ObjectEnvironment.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
 docs/P1ErrorDetailsInnerInnerError.md
+docs/ReadAllRiskPredictors200Response.md
+docs/ReadAllRiskPredictors200ResponseEmbedded.md
+docs/ReadRiskPolicySets200Response.md
+docs/ReadRiskPolicySets200ResponseEmbedded.md
 docs/RiskAdvancedPredictorsApi.md
 docs/RiskEvaluation.md
 docs/RiskEvaluationDetails.md
@@ -79,7 +82,7 @@ docs/RiskPredictorCommonDefault.md
 docs/RiskPredictorCommonDefaultResult.md
 docs/RiskPredictorComposite.md
 docs/RiskPredictorCompositeAllOfComposition.md
-docs/RiskPredictorCompositeAllOfCompositionsInner.md
+docs/RiskPredictorCompositeAllOfCompositions.md
 docs/RiskPredictorCompositeAnd.md
 docs/RiskPredictorCompositeCondition.md
 docs/RiskPredictorCompositeConditionBase.md
@@ -111,12 +114,9 @@ docs/RiskPredictorVelocity.md
 docs/RiskPredictorVelocityAllOfEvery.md
 docs/RiskPredictorVelocityAllOfFallback.md
 docs/RiskPredictorVelocityAllOfMaxDelay.md
-docs/RiskPredictorVelocityAllOfSlidingWindow.md
 docs/RiskPredictorVelocityAllOfUse.md
 go.mod
 go.sum
-model_entity_array.go
-model_entity_array__embedded.go
 model_enum_completion_status.go
 model_enum_distance_unit.go
 model_enum_event_sharing_type.go
@@ -143,6 +143,10 @@ model_object_environment.go
 model_p1_error.go
 model_p1_error_details_inner.go
 model_p1_error_details_inner_inner_error.go
+model_read_all_risk_predictors_200_response.go
+model_read_all_risk_predictors_200_response__embedded.go
+model_read_risk_policy_sets_200_response.go
+model_read_risk_policy_sets_200_response__embedded.go
 model_risk_evaluation.go
 model_risk_evaluation_details.go
 model_risk_evaluation_details_ip_address_reputation.go
@@ -187,7 +191,7 @@ model_risk_predictor_common_default.go
 model_risk_predictor_common_default_result.go
 model_risk_predictor_composite.go
 model_risk_predictor_composite_all_of_composition.go
-model_risk_predictor_composite_all_of_compositions_inner.go
+model_risk_predictor_composite_all_of_compositions.go
 model_risk_predictor_composite_and.go
 model_risk_predictor_composite_condition.go
 model_risk_predictor_composite_condition_base.go
@@ -219,7 +223,6 @@ model_risk_predictor_velocity.go
 model_risk_predictor_velocity_all_of_every.go
 model_risk_predictor_velocity_all_of_fallback.go
 model_risk_predictor_velocity_all_of_max_delay.go
-model_risk_predictor_velocity_all_of_sliding_window.go
 model_risk_predictor_velocity_all_of_use.go
 response.go
 utils.go

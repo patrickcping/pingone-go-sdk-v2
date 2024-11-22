@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | The time the resource was created (format ISO-8061). | [optional] [readonly] 
-**Details** | Pointer to [**RiskEvaluationDetails**](RiskEvaluationDetails.md) |  | [optional] 
+**Details** | Pointer to [**RiskEvaluationDetails**](RiskEvaluationDetails.md) | A details object that provides additional information about the risk evaluation. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Event** | [**RiskEvaluationEvent**](RiskEvaluationEvent.md) |  | 
+**Event** | [**RiskEvaluationEvent**](RiskEvaluationEvent.md) | An object that specifies the attributes to identify the event. This is a required property. For more information about event attributes, see the Event Data Model table. | 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **RiskPolicySet** | Pointer to [**RiskEvaluationRiskPolicySet**](RiskEvaluationRiskPolicySet.md) |  | [optional] 
-**Result** | Pointer to [**RiskEvaluationResult**](RiskEvaluationResult.md) |  | [optional] 
+**Result** | Pointer to [**RiskEvaluationResult**](RiskEvaluationResult.md) | A result object that specifies the result that corresponds to the risk policy that evaluates as true. If there are several risk policies that evaluate as true, the result that corresponds to the highest priority risk policy is returned. If no risk policy evaluates as true, the result is the defaultResult of the policy set. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated (format ISO-8061). | [optional] [readonly] 
 
 ## Methods

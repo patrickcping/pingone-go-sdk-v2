@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: PingOne Platform API - PingOne Risk
   description: The PingOne Platform API covering the PingOne Risk service
@@ -38,6 +38,7 @@ components:
       description: OAuth bearer token (see documentation)
   schemas:
     LinksHATEOAS:
+      x-pingidentity-paginatedresponse-links: true
       type: object
       readOnly: true
       additionalProperties:
@@ -49,26 +50,6 @@ components:
             description: The HREF of the link.
         required:
           - href
-    EntityArray:
-      type: object
-      properties:
-        '_links':
-          $ref: '#/components/schemas/LinksHATEOAS'
-        '_embedded':
-          type: object
-          properties:
-            riskPolicySets:
-              type: array
-              items:
-                $ref: '#/components/schemas/RiskPolicySet'
-            riskPredictors:
-              type: array
-              items:
-                $ref: '#/components/schemas/RiskPredictor'
-        count:
-          type: number
-        size:
-          type: number
     EnumCompletionStatus:
       type: string
       enum: [FAILED, IN_PROGRESS, SUCCESS]
@@ -1435,6 +1416,7 @@ paths:
         - Risk Policies
       summary: READ Risk Policy Sets
       operationId: readRiskPolicySets
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1461,7 +1443,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                type: object
+                x-pingidentity-paginatedresponse: true
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      riskPolicySets:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RiskPolicySet'
+                  count:
+                    type: number
+                  size:
+                    type: number
   /environments/{environmentID}/riskPolicySets/{riskPolicySetID}:
     get:
       tags:
@@ -1900,6 +1897,7 @@ paths:
         - Risk Advanced Predictors
       summary: READ All Risk Predictors
       operationId: readAllRiskPredictors
+      x-pingidentity-paginatedresponse: true
       parameters:
         - name: environmentID
           in: path
@@ -1926,7 +1924,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                type: object
+                x-pingidentity-paginatedresponse: true
+                properties:
+                  '_links':
+                    $ref: '#/components/schemas/LinksHATEOAS'
+                  '_embedded':
+                    type: object
+                    properties:
+                      riskPredictors:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RiskPredictor'
+                  count:
+                    type: number
+                  size:
+                    type: number
   /environments/{environmentID}/riskPredictors/{riskPredictorID}:
     get:
       tags:

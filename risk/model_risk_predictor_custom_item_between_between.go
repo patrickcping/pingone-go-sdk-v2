@@ -12,6 +12,8 @@ package risk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskPredictorCustomItemBetweenBetween type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type RiskPredictorCustomItemBetweenBetween struct {
 	MinScore float32 `json:"minScore"`
 	MaxScore float32 `json:"maxScore"`
 }
+
+type _RiskPredictorCustomItemBetweenBetween RiskPredictorCustomItemBetweenBetween
 
 // NewRiskPredictorCustomItemBetweenBetween instantiates a new RiskPredictorCustomItemBetweenBetween object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +107,44 @@ func (o RiskPredictorCustomItemBetweenBetween) ToMap() (map[string]interface{}, 
 	toSerialize["minScore"] = o.MinScore
 	toSerialize["maxScore"] = o.MaxScore
 	return toSerialize, nil
+}
+
+func (o *RiskPredictorCustomItemBetweenBetween) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"minScore",
+		"maxScore",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskPredictorCustomItemBetweenBetween := _RiskPredictorCustomItemBetweenBetween{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskPredictorCustomItemBetweenBetween)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskPredictorCustomItemBetweenBetween(varRiskPredictorCustomItemBetweenBetween)
+
+	return err
 }
 
 type NullableRiskPredictorCustomItemBetweenBetween struct {

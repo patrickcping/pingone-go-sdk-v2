@@ -12,6 +12,8 @@ package risk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskPolicyConditionAggregatedScoresInner type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type RiskPolicyConditionAggregatedScoresInner struct {
 	// The score you want to assign to the predictor when it is determined that there is a high risk for the predictor. Value should be between 0 and 100. If it is determined that there is medium risk, the predictor will automatically be assigned a score equal to half of the value you specified for high risk.
 	Score int32 `json:"score"`
 }
+
+type _RiskPolicyConditionAggregatedScoresInner RiskPolicyConditionAggregatedScoresInner
 
 // NewRiskPolicyConditionAggregatedScoresInner instantiates a new RiskPolicyConditionAggregatedScoresInner object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +109,44 @@ func (o RiskPolicyConditionAggregatedScoresInner) ToMap() (map[string]interface{
 	toSerialize["value"] = o.Value
 	toSerialize["score"] = o.Score
 	return toSerialize, nil
+}
+
+func (o *RiskPolicyConditionAggregatedScoresInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"value",
+		"score",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskPolicyConditionAggregatedScoresInner := _RiskPolicyConditionAggregatedScoresInner{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskPolicyConditionAggregatedScoresInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskPolicyConditionAggregatedScoresInner(varRiskPolicyConditionAggregatedScoresInner)
+
+	return err
 }
 
 type NullableRiskPolicyConditionAggregatedScoresInner struct {

@@ -24,25 +24,25 @@ CREATE Risk Predictor
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPredictor := openapiclient.RiskPredictor{RiskPredictorAdversaryInTheMiddle: openapiclient.NewRiskPredictorAdversaryInTheMiddle("Name_example", "CompactName_example", openapiclient.EnumPredictorType("ADVERSARY_IN_THE_MIDDLE"))} // RiskPredictor |  (optional)
+	environmentID := "environmentID_example" // string | 
+	riskPredictor := openapiclient.RiskPredictor{RiskPredictorAdversaryInTheMiddle: openapiclient.NewRiskPredictorAdversaryInTheMiddle("Name_example", "CompactName_example", openapiclient.EnumPredictorType("ADVERSARY_IN_THE_MIDDLE"))} // RiskPredictor |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskAdvancedPredictorsApi.CreateRiskPredictor(context.Background(), environmentID).RiskPredictor(riskPredictor).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.CreateRiskPredictor``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateRiskPredictor`: RiskPredictor
-    fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.CreateRiskPredictor`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskAdvancedPredictorsApi.CreateRiskPredictor(context.Background(), environmentID).RiskPredictor(riskPredictor).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.CreateRiskPredictor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateRiskPredictor`: RiskPredictor
+	fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.CreateRiskPredictor`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ DELETE Risk Advanced Predictor
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPredictorID := "riskPredictorID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	riskPredictorID := "riskPredictorID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.RiskAdvancedPredictorsApi.DeleteRiskAdvancedPredictor(context.Background(), environmentID, riskPredictorID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.DeleteRiskAdvancedPredictor``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.RiskAdvancedPredictorsApi.DeleteRiskAdvancedPredictor(context.Background(), environmentID, riskPredictorID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.DeleteRiskAdvancedPredictor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -157,7 +157,7 @@ READ All Risk Predictors
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadAllRiskPredictors(ctx, environmentID).Execute()
+> PagedIterator[ReadAllRiskPredictors200Response] ReadAllRiskPredictors(ctx, environmentID).Execute()
 
 #### Example
 
@@ -165,36 +165,34 @@ READ All Risk Predictors
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllRiskPredictors(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.RiskAdvancedPredictorsApi.ReadAllRiskPredictors(context.Background(), environmentID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllRiskPredictors``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.ReadAllRiskPredictors``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadAllRiskPredictors`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllRiskPredictors`: %v\n", pageCursor.EntityArray)
+		// response from `ReadAllRiskPredictors` page iteration: ReadAllRiskPredictors200Response
+		fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.ReadAllRiskPredictors` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadAllRiskPredictors(ctx, environmentID).ExecuteInitialPage()
+> ReadAllRiskPredictors200Response ReadAllRiskPredictors(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -202,24 +200,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskAdvancedPredictorsApi.ReadAllRiskPredictors(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.ReadAllRiskPredictors``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadAllRiskPredictors`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.ReadAllRiskPredictors`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskAdvancedPredictorsApi.ReadAllRiskPredictors(context.Background(), environmentID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.ReadAllRiskPredictors``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAllRiskPredictors`: ReadAllRiskPredictors200Response
+	fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.ReadAllRiskPredictors`: %v\n", resp)
 }
 ```
 
@@ -242,7 +240,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadAllRiskPredictors200Response**](ReadAllRiskPredictors200Response.md)]
+
+PagedIterator[ReadAllRiskPredictors200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadAllRiskPredictors200Response**](ReadAllRiskPredictors200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadAllRiskPredictors200Response**](ReadAllRiskPredictors200Response.md)
 
 ### Authorization
 
@@ -270,25 +272,25 @@ READ One Risk Predictor
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPredictorID := "riskPredictorID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	riskPredictorID := "riskPredictorID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskAdvancedPredictorsApi.ReadOneRiskPredictor(context.Background(), environmentID, riskPredictorID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.ReadOneRiskPredictor``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneRiskPredictor`: RiskPredictor
-    fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.ReadOneRiskPredictor`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskAdvancedPredictorsApi.ReadOneRiskPredictor(context.Background(), environmentID, riskPredictorID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.ReadOneRiskPredictor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneRiskPredictor`: RiskPredictor
+	fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.ReadOneRiskPredictor`: %v\n", resp)
 }
 ```
 
@@ -341,26 +343,26 @@ UPDATE Risk Predictor
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPredictorID := "riskPredictorID_example" // string | 
-    riskPredictor := openapiclient.RiskPredictor{RiskPredictorAdversaryInTheMiddle: openapiclient.NewRiskPredictorAdversaryInTheMiddle("Name_example", "CompactName_example", openapiclient.EnumPredictorType("ADVERSARY_IN_THE_MIDDLE"))} // RiskPredictor |  (optional)
+	environmentID := "environmentID_example" // string | 
+	riskPredictorID := "riskPredictorID_example" // string | 
+	riskPredictor := openapiclient.RiskPredictor{RiskPredictorAdversaryInTheMiddle: openapiclient.NewRiskPredictorAdversaryInTheMiddle("Name_example", "CompactName_example", openapiclient.EnumPredictorType("ADVERSARY_IN_THE_MIDDLE"))} // RiskPredictor |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskAdvancedPredictorsApi.UpdateRiskPredictor(context.Background(), environmentID, riskPredictorID).RiskPredictor(riskPredictor).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.UpdateRiskPredictor``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateRiskPredictor`: RiskPredictor
-    fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.UpdateRiskPredictor`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskAdvancedPredictorsApi.UpdateRiskPredictor(context.Background(), environmentID, riskPredictorID).RiskPredictor(riskPredictor).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskAdvancedPredictorsApi.UpdateRiskPredictor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateRiskPredictor`: RiskPredictor
+	fmt.Fprintf(os.Stdout, "Response from `RiskAdvancedPredictorsApi.UpdateRiskPredictor`: %v\n", resp)
 }
 ```
 

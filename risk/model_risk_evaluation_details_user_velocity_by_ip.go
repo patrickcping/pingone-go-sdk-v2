@@ -19,6 +19,7 @@ var _ MappedNullable = &RiskEvaluationDetailsUserVelocityByIp{}
 
 // RiskEvaluationDetailsUserVelocityByIp struct for RiskEvaluationDetailsUserVelocityByIp
 type RiskEvaluationDetailsUserVelocityByIp struct {
+	// An enum indicating whether the calculated number of users per IP is LOW, MEDIUM, or HIGH.
 	Level *EnumRiskLevel `json:"level,omitempty"`
 	// A string indicating the reason the user was flagged. For example \"More than 250 users accessed IP address 1.1.1.1 during the last 1 hour.\"
 	Reason *string `json:"reason,omitempty"`

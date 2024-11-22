@@ -12,6 +12,7 @@ package risk
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *RiskPredictorCompositeConditionOneOf1Equals) UnmarshalJSON(data []byt
 		if string(jsonInt32) == "{}" { // empty struct
 			dst.Int32 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Int32); err != nil {
+				dst.Int32 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Int32 = nil
@@ -60,7 +65,11 @@ func (dst *RiskPredictorCompositeConditionOneOf1Equals) UnmarshalJSON(data []byt
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

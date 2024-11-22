@@ -12,6 +12,8 @@ package risk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskEvaluationEventSession type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type RiskEvaluationEventSession struct {
 	// A string that specifies a unique session ID associated with the event.
 	Id string `json:"id"`
 }
+
+type _RiskEvaluationEventSession RiskEvaluationEventSession
 
 // NewRiskEvaluationEventSession instantiates a new RiskEvaluationEventSession object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o RiskEvaluationEventSession) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *RiskEvaluationEventSession) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskEvaluationEventSession := _RiskEvaluationEventSession{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskEvaluationEventSession)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskEvaluationEventSession(varRiskEvaluationEventSession)
+
+	return err
 }
 
 type NullableRiskEvaluationEventSession struct {

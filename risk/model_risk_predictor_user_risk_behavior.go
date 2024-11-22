@@ -13,6 +13,8 @@ package risk
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskPredictorUserRiskBehavior type satisfies the MappedNullable interface at compile time
@@ -20,7 +22,7 @@ var _ MappedNullable = &RiskPredictorUserRiskBehavior{}
 
 // RiskPredictorUserRiskBehavior struct for RiskPredictorUserRiskBehavior
 type RiskPredictorUserRiskBehavior struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -43,6 +45,8 @@ type RiskPredictorUserRiskBehavior struct {
 	PredictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel `json:"predictionModel"`
 }
 
+type _RiskPredictorUserRiskBehavior RiskPredictorUserRiskBehavior
+
 // NewRiskPredictorUserRiskBehavior instantiates a new RiskPredictorUserRiskBehavior object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -64,20 +68,95 @@ func NewRiskPredictorUserRiskBehaviorWithDefaults() *RiskPredictorUserRiskBehavi
 	return &this
 }
 
+func (o RiskPredictorUserRiskBehavior) hasHalLink(linkIndex string) bool {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (o RiskPredictorUserRiskBehavior) getHalLink(linkIndex string) LinksHATEOASValue {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return v
+		}
+	}
+
+	var ret LinksHATEOASValue
+	return ret
+}
+
+func (o RiskPredictorUserRiskBehavior) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return &v, true
+		}
+	}
+
+	return nil, false
+}
+
+func (o RiskPredictorUserRiskBehavior) IsPaginated() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT) || o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorUserRiskBehavior) HasPaginationSelf() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorUserRiskBehavior) GetPaginationSelfLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorUserRiskBehavior) GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorUserRiskBehavior) HasPaginationNext() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorUserRiskBehavior) GetPaginationNextLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorUserRiskBehavior) GetPaginationNextLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorUserRiskBehavior) HasPaginationPrevious() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorUserRiskBehavior) GetPaginationPreviousLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorUserRiskBehavior) GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *RiskPredictorUserRiskBehavior) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUserRiskBehavior) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -93,7 +172,7 @@ func (o *RiskPredictorUserRiskBehavior) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *RiskPredictorUserRiskBehavior) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -490,6 +569,46 @@ func (o RiskPredictorUserRiskBehavior) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["predictionModel"] = o.PredictionModel
 	return toSerialize, nil
+}
+
+func (o *RiskPredictorUserRiskBehavior) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"compactName",
+		"type",
+		"predictionModel",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskPredictorUserRiskBehavior := _RiskPredictorUserRiskBehavior{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskPredictorUserRiskBehavior)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskPredictorUserRiskBehavior(varRiskPredictorUserRiskBehavior)
+
+	return err
 }
 
 type NullableRiskPredictorUserRiskBehavior struct {

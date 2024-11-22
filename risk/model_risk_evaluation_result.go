@@ -20,6 +20,7 @@ var _ MappedNullable = &RiskEvaluationResult{}
 // RiskEvaluationResult struct for RiskEvaluationResult
 type RiskEvaluationResult struct {
 	Type *EnumResultType `json:"type,omitempty"`
+	// A string that specifies the risk evaluation result level. Options are HIGH, MEDIUM, and LOW.
 	Level *EnumRiskLevel `json:"level,omitempty"`
 	// A string that specifies any custom attribute the administrator defines.
 	Value *string `json:"value,omitempty"`

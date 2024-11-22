@@ -24,25 +24,25 @@ CREATE Risk Policy Set
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
+	environmentID := "environmentID_example" // string | 
+	riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskPoliciesApi.CreateRiskPolicySet(context.Background(), environmentID).RiskPolicySet(riskPolicySet).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.CreateRiskPolicySet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateRiskPolicySet`: RiskPolicySet
-    fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.CreateRiskPolicySet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskPoliciesApi.CreateRiskPolicySet(context.Background(), environmentID).RiskPolicySet(riskPolicySet).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.CreateRiskPolicySet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateRiskPolicySet`: RiskPolicySet
+	fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.CreateRiskPolicySet`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ DELETE Risk Policy Set
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPolicySetID := "riskPolicySetID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	riskPolicySetID := "riskPolicySetID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.RiskPoliciesApi.DeleteRiskPolicySet(context.Background(), environmentID, riskPolicySetID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.DeleteRiskPolicySet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.RiskPoliciesApi.DeleteRiskPolicySet(context.Background(), environmentID, riskPolicySetID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.DeleteRiskPolicySet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -163,25 +163,25 @@ READ One Risk Policy Set
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPolicySetID := "riskPolicySetID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	riskPolicySetID := "riskPolicySetID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskPoliciesApi.ReadOneRiskPolicySet(context.Background(), environmentID, riskPolicySetID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.ReadOneRiskPolicySet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneRiskPolicySet`: RiskPolicySet
-    fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.ReadOneRiskPolicySet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskPoliciesApi.ReadOneRiskPolicySet(context.Background(), environmentID, riskPolicySetID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.ReadOneRiskPolicySet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneRiskPolicySet`: RiskPolicySet
+	fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.ReadOneRiskPolicySet`: %v\n", resp)
 }
 ```
 
@@ -228,7 +228,7 @@ READ Risk Policy Sets
 
 ### Paged Response (Recommended)
 
-> EntityArrayPagedIterator ReadRiskPolicySets(ctx, environmentID).Execute()
+> PagedIterator[ReadRiskPolicySets200Response] ReadRiskPolicySets(ctx, environmentID).Execute()
 
 #### Example
 
@@ -236,36 +236,34 @@ READ Risk Policy Sets
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-	// ... other parameters
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadRiskPolicySets(context.Background(), environmentID, /* ... other parameters */).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	pagedIterator := apiClient.RiskPoliciesApi.ReadRiskPolicySets(context.Background(), environmentID).Execute()
+
 	for pageCursor, err := range pagedIterator {
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadRiskPolicySets``: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.ReadRiskPolicySets``: %v\n", err)
 			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
 		}
 
-		// response from `ReadRiskPolicySets`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadRiskPolicySets`: %v\n", pageCursor.EntityArray)
+		// response from `ReadRiskPolicySets` page iteration: ReadRiskPolicySets200Response
+		fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.ReadRiskPolicySets` page iteration: %v\n", pageCursor.Data)
 	}
 }
 ```
 
 ### Initial Page Response
 
-> EntityArray ReadRiskPolicySets(ctx, environmentID).ExecuteInitialPage()
+> ReadRiskPolicySets200Response ReadRiskPolicySets(ctx, environmentID).ExecuteInitialPage()
 
 #### Example
 
@@ -273,24 +271,24 @@ func main() {
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
+	environmentID := "environmentID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskPoliciesApi.ReadRiskPolicySets(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.ReadRiskPolicySets``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadRiskPolicySets`: EntityArrayPagedIterator
-    fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.ReadRiskPolicySets`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskPoliciesApi.ReadRiskPolicySets(context.Background(), environmentID).ExecuteInitialPage()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.ReadRiskPolicySets``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadRiskPolicySets`: ReadRiskPolicySets200Response
+	fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.ReadRiskPolicySets`: %v\n", resp)
 }
 ```
 
@@ -313,7 +311,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
+Page Iterator: PagedIterator[[**ReadRiskPolicySets200Response**](ReadRiskPolicySets200Response.md)]
+
+PagedIterator[ReadRiskPolicySets200Response] is a struct alias for iter.Seq2[[PagedCursor](PagedCursor.md)[[**ReadRiskPolicySets200Response**](ReadRiskPolicySets200Response.md)], error] using the standard `iter` package in go `1.23`.
+
+Page Data: [**ReadRiskPolicySets200Response**](ReadRiskPolicySets200Response.md)
 
 ### Authorization
 
@@ -341,26 +343,26 @@ UPDATE Risk Policy Set
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskPolicySetID := "riskPolicySetID_example" // string | 
-    riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
+	environmentID := "environmentID_example" // string | 
+	riskPolicySetID := "riskPolicySetID_example" // string | 
+	riskPolicySet := *openapiclient.NewRiskPolicySet("Name_example") // RiskPolicySet |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskPoliciesApi.UpdateRiskPolicySet(context.Background(), environmentID, riskPolicySetID).RiskPolicySet(riskPolicySet).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.UpdateRiskPolicySet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateRiskPolicySet`: RiskPolicySet
-    fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.UpdateRiskPolicySet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskPoliciesApi.UpdateRiskPolicySet(context.Background(), environmentID, riskPolicySetID).RiskPolicySet(riskPolicySet).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskPoliciesApi.UpdateRiskPolicySet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateRiskPolicySet`: RiskPolicySet
+	fmt.Fprintf(os.Stdout, "Response from `RiskPoliciesApi.UpdateRiskPolicySet`: %v\n", resp)
 }
 ```
 

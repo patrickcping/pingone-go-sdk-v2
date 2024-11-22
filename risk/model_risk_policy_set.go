@@ -13,6 +13,8 @@ package risk
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskPolicySet type satisfies the MappedNullable interface at compile time
@@ -20,7 +22,7 @@ var _ MappedNullable = &RiskPolicySet{}
 
 // RiskPolicySet struct for RiskPolicySet
 type RiskPolicySet struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether this risk policy set is the environment's default risk policy set, which is used whenever an explicit policySet ID is not specified in the risk policy evaluation request. If this property is not specified, the value defaults to false, and this risk policy set is not regarded as the default risk policy set for the environment. When this property is set to true (in PUT or POST requests), the default property of all other risk policy sets in the environment is set to false.
@@ -43,6 +45,8 @@ type RiskPolicySet struct {
 	Triggers []RiskPolicySetTriggersInner `json:"triggers,omitempty"`
 }
 
+type _RiskPolicySet RiskPolicySet
+
 // NewRiskPolicySet instantiates a new RiskPolicySet object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -61,20 +65,95 @@ func NewRiskPolicySetWithDefaults() *RiskPolicySet {
 	return &this
 }
 
+func (o RiskPolicySet) hasHalLink(linkIndex string) bool {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (o RiskPolicySet) getHalLink(linkIndex string) LinksHATEOASValue {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return v
+		}
+	}
+
+	var ret LinksHATEOASValue
+	return ret
+}
+
+func (o RiskPolicySet) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return &v, true
+		}
+	}
+
+	return nil, false
+}
+
+func (o RiskPolicySet) IsPaginated() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT) || o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPolicySet) HasPaginationSelf() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPolicySet) GetPaginationSelfLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPolicySet) GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPolicySet) HasPaginationNext() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPolicySet) GetPaginationNextLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPolicySet) GetPaginationNextLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPolicySet) HasPaginationPrevious() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPolicySet) GetPaginationPreviousLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPolicySet) GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *RiskPolicySet) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySet) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *RiskPolicySet) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -90,7 +169,7 @@ func (o *RiskPolicySet) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *RiskPolicySet) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -482,6 +561,43 @@ func (o RiskPolicySet) ToMap() (map[string]interface{}, error) {
 		toSerialize["triggers"] = o.Triggers
 	}
 	return toSerialize, nil
+}
+
+func (o *RiskPolicySet) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskPolicySet := _RiskPolicySet{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskPolicySet)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskPolicySet(varRiskPolicySet)
+
+	return err
 }
 
 type NullableRiskPolicySet struct {

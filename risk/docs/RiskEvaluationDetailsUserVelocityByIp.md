@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) | An enum indicating whether the calculated number of users per IP is LOW, MEDIUM, or HIGH. | [optional] 
 **Reason** | Pointer to **string** | A string indicating the reason the user was flagged. For example \&quot;More than 250 users accessed IP address 1.1.1.1 during the last 1 hour.\&quot; | [optional] 
 **Threshold** | Pointer to [**RiskEvaluationDetailsUserVelocityByIpThreshold**](RiskEvaluationDetailsUserVelocityByIpThreshold.md) |  | [optional] 
 **Velocity** | Pointer to [**RiskEvaluationDetailsUserVelocityByIpVelocity**](RiskEvaluationDetailsUserVelocityByIpVelocity.md) |  | [optional] 

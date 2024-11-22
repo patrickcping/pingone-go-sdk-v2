@@ -58,9 +58,9 @@ func (a *RiskEvaluationsApiService) CreateRiskEvaluation(ctx context.Context, en
 //  @return RiskEvaluation
 func (a *RiskEvaluationsApiService) CreateRiskEvaluationExecute(r ApiCreateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskEvaluation
+		err error
+		response *http.Response
+		localVarReturnValue *RiskEvaluation
 	)
 	
 	response, err = processResponse(
@@ -122,7 +122,7 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -268,9 +268,9 @@ func (a *RiskEvaluationsApiService) ReadOneRiskEvaluation(ctx context.Context, e
 //  @return RiskEvaluation
 func (a *RiskEvaluationsApiService) ReadOneRiskEvaluationExecute(r ApiReadOneRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskEvaluation
+		err error
+		response *http.Response
+		localVarReturnValue *RiskEvaluation
 	)
 	
 	response, err = processResponse(
@@ -331,7 +331,7 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -472,9 +472,9 @@ func (a *RiskEvaluationsApiService) UpdateRiskEvaluation(ctx context.Context, en
 //  @return RiskEvaluation
 func (a *RiskEvaluationsApiService) UpdateRiskEvaluationExecute(r ApiUpdateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *RiskEvaluation
+		err error
+		response *http.Response
+		localVarReturnValue *RiskEvaluation
 	)
 	
 	response, err = processResponse(
@@ -537,7 +537,7 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

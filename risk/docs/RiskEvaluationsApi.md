@@ -22,25 +22,25 @@ CREATE Risk Evaluation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskEvaluation := *openapiclient.NewRiskEvaluation(*openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", openapiclient.EnumUserType("EXTERNAL")))) // RiskEvaluation |  (optional)
+	environmentID := "environmentID_example" // string | 
+	riskEvaluation := *openapiclient.NewRiskEvaluation(*openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", openapiclient.EnumUserType("EXTERNAL")))) // RiskEvaluation |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskEvaluationsApi.CreateRiskEvaluation(context.Background(), environmentID).RiskEvaluation(riskEvaluation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskEvaluationsApi.CreateRiskEvaluation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateRiskEvaluation`: RiskEvaluation
-    fmt.Fprintf(os.Stdout, "Response from `RiskEvaluationsApi.CreateRiskEvaluation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskEvaluationsApi.CreateRiskEvaluation(context.Background(), environmentID).RiskEvaluation(riskEvaluation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskEvaluationsApi.CreateRiskEvaluation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateRiskEvaluation`: RiskEvaluation
+	fmt.Fprintf(os.Stdout, "Response from `RiskEvaluationsApi.CreateRiskEvaluation`: %v\n", resp)
 }
 ```
 
@@ -92,25 +92,25 @@ READ One Risk Evaluation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskEvaluationID := "riskEvaluationID_example" // string | 
+	environmentID := "environmentID_example" // string | 
+	riskEvaluationID := "riskEvaluationID_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskEvaluationsApi.ReadOneRiskEvaluation(context.Background(), environmentID, riskEvaluationID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskEvaluationsApi.ReadOneRiskEvaluation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadOneRiskEvaluation`: RiskEvaluation
-    fmt.Fprintf(os.Stdout, "Response from `RiskEvaluationsApi.ReadOneRiskEvaluation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskEvaluationsApi.ReadOneRiskEvaluation(context.Background(), environmentID, riskEvaluationID).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskEvaluationsApi.ReadOneRiskEvaluation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadOneRiskEvaluation`: RiskEvaluation
+	fmt.Fprintf(os.Stdout, "Response from `RiskEvaluationsApi.ReadOneRiskEvaluation`: %v\n", resp)
 }
 ```
 
@@ -163,26 +163,26 @@ UPDATE Risk Evaluation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
 func main() {
-    environmentID := "environmentID_example" // string | 
-    riskEvaluationID := "riskEvaluationID_example" // string | 
-    riskEvaluationEvent := *openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", openapiclient.EnumUserType("EXTERNAL"))) // RiskEvaluationEvent |  (optional)
+	environmentID := "environmentID_example" // string | 
+	riskEvaluationID := "riskEvaluationID_example" // string | 
+	riskEvaluationEvent := *openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", openapiclient.EnumUserType("EXTERNAL"))) // RiskEvaluationEvent |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RiskEvaluationsApi.UpdateRiskEvaluation(context.Background(), environmentID, riskEvaluationID).RiskEvaluationEvent(riskEvaluationEvent).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RiskEvaluationsApi.UpdateRiskEvaluation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateRiskEvaluation`: RiskEvaluation
-    fmt.Fprintf(os.Stdout, "Response from `RiskEvaluationsApi.UpdateRiskEvaluation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RiskEvaluationsApi.UpdateRiskEvaluation(context.Background(), environmentID, riskEvaluationID).RiskEvaluationEvent(riskEvaluationEvent).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RiskEvaluationsApi.UpdateRiskEvaluation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateRiskEvaluation`: RiskEvaluation
+	fmt.Fprintf(os.Stdout, "Response from `RiskEvaluationsApi.UpdateRiskEvaluation`: %v\n", resp)
 }
 ```
 

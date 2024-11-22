@@ -12,6 +12,8 @@ package risk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskPolicyResult type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type RiskPolicyResult struct {
 	Type *EnumResultType `json:"type,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
+
+type _RiskPolicyResult RiskPolicyResult
 
 // NewRiskPolicyResult instantiates a new RiskPolicyResult object
 // This constructor will assign default values to properties that have it defined,
@@ -148,6 +152,43 @@ func (o RiskPolicyResult) ToMap() (map[string]interface{}, error) {
 		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
+}
+
+func (o *RiskPolicyResult) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"level",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskPolicyResult := _RiskPolicyResult{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskPolicyResult)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskPolicyResult(varRiskPolicyResult)
+
+	return err
 }
 
 type NullableRiskPolicyResult struct {

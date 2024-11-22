@@ -1,4 +1,4 @@
-# RiskPredictorCompositeAllOfCompositionsInner
+# RiskPredictorCompositeAllOfCompositions
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewRiskPredictorCompositeAllOfCompositionsInner
+### NewRiskPredictorCompositeAllOfCompositions
 
-`func NewRiskPredictorCompositeAllOfCompositionsInner(condition RiskPredictorCompositeConditionBase, level EnumRiskLevel, ) *RiskPredictorCompositeAllOfCompositionsInner`
+`func NewRiskPredictorCompositeAllOfCompositions(condition RiskPredictorCompositeConditionBase, level EnumRiskLevel, ) *RiskPredictorCompositeAllOfCompositions`
 
-NewRiskPredictorCompositeAllOfCompositionsInner instantiates a new RiskPredictorCompositeAllOfCompositionsInner object
+NewRiskPredictorCompositeAllOfCompositions instantiates a new RiskPredictorCompositeAllOfCompositions object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRiskPredictorCompositeAllOfCompositionsInnerWithDefaults
+### NewRiskPredictorCompositeAllOfCompositionsWithDefaults
 
-`func NewRiskPredictorCompositeAllOfCompositionsInnerWithDefaults() *RiskPredictorCompositeAllOfCompositionsInner`
+`func NewRiskPredictorCompositeAllOfCompositionsWithDefaults() *RiskPredictorCompositeAllOfCompositions`
 
-NewRiskPredictorCompositeAllOfCompositionsInnerWithDefaults instantiates a new RiskPredictorCompositeAllOfCompositionsInner object
+NewRiskPredictorCompositeAllOfCompositionsWithDefaults instantiates a new RiskPredictorCompositeAllOfCompositions object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCondition
 
-`func (o *RiskPredictorCompositeAllOfCompositionsInner) GetCondition() RiskPredictorCompositeConditionBase`
+`func (o *RiskPredictorCompositeAllOfCompositions) GetCondition() RiskPredictorCompositeConditionBase`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *RiskPredictorCompositeAllOfCompositionsInner) GetConditionOk() (*RiskPredictorCompositeConditionBase, bool)`
+`func (o *RiskPredictorCompositeAllOfCompositions) GetConditionOk() (*RiskPredictorCompositeConditionBase, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *RiskPredictorCompositeAllOfCompositionsInner) SetCondition(v RiskPredictorCompositeConditionBase)`
+`func (o *RiskPredictorCompositeAllOfCompositions) SetCondition(v RiskPredictorCompositeConditionBase)`
 
 SetCondition sets Condition field to given value.
 
 
 ### GetLevel
 
-`func (o *RiskPredictorCompositeAllOfCompositionsInner) GetLevel() EnumRiskLevel`
+`func (o *RiskPredictorCompositeAllOfCompositions) GetLevel() EnumRiskLevel`
 
 GetLevel returns the Level field if non-nil, zero value otherwise.
 
 ### GetLevelOk
 
-`func (o *RiskPredictorCompositeAllOfCompositionsInner) GetLevelOk() (*EnumRiskLevel, bool)`
+`func (o *RiskPredictorCompositeAllOfCompositions) GetLevelOk() (*EnumRiskLevel, bool)`
 
 GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLevel
 
-`func (o *RiskPredictorCompositeAllOfCompositionsInner) SetLevel(v EnumRiskLevel)`
+`func (o *RiskPredictorCompositeAllOfCompositions) SetLevel(v EnumRiskLevel)`
 
 SetLevel sets Level field to given value.
 

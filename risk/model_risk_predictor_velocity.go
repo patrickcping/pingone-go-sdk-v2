@@ -13,6 +13,8 @@ package risk
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RiskPredictorVelocity type satisfies the MappedNullable interface at compile time
@@ -20,7 +22,7 @@ var _ MappedNullable = &RiskPredictorVelocity{}
 
 // RiskPredictorVelocity struct for RiskPredictorVelocity
 type RiskPredictorVelocity struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -46,9 +48,11 @@ type RiskPredictorVelocity struct {
 	MaxDelay *RiskPredictorVelocityAllOfMaxDelay `json:"maxDelay,omitempty"`
 	Measure *EnumPredictorVelocityMeasure `json:"measure,omitempty"`
 	Of *string `json:"of,omitempty"`
-	SlidingWindow *RiskPredictorVelocityAllOfSlidingWindow `json:"slidingWindow,omitempty"`
+	SlidingWindow *RiskPredictorVelocityAllOfEvery `json:"slidingWindow,omitempty"`
 	Use *RiskPredictorVelocityAllOfUse `json:"use,omitempty"`
 }
+
+type _RiskPredictorVelocity RiskPredictorVelocity
 
 // NewRiskPredictorVelocity instantiates a new RiskPredictorVelocity object
 // This constructor will assign default values to properties that have it defined,
@@ -70,20 +74,95 @@ func NewRiskPredictorVelocityWithDefaults() *RiskPredictorVelocity {
 	return &this
 }
 
+func (o RiskPredictorVelocity) hasHalLink(linkIndex string) bool {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			if h, ok := v.GetHrefOk(); ok && h != nil && *h != "" {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (o RiskPredictorVelocity) getHalLink(linkIndex string) LinksHATEOASValue {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return v
+		}
+	}
+
+	var ret LinksHATEOASValue
+	return ret
+}
+
+func (o RiskPredictorVelocity) getHalLinkOk(linkIndex string) (*LinksHATEOASValue, bool) {
+	if l, ok := o.GetLinksOk(); ok && l != nil {
+		links := l
+		if v, ok := links[linkIndex]; ok {
+			return &v, true
+		}
+	}
+
+	return nil, false
+}
+
+func (o RiskPredictorVelocity) IsPaginated() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT) || o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorVelocity) HasPaginationSelf() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorVelocity) GetPaginationSelfLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorVelocity) GetPaginationSelfLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_SELF)
+}
+
+func (o RiskPredictorVelocity) HasPaginationNext() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorVelocity) GetPaginationNextLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorVelocity) GetPaginationNextLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_NEXT)
+}
+
+func (o RiskPredictorVelocity) HasPaginationPrevious() bool {
+	return o.hasHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorVelocity) GetPaginationPreviousLink() LinksHATEOASValue {
+	return o.getHalLink(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
+func (o RiskPredictorVelocity) GetPaginationPreviousLinkOk() (*LinksHATEOASValue, bool) {
+	return o.getHalLinkOk(PAGINATION_HAL_LINK_INDEX_PREV)
+}
+
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *RiskPredictorVelocity) GetLinks() map[string]LinksHATEOASValue {
 	if o == nil || IsNil(o.Links) {
 		var ret map[string]LinksHATEOASValue
 		return ret
 	}
-	return *o.Links
+	return o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorVelocity) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+func (o *RiskPredictorVelocity) GetLinksOk() (map[string]LinksHATEOASValue, bool) {
 	if o == nil || IsNil(o.Links) {
-		return nil, false
+		return map[string]LinksHATEOASValue{}, false
 	}
 	return o.Links, true
 }
@@ -99,7 +178,7 @@ func (o *RiskPredictorVelocity) HasLinks() bool {
 
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *RiskPredictorVelocity) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
+	o.Links = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -623,9 +702,9 @@ func (o *RiskPredictorVelocity) SetOf(v string) {
 }
 
 // GetSlidingWindow returns the SlidingWindow field value if set, zero value otherwise.
-func (o *RiskPredictorVelocity) GetSlidingWindow() RiskPredictorVelocityAllOfSlidingWindow {
+func (o *RiskPredictorVelocity) GetSlidingWindow() RiskPredictorVelocityAllOfEvery {
 	if o == nil || IsNil(o.SlidingWindow) {
-		var ret RiskPredictorVelocityAllOfSlidingWindow
+		var ret RiskPredictorVelocityAllOfEvery
 		return ret
 	}
 	return *o.SlidingWindow
@@ -633,7 +712,7 @@ func (o *RiskPredictorVelocity) GetSlidingWindow() RiskPredictorVelocityAllOfSli
 
 // GetSlidingWindowOk returns a tuple with the SlidingWindow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorVelocity) GetSlidingWindowOk() (*RiskPredictorVelocityAllOfSlidingWindow, bool) {
+func (o *RiskPredictorVelocity) GetSlidingWindowOk() (*RiskPredictorVelocityAllOfEvery, bool) {
 	if o == nil || IsNil(o.SlidingWindow) {
 		return nil, false
 	}
@@ -649,8 +728,8 @@ func (o *RiskPredictorVelocity) HasSlidingWindow() bool {
 	return false
 }
 
-// SetSlidingWindow gets a reference to the given RiskPredictorVelocityAllOfSlidingWindow and assigns it to the SlidingWindow field.
-func (o *RiskPredictorVelocity) SetSlidingWindow(v RiskPredictorVelocityAllOfSlidingWindow) {
+// SetSlidingWindow gets a reference to the given RiskPredictorVelocityAllOfEvery and assigns it to the SlidingWindow field.
+func (o *RiskPredictorVelocity) SetSlidingWindow(v RiskPredictorVelocityAllOfEvery) {
 	o.SlidingWindow = &v
 }
 
@@ -751,6 +830,45 @@ func (o RiskPredictorVelocity) ToMap() (map[string]interface{}, error) {
 		toSerialize["use"] = o.Use
 	}
 	return toSerialize, nil
+}
+
+func (o *RiskPredictorVelocity) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"compactName",
+		"type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRiskPredictorVelocity := _RiskPredictorVelocity{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRiskPredictorVelocity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskPredictorVelocity(varRiskPredictorVelocity)
+
+	return err
 }
 
 type NullableRiskPredictorVelocity struct {

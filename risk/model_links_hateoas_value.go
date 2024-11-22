@@ -12,6 +12,8 @@ package risk
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LinksHATEOASValue type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type LinksHATEOASValue struct {
 	// The HREF of the link.
 	Href string `json:"href"`
 }
+
+type _LinksHATEOASValue LinksHATEOASValue
 
 // NewLinksHATEOASValue instantiates a new LinksHATEOASValue object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o LinksHATEOASValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["href"] = o.Href
 	return toSerialize, nil
+}
+
+func (o *LinksHATEOASValue) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"href",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLinksHATEOASValue := _LinksHATEOASValue{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	// decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLinksHATEOASValue)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LinksHATEOASValue(varLinksHATEOASValue)
+
+	return err
 }
 
 type NullableLinksHATEOASValue struct {

@@ -12,6 +12,7 @@ package risk
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *RiskPolicyConditionEquals) UnmarshalJSON(data []byte) error {
 		if string(jsonBool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Bool); err != nil {
+				dst.Bool = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Bool = nil
@@ -60,7 +65,11 @@ func (dst *RiskPolicyConditionEquals) UnmarshalJSON(data []byte) error {
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

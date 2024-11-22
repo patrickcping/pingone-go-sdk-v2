@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **WhiteList** | Pointer to **[]string** | A list of IP addresses (CDIRs) that are ignored for the predictor results. | [optional] 
 **IncludeRepeatedEventsWithoutSdk** | Pointer to **bool** | Set the value of &#x60;includeRepeatedEventsWithoutSdk&#x60; to &#x60;true&#x60; to expand the range of bot activity that PingOne Protect can detect. | [optional] 
 **Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
-**Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
+**Compositions** | [**[]RiskPredictorCompositeAllOfCompositions**](RiskPredictorCompositeAllOfCompositions.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
 **Map** | [**RiskPredictorCustomAllOfMap**](RiskPredictorCustomAllOfMap.md) |  | 
 **Detect** | [**EnumPredictorNewDeviceDetectType**](EnumPredictorNewDeviceDetectType.md) |  | 
 **ShouldValidatePayloadSignature** | Pointer to **bool** | Relevant only for Suspicious Device predictors. If &#x60;shouldValidatePayloadSignature&#x60; is set to &#x60;true&#x60;, then any risk policies that include this predictor will require that the Signals SDK payload be provided as a signed JWT whose signature will be verified before proceeding with risk evaluation. You instruct the Signals SDK to provide the payload as a signed JWT by using the &#x60;universalDeviceIdentification&#x60; flag during initialization of the SDK, or by selecting the relevant setting for the &#x60;skrisk&#x60; component in DaVinci flows. | [optional] 
@@ -35,14 +35,14 @@ Name | Type | Description | Notes
 **MaxDelay** | Pointer to [**RiskPredictorVelocityAllOfMaxDelay**](RiskPredictorVelocityAllOfMaxDelay.md) |  | [optional] 
 **Measure** | Pointer to [**EnumPredictorVelocityMeasure**](EnumPredictorVelocityMeasure.md) |  | [optional] 
 **Of** | Pointer to **string** |  | [optional] 
-**SlidingWindow** | Pointer to [**RiskPredictorVelocityAllOfSlidingWindow**](RiskPredictorVelocityAllOfSlidingWindow.md) |  | [optional] 
+**SlidingWindow** | Pointer to [**RiskPredictorVelocityAllOfEvery**](RiskPredictorVelocityAllOfEvery.md) |  | [optional] 
 **Use** | Pointer to [**RiskPredictorVelocityAllOfUse**](RiskPredictorVelocityAllOfUse.md) |  | [optional] 
 
 ## Methods
 
 ### NewRiskPredictor
 
-`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, rules []RiskPredictorTrafficAnomalyAllOfRules, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
+`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositions, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, rules []RiskPredictorTrafficAnomalyAllOfRules, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
 
 NewRiskPredictor instantiates a new RiskPredictor object
 This constructor will assign default values to properties that have it defined,
@@ -444,20 +444,20 @@ HasComposition returns a boolean if a field has been set.
 
 ### GetCompositions
 
-`func (o *RiskPredictor) GetCompositions() []RiskPredictorCompositeAllOfCompositionsInner`
+`func (o *RiskPredictor) GetCompositions() []RiskPredictorCompositeAllOfCompositions`
 
 GetCompositions returns the Compositions field if non-nil, zero value otherwise.
 
 ### GetCompositionsOk
 
-`func (o *RiskPredictor) GetCompositionsOk() (*[]RiskPredictorCompositeAllOfCompositionsInner, bool)`
+`func (o *RiskPredictor) GetCompositionsOk() (*[]RiskPredictorCompositeAllOfCompositions, bool)`
 
 GetCompositionsOk returns a tuple with the Compositions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompositions
 
-`func (o *RiskPredictor) SetCompositions(v []RiskPredictorCompositeAllOfCompositionsInner)`
+`func (o *RiskPredictor) SetCompositions(v []RiskPredictorCompositeAllOfCompositions)`
 
 SetCompositions sets Compositions field to given value.
 
@@ -784,20 +784,20 @@ HasOf returns a boolean if a field has been set.
 
 ### GetSlidingWindow
 
-`func (o *RiskPredictor) GetSlidingWindow() RiskPredictorVelocityAllOfSlidingWindow`
+`func (o *RiskPredictor) GetSlidingWindow() RiskPredictorVelocityAllOfEvery`
 
 GetSlidingWindow returns the SlidingWindow field if non-nil, zero value otherwise.
 
 ### GetSlidingWindowOk
 
-`func (o *RiskPredictor) GetSlidingWindowOk() (*RiskPredictorVelocityAllOfSlidingWindow, bool)`
+`func (o *RiskPredictor) GetSlidingWindowOk() (*RiskPredictorVelocityAllOfEvery, bool)`
 
 GetSlidingWindowOk returns a tuple with the SlidingWindow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSlidingWindow
 
-`func (o *RiskPredictor) SetSlidingWindow(v RiskPredictorVelocityAllOfSlidingWindow)`
+`func (o *RiskPredictor) SetSlidingWindow(v RiskPredictorVelocityAllOfEvery)`
 
 SetSlidingWindow sets SlidingWindow field to given value.
 
