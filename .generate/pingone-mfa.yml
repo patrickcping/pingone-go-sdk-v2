@@ -835,6 +835,13 @@ components:
         - $ref: '#/components/schemas/MFAPushCredentialFCM'
         - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
         - $ref: '#/components/schemas/MFAPushCredentialHMS'
+      discriminator:
+        propertyName: type
+        mapping:
+          APNS: '#/components/schemas/MFAPushCredentialAPNS'
+          FCM: '#/components/schemas/MFAPushCredentialFCM'
+          HMS: '#/components/schemas/MFAPushCredentialHMS'
+          FCM_HTTP_V1: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
     MFAPushCredentialResponse:
       type: object
       properties:

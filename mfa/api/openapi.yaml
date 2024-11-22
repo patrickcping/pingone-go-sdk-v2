@@ -2617,6 +2617,13 @@ components:
         - clientId
         - clientSecret
     MFAPushCredentialRequest:
+      discriminator:
+        mapping:
+          APNS: '#/components/schemas/MFAPushCredentialAPNS'
+          FCM: '#/components/schemas/MFAPushCredentialFCM'
+          HMS: '#/components/schemas/MFAPushCredentialHMS'
+          FCM_HTTP_V1: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
+        propertyName: type
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'

@@ -52,56 +52,57 @@ var (
 		// MFAPushCredentialRequest model
 		{
 			fileSelectPattern: "model_mfa_push_credential_request.go",
-			pattern:           `"encoding/json"\n\W+"gopkg\.in/validator\.v2"`,
-			repl: `"encoding/json"`,
+			pattern:           `import \(\n([\s"a-zA-Z0-9/\n\.]*)"gopkg\.in/validator\.v2"\n+[\s]*([\s"a-zA-Z0-9/\n\.]*)`,
+			repl: `import (
+$1$2`,
 		},
-		{
-			fileSelectPattern: "model_mfa_push_credential_request.go",
-			pattern:           `(func \(dst \*MFAPushCredentialRequest\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
-			repl: `func (dst *MFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
+// 		{
+// 			fileSelectPattern: "model_mfa_push_credential_request.go",
+// 			pattern:           `(func \(dst \*MFAPushCredentialRequest\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+// 			repl: `func (dst *MFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
 
-	var common MFAPushCredential
+// 	var common MFAPushCredential
 
-	if err := json.Unmarshal(data, &common); err != nil {
-		return err
-	}
+// 	if err := json.Unmarshal(data, &common); err != nil {
+// 		return err
+// 	}
 
-	dst.MFAPushCredentialAPNS = nil
-	dst.MFAPushCredentialFCM = nil
-	dst.MFAPushCredentialFCMHTTPV1 = nil
-	dst.MFAPushCredentialHMS = nil
+// 	dst.MFAPushCredentialAPNS = nil
+// 	dst.MFAPushCredentialFCM = nil
+// 	dst.MFAPushCredentialFCMHTTPV1 = nil
+// 	dst.MFAPushCredentialHMS = nil
 
-	objType := common.GetType()
+// 	objType := common.GetType()
 
-	if !objType.IsValid() {
-		return nil
-	}
+// 	if !objType.IsValid() {
+// 		return nil
+// 	}
 
-	switch objType {
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialAPNS); err != nil {
-			return err
-		}
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCM); err != nil {
-			return err
-		}
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_HMS:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialHMS); err != nil {
-			return err
-		}
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM_HTTP_V1:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCMHTTPV1); err != nil {
-			return err
-		}
-	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(MFAPushCredentialRequest)")
-	}
-	return nil
-}
+// 	switch objType {
+// 	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
+// 		if err := json.Unmarshal(data, &dst.MFAPushCredentialAPNS); err != nil {
+// 			return err
+// 		}
+// 	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM:
+// 		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCM); err != nil {
+// 			return err
+// 		}
+// 	case ENUMMFAPUSHCREDENTIALATTRTYPE_HMS:
+// 		if err := json.Unmarshal(data, &dst.MFAPushCredentialHMS); err != nil {
+// 			return err
+// 		}
+// 	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM_HTTP_V1:
+// 		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCMHTTPV1); err != nil {
+// 			return err
+// 		}
+// 	default:
+// 		return fmt.Errorf("Data failed to match schemas in oneOf(MFAPushCredentialRequest)")
+// 	}
+// 	return nil
+// }
 
-// Marshal data from the first non-nil pointers in the struct to JSON`,
-		},
+// // Marshal data from the first non-nil pointers in the struct to JSON`,
+// 		},
 
 		// DeviceAuthenticationPolicyPost model
 		{

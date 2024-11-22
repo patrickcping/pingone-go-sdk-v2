@@ -13,8 +13,7 @@ package mfa
 import (
 	"encoding/json"
 	"fmt"
-	"gopkg.in/validator.v2"
-)
+	)
 
 // MFAPushCredentialRequest - struct for MFAPushCredentialRequest
 type MFAPushCredentialRequest struct {
@@ -54,44 +53,115 @@ func MFAPushCredentialHMSAsMFAPushCredentialRequest(v *MFAPushCredentialHMS) MFA
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *MFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
-
-	var common MFAPushCredential
-
-	if err := json.Unmarshal(data, &common); err != nil {
-		return err
+	var err error
+	// use discriminator value to speed up the lookup
+	jsonDict := make(map[string]interface{})
+	err = json.Unmarshal(data, &jsonDict)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
-	dst.MFAPushCredentialAPNS = nil
-	dst.MFAPushCredentialFCM = nil
-	dst.MFAPushCredentialFCMHTTPV1 = nil
-	dst.MFAPushCredentialHMS = nil
-
-	objType := common.GetType()
-
-	if !objType.IsValid() {
-		return nil
+	// check if the discriminator value is 'APNS'
+	if v, ok := jsonDict["type"]; ok && v == "APNS" {
+		// try to unmarshal JSON data into MFAPushCredentialAPNS
+		err = json.Unmarshal(data, &dst.MFAPushCredentialAPNS)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialAPNS, return on the first match
+		} else {
+			dst.MFAPushCredentialAPNS = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialAPNS: %s", err.Error())
+		}
 	}
 
-	switch objType {
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialAPNS); err != nil {
-			return err
+	// check if the discriminator value is 'FCM'
+	if v, ok := jsonDict["type"]; ok && v == "FCM" {
+		// try to unmarshal JSON data into MFAPushCredentialFCM
+		err = json.Unmarshal(data, &dst.MFAPushCredentialFCM)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialFCM, return on the first match
+		} else {
+			dst.MFAPushCredentialFCM = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialFCM: %s", err.Error())
 		}
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCM); err != nil {
-			return err
-		}
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_HMS:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialHMS); err != nil {
-			return err
-		}
-	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM_HTTP_V1:
-		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCMHTTPV1); err != nil {
-			return err
-		}
-	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(MFAPushCredentialRequest)")
 	}
+
+	// check if the discriminator value is 'FCM_HTTP_V1'
+	if v, ok := jsonDict["type"]; ok && v == "FCM_HTTP_V1" {
+		// try to unmarshal JSON data into MFAPushCredentialFCMHTTPV1
+		err = json.Unmarshal(data, &dst.MFAPushCredentialFCMHTTPV1)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialFCMHTTPV1, return on the first match
+		} else {
+			dst.MFAPushCredentialFCMHTTPV1 = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialFCMHTTPV1: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'HMS'
+	if v, ok := jsonDict["type"]; ok && v == "HMS" {
+		// try to unmarshal JSON data into MFAPushCredentialHMS
+		err = json.Unmarshal(data, &dst.MFAPushCredentialHMS)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialHMS, return on the first match
+		} else {
+			dst.MFAPushCredentialHMS = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialHMS: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'MFAPushCredentialAPNS'
+	if v, ok := jsonDict["type"]; ok && v == "MFAPushCredentialAPNS" {
+		// try to unmarshal JSON data into MFAPushCredentialAPNS
+		err = json.Unmarshal(data, &dst.MFAPushCredentialAPNS)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialAPNS, return on the first match
+		} else {
+			dst.MFAPushCredentialAPNS = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialAPNS: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'MFAPushCredentialFCM'
+	if v, ok := jsonDict["type"]; ok && v == "MFAPushCredentialFCM" {
+		// try to unmarshal JSON data into MFAPushCredentialFCM
+		err = json.Unmarshal(data, &dst.MFAPushCredentialFCM)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialFCM, return on the first match
+		} else {
+			dst.MFAPushCredentialFCM = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialFCM: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'MFAPushCredentialFCMHTTPV1'
+	if v, ok := jsonDict["type"]; ok && v == "MFAPushCredentialFCMHTTPV1" {
+		// try to unmarshal JSON data into MFAPushCredentialFCMHTTPV1
+		err = json.Unmarshal(data, &dst.MFAPushCredentialFCMHTTPV1)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialFCMHTTPV1, return on the first match
+		} else {
+			dst.MFAPushCredentialFCMHTTPV1 = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialFCMHTTPV1: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'MFAPushCredentialHMS'
+	if v, ok := jsonDict["type"]; ok && v == "MFAPushCredentialHMS" {
+		// try to unmarshal JSON data into MFAPushCredentialHMS
+		err = json.Unmarshal(data, &dst.MFAPushCredentialHMS)
+		if err == nil {
+			return nil // data stored in dst.MFAPushCredentialHMS, return on the first match
+		} else {
+			dst.MFAPushCredentialHMS = nil
+			return fmt.Errorf("failed to unmarshal MFAPushCredentialRequest as MFAPushCredentialHMS: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'UNKNOWN'
+	if v, ok := jsonDict["type"]; ok && v == "UNKNOWN" {
+		return fmt.Errorf("data failed to match schemas in oneOf(MFAPushCredentialRequest) using discriminator lookup")
+	}
+
 	return nil
 }
 
