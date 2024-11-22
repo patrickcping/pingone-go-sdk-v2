@@ -15,8 +15,9 @@ else
         rm ./docs/*.md
 
         echo "==> Running codegen-$3..."
-        # openapi-generator-cli version-manager set 7.0.1
-        openapi-generator-cli generate -i ../.generate/pingone-$3.yml -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api -o . --git-repo-id $2 --git-user-id $1 --http-user-agent \"pingtools PingOne-GOLANG-SDK-$3/$version\" -t ../.generate/templates; \
+        openapi-generator-cli version-manager set 7.10.0
+        export GO_POST_PROCESS_FILE="gofmt -w -s"
+        openapi-generator-cli generate -i ../.generate/pingone-$3.yml --enable-post-process-file -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api -o . --type-mappings string+byte=[]byte --git-repo-id $2 --git-user-id $1 --http-user-agent \"pingtools PingOne-GOLANG-SDK-$3/$version\" -t ../.generate/templates; \
 
         template=$(cat ../scripts/templates/api_hal_ext.go.tmpl)
         template=${template//PACKAGENAME/$3}

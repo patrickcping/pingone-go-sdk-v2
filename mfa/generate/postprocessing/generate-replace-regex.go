@@ -49,13 +49,6 @@ var (
 		pattern           string
 		repl              string
 	}{
-
-		{
-			fileSelectPattern: "*Api.md",
-			pattern:           `PACKAGENAME`,
-			repl:              `mfa`,
-		},
-
 		// MFAPushCredentialRequest model
 		{
 			fileSelectPattern: "model_mfa_push_credential_request.go",
