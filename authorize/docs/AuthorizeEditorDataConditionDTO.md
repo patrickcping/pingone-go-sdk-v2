@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumAuthorizeEditorDataConditionDTOType**](EnumAuthorizeEditorDataConditionDTOType.md) |  | 
 **Conditions** | [**[]AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
-**Left** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
-**Right** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
+**Left** | [**AuthorizeEditorDataConditionsComparandLeftDTO**](AuthorizeEditorDataConditionsComparandLeftDTO.md) |  | 
+**Right** | [**AuthorizeEditorDataConditionsComparandRightDTO**](AuthorizeEditorDataConditionsComparandRightDTO.md) |  | 
 **Comparator** | [**EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator**](EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md) |  | 
 **Condition** | [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | 
 **Reference** | [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAuthorizeEditorDataConditionDTO
 
-`func NewAuthorizeEditorDataConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, conditions []AuthorizeEditorDataConditionDTO, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, condition AuthorizeEditorDataConditionDTO, reference AuthorizeEditorDataReferenceObjectDTO, ) *AuthorizeEditorDataConditionDTO`
+`func NewAuthorizeEditorDataConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, conditions []AuthorizeEditorDataConditionDTO, left AuthorizeEditorDataConditionsComparandLeftDTO, right AuthorizeEditorDataConditionsComparandRightDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, condition AuthorizeEditorDataConditionDTO, reference AuthorizeEditorDataReferenceObjectDTO, ) *AuthorizeEditorDataConditionDTO`
 
 NewAuthorizeEditorDataConditionDTO instantiates a new AuthorizeEditorDataConditionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -73,40 +73,40 @@ SetConditions sets Conditions field to given value.
 
 ### GetLeft
 
-`func (o *AuthorizeEditorDataConditionDTO) GetLeft() AuthorizeEditorDataConditionsComparandDTO`
+`func (o *AuthorizeEditorDataConditionDTO) GetLeft() AuthorizeEditorDataConditionsComparandLeftDTO`
 
 GetLeft returns the Left field if non-nil, zero value otherwise.
 
 ### GetLeftOk
 
-`func (o *AuthorizeEditorDataConditionDTO) GetLeftOk() (*AuthorizeEditorDataConditionsComparandDTO, bool)`
+`func (o *AuthorizeEditorDataConditionDTO) GetLeftOk() (*AuthorizeEditorDataConditionsComparandLeftDTO, bool)`
 
 GetLeftOk returns a tuple with the Left field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeft
 
-`func (o *AuthorizeEditorDataConditionDTO) SetLeft(v AuthorizeEditorDataConditionsComparandDTO)`
+`func (o *AuthorizeEditorDataConditionDTO) SetLeft(v AuthorizeEditorDataConditionsComparandLeftDTO)`
 
 SetLeft sets Left field to given value.
 
 
 ### GetRight
 
-`func (o *AuthorizeEditorDataConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandDTO`
+`func (o *AuthorizeEditorDataConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandRightDTO`
 
 GetRight returns the Right field if non-nil, zero value otherwise.
 
 ### GetRightOk
 
-`func (o *AuthorizeEditorDataConditionDTO) GetRightOk() (*AuthorizeEditorDataConditionsComparandDTO, bool)`
+`func (o *AuthorizeEditorDataConditionDTO) GetRightOk() (*AuthorizeEditorDataConditionsComparandRightDTO, bool)`
 
 GetRightOk returns a tuple with the Right field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRight
 
-`func (o *AuthorizeEditorDataConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandDTO)`
+`func (o *AuthorizeEditorDataConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandRightDTO)`
 
 SetRight sets Right field to given value.
 

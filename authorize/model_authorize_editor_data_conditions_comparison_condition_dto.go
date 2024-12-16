@@ -20,8 +20,8 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsComparisonConditionDTO{}
 // AuthorizeEditorDataConditionsComparisonConditionDTO struct for AuthorizeEditorDataConditionsComparisonConditionDTO
 type AuthorizeEditorDataConditionsComparisonConditionDTO struct {
 	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
-	Left AuthorizeEditorDataConditionsComparandDTO `json:"left"`
-	Right AuthorizeEditorDataConditionsComparandDTO `json:"right"`
+	Left AuthorizeEditorDataConditionsComparandLeftDTO `json:"left"`
+	Right AuthorizeEditorDataConditionsComparandRightDTO `json:"right"`
 	Comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator `json:"comparator"`
 }
 
@@ -29,7 +29,7 @@ type AuthorizeEditorDataConditionsComparisonConditionDTO struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataConditionsComparisonConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator) *AuthorizeEditorDataConditionsComparisonConditionDTO {
+func NewAuthorizeEditorDataConditionsComparisonConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, left AuthorizeEditorDataConditionsComparandLeftDTO, right AuthorizeEditorDataConditionsComparandRightDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator) *AuthorizeEditorDataConditionsComparisonConditionDTO {
 	this := AuthorizeEditorDataConditionsComparisonConditionDTO{}
 	this.Type = type_
 	this.Left = left
@@ -71,9 +71,9 @@ func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetType(v EnumAuth
 }
 
 // GetLeft returns the Left field value
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeft() AuthorizeEditorDataConditionsComparandDTO {
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeft() AuthorizeEditorDataConditionsComparandLeftDTO {
 	if o == nil {
-		var ret AuthorizeEditorDataConditionsComparandDTO
+		var ret AuthorizeEditorDataConditionsComparandLeftDTO
 		return ret
 	}
 
@@ -82,7 +82,7 @@ func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeft() Authoriz
 
 // GetLeftOk returns a tuple with the Left field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeftOk() (*AuthorizeEditorDataConditionsComparandDTO, bool) {
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeftOk() (*AuthorizeEditorDataConditionsComparandLeftDTO, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,14 +90,14 @@ func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeftOk() (*Auth
 }
 
 // SetLeft sets field value
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetLeft(v AuthorizeEditorDataConditionsComparandDTO) {
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetLeft(v AuthorizeEditorDataConditionsComparandLeftDTO) {
 	o.Left = v
 }
 
 // GetRight returns the Right field value
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandDTO {
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandRightDTO {
 	if o == nil {
-		var ret AuthorizeEditorDataConditionsComparandDTO
+		var ret AuthorizeEditorDataConditionsComparandRightDTO
 		return ret
 	}
 
@@ -106,7 +106,7 @@ func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRight() Authori
 
 // GetRightOk returns a tuple with the Right field value
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRightOk() (*AuthorizeEditorDataConditionsComparandDTO, bool) {
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRightOk() (*AuthorizeEditorDataConditionsComparandRightDTO, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,7 +114,7 @@ func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRightOk() (*Aut
 }
 
 // SetRight sets field value
-func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandDTO) {
+func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandRightDTO) {
 	o.Right = v
 }
 

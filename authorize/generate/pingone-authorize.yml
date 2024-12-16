@@ -965,7 +965,7 @@ components:
     EnumAuthorizeEditorDataConditionsComparandDTOType:
       type: string
       enum: [ATTRIBUTE, CONSTANT]
-    AuthorizeEditorDataConditionsComparandDTO:
+    AuthorizeEditorDataConditionsComparandRightDTO:
       oneOf:
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
       - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
@@ -974,6 +974,13 @@ components:
         mapping:
           ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
           CONSTANT: '#/components/schemas/AuthorizeEditorDataConditionsComparandsConstantComparandDTO'
+    AuthorizeEditorDataConditionsComparandLeftDTO:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
+      discriminator:
+        propertyName: type
+        mapping:
+          ATTRIBUTE: '#/components/schemas/AuthorizeEditorDataConditionsComparandsAttributeComparandDTO'
     AuthorizeEditorDataConditionsComparisonConditionDTO:
       required:
       - comparator
@@ -984,9 +991,9 @@ components:
       - type: object
         properties:
           left:
-            $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+            $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandLeftDTO'
           right:
-            $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandDTO'
+            $ref: '#/components/schemas/AuthorizeEditorDataConditionsComparandRightDTO'
           comparator:
             $ref: '#/components/schemas/EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator'
     EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator:

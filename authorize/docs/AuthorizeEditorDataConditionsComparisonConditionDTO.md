@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumAuthorizeEditorDataConditionDTOType**](EnumAuthorizeEditorDataConditionDTOType.md) |  | 
-**Left** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
-**Right** | [**AuthorizeEditorDataConditionsComparandDTO**](AuthorizeEditorDataConditionsComparandDTO.md) |  | 
+**Left** | [**AuthorizeEditorDataConditionsComparandLeftDTO**](AuthorizeEditorDataConditionsComparandLeftDTO.md) |  | 
+**Right** | [**AuthorizeEditorDataConditionsComparandRightDTO**](AuthorizeEditorDataConditionsComparandRightDTO.md) |  | 
 **Comparator** | [**EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator**](EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator.md) |  | 
 
 ## Methods
 
 ### NewAuthorizeEditorDataConditionsComparisonConditionDTO
 
-`func NewAuthorizeEditorDataConditionsComparisonConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, left AuthorizeEditorDataConditionsComparandDTO, right AuthorizeEditorDataConditionsComparandDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, ) *AuthorizeEditorDataConditionsComparisonConditionDTO`
+`func NewAuthorizeEditorDataConditionsComparisonConditionDTO(type_ EnumAuthorizeEditorDataConditionDTOType, left AuthorizeEditorDataConditionsComparandLeftDTO, right AuthorizeEditorDataConditionsComparandRightDTO, comparator EnumAuthorizeEditorDataConditionsComparisonConditionDTOComparator, ) *AuthorizeEditorDataConditionsComparisonConditionDTO`
 
 NewAuthorizeEditorDataConditionsComparisonConditionDTO instantiates a new AuthorizeEditorDataConditionsComparisonConditionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -50,40 +50,40 @@ SetType sets Type field to given value.
 
 ### GetLeft
 
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeft() AuthorizeEditorDataConditionsComparandDTO`
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeft() AuthorizeEditorDataConditionsComparandLeftDTO`
 
 GetLeft returns the Left field if non-nil, zero value otherwise.
 
 ### GetLeftOk
 
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeftOk() (*AuthorizeEditorDataConditionsComparandDTO, bool)`
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetLeftOk() (*AuthorizeEditorDataConditionsComparandLeftDTO, bool)`
 
 GetLeftOk returns a tuple with the Left field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeft
 
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetLeft(v AuthorizeEditorDataConditionsComparandDTO)`
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetLeft(v AuthorizeEditorDataConditionsComparandLeftDTO)`
 
 SetLeft sets Left field to given value.
 
 
 ### GetRight
 
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandDTO`
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRight() AuthorizeEditorDataConditionsComparandRightDTO`
 
 GetRight returns the Right field if non-nil, zero value otherwise.
 
 ### GetRightOk
 
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRightOk() (*AuthorizeEditorDataConditionsComparandDTO, bool)`
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) GetRightOk() (*AuthorizeEditorDataConditionsComparandRightDTO, bool)`
 
 GetRightOk returns a tuple with the Right field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRight
 
-`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandDTO)`
+`func (o *AuthorizeEditorDataConditionsComparisonConditionDTO) SetRight(v AuthorizeEditorDataConditionsComparandRightDTO)`
 
 SetRight sets Right field to given value.
 
