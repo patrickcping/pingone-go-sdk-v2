@@ -108,7 +108,7 @@ components:
       description: A string that specifies the trigger type for the policy set. The only option is `POLICY_SET_STAGING`.
     EnumPredictorCompositeConditionType:
       type: string
-      enum: [VALUE_COMPARISON, STRING_LIST, AND, NOT, OR]
+      enum: [VALUE_COMPARISON, IP_RANGE, IP_COMPARISON, STRING_LIST, AND, NOT, OR]
     EnumPredictorNewDeviceDetectType:
       type: string
       description: Used only for New Device predictors and Suspicious Device predictors. Both of these predictor types use the value `DEVICE` for `type`. The `detect` field is used to specify the kind of devices you are trying to detect.
@@ -793,6 +793,8 @@ components:
           type: string
           readOnly: true
           description: A string that specifies the resource’s unique identifier.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         name:
           type: string
           description: A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -901,17 +903,6 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
           properties:
-            composition:
-              type: object
-              deprecated: true
-              properties:
-                condition:
-                  $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
-                level:
-                  $ref: '#/components/schemas/EnumRiskLevel'
-              required:
-                - condition
-                - level
             compositions:
               type: array
               description: Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements.
@@ -947,6 +938,7 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCompositeNot'
         - $ref: '#/components/schemas/RiskPredictorCompositeOr'
         - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
+        - $ref: '#/components/schemas/RiskPredictorCompositeIPRange'
         - type: object
           properties:
             contains:
@@ -1007,6 +999,35 @@ components:
           $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - or
+    RiskPredictorCompositeIPRange:
+      type: object
+      description: The mapping of risk levels for the IP ranges specified.
+      properties:
+        contains:
+          type: string
+          format: ^\${(event|details)[a-z\.]+}$
+        notContains:
+          type: string
+          format: ^\${(event|details)[a-z\.]+}$
+        equals:
+          type: string
+          format: ^\${(event|details)[a-z\.]+}$
+        notEquals:
+          type: string
+          format: ^\${(event|details)[a-z\.]+}$
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
+        ipRange:
+          type: array
+          description: List of CIDRs to include
+          items:
+            type: string
+            pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
+        ip:
+          type: string
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
+      required:
+        - ipRange
     RiskPredictorCustom:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'

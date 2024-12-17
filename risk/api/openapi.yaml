@@ -1308,6 +1308,8 @@ components:
     EnumPredictorCompositeConditionType:
       enum:
       - VALUE_COMPARISON
+      - IP_RANGE
+      - IP_COMPARISON
       - STRING_LIST
       - AND
       - NOT
@@ -2131,6 +2133,8 @@ components:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
           type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         name:
           description: "A string type. A unique, friendly name for the predictor.\
             \ This name is displayed in the Risk Policies UI, when the admin is asked\
@@ -2215,8 +2219,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - properties:
-          composition:
-            $ref: '#/components/schemas/RiskPredictorComposite_allOf_composition'
           compositions:
             description: Contains the objects that specify the conditions to test
               and the risk level that should be assigned if the conditions are met.
@@ -2248,6 +2250,7 @@ components:
       - $ref: '#/components/schemas/RiskPredictorCompositeNot'
       - $ref: '#/components/schemas/RiskPredictorCompositeOr'
       - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
+      - $ref: '#/components/schemas/RiskPredictorCompositeIPRange'
       - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf'
       - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1'
     RiskPredictorCompositeNot:
@@ -2269,6 +2272,35 @@ components:
           $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - or
+      type: object
+    RiskPredictorCompositeIPRange:
+      description: The mapping of risk levels for the IP ranges specified.
+      properties:
+        contains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        notContains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        equals:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        notEquals:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
+        ipRange:
+          description: List of CIDRs to include
+          items:
+            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+            type: string
+          type: array
+        ip:
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+          type: string
+      required:
+      - ipRange
       type: object
     RiskPredictorCustom:
       allOf:
@@ -3371,18 +3403,6 @@ components:
           type: array
       readOnly: true
       type: object
-    RiskPredictorComposite_allOf_composition:
-      deprecated: true
-      properties:
-        condition:
-          $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
-        level:
-          $ref: '#/components/schemas/EnumRiskLevel'
-      required:
-      - condition
-      - level
-      type: object
-      example: null
     RiskPredictorComposite_allOf_compositions_inner:
       properties:
         condition:

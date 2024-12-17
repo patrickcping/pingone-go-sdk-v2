@@ -23,6 +23,7 @@ type RiskPredictorAdversaryInTheMiddle struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
 	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
@@ -126,6 +127,38 @@ func (o *RiskPredictorAdversaryInTheMiddle) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *RiskPredictorAdversaryInTheMiddle) SetId(v string) {
 	o.Id = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *RiskPredictorAdversaryInTheMiddle) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorAdversaryInTheMiddle) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *RiskPredictorAdversaryInTheMiddle) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *RiskPredictorAdversaryInTheMiddle) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
 }
 
 // GetName returns the Name field value
@@ -471,6 +504,9 @@ func (o RiskPredictorAdversaryInTheMiddle) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["compactName"] = o.CompactName

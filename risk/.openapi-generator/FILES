@@ -3,6 +3,7 @@ api/openapi.yaml
 api_risk_advanced_predictors.go
 api_risk_evaluations.go
 api_risk_policies.go
+client.go
 configuration.go
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
@@ -78,7 +79,6 @@ docs/RiskPredictorCommonConditionScoresInner.md
 docs/RiskPredictorCommonDefault.md
 docs/RiskPredictorCommonDefaultResult.md
 docs/RiskPredictorComposite.md
-docs/RiskPredictorCompositeAllOfComposition.md
 docs/RiskPredictorCompositeAllOfCompositionsInner.md
 docs/RiskPredictorCompositeAnd.md
 docs/RiskPredictorCompositeCondition.md
@@ -86,6 +86,7 @@ docs/RiskPredictorCompositeConditionBase.md
 docs/RiskPredictorCompositeConditionOneOf.md
 docs/RiskPredictorCompositeConditionOneOf1.md
 docs/RiskPredictorCompositeConditionOneOf1Equals.md
+docs/RiskPredictorCompositeIPRange.md
 docs/RiskPredictorCompositeNot.md
 docs/RiskPredictorCompositeOr.md
 docs/RiskPredictorCustom.md
@@ -186,7 +187,6 @@ model_risk_predictor_common_condition_scores_inner.go
 model_risk_predictor_common_default.go
 model_risk_predictor_common_default_result.go
 model_risk_predictor_composite.go
-model_risk_predictor_composite_all_of_composition.go
 model_risk_predictor_composite_all_of_compositions_inner.go
 model_risk_predictor_composite_and.go
 model_risk_predictor_composite_condition.go
@@ -194,6 +194,7 @@ model_risk_predictor_composite_condition_base.go
 model_risk_predictor_composite_condition_one_of.go
 model_risk_predictor_composite_condition_one_of_1.go
 model_risk_predictor_composite_condition_one_of_1_equals.go
+model_risk_predictor_composite_ip_range.go
 model_risk_predictor_composite_not.go
 model_risk_predictor_composite_or.go
 model_risk_predictor_custom.go
