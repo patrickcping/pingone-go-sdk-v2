@@ -9,9 +9,12 @@ Name | Type | Description | Notes
 **Or** | [**[]RiskPredictorCompositeCondition**](RiskPredictorCompositeCondition.md) |  | 
 **And** | [**[]RiskPredictorCompositeCondition**](RiskPredictorCompositeCondition.md) |  | 
 **Contains** | **string** |  | 
-**List** | **[]string** |  | 
+**NotContains** | Pointer to **string** |  | [optional] 
 **Equals** | Pointer to [**RiskPredictorCompositeConditionOneOf1Equals**](RiskPredictorCompositeConditionOneOf1Equals.md) |  | [optional] 
 **NotEquals** | Pointer to [**RiskPredictorCompositeConditionOneOf1Equals**](RiskPredictorCompositeConditionOneOf1Equals.md) |  | [optional] 
+**IpRange** | **[]string** | List of CIDRs to include | 
+**Ip** | Pointer to **string** |  | [optional] 
+**List** | **[]string** |  | 
 **Greater** | Pointer to **int32** |  | [optional] 
 **GreaterEquals** | Pointer to **int32** |  | [optional] 
 **Lower** | Pointer to **int32** |  | [optional] 
@@ -22,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictorCompositeCondition
 
-`func NewRiskPredictorCompositeCondition(not RiskPredictorCompositeOr, type_ EnumPredictorCompositeConditionType, or []RiskPredictorCompositeCondition, and []RiskPredictorCompositeCondition, contains string, list []string, value string, ) *RiskPredictorCompositeCondition`
+`func NewRiskPredictorCompositeCondition(not RiskPredictorCompositeOr, type_ EnumPredictorCompositeConditionType, or []RiskPredictorCompositeCondition, and []RiskPredictorCompositeCondition, contains string, ipRange []string, list []string, value string, ) *RiskPredictorCompositeCondition`
 
 NewRiskPredictorCompositeCondition instantiates a new RiskPredictorCompositeCondition object
 This constructor will assign default values to properties that have it defined,
@@ -137,25 +140,30 @@ and a boolean to check if the value has been set.
 SetContains sets Contains field to given value.
 
 
-### GetList
+### GetNotContains
 
-`func (o *RiskPredictorCompositeCondition) GetList() []string`
+`func (o *RiskPredictorCompositeCondition) GetNotContains() string`
 
-GetList returns the List field if non-nil, zero value otherwise.
+GetNotContains returns the NotContains field if non-nil, zero value otherwise.
 
-### GetListOk
+### GetNotContainsOk
 
-`func (o *RiskPredictorCompositeCondition) GetListOk() (*[]string, bool)`
+`func (o *RiskPredictorCompositeCondition) GetNotContainsOk() (*string, bool)`
 
-GetListOk returns a tuple with the List field if it's non-nil, zero value otherwise
+GetNotContainsOk returns a tuple with the NotContains field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetList
+### SetNotContains
 
-`func (o *RiskPredictorCompositeCondition) SetList(v []string)`
+`func (o *RiskPredictorCompositeCondition) SetNotContains(v string)`
 
-SetList sets List field to given value.
+SetNotContains sets NotContains field to given value.
 
+### HasNotContains
+
+`func (o *RiskPredictorCompositeCondition) HasNotContains() bool`
+
+HasNotContains returns a boolean if a field has been set.
 
 ### GetEquals
 
@@ -206,6 +214,71 @@ SetNotEquals sets NotEquals field to given value.
 `func (o *RiskPredictorCompositeCondition) HasNotEquals() bool`
 
 HasNotEquals returns a boolean if a field has been set.
+
+### GetIpRange
+
+`func (o *RiskPredictorCompositeCondition) GetIpRange() []string`
+
+GetIpRange returns the IpRange field if non-nil, zero value otherwise.
+
+### GetIpRangeOk
+
+`func (o *RiskPredictorCompositeCondition) GetIpRangeOk() (*[]string, bool)`
+
+GetIpRangeOk returns a tuple with the IpRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpRange
+
+`func (o *RiskPredictorCompositeCondition) SetIpRange(v []string)`
+
+SetIpRange sets IpRange field to given value.
+
+
+### GetIp
+
+`func (o *RiskPredictorCompositeCondition) GetIp() string`
+
+GetIp returns the Ip field if non-nil, zero value otherwise.
+
+### GetIpOk
+
+`func (o *RiskPredictorCompositeCondition) GetIpOk() (*string, bool)`
+
+GetIpOk returns a tuple with the Ip field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIp
+
+`func (o *RiskPredictorCompositeCondition) SetIp(v string)`
+
+SetIp sets Ip field to given value.
+
+### HasIp
+
+`func (o *RiskPredictorCompositeCondition) HasIp() bool`
+
+HasIp returns a boolean if a field has been set.
+
+### GetList
+
+`func (o *RiskPredictorCompositeCondition) GetList() []string`
+
+GetList returns the List field if non-nil, zero value otherwise.
+
+### GetListOk
+
+`func (o *RiskPredictorCompositeCondition) GetListOk() (*[]string, bool)`
+
+GetListOk returns a tuple with the List field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetList
+
+`func (o *RiskPredictorCompositeCondition) SetList(v []string)`
+
+SetList sets List field to given value.
+
 
 ### GetGreater
 
