@@ -1,4 +1,4 @@
-# v0.18.0 (2024-11-15)
+# v0.18.0 (2024-12-18)
 
 * **Bug** Add missing protect predictor composite conditions `IP_RANGE` and `IP_COMPARISON`. [#401](https://github.com/patrickcping/pingone-go-sdk-v2/pull/401)
 

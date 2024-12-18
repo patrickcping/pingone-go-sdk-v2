@@ -1,4 +1,4 @@
-# v0.45.0 (Unreleased)
+# v0.45.0 (2024-12-18)
 
 * **Enhancement** Added `SUSPICIOUS_TRAFFIC` enum to `EnumAlertChannelAlertType` model. [#399](https://github.com/patrickcping/pingone-go-sdk-v2/pull/399)
 
