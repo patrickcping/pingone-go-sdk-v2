@@ -1,6 +1,8 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.5
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.44.0 => v0.45.0 [#403](https://github.com/patrickcping/pingone-go-sdk-v2/pull/403)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.17.0 => v0.18.0 [#403](https://github.com/patrickcping/pingone-go-sdk-v2/pull/403)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.45.0](./management/CHANGELOG.md)
   * **Enhancement** Added `SUSPICIOUS_TRAFFIC` enum to `EnumAlertChannelAlertType` model. [#399](https://github.com/patrickcping/pingone-go-sdk-v2/pull/399)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.18.0](./risk/CHANGELOG.md)
