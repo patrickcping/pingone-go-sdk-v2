@@ -3,6 +3,8 @@
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.5
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.45.0](./management/CHANGELOG.md)
   * **Enhancement** Added `SUSPICIOUS_TRAFFIC` enum to `EnumAlertChannelAlertType` model. [#399](https://github.com/patrickcping/pingone-go-sdk-v2/pull/399)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.18.0](./risk/CHANGELOG.md)
+  * **Bug** Add missing protect predictor composite conditions `IP_RANGE` and `IP_COMPARISON`. [#401](https://github.com/patrickcping/pingone-go-sdk-v2/pull/401)
 
 # Release (2024-11-15)
 
