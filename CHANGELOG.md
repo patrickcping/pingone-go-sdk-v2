@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.6
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.46.0](./management/CHANGELOG.md)
+  * **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
+
 # Release (2024-12-18)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.5
