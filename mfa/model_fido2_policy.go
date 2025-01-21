@@ -46,6 +46,7 @@ type FIDO2Policy struct {
 	// The ID of the relying party. The value should be a domain name, such as `example.com` (in lower-case characters).
 	RelyingPartyId string `json:"relyingPartyId"`
 	UserDisplayNameAttributes FIDO2PolicyUserDisplayNameAttributes `json:"userDisplayNameAttributes"`
+	UserPresenceTimeout *FIDO2PolicyUserPresenceTimeout `json:"userPresenceTimeout,omitempty"`
 	UserVerification FIDO2PolicyUserVerification `json:"userVerification"`
 }
 
@@ -548,6 +549,38 @@ func (o *FIDO2Policy) SetUserDisplayNameAttributes(v FIDO2PolicyUserDisplayNameA
 	o.UserDisplayNameAttributes = v
 }
 
+// GetUserPresenceTimeout returns the UserPresenceTimeout field value if set, zero value otherwise.
+func (o *FIDO2Policy) GetUserPresenceTimeout() FIDO2PolicyUserPresenceTimeout {
+	if o == nil || IsNil(o.UserPresenceTimeout) {
+		var ret FIDO2PolicyUserPresenceTimeout
+		return ret
+	}
+	return *o.UserPresenceTimeout
+}
+
+// GetUserPresenceTimeoutOk returns a tuple with the UserPresenceTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FIDO2Policy) GetUserPresenceTimeoutOk() (*FIDO2PolicyUserPresenceTimeout, bool) {
+	if o == nil || IsNil(o.UserPresenceTimeout) {
+		return nil, false
+	}
+	return o.UserPresenceTimeout, true
+}
+
+// HasUserPresenceTimeout returns a boolean if a field has been set.
+func (o *FIDO2Policy) HasUserPresenceTimeout() bool {
+	if o != nil && !IsNil(o.UserPresenceTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPresenceTimeout gets a reference to the given FIDO2PolicyUserPresenceTimeout and assigns it to the UserPresenceTimeout field.
+func (o *FIDO2Policy) SetUserPresenceTimeout(v FIDO2PolicyUserPresenceTimeout) {
+	o.UserPresenceTimeout = &v
+}
+
 // GetUserVerification returns the UserVerification field value
 func (o *FIDO2Policy) GetUserVerification() FIDO2PolicyUserVerification {
 	if o == nil {
@@ -615,6 +648,9 @@ func (o FIDO2Policy) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["relyingPartyId"] = o.RelyingPartyId
 	toSerialize["userDisplayNameAttributes"] = o.UserDisplayNameAttributes
+	if !IsNil(o.UserPresenceTimeout) {
+		toSerialize["userPresenceTimeout"] = o.UserPresenceTimeout
+	}
 	toSerialize["userVerification"] = o.UserVerification
 	return toSerialize, nil
 }
