@@ -3256,6 +3256,16 @@ components:
               items:
                 type: object
                 properties:
+                  blastRadiusMitigation:
+                    type: object
+                    description: This object contains two optional fields that can be used to block Blast RADIUS attacks. Since these two options use different approaches to deal with the same issue, you should not set more than one of them to `true`. If both are set to `true`, an error is returned.
+                    properties:
+                      requireMsgAuth:
+                        type: boolean
+                        description: Set to `true` to require that all requests from the client include the Message-Authenticator attribute. Any requests without the attribute will be ignored.
+                      limitProxyState:
+                        type: boolean
+                        description: For older clients that don't support sending the Message-Authenticator attribute, you can set this field to `true`. This instructs the gateway to ignore requests that don't contain the Message-Authenticator attribute but contain the Proxy-State attribute.
                   ip:
                     type: string
                     description: The IP of the RADIUS client.

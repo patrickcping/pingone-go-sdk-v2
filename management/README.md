@@ -753,6 +753,7 @@ Class | Method | HTTP request | Description
  - [GatewayTypeLDAPAllOfNewUserLookupPopulation](docs/GatewayTypeLDAPAllOfNewUserLookupPopulation.md)
  - [GatewayTypeLDAPAllOfUserTypes](docs/GatewayTypeLDAPAllOfUserTypes.md)
  - [GatewayTypeRADIUS](docs/GatewayTypeRADIUS.md)
+ - [GatewayTypeRADIUSAllOfBlastRadiusMitigation](docs/GatewayTypeRADIUSAllOfBlastRadiusMitigation.md)
  - [GatewayTypeRADIUSAllOfDavinci](docs/GatewayTypeRADIUSAllOfDavinci.md)
  - [GatewayTypeRADIUSAllOfDavinciPolicy](docs/GatewayTypeRADIUSAllOfDavinciPolicy.md)
  - [GatewayTypeRADIUSAllOfNetworkPolicyServer](docs/GatewayTypeRADIUSAllOfNetworkPolicyServer.md)
