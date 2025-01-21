@@ -1,6 +1,9 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.6
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.45.0 => v0.46.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.21.0 => v0.22.0
+  * **Note** bump `golang.org/x/oauth2` v0.24.0 => v0.25.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.46.0](./management/CHANGELOG.md)
   * **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
   * **Enhancement** Added `BlastRadiusMitigation` to the `GatewayTypeRADIUSAllOfRadiusClients` model. [#410](https://github.com/patrickcping/pingone-go-sdk-v2/pull/410)
