@@ -3403,6 +3403,9 @@ components:
             environment:
               id: id
             default: true
+            publicKeyCredentialHints:
+            - null
+            - null
             name: name
             attestationRequirements: null
             id: id
@@ -3447,6 +3450,9 @@ components:
             environment:
               id: id
             default: true
+            publicKeyCredentialHints:
+            - null
+            - null
             name: name
             attestationRequirements: null
             id: id
@@ -3898,6 +3904,12 @@ components:
       - DISCOURAGED
       - PREFERRED
       type: string
+    EnumFIDO2PublicKeyCredentialHint:
+      enum:
+      - SECURITY_KEY
+      - CLIENT_DEVICE
+      - HYBRID
+      type: string
     EnumMFADevicePolicyMobileExtraVerification:
       description: "Specifies the level of further verification when deviceAuthorization\
         \ is enabled. The PingOne platform performs an extra verification check by\
@@ -4107,6 +4119,9 @@ components:
         environment:
           id: id
         default: true
+        publicKeyCredentialHints:
+        - null
+        - null
         name: name
         attestationRequirements: null
         id: id
@@ -4180,6 +4195,16 @@ components:
           description: The name to use for the FIDO policy. Can be up to 256 characters.
           maxLength: 256
           type: string
+        publicKeyCredentialHints:
+          description: "The `publicKeyCredentialHints` array is used to indicate that\
+            \ you want to provide public key credential hints to the browser to help\
+            \ give priority to the authentication method that the user is most likely\
+            \ to use. You can include in the array one or more of the following values\
+            \ `SECURITY_KEY`, `CLIENT_DEVICE`, `HYBRID`."
+          items:
+            $ref: '#/components/schemas/EnumFIDO2PublicKeyCredentialHint'
+          minItems: 1
+          type: array
         relyingPartyId:
           description: "The ID of the relying party. The value should be a domain\
             \ name, such as `example.com` (in lower-case characters)."
@@ -4977,6 +5002,9 @@ components:
           environment:
             id: id
           default: true
+          publicKeyCredentialHints:
+          - null
+          - null
           name: name
           attestationRequirements: null
           id: id
@@ -5021,6 +5049,9 @@ components:
           environment:
             id: id
           default: true
+          publicKeyCredentialHints:
+          - null
+          - null
           name: name
           attestationRequirements: null
           id: id
