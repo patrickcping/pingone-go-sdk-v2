@@ -1,4 +1,4 @@
-# v0.46.0 (Unreleased)
+# v0.46.0 (2025-01-21)
 
 * **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
 * **Enhancement** Added `BlastRadiusMitigation` to the `GatewayTypeRADIUSAllOfRadiusClients` model. [#410](https://github.com/patrickcping/pingone-go-sdk-v2/pull/410)
