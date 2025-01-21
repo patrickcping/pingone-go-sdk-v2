@@ -1,3 +1,7 @@
+# v0.46.0 (Unreleased)
+
+* **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
+
 # v0.45.0 (2024-12-18)
 
 * **Enhancement** Added `SUSPICIOUS_TRAFFIC` enum to `EnumAlertChannelAlertType` model. [#399](https://github.com/patrickcping/pingone-go-sdk-v2/pull/399)
