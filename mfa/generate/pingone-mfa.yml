@@ -519,6 +519,9 @@ components:
         - `DISCOURAGED` - user verification is not required, even when supported by the FIDO device. In cases where user verification is required by the FIDO device itself, this setting does not override the device setting.
         - `PREFERRED` - user verification is required if the user's FIDO device supports it, but is not required if the user's device does not support it.
         For usernameless flows, only FIDO devices supporting user verification can be used, regardless of the value you set for `userVerification.option`.
+    EnumFIDO2PublicKeyCredentialHint:
+      type: string
+      enum: [SECURITY_KEY, CLIENT_DEVICE, HYBRID]
     EnumMFADevicePolicyMobileExtraVerification:
       type: string
       description: Specifies the level of further verification when deviceAuthorization is enabled. The PingOne platform performs an extra verification check by sending a “silent” push notification to the customer native application, and receives a confirmation in return.
@@ -719,6 +722,12 @@ components:
           type: string
           description: The name to use for the FIDO policy. Can be up to 256 characters.
           maxLength: 256
+        publicKeyCredentialHints:
+          type: array
+          description: The `publicKeyCredentialHints` array is used to indicate that you want to provide public key credential hints to the browser to help give priority to the authentication method that the user is most likely to use. You can include in the array one or more of the following values `SECURITY_KEY`, `CLIENT_DEVICE`, `HYBRID`.
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/EnumFIDO2PublicKeyCredentialHint'
         relyingPartyId:
           type: string
           description: The ID of the relying party. The value should be a domain name, such as `example.com` (in lower-case characters).

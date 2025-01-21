@@ -5,6 +5,7 @@
   * **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.22.0](./mfa/CHANGELOG.md)
   * **Enhancement** Added `UserPresenceTimeout` to the `FIDO2Policy` model. [#408](https://github.com/patrickcping/pingone-go-sdk-v2/pull/408)
+  * **Enhancement** Added `PublicKeyCredentialHints` to the `FIDO2Policy` model. [#409](https://github.com/patrickcping/pingone-go-sdk-v2/pull/409)
 
 # Release (2024-12-18)
 

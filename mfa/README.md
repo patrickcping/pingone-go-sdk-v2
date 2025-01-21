@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
  - [EnumFIDO2PolicyDiscoverableCredentials](docs/EnumFIDO2PolicyDiscoverableCredentials.md)
  - [EnumFIDO2PolicyMDSAuthenticatorOption](docs/EnumFIDO2PolicyMDSAuthenticatorOption.md)
  - [EnumFIDO2PolicyUserVerificationOption](docs/EnumFIDO2PolicyUserVerificationOption.md)
+ - [EnumFIDO2PublicKeyCredentialHint](docs/EnumFIDO2PublicKeyCredentialHint.md)
  - [EnumFIDOAttestationRequirements](docs/EnumFIDOAttestationRequirements.md)
  - [EnumFIDOResidentKeyRequirement](docs/EnumFIDOResidentKeyRequirement.md)
  - [EnumMFADevicePolicyMobileExtraVerification](docs/EnumMFADevicePolicyMobileExtraVerification.md)
