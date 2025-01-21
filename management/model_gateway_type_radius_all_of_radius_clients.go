@@ -19,6 +19,7 @@ var _ MappedNullable = &GatewayTypeRADIUSAllOfRadiusClients{}
 
 // GatewayTypeRADIUSAllOfRadiusClients struct for GatewayTypeRADIUSAllOfRadiusClients
 type GatewayTypeRADIUSAllOfRadiusClients struct {
+	BlastRadiusMitigation *GatewayTypeRADIUSAllOfBlastRadiusMitigation `json:"blastRadiusMitigation,omitempty"`
 	// The IP of the RADIUS client.
 	Ip string `json:"ip"`
 	// The shared secret for the RADIUS client. If this value is not provided, the shared secret specified with `defaultSharedSecret` is used. If you are not providing a shared secret for the client, leave out `sharedSecret` or set it to null.
@@ -41,6 +42,38 @@ func NewGatewayTypeRADIUSAllOfRadiusClients(ip string) *GatewayTypeRADIUSAllOfRa
 func NewGatewayTypeRADIUSAllOfRadiusClientsWithDefaults() *GatewayTypeRADIUSAllOfRadiusClients {
 	this := GatewayTypeRADIUSAllOfRadiusClients{}
 	return &this
+}
+
+// GetBlastRadiusMitigation returns the BlastRadiusMitigation field value if set, zero value otherwise.
+func (o *GatewayTypeRADIUSAllOfRadiusClients) GetBlastRadiusMitigation() GatewayTypeRADIUSAllOfBlastRadiusMitigation {
+	if o == nil || IsNil(o.BlastRadiusMitigation) {
+		var ret GatewayTypeRADIUSAllOfBlastRadiusMitigation
+		return ret
+	}
+	return *o.BlastRadiusMitigation
+}
+
+// GetBlastRadiusMitigationOk returns a tuple with the BlastRadiusMitigation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayTypeRADIUSAllOfRadiusClients) GetBlastRadiusMitigationOk() (*GatewayTypeRADIUSAllOfBlastRadiusMitigation, bool) {
+	if o == nil || IsNil(o.BlastRadiusMitigation) {
+		return nil, false
+	}
+	return o.BlastRadiusMitigation, true
+}
+
+// HasBlastRadiusMitigation returns a boolean if a field has been set.
+func (o *GatewayTypeRADIUSAllOfRadiusClients) HasBlastRadiusMitigation() bool {
+	if o != nil && !IsNil(o.BlastRadiusMitigation) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlastRadiusMitigation gets a reference to the given GatewayTypeRADIUSAllOfBlastRadiusMitigation and assigns it to the BlastRadiusMitigation field.
+func (o *GatewayTypeRADIUSAllOfRadiusClients) SetBlastRadiusMitigation(v GatewayTypeRADIUSAllOfBlastRadiusMitigation) {
+	o.BlastRadiusMitigation = &v
 }
 
 // GetIp returns the Ip field value
@@ -109,6 +142,9 @@ func (o GatewayTypeRADIUSAllOfRadiusClients) MarshalJSON() ([]byte, error) {
 
 func (o GatewayTypeRADIUSAllOfRadiusClients) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BlastRadiusMitigation) {
+		toSerialize["blastRadiusMitigation"] = o.BlastRadiusMitigation
+	}
 	toSerialize["ip"] = o.Ip
 	if !IsNil(o.SharedSecret) {
 		toSerialize["sharedSecret"] = o.SharedSecret
