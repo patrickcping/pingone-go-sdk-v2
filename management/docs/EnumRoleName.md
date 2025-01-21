@@ -3,11 +3,17 @@
 ## Enum
 
 
+* `ADVANCED_IDENTITY_CLOUD_SUPER_ADMIN` (value: `"Advanced Identity Cloud Super Admin"`)
+
+* `ADVANCED_IDENTITY_CLOUD_TENANT_ADMIN` (value: `"Advanced Identity Cloud Tenant Admin"`)
+
 * `APPLICATION_OWNER` (value: `"Application Owner"`)
 
 * `CLIENT_APPLICATION_DEVELOPER` (value: `"Client Application Developer"`)
 
 * `CONFIGURATION_READ_ONLY` (value: `"Configuration Read Only"`)
+
+* `CUSTOM_ROLES_ADMIN` (value: `"Custom Roles Admin"`)
 
 * `DA_VINCI_ADMIN_READ_ONLY` (value: `"DaVinci Admin Read Only"`)
 

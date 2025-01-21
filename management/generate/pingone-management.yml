@@ -596,9 +596,12 @@ components:
       type: string
       description: The name of the role
       enum: [
+        "Advanced Identity Cloud Super Admin",
+        "Advanced Identity Cloud Tenant Admin",
         "Application Owner",
         "Client Application Developer",
         "Configuration Read Only",
+        "Custom Roles Admin",
         "DaVinci Admin Read Only",
         "DaVinci Admin",
         "Environment Admin",
@@ -609,7 +612,7 @@ components:
         "PingFederate Auditor",
         "PingFederate Crypto Administrator",
         "PingFederate Expression Administrator",
-        "PingFederate User Administrator"
+        "PingFederate User Administrator",
       ]
     EnumRoleAssignmentScopeType:
       type: string
