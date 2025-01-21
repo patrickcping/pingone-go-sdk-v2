@@ -3358,7 +3358,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 7.386281948385884
+        size: 1.2315135367772556
         _links:
           key:
             href: https://openapi-generator.tech
@@ -3384,6 +3384,9 @@ components:
                 subAttributes:
                 - name: name
                 - name: name
+            userPresenceTimeout:
+              duration: 4
+              timeUnit: null
             description: description
             backupEligibility:
               allow: true
@@ -3425,6 +3428,9 @@ components:
                 subAttributes:
                 - name: name
                 - name: name
+            userPresenceTimeout:
+              duration: 4
+              timeUnit: null
             description: description
             backupEligibility:
               allow: true
@@ -3794,7 +3800,7 @@ components:
             authentication:
               deviceSelection: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-        count: 4.145608029883936
+        count: 7.386281948385884
       properties:
         _links:
           additionalProperties:
@@ -4082,6 +4088,9 @@ components:
             subAttributes:
             - name: name
             - name: name
+        userPresenceTimeout:
+          duration: 4
+          timeUnit: null
         description: description
         backupEligibility:
           allow: true
@@ -4177,6 +4186,8 @@ components:
           type: string
         userDisplayNameAttributes:
           $ref: '#/components/schemas/FIDO2Policy_userDisplayNameAttributes'
+        userPresenceTimeout:
+          $ref: '#/components/schemas/FIDO2Policy_userPresenceTimeout'
         userVerification:
           $ref: '#/components/schemas/FIDO2Policy_userVerification'
       required:
@@ -4947,6 +4958,9 @@ components:
               subAttributes:
               - name: name
               - name: name
+          userPresenceTimeout:
+            duration: 4
+            timeUnit: null
           description: description
           backupEligibility:
             allow: true
@@ -4988,6 +5002,9 @@ components:
               subAttributes:
               - name: name
               - name: name
+          userPresenceTimeout:
+            duration: 4
+            timeUnit: null
           description: description
           backupEligibility:
             allow: true
@@ -5505,6 +5522,24 @@ components:
           type: array
       required:
       - attributes
+      type: object
+    FIDO2Policy_userPresenceTimeout:
+      description: Used to specify the amount of time the user has to perform a user
+        presence gesture with their FIDO device before the request expires. The defined
+        timeout applies also to the pairing of the device. Note that the information
+        is provided as a hint to the authenticator so the actual time given may differ
+        from what you defined.
+      example:
+        duration: 4
+        timeUnit: null
+      properties:
+        duration:
+          description: "The amount of time a user presence gesture will be accepted\
+            \ for the authentication request. Minimum is one minute, maximum is ten\
+            \ minutes. Can be set in minutes or seconds."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
       type: object
     FIDO2Policy_userVerification:
       description: "Used to control whether the user must perform a gesture (such\

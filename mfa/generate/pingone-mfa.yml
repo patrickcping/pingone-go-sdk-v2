@@ -756,6 +756,15 @@ components:
                   - name
           required:
             - attributes
+        userPresenceTimeout:
+          type: object
+          description: Used to specify the amount of time the user has to perform a user presence gesture with their FIDO device before the request expires. The defined timeout applies also to the pairing of the device. Note that the information is provided as a hint to the authenticator so the actual time given may differ from what you defined.
+          properties:
+            duration:
+              type: integer
+              description: The amount of time a user presence gesture will be accepted for the authentication request. Minimum is one minute, maximum is ten minutes. Can be set in minutes or seconds.
+            timeUnit:
+              $ref: '#/components/schemas/EnumTimeUnit'
         userVerification:
           type: object
           description: Used to control whether the user must perform a gesture (such as a public key credential, fingerprint scan, or a PIN code) when registering or authenticating with their FIDO device.

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name to use for the FIDO policy. Can be up to 256 characters. | 
 **RelyingPartyId** | **string** | The ID of the relying party. The value should be a domain name, such as &#x60;example.com&#x60; (in lower-case characters). | 
 **UserDisplayNameAttributes** | [**FIDO2PolicyUserDisplayNameAttributes**](FIDO2PolicyUserDisplayNameAttributes.md) |  | 
+**UserPresenceTimeout** | Pointer to [**FIDO2PolicyUserPresenceTimeout**](FIDO2PolicyUserPresenceTimeout.md) |  | [optional] 
 **UserVerification** | [**FIDO2PolicyUserVerification**](FIDO2PolicyUserVerification.md) |  | 
 
 ## Methods
@@ -421,6 +422,31 @@ and a boolean to check if the value has been set.
 
 SetUserDisplayNameAttributes sets UserDisplayNameAttributes field to given value.
 
+
+### GetUserPresenceTimeout
+
+`func (o *FIDO2Policy) GetUserPresenceTimeout() FIDO2PolicyUserPresenceTimeout`
+
+GetUserPresenceTimeout returns the UserPresenceTimeout field if non-nil, zero value otherwise.
+
+### GetUserPresenceTimeoutOk
+
+`func (o *FIDO2Policy) GetUserPresenceTimeoutOk() (*FIDO2PolicyUserPresenceTimeout, bool)`
+
+GetUserPresenceTimeoutOk returns a tuple with the UserPresenceTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPresenceTimeout
+
+`func (o *FIDO2Policy) SetUserPresenceTimeout(v FIDO2PolicyUserPresenceTimeout)`
+
+SetUserPresenceTimeout sets UserPresenceTimeout field to given value.
+
+### HasUserPresenceTimeout
+
+`func (o *FIDO2Policy) HasUserPresenceTimeout() bool`
+
+HasUserPresenceTimeout returns a boolean if a field has been set.
 
 ### GetUserVerification
 
