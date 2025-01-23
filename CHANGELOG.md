@@ -1,7 +1,9 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.7
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.46.0 => v0.47.0 [#413](https://github.com/patrickcping/pingone-go-sdk-v2/pull/413)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.47.0](./management/CHANGELOG.md)
-    * **Enhancement** Added `EnvironmentDnsRecord` to the `EmailDomainOwnershipStatus` model. [#412](https://github.com/patrickcping/pingone-go-sdk-v2/pull/412)
+  * **Enhancement** Added `EnvironmentDnsRecord` to the `EmailDomainOwnershipStatus` model. [#412](https://github.com/patrickcping/pingone-go-sdk-v2/pull/412)
 
 # Release (2025-01-21)
 
