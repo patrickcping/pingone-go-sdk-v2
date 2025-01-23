@@ -23,6 +23,7 @@ type EmailDomainOwnershipStatus struct {
 	Type *string `json:"type,omitempty"`
 	// The regions collection specifies the properties for the 4 AWS SES regions that are used for sending email for the environment. The regions are determined by the geography where this environment was provisioned (North America, Canada, Europe & Asia-Pacific).
 	Regions []EmailDomainOwnershipStatusRegionsInner `json:"regions,omitempty"`
+	EnvironmentDnsRecord *EmailDomainOwnershipStatusEnvironmentDnsRecord `json:"environmentDnsRecord,omitempty"`
 }
 
 // NewEmailDomainOwnershipStatus instantiates a new EmailDomainOwnershipStatus object
@@ -106,6 +107,38 @@ func (o *EmailDomainOwnershipStatus) SetRegions(v []EmailDomainOwnershipStatusRe
 	o.Regions = v
 }
 
+// GetEnvironmentDnsRecord returns the EnvironmentDnsRecord field value if set, zero value otherwise.
+func (o *EmailDomainOwnershipStatus) GetEnvironmentDnsRecord() EmailDomainOwnershipStatusEnvironmentDnsRecord {
+	if o == nil || IsNil(o.EnvironmentDnsRecord) {
+		var ret EmailDomainOwnershipStatusEnvironmentDnsRecord
+		return ret
+	}
+	return *o.EnvironmentDnsRecord
+}
+
+// GetEnvironmentDnsRecordOk returns a tuple with the EnvironmentDnsRecord field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailDomainOwnershipStatus) GetEnvironmentDnsRecordOk() (*EmailDomainOwnershipStatusEnvironmentDnsRecord, bool) {
+	if o == nil || IsNil(o.EnvironmentDnsRecord) {
+		return nil, false
+	}
+	return o.EnvironmentDnsRecord, true
+}
+
+// HasEnvironmentDnsRecord returns a boolean if a field has been set.
+func (o *EmailDomainOwnershipStatus) HasEnvironmentDnsRecord() bool {
+	if o != nil && !IsNil(o.EnvironmentDnsRecord) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironmentDnsRecord gets a reference to the given EmailDomainOwnershipStatusEnvironmentDnsRecord and assigns it to the EnvironmentDnsRecord field.
+func (o *EmailDomainOwnershipStatus) SetEnvironmentDnsRecord(v EmailDomainOwnershipStatusEnvironmentDnsRecord) {
+	o.EnvironmentDnsRecord = &v
+}
+
 func (o EmailDomainOwnershipStatus) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o EmailDomainOwnershipStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Regions) {
 		toSerialize["regions"] = o.Regions
+	}
+	if !IsNil(o.EnvironmentDnsRecord) {
+		toSerialize["environmentDnsRecord"] = o.EnvironmentDnsRecord
 	}
 	return toSerialize, nil
 }
