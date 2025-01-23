@@ -190,6 +190,7 @@ docs/EmailDomainDKIMStatus.md
 docs/EmailDomainDKIMStatusRegionsInner.md
 docs/EmailDomainDKIMStatusRegionsInnerTokensInner.md
 docs/EmailDomainOwnershipStatus.md
+docs/EmailDomainOwnershipStatusEnvironmentDnsRecord.md
 docs/EmailDomainOwnershipStatusRegionsInner.md
 docs/EmailDomainSPFStatus.md
 docs/EmailDomainTrustedEmail.md
@@ -799,6 +800,7 @@ model_email_domain_dkim_status.go
 model_email_domain_dkim_status_regions_inner.go
 model_email_domain_dkim_status_regions_inner_tokens_inner.go
 model_email_domain_ownership_status.go
+model_email_domain_ownership_status_environment_dns_record.go
 model_email_domain_ownership_status_regions_inner.go
 model_email_domain_spf_status.go
 model_email_domain_trusted_email.go

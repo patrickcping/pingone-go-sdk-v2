@@ -1,3 +1,7 @@
+# v0.47.0 (Unreleased)
+
+* **Enhancement** Added `EnvironmentDnsRecord` to the `EmailDomainOwnershipStatus` model.
+
 # v0.46.0 (2025-01-21)
 
 * **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
