@@ -1,6 +1,6 @@
 # v0.48.0 (Unreleased)
 
-* **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model.
+* **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model. [#414](https://github.com/patrickcping/pingone-go-sdk-v2/pull/414)
 
 # v0.47.0 (2025-01-23)
 

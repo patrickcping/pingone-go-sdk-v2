@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.48.0](./management/CHANGELOG.md)
-  * **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model.
+  * **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model. [#414](https://github.com/patrickcping/pingone-go-sdk-v2/pull/414)
 
 # Release (2025-01-23)
 
