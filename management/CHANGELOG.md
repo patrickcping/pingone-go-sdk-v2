@@ -1,4 +1,8 @@
-# v0.47.0 (Unreleased)
+# v0.48.0 (Unreleased)
+
+* **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model.
+
+# v0.47.0 (2025-01-23)
 
 * **Enhancement** Added `EnvironmentDnsRecord` to the `EmailDomainOwnershipStatus` model. [#412](https://github.com/patrickcping/pingone-go-sdk-v2/pull/412)
 

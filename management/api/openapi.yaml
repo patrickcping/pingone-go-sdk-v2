@@ -19972,6 +19972,14 @@ paths:
         schema:
           type: string
         style: simple
+      - example: type eq "CUSTOM"
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "400":
           content:
