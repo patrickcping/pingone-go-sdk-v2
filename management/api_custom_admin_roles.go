@@ -427,6 +427,12 @@ type ApiReadAllCustomAdminRolesRequest struct {
 	ctx context.Context
 	ApiService *CustomAdminRolesApiService
 	environmentID string
+	filter *string
+}
+
+func (r ApiReadAllCustomAdminRolesRequest) Filter(filter string) ApiReadAllCustomAdminRolesRequest {
+	r.filter = &filter
+	return r
 }
 
 func (r ApiReadAllCustomAdminRolesRequest) Execute() EntityArrayPagedIterator {
@@ -494,6 +500,9 @@ func (a *CustomAdminRolesApiService) internalReadAllCustomAdminRolesExecute(r Ap
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -153,13 +153,11 @@ Name | Type | Description  | Notes
 
 ## ReadAllCustomAdminRoles
 
+> EntityArrayPagedIterator ReadAllCustomAdminRoles(ctx, environmentID).Filter(filter).Execute()
+
 READ All Custom Admin Roles
 
-### Paged Response (Recommended)
-
-> EntityArrayPagedIterator ReadAllCustomAdminRoles(ctx, environmentID).Execute()
-
-#### Example
+### Example
 
 ```go
 package main
@@ -173,47 +171,11 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-	// ... other parameters
+    filter := "type eq "CUSTOM"" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-	api := apiClient. // .... API function
-    pagedIterator := api.ReadAllCustomAdminRoles(context.Background(), environmentID, /* ... other parameters */).Execute()
-	for pageCursor, err := range pagedIterator {
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `api.ReadAllCustomAdminRoles``: %v\n", err)
-			fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", pageCursor.HTTPResponse)
-			break
-		}
-
-		// response from `ReadAllCustomAdminRoles`: EntityArrayPagedIterator
-		fmt.Fprintf(os.Stdout, "Response from `api.ReadAllCustomAdminRoles`: %v\n", pageCursor.EntityArray)
-	}
-}
-```
-
-### Initial Page Response
-
-> EntityArray ReadAllCustomAdminRoles(ctx, environmentID).ExecuteInitialPage()
-
-#### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomAdminRolesApi.ReadAllCustomAdminRoles(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.CustomAdminRolesApi.ReadAllCustomAdminRoles(context.Background(), environmentID).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomAdminRolesApi.ReadAllCustomAdminRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,6 +201,7 @@ Other parameters are passed through a pointer to a apiReadAllCustomAdminRolesReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **filter** | **string** |  | 
 
 ### Return type
 

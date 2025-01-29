@@ -18761,6 +18761,12 @@ paths:
           schema:
             type: string
           required: true
+        - name: filter
+          in: query
+          schema:
+            type: string
+          example: >-
+            type eq "CUSTOM"
       responses:
         '400':
           $ref: '#/components/responses/400'
