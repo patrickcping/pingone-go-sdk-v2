@@ -22,14 +22,13 @@ var _ MappedNullable = &NotificationsSettingsEmailDeliverySettingsSMTP{}
 type NotificationsSettingsEmailDeliverySettingsSMTP struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Protocol *EnumNotificationsSettingsEmailDeliverySettingsProtocol `json:"protocol,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the organization's SMTP server.
 	Host *string `json:"host,omitempty"`
 	// An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
 	Port *int32 `json:"port,omitempty"`
-	// A string that specifies the organization's SMTP server's protocol.
-	Protocol *string `json:"protocol,omitempty"`
 	// A string that specifies the organization's SMTP server's username.
 	Username *string `json:"username,omitempty"`
 	// A string that specifies the organization's SMTP server's password.
@@ -121,6 +120,38 @@ func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *NotificationsSettingsEmailDeliverySettingsSMTP) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetProtocol returns the Protocol field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocol() EnumNotificationsSettingsEmailDeliverySettingsProtocol {
+	if o == nil || IsNil(o.Protocol) {
+		var ret EnumNotificationsSettingsEmailDeliverySettingsProtocol
+		return ret
+	}
+	return *o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocolOk() (*EnumNotificationsSettingsEmailDeliverySettingsProtocol, bool) {
+	if o == nil || IsNil(o.Protocol) {
+		return nil, false
+	}
+	return o.Protocol, true
+}
+
+// HasProtocol returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasProtocol() bool {
+	if o != nil && !IsNil(o.Protocol) {
+		return true
+	}
+
+	return false
+}
+
+// SetProtocol gets a reference to the given EnumNotificationsSettingsEmailDeliverySettingsProtocol and assigns it to the Protocol field.
+func (o *NotificationsSettingsEmailDeliverySettingsSMTP) SetProtocol(v EnumNotificationsSettingsEmailDeliverySettingsProtocol) {
+	o.Protocol = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -217,38 +248,6 @@ func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasPort() bool {
 // SetPort gets a reference to the given int32 and assigns it to the Port field.
 func (o *NotificationsSettingsEmailDeliverySettingsSMTP) SetPort(v int32) {
 	o.Port = &v
-}
-
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocol() string {
-	if o == nil || IsNil(o.Protocol) {
-		var ret string
-		return ret
-	}
-	return *o.Protocol
-}
-
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocolOk() (*string, bool) {
-	if o == nil || IsNil(o.Protocol) {
-		return nil, false
-	}
-	return o.Protocol, true
-}
-
-// HasProtocol returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasProtocol() bool {
-	if o != nil && !IsNil(o.Protocol) {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *NotificationsSettingsEmailDeliverySettingsSMTP) SetProtocol(v string) {
-	o.Protocol = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
@@ -395,6 +394,9 @@ func (o NotificationsSettingsEmailDeliverySettingsSMTP) ToMap() (map[string]inte
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
+	if !IsNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
+	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
@@ -403,9 +405,6 @@ func (o NotificationsSettingsEmailDeliverySettingsSMTP) ToMap() (map[string]inte
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
-	}
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username

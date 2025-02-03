@@ -27672,10 +27672,11 @@ components:
       - BASIC
       - BEARER
       type: string
-    EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol:
-      description: Set to `HTTP` when configuring an external email provider.
+    EnumNotificationsSettingsEmailDeliverySettingsProtocol:
       enum:
       - HTTP
+      - SMTP
+      - SMTPS
       type: string
     EnumNotificationsSettingsEmailDeliverySettingsCustomProvider:
       description: Must be set to `CUSTOM_PROVIDER`.
@@ -33728,6 +33729,8 @@ components:
           type: object
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        protocol:
+          $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsProtocol'
         updatedAt:
           description: The time the resource was last updated.
           format: date-time
@@ -33745,8 +33748,6 @@ components:
           name:
             description: Name to use to identify the provider.
             type: string
-          protocol:
-            $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol'
           provider:
             $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomProvider'
           replyTo:
@@ -33777,11 +33778,6 @@ components:
               \ used depends upon the port specified. If you specify port `25`, `587`,\
               \ or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used."
             type: integer
-          protocol:
-            description: A string that specifies the organization's SMTP server's
-              protocol.
-            readOnly: true
-            type: string
           username:
             description: A string that specifies the organization's SMTP server's
               username.

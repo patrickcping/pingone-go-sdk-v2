@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Protocol** | Pointer to [**EnumNotificationsSettingsEmailDeliverySettingsProtocol**](EnumNotificationsSettingsEmailDeliverySettingsProtocol.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **Host** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server. | [optional] 
 **Port** | Pointer to **int32** | An integer that specifies the port used by the organization&#39;s SMTP server to send emails (default &#x60;465&#x60;). Note that the protocol used depends upon the port specified. If you specify port &#x60;25&#x60;, &#x60;587&#x60;, or &#x60;2525&#x60;, SMTP with &#x60;STARTTLS&#x60; is used. Otherwise, &#x60;SMTPS&#x60; is used. | [optional] [default to 465]
-**Protocol** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server&#39;s protocol. | [optional] [readonly] 
 **Username** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server&#39;s username. | [optional] 
 **Password** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server&#39;s password. | [optional] 
 **From** | Pointer to [**NotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom**](NotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom.md) |  | [optional] 
@@ -83,6 +83,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocol() EnumNotificationsSettingsEmailDeliverySettingsProtocol`
+
+GetProtocol returns the Protocol field if non-nil, zero value otherwise.
+
+### GetProtocolOk
+
+`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocolOk() (*EnumNotificationsSettingsEmailDeliverySettingsProtocol, bool)`
+
+GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) SetProtocol(v EnumNotificationsSettingsEmailDeliverySettingsProtocol)`
+
+SetProtocol sets Protocol field to given value.
+
+### HasProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasProtocol() bool`
+
+HasProtocol returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -158,31 +183,6 @@ SetPort sets Port field to given value.
 `func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
-
-### GetProtocol
-
-`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocol() string`
-
-GetProtocol returns the Protocol field if non-nil, zero value otherwise.
-
-### GetProtocolOk
-
-`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) GetProtocolOk() (*string, bool)`
-
-GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProtocol
-
-`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) SetProtocol(v string)`
-
-SetProtocol sets Protocol field to given value.
-
-### HasProtocol
-
-`func (o *NotificationsSettingsEmailDeliverySettingsSMTP) HasProtocol() bool`
-
-HasProtocol returns a boolean if a field has been set.
 
 ### GetUsername
 
