@@ -22,6 +22,7 @@ var _ MappedNullable = &NotificationsSettingsEmailDeliverySettingsCommon{}
 type NotificationsSettingsEmailDeliverySettingsCommon struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Protocol *EnumNotificationsSettingsEmailDeliverySettingsProtocol `json:"protocol,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -107,6 +108,38 @@ func (o *NotificationsSettingsEmailDeliverySettingsCommon) SetEnvironment(v Obje
 	o.Environment = &v
 }
 
+// GetProtocol returns the Protocol field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCommon) GetProtocol() EnumNotificationsSettingsEmailDeliverySettingsProtocol {
+	if o == nil || IsNil(o.Protocol) {
+		var ret EnumNotificationsSettingsEmailDeliverySettingsProtocol
+		return ret
+	}
+	return *o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCommon) GetProtocolOk() (*EnumNotificationsSettingsEmailDeliverySettingsProtocol, bool) {
+	if o == nil || IsNil(o.Protocol) {
+		return nil, false
+	}
+	return o.Protocol, true
+}
+
+// HasProtocol returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCommon) HasProtocol() bool {
+	if o != nil && !IsNil(o.Protocol) {
+		return true
+	}
+
+	return false
+}
+
+// SetProtocol gets a reference to the given EnumNotificationsSettingsEmailDeliverySettingsProtocol and assigns it to the Protocol field.
+func (o *NotificationsSettingsEmailDeliverySettingsCommon) SetProtocol(v EnumNotificationsSettingsEmailDeliverySettingsProtocol) {
+	o.Protocol = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettingsCommon) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -154,6 +187,9 @@ func (o NotificationsSettingsEmailDeliverySettingsCommon) ToMap() (map[string]in
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
