@@ -492,5 +492,44 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// Management: NotificationsSettingsEmailDeliverySettings model
+		{
+			fileSelectPattern: "model_integration_version.go",
+			pattern:           `(func \(dst \*NotificationsSettingsEmailDeliverySettings\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *NotificationsSettingsEmailDeliverySettings) UnmarshalJSON(data []byte) error {
+
+	var common NotificationsSettingsEmailDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
+	dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
+
+	objType := common.GetProtocol()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_HTTP:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsCustom); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTP, ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTPS:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsSMTP); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )
