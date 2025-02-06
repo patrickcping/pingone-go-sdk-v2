@@ -77,9 +77,9 @@ func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, e
 func testForRetryable(r *http.Response, err error, retryAttempt int) (time.Duration, bool) {
 
 	baseDelay := time.Second
-	requestDelayDuration, err := calculateExponentialBackoff(retryAttempt, baseDelay)
-	if err != nil {
-		slog.Error("Invalid backoff delay duration", "error", err, "defaultDuration", baseDelay, "retry", false)
+	requestDelayDuration, ebErr := calculateExponentialBackoff(retryAttempt, baseDelay)
+	if ebErr != nil {
+		slog.Error("Invalid backoff delay duration", "error", ebErr, "defaultDuration", baseDelay, "retry", false)
 		return baseDelay, false
 	}
 
