@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## EnvironmentsEnvironmentIDActiveIdentityCountsGet
 
-> EnvironmentsEnvironmentIDActiveIdentityCountsGet(ctx, environmentID).Filter(filter).Limit(limit).Order(order).Execute()
+> EnvironmentsEnvironmentIDActiveIdentityCountsGet(ctx, environmentID).Filter(filter).Limit(limit).Order(order).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 READ Active Identity Counts (Deprecated)
 
@@ -33,10 +33,12 @@ func main() {
     filter := "startDate ge "2019-05-01T19:00:00Z" and samplingPeriod eq "10"" // string |  (optional)
     limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     order := "-startDate" // string |  (optional)
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ActiveIdentityCountsApi.EnvironmentsEnvironmentIDActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).Execute()
+    r, err := apiClient.ActiveIdentityCountsApi.EnvironmentsEnvironmentIDActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ActiveIdentityCountsApi.EnvironmentsEnvironmentIDActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,6 +65,8 @@ Name | Type | Description  | Notes
  **filter** | **string** |  | 
  **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **order** | **string** |  | 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -84,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet
 
-> EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet(ctx, environmentID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
+> EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet(ctx, environmentID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 READ Active Identity Counts by Date Range
 
@@ -106,10 +110,12 @@ func main() {
     limit := int32(10) // int32 |  (optional)
     order := "-startDate" // string |  (optional)
     samplePeriod := "MONTH" // string |  (optional)
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ActiveIdentityCountsApi.EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
+    r, err := apiClient.ActiveIdentityCountsApi.EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ActiveIdentityCountsApi.EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,6 +143,8 @@ Name | Type | Description  | Notes
  **limit** | **int32** |  | 
  **order** | **string** |  | 
  **samplePeriod** | **string** |  | 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -158,7 +166,7 @@ Name | Type | Description  | Notes
 
 ## ReadActiveIdentityCount
 
-> ReadActiveIdentityCount(ctx, organizationID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
+> ReadActiveIdentityCount(ctx, organizationID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 READ Active Identity Counts by License
 
@@ -180,10 +188,12 @@ func main() {
     aggregatedBy := "calendarMonth" // string |  (optional)
     limit := int32(20) // int32 |  (optional)
     order := "-startDate" // string |  (optional)
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ActiveIdentityCountsApi.ReadActiveIdentityCount(context.Background(), organizationID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
+    r, err := apiClient.ActiveIdentityCountsApi.ReadActiveIdentityCount(context.Background(), organizationID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ActiveIdentityCountsApi.ReadActiveIdentityCount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,6 +222,8 @@ Name | Type | Description  | Notes
  **aggregatedBy** | **string** |  | 
  **limit** | **int32** |  | 
  **order** | **string** |  | 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
