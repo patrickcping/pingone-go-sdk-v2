@@ -495,7 +495,7 @@ var (
 
 		// Management: NotificationsSettingsEmailDeliverySettings model
 		{
-			fileSelectPattern: "model_integration_version.go",
+			fileSelectPattern: "model_notifications_settings_email_delivery_settings.go",
 			pattern:           `(func \(dst \*NotificationsSettingsEmailDeliverySettings\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *NotificationsSettingsEmailDeliverySettings) UnmarshalJSON(data []byte) error {
 
