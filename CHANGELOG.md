@@ -6,6 +6,7 @@
   * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.48.1](./management/CHANGELOG.md)
   * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+  * **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments (again). [#417](https://github.com/patrickcping/pingone-go-sdk-v2/pull/417)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.22.1](./mfa/CHANGELOG.md)
   * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.18.1](./risk/CHANGELOG.md)

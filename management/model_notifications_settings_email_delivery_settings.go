@@ -38,45 +38,35 @@ func NotificationsSettingsEmailDeliverySettingsSMTPAsNotificationsSettingsEmailD
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *NotificationsSettingsEmailDeliverySettings) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into NotificationsSettingsEmailDeliverySettingsCustom
-	err = newStrictDecoder(data).Decode(&dst.NotificationsSettingsEmailDeliverySettingsCustom)
-	if err == nil {
-		jsonNotificationsSettingsEmailDeliverySettingsCustom, _ := json.Marshal(dst.NotificationsSettingsEmailDeliverySettingsCustom)
-		if string(jsonNotificationsSettingsEmailDeliverySettingsCustom) == "{}" { // empty struct
-			dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
-		} else {
-			match++
+
+	var common NotificationsSettingsEmailDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
+	dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
+
+	objType := common.GetProtocol()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_HTTP:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsCustom); err != nil {
+			return err
 		}
-	} else {
-		dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
-	}
-
-	// try to unmarshal data into NotificationsSettingsEmailDeliverySettingsSMTP
-	err = newStrictDecoder(data).Decode(&dst.NotificationsSettingsEmailDeliverySettingsSMTP)
-	if err == nil {
-		jsonNotificationsSettingsEmailDeliverySettingsSMTP, _ := json.Marshal(dst.NotificationsSettingsEmailDeliverySettingsSMTP)
-		if string(jsonNotificationsSettingsEmailDeliverySettingsSMTP) == "{}" { // empty struct
-			dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
-		} else {
-			match++
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTP, ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTPS:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsSMTP); err != nil {
+			return err
 		}
-	} else {
-		dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
-		dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
