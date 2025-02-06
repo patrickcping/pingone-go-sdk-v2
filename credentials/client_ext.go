@@ -1,8 +1,11 @@
 package credentials
 
 import (
+	"crypto/rand"
 	"fmt"
-	"log"
+	"log/slog"
+	"math"
+	"math/big"
 	"net/http"
 	"reflect"
 	"regexp"
@@ -15,7 +18,7 @@ import (
 type SDKInterfaceFunc func() (any, *http.Response, error)
 
 var (
-	maxRetries               = 5
+	maxRetries               = 10
 	maximumRetryAfterBackoff = 30
 )
 
@@ -26,10 +29,10 @@ func processResponse(f SDKInterfaceFunc, targetObject any) (*http.Response, erro
 	if targetObject != nil {
 		v := reflect.ValueOf(targetObject)
 		if v.Kind() != reflect.Ptr {
-			return nil, fmt.Errorf("Target object must be a pointer.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
+			return nil, fmt.Errorf("Target object must be a pointer.  This is always a problem with the SDK, please raise an issue with the SDK maintainers.")
 		}
 		if !v.Elem().IsValid() {
-			return nil, fmt.Errorf("Target object is not valid.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
+			return nil, fmt.Errorf("Target object is not valid.  This is always a problem with the SDK, please raise an issue with the SDK maintainers.")
 		}
 
 		if obj != nil {
@@ -53,11 +56,12 @@ func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, e
 
 	for i := 0; i < maxRetries; i++ {
 		obj, resp, err = f()
+		retryAttempt := i + 1
 
-		backOffTime, isRetryable = testForRetryable(resp, err, backOffTime)
+		backOffTime, isRetryable = testForRetryable(resp, err, retryAttempt)
 
 		if isRetryable {
-			log.Printf("Attempt %d failed: %v, backing off by %s.", i+1, err, backOffTime.String())
+			slog.Info("Attempt failed, backing off by calculated duration.", "retry attempt", retryAttempt, "error", err, "backoff duration", backOffTime.String())
 			time.Sleep(backOffTime)
 			continue
 		}
@@ -65,33 +69,38 @@ func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, e
 		return obj, resp, err
 	}
 
-	log.Printf("Request failed after %d attempts", maxRetries)
+	slog.Warn("Request failed after maximum number of attempts", "max retries", maxRetries)
 
 	return obj, resp, err // output the final error
 }
 
-func testForRetryable(r *http.Response, err error, currentBackoff time.Duration) (time.Duration, bool) {
+func testForRetryable(r *http.Response, err error, retryAttempt int) (time.Duration, bool) {
 
-	backoff := currentBackoff
+	baseDelay := time.Second
+	requestDelayDuration, ebErr := calculateExponentialBackoff(retryAttempt, baseDelay)
+	if ebErr != nil {
+		slog.Error("Invalid backoff delay duration", "error", ebErr, "defaultDuration", baseDelay, "retry", false)
+		return baseDelay, false
+	}
 
 	if r != nil {
 		if r.StatusCode == 501 || r.StatusCode == 503 || r.StatusCode == 429 {
 			retryAfter, err := parseRetryAfterHeader(r)
 			if err != nil {
-				log.Printf("Cannot parse the expected \"Retry-After\" header: %s", err)
-				backoff = currentBackoff * 2
+				slog.Warn("Cannot parse the expected \"Retry-After\" header", "error", err)
 			}
 
-			if retryAfter <= time.Duration(maximumRetryAfterBackoff) {
-				backoff += time.Duration(maximumRetryAfterBackoff)
-			} else {
-				backoff += retryAfter
+			if err != nil {
+				if retryAfter <= time.Duration(maximumRetryAfterBackoff) {
+					requestDelayDuration += time.Duration(maximumRetryAfterBackoff)
+				} else {
+					requestDelayDuration += retryAfter
+				}
 			}
-		} else {
-			backoff = currentBackoff * 2
 		}
 
 		retryAbleCodes := []int{
+			408,
 			429,
 			500,
 			501,
@@ -101,8 +110,8 @@ func testForRetryable(r *http.Response, err error, currentBackoff time.Duration)
 		}
 
 		if slices.Contains(retryAbleCodes, r.StatusCode) {
-			log.Printf("HTTP status code %d detected, available for retry", r.StatusCode)
-			return backoff, true
+			slog.Info("HTTP status code detected, available for retry", "status code", r.StatusCode)
+			return requestDelayDuration, true
 		}
 	}
 
@@ -114,22 +123,22 @@ func testForRetryable(r *http.Response, err error, currentBackoff time.Duration)
 
 				// Test for unexpected errors
 				if strings.EqualFold(modelError.GetCode(), "UNEXPECTED_ERROR") {
-					log.Printf("Unexpected error detected, available for retry")
-					return backoff, true
+					slog.Info("API reports unexpected error, available for retry")
+					return requestDelayDuration, true
 				}
 
 				// Test for inconsistent role state
 				m, _ := regexp.MatchString(`^Role assignment [a-z0-9\-]* cannot be deleted as it is read only`, modelError.GetMessage())
 
 				if m {
-					log.Printf("Inconsistent role assignment, available for retry")
-					return backoff, true
+					slog.Info("API reports inconsistent role assignment, available for retry")
+					return requestDelayDuration, true
 				}
 			}
 		}
 	}
 
-	return backoff, false
+	return requestDelayDuration, false
 }
 
 func parseRetryAfterHeader(resp *http.Response) (time.Duration, error) {
@@ -152,4 +161,18 @@ func parseRetryAfterHeader(resp *http.Response) (time.Duration, error) {
 	}
 
 	return time.Until(retryAfterTime), nil
+}
+
+func calculateExponentialBackoff(attempt int, baseDelay time.Duration) (time.Duration, error) {
+	n, err := rand.Int(rand.Reader, big.NewInt(101))
+	if err != nil {
+		return 0, err
+	}
+
+	if !n.IsInt64() {
+		return 0, fmt.Errorf("Generated random jitter value is too large. This is always a problem with the SDK. Please raise an issue with the SDK maintainers.")
+	}
+
+	jitter := time.Duration(n.Int64()) * time.Millisecond // Add random jitter
+	return baseDelay*time.Duration(math.Pow(2, float64(attempt))) + jitter, nil
 }

@@ -1,3 +1,7 @@
+# v0.18.1 (Unreleased)
+
+* **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+
 # v0.18.0 (2024-12-18)
 
 * **Bug** Add missing protect predictor composite conditions `IP_RANGE` and `IP_COMPARISON`. [#401](https://github.com/patrickcping/pingone-go-sdk-v2/pull/401)
