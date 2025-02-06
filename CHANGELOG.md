@@ -1,3 +1,18 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.7.1](./authorize/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.10.1](./credentials/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.48.1](./management/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.22.1](./mfa/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.18.1](./risk/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.8.1](./verify/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418)
+
 # Release (2025-02-05)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.8
