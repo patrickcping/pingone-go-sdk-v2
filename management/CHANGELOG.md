@@ -1,3 +1,7 @@
+# v0.48.1 (Unreleased)
+
+* **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments (again).
+
 # v0.48.0 (2025-02-05)
 
 * **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model. [#414](https://github.com/patrickcping/pingone-go-sdk-v2/pull/414)
