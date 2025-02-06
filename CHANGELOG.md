@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.48.1](./management/CHANGELOG.md)
-  * **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments (again).
+  * **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments (again). [#417](https://github.com/patrickcping/pingone-go-sdk-v2/pull/417)
 
 # Release (2025-02-05)
 
