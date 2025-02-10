@@ -177,7 +177,7 @@ func calculateExponentialBackoff(attempt int, baseDelay time.Duration) (time.Dur
 	jitter := time.Duration(n.Int64()) * time.Millisecond // Add random jitter
 	calculatedBackOff := baseDelay*time.Duration(math.Pow(2, float64(attempt))) + jitter
 
-	slog.Info("Calculated backoff duration", "maximumRetryAfterBackoffDuration", maximumRetryAfterBackoffDuration.String(), "attempt", attempt, "baseDelay", baseDelay.String(), "jitter", jitter.String(), "calculatedBackOff", calculatedBackOff.String())
+	slog.Debug("Calculated backoff duration", "maximumRetryAfterBackoffDuration", maximumRetryAfterBackoffDuration.String(), "attempt", attempt, "baseDelay", baseDelay.String(), "jitter", jitter.String(), "calculatedBackOff", calculatedBackOff.String())
 
-	return time.Duration(math.Min(float64(calculatedBackOff), float64(maximumRetryAfterBackoff)*float64(time.Second))), nil
+	return time.Duration(math.Min(float64(calculatedBackOff), float64(maximumRetryAfterBackoffDuration))), nil
 }
