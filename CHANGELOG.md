@@ -1,5 +1,13 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.9
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.7.0 => v0.8.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.10.0 => v0.11.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.48.0 => v0.49.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.22.0 => v0.23.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.18.0 => v0.19.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.8.0 => v0.9.0
+  * **Note** bump `golang.org/x/oauth2` v0.25.0 => v0.26.0
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.0](./authorize/CHANGELOG.md)
   * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
   * **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
