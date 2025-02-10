@@ -19,8 +19,10 @@ Name | Type | Description | Notes
 **DiscoverableCredentials** | [**EnumFIDO2PolicyDiscoverableCredentials**](EnumFIDO2PolicyDiscoverableCredentials.md) |  | 
 **MdsAuthenticatorsRequirements** | [**FIDO2PolicyMdsAuthenticatorsRequirements**](FIDO2PolicyMdsAuthenticatorsRequirements.md) |  | 
 **Name** | **string** | The name to use for the FIDO policy. Can be up to 256 characters. | 
+**PublicKeyCredentialHints** | Pointer to [**[]EnumFIDO2PublicKeyCredentialHint**](EnumFIDO2PublicKeyCredentialHint.md) | The &#x60;publicKeyCredentialHints&#x60; array is used to indicate that you want to provide public key credential hints to the browser to help give priority to the authentication method that the user is most likely to use. You can include in the array one or more of the following values &#x60;SECURITY_KEY&#x60;, &#x60;CLIENT_DEVICE&#x60;, &#x60;HYBRID&#x60;. | [optional] 
 **RelyingPartyId** | **string** | The ID of the relying party. The value should be a domain name, such as &#x60;example.com&#x60; (in lower-case characters). | 
 **UserDisplayNameAttributes** | [**FIDO2PolicyUserDisplayNameAttributes**](FIDO2PolicyUserDisplayNameAttributes.md) |  | 
+**UserPresenceTimeout** | Pointer to [**FIDO2PolicyUserPresenceTimeout**](FIDO2PolicyUserPresenceTimeout.md) |  | [optional] 
 **UserVerification** | [**FIDO2PolicyUserVerification**](FIDO2PolicyUserVerification.md) |  | 
 
 ## Methods
@@ -382,6 +384,31 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetPublicKeyCredentialHints
+
+`func (o *FIDO2Policy) GetPublicKeyCredentialHints() []EnumFIDO2PublicKeyCredentialHint`
+
+GetPublicKeyCredentialHints returns the PublicKeyCredentialHints field if non-nil, zero value otherwise.
+
+### GetPublicKeyCredentialHintsOk
+
+`func (o *FIDO2Policy) GetPublicKeyCredentialHintsOk() (*[]EnumFIDO2PublicKeyCredentialHint, bool)`
+
+GetPublicKeyCredentialHintsOk returns a tuple with the PublicKeyCredentialHints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicKeyCredentialHints
+
+`func (o *FIDO2Policy) SetPublicKeyCredentialHints(v []EnumFIDO2PublicKeyCredentialHint)`
+
+SetPublicKeyCredentialHints sets PublicKeyCredentialHints field to given value.
+
+### HasPublicKeyCredentialHints
+
+`func (o *FIDO2Policy) HasPublicKeyCredentialHints() bool`
+
+HasPublicKeyCredentialHints returns a boolean if a field has been set.
+
 ### GetRelyingPartyId
 
 `func (o *FIDO2Policy) GetRelyingPartyId() string`
@@ -421,6 +448,31 @@ and a boolean to check if the value has been set.
 
 SetUserDisplayNameAttributes sets UserDisplayNameAttributes field to given value.
 
+
+### GetUserPresenceTimeout
+
+`func (o *FIDO2Policy) GetUserPresenceTimeout() FIDO2PolicyUserPresenceTimeout`
+
+GetUserPresenceTimeout returns the UserPresenceTimeout field if non-nil, zero value otherwise.
+
+### GetUserPresenceTimeoutOk
+
+`func (o *FIDO2Policy) GetUserPresenceTimeoutOk() (*FIDO2PolicyUserPresenceTimeout, bool)`
+
+GetUserPresenceTimeoutOk returns a tuple with the UserPresenceTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPresenceTimeout
+
+`func (o *FIDO2Policy) SetUserPresenceTimeout(v FIDO2PolicyUserPresenceTimeout)`
+
+SetUserPresenceTimeout sets UserPresenceTimeout field to given value.
+
+### HasUserPresenceTimeout
+
+`func (o *FIDO2Policy) HasUserPresenceTimeout() bool`
+
+HasUserPresenceTimeout returns a boolean if a field has been set.
 
 ### GetUserVerification
 

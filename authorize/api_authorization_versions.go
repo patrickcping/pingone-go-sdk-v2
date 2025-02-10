@@ -26,8 +26,22 @@ type AuthorizationVersionsApiService service
 type ApiDeleteTagRequest struct {
 	ctx context.Context
 	ApiService *AuthorizationVersionsApiService
-	environmentId string
-	authorizationVersionId string
+	environmentID string
+	authorizationVersionID string
+	xPingExternalTransactionID *string
+	xPingExternalSessionID *string
+}
+
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiDeleteTagRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiDeleteTagRequest {
+	r.xPingExternalTransactionID = &xPingExternalTransactionID
+	return r
+}
+
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiDeleteTagRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiDeleteTagRequest {
+	r.xPingExternalSessionID = &xPingExternalSessionID
+	return r
 }
 
 func (r ApiDeleteTagRequest) Execute() (*http.Response, error) {
@@ -40,16 +54,16 @@ DeleteTag Remove a Tag from an Authorize Version
 Remove a Tag from an Authorize Version in PingOne Authorize
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId The ID of the environment from which to remove the version tag.
- @param authorizationVersionId The ID of the version to remove the tag from.
+ @param environmentID The ID of the environment from which to remove the version tag.
+ @param authorizationVersionID The ID of the version to remove the tag from.
  @return ApiDeleteTagRequest
 */
-func (a *AuthorizationVersionsApiService) DeleteTag(ctx context.Context, environmentId string, authorizationVersionId string) ApiDeleteTagRequest {
+func (a *AuthorizationVersionsApiService) DeleteTag(ctx context.Context, environmentID string, authorizationVersionID string) ApiDeleteTagRequest {
 	return ApiDeleteTagRequest{
 		ApiService: a,
 		ctx: ctx,
-		environmentId: environmentId,
-		authorizationVersionId: authorizationVersionId,
+		environmentID: environmentID,
+		authorizationVersionID: authorizationVersionID,
 	}
 }
 
@@ -82,9 +96,9 @@ func (a *AuthorizationVersionsApiService) internalDeleteTagExecute(r ApiDeleteTa
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionId"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionId, "authorizationVersionId")), -1)
+	localVarPath := localBasePath + "/environments/{environmentID}/authorizationVersions/{authorizationVersionID}/tag"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionID"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionID, "authorizationVersionID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -106,6 +120,12 @@ func (a *AuthorizationVersionsApiService) internalDeleteTagExecute(r ApiDeleteTa
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xPingExternalTransactionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Transaction-ID", r.xPingExternalTransactionID, "")
+	}
+	if r.xPingExternalSessionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Session-ID", r.xPingExternalSessionID, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -236,9 +256,23 @@ func (a *AuthorizationVersionsApiService) internalDeleteTagExecute(r ApiDeleteTa
 type ApiGetPolicyInVersionRequest struct {
 	ctx context.Context
 	ApiService *AuthorizationVersionsApiService
-	environmentId string
-	authorizationVersionId string
-	policyId string
+	environmentID string
+	authorizationVersionID string
+	policyID string
+	xPingExternalTransactionID *string
+	xPingExternalSessionID *string
+}
+
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiGetPolicyInVersionRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiGetPolicyInVersionRequest {
+	r.xPingExternalTransactionID = &xPingExternalTransactionID
+	return r
+}
+
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiGetPolicyInVersionRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiGetPolicyInVersionRequest {
+	r.xPingExternalSessionID = &xPingExternalSessionID
+	return r
 }
 
 func (r ApiGetPolicyInVersionRequest) Execute() (*AuthorizeEditorDataPoliciesReferenceablePolicyDTO, *http.Response, error) {
@@ -251,18 +285,18 @@ GetPolicyInVersion Get a Policy from a specific Authorize Version
 Get a Policy in the PingOne Authorize Policy Manager by its ID and Authorize Version
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId The ID of the environment from which to get the policy.
- @param authorizationVersionId The ID of the Authorize Version from which to get the policy.
- @param policyId The ID of the policy to retrieve.
+ @param environmentID The ID of the environment from which to get the policy.
+ @param authorizationVersionID The ID of the Authorize Version from which to get the policy.
+ @param policyID The ID of the policy to retrieve.
  @return ApiGetPolicyInVersionRequest
 */
-func (a *AuthorizationVersionsApiService) GetPolicyInVersion(ctx context.Context, environmentId string, authorizationVersionId string, policyId string) ApiGetPolicyInVersionRequest {
+func (a *AuthorizationVersionsApiService) GetPolicyInVersion(ctx context.Context, environmentID string, authorizationVersionID string, policyID string) ApiGetPolicyInVersionRequest {
 	return ApiGetPolicyInVersionRequest{
 		ApiService: a,
 		ctx: ctx,
-		environmentId: environmentId,
-		authorizationVersionId: authorizationVersionId,
-		policyId: policyId,
+		environmentID: environmentID,
+		authorizationVersionID: authorizationVersionID,
+		policyID: policyID,
 	}
 }
 
@@ -297,10 +331,10 @@ func (a *AuthorizationVersionsApiService) internalGetPolicyInVersionExecute(r Ap
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentId}/authorizationVersions/{authorizationVersionId}/policies/{policyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionId"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionId, "authorizationVersionId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"policyId"+"}", url.PathEscape(parameterValueToString(r.policyId, "policyId")), -1)
+	localVarPath := localBasePath + "/environments/{environmentID}/authorizationVersions/{authorizationVersionID}/policies/{policyID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionID"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionID, "authorizationVersionID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterValueToString(r.policyID, "policyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,6 +356,12 @@ func (a *AuthorizationVersionsApiService) internalGetPolicyInVersionExecute(r Ap
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xPingExternalTransactionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Transaction-ID", r.xPingExternalTransactionID, "")
+	}
+	if r.xPingExternalSessionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Session-ID", r.xPingExternalSessionID, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -461,8 +501,22 @@ func (a *AuthorizationVersionsApiService) internalGetPolicyInVersionExecute(r Ap
 type ApiGetTagRequest struct {
 	ctx context.Context
 	ApiService *AuthorizationVersionsApiService
-	environmentId string
-	authorizationVersionId string
+	environmentID string
+	authorizationVersionID string
+	xPingExternalTransactionID *string
+	xPingExternalSessionID *string
+}
+
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiGetTagRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiGetTagRequest {
+	r.xPingExternalTransactionID = &xPingExternalTransactionID
+	return r
+}
+
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiGetTagRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiGetTagRequest {
+	r.xPingExternalSessionID = &xPingExternalSessionID
+	return r
 }
 
 func (r ApiGetTagRequest) Execute() (*AuthorizeEditorDataTagResponseDTO, *http.Response, error) {
@@ -475,16 +529,16 @@ GetTag Get a Tag for an Authorize Version
 Get a Tag for an Authorize Version in PingOne Authorize
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId The ID of the environment from which to get the version tag.
- @param authorizationVersionId The ID of the version to retrieve the tag for.
+ @param environmentID The ID of the environment from which to get the version tag.
+ @param authorizationVersionID The ID of the version to retrieve the tag for.
  @return ApiGetTagRequest
 */
-func (a *AuthorizationVersionsApiService) GetTag(ctx context.Context, environmentId string, authorizationVersionId string) ApiGetTagRequest {
+func (a *AuthorizationVersionsApiService) GetTag(ctx context.Context, environmentID string, authorizationVersionID string) ApiGetTagRequest {
 	return ApiGetTagRequest{
 		ApiService: a,
 		ctx: ctx,
-		environmentId: environmentId,
-		authorizationVersionId: authorizationVersionId,
+		environmentID: environmentID,
+		authorizationVersionID: authorizationVersionID,
 	}
 }
 
@@ -519,9 +573,9 @@ func (a *AuthorizationVersionsApiService) internalGetTagExecute(r ApiGetTagReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionId"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionId, "authorizationVersionId")), -1)
+	localVarPath := localBasePath + "/environments/{environmentID}/authorizationVersions/{authorizationVersionID}/tag"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionID"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionID, "authorizationVersionID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -543,6 +597,12 @@ func (a *AuthorizationVersionsApiService) internalGetTagExecute(r ApiGetTagReque
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xPingExternalTransactionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Transaction-ID", r.xPingExternalTransactionID, "")
+	}
+	if r.xPingExternalSessionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Session-ID", r.xPingExternalSessionID, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -682,8 +742,22 @@ func (a *AuthorizationVersionsApiService) internalGetTagExecute(r ApiGetTagReque
 type ApiGetVersionRequest struct {
 	ctx context.Context
 	ApiService *AuthorizationVersionsApiService
-	environmentId string
-	authorizationVersionId string
+	environmentID string
+	authorizationVersionID string
+	xPingExternalTransactionID *string
+	xPingExternalSessionID *string
+}
+
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiGetVersionRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiGetVersionRequest {
+	r.xPingExternalTransactionID = &xPingExternalTransactionID
+	return r
+}
+
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiGetVersionRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiGetVersionRequest {
+	r.xPingExternalSessionID = &xPingExternalSessionID
+	return r
 }
 
 func (r ApiGetVersionRequest) Execute() (*AuthorizeEditorDataAuthorizationVersionDTO, *http.Response, error) {
@@ -696,16 +770,16 @@ GetVersion Get an Authorize Version by ID
 Get an Authorize Version in PingOne Authorize by its ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId The ID of the environment from which to get the version.
- @param authorizationVersionId The ID of the version to retrieve
+ @param environmentID The ID of the environment from which to get the version.
+ @param authorizationVersionID The ID of the version to retrieve
  @return ApiGetVersionRequest
 */
-func (a *AuthorizationVersionsApiService) GetVersion(ctx context.Context, environmentId string, authorizationVersionId string) ApiGetVersionRequest {
+func (a *AuthorizationVersionsApiService) GetVersion(ctx context.Context, environmentID string, authorizationVersionID string) ApiGetVersionRequest {
 	return ApiGetVersionRequest{
 		ApiService: a,
 		ctx: ctx,
-		environmentId: environmentId,
-		authorizationVersionId: authorizationVersionId,
+		environmentID: environmentID,
+		authorizationVersionID: authorizationVersionID,
 	}
 }
 
@@ -740,9 +814,9 @@ func (a *AuthorizationVersionsApiService) internalGetVersionExecute(r ApiGetVers
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentId}/authorizationVersions/{authorizationVersionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionId"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionId, "authorizationVersionId")), -1)
+	localVarPath := localBasePath + "/environments/{environmentID}/authorizationVersions/{authorizationVersionID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionID"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionID, "authorizationVersionID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -764,6 +838,12 @@ func (a *AuthorizationVersionsApiService) internalGetVersionExecute(r ApiGetVers
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xPingExternalTransactionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Transaction-ID", r.xPingExternalTransactionID, "")
+	}
+	if r.xPingExternalSessionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Session-ID", r.xPingExternalSessionID, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -903,8 +983,10 @@ func (a *AuthorizationVersionsApiService) internalGetVersionExecute(r ApiGetVers
 type ApiListVersionsRequest struct {
 	ctx context.Context
 	ApiService *AuthorizationVersionsApiService
-	environmentId string
+	environmentID string
 	filter *string
+	xPingExternalTransactionID *string
+	xPingExternalSessionID *string
 	limit *int32
 	cursor *string
 	filter2 *Filter
@@ -913,6 +995,18 @@ type ApiListVersionsRequest struct {
 // The SCIM filter (RFC 7644 Section 3.4.2.2) that should be used to determine the resources to return. Filterable attributes: tag (pr)
 func (r ApiListVersionsRequest) Filter(filter string) ApiListVersionsRequest {
 	r.filter = &filter
+	return r
+}
+
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiListVersionsRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiListVersionsRequest {
+	r.xPingExternalTransactionID = &xPingExternalTransactionID
+	return r
+}
+
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiListVersionsRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiListVersionsRequest {
+	r.xPingExternalSessionID = &xPingExternalSessionID
 	return r
 }
 
@@ -947,14 +1041,14 @@ ListVersions List Authorize Versions
 List Authorize Versions in PingOne Authorize
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId The ID of the environment from which to list versions.
+ @param environmentID The ID of the environment from which to list versions.
  @return ApiListVersionsRequest
 */
-func (a *AuthorizationVersionsApiService) ListVersions(ctx context.Context, environmentId string) ApiListVersionsRequest {
+func (a *AuthorizationVersionsApiService) ListVersions(ctx context.Context, environmentID string) ApiListVersionsRequest {
 	return ApiListVersionsRequest{
 		ApiService: a,
 		ctx: ctx,
-		environmentId: environmentId,
+		environmentID: environmentID,
 	}
 }
 
@@ -993,8 +1087,8 @@ func (a *AuthorizationVersionsApiService) internalListVersionsExecute(r ApiListV
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentId}/authorizationVersions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+	localVarPath := localBasePath + "/environments/{environmentID}/authorizationVersions"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1029,6 +1123,12 @@ func (a *AuthorizationVersionsApiService) internalListVersionsExecute(r ApiListV
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xPingExternalTransactionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Transaction-ID", r.xPingExternalTransactionID, "")
+	}
+	if r.xPingExternalSessionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Session-ID", r.xPingExternalSessionID, "")
 	}
 	// body params
 	localVarPostBody = r.filter2
@@ -1170,13 +1270,27 @@ func (a *AuthorizationVersionsApiService) internalListVersionsExecute(r ApiListV
 type ApiUpdateTagRequest struct {
 	ctx context.Context
 	ApiService *AuthorizationVersionsApiService
-	environmentId string
-	authorizationVersionId string
+	environmentID string
+	authorizationVersionID string
 	authorizeEditorDataTagRequestDTO *AuthorizeEditorDataTagRequestDTO
+	xPingExternalTransactionID *string
+	xPingExternalSessionID *string
 }
 
 func (r ApiUpdateTagRequest) AuthorizeEditorDataTagRequestDTO(authorizeEditorDataTagRequestDTO AuthorizeEditorDataTagRequestDTO) ApiUpdateTagRequest {
 	r.authorizeEditorDataTagRequestDTO = &authorizeEditorDataTagRequestDTO
+	return r
+}
+
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiUpdateTagRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiUpdateTagRequest {
+	r.xPingExternalTransactionID = &xPingExternalTransactionID
+	return r
+}
+
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+func (r ApiUpdateTagRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiUpdateTagRequest {
+	r.xPingExternalSessionID = &xPingExternalSessionID
 	return r
 }
 
@@ -1190,16 +1304,16 @@ UpdateTag Create or Update a Tag for an Authorize Version
 Create or Update a Tag for an Authorize Version in PingOne Authorize
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId The ID of the environment from which to create or update the version tag.
- @param authorizationVersionId The ID of the version to create or update the tag for.
+ @param environmentID The ID of the environment from which to create or update the version tag.
+ @param authorizationVersionID The ID of the version to create or update the tag for.
  @return ApiUpdateTagRequest
 */
-func (a *AuthorizationVersionsApiService) UpdateTag(ctx context.Context, environmentId string, authorizationVersionId string) ApiUpdateTagRequest {
+func (a *AuthorizationVersionsApiService) UpdateTag(ctx context.Context, environmentID string, authorizationVersionID string) ApiUpdateTagRequest {
 	return ApiUpdateTagRequest{
 		ApiService: a,
 		ctx: ctx,
-		environmentId: environmentId,
-		authorizationVersionId: authorizationVersionId,
+		environmentID: environmentID,
+		authorizationVersionID: authorizationVersionID,
 	}
 }
 
@@ -1234,9 +1348,9 @@ func (a *AuthorizationVersionsApiService) internalUpdateTagExecute(r ApiUpdateTa
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionId"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionId, "authorizationVersionId")), -1)
+	localVarPath := localBasePath + "/environments/{environmentID}/authorizationVersions/{authorizationVersionID}/tag"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"authorizationVersionID"+"}", url.PathEscape(parameterValueToString(r.authorizationVersionID, "authorizationVersionID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1261,6 +1375,12 @@ func (a *AuthorizationVersionsApiService) internalUpdateTagExecute(r ApiUpdateTa
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xPingExternalTransactionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Transaction-ID", r.xPingExternalTransactionID, "")
+	}
+	if r.xPingExternalSessionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Session-ID", r.xPingExternalSessionID, "")
 	}
 	// body params
 	localVarPostBody = r.authorizeEditorDataTagRequestDTO

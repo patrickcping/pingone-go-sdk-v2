@@ -20,9 +20,12 @@ type EnumRoleName string
 
 // List of EnumRoleName
 const (
+	ENUMROLENAME_ADVANCED_IDENTITY_CLOUD_SUPER_ADMIN EnumRoleName = "Advanced Identity Cloud Super Admin"
+	ENUMROLENAME_ADVANCED_IDENTITY_CLOUD_TENANT_ADMIN EnumRoleName = "Advanced Identity Cloud Tenant Admin"
 	ENUMROLENAME_APPLICATION_OWNER EnumRoleName = "Application Owner"
 	ENUMROLENAME_CLIENT_APPLICATION_DEVELOPER EnumRoleName = "Client Application Developer"
 	ENUMROLENAME_CONFIGURATION_READ_ONLY EnumRoleName = "Configuration Read Only"
+	ENUMROLENAME_CUSTOM_ROLES_ADMIN EnumRoleName = "Custom Roles Admin"
 	ENUMROLENAME_DA_VINCI_ADMIN_READ_ONLY EnumRoleName = "DaVinci Admin Read Only"
 	ENUMROLENAME_DA_VINCI_ADMIN EnumRoleName = "DaVinci Admin"
 	ENUMROLENAME_ENVIRONMENT_ADMIN EnumRoleName = "Environment Admin"
@@ -38,9 +41,12 @@ const (
 
 // All allowed values of EnumRoleName enum
 var AllowedEnumRoleNameEnumValues = []EnumRoleName{
+	"Advanced Identity Cloud Super Admin",
+	"Advanced Identity Cloud Tenant Admin",
 	"Application Owner",
 	"Client Application Developer",
 	"Configuration Read Only",
+	"Custom Roles Admin",
 	"DaVinci Admin Read Only",
 	"DaVinci Admin",
 	"Environment Admin",

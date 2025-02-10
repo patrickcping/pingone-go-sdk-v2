@@ -1,4 +1,72 @@
-# Release (Unreleased)
+# Release (2025-02-10)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.9
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.7.0 => v0.8.0 [#422](https://github.com/patrickcping/pingone-go-sdk-v2/pull/422)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.10.0 => v0.11.0 [#422](https://github.com/patrickcping/pingone-go-sdk-v2/pull/422)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.48.0 => v0.49.0 [#422](https://github.com/patrickcping/pingone-go-sdk-v2/pull/422)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.22.0 => v0.23.0 [#422](https://github.com/patrickcping/pingone-go-sdk-v2/pull/422)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.18.0 => v0.19.0 [#422](https://github.com/patrickcping/pingone-go-sdk-v2/pull/422)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.8.0 => v0.9.0 [#422](https://github.com/patrickcping/pingone-go-sdk-v2/pull/422)
+  * **Note** bump `golang.org/x/oauth2` v0.25.0 => v0.26.0 [#422](https://github.com/patrickcping/pingone-go-sdk-v2/pull/422)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.0](./authorize/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
+  * **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.11.0](./credentials/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
+  * **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.49.0](./management/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
+  * **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
+  * **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments (again). [#417](https://github.com/patrickcping/pingone-go-sdk-v2/pull/417)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.23.0](./mfa/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
+  * **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.19.0](./risk/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
+  * **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.9.0](./verify/CHANGELOG.md)
+  * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
+  * **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
+
+# Release (2025-02-05)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.8
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.47.0 => v0.48.0 [#416](https://github.com/patrickcping/pingone-go-sdk-v2/pull/416)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.48.0](./management/CHANGELOG.md)
+  * **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model. [#414](https://github.com/patrickcping/pingone-go-sdk-v2/pull/414)
+  * **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments. [#415](https://github.com/patrickcping/pingone-go-sdk-v2/pull/415)
+
+# Release (2025-01-23)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.7
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.46.0 => v0.47.0 [#413](https://github.com/patrickcping/pingone-go-sdk-v2/pull/413)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.47.0](./management/CHANGELOG.md)
+  * **Enhancement** Added `EnvironmentDnsRecord` to the `EmailDomainOwnershipStatus` model. [#412](https://github.com/patrickcping/pingone-go-sdk-v2/pull/412)
+
+# Release (2025-01-21)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.6
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.45.0 => v0.46.0 [#411](https://github.com/patrickcping/pingone-go-sdk-v2/pull/411)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.21.0 => v0.22.0 [#411](https://github.com/patrickcping/pingone-go-sdk-v2/pull/411)
+  * **Note** bump `golang.org/x/oauth2` v0.24.0 => v0.25.0 [#411](https://github.com/patrickcping/pingone-go-sdk-v2/pull/411)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.46.0](./management/CHANGELOG.md)
+  * **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
+  * **Enhancement** Added `BlastRadiusMitigation` to the `GatewayTypeRADIUSAllOfRadiusClients` model. [#410](https://github.com/patrickcping/pingone-go-sdk-v2/pull/410)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.22.0](./mfa/CHANGELOG.md)
+  * **Enhancement** Added `UserPresenceTimeout` to the `FIDO2Policy` model. [#408](https://github.com/patrickcping/pingone-go-sdk-v2/pull/408)
+  * **Enhancement** Added `PublicKeyCredentialHints` to the `FIDO2Policy` model. [#409](https://github.com/patrickcping/pingone-go-sdk-v2/pull/409)
+
+# Release (2024-12-18)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.5
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.44.0 => v0.45.0 [#403](https://github.com/patrickcping/pingone-go-sdk-v2/pull/403)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.17.0 => v0.18.0 [#403](https://github.com/patrickcping/pingone-go-sdk-v2/pull/403)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.45.0](./management/CHANGELOG.md)
+  * **Enhancement** Added `SUSPICIOUS_TRAFFIC` enum to `EnumAlertChannelAlertType` model. [#399](https://github.com/patrickcping/pingone-go-sdk-v2/pull/399)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.18.0](./risk/CHANGELOG.md)
+  * **Bug** Add missing protect predictor composite conditions `IP_RANGE` and `IP_COMPARISON`. [#401](https://github.com/patrickcping/pingone-go-sdk-v2/pull/401)
+
+# Release (2024-11-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.5
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.0](./authorize/CHANGELOG.md)
@@ -15,6 +83,13 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.4
     * **Note** Upgraded go version to 1.23 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#395](https://github.com/patrickcping/pingone-go-sdk-v2/pull/395)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.6.0 => v0.7.0 [#397](https://github.com/patrickcping/pingone-go-sdk-v2/pull/397)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.9.0 => v0.10.0 [#397](https://github.com/patrickcping/pingone-go-sdk-v2/pull/397)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.43.0 => v0.44.0 [#397](https://github.com/patrickcping/pingone-go-sdk-v2/pull/397)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.20.0 => v0.21.0 [#397](https://github.com/patrickcping/pingone-go-sdk-v2/pull/397)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.16.0 => v0.17.0 [#397](https://github.com/patrickcping/pingone-go-sdk-v2/pull/397)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.7.0 => v0.8.0 [#397](https://github.com/patrickcping/pingone-go-sdk-v2/pull/397)
+    * **Note** bump `golang.org/x/oauth2` v0.21.0 => v0.24.0 [#397](https://github.com/patrickcping/pingone-go-sdk-v2/pull/397)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.3.3](./agreementmanagement/CHANGELOG.md)
     * **Note** Upgraded go version to 1.23 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#395](https://github.com/patrickcping/pingone-go-sdk-v2/pull/395)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.7.0](./authorize/CHANGELOG.md)

@@ -4,18 +4,18 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteTag**](AuthorizationVersionsApi.md#DeleteTag) | **Delete** /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag | Remove a Tag from an Authorize Version
-[**GetPolicyInVersion**](AuthorizationVersionsApi.md#GetPolicyInVersion) | **Get** /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/policies/{policyId} | Get a Policy from a specific Authorize Version
-[**GetTag**](AuthorizationVersionsApi.md#GetTag) | **Get** /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag | Get a Tag for an Authorize Version
-[**GetVersion**](AuthorizationVersionsApi.md#GetVersion) | **Get** /environments/{environmentId}/authorizationVersions/{authorizationVersionId} | Get an Authorize Version by ID
-[**ListVersions**](AuthorizationVersionsApi.md#ListVersions) | **Get** /environments/{environmentId}/authorizationVersions | List Authorize Versions
-[**UpdateTag**](AuthorizationVersionsApi.md#UpdateTag) | **Put** /environments/{environmentId}/authorizationVersions/{authorizationVersionId}/tag | Create or Update a Tag for an Authorize Version
+[**DeleteTag**](AuthorizationVersionsApi.md#DeleteTag) | **Delete** /environments/{environmentID}/authorizationVersions/{authorizationVersionID}/tag | Remove a Tag from an Authorize Version
+[**GetPolicyInVersion**](AuthorizationVersionsApi.md#GetPolicyInVersion) | **Get** /environments/{environmentID}/authorizationVersions/{authorizationVersionID}/policies/{policyID} | Get a Policy from a specific Authorize Version
+[**GetTag**](AuthorizationVersionsApi.md#GetTag) | **Get** /environments/{environmentID}/authorizationVersions/{authorizationVersionID}/tag | Get a Tag for an Authorize Version
+[**GetVersion**](AuthorizationVersionsApi.md#GetVersion) | **Get** /environments/{environmentID}/authorizationVersions/{authorizationVersionID} | Get an Authorize Version by ID
+[**ListVersions**](AuthorizationVersionsApi.md#ListVersions) | **Get** /environments/{environmentID}/authorizationVersions | List Authorize Versions
+[**UpdateTag**](AuthorizationVersionsApi.md#UpdateTag) | **Put** /environments/{environmentID}/authorizationVersions/{authorizationVersionID}/tag | Create or Update a Tag for an Authorize Version
 
 
 
 ## DeleteTag
 
-> DeleteTag(ctx, environmentId, authorizationVersionId).Execute()
+> DeleteTag(ctx, environmentID, authorizationVersionID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 Remove a Tag from an Authorize Version
 
@@ -34,12 +34,14 @@ import (
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to remove the version tag.
-    authorizationVersionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to remove the tag from.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to remove the version tag.
+    authorizationVersionID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to remove the tag from.
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuthorizationVersionsApi.DeleteTag(context.Background(), environmentId, authorizationVersionId).Execute()
+    r, err := apiClient.AuthorizationVersionsApi.DeleteTag(context.Background(), environmentID, authorizationVersionID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.DeleteTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,8 +55,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | The ID of the environment from which to remove the version tag. | 
-**authorizationVersionId** | **string** | The ID of the version to remove the tag from. | 
+**environmentID** | **string** | The ID of the environment from which to remove the version tag. | 
+**authorizationVersionID** | **string** | The ID of the version to remove the tag from. | 
 
 ### Other Parameters
 
@@ -65,6 +67,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -86,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## GetPolicyInVersion
 
-> AuthorizeEditorDataPoliciesReferenceablePolicyDTO GetPolicyInVersion(ctx, environmentId, authorizationVersionId, policyId).Execute()
+> AuthorizeEditorDataPoliciesReferenceablePolicyDTO GetPolicyInVersion(ctx, environmentID, authorizationVersionID, policyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 Get a Policy from a specific Authorize Version
 
@@ -105,13 +109,15 @@ import (
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to get the policy.
-    authorizationVersionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the Authorize Version from which to get the policy.
-    policyId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the policy to retrieve.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to get the policy.
+    authorizationVersionID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the Authorize Version from which to get the policy.
+    policyID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the policy to retrieve.
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationVersionsApi.GetPolicyInVersion(context.Background(), environmentId, authorizationVersionId, policyId).Execute()
+    resp, r, err := apiClient.AuthorizationVersionsApi.GetPolicyInVersion(context.Background(), environmentID, authorizationVersionID, policyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.GetPolicyInVersion``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,9 +133,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | The ID of the environment from which to get the policy. | 
-**authorizationVersionId** | **string** | The ID of the Authorize Version from which to get the policy. | 
-**policyId** | **string** | The ID of the policy to retrieve. | 
+**environmentID** | **string** | The ID of the environment from which to get the policy. | 
+**authorizationVersionID** | **string** | The ID of the Authorize Version from which to get the policy. | 
+**policyID** | **string** | The ID of the policy to retrieve. | 
 
 ### Other Parameters
 
@@ -141,6 +147,8 @@ Name | Type | Description  | Notes
 
 
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -162,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## GetTag
 
-> AuthorizeEditorDataTagResponseDTO GetTag(ctx, environmentId, authorizationVersionId).Execute()
+> AuthorizeEditorDataTagResponseDTO GetTag(ctx, environmentID, authorizationVersionID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 Get a Tag for an Authorize Version
 
@@ -181,12 +189,14 @@ import (
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to get the version tag.
-    authorizationVersionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to retrieve the tag for.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to get the version tag.
+    authorizationVersionID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to retrieve the tag for.
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationVersionsApi.GetTag(context.Background(), environmentId, authorizationVersionId).Execute()
+    resp, r, err := apiClient.AuthorizationVersionsApi.GetTag(context.Background(), environmentID, authorizationVersionID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.GetTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,8 +212,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | The ID of the environment from which to get the version tag. | 
-**authorizationVersionId** | **string** | The ID of the version to retrieve the tag for. | 
+**environmentID** | **string** | The ID of the environment from which to get the version tag. | 
+**authorizationVersionID** | **string** | The ID of the version to retrieve the tag for. | 
 
 ### Other Parameters
 
@@ -214,6 +224,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -235,7 +247,7 @@ Name | Type | Description  | Notes
 
 ## GetVersion
 
-> AuthorizeEditorDataAuthorizationVersionDTO GetVersion(ctx, environmentId, authorizationVersionId).Execute()
+> AuthorizeEditorDataAuthorizationVersionDTO GetVersion(ctx, environmentID, authorizationVersionID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 Get an Authorize Version by ID
 
@@ -254,12 +266,14 @@ import (
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to get the version.
-    authorizationVersionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to retrieve
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to get the version.
+    authorizationVersionID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to retrieve
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationVersionsApi.GetVersion(context.Background(), environmentId, authorizationVersionId).Execute()
+    resp, r, err := apiClient.AuthorizationVersionsApi.GetVersion(context.Background(), environmentID, authorizationVersionID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.GetVersion``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -275,8 +289,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | The ID of the environment from which to get the version. | 
-**authorizationVersionId** | **string** | The ID of the version to retrieve | 
+**environmentID** | **string** | The ID of the environment from which to get the version. | 
+**authorizationVersionID** | **string** | The ID of the version to retrieve | 
 
 ### Other Parameters
 
@@ -287,6 +301,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -308,7 +324,7 @@ Name | Type | Description  | Notes
 
 ## ListVersions
 
-> EntityArrayPagedIterator ListVersions(ctx, environmentId).Filter(filter).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
+> EntityArrayPagedIterator ListVersions(ctx, environmentID).Filter(filter).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
 
 List Authorize Versions
 
@@ -327,15 +343,17 @@ import (
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list versions.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to list versions.
     filter := "filter_example" // string | The SCIM filter (RFC 7644 Section 3.4.2.2) that should be used to determine the resources to return. Filterable attributes: tag (pr)
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
     limit := int32(56) // int32 | The maximum number of resources to return in the page (optional) (default to 25)
     cursor := "cursor_example" // string | An optional cursor that may be provided to start paging from a certain location. This cursor will be included in the 'next' link in the response body (optional)
     filter2 := *openapiclient.NewFilter() // Filter |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationVersionsApi.ListVersions(context.Background(), environmentId).Filter(filter).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
+    resp, r, err := apiClient.AuthorizationVersionsApi.ListVersions(context.Background(), environmentID).Filter(filter).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Limit(limit).Cursor(cursor).Filter2(filter2).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.ListVersions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -351,7 +369,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | The ID of the environment from which to list versions. | 
+**environmentID** | **string** | The ID of the environment from which to list versions. | 
 
 ### Other Parameters
 
@@ -362,6 +380,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **filter** | **string** | The SCIM filter (RFC 7644 Section 3.4.2.2) that should be used to determine the resources to return. Filterable attributes: tag (pr) | 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
  **limit** | **int32** | The maximum number of resources to return in the page | [default to 25]
  **cursor** | **string** | An optional cursor that may be provided to start paging from a certain location. This cursor will be included in the &#39;next&#39; link in the response body | 
  **filter2** | [**Filter**](Filter.md) |  | 
@@ -386,7 +406,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTag
 
-> AuthorizeEditorDataTagResponseDTO UpdateTag(ctx, environmentId, authorizationVersionId).AuthorizeEditorDataTagRequestDTO(authorizeEditorDataTagRequestDTO).Execute()
+> AuthorizeEditorDataTagResponseDTO UpdateTag(ctx, environmentID, authorizationVersionID).AuthorizeEditorDataTagRequestDTO(authorizeEditorDataTagRequestDTO).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 Create or Update a Tag for an Authorize Version
 
@@ -405,13 +425,15 @@ import (
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create or update the version tag.
-    authorizationVersionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to create or update the tag for.
+    environmentID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the environment from which to create or update the version tag.
+    authorizationVersionID := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the version to create or update the tag for.
     authorizeEditorDataTagRequestDTO := *openapiclient.NewAuthorizeEditorDataTagRequestDTO() // AuthorizeEditorDataTagRequestDTO | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationVersionsApi.UpdateTag(context.Background(), environmentId, authorizationVersionId).AuthorizeEditorDataTagRequestDTO(authorizeEditorDataTagRequestDTO).Execute()
+    resp, r, err := apiClient.AuthorizationVersionsApi.UpdateTag(context.Background(), environmentID, authorizationVersionID).AuthorizeEditorDataTagRequestDTO(authorizeEditorDataTagRequestDTO).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationVersionsApi.UpdateTag``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -427,8 +449,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | The ID of the environment from which to create or update the version tag. | 
-**authorizationVersionId** | **string** | The ID of the version to create or update the tag for. | 
+**environmentID** | **string** | The ID of the environment from which to create or update the version tag. | 
+**authorizationVersionID** | **string** | The ID of the version to create or update the tag for. | 
 
 ### Other Parameters
 
@@ -440,6 +462,8 @@ Name | Type | Description  | Notes
 
 
  **authorizeEditorDataTagRequestDTO** | [**AuthorizeEditorDataTagRequestDTO**](AuthorizeEditorDataTagRequestDTO.md) |  | 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 

@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Protocol** | [**EnumNotificationsSettingsEmailDeliverySettingsProtocol**](EnumNotificationsSettingsEmailDeliverySettingsProtocol.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **Authentication** | [**NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication**](NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication.md) |  | 
 **From** | Pointer to [**NotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom**](NotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom.md) |  | [optional] 
 **Name** | **string** | Name to use to identify the provider. | 
-**Protocol** | **string** | A string that specifies the organization&#39;s SMTP server&#39;s protocol. | [readonly] 
 **Provider** | Pointer to [**EnumNotificationsSettingsEmailDeliverySettingsCustomProvider**](EnumNotificationsSettingsEmailDeliverySettingsCustomProvider.md) |  | [optional] 
 **ReplyTo** | Pointer to [**NotificationsSettingsEmailDeliverySettingsSMTPAllOfReplyTo**](NotificationsSettingsEmailDeliverySettingsSMTPAllOfReplyTo.md) |  | [optional] 
 **Requests** | [**[]NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests**](NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests.md) | Contains the object that is used to configure the API requests sent to the email provider. | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewNotificationsSettingsEmailDeliverySettings
 
-`func NewNotificationsSettingsEmailDeliverySettings(authentication NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication, name string, protocol string, requests []NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests, ) *NotificationsSettingsEmailDeliverySettings`
+`func NewNotificationsSettingsEmailDeliverySettings(protocol EnumNotificationsSettingsEmailDeliverySettingsProtocol, authentication NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication, name string, requests []NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests, ) *NotificationsSettingsEmailDeliverySettings`
 
 NewNotificationsSettingsEmailDeliverySettings instantiates a new NotificationsSettingsEmailDeliverySettings object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +87,26 @@ SetEnvironment sets Environment field to given value.
 `func (o *NotificationsSettingsEmailDeliverySettings) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetProtocol() EnumNotificationsSettingsEmailDeliverySettingsProtocol`
+
+GetProtocol returns the Protocol field if non-nil, zero value otherwise.
+
+### GetProtocolOk
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetProtocolOk() (*EnumNotificationsSettingsEmailDeliverySettingsProtocol, bool)`
+
+GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettings) SetProtocol(v EnumNotificationsSettingsEmailDeliverySettingsProtocol)`
+
+SetProtocol sets Protocol field to given value.
+
 
 ### GetUpdatedAt
 
@@ -176,26 +196,6 @@ and a boolean to check if the value has been set.
 `func (o *NotificationsSettingsEmailDeliverySettings) SetName(v string)`
 
 SetName sets Name field to given value.
-
-
-### GetProtocol
-
-`func (o *NotificationsSettingsEmailDeliverySettings) GetProtocol() string`
-
-GetProtocol returns the Protocol field if non-nil, zero value otherwise.
-
-### GetProtocolOk
-
-`func (o *NotificationsSettingsEmailDeliverySettings) GetProtocolOk() (*string, bool)`
-
-GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProtocol
-
-`func (o *NotificationsSettingsEmailDeliverySettings) SetProtocol(v string)`
-
-SetProtocol sets Protocol field to given value.
 
 
 ### GetProvider

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Protocol** | Pointer to [**EnumNotificationsSettingsEmailDeliverySettingsProtocol**](EnumNotificationsSettingsEmailDeliverySettingsProtocol.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *NotificationsSettingsEmailDeliverySettingsCommon) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCommon) GetProtocol() EnumNotificationsSettingsEmailDeliverySettingsProtocol`
+
+GetProtocol returns the Protocol field if non-nil, zero value otherwise.
+
+### GetProtocolOk
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCommon) GetProtocolOk() (*EnumNotificationsSettingsEmailDeliverySettingsProtocol, bool)`
+
+GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCommon) SetProtocol(v EnumNotificationsSettingsEmailDeliverySettingsProtocol)`
+
+SetProtocol sets Protocol field to given value.
+
+### HasProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCommon) HasProtocol() bool`
+
+HasProtocol returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

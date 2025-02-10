@@ -22,13 +22,13 @@ var _ MappedNullable = &NotificationsSettingsEmailDeliverySettingsCustom{}
 type NotificationsSettingsEmailDeliverySettingsCustom struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Protocol EnumNotificationsSettingsEmailDeliverySettingsProtocol `json:"protocol"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	Authentication NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication `json:"authentication"`
 	From *NotificationsSettingsEmailDeliverySettingsCustomAllOfFrom `json:"from,omitempty"`
 	// Name to use to identify the provider.
 	Name string `json:"name"`
-	Protocol EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol `json:"protocol"`
 	Provider *EnumNotificationsSettingsEmailDeliverySettingsCustomProvider `json:"provider,omitempty"`
 	ReplyTo *NotificationsSettingsEmailDeliverySettingsCustomAllOfReplyTo `json:"replyTo,omitempty"`
 	// Contains the object that is used to configure the API requests sent to the email provider.
@@ -39,11 +39,11 @@ type NotificationsSettingsEmailDeliverySettingsCustom struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationsSettingsEmailDeliverySettingsCustom(authentication NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication, name string, protocol EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol, requests []NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests) *NotificationsSettingsEmailDeliverySettingsCustom {
+func NewNotificationsSettingsEmailDeliverySettingsCustom(protocol EnumNotificationsSettingsEmailDeliverySettingsProtocol, authentication NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication, name string, requests []NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests) *NotificationsSettingsEmailDeliverySettingsCustom {
 	this := NotificationsSettingsEmailDeliverySettingsCustom{}
+	this.Protocol = protocol
 	this.Authentication = authentication
 	this.Name = name
-	this.Protocol = protocol
 	this.Requests = requests
 	return &this
 }
@@ -118,6 +118,30 @@ func (o *NotificationsSettingsEmailDeliverySettingsCustom) HasEnvironment() bool
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *NotificationsSettingsEmailDeliverySettingsCustom) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetProtocol returns the Protocol field value
+func (o *NotificationsSettingsEmailDeliverySettingsCustom) GetProtocol() EnumNotificationsSettingsEmailDeliverySettingsProtocol {
+	if o == nil {
+		var ret EnumNotificationsSettingsEmailDeliverySettingsProtocol
+		return ret
+	}
+
+	return o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustom) GetProtocolOk() (*EnumNotificationsSettingsEmailDeliverySettingsProtocol, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Protocol, true
+}
+
+// SetProtocol sets field value
+func (o *NotificationsSettingsEmailDeliverySettingsCustom) SetProtocol(v EnumNotificationsSettingsEmailDeliverySettingsProtocol) {
+	o.Protocol = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -232,30 +256,6 @@ func (o *NotificationsSettingsEmailDeliverySettingsCustom) SetName(v string) {
 	o.Name = v
 }
 
-// GetProtocol returns the Protocol field value
-func (o *NotificationsSettingsEmailDeliverySettingsCustom) GetProtocol() EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol {
-	if o == nil {
-		var ret EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol
-		return ret
-	}
-
-	return o.Protocol
-}
-
-// GetProtocolOk returns a tuple with the Protocol field value
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettingsCustom) GetProtocolOk() (*EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Protocol, true
-}
-
-// SetProtocol sets field value
-func (o *NotificationsSettingsEmailDeliverySettingsCustom) SetProtocol(v EnumNotificationsSettingsEmailDeliverySettingsCustomProtocol) {
-	o.Protocol = v
-}
-
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettingsCustom) GetProvider() EnumNotificationsSettingsEmailDeliverySettingsCustomProvider {
 	if o == nil || IsNil(o.Provider) {
@@ -360,6 +360,7 @@ func (o NotificationsSettingsEmailDeliverySettingsCustom) ToMap() (map[string]in
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
+	toSerialize["protocol"] = o.Protocol
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
@@ -368,7 +369,6 @@ func (o NotificationsSettingsEmailDeliverySettingsCustom) ToMap() (map[string]in
 		toSerialize["from"] = o.From
 	}
 	toSerialize["name"] = o.Name
-	toSerialize["protocol"] = o.Protocol
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
 	}

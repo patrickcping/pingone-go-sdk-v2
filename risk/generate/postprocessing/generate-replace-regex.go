@@ -167,6 +167,7 @@ var (
 	dst.RiskPredictorCompositeAnd = nil
 	dst.RiskPredictorCompositeConditionOneOf = nil
 	dst.RiskPredictorCompositeConditionOneOf1 = nil
+	dst.RiskPredictorCompositeIPRange = nil
 	dst.RiskPredictorCompositeNot = nil
 	dst.RiskPredictorCompositeOr = nil
 
@@ -198,6 +199,20 @@ var (
 		match++
 	}
 
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_RANGE) {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeIPRange); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_COMPARISON) {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeIPRange); err != nil {
+			return err
+		}
+		match++
+	}
+
 	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON) {
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf1); err != nil {
 			return err
@@ -210,6 +225,7 @@ var (
 		dst.RiskPredictorCompositeAnd = nil
 		dst.RiskPredictorCompositeConditionOneOf = nil
 		dst.RiskPredictorCompositeConditionOneOf1 = nil
+		dst.RiskPredictorCompositeIPRange = nil
 		dst.RiskPredictorCompositeNot = nil
 		dst.RiskPredictorCompositeOr = nil
 

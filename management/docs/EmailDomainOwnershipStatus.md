@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | A string that specifies the type of DNS record, with the value \&quot;TXT\&quot;. | [optional] [readonly] 
 **Regions** | Pointer to [**[]EmailDomainOwnershipStatusRegionsInner**](EmailDomainOwnershipStatusRegionsInner.md) | The regions collection specifies the properties for the 4 AWS SES regions that are used for sending email for the environment. The regions are determined by the geography where this environment was provisioned (North America, Canada, Europe &amp; Asia-Pacific). | [optional] [readonly] 
+**EnvironmentDnsRecord** | Pointer to [**EmailDomainOwnershipStatusEnvironmentDnsRecord**](EmailDomainOwnershipStatusEnvironmentDnsRecord.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetRegions sets Regions field to given value.
 `func (o *EmailDomainOwnershipStatus) HasRegions() bool`
 
 HasRegions returns a boolean if a field has been set.
+
+### GetEnvironmentDnsRecord
+
+`func (o *EmailDomainOwnershipStatus) GetEnvironmentDnsRecord() EmailDomainOwnershipStatusEnvironmentDnsRecord`
+
+GetEnvironmentDnsRecord returns the EnvironmentDnsRecord field if non-nil, zero value otherwise.
+
+### GetEnvironmentDnsRecordOk
+
+`func (o *EmailDomainOwnershipStatus) GetEnvironmentDnsRecordOk() (*EmailDomainOwnershipStatusEnvironmentDnsRecord, bool)`
+
+GetEnvironmentDnsRecordOk returns a tuple with the EnvironmentDnsRecord field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentDnsRecord
+
+`func (o *EmailDomainOwnershipStatus) SetEnvironmentDnsRecord(v EmailDomainOwnershipStatusEnvironmentDnsRecord)`
+
+SetEnvironmentDnsRecord sets EnvironmentDnsRecord field to given value.
+
+### HasEnvironmentDnsRecord
+
+`func (o *EmailDomainOwnershipStatus) HasEnvironmentDnsRecord() bool`
+
+HasEnvironmentDnsRecord returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

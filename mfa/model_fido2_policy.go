@@ -43,9 +43,12 @@ type FIDO2Policy struct {
 	MdsAuthenticatorsRequirements FIDO2PolicyMdsAuthenticatorsRequirements `json:"mdsAuthenticatorsRequirements"`
 	// The name to use for the FIDO policy. Can be up to 256 characters.
 	Name string `json:"name"`
+	// The `publicKeyCredentialHints` array is used to indicate that you want to provide public key credential hints to the browser to help give priority to the authentication method that the user is most likely to use. You can include in the array one or more of the following values `SECURITY_KEY`, `CLIENT_DEVICE`, `HYBRID`.
+	PublicKeyCredentialHints []EnumFIDO2PublicKeyCredentialHint `json:"publicKeyCredentialHints,omitempty"`
 	// The ID of the relying party. The value should be a domain name, such as `example.com` (in lower-case characters).
 	RelyingPartyId string `json:"relyingPartyId"`
 	UserDisplayNameAttributes FIDO2PolicyUserDisplayNameAttributes `json:"userDisplayNameAttributes"`
+	UserPresenceTimeout *FIDO2PolicyUserPresenceTimeout `json:"userPresenceTimeout,omitempty"`
 	UserVerification FIDO2PolicyUserVerification `json:"userVerification"`
 }
 
@@ -500,6 +503,38 @@ func (o *FIDO2Policy) SetName(v string) {
 	o.Name = v
 }
 
+// GetPublicKeyCredentialHints returns the PublicKeyCredentialHints field value if set, zero value otherwise.
+func (o *FIDO2Policy) GetPublicKeyCredentialHints() []EnumFIDO2PublicKeyCredentialHint {
+	if o == nil || IsNil(o.PublicKeyCredentialHints) {
+		var ret []EnumFIDO2PublicKeyCredentialHint
+		return ret
+	}
+	return o.PublicKeyCredentialHints
+}
+
+// GetPublicKeyCredentialHintsOk returns a tuple with the PublicKeyCredentialHints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FIDO2Policy) GetPublicKeyCredentialHintsOk() ([]EnumFIDO2PublicKeyCredentialHint, bool) {
+	if o == nil || IsNil(o.PublicKeyCredentialHints) {
+		return nil, false
+	}
+	return o.PublicKeyCredentialHints, true
+}
+
+// HasPublicKeyCredentialHints returns a boolean if a field has been set.
+func (o *FIDO2Policy) HasPublicKeyCredentialHints() bool {
+	if o != nil && !IsNil(o.PublicKeyCredentialHints) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKeyCredentialHints gets a reference to the given []EnumFIDO2PublicKeyCredentialHint and assigns it to the PublicKeyCredentialHints field.
+func (o *FIDO2Policy) SetPublicKeyCredentialHints(v []EnumFIDO2PublicKeyCredentialHint) {
+	o.PublicKeyCredentialHints = v
+}
+
 // GetRelyingPartyId returns the RelyingPartyId field value
 func (o *FIDO2Policy) GetRelyingPartyId() string {
 	if o == nil {
@@ -546,6 +581,38 @@ func (o *FIDO2Policy) GetUserDisplayNameAttributesOk() (*FIDO2PolicyUserDisplayN
 // SetUserDisplayNameAttributes sets field value
 func (o *FIDO2Policy) SetUserDisplayNameAttributes(v FIDO2PolicyUserDisplayNameAttributes) {
 	o.UserDisplayNameAttributes = v
+}
+
+// GetUserPresenceTimeout returns the UserPresenceTimeout field value if set, zero value otherwise.
+func (o *FIDO2Policy) GetUserPresenceTimeout() FIDO2PolicyUserPresenceTimeout {
+	if o == nil || IsNil(o.UserPresenceTimeout) {
+		var ret FIDO2PolicyUserPresenceTimeout
+		return ret
+	}
+	return *o.UserPresenceTimeout
+}
+
+// GetUserPresenceTimeoutOk returns a tuple with the UserPresenceTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FIDO2Policy) GetUserPresenceTimeoutOk() (*FIDO2PolicyUserPresenceTimeout, bool) {
+	if o == nil || IsNil(o.UserPresenceTimeout) {
+		return nil, false
+	}
+	return o.UserPresenceTimeout, true
+}
+
+// HasUserPresenceTimeout returns a boolean if a field has been set.
+func (o *FIDO2Policy) HasUserPresenceTimeout() bool {
+	if o != nil && !IsNil(o.UserPresenceTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPresenceTimeout gets a reference to the given FIDO2PolicyUserPresenceTimeout and assigns it to the UserPresenceTimeout field.
+func (o *FIDO2Policy) SetUserPresenceTimeout(v FIDO2PolicyUserPresenceTimeout) {
+	o.UserPresenceTimeout = &v
 }
 
 // GetUserVerification returns the UserVerification field value
@@ -613,8 +680,14 @@ func (o FIDO2Policy) ToMap() (map[string]interface{}, error) {
 	toSerialize["discoverableCredentials"] = o.DiscoverableCredentials
 	toSerialize["mdsAuthenticatorsRequirements"] = o.MdsAuthenticatorsRequirements
 	toSerialize["name"] = o.Name
+	if !IsNil(o.PublicKeyCredentialHints) {
+		toSerialize["publicKeyCredentialHints"] = o.PublicKeyCredentialHints
+	}
 	toSerialize["relyingPartyId"] = o.RelyingPartyId
 	toSerialize["userDisplayNameAttributes"] = o.UserDisplayNameAttributes
+	if !IsNil(o.UserPresenceTimeout) {
+		toSerialize["userPresenceTimeout"] = o.UserPresenceTimeout
+	}
 	toSerialize["userVerification"] = o.UserVerification
 	return toSerialize, nil
 }

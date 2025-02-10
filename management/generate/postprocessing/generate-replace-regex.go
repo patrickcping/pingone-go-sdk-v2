@@ -412,11 +412,10 @@ var (
 	// try to unmarshal JSON data into CustomAdminRole
 	err = json.Unmarshal(data, &dst.CustomAdminRole)
 	if err == nil {
-		jsonCustomAdminRole, _ := json.Marshal(dst.CustomAdminRole)
-		if string(jsonCustomAdminRole) == "{}" { // empty struct
-			dst.CustomAdminRole = nil
+		if dst.CustomAdminRole.Type != nil && *dst.CustomAdminRole.Type == ENUMCUSTOMADMINROLETYPE_CUSTOM { // custom role type
+			return nil // data stored in dst.CustomAdminRole, return on the first match
 		} else {
-				return nil // data stored in dst.CustomAdminRole, return on the first match
+			dst.CustomAdminRole = nil
 		}
 	} else {
 		dst.CustomAdminRole = nil
@@ -487,6 +486,45 @@ var (
 		}
 	default:
 		return fmt.Errorf("Data failed to match schemas in oneOf(IntegrationVersion)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// Management: NotificationsSettingsEmailDeliverySettings model
+		{
+			fileSelectPattern: "model_notifications_settings_email_delivery_settings.go",
+			pattern:           `(func \(dst \*NotificationsSettingsEmailDeliverySettings\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *NotificationsSettingsEmailDeliverySettings) UnmarshalJSON(data []byte) error {
+
+	var common NotificationsSettingsEmailDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
+	dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
+
+	objType := common.GetProtocol()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_HTTP:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsCustom); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTP, ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTPS:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsSMTP); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
 	}
 	return nil
 }
