@@ -18,8 +18,9 @@ import (
 type SDKInterfaceFunc func() (any, *http.Response, error)
 
 var (
-	maxRetries               = 10
-	maximumRetryAfterBackoff = 30
+	maxRetries                       = 10
+	maximumRetryAfterBackoff         = 30
+	maximumRetryAfterBackoffDuration = time.Duration(maximumRetryAfterBackoff) * time.Second
 )
 
 func processResponse(f SDKInterfaceFunc, targetObject any) (*http.Response, error) {
@@ -79,34 +80,34 @@ func testForRetryable(r *http.Response, err error, retryAttempt int) (time.Durat
 	baseDelay := time.Second
 	requestDelayDuration, ebErr := calculateExponentialBackoff(retryAttempt, baseDelay)
 	if ebErr != nil {
-		slog.Error("Invalid backoff delay duration", "error", ebErr, "defaultDuration", baseDelay, "retry", false)
-		return baseDelay, false
+		slog.Error("Invalid backoff delay duration", "error", ebErr, "baseDelay", baseDelay, "retry", false)
+		return maximumRetryAfterBackoffDuration, false
 	}
 
 	if r != nil {
-		if r.StatusCode == 501 || r.StatusCode == 503 || r.StatusCode == 429 {
+		if r.StatusCode == http.StatusNotImplemented || r.StatusCode == http.StatusServiceUnavailable || r.StatusCode == http.StatusTooManyRequests {
 			retryAfter, err := parseRetryAfterHeader(r)
 			if err != nil {
 				slog.Warn("Cannot parse the expected \"Retry-After\" header", "error", err)
 			}
 
-			if err != nil {
-				if retryAfter <= time.Duration(maximumRetryAfterBackoff) {
-					requestDelayDuration += time.Duration(maximumRetryAfterBackoff)
+			if err == nil {
+				if retryAfter >= maximumRetryAfterBackoffDuration {
+					return maximumRetryAfterBackoffDuration, true // optimistically set to the maximum if beyond
 				} else {
-					requestDelayDuration += retryAfter
+					return retryAfter, true
 				}
 			}
 		}
 
 		retryAbleCodes := []int{
-			408,
-			429,
-			500,
-			501,
-			502,
-			503,
-			504,
+			http.StatusRequestTimeout,
+			http.StatusTooManyRequests,
+			http.StatusInternalServerError,
+			http.StatusNotImplemented,
+			http.StatusBadGateway,
+			http.StatusServiceUnavailable,
+			http.StatusGatewayTimeout,
 		}
 
 		if slices.Contains(retryAbleCodes, r.StatusCode) {
@@ -174,5 +175,9 @@ func calculateExponentialBackoff(attempt int, baseDelay time.Duration) (time.Dur
 	}
 
 	jitter := time.Duration(n.Int64()) * time.Millisecond // Add random jitter
-	return baseDelay*time.Duration(math.Pow(2, float64(attempt))) + jitter, nil
+	calculatedBackOff := baseDelay*time.Duration(math.Pow(2, float64(attempt))) + jitter
+
+	slog.Debug("Calculated backoff duration", "maximumRetryAfterBackoffDuration", maximumRetryAfterBackoffDuration.String(), "attempt", attempt, "baseDelay", baseDelay.String(), "jitter", jitter.String(), "calculatedBackOff", calculatedBackOff.String())
+
+	return time.Duration(math.Min(float64(calculatedBackOff), float64(maximumRetryAfterBackoffDuration))), nil
 }
