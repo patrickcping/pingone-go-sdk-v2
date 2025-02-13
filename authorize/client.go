@@ -104,6 +104,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.HALApi = (*HALApiService)(&c.common)
 	c.APIServerDeploymentApi = (*APIServerDeploymentApiService)(&c.common)
 	c.APIServerOperationsApi = (*APIServerOperationsApiService)(&c.common)
 	c.APIServersApi = (*APIServersApiService)(&c.common)
