@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Statements** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **Condition** | Pointer to [**AuthorizeEditorDataConditionDTO**](AuthorizeEditorDataConditionDTO.md) |  | [optional] 
 **CombiningAlgorithm** | [**AuthorizeEditorDataPoliciesCombiningAlgorithmDTO**](AuthorizeEditorDataPoliciesCombiningAlgorithmDTO.md) |  | 
-**Children** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**Children** | Pointer to [**[]AuthorizeEditorDataPoliciesPolicyChild**](AuthorizeEditorDataPoliciesPolicyChild.md) |  | [optional] 
 **RepetitionSettings** | Pointer to [**AuthorizeEditorDataPoliciesRepetitionSettingsDTO**](AuthorizeEditorDataPoliciesRepetitionSettingsDTO.md) |  | [optional] 
 **ManagedEntity** | Pointer to [**AuthorizeEditorDataManagedEntityDTO**](AuthorizeEditorDataManagedEntityDTO.md) |  | [optional] 
 **Version** | **string** |  | 
@@ -275,20 +275,20 @@ SetCombiningAlgorithm sets CombiningAlgorithm field to given value.
 
 ### GetChildren
 
-`func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildren() []map[string]interface{}`
+`func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildren() []AuthorizeEditorDataPoliciesPolicyChild`
 
 GetChildren returns the Children field if non-nil, zero value otherwise.
 
 ### GetChildrenOk
 
-`func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildrenOk() (*[]map[string]interface{}, bool)`
+`func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildrenOk() (*[]AuthorizeEditorDataPoliciesPolicyChild, bool)`
 
 GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChildren
 
-`func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetChildren(v []map[string]interface{})`
+`func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetChildren(v []AuthorizeEditorDataPoliciesPolicyChild)`
 
 SetChildren sets Children field to given value.
 

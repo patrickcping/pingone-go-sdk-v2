@@ -10607,6 +10607,53 @@ components:
       - ONLY_ONE_APPLICABLE
       type: string
     AuthorizeEditorDataPoliciesPolicyChild:
+      example:
+        condition: null
+        combiningAlgorithm:
+          algorithm: null
+        children:
+        - null
+        - null
+        repetitionSettings:
+          decision: null
+          source:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        statements:
+        - null
+        - null
+        type: type
+        value:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
+      properties:
+        value:
+          $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        statements:
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
+          type: array
+        condition:
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+        combiningAlgorithm:
+          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
+        children:
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
+          type: array
+        repetitionSettings:
+          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
+      required:
+      - type
       type: object
     AuthorizeEditorDataPoliciesReferenceablePolicyDTO:
       example:
@@ -10639,8 +10686,44 @@ components:
         _embedded:
           key: "{}"
         children:
-        - null
-        - null
+        - condition: null
+          combiningAlgorithm:
+            algorithm: null
+          children:
+          - null
+          - null
+          repetitionSettings:
+            decision: null
+            source:
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          statements:
+          - null
+          - null
+          type: type
+          value:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enabled: true
+        - condition: null
+          combiningAlgorithm:
+            algorithm: null
+          children:
+          - null
+          - null
+          repetitionSettings:
+            decision: null
+            source:
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          statements:
+          - null
+          - null
+          type: type
+          value:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enabled: true
         repetitionSettings:
           decision: null
           source:
@@ -11339,8 +11422,44 @@ components:
         _embedded:
           key: "{}"
         children:
-        - null
-        - null
+        - condition: null
+          combiningAlgorithm:
+            algorithm: null
+          children:
+          - null
+          - null
+          repetitionSettings:
+            decision: null
+            source:
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          statements:
+          - null
+          - null
+          type: type
+          value:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enabled: true
+        - condition: null
+          combiningAlgorithm:
+            algorithm: null
+          children:
+          - null
+          - null
+          repetitionSettings:
+            decision: null
+            source:
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          statements:
+          - null
+          - null
+          type: type
+          value:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enabled: true
         repetitionSettings:
           decision: null
           source:

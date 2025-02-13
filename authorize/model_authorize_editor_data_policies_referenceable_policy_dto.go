@@ -31,7 +31,7 @@ type AuthorizeEditorDataPoliciesReferenceablePolicyDTO struct {
 	Statements []map[string]interface{} `json:"statements,omitempty"`
 	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
 	CombiningAlgorithm AuthorizeEditorDataPoliciesCombiningAlgorithmDTO `json:"combiningAlgorithm"`
-	Children []map[string]interface{} `json:"children,omitempty"`
+	Children []AuthorizeEditorDataPoliciesPolicyChild `json:"children,omitempty"`
 	RepetitionSettings *AuthorizeEditorDataPoliciesRepetitionSettingsDTO `json:"repetitionSettings,omitempty"`
 	ManagedEntity *AuthorizeEditorDataManagedEntityDTO `json:"managedEntity,omitempty"`
 	Version string `json:"version"`
@@ -355,9 +355,9 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetCombiningAlgorith
 }
 
 // GetChildren returns the Children field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildren() []map[string]interface{} {
+func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildren() []AuthorizeEditorDataPoliciesPolicyChild {
 	if o == nil || IsNil(o.Children) {
-		var ret []map[string]interface{}
+		var ret []AuthorizeEditorDataPoliciesPolicyChild
 		return ret
 	}
 	return o.Children
@@ -365,7 +365,7 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildren() []map[
 
 // GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildrenOk() ([]map[string]interface{}, bool) {
+func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) GetChildrenOk() ([]AuthorizeEditorDataPoliciesPolicyChild, bool) {
 	if o == nil || IsNil(o.Children) {
 		return nil, false
 	}
@@ -381,8 +381,8 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) HasChildren() bool {
 	return false
 }
 
-// SetChildren gets a reference to the given []map[string]interface{} and assigns it to the Children field.
-func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetChildren(v []map[string]interface{}) {
+// SetChildren gets a reference to the given []AuthorizeEditorDataPoliciesPolicyChild and assigns it to the Children field.
+func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetChildren(v []AuthorizeEditorDataPoliciesPolicyChild) {
 	o.Children = v
 }
 

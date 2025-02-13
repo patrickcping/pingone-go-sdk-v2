@@ -1249,7 +1249,34 @@ components:
       - FIRST_APPLICABLE
       - ONLY_ONE_APPLICABLE
     AuthorizeEditorDataPoliciesPolicyChild:
+      required:
+      - type
       type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        statements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
+        condition:
+          $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
+        combiningAlgorithm:
+          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
+        repetitionSettings:
+          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
     AuthorizeEditorDataPoliciesReferenceablePolicyDTO:
       required:
       - combiningAlgorithm

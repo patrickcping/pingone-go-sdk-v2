@@ -257,6 +257,7 @@ Class | Method | HTTP request | Description
  - [AuthorizeEditorDataManagedEntityRestrictionsDTO](docs/AuthorizeEditorDataManagedEntityRestrictionsDTO.md)
  - [AuthorizeEditorDataOverrideObjectDTO](docs/AuthorizeEditorDataOverrideObjectDTO.md)
  - [AuthorizeEditorDataPoliciesCombiningAlgorithmDTO](docs/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO.md)
+ - [AuthorizeEditorDataPoliciesPolicyChild](docs/AuthorizeEditorDataPoliciesPolicyChild.md)
  - [AuthorizeEditorDataPoliciesPolicyDTO](docs/AuthorizeEditorDataPoliciesPolicyDTO.md)
  - [AuthorizeEditorDataPoliciesReferenceablePolicyDTO](docs/AuthorizeEditorDataPoliciesReferenceablePolicyDTO.md)
  - [AuthorizeEditorDataPoliciesRepetitionSettingsDTO](docs/AuthorizeEditorDataPoliciesRepetitionSettingsDTO.md)
