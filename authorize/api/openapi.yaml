@@ -10514,7 +10514,6 @@ components:
           $ref: '#/components/schemas/AuthorizeEditorDataProcessorDTO'
       required:
       - name
-      - processor
       type: object
     EnumAuthorizeEditorDataDefinitionsProcessorDefinitionDTOType:
       enum:

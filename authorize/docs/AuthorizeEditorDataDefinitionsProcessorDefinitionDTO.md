@@ -14,13 +14,13 @@ Name | Type | Description | Notes
 **FullName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Parent** | Pointer to [**AuthorizeEditorDataReferenceObjectDTO**](AuthorizeEditorDataReferenceObjectDTO.md) |  | [optional] 
-**Processor** | [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | 
+**Processor** | Pointer to [**AuthorizeEditorDataProcessorDTO**](AuthorizeEditorDataProcessorDTO.md) |  | [optional] 
 
 ## Methods
 
 ### NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO
 
-`func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, processor AuthorizeEditorDataProcessorDTO, ) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO`
+`func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, ) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO`
 
 NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO instantiates a new AuthorizeEditorDataDefinitionsProcessorDefinitionDTO object
 This constructor will assign default values to properties that have it defined,
@@ -299,6 +299,11 @@ and a boolean to check if the value has been set.
 
 SetProcessor sets Processor field to given value.
 
+### HasProcessor
+
+`func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) HasProcessor() bool`
+
+HasProcessor returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

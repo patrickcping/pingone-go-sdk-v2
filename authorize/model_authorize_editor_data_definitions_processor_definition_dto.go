@@ -31,17 +31,16 @@ type AuthorizeEditorDataDefinitionsProcessorDefinitionDTO struct {
 	FullName *string `json:"fullName,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
-	Processor AuthorizeEditorDataProcessorDTO `json:"processor"`
+	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
 }
 
 // NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO instantiates a new AuthorizeEditorDataDefinitionsProcessorDefinitionDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string, processor AuthorizeEditorDataProcessorDTO) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO {
+func NewAuthorizeEditorDataDefinitionsProcessorDefinitionDTO(name string) *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO {
 	this := AuthorizeEditorDataDefinitionsProcessorDefinitionDTO{}
 	this.Name = name
-	this.Processor = processor
 	return &this
 }
 
@@ -365,28 +364,36 @@ func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) SetParent(v Autho
 	o.Parent = &v
 }
 
-// GetProcessor returns the Processor field value
+// GetProcessor returns the Processor field value if set, zero value otherwise.
 func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) GetProcessor() AuthorizeEditorDataProcessorDTO {
-	if o == nil {
+	if o == nil || IsNil(o.Processor) {
 		var ret AuthorizeEditorDataProcessorDTO
 		return ret
 	}
-
-	return o.Processor
+	return *o.Processor
 }
 
-// GetProcessorOk returns a tuple with the Processor field value
+// GetProcessorOk returns a tuple with the Processor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) GetProcessorOk() (*AuthorizeEditorDataProcessorDTO, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Processor) {
 		return nil, false
 	}
-	return &o.Processor, true
+	return o.Processor, true
 }
 
-// SetProcessor sets field value
+// HasProcessor returns a boolean if a field has been set.
+func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) HasProcessor() bool {
+	if o != nil && !IsNil(o.Processor) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessor gets a reference to the given AuthorizeEditorDataProcessorDTO and assigns it to the Processor field.
 func (o *AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) SetProcessor(v AuthorizeEditorDataProcessorDTO) {
-	o.Processor = v
+	o.Processor = &v
 }
 
 func (o AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) MarshalJSON() ([]byte, error) {
@@ -427,7 +434,9 @@ func (o AuthorizeEditorDataDefinitionsProcessorDefinitionDTO) ToMap() (map[strin
 	if !IsNil(o.Parent) {
 		toSerialize["parent"] = o.Parent
 	}
-	toSerialize["processor"] = o.Processor
+	if !IsNil(o.Processor) {
+		toSerialize["processor"] = o.Processor
+	}
 	return toSerialize, nil
 }
 

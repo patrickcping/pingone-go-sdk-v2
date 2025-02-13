@@ -1151,7 +1151,6 @@ components:
     AuthorizeEditorDataDefinitionsProcessorDefinitionDTO:
       required:
       - name
-      - processor
       type: object
       properties:
         '_links':
