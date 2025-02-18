@@ -12,394 +12,101 @@ package authorize
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the AuthorizeEditorDataPoliciesPolicyChild type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthorizeEditorDataPoliciesPolicyChild{}
-
-// AuthorizeEditorDataPoliciesPolicyChild struct for AuthorizeEditorDataPoliciesPolicyChild
+// AuthorizeEditorDataPoliciesPolicyChild - struct for AuthorizeEditorDataPoliciesPolicyChild
 type AuthorizeEditorDataPoliciesPolicyChild struct {
-	Value *AuthorizeEditorDataReferenceObjectDTO `json:"value,omitempty"`
-	Type string `json:"type"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	CombiningAlgorithm *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO `json:"combiningAlgorithm,omitempty"`
-	Children []AuthorizeEditorDataPoliciesPolicyChild `json:"children,omitempty"`
-	RepetitionSettings *AuthorizeEditorDataPoliciesRepetitionSettingsDTO `json:"repetitionSettings,omitempty"`
+	AuthorizeEditorDataPoliciesPolicyChildPolicy *AuthorizeEditorDataPoliciesPolicyChildPolicy
+	AuthorizeEditorDataPoliciesPolicyChildRule *AuthorizeEditorDataPoliciesPolicyChildRule
 }
 
-// NewAuthorizeEditorDataPoliciesPolicyChild instantiates a new AuthorizeEditorDataPoliciesPolicyChild object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAuthorizeEditorDataPoliciesPolicyChild(type_ string) *AuthorizeEditorDataPoliciesPolicyChild {
-	this := AuthorizeEditorDataPoliciesPolicyChild{}
-	this.Type = type_
-	return &this
-}
-
-// NewAuthorizeEditorDataPoliciesPolicyChildWithDefaults instantiates a new AuthorizeEditorDataPoliciesPolicyChild object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAuthorizeEditorDataPoliciesPolicyChildWithDefaults() *AuthorizeEditorDataPoliciesPolicyChild {
-	this := AuthorizeEditorDataPoliciesPolicyChild{}
-	return &this
-}
-
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetValue() AuthorizeEditorDataReferenceObjectDTO {
-	if o == nil || IsNil(o.Value) {
-		var ret AuthorizeEditorDataReferenceObjectDTO
-		return ret
+// AuthorizeEditorDataPoliciesPolicyChildPolicyAsAuthorizeEditorDataPoliciesPolicyChild is a convenience function that returns AuthorizeEditorDataPoliciesPolicyChildPolicy wrapped in AuthorizeEditorDataPoliciesPolicyChild
+func AuthorizeEditorDataPoliciesPolicyChildPolicyAsAuthorizeEditorDataPoliciesPolicyChild(v *AuthorizeEditorDataPoliciesPolicyChildPolicy) AuthorizeEditorDataPoliciesPolicyChild {
+	return AuthorizeEditorDataPoliciesPolicyChild{
+		AuthorizeEditorDataPoliciesPolicyChildPolicy: v,
 	}
-	return *o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetValueOk() (*AuthorizeEditorDataReferenceObjectDTO, bool) {
-	if o == nil || IsNil(o.Value) {
-		return nil, false
+// AuthorizeEditorDataPoliciesPolicyChildRuleAsAuthorizeEditorDataPoliciesPolicyChild is a convenience function that returns AuthorizeEditorDataPoliciesPolicyChildRule wrapped in AuthorizeEditorDataPoliciesPolicyChild
+func AuthorizeEditorDataPoliciesPolicyChildRuleAsAuthorizeEditorDataPoliciesPolicyChild(v *AuthorizeEditorDataPoliciesPolicyChildRule) AuthorizeEditorDataPoliciesPolicyChild {
+	return AuthorizeEditorDataPoliciesPolicyChild{
+		AuthorizeEditorDataPoliciesPolicyChildRule: v,
 	}
-	return o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AuthorizeEditorDataPoliciesPolicyChild) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AuthorizeEditorDataPoliciesPolicyChildPolicy
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataPoliciesPolicyChildPolicy)
+	if err == nil {
+		jsonAuthorizeEditorDataPoliciesPolicyChildPolicy, _ := json.Marshal(dst.AuthorizeEditorDataPoliciesPolicyChildPolicy)
+		if string(jsonAuthorizeEditorDataPoliciesPolicyChildPolicy) == "{}" { // empty struct
+			dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
 	}
 
-	return false
-}
-
-// SetValue gets a reference to the given AuthorizeEditorDataReferenceObjectDTO and assigns it to the Value field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetValue(v AuthorizeEditorDataReferenceObjectDTO) {
-	o.Value = &v
-}
-
-// GetType returns the Type field value
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
+	// try to unmarshal data into AuthorizeEditorDataPoliciesPolicyChildRule
+	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataPoliciesPolicyChildRule)
+	if err == nil {
+		jsonAuthorizeEditorDataPoliciesPolicyChildRule, _ := json.Marshal(dst.AuthorizeEditorDataPoliciesPolicyChildRule)
+		if string(jsonAuthorizeEditorDataPoliciesPolicyChildRule) == "{}" { // empty struct
+			dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
 	}
 
-	return o.Type
-}
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
+		dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
 
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataPoliciesPolicyChild)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataPoliciesPolicyChild)")
 	}
-	return &o.Type, true
 }
 
-// SetType sets field value
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetType(v string) {
-	o.Type = v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AuthorizeEditorDataPoliciesPolicyChild) MarshalJSON() ([]byte, error) {
+	if src.AuthorizeEditorDataPoliciesPolicyChildPolicy != nil {
+		return json.Marshal(&src.AuthorizeEditorDataPoliciesPolicyChildPolicy)
 	}
 
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetName(v string) {
-	o.Name = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
+	if src.AuthorizeEditorDataPoliciesPolicyChildRule != nil {
+		return json.Marshal(&src.AuthorizeEditorDataPoliciesPolicyChildRule)
 	}
 
-	return false
+	return nil, nil // no data in oneOf schemas
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
-		var ret bool
-		return ret
+// Get the actual instance
+func (obj *AuthorizeEditorDataPoliciesPolicyChild) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
 	}
-	return *o.Enabled
-}
-
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
-		return nil, false
-	}
-	return o.Enabled, true
-}
-
-// HasEnabled returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
-		return true
+	if obj.AuthorizeEditorDataPoliciesPolicyChildPolicy != nil {
+		return obj.AuthorizeEditorDataPoliciesPolicyChildPolicy
 	}
 
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetEnabled(v bool) {
-	o.Enabled = &v
-}
-
-// GetStatements returns the Statements field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetStatements() []map[string]interface{} {
-	if o == nil || IsNil(o.Statements) {
-		var ret []map[string]interface{}
-		return ret
-	}
-	return o.Statements
-}
-
-// GetStatementsOk returns a tuple with the Statements field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetStatementsOk() ([]map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Statements) {
-		return nil, false
-	}
-	return o.Statements, true
-}
-
-// HasStatements returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasStatements() bool {
-	if o != nil && !IsNil(o.Statements) {
-		return true
+	if obj.AuthorizeEditorDataPoliciesPolicyChildRule != nil {
+		return obj.AuthorizeEditorDataPoliciesPolicyChildRule
 	}
 
-	return false
-}
-
-// SetStatements gets a reference to the given []map[string]interface{} and assigns it to the Statements field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetStatements(v []map[string]interface{}) {
-	o.Statements = v
-}
-
-// GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetCondition() AuthorizeEditorDataConditionDTO {
-	if o == nil || IsNil(o.Condition) {
-		var ret AuthorizeEditorDataConditionDTO
-		return ret
-	}
-	return *o.Condition
-}
-
-// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetConditionOk() (*AuthorizeEditorDataConditionDTO, bool) {
-	if o == nil || IsNil(o.Condition) {
-		return nil, false
-	}
-	return o.Condition, true
-}
-
-// HasCondition returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasCondition() bool {
-	if o != nil && !IsNil(o.Condition) {
-		return true
-	}
-
-	return false
-}
-
-// SetCondition gets a reference to the given AuthorizeEditorDataConditionDTO and assigns it to the Condition field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetCondition(v AuthorizeEditorDataConditionDTO) {
-	o.Condition = &v
-}
-
-// GetCombiningAlgorithm returns the CombiningAlgorithm field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetCombiningAlgorithm() AuthorizeEditorDataPoliciesCombiningAlgorithmDTO {
-	if o == nil || IsNil(o.CombiningAlgorithm) {
-		var ret AuthorizeEditorDataPoliciesCombiningAlgorithmDTO
-		return ret
-	}
-	return *o.CombiningAlgorithm
-}
-
-// GetCombiningAlgorithmOk returns a tuple with the CombiningAlgorithm field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetCombiningAlgorithmOk() (*AuthorizeEditorDataPoliciesCombiningAlgorithmDTO, bool) {
-	if o == nil || IsNil(o.CombiningAlgorithm) {
-		return nil, false
-	}
-	return o.CombiningAlgorithm, true
-}
-
-// HasCombiningAlgorithm returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasCombiningAlgorithm() bool {
-	if o != nil && !IsNil(o.CombiningAlgorithm) {
-		return true
-	}
-
-	return false
-}
-
-// SetCombiningAlgorithm gets a reference to the given AuthorizeEditorDataPoliciesCombiningAlgorithmDTO and assigns it to the CombiningAlgorithm field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetCombiningAlgorithm(v AuthorizeEditorDataPoliciesCombiningAlgorithmDTO) {
-	o.CombiningAlgorithm = &v
-}
-
-// GetChildren returns the Children field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetChildren() []AuthorizeEditorDataPoliciesPolicyChild {
-	if o == nil || IsNil(o.Children) {
-		var ret []AuthorizeEditorDataPoliciesPolicyChild
-		return ret
-	}
-	return o.Children
-}
-
-// GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetChildrenOk() ([]AuthorizeEditorDataPoliciesPolicyChild, bool) {
-	if o == nil || IsNil(o.Children) {
-		return nil, false
-	}
-	return o.Children, true
-}
-
-// HasChildren returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasChildren() bool {
-	if o != nil && !IsNil(o.Children) {
-		return true
-	}
-
-	return false
-}
-
-// SetChildren gets a reference to the given []AuthorizeEditorDataPoliciesPolicyChild and assigns it to the Children field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetChildren(v []AuthorizeEditorDataPoliciesPolicyChild) {
-	o.Children = v
-}
-
-// GetRepetitionSettings returns the RepetitionSettings field value if set, zero value otherwise.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetRepetitionSettings() AuthorizeEditorDataPoliciesRepetitionSettingsDTO {
-	if o == nil || IsNil(o.RepetitionSettings) {
-		var ret AuthorizeEditorDataPoliciesRepetitionSettingsDTO
-		return ret
-	}
-	return *o.RepetitionSettings
-}
-
-// GetRepetitionSettingsOk returns a tuple with the RepetitionSettings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) GetRepetitionSettingsOk() (*AuthorizeEditorDataPoliciesRepetitionSettingsDTO, bool) {
-	if o == nil || IsNil(o.RepetitionSettings) {
-		return nil, false
-	}
-	return o.RepetitionSettings, true
-}
-
-// HasRepetitionSettings returns a boolean if a field has been set.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) HasRepetitionSettings() bool {
-	if o != nil && !IsNil(o.RepetitionSettings) {
-		return true
-	}
-
-	return false
-}
-
-// SetRepetitionSettings gets a reference to the given AuthorizeEditorDataPoliciesRepetitionSettingsDTO and assigns it to the RepetitionSettings field.
-func (o *AuthorizeEditorDataPoliciesPolicyChild) SetRepetitionSettings(v AuthorizeEditorDataPoliciesRepetitionSettingsDTO) {
-	o.RepetitionSettings = &v
-}
-
-func (o AuthorizeEditorDataPoliciesPolicyChild) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthorizeEditorDataPoliciesPolicyChild) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
-	toSerialize["type"] = o.Type
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Statements) {
-		toSerialize["statements"] = o.Statements
-	}
-	if !IsNil(o.Condition) {
-		toSerialize["condition"] = o.Condition
-	}
-	if !IsNil(o.CombiningAlgorithm) {
-		toSerialize["combiningAlgorithm"] = o.CombiningAlgorithm
-	}
-	if !IsNil(o.Children) {
-		toSerialize["children"] = o.Children
-	}
-	if !IsNil(o.RepetitionSettings) {
-		toSerialize["repetitionSettings"] = o.RepetitionSettings
-	}
-	return toSerialize, nil
+	// all schemas are nil
+	return nil
 }
 
 type NullableAuthorizeEditorDataPoliciesPolicyChild struct {

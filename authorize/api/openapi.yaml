@@ -10606,32 +10606,24 @@ components:
       - FIRST_APPLICABLE
       - ONLY_ONE_APPLICABLE
       type: string
+    EnumAuthorizeEditorDataPoliciesPolicyChildCommonType:
+      enum:
+      - POLICY
+      - RULE
+      type: string
     AuthorizeEditorDataPoliciesPolicyChild:
-      example:
-        condition: null
-        combiningAlgorithm:
-          algorithm: null
-        children:
-        - null
-        - null
-        repetitionSettings:
-          decision: null
-          source:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        description: description
-        statements:
-        - null
-        - null
-        type: type
-        value:
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enabled: true
+      discriminator:
+        mapping:
+          POLICY: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildPolicy'
+          RULE: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildRule'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildPolicy'
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildRule'
+    AuthorizeEditorDataPoliciesPolicyChildCommon:
       properties:
-        value:
-          $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataPoliciesPolicyChildCommonType'
         name:
           type: string
         description:
@@ -10644,17 +10636,31 @@ components:
           type: array
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
-        combiningAlgorithm:
-          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
-        children:
-          items:
-            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
-          type: array
-        repetitionSettings:
-          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
+        value:
+          $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
       required:
       - type
       type: object
+    AuthorizeEditorDataPoliciesPolicyChildRule:
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildCommon'
+      - properties:
+          effectSettings:
+            $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+        type: object
+    AuthorizeEditorDataPoliciesPolicyChildPolicy:
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildCommon'
+      - properties:
+          combiningAlgorithm:
+            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
+          children:
+            items:
+              $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
+            type: array
+          repetitionSettings:
+            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
+        type: object
     AuthorizeEditorDataPoliciesReferenceablePolicyDTO:
       example:
         managedEntity:
@@ -10686,44 +10692,8 @@ components:
         _embedded:
           key: "{}"
         children:
-        - condition: null
-          combiningAlgorithm:
-            algorithm: null
-          children:
-          - null
-          - null
-          repetitionSettings:
-            decision: null
-            source:
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          description: description
-          statements:
-          - null
-          - null
-          type: type
-          value:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          enabled: true
-        - condition: null
-          combiningAlgorithm:
-            algorithm: null
-          children:
-          - null
-          - null
-          repetitionSettings:
-            decision: null
-            source:
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          description: description
-          statements:
-          - null
-          - null
-          type: type
-          value:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          enabled: true
+        - null
+        - null
         repetitionSettings:
           decision: null
           source:
@@ -11422,44 +11392,8 @@ components:
         _embedded:
           key: "{}"
         children:
-        - condition: null
-          combiningAlgorithm:
-            algorithm: null
-          children:
-          - null
-          - null
-          repetitionSettings:
-            decision: null
-            source:
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          description: description
-          statements:
-          - null
-          - null
-          type: type
-          value:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          enabled: true
-        - condition: null
-          combiningAlgorithm:
-            algorithm: null
-          children:
-          - null
-          - null
-          repetitionSettings:
-            decision: null
-            source:
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          description: description
-          statements:
-          - null
-          - null
-          type: type
-          value:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          enabled: true
+        - null
+        - null
         repetitionSettings:
           decision: null
           source:

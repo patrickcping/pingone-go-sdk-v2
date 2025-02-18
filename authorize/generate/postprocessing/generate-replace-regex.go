@@ -525,5 +525,38 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// AuthorizeEditorDataPoliciesPolicyChildPolicy model
+		{
+			fileSelectPattern: "model_authorize_editor_data_policies_policy_child.go",
+			pattern:           `(func \(dst \*AuthorizeEditorDataPoliciesPolicyChildPolicy\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataPoliciesPolicyChildPolicy) UnmarshalJSON(data []byte) error {
+
+	var common AuthorizeEditorDataPoliciesPolicyChildPolicyCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
+	dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAPOLICIESPOLICYCHILDCOMMONTYPE_POLICY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataPoliciesPolicyChildPolicy); err != nil { // simple model
+			return err
+		}
+	case ENUMAUTHORIZEEDITORDATAPOLICIESPOLICYCHILDCOMMONTYPE_RULE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataPoliciesPolicyChildRule); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataPoliciesPolicyChildPolicy)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )

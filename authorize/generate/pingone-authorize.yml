@@ -1248,15 +1248,27 @@ components:
       - DENY_UNLESS_PERMIT
       - FIRST_APPLICABLE
       - ONLY_ONE_APPLICABLE
+    EnumAuthorizeEditorDataPoliciesPolicyChildCommonType:
+      type: string
+      enum:
+      - POLICY
+      - RULE
     AuthorizeEditorDataPoliciesPolicyChild:
+      oneOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildPolicy'
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildRule'
+      discriminator:
+        propertyName: type
+        mapping:
+          POLICY: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildPolicy'
+          RULE: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildRule'
+    AuthorizeEditorDataPoliciesPolicyChildCommon:
+      type: object
       required:
       - type
-      type: object
       properties:
-        value:
-          $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
         type:
-          type: string
+          $ref: '#/components/schemas/EnumAuthorizeEditorDataPoliciesPolicyChildCommonType'
         name:
           type: string
         description:
@@ -1269,14 +1281,28 @@ components:
             $ref: '#/components/schemas/AuthorizeEditorDataStatementsStatementItem'
         condition:
           $ref: '#/components/schemas/AuthorizeEditorDataConditionDTO'
-        combiningAlgorithm:
-          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
-        repetitionSettings:
-          $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
+        value:
+          $ref: '#/components/schemas/AuthorizeEditorDataReferenceObjectDTO'
+    AuthorizeEditorDataPoliciesPolicyChildRule:
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildCommon'
+      - type: object
+        properties:
+          effectSettings:
+            $ref: '#/components/schemas/AuthorizeEditorDataRulesEffectSettingsDTO'
+    AuthorizeEditorDataPoliciesPolicyChildPolicy:
+      allOf:
+      - $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChildCommon'
+      - type: object
+        properties:
+          combiningAlgorithm:
+            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesCombiningAlgorithmDTO'
+          children:
+            type: array
+            items:
+              $ref: '#/components/schemas/AuthorizeEditorDataPoliciesPolicyChild'
+          repetitionSettings:
+            $ref: '#/components/schemas/AuthorizeEditorDataPoliciesRepetitionSettingsDTO'
     AuthorizeEditorDataPoliciesReferenceablePolicyDTO:
       required:
       - combiningAlgorithm
