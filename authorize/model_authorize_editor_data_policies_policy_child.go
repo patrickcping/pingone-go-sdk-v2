@@ -38,45 +38,29 @@ func AuthorizeEditorDataPoliciesPolicyChildRuleAsAuthorizeEditorDataPoliciesPoli
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataPoliciesPolicyChild) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into AuthorizeEditorDataPoliciesPolicyChildPolicy
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataPoliciesPolicyChildPolicy)
-	if err == nil {
-		jsonAuthorizeEditorDataPoliciesPolicyChildPolicy, _ := json.Marshal(dst.AuthorizeEditorDataPoliciesPolicyChildPolicy)
-		if string(jsonAuthorizeEditorDataPoliciesPolicyChildPolicy) == "{}" { // empty struct
-			dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
-		} else {
-			match++
+
+	var common AuthorizeEditorDataPoliciesPolicyChildCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
+	dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
+
+	switch common.GetType() {
+	case ENUMAUTHORIZEEDITORDATAPOLICIESPOLICYCHILDCOMMONTYPE_POLICY:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataPoliciesPolicyChildPolicy); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
-	}
-
-	// try to unmarshal data into AuthorizeEditorDataPoliciesPolicyChildRule
-	err = newStrictDecoder(data).Decode(&dst.AuthorizeEditorDataPoliciesPolicyChildRule)
-	if err == nil {
-		jsonAuthorizeEditorDataPoliciesPolicyChildRule, _ := json.Marshal(dst.AuthorizeEditorDataPoliciesPolicyChildRule)
-		if string(jsonAuthorizeEditorDataPoliciesPolicyChildRule) == "{}" { // empty struct
-			dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
-		} else {
-			match++
+	case ENUMAUTHORIZEEDITORDATAPOLICIESPOLICYCHILDCOMMONTYPE_RULE:
+		if err := json.Unmarshal(data, &dst.AuthorizeEditorDataPoliciesPolicyChildRule); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataPoliciesPolicyChild)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AuthorizeEditorDataPoliciesPolicyChildPolicy = nil
-		dst.AuthorizeEditorDataPoliciesPolicyChildRule = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AuthorizeEditorDataPoliciesPolicyChild)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AuthorizeEditorDataPoliciesPolicyChild)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

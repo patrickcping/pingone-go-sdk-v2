@@ -529,10 +529,10 @@ var (
 		// AuthorizeEditorDataPoliciesPolicyChildPolicy model
 		{
 			fileSelectPattern: "model_authorize_editor_data_policies_policy_child.go",
-			pattern:           `(func \(dst \*AuthorizeEditorDataPoliciesPolicyChildPolicy\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
-			repl: `func (dst *AuthorizeEditorDataPoliciesPolicyChildPolicy) UnmarshalJSON(data []byte) error {
+			pattern:           `(func \(dst \*AuthorizeEditorDataPoliciesPolicyChild\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *AuthorizeEditorDataPoliciesPolicyChild) UnmarshalJSON(data []byte) error {
 
-	var common AuthorizeEditorDataPoliciesPolicyChildPolicyCommon
+	var common AuthorizeEditorDataPoliciesPolicyChildCommon
 
 	if err := json.Unmarshal(data, &common); err != nil { // simple model
 		return err
@@ -551,7 +551,7 @@ var (
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataPoliciesPolicyChildPolicy)")
+		return fmt.Errorf("Data failed to match schemas in oneOf(AuthorizeEditorDataPoliciesPolicyChild)")
 	}
 	return nil
 }
