@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **AppId** | **string** | A string that specifies the application ID from Facebook. This is a required property. | 
 **AppSecret** | **string** | A string that specifies the application secret from Facebook. This is a required property. | 
-**ClientId** | **string** | A string that specifies the application ID from PayPal. This is a required property. | 
-**ClientSecret** | **string** | A string that specifies the application secret from PayPal. This is a required property. | 
+**ClientId** | **string** | A string that specifies the application ID from the provider. This is a required property. | 
+**ClientSecret** | **string** | A string that specifies the application secret from the provider. This is a required property. | 
 **AuthorizationEndpoint** | **string** | A string that specifies the the OIDC identity provider&#39;s authorization endpoint. This value must be a URL that uses https. This is a required property. | 
 **DiscoveryEndpoint** | Pointer to **string** | A string that specifies the OIDC identity provider&#39;s discovery endpoint. This value must be a URL that uses https. | [optional] 
 **Issuer** | **string** | A string that specifies the issuer to which the authentication is sent for the OIDC identity provider. This value must be a URL that uses https. This is a required property. | 
@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **KeyId** | **string** | A 10-character string that Apple uses to identify an authentication key. This is a required property. | 
 **TeamId** | **string** | A 10-character string that Apple uses to identify teams. This is a required property. | 
 **ClientEnvironment** | **string** | A string that specifies the PayPal environment. Options are sandbox, and live. This is a required property. | 
+**TenantId** | Pointer to **string** | A string that specifies the tenant ID from Microsoft Entra ID. This property is required if Entra ID is enabled. | [optional] 
 **AuthnRequestSigned** | Pointer to **bool** | A boolean that specifies whether the SAML authentication request will be signed when sending to the identity provider. Set this to true if the external IDP is included in an authentication policy to be used by applications that are accessed using a mix of default URLS and custom Domains URLs. | [optional] 
 **IdpEntityId** | **string** | A string that specifies the entity ID URI that is checked against the issuerId tag in the incoming response. | 
 **IdpVerification** | [**IdentityProviderSAMLAllOfIdpVerification**](IdentityProviderSAMLAllOfIdpVerification.md) |  | 
@@ -703,6 +704,31 @@ and a boolean to check if the value has been set.
 
 SetClientEnvironment sets ClientEnvironment field to given value.
 
+
+### GetTenantId
+
+`func (o *IdentityProvider) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *IdentityProvider) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *IdentityProvider) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+### HasTenantId
+
+`func (o *IdentityProvider) HasTenantId() bool`
+
+HasTenantId returns a boolean if a field has been set.
 
 ### GetAuthnRequestSigned
 

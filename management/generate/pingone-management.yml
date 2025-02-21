@@ -3497,6 +3497,7 @@ components:
         - $ref: '#/components/schemas/IdentityProviderOIDC'
         - $ref: '#/components/schemas/IdentityProviderApple'
         - $ref: '#/components/schemas/IdentityProviderPaypal'
+        - $ref: '#/components/schemas/IdentityProviderMicrosoft'
         - $ref: '#/components/schemas/IdentityProviderSAML'
     IdentityProviderAttribute:
       type: object
@@ -3628,6 +3629,14 @@ components:
           required:
             - clientId
             - clientSecret
+    IdentityProviderMicrosoft:
+      allOf:
+        - $ref: '#/components/schemas/IdentityProviderClientIDClientSecret'
+        - type: object
+          properties:
+            tenantId:
+              type: string
+              description: A string that specifies the tenant ID from Microsoft Entra ID. This property is required if Entra ID is enabled.
     IdentityProviderOIDC:
       allOf:
         - $ref: '#/components/schemas/IdentityProviderCommon'

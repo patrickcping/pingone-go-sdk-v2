@@ -778,6 +778,7 @@ Class | Method | HTTP request | Description
  - [IdentityProviderCommonRegistration](docs/IdentityProviderCommonRegistration.md)
  - [IdentityProviderCommonRegistrationPopulation](docs/IdentityProviderCommonRegistrationPopulation.md)
  - [IdentityProviderFacebook](docs/IdentityProviderFacebook.md)
+ - [IdentityProviderMicrosoft](docs/IdentityProviderMicrosoft.md)
  - [IdentityProviderOIDC](docs/IdentityProviderOIDC.md)
  - [IdentityProviderPaypal](docs/IdentityProviderPaypal.md)
  - [IdentityProviderSAML](docs/IdentityProviderSAML.md)
