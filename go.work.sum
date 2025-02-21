@@ -1080,6 +1080,7 @@ github.com/otiai10/mint v1.5.1 h1:XaPLeE+9vGbuyEHem1JNk3bYc7KKqyI/na0/mLd/Kks=
 github.com/otiai10/mint v1.5.1/go.mod h1:MJm72SBthJjz8qhefc4z1PYEieWmy8Bku7CjcAqyUSM=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pascaldekloe/goe v0.1.0/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
+github.com/patrickcping/pingone-go-sdk-v2 v0.12.9/go.mod h1:ZA09d5Rw6Mp7MBT7iJageVfzU1k6yjEjsQCLpIlFyRQ=
 github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.1/go.mod h1:IMQjhejQfTfZkQNhbFq6VxRshTzJIpOEQO5x5w+n/nA=
 github.com/patrickcping/pingone-go-sdk-v2/management v0.14.0/go.mod h1:JK1xIupfpiOONjRMuoc9e7uBEodx6ciYhhc0iF3azI0=
 github.com/patrickcping/pingone-go-sdk-v2/management v0.17.0/go.mod h1:icHZVY/j9s2wl4oSdAy/JDJKrd5BYZ1io+XDhoI7sR4=
