@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.50.0](./management/CHANGELOG.md)
+  * **Breaking change** Added support for the `TenantId` field on Microsoft Identity providers. The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model. [#425](https://github.com/patrickcping/pingone-go-sdk-v2/pull/425)
+ 
 # Release (2025-02-10)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.9

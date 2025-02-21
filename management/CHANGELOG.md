@@ -1,3 +1,7 @@
+# v0.50.0 (Unreleased)
+
+* **Breaking change** Added support for the `TenantId` field on Microsoft Identity providers. The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model. [#425](https://github.com/patrickcping/pingone-go-sdk-v2/pull/425)
+
 # v0.49.0 (2025-02-10)
 
 * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
