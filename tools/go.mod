@@ -3,7 +3,7 @@ module github.com/patrickcping/pingone-go-sdk-v2/tools
 go 1.23.3
 
 require (
-	github.com/golangci/golangci-lint v1.63.4
+	github.com/golangci/golangci-lint v1.64.5
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.22.0
 )
