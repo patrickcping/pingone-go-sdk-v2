@@ -5,7 +5,7 @@ go 1.23.3
 require (
 	github.com/golangci/golangci-lint v1.64.5
 	github.com/pavius/impi v0.0.3
-	github.com/securego/gosec/v2 v2.22.0
+	github.com/securego/gosec/v2 v2.22.1
 )
 
 require (
