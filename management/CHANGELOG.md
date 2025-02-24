@@ -1,4 +1,4 @@
-# v0.51.0 (Unreleased)
+# v0.51.0 (2025-02-24)
 
 * **Breaking change** The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model when using the `IdentityProvider` model. [#427](https://github.com/patrickcping/pingone-go-sdk-v2/pull/427)
 
