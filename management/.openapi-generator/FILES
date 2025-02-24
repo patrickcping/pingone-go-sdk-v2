@@ -1038,6 +1038,7 @@ model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
 model_identity_propagation_plan.go
+model_identity_provider.go
 model_identity_provider_apple.go
 model_identity_provider_attribute.go
 model_identity_provider_attribute_identity_provider.go
