@@ -531,5 +531,83 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// Management: IdentityProvider model
+		{
+			fileSelectPattern: "model_identity_provider.go",
+			pattern:           `(func \(dst \*IdentityProvider\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *IdentityProvider) UnmarshalJSON(data []byte) error {
+
+	var common IdentityProviderCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.IdentityProviderApple = nil
+	dst.IdentityProviderClientIDClientSecret = nil
+	dst.IdentityProviderFacebook = nil
+	dst.IdentityProviderMicrosoft = nil
+	dst.IdentityProviderOIDC = nil
+	dst.IdentityProviderPaypal = nil
+	dst.IdentityProviderSAML = nil
+
+	switch common.GetType() {
+	case ENUMIDENTITYPROVIDEREXT_FACEBOOK:
+		if err := json.Unmarshal(data, &dst.IdentityProviderFacebook); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_GOOGLE:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_LINKEDIN:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_APPLE:
+		if err := json.Unmarshal(data, &dst.IdentityProviderApple); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_TWITTER:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_AMAZON:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_YAHOO:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_MICROSOFT:
+		if err := json.Unmarshal(data, &dst.IdentityProviderMicrosoft); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_PAYPAL:
+		if err := json.Unmarshal(data, &dst.IdentityProviderPaypal); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_GITHUB:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_OPENID_CONNECT:
+		if err := json.Unmarshal(data, &dst.IdentityProviderOIDC); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_SAML:
+		if err := json.Unmarshal(data, &dst.IdentityProviderSAML); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(IdentityProvider)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )
