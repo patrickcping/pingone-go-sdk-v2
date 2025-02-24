@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.11
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.50.0 => v0.51.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.50.0 => v0.51.0 [#428](https://github.com/patrickcping/pingone-go-sdk-v2/pull/428)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.51.0](./management/CHANGELOG.md)
   * **Breaking change** The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model when using the `IdentityProvider` model. [#427](https://github.com/patrickcping/pingone-go-sdk-v2/pull/427)
 
