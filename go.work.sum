@@ -1084,6 +1084,7 @@ github.com/patrickcping/pingone-go-sdk-v2 v0.12.9/go.mod h1:ZA09d5Rw6Mp7MBT7iJag
 github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.1/go.mod h1:IMQjhejQfTfZkQNhbFq6VxRshTzJIpOEQO5x5w+n/nA=
 github.com/patrickcping/pingone-go-sdk-v2/management v0.14.0/go.mod h1:JK1xIupfpiOONjRMuoc9e7uBEodx6ciYhhc0iF3azI0=
 github.com/patrickcping/pingone-go-sdk-v2/management v0.17.0/go.mod h1:icHZVY/j9s2wl4oSdAy/JDJKrd5BYZ1io+XDhoI7sR4=
+github.com/patrickcping/pingone-go-sdk-v2/management v0.51.0/go.mod h1:oLB/jjAkn4oEA60nC5/0KAobvcNJbflOWnVaS6lKxv8=
 github.com/patrickcping/pingone-go-sdk-v2/mfa v0.7.2/go.mod h1:XvlVDdfz69zPFi549g2OZaUC8/wnRUMgrra9MDQ8Hhg=
 github.com/patrickcping/pingone-go-sdk-v2/risk v0.3.1/go.mod h1:v6ANb988xfh9wvXs6WOAAosUwtogYpKmrrH88AW8Clo=
 github.com/pelletier/go-toml v1.2.0/go.mod h1:5z9KED0ma1S8pY6P1sdut58dfprrGBbd/94hg7ilaic=
