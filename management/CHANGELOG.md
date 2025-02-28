@@ -1,6 +1,6 @@
 # v0.52.0 (Unreleased)
 
-* **Breaking change** The `AdministratorSecurity` model has been aligned to the service.
+* **Breaking change** The `AdministratorSecurity` model has been aligned to the service. [#429](https://github.com/patrickcping/pingone-go-sdk-v2/pull/429)
 
 # v0.51.0 (2025-02-24)
 
