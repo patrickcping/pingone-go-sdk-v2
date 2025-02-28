@@ -82,8 +82,8 @@ api_users.go
 configuration.go
 docs/ActiveIdentityCountsApi.md
 docs/AdministratorSecurity.md
+docs/AdministratorSecurityAllowedMethods.md
 docs/AdministratorSecurityApi.md
-docs/AdministratorSecurityPolicy.md
 docs/AdministratorSecurityProvider.md
 docs/Agreement.md
 docs/AgreementLanguage.md
@@ -203,7 +203,6 @@ docs/EntityArrayEmbeddedGatewaysInner.md
 docs/EntityArrayEmbeddedLanguagesInner.md
 docs/EntityArrayEmbeddedResourcesInner.md
 docs/EntityArrayEmbeddedRolesInner.md
-docs/EnumAdministratorSecurityAllowedMethods.md
 docs/EnumAdministratorSecurityAuthenticationMethod.md
 docs/EnumAdministratorSecurityMfaStatus.md
 docs/EnumAgreementRevisionContentType.md
@@ -719,7 +718,7 @@ docs/UsersApi.md
 go.mod
 go.sum
 model_administrator_security.go
-model_administrator_security_policy.go
+model_administrator_security_allowed_methods.go
 model_administrator_security_provider.go
 model_agreement.go
 model_agreement_language.go
@@ -811,7 +810,6 @@ model_entity_array__embedded.go
 model_entity_array__embedded_gateways_inner.go
 model_entity_array__embedded_resources_inner.go
 model_entity_array__embedded_roles_inner.go
-model_enum_administrator_security_allowed_methods.go
 model_enum_administrator_security_authentication_method.go
 model_enum_administrator_security_mfa_status.go
 model_enum_agreement_revision_content_type.go

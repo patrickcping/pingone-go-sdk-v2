@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**AllowedMethods** | Pointer to [**EnumAdministratorSecurityAllowedMethods**](EnumAdministratorSecurityAllowedMethods.md) |  | [optional] 
+**AllowedMethods** | Pointer to [**AdministratorSecurityAllowedMethods**](AdministratorSecurityAllowedMethods.md) |  | [optional] 
 **AuthenticationMethod** | [**EnumAdministratorSecurityAuthenticationMethod**](EnumAdministratorSecurityAuthenticationMethod.md) |  | [default to ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_PINGONE]
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**MfaStatus** | Pointer to [**EnumAdministratorSecurityMfaStatus**](EnumAdministratorSecurityMfaStatus.md) |  | [optional] [default to ENUMADMINISTRATORSECURITYMFASTATUS_OUT]
-**Policy** | Pointer to [**AdministratorSecurityPolicy**](AdministratorSecurityPolicy.md) |  | [optional] 
+**HasFido2Capabilities** | Pointer to **bool** | Indicates whether the environment supports FIDO2 passkeys for MFA. | [optional] [readonly] 
+**IsPingIDInBOM** | Pointer to **bool** | Indicates whether the environment supports FIDO2 passkeys for MFA. | [optional] [readonly] 
+**MfaStatus** | [**EnumAdministratorSecurityMfaStatus**](EnumAdministratorSecurityMfaStatus.md) |  | 
 **Provider** | Pointer to [**AdministratorSecurityProvider**](AdministratorSecurityProvider.md) |  | [optional] 
 **Recovery** | **bool** | Indicates whether to allow account recovery within the admin policy. | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewAdministratorSecurity
 
-`func NewAdministratorSecurity(authenticationMethod EnumAdministratorSecurityAuthenticationMethod, recovery bool, ) *AdministratorSecurity`
+`func NewAdministratorSecurity(authenticationMethod EnumAdministratorSecurityAuthenticationMethod, mfaStatus EnumAdministratorSecurityMfaStatus, recovery bool, ) *AdministratorSecurity`
 
 NewAdministratorSecurity instantiates a new AdministratorSecurity object
 This constructor will assign default values to properties that have it defined,
@@ -61,20 +62,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetAllowedMethods
 
-`func (o *AdministratorSecurity) GetAllowedMethods() EnumAdministratorSecurityAllowedMethods`
+`func (o *AdministratorSecurity) GetAllowedMethods() AdministratorSecurityAllowedMethods`
 
 GetAllowedMethods returns the AllowedMethods field if non-nil, zero value otherwise.
 
 ### GetAllowedMethodsOk
 
-`func (o *AdministratorSecurity) GetAllowedMethodsOk() (*EnumAdministratorSecurityAllowedMethods, bool)`
+`func (o *AdministratorSecurity) GetAllowedMethodsOk() (*AdministratorSecurityAllowedMethods, bool)`
 
 GetAllowedMethodsOk returns a tuple with the AllowedMethods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllowedMethods
 
-`func (o *AdministratorSecurity) SetAllowedMethods(v EnumAdministratorSecurityAllowedMethods)`
+`func (o *AdministratorSecurity) SetAllowedMethods(v AdministratorSecurityAllowedMethods)`
 
 SetAllowedMethods sets AllowedMethods field to given value.
 
@@ -154,6 +155,56 @@ SetEnvironment sets Environment field to given value.
 
 HasEnvironment returns a boolean if a field has been set.
 
+### GetHasFido2Capabilities
+
+`func (o *AdministratorSecurity) GetHasFido2Capabilities() bool`
+
+GetHasFido2Capabilities returns the HasFido2Capabilities field if non-nil, zero value otherwise.
+
+### GetHasFido2CapabilitiesOk
+
+`func (o *AdministratorSecurity) GetHasFido2CapabilitiesOk() (*bool, bool)`
+
+GetHasFido2CapabilitiesOk returns a tuple with the HasFido2Capabilities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasFido2Capabilities
+
+`func (o *AdministratorSecurity) SetHasFido2Capabilities(v bool)`
+
+SetHasFido2Capabilities sets HasFido2Capabilities field to given value.
+
+### HasHasFido2Capabilities
+
+`func (o *AdministratorSecurity) HasHasFido2Capabilities() bool`
+
+HasHasFido2Capabilities returns a boolean if a field has been set.
+
+### GetIsPingIDInBOM
+
+`func (o *AdministratorSecurity) GetIsPingIDInBOM() bool`
+
+GetIsPingIDInBOM returns the IsPingIDInBOM field if non-nil, zero value otherwise.
+
+### GetIsPingIDInBOMOk
+
+`func (o *AdministratorSecurity) GetIsPingIDInBOMOk() (*bool, bool)`
+
+GetIsPingIDInBOMOk returns a tuple with the IsPingIDInBOM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPingIDInBOM
+
+`func (o *AdministratorSecurity) SetIsPingIDInBOM(v bool)`
+
+SetIsPingIDInBOM sets IsPingIDInBOM field to given value.
+
+### HasIsPingIDInBOM
+
+`func (o *AdministratorSecurity) HasIsPingIDInBOM() bool`
+
+HasIsPingIDInBOM returns a boolean if a field has been set.
+
 ### GetMfaStatus
 
 `func (o *AdministratorSecurity) GetMfaStatus() EnumAdministratorSecurityMfaStatus`
@@ -173,36 +224,6 @@ and a boolean to check if the value has been set.
 
 SetMfaStatus sets MfaStatus field to given value.
 
-### HasMfaStatus
-
-`func (o *AdministratorSecurity) HasMfaStatus() bool`
-
-HasMfaStatus returns a boolean if a field has been set.
-
-### GetPolicy
-
-`func (o *AdministratorSecurity) GetPolicy() AdministratorSecurityPolicy`
-
-GetPolicy returns the Policy field if non-nil, zero value otherwise.
-
-### GetPolicyOk
-
-`func (o *AdministratorSecurity) GetPolicyOk() (*AdministratorSecurityPolicy, bool)`
-
-GetPolicyOk returns a tuple with the Policy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPolicy
-
-`func (o *AdministratorSecurity) SetPolicy(v AdministratorSecurityPolicy)`
-
-SetPolicy sets Policy field to given value.
-
-### HasPolicy
-
-`func (o *AdministratorSecurity) HasPolicy() bool`
-
-HasPolicy returns a boolean if a field has been set.
 
 ### GetProvider
 

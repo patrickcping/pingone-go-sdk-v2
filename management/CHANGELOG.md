@@ -1,3 +1,7 @@
+# v0.52.0 (Unreleased)
+
+* **Breaking change** The `AdministratorSecurity` model has been aligned to the service.
+
 # v0.51.0 (2025-02-24)
 
 * **Breaking change** The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model when using the `IdentityProvider` model. [#427](https://github.com/patrickcping/pingone-go-sdk-v2/pull/427)
