@@ -1,6 +1,6 @@
 # v0.53.0 (Unreleased)
 
-* **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model.
+* **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model. [#433](https://github.com/patrickcping/pingone-go-sdk-v2/pull/433)
 
 # v0.52.0 (2025-03-04)
 

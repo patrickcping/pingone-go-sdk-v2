@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.53.0](./management/CHANGELOG.md)
-  * **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model.
+  * **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model. [#433](https://github.com/patrickcping/pingone-go-sdk-v2/pull/433)
 
 # Release (2025-03-04)
 
