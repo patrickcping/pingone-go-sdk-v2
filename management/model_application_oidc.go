@@ -57,6 +57,8 @@ type ApplicationOIDC struct {
 	DeviceTimeout *int32 `json:"deviceTimeout,omitempty"`
 	// An integer that specifies the frequency (in seconds) for the client to poll the `/as/token` endpoint. This property is required only for applications in which the `grantTypes` property is set to `device_code`. The default value is `5` seconds. It can have a value of no more than `60` seconds (`min`/`max`=`1`/`60`).
 	DevicePollingInterval *int32 `json:"devicePollingInterval,omitempty"`
+	// Set this to true to allow an application to request to terminate a user session using only the ID token. The application is not required to have access to the session token cookie.
+	IdpSignoff *bool `json:"idpSignoff,omitempty"`
 	// A JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwksUrl` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwksUrl` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
 	Jwks *string `json:"jwks,omitempty"`
 	// A URL (supports `https://` only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwks` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwks` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
@@ -821,6 +823,38 @@ func (o *ApplicationOIDC) HasDevicePollingInterval() bool {
 // SetDevicePollingInterval gets a reference to the given int32 and assigns it to the DevicePollingInterval field.
 func (o *ApplicationOIDC) SetDevicePollingInterval(v int32) {
 	o.DevicePollingInterval = &v
+}
+
+// GetIdpSignoff returns the IdpSignoff field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetIdpSignoff() bool {
+	if o == nil || IsNil(o.IdpSignoff) {
+		var ret bool
+		return ret
+	}
+	return *o.IdpSignoff
+}
+
+// GetIdpSignoffOk returns a tuple with the IdpSignoff field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetIdpSignoffOk() (*bool, bool) {
+	if o == nil || IsNil(o.IdpSignoff) {
+		return nil, false
+	}
+	return o.IdpSignoff, true
+}
+
+// HasIdpSignoff returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasIdpSignoff() bool {
+	if o != nil && !IsNil(o.IdpSignoff) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdpSignoff gets a reference to the given bool and assigns it to the IdpSignoff field.
+func (o *ApplicationOIDC) SetIdpSignoff(v bool) {
+	o.IdpSignoff = &v
 }
 
 // GetJwks returns the Jwks field value if set, zero value otherwise.
@@ -1680,6 +1714,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DevicePollingInterval) {
 		toSerialize["devicePollingInterval"] = o.DevicePollingInterval
+	}
+	if !IsNil(o.IdpSignoff) {
+		toSerialize["idpSignoff"] = o.IdpSignoff
 	}
 	if !IsNil(o.Jwks) {
 		toSerialize["jwks"] = o.Jwks

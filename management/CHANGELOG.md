@@ -1,3 +1,7 @@
+# v0.53.0 (Unreleased)
+
+* **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model.
+
 # v0.52.0 (2025-03-04)
 
 * **Breaking change** The `AdministratorSecurity` model has been aligned to the service. [#429](https://github.com/patrickcping/pingone-go-sdk-v2/pull/429)
