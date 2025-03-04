@@ -38222,6 +38222,11 @@ components:
             maximum: 60
             minimum: 1
             type: integer
+          idpSignoff:
+            description: Set this to true to allow an application to request to terminate
+              a user session using only the ID token. The application is not required
+              to have access to the session token cookie.
+            type: boolean
           jwks:
             description: "A JWKS string that validates the signature of signed JWTs\
               \ for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`.\
