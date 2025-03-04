@@ -21,17 +21,20 @@ var _ MappedNullable = &AdministratorSecurity{}
 // AdministratorSecurity struct for AdministratorSecurity
 type AdministratorSecurity struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AllowedMethods *EnumAdministratorSecurityAllowedMethods `json:"allowedMethods,omitempty"`
+	AllowedMethods *AdministratorSecurityAllowedMethods `json:"allowedMethods,omitempty"`
 	AuthenticationMethod EnumAdministratorSecurityAuthenticationMethod `json:"authenticationMethod"`
-	// The time the resource was created.
+	// The timestamp the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	MfaStatus *EnumAdministratorSecurityMfaStatus `json:"mfaStatus,omitempty"`
-	Policy *AdministratorSecurityPolicy `json:"policy,omitempty"`
+	// Indicates whether the environment supports FIDO2 passkeys for MFA.
+	HasFido2Capabilities *bool `json:"hasFido2Capabilities,omitempty"`
+	// Indicates whether the environment supports PingID for MFA.
+	IsPingIDInBOM *bool `json:"isPingIDInBOM,omitempty"`
+	MfaStatus EnumAdministratorSecurityMfaStatus `json:"mfaStatus"`
 	Provider *AdministratorSecurityProvider `json:"provider,omitempty"`
 	// Indicates whether to allow account recovery within the admin policy.
 	Recovery bool `json:"recovery"`
-	// The time the resource was last updated.
+	// The timestamp the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
@@ -39,11 +42,10 @@ type AdministratorSecurity struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdministratorSecurity(authenticationMethod EnumAdministratorSecurityAuthenticationMethod, recovery bool) *AdministratorSecurity {
+func NewAdministratorSecurity(authenticationMethod EnumAdministratorSecurityAuthenticationMethod, mfaStatus EnumAdministratorSecurityMfaStatus, recovery bool) *AdministratorSecurity {
 	this := AdministratorSecurity{}
 	this.AuthenticationMethod = authenticationMethod
-	var mfaStatus EnumAdministratorSecurityMfaStatus = ENUMADMINISTRATORSECURITYMFASTATUS_OUT
-	this.MfaStatus = &mfaStatus
+	this.MfaStatus = mfaStatus
 	this.Recovery = recovery
 	return &this
 }
@@ -55,8 +57,6 @@ func NewAdministratorSecurityWithDefaults() *AdministratorSecurity {
 	this := AdministratorSecurity{}
 	var authenticationMethod EnumAdministratorSecurityAuthenticationMethod = ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_PINGONE
 	this.AuthenticationMethod = authenticationMethod
-	var mfaStatus EnumAdministratorSecurityMfaStatus = ENUMADMINISTRATORSECURITYMFASTATUS_OUT
-	this.MfaStatus = &mfaStatus
 	return &this
 }
 
@@ -93,9 +93,9 @@ func (o *AdministratorSecurity) SetLinks(v map[string]LinksHATEOASValue) {
 }
 
 // GetAllowedMethods returns the AllowedMethods field value if set, zero value otherwise.
-func (o *AdministratorSecurity) GetAllowedMethods() EnumAdministratorSecurityAllowedMethods {
+func (o *AdministratorSecurity) GetAllowedMethods() AdministratorSecurityAllowedMethods {
 	if o == nil || IsNil(o.AllowedMethods) {
-		var ret EnumAdministratorSecurityAllowedMethods
+		var ret AdministratorSecurityAllowedMethods
 		return ret
 	}
 	return *o.AllowedMethods
@@ -103,7 +103,7 @@ func (o *AdministratorSecurity) GetAllowedMethods() EnumAdministratorSecurityAll
 
 // GetAllowedMethodsOk returns a tuple with the AllowedMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdministratorSecurity) GetAllowedMethodsOk() (*EnumAdministratorSecurityAllowedMethods, bool) {
+func (o *AdministratorSecurity) GetAllowedMethodsOk() (*AdministratorSecurityAllowedMethods, bool) {
 	if o == nil || IsNil(o.AllowedMethods) {
 		return nil, false
 	}
@@ -119,8 +119,8 @@ func (o *AdministratorSecurity) HasAllowedMethods() bool {
 	return false
 }
 
-// SetAllowedMethods gets a reference to the given EnumAdministratorSecurityAllowedMethods and assigns it to the AllowedMethods field.
-func (o *AdministratorSecurity) SetAllowedMethods(v EnumAdministratorSecurityAllowedMethods) {
+// SetAllowedMethods gets a reference to the given AdministratorSecurityAllowedMethods and assigns it to the AllowedMethods field.
+func (o *AdministratorSecurity) SetAllowedMethods(v AdministratorSecurityAllowedMethods) {
 	o.AllowedMethods = &v
 }
 
@@ -212,68 +212,92 @@ func (o *AdministratorSecurity) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
-// GetMfaStatus returns the MfaStatus field value if set, zero value otherwise.
+// GetHasFido2Capabilities returns the HasFido2Capabilities field value if set, zero value otherwise.
+func (o *AdministratorSecurity) GetHasFido2Capabilities() bool {
+	if o == nil || IsNil(o.HasFido2Capabilities) {
+		var ret bool
+		return ret
+	}
+	return *o.HasFido2Capabilities
+}
+
+// GetHasFido2CapabilitiesOk returns a tuple with the HasFido2Capabilities field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdministratorSecurity) GetHasFido2CapabilitiesOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasFido2Capabilities) {
+		return nil, false
+	}
+	return o.HasFido2Capabilities, true
+}
+
+// HasHasFido2Capabilities returns a boolean if a field has been set.
+func (o *AdministratorSecurity) HasHasFido2Capabilities() bool {
+	if o != nil && !IsNil(o.HasFido2Capabilities) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasFido2Capabilities gets a reference to the given bool and assigns it to the HasFido2Capabilities field.
+func (o *AdministratorSecurity) SetHasFido2Capabilities(v bool) {
+	o.HasFido2Capabilities = &v
+}
+
+// GetIsPingIDInBOM returns the IsPingIDInBOM field value if set, zero value otherwise.
+func (o *AdministratorSecurity) GetIsPingIDInBOM() bool {
+	if o == nil || IsNil(o.IsPingIDInBOM) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPingIDInBOM
+}
+
+// GetIsPingIDInBOMOk returns a tuple with the IsPingIDInBOM field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdministratorSecurity) GetIsPingIDInBOMOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPingIDInBOM) {
+		return nil, false
+	}
+	return o.IsPingIDInBOM, true
+}
+
+// HasIsPingIDInBOM returns a boolean if a field has been set.
+func (o *AdministratorSecurity) HasIsPingIDInBOM() bool {
+	if o != nil && !IsNil(o.IsPingIDInBOM) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPingIDInBOM gets a reference to the given bool and assigns it to the IsPingIDInBOM field.
+func (o *AdministratorSecurity) SetIsPingIDInBOM(v bool) {
+	o.IsPingIDInBOM = &v
+}
+
+// GetMfaStatus returns the MfaStatus field value
 func (o *AdministratorSecurity) GetMfaStatus() EnumAdministratorSecurityMfaStatus {
-	if o == nil || IsNil(o.MfaStatus) {
+	if o == nil {
 		var ret EnumAdministratorSecurityMfaStatus
 		return ret
 	}
-	return *o.MfaStatus
+
+	return o.MfaStatus
 }
 
-// GetMfaStatusOk returns a tuple with the MfaStatus field value if set, nil otherwise
+// GetMfaStatusOk returns a tuple with the MfaStatus field value
 // and a boolean to check if the value has been set.
 func (o *AdministratorSecurity) GetMfaStatusOk() (*EnumAdministratorSecurityMfaStatus, bool) {
-	if o == nil || IsNil(o.MfaStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MfaStatus, true
+	return &o.MfaStatus, true
 }
 
-// HasMfaStatus returns a boolean if a field has been set.
-func (o *AdministratorSecurity) HasMfaStatus() bool {
-	if o != nil && !IsNil(o.MfaStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetMfaStatus gets a reference to the given EnumAdministratorSecurityMfaStatus and assigns it to the MfaStatus field.
+// SetMfaStatus sets field value
 func (o *AdministratorSecurity) SetMfaStatus(v EnumAdministratorSecurityMfaStatus) {
-	o.MfaStatus = &v
-}
-
-// GetPolicy returns the Policy field value if set, zero value otherwise.
-func (o *AdministratorSecurity) GetPolicy() AdministratorSecurityPolicy {
-	if o == nil || IsNil(o.Policy) {
-		var ret AdministratorSecurityPolicy
-		return ret
-	}
-	return *o.Policy
-}
-
-// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdministratorSecurity) GetPolicyOk() (*AdministratorSecurityPolicy, bool) {
-	if o == nil || IsNil(o.Policy) {
-		return nil, false
-	}
-	return o.Policy, true
-}
-
-// HasPolicy returns a boolean if a field has been set.
-func (o *AdministratorSecurity) HasPolicy() bool {
-	if o != nil && !IsNil(o.Policy) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicy gets a reference to the given AdministratorSecurityPolicy and assigns it to the Policy field.
-func (o *AdministratorSecurity) SetPolicy(v AdministratorSecurityPolicy) {
-	o.Policy = &v
+	o.MfaStatus = v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
@@ -387,12 +411,13 @@ func (o AdministratorSecurity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !IsNil(o.MfaStatus) {
-		toSerialize["mfaStatus"] = o.MfaStatus
+	if !IsNil(o.HasFido2Capabilities) {
+		toSerialize["hasFido2Capabilities"] = o.HasFido2Capabilities
 	}
-	if !IsNil(o.Policy) {
-		toSerialize["policy"] = o.Policy
+	if !IsNil(o.IsPingIDInBOM) {
+		toSerialize["isPingIDInBOM"] = o.IsPingIDInBOM
 	}
+	toSerialize["mfaStatus"] = o.MfaStatus
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
 	}

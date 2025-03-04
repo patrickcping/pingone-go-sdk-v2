@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.52.0](./management/CHANGELOG.md)
+  * **Breaking change** The `AdministratorSecurity` model has been aligned to the service. [#429](https://github.com/patrickcping/pingone-go-sdk-v2/pull/429)
+ 
 # Release (2025-02-24)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.11
