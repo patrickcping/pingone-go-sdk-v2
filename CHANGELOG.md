@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.12
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.51.0 => v0.52.0
+  * **Note** bump `golang.org/x/oauth2` v0.26.0 => v0.27.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.52.0](./management/CHANGELOG.md)
   * **Breaking change** The `AdministratorSecurity` model has been aligned to the service. [#429](https://github.com/patrickcping/pingone-go-sdk-v2/pull/429)
  
