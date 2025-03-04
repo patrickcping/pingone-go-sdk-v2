@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **AllowedMethods** | Pointer to [**AdministratorSecurityAllowedMethods**](AdministratorSecurityAllowedMethods.md) |  | [optional] 
 **AuthenticationMethod** | [**EnumAdministratorSecurityAuthenticationMethod**](EnumAdministratorSecurityAuthenticationMethod.md) |  | [default to ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_PINGONE]
-**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The timestamp the resource was created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **HasFido2Capabilities** | Pointer to **bool** | Indicates whether the environment supports FIDO2 passkeys for MFA. | [optional] [readonly] 
-**IsPingIDInBOM** | Pointer to **bool** | Indicates whether the environment supports FIDO2 passkeys for MFA. | [optional] [readonly] 
+**IsPingIDInBOM** | Pointer to **bool** | Indicates whether the environment supports PingID for MFA. | [optional] [readonly] 
 **MfaStatus** | [**EnumAdministratorSecurityMfaStatus**](EnumAdministratorSecurityMfaStatus.md) |  | 
 **Provider** | Pointer to [**AdministratorSecurityProvider**](AdministratorSecurityProvider.md) |  | [optional] 
 **Recovery** | **bool** | Indicates whether to allow account recovery within the admin policy. | 
-**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The timestamp the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 

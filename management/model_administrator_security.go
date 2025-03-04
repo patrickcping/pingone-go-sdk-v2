@@ -23,18 +23,18 @@ type AdministratorSecurity struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	AllowedMethods *AdministratorSecurityAllowedMethods `json:"allowedMethods,omitempty"`
 	AuthenticationMethod EnumAdministratorSecurityAuthenticationMethod `json:"authenticationMethod"`
-	// The time the resource was created.
+	// The timestamp the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Indicates whether the environment supports FIDO2 passkeys for MFA.
 	HasFido2Capabilities *bool `json:"hasFido2Capabilities,omitempty"`
-	// Indicates whether the environment supports FIDO2 passkeys for MFA.
+	// Indicates whether the environment supports PingID for MFA.
 	IsPingIDInBOM *bool `json:"isPingIDInBOM,omitempty"`
 	MfaStatus EnumAdministratorSecurityMfaStatus `json:"mfaStatus"`
 	Provider *AdministratorSecurityProvider `json:"provider,omitempty"`
 	// Indicates whether to allow account recovery within the admin policy.
 	Recovery bool `json:"recovery"`
-	// The time the resource was last updated.
+	// The timestamp the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 

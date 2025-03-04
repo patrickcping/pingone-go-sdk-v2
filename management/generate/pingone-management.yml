@@ -737,13 +737,13 @@ components:
           properties:
             EMAIL:
               type: string
-              description: Indicates whether to enable email for sign-on.
+              description: Indicates whether to enable email for sign-on. Must be set to either `{\"enabled\":true}` or `{\"enabled\":false}`.
             FIDO2:
               type: string
-              description: Indicates whether to enable FIDO2 for sign-on.
+              description: Indicates whether to enable FIDO2 for sign-on. Must be set to either `{\"enabled\":true}` or `{\"enabled\":false}`.
             TOTP:
               type: string
-              description: Indicates whether to enable TOTP for sign-on.
+              description: Indicates whether to enable TOTP for sign-on. Must be set to either `{\"enabled\":true}` or `{\"enabled\":false}`.
           required:
             - TOTP
             - FIDO2
@@ -754,7 +754,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-          description: The time the resource was created.
+          description: The timestamp the resource was created.
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         hasFido2Capabilities:
@@ -764,7 +764,7 @@ components:
         isPingIDInBOM:
           type: boolean
           readOnly: true
-          description: Indicates whether the environment supports FIDO2 passkeys for MFA.
+          description: Indicates whether the environment supports PingID for MFA.
         mfaStatus:
           $ref: '#/components/schemas/EnumAdministratorSecurityMfaStatus'
         provider:
@@ -782,7 +782,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-          description: The time the resource was last updated.
+          description: The timestamp the resource was last updated.
       required:
         - authenticationMethod
         - mfaStatus

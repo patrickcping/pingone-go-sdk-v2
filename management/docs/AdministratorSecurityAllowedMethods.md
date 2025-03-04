@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EMAIL** | **string** | Indicates whether to enable email for sign-on. | 
-**FIDO2** | **string** | Indicates whether to enable FIDO2 for sign-on. | 
-**TOTP** | **string** | Indicates whether to enable TOTP for sign-on. | 
+**EMAIL** | **string** | Indicates whether to enable email for sign-on. Must be set to either &#x60;{\\\&quot;enabled\\\&quot;:true}&#x60; or &#x60;{\\\&quot;enabled\\\&quot;:false}&#x60;. | 
+**FIDO2** | **string** | Indicates whether to enable FIDO2 for sign-on. Must be set to either &#x60;{\\\&quot;enabled\\\&quot;:true}&#x60; or &#x60;{\\\&quot;enabled\\\&quot;:false}&#x60;. | 
+**TOTP** | **string** | Indicates whether to enable TOTP for sign-on. Must be set to either &#x60;{\\\&quot;enabled\\\&quot;:true}&#x60; or &#x60;{\\\&quot;enabled\\\&quot;:false}&#x60;. | 
 
 ## Methods
 

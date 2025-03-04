@@ -37672,7 +37672,7 @@ components:
         authenticationMethod:
           $ref: '#/components/schemas/EnumAdministratorSecurityAuthenticationMethod'
         createdAt:
-          description: The time the resource was created.
+          description: The timestamp the resource was created.
           format: date-time
           readOnly: true
           type: string
@@ -37684,8 +37684,7 @@ components:
           readOnly: true
           type: boolean
         isPingIDInBOM:
-          description: Indicates whether the environment supports FIDO2 passkeys for
-            MFA.
+          description: Indicates whether the environment supports PingID for MFA.
           readOnly: true
           type: boolean
         mfaStatus:
@@ -37697,7 +37696,7 @@ components:
             policy.
           type: boolean
         updatedAt:
-          description: The time the resource was last updated.
+          description: The timestamp the resource was last updated.
           format: date-time
           readOnly: true
           type: string
@@ -46373,13 +46372,16 @@ components:
         EMAIL: EMAIL
       properties:
         EMAIL:
-          description: Indicates whether to enable email for sign-on.
+          description: "Indicates whether to enable email for sign-on. Must be set\
+            \ to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`."
           type: string
         FIDO2:
-          description: Indicates whether to enable FIDO2 for sign-on.
+          description: "Indicates whether to enable FIDO2 for sign-on. Must be set\
+            \ to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`."
           type: string
         TOTP:
-          description: Indicates whether to enable TOTP for sign-on.
+          description: "Indicates whether to enable TOTP for sign-on. Must be set\
+            \ to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`."
           type: string
       required:
       - EMAIL

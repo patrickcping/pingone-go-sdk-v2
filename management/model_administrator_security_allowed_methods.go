@@ -19,11 +19,11 @@ var _ MappedNullable = &AdministratorSecurityAllowedMethods{}
 
 // AdministratorSecurityAllowedMethods Indicates the methods to enable or disable for admin sign-on. Required properties are `TOTP` (temporary one-time password), `FIDO2`, or `EMAIL`.
 type AdministratorSecurityAllowedMethods struct {
-	// Indicates whether to enable email for sign-on.
+	// Indicates whether to enable email for sign-on. Must be set to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`.
 	EMAIL string `json:"EMAIL"`
-	// Indicates whether to enable FIDO2 for sign-on.
+	// Indicates whether to enable FIDO2 for sign-on. Must be set to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`.
 	FIDO2 string `json:"FIDO2"`
-	// Indicates whether to enable TOTP for sign-on.
+	// Indicates whether to enable TOTP for sign-on. Must be set to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`.
 	TOTP string `json:"TOTP"`
 }
 
