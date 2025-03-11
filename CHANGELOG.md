@@ -1,8 +1,8 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.13
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.52.0 => v0.53.0
-  * **Note** bump `golang.org/x/oauth2` v0.27.0 => v0.28.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.52.0 => v0.53.0 [#436](https://github.com/patrickcping/pingone-go-sdk-v2/pull/436)
+  * **Note** bump `golang.org/x/oauth2` v0.27.0 => v0.28.0 [#436](https://github.com/patrickcping/pingone-go-sdk-v2/pull/436)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.53.0](./management/CHANGELOG.md)
   * **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model. [#433](https://github.com/patrickcping/pingone-go-sdk-v2/pull/433)
 
