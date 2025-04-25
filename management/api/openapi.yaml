@@ -36701,6 +36701,7 @@ components:
       - GOOGLE
       - AMAZON
       - LINKEDIN
+      - LINKEDIN_OIDC
       - MICROSOFT
       - TWITTER
       - YAHOO
@@ -36819,6 +36820,7 @@ components:
       - FACEBOOK
       - GOOGLE
       - LINKEDIN
+      - LINKEDIN_OIDC
       - APPLE
       - TWITTER
       - AMAZON
@@ -36854,6 +36856,7 @@ components:
       - FACEBOOK
       - GOOGLE
       - LINKEDIN
+      - LINKEDIN_OIDC
       - APPLE
       - TWITTER
       - AMAZON

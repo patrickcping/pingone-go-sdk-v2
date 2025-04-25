@@ -241,7 +241,7 @@ components:
       description: A string that specifies the theme of the reCAPTCHA widget.
     EnumFormSocialLoginIdpType:
       type: string
-      enum: [FACEBOOK, APPLE, GOOGLE, AMAZON, LINKEDIN, MICROSOFT, TWITTER, YAHOO, PAYPAL, GITHUB, OPENID_CONNECT, SAML, LDAP]
+      enum: [FACEBOOK, APPLE, GOOGLE, AMAZON, LINKEDIN, LINKEDIN_OIDC, MICROSOFT, TWITTER, YAHOO, PAYPAL, GITHUB, OPENID_CONNECT, SAML, LDAP]
       description: A string that specifies the external identity provider type.
     EnumFormStylesWidthUnit:
       type: string
@@ -296,7 +296,7 @@ components:
       description: Status of the propagation plan; defaults to `INACTIVE`
     EnumIdentityProvider:
       type: string
-      enum: [FACEBOOK, GOOGLE, LINKEDIN, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML, PING_ONE]
+      enum: [FACEBOOK, GOOGLE, LINKEDIN, LINKEDIN_OIDC, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML, PING_ONE]
       description: A string that identifies the type of identity provider used to authenticate the user. The default value of `PING_ONE` is set when a value for identityProvider.id is not provided. The `PING_ONE` value is the default for all pre-existing users. There is currently no search filter support for this attribute.
       default: PING_ONE
     EnumIdentityProviderAttributeMappingType:
@@ -309,7 +309,7 @@ components:
       enum: [EMPTY_ONLY, ALWAYS]
     EnumIdentityProviderExt:
       type: string
-      enum: [FACEBOOK, GOOGLE, LINKEDIN, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML]
+      enum: [FACEBOOK, GOOGLE, LINKEDIN, LINKEDIN_OIDC, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML]
       description: A string that identifies the type of identity provider used to authenticate the user.
     EnumIdentityProviderOIDCTokenAuthMethod:
       type: string

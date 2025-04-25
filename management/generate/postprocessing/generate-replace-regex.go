@@ -565,6 +565,10 @@ var (
 		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
 			return err
 		}
+	case ENUMIDENTITYPROVIDEREXT_LINKEDIN_OIDC:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
 	case ENUMIDENTITYPROVIDEREXT_APPLE:
 		if err := json.Unmarshal(data, &dst.IdentityProviderApple); err != nil { // simple model
 			return err
