@@ -9,6 +9,8 @@
 
 * `LINKEDIN` (value: `"LINKEDIN"`)
 
+* `LINKEDIN_OIDC` (value: `"LINKEDIN_OIDC"`)
+
 * `APPLE` (value: `"APPLE"`)
 
 * `TWITTER` (value: `"TWITTER"`)

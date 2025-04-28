@@ -2,6 +2,8 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.14
   * **Note** bump `golang.org/x/oauth2` v0.28.0 => v0.29.0 [#441](https://github.com/patrickcping/pingone-go-sdk-v2/pull/441)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.54.0](./management/CHANGELOG.md)
+  * **Enhancement** Support the new `LINKEDIN_OIDC` Identity provider type. [#445](https://github.com/patrickcping/pingone-go-sdk-v2/pull/445)
 
 # Release (2025-03-11)
 

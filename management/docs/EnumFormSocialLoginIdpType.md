@@ -13,6 +13,8 @@
 
 * `LINKEDIN` (value: `"LINKEDIN"`)
 
+* `LINKEDIN_OIDC` (value: `"LINKEDIN_OIDC"`)
+
 * `MICROSOFT` (value: `"MICROSOFT"`)
 
 * `TWITTER` (value: `"TWITTER"`)
