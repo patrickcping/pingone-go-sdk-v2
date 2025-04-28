@@ -1,4 +1,4 @@
-# v0.54.0 (Unreleased)
+# v0.54.0 (2025-04-28)
 
 * **Enhancement** Support the new `LINKEDIN_OIDC` Identity provider type. [#445](https://github.com/patrickcping/pingone-go-sdk-v2/pull/445)
 
