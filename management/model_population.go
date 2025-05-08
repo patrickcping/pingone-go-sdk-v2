@@ -20,6 +20,8 @@ var _ MappedNullable = &Population{}
 // Population struct for Population
 type Population struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	// Alternative identifiers that can be used to search for populations besides `name`.
+	AlternativeIdentifiers []string `json:"alternativeIdentifiers,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The population to use as the default population for the environment. Only one population per environment can be the default. New users are assigned to the default population if it exists, and the Population ID is not provided in the [Create User](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user) request.
@@ -31,11 +33,14 @@ type Population struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the population name, which must be provided and must be unique within an environment.
 	Name string `json:"name"`
+	// The language locale for the population. If absent, the environment default is used.
+	PreferredLanguage *string `json:"preferredLanguage,omitempty"`
 	PasswordPolicy *PopulationPasswordPolicy `json:"passwordPolicy,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// The number of users that belong to the population
 	UserCount *int32 `json:"userCount,omitempty"`
+	Theme *PopulationTheme `json:"theme,omitempty"`
 }
 
 // NewPopulation instantiates a new Population object
@@ -86,6 +91,38 @@ func (o *Population) HasLinks() bool {
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *Population) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
+}
+
+// GetAlternativeIdentifiers returns the AlternativeIdentifiers field value if set, zero value otherwise.
+func (o *Population) GetAlternativeIdentifiers() []string {
+	if o == nil || IsNil(o.AlternativeIdentifiers) {
+		var ret []string
+		return ret
+	}
+	return o.AlternativeIdentifiers
+}
+
+// GetAlternativeIdentifiersOk returns a tuple with the AlternativeIdentifiers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Population) GetAlternativeIdentifiersOk() ([]string, bool) {
+	if o == nil || IsNil(o.AlternativeIdentifiers) {
+		return nil, false
+	}
+	return o.AlternativeIdentifiers, true
+}
+
+// HasAlternativeIdentifiers returns a boolean if a field has been set.
+func (o *Population) HasAlternativeIdentifiers() bool {
+	if o != nil && !IsNil(o.AlternativeIdentifiers) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlternativeIdentifiers gets a reference to the given []string and assigns it to the AlternativeIdentifiers field.
+func (o *Population) SetAlternativeIdentifiers(v []string) {
+	o.AlternativeIdentifiers = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -272,6 +309,38 @@ func (o *Population) SetName(v string) {
 	o.Name = v
 }
 
+// GetPreferredLanguage returns the PreferredLanguage field value if set, zero value otherwise.
+func (o *Population) GetPreferredLanguage() string {
+	if o == nil || IsNil(o.PreferredLanguage) {
+		var ret string
+		return ret
+	}
+	return *o.PreferredLanguage
+}
+
+// GetPreferredLanguageOk returns a tuple with the PreferredLanguage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Population) GetPreferredLanguageOk() (*string, bool) {
+	if o == nil || IsNil(o.PreferredLanguage) {
+		return nil, false
+	}
+	return o.PreferredLanguage, true
+}
+
+// HasPreferredLanguage returns a boolean if a field has been set.
+func (o *Population) HasPreferredLanguage() bool {
+	if o != nil && !IsNil(o.PreferredLanguage) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreferredLanguage gets a reference to the given string and assigns it to the PreferredLanguage field.
+func (o *Population) SetPreferredLanguage(v string) {
+	o.PreferredLanguage = &v
+}
+
 // GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
 func (o *Population) GetPasswordPolicy() PopulationPasswordPolicy {
 	if o == nil || IsNil(o.PasswordPolicy) {
@@ -368,6 +437,38 @@ func (o *Population) SetUserCount(v int32) {
 	o.UserCount = &v
 }
 
+// GetTheme returns the Theme field value if set, zero value otherwise.
+func (o *Population) GetTheme() PopulationTheme {
+	if o == nil || IsNil(o.Theme) {
+		var ret PopulationTheme
+		return ret
+	}
+	return *o.Theme
+}
+
+// GetThemeOk returns a tuple with the Theme field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Population) GetThemeOk() (*PopulationTheme, bool) {
+	if o == nil || IsNil(o.Theme) {
+		return nil, false
+	}
+	return o.Theme, true
+}
+
+// HasTheme returns a boolean if a field has been set.
+func (o *Population) HasTheme() bool {
+	if o != nil && !IsNil(o.Theme) {
+		return true
+	}
+
+	return false
+}
+
+// SetTheme gets a reference to the given PopulationTheme and assigns it to the Theme field.
+func (o *Population) SetTheme(v PopulationTheme) {
+	o.Theme = &v
+}
+
 func (o Population) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -380,6 +481,9 @@ func (o Population) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.AlternativeIdentifiers) {
+		toSerialize["alternativeIdentifiers"] = o.AlternativeIdentifiers
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
@@ -397,6 +501,9 @@ func (o Population) ToMap() (map[string]interface{}, error) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.PreferredLanguage) {
+		toSerialize["preferredLanguage"] = o.PreferredLanguage
+	}
 	if !IsNil(o.PasswordPolicy) {
 		toSerialize["passwordPolicy"] = o.PasswordPolicy
 	}
@@ -405,6 +512,9 @@ func (o Population) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UserCount) {
 		toSerialize["userCount"] = o.UserCount
+	}
+	if !IsNil(o.Theme) {
+		toSerialize["theme"] = o.Theme
 	}
 	return toSerialize, nil
 }

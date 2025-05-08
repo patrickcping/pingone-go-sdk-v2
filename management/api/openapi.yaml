@@ -40753,32 +40753,44 @@ components:
             - null
             - null
           populations:
-          - createdAt: createdAt
-            default: true
-            environment:
-              id: id
+          - preferredLanguage: preferredLanguage
             passwordPolicy:
               id: id
-            userCount: 4
             _links:
               key:
                 href: https://openapi-generator.tech
-            name: name
             description: description
+            createdAt: createdAt
+            alternativeIdentifiers:
+            - alternativeIdentifiers
+            - alternativeIdentifiers
+            default: true
+            environment:
+              id: id
+            userCount: 4
+            name: name
+            theme:
+              id: id
             id: id
             updatedAt: updatedAt
-          - createdAt: createdAt
-            default: true
-            environment:
-              id: id
+          - preferredLanguage: preferredLanguage
             passwordPolicy:
               id: id
-            userCount: 4
             _links:
               key:
                 href: https://openapi-generator.tech
-            name: name
             description: description
+            createdAt: createdAt
+            alternativeIdentifiers:
+            - alternativeIdentifiers
+            - alternativeIdentifiers
+            default: true
+            environment:
+              id: id
+            userCount: 4
+            name: name
+            theme:
+              id: id
             id: id
             updatedAt: updatedAt
           forms:
@@ -43647,18 +43659,24 @@ components:
       type: object
     Population:
       example:
-        createdAt: createdAt
-        default: true
-        environment:
-          id: id
+        preferredLanguage: preferredLanguage
         passwordPolicy:
           id: id
-        userCount: 4
         _links:
           key:
             href: https://openapi-generator.tech
-        name: name
         description: description
+        createdAt: createdAt
+        alternativeIdentifiers:
+        - alternativeIdentifiers
+        - alternativeIdentifiers
+        default: true
+        environment:
+          id: id
+        userCount: 4
+        name: name
+        theme:
+          id: id
         id: id
         updatedAt: updatedAt
       properties:
@@ -43667,6 +43685,12 @@ components:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
+        alternativeIdentifiers:
+          description: Alternative identifiers that can be used to search for populations
+            besides `name`.
+          items:
+            type: string
+          type: array
         createdAt:
           description: The time the resource was created.
           readOnly: true
@@ -43691,6 +43715,10 @@ components:
           description: "A string that specifies the population name, which must be\
             \ provided and must be unique within an environment."
           type: string
+        preferredLanguage:
+          description: "The language locale for the population. If absent, the environment\
+            \ default is used."
+          type: string
         passwordPolicy:
           $ref: '#/components/schemas/Population_passwordPolicy'
         updatedAt:
@@ -43701,6 +43729,8 @@ components:
           description: The number of users that belong to the population
           readOnly: true
           type: integer
+        theme:
+          $ref: '#/components/schemas/Population_theme'
       required:
       - name
       type: object
@@ -48751,32 +48781,44 @@ components:
           - null
           - null
         populations:
-        - createdAt: createdAt
-          default: true
-          environment:
-            id: id
+        - preferredLanguage: preferredLanguage
           passwordPolicy:
             id: id
-          userCount: 4
           _links:
             key:
               href: https://openapi-generator.tech
-          name: name
           description: description
+          createdAt: createdAt
+          alternativeIdentifiers:
+          - alternativeIdentifiers
+          - alternativeIdentifiers
+          default: true
+          environment:
+            id: id
+          userCount: 4
+          name: name
+          theme:
+            id: id
           id: id
           updatedAt: updatedAt
-        - createdAt: createdAt
-          default: true
-          environment:
-            id: id
+        - preferredLanguage: preferredLanguage
           passwordPolicy:
             id: id
-          userCount: 4
           _links:
             key:
               href: https://openapi-generator.tech
-          name: name
           description: description
+          createdAt: createdAt
+          alternativeIdentifiers:
+          - alternativeIdentifiers
+          - alternativeIdentifiers
+          default: true
+          environment:
+            id: id
+          userCount: 4
+          name: name
+          theme:
+            id: id
           id: id
           updatedAt: updatedAt
         forms:
@@ -50468,6 +50510,16 @@ components:
           type: string
       required:
       - id
+      type: object
+    Population_theme:
+      description: The object reference to the theme resource.
+      example:
+        id: id
+      properties:
+        id:
+          description: "The ID of the theme to use for the population. If absent,\
+            \ the environment's default is used."
+          type: string
       type: object
     PropagationStore_image:
       example:

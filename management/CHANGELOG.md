@@ -1,3 +1,9 @@
+# v0.55.0 (Unreleased)
+
+* **Enhancement** Support `AlternativeIdentifiers` on the `Population` data model.
+* **Enhancement** Support `PreferredLanguage` on the `Population` data model.
+* **Enhancement** Support `Theme` on the `Population` data model.
+
 # v0.54.0 (2025-04-28)
 
 * **Enhancement** Support the new `LINKEDIN_OIDC` Identity provider type. [#445](https://github.com/patrickcping/pingone-go-sdk-v2/pull/445)
