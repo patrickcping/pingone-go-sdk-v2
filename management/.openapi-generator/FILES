@@ -560,6 +560,7 @@ docs/PhoneDeliverySettingsApi.md
 docs/Population.md
 docs/PopulationDefaultIdp.md
 docs/PopulationPasswordPolicy.md
+docs/PopulationTheme.md
 docs/PopulationsApi.md
 docs/PropagationMappingsApi.md
 docs/PropagationRevisionsApi.md
@@ -1139,6 +1140,7 @@ model_password_policy_min_characters.go
 model_population.go
 model_population_default_idp.go
 model_population_password_policy.go
+model_population_theme.go
 model_propagation_store.go
 model_propagation_store_configuration_aquera.go
 model_propagation_store_configuration_azure_adsamlv2.go

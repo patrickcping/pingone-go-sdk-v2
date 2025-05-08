@@ -5242,6 +5242,11 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        alternativeIdentifiers:
+          type: array
+          description: Alternative identifiers that can be used to search for populations besides `name`.
+          items:
+            type: string
         createdAt:
           type: string
           description: The time the resource was created.
@@ -5261,6 +5266,9 @@ components:
         name:
           type: string
           description: A string that specifies the population name, which must be provided and must be unique within an environment.
+        preferredLanguage:
+          type: string
+          description: The language locale for the population. If absent, the environment default is used.
         passwordPolicy:
           type: object
           description: The object reference to the password policy resource. This is an optional property.
@@ -5278,6 +5286,13 @@ components:
           type: integer
           description: The number of users that belong to the population
           readOnly: true
+        theme:
+          type: object
+          description: The object reference to the theme resource.
+          properties:
+            id:
+              type: string
+              description: The ID of the theme to use for the population. If absent, the environment's default is used.
       required:
         - name
     PopulationDefaultIdp:
