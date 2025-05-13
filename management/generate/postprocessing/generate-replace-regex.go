@@ -100,7 +100,7 @@ var (
 	err = newStrictDecoder(data).Decode(&dst.EnumRegionCode)
 	if err == nil {
 		jsonEnumRegionCode, _ := json.Marshal(dst.EnumRegionCode)
-		if string(jsonEnumRegionCode) == "{}" { // empty struct
+		if string(jsonEnumRegionCode) == "{}" || dst.EnumRegionCode == nil || *dst.EnumRegionCode == "UNKNOWN" { // empty struct
 			dst.EnumRegionCode = nil
 		} else {
 			match = true
