@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.15
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.54.0 => v0.55.0
+  * **Note** bump `golang.org/x/oauth2` v0.29.0 => v0.30.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.55.0](./management/CHANGELOG.md)
   * **Feature** Add support for the Environment Status API. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
   * **Enhancement** Support `HardDeletedAllowedAt`, `SoftDeletedAt`, `Status` on the `Environment` data model. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
