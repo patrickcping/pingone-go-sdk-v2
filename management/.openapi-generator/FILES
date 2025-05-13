@@ -244,6 +244,7 @@ docs/EnumCustomDomainStatus.md
 docs/EnumDurationUnitMinsHours.md
 docs/EnumEmailDomainStatus.md
 docs/EnumEnabledStatus.md
+docs/EnumEnvironmentStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumFlowPolicyTriggerType.md
 docs/EnumFormCategory.md
@@ -360,6 +361,7 @@ docs/Environment.md
 docs/EnvironmentLicense.md
 docs/EnvironmentOrganization.md
 docs/EnvironmentRegion.md
+docs/EnvironmentStatus.md
 docs/EnvironmentsApi.md
 docs/FlowPoliciesApi.md
 docs/FlowPolicy.md
@@ -852,6 +854,7 @@ model_enum_custom_domain_status.go
 model_enum_duration_unit_mins_hours.go
 model_enum_email_domain_status.go
 model_enum_enabled_status.go
+model_enum_environment_status.go
 model_enum_environment_type.go
 model_enum_flow_policy_trigger_type.go
 model_enum_form_category.go
@@ -968,6 +971,7 @@ model_environment.go
 model_environment_license.go
 model_environment_organization.go
 model_environment_region.go
+model_environment_status.go
 model_flow_policy.go
 model_flow_policy_application.go
 model_flow_policy_assignment.go

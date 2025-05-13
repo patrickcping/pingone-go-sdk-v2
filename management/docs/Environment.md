@@ -8,12 +8,15 @@ Name | Type | Description | Notes
 **BillOfMaterials** | Pointer to [**BillOfMaterials**](BillOfMaterials.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
+**HardDeletedAllowedAt** | Pointer to **time.Time** | The time when the soft-deleted Production environment (set to &#x60;DELETE_PENDING&#x60; status) can be completely deleted (a hard delete). When a soft-deleted environment is restored, this value is cleared. | [optional] [readonly] 
 **Icon** | Pointer to **string** | The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF. | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **License** | [**EnvironmentLicense**](EnvironmentLicense.md) |  | 
 **Name** | **string** | A string that specifies the environment name, which must be provided and must be unique within an organization. | 
 **Organization** | Pointer to [**EnvironmentOrganization**](EnvironmentOrganization.md) |  | [optional] 
 **Region** | [**EnvironmentRegion**](EnvironmentRegion.md) |  | 
+**SoftDeletedAt** | Pointer to **time.Time** | The time the Production environment was set to the &#x60;DELETE_PENDING&#x60; status. When a soft-deleted environment is restored, this value is cleared. | [optional] [readonly] 
+**Status** | Pointer to [**EnumEnvironmentStatus**](EnumEnvironmentStatus.md) |  | [optional] 
 **Type** | [**EnumEnvironmentType**](EnumEnvironmentType.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
@@ -135,6 +138,31 @@ SetDescription sets Description field to given value.
 `func (o *Environment) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetHardDeletedAllowedAt
+
+`func (o *Environment) GetHardDeletedAllowedAt() time.Time`
+
+GetHardDeletedAllowedAt returns the HardDeletedAllowedAt field if non-nil, zero value otherwise.
+
+### GetHardDeletedAllowedAtOk
+
+`func (o *Environment) GetHardDeletedAllowedAtOk() (*time.Time, bool)`
+
+GetHardDeletedAllowedAtOk returns a tuple with the HardDeletedAllowedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHardDeletedAllowedAt
+
+`func (o *Environment) SetHardDeletedAllowedAt(v time.Time)`
+
+SetHardDeletedAllowedAt sets HardDeletedAllowedAt field to given value.
+
+### HasHardDeletedAllowedAt
+
+`func (o *Environment) HasHardDeletedAllowedAt() bool`
+
+HasHardDeletedAllowedAt returns a boolean if a field has been set.
 
 ### GetIcon
 
@@ -270,6 +298,56 @@ and a boolean to check if the value has been set.
 
 SetRegion sets Region field to given value.
 
+
+### GetSoftDeletedAt
+
+`func (o *Environment) GetSoftDeletedAt() time.Time`
+
+GetSoftDeletedAt returns the SoftDeletedAt field if non-nil, zero value otherwise.
+
+### GetSoftDeletedAtOk
+
+`func (o *Environment) GetSoftDeletedAtOk() (*time.Time, bool)`
+
+GetSoftDeletedAtOk returns a tuple with the SoftDeletedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSoftDeletedAt
+
+`func (o *Environment) SetSoftDeletedAt(v time.Time)`
+
+SetSoftDeletedAt sets SoftDeletedAt field to given value.
+
+### HasSoftDeletedAt
+
+`func (o *Environment) HasSoftDeletedAt() bool`
+
+HasSoftDeletedAt returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *Environment) GetStatus() EnumEnvironmentStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *Environment) GetStatusOk() (*EnumEnvironmentStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *Environment) SetStatus(v EnumEnvironmentStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *Environment) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetType
 
