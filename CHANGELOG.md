@@ -1,7 +1,8 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.55.0](./management/CHANGELOG.md)
-  * **Feature** Add support for the Environment Status API.
+  * **Feature** Add support for the Environment Status API. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
+  * **Enhancement** Support `HardDeletedAllowedAt`, `SoftDeletedAt`, `Status` on the `Environment` data model. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
   * **Enhancement** Support `AlternativeIdentifiers` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
   * **Enhancement** Support `PreferredLanguage` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
   * **Enhancement** Support `Theme` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
