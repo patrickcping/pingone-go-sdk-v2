@@ -29201,6 +29201,101 @@ paths:
       summary: UPDATE Sign-On Policy Action
       tags:
       - Sign-On Policy Actions
+  /environments/{environmentID}/status:
+    put:
+      operationId: updateEnvironmentStatus
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentStatus'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+          description: Successful response
+      summary: Update Environment Status
+      tags:
+      - Environments
   /environments/{environmentID}/subscriptions:
     get:
       operationId: readAllSubscriptions
@@ -36619,6 +36714,15 @@ components:
       - ACTIVE
       - VERIFICATION_REQUIRED
       type: string
+    EnumEnvironmentStatus:
+      description: "The status of an environment. (*Required for the Update Environment\
+        \ Status request.) This can be null, `ACTIVE` and `DELETE_PENDING` (soft-delete).\
+        \ The maximum number of Production environments that can be in the `DELETE_PENDING`\
+        \ state is set to 100."
+      enum:
+      - ACTIVE
+      - DELETE_PENDING
+      type: string
     EnumEnvironmentType:
       description: A string that specifies the type of environment to use.
       enum:
@@ -40931,6 +41035,13 @@ components:
         description:
           description: A string that specifies the description of the population.
           type: string
+        hardDeletedAllowedAt:
+          description: "The time when the soft-deleted Production environment (set\
+            \ to `DELETE_PENDING` status) can be completely deleted (a hard delete).\
+            \ When a soft-deleted environment is restored, this value is cleared."
+          format: date-time
+          readOnly: true
+          type: string
         icon:
           description: "The URL referencing the image to use for the environment icon.\
             \ The supported image types are JPEG/JPG, PNG, and GIF."
@@ -40949,6 +41060,14 @@ components:
           $ref: '#/components/schemas/Environment_organization'
         region:
           $ref: '#/components/schemas/Environment_region'
+        softDeletedAt:
+          description: "The time the Production environment was set to the `DELETE_PENDING`\
+            \ status. When a soft-deleted environment is restored, this value is cleared."
+          format: date-time
+          readOnly: true
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumEnvironmentStatus'
         type:
           $ref: '#/components/schemas/EnumEnvironmentType'
         updatedAt:
@@ -40960,6 +41079,15 @@ components:
       - name
       - region
       - type
+      type: object
+    EnvironmentStatus:
+      example:
+        status: null
+      properties:
+        status:
+          $ref: '#/components/schemas/EnumEnvironmentStatus'
+      required:
+      - status
       type: object
     FlowPolicy:
       example:

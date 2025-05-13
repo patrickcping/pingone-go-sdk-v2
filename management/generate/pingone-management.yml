@@ -203,6 +203,10 @@ components:
       type: string
       enum: [ACTIVE, VERIFICATION_REQUIRED]
       description: The status of the email domain ownership.
+    EnumEnvironmentStatus:
+      type: string
+      description: The status of an environment. (*Required for the Update Environment Status request.) This can be null, `ACTIVE` and `DELETE_PENDING` (soft-delete). The maximum number of Production environments that can be in the `DELETE_PENDING` state is set to 100.
+      enum: [ACTIVE, DELETE_PENDING]
     EnumEnvironmentType:
       type: string
       enum: [PRODUCTION, SANDBOX]
@@ -2439,6 +2443,11 @@ components:
         description:
           type: string
           description: A string that specifies the description of the population.
+        hardDeletedAllowedAt:
+          type: string
+          format: date-time
+          description: The time when the soft-deleted Production environment (set to `DELETE_PENDING` status) can be completely deleted (a hard delete). When a soft-deleted environment is restored, this value is cleared.
+          readOnly: true
         icon:
           type: string
           description: The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF.
@@ -2467,6 +2476,13 @@ components:
           oneOf:
             - $ref: '#/components/schemas/EnumRegionCode'
             - type: string
+        softDeletedAt:
+          type: string
+          format: date-time
+          description: The time the Production environment was set to the `DELETE_PENDING` status. When a soft-deleted environment is restored, this value is cleared.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/EnumEnvironmentStatus'
         type:
           $ref: '#/components/schemas/EnumEnvironmentType'
         updatedAt:
@@ -2491,6 +2507,13 @@ components:
               href: https://example.com
         license:
           id: 34f0efac-21d9-4a17-8a35-196bb3362983
+    EnvironmentStatus:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/EnumEnvironmentStatus'
+      required:
+        - status
     FlowPolicy:
       type: object
       properties:
@@ -26100,6 +26123,66 @@ paths:
           $ref: '#/components/responses/500'
         '204':
           description: Successful response
+  /environments/{environmentID}/status:
+    put:
+      tags:
+        - Environments
+      summary: Update Environment Status
+      operationId: updateEnvironmentStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentStatus'
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
   /environments/{environmentID}/subscriptions:
     post:
       tags:

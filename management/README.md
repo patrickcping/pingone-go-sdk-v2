@@ -189,6 +189,7 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**ReadAllEnvironments**](docs/EnvironmentsApi.md#readallenvironments) | **Get** /environments | READ All Environments
 *EnvironmentsApi* | [**ReadOneEnvironment**](docs/EnvironmentsApi.md#readoneenvironment) | **Get** /environments/{environmentID} | READ One Environment
 *EnvironmentsApi* | [**UpdateEnvironment**](docs/EnvironmentsApi.md#updateenvironment) | **Put** /environments/{environmentID} | UPDATE Environment
+*EnvironmentsApi* | [**UpdateEnvironmentStatus**](docs/EnvironmentsApi.md#updateenvironmentstatus) | **Put** /environments/{environmentID}/status | Update Environment Status
 *EnvironmentsApi* | [**UpdateEnvironmentType**](docs/EnvironmentsApi.md#updateenvironmenttype) | **Put** /environments/{environmentID}/type | UPDATE Environment Type
 *FlowPoliciesApi* | [**ReadAllFlowPolicies**](docs/FlowPoliciesApi.md#readallflowpolicies) | **Get** /environments/{environmentID}/flowPolicies | READ All Flow Policies
 *FlowPoliciesApi* | [**ReadOneFlowPolicy**](docs/FlowPoliciesApi.md#readoneflowpolicy) | **Get** /environments/{environmentID}/flowPolicies/{flowPolicyID} | READ ONE Flow Policy
@@ -581,6 +582,7 @@ Class | Method | HTTP request | Description
  - [EnumDurationUnitMinsHours](docs/EnumDurationUnitMinsHours.md)
  - [EnumEmailDomainStatus](docs/EnumEmailDomainStatus.md)
  - [EnumEnabledStatus](docs/EnumEnabledStatus.md)
+ - [EnumEnvironmentStatus](docs/EnumEnvironmentStatus.md)
  - [EnumEnvironmentType](docs/EnumEnvironmentType.md)
  - [EnumFlowPolicyTriggerType](docs/EnumFlowPolicyTriggerType.md)
  - [EnumFormCategory](docs/EnumFormCategory.md)
@@ -697,6 +699,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentLicense](docs/EnvironmentLicense.md)
  - [EnvironmentOrganization](docs/EnvironmentOrganization.md)
  - [EnvironmentRegion](docs/EnvironmentRegion.md)
+ - [EnvironmentStatus](docs/EnvironmentStatus.md)
  - [FlowPolicy](docs/FlowPolicy.md)
  - [FlowPolicyApplication](docs/FlowPolicyApplication.md)
  - [FlowPolicyAssignment](docs/FlowPolicyAssignment.md)
