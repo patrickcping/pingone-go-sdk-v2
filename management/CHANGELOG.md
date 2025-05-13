@@ -1,4 +1,4 @@
-# v0.55.0 (Unreleased)
+# v0.55.0 (2025-05-13)
 
 * **Feature** Add support for the Environment Status API. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
 * **Enhancement** Support `HardDeletedAllowedAt`, `SoftDeletedAt`, `Status` on the `Environment` data model. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
