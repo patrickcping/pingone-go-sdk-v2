@@ -71,6 +71,7 @@ Name | Type | Description | Notes
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
+**SubjectNameIdentifierFormat** | Pointer to [**EnumApplicationWSFEDSubjectNameIdentifierFormat**](EnumApplicationWSFEDSubjectNameIdentifierFormat.md) |  | [optional] 
 **ApplyDefaultTheme** | **bool** | If &#x60;true&#x60;, applies the default theme to the self service application. | 
 **EnableDefaultThemeFooter** | Pointer to **bool** | If &#x60;true&#x60;, shows the default theme footer on the self service application. Applies only if &#x60;applyDefaultTheme&#x60; is also &#x60;true&#x60;. | [optional] 
 
@@ -1702,6 +1703,31 @@ and a boolean to check if the value has been set.
 
 SetReplyUrl sets ReplyUrl field to given value.
 
+
+### GetSubjectNameIdentifierFormat
+
+`func (o *UpdateApplicationRequest) GetSubjectNameIdentifierFormat() EnumApplicationWSFEDSubjectNameIdentifierFormat`
+
+GetSubjectNameIdentifierFormat returns the SubjectNameIdentifierFormat field if non-nil, zero value otherwise.
+
+### GetSubjectNameIdentifierFormatOk
+
+`func (o *UpdateApplicationRequest) GetSubjectNameIdentifierFormatOk() (*EnumApplicationWSFEDSubjectNameIdentifierFormat, bool)`
+
+GetSubjectNameIdentifierFormatOk returns a tuple with the SubjectNameIdentifierFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubjectNameIdentifierFormat
+
+`func (o *UpdateApplicationRequest) SetSubjectNameIdentifierFormat(v EnumApplicationWSFEDSubjectNameIdentifierFormat)`
+
+SetSubjectNameIdentifierFormat sets SubjectNameIdentifierFormat field to given value.
+
+### HasSubjectNameIdentifierFormat
+
+`func (o *UpdateApplicationRequest) HasSubjectNameIdentifierFormat() bool`
+
+HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
 
 ### GetApplyDefaultTheme
 

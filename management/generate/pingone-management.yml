@@ -112,7 +112,7 @@ components:
       description: A string that specifies the client authentication methods supported by the token endpoint.
     EnumApplicationProtocol:
       type: string
-      enum: [OPENID_CONNECT, SAML, WS-FED, EXTERNAL_LINK]
+      enum: [OPENID_CONNECT, SAML, WS_FED, EXTERNAL_LINK]
       description: A string that specifies the protocol for the Application.
     EnumApplicationSAMLSloBinding:
       type: string
@@ -730,6 +730,12 @@ components:
       type: string
       enum: [NOT_INITIATED, ENABLED, DISABLED]
       description: Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED.
+    EnumApplicationWSFEDSubjectNameIdentifierFormat:
+      type: string
+      description: The format to use for the SubjectNameIdentifier element.
+      enum:
+        - urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+        - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
     AdministratorSecurity:
       type: object
       properties:
@@ -1635,11 +1641,11 @@ components:
               type: string
               description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
               default: urn:federation:MicrosoftOnline
+            corsSettings:
+              $ref: '#/components/schemas/ApplicationCorsSettings'
             domainName:
               type: string
               description: The federated domain name (for example, the Azure custom domain).
-            corsSettings:
-              $ref: '#/components/schemas/ApplicationCorsSettings'
             idpSigning:
               type: object
               description: Contains the information about the signing of requests by the identity provider (IdP).
@@ -1689,6 +1695,8 @@ components:
             sloEndpoint:
               type: string
               description: The single logout endpoint URL.
+            subjectNameIdentifierFormat:
+              $ref: '#/components/schemas/EnumApplicationWSFEDSubjectNameIdentifierFormat'
           required:
             - domainName
             - idpSigning
