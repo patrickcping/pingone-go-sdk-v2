@@ -1,7 +1,7 @@
 # v0.56.0 (Unreleased)
 
-* **Enhancement** Support `SubjectNameIdentifierFormat` on WS-FED application data models.
-* **Bug** Corrected `WS_FED` enum value typo on the `EnumApplicationProtocol` model.
+* **Enhancement** Support `SubjectNameIdentifierFormat` on WS-FED application data models. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
+* **Bug** Corrected `WS_FED` enum value typo on the `EnumApplicationProtocol` model. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
 
 # v0.55.0 (2025-05-13)
 
