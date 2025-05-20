@@ -36525,7 +36525,7 @@ components:
       enum:
       - OPENID_CONNECT
       - SAML
-      - WS-FED
+      - WS_FED
       - EXTERNAL_LINK
       type: string
     EnumApplicationSAMLSloBinding:
@@ -37748,6 +37748,12 @@ components:
       - ENABLED
       - DISABLED
       type: string
+    EnumApplicationWSFEDSubjectNameIdentifierFormat:
+      description: The format to use for the SubjectNameIdentifier element.
+      enum:
+      - urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+      - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+      type: string
     AdministratorSecurity:
       example:
         mfaStatus: null
@@ -38733,12 +38739,12 @@ components:
             default: urn:federation:MicrosoftOnline
             description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
             type: string
+          corsSettings:
+            $ref: '#/components/schemas/ApplicationCorsSettings'
           domainName:
             description: "The federated domain name (for example, the Azure custom\
               \ domain)."
             type: string
-          corsSettings:
-            $ref: '#/components/schemas/ApplicationCorsSettings'
           idpSigning:
             $ref: '#/components/schemas/ApplicationWSFED_allOf_idpSigning'
           kerberos:
@@ -38751,6 +38757,8 @@ components:
           sloEndpoint:
             description: The single logout endpoint URL.
             type: string
+          subjectNameIdentifierFormat:
+            $ref: '#/components/schemas/EnumApplicationWSFEDSubjectNameIdentifierFormat'
         required:
         - domainName
         - idpSigning

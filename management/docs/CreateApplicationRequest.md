@@ -71,6 +71,7 @@ Name | Type | Description | Notes
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
+**SubjectNameIdentifierFormat** | Pointer to [**EnumApplicationWSFEDSubjectNameIdentifierFormat**](EnumApplicationWSFEDSubjectNameIdentifierFormat.md) |  | [optional] 
 
 ## Methods
 
@@ -1700,6 +1701,31 @@ and a boolean to check if the value has been set.
 
 SetReplyUrl sets ReplyUrl field to given value.
 
+
+### GetSubjectNameIdentifierFormat
+
+`func (o *CreateApplicationRequest) GetSubjectNameIdentifierFormat() EnumApplicationWSFEDSubjectNameIdentifierFormat`
+
+GetSubjectNameIdentifierFormat returns the SubjectNameIdentifierFormat field if non-nil, zero value otherwise.
+
+### GetSubjectNameIdentifierFormatOk
+
+`func (o *CreateApplicationRequest) GetSubjectNameIdentifierFormatOk() (*EnumApplicationWSFEDSubjectNameIdentifierFormat, bool)`
+
+GetSubjectNameIdentifierFormatOk returns a tuple with the SubjectNameIdentifierFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubjectNameIdentifierFormat
+
+`func (o *CreateApplicationRequest) SetSubjectNameIdentifierFormat(v EnumApplicationWSFEDSubjectNameIdentifierFormat)`
+
+SetSubjectNameIdentifierFormat sets SubjectNameIdentifierFormat field to given value.
+
+### HasSubjectNameIdentifierFormat
+
+`func (o *CreateApplicationRequest) HasSubjectNameIdentifierFormat() bool`
+
+HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

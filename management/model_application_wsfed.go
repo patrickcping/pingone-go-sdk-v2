@@ -44,15 +44,16 @@ type ApplicationWSFED struct {
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
 	AudienceRestriction *string `json:"audienceRestriction,omitempty"`
+	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	// The federated domain name (for example, the Azure custom domain).
 	DomainName string `json:"domainName"`
-	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	IdpSigning ApplicationWSFEDAllOfIdpSigning `json:"idpSigning"`
 	Kerberos *ApplicationWSFEDAllOfKerberos `json:"kerberos,omitempty"`
 	// The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests.
 	ReplyUrl string `json:"replyUrl"`
 	// The single logout endpoint URL.
 	SloEndpoint *string `json:"sloEndpoint,omitempty"`
+	SubjectNameIdentifierFormat *EnumApplicationWSFEDSubjectNameIdentifierFormat `json:"subjectNameIdentifierFormat,omitempty"`
 }
 
 // NewApplicationWSFED instantiates a new ApplicationWSFED object
@@ -531,30 +532,6 @@ func (o *ApplicationWSFED) SetAudienceRestriction(v string) {
 	o.AudienceRestriction = &v
 }
 
-// GetDomainName returns the DomainName field value
-func (o *ApplicationWSFED) GetDomainName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DomainName
-}
-
-// GetDomainNameOk returns a tuple with the DomainName field value
-// and a boolean to check if the value has been set.
-func (o *ApplicationWSFED) GetDomainNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DomainName, true
-}
-
-// SetDomainName sets field value
-func (o *ApplicationWSFED) SetDomainName(v string) {
-	o.DomainName = v
-}
-
 // GetCorsSettings returns the CorsSettings field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetCorsSettings() ApplicationCorsSettings {
 	if o == nil || IsNil(o.CorsSettings) {
@@ -585,6 +562,30 @@ func (o *ApplicationWSFED) HasCorsSettings() bool {
 // SetCorsSettings gets a reference to the given ApplicationCorsSettings and assigns it to the CorsSettings field.
 func (o *ApplicationWSFED) SetCorsSettings(v ApplicationCorsSettings) {
 	o.CorsSettings = &v
+}
+
+// GetDomainName returns the DomainName field value
+func (o *ApplicationWSFED) GetDomainName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DomainName
+}
+
+// GetDomainNameOk returns a tuple with the DomainName field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetDomainNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DomainName, true
+}
+
+// SetDomainName sets field value
+func (o *ApplicationWSFED) SetDomainName(v string) {
+	o.DomainName = v
 }
 
 // GetIdpSigning returns the IdpSigning field value
@@ -699,6 +700,38 @@ func (o *ApplicationWSFED) SetSloEndpoint(v string) {
 	o.SloEndpoint = &v
 }
 
+// GetSubjectNameIdentifierFormat returns the SubjectNameIdentifierFormat field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetSubjectNameIdentifierFormat() EnumApplicationWSFEDSubjectNameIdentifierFormat {
+	if o == nil || IsNil(o.SubjectNameIdentifierFormat) {
+		var ret EnumApplicationWSFEDSubjectNameIdentifierFormat
+		return ret
+	}
+	return *o.SubjectNameIdentifierFormat
+}
+
+// GetSubjectNameIdentifierFormatOk returns a tuple with the SubjectNameIdentifierFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetSubjectNameIdentifierFormatOk() (*EnumApplicationWSFEDSubjectNameIdentifierFormat, bool) {
+	if o == nil || IsNil(o.SubjectNameIdentifierFormat) {
+		return nil, false
+	}
+	return o.SubjectNameIdentifierFormat, true
+}
+
+// HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasSubjectNameIdentifierFormat() bool {
+	if o != nil && !IsNil(o.SubjectNameIdentifierFormat) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubjectNameIdentifierFormat gets a reference to the given EnumApplicationWSFEDSubjectNameIdentifierFormat and assigns it to the SubjectNameIdentifierFormat field.
+func (o *ApplicationWSFED) SetSubjectNameIdentifierFormat(v EnumApplicationWSFEDSubjectNameIdentifierFormat) {
+	o.SubjectNameIdentifierFormat = &v
+}
+
 func (o ApplicationWSFED) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -746,10 +779,10 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AudienceRestriction) {
 		toSerialize["audienceRestriction"] = o.AudienceRestriction
 	}
-	toSerialize["domainName"] = o.DomainName
 	if !IsNil(o.CorsSettings) {
 		toSerialize["corsSettings"] = o.CorsSettings
 	}
+	toSerialize["domainName"] = o.DomainName
 	toSerialize["idpSigning"] = o.IdpSigning
 	if !IsNil(o.Kerberos) {
 		toSerialize["kerberos"] = o.Kerberos
@@ -757,6 +790,9 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	toSerialize["replyUrl"] = o.ReplyUrl
 	if !IsNil(o.SloEndpoint) {
 		toSerialize["sloEndpoint"] = o.SloEndpoint
+	}
+	if !IsNil(o.SubjectNameIdentifierFormat) {
+		toSerialize["subjectNameIdentifierFormat"] = o.SubjectNameIdentifierFormat
 	}
 	return toSerialize, nil
 }

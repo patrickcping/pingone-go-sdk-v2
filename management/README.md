@@ -562,6 +562,7 @@ Class | Method | HTTP request | Description
  - [EnumApplicationType](docs/EnumApplicationType.md)
  - [EnumApplicationWSFEDIDPSigningAlgorithm](docs/EnumApplicationWSFEDIDPSigningAlgorithm.md)
  - [EnumApplicationWSFEDKerberosGatewayType](docs/EnumApplicationWSFEDKerberosGatewayType.md)
+ - [EnumApplicationWSFEDSubjectNameIdentifierFormat](docs/EnumApplicationWSFEDSubjectNameIdentifierFormat.md)
  - [EnumAttributeMappingType](docs/EnumAttributeMappingType.md)
  - [EnumBillOfMaterialsProductTags](docs/EnumBillOfMaterialsProductTags.md)
  - [EnumBrandingLogoType](docs/EnumBrandingLogoType.md)
