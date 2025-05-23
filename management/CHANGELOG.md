@@ -1,3 +1,7 @@
+# v0.57.0 (Unreleased)
+
+* **Feature** Add support for the Locale Translations API.
+
 # v0.56.0 (2025-05-20)
 
 * **Enhancement** Support `SubjectNameIdentifierFormat` on WS-FED application data models. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)

@@ -59,6 +59,7 @@ type EntityArrayEmbedded struct {
 	Subscriptions []Subscription `json:"subscriptions,omitempty"`
 	Templates []Template `json:"templates,omitempty"`
 	Themes []BrandingTheme `json:"themes,omitempty"`
+	Translations [][]LocaleTranslation `json:"translations,omitempty"`
 	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles []EntityArrayEmbeddedRolesInner `json:"roles,omitempty"`
@@ -1364,6 +1365,38 @@ func (o *EntityArrayEmbedded) SetThemes(v []BrandingTheme) {
 	o.Themes = v
 }
 
+// GetTranslations returns the Translations field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetTranslations() [][]LocaleTranslation {
+	if o == nil || IsNil(o.Translations) {
+		var ret [][]LocaleTranslation
+		return ret
+	}
+	return o.Translations
+}
+
+// GetTranslationsOk returns a tuple with the Translations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetTranslationsOk() ([][]LocaleTranslation, bool) {
+	if o == nil || IsNil(o.Translations) {
+		return nil, false
+	}
+	return o.Translations, true
+}
+
+// HasTranslations returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasTranslations() bool {
+	if o != nil && !IsNil(o.Translations) {
+		return true
+	}
+
+	return false
+}
+
+// SetTranslations gets a reference to the given [][]LocaleTranslation and assigns it to the Translations field.
+func (o *EntityArrayEmbedded) SetTranslations(v [][]LocaleTranslation) {
+	o.Translations = v
+}
+
 // GetTrustedEmails returns the TrustedEmails field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetTrustedEmails() []EmailDomainTrustedEmail {
 	if o == nil || IsNil(o.TrustedEmails) {
@@ -1685,6 +1718,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Themes) {
 		toSerialize["themes"] = o.Themes
+	}
+	if !IsNil(o.Translations) {
+		toSerialize["translations"] = o.Translations
 	}
 	if !IsNil(o.TrustedEmails) {
 		toSerialize["trustedEmails"] = o.TrustedEmails
