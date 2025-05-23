@@ -2406,6 +2406,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/BrandingTheme'
+            translations:
+              type: array
+              items:
+                $ref: '#/components/schemas/LocaleTranslations'
             trustedEmails:
               type: array
               items:
@@ -4516,6 +4520,35 @@ components:
           description: The license name
       required:
         - name
+    LocaleTranslations:
+      type: array
+      uniqueItems: true
+      items:
+        title: LocaleTranslation
+        type: object
+        properties:
+          id:
+            type: string
+            readOnly: true
+            description: The translation ID for a specific string.
+          key:
+            type: string
+            description: The page and name of the interface element to be localized (for example, `flow-ui.button.cancel`).
+            minLength: 1
+          shortKey:
+            type: string
+            description: The interace element only (for example, `button.cancel`).
+            readOnly: true
+          referenceText:
+            type: string
+            description: The English string text associated with the interface element.
+            readOnly: true
+          translatedText:
+            type: string
+            description: The translated string text associated with the interface element.
+        required:
+          - key
+          - translatedText
     NotificationsPolicy:
       type: object
       properties:
@@ -21333,6 +21366,130 @@ paths:
           $ref: '#/components/responses/500'
         '204':
           description: Successful response
+  /environments/{environmentID}/translations/{locale}:
+    get:
+      tags:
+        - Translations
+      summary: Read Translations by locale
+      operationId: readTranslations
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: locale
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    put:
+      tags:
+        - Translations
+      summary: Update Translations by locale
+      operationId: updateTranslations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocaleTranslations'
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: locale
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocaleTranslations'
   /environments/{environmentID}/notificationsSettings:
     get:
       tags:

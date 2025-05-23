@@ -68,6 +68,7 @@ api_sign_on_policies.go
 api_sign_on_policy_actions.go
 api_subscriptions_webhooks.go
 api_total_identities.go
+api_translations.go
 api_trusted_email_addresses.go
 api_trusted_email_domains.go
 api_user_accounts.go
@@ -512,6 +513,7 @@ docs/LicenseVerify.md
 docs/LicensesApi.md
 docs/LinkedAccountsApi.md
 docs/LinksHATEOASValue.md
+docs/LocaleTranslation.md
 docs/MFAPairingKeysApi.md
 docs/NotificationsPoliciesApi.md
 docs/NotificationsPolicy.md
@@ -691,6 +693,7 @@ docs/TemplateContentPush.md
 docs/TemplateContentSMS.md
 docs/TemplateContentVoice.md
 docs/TotalIdentitiesApi.md
+docs/TranslationsApi.md
 docs/TrustedEmailAddressesApi.md
 docs/TrustedEmailDomainsApi.md
 docs/UpdateApplicationRequest.md
@@ -1103,6 +1106,7 @@ model_license_replaces_license.go
 model_license_users.go
 model_license_verify.go
 model_links_hateoas_value.go
+model_locale_translation.go
 model_notifications_policy.go
 model_notifications_policy_country_limit.go
 model_notifications_policy_quotas_inner.go
