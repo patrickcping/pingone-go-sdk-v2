@@ -1,6 +1,6 @@
 # v0.57.0 (Unreleased)
 
-* **Feature** Add support for the Locale Translations API.
+* **Feature** Add support for the Locale Translations API. [#457](https://github.com/patrickcping/pingone-go-sdk-v2/pull/457)
 
 # v0.56.0 (2025-05-20)
 
