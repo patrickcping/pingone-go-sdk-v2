@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.57.0](./management/CHANGELOG.md)
-  * **Enhancement** Add support for assigning application scope to custom roles.
+  * **Enhancement** Add support for assigning application scope to custom roles. [#458](https://github.com/patrickcping/pingone-go-sdk-v2/pull/458)
 
 # Release (2025-05-20)
 
