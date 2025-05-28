@@ -185,8 +185,8 @@ components:
       enum: [application/x-pem-file]
     EnumCustomAdminRoleApplicableTo:
       type: string
-      description: The scope types to which the role can be applied. Options are ORGANIZATION, ENVIRONMENT, and POPULATION.
-      enum: [ORGANIZATION, ENVIRONMENT, POPULATION]
+      description: The scope types to which the role can be applied.
+      enum: [ORGANIZATION, ENVIRONMENT, POPULATION, APPLICATION]
     EnumCustomAdminRoleType:
       type: string
       enum: [PLATFORM,CUSTOM]

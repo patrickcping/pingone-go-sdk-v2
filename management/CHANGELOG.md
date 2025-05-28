@@ -1,3 +1,7 @@
+# v0.57.0 (Unreleased)
+
+* **Enhancement** Add support for assigning application scope to custom roles. [#458](https://github.com/patrickcping/pingone-go-sdk-v2/pull/458)
+
 # v0.56.0 (2025-05-20)
 
 * **Enhancement** Support `SubjectNameIdentifierFormat` on WS-FED application data models. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
