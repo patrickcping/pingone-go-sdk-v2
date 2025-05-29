@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumCustomAdminRoleApplicableTo The scope types to which the role can be applied. Options are ORGANIZATION, ENVIRONMENT, and POPULATION.
+// EnumCustomAdminRoleApplicableTo The scope types to which the role can be applied.
 type EnumCustomAdminRoleApplicableTo string
 
 // List of EnumCustomAdminRoleApplicableTo
@@ -23,6 +23,7 @@ const (
 	ENUMCUSTOMADMINROLEAPPLICABLETO_ORGANIZATION EnumCustomAdminRoleApplicableTo = "ORGANIZATION"
 	ENUMCUSTOMADMINROLEAPPLICABLETO_ENVIRONMENT EnumCustomAdminRoleApplicableTo = "ENVIRONMENT"
 	ENUMCUSTOMADMINROLEAPPLICABLETO_POPULATION EnumCustomAdminRoleApplicableTo = "POPULATION"
+	ENUMCUSTOMADMINROLEAPPLICABLETO_APPLICATION EnumCustomAdminRoleApplicableTo = "APPLICATION"
 )
 
 // All allowed values of EnumCustomAdminRoleApplicableTo enum
@@ -30,6 +31,7 @@ var AllowedEnumCustomAdminRoleApplicableToEnumValues = []EnumCustomAdminRoleAppl
 	"ORGANIZATION",
 	"ENVIRONMENT",
 	"POPULATION",
+	"APPLICATION",
 }
 
 func (v *EnumCustomAdminRoleApplicableTo) UnmarshalJSON(src []byte) error {
