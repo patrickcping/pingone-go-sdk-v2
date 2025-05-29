@@ -394,6 +394,8 @@ Class | Method | HTTP request | Description
 *SubscriptionsWebhooksApi* | [**ReadOneSubscription**](docs/SubscriptionsWebhooksApi.md#readonesubscription) | **Get** /environments/{environmentID}/subscriptions/{subscriptionID} | READ One Subscription
 *SubscriptionsWebhooksApi* | [**UpdateSubscription**](docs/SubscriptionsWebhooksApi.md#updatesubscription) | **Put** /environments/{environmentID}/subscriptions/{subscriptionID} | UPDATE Subscription
 *TotalIdentitiesApi* | [**EnvironmentsEnvironmentIDTotalIdentitiesGet**](docs/TotalIdentitiesApi.md#environmentsenvironmentidtotalidentitiesget) | **Get** /environments/{environmentID}/totalIdentities | READ Total Identity Counts
+*TranslationsApi* | [**ReadTranslations**](docs/TranslationsApi.md#readtranslations) | **Get** /environments/{environmentID}/translations/{locale} | Read Translations by locale
+*TranslationsApi* | [**UpdateTranslations**](docs/TranslationsApi.md#updatetranslations) | **Put** /environments/{environmentID}/translations/{locale} | Update Translations by locale
 *TrustedEmailAddressesApi* | [**CreateTrustedEmailAddress**](docs/TrustedEmailAddressesApi.md#createtrustedemailaddress) | **Post** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | CREATE Trusted Email Address
 *TrustedEmailAddressesApi* | [**DeleteTrustedEmailAddress**](docs/TrustedEmailAddressesApi.md#deletetrustedemailaddress) | **Delete** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | DELETE Trusted Email Address
 *TrustedEmailAddressesApi* | [**ReadAllTrustedEmailAddresses**](docs/TrustedEmailAddressesApi.md#readalltrustedemailaddresses) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | READ All Trusted Email Addresses
@@ -830,6 +832,7 @@ Class | Method | HTTP request | Description
  - [LicenseUsers](docs/LicenseUsers.md)
  - [LicenseVerify](docs/LicenseVerify.md)
  - [LinksHATEOASValue](docs/LinksHATEOASValue.md)
+ - [LocaleTranslation](docs/LocaleTranslation.md)
  - [NotificationsPolicy](docs/NotificationsPolicy.md)
  - [NotificationsPolicyCountryLimit](docs/NotificationsPolicyCountryLimit.md)
  - [NotificationsPolicyQuotasInner](docs/NotificationsPolicyQuotasInner.md)

@@ -21516,6 +21516,204 @@ paths:
       summary: UPDATE Content
       tags:
       - Notifications Templates
+  /environments/{environmentID}/translations/{locale}:
+    get:
+      operationId: readTranslations
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: locale
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: Read Translations by locale
+      tags:
+      - Translations
+    put:
+      operationId: updateTranslations
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: locale
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocaleTranslations'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocaleTranslations'
+          description: Successful response
+      summary: Update Translations by locale
+      tags:
+      - Translations
   /environments/{environmentID}/notificationsSettings:
     delete:
       operationId: deleteNotificationsSettings
@@ -39693,6 +39891,17 @@ components:
             description: description
             id: id
             key: key
+          translations:
+          - translatedText: translatedText
+            referenceText: referenceText
+            shortKey: shortKey
+            id: id
+            key: key
+          - translatedText: translatedText
+            referenceText: referenceText
+            shortKey: shortKey
+            id: id
+            key: key
           passwordPolicies:
           - minCharacters:
               "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
@@ -43091,6 +43300,43 @@ components:
       required:
       - name
       type: object
+    LocaleTranslation:
+      example:
+        translatedText: translatedText
+        referenceText: referenceText
+        shortKey: shortKey
+        id: id
+        key: key
+      properties:
+        id:
+          description: The translation ID for a specific string.
+          readOnly: true
+          type: string
+        key:
+          description: "The page and name of the interface element to be localized\
+            \ (for example, `flow-ui.button.cancel`)."
+          minLength: 1
+          type: string
+        shortKey:
+          description: "The interace element only (for example, `button.cancel`)."
+          readOnly: true
+          type: string
+        referenceText:
+          description: The English string text associated with the interface element.
+          readOnly: true
+          type: string
+        translatedText:
+          description: The translated string text associated with the interface element.
+          type: string
+      required:
+      - key
+      - translatedText
+      type: object
+    LocaleTranslations:
+      items:
+        $ref: '#/components/schemas/LocaleTranslation'
+      type: array
+      uniqueItems: true
     NotificationsPolicy:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -47745,6 +47991,17 @@ components:
           description: description
           id: id
           key: key
+        translations:
+        - translatedText: translatedText
+          referenceText: referenceText
+          shortKey: shortKey
+          id: id
+          key: key
+        - translatedText: translatedText
+          referenceText: referenceText
+          shortKey: shortKey
+          id: id
+          key: key
         passwordPolicies:
         - minCharacters:
             "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
@@ -49212,6 +49469,10 @@ components:
         themes:
           items:
             $ref: '#/components/schemas/BrandingTheme'
+          type: array
+        translations:
+          items:
+            $ref: '#/components/schemas/LocaleTranslation'
           type: array
         trustedEmails:
           items:
