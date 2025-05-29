@@ -39892,8 +39892,16 @@ components:
             id: id
             key: key
           translations:
-          - null
-          - null
+          - translatedText: translatedText
+            referenceText: referenceText
+            shortKey: shortKey
+            id: id
+            key: key
+          - translatedText: translatedText
+            referenceText: referenceText
+            shortKey: shortKey
+            id: id
+            key: key
           passwordPolicies:
           - minCharacters:
               "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
@@ -43291,6 +43299,38 @@ components:
           type: string
       required:
       - name
+      type: object
+    LocaleTranslation:
+      example:
+        translatedText: translatedText
+        referenceText: referenceText
+        shortKey: shortKey
+        id: id
+        key: key
+      properties:
+        id:
+          description: The translation ID for a specific string.
+          readOnly: true
+          type: string
+        key:
+          description: "The page and name of the interface element to be localized\
+            \ (for example, `flow-ui.button.cancel`)."
+          minLength: 1
+          type: string
+        shortKey:
+          description: "The interace element only (for example, `button.cancel`)."
+          readOnly: true
+          type: string
+        referenceText:
+          description: The English string text associated with the interface element.
+          readOnly: true
+          type: string
+        translatedText:
+          description: The translated string text associated with the interface element.
+          type: string
+      required:
+      - key
+      - translatedText
       type: object
     LocaleTranslations:
       items:
@@ -47952,8 +47992,16 @@ components:
           id: id
           key: key
         translations:
-        - null
-        - null
+        - translatedText: translatedText
+          referenceText: referenceText
+          shortKey: shortKey
+          id: id
+          key: key
+        - translatedText: translatedText
+          referenceText: referenceText
+          shortKey: shortKey
+          id: id
+          key: key
         passwordPolicies:
         - minCharacters:
             "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
@@ -49424,7 +49472,7 @@ components:
           type: array
         translations:
           items:
-            $ref: '#/components/schemas/LocaleTranslations'
+            $ref: '#/components/schemas/LocaleTranslation'
           type: array
         trustedEmails:
           items:
@@ -50449,39 +50497,6 @@ components:
             Verify manual ID inspection feature.
           type: boolean
       readOnly: true
-      type: object
-    LocaleTranslation:
-      example:
-        translatedText: translatedText
-        referenceText: referenceText
-        shortKey: shortKey
-        id: id
-        key: key
-      properties:
-        id:
-          description: The translation ID for a specific string.
-          readOnly: true
-          type: string
-        key:
-          description: "The page and name of the interface element to be localized\
-            \ (for example, `flow-ui.button.cancel`)."
-          minLength: 1
-          type: string
-        shortKey:
-          description: "The interace element only (for example, `button.cancel`)."
-          readOnly: true
-          type: string
-        referenceText:
-          description: The English string text associated with the interface element.
-          readOnly: true
-          type: string
-        translatedText:
-          description: The translated string text associated with the interface element.
-          type: string
-      required:
-      - key
-      - translatedText
-      title: LocaleTranslation
       type: object
     NotificationsPolicy_countryLimit:
       description: You can use the `countryLimit` object to limit the countries where

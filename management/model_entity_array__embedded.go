@@ -59,7 +59,7 @@ type EntityArrayEmbedded struct {
 	Subscriptions []Subscription `json:"subscriptions,omitempty"`
 	Templates []Template `json:"templates,omitempty"`
 	Themes []BrandingTheme `json:"themes,omitempty"`
-	Translations [][]LocaleTranslation `json:"translations,omitempty"`
+	Translations []LocaleTranslation `json:"translations,omitempty"`
 	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles []EntityArrayEmbeddedRolesInner `json:"roles,omitempty"`
@@ -1366,9 +1366,9 @@ func (o *EntityArrayEmbedded) SetThemes(v []BrandingTheme) {
 }
 
 // GetTranslations returns the Translations field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetTranslations() [][]LocaleTranslation {
+func (o *EntityArrayEmbedded) GetTranslations() []LocaleTranslation {
 	if o == nil || IsNil(o.Translations) {
-		var ret [][]LocaleTranslation
+		var ret []LocaleTranslation
 		return ret
 	}
 	return o.Translations
@@ -1376,7 +1376,7 @@ func (o *EntityArrayEmbedded) GetTranslations() [][]LocaleTranslation {
 
 // GetTranslationsOk returns a tuple with the Translations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetTranslationsOk() ([][]LocaleTranslation, bool) {
+func (o *EntityArrayEmbedded) GetTranslationsOk() ([]LocaleTranslation, bool) {
 	if o == nil || IsNil(o.Translations) {
 		return nil, false
 	}
@@ -1392,8 +1392,8 @@ func (o *EntityArrayEmbedded) HasTranslations() bool {
 	return false
 }
 
-// SetTranslations gets a reference to the given [][]LocaleTranslation and assigns it to the Translations field.
-func (o *EntityArrayEmbedded) SetTranslations(v [][]LocaleTranslation) {
+// SetTranslations gets a reference to the given []LocaleTranslation and assigns it to the Translations field.
+func (o *EntityArrayEmbedded) SetTranslations(v []LocaleTranslation) {
 	o.Translations = v
 }
 

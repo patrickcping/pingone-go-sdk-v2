@@ -2409,7 +2409,7 @@ components:
             translations:
               type: array
               items:
-                $ref: '#/components/schemas/LocaleTranslations'
+                $ref: '#/components/schemas/LocaleTranslation'
             trustedEmails:
               type: array
               items:
@@ -4520,35 +4520,36 @@ components:
           description: The license name
       required:
         - name
+    LocaleTranslation:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The translation ID for a specific string.
+        key:
+          type: string
+          description: The page and name of the interface element to be localized (for example, `flow-ui.button.cancel`).
+          minLength: 1
+        shortKey:
+          type: string
+          description: The interace element only (for example, `button.cancel`).
+          readOnly: true
+        referenceText:
+          type: string
+          description: The English string text associated with the interface element.
+          readOnly: true
+        translatedText:
+          type: string
+          description: The translated string text associated with the interface element.
+      required:
+        - key
+        - translatedText
     LocaleTranslations:
       type: array
       uniqueItems: true
       items:
-        title: LocaleTranslation
-        type: object
-        properties:
-          id:
-            type: string
-            readOnly: true
-            description: The translation ID for a specific string.
-          key:
-            type: string
-            description: The page and name of the interface element to be localized (for example, `flow-ui.button.cancel`).
-            minLength: 1
-          shortKey:
-            type: string
-            description: The interace element only (for example, `button.cancel`).
-            readOnly: true
-          referenceText:
-            type: string
-            description: The English string text associated with the interface element.
-            readOnly: true
-          translatedText:
-            type: string
-            description: The translated string text associated with the interface element.
-        required:
-          - key
-          - translatedText
+        $ref: '#/components/schemas/LocaleTranslation'
     NotificationsPolicy:
       type: object
       properties:

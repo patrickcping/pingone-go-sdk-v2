@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 **Subscriptions** | Pointer to [**[]Subscription**](Subscription.md) |  | [optional] 
 **Templates** | Pointer to [**[]Template**](Template.md) |  | [optional] 
 **Themes** | Pointer to [**[]BrandingTheme**](BrandingTheme.md) |  | [optional] 
-**Translations** | Pointer to [**[][]LocaleTranslation**]([]LocaleTranslation.md) |  | [optional] 
+**Translations** | Pointer to [**[]LocaleTranslation**](LocaleTranslation.md) |  | [optional] 
 **TrustedEmails** | Pointer to [**[]EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]EntityArrayEmbeddedRolesInner**](EntityArrayEmbeddedRolesInner.md) |  | [optional] 
@@ -1073,20 +1073,20 @@ HasThemes returns a boolean if a field has been set.
 
 ### GetTranslations
 
-`func (o *EntityArrayEmbedded) GetTranslations() [][]LocaleTranslation`
+`func (o *EntityArrayEmbedded) GetTranslations() []LocaleTranslation`
 
 GetTranslations returns the Translations field if non-nil, zero value otherwise.
 
 ### GetTranslationsOk
 
-`func (o *EntityArrayEmbedded) GetTranslationsOk() (*[][]LocaleTranslation, bool)`
+`func (o *EntityArrayEmbedded) GetTranslationsOk() (*[]LocaleTranslation, bool)`
 
 GetTranslationsOk returns a tuple with the Translations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTranslations
 
-`func (o *EntityArrayEmbedded) SetTranslations(v [][]LocaleTranslation)`
+`func (o *EntityArrayEmbedded) SetTranslations(v []LocaleTranslation)`
 
 SetTranslations sets Translations field to given value.
 
