@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.17
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.56.0 => v0.57.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.57.0](./management/CHANGELOG.md)
   * **Feature** Add support for the Locale Translations API. [#457](https://github.com/patrickcping/pingone-go-sdk-v2/pull/457)
   * **Enhancement** Add support for assigning application scope to custom roles. [#458](https://github.com/patrickcping/pingone-go-sdk-v2/pull/458)
