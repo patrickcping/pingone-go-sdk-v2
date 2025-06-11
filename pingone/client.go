@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
@@ -708,7 +709,7 @@ func testForRetryable(err error, currentBackoff time.Duration) (time.Duration, b
 		}
 	}
 
-	if m, mErr := regexp.MatchString("Unsupported authentication method", err.Error()); mErr == nil && m {
+	if m, mErr := regexp.MatchString("unsupported authentication method", strings.ToLower(err.Error())); mErr == nil && m {
 		log.Printf("Unsupported authentication method detected, available for retry")
 		return backoff, true
 	}
