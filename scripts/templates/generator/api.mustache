@@ -410,22 +410,27 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 			{{#vendorExtensions.x-pingone-docs-8830}}
 			baseDelay := time.Second
 			// check if environment created recently - DOCS-8830
-			retryEnvironmentResponse, retryVarHTTPResponse, err := a.client.EnvironmentApi.GetEnvironmentById(r.ctx, r.environmentID).Execute()
+			retryEnvironmentResponse, retryVarHTTPResponse, err := a.client.EnvironmentsApi.ReadOneEnvironment(r.ctx, r.environmentID).Execute()
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			if retryVarHTTPResponse.StatusCode == 200 && retryEnvironmentResponse != nil {
+			if retryVarHTTPResponse.StatusCode == 200 && retryEnvironmentResponse != nil && retryEnvironmentResponse.CreatedAt != nil {
 				// Check if the retryEnvironmentResponse.CreatedAt is within the last 17 seconds
-				if time.Since(retryEnvironmentResponse.CreatedAt) < 17*time.Second {
-					slog.Debug("The environment was created within the last 17 seconds, retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
-					// Retry the request
-					delay, backoffErr := calculateExponentialBackoff(i, baseDelay)
-					if backoffErr != nil {
-						slog.Error("Invalid backoff delay duration", "error", backoffErr, "baseDelay", baseDelay, "retry", false)
-					} else {
-						time.Sleep(delay)
-						continue
+				createdAt, nestedErr := time.Parse(time.RFC3339, *retryEnvironmentResponse.CreatedAt)
+				if nestedErr != nil {
+					slog.Error("Invalid RFC3339 string", "environment created at", *retryEnvironmentResponse.CreatedAt)
+				} else {
+					if time.Since(createdAt) < 17*time.Second {
+						slog.Debug("The environment was created within the last 17 seconds, retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
+						// Retry the request
+						delay, nestedErr := calculateExponentialBackoff(i, baseDelay)
+						if nestedErr != nil {
+							slog.Error("Invalid backoff delay duration", "error", nestedErr, "baseDelay", baseDelay, "retry", false)
+						} else {
+							time.Sleep(delay)
+							continue
+						}
 					}
 				}
 			}
