@@ -21,7 +21,7 @@ type EnumPropagationStoreTypePingOneDefaultAuthMethod string
 // List of EnumPropagationStoreTypePingOneDefaultAuthMethod
 const (
 	ENUMPROPAGATIONSTORETYPEPINGONEDEFAULTAUTHMETHOD_EMAIL_1 EnumPropagationStoreTypePingOneDefaultAuthMethod = "Email 1"
-	ENUMPROPAGATIONSTORETYPEPINGONEDEFAULTAUTHMETHOD_SMS_1 EnumPropagationStoreTypePingOneDefaultAuthMethod = "SMS 1"
+	ENUMPROPAGATIONSTORETYPEPINGONEDEFAULTAUTHMETHOD_SMS_1   EnumPropagationStoreTypePingOneDefaultAuthMethod = "SMS 1"
 	ENUMPROPAGATIONSTORETYPEPINGONEDEFAULTAUTHMETHOD_VOICE_1 EnumPropagationStoreTypePingOneDefaultAuthMethod = "Voice 1"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumPropagationStoreTypePingOneDefaultAuthMethod) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

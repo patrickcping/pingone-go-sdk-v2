@@ -20,13 +20,13 @@ var _ MappedNullable = &AgreementLanguageRevision{}
 
 // AgreementLanguageRevision struct for AgreementLanguageRevision
 type AgreementLanguageRevision struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
+	Links       *map[string]LinksHATEOASValue    `json:"_links,omitempty"`
+	Agreement   *AgreementLanguageAgreement      `json:"agreement,omitempty"`
 	ContentType EnumAgreementRevisionContentType `json:"contentType"`
 	// A date that specifies the start date that the revision is presented to users. This property value can be modified only if the current value is a date that has not already passed. The effective date must be unique for each language agreement, and the property value can be the present date or a future date only.
 	EffectiveAt time.Time `json:"effectiveAt"`
 	// A read-only string that specifies the revision ID.
-	Id *string `json:"id,omitempty"`
+	Id       *string                            `json:"id,omitempty"`
 	Language *AgreementLanguageRevisionLanguage `json:"language,omitempty"`
 	// A date that specifies whether the revision is still valid in the context of all revisions for a language. This property is calculated dynamically at read time, taking into consideration the agreement language, the language enabled property, and the agreement enabled property. When a new revision is added, the notValidAfter property values for all other previous revisions might be impacted. For example, if a new revision becomes effective and it forces reconsent, then all older revisions are no longer valid.
 	NotValidAfter *time.Time `json:"notValidAfter,omitempty"`
@@ -314,7 +314,7 @@ func (o *AgreementLanguageRevision) SetText(v string) {
 }
 
 func (o AgreementLanguageRevision) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -380,5 +380,3 @@ func (v *NullableAgreementLanguageRevision) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

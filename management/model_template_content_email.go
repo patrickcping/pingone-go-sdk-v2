@@ -28,16 +28,16 @@ type TemplateContentEmail struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// Specifies whether the template is a predefined default template.
 	Default *bool `json:"default,omitempty"`
-	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`. 
-	Locale string `json:"locale"`
+	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`.
+	Locale         string                            `json:"locale"`
 	DeliveryMethod EnumTemplateContentDeliveryMethod `json:"deliveryMethod"`
 	// Holds the unique user-defined name for each content variant that uses the same template + `deliveryMethod` + `locale` combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents).
 	Variant *string `json:"variant,omitempty"`
 	// The email text. Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables.
-	Body string `json:"body"`
+	Body string                         `json:"body"`
 	From *TemplateContentEmailAllOfFrom `json:"from,omitempty"`
 	// The email's subject line. Cannot exceed 256 characters. If supported, can include variables.
-	Subject *string `json:"subject,omitempty"`
+	Subject *string                           `json:"subject,omitempty"`
 	ReplyTo *TemplateContentEmailAllOfReplyTo `json:"replyTo,omitempty"`
 	// If not specified, `UTF-8` is the default value.
 	Charset *string `json:"charset,omitempty"`
@@ -498,7 +498,7 @@ func (o *TemplateContentEmail) SetEmailContentType(v string) {
 }
 
 func (o TemplateContentEmail) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -581,5 +581,3 @@ func (v *NullableTemplateContentEmail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,9 @@ type EnumResourceIntrospectEndpointAuthMethod string
 
 // List of EnumResourceIntrospectEndpointAuthMethod
 const (
-	ENUMRESOURCEINTROSPECTENDPOINTAUTHMETHOD_NONE EnumResourceIntrospectEndpointAuthMethod = "NONE"
+	ENUMRESOURCEINTROSPECTENDPOINTAUTHMETHOD_NONE                EnumResourceIntrospectEndpointAuthMethod = "NONE"
 	ENUMRESOURCEINTROSPECTENDPOINTAUTHMETHOD_CLIENT_SECRET_BASIC EnumResourceIntrospectEndpointAuthMethod = "CLIENT_SECRET_BASIC"
-	ENUMRESOURCEINTROSPECTENDPOINTAUTHMETHOD_CLIENT_SECRET_POST EnumResourceIntrospectEndpointAuthMethod = "CLIENT_SECRET_POST"
+	ENUMRESOURCEINTROSPECTENDPOINTAUTHMETHOD_CLIENT_SECRET_POST  EnumResourceIntrospectEndpointAuthMethod = "CLIENT_SECRET_POST"
 )
 
 // All allowed values of EnumResourceIntrospectEndpointAuthMethod enum
@@ -111,4 +111,3 @@ func (v *NullableEnumResourceIntrospectEndpointAuthMethod) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

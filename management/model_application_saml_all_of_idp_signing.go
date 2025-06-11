@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationSAMLAllOfIdpSigning{}
 
 // ApplicationSAMLAllOfIdpSigning struct for ApplicationSAMLAllOfIdpSigning
 type ApplicationSAMLAllOfIdpSigning struct {
-	Key ApplicationSAMLAllOfIdpSigningKey `json:"key"`
+	Key       ApplicationSAMLAllOfIdpSigningKey     `json:"key"`
 	Algorithm *EnumCertificateKeySignagureAlgorithm `json:"algorithm,omitempty"`
 }
 
@@ -98,7 +98,7 @@ func (o *ApplicationSAMLAllOfIdpSigning) SetAlgorithm(v EnumCertificateKeySignag
 }
 
 func (o ApplicationSAMLAllOfIdpSigning) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullableApplicationSAMLAllOfIdpSigning) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

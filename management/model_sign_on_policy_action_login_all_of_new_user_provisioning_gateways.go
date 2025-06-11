@@ -20,9 +20,9 @@ var _ MappedNullable = &SignOnPolicyActionLoginAllOfNewUserProvisioningGateways{
 // SignOnPolicyActionLoginAllOfNewUserProvisioningGateways struct for SignOnPolicyActionLoginAllOfNewUserProvisioningGateways
 type SignOnPolicyActionLoginAllOfNewUserProvisioningGateways struct {
 	// A string referencing the UUID for the gateway.
-	Id string `json:"id"`
-	Type EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType `json:"type"`
-	UserType SignOnPolicyActionLoginAllOfNewUserProvisioningUserType `json:"userType"`
+	Id       string                                                    `json:"id"`
+	Type     EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType `json:"type"`
+	UserType SignOnPolicyActionLoginAllOfNewUserProvisioningUserType   `json:"userType"`
 }
 
 // NewSignOnPolicyActionLoginAllOfNewUserProvisioningGateways instantiates a new SignOnPolicyActionLoginAllOfNewUserProvisioningGateways object
@@ -118,7 +118,7 @@ func (o *SignOnPolicyActionLoginAllOfNewUserProvisioningGateways) SetUserType(v 
 }
 
 func (o SignOnPolicyActionLoginAllOfNewUserProvisioningGateways) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,5 +168,3 @@ func (v *NullableSignOnPolicyActionLoginAllOfNewUserProvisioningGateways) Unmars
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,8 @@ type EnumCertificateKeyEncryptionAlgorithm string
 
 // List of EnumCertificateKeyEncryptionAlgorithm
 const (
-	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_AES_128 EnumCertificateKeyEncryptionAlgorithm = "AES_128"
-	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_AES_256 EnumCertificateKeyEncryptionAlgorithm = "AES_256"
+	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_AES_128   EnumCertificateKeyEncryptionAlgorithm = "AES_128"
+	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_AES_256   EnumCertificateKeyEncryptionAlgorithm = "AES_256"
 	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_TRIPLEDES EnumCertificateKeyEncryptionAlgorithm = "TRIPLEDES"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumCertificateKeyEncryptionAlgorithm) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

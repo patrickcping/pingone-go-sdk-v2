@@ -19,12 +19,12 @@ var _ MappedNullable = &FormFieldSubmitButton{}
 
 // FormFieldSubmitButton struct for FormFieldSubmitButton
 type FormFieldSubmitButton struct {
-	Type EnumFormFieldType `json:"type"`
+	Type     EnumFormFieldType       `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
 	// A string that specifies an identifier for the field component.
 	Key *string `json:"key,omitempty"`
 	// A string that specifies the button label.
-	Label string `json:"label"`
+	Label  string      `json:"label"`
 	Styles *FormStyles `json:"styles,omitempty"`
 }
 
@@ -185,7 +185,7 @@ func (o *FormFieldSubmitButton) SetStyles(v FormStyles) {
 }
 
 func (o FormFieldSubmitButton) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -241,5 +241,3 @@ func (v *NullableFormFieldSubmitButton) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

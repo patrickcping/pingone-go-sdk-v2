@@ -20,8 +20,8 @@ var _ MappedNullable = &Environment{}
 
 // Environment struct for Environment
 type Environment struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	BillOfMaterials *BillOfMaterials `json:"billOfMaterials,omitempty"`
+	Links           *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	BillOfMaterials *BillOfMaterials              `json:"billOfMaterials,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies the description of the population.
@@ -31,16 +31,16 @@ type Environment struct {
 	// The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF.
 	Icon *string `json:"icon,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id      *string            `json:"id,omitempty"`
 	License EnvironmentLicense `json:"license"`
 	// A string that specifies the environment name, which must be provided and must be unique within an organization.
-	Name string `json:"name"`
+	Name         string                   `json:"name"`
 	Organization *EnvironmentOrganization `json:"organization,omitempty"`
-	Region EnvironmentRegion `json:"region"`
+	Region       EnvironmentRegion        `json:"region"`
 	// The time the Production environment was set to the `DELETE_PENDING` status. When a soft-deleted environment is restored, this value is cleared.
-	SoftDeletedAt *time.Time `json:"softDeletedAt,omitempty"`
-	Status *EnumEnvironmentStatus `json:"status,omitempty"`
-	Type EnumEnvironmentType `json:"type"`
+	SoftDeletedAt *time.Time             `json:"softDeletedAt,omitempty"`
+	Status        *EnumEnvironmentStatus `json:"status,omitempty"`
+	Type          EnumEnvironmentType    `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -515,7 +515,7 @@ func (o *Environment) SetUpdatedAt(v string) {
 }
 
 func (o Environment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -599,5 +599,3 @@ func (v *NullableEnvironment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

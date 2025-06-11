@@ -22,18 +22,18 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCustom{}
 type NotificationsSettingsPhoneDeliverySettingsCustom struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Provider EnumNotificationsSettingsPhoneDeliverySettingsProvider `json:"provider"`
+	Id          *string                                                `json:"id,omitempty"`
+	Environment *ObjectEnvironment                                     `json:"environment,omitempty"`
+	Provider    EnumNotificationsSettingsPhoneDeliverySettingsProvider `json:"provider"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// The customer provider's name.
-	Name string `json:"name"`
-	Requests []NotificationsSettingsPhoneDeliverySettingsCustomRequest `json:"requests"`
+	Name           string                                                              `json:"name"`
+	Requests       []NotificationsSettingsPhoneDeliverySettingsCustomRequest           `json:"requests"`
 	Authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication `json:"authentication"`
-	Numbers []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
+	Numbers        []NotificationsSettingsPhoneDeliverySettingsCustomNumbers           `json:"numbers,omitempty"`
 }
 
 // NewNotificationsSettingsPhoneDeliverySettingsCustom instantiates a new NotificationsSettingsPhoneDeliverySettingsCustom object
@@ -346,7 +346,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetNumbers(v []Notifi
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsCustom) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -415,5 +415,3 @@ func (v *NullableNotificationsSettingsPhoneDeliverySettingsCustom) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

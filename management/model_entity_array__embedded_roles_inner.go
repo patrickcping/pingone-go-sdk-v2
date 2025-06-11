@@ -17,8 +17,8 @@ import (
 
 // EntityArrayEmbeddedRolesInner - struct for EntityArrayEmbeddedRolesInner
 type EntityArrayEmbeddedRolesInner struct {
-	CustomAdminRole *CustomAdminRole
-	Role *Role
+	CustomAdminRole               *CustomAdminRole
+	Role                          *Role
 	UserApplicationRoleAssignment *UserApplicationRoleAssignment
 }
 
@@ -42,7 +42,6 @@ func UserApplicationRoleAssignmentAsEntityArrayEmbeddedRolesInner(v *UserApplica
 		UserApplicationRoleAssignment: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EntityArrayEmbeddedRolesInner) UnmarshalJSON(data []byte) error {
@@ -107,7 +106,7 @@ func (src EntityArrayEmbeddedRolesInner) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *EntityArrayEmbeddedRolesInner) GetActualInstance() (interface{}) {
+func (obj *EntityArrayEmbeddedRolesInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -162,5 +161,3 @@ func (v *NullableEntityArrayEmbeddedRolesInner) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

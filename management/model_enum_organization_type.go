@@ -20,8 +20,8 @@ type EnumOrganizationType string
 
 // List of EnumOrganizationType
 const (
-	ENUMORGANIZATIONTYPE_PAID EnumOrganizationType = "PAID"
-	ENUMORGANIZATIONTYPE_TRIAL EnumOrganizationType = "TRIAL"
+	ENUMORGANIZATIONTYPE_PAID     EnumOrganizationType = "PAID"
+	ENUMORGANIZATIONTYPE_TRIAL    EnumOrganizationType = "TRIAL"
 	ENUMORGANIZATIONTYPE_INTERNAL EnumOrganizationType = "INTERNAL"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumOrganizationType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -23,13 +23,13 @@ type IntegrationVersionSAML struct {
 	// Unicode characters. The description of this integration metadata version.
 	Description *string `json:"description,omitempty"`
 	// The platform-generated ID of this integration metadata version.
-	Id *string `json:"id,omitempty"`
+	Id          *string                              `json:"id,omitempty"`
 	Integration *IntegrationVersionCommonIntegration `json:"integration,omitempty"`
 	// A unique name for the integration metadata version.
 	Name string `json:"name"`
 	// A unique number for the integration version.
-	Number string `json:"number"`
-	Type *EnumIntegrationVersionType `json:"type,omitempty"`
+	Number string                      `json:"number"`
+	Type   *EnumIntegrationVersionType `json:"type,omitempty"`
 	// The URL to which PingOne sends SAML responses. Parameterize the URL using `${_paremter_}`. For example, `https://${subdomain}.slack.com`. The maximum length is 2000 characters.
 	AssertionConsumerService string `json:"assertionConsumerService"`
 	// The state of assertion encryption. `true` if encrypted.
@@ -38,11 +38,11 @@ type IntegrationVersionSAML struct {
 	DefaultTarget *string `json:"defaultTarget,omitempty"`
 	// Unique ID for the application.
 	EntityId *string `json:"entityId,omitempty"`
-	// This can be one of the following: urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress urn:oasis:names:tc:SAML:2.0:nameid-format:persistent urn:oasis:names:tc:SAML:2.0:nameid-format:transient 
-	NameIdFormat *string `json:"nameIdFormat,omitempty"`
+	// This can be one of the following: urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress urn:oasis:names:tc:SAML:2.0:nameid-format:persistent urn:oasis:names:tc:SAML:2.0:nameid-format:transient
+	NameIdFormat    *string                                   `json:"nameIdFormat,omitempty"`
 	ProtocolVersion EnumIntegrationVersionSAMLProtocolVersion `json:"protocolVersion"`
-	Slo *IntegrationVersionSAMLAllOfSlo `json:"slo,omitempty"`
-	ThirdParty *IntegrationVersionSAMLAllOfThirdParty `json:"thirdParty,omitempty"`
+	Slo             *IntegrationVersionSAMLAllOfSlo           `json:"slo,omitempty"`
+	ThirdParty      *IntegrationVersionSAMLAllOfThirdParty    `json:"thirdParty,omitempty"`
 }
 
 // NewIntegrationVersionSAML instantiates a new IntegrationVersionSAML object
@@ -515,7 +515,7 @@ func (o *IntegrationVersionSAML) SetThirdParty(v IntegrationVersionSAMLAllOfThir
 }
 
 func (o IntegrationVersionSAML) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -599,5 +599,3 @@ func (v *NullableIntegrationVersionSAML) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

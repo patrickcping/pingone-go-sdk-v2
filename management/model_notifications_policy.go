@@ -30,7 +30,7 @@ type NotificationsPolicy struct {
 	// The name to use for the notification policy. Must be unique among the notification policies in the environment.
 	Name string `json:"name"`
 	// Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is `false`
-	Default *bool `json:"default,omitempty"`
+	Default      *bool                            `json:"default,omitempty"`
 	CountryLimit *NotificationsPolicyCountryLimit `json:"countryLimit,omitempty"`
 	// Collection of objects that define the SMS/Voice limits. Each object contain the following elements- `type`, `deliveryMethods`, `total`. Currently, a policy can contain ony one such object. Note that instead of `total`, you can use the pair of fields- `claimed` and `unclaimed`.
 	Quotas []NotificationsPolicyQuotasInner `json:"quotas"`
@@ -300,7 +300,7 @@ func (o *NotificationsPolicy) SetQuotas(v []NotificationsPolicyQuotasInner) {
 }
 
 func (o NotificationsPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -367,5 +367,3 @@ func (v *NullableNotificationsPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -34,8 +34,8 @@ type PropagationStoreConfigurationLDAPGateway struct {
 	// Base URL of the gateway.
 	GATEWAY_BASE_URL string `json:"GATEWAY_BASE_URL"`
 	// Identifier of the gateway to which the connector connects.
-	GATEWAY_ID string `json:"GATEWAY_ID"`
-	LDAP_TYPE EnumPropagationStoreTypeLDAPGatewayLDAPType `json:"LDAP_TYPE"`
+	GATEWAY_ID string                                      `json:"GATEWAY_ID"`
+	LDAP_TYPE  EnumPropagationStoreTypeLDAPGatewayLDAPType `json:"LDAP_TYPE"`
 	// OAuth token request endpoint.
 	OAUTH_URL string `json:"OAUTH_URL"`
 	// Whether or not users are allowed to be updated.
@@ -363,7 +363,7 @@ func (o *PropagationStoreConfigurationLDAPGateway) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationLDAPGateway) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -429,5 +429,3 @@ func (v *NullablePropagationStoreConfigurationLDAPGateway) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

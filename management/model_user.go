@@ -20,9 +20,9 @@ var _ MappedNullable = &User{}
 
 // User struct for User
 type User struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Account *UserAccount `json:"account,omitempty"`
-	Address *UserAddress `json:"address,omitempty"`
+	Links   *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Account *UserAccount                  `json:"account,omitempty"`
+	Address *UserAddress                  `json:"address,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format.
@@ -30,15 +30,15 @@ type User struct {
 	// Whether the user’s email is verified. An email address can be verified during account verification. If the email address used to request the verification code is the same as the user’s email at verification time (and the verification code is valid), then the email is verified. The value of this property can be set on user import.
 	EmailVerified *bool `json:"emailVerified,omitempty"`
 	// A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled     *bool              `json:"enabled,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies an identifier for the user resource as defined by the provisioning client. This is optional. This may be explicitly set to null when updating a user to unset it. The externalId attribute simplifies the correlation of the user in PingOne with the user’s account in another system of record. The platform does not use this attribute directly in any way, but it is used by Ping Identity’s Data Sync product. It can have a length of no more than 1024 characters (min/max=1/1024).
 	ExternalId *string `json:"externalId,omitempty"`
 	// A string that specifies the user resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id               *string               `json:"id,omitempty"`
 	IdentityProvider *UserIdentityProvider `json:"identityProvider,omitempty"`
-	LastSignOn *UserLastSignOn `json:"lastSignOn,omitempty"`
-	Lifecycle *UserLifecycle `json:"lifecycle,omitempty"`
+	LastSignOn       *UserLastSignOn       `json:"lastSignOn,omitempty"`
+	Lifecycle        *UserLifecycle        `json:"lifecycle,omitempty"`
 	// A string that specifies the user’s default location, which is optional. This may be explicitly set to null when updating a user to unset it. This is used for purposes of localizing such items as currency, date time format, or numerical representations. If provided, it must be a valid language tag as defined in RFC 5646. The following are example tags fr, en-US, es-419, az-Arab, man-Nkoo-GN. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Locale *string `json:"locale,omitempty"`
 	// A read-only array of IDs for the groups the user is a member of. This property is returned for GET /environments/{environmentID}/users/{userID} when include=memberOfGroupIDs is appended to the request. This property is not returned with a list of users.
@@ -48,12 +48,12 @@ type User struct {
 	// A boolean attribute that specifies whether multi-factor authentication is enabled. This attribute is set to false by default when the user is created. You can set mfaEnabled to true with POST CREATE User, POST CREATE User (Import), or PUT UPDATE User MFA Enabled. You cannot update mfaEnabled with PUT UPDATE User or PATCH UPDATE User.
 	MfaEnabled *bool `json:"mfaEnabled,omitempty"`
 	// A string that specifies the user’s native phone number, which is optional. This might also match the primaryPhone attribute. This may be explicitly set to null when updating a user to unset it. Valid phone numbers must have at least one number and a maximum character length of 32.
-	MobilePhone *string `json:"mobilePhone,omitempty"`
-	Name *UserName `json:"name,omitempty"`
+	MobilePhone *string   `json:"mobilePhone,omitempty"`
+	Name        *UserName `json:"name,omitempty"`
 	// A string that specifies the user’s nickname, which is optional. This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
-	Nickname *string `json:"nickname,omitempty"`
-	Password *UserPassword `json:"password,omitempty"`
-	Photo *UserPhoto `json:"photo,omitempty"`
+	Nickname   *string         `json:"nickname,omitempty"`
+	Password   *UserPassword   `json:"password,omitempty"`
+	Photo      *UserPhoto      `json:"photo,omitempty"`
 	Population *UserPopulation `json:"population,omitempty"`
 	// A string that specifies the user’s preferred written or spoken languages, which are optional. This may be explicitly set to null when updating a user to unset it. If provided, the format of the value must be a valid language range and the same as the HTTP Accept-Language header field (not including Accept-Language:) and is specified in Section 5.3.5 of RFC 7231. For example en-US, en-gb;q=0.8, en;q=0.7.
 	PreferredLanguage *string `json:"preferredLanguage,omitempty"`
@@ -68,7 +68,7 @@ type User struct {
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 128 characters (min/max=1/128).
-	Username string `json:"username"`
+	Username     string                `json:"username"`
 	VerifyStatus *EnumUserVerifyStatus `json:"verifyStatus,omitempty"`
 }
 
@@ -1068,7 +1068,7 @@ func (o *User) SetVerifyStatus(v EnumUserVerifyStatus) {
 }
 
 func (o User) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1204,5 +1204,3 @@ func (v *NullableUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ type EnumFormElementValidationType string
 
 // List of EnumFormElementValidationType
 const (
-	ENUMFORMELEMENTVALIDATIONTYPE_NONE EnumFormElementValidationType = "NONE"
+	ENUMFORMELEMENTVALIDATIONTYPE_NONE   EnumFormElementValidationType = "NONE"
 	ENUMFORMELEMENTVALIDATIONTYPE_CUSTOM EnumFormElementValidationType = "CUSTOM"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumFormElementValidationType) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

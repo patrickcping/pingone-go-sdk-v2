@@ -20,8 +20,8 @@ var _ MappedNullable = &ApplicationSAMLAllOfSpVerification{}
 // ApplicationSAMLAllOfSpVerification struct for ApplicationSAMLAllOfSpVerification
 type ApplicationSAMLAllOfSpVerification struct {
 	// Whether the Authn Request signing should be enforced. Default is `false`.
-	AuthnRequestSigned *bool `json:"authnRequestSigned,omitempty"`
-	Certificates []ApplicationSAMLAllOfSpVerificationCertificates `json:"certificates"`
+	AuthnRequestSigned *bool                                            `json:"authnRequestSigned,omitempty"`
+	Certificates       []ApplicationSAMLAllOfSpVerificationCertificates `json:"certificates"`
 }
 
 // NewApplicationSAMLAllOfSpVerification instantiates a new ApplicationSAMLAllOfSpVerification object
@@ -103,7 +103,7 @@ func (o *ApplicationSAMLAllOfSpVerification) SetCertificates(v []ApplicationSAML
 }
 
 func (o ApplicationSAMLAllOfSpVerification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -154,5 +154,3 @@ func (v *NullableApplicationSAMLAllOfSpVerification) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

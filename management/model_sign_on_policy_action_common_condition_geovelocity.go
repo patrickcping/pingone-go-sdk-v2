@@ -19,8 +19,8 @@ var _ MappedNullable = &SignOnPolicyActionCommonConditionGeovelocity{}
 
 // SignOnPolicyActionCommonConditionGeovelocity struct for SignOnPolicyActionCommonConditionGeovelocity
 type SignOnPolicyActionCommonConditionGeovelocity struct {
-	GeoVelocity string `json:"geoVelocity"`
-	Valid SignOnPolicyActionCommonConditionGeovelocityValid `json:"valid"`
+	GeoVelocity string                                            `json:"geoVelocity"`
+	Valid       SignOnPolicyActionCommonConditionGeovelocityValid `json:"valid"`
 }
 
 // NewSignOnPolicyActionCommonConditionGeovelocity instantiates a new SignOnPolicyActionCommonConditionGeovelocity object
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionCommonConditionGeovelocity) SetValid(v SignOnPolicyAc
 }
 
 func (o SignOnPolicyActionCommonConditionGeovelocity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionCommonConditionGeovelocity) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

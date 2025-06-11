@@ -29,7 +29,7 @@ type PropagationStoreConfigurationSCIM struct {
 	// Whether or not users are allowed to be created.
 	CREATE_USERS *bool `json:"CREATE_USERS,omitempty"`
 	// Whether or not users are allowed to be disabled.
-	DISABLE_USERS *bool `json:"DISABLE_USERS,omitempty"`
+	DISABLE_USERS     *bool                                        `json:"DISABLE_USERS,omitempty"`
 	GROUP_NAME_SOURCE *EnumPropagationStoreTypeSCIMGroupNameSource `json:"GROUP_NAME_SOURCE,omitempty"`
 	// API endpoint path to the group entity.
 	GROUPS_RESOURCE *string `json:"GROUPS_RESOURCE,omitempty"`
@@ -40,12 +40,12 @@ type PropagationStoreConfigurationSCIM struct {
 	// OAuth client secret. Required when `AUTHENTICATION_METHOD` is `OAuth 2 Client Credentials`, otherwise optional.
 	OAUTH_CLIENT_SECRET *string `json:"OAUTH_CLIENT_SECRET,omitempty"`
 	// OAuth token request endpoint. Required when `AUTHENTICATION_METHOD` is `OAuth 2 Bearer Token`, otherwise optional.
-	OAUTH_TOKEN_REQUEST *string `json:"OAUTH_TOKEN_REQUEST,omitempty"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
+	OAUTH_TOKEN_REQUEST *string                                            `json:"OAUTH_TOKEN_REQUEST,omitempty"`
+	REMOVE_ACTION       *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
 	// The SCIM URL.
 	SCIM_URL string `json:"SCIM_URL"`
 	// The SCIM version.
-	SCIM_VERSION string `json:"SCIM_VERSION"`
+	SCIM_VERSION           string                                           `json:"SCIM_VERSION"`
 	UNIQUE_USER_IDENTIFIER EnumPropagationStoreTypeSCIMUniqueUserIdentifier `json:"UNIQUE_USER_IDENTIFIER"`
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
@@ -632,7 +632,7 @@ func (o *PropagationStoreConfigurationSCIM) SetUSERS_RESOURCE(v string) {
 }
 
 func (o PropagationStoreConfigurationSCIM) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -722,5 +722,3 @@ func (v *NullablePropagationStoreConfigurationSCIM) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

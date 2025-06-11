@@ -14,32 +14,32 @@ import (
 	"bytes"
 	"context"
 	"io"
+	"log/slog"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-
 // UserApplicationRoleAssignmentsApiService UserApplicationRoleAssignmentsApi service
 type UserApplicationRoleAssignmentsApiService service
 
 type ApiCreateUserApplicationRoleAssignmentRequest struct {
-	ctx context.Context
-	ApiService *UserApplicationRoleAssignmentsApiService
-	environmentID string
-	userID string
-	xPingExternalTransactionID *string
-	xPingExternalSessionID *string
+	ctx                           context.Context
+	ApiService                    *UserApplicationRoleAssignmentsApiService
+	environmentID                 string
+	userID                        string
+	xPingExternalTransactionID    *string
+	xPingExternalSessionID        *string
 	userApplicationRoleAssignment *UserApplicationRoleAssignment
 }
 
-// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
 func (r ApiCreateUserApplicationRoleAssignmentRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiCreateUserApplicationRoleAssignmentRequest {
 	r.xPingExternalTransactionID = &xPingExternalTransactionID
 	return r
 }
 
-// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
 func (r ApiCreateUserApplicationRoleAssignmentRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiCreateUserApplicationRoleAssignmentRequest {
 	r.xPingExternalSessionID = &xPingExternalSessionID
 	return r
@@ -57,22 +57,23 @@ func (r ApiCreateUserApplicationRoleAssignmentRequest) Execute() (*UserApplicati
 /*
 CreateUserApplicationRoleAssignment CREATE User Application Role Assignment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiCreateUserApplicationRoleAssignmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiCreateUserApplicationRoleAssignmentRequest
 */
 func (a *UserApplicationRoleAssignmentsApiService) CreateUserApplicationRoleAssignment(ctx context.Context, environmentID string, userID string) ApiCreateUserApplicationRoleAssignmentRequest {
 	return ApiCreateUserApplicationRoleAssignmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
-//  @return UserApplicationRoleAssignment
+//
+//	@return UserApplicationRoleAssignment
 func (a *UserApplicationRoleAssignmentsApiService) CreateUserApplicationRoleAssignmentExecute(r ApiCreateUserApplicationRoleAssignmentRequest) (*UserApplicationRoleAssignment, *http.Response, error) {
 	var (
 		err                  error
@@ -91,10 +92,10 @@ func (a *UserApplicationRoleAssignmentsApiService) CreateUserApplicationRoleAssi
 
 func (a *UserApplicationRoleAssignmentsApiService) internalCreateUserApplicationRoleAssignmentExecute(r ApiCreateUserApplicationRoleAssignmentRequest) (*UserApplicationRoleAssignment, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserApplicationRoleAssignment
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserApplicationRoleAssignment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApplicationRoleAssignmentsApiService.CreateUserApplicationRoleAssignment")
@@ -140,112 +141,131 @@ func (a *UserApplicationRoleAssignmentsApiService) internalCreateUserApplication
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+	var bodyBytes []byte
+	if req.Body != nil {
+		bodyBytes, _ = io.ReadAll(req.Body)
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
+	var localVarHTTPResponse *http.Response
+	var localVarBody []byte
 
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+	for i := range maxRetries {
+		if req.Body != nil {
+			req.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+
+		if i > 0 {
+			slog.Debug("Retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
+		}
+
+		localVarHTTPResponse, err = a.client.callAPI(req)
+		if err != nil || localVarHTTPResponse == nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+
+		localVarBody, err = io.ReadAll(localVarHTTPResponse.Body)
+		_ = localVarHTTPResponse.Body.Close()
+		localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+		if err != nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+
+		if localVarHTTPResponse.StatusCode >= 300 {
+			newErr := &GenericOpenAPIError{
+				body:  localVarBody,
+				error: localVarHTTPResponse.Status,
+			}
+			if localVarHTTPResponse.StatusCode == 400 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 401 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 403 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 404 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 405 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 405 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 409 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 429 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 500 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		break
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -261,22 +281,22 @@ func (a *UserApplicationRoleAssignmentsApiService) internalCreateUserApplication
 }
 
 type ApiDeleteUserApplicationRoleAssignmentRequest struct {
-	ctx context.Context
-	ApiService *UserApplicationRoleAssignmentsApiService
-	environmentID string
-	userID string
-	applicationRoleID string
+	ctx                        context.Context
+	ApiService                 *UserApplicationRoleAssignmentsApiService
+	environmentID              string
+	userID                     string
+	applicationRoleID          string
 	xPingExternalTransactionID *string
-	xPingExternalSessionID *string
+	xPingExternalSessionID     *string
 }
 
-// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
 func (r ApiDeleteUserApplicationRoleAssignmentRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiDeleteUserApplicationRoleAssignmentRequest {
 	r.xPingExternalTransactionID = &xPingExternalTransactionID
 	return r
 }
 
-// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
 func (r ApiDeleteUserApplicationRoleAssignmentRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiDeleteUserApplicationRoleAssignmentRequest {
 	r.xPingExternalSessionID = &xPingExternalSessionID
 	return r
@@ -289,18 +309,18 @@ func (r ApiDeleteUserApplicationRoleAssignmentRequest) Execute() (*http.Response
 /*
 DeleteUserApplicationRoleAssignment DELETE User Application Role Assignment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @param applicationRoleID
- @return ApiDeleteUserApplicationRoleAssignmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@param applicationRoleID
+	@return ApiDeleteUserApplicationRoleAssignmentRequest
 */
 func (a *UserApplicationRoleAssignmentsApiService) DeleteUserApplicationRoleAssignment(ctx context.Context, environmentID string, userID string, applicationRoleID string) ApiDeleteUserApplicationRoleAssignmentRequest {
 	return ApiDeleteUserApplicationRoleAssignmentRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		userID: userID,
+		ApiService:        a,
+		ctx:               ctx,
+		environmentID:     environmentID,
+		userID:            userID,
 		applicationRoleID: applicationRoleID,
 	}
 }
@@ -324,9 +344,9 @@ func (a *UserApplicationRoleAssignmentsApiService) DeleteUserApplicationRoleAssi
 
 func (a *UserApplicationRoleAssignmentsApiService) internalDeleteUserApplicationRoleAssignmentExecute(r ApiDeleteUserApplicationRoleAssignmentRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApplicationRoleAssignmentsApiService.DeleteUserApplicationRoleAssignment")
@@ -371,122 +391,141 @@ func (a *UserApplicationRoleAssignmentsApiService) internalDeleteUserApplication
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+	var bodyBytes []byte
+	if req.Body != nil {
+		bodyBytes, _ = io.ReadAll(req.Body)
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
+	var localVarHTTPResponse *http.Response
+	var localVarBody []byte
 
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+	for i := range maxRetries {
+		if req.Body != nil {
+			req.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+
+		if i > 0 {
+			slog.Debug("Retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
+		}
+
+		localVarHTTPResponse, err = a.client.callAPI(req)
+		if err != nil || localVarHTTPResponse == nil {
+			return localVarHTTPResponse, err
+		}
+
+		localVarBody, err = io.ReadAll(localVarHTTPResponse.Body)
+		_ = localVarHTTPResponse.Body.Close()
+		localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+		if err != nil {
+			return localVarHTTPResponse, err
+		}
+
+		if localVarHTTPResponse.StatusCode >= 300 {
+			newErr := &GenericOpenAPIError{
+				body:  localVarBody,
+				error: localVarHTTPResponse.Status,
+			}
+			if localVarHTTPResponse.StatusCode == 400 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 401 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 403 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 404 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 409 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 429 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 500 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		break
 	}
 
 	return localVarHTTPResponse, nil
 }
 
 type ApiReadUserApplicationRoleAssignmentsRequest struct {
-	ctx context.Context
-	ApiService *UserApplicationRoleAssignmentsApiService
-	environmentID string
-	userID string
+	ctx                        context.Context
+	ApiService                 *UserApplicationRoleAssignmentsApiService
+	environmentID              string
+	userID                     string
 	xPingExternalTransactionID *string
-	xPingExternalSessionID *string
+	xPingExternalSessionID     *string
 }
 
-// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
 func (r ApiReadUserApplicationRoleAssignmentsRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiReadUserApplicationRoleAssignmentsRequest {
 	r.xPingExternalTransactionID = &xPingExternalTransactionID
 	return r
 }
 
-// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60; 
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
 func (r ApiReadUserApplicationRoleAssignmentsRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiReadUserApplicationRoleAssignmentsRequest {
 	r.xPingExternalSessionID = &xPingExternalSessionID
 	return r
@@ -503,22 +542,23 @@ func (r ApiReadUserApplicationRoleAssignmentsRequest) ExecuteInitialPage() (*Ent
 /*
 ReadUserApplicationRoleAssignments READ User Application Role Assignments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param userID
- @return ApiReadUserApplicationRoleAssignmentsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param userID
+	@return ApiReadUserApplicationRoleAssignmentsRequest
 */
 func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssignments(ctx context.Context, environmentID string, userID string) ApiReadUserApplicationRoleAssignmentsRequest {
 	return ApiReadUserApplicationRoleAssignmentsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		userID: userID,
+		userID:        userID,
 	}
 }
 
 // Execute executes the request
-//  @return EntityArray
+//
+//	@return EntityArray
 func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssignmentsExecute(r ApiReadUserApplicationRoleAssignmentsRequest) EntityArrayPagedIterator {
   return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
 }
@@ -541,10 +581,10 @@ func (a *UserApplicationRoleAssignmentsApiService) ReadUserApplicationRoleAssign
 
 func (a *UserApplicationRoleAssignmentsApiService) internalReadUserApplicationRoleAssignmentsExecute(r ApiReadUserApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EntityArray
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApplicationRoleAssignmentsApiService.ReadUserApplicationRoleAssignments")
@@ -588,101 +628,120 @@ func (a *UserApplicationRoleAssignmentsApiService) internalReadUserApplicationRo
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+	var bodyBytes []byte
+	if req.Body != nil {
+		bodyBytes, _ = io.ReadAll(req.Body)
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	_ = localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
+	var localVarHTTPResponse *http.Response
+	var localVarBody []byte
 
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+	for i := range maxRetries {
+		if req.Body != nil {
+			req.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+
+		if i > 0 {
+			slog.Debug("Retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
+		}
+
+		localVarHTTPResponse, err = a.client.callAPI(req)
+		if err != nil || localVarHTTPResponse == nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+
+		localVarBody, err = io.ReadAll(localVarHTTPResponse.Body)
+		_ = localVarHTTPResponse.Body.Close()
+		localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+		if err != nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+
+		if localVarHTTPResponse.StatusCode >= 300 {
+			newErr := &GenericOpenAPIError{
+				body:  localVarBody,
+				error: localVarHTTPResponse.Status,
+			}
+			if localVarHTTPResponse.StatusCode == 400 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 401 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 403 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 404 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 409 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 429 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
+			if localVarHTTPResponse.StatusCode == 500 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		break
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))

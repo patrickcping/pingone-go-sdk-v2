@@ -21,10 +21,10 @@ var _ MappedNullable = &FlowPolicyAssignment{}
 type FlowPolicyAssignment struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the flow policy assignment resource's unique identifier.
-	Id *string `json:"id,omitempty"`
-	Application *ObjectApplication `json:"application,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	FlowPolicy FlowPolicyAssignmentFlowPolicy `json:"flowPolicy"`
+	Id          *string                        `json:"id,omitempty"`
+	Application *ObjectApplication             `json:"application,omitempty"`
+	Environment *ObjectEnvironment             `json:"environment,omitempty"`
+	FlowPolicy  FlowPolicyAssignmentFlowPolicy `json:"flowPolicy"`
 	// The order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first.
 	Priority int32 `json:"priority"`
 }
@@ -225,7 +225,7 @@ func (o *FlowPolicyAssignment) SetPriority(v int32) {
 }
 
 func (o FlowPolicyAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -286,5 +286,3 @@ func (v *NullableFlowPolicyAssignment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

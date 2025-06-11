@@ -22,7 +22,7 @@ type ImageTargetsOriginal struct {
 	// A string that specifies the URL or fully qualified path to the image source file.
 	Href *string `json:"href,omitempty"`
 	// A string that specifies the UUID of the target image.
-	Id *string `json:"id,omitempty"`
+	Id   *string          `json:"id,omitempty"`
 	Type *EnumImageFormat `json:"type,omitempty"`
 	// The width of the image (in pixels).
 	Width *int32 `json:"width,omitempty"`
@@ -208,7 +208,7 @@ func (o *ImageTargetsOriginal) SetHeight(v int32) {
 }
 
 func (o ImageTargetsOriginal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,5 +270,3 @@ func (v *NullableImageTargetsOriginal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

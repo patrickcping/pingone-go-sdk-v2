@@ -20,14 +20,14 @@ var _ MappedNullable = &ApplicationResourceGrant{}
 
 // ApplicationResourceGrant struct for ApplicationResourceGrant
 type ApplicationResourceGrant struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links       *map[string]LinksHATEOASValue        `json:"_links,omitempty"`
 	Application *ApplicationResourceGrantApplication `json:"application,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the application resource grant ID.
-	Id *string `json:"id,omitempty"`
-	Resource ApplicationResourceGrantResource `json:"resource"`
-	Scopes []ApplicationResourceGrantScopesInner `json:"scopes"`
+	Id       *string                               `json:"id,omitempty"`
+	Resource ApplicationResourceGrantResource      `json:"resource"`
+	Scopes   []ApplicationResourceGrantScopesInner `json:"scopes"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -260,7 +260,7 @@ func (o *ApplicationResourceGrant) SetUpdatedAt(v time.Time) {
 }
 
 func (o ApplicationResourceGrant) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -324,5 +324,3 @@ func (v *NullableApplicationResourceGrant) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

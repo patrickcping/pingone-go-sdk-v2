@@ -21,10 +21,10 @@ var _ MappedNullable = &Schema{}
 type Schema struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Indicates whether or not the `contains` operator can be used. You can use the `contains` operator in a maximum of 5 custom attributes.
-	AllowsContainsOperator *bool `json:"allowsContainsOperator,omitempty"`
-	Attributes []SchemaAttribute `json:"attributes,omitempty"`
+	AllowsContainsOperator *bool             `json:"allowsContainsOperator,omitempty"`
+	Attributes             []SchemaAttribute `json:"attributes,omitempty"`
 	// A string that specifies the description of the schema.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -274,7 +274,7 @@ func (o *Schema) SetName(v string) {
 }
 
 func (o Schema) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -342,5 +342,3 @@ func (v *NullableSchema) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

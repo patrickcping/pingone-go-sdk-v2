@@ -100,7 +100,7 @@ func (o *NotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom) SetAddress(v s
 }
 
 func (o NotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,5 +151,3 @@ func (v *NullableNotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom) Unmars
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

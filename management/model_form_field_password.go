@@ -19,14 +19,14 @@ var _ MappedNullable = &FormFieldPassword{}
 
 // FormFieldPassword struct for FormFieldPassword
 type FormFieldPassword struct {
-	Type EnumFormFieldType `json:"type"`
+	Type     EnumFormFieldType       `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
 	// A boolean that specifies whether the linked directory attribute is disabled.
 	AttributeDisabled *bool `json:"attributeDisabled,omitempty"`
 	// A string that specifies an identifier for the field component.
 	Key string `json:"key"`
 	// A string of escaped JSON that is designed to store a series of text and translatable keys.
-	Label string `json:"label"`
+	Label     string                    `json:"label"`
 	LabelMode *EnumFormElementLabelMode `json:"labelMode,omitempty"`
 	// A boolean that specifies whether the field is required.
 	Required *bool `json:"required,omitempty"`
@@ -39,13 +39,13 @@ type FormFieldPassword struct {
 	// A string that specifies the label for the other option in drop-down controls.
 	OtherOptionInputLabel *string `json:"otherOptionInputLabel,omitempty"`
 	// A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
-	OtherOptionAttributeDisabled *bool `json:"otherOptionAttributeDisabled,omitempty"`
-	Layout *EnumFormElementLayout `json:"layout,omitempty"`
+	OtherOptionAttributeDisabled *bool                  `json:"otherOptionAttributeDisabled,omitempty"`
+	Layout                       *EnumFormElementLayout `json:"layout,omitempty"`
 	// An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
 	Options []FormElementOption `json:"options,omitempty"`
 	// A boolean that specifies whether the password requirements are displayed.
-	ShowPasswordRequirements *bool `json:"showPasswordRequirements,omitempty"`
-	Validation *FormElementValidation `json:"validation,omitempty"`
+	ShowPasswordRequirements *bool                  `json:"showPasswordRequirements,omitempty"`
+	Validation               *FormElementValidation `json:"validation,omitempty"`
 }
 
 // NewFormFieldPassword instantiates a new FormFieldPassword object
@@ -550,7 +550,7 @@ func (o *FormFieldPassword) SetValidation(v FormElementValidation) {
 }
 
 func (o FormFieldPassword) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -637,5 +637,3 @@ func (v *NullableFormFieldPassword) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

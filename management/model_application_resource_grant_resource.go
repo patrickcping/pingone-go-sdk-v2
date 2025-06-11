@@ -66,7 +66,7 @@ func (o *ApplicationResourceGrantResource) SetId(v string) {
 }
 
 func (o ApplicationResourceGrantResource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableApplicationResourceGrantResource) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ var _ MappedNullable = &RoleAssignmentScope{}
 // RoleAssignmentScope struct for RoleAssignmentScope
 type RoleAssignmentScope struct {
 	// A string that specifies the role assignment scope ID.
-	Id string `json:"id"`
+	Id   string                      `json:"id"`
 	Type EnumRoleAssignmentScopeType `json:"type"`
 }
 
@@ -92,7 +92,7 @@ func (o *RoleAssignmentScope) SetType(v EnumRoleAssignmentScopeType) {
 }
 
 func (o RoleAssignmentScope) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableRoleAssignmentScope) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

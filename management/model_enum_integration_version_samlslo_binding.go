@@ -20,7 +20,7 @@ type EnumIntegrationVersionSAMLSLOBinding string
 
 // List of EnumIntegrationVersionSAMLSLOBinding
 const (
-	ENUMINTEGRATIONVERSIONSAMLSLOBINDING_POST EnumIntegrationVersionSAMLSLOBinding = "HTTP_POST"
+	ENUMINTEGRATIONVERSIONSAMLSLOBINDING_POST     EnumIntegrationVersionSAMLSLOBinding = "HTTP_POST"
 	ENUMINTEGRATIONVERSIONSAMLSLOBINDING_REDIRECT EnumIntegrationVersionSAMLSLOBinding = "HTTP_REDIRECT"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumIntegrationVersionSAMLSLOBinding) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -19,16 +19,16 @@ var _ MappedNullable = &RoleAssignment{}
 
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Gateway *GatewayInstanceGateway `json:"gateway,omitempty"`
-	Group *RoleAssignmentGroup `json:"group,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Environment *ObjectEnvironment            `json:"environment,omitempty"`
+	Gateway     *GatewayInstanceGateway       `json:"gateway,omitempty"`
+	Group       *RoleAssignmentGroup          `json:"group,omitempty"`
 	// A string that specifies the user role assignment ID.
 	Id *string `json:"id,omitempty"`
 	// A boolean that specifies whether this role assignment can be deleted by the current actor.
-	ReadOnly *bool `json:"readOnly,omitempty"`
-	Role RoleAssignmentRole `json:"role"`
-	Scope RoleAssignmentScope `json:"scope"`
+	ReadOnly *bool               `json:"readOnly,omitempty"`
+	Role     RoleAssignmentRole  `json:"role"`
+	Scope    RoleAssignmentScope `json:"scope"`
 }
 
 // NewRoleAssignment instantiates a new RoleAssignment object
@@ -291,7 +291,7 @@ func (o *RoleAssignment) SetScope(v RoleAssignmentScope) {
 }
 
 func (o RoleAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,5 +358,3 @@ func (v *NullableRoleAssignment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

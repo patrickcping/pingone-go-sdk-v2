@@ -19,10 +19,10 @@ var _ MappedNullable = &FormStylesPadding{}
 
 // FormStylesPadding struct for FormStylesPadding
 type FormStylesPadding struct {
-	Top *int32 `json:"top,omitempty"`
+	Top    *int32 `json:"top,omitempty"`
 	Bottom *int32 `json:"bottom,omitempty"`
-	Left *int32 `json:"left,omitempty"`
-	Right *int32 `json:"right,omitempty"`
+	Left   *int32 `json:"left,omitempty"`
+	Right  *int32 `json:"right,omitempty"`
 }
 
 // NewFormStylesPadding instantiates a new FormStylesPadding object
@@ -171,7 +171,7 @@ func (o *FormStylesPadding) SetRight(v int32) {
 }
 
 func (o FormStylesPadding) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableFormStylesPadding) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

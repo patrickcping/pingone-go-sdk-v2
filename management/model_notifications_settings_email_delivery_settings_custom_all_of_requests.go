@@ -19,12 +19,12 @@ var _ MappedNullable = &NotificationsSettingsEmailDeliverySettingsCustomAllOfReq
 
 // NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests struct for NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests
 type NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests struct {
-	// Required if method is set to `POST`. Use body to provide the content of the body for the request sent to the email provider. The body that you define must include the mandatory PingOne variables for notifications: `${from}`, `${to}`, and `${message}`. You can also include any optional notification variables. If you are including the header `content-type: application/json` in `headers`: - The content of `body` must be valid JSON - You must enclose the JSON object in quotation marks and escape all quotation marks within the string, for example, `\"{\\\"From\\\": \\\"${from}\\\",\\\"To\\\": \\\"${to}\\\",\\\"message2\\\": \\\"${message}\\\"}\"`. 
-	Body *string `json:"body,omitempty"`
+	// Required if method is set to `POST`. Use body to provide the content of the body for the request sent to the email provider. The body that you define must include the mandatory PingOne variables for notifications: `${from}`, `${to}`, and `${message}`. You can also include any optional notification variables. If you are including the header `content-type: application/json` in `headers`: - The content of `body` must be valid JSON - You must enclose the JSON object in quotation marks and escape all quotation marks within the string, for example, `\"{\\\"From\\\": \\\"${from}\\\",\\\"To\\\": \\\"${to}\\\",\\\"message2\\\": \\\"${message}\\\"}\"`.
+	Body           *string                                                                    `json:"body,omitempty"`
 	DeliveryMethod EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod `json:"deliveryMethod"`
 	// Use this object to specify the headers that your email provider's API expects.
-	Headers *map[string]string `json:"headers,omitempty"`
-	Method EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod `json:"method"`
+	Headers *map[string]string                                                 `json:"headers,omitempty"`
+	Method  EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod `json:"method"`
 	// Use url to specify the endpoint for your email provider, for example, `https://api.example.com/email`. If `method` is set to `GET`, append to the URL the various query parameters that the email provider's API requires. The URL must also include the required PingOne variables, as described for the body parameter.
 	Url string `json:"url"`
 }
@@ -186,7 +186,7 @@ func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests) SetUrl(v
 }
 
 func (o NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,5 +242,3 @@ func (v *NullableNotificationsSettingsEmailDeliverySettingsCustomAllOfRequests) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

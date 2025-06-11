@@ -19,9 +19,9 @@ var _ MappedNullable = &TemplateContentEmailAllOfFrom{}
 
 // TemplateContentEmailAllOfFrom struct for TemplateContentEmailAllOfFrom
 type TemplateContentEmailAllOfFrom struct {
-	// The email's sender name. If the environment uses the Ping Identity email sender, the name \"PingOne\" is used. You can configure other email sender names per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details. 
+	// The email's sender name. If the environment uses the Ping Identity email sender, the name \"PingOne\" is used. You can configure other email sender names per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
 	Name *string `json:"name,omitempty"`
-	// The sender email address. If the environment uses the Ping Identity email sender, or if the address field is empty, the address \"noreply@pingidentity.com\" is used. You can configure other email sender addresses per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details. 
+	// The sender email address. If the environment uses the Ping Identity email sender, or if the address field is empty, the address \"noreply@pingidentity.com\" is used. You can configure other email sender addresses per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
 	Address *string `json:"address,omitempty"`
 }
 
@@ -115,7 +115,7 @@ func (o *TemplateContentEmailAllOfFrom) SetAddress(v string) {
 }
 
 func (o TemplateContentEmailAllOfFrom) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,5 +168,3 @@ func (v *NullableTemplateContentEmailAllOfFrom) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

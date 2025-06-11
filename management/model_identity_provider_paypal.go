@@ -23,16 +23,16 @@ type IdentityProviderPaypal struct {
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
-	Enabled bool `json:"enabled"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Icon *IdentityProviderCommonIcon `json:"icon,omitempty"`
+	Enabled     bool                        `json:"enabled"`
+	Environment *ObjectEnvironment          `json:"environment,omitempty"`
+	Icon        *IdentityProviderCommonIcon `json:"icon,omitempty"`
 	// The resource ID.
-	Id *string `json:"id,omitempty"`
+	Id              *string                                `json:"id,omitempty"`
 	LoginButtonIcon *IdentityProviderCommonLoginButtonIcon `json:"loginButtonIcon,omitempty"`
 	// The name of the IdP.
-	Name string `json:"name"`
+	Name         string                              `json:"name"`
 	Registration *IdentityProviderCommonRegistration `json:"registration,omitempty"`
-	Type EnumIdentityProviderExt `json:"type"`
+	Type         EnumIdentityProviderExt             `json:"type"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -501,7 +501,7 @@ func (o *IdentityProviderPaypal) SetClientEnvironment(v string) {
 }
 
 func (o IdentityProviderPaypal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -581,5 +581,3 @@ func (v *NullableIdentityProviderPaypal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

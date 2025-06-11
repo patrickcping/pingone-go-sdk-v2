@@ -19,9 +19,9 @@ var _ MappedNullable = &TemplateContentEmailAllOfReplyTo{}
 
 // TemplateContentEmailAllOfReplyTo struct for TemplateContentEmailAllOfReplyTo
 type TemplateContentEmailAllOfReplyTo struct {
-	// The email's \"reply to\" name. If the environment uses the Ping Identity email sender, the name \"PingOne\" is used. You can configure other email \"reply to\" names per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details. 
+	// The email's \"reply to\" name. If the environment uses the Ping Identity email sender, the name \"PingOne\" is used. You can configure other email \"reply to\" names per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
 	Name *string `json:"name,omitempty"`
-	// The \"reply to\" email address. If the environment uses the Ping Identity email sender, or if the address field is empty, the address \"noreply@pingidentity.com\" is used. You can configure other email \"reply to\" addresses per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details. 
+	// The \"reply to\" email address. If the environment uses the Ping Identity email sender, or if the address field is empty, the address \"noreply@pingidentity.com\" is used. You can configure other email \"reply to\" addresses per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
 	Address *string `json:"address,omitempty"`
 }
 
@@ -115,7 +115,7 @@ func (o *TemplateContentEmailAllOfReplyTo) SetAddress(v string) {
 }
 
 func (o TemplateContentEmailAllOfReplyTo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,5 +168,3 @@ func (v *NullableTemplateContentEmailAllOfReplyTo) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

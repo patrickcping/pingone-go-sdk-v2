@@ -20,7 +20,7 @@ var _ MappedNullable = &EmailDomainDKIMStatusRegionsInner{}
 // EmailDomainDKIMStatusRegionsInner struct for EmailDomainDKIMStatusRegionsInner
 type EmailDomainDKIMStatusRegionsInner struct {
 	// The name of the region.
-	Name *string `json:"name,omitempty"`
+	Name   *string                `json:"name,omitempty"`
 	Status *EnumEmailDomainStatus `json:"status,omitempty"`
 	// A collection of key and value pairs.
 	Tokens []EmailDomainDKIMStatusRegionsInnerTokensInner `json:"tokens,omitempty"`
@@ -140,7 +140,7 @@ func (o *EmailDomainDKIMStatusRegionsInner) SetTokens(v []EmailDomainDKIMStatusR
 }
 
 func (o EmailDomainDKIMStatusRegionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,5 +196,3 @@ func (v *NullableEmailDomainDKIMStatusRegionsInner) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ type EnumCSRExportHeader string
 
 // List of EnumCSRExportHeader
 const (
-	ENUMCSREXPORTHEADER_PKCS10 EnumCSRExportHeader = "application/pkcs10"
+	ENUMCSREXPORTHEADER_PKCS10     EnumCSRExportHeader = "application/pkcs10"
 	ENUMCSREXPORTHEADER_X_PEM_FILE EnumCSRExportHeader = "application/x-pem-file"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumCSRExportHeader) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

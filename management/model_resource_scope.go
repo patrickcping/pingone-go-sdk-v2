@@ -22,12 +22,12 @@ var _ MappedNullable = &ResourceScope{}
 type ResourceScope struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id       *string         `json:"id,omitempty"`
 	Resource *ObjectResource `json:"resource,omitempty"`
 	// A string that specifies the resource scope name.
 	Name string `json:"name"`
 	// A string that specifies the description of the scope.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// An array that specifies the user schema attributes that can be read or updated for the specified PingOne access control scope. The value is an array of schema attribute paths (such as `username`, `name.given`, `shirtSize`) that the scope controls. This property is supported only for the `p1:read:user`, `p1:update:user` and `p1:read:user:{suffix}` and `p1:update:user:{suffix}` scopes. No other PingOne platform scopes allow this behavior. Any attributes not listed in the attribute array are excluded from the read or update action. The wildcard path (*) in the array includes all attributes and cannot be used in conjunction with any other user schema attribute paths
 	SchemaAttributes []string `json:"schemaAttributes,omitempty"`
@@ -370,7 +370,7 @@ func (o *ResourceScope) SetUpdatedAt(v time.Time) {
 }
 
 func (o ResourceScope) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -445,5 +445,3 @@ func (v *NullableResourceScope) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

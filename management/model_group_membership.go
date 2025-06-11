@@ -19,13 +19,13 @@ var _ MappedNullable = &GroupMembership{}
 
 // GroupMembership struct for GroupMembership
 type GroupMembership struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Embedded *GroupMembershipEmbedded `json:"_embedded,omitempty"`
+	Links    *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Embedded *GroupMembershipEmbedded      `json:"_embedded,omitempty"`
 	// ID of the group to assign
-	Id string `json:"id"`
+	Id          string             `json:"id"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the group name assigned to the user.
-	Name *string `json:"name,omitempty"`
+	Name *string                  `json:"name,omitempty"`
 	Type *EnumGroupMembershipType `json:"type,omitempty"`
 }
 
@@ -232,7 +232,7 @@ func (o *GroupMembership) SetType(v EnumGroupMembershipType) {
 }
 
 func (o GroupMembership) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -295,5 +295,3 @@ func (v *NullableGroupMembership) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

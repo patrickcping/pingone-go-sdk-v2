@@ -27,11 +27,11 @@ type FormStyles struct {
 	// A string that specifies the button border color. The value must be a valid hexadecimal color.
 	BorderColor *string `json:"borderColor,omitempty"`
 	// A boolean that specifies whether the button is enabled.
-	Enabled *bool `json:"enabled,omitempty"`
-	Height *int32 `json:"height,omitempty"`
+	Enabled *bool              `json:"enabled,omitempty"`
+	Height  *int32             `json:"height,omitempty"`
 	Padding *FormStylesPadding `json:"padding,omitempty"`
 	// An integer that specifies the button width. Set as a percentage.
-	Width *int32 `json:"width,omitempty"`
+	Width     *int32                   `json:"width,omitempty"`
 	WidthUnit *EnumFormStylesWidthUnit `json:"widthUnit,omitempty"`
 }
 
@@ -341,7 +341,7 @@ func (o *FormStyles) SetWidthUnit(v EnumFormStylesWidthUnit) {
 }
 
 func (o FormStyles) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -415,5 +415,3 @@ func (v *NullableFormStyles) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

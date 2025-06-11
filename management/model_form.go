@@ -22,20 +22,20 @@ var _ MappedNullable = &Form{}
 type Form struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the form name, which must be provided and must be unique within an environment.
 	Name string `json:"name"`
 	// A string that specifies the description of the form.
-	Description *string `json:"description,omitempty"`
-	Category EnumFormCategory `json:"category"`
-	Components FormComponents `json:"components"`
+	Description *string          `json:"description,omitempty"`
+	Category    EnumFormCategory `json:"category"`
+	Components  FormComponents   `json:"components"`
 	// An integer that specifies the number of columns in the form (min = 1; max = 4).
 	Cols *int32 `json:"cols,omitempty"`
 	// A boolean that specifies whether optional fields are highlighted in the rendered form.
 	MarkOptional bool `json:"markOptional"`
 	// A boolean that specifies whether required fields are highlighted in the rendered form.
-	MarkRequired bool `json:"markRequired"`
+	MarkRequired      bool                       `json:"markRequired"`
 	TranslationMethod *EnumFormTranslationMethod `json:"translationMethod,omitempty"`
 	// A read-only object that specifies the list of the FormField types in the form.
 	FieldTypes []EnumFormFieldType `json:"fieldTypes,omitempty"`
@@ -510,7 +510,7 @@ func (o *Form) SetModified(v time.Time) {
 }
 
 func (o Form) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -592,5 +592,3 @@ func (v *NullableForm) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

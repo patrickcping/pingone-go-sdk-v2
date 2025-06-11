@@ -25,8 +25,8 @@ type UserAccount struct {
 	// A string that specifies the date-time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts.
 	LockedAt *time.Time `json:"lockedAt,omitempty"`
 	// An integer that specifies the number of seconds until the user's account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
-	SecondsUntilUnlock *int32 `json:"secondsUntilUnlock,omitempty"`
-	Status EnumUserStatus `json:"status"`
+	SecondsUntilUnlock *int32         `json:"secondsUntilUnlock,omitempty"`
+	Status             EnumUserStatus `json:"status"`
 	// A string that specifies the time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
 	UnlockAt *time.Time `json:"unlockAt,omitempty"`
 }
@@ -195,7 +195,7 @@ func (o *UserAccount) SetUnlockAt(v time.Time) {
 }
 
 func (o UserAccount) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,5 +253,3 @@ func (v *NullableUserAccount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

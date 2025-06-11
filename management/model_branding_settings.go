@@ -21,11 +21,11 @@ var _ MappedNullable = &BrandingSettings{}
 type BrandingSettings struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The company name associated with the specified environment.
-	CompanyName *string `json:"companyName,omitempty"`
-	Logo *BrandingSettingsLogo `json:"logo,omitempty"`
+	CompanyName *string               `json:"companyName,omitempty"`
+	Logo        *BrandingSettingsLogo `json:"logo,omitempty"`
 }
 
 // NewBrandingSettings instantiates a new BrandingSettings object
@@ -206,7 +206,7 @@ func (o *BrandingSettings) SetLogo(v BrandingSettingsLogo) {
 }
 
 func (o BrandingSettings) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -268,5 +268,3 @@ func (v *NullableBrandingSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

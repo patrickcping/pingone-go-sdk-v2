@@ -20,20 +20,20 @@ type EnumIdentityProvider string
 
 // List of EnumIdentityProvider
 const (
-	ENUMIDENTITYPROVIDER_FACEBOOK EnumIdentityProvider = "FACEBOOK"
-	ENUMIDENTITYPROVIDER_GOOGLE EnumIdentityProvider = "GOOGLE"
-	ENUMIDENTITYPROVIDER_LINKEDIN EnumIdentityProvider = "LINKEDIN"
-	ENUMIDENTITYPROVIDER_LINKEDIN_OIDC EnumIdentityProvider = "LINKEDIN_OIDC"
-	ENUMIDENTITYPROVIDER_APPLE EnumIdentityProvider = "APPLE"
-	ENUMIDENTITYPROVIDER_TWITTER EnumIdentityProvider = "TWITTER"
-	ENUMIDENTITYPROVIDER_AMAZON EnumIdentityProvider = "AMAZON"
-	ENUMIDENTITYPROVIDER_YAHOO EnumIdentityProvider = "YAHOO"
-	ENUMIDENTITYPROVIDER_MICROSOFT EnumIdentityProvider = "MICROSOFT"
-	ENUMIDENTITYPROVIDER_PAYPAL EnumIdentityProvider = "PAYPAL"
-	ENUMIDENTITYPROVIDER_GITHUB EnumIdentityProvider = "GITHUB"
+	ENUMIDENTITYPROVIDER_FACEBOOK       EnumIdentityProvider = "FACEBOOK"
+	ENUMIDENTITYPROVIDER_GOOGLE         EnumIdentityProvider = "GOOGLE"
+	ENUMIDENTITYPROVIDER_LINKEDIN       EnumIdentityProvider = "LINKEDIN"
+	ENUMIDENTITYPROVIDER_LINKEDIN_OIDC  EnumIdentityProvider = "LINKEDIN_OIDC"
+	ENUMIDENTITYPROVIDER_APPLE          EnumIdentityProvider = "APPLE"
+	ENUMIDENTITYPROVIDER_TWITTER        EnumIdentityProvider = "TWITTER"
+	ENUMIDENTITYPROVIDER_AMAZON         EnumIdentityProvider = "AMAZON"
+	ENUMIDENTITYPROVIDER_YAHOO          EnumIdentityProvider = "YAHOO"
+	ENUMIDENTITYPROVIDER_MICROSOFT      EnumIdentityProvider = "MICROSOFT"
+	ENUMIDENTITYPROVIDER_PAYPAL         EnumIdentityProvider = "PAYPAL"
+	ENUMIDENTITYPROVIDER_GITHUB         EnumIdentityProvider = "GITHUB"
 	ENUMIDENTITYPROVIDER_OPENID_CONNECT EnumIdentityProvider = "OPENID_CONNECT"
-	ENUMIDENTITYPROVIDER_SAML EnumIdentityProvider = "SAML"
-	ENUMIDENTITYPROVIDER_PING_ONE EnumIdentityProvider = "PING_ONE"
+	ENUMIDENTITYPROVIDER_SAML           EnumIdentityProvider = "SAML"
+	ENUMIDENTITYPROVIDER_PING_ONE       EnumIdentityProvider = "PING_ONE"
 )
 
 // All allowed values of EnumIdentityProvider enum
@@ -133,4 +133,3 @@ func (v *NullableEnumIdentityProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

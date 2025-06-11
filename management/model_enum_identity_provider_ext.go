@@ -20,19 +20,19 @@ type EnumIdentityProviderExt string
 
 // List of EnumIdentityProviderExt
 const (
-	ENUMIDENTITYPROVIDEREXT_FACEBOOK EnumIdentityProviderExt = "FACEBOOK"
-	ENUMIDENTITYPROVIDEREXT_GOOGLE EnumIdentityProviderExt = "GOOGLE"
-	ENUMIDENTITYPROVIDEREXT_LINKEDIN EnumIdentityProviderExt = "LINKEDIN"
-	ENUMIDENTITYPROVIDEREXT_LINKEDIN_OIDC EnumIdentityProviderExt = "LINKEDIN_OIDC"
-	ENUMIDENTITYPROVIDEREXT_APPLE EnumIdentityProviderExt = "APPLE"
-	ENUMIDENTITYPROVIDEREXT_TWITTER EnumIdentityProviderExt = "TWITTER"
-	ENUMIDENTITYPROVIDEREXT_AMAZON EnumIdentityProviderExt = "AMAZON"
-	ENUMIDENTITYPROVIDEREXT_YAHOO EnumIdentityProviderExt = "YAHOO"
-	ENUMIDENTITYPROVIDEREXT_MICROSOFT EnumIdentityProviderExt = "MICROSOFT"
-	ENUMIDENTITYPROVIDEREXT_PAYPAL EnumIdentityProviderExt = "PAYPAL"
-	ENUMIDENTITYPROVIDEREXT_GITHUB EnumIdentityProviderExt = "GITHUB"
+	ENUMIDENTITYPROVIDEREXT_FACEBOOK       EnumIdentityProviderExt = "FACEBOOK"
+	ENUMIDENTITYPROVIDEREXT_GOOGLE         EnumIdentityProviderExt = "GOOGLE"
+	ENUMIDENTITYPROVIDEREXT_LINKEDIN       EnumIdentityProviderExt = "LINKEDIN"
+	ENUMIDENTITYPROVIDEREXT_LINKEDIN_OIDC  EnumIdentityProviderExt = "LINKEDIN_OIDC"
+	ENUMIDENTITYPROVIDEREXT_APPLE          EnumIdentityProviderExt = "APPLE"
+	ENUMIDENTITYPROVIDEREXT_TWITTER        EnumIdentityProviderExt = "TWITTER"
+	ENUMIDENTITYPROVIDEREXT_AMAZON         EnumIdentityProviderExt = "AMAZON"
+	ENUMIDENTITYPROVIDEREXT_YAHOO          EnumIdentityProviderExt = "YAHOO"
+	ENUMIDENTITYPROVIDEREXT_MICROSOFT      EnumIdentityProviderExt = "MICROSOFT"
+	ENUMIDENTITYPROVIDEREXT_PAYPAL         EnumIdentityProviderExt = "PAYPAL"
+	ENUMIDENTITYPROVIDEREXT_GITHUB         EnumIdentityProviderExt = "GITHUB"
 	ENUMIDENTITYPROVIDEREXT_OPENID_CONNECT EnumIdentityProviderExt = "OPENID_CONNECT"
-	ENUMIDENTITYPROVIDEREXT_SAML EnumIdentityProviderExt = "SAML"
+	ENUMIDENTITYPROVIDEREXT_SAML           EnumIdentityProviderExt = "SAML"
 )
 
 // All allowed values of EnumIdentityProviderExt enum
@@ -131,4 +131,3 @@ func (v *NullableEnumIdentityProviderExt) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

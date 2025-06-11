@@ -20,8 +20,8 @@ type EnumNotificationsSettingsEmailDeliverySettingsProtocol string
 
 // List of EnumNotificationsSettingsEmailDeliverySettingsProtocol
 const (
-	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_HTTP EnumNotificationsSettingsEmailDeliverySettingsProtocol = "HTTP"
-	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTP EnumNotificationsSettingsEmailDeliverySettingsProtocol = "SMTP"
+	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_HTTP  EnumNotificationsSettingsEmailDeliverySettingsProtocol = "HTTP"
+	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTP  EnumNotificationsSettingsEmailDeliverySettingsProtocol = "SMTP"
 	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTPS EnumNotificationsSettingsEmailDeliverySettingsProtocol = "SMTPS"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumNotificationsSettingsEmailDeliverySettingsProtocol) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

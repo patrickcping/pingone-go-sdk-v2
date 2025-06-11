@@ -20,7 +20,7 @@ type EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod string
 
 // List of EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod
 const (
-	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMREQUESTSMETHOD_GET EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod = "GET"
+	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMREQUESTSMETHOD_GET  EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod = "GET"
 	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMREQUESTSMETHOD_POST EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod = "POST"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMet
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

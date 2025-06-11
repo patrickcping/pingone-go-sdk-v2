@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationOIDCAllOfMobilePasscodeRefreshDuration{}
 // ApplicationOIDCAllOfMobilePasscodeRefreshDuration struct for ApplicationOIDCAllOfMobilePasscodeRefreshDuration
 type ApplicationOIDCAllOfMobilePasscodeRefreshDuration struct {
 	// The amount of time a passcode should be displayed before being replaced with a new passcode - must be between 30 and 60.
-	Duration int32 `json:"duration"`
+	Duration int32                       `json:"duration"`
 	TimeUnit EnumPasscodeRefreshTimeUnit `json:"timeUnit"`
 }
 
@@ -96,7 +96,7 @@ func (o *ApplicationOIDCAllOfMobilePasscodeRefreshDuration) SetTimeUnit(v EnumPa
 }
 
 func (o ApplicationOIDCAllOfMobilePasscodeRefreshDuration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -145,5 +145,3 @@ func (v *NullableApplicationOIDCAllOfMobilePasscodeRefreshDuration) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,7 +21,7 @@ type EnumPropagationStoreTypeSlackUniqueUserIdentifier string
 // List of EnumPropagationStoreTypeSlackUniqueUserIdentifier
 const (
 	ENUMPROPAGATIONSTORETYPESLACKUNIQUEUSERIDENTIFIER_PRIMARY_EMAIL EnumPropagationStoreTypeSlackUniqueUserIdentifier = "primaryEmail"
-	ENUMPROPAGATIONSTORETYPESLACKUNIQUEUSERIDENTIFIER_USER_NAME EnumPropagationStoreTypeSlackUniqueUserIdentifier = "userName"
+	ENUMPROPAGATIONSTORETYPESLACKUNIQUEUSERIDENTIFIER_USER_NAME     EnumPropagationStoreTypeSlackUniqueUserIdentifier = "userName"
 )
 
 // All allowed values of EnumPropagationStoreTypeSlackUniqueUserIdentifier enum
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeSlackUniqueUserIdentifier) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -22,22 +22,22 @@ var _ MappedNullable = &Resource{}
 type Resource struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days).
-	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
+	AccessTokenValiditySeconds     *int32                                  `json:"accessTokenValiditySeconds,omitempty"`
 	ApplicationPermissionsSettings *ResourceApplicationPermissionsSettings `json:"applicationPermissionsSettings,omitempty"`
 	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`). If a URL is not specified, the resource name is used.
 	Audience *string `json:"audience,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the resource.
-	Description *string `json:"description,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Resource *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`
+	Description *string                                    `json:"description,omitempty"`
+	Environment *ObjectEnvironment                         `json:"environment,omitempty"`
+	Resource    *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment.
-	Name string `json:"name"`
+	Name                         string                                    `json:"name"`
 	IntrospectEndpointAuthMethod *EnumResourceIntrospectEndpointAuthMethod `json:"introspectEndpointAuthMethod,omitempty"`
-	Type *EnumResourceType `json:"type,omitempty"`
+	Type                         *EnumResourceType                         `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -469,7 +469,7 @@ func (o *Resource) SetUpdatedAt(v time.Time) {
 }
 
 func (o Resource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -553,5 +553,3 @@ func (v *NullableResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

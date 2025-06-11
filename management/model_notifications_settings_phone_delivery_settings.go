@@ -17,7 +17,7 @@ import (
 
 // NotificationsSettingsPhoneDeliverySettings - struct for NotificationsSettingsPhoneDeliverySettings
 type NotificationsSettingsPhoneDeliverySettings struct {
-	NotificationsSettingsPhoneDeliverySettingsCustom *NotificationsSettingsPhoneDeliverySettingsCustom
+	NotificationsSettingsPhoneDeliverySettingsCustom          *NotificationsSettingsPhoneDeliverySettingsCustom
 	NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
 }
 
@@ -34,7 +34,6 @@ func NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAsNotificationsSet
 		NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *NotificationsSettingsPhoneDeliverySettings) UnmarshalJSON(data []byte) error {
@@ -87,7 +86,7 @@ func (src NotificationsSettingsPhoneDeliverySettings) MarshalJSON() ([]byte, err
 }
 
 // Get the actual instance
-func (obj *NotificationsSettingsPhoneDeliverySettings) GetActualInstance() (interface{}) {
+func (obj *NotificationsSettingsPhoneDeliverySettings) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -138,5 +137,3 @@ func (v *NullableNotificationsSettingsPhoneDeliverySettings) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

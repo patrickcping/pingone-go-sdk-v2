@@ -17,7 +17,7 @@ import (
 
 // SignOnPolicyActionCommonConditionEqualsEquals - struct for SignOnPolicyActionCommonConditionEqualsEquals
 type SignOnPolicyActionCommonConditionEqualsEquals struct {
-	Bool *bool
+	Bool   *bool
 	String *string
 }
 
@@ -34,7 +34,6 @@ func StringAsSignOnPolicyActionCommonConditionEqualsEquals(v *string) SignOnPoli
 		String: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *SignOnPolicyActionCommonConditionEqualsEquals) UnmarshalJSON(data []byte) error {
@@ -93,7 +92,7 @@ func (src SignOnPolicyActionCommonConditionEqualsEquals) MarshalJSON() ([]byte, 
 }
 
 // Get the actual instance
-func (obj *SignOnPolicyActionCommonConditionEqualsEquals) GetActualInstance() (interface{}) {
+func (obj *SignOnPolicyActionCommonConditionEqualsEquals) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -144,5 +143,3 @@ func (v *NullableSignOnPolicyActionCommonConditionEqualsEquals) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

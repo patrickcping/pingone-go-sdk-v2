@@ -20,7 +20,7 @@ type EnumApplicationNativeGooglePlayVerificationType string
 
 // List of EnumApplicationNativeGooglePlayVerificationType
 const (
-	ENUMAPPLICATIONNATIVEGOOGLEPLAYVERIFICATIONTYPE_GOOGLE EnumApplicationNativeGooglePlayVerificationType = "GOOGLE"
+	ENUMAPPLICATIONNATIVEGOOGLEPLAYVERIFICATIONTYPE_GOOGLE   EnumApplicationNativeGooglePlayVerificationType = "GOOGLE"
 	ENUMAPPLICATIONNATIVEGOOGLEPLAYVERIFICATIONTYPE_INTERNAL EnumApplicationNativeGooglePlayVerificationType = "INTERNAL"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumApplicationNativeGooglePlayVerificationType) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

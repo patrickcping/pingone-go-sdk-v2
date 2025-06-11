@@ -27,7 +27,7 @@ type Integration struct {
 	// The description of the integration in HTML to be used for the integration listing. You can use class and style attributes for inline styling. There's a 4000 character limit for the description.
 	Description *string `json:"description,omitempty"`
 	// The platform-generated ID of this integration.
-	Id *string `json:"id,omitempty"`
+	Id   *string          `json:"id,omitempty"`
 	Logo *IntegrationLogo `json:"logo,omitempty"`
 	// Absolute URL link to the marketing landing page.
 	MarketingLandingPageUrl *string `json:"marketingLandingPageUrl,omitempty"`
@@ -38,7 +38,7 @@ type Integration struct {
 	// Name of the publisher.
 	Publisher string `json:"publisher"`
 	// Tags to apply to the integration metadata. Can include `SSO`, `AUTHENTICATION`, `MFA`, `INTELLIGENCE`, `GOVERNANCE`, `IDAAS`, `ACCESS`, `DIRECTORY`, or `PROVISIONING`.
-	Tags []EnumIntegrationTag `json:"tags,omitempty"`
+	Tags       []EnumIntegrationTag   `json:"tags,omitempty"`
 	ThirdParty *IntegrationThirdParty `json:"thirdParty,omitempty"`
 }
 
@@ -391,7 +391,7 @@ func (o *Integration) SetThirdParty(v IntegrationThirdParty) {
 }
 
 func (o Integration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -465,5 +465,3 @@ func (v *NullableIntegration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

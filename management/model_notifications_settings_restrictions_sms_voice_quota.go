@@ -19,7 +19,7 @@ var _ MappedNullable = &NotificationsSettingsRestrictionsSmsVoiceQuota{}
 
 // NotificationsSettingsRestrictionsSmsVoiceQuota struct for NotificationsSettingsRestrictionsSmsVoiceQuota
 type NotificationsSettingsRestrictionsSmsVoiceQuota struct {
-	// The maximum number of SMS and voice notifications that can be sent per user per day. - `restrictions.smsVoiceQuota.daily` can be set to any value between 0 and 50. - Trial accounts have a default value of 30. - The daily counters are reset every night at midnight UTC. 
+	// The maximum number of SMS and voice notifications that can be sent per user per day. - `restrictions.smsVoiceQuota.daily` can be set to any value between 0 and 50. - Trial accounts have a default value of 30. - The daily counters are reset every night at midnight UTC.
 	Daily int32 `json:"daily"`
 }
 
@@ -66,7 +66,7 @@ func (o *NotificationsSettingsRestrictionsSmsVoiceQuota) SetDaily(v int32) {
 }
 
 func (o NotificationsSettingsRestrictionsSmsVoiceQuota) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableNotificationsSettingsRestrictionsSmsVoiceQuota) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

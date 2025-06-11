@@ -29,7 +29,7 @@ type LicenseEnvironments struct {
 	// A read-only boolean that specifies whether production environments are allowed.
 	AllowProduction *bool `json:"allowProduction,omitempty"`
 	// A read-only integer that specifies the maximum number of environments allowed.
-	Max *int32 `json:"max,omitempty"`
+	Max     *int32                  `json:"max,omitempty"`
 	Regions []EnumRegionCodeLicense `json:"regions,omitempty"`
 }
 
@@ -275,7 +275,7 @@ func (o *LicenseEnvironments) SetRegions(v []EnumRegionCodeLicense) {
 }
 
 func (o LicenseEnvironments) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -343,5 +343,3 @@ func (v *NullableLicenseEnvironments) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

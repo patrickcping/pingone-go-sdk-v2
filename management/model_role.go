@@ -25,7 +25,7 @@ type Role struct {
 	// A string that specifies the description of the role.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the ID of the role.
-	Id *string `json:"id,omitempty"`
+	Id   *string       `json:"id,omitempty"`
 	Name *EnumRoleName `json:"name,omitempty"`
 	// A set of permissions assigned to the role.
 	Permissions []RolePermissionsInner `json:"permissions,omitempty"`
@@ -241,7 +241,7 @@ func (o *Role) SetPermissions(v []RolePermissionsInner) {
 }
 
 func (o Role) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -306,5 +306,3 @@ func (v *NullableRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

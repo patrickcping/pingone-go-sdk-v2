@@ -17,13 +17,13 @@ import (
 
 // IdentityProvider - struct for IdentityProvider
 type IdentityProvider struct {
-	IdentityProviderApple *IdentityProviderApple
+	IdentityProviderApple                *IdentityProviderApple
 	IdentityProviderClientIDClientSecret *IdentityProviderClientIDClientSecret
-	IdentityProviderFacebook *IdentityProviderFacebook
-	IdentityProviderMicrosoft *IdentityProviderMicrosoft
-	IdentityProviderOIDC *IdentityProviderOIDC
-	IdentityProviderPaypal *IdentityProviderPaypal
-	IdentityProviderSAML *IdentityProviderSAML
+	IdentityProviderFacebook             *IdentityProviderFacebook
+	IdentityProviderMicrosoft            *IdentityProviderMicrosoft
+	IdentityProviderOIDC                 *IdentityProviderOIDC
+	IdentityProviderPaypal               *IdentityProviderPaypal
+	IdentityProviderSAML                 *IdentityProviderSAML
 }
 
 // IdentityProviderAppleAsIdentityProvider is a convenience function that returns IdentityProviderApple wrapped in IdentityProvider
@@ -74,7 +74,6 @@ func IdentityProviderSAMLAsIdentityProvider(v *IdentityProviderSAML) IdentityPro
 		IdentityProviderSAML: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *IdentityProvider) UnmarshalJSON(data []byte) error {
@@ -186,7 +185,7 @@ func (src IdentityProvider) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *IdentityProvider) GetActualInstance() (interface{}) {
+func (obj *IdentityProvider) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -257,5 +256,3 @@ func (v *NullableIdentityProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

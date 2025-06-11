@@ -21,9 +21,9 @@ type EnumRoleAssignmentScopeType string
 // List of EnumRoleAssignmentScopeType
 const (
 	ENUMROLEASSIGNMENTSCOPETYPE_ORGANIZATION EnumRoleAssignmentScopeType = "ORGANIZATION"
-	ENUMROLEASSIGNMENTSCOPETYPE_ENVIRONMENT EnumRoleAssignmentScopeType = "ENVIRONMENT"
-	ENUMROLEASSIGNMENTSCOPETYPE_POPULATION EnumRoleAssignmentScopeType = "POPULATION"
-	ENUMROLEASSIGNMENTSCOPETYPE_APPLICATION EnumRoleAssignmentScopeType = "APPLICATION"
+	ENUMROLEASSIGNMENTSCOPETYPE_ENVIRONMENT  EnumRoleAssignmentScopeType = "ENVIRONMENT"
+	ENUMROLEASSIGNMENTSCOPETYPE_POPULATION   EnumRoleAssignmentScopeType = "POPULATION"
+	ENUMROLEASSIGNMENTSCOPETYPE_APPLICATION  EnumRoleAssignmentScopeType = "APPLICATION"
 )
 
 // All allowed values of EnumRoleAssignmentScopeType enum
@@ -113,4 +113,3 @@ func (v *NullableEnumRoleAssignmentScopeType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

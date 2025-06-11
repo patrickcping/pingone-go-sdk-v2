@@ -20,26 +20,26 @@ var _ MappedNullable = &ApplicationSAML{}
 
 // ApplicationSAML struct for ApplicationSAML
 type ApplicationSAML struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
+	Links         *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	AccessControl *ApplicationAccessControl     `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled bool `json:"enabled"`
+	Enabled     bool               `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A boolean to specify whether the application is hidden in the application portal despite the configured group access policy.
-	HiddenFromAppPortal *bool `json:"hiddenFromAppPortal,omitempty"`
-	Icon *ApplicationIcon `json:"icon,omitempty"`
+	HiddenFromAppPortal *bool            `json:"hiddenFromAppPortal,omitempty"`
+	Icon                *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains.
 	LoginPageUrl *string `json:"loginPageUrl,omitempty"`
 	// A string that specifies the name of the application. This is a required property.
-	Name string `json:"name"`
+	Name     string                  `json:"name"`
 	Protocol EnumApplicationProtocol `json:"protocol"`
-	Type EnumApplicationType `json:"type"`
+	Type     EnumApplicationType     `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the custom home page URL for the application.
@@ -49,31 +49,31 @@ type ApplicationSAML struct {
 	// An integer that specifies the assertion validity duration in seconds. This is a required property.
 	AssertionDuration int32 `json:"assertionDuration"`
 	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is `true`.
-	AssertionSigned *bool `json:"assertionSigned,omitempty"`
-	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
+	AssertionSigned *bool                    `json:"assertionSigned,omitempty"`
+	CorsSettings    *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	// This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application's ACS URL as a separate RelayState key value (not within the SAMLResponse key value).
 	DefaultTargetUrl *string `json:"defaultTargetUrl,omitempty"`
 	// Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
-	EnableRequestedAuthnContext *bool `json:"enableRequestedAuthnContext,omitempty"`
-	IdpSigning *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
+	EnableRequestedAuthnContext *bool                           `json:"enableRequestedAuthnContext,omitempty"`
+	IdpSigning                  *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
 	// A string that specifies the format of the Subject NameID attibute in the SAML assertion
 	NameIdFormat *string `json:"nameIdFormat,omitempty"`
 	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is `false`.
 	ResponseSigned *bool `json:"responseSigned,omitempty"`
 	// Update this value if the SAML application requires a different `SessionNotOnOrAfter` attribute value within the `AuthnStatement` element than the `NotOnOrAfter` value set by the `assertionDuration` property.
-	SessionNotOnOrAfterDuration *int32 `json:"sessionNotOnOrAfterDuration,omitempty"`
-	SloBinding *EnumApplicationSAMLSloBinding `json:"sloBinding,omitempty"`
+	SessionNotOnOrAfterDuration *int32                         `json:"sessionNotOnOrAfterDuration,omitempty"`
+	SloBinding                  *EnumApplicationSAMLSloBinding `json:"sloBinding,omitempty"`
 	// A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error.
 	SloEndpoint *string `json:"sloEndpoint,omitempty"`
 	// A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response.
 	SloResponseEndpoint *string `json:"sloResponseEndpoint,omitempty"`
 	// Defines how long PingOne can exchange logout messages with the application, specifically a `LogoutRequest` from the application, since the initial request. PingOne can also send a `LogoutRequest` to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens.
-	SloWindow *int32 `json:"sloWindow,omitempty"`
+	SloWindow    *int32                            `json:"sloWindow,omitempty"`
 	SpEncryption *ApplicationSAMLAllOfSpEncryption `json:"spEncryption,omitempty"`
 	// A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
-	SpEntityId string `json:"spEntityId"`
+	SpEntityId     string                              `json:"spEntityId"`
 	SpVerification *ApplicationSAMLAllOfSpVerification `json:"spVerification,omitempty"`
-	Template *ApplicationTemplate `json:"template,omitempty"`
+	Template       *ApplicationTemplate                `json:"template,omitempty"`
 }
 
 // NewApplicationSAML instantiates a new ApplicationSAML object
@@ -1113,7 +1113,7 @@ func (o *ApplicationSAML) SetTemplate(v ApplicationTemplate) {
 }
 
 func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1245,5 +1245,3 @@ func (v *NullableApplicationSAML) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

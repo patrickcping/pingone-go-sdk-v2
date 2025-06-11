@@ -20,18 +20,18 @@ var _ MappedNullable = &AdministratorSecurity{}
 
 // AdministratorSecurity struct for AdministratorSecurity
 type AdministratorSecurity struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AllowedMethods *AdministratorSecurityAllowedMethods `json:"allowedMethods,omitempty"`
+	Links                *map[string]LinksHATEOASValue                 `json:"_links,omitempty"`
+	AllowedMethods       *AdministratorSecurityAllowedMethods          `json:"allowedMethods,omitempty"`
 	AuthenticationMethod EnumAdministratorSecurityAuthenticationMethod `json:"authenticationMethod"`
 	// The timestamp the resource was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt   *time.Time         `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Indicates whether the environment supports FIDO2 passkeys for MFA.
 	HasFido2Capabilities *bool `json:"hasFido2Capabilities,omitempty"`
 	// Indicates whether the environment supports PingID for MFA.
-	IsPingIDInBOM *bool `json:"isPingIDInBOM,omitempty"`
-	MfaStatus EnumAdministratorSecurityMfaStatus `json:"mfaStatus"`
-	Provider *AdministratorSecurityProvider `json:"provider,omitempty"`
+	IsPingIDInBOM *bool                              `json:"isPingIDInBOM,omitempty"`
+	MfaStatus     EnumAdministratorSecurityMfaStatus `json:"mfaStatus"`
+	Provider      *AdministratorSecurityProvider     `json:"provider,omitempty"`
 	// Indicates whether to allow account recovery within the admin policy.
 	Recovery bool `json:"recovery"`
 	// The timestamp the resource was last updated.
@@ -389,7 +389,7 @@ func (o *AdministratorSecurity) SetUpdatedAt(v time.Time) {
 }
 
 func (o AdministratorSecurity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -463,5 +463,3 @@ func (v *NullableAdministratorSecurity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

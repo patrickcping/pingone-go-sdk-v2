@@ -19,8 +19,8 @@ var _ MappedNullable = &BillOfMaterials{}
 
 // BillOfMaterials struct for BillOfMaterials
 type BillOfMaterials struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	SolutionType *EnumSolutionType `json:"solutionType,omitempty"`
+	Links        *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	SolutionType *EnumSolutionType             `json:"solutionType,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -200,7 +200,7 @@ func (o *BillOfMaterials) SetProducts(v []BillOfMaterialsProductsInner) {
 }
 
 func (o BillOfMaterials) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -260,5 +260,3 @@ func (v *NullableBillOfMaterials) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

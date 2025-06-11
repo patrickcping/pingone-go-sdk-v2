@@ -22,9 +22,9 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCommon{}
 type NotificationsSettingsPhoneDeliverySettingsCommon struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Provider EnumNotificationsSettingsPhoneDeliverySettingsProvider `json:"provider"`
+	Id          *string                                                `json:"id,omitempty"`
+	Environment *ObjectEnvironment                                     `json:"environment,omitempty"`
+	Provider    EnumNotificationsSettingsPhoneDeliverySettingsProvider `json:"provider"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -234,7 +234,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCommon) SetUpdatedAt(v time.T
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsCommon) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -297,5 +297,3 @@ func (v *NullableNotificationsSettingsPhoneDeliverySettingsCommon) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

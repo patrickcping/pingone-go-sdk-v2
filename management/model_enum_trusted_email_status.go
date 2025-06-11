@@ -20,7 +20,7 @@ type EnumTrustedEmailStatus string
 
 // List of EnumTrustedEmailStatus
 const (
-	ENUMTRUSTEDEMAILSTATUS_ACTIVE EnumTrustedEmailStatus = "ACTIVE"
+	ENUMTRUSTEDEMAILSTATUS_ACTIVE                EnumTrustedEmailStatus = "ACTIVE"
 	ENUMTRUSTEDEMAILSTATUS_VERIFICATION_REQUIRED EnumTrustedEmailStatus = "VERIFICATION_REQUIRED"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumTrustedEmailStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

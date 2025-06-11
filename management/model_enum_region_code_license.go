@@ -20,9 +20,9 @@ type EnumRegionCodeLicense string
 
 // List of EnumRegionCodeLicense
 const (
-	ENUMREGIONCODELICENSE_AP EnumRegionCodeLicense = "AP"
-	ENUMREGIONCODELICENSE_CA EnumRegionCodeLicense = "CA"
-	ENUMREGIONCODELICENSE_EU EnumRegionCodeLicense = "EU"
+	ENUMREGIONCODELICENSE_AP            EnumRegionCodeLicense = "AP"
+	ENUMREGIONCODELICENSE_CA            EnumRegionCodeLicense = "CA"
+	ENUMREGIONCODELICENSE_EU            EnumRegionCodeLicense = "EU"
 	ENUMREGIONCODELICENSE_NORTH_AMERICA EnumRegionCodeLicense = "NORTH_AMERICA"
 )
 
@@ -113,4 +113,3 @@ func (v *NullableEnumRegionCodeLicense) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

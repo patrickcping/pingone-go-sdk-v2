@@ -20,9 +20,9 @@ type EnumBrandingThemeBackgroundType string
 
 // List of EnumBrandingThemeBackgroundType
 const (
-	ENUMBRANDINGTHEMEBACKGROUNDTYPE_NONE EnumBrandingThemeBackgroundType = "NONE"
-	ENUMBRANDINGTHEMEBACKGROUNDTYPE_COLOR EnumBrandingThemeBackgroundType = "COLOR"
-	ENUMBRANDINGTHEMEBACKGROUNDTYPE_IMAGE EnumBrandingThemeBackgroundType = "IMAGE"
+	ENUMBRANDINGTHEMEBACKGROUNDTYPE_NONE    EnumBrandingThemeBackgroundType = "NONE"
+	ENUMBRANDINGTHEMEBACKGROUNDTYPE_COLOR   EnumBrandingThemeBackgroundType = "COLOR"
+	ENUMBRANDINGTHEMEBACKGROUNDTYPE_IMAGE   EnumBrandingThemeBackgroundType = "IMAGE"
 	ENUMBRANDINGTHEMEBACKGROUNDTYPE_DEFAULT EnumBrandingThemeBackgroundType = "DEFAULT"
 )
 
@@ -113,4 +113,3 @@ func (v *NullableEnumBrandingThemeBackgroundType) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

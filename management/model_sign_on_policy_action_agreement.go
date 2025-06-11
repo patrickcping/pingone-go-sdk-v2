@@ -19,16 +19,16 @@ var _ MappedNullable = &SignOnPolicyActionAgreement{}
 
 // SignOnPolicyActionAgreement struct for SignOnPolicyActionAgreement
 type SignOnPolicyActionAgreement struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue               `json:"_links,omitempty"`
+	Condition   *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
+	Environment *ObjectEnvironment                          `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
-	Priority int32 `json:"priority"`
-	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
-	Type EnumSignOnPolicyType `json:"type"`
-	Agreement SignOnPolicyActionAgreementAllOfAgreement `json:"agreement"`
+	Priority     int32                                     `json:"priority"`
+	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy     `json:"signOnPolicy,omitempty"`
+	Type         EnumSignOnPolicyType                      `json:"type"`
+	Agreement    SignOnPolicyActionAgreementAllOfAgreement `json:"agreement"`
 	// When enabled, the `Do Not Accept` button will terminate the Flow and display an error message to the user.
 	DisableDeclineOption *bool `json:"disableDeclineOption,omitempty"`
 }
@@ -318,7 +318,7 @@ func (o *SignOnPolicyActionAgreement) SetDisableDeclineOption(v bool) {
 }
 
 func (o SignOnPolicyActionAgreement) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -386,5 +386,3 @@ func (v *NullableSignOnPolicyActionAgreement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

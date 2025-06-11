@@ -20,8 +20,8 @@ type EnumGatewayTypeLDAPSecurity string
 
 // List of EnumGatewayTypeLDAPSecurity
 const (
-	ENUMGATEWAYTYPELDAPSECURITY_NONE EnumGatewayTypeLDAPSecurity = "None"
-	ENUMGATEWAYTYPELDAPSECURITY_TLS EnumGatewayTypeLDAPSecurity = "TLS"
+	ENUMGATEWAYTYPELDAPSECURITY_NONE      EnumGatewayTypeLDAPSecurity = "None"
+	ENUMGATEWAYTYPELDAPSECURITY_TLS       EnumGatewayTypeLDAPSecurity = "TLS"
 	ENUMGATEWAYTYPELDAPSECURITY_START_TLS EnumGatewayTypeLDAPSecurity = "StartTLS"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumGatewayTypeLDAPSecurity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

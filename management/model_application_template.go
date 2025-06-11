@@ -20,9 +20,9 @@ var _ MappedNullable = &ApplicationTemplate{}
 // ApplicationTemplate struct for ApplicationTemplate
 type ApplicationTemplate struct {
 	// Contains a key/value map of the parameters required by the integration in Integration Catalog.
-	Configuration map[string]string `json:"configuration"`
-	Integration ApplicationTemplateIntegration `json:"integration"`
-	Version ApplicationTemplateVersion `json:"version"`
+	Configuration map[string]string              `json:"configuration"`
+	Integration   ApplicationTemplateIntegration `json:"integration"`
+	Version       ApplicationTemplateVersion     `json:"version"`
 }
 
 // NewApplicationTemplate instantiates a new ApplicationTemplate object
@@ -118,7 +118,7 @@ func (o *ApplicationTemplate) SetVersion(v ApplicationTemplateVersion) {
 }
 
 func (o ApplicationTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,5 +168,3 @@ func (v *NullableApplicationTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
