@@ -1,6 +1,6 @@
 # v0.11.1 (Unreleased)
 
-* **Note** Add backoff retry on transient 404 errors expected after environment creation.
+* **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
 
 # v0.11.0 (2025-02-10)
 
