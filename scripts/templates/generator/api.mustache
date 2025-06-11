@@ -6,8 +6,10 @@ import (
 	"bytes"
 	"context"
 	"io"
+	"log/slog"
 	"net/http"
 	"net/url"
+	"strings"
 {{#imports}}	"{{import}}"
 {{/imports}}
 )
@@ -340,12 +342,35 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	{{! Start Ping - DOCS-8830 }}
+	var bodyBytes []byte
+	if req.Body != nil {
+		bodyBytes, _ = io.ReadAll(req.Body)
+	}
+
+	var localVarHTTPResponse *http.Response
+	var localVarBody []byte
+	
+	baseDelay := time.Second
+
+	for i := range maxRetries {
+		if req.Body != nil {
+			req.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
+		}
+
+		if i > 0 {
+			slog.Debug("Retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
+		}
+
+	localVarHTTPResponse, err = a.client.callAPI(req)
+	{{! End Ping - DOCS-8830 }}
 	if err != nil || localVarHTTPResponse == nil {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	{{! Start Ping - DOCS-8830 }}
+	localVarBody, err = io.ReadAll(localVarHTTPResponse.Body)
+	{{! End Ping - DOCS-8830 }}
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
@@ -383,6 +408,30 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 				newErr.error = err.Error()
 				return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHTTPResponse, newErr
 			}
+			{{! Start Ping - DOCS-8830 }}
+			{{#vendorExtensions.x-pingone-docs-8830}}
+			// check if environment created recently - DOCS-8830
+			retryEnvironmentResponse, retryVarHTTPResponse, err := a.client.EnvironmentApi.GetEnvironmentById(r.ctx, r.environmentID).Execute()
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			if retryVarHTTPResponse.StatusCode == 200 && retryEnvironmentResponse != nil {
+				// Check if the retryEnvironmentResponse.CreatedAt is within the last 17 seconds
+				if time.Since(retryEnvironmentResponse.CreatedAt) < 17*time.Second {
+					slog.Debug("The environment was created within the last 17 seconds, retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
+					// Retry the request
+					delay, backoffErr := calculateExponentialBackoff(i, baseDelay)
+					if backoffErr != nil {
+						slog.Error("Invalid backoff delay duration", "error", backoffErr, "baseDelay", baseDelay, "retry", false)
+					} else {
+						time.Sleep(delay)
+						continue
+					}
+				}
+			}
+			{{/vendorExtensions.x-pingone-docs-8830}}
+			{{! End Ping - DOCS-8830 }}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 			{{^-last}}
@@ -396,6 +445,10 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 		{{/dataType}}
 		{{/responses}}
 		return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHTTPResponse, newErr
+		{{! Start Ping - DOCS-8830 }}
+		}
+		break
+		{{! End Ping - DOCS-8830 }}
 	}
 
 	{{#returnType}}
