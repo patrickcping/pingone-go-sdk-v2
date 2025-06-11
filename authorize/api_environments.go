@@ -20,94 +20,82 @@ import (
 	"strings"
 )
 
-// ApplicationRoleAssignmentsApiService ApplicationRoleAssignmentsApi service
-type ApplicationRoleAssignmentsApiService service
+// EnvironmentsApiService EnvironmentsApi service
+type EnvironmentsApiService service
 
-type ApiReadApplicationRoleAssignmentsRequest struct {
+type ApiReadOneEnvironmentRequest struct {
 	ctx                        context.Context
-	ApiService                 *ApplicationRoleAssignmentsApiService
+	ApiService                 *EnvironmentsApiService
 	environmentID              string
-	applicationRoleID          string
 	xPingExternalTransactionID *string
 	xPingExternalSessionID     *string
 }
 
 // An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
-func (r ApiReadApplicationRoleAssignmentsRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiReadApplicationRoleAssignmentsRequest {
+func (r ApiReadOneEnvironmentRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiReadOneEnvironmentRequest {
 	r.xPingExternalTransactionID = &xPingExternalTransactionID
 	return r
 }
 
 // An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
-func (r ApiReadApplicationRoleAssignmentsRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiReadApplicationRoleAssignmentsRequest {
+func (r ApiReadOneEnvironmentRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiReadOneEnvironmentRequest {
 	r.xPingExternalSessionID = &xPingExternalSessionID
 	return r
 }
 
-func (r ApiReadApplicationRoleAssignmentsRequest) Execute() EntityArrayPagedIterator {
-	return r.ApiService.ReadApplicationRoleAssignmentsExecute(r)
-}
-
-func (r ApiReadApplicationRoleAssignmentsRequest) ExecuteInitialPage() (*EntityArray, *http.Response, error) {
-	return r.ApiService.ReadApplicationRoleAssignmentsExecuteInitialPage(r)
+func (r ApiReadOneEnvironmentRequest) Execute() (*Environment, *http.Response, error) {
+	return r.ApiService.ReadOneEnvironmentExecute(r)
 }
 
 /*
-ReadApplicationRoleAssignments READ Application Role Assignments
+ReadOneEnvironment READ One Environment
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentID
-	@param applicationRoleID
-	@return ApiReadApplicationRoleAssignmentsRequest
+	@return ApiReadOneEnvironmentRequest
 */
-func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignments(ctx context.Context, environmentID string, applicationRoleID string) ApiReadApplicationRoleAssignmentsRequest {
-	return ApiReadApplicationRoleAssignmentsRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		environmentID:     environmentID,
-		applicationRoleID: applicationRoleID,
+func (a *EnvironmentsApiService) ReadOneEnvironment(ctx context.Context, environmentID string) ApiReadOneEnvironmentRequest {
+	return ApiReadOneEnvironmentRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
 //
-//	@return EntityArray
-func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) EntityArrayPagedIterator {
-  return a.client.paginationIterator(r.ctx, r.ExecuteInitialPage)
-}
-
-func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecuteInitialPage(r ApiReadApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
+//	@return Environment
+func (a *EnvironmentsApiService) ReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *Environment
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			return r.ApiService.internalReadApplicationRoleAssignmentsExecute(r)
+			return r.ApiService.internalReadOneEnvironmentExecute(r)
 		},
 		&localVarReturnValue,
 	)
 	return localVarReturnValue, response, err
 }
 
-func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
+func (a *EnvironmentsApiService) internalReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EntityArray
+		localVarReturnValue *Environment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationRoleAssignmentsApiService.ReadApplicationRoleAssignments")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.ReadOneEnvironment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/applicationRoles/{applicationRoleID}/assignments"
+	localVarPath := localBasePath + "/environments/{environmentID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationRoleID"+"}", url.PathEscape(parameterValueToString(r.applicationRoleID, "applicationRoleID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

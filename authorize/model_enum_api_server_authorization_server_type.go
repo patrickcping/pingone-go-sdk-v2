@@ -21,7 +21,7 @@ type EnumAPIServerAuthorizationServerType string
 // List of EnumAPIServerAuthorizationServerType
 const (
 	ENUMAPISERVERAUTHORIZATIONSERVERTYPE_PINGONE_SSO EnumAPIServerAuthorizationServerType = "PINGONE_SSO"
-	ENUMAPISERVERAUTHORIZATIONSERVERTYPE_EXTERNAL EnumAPIServerAuthorizationServerType = "EXTERNAL"
+	ENUMAPISERVERAUTHORIZATIONSERVERTYPE_EXTERNAL    EnumAPIServerAuthorizationServerType = "EXTERNAL"
 )
 
 // All allowed values of EnumAPIServerAuthorizationServerType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumAPIServerAuthorizationServerType) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
