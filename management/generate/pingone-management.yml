@@ -8506,7 +8506,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -9469,7 +9474,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -9734,7 +9744,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -12086,7 +12101,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '409':
           $ref: '#/components/responses/409'
         '429':
@@ -12200,7 +12220,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '409':
           $ref: '#/components/responses/409'
         '429':
@@ -12486,7 +12511,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -12793,7 +12823,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -13296,7 +13331,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -13596,7 +13636,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -14148,7 +14193,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -14451,7 +14501,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -15256,7 +15311,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -16294,7 +16354,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -18975,7 +19040,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -19583,7 +19653,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -20269,7 +20344,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -21592,7 +21672,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '409':
           $ref: '#/components/responses/409'
         '429':
@@ -22524,7 +22609,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -22836,7 +22926,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -23255,7 +23350,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -23426,7 +23526,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -24953,7 +25058,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -25775,7 +25885,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -26336,7 +26451,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '409':
           $ref: '#/components/responses/409'
         '429':
@@ -26396,7 +26516,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -26745,7 +26870,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -27318,7 +27448,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':

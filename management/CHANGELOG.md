@@ -1,3 +1,7 @@
+# v0.57.1 (Unreleased)
+
+* **Note** Add backoff retry on transient 404 errors expected after environment creation.
+
 # v0.57.0 (2025-05-29)
 
 * **Feature** Add support for the Locale Translations API. [#457](https://github.com/patrickcping/pingone-go-sdk-v2/pull/457)
