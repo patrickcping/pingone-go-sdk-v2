@@ -22,13 +22,13 @@ var _ MappedNullable = &RiskPredictorAdversaryInTheMiddle{}
 type RiskPredictorAdversaryInTheMiddle struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
 	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
-	CompactName string `json:"compactName"`
-	Type EnumPredictorType `json:"type"`
+	CompactName string            `json:"compactName"`
+	Type        EnumPredictorType `json:"type"`
 	// A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
@@ -38,8 +38,8 @@ type RiskPredictorAdversaryInTheMiddle struct {
 	// Indicates whether PingOne Risk is licensed for the environment.
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
-	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
+	Deletable *bool                         `json:"deletable,omitempty"`
+	Default   *RiskPredictorCommonDefault   `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	// A list of strings that specify legitimate domains that users will access for restricted resources.
 	DomainWhiteList []string `json:"domainWhiteList,omitempty"`
@@ -490,7 +490,7 @@ func (o *RiskPredictorAdversaryInTheMiddle) SetDomainWhiteList(v []string) {
 }
 
 func (o RiskPredictorAdversaryInTheMiddle) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -573,5 +573,3 @@ func (v *NullableRiskPredictorAdversaryInTheMiddle) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

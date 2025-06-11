@@ -19,18 +19,18 @@ var _ MappedNullable = &RiskEvaluationEvent{}
 
 // RiskEvaluationEvent struct for RiskEvaluationEvent
 type RiskEvaluationEvent struct {
-	Browser *RiskEvaluationEventBrowser `json:"browser,omitempty"`
-	CompletionStatus *EnumCompletionStatus `json:"completionStatus,omitempty"`
+	Browser          *RiskEvaluationEventBrowser          `json:"browser,omitempty"`
+	CompletionStatus *EnumCompletionStatus                `json:"completionStatus,omitempty"`
 	EvaluatedFactors *RiskEvaluationEventEvaluatedFactors `json:"evaluatedFactors,omitempty"`
 	// A string that specifies the origin IP address of the authentication flow. This is a required property.
-	Ip string `json:"ip"`
+	Ip   string                   `json:"ip"`
 	Flow *RiskEvaluationEventFlow `json:"flow,omitempty"`
 	// A string that specifies the calling service.
-	Origin *string `json:"origin,omitempty"`
-	Session *RiskEvaluationEventSession `json:"session,omitempty"`
+	Origin         *string                            `json:"origin,omitempty"`
+	Session        *RiskEvaluationEventSession        `json:"session,omitempty"`
 	TargetResource *RiskEvaluationEventTargetResource `json:"targetResource,omitempty"`
-	User RiskEvaluationEventUser `json:"user"`
-	SharingType *EnumEventSharingType `json:"sharingType,omitempty"`
+	User           RiskEvaluationEventUser            `json:"user"`
+	SharingType    *EnumEventSharingType              `json:"sharingType,omitempty"`
 }
 
 // NewRiskEvaluationEvent instantiates a new RiskEvaluationEvent object
@@ -357,7 +357,7 @@ func (o *RiskEvaluationEvent) SetSharingType(v EnumEventSharingType) {
 }
 
 func (o RiskEvaluationEvent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -430,5 +430,3 @@ func (v *NullableRiskEvaluationEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

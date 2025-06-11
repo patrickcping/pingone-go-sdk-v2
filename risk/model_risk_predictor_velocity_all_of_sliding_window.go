@@ -19,9 +19,9 @@ var _ MappedNullable = &RiskPredictorVelocityAllOfSlidingWindow{}
 
 // RiskPredictorVelocityAllOfSlidingWindow struct for RiskPredictorVelocityAllOfSlidingWindow
 type RiskPredictorVelocityAllOfSlidingWindow struct {
-	MinSample *int32 `json:"minSample,omitempty"`
-	Quantity *int32 `json:"quantity,omitempty"`
-	Unit *EnumPredictorUnit `json:"unit,omitempty"`
+	MinSample *int32             `json:"minSample,omitempty"`
+	Quantity  *int32             `json:"quantity,omitempty"`
+	Unit      *EnumPredictorUnit `json:"unit,omitempty"`
 }
 
 // NewRiskPredictorVelocityAllOfSlidingWindow instantiates a new RiskPredictorVelocityAllOfSlidingWindow object
@@ -138,7 +138,7 @@ func (o *RiskPredictorVelocityAllOfSlidingWindow) SetUnit(v EnumPredictorUnit) {
 }
 
 func (o RiskPredictorVelocityAllOfSlidingWindow) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableRiskPredictorVelocityAllOfSlidingWindow) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

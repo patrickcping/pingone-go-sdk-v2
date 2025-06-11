@@ -20,10 +20,10 @@ type EnumThresholdSource string
 
 // List of EnumThresholdSource
 const (
-	ENUMTHRESHOLDSOURCE_MIN_NOT_REACHED EnumThresholdSource = "MIN_NOT_REACHED"
-	ENUMTHRESHOLDSOURCE_CALCULATED EnumThresholdSource = "CALCULATED"
+	ENUMTHRESHOLDSOURCE_MIN_NOT_REACHED      EnumThresholdSource = "MIN_NOT_REACHED"
+	ENUMTHRESHOLDSOURCE_CALCULATED           EnumThresholdSource = "CALCULATED"
 	ENUMTHRESHOLDSOURCE_ENVIRONMENT_FALLBACK EnumThresholdSource = "ENVIRONMENT_FALLBACK"
-	ENUMTHRESHOLDSOURCE_DEFAULT_FALLBACK EnumThresholdSource = "DEFAULT_FALLBACK"
+	ENUMTHRESHOLDSOURCE_DEFAULT_FALLBACK     EnumThresholdSource = "DEFAULT_FALLBACK"
 )
 
 // All allowed values of EnumThresholdSource enum
@@ -113,4 +113,3 @@ func (v *NullableEnumThresholdSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

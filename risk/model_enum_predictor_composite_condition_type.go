@@ -21,12 +21,12 @@ type EnumPredictorCompositeConditionType string
 // List of EnumPredictorCompositeConditionType
 const (
 	ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON EnumPredictorCompositeConditionType = "VALUE_COMPARISON"
-	ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_RANGE EnumPredictorCompositeConditionType = "IP_RANGE"
-	ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_COMPARISON EnumPredictorCompositeConditionType = "IP_COMPARISON"
-	ENUMPREDICTORCOMPOSITECONDITIONTYPE_STRING_LIST EnumPredictorCompositeConditionType = "STRING_LIST"
-	ENUMPREDICTORCOMPOSITECONDITIONTYPE_AND EnumPredictorCompositeConditionType = "AND"
-	ENUMPREDICTORCOMPOSITECONDITIONTYPE_NOT EnumPredictorCompositeConditionType = "NOT"
-	ENUMPREDICTORCOMPOSITECONDITIONTYPE_OR EnumPredictorCompositeConditionType = "OR"
+	ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_RANGE         EnumPredictorCompositeConditionType = "IP_RANGE"
+	ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_COMPARISON    EnumPredictorCompositeConditionType = "IP_COMPARISON"
+	ENUMPREDICTORCOMPOSITECONDITIONTYPE_STRING_LIST      EnumPredictorCompositeConditionType = "STRING_LIST"
+	ENUMPREDICTORCOMPOSITECONDITIONTYPE_AND              EnumPredictorCompositeConditionType = "AND"
+	ENUMPREDICTORCOMPOSITECONDITIONTYPE_NOT              EnumPredictorCompositeConditionType = "NOT"
+	ENUMPREDICTORCOMPOSITECONDITIONTYPE_OR               EnumPredictorCompositeConditionType = "OR"
 )
 
 // All allowed values of EnumPredictorCompositeConditionType enum
@@ -119,4 +119,3 @@ func (v *NullableEnumPredictorCompositeConditionType) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

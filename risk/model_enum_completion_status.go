@@ -20,9 +20,9 @@ type EnumCompletionStatus string
 
 // List of EnumCompletionStatus
 const (
-	ENUMCOMPLETIONSTATUS_FAILED EnumCompletionStatus = "FAILED"
+	ENUMCOMPLETIONSTATUS_FAILED      EnumCompletionStatus = "FAILED"
 	ENUMCOMPLETIONSTATUS_IN_PROGRESS EnumCompletionStatus = "IN_PROGRESS"
-	ENUMCOMPLETIONSTATUS_SUCCESS EnumCompletionStatus = "SUCCESS"
+	ENUMCOMPLETIONSTATUS_SUCCESS     EnumCompletionStatus = "SUCCESS"
 )
 
 // All allowed values of EnumCompletionStatus enum
@@ -111,4 +111,3 @@ func (v *NullableEnumCompletionStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

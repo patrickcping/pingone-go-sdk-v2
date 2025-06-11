@@ -19,14 +19,14 @@ var _ MappedNullable = &RiskPredictorCompositeConditionOneOf1{}
 
 // RiskPredictorCompositeConditionOneOf1 struct for RiskPredictorCompositeConditionOneOf1
 type RiskPredictorCompositeConditionOneOf1 struct {
-	Equals *RiskPredictorCompositeConditionOneOf1Equals `json:"equals,omitempty"`
-	NotEquals *RiskPredictorCompositeConditionOneOf1Equals `json:"notEquals,omitempty"`
-	Greater *int32 `json:"greater,omitempty"`
-	GreaterEquals *int32 `json:"greaterEquals,omitempty"`
-	Lower *int32 `json:"lower,omitempty"`
-	LowerEquals *int32 `json:"lowerEquals,omitempty"`
-	Value string `json:"value"`
-	Type *EnumPredictorCompositeConditionType `json:"type,omitempty"`
+	Equals        *RiskPredictorCompositeConditionOneOf1Equals `json:"equals,omitempty"`
+	NotEquals     *RiskPredictorCompositeConditionOneOf1Equals `json:"notEquals,omitempty"`
+	Greater       *int32                                       `json:"greater,omitempty"`
+	GreaterEquals *int32                                       `json:"greaterEquals,omitempty"`
+	Lower         *int32                                       `json:"lower,omitempty"`
+	LowerEquals   *int32                                       `json:"lowerEquals,omitempty"`
+	Value         string                                       `json:"value"`
+	Type          *EnumPredictorCompositeConditionType         `json:"type,omitempty"`
 }
 
 // NewRiskPredictorCompositeConditionOneOf1 instantiates a new RiskPredictorCompositeConditionOneOf1 object
@@ -296,7 +296,7 @@ func (o *RiskPredictorCompositeConditionOneOf1) SetType(v EnumPredictorComposite
 }
 
 func (o RiskPredictorCompositeConditionOneOf1) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -365,5 +365,3 @@ func (v *NullableRiskPredictorCompositeConditionOneOf1) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,10 +19,10 @@ var _ MappedNullable = &EntityArray{}
 
 // EntityArray struct for EntityArray
 type EntityArray struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Embedded *EntityArrayEmbedded `json:"_embedded,omitempty"`
-	Count *float32 `json:"count,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	Links    *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Embedded *EntityArrayEmbedded          `json:"_embedded,omitempty"`
+	Count    *float32                      `json:"count,omitempty"`
+	Size     *float32                      `json:"size,omitempty"`
 }
 
 // NewEntityArray instantiates a new EntityArray object
@@ -171,7 +171,7 @@ func (o *EntityArray) SetSize(v float32) {
 }
 
 func (o EntityArray) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableEntityArray) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,12 +17,12 @@ import (
 
 // RiskPredictorCompositeCondition - struct for RiskPredictorCompositeCondition
 type RiskPredictorCompositeCondition struct {
-	RiskPredictorCompositeAnd *RiskPredictorCompositeAnd
-	RiskPredictorCompositeConditionOneOf *RiskPredictorCompositeConditionOneOf
+	RiskPredictorCompositeAnd             *RiskPredictorCompositeAnd
+	RiskPredictorCompositeConditionOneOf  *RiskPredictorCompositeConditionOneOf
 	RiskPredictorCompositeConditionOneOf1 *RiskPredictorCompositeConditionOneOf1
-	RiskPredictorCompositeIPRange *RiskPredictorCompositeIPRange
-	RiskPredictorCompositeNot *RiskPredictorCompositeNot
-	RiskPredictorCompositeOr *RiskPredictorCompositeOr
+	RiskPredictorCompositeIPRange         *RiskPredictorCompositeIPRange
+	RiskPredictorCompositeNot             *RiskPredictorCompositeNot
+	RiskPredictorCompositeOr              *RiskPredictorCompositeOr
 }
 
 // RiskPredictorCompositeAndAsRiskPredictorCompositeCondition is a convenience function that returns RiskPredictorCompositeAnd wrapped in RiskPredictorCompositeCondition
@@ -66,7 +66,6 @@ func RiskPredictorCompositeOrAsRiskPredictorCompositeCondition(v *RiskPredictorC
 		RiskPredictorCompositeOr: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
@@ -181,7 +180,7 @@ func (src RiskPredictorCompositeCondition) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RiskPredictorCompositeCondition) GetActualInstance() (interface{}) {
+func (obj *RiskPredictorCompositeCondition) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -248,5 +247,3 @@ func (v *NullableRiskPredictorCompositeCondition) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

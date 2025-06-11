@@ -19,9 +19,9 @@ var _ MappedNullable = &RiskPredictorCompositeConditionOneOf{}
 
 // RiskPredictorCompositeConditionOneOf struct for RiskPredictorCompositeConditionOneOf
 type RiskPredictorCompositeConditionOneOf struct {
-	Contains string `json:"contains"`
-	List []string `json:"list"`
-	Type EnumPredictorCompositeConditionType `json:"type"`
+	Contains string                              `json:"contains"`
+	List     []string                            `json:"list"`
+	Type     EnumPredictorCompositeConditionType `json:"type"`
 }
 
 // NewRiskPredictorCompositeConditionOneOf instantiates a new RiskPredictorCompositeConditionOneOf object
@@ -117,7 +117,7 @@ func (o *RiskPredictorCompositeConditionOneOf) SetType(v EnumPredictorCompositeC
 }
 
 func (o RiskPredictorCompositeConditionOneOf) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,5 +167,3 @@ func (v *NullableRiskPredictorCompositeConditionOneOf) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
