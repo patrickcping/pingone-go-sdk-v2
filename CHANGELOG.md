@@ -1,7 +1,15 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.18
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.0 => v0.8.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.0 => v0.11.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.57.0 => v0.57.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.0 => v0.23.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.19.0 => v0.19.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.0 => v0.9.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.1](./authorize/CHANGELOG.md)
-  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.11.1](./credentials/CHANGELOG.md)
+  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.11.1](./credentials/CHANGELOG.md)
   * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.57.1](./management/CHANGELOG.md)
   * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
