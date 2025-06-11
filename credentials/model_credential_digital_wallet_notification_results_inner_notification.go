@@ -65,7 +65,7 @@ func (o *CredentialDigitalWalletNotificationResultsInnerNotification) SetId(v st
 }
 
 func (o CredentialDigitalWalletNotificationResultsInnerNotification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -113,5 +113,3 @@ func (v *NullableCredentialDigitalWalletNotificationResultsInnerNotification) Un
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

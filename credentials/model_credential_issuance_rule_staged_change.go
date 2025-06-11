@@ -22,7 +22,7 @@ type CredentialIssuanceRuleStagedChange struct {
 	// An array that specifies one or more identifiers (UUIDs) of users whose credentials are in an issue action state and should be issued.
 	Issue []string `json:"issue,omitempty"`
 	// An array that specifies one or more identifiers (UUIDs) of users whose credentials are in an revoke action state and should be issued.
-	Revoke []string `json:"revoke,omitempty"`
+	Revoke        []string                                         `json:"revoke,omitempty"`
 	StagedChanges *CredentialIssuanceRuleStagedChangeStagedChanges `json:"stagedChanges,omitempty"`
 	// An array that specifies one or more identifiers (UUIDs) of users whose credentials are in an update action state and should be issued.
 	Update []string `json:"update,omitempty"`
@@ -174,7 +174,7 @@ func (o *CredentialIssuanceRuleStagedChange) SetUpdate(v []string) {
 }
 
 func (o CredentialIssuanceRuleStagedChange) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableCredentialIssuanceRuleStagedChange) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

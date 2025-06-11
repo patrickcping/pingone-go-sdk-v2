@@ -20,7 +20,7 @@ type EnumCredentialIssuanceRuleStagedChangeAction string
 
 // List of EnumCredentialIssuanceRuleStagedChangeAction
 const (
-	ENUMCREDENTIALISSUANCERULESTAGEDCHANGEACTION_ISSUE EnumCredentialIssuanceRuleStagedChangeAction = "ISSUE"
+	ENUMCREDENTIALISSUANCERULESTAGEDCHANGEACTION_ISSUE  EnumCredentialIssuanceRuleStagedChangeAction = "ISSUE"
 	ENUMCREDENTIALISSUANCERULESTAGEDCHANGEACTION_UPDATE EnumCredentialIssuanceRuleStagedChangeAction = "UPDATE"
 	ENUMCREDENTIALISSUANCERULESTAGEDCHANGEACTION_REVOKE EnumCredentialIssuanceRuleStagedChangeAction = "REVOKE"
 )
@@ -111,4 +111,3 @@ func (v *NullableEnumCredentialIssuanceRuleStagedChangeAction) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

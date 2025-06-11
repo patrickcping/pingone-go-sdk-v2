@@ -24,15 +24,15 @@ type CredentialTypeMetaDataFieldsInner struct {
 	// Assigns a default field value if a PingOne Expression Language (PEL) expression in the fields.attribute evaluates to no value.
 	Default *string `json:"default,omitempty"`
 	// A string that specifies the identifier of the field.
-	Id string `json:"id"`
+	Id          string                                       `json:"id"`
 	FileSupport *EnumCredentialTypeMetaDataFieldsFileSupport `json:"fileSupport,omitempty"`
 	// A boolean value that specifies whether the field should be visible to viewers of the credential.
 	IsVisible bool `json:"isVisible"`
 	// A boolean value that specifies whether the field is required for the credential.
 	Required *bool `json:"required,omitempty"`
 	// A string that specifies the descriptive text when showing the field.
-	Title string `json:"title"`
-	Type EnumCredentialTypeMetaDataFieldsType `json:"type"`
+	Title string                               `json:"title"`
+	Type  EnumCredentialTypeMetaDataFieldsType `json:"type"`
 	// A string that specifies the text to appear on the credential for a type of Alphanumeric Text.
 	Value *string `json:"value,omitempty"`
 }
@@ -315,7 +315,7 @@ func (o *CredentialTypeMetaDataFieldsInner) SetValue(v string) {
 }
 
 func (o CredentialTypeMetaDataFieldsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -381,5 +381,3 @@ func (v *NullableCredentialTypeMetaDataFieldsInner) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

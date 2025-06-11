@@ -19,9 +19,9 @@ var _ MappedNullable = &CredentialDigitalWalletNotification{}
 
 // CredentialDigitalWalletNotification struct for CredentialDigitalWalletNotification
 type CredentialDigitalWalletNotification struct {
-	Methods []string `json:"methods,omitempty"`
-	Results []CredentialDigitalWalletNotificationResultsInner `json:"results,omitempty"`
-	Template *CredentialDigitalWalletNotificationTemplate `json:"template,omitempty"`
+	Methods  []string                                          `json:"methods,omitempty"`
+	Results  []CredentialDigitalWalletNotificationResultsInner `json:"results,omitempty"`
+	Template *CredentialDigitalWalletNotificationTemplate      `json:"template,omitempty"`
 }
 
 // NewCredentialDigitalWalletNotification instantiates a new CredentialDigitalWalletNotification object
@@ -138,7 +138,7 @@ func (o *CredentialDigitalWalletNotification) SetTemplate(v CredentialDigitalWal
 }
 
 func (o CredentialDigitalWalletNotification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableCredentialDigitalWalletNotification) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

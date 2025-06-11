@@ -20,18 +20,18 @@ var _ MappedNullable = &CredentialIssuanceRule{}
 
 // CredentialIssuanceRule struct for CredentialIssuanceRule
 type CredentialIssuanceRule struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links      *map[string]LinksHATEOASValue    `json:"_links,omitempty"`
 	Automation CredentialIssuanceRuleAutomation `json:"automation"`
 	// A string that specifies the date and time the credential issuance rule was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	CredentialType *CredentialIssuanceRuleCredentialType `json:"credentialType,omitempty"`
+	CreatedAt                *time.Time                                      `json:"createdAt,omitempty"`
+	CredentialType           *CredentialIssuanceRuleCredentialType           `json:"credentialType,omitempty"`
 	DigitalWalletApplication *CredentialIssuanceRuleDigitalWalletApplication `json:"digitalWalletApplication,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Filter *CredentialIssuanceRuleFilter `json:"filter,omitempty"`
+	Environment              *ObjectEnvironment                              `json:"environment,omitempty"`
+	Filter                   *CredentialIssuanceRuleFilter                   `json:"filter,omitempty"`
 	// A string that specifies the identifier (UUID) of the credential issuance rule.
-	Id *string `json:"id,omitempty"`
+	Id           *string                             `json:"id,omitempty"`
 	Notification *CredentialIssuanceRuleNotification `json:"notification,omitempty"`
-	Status EnumCredentialIssuanceRuleStatus `json:"status"`
+	Status       EnumCredentialIssuanceRuleStatus    `json:"status"`
 	// A string that specifies the date and time the credential issuance rule was last updated; can be null.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -392,7 +392,7 @@ func (o *CredentialIssuanceRule) SetUpdatedAt(v time.Time) {
 }
 
 func (o CredentialIssuanceRule) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -468,5 +468,3 @@ func (v *NullableCredentialIssuanceRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
