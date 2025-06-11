@@ -20,7 +20,7 @@ var _ MappedNullable = &APIServerAuthorizationServer{}
 // APIServerAuthorizationServer A container object for properties related to the authorization server that will issue access tokens used to access the APIs.
 type APIServerAuthorizationServer struct {
 	Resource *APIServerAuthorizationServerResource `json:"resource,omitempty"`
-	Type EnumAPIServerAuthorizationServerType `json:"type"`
+	Type     EnumAPIServerAuthorizationServerType  `json:"type"`
 }
 
 // NewAPIServerAuthorizationServer instantiates a new APIServerAuthorizationServer object
@@ -98,7 +98,7 @@ func (o *APIServerAuthorizationServer) SetType(v EnumAPIServerAuthorizationServe
 }
 
 func (o APIServerAuthorizationServer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullableAPIServerAuthorizationServer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

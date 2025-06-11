@@ -20,7 +20,7 @@ type EnumUserRiskBehaviorRiskModel string
 
 // List of EnumUserRiskBehaviorRiskModel
 const (
-	ENUMUSERRISKBEHAVIORRISKMODEL_POINTS EnumUserRiskBehaviorRiskModel = "points"
+	ENUMUSERRISKBEHAVIORRISKMODEL_POINTS                  EnumUserRiskBehaviorRiskModel = "points"
 	ENUMUSERRISKBEHAVIORRISKMODEL_LOGIN_ANOMALY_STATISTIC EnumUserRiskBehaviorRiskModel = "login_anomaly_statistic"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumUserRiskBehaviorRiskModel) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

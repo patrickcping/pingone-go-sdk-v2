@@ -20,8 +20,8 @@ var _ MappedNullable = &FormElementValidation{}
 // FormElementValidation An object containing validation data for the field. This is a required property when the type is `TEXT`.
 type FormElementValidation struct {
 	// A string that specifies a validation regular expression. The expression must be a valid regular expression string. This is a required property when the validation type is `CUSTOM`.
-	Regex *string `json:"regex,omitempty"`
-	Type *EnumFormElementValidationType `json:"type,omitempty"`
+	Regex *string                        `json:"regex,omitempty"`
+	Type  *EnumFormElementValidationType `json:"type,omitempty"`
 	// A string that specifies the error message to be displayed when the field validation fails.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 }
@@ -140,7 +140,7 @@ func (o *FormElementValidation) SetErrorMessage(v string) {
 }
 
 func (o FormElementValidation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,5 +196,3 @@ func (v *NullableFormElementValidation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

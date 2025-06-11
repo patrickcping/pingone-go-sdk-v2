@@ -22,20 +22,20 @@ type GatewayInstance struct {
 	// A boolean that specifies whether or not the gateway instance has one or more connections. This is a required property.
 	Connected *bool `json:"connected,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Gateway *GatewayInstanceGateway `json:"gateway,omitempty"`
-	Credential *GatewayInstanceCredential `json:"credential,omitempty"`
+	Id          *string                    `json:"id,omitempty"`
+	Environment *ObjectEnvironment         `json:"environment,omitempty"`
+	Gateway     *GatewayInstanceGateway    `json:"gateway,omitempty"`
+	Credential  *GatewayInstanceCredential `json:"credential,omitempty"`
 	// An array of strings that lists the messages that are maintained by the gateway instance.
-	CurrentErrors []string `json:"currentErrors,omitempty"`
-	HealthStatus *EnumHealthStatus `json:"healthStatus,omitempty"`
+	CurrentErrors []string          `json:"currentErrors,omitempty"`
+	HealthStatus  *EnumHealthStatus `json:"healthStatus,omitempty"`
 	// A string that specifies the hostname of the container running in the customer’s infrastructure. This is a required property.
 	Hostname *string `json:"hostname,omitempty"`
 	// A timestamp that specifies when gateway was initialized (when the first connect to PingOne was made).
 	InitializedAt *string `json:"initializedAt,omitempty"`
 	// A timestamp that specifies the last reported timestamp, heartbeat, or other message.
-	LastReportedAt *string `json:"lastReportedAt,omitempty"`
-	Version *GatewayInstanceVersion `json:"version,omitempty"`
+	LastReportedAt *string                 `json:"lastReportedAt,omitempty"`
+	Version        *GatewayInstanceVersion `json:"version,omitempty"`
 	// An integer that specifies the gateway instance's busy percentage. When this percentage is high, then more instances should be added.
 	BusyPercentage *int32 `json:"busyPercentage,omitempty"`
 	// A number that specifies the recent throughput of the gateway instance.
@@ -510,7 +510,7 @@ func (o *GatewayInstance) SetResponseTimeMillis(v float32) {
 }
 
 func (o GatewayInstance) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -599,5 +599,3 @@ func (v *NullableGatewayInstance) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

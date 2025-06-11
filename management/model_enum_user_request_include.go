@@ -20,7 +20,7 @@ type EnumUserRequestInclude string
 
 // List of EnumUserRequestInclude
 const (
-	ENUMUSERREQUESTINCLUDE_MEMBER_OF_GROUP_IDS EnumUserRequestInclude = "memberOfGroupIDs"
+	ENUMUSERREQUESTINCLUDE_MEMBER_OF_GROUP_IDS   EnumUserRequestInclude = "memberOfGroupIDs"
 	ENUMUSERREQUESTINCLUDE_MEMBER_OF_GROUP_NAMES EnumUserRequestInclude = "memberOfGroupNames"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumUserRequestInclude) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

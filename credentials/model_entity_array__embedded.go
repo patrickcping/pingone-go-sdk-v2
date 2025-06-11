@@ -19,12 +19,12 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	Items []EntityArrayEmbeddedItemsInner `json:"items,omitempty"`
-	IssuanceRules []CredentialIssuanceRule `json:"issuanceRules,omitempty"`
-	StagedChanges []CredentialIssuanceRuleStagedChange `json:"stagedChanges,omitempty"`
-	DigitalWalletApplications []DigitalWalletApplication `json:"digitalWalletApplications,omitempty"`
-	DigitalWallets []CredentialDigitalWallet `json:"digitalWallets,omitempty"`
-	ProvisionedCredentials []ProvisionedCredential `json:"provisionedCredentials,omitempty"`
+	Items                     []EntityArrayEmbeddedItemsInner      `json:"items,omitempty"`
+	IssuanceRules             []CredentialIssuanceRule             `json:"issuanceRules,omitempty"`
+	StagedChanges             []CredentialIssuanceRuleStagedChange `json:"stagedChanges,omitempty"`
+	DigitalWalletApplications []DigitalWalletApplication           `json:"digitalWalletApplications,omitempty"`
+	DigitalWallets            []CredentialDigitalWallet            `json:"digitalWallets,omitempty"`
+	ProvisionedCredentials    []ProvisionedCredential              `json:"provisionedCredentials,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -237,7 +237,7 @@ func (o *EntityArrayEmbedded) SetProvisionedCredentials(v []ProvisionedCredentia
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,5 +302,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

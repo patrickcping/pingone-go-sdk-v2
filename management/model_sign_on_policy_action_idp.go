@@ -19,21 +19,21 @@ var _ MappedNullable = &SignOnPolicyActionIDP{}
 
 // SignOnPolicyActionIDP struct for SignOnPolicyActionIDP
 type SignOnPolicyActionIDP struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue               `json:"_links,omitempty"`
+	Condition   *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
+	Environment *ObjectEnvironment                          `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
-	Priority int32 `json:"priority"`
+	Priority     int32                                 `json:"priority"`
 	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
-	Type EnumSignOnPolicyType `json:"type"`
+	Type         EnumSignOnPolicyType                  `json:"type"`
 	// A string that designates the sign-on policies included in the authorization flow request. Options can include the PingOne predefined sign-on policies, Single_Factor and Multi_Factor, or any custom defined sign-on policy names. Sign-on policy names should be listed in order of preference, and they must be assigned to the application. This property can be configured on the identity provider action and is passed to the identity provider if the identity provider is of type `SAML` or `OPENID_CONNECT`.
-	AcrValues *string `json:"acrValues,omitempty"`
+	AcrValues        *string                                    `json:"acrValues,omitempty"`
 	IdentityProvider SignOnPolicyActionIDPAllOfIdentityProvider `json:"identityProvider"`
 	// A boolean that specifies whether to pass in a login hint to the identity provider on the authentication request. Based on user context, the login hint is set if (1) the user is set on the flow, and (2) the user already has an account link for the identity provider. If both of these conditions are true, then the user is sent to the identity provider with a login hint equal to their externalId for the identity provider (saved on the account link). If these conditions are not true, then the API checks see if there is an OIDC login hint on the flow. If so, that login hint is used. If none of these conditions are true, the login hint parameter is not included on the authorization request to the identity provider.
-	PassUserContext *bool `json:"passUserContext,omitempty"`
-	Registration *SignOnPolicyActionIDPAllOfRegistration `json:"registration,omitempty"`
+	PassUserContext *bool                                   `json:"passUserContext,omitempty"`
+	Registration    *SignOnPolicyActionIDPAllOfRegistration `json:"registration,omitempty"`
 }
 
 // NewSignOnPolicyActionIDP instantiates a new SignOnPolicyActionIDP object
@@ -385,7 +385,7 @@ func (o *SignOnPolicyActionIDP) SetRegistration(v SignOnPolicyActionIDPAllOfRegi
 }
 
 func (o SignOnPolicyActionIDP) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -459,5 +459,3 @@ func (v *NullableSignOnPolicyActionIDP) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

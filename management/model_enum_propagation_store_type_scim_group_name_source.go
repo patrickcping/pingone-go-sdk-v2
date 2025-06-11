@@ -20,7 +20,7 @@ type EnumPropagationStoreTypeSCIMGroupNameSource string
 
 // List of EnumPropagationStoreTypeSCIMGroupNameSource
 const (
-	ENUMPROPAGATIONSTORETYPESCIMGROUPNAMESOURCE_COMMON_NAME EnumPropagationStoreTypeSCIMGroupNameSource = "Common Name"
+	ENUMPROPAGATIONSTORETYPESCIMGROUPNAMESOURCE_COMMON_NAME        EnumPropagationStoreTypeSCIMGroupNameSource = "Common Name"
 	ENUMPROPAGATIONSTORETYPESCIMGROUPNAMESOURCE_DISTINGUISHED_NAME EnumPropagationStoreTypeSCIMGroupNameSource = "Distinguished Name"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeSCIMGroupNameSource) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

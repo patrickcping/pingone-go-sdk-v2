@@ -93,7 +93,7 @@ func (o *RiskPolicyConditionAggregatedScoresInner) SetScore(v int32) {
 }
 
 func (o RiskPolicyConditionAggregatedScoresInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -142,5 +142,3 @@ func (v *NullableRiskPolicyConditionAggregatedScoresInner) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -29,8 +29,8 @@ type PropagationStoreSyncStatus struct {
 	// The last synchronization in yyyy-MM-dd'T'HH:mm:ss.SSS'Z' format.
 	LastSyncAt *time.Time `json:"lastSyncAt,omitempty"`
 	// A count of successful synchronization events since the last revision.
-	SuccessCount *int32 `json:"successCount,omitempty"`
-	SyncState *EnumPropagationStoreSyncState `json:"syncState,omitempty"`
+	SuccessCount *int32                         `json:"successCount,omitempty"`
+	SyncState    *EnumPropagationStoreSyncState `json:"syncState,omitempty"`
 	// A count of users that will synchronize to the target store based on the Rule’s filter.
 	UserTotal *int32 `json:"userTotal,omitempty"`
 }
@@ -277,7 +277,7 @@ func (o *PropagationStoreSyncStatus) SetUserTotal(v int32) {
 }
 
 func (o PropagationStoreSyncStatus) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,5 +345,3 @@ func (v *NullablePropagationStoreSyncStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,9 +19,9 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	VerifyPolicies []VerifyPolicy `json:"verifyPolicies,omitempty"`
-	VoicePhrases []VoicePhrase `json:"voicePhrases,omitempty"`
-	Contents []VoicePhraseContents `json:"contents,omitempty"`
+	VerifyPolicies []VerifyPolicy        `json:"verifyPolicies,omitempty"`
+	VoicePhrases   []VoicePhrase         `json:"voicePhrases,omitempty"`
+	Contents       []VoicePhraseContents `json:"contents,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -138,7 +138,7 @@ func (o *EntityArrayEmbedded) SetContents(v []VoicePhraseContents) {
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

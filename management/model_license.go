@@ -20,36 +20,36 @@ var _ MappedNullable = &License{}
 
 // License struct for License
 type License struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AdvancedServices *LicenseAdvancedServices `json:"advancedServices,omitempty"`
+	Links            *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	AdvancedServices *LicenseAdvancedServices      `json:"advancedServices,omitempty"`
 	// A read-only integer that specifies the total number of environments associated with this license.
-	AssignedEnvironmentsCount *int32 `json:"assignedEnvironmentsCount,omitempty"`
-	Authorize *LicenseAuthorize `json:"authorize,omitempty"`
+	AssignedEnvironmentsCount *int32            `json:"assignedEnvironmentsCount,omitempty"`
+	Authorize                 *LicenseAuthorize `json:"authorize,omitempty"`
 	// The date and time this license begins.
-	BeginsAt *time.Time `json:"beginsAt,omitempty"`
-	Credentials *LicenseCredentials `json:"credentials,omitempty"`
+	BeginsAt     *time.Time           `json:"beginsAt,omitempty"`
+	Credentials  *LicenseCredentials  `json:"credentials,omitempty"`
 	Environments *LicenseEnvironments `json:"environments,omitempty"`
 	// The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services.
-	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
-	Fraud *LicenseFraud `json:"fraud,omitempty"`
-	Gateways *LicenseGateways `json:"gateways,omitempty"`
+	ExpiresAt *time.Time       `json:"expiresAt,omitempty"`
+	Fraud     *LicenseFraud    `json:"fraud,omitempty"`
+	Gateways  *LicenseGateways `json:"gateways,omitempty"`
 	// A read-only string that specifies the license resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id           *string              `json:"id,omitempty"`
 	Intelligence *LicenseIntelligence `json:"intelligence,omitempty"`
-	Mfa *LicenseMfa `json:"mfa,omitempty"`
+	Mfa          *LicenseMfa          `json:"mfa,omitempty"`
 	// A string that specifies a descriptive name for the license. This is a required property in a license name update request. Valid characters consists of any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. The maximum length of a name is 255 characters.
-	Name string `json:"name"`
-	Orchestrate *LicenseOrchestrate `json:"orchestrate,omitempty"`
+	Name         string              `json:"name"`
+	Orchestrate  *LicenseOrchestrate `json:"orchestrate,omitempty"`
 	Organization *ObjectOrganization `json:"organization,omitempty"`
 	// A string that specifies the license template on which this license is based.
-	Package *string `json:"package,omitempty"`
-	ReplacesLicense *LicenseReplacesLicense `json:"replacesLicense,omitempty"`
+	Package           *string                   `json:"package,omitempty"`
+	ReplacesLicense   *LicenseReplacesLicense   `json:"replacesLicense,omitempty"`
 	ReplacedByLicense *LicenseReplacedByLicense `json:"replacedByLicense,omitempty"`
-	Status *EnumLicenseStatus `json:"status,omitempty"`
+	Status            *EnumLicenseStatus        `json:"status,omitempty"`
 	// An optional attribute that designates the exact date and time when this license terminates access to PingOne services. This attribute can be added to any licensing package.
-	TerminatesAt *time.Time `json:"terminatesAt,omitempty"`
-	Users *LicenseUsers `json:"users,omitempty"`
-	Verify *LicenseVerify `json:"verify,omitempty"`
+	TerminatesAt *time.Time     `json:"terminatesAt,omitempty"`
+	Users        *LicenseUsers  `json:"users,omitempty"`
+	Verify       *LicenseVerify `json:"verify,omitempty"`
 }
 
 // NewLicense instantiates a new License object
@@ -799,7 +799,7 @@ func (o *License) SetVerify(v LicenseVerify) {
 }
 
 func (o License) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -913,5 +913,3 @@ func (v *NullableLicense) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

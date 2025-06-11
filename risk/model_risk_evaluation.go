@@ -21,14 +21,14 @@ var _ MappedNullable = &RiskEvaluation{}
 type RiskEvaluation struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the resource was created (format ISO-8061).
-	CreatedAt *string `json:"createdAt,omitempty"`
-	Details *RiskEvaluationDetails `json:"details,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Event RiskEvaluationEvent `json:"event"`
+	CreatedAt   *string                `json:"createdAt,omitempty"`
+	Details     *RiskEvaluationDetails `json:"details,omitempty"`
+	Environment *ObjectEnvironment     `json:"environment,omitempty"`
+	Event       RiskEvaluationEvent    `json:"event"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id            *string                      `json:"id,omitempty"`
 	RiskPolicySet *RiskEvaluationRiskPolicySet `json:"riskPolicySet,omitempty"`
-	Result *RiskEvaluationResult `json:"result,omitempty"`
+	Result        *RiskEvaluationResult        `json:"result,omitempty"`
 	// The time the resource was last updated (format ISO-8061).
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -332,7 +332,7 @@ func (o *RiskEvaluation) SetUpdatedAt(v string) {
 }
 
 func (o RiskEvaluation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -404,5 +404,3 @@ func (v *NullableRiskEvaluation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

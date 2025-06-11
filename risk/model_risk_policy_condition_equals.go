@@ -17,7 +17,7 @@ import (
 
 // RiskPolicyConditionEquals - struct for RiskPolicyConditionEquals
 type RiskPolicyConditionEquals struct {
-	Bool *bool
+	Bool   *bool
 	String *string
 }
 
@@ -34,7 +34,6 @@ func StringAsRiskPolicyConditionEquals(v *string) RiskPolicyConditionEquals {
 		String: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPolicyConditionEquals) UnmarshalJSON(data []byte) error {
@@ -93,7 +92,7 @@ func (src RiskPolicyConditionEquals) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RiskPolicyConditionEquals) GetActualInstance() (interface{}) {
+func (obj *RiskPolicyConditionEquals) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -144,5 +143,3 @@ func (v *NullableRiskPolicyConditionEquals) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

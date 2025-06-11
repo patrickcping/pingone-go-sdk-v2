@@ -20,7 +20,7 @@ var _ MappedNullable = &SignOnPolicyActionMFAAllOfDeviceAuthorization{}
 // SignOnPolicyActionMFAAllOfDeviceAuthorization struct for SignOnPolicyActionMFAAllOfDeviceAuthorization
 type SignOnPolicyActionMFAAllOfDeviceAuthorization struct {
 	// A boolean that specifies the enabled/disabled state of automatic MFA for native devices paired with the user for the specified application.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled           *bool                              `json:"enabled,omitempty"`
 	ExtraVerification *EnumSignOnPolicyExtraVerification `json:"extraVerification,omitempty"`
 }
 
@@ -114,7 +114,7 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) SetExtraVerification(v E
 }
 
 func (o SignOnPolicyActionMFAAllOfDeviceAuthorization) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,5 +167,3 @@ func (v *NullableSignOnPolicyActionMFAAllOfDeviceAuthorization) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

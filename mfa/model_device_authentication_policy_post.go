@@ -17,7 +17,7 @@ import (
 
 // DeviceAuthenticationPolicyPost - struct for DeviceAuthenticationPolicyPost
 type DeviceAuthenticationPolicyPost struct {
-	DeviceAuthenticationPolicy *DeviceAuthenticationPolicy
+	DeviceAuthenticationPolicy        *DeviceAuthenticationPolicy
 	DeviceAuthenticationPolicyMigrate *DeviceAuthenticationPolicyMigrate
 }
 
@@ -34,7 +34,6 @@ func DeviceAuthenticationPolicyMigrateAsDeviceAuthenticationPolicyPost(v *Device
 		DeviceAuthenticationPolicyMigrate: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceAuthenticationPolicyPost) UnmarshalJSON(data []byte) error {
@@ -91,7 +90,7 @@ func (src DeviceAuthenticationPolicyPost) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DeviceAuthenticationPolicyPost) GetActualInstance() (interface{}) {
+func (obj *DeviceAuthenticationPolicyPost) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -142,5 +141,3 @@ func (v *NullableDeviceAuthenticationPolicyPost) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

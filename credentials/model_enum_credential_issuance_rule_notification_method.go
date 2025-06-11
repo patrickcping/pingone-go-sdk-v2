@@ -20,7 +20,7 @@ type EnumCredentialIssuanceRuleNotificationMethod string
 
 // List of EnumCredentialIssuanceRuleNotificationMethod
 const (
-	ENUMCREDENTIALISSUANCERULENOTIFICATIONMETHOD_SMS EnumCredentialIssuanceRuleNotificationMethod = "SMS"
+	ENUMCREDENTIALISSUANCERULENOTIFICATIONMETHOD_SMS   EnumCredentialIssuanceRuleNotificationMethod = "SMS"
 	ENUMCREDENTIALISSUANCERULENOTIFICATIONMETHOD_EMAIL EnumCredentialIssuanceRuleNotificationMethod = "EMAIL"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumCredentialIssuanceRuleNotificationMethod) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

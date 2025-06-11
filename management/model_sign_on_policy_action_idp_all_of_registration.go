@@ -22,7 +22,7 @@ type SignOnPolicyActionIDPAllOfRegistration struct {
 	// A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user's profile during account creation. This is an optional property. If omitted, the default value is set to false.
 	ConfirmIdentityProviderAttributes *bool `json:"confirmIdentityProviderAttributes,omitempty"`
 	// A boolean that specifies the enabled/disabled state of the policy action. The property is disabled by default when creating a new policy. When enabled, it allows the use of the new user registration flow. This attribute should be set to true when implementing the social login sign-on policy option.
-	Enabled bool `json:"enabled"`
+	Enabled    bool                                                `json:"enabled"`
 	Population *SignOnPolicyActionLoginAllOfRegistrationPopulation `json:"population,omitempty"`
 }
 
@@ -137,7 +137,7 @@ func (o *SignOnPolicyActionIDPAllOfRegistration) SetPopulation(v SignOnPolicyAct
 }
 
 func (o SignOnPolicyActionIDPAllOfRegistration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -191,5 +191,3 @@ func (v *NullableSignOnPolicyActionIDPAllOfRegistration) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

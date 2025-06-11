@@ -20,9 +20,9 @@ type EnumAdministratorSecurityAuthenticationMethod string
 
 // List of EnumAdministratorSecurityAuthenticationMethod
 const (
-	ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_PINGONE EnumAdministratorSecurityAuthenticationMethod = "PINGONE"
+	ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_PINGONE  EnumAdministratorSecurityAuthenticationMethod = "PINGONE"
 	ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_EXTERNAL EnumAdministratorSecurityAuthenticationMethod = "EXTERNAL"
-	ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_HYBRID EnumAdministratorSecurityAuthenticationMethod = "HYBRID"
+	ENUMADMINISTRATORSECURITYAUTHENTICATIONMETHOD_HYBRID   EnumAdministratorSecurityAuthenticationMethod = "HYBRID"
 )
 
 // All allowed values of EnumAdministratorSecurityAuthenticationMethod enum
@@ -111,4 +111,3 @@ func (v *NullableEnumAdministratorSecurityAuthenticationMethod) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

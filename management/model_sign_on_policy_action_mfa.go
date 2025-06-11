@@ -19,15 +19,15 @@ var _ MappedNullable = &SignOnPolicyActionMFA{}
 
 // SignOnPolicyActionMFA struct for SignOnPolicyActionMFA
 type SignOnPolicyActionMFA struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue               `json:"_links,omitempty"`
+	Condition   *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
+	Environment *ObjectEnvironment                          `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
-	Priority int32 `json:"priority"`
+	Priority     int32                                 `json:"priority"`
 	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
-	Type EnumSignOnPolicyType `json:"type"`
+	Type         EnumSignOnPolicyType                  `json:"type"`
 	// Deprecated
 	Authenticator *SignOnPolicyActionMFAAllOfAuthenticator `json:"authenticator,omitempty"`
 	// Deprecated
@@ -42,9 +42,9 @@ type SignOnPolicyActionMFA struct {
 	Voice *SignOnPolicyActionMFAAllOfVoice `json:"voice,omitempty"`
 	// The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action.
 	// Deprecated
-	Applications []SignOnPolicyActionMFAAllOfApplications `json:"applications,omitempty"`
+	Applications               []SignOnPolicyActionMFAAllOfApplications              `json:"applications,omitempty"`
 	DeviceAuthenticationPolicy *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy `json:"deviceAuthenticationPolicy,omitempty"`
-	NoDevicesMode *EnumSignOnPolicyNoDeviceMode `json:"noDevicesMode,omitempty"`
+	NoDevicesMode              *EnumSignOnPolicyNoDeviceMode                         `json:"noDevicesMode,omitempty"`
 }
 
 // NewSignOnPolicyActionMFA instantiates a new SignOnPolicyActionMFA object
@@ -584,7 +584,7 @@ func (o *SignOnPolicyActionMFA) SetNoDevicesMode(v EnumSignOnPolicyNoDeviceMode)
 }
 
 func (o SignOnPolicyActionMFA) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -675,5 +675,3 @@ func (v *NullableSignOnPolicyActionMFA) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

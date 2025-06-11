@@ -20,13 +20,13 @@ var _ MappedNullable = &VoicePhraseContents{}
 
 // VoicePhraseContents struct for VoicePhraseContents
 type VoicePhraseContents struct {
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Id          *string                        `json:"id,omitempty"`
+	Environment *ObjectEnvironment             `json:"environment,omitempty"`
 	VoicePhrase VoicePhraseContentsVoicePhrase `json:"voicePhrase"`
-	Locale string `json:"locale"`
-	Content string `json:"content"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Locale      string                         `json:"locale"`
+	Content     string                         `json:"content"`
+	CreatedAt   *time.Time                     `json:"createdAt,omitempty"`
+	UpdatedAt   *time.Time                     `json:"updatedAt,omitempty"`
 }
 
 // NewVoicePhraseContents instantiates a new VoicePhraseContents object
@@ -250,7 +250,7 @@ func (o *VoicePhraseContents) SetUpdatedAt(v time.Time) {
 }
 
 func (o VoicePhraseContents) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -312,5 +312,3 @@ func (v *NullableVoicePhraseContents) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

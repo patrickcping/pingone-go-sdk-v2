@@ -28,15 +28,15 @@ type TemplateContentPush struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// Specifies whether the template is a predefined default template.
 	Default *bool `json:"default,omitempty"`
-	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`. 
-	Locale string `json:"locale"`
+	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`.
+	Locale         string                            `json:"locale"`
 	DeliveryMethod EnumTemplateContentDeliveryMethod `json:"deliveryMethod"`
 	// Holds the unique user-defined name for each content variant that uses the same template + `deliveryMethod` + `locale` combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents).
 	Variant *string `json:"variant,omitempty"`
 	// The push title (maximum 200 characters). If supported, this can include variables.
 	Title string `json:"title"`
 	// The push text (maximum 400 characters for push text). If supported, this can include variables.
-	Body string `json:"body"`
+	Body         string                           `json:"body"`
 	PushCategory *EnumTemplateContentPushCategory `json:"pushCategory,omitempty"`
 }
 
@@ -386,7 +386,7 @@ func (o *TemplateContentPush) SetPushCategory(v EnumTemplateContentPushCategory)
 }
 
 func (o TemplateContentPush) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -458,5 +458,3 @@ func (v *NullableTemplateContentPush) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

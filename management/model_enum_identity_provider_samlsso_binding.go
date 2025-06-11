@@ -20,7 +20,7 @@ type EnumIdentityProviderSAMLSSOBinding string
 
 // List of EnumIdentityProviderSAMLSSOBinding
 const (
-	ENUMIDENTITYPROVIDERSAMLSSOBINDING_POST EnumIdentityProviderSAMLSSOBinding = "HTTP_POST"
+	ENUMIDENTITYPROVIDERSAMLSSOBINDING_POST     EnumIdentityProviderSAMLSSOBinding = "HTTP_POST"
 	ENUMIDENTITYPROVIDERSAMLSSOBINDING_REDIRECT EnumIdentityProviderSAMLSSOBinding = "HTTP_REDIRECT"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumIdentityProviderSAMLSSOBinding) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

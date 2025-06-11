@@ -23,13 +23,13 @@ type IntegrationVersionCommon struct {
 	// Unicode characters. The description of this integration metadata version.
 	Description *string `json:"description,omitempty"`
 	// The platform-generated ID of this integration metadata version.
-	Id *string `json:"id,omitempty"`
+	Id          *string                              `json:"id,omitempty"`
 	Integration *IntegrationVersionCommonIntegration `json:"integration,omitempty"`
 	// A unique name for the integration metadata version.
 	Name string `json:"name"`
 	// A unique number for the integration version.
-	Number string `json:"number"`
-	Type *EnumIntegrationVersionType `json:"type,omitempty"`
+	Number string                      `json:"number"`
+	Type   *EnumIntegrationVersionType `json:"type,omitempty"`
 }
 
 // NewIntegrationVersionCommon instantiates a new IntegrationVersionCommon object
@@ -260,7 +260,7 @@ func (o *IntegrationVersionCommon) SetType(v EnumIntegrationVersionType) {
 }
 
 func (o IntegrationVersionCommon) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -324,5 +324,3 @@ func (v *NullableIntegrationVersionCommon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

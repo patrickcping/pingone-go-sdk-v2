@@ -21,7 +21,7 @@ type EnumBrandingLogoType string
 // List of EnumBrandingLogoType
 const (
 	ENUMBRANDINGLOGOTYPE_IMAGE EnumBrandingLogoType = "IMAGE"
-	ENUMBRANDINGLOGOTYPE_NONE EnumBrandingLogoType = "NONE"
+	ENUMBRANDINGLOGOTYPE_NONE  EnumBrandingLogoType = "NONE"
 )
 
 // All allowed values of EnumBrandingLogoType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumBrandingLogoType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -21,7 +21,7 @@ type EnumApplicationSAMLSloBinding string
 // List of EnumApplicationSAMLSloBinding
 const (
 	ENUMAPPLICATIONSAMLSLOBINDING_REDIRECT EnumApplicationSAMLSloBinding = "HTTP_REDIRECT"
-	ENUMAPPLICATIONSAMLSLOBINDING_POST EnumApplicationSAMLSloBinding = "HTTP_POST"
+	ENUMAPPLICATIONSAMLSLOBINDING_POST     EnumApplicationSAMLSloBinding = "HTTP_POST"
 )
 
 // All allowed values of EnumApplicationSAMLSloBinding enum
@@ -109,4 +109,3 @@ func (v *NullableEnumApplicationSAMLSloBinding) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

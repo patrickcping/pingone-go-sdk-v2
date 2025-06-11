@@ -20,8 +20,8 @@ var _ MappedNullable = &BrandingThemeConfiguration{}
 // BrandingThemeConfiguration struct for BrandingThemeConfiguration
 type BrandingThemeConfiguration struct {
 	// The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR.
-	BackgroundColor *string `json:"backgroundColor,omitempty"`
-	BackgroundType EnumBrandingThemeBackgroundType `json:"backgroundType"`
+	BackgroundColor *string                                    `json:"backgroundColor,omitempty"`
+	BackgroundType  EnumBrandingThemeBackgroundType            `json:"backgroundType"`
 	BackgroundImage *BrandingThemeConfigurationBackgroundImage `json:"backgroundImage,omitempty"`
 	// The body text color for the theme. It must be a valid hexadecimal color code.
 	BodyTextColor string `json:"bodyTextColor"`
@@ -36,9 +36,9 @@ type BrandingThemeConfiguration struct {
 	// The heading text color for the branding theme. It must be a valid hexadecimal color code.
 	HeadingTextColor string `json:"headingTextColor"`
 	// The hyperlink text color for the branding theme. It must be a valid hexadecimal color code.
-	LinkTextColor string `json:"linkTextColor"`
-	Logo *BrandingThemeConfigurationLogo `json:"logo,omitempty"`
-	LogoType EnumBrandingLogoType `json:"logoType"`
+	LinkTextColor string                          `json:"linkTextColor"`
+	Logo          *BrandingThemeConfigurationLogo `json:"logo,omitempty"`
+	LogoType      EnumBrandingLogoType            `json:"logoType"`
 	// The name of the branding theme.
 	Name *string `json:"name,omitempty"`
 }
@@ -421,7 +421,7 @@ func (o *BrandingThemeConfiguration) SetName(v string) {
 }
 
 func (o BrandingThemeConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -491,5 +491,3 @@ func (v *NullableBrandingThemeConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

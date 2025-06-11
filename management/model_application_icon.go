@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationIcon{}
 
 // ApplicationIcon The HREF and the ID for the application icon.
 type ApplicationIcon struct {
-	Id string `json:"id"`
+	Id   string `json:"id"`
 	Href string `json:"href"`
 }
 
@@ -91,7 +91,7 @@ func (o *ApplicationIcon) SetHref(v string) {
 }
 
 func (o ApplicationIcon) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableApplicationIcon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -8,6 +8,7 @@ api_application_resources.go
 api_application_role_assignments.go
 api_application_role_permissions.go
 api_application_roles.go
+api_environments.go
 api_policy_decision_management.go
 configuration.go
 docs/APIServer.md
@@ -61,6 +62,8 @@ docs/EnumAPIServerOperationMethod.md
 docs/EnumAPIServerOperationPathPatternType.md
 docs/EnumAPIServerPatternType.md
 docs/EnumApplicationResourceParentType.md
+docs/Environment.md
+docs/EnvironmentsApi.md
 docs/LinksHATEOASValue.md
 docs/ObjectApplication.md
 docs/ObjectEnvironment.md
@@ -115,6 +118,7 @@ model_enum_api_server_operation_method.go
 model_enum_api_server_operation_path_pattern_type.go
 model_enum_api_server_pattern_type.go
 model_enum_application_resource_parent_type.go
+model_environment.go
 model_links_hateoas_value.go
 model_object_application.go
 model_object_environment.go

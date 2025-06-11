@@ -21,7 +21,7 @@ type EnumUserAccountContentTypeHeader string
 // List of EnumUserAccountContentTypeHeader
 const (
 	ENUMUSERACCOUNTCONTENTTYPEHEADER_UNLOCKJSON EnumUserAccountContentTypeHeader = "application/vnd.pingidentity.account.unlock+json"
-	ENUMUSERACCOUNTCONTENTTYPEHEADER_LOCKJSON EnumUserAccountContentTypeHeader = "application/vnd.pingidentity.account.lock+json"
+	ENUMUSERACCOUNTCONTENTTYPEHEADER_LOCKJSON   EnumUserAccountContentTypeHeader = "application/vnd.pingidentity.account.lock+json"
 )
 
 // All allowed values of EnumUserAccountContentTypeHeader enum
@@ -109,4 +109,3 @@ func (v *NullableEnumUserAccountContentTypeHeader) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPushLim
 // DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimePeriod struct for DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimePeriod
 type DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimePeriod struct {
 	// The time period in which the push notifications are counted towards the defined limit. The minimum value is 1 minute and the maximum value is 120 minutes. If this parameter is not provided, the default value is 10 minutes.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -94,7 +94,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimePeriod) S
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimePeriod) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -143,5 +143,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimeP
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

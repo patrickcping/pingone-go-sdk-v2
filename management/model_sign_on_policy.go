@@ -25,7 +25,7 @@ type SignOnPolicy struct {
 	// A boolean that specifies whether this sign-on policy is the environment's default that is used by applications that do not have application-specific sign-on policy assignments. This property can only be set to true, in which case the isDefault property of all other sign-on policies are set to false.
 	Default *bool `json:"default,omitempty"`
 	// A string that specifies the description of the sign-on policy.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -306,7 +306,7 @@ func (o *SignOnPolicy) SetUpdatedAt(v string) {
 }
 
 func (o SignOnPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -375,5 +375,3 @@ func (v *NullableSignOnPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

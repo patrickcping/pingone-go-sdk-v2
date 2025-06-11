@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerDeviceA
 // DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization struct for DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization
 type DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization struct {
 	// Specifies the enabled or disabled state of automatic MFA for native devices paired with the user, for the specified application.
-	Enabled bool `json:"enabled"`
+	Enabled           bool                                        `json:"enabled"`
 	ExtraVerification *EnumMFADevicePolicyMobileExtraVerification `json:"extraVerification,omitempty"`
 }
 
@@ -99,7 +99,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) S
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -150,5 +150,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthoriz
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

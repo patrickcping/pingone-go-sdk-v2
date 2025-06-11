@@ -20,7 +20,7 @@ type EnumApplicationWSFEDSubjectNameIdentifierFormat string
 
 // List of EnumApplicationWSFEDSubjectNameIdentifierFormat
 const (
-	ENUMAPPLICATIONWSFEDSUBJECTNAMEIDENTIFIERFORMAT_UNSPECIFIED EnumApplicationWSFEDSubjectNameIdentifierFormat = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+	ENUMAPPLICATIONWSFEDSUBJECTNAMEIDENTIFIERFORMAT_UNSPECIFIED   EnumApplicationWSFEDSubjectNameIdentifierFormat = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
 	ENUMAPPLICATIONWSFEDSUBJECTNAMEIDENTIFIERFORMAT_EMAIL_ADDRESS EnumApplicationWSFEDSubjectNameIdentifierFormat = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumApplicationWSFEDSubjectNameIdentifierFormat) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

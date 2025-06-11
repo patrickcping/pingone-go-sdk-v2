@@ -23,16 +23,16 @@ type IdentityProviderSAML struct {
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
 	// The current enabled state of the IdP.
-	Enabled bool `json:"enabled"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Icon *IdentityProviderCommonIcon `json:"icon,omitempty"`
+	Enabled     bool                        `json:"enabled"`
+	Environment *ObjectEnvironment          `json:"environment,omitempty"`
+	Icon        *IdentityProviderCommonIcon `json:"icon,omitempty"`
 	// The resource ID.
-	Id *string `json:"id,omitempty"`
+	Id              *string                                `json:"id,omitempty"`
 	LoginButtonIcon *IdentityProviderCommonLoginButtonIcon `json:"loginButtonIcon,omitempty"`
 	// The name of the IdP.
-	Name string `json:"name"`
+	Name         string                              `json:"name"`
 	Registration *IdentityProviderCommonRegistration `json:"registration,omitempty"`
-	Type EnumIdentityProviderExt `json:"type"`
+	Type         EnumIdentityProviderExt             `json:"type"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -40,15 +40,15 @@ type IdentityProviderSAML struct {
 	// A boolean that specifies whether the SAML authentication request will be signed when sending to the identity provider. Set this to true if the external IDP is included in an authentication policy to be used by applications that are accessed using a mix of default URLS and custom Domains URLs.
 	AuthnRequestSigned *bool `json:"authnRequestSigned,omitempty"`
 	// A string that specifies the entity ID URI that is checked against the issuerId tag in the incoming response.
-	IdpEntityId string `json:"idpEntityId"`
+	IdpEntityId     string                                   `json:"idpEntityId"`
 	IdpVerification IdentityProviderSAMLAllOfIdpVerification `json:"idpVerification"`
 	// A string that specifies the service provider's entity ID, used to look up the application.
-	SpEntityId string `json:"spEntityId"`
-	SpSigning *IdentityProviderSAMLAllOfSpSigning `json:"spSigning,omitempty"`
-	SsoBinding EnumIdentityProviderSAMLSSOBinding `json:"ssoBinding"`
+	SpEntityId string                              `json:"spEntityId"`
+	SpSigning  *IdentityProviderSAMLAllOfSpSigning `json:"spSigning,omitempty"`
+	SsoBinding EnumIdentityProviderSAMLSSOBinding  `json:"ssoBinding"`
 	// A string that specifies the SSO endpoint for the authentication request.
-	SsoEndpoint string `json:"ssoEndpoint"`
-	SloBinding *EnumIdentityProviderSAMLSLOBinding `json:"sloBinding,omitempty"`
+	SsoEndpoint string                              `json:"ssoEndpoint"`
+	SloBinding  *EnumIdentityProviderSAMLSLOBinding `json:"sloBinding,omitempty"`
 	// The logout endpoint URL. This is an optional property. However, if a `sloEndpoint` logout endpoint URL is not defined, logout actions result in an error.
 	SloEndpoint *string `json:"sloEndpoint,omitempty"`
 	// The endpoint URL to submit the logout response. If a value is not provided, the `sloEndpoint` property value is used to submit SLO response.
@@ -759,7 +759,7 @@ func (o *IdentityProviderSAML) SetSloWindow(v int32) {
 }
 
 func (o IdentityProviderSAML) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -859,5 +859,3 @@ func (v *NullableIdentityProviderSAML) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ type EnumIdentityProviderAttributeMappingType string
 
 // List of EnumIdentityProviderAttributeMappingType
 const (
-	ENUMIDENTITYPROVIDERATTRIBUTEMAPPINGTYPE_CORE EnumIdentityProviderAttributeMappingType = "CORE"
+	ENUMIDENTITYPROVIDERATTRIBUTEMAPPINGTYPE_CORE   EnumIdentityProviderAttributeMappingType = "CORE"
 	ENUMIDENTITYPROVIDERATTRIBUTEMAPPINGTYPE_CUSTOM EnumIdentityProviderAttributeMappingType = "CUSTOM"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumIdentityProviderAttributeMappingType) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

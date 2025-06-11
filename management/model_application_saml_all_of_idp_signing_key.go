@@ -66,7 +66,7 @@ func (o *ApplicationSAMLAllOfIdpSigningKey) SetId(v string) {
 }
 
 func (o ApplicationSAMLAllOfIdpSigningKey) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableApplicationSAMLAllOfIdpSigningKey) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

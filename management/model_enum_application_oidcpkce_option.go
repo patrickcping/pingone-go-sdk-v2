@@ -20,8 +20,8 @@ type EnumApplicationOIDCPKCEOption string
 
 // List of EnumApplicationOIDCPKCEOption
 const (
-	ENUMAPPLICATIONOIDCPKCEOPTION_OPTIONAL EnumApplicationOIDCPKCEOption = "OPTIONAL"
-	ENUMAPPLICATIONOIDCPKCEOPTION_REQUIRED EnumApplicationOIDCPKCEOption = "REQUIRED"
+	ENUMAPPLICATIONOIDCPKCEOPTION_OPTIONAL      EnumApplicationOIDCPKCEOption = "OPTIONAL"
+	ENUMAPPLICATIONOIDCPKCEOPTION_REQUIRED      EnumApplicationOIDCPKCEOption = "REQUIRED"
 	ENUMAPPLICATIONOIDCPKCEOPTION_S256_REQUIRED EnumApplicationOIDCPKCEOption = "S256_REQUIRED"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumApplicationOIDCPKCEOption) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

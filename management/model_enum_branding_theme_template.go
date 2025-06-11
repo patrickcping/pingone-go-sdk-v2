@@ -21,10 +21,10 @@ type EnumBrandingThemeTemplate string
 // List of EnumBrandingThemeTemplate
 const (
 	ENUMBRANDINGTHEMETEMPLATE_DEFAULT EnumBrandingThemeTemplate = "default"
-	ENUMBRANDINGTHEMETEMPLATE_FOCUS EnumBrandingThemeTemplate = "focus"
-	ENUMBRANDINGTHEMETEMPLATE_MURAL EnumBrandingThemeTemplate = "mural"
-	ENUMBRANDINGTHEMETEMPLATE_SLATE EnumBrandingThemeTemplate = "slate"
-	ENUMBRANDINGTHEMETEMPLATE_SPLIT EnumBrandingThemeTemplate = "split"
+	ENUMBRANDINGTHEMETEMPLATE_FOCUS   EnumBrandingThemeTemplate = "focus"
+	ENUMBRANDINGTHEMETEMPLATE_MURAL   EnumBrandingThemeTemplate = "mural"
+	ENUMBRANDINGTHEMETEMPLATE_SLATE   EnumBrandingThemeTemplate = "slate"
+	ENUMBRANDINGTHEMETEMPLATE_SPLIT   EnumBrandingThemeTemplate = "split"
 )
 
 // All allowed values of EnumBrandingThemeTemplate enum
@@ -115,4 +115,3 @@ func (v *NullableEnumBrandingThemeTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

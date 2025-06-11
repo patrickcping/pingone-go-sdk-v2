@@ -19,15 +19,15 @@ var _ MappedNullable = &CustomDomain{}
 
 // CustomDomain struct for CustomDomain
 type CustomDomain struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Certificate *CustomDomainCertificate `json:"certificate,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Certificate *CustomDomainCertificate      `json:"certificate,omitempty"`
 	// A string that specifies the domain name that should be used as the value of the CNAME record in the customer’s DNS.
 	CanonicalName *string `json:"canonicalName,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment (for example, auth.shopco.com). This is a required property.
-	DomainName string `json:"domainName"`
+	DomainName  string             `json:"domainName"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id     *string                 `json:"id,omitempty"`
 	Status *EnumCustomDomainStatus `json:"status,omitempty"`
 }
 
@@ -266,7 +266,7 @@ func (o *CustomDomain) SetStatus(v EnumCustomDomainStatus) {
 }
 
 func (o CustomDomain) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -332,5 +332,3 @@ func (v *NullableCustomDomain) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

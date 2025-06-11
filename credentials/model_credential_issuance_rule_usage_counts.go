@@ -19,10 +19,10 @@ var _ MappedNullable = &CredentialIssuanceRuleUsageCounts{}
 
 // CredentialIssuanceRuleUsageCounts struct for CredentialIssuanceRuleUsageCounts
 type CredentialIssuanceRuleUsageCounts struct {
-	Issued *int32 `json:"issued,omitempty"`
+	Issued   *int32 `json:"issued,omitempty"`
 	Accepted *int32 `json:"accepted,omitempty"`
-	Updated *int32 `json:"updated,omitempty"`
-	Revoked *int32 `json:"revoked,omitempty"`
+	Updated  *int32 `json:"updated,omitempty"`
+	Revoked  *int32 `json:"revoked,omitempty"`
 }
 
 // NewCredentialIssuanceRuleUsageCounts instantiates a new CredentialIssuanceRuleUsageCounts object
@@ -171,7 +171,7 @@ func (o *CredentialIssuanceRuleUsageCounts) SetRevoked(v int32) {
 }
 
 func (o CredentialIssuanceRuleUsageCounts) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableCredentialIssuanceRuleUsageCounts) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -22,7 +22,7 @@ type UserPassword struct {
 	// A boolean that specifies whether the user is forced to change the password on the next log in. If not provided, the property is set to false.
 	ForceChange *bool `json:"forceChange,omitempty"`
 	// A string that specifies the user's password value. The string is either in cleartext or pre-encoded format.
-	Value *string `json:"value,omitempty"`
+	Value    *string               `json:"value,omitempty"`
 	External *UserPasswordExternal `json:"external,omitempty"`
 }
 
@@ -140,7 +140,7 @@ func (o *UserPassword) SetExternal(v UserPasswordExternal) {
 }
 
 func (o UserPassword) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,5 +196,3 @@ func (v *NullableUserPassword) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

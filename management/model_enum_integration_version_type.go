@@ -21,7 +21,7 @@ type EnumIntegrationVersionType string
 // List of EnumIntegrationVersionType
 const (
 	ENUMINTEGRATIONVERSIONTYPE_PRODUCT_INTEGRATION_KIT EnumIntegrationVersionType = "PRODUCT_INTEGRATION_KIT"
-	ENUMINTEGRATIONVERSIONTYPE_SAML EnumIntegrationVersionType = "SAML"
+	ENUMINTEGRATIONVERSIONTYPE_SAML                    EnumIntegrationVersionType = "SAML"
 )
 
 // All allowed values of EnumIntegrationVersionType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumIntegrationVersionType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

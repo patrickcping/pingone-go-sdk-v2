@@ -20,11 +20,11 @@ type EnumUpdateStatus string
 
 // List of EnumUpdateStatus
 const (
-	ENUMUPDATESTATUS_AT_LATEST EnumUpdateStatus = "AT_LATEST"
-	ENUMUPDATESTATUS_UPGRADE_AVAILABLE EnumUpdateStatus = "UPGRADE_AVAILABLE"
+	ENUMUPDATESTATUS_AT_LATEST           EnumUpdateStatus = "AT_LATEST"
+	ENUMUPDATESTATUS_UPGRADE_AVAILABLE   EnumUpdateStatus = "UPGRADE_AVAILABLE"
 	ENUMUPDATESTATUS_UPGRADE_RECOMMENDED EnumUpdateStatus = "UPGRADE_RECOMMENDED"
-	ENUMUPDATESTATUS_UPGRADE_REQUIRED EnumUpdateStatus = "UPGRADE_REQUIRED"
-	ENUMUPDATESTATUS_NOT_SUPPORTED EnumUpdateStatus = "NOT_SUPPORTED"
+	ENUMUPDATESTATUS_UPGRADE_REQUIRED    EnumUpdateStatus = "UPGRADE_REQUIRED"
+	ENUMUPDATESTATUS_NOT_SUPPORTED       EnumUpdateStatus = "NOT_SUPPORTED"
 )
 
 // All allowed values of EnumUpdateStatus enum
@@ -115,4 +115,3 @@ func (v *NullableEnumUpdateStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

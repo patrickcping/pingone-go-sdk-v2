@@ -20,7 +20,7 @@ type EnumRiskPredictorTrafficAnomalyRuleIntervalUnit string
 
 // List of EnumRiskPredictorTrafficAnomalyRuleIntervalUnit
 const (
-	ENUMRISKPREDICTORTRAFFICANOMALYRULEINTERVALUNIT_DAY EnumRiskPredictorTrafficAnomalyRuleIntervalUnit = "DAY"
+	ENUMRISKPREDICTORTRAFFICANOMALYRULEINTERVALUNIT_DAY  EnumRiskPredictorTrafficAnomalyRuleIntervalUnit = "DAY"
 	ENUMRISKPREDICTORTRAFFICANOMALYRULEINTERVALUNIT_HOUR EnumRiskPredictorTrafficAnomalyRuleIntervalUnit = "HOUR"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumRiskPredictorTrafficAnomalyRuleIntervalUnit) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

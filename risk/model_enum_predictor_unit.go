@@ -20,7 +20,7 @@ type EnumPredictorUnit string
 
 // List of EnumPredictorUnit
 const (
-	ENUMPREDICTORUNIT_DAY EnumPredictorUnit = "DAY"
+	ENUMPREDICTORUNIT_DAY  EnumPredictorUnit = "DAY"
 	ENUMPREDICTORUNIT_HOUR EnumPredictorUnit = "HOUR"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPredictorUnit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

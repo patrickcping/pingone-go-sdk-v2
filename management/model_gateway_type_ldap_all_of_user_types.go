@@ -26,11 +26,11 @@ type GatewayTypeLDAPAllOfUserTypes struct {
 	// The UUID of the user type. This correlates to the password.external.gateway.userType.id User property.
 	Id *string `json:"id,omitempty"`
 	// The name of the user type.
-	Name string `json:"name"`
+	Name          string                             `json:"name"`
 	NewUserLookup *GatewayTypeLDAPAllOfNewUserLookup `json:"newUserLookup,omitempty"`
 	// A map of key/value entries used to persist the external LDAP directory attributes.
-	OrderedCorrelationAttributes []string `json:"orderedCorrelationAttributes"`
-	PasswordAuthority EnumGatewayPasswordAuthority `json:"passwordAuthority"`
+	OrderedCorrelationAttributes []string                     `json:"orderedCorrelationAttributes"`
+	PasswordAuthority            EnumGatewayPasswordAuthority `json:"passwordAuthority"`
 	// The LDAP base domain name (DN) for this user type.
 	SearchBaseDn string `json:"searchBaseDn"`
 }
@@ -281,7 +281,7 @@ func (o *GatewayTypeLDAPAllOfUserTypes) SetSearchBaseDn(v string) {
 }
 
 func (o GatewayTypeLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -344,5 +344,3 @@ func (v *NullableGatewayTypeLDAPAllOfUserTypes) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

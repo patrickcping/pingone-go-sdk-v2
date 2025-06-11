@@ -22,7 +22,7 @@ type PropagationStoreConfigurationZoom struct {
 	// The client API key. Required when `AUTHENTICATION_METHOD` is `JWT Bearer Token`, otherwise optional.
 	API_KEY *string `json:"API_KEY,omitempty"`
 	// The client API secret. Required when `AUTHENTICATION_METHOD` is `JWT Bearer Token`, otherwise optional.
-	API_SECRET *string `json:"API_SECRET,omitempty"`
+	API_SECRET            *string                                           `json:"API_SECRET,omitempty"`
 	AUTHENTICATION_METHOD *EnumPropagationStoreTypeZoomAuthenticationMethod `json:"AUTHENTICATION_METHOD,omitempty"`
 	// Whether or not users are allowed to be created.
 	CREATE_USERS *bool `json:"CREATE_USERS,omitempty"`
@@ -37,8 +37,8 @@ type PropagationStoreConfigurationZoom struct {
 	// OAuth client secret. Required when `AUTHENTICATION_METHOD` is `OAuth Bearer Token`, otherwise optional.
 	OAUTH_CLIENT_SECRET *string `json:"OAUTH_CLIENT_SECRET,omitempty"`
 	// OAuth token request endpoint. Required when `AUTHENTICATION_METHOD` is `OAuth Bearer Token`, otherwise optional.
-	OAUTH_TOKEN_URL *string `json:"OAUTH_TOKEN_URL,omitempty"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
+	OAUTH_TOKEN_URL *string                                            `json:"OAUTH_TOKEN_URL,omitempty"`
+	REMOVE_ACTION   *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
 	// The SCIM URL.
 	SCIM_URL string `json:"SCIM_URL"`
 	// Whether or not users are allowed to be updated.
@@ -476,7 +476,7 @@ func (o *PropagationStoreConfigurationZoom) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationZoom) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -560,5 +560,3 @@ func (v *NullablePropagationStoreConfigurationZoom) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

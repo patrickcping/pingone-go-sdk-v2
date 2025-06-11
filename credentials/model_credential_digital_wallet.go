@@ -20,20 +20,20 @@ var _ MappedNullable = &CredentialDigitalWallet{}
 
 // CredentialDigitalWallet struct for CredentialDigitalWallet
 type CredentialDigitalWallet struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links       *map[string]LinksHATEOASValue       `json:"_links,omitempty"`
 	Application *CredentialDigitalWalletApplication `json:"application,omitempty"`
 	// A string that specifies the date and time the credential digital wallet was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt                *time.Time                                       `json:"createdAt,omitempty"`
 	DigitalWalletApplication *CredentialDigitalWalletDigitalWalletApplication `json:"digitalWalletApplication,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Environment              *ObjectEnvironment                               `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential digital wallet app.
-	Id *string `json:"id,omitempty"`
+	Id           *string                              `json:"id,omitempty"`
 	Notification *CredentialDigitalWalletNotification `json:"notification,omitempty"`
 	// A string that specifies the date and time the credential digital wallet was last updated; can be null.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	User *CredentialDigitalWalletUser `json:"user,omitempty"`
+	UpdatedAt *time.Time                   `json:"updatedAt,omitempty"`
+	User      *CredentialDigitalWalletUser `json:"user,omitempty"`
 	// A string that specifies the status of the wallet.
-	Status *string `json:"status,omitempty"`
+	Status         *string                                `json:"status,omitempty"`
 	PairingSession *CredentialDigitalWalletPairingSession `json:"pairingSession,omitempty"`
 }
 
@@ -407,7 +407,7 @@ func (o *CredentialDigitalWallet) SetPairingSession(v CredentialDigitalWalletPai
 }
 
 func (o CredentialDigitalWallet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -487,5 +487,3 @@ func (v *NullableCredentialDigitalWallet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

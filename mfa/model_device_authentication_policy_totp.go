@@ -22,8 +22,8 @@ type DeviceAuthenticationPolicyTotp struct {
 	// Enabled or disabled in the policy.
 	Enabled bool `json:"enabled"`
 	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
-	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
-	Otp DeviceAuthenticationPolicyTotpOtp `json:"otp"`
+	PairingDisabled *bool                             `json:"pairingDisabled,omitempty"`
+	Otp             DeviceAuthenticationPolicyTotpOtp `json:"otp"`
 	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 	// Object that you can use to provide key:value pairs for `otpauth` URI parameters. For example, if you provide a value for the `issuer` parameter, then authenticators that support that parameter will display the text you specify together with the OTP (in addition to the username). This can help users recognize which application the OTP is for. If you intend on using the same MFA policy for multiple applications, choose a name that reflects the group of applications.
@@ -194,7 +194,7 @@ func (o *DeviceAuthenticationPolicyTotp) SetUriParameters(v map[string]string) {
 }
 
 func (o DeviceAuthenticationPolicyTotp) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -252,5 +252,3 @@ func (v *NullableDeviceAuthenticationPolicyTotp) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

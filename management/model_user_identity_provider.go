@@ -20,7 +20,7 @@ var _ MappedNullable = &UserIdentityProvider{}
 // UserIdentityProvider struct for UserIdentityProvider
 type UserIdentityProvider struct {
 	// A mutable string that identifies the external identity provider used to authenticate the user. If not provided, PingOne is the identity provider. This attribute is required if the identity provider is authoritative for just-in-time user provisioning.
-	Id *string `json:"id,omitempty"`
+	Id   *string               `json:"id,omitempty"`
 	Type *EnumIdentityProvider `json:"type,omitempty"`
 }
 
@@ -110,7 +110,7 @@ func (o *UserIdentityProvider) SetType(v EnumIdentityProvider) {
 }
 
 func (o UserIdentityProvider) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,5 +163,3 @@ func (v *NullableUserIdentityProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

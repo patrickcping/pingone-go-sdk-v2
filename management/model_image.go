@@ -22,11 +22,11 @@ var _ MappedNullable = &Image{}
 type Image struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the resource was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	Targets *ImageTargets `json:"targets,omitempty"`
+	CreatedAt *time.Time    `json:"createdAt,omitempty"`
+	Targets   *ImageTargets `json:"targets,omitempty"`
 }
 
 // NewImage instantiates a new Image object
@@ -207,7 +207,7 @@ func (o *Image) SetTargets(v ImageTargets) {
 }
 
 func (o Image) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,5 +269,3 @@ func (v *NullableImage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

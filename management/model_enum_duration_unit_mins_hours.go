@@ -21,7 +21,7 @@ type EnumDurationUnitMinsHours string
 // List of EnumDurationUnitMinsHours
 const (
 	ENUMDURATIONUNITMINSHOURS_MINUTES EnumDurationUnitMinsHours = "MINUTES"
-	ENUMDURATIONUNITMINSHOURS_HOURS EnumDurationUnitMinsHours = "HOURS"
+	ENUMDURATIONUNITMINSHOURS_HOURS   EnumDurationUnitMinsHours = "HOURS"
 )
 
 // All allowed values of EnumDurationUnitMinsHours enum
@@ -109,4 +109,3 @@ func (v *NullableEnumDurationUnitMinsHours) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

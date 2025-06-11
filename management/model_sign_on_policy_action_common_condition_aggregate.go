@@ -18,11 +18,11 @@ import (
 // SignOnPolicyActionCommonConditionAggregate - struct for SignOnPolicyActionCommonConditionAggregate
 type SignOnPolicyActionCommonConditionAggregate struct {
 	SignOnPolicyActionCommonConditionAnonymousNetwork *SignOnPolicyActionCommonConditionAnonymousNetwork
-	SignOnPolicyActionCommonConditionEquals *SignOnPolicyActionCommonConditionEquals
-	SignOnPolicyActionCommonConditionGeovelocity *SignOnPolicyActionCommonConditionGeovelocity
-	SignOnPolicyActionCommonConditionGreater *SignOnPolicyActionCommonConditionGreater
-	SignOnPolicyActionCommonConditionIPRange *SignOnPolicyActionCommonConditionIPRange
-	SignOnPolicyActionCommonConditionIPRisk *SignOnPolicyActionCommonConditionIPRisk
+	SignOnPolicyActionCommonConditionEquals           *SignOnPolicyActionCommonConditionEquals
+	SignOnPolicyActionCommonConditionGeovelocity      *SignOnPolicyActionCommonConditionGeovelocity
+	SignOnPolicyActionCommonConditionGreater          *SignOnPolicyActionCommonConditionGreater
+	SignOnPolicyActionCommonConditionIPRange          *SignOnPolicyActionCommonConditionIPRange
+	SignOnPolicyActionCommonConditionIPRisk           *SignOnPolicyActionCommonConditionIPRisk
 }
 
 // SignOnPolicyActionCommonConditionAnonymousNetworkAsSignOnPolicyActionCommonConditionAggregate is a convenience function that returns SignOnPolicyActionCommonConditionAnonymousNetwork wrapped in SignOnPolicyActionCommonConditionAggregate
@@ -66,7 +66,6 @@ func SignOnPolicyActionCommonConditionIPRiskAsSignOnPolicyActionCommonConditionA
 		SignOnPolicyActionCommonConditionIPRisk: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *SignOnPolicyActionCommonConditionAggregate) UnmarshalJSON(data []byte) error {
@@ -197,7 +196,7 @@ func (src SignOnPolicyActionCommonConditionAggregate) MarshalJSON() ([]byte, err
 }
 
 // Get the actual instance
-func (obj *SignOnPolicyActionCommonConditionAggregate) GetActualInstance() (interface{}) {
+func (obj *SignOnPolicyActionCommonConditionAggregate) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -264,5 +263,3 @@ func (v *NullableSignOnPolicyActionCommonConditionAggregate) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

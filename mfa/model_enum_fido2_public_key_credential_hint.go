@@ -20,9 +20,9 @@ type EnumFIDO2PublicKeyCredentialHint string
 
 // List of EnumFIDO2PublicKeyCredentialHint
 const (
-	ENUMFIDO2PUBLICKEYCREDENTIALHINT_SECURITY_KEY EnumFIDO2PublicKeyCredentialHint = "SECURITY_KEY"
+	ENUMFIDO2PUBLICKEYCREDENTIALHINT_SECURITY_KEY  EnumFIDO2PublicKeyCredentialHint = "SECURITY_KEY"
 	ENUMFIDO2PUBLICKEYCREDENTIALHINT_CLIENT_DEVICE EnumFIDO2PublicKeyCredentialHint = "CLIENT_DEVICE"
-	ENUMFIDO2PUBLICKEYCREDENTIALHINT_HYBRID EnumFIDO2PublicKeyCredentialHint = "HYBRID"
+	ENUMFIDO2PUBLICKEYCREDENTIALHINT_HYBRID        EnumFIDO2PublicKeyCredentialHint = "HYBRID"
 )
 
 // All allowed values of EnumFIDO2PublicKeyCredentialHint enum
@@ -110,4 +110,3 @@ func (v *NullableEnumFIDO2PublicKeyCredentialHint) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

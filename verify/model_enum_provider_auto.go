@@ -20,7 +20,7 @@ type EnumProviderAuto string
 
 // List of EnumProviderAuto
 const (
-	ENUMPROVIDERAUTO_MITEK EnumProviderAuto = "MITEK"
+	ENUMPROVIDERAUTO_MITEK  EnumProviderAuto = "MITEK"
 	ENUMPROVIDERAUTO_VERIFF EnumProviderAuto = "VERIFF"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumProviderAuto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

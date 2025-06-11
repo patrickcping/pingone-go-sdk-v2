@@ -20,9 +20,9 @@ type EnumApplicationOIDCResponseType string
 
 // List of EnumApplicationOIDCResponseType
 const (
-	ENUMAPPLICATIONOIDCRESPONSETYPE_TOKEN EnumApplicationOIDCResponseType = "TOKEN"
+	ENUMAPPLICATIONOIDCRESPONSETYPE_TOKEN    EnumApplicationOIDCResponseType = "TOKEN"
 	ENUMAPPLICATIONOIDCRESPONSETYPE_ID_TOKEN EnumApplicationOIDCResponseType = "ID_TOKEN"
-	ENUMAPPLICATIONOIDCRESPONSETYPE_CODE EnumApplicationOIDCResponseType = "CODE"
+	ENUMAPPLICATIONOIDCRESPONSETYPE_CODE     EnumApplicationOIDCResponseType = "CODE"
 )
 
 // All allowed values of EnumApplicationOIDCResponseType enum
@@ -111,4 +111,3 @@ func (v *NullableEnumApplicationOIDCResponseType) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

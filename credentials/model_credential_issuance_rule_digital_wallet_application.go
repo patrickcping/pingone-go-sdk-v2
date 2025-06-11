@@ -66,7 +66,7 @@ func (o *CredentialIssuanceRuleDigitalWalletApplication) SetId(v string) {
 }
 
 func (o CredentialIssuanceRuleDigitalWalletApplication) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableCredentialIssuanceRuleDigitalWalletApplication) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

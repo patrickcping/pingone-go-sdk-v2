@@ -21,13 +21,13 @@ var _ MappedNullable = &FlowPolicy{}
 type FlowPolicy struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The flow policy resource's unique identifier.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Id          *string                `json:"id,omitempty"`
+	Environment *ObjectEnvironment     `json:"environment,omitempty"`
 	Application *FlowPolicyApplication `json:"application,omitempty"`
 	// A boolean that specifies whether the flow policy is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 	// The flow policy resource name.
-	Name *string `json:"name,omitempty"`
+	Name    *string            `json:"name,omitempty"`
 	Trigger *FlowPolicyTrigger `json:"trigger,omitempty"`
 }
 
@@ -273,7 +273,7 @@ func (o *FlowPolicy) SetTrigger(v FlowPolicyTrigger) {
 }
 
 func (o FlowPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -341,5 +341,3 @@ func (v *NullableFlowPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

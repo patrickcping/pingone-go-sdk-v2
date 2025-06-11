@@ -21,7 +21,7 @@ var _ MappedNullable = &DecisionEndpoint{}
 type DecisionEndpoint struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies alternative unique identifier for the endpoint, which provides a method for locating the resource by a known, fixed identifier.
-	AlternateId *string `json:"alternateId,omitempty"`
+	AlternateId          *string                               `json:"alternateId,omitempty"`
 	AuthorizationVersion *DecisionEndpointAuthorizationVersion `json:"authorizationVersion,omitempty"`
 	// A string that specifies the description of the policy decision resource.
 	Description string `json:"description"`
@@ -36,8 +36,8 @@ type DecisionEndpoint struct {
 	// A string that specifies a machine-readable identifier indicating the provenance of the current configuration. It has no meaning to the Policy Decision Service itself but exists to support integration with other services.
 	Provenance *string `json:"provenance,omitempty"`
 	// A boolean that specifies whether to show recent decisions.
-	RecentDecisionsEnabled *bool `json:"recentDecisionsEnabled,omitempty"`
-	RecentDecisions *DecisionEndpointRecentDecisions `json:"recentDecisions,omitempty"`
+	RecentDecisionsEnabled *bool                            `json:"recentDecisionsEnabled,omitempty"`
+	RecentDecisions        *DecisionEndpointRecentDecisions `json:"recentDecisions,omitempty"`
 	// A boolean that specifies whether to record a limited history of recent decision requests and responses, which can be queried through a separate API.
 	RecordRecentRequests bool `json:"recordRecentRequests"`
 }
@@ -423,7 +423,7 @@ func (o *DecisionEndpoint) SetRecordRecentRequests(v bool) {
 }
 
 func (o DecisionEndpoint) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -500,5 +500,3 @@ func (v *NullableDecisionEndpoint) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

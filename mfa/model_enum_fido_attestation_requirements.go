@@ -15,16 +15,16 @@ import (
 	"fmt"
 )
 
-// EnumFIDOAttestationRequirements Determines whether attestation is requested from the authenticator, and whether this information is used to restrict authenticator usage. Can take one of these values: `NONE` - attestation is not requested `AUDIT_ONLY` - Attestation is requested and the information is used for logging purposes, but the information is not used for filtering authenticators `GLOBAL` - all entries in the MDS table can be used for authentication `CERTIFIED` - only FIDO-certified authenticators can be used `SPECIFIC` - only specific authenticators can be used. Used in conjunction with `allowedAuthenticators`. 
+// EnumFIDOAttestationRequirements Determines whether attestation is requested from the authenticator, and whether this information is used to restrict authenticator usage. Can take one of these values: `NONE` - attestation is not requested `AUDIT_ONLY` - Attestation is requested and the information is used for logging purposes, but the information is not used for filtering authenticators `GLOBAL` - all entries in the MDS table can be used for authentication `CERTIFIED` - only FIDO-certified authenticators can be used `SPECIFIC` - only specific authenticators can be used. Used in conjunction with `allowedAuthenticators`.
 type EnumFIDOAttestationRequirements string
 
 // List of EnumFIDOAttestationRequirements
 const (
-	ENUMFIDOATTESTATIONREQUIREMENTS_NONE EnumFIDOAttestationRequirements = "NONE"
+	ENUMFIDOATTESTATIONREQUIREMENTS_NONE       EnumFIDOAttestationRequirements = "NONE"
 	ENUMFIDOATTESTATIONREQUIREMENTS_AUDIT_ONLY EnumFIDOAttestationRequirements = "AUDIT_ONLY"
-	ENUMFIDOATTESTATIONREQUIREMENTS_GLOBAL EnumFIDOAttestationRequirements = "GLOBAL"
-	ENUMFIDOATTESTATIONREQUIREMENTS_CERTIFIED EnumFIDOAttestationRequirements = "CERTIFIED"
-	ENUMFIDOATTESTATIONREQUIREMENTS_SPECIFIC EnumFIDOAttestationRequirements = "SPECIFIC"
+	ENUMFIDOATTESTATIONREQUIREMENTS_GLOBAL     EnumFIDOAttestationRequirements = "GLOBAL"
+	ENUMFIDOATTESTATIONREQUIREMENTS_CERTIFIED  EnumFIDOAttestationRequirements = "CERTIFIED"
+	ENUMFIDOATTESTATIONREQUIREMENTS_SPECIFIC   EnumFIDOAttestationRequirements = "SPECIFIC"
 )
 
 // All allowed values of EnumFIDOAttestationRequirements enum
@@ -115,4 +115,3 @@ func (v *NullableEnumFIDOAttestationRequirements) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

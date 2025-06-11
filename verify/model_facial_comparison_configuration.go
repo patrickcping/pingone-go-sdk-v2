@@ -19,7 +19,7 @@ var _ MappedNullable = &FacialComparisonConfiguration{}
 
 // FacialComparisonConfiguration struct for FacialComparisonConfiguration
 type FacialComparisonConfiguration struct {
-	Verify EnumVerify `json:"verify"`
+	Verify    EnumVerify    `json:"verify"`
 	Threshold EnumThreshold `json:"threshold"`
 }
 
@@ -91,7 +91,7 @@ func (o *FacialComparisonConfiguration) SetThreshold(v EnumThreshold) {
 }
 
 func (o FacialComparisonConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableFacialComparisonConfiguration) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

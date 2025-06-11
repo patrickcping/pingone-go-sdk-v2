@@ -20,7 +20,7 @@ var _ MappedNullable = &NotificationsPolicyQuotasInner{}
 // NotificationsPolicyQuotasInner struct for NotificationsPolicyQuotasInner
 type NotificationsPolicyQuotasInner struct {
 	Type EnumNotificationsPolicyQuotaItemType `json:"type"`
-	// The delivery methods for which the limit is being defined. The value can be `Email` or `SMS,Voice`. When you use the `SMS`, `Voice` option, it means that the combined total of SMS and voice notifications must be below the limit defined. If you are limiting both email and SMS/voice, each limit should be represented by a different object in the `quotas` array, for example: `\"quotas\": [{\"type\": \"USER\",\"deliveryMethods\": [\"SMS\",\"Voice\"],\"total\": 30},{\"type\": \"USER\",\"deliveryMethods\": [\"Email\"],\"total\": 30}]` 
+	// The delivery methods for which the limit is being defined. The value can be `Email` or `SMS,Voice`. When you use the `SMS`, `Voice` option, it means that the combined total of SMS and voice notifications must be below the limit defined. If you are limiting both email and SMS/voice, each limit should be represented by a different object in the `quotas` array, for example: `\"quotas\": [{\"type\": \"USER\",\"deliveryMethods\": [\"SMS\",\"Voice\"],\"total\": 30},{\"type\": \"USER\",\"deliveryMethods\": [\"Email\"],\"total\": 30}]`
 	DeliveryMethods []EnumNotificationsPolicyQuotaDeliveryMethods `json:"deliveryMethods"`
 	// The maximum number of notifications allowed per day.
 	Total *int32 `json:"total,omitempty"`
@@ -194,7 +194,7 @@ func (o *NotificationsPolicyQuotasInner) SetUnclaimed(v int32) {
 }
 
 func (o NotificationsPolicyQuotasInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -252,5 +252,3 @@ func (v *NullableNotificationsPolicyQuotasInner) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

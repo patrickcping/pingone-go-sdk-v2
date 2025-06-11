@@ -22,8 +22,8 @@ type EnumCDigitalWalletProvisionedCredentialWalletAction string
 const (
 	ENUMCDIGITALWALLETPROVISIONEDCREDENTIALWALLETACTION_ACCEPTED EnumCDigitalWalletProvisionedCredentialWalletAction = "CREDENTIAL_ACCEPTED"
 	ENUMCDIGITALWALLETPROVISIONEDCREDENTIALWALLETACTION_REJECTED EnumCDigitalWalletProvisionedCredentialWalletAction = "CREDENTIAL_REJECTED"
-	ENUMCDIGITALWALLETPROVISIONEDCREDENTIALWALLETACTION_REVOKED EnumCDigitalWalletProvisionedCredentialWalletAction = "CREDENTIAL_REVOKED"
-	ENUMCDIGITALWALLETPROVISIONEDCREDENTIALWALLETACTION_DELETED EnumCDigitalWalletProvisionedCredentialWalletAction = "CREDENTIAL_DELETED"
+	ENUMCDIGITALWALLETPROVISIONEDCREDENTIALWALLETACTION_REVOKED  EnumCDigitalWalletProvisionedCredentialWalletAction = "CREDENTIAL_REVOKED"
+	ENUMCDIGITALWALLETPROVISIONEDCREDENTIALWALLETACTION_DELETED  EnumCDigitalWalletProvisionedCredentialWalletAction = "CREDENTIAL_DELETED"
 )
 
 // All allowed values of EnumCDigitalWalletProvisionedCredentialWalletAction enum
@@ -113,4 +113,3 @@ func (v *NullableEnumCDigitalWalletProvisionedCredentialWalletAction) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

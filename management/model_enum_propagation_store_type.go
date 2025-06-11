@@ -20,17 +20,17 @@ type EnumPropagationStoreType string
 
 // List of EnumPropagationStoreType
 const (
-	ENUMPROPAGATIONSTORETYPE_AQUERA EnumPropagationStoreType = "Aquera"
+	ENUMPROPAGATIONSTORETYPE_AQUERA                       EnumPropagationStoreType = "Aquera"
 	ENUMPROPAGATIONSTORETYPE_AZURE_ACTIVE_DIRECTORY_SAML2 EnumPropagationStoreType = "AzureActiveDirectorySAML2"
-	ENUMPROPAGATIONSTORETYPE_DIRECTORY EnumPropagationStoreType = "directory"
-	ENUMPROPAGATIONSTORETYPE_LDAP_GATEWAY EnumPropagationStoreType = "LdapGateway"
-	ENUMPROPAGATIONSTORETYPE_PING_ONE EnumPropagationStoreType = "PingOne"
-	ENUMPROPAGATIONSTORETYPE_SALESFORCE EnumPropagationStoreType = "Salesforce"
-	ENUMPROPAGATIONSTORETYPE_SALESFORCE_CONTACTS EnumPropagationStoreType = "SalesforceContacts"
-	ENUMPROPAGATIONSTORETYPE_SCIM EnumPropagationStoreType = "scim"
-	ENUMPROPAGATIONSTORETYPE_SLACK EnumPropagationStoreType = "Slack"
-	ENUMPROPAGATIONSTORETYPE_WORKDAY EnumPropagationStoreType = "Workday"
-	ENUMPROPAGATIONSTORETYPE_ZOOM EnumPropagationStoreType = "Zoom"
+	ENUMPROPAGATIONSTORETYPE_DIRECTORY                    EnumPropagationStoreType = "directory"
+	ENUMPROPAGATIONSTORETYPE_LDAP_GATEWAY                 EnumPropagationStoreType = "LdapGateway"
+	ENUMPROPAGATIONSTORETYPE_PING_ONE                     EnumPropagationStoreType = "PingOne"
+	ENUMPROPAGATIONSTORETYPE_SALESFORCE                   EnumPropagationStoreType = "Salesforce"
+	ENUMPROPAGATIONSTORETYPE_SALESFORCE_CONTACTS          EnumPropagationStoreType = "SalesforceContacts"
+	ENUMPROPAGATIONSTORETYPE_SCIM                         EnumPropagationStoreType = "scim"
+	ENUMPROPAGATIONSTORETYPE_SLACK                        EnumPropagationStoreType = "Slack"
+	ENUMPROPAGATIONSTORETYPE_WORKDAY                      EnumPropagationStoreType = "Workday"
+	ENUMPROPAGATIONSTORETYPE_ZOOM                         EnumPropagationStoreType = "Zoom"
 )
 
 // All allowed values of EnumPropagationStoreType enum
@@ -127,4 +127,3 @@ func (v *NullableEnumPropagationStoreType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

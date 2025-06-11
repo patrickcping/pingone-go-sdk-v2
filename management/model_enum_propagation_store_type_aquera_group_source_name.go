@@ -20,7 +20,7 @@ type EnumPropagationStoreTypeAqueraGroupSourceName string
 
 // List of EnumPropagationStoreTypeAqueraGroupSourceName
 const (
-	ENUMPROPAGATIONSTORETYPEAQUERAGROUPSOURCENAME_COMMON_NAME EnumPropagationStoreTypeAqueraGroupSourceName = "Common Name"
+	ENUMPROPAGATIONSTORETYPEAQUERAGROUPSOURCENAME_COMMON_NAME        EnumPropagationStoreTypeAqueraGroupSourceName = "Common Name"
 	ENUMPROPAGATIONSTORETYPEAQUERAGROUPSOURCENAME_DISTINGUISHED_NAME EnumPropagationStoreTypeAqueraGroupSourceName = "Distinguished Name"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeAqueraGroupSourceName) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

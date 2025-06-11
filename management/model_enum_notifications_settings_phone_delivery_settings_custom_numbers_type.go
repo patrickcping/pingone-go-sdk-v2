@@ -20,8 +20,8 @@ type EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSTYPE_SHORT_CODE EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType = "SHORT_CODE"
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSTYPE_TOLL_FREE EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType = "TOLL_FREE"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSTYPE_SHORT_CODE   EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType = "SHORT_CODE"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSTYPE_TOLL_FREE    EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType = "TOLL_FREE"
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSTYPE_PHONE_NUMBER EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType = "PHONE_NUMBER"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

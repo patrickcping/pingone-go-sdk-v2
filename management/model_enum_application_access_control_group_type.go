@@ -20,7 +20,7 @@ type EnumApplicationAccessControlGroupType string
 
 // List of EnumApplicationAccessControlGroupType
 const (
-	ENUMAPPLICATIONACCESSCONTROLGROUPTYPE_ANY_GROUP EnumApplicationAccessControlGroupType = "ANY_GROUP"
+	ENUMAPPLICATIONACCESSCONTROLGROUPTYPE_ANY_GROUP  EnumApplicationAccessControlGroupType = "ANY_GROUP"
 	ENUMAPPLICATIONACCESSCONTROLGROUPTYPE_ALL_GROUPS EnumApplicationAccessControlGroupType = "ALL_GROUPS"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumApplicationAccessControlGroupType) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

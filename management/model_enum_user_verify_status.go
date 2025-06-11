@@ -21,8 +21,8 @@ type EnumUserVerifyStatus string
 // List of EnumUserVerifyStatus
 const (
 	ENUMUSERVERIFYSTATUS_NOT_INITIATED EnumUserVerifyStatus = "NOT_INITIATED"
-	ENUMUSERVERIFYSTATUS_ENABLED EnumUserVerifyStatus = "ENABLED"
-	ENUMUSERVERIFYSTATUS_DISABLED EnumUserVerifyStatus = "DISABLED"
+	ENUMUSERVERIFYSTATUS_ENABLED       EnumUserVerifyStatus = "ENABLED"
+	ENUMUSERVERIFYSTATUS_DISABLED      EnumUserVerifyStatus = "DISABLED"
 )
 
 // All allowed values of EnumUserVerifyStatus enum
@@ -111,4 +111,3 @@ func (v *NullableEnumUserVerifyStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

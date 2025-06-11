@@ -20,8 +20,8 @@ type EnumSchemaAttributeType string
 
 // List of EnumSchemaAttributeType
 const (
-	ENUMSCHEMAATTRIBUTETYPE_STRING EnumSchemaAttributeType = "STRING"
-	ENUMSCHEMAATTRIBUTETYPE_JSON EnumSchemaAttributeType = "JSON"
+	ENUMSCHEMAATTRIBUTETYPE_STRING  EnumSchemaAttributeType = "STRING"
+	ENUMSCHEMAATTRIBUTETYPE_JSON    EnumSchemaAttributeType = "JSON"
 	ENUMSCHEMAATTRIBUTETYPE_BOOLEAN EnumSchemaAttributeType = "BOOLEAN"
 	ENUMSCHEMAATTRIBUTETYPE_COMPLEX EnumSchemaAttributeType = "COMPLEX"
 )
@@ -113,4 +113,3 @@ func (v *NullableEnumSchemaAttributeType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

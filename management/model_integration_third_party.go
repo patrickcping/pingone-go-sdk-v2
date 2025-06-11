@@ -100,7 +100,7 @@ func (o *IntegrationThirdParty) SetProducts(v []string) {
 }
 
 func (o IntegrationThirdParty) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,5 +151,3 @@ func (v *NullableIntegrationThirdParty) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

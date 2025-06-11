@@ -24,7 +24,7 @@ type Language struct {
 	// Specifies whether this language is the default for the environment. This property value must be set to false when creating a language resource. It can be set to true only after the language is enabled and after the localization of an agreement resource is complete when agreements are used for the environment.
 	Default bool `json:"default"`
 	// Specifies whether this language is enabled for the environment. This property value must be set to false when creating a language.
-	Enabled bool `json:"enabled"`
+	Enabled     bool               `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -357,7 +357,7 @@ func (o *Language) SetUpdatedAt(v time.Time) {
 }
 
 func (o Language) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -428,5 +428,3 @@ func (v *NullableLanguage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,9 +21,9 @@ type EnumTemplateContentDeliveryMethod string
 // List of EnumTemplateContentDeliveryMethod
 const (
 	ENUMTEMPLATECONTENTDELIVERYMETHOD_EMAIL EnumTemplateContentDeliveryMethod = "Email"
-	ENUMTEMPLATECONTENTDELIVERYMETHOD_SMS EnumTemplateContentDeliveryMethod = "SMS"
+	ENUMTEMPLATECONTENTDELIVERYMETHOD_SMS   EnumTemplateContentDeliveryMethod = "SMS"
 	ENUMTEMPLATECONTENTDELIVERYMETHOD_VOICE EnumTemplateContentDeliveryMethod = "Voice"
-	ENUMTEMPLATECONTENTDELIVERYMETHOD_PUSH EnumTemplateContentDeliveryMethod = "Push"
+	ENUMTEMPLATECONTENTDELIVERYMETHOD_PUSH  EnumTemplateContentDeliveryMethod = "Push"
 )
 
 // All allowed values of EnumTemplateContentDeliveryMethod enum
@@ -113,4 +113,3 @@ func (v *NullableEnumTemplateContentDeliveryMethod) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,7 +20,7 @@ type EnumFormRecaptchaV2Size string
 
 // List of EnumFormRecaptchaV2Size
 const (
-	ENUMFORMRECAPTCHAV2SIZE_NORMAL EnumFormRecaptchaV2Size = "NORMAL"
+	ENUMFORMRECAPTCHAV2SIZE_NORMAL  EnumFormRecaptchaV2Size = "NORMAL"
 	ENUMFORMRECAPTCHAV2SIZE_COMPACT EnumFormRecaptchaV2Size = "COMPACT"
 )
 
@@ -108,4 +108,3 @@ func (v *NullableEnumFormRecaptchaV2Size) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

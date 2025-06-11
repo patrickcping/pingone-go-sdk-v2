@@ -20,16 +20,16 @@ var _ MappedNullable = &ProvisionedCredentialClaimReference{}
 
 // ProvisionedCredentialClaimReference struct for ProvisionedCredentialClaimReference
 type ProvisionedCredentialClaimReference struct {
-	Id *string `json:"id,omitempty"`
-	Version *int32 `json:"version,omitempty"`
-	Issuer *string `json:"issuer,omitempty"`
-	Subject *string `json:"subject,omitempty"`
-	Holder *string `json:"holder,omitempty"`
-	CreateDate *time.Time `json:"createDate,omitempty"`
-	DataJson *string `json:"dataJson,omitempty"`
-	DataSignature *string `json:"dataSignature,omitempty"`
-	DataHash *string `json:"dataHash,omitempty"`
-	PartitionId *string `json:"partitionId,omitempty"`
+	Id            *string    `json:"id,omitempty"`
+	Version       *int32     `json:"version,omitempty"`
+	Issuer        *string    `json:"issuer,omitempty"`
+	Subject       *string    `json:"subject,omitempty"`
+	Holder        *string    `json:"holder,omitempty"`
+	CreateDate    *time.Time `json:"createDate,omitempty"`
+	DataJson      *string    `json:"dataJson,omitempty"`
+	DataSignature *string    `json:"dataSignature,omitempty"`
+	DataHash      *string    `json:"dataHash,omitempty"`
+	PartitionId   *string    `json:"partitionId,omitempty"`
 }
 
 // NewProvisionedCredentialClaimReference instantiates a new ProvisionedCredentialClaimReference object
@@ -370,7 +370,7 @@ func (o *ProvisionedCredentialClaimReference) SetPartitionId(v string) {
 }
 
 func (o ProvisionedCredentialClaimReference) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -447,5 +447,3 @@ func (v *NullableProvisionedCredentialClaimReference) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

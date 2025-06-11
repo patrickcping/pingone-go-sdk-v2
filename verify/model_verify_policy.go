@@ -20,24 +20,24 @@ var _ MappedNullable = &VerifyPolicy{}
 
 // VerifyPolicy struct for VerifyPolicy
 type VerifyPolicy struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Id          *string                       `json:"id,omitempty"`
+	Environment *ObjectEnvironment            `json:"environment,omitempty"`
 	// Name displayed in PingOne Admin UI.
 	Name string `json:"name"`
 	// Description displayed in PingOne Admin UI, 1-1024 characters.
 	Description *string `json:"description,omitempty"`
 	// Required as true to set this verify policy as the default policy for the environment; otherwise optional and defaults to false.
-	Default *bool `json:"default,omitempty"`
-	GovernmentId *GovernmentIdConfiguration `json:"governmentId,omitempty"`
+	Default          *bool                          `json:"default,omitempty"`
+	GovernmentId     *GovernmentIdConfiguration     `json:"governmentId,omitempty"`
 	FacialComparison *FacialComparisonConfiguration `json:"facialComparison,omitempty"`
-	Liveness *LivenessConfiguration `json:"liveness,omitempty"`
-	Email *OTPDeviceConfiguration `json:"email,omitempty"`
-	Phone *OTPDeviceConfiguration `json:"phone,omitempty"`
-	Transaction *TransactionConfiguration `json:"transaction,omitempty"`
-	Voice *VoiceConfiguration `json:"voice,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Liveness         *LivenessConfiguration         `json:"liveness,omitempty"`
+	Email            *OTPDeviceConfiguration        `json:"email,omitempty"`
+	Phone            *OTPDeviceConfiguration        `json:"phone,omitempty"`
+	Transaction      *TransactionConfiguration      `json:"transaction,omitempty"`
+	Voice            *VoiceConfiguration            `json:"voice,omitempty"`
+	CreatedAt        *time.Time                     `json:"createdAt,omitempty"`
+	UpdatedAt        *time.Time                     `json:"updatedAt,omitempty"`
 }
 
 // NewVerifyPolicy instantiates a new VerifyPolicy object
@@ -531,7 +531,7 @@ func (o *VerifyPolicy) SetUpdatedAt(v time.Time) {
 }
 
 func (o VerifyPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -621,5 +621,3 @@ func (v *NullableVerifyPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

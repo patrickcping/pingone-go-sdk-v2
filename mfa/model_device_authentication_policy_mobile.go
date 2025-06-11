@@ -20,8 +20,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobile{}
 // DeviceAuthenticationPolicyMobile Mobile device authentication policy settings.
 type DeviceAuthenticationPolicyMobile struct {
 	// A boolean that specifies whether the method is enabled or disabled in the policy.
-	Enabled bool `json:"enabled"`
-	Otp DeviceAuthenticationPolicyMobileOtp `json:"otp"`
+	Enabled      bool                                                `json:"enabled"`
+	Otp          DeviceAuthenticationPolicyMobileOtp                 `json:"otp"`
 	Applications []DeviceAuthenticationPolicyMobileApplicationsInner `json:"applications,omitempty"`
 	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
@@ -159,7 +159,7 @@ func (o *DeviceAuthenticationPolicyMobile) SetPromptForNicknameOnPairing(v bool)
 }
 
 func (o DeviceAuthenticationPolicyMobile) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -214,5 +214,3 @@ func (v *NullableDeviceAuthenticationPolicyMobile) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

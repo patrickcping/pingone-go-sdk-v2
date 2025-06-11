@@ -22,7 +22,7 @@ type EmailDomainOwnershipStatus struct {
 	// A string that specifies the type of DNS record, with the value \"TXT\".
 	Type *string `json:"type,omitempty"`
 	// The regions collection specifies the properties for the 4 AWS SES regions that are used for sending email for the environment. The regions are determined by the geography where this environment was provisioned (North America, Canada, Europe & Asia-Pacific).
-	Regions []EmailDomainOwnershipStatusRegionsInner `json:"regions,omitempty"`
+	Regions              []EmailDomainOwnershipStatusRegionsInner        `json:"regions,omitempty"`
 	EnvironmentDnsRecord *EmailDomainOwnershipStatusEnvironmentDnsRecord `json:"environmentDnsRecord,omitempty"`
 }
 
@@ -140,7 +140,7 @@ func (o *EmailDomainOwnershipStatus) SetEnvironmentDnsRecord(v EmailDomainOwners
 }
 
 func (o EmailDomainOwnershipStatus) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,5 +196,3 @@ func (v *NullableEmailDomainOwnershipStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

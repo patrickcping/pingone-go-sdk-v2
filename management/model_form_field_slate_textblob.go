@@ -19,7 +19,7 @@ var _ MappedNullable = &FormFieldSlateTextblob{}
 
 // FormFieldSlateTextblob struct for FormFieldSlateTextblob
 type FormFieldSlateTextblob struct {
-	Type EnumFormFieldType `json:"type"`
+	Type     EnumFormFieldType       `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
 	// A string that specifies the field content.
 	Content *string `json:"content,omitempty"`
@@ -125,7 +125,7 @@ func (o *FormFieldSlateTextblob) SetContent(v string) {
 }
 
 func (o FormFieldSlateTextblob) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,5 +177,3 @@ func (v *NullableFormFieldSlateTextblob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

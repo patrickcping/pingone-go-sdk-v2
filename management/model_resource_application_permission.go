@@ -26,8 +26,8 @@ type ResourceApplicationPermission struct {
 	// The resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	// The resource.name:action pair of the permission.
-	Key *string `json:"key,omitempty"`
-	Resource *ResourceApplicationPermissionResource `json:"resource,omitempty"`
+	Key            *string                                      `json:"key,omitempty"`
+	Resource       *ResourceApplicationPermissionResource       `json:"resource,omitempty"`
 	ResourceServer *ResourceApplicationPermissionResourceServer `json:"resourceServer,omitempty"`
 }
 
@@ -234,7 +234,7 @@ func (o *ResourceApplicationPermission) SetResourceServer(v ResourceApplicationP
 }
 
 func (o ResourceApplicationPermission) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -297,5 +297,3 @@ func (v *NullableResourceApplicationPermission) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -15,12 +15,12 @@ import (
 	"fmt"
 )
 
-// EnumMFADevicePolicyNewDeviceNotification Use `newDeviceNotification` to control whether a user should be notified if a new authentication method has been added to their account. Can take one of the following values: - `NONE` - don't notify the user when a new authentication method is added. - `EMAIL_THEN_SMS` - notify the user by email. If there is no email address in the user profile, notify the user by SMS. If there is no phone number either, don't notify the user. - `SMS_THEN_EMAIL` - notify the user by SMS. If there is no phone number in the user profile, notify the user by email. If there is no email address either, don't notify the user. If the parameter is not provided, the default value is `EMAIL_THEN_SMS`. 
+// EnumMFADevicePolicyNewDeviceNotification Use `newDeviceNotification` to control whether a user should be notified if a new authentication method has been added to their account. Can take one of the following values: - `NONE` - don't notify the user when a new authentication method is added. - `EMAIL_THEN_SMS` - notify the user by email. If there is no email address in the user profile, notify the user by SMS. If there is no phone number either, don't notify the user. - `SMS_THEN_EMAIL` - notify the user by SMS. If there is no phone number in the user profile, notify the user by email. If there is no email address either, don't notify the user. If the parameter is not provided, the default value is `EMAIL_THEN_SMS`.
 type EnumMFADevicePolicyNewDeviceNotification string
 
 // List of EnumMFADevicePolicyNewDeviceNotification
 const (
-	ENUMMFADEVICEPOLICYNEWDEVICENOTIFICATION_NONE EnumMFADevicePolicyNewDeviceNotification = "NONE"
+	ENUMMFADEVICEPOLICYNEWDEVICENOTIFICATION_NONE           EnumMFADevicePolicyNewDeviceNotification = "NONE"
 	ENUMMFADEVICEPOLICYNEWDEVICENOTIFICATION_EMAIL_THEN_SMS EnumMFADevicePolicyNewDeviceNotification = "EMAIL_THEN_SMS"
 	ENUMMFADEVICEPOLICYNEWDEVICENOTIFICATION_SMS_THEN_EMAIL EnumMFADevicePolicyNewDeviceNotification = "SMS_THEN_EMAIL"
 )
@@ -111,4 +111,3 @@ func (v *NullableEnumMFADevicePolicyNewDeviceNotification) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

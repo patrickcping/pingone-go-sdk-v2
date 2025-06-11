@@ -24,15 +24,15 @@ type Subscription struct {
 	// The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether a created or updated subscription should be active or suspended. A suspended state (`\"enabled\":false`) accumulates all matched events, but these events are not delivered until the subscription becomes active again (`\"enabled\":true`). For suspended subscriptions, events accumulate for a maximum of two weeks. Events older than two weeks are deleted. Restarted subscriptions receive the saved events (up to two weeks from the restart date). This is a required property.
-	Enabled bool `json:"enabled"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Enabled       bool                      `json:"enabled"`
+	Environment   *ObjectEnvironment        `json:"environment,omitempty"`
 	FilterOptions SubscriptionFilterOptions `json:"filterOptions"`
-	Format EnumSubscriptionFormat `json:"format"`
+	Format        EnumSubscriptionFormat    `json:"format"`
 	// A string that specifies the user resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id           *string                  `json:"id,omitempty"`
 	HttpEndpoint SubscriptionHttpEndpoint `json:"httpEndpoint"`
 	// A string that specifies the subscription name. This is a required property.
-	Name string `json:"name"`
+	Name                 string                            `json:"name"`
 	TlsClientAuthKeyPair *SubscriptionTlsClientAuthKeyPair `json:"tlsClientAuthKeyPair,omitempty"`
 	// The date and time at which the subscription resource was last updated (ISO 8601 format).
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
@@ -400,7 +400,7 @@ func (o *Subscription) SetVerifyTlsCertificates(v bool) {
 }
 
 func (o Subscription) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -471,5 +471,3 @@ func (v *NullableSubscription) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

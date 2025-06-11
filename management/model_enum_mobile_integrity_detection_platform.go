@@ -20,7 +20,7 @@ type EnumMobileIntegrityDetectionPlatform string
 
 // List of EnumMobileIntegrityDetectionPlatform
 const (
-	ENUMMOBILEINTEGRITYDETECTIONPLATFORM_IOS EnumMobileIntegrityDetectionPlatform = "IOS"
+	ENUMMOBILEINTEGRITYDETECTIONPLATFORM_IOS    EnumMobileIntegrityDetectionPlatform = "IOS"
 	ENUMMOBILEINTEGRITYDETECTIONPLATFORM_GOOGLE EnumMobileIntegrityDetectionPlatform = "GOOGLE"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumMobileIntegrityDetectionPlatform) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -21,7 +21,7 @@ type EnumEnvironmentType string
 // List of EnumEnvironmentType
 const (
 	ENUMENVIRONMENTTYPE_PRODUCTION EnumEnvironmentType = "PRODUCTION"
-	ENUMENVIRONMENTTYPE_SANDBOX EnumEnvironmentType = "SANDBOX"
+	ENUMENVIRONMENTTYPE_SANDBOX    EnumEnvironmentType = "SANDBOX"
 )
 
 // All allowed values of EnumEnvironmentType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumEnvironmentType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

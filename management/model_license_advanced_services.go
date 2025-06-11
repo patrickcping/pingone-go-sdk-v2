@@ -72,7 +72,7 @@ func (o *LicenseAdvancedServices) SetPingId(v LicenseAdvancedServicesPingId) {
 }
 
 func (o LicenseAdvancedServices) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableLicenseAdvancedServices) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

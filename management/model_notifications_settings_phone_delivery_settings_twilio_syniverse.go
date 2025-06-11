@@ -22,18 +22,18 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsTwilioSynivers
 type NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Provider EnumNotificationsSettingsPhoneDeliverySettingsProvider `json:"provider"`
+	Id          *string                                                `json:"id,omitempty"`
+	Environment *ObjectEnvironment                                     `json:"environment,omitempty"`
+	Provider    EnumNotificationsSettingsPhoneDeliverySettingsProvider `json:"provider"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// The public ID of the Twilio account. Relevant to Twilio only. 
+	// The public ID of the Twilio account. Relevant to Twilio only.
 	Sid string `json:"sid"`
 	// The secret key of the Twilio or Syniverse account.
-	AuthToken string `json:"authToken"`
-	Numbers []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
+	AuthToken string                                                    `json:"authToken"`
+	Numbers   []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
 }
 
 // NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse object
@@ -321,7 +321,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetNumbers(v
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -389,5 +389,3 @@ func (v *NullableNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) Unma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

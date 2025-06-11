@@ -20,29 +20,29 @@ var _ MappedNullable = &ApplicationPingOneSelfService{}
 
 // ApplicationPingOneSelfService struct for ApplicationPingOneSelfService
 type ApplicationPingOneSelfService struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
+	Links         *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	AccessControl *ApplicationAccessControl     `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled bool `json:"enabled"`
+	Enabled     bool               `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A boolean to specify whether the application is hidden in the application portal despite the configured group access policy.
-	HiddenFromAppPortal *bool `json:"hiddenFromAppPortal,omitempty"`
-	Icon *ApplicationIcon `json:"icon,omitempty"`
+	HiddenFromAppPortal *bool            `json:"hiddenFromAppPortal,omitempty"`
+	Icon                *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains.
 	LoginPageUrl *string `json:"loginPageUrl,omitempty"`
 	// A string that specifies the name of the application. This is a required property.
-	Name string `json:"name"`
+	Name     string                  `json:"name"`
 	Protocol EnumApplicationProtocol `json:"protocol"`
-	Type EnumApplicationType `json:"type"`
+	Type     EnumApplicationType     `json:"type"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	PkceEnforcement *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
+	UpdatedAt               *time.Time                         `json:"updatedAt,omitempty"`
+	PkceEnforcement         *EnumApplicationOIDCPKCEOption     `json:"pkceEnforcement,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
 	// If `true`, shows the default theme footer on the self service application. Applies only if `applyDefaultTheme` is also `true`.
 	EnableDefaultThemeFooter *bool `json:"enableDefaultThemeFooter,omitempty"`
@@ -602,7 +602,7 @@ func (o *ApplicationPingOneSelfService) SetApplyDefaultTheme(v bool) {
 }
 
 func (o ApplicationPingOneSelfService) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -691,5 +691,3 @@ func (v *NullableApplicationPingOneSelfService) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

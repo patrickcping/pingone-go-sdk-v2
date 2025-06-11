@@ -30,8 +30,8 @@ type PropagationStoreConfigurationAzureADSAMLV2 struct {
 	// Whether or not users are allowed to be disabled.
 	DISABLE_USERS *bool `json:"DISABLE_USERS,omitempty"`
 	// Whether or not disabled users can be provisioned. Defaults to `true` and, if used, must be set to `true`.
-	PROVISION_DISABLED_USERS_PROV_OPT *bool `json:"PROVISION_DISABLED_USERS_PROV_OPT,omitempty"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
+	PROVISION_DISABLED_USERS_PROV_OPT *bool                                              `json:"PROVISION_DISABLED_USERS_PROV_OPT,omitempty"`
+	REMOVE_ACTION                     *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
 	// Whether or not remove licenses from user when `skuId` is empty.
 	RemoveLicensesWhenSkuIdEmpty bool `json:"RemoveLicensesWhenSkuIdEmpty"`
 	// The account's Azure Active Directory domain.
@@ -354,7 +354,7 @@ func (o *PropagationStoreConfigurationAzureADSAMLV2) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationAzureADSAMLV2) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -423,5 +423,3 @@ func (v *NullablePropagationStoreConfigurationAzureADSAMLV2) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,53 +19,53 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	Actions []SignOnPolicyAction `json:"actions,omitempty"`
-	Agreements []Agreement `json:"agreements,omitempty"`
-	AlertChannels []AlertChannel `json:"alertChannels,omitempty"`
-	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
-	Applications []ReadOneApplication200Response `json:"applications,omitempty"`
-	Certificates []Certificate `json:"certificates,omitempty"`
-	Contents []TemplateContent `json:"contents,omitempty"`
-	Credentials []GatewayCredential `json:"credentials,omitempty"`
-	CustomDomains []CustomDomain `json:"customDomains,omitempty"`
-	EmailDomains []EmailDomain `json:"emailDomains,omitempty"`
-	Environments []Environment `json:"environments,omitempty"`
-	FlowPolicies []FlowPolicy `json:"flowPolicies,omitempty"`
-	FlowPolicyAssignments []FlowPolicyAssignment `json:"flowPolicyAssignments,omitempty"`
-	Forms []Form `json:"forms,omitempty"`
-	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
-	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
-	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
-	Groups []Group `json:"groups,omitempty"`
-	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
-	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
-	Integrations []Integration `json:"integrations,omitempty"`
-	Keys []Certificate `json:"keys,omitempty"`
-	KeyRotationPolicies []KeyRotationPolicy `json:"keyRotationPolicies,omitempty"`
-	Languages []EntityArrayEmbeddedLanguagesInner `json:"languages,omitempty"`
-	Licenses []License `json:"licenses,omitempty"`
-	NotificationsPolicies []NotificationsPolicy `json:"notificationsPolicies,omitempty"`
-	Organizations []Organization `json:"organizations,omitempty"`
-	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
-	Permissions []ResourceApplicationPermission `json:"permissions,omitempty"`
-	PhoneDeliverySettings []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
-	Plans []IdentityPropagationPlan `json:"plans,omitempty"`
-	Populations []Population `json:"populations,omitempty"`
-	Resources []EntityArrayEmbeddedResourcesInner `json:"resources,omitempty"`
-	Revisions []AgreementLanguageRevision `json:"revisions,omitempty"`
-	Scopes []ResourceScope `json:"scopes,omitempty"`
-	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
-	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
-	Subscriptions []Subscription `json:"subscriptions,omitempty"`
-	Templates []Template `json:"templates,omitempty"`
-	Themes []BrandingTheme `json:"themes,omitempty"`
-	Translations []LocaleTranslation `json:"translations,omitempty"`
-	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
-	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
-	Roles []EntityArrayEmbeddedRolesInner `json:"roles,omitempty"`
-	Schemas []Schema `json:"schemas,omitempty"`
-	Users []User `json:"users,omitempty"`
-	Versions []IntegrationVersion `json:"versions,omitempty"`
+	Actions                 []SignOnPolicyAction                         `json:"actions,omitempty"`
+	Agreements              []Agreement                                  `json:"agreements,omitempty"`
+	AlertChannels           []AlertChannel                               `json:"alertChannels,omitempty"`
+	Attributes              []EntityArrayEmbeddedAttributesInner         `json:"attributes,omitempty"`
+	Applications            []ReadOneApplication200Response              `json:"applications,omitempty"`
+	Certificates            []Certificate                                `json:"certificates,omitempty"`
+	Contents                []TemplateContent                            `json:"contents,omitempty"`
+	Credentials             []GatewayCredential                          `json:"credentials,omitempty"`
+	CustomDomains           []CustomDomain                               `json:"customDomains,omitempty"`
+	EmailDomains            []EmailDomain                                `json:"emailDomains,omitempty"`
+	Environments            []Environment                                `json:"environments,omitempty"`
+	FlowPolicies            []FlowPolicy                                 `json:"flowPolicies,omitempty"`
+	FlowPolicyAssignments   []FlowPolicyAssignment                       `json:"flowPolicyAssignments,omitempty"`
+	Forms                   []Form                                       `json:"forms,omitempty"`
+	GatewayInstances        []GatewayInstance                            `json:"gatewayInstances,omitempty"`
+	Gateways                []EntityArrayEmbeddedGatewaysInner           `json:"gateways,omitempty"`
+	Grants                  []ApplicationResourceGrant                   `json:"grants,omitempty"`
+	Groups                  []Group                                      `json:"groups,omitempty"`
+	GroupMemberships        []GroupMembership                            `json:"groupMemberships,omitempty"`
+	IdentityProviders       []IdentityProvider                           `json:"identityProviders,omitempty"`
+	Integrations            []Integration                                `json:"integrations,omitempty"`
+	Keys                    []Certificate                                `json:"keys,omitempty"`
+	KeyRotationPolicies     []KeyRotationPolicy                          `json:"keyRotationPolicies,omitempty"`
+	Languages               []EntityArrayEmbeddedLanguagesInner          `json:"languages,omitempty"`
+	Licenses                []License                                    `json:"licenses,omitempty"`
+	NotificationsPolicies   []NotificationsPolicy                        `json:"notificationsPolicies,omitempty"`
+	Organizations           []Organization                               `json:"organizations,omitempty"`
+	PasswordPolicies        []PasswordPolicy                             `json:"passwordPolicies,omitempty"`
+	Permissions             []ResourceApplicationPermission              `json:"permissions,omitempty"`
+	PhoneDeliverySettings   []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
+	Plans                   []IdentityPropagationPlan                    `json:"plans,omitempty"`
+	Populations             []Population                                 `json:"populations,omitempty"`
+	Resources               []EntityArrayEmbeddedResourcesInner          `json:"resources,omitempty"`
+	Revisions               []AgreementLanguageRevision                  `json:"revisions,omitempty"`
+	Scopes                  []ResourceScope                              `json:"scopes,omitempty"`
+	SignOnPolicies          []SignOnPolicy                               `json:"signOnPolicies,omitempty"`
+	SignOnPolicyAssignments []SignOnPolicyAssignment                     `json:"signOnPolicyAssignments,omitempty"`
+	Subscriptions           []Subscription                               `json:"subscriptions,omitempty"`
+	Templates               []Template                                   `json:"templates,omitempty"`
+	Themes                  []BrandingTheme                              `json:"themes,omitempty"`
+	Translations            []LocaleTranslation                          `json:"translations,omitempty"`
+	TrustedEmails           []EmailDomainTrustedEmail                    `json:"trustedEmails,omitempty"`
+	RoleAssignments         []RoleAssignment                             `json:"roleAssignments,omitempty"`
+	Roles                   []EntityArrayEmbeddedRolesInner              `json:"roles,omitempty"`
+	Schemas                 []Schema                                     `json:"schemas,omitempty"`
+	Users                   []User                                       `json:"users,omitempty"`
+	Versions                []IntegrationVersion                         `json:"versions,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -1590,7 +1590,7 @@ func (o *EntityArrayEmbedded) SetVersions(v []IntegrationVersion) {
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1778,5 +1778,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

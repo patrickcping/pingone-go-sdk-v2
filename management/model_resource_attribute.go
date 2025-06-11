@@ -22,13 +22,13 @@ type ResourceAttribute struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
-	// A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource's type property is `OPENID_CONNECT`: - `acr` - `amr` - `aud` - `auth_time` - `client_id` - `env` - `exp` - `iat` - `iss` - `jti` - `org` - `p1.*` (any name starting with the p1. prefix) - `scope` - `sid` - `sub` 
-	Name string `json:"name"`
+	// A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource's type property is `OPENID_CONNECT`: - `acr` - `amr` - `aud` - `auth_time` - `client_id` - `env` - `exp` - `iat` - `iss` - `jti` - `org` - `p1.*` (any name starting with the p1. prefix) - `scope` - `sid` - `sub`
+	Name string                     `json:"name"`
 	Type *EnumResourceAttributeType `json:"type,omitempty"`
 	// A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as `${user.path.to.value}`, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are `${user.email}`, `${user.name.family}`, and `myClaimValueString`
-	Value string `json:"value"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Resource *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`
+	Value       string                                     `json:"value"`
+	Environment *ObjectEnvironment                         `json:"environment,omitempty"`
+	Resource    *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`
 	// A boolean that specifies whether the attribute mapping should be available in the ID Token. This property is applicable only when the application's protocol property is `OPENID_CONNECT`. If omitted, the default is `true`. Note that the `idToken` and `userInfo` properties cannot both be set to `false`. At least one of these properties must have a value of `true`.
 	IdToken *bool `json:"idToken,omitempty"`
 	// A boolean that specifies whether the attribute mapping should be available through the `/as/userinfo` endpoint. This property is applicable only when the application's protocol property is `OPENID_CONNECT`. If omitted, the default is `true`. Note that the `idToken` and `userInfo` properties cannot both be set to `false`. At least one of these properties must have a value of `true`.
@@ -327,7 +327,7 @@ func (o *ResourceAttribute) SetUserInfo(v bool) {
 }
 
 func (o ResourceAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -397,5 +397,3 @@ func (v *NullableResourceAttribute) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

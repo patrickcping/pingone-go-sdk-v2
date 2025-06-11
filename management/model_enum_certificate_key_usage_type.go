@@ -20,10 +20,10 @@ type EnumCertificateKeyUsageType string
 
 // List of EnumCertificateKeyUsageType
 const (
-	ENUMCERTIFICATEKEYUSAGETYPE_ENCRYPTION EnumCertificateKeyUsageType = "ENCRYPTION"
-	ENUMCERTIFICATEKEYUSAGETYPE_SIGNING EnumCertificateKeyUsageType = "SIGNING"
-	ENUMCERTIFICATEKEYUSAGETYPE_SSL_TLS EnumCertificateKeyUsageType = "SSL/TLS"
-	ENUMCERTIFICATEKEYUSAGETYPE_ISSUANCE EnumCertificateKeyUsageType = "ISSUANCE"
+	ENUMCERTIFICATEKEYUSAGETYPE_ENCRYPTION    EnumCertificateKeyUsageType = "ENCRYPTION"
+	ENUMCERTIFICATEKEYUSAGETYPE_SIGNING       EnumCertificateKeyUsageType = "SIGNING"
+	ENUMCERTIFICATEKEYUSAGETYPE_SSL_TLS       EnumCertificateKeyUsageType = "SSL/TLS"
+	ENUMCERTIFICATEKEYUSAGETYPE_ISSUANCE      EnumCertificateKeyUsageType = "ISSUANCE"
 	ENUMCERTIFICATEKEYUSAGETYPE_OUTBOUND_MTLS EnumCertificateKeyUsageType = "OUTBOUND_MTLS"
 )
 
@@ -115,4 +115,3 @@ func (v *NullableEnumCertificateKeyUsageType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

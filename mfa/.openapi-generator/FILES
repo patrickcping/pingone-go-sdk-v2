@@ -3,6 +3,7 @@ api/openapi.yaml
 api_applications_application_mfa_push_credentials.go
 api_device_authentication_policy.go
 api_enable_users_mfa.go
+api_environments.go
 api_fido2_policy.go
 api_fido_device.go
 api_fido_policy.go
@@ -63,6 +64,8 @@ docs/EnumMFASettingsPairingKeyFormat.md
 docs/EnumTimeUnit.md
 docs/EnumTimeUnitPairingKeyLifetime.md
 docs/EnumTimeUnitPushTimeout.md
+docs/Environment.md
+docs/EnvironmentsApi.md
 docs/FIDO2Policy.md
 docs/FIDO2PolicyApi.md
 docs/FIDO2PolicyBackupEligibility.md
@@ -151,6 +154,7 @@ model_enum_mfa_settings_pairing_key_format.go
 model_enum_time_unit.go
 model_enum_time_unit_pairing_key_lifetime.go
 model_enum_time_unit_push_timeout.go
+model_environment.go
 model_fido2_policy.go
 model_fido2_policy_backup_eligibility.go
 model_fido2_policy_mds_authenticators_requirements.go

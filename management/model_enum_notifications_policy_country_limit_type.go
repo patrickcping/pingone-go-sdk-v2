@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsPolicyCountryLimitType Determines the kind of limitation being defined. The possible values are: `NONE` `ALLOWED` - allows SMS/Voice notifications only for the countries specified with `countryLimit.countries` `DENIED` - denies SMS/Voice notifications for the countries specified with `countryLimit.countries` 
+// EnumNotificationsPolicyCountryLimitType Determines the kind of limitation being defined. The possible values are: `NONE` `ALLOWED` - allows SMS/Voice notifications only for the countries specified with `countryLimit.countries` `DENIED` - denies SMS/Voice notifications for the countries specified with `countryLimit.countries`
 type EnumNotificationsPolicyCountryLimitType string
 
 // List of EnumNotificationsPolicyCountryLimitType
 const (
-	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITTYPE_NONE EnumNotificationsPolicyCountryLimitType = "NONE"
+	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITTYPE_NONE    EnumNotificationsPolicyCountryLimitType = "NONE"
 	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITTYPE_ALLOWED EnumNotificationsPolicyCountryLimitType = "ALLOWED"
-	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITTYPE_DENIED EnumNotificationsPolicyCountryLimitType = "DENIED"
+	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITTYPE_DENIED  EnumNotificationsPolicyCountryLimitType = "DENIED"
 )
 
 // All allowed values of EnumNotificationsPolicyCountryLimitType enum
@@ -111,4 +111,3 @@ func (v *NullableEnumNotificationsPolicyCountryLimitType) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,11 +20,11 @@ type EnumAPIServerOperationMethod string
 
 // List of EnumAPIServerOperationMethod
 const (
-	ENUMAPISERVEROPERATIONMETHOD_GET EnumAPIServerOperationMethod = "GET"
-	ENUMAPISERVEROPERATIONMETHOD_POST EnumAPIServerOperationMethod = "POST"
-	ENUMAPISERVEROPERATIONMETHOD_PUT EnumAPIServerOperationMethod = "PUT"
-	ENUMAPISERVEROPERATIONMETHOD_PATCH EnumAPIServerOperationMethod = "PATCH"
-	ENUMAPISERVEROPERATIONMETHOD_DELETE EnumAPIServerOperationMethod = "DELETE"
+	ENUMAPISERVEROPERATIONMETHOD_GET     EnumAPIServerOperationMethod = "GET"
+	ENUMAPISERVEROPERATIONMETHOD_POST    EnumAPIServerOperationMethod = "POST"
+	ENUMAPISERVEROPERATIONMETHOD_PUT     EnumAPIServerOperationMethod = "PUT"
+	ENUMAPISERVEROPERATIONMETHOD_PATCH   EnumAPIServerOperationMethod = "PATCH"
+	ENUMAPISERVEROPERATIONMETHOD_DELETE  EnumAPIServerOperationMethod = "DELETE"
 	ENUMAPISERVEROPERATIONMETHOD_OPTIONS EnumAPIServerOperationMethod = "OPTIONS"
 )
 
@@ -117,4 +117,3 @@ func (v *NullableEnumAPIServerOperationMethod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

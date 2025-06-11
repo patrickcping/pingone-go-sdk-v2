@@ -21,10 +21,10 @@ var _ MappedNullable = &AlertChannel{}
 type AlertChannel struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// Unique ID of the alert channel.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The name to assign to the alert channel.
-	AlertName *string `json:"alertName,omitempty"`
+	AlertName   *string              `json:"alertName,omitempty"`
 	ChannelType EnumAlertChannelType `json:"channelType"`
 	// The email addresses to send the alert to.
 	Addresses []string `json:"addresses"`
@@ -328,7 +328,7 @@ func (o *AlertChannel) SetExcludeAlertTypes(v []EnumAlertChannelAlertType) {
 }
 
 func (o AlertChannel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -398,5 +398,3 @@ func (v *NullableAlertChannel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

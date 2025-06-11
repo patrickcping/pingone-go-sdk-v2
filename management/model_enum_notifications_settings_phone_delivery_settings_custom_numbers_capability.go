@@ -20,7 +20,7 @@ type EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability strin
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSCAPABILITY_SMS EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability = "SMS"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSCAPABILITY_SMS   EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability = "SMS"
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERSCAPABILITY_VOICE EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability = "VOICE"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapa
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,7 +20,7 @@ var _ MappedNullable = &OTPDeviceConfigurationOtpLifeTime{}
 // OTPDeviceConfigurationOtpLifeTime The length of time for which the OTP is valid.
 type OTPDeviceConfigurationOtpLifeTime struct {
 	// OTP duration configuration.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -92,7 +92,7 @@ func (o *OTPDeviceConfigurationOtpLifeTime) SetTimeUnit(v EnumTimeUnit) {
 }
 
 func (o OTPDeviceConfigurationOtpLifeTime) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableOTPDeviceConfigurationOtpLifeTime) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

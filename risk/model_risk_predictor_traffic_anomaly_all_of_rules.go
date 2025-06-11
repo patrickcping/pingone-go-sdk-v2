@@ -20,10 +20,10 @@ var _ MappedNullable = &RiskPredictorTrafficAnomalyAllOfRules{}
 // RiskPredictorTrafficAnomalyAllOfRules struct for RiskPredictorTrafficAnomalyAllOfRules
 type RiskPredictorTrafficAnomalyAllOfRules struct {
 	// Set to true to use the defined rule in the predictor.
-	Enabled bool `json:"enabled"`
-	Interval RiskPredictorTrafficAnomalyAllOfInterval `json:"interval"`
+	Enabled   bool                                      `json:"enabled"`
+	Interval  RiskPredictorTrafficAnomalyAllOfInterval  `json:"interval"`
 	Threshold RiskPredictorTrafficAnomalyAllOfThreshold `json:"threshold"`
-	Type EnumRiskPredictorTrafficAnomalyRuleType `json:"type"`
+	Type      EnumRiskPredictorTrafficAnomalyRuleType   `json:"type"`
 }
 
 // NewRiskPredictorTrafficAnomalyAllOfRules instantiates a new RiskPredictorTrafficAnomalyAllOfRules object
@@ -144,7 +144,7 @@ func (o *RiskPredictorTrafficAnomalyAllOfRules) SetType(v EnumRiskPredictorTraff
 }
 
 func (o RiskPredictorTrafficAnomalyAllOfRules) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,5 +195,3 @@ func (v *NullableRiskPredictorTrafficAnomalyAllOfRules) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

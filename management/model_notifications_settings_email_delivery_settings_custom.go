@@ -20,17 +20,17 @@ var _ MappedNullable = &NotificationsSettingsEmailDeliverySettingsCustom{}
 
 // NotificationsSettingsEmailDeliverySettingsCustom struct for NotificationsSettingsEmailDeliverySettingsCustom
 type NotificationsSettingsEmailDeliverySettingsCustom struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Protocol EnumNotificationsSettingsEmailDeliverySettingsProtocol `json:"protocol"`
+	Links       *map[string]LinksHATEOASValue                          `json:"_links,omitempty"`
+	Environment *ObjectEnvironment                                     `json:"environment,omitempty"`
+	Protocol    EnumNotificationsSettingsEmailDeliverySettingsProtocol `json:"protocol"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt      *time.Time                                                          `json:"updatedAt,omitempty"`
 	Authentication NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication `json:"authentication"`
-	From *NotificationsSettingsEmailDeliverySettingsCustomAllOfFrom `json:"from,omitempty"`
+	From           *NotificationsSettingsEmailDeliverySettingsCustomAllOfFrom          `json:"from,omitempty"`
 	// Name to use to identify the provider.
-	Name string `json:"name"`
+	Name     string                                                        `json:"name"`
 	Provider *EnumNotificationsSettingsEmailDeliverySettingsCustomProvider `json:"provider,omitempty"`
-	ReplyTo *NotificationsSettingsEmailDeliverySettingsCustomAllOfReplyTo `json:"replyTo,omitempty"`
+	ReplyTo  *NotificationsSettingsEmailDeliverySettingsCustomAllOfReplyTo `json:"replyTo,omitempty"`
 	// Contains the object that is used to configure the API requests sent to the email provider.
 	Requests []NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests `json:"requests"`
 }
@@ -345,7 +345,7 @@ func (o *NotificationsSettingsEmailDeliverySettingsCustom) SetRequests(v []Notif
 }
 
 func (o NotificationsSettingsEmailDeliverySettingsCustom) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -414,5 +414,3 @@ func (v *NullableNotificationsSettingsEmailDeliverySettingsCustom) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,8 @@ var _ MappedNullable = &SignOnPolicyActionLoginAllOfRegistration{}
 // SignOnPolicyActionLoginAllOfRegistration Specifies the account registration options.
 type SignOnPolicyActionLoginAllOfRegistration struct {
 	// A boolean that specifies the enabled/disabled state of the policy action. The default is disabled when creating a new policy. When enabled, it allows the use of the new user registration flow. This attribute should be set to true when implementing the social login sign-on policy option.
-	Enabled bool `json:"enabled"`
-	External *SignOnPolicyActionLoginAllOfRegistrationExternal `json:"external,omitempty"`
+	Enabled    bool                                                `json:"enabled"`
+	External   *SignOnPolicyActionLoginAllOfRegistrationExternal   `json:"external,omitempty"`
 	Population *SignOnPolicyActionLoginAllOfRegistrationPopulation `json:"population,omitempty"`
 	// A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user's profile during account creation. This is an optional property. If omitted, the default value is set to false.
 	ConfirmIdentityProviderAttributes *bool `json:"confirmIdentityProviderAttributes,omitempty"`
@@ -170,7 +170,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) SetConfirmIdentityProviderAtt
 }
 
 func (o SignOnPolicyActionLoginAllOfRegistration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -227,5 +227,3 @@ func (v *NullableSignOnPolicyActionLoginAllOfRegistration) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

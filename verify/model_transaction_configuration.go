@@ -19,9 +19,9 @@ var _ MappedNullable = &TransactionConfiguration{}
 
 // TransactionConfiguration struct for TransactionConfiguration
 type TransactionConfiguration struct {
-	Timeout *TransactionConfigurationTimeout `json:"timeout,omitempty"`
-	DataCollection *TransactionConfigurationDataCollection `json:"dataCollection,omitempty"`
-	DataCollectionOnly *bool `json:"dataCollectionOnly,omitempty"`
+	Timeout            *TransactionConfigurationTimeout        `json:"timeout,omitempty"`
+	DataCollection     *TransactionConfigurationDataCollection `json:"dataCollection,omitempty"`
+	DataCollectionOnly *bool                                   `json:"dataCollectionOnly,omitempty"`
 }
 
 // NewTransactionConfiguration instantiates a new TransactionConfiguration object
@@ -138,7 +138,7 @@ func (o *TransactionConfiguration) SetDataCollectionOnly(v bool) {
 }
 
 func (o TransactionConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableTransactionConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

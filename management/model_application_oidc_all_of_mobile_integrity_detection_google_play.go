@@ -24,7 +24,7 @@ type ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay struct {
 	// Contents of the JSON file that represents your Service Account Credentials. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType` to `GOOGLE`.
 	ServiceAccountCredentials *string `json:"serviceAccountCredentials,omitempty"`
 	// Play Integrity verdict signature verification key from your Google Play Services account. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType` to `INTERNAL`.
-	VerificationKey *string `json:"verificationKey,omitempty"`
+	VerificationKey  *string                                          `json:"verificationKey,omitempty"`
 	VerificationType *EnumApplicationNativeGooglePlayVerificationType `json:"verificationType,omitempty"`
 }
 
@@ -174,7 +174,7 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay) SetVerification
 }
 
 func (o ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,26 +20,26 @@ var _ MappedNullable = &ApplicationOIDC{}
 
 // ApplicationOIDC struct for ApplicationOIDC
 type ApplicationOIDC struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
+	Links         *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	AccessControl *ApplicationAccessControl     `json:"accessControl,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the application.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
-	Enabled bool `json:"enabled"`
+	Enabled     bool               `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A boolean to specify whether the application is hidden in the application portal despite the configured group access policy.
-	HiddenFromAppPortal *bool `json:"hiddenFromAppPortal,omitempty"`
-	Icon *ApplicationIcon `json:"icon,omitempty"`
+	HiddenFromAppPortal *bool            `json:"hiddenFromAppPortal,omitempty"`
+	Icon                *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains.
 	LoginPageUrl *string `json:"loginPageUrl,omitempty"`
 	// A string that specifies the name of the application. This is a required property.
-	Name string `json:"name"`
+	Name     string                  `json:"name"`
 	Protocol EnumApplicationProtocol `json:"protocol"`
-	Type EnumApplicationType `json:"type"`
+	Type     EnumApplicationType     `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// When set to `true` (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a `false` setting.
@@ -47,8 +47,8 @@ type ApplicationOIDC struct {
 	// A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri).
 	AllowWildcardInRedirectUris *bool `json:"allowWildcardInRedirectUris,omitempty"`
 	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
-	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
-	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
+	AssignActorRoles *bool                    `json:"assignActorRoles,omitempty"`
+	CorsSettings     *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	// A string that specifies a unique identifier within an environment for a device authorization grant flow to provide a short identifier to the application. This property is ignored when the `deviceCustomVerificationUri` property is configured. The string can contain any letters, numbers, and some special characters (regex `a-zA-Z0-9_-`). It can have a length of no more than 50 characters (`min`/`max`=`1`/`50`).
 	DevicePathId *string `json:"devicePathId,omitempty"`
 	// A string that specifies an optional custom verification URI that is returned for the `/device_authorization` endpoint.
@@ -62,22 +62,22 @@ type ApplicationOIDC struct {
 	// A JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwksUrl` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwksUrl` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
 	Jwks *string `json:"jwks,omitempty"`
 	// A URL (supports `https://` only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwks` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwks` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
-	JwksUrl *string `json:"jwksUrl,omitempty"`
-	Mobile *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
-	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. 
+	JwksUrl *string                     `json:"jwksUrl,omitempty"`
+	Mobile  *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
+	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
 	// Deprecated
 	BundleId *string `json:"bundleId,omitempty"`
-	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. 
+	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
 	// Deprecated
-	PackageName *string `json:"packageName,omitempty"`
-	Kerberos *ApplicationOIDCAllOfKerberos `json:"kerberos,omitempty"`
+	PackageName *string                       `json:"packageName,omitempty"`
+	Kerberos    *ApplicationOIDCAllOfKerberos `json:"kerberos,omitempty"`
 	// A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
 	GrantTypes []EnumApplicationOIDCGrantType `json:"grantTypes"`
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl *string `json:"homePageUrl,omitempty"`
 	// A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information.
-	InitiateLoginUri *string `json:"initiateLoginUri,omitempty"`
-	PkceEnforcement *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
+	InitiateLoginUri *string                        `json:"initiateLoginUri,omitempty"`
+	PkceEnforcement  *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
 	// A string that specifies the URLs that the browser can be redirected to after logout.
 	PostLogoutRedirectUris []string `json:"postLogoutRedirectUris,omitempty"`
 	// A string that specifies the callback URI for the authentication response.
@@ -97,13 +97,13 @@ type ApplicationOIDC struct {
 	// An array that specifies the list of labels associated with the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only applicable for creating worker applications.
 	Tags []EnumApplicationTags `json:"tags,omitempty"`
 	// The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
-	TargetLinkUri *string `json:"targetLinkUri,omitempty"`
-	Template *ApplicationTemplate `json:"template,omitempty"`
+	TargetLinkUri           *string                            `json:"targetLinkUri,omitempty"`
+	Template                *ApplicationTemplate               `json:"template,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
-	ParRequirement *EnumApplicationOIDCPARRequirement `json:"parRequirement,omitempty"`
+	ParRequirement          *EnumApplicationOIDCPARRequirement `json:"parRequirement,omitempty"`
 	// PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
-	ParTimeout *int32 `json:"parTimeout,omitempty"`
-	Signing *ApplicationOIDCAllOfSigning `json:"signing,omitempty"`
+	ParTimeout *int32                       `json:"parTimeout,omitempty"`
+	Signing    *ApplicationOIDCAllOfSigning `json:"signing,omitempty"`
 }
 
 // NewApplicationOIDC instantiates a new ApplicationOIDC object
@@ -1648,7 +1648,7 @@ func (o *ApplicationOIDC) SetSigning(v ApplicationOIDCAllOfSigning) {
 }
 
 func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1827,5 +1827,3 @@ func (v *NullableApplicationOIDC) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

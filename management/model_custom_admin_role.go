@@ -27,7 +27,7 @@ type CustomAdminRole struct {
 	// A relationship that determines whether a user assigned to one of this set of roles for a jurisdiction can assign the current custom role to another user for the same jurisdiction or sub-jurisdiction.
 	CanBeAssignedBy []CustomAdminRoleCanAssignInner `json:"canBeAssignedBy"`
 	// The description of the role.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -35,7 +35,7 @@ type CustomAdminRole struct {
 	Name string `json:"name"`
 	// The set of permissions assigned to the role.
 	Permissions []CustomAdminRolePermissionsInner `json:"permissions"`
-	Type *EnumCustomAdminRoleType `json:"type,omitempty"`
+	Type        *EnumCustomAdminRoleType          `json:"type,omitempty"`
 }
 
 // NewCustomAdminRole instantiates a new CustomAdminRole object
@@ -355,7 +355,7 @@ func (o *CustomAdminRole) SetType(v EnumCustomAdminRoleType) {
 }
 
 func (o CustomAdminRole) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -426,5 +426,3 @@ func (v *NullableCustomAdminRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

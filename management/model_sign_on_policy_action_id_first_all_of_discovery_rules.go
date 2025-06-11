@@ -19,7 +19,7 @@ var _ MappedNullable = &SignOnPolicyActionIDFirstAllOfDiscoveryRules{}
 
 // SignOnPolicyActionIDFirstAllOfDiscoveryRules struct for SignOnPolicyActionIDFirstAllOfDiscoveryRules
 type SignOnPolicyActionIDFirstAllOfDiscoveryRules struct {
-	Condition SignOnPolicyActionIDFirstAllOfCondition `json:"condition"`
+	Condition        SignOnPolicyActionIDFirstAllOfCondition        `json:"condition"`
 	IdentityProvider SignOnPolicyActionIDFirstAllOfIdentityProvider `json:"identityProvider"`
 }
 
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionIDFirstAllOfDiscoveryRules) SetIdentityProvider(v Sig
 }
 
 func (o SignOnPolicyActionIDFirstAllOfDiscoveryRules) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionIDFirstAllOfDiscoveryRules) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

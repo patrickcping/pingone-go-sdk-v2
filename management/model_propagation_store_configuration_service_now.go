@@ -28,7 +28,7 @@ type PropagationStoreConfigurationServiceNow struct {
 	// Whether or not users are allowed to be deprovisioned (removed) following action specified in `REMOVE_ACTION`.
 	DEPROVISION_USERS *string `json:"DEPROVISION_USERS,omitempty"`
 	// Whether or not new users are allowed to be disabled.
-	DISABLE_USERS *bool `json:"DISABLE_USERS,omitempty"`
+	DISABLE_USERS *bool                                        `json:"DISABLE_USERS,omitempty"`
 	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisable `json:"REMOVE_ACTION,omitempty"`
 	// The URL for the ServiceNow account.
 	ServiceNowUrl string `json:"ServiceNow_Url"`
@@ -289,7 +289,7 @@ func (o *PropagationStoreConfigurationServiceNow) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationServiceNow) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -354,5 +354,3 @@ func (v *NullablePropagationStoreConfigurationServiceNow) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

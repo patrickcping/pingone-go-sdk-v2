@@ -19,13 +19,13 @@ var _ MappedNullable = &SignOnPolicyAssignment{}
 
 // SignOnPolicyAssignment struct for SignOnPolicyAssignment
 type SignOnPolicyAssignment struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Application *ObjectApplication `json:"application,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Application *ObjectApplication            `json:"application,omitempty"`
+	Environment *ObjectEnvironment            `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// The order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first.
-	Priority int32 `json:"priority"`
+	Priority     int32                                `json:"priority"`
 	SignOnPolicy SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy"`
 }
 
@@ -225,7 +225,7 @@ func (o *SignOnPolicyAssignment) SetSignOnPolicy(v SignOnPolicyActionCommonSignO
 }
 
 func (o SignOnPolicyAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -286,5 +286,3 @@ func (v *NullableSignOnPolicyAssignment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

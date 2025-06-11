@@ -20,11 +20,11 @@ var _ MappedNullable = &GovernmentIdConfiguration{}
 // GovernmentIdConfiguration struct for GovernmentIdConfiguration
 type GovernmentIdConfiguration struct {
 	// Indicates whether verification should fail if the ID is expired.
-	FailExpiredId *bool `json:"failExpiredId,omitempty"`
-	InspectionType *EnumInspectionType `json:"inspectionType,omitempty"`
-	Provider *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
-	Retry *ObjectRetry `json:"retry,omitempty"`
-	Verify EnumVerify `json:"verify"`
+	FailExpiredId  *bool                              `json:"failExpiredId,omitempty"`
+	InspectionType *EnumInspectionType                `json:"inspectionType,omitempty"`
+	Provider       *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
+	Retry          *ObjectRetry                       `json:"retry,omitempty"`
+	Verify         EnumVerify                         `json:"verify"`
 }
 
 // NewGovernmentIdConfiguration instantiates a new GovernmentIdConfiguration object
@@ -198,7 +198,7 @@ func (o *GovernmentIdConfiguration) SetVerify(v EnumVerify) {
 }
 
 func (o GovernmentIdConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -258,5 +258,3 @@ func (v *NullableGovernmentIdConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

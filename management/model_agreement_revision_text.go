@@ -20,8 +20,8 @@ var _ MappedNullable = &AgreementRevisionText{}
 // AgreementRevisionText struct for AgreementRevisionText
 type AgreementRevisionText struct {
 	ResourcePath *string `json:"resourcePath,omitempty"`
-	Data *string `json:"data,omitempty"`
-	DataType *string `json:"dataType,omitempty"`
+	Data         *string `json:"data,omitempty"`
+	DataType     *string `json:"dataType,omitempty"`
 }
 
 // NewAgreementRevisionText instantiates a new AgreementRevisionText object
@@ -138,7 +138,7 @@ func (o *AgreementRevisionText) SetDataType(v string) {
 }
 
 func (o AgreementRevisionText) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableAgreementRevisionText) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

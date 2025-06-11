@@ -66,7 +66,7 @@ func (o *CustomAdminRolePermissionsInner) SetId(v string) {
 }
 
 func (o CustomAdminRolePermissionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableCustomAdminRolePermissionsInner) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

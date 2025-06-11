@@ -23,18 +23,18 @@ type PropagationStore struct {
 	// Configuration properties specific to each identity propagation store.
 	Configuration map[string]interface{} `json:"configuration"`
 	// A description for the identity propagation store.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id    *string                `json:"id,omitempty"`
 	Image *PropagationStoreImage `json:"image,omitempty"`
 	// Indicates whether or not to enable deprovisioning of users for a store when it is deleted. The deprovisioning occurs when a new revision is created (`POST {{apiPath}}/environments/{{envID}}/propagation/revisions`).
 	Managed *bool `json:"managed,omitempty"`
 	// The name of the identity store.
-	Name string `json:"name"`
-	Status *EnumPropagationStoreStatus `json:"status,omitempty"`
+	Name       string                      `json:"name"`
+	Status     *EnumPropagationStoreStatus `json:"status,omitempty"`
 	SyncStatus *PropagationStoreSyncStatus `json:"syncStatus,omitempty"`
-	Type EnumPropagationStoreType `json:"type"`
+	Type       EnumPropagationStoreType    `json:"type"`
 }
 
 // NewPropagationStore instantiates a new PropagationStore object
@@ -386,7 +386,7 @@ func (o *PropagationStore) SetType(v EnumPropagationStoreType) {
 }
 
 func (o PropagationStore) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -460,5 +460,3 @@ func (v *NullablePropagationStore) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

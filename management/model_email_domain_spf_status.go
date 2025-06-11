@@ -20,7 +20,7 @@ var _ MappedNullable = &EmailDomainSPFStatus{}
 // EmailDomainSPFStatus struct for EmailDomainSPFStatus
 type EmailDomainSPFStatus struct {
 	// A string that specifies the type of DNS record, with the value \"TXT\".
-	Type *string `json:"type,omitempty"`
+	Type   *string                `json:"type,omitempty"`
 	Status *EnumEmailDomainStatus `json:"status,omitempty"`
 	// Record name.
 	Key *string `json:"key,omitempty"`
@@ -174,7 +174,7 @@ func (o *EmailDomainSPFStatus) SetValue(v string) {
 }
 
 func (o EmailDomainSPFStatus) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableEmailDomainSPFStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -26,7 +26,7 @@ type Agreement struct {
 	// A string that specifies the description of the agreement.
 	Description *string `json:"description,omitempty"`
 	// A boolean that specifies the current enabled state of the agreement. This is a required property. The agreement must support the default language to be enabled. It cannot be disabled if it is referenced by a sign-on action. When an agreement is disabled, it is not used anywhere it is configured across PingOne.
-	Enabled bool `json:"enabled"`
+	Enabled     bool               `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// An integer that identifies the number of users who have consented to the agreement, but their consent has expired. This value is last calculated at the consentCountsUpdatedAt time.
 	TotalExpiredConsents *int32 `json:"totalExpiredConsents,omitempty"`
@@ -364,7 +364,7 @@ func (o *Agreement) SetTotalConsents(v int32) {
 }
 
 func (o Agreement) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -437,5 +437,3 @@ func (v *NullableAgreement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

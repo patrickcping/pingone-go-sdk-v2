@@ -17,8 +17,8 @@ import (
 
 // EntityArrayEmbeddedGatewaysInner struct for EntityArrayEmbeddedGatewaysInner
 type EntityArrayEmbeddedGatewaysInner struct {
-	Gateway *Gateway
-	GatewayTypeLDAP *GatewayTypeLDAP
+	Gateway           *Gateway
+	GatewayTypeLDAP   *GatewayTypeLDAP
 	GatewayTypeRADIUS *GatewayTypeRADIUS
 }
 
@@ -133,5 +133,3 @@ func (v *NullableEntityArrayEmbeddedGatewaysInner) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

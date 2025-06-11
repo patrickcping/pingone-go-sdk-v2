@@ -20,7 +20,7 @@ var _ MappedNullable = &OTPDeviceConfigurationOtpDeliveriesCooldown{}
 // OTPDeviceConfigurationOtpDeliveriesCooldown Cooldown (waiting period between OTP attempts) configuration.
 type OTPDeviceConfigurationOtpDeliveriesCooldown struct {
 	// Cooldown duration configuration.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -92,7 +92,7 @@ func (o *OTPDeviceConfigurationOtpDeliveriesCooldown) SetTimeUnit(v EnumTimeUnit
 }
 
 func (o OTPDeviceConfigurationOtpDeliveriesCooldown) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableOTPDeviceConfigurationOtpDeliveriesCooldown) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

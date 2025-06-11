@@ -66,7 +66,7 @@ func (o *APIServerOperationAccessControlPermission) SetId(v string) {
 }
 
 func (o APIServerOperationAccessControlPermission) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableAPIServerOperationAccessControlPermission) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ type EnumPredictorNewDeviceDetectType string
 
 // List of EnumPredictorNewDeviceDetectType
 const (
-	ENUMPREDICTORNEWDEVICEDETECTTYPE_NEW_DEVICE EnumPredictorNewDeviceDetectType = "NEW_DEVICE"
+	ENUMPREDICTORNEWDEVICEDETECTTYPE_NEW_DEVICE        EnumPredictorNewDeviceDetectType = "NEW_DEVICE"
 	ENUMPREDICTORNEWDEVICEDETECTTYPE_SUSPICIOUS_DEVICE EnumPredictorNewDeviceDetectType = "SUSPICIOUS_DEVICE"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPredictorNewDeviceDetectType) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -22,7 +22,7 @@ type RiskEvaluationDetailsIpVelocityByUserThreshold struct {
 	// An integer indicating the value calculated for the high threshold. If the user accessed more than the high number of IPs during the past hour, they're flagged as a HIGH ipVelocityByUser.level.
 	High *int32 `json:"high,omitempty"`
 	// An integer indicating the value calculated for the medium threshold. If the user accessed more than the medium number of IPs during the past hour, they're flagged as a MEDIUM ipVelocityByUser.level.
-	Medium *int32 `json:"medium,omitempty"`
+	Medium *int32               `json:"medium,omitempty"`
 	Source *EnumThresholdSource `json:"source,omitempty"`
 	// A date-time indicating the timestamp for the calculated threshold.
 	CalculatedAt *string `json:"calculatedAt,omitempty"`
@@ -208,7 +208,7 @@ func (o *RiskEvaluationDetailsIpVelocityByUserThreshold) SetExpiresAt(v string) 
 }
 
 func (o RiskEvaluationDetailsIpVelocityByUserThreshold) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,5 +270,3 @@ func (v *NullableRiskEvaluationDetailsIpVelocityByUserThreshold) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,8 +21,8 @@ type EnumEventSharingType string
 // List of EnumEventSharingType
 const (
 	ENUMEVENTSHARINGTYPE_UNSPECIFIED EnumEventSharingType = "UNSPECIFIED"
-	ENUMEVENTSHARINGTYPE_SHARED EnumEventSharingType = "SHARED"
-	ENUMEVENTSHARINGTYPE_PRIVATE EnumEventSharingType = "PRIVATE"
+	ENUMEVENTSHARINGTYPE_SHARED      EnumEventSharingType = "SHARED"
+	ENUMEVENTSHARINGTYPE_PRIVATE     EnumEventSharingType = "PRIVATE"
 )
 
 // All allowed values of EnumEventSharingType enum
@@ -111,4 +111,3 @@ func (v *NullableEnumEventSharingType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

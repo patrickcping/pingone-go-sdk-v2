@@ -19,9 +19,9 @@ var _ MappedNullable = &RiskPredictorCustomAllOfMap{}
 
 // RiskPredictorCustomAllOfMap An object that defines the mapping of risk levels for the list of all results.
 type RiskPredictorCustomAllOfMap struct {
-	High *RiskPredictorCustomItem `json:"high,omitempty"`
+	High   *RiskPredictorCustomItem `json:"high,omitempty"`
 	Medium *RiskPredictorCustomItem `json:"medium,omitempty"`
-	Low *RiskPredictorCustomItem `json:"low,omitempty"`
+	Low    *RiskPredictorCustomItem `json:"low,omitempty"`
 }
 
 // NewRiskPredictorCustomAllOfMap instantiates a new RiskPredictorCustomAllOfMap object
@@ -138,7 +138,7 @@ func (o *RiskPredictorCustomAllOfMap) SetLow(v RiskPredictorCustomItem) {
 }
 
 func (o RiskPredictorCustomAllOfMap) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableRiskPredictorCustomAllOfMap) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

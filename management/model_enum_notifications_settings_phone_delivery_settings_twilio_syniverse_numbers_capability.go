@@ -15,13 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability The type of phone delivery service capability. Possible values: `VOICE`, `SMS` 
+// EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability The type of phone delivery service capability. Possible values: `VOICE`, `SMS`
 type EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability
 const (
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSCAPABILITY_VOICE EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability = "VOICE"
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSCAPABILITY_SMS EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability = "SMS"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSCAPABILITY_SMS   EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability = "SMS"
 )
 
 // All allowed values of EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability enum
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNu
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
