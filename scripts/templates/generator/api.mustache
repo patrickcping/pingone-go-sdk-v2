@@ -9,7 +9,7 @@ import (
 	"log/slog"
 	"net/http"
 	"net/url"
-	"strings"
+	"time"
 {{#imports}}	"{{import}}"
 {{/imports}}
 )
@@ -350,8 +350,6 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 
 	var localVarHTTPResponse *http.Response
 	var localVarBody []byte
-	
-	baseDelay := time.Second
 
 	for i := range maxRetries {
 		if req.Body != nil {
@@ -410,6 +408,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 			}
 			{{! Start Ping - DOCS-8830 }}
 			{{#vendorExtensions.x-pingone-docs-8830}}
+			baseDelay := time.Second
 			// check if environment created recently - DOCS-8830
 			retryEnvironmentResponse, retryVarHTTPResponse, err := a.client.EnvironmentApi.GetEnvironmentById(r.ctx, r.environmentID).Execute()
 			if err != nil {
