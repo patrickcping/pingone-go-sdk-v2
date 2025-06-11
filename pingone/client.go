@@ -708,5 +708,10 @@ func testForRetryable(err error, currentBackoff time.Duration) (time.Duration, b
 		}
 	}
 
+	if m, mErr := regexp.MatchString("Unsupported authentication method", err.Error()); mErr == nil && m {
+		log.Printf("Unsupported authentication method detected, available for retry")
+		return backoff, true
+	}
+
 	return backoff, false
 }
