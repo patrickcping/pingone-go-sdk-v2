@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime{}
 // DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime struct for DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime
 type DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime struct {
 	// The duration (number of time units) that the passcode is valid before it expires.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -92,7 +92,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) SetTimeUnit(v EnumT
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableDeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) UnmarshalJS
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

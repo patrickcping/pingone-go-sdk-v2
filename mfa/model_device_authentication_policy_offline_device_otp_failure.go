@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtpFailure{}
 // DeviceAuthenticationPolicyOfflineDeviceOtpFailure struct for DeviceAuthenticationPolicyOfflineDeviceOtpFailure
 type DeviceAuthenticationPolicyOfflineDeviceOtpFailure struct {
 	// The maximum number of times that the OTP entry can fail for a user, before they are blocked.
-	Count int32 `json:"count"`
+	Count    int32                                                     `json:"count"`
 	CoolDown DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown `json:"coolDown"`
 }
 
@@ -92,7 +92,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) SetCoolDown(v Device
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailure) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableDeviceAuthenticationPolicyOfflineDeviceOtpFailure) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPushTim
 // DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout struct for DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout
 type DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout struct {
 	// The amount of time a user has to respond to a push notification before it expires. Minimum is 40 seconds and maximum is 150 seconds. If this parameter is not provided, the duration is set to 40 seconds.
-	Duration int32 `json:"duration"`
+	Duration int32                   `json:"duration"`
 	TimeUnit EnumTimeUnitPushTimeout `json:"timeUnit"`
 }
 
@@ -94,7 +94,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) SetTimeUn
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -143,5 +143,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) U
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

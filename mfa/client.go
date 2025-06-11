@@ -49,6 +49,8 @@ type APIClient struct {
 
 	EnableUsersMFAApi *EnableUsersMFAApiService
 
+	EnvironmentsApi *EnvironmentsApiService
+
 	FIDODeviceApi *FIDODeviceApiService
 
 	FIDOPolicyApi *FIDOPolicyApiService
@@ -103,6 +105,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationsApplicationMFAPushCredentialsApi = (*ApplicationsApplicationMFAPushCredentialsApiService)(&c.common)
 	c.DeviceAuthenticationPolicyApi = (*DeviceAuthenticationPolicyApiService)(&c.common)
 	c.EnableUsersMFAApi = (*EnableUsersMFAApiService)(&c.common)
+	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.FIDODeviceApi = (*FIDODeviceApiService)(&c.common)
 	c.FIDOPolicyApi = (*FIDOPolicyApiService)(&c.common)
 	c.FIDO2PolicyApi = (*FIDO2PolicyApiService)(&c.common)

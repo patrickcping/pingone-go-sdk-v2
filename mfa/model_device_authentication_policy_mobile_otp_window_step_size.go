@@ -19,7 +19,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileOtpWindowStepSize{}
 
 // DeviceAuthenticationPolicyMobileOtpWindowStepSize struct for DeviceAuthenticationPolicyMobileOtpWindowStepSize
 type DeviceAuthenticationPolicyMobileOtpWindowStepSize struct {
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -91,7 +91,7 @@ func (o *DeviceAuthenticationPolicyMobileOtpWindowStepSize) SetTimeUnit(v EnumTi
 }
 
 func (o DeviceAuthenticationPolicyMobileOtpWindowStepSize) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileOtpWindowStepSize) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

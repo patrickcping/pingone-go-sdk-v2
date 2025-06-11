@@ -66,7 +66,7 @@ func (o *FIDO2PolicyUserDisplayNameAttributesAttributesInnerSubAttributesInner) 
 }
 
 func (o FIDO2PolicyUserDisplayNameAttributesAttributesInnerSubAttributesInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableFIDO2PolicyUserDisplayNameAttributesAttributesInnerSubAttribute
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

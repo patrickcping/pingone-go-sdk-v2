@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPairing
 // DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime struct for DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime
 type DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime struct {
 	// The amount of time an issued pairing key can be used until it expires. Minimum is 1 minute and maximum is 48 hours. If this parameter is not provided, the duration is set to 10 minutes.
-	Duration int32 `json:"duration"`
+	Duration int32                          `json:"duration"`
 	TimeUnit EnumTimeUnitPairingKeyLifetime `json:"timeUnit"`
 }
 
@@ -94,7 +94,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) Se
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -143,5 +143,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLife
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

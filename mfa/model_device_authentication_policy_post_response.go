@@ -18,7 +18,7 @@ import (
 // DeviceAuthenticationPolicyPostResponse - struct for DeviceAuthenticationPolicyPostResponse
 type DeviceAuthenticationPolicyPostResponse struct {
 	DeviceAuthenticationPolicy *DeviceAuthenticationPolicy
-	EntityArray *EntityArray
+	EntityArray                *EntityArray
 }
 
 // DeviceAuthenticationPolicyAsDeviceAuthenticationPolicyPostResponse is a convenience function that returns DeviceAuthenticationPolicy wrapped in DeviceAuthenticationPolicyPostResponse
@@ -34,7 +34,6 @@ func EntityArrayAsDeviceAuthenticationPolicyPostResponse(v *EntityArray) DeviceA
 		EntityArray: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DeviceAuthenticationPolicyPostResponse) UnmarshalJSON(data []byte) error {
@@ -91,7 +90,7 @@ func (src DeviceAuthenticationPolicyPostResponse) MarshalJSON() ([]byte, error) 
 }
 
 // Get the actual instance
-func (obj *DeviceAuthenticationPolicyPostResponse) GetActualInstance() (interface{}) {
+func (obj *DeviceAuthenticationPolicyPostResponse) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -142,5 +141,3 @@ func (v *NullableDeviceAuthenticationPolicyPostResponse) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

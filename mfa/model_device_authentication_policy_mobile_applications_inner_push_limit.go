@@ -20,9 +20,9 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPushLim
 // DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit struct for DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit
 type DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit struct {
 	// The number of consecutive push notifications that can be ignored or rejected by a user within a defined period before push notifications are blocked for the application. The minimum value is 1 and the maximum value is 50. If this parameter is not provided, the default value is 5.
-	Count *int32 `json:"count,omitempty"`
+	Count        *int32                                                                  `json:"count,omitempty"`
 	LockDuration *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration `json:"lockDuration,omitempty"`
-	TimePeriod *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimePeriod `json:"timePeriod,omitempty"`
+	TimePeriod   *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitTimePeriod   `json:"timePeriod,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyMobileApplicationsInnerPushLimit instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit object
@@ -143,7 +143,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit) SetTimePeri
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +199,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPushLimit) Unm
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// EnumFIDO2PolicyAuthenticatorAttachment Used to control the type of authenticators that are allowed. Can be one of the following values: - `PLATFORM` - only allow the use of FIDO device authenticators that contain an internal authenticator (such as a face or fingerprint scanner) - `CROSS_PLATFORM` - allow use of cross-platform authenticators, which are external to the accessing device (such as a security key) - `BOTH` - allow both categories of authenticators 
+// EnumFIDO2PolicyAuthenticatorAttachment Used to control the type of authenticators that are allowed. Can be one of the following values: - `PLATFORM` - only allow the use of FIDO device authenticators that contain an internal authenticator (such as a face or fingerprint scanner) - `CROSS_PLATFORM` - allow use of cross-platform authenticators, which are external to the accessing device (such as a security key) - `BOTH` - allow both categories of authenticators
 type EnumFIDO2PolicyAuthenticatorAttachment string
 
 // List of EnumFIDO2PolicyAuthenticatorAttachment
 const (
-	ENUMFIDO2POLICYAUTHENTICATORATTACHMENT_PLATFORM EnumFIDO2PolicyAuthenticatorAttachment = "PLATFORM"
+	ENUMFIDO2POLICYAUTHENTICATORATTACHMENT_PLATFORM       EnumFIDO2PolicyAuthenticatorAttachment = "PLATFORM"
 	ENUMFIDO2POLICYAUTHENTICATORATTACHMENT_CROSS_PLATFORM EnumFIDO2PolicyAuthenticatorAttachment = "CROSS_PLATFORM"
-	ENUMFIDO2POLICYAUTHENTICATORATTACHMENT_BOTH EnumFIDO2PolicyAuthenticatorAttachment = "BOTH"
+	ENUMFIDO2POLICYAUTHENTICATORATTACHMENT_BOTH           EnumFIDO2PolicyAuthenticatorAttachment = "BOTH"
 )
 
 // All allowed values of EnumFIDO2PolicyAuthenticatorAttachment enum
@@ -110,4 +110,3 @@ func (v *NullableEnumFIDO2PolicyAuthenticatorAttachment) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

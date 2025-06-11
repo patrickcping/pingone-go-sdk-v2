@@ -26,20 +26,20 @@ type FIDOPolicy struct {
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Embedded map[string]interface{} `json:"_embedded,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	UpdatedAt   *time.Time             `json:"updatedAt,omitempty"`
+	Embedded    map[string]interface{} `json:"_embedded,omitempty"`
+	Environment *ObjectEnvironment     `json:"environment,omitempty"`
 	// The name to use for the FIDO policy.
 	Name string `json:"name"`
 	// Description of the FIDO policy.
-	Description *string `json:"description,omitempty"`
+	Description             *string                         `json:"description,omitempty"`
 	AttestationRequirements EnumFIDOAttestationRequirements `json:"attestationRequirements"`
 	// If `attestationRequirements` is set to `SPECIFIC`, this array is used to specify the authenticators that you want to allow.
 	AllowedAuthenticators []FIDOPolicyAllowedAuthenticatorsInner `json:"allowedAuthenticators,omitempty"`
 	// This parameter is relevant only if you have set `attestationRequirements` to `SPECIFIC` in order to restrict usage to only certain authenticators. If set to `true`, the policy will be applied both during registration and during each authentication attempt. If set to `false`, the policy is applied only during registration. Default is `false`.
 	EnforceDuringAuthentication *bool `json:"enforceDuringAuthentication,omitempty"`
 	// Whether this policy should serve as the default FIDO policy.
-	Default *bool `json:"default,omitempty"`
+	Default                *bool                          `json:"default,omitempty"`
 	ResidentKeyRequirement EnumFIDOResidentKeyRequirement `json:"residentKeyRequirement"`
 }
 
@@ -460,7 +460,7 @@ func (o *FIDOPolicy) SetResidentKeyRequirement(v EnumFIDOResidentKeyRequirement)
 }
 
 func (o FIDOPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -540,5 +540,3 @@ func (v *NullableFIDOPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
