@@ -19,11 +19,11 @@ var _ MappedNullable = &VoiceConfiguration{}
 
 // VoiceConfiguration struct for VoiceConfiguration
 type VoiceConfiguration struct {
-	Verify EnumVerify `json:"verify"`
-	Enrollment bool `json:"enrollment"`
+	Verify        EnumVerify                       `json:"verify"`
+	Enrollment    bool                             `json:"enrollment"`
 	TextDependent *VoiceConfigurationTextDependent `json:"textDependent,omitempty"`
-	Comparison VoiceConfigurationThreshold `json:"comparison"`
-	Liveness VoiceConfigurationThreshold `json:"liveness"`
+	Comparison    VoiceConfigurationThreshold      `json:"comparison"`
+	Liveness      VoiceConfigurationThreshold      `json:"liveness"`
 	ReferenceData *VoiceConfigurationReferenceData `json:"referenceData,omitempty"`
 }
 
@@ -209,7 +209,7 @@ func (o *VoiceConfiguration) SetReferenceData(v VoiceConfigurationReferenceData)
 }
 
 func (o VoiceConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,5 +266,3 @@ func (v *NullableVoiceConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

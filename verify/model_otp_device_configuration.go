@@ -21,8 +21,8 @@ var _ MappedNullable = &OTPDeviceConfiguration{}
 type OTPDeviceConfiguration struct {
 	Verify EnumVerify `json:"verify"`
 	// When enabled, PingOne Verify registers the email address or phone number with PingOne MFA as a verified MFA device.
-	CreateMfaDevice *bool `json:"createMfaDevice,omitempty"`
-	Otp *OTPDeviceConfigurationOtp `json:"otp,omitempty"`
+	CreateMfaDevice *bool                      `json:"createMfaDevice,omitempty"`
+	Otp             *OTPDeviceConfigurationOtp `json:"otp,omitempty"`
 }
 
 // NewOTPDeviceConfiguration instantiates a new OTPDeviceConfiguration object
@@ -132,7 +132,7 @@ func (o *OTPDeviceConfiguration) SetOtp(v OTPDeviceConfigurationOtp) {
 }
 
 func (o OTPDeviceConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -186,5 +186,3 @@ func (v *NullableOTPDeviceConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

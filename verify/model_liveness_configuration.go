@@ -19,9 +19,9 @@ var _ MappedNullable = &LivenessConfiguration{}
 
 // LivenessConfiguration struct for LivenessConfiguration
 type LivenessConfiguration struct {
-	Retry *ObjectRetry `json:"retry,omitempty"`
+	Retry     *ObjectRetry  `json:"retry,omitempty"`
 	Threshold EnumThreshold `json:"threshold"`
-	Verify EnumVerify `json:"verify"`
+	Verify    EnumVerify    `json:"verify"`
 }
 
 // NewLivenessConfiguration instantiates a new LivenessConfiguration object
@@ -124,7 +124,7 @@ func (o *LivenessConfiguration) SetVerify(v EnumVerify) {
 }
 
 func (o LivenessConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -176,5 +176,3 @@ func (v *NullableLivenessConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

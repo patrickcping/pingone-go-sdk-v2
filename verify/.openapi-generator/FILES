@@ -1,5 +1,6 @@
 README.md
 api/openapi.yaml
+api_environments.go
 api_verify_policies.go
 api_voice_phrase_contents.go
 api_voice_phrases.go
@@ -12,6 +13,8 @@ docs/EnumProviderManual.md
 docs/EnumThreshold.md
 docs/EnumTimeUnit.md
 docs/EnumVerify.md
+docs/Environment.md
+docs/EnvironmentsApi.md
 docs/FacialComparisonConfiguration.md
 docs/GovernmentIdConfiguration.md
 docs/GovernmentIdConfigurationProvider.md
@@ -55,6 +58,7 @@ model_enum_provider_manual.go
 model_enum_threshold.go
 model_enum_time_unit.go
 model_enum_verify.go
+model_environment.go
 model_facial_comparison_configuration.go
 model_government_id_configuration.go
 model_government_id_configuration_provider.go
