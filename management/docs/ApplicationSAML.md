@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 **Template** | Pointer to [**ApplicationTemplate**](ApplicationTemplate.md) |  | [optional] 
+**VirtualServerIdSettings** | Pointer to [**ApplicationSAMLAllOfVirtualServerIdSettings**](ApplicationSAMLAllOfVirtualServerIdSettings.md) |  | [optional] 
 
 ## Methods
 
@@ -846,6 +847,31 @@ SetTemplate sets Template field to given value.
 `func (o *ApplicationSAML) HasTemplate() bool`
 
 HasTemplate returns a boolean if a field has been set.
+
+### GetVirtualServerIdSettings
+
+`func (o *ApplicationSAML) GetVirtualServerIdSettings() ApplicationSAMLAllOfVirtualServerIdSettings`
+
+GetVirtualServerIdSettings returns the VirtualServerIdSettings field if non-nil, zero value otherwise.
+
+### GetVirtualServerIdSettingsOk
+
+`func (o *ApplicationSAML) GetVirtualServerIdSettingsOk() (*ApplicationSAMLAllOfVirtualServerIdSettings, bool)`
+
+GetVirtualServerIdSettingsOk returns a tuple with the VirtualServerIdSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualServerIdSettings
+
+`func (o *ApplicationSAML) SetVirtualServerIdSettings(v ApplicationSAMLAllOfVirtualServerIdSettings)`
+
+SetVirtualServerIdSettings sets VirtualServerIdSettings field to given value.
+
+### HasVirtualServerIdSettings
+
+`func (o *ApplicationSAML) HasVirtualServerIdSettings() bool`
+
+HasVirtualServerIdSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

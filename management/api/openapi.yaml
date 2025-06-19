@@ -38507,6 +38507,8 @@ components:
             $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification'
           template:
             $ref: '#/components/schemas/ApplicationTemplate'
+          virtualServerIdSettings:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_virtualServerIdSettings'
         required:
         - acsUrls
         - assertionDuration
@@ -47030,6 +47032,35 @@ components:
           type: array
       required:
       - certificates
+      type: object
+      example: null
+    ApplicationSAML_allOf_virtualServerIdSettings_virtualServerIds:
+      properties:
+        vsId:
+          description: This must be a valid SAML entity ID.
+          type: string
+        default:
+          description: Indicates whether the virtual server identified by the associated
+            `vsId` is to be used as the default virtual server.
+          type: boolean
+      required:
+      - vsId
+      type: object
+      example: null
+    ApplicationSAML_allOf_virtualServerIdSettings:
+      description: Contains the virtual server ID or IDs to be used.
+      properties:
+        enabled:
+          default: false
+          description: Indicates whether the virtual server ID or IDs specified are
+            to be used. Defaults to `false`.
+          type: boolean
+        virtualServerIds:
+          description: Required if `enabled` is `true`. Contains the list of virtual
+            ID or IDs to be used.
+          items:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_virtualServerIdSettings_virtualServerIds'
+          type: array
       type: object
       example: null
     ApplicationOIDC_allOf_mobile_passcodeRefreshDuration:

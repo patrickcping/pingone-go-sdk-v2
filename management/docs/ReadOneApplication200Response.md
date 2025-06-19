@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 **Template** | Pointer to [**ApplicationTemplate**](ApplicationTemplate.md) |  | [optional] 
+**VirtualServerIdSettings** | Pointer to [**ApplicationSAMLAllOfVirtualServerIdSettings**](ApplicationSAMLAllOfVirtualServerIdSettings.md) |  | [optional] 
 **AdditionalRefreshTokenReplayProtectionEnabled** | Pointer to **bool** | When set to &#x60;true&#x60; (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a &#x60;false&#x60; setting. | [optional] [default to true]
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
@@ -873,6 +874,31 @@ SetTemplate sets Template field to given value.
 `func (o *ReadOneApplication200Response) HasTemplate() bool`
 
 HasTemplate returns a boolean if a field has been set.
+
+### GetVirtualServerIdSettings
+
+`func (o *ReadOneApplication200Response) GetVirtualServerIdSettings() ApplicationSAMLAllOfVirtualServerIdSettings`
+
+GetVirtualServerIdSettings returns the VirtualServerIdSettings field if non-nil, zero value otherwise.
+
+### GetVirtualServerIdSettingsOk
+
+`func (o *ReadOneApplication200Response) GetVirtualServerIdSettingsOk() (*ApplicationSAMLAllOfVirtualServerIdSettings, bool)`
+
+GetVirtualServerIdSettingsOk returns a tuple with the VirtualServerIdSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualServerIdSettings
+
+`func (o *ReadOneApplication200Response) SetVirtualServerIdSettings(v ApplicationSAMLAllOfVirtualServerIdSettings)`
+
+SetVirtualServerIdSettings sets VirtualServerIdSettings field to given value.
+
+### HasVirtualServerIdSettings
+
+`func (o *ReadOneApplication200Response) HasVirtualServerIdSettings() bool`
+
+HasVirtualServerIdSettings returns a boolean if a field has been set.
 
 ### GetAdditionalRefreshTokenReplayProtectionEnabled
 

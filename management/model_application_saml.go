@@ -71,9 +71,10 @@ type ApplicationSAML struct {
 	SloWindow    *int32                            `json:"sloWindow,omitempty"`
 	SpEncryption *ApplicationSAMLAllOfSpEncryption `json:"spEncryption,omitempty"`
 	// A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
-	SpEntityId     string                              `json:"spEntityId"`
-	SpVerification *ApplicationSAMLAllOfSpVerification `json:"spVerification,omitempty"`
-	Template       *ApplicationTemplate                `json:"template,omitempty"`
+	SpEntityId              string                                       `json:"spEntityId"`
+	SpVerification          *ApplicationSAMLAllOfSpVerification          `json:"spVerification,omitempty"`
+	Template                *ApplicationTemplate                         `json:"template,omitempty"`
+	VirtualServerIdSettings *ApplicationSAMLAllOfVirtualServerIdSettings `json:"virtualServerIdSettings,omitempty"`
 }
 
 // NewApplicationSAML instantiates a new ApplicationSAML object
@@ -1112,6 +1113,38 @@ func (o *ApplicationSAML) SetTemplate(v ApplicationTemplate) {
 	o.Template = &v
 }
 
+// GetVirtualServerIdSettings returns the VirtualServerIdSettings field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetVirtualServerIdSettings() ApplicationSAMLAllOfVirtualServerIdSettings {
+	if o == nil || IsNil(o.VirtualServerIdSettings) {
+		var ret ApplicationSAMLAllOfVirtualServerIdSettings
+		return ret
+	}
+	return *o.VirtualServerIdSettings
+}
+
+// GetVirtualServerIdSettingsOk returns a tuple with the VirtualServerIdSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetVirtualServerIdSettingsOk() (*ApplicationSAMLAllOfVirtualServerIdSettings, bool) {
+	if o == nil || IsNil(o.VirtualServerIdSettings) {
+		return nil, false
+	}
+	return o.VirtualServerIdSettings, true
+}
+
+// HasVirtualServerIdSettings returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasVirtualServerIdSettings() bool {
+	if o != nil && !IsNil(o.VirtualServerIdSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetVirtualServerIdSettings gets a reference to the given ApplicationSAMLAllOfVirtualServerIdSettings and assigns it to the VirtualServerIdSettings field.
+func (o *ApplicationSAML) SetVirtualServerIdSettings(v ApplicationSAMLAllOfVirtualServerIdSettings) {
+	o.VirtualServerIdSettings = &v
+}
+
 func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1206,6 +1239,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Template) {
 		toSerialize["template"] = o.Template
+	}
+	if !IsNil(o.VirtualServerIdSettings) {
+		toSerialize["virtualServerIdSettings"] = o.VirtualServerIdSettings
 	}
 	return toSerialize, nil
 }

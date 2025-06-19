@@ -1196,6 +1196,28 @@ components:
                 - certificates
             template:
               $ref: '#/components/schemas/ApplicationTemplate'
+            virtualServerIdSettings:
+              type: object
+              description: Contains the virtual server ID or IDs to be used.
+              properties:
+                enabled:
+                  type: boolean
+                  description: Indicates whether the virtual server ID or IDs specified are to be used. Defaults to `false`.
+                  default: false
+                virtualServerIds:
+                  type: array
+                  description: Required if `enabled` is `true`. Contains the list of virtual ID or IDs to be used.
+                  items:
+                    type: object
+                    properties:
+                      vsId:
+                        type: string
+                        description: This must be a valid SAML entity ID.
+                      default:
+                        type: boolean
+                        description: Indicates whether the virtual server identified by the associated `vsId` is to be used as the default virtual server.
+                    required:
+                      - vsId
           required:
             - spEntityId
             - acsUrls
