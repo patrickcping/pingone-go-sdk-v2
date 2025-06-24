@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.19
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.57.1 => v0.58.0 [#464](https://github.com/patrickcping/pingone-go-sdk-v2/pull/464)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.58.0](./management/CHANGELOG.md)
   * **Enhancement** Add support for `VirtualServerIdSettings` in SAML application objects. [#462](https://github.com/patrickcping/pingone-go-sdk-v2/pull/462)
 
