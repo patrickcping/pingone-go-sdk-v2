@@ -1,4 +1,4 @@
-# v0.58.0 (Unreleased)
+# v0.58.0 (2025-06-24)
 
 * **Enhancement** Add support for `VirtualServerIdSettings` in SAML application objects. [#462](https://github.com/patrickcping/pingone-go-sdk-v2/pull/462)
 
