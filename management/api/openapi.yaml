@@ -37544,6 +37544,7 @@ components:
       - PING_DIRECTORY
       - PING_AUTHORIZE
       - PING_ID
+      - PING_ONE_ID
       - PING_INTELLIGENCE
       - PING_CENTRAL
       type: string

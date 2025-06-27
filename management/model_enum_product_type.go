@@ -40,6 +40,7 @@ const (
 	ENUMPRODUCTTYPE_DIRECTORY          EnumProductType = "PING_DIRECTORY"
 	ENUMPRODUCTTYPE_AUTHORIZE          EnumProductType = "PING_AUTHORIZE"
 	ENUMPRODUCTTYPE_ID                 EnumProductType = "PING_ID"
+	ENUMPRODUCTTYPE_ONE_ID             EnumProductType = "PING_ONE_ID"
 	ENUMPRODUCTTYPE_INTELLIGENCE       EnumProductType = "PING_INTELLIGENCE"
 	ENUMPRODUCTTYPE_CENTRAL            EnumProductType = "PING_CENTRAL"
 )
@@ -66,6 +67,7 @@ var AllowedEnumProductTypeEnumValues = []EnumProductType{
 	"PING_DIRECTORY",
 	"PING_AUTHORIZE",
 	"PING_ID",
+	"PING_ONE_ID",
 	"PING_INTELLIGENCE",
 	"PING_CENTRAL",
 }
