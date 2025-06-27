@@ -1,4 +1,4 @@
-# v0.59.0 (Unreleased)
+# v0.59.0 (2025-06-27)
 
 * **Enhancement** Added the `PING_ONE_ID` product type to support PingID (v2). [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
 
