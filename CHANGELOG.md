@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.13.0
+  * **Enhancement** Add support for PingID v2 environments in product selection. [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
+
 # Release (2025-06-24)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.19
