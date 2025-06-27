@@ -1,3 +1,7 @@
+# v0.59.0 (Unreleased)
+
+* **Enhancement** Added the `PING_ONE_ID` product type to support PingID (v2). [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
+
 # v0.58.0 (2025-06-24)
 
 * **Enhancement** Add support for `VirtualServerIdSettings` in SAML application objects. [#462](https://github.com/patrickcping/pingone-go-sdk-v2/pull/462)
