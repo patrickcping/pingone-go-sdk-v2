@@ -21,17 +21,21 @@ type EnumRegionCodeLicense string
 // List of EnumRegionCodeLicense
 const (
 	ENUMREGIONCODELICENSE_AP            EnumRegionCodeLicense = "AP"
+	ENUMREGIONCODELICENSE_AU            EnumRegionCodeLicense = "AU"
 	ENUMREGIONCODELICENSE_CA            EnumRegionCodeLicense = "CA"
 	ENUMREGIONCODELICENSE_EU            EnumRegionCodeLicense = "EU"
 	ENUMREGIONCODELICENSE_NORTH_AMERICA EnumRegionCodeLicense = "NORTH_AMERICA"
+	ENUMREGIONCODELICENSE_SG            EnumRegionCodeLicense = "SG"
 )
 
 // All allowed values of EnumRegionCodeLicense enum
 var AllowedEnumRegionCodeLicenseEnumValues = []EnumRegionCodeLicense{
 	"AP",
+	"AU",
 	"CA",
 	"EU",
 	"NORTH_AMERICA",
+	"SG",
 }
 
 func (v *EnumRegionCodeLicense) UnmarshalJSON(src []byte) error {

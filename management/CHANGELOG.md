@@ -1,3 +1,9 @@
+# v0.60.0 (Unreleased)
+
+* **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* **Enhancement** Added the `SG` region code to the `EnumRegionCode` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* **Enhancement** Added the `AU` and `SG` region codes to the `EnumRegionCodeLicense` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+
 # v0.59.0 (2025-06-27)
 
 * **Enhancement** Added the `PING_ONE_ID` product type to support PingID (v2). [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)

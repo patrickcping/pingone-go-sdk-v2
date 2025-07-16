@@ -37627,12 +37627,14 @@ components:
       - Voice 1
       type: string
     EnumPropagationStoreTypePingOneRegion:
-      description: "A supported region. Options are `NA`, `CA`, `EU`, or `AP`."
+      description: A supported region.
       enum:
-      - NA
+      - AP
+      - AU
       - CA
       - EU
-      - AP
+      - NA
+      - SG
       type: string
     EnumPropagationStoreTypeSalesforceContactsRecordType:
       description: The type of Salesforce record. Options are either Lead or Contact.
@@ -37685,13 +37687,16 @@ components:
       - CA
       - EU
       - NA
+      - SG
       type: string
     EnumRegionCodeLicense:
       enum:
       - AP
+      - AU
       - CA
       - EU
       - NORTH_AMERICA
+      - SG
       type: string
     EnumResourceAttributeType:
       description: |

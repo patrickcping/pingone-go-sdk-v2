@@ -25,6 +25,7 @@ const (
 	ENUMREGIONCODE_CA EnumRegionCode = "CA"
 	ENUMREGIONCODE_EU EnumRegionCode = "EU"
 	ENUMREGIONCODE_NA EnumRegionCode = "NA"
+	ENUMREGIONCODE_SG EnumRegionCode = "SG"
 )
 
 // All allowed values of EnumRegionCode enum
@@ -34,6 +35,7 @@ var AllowedEnumRegionCodeEnumValues = []EnumRegionCode{
 	"CA",
 	"EU",
 	"NA",
+	"SG",
 }
 
 func (v *EnumRegionCode) UnmarshalJSON(src []byte) error {

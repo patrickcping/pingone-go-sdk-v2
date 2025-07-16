@@ -15,23 +15,27 @@ import (
 	"fmt"
 )
 
-// EnumPropagationStoreTypePingOneRegion A supported region. Options are `NA`, `CA`, `EU`, or `AP`.
+// EnumPropagationStoreTypePingOneRegion A supported region.
 type EnumPropagationStoreTypePingOneRegion string
 
 // List of EnumPropagationStoreTypePingOneRegion
 const (
-	ENUMPROPAGATIONSTORETYPEPINGONEREGION_NA EnumPropagationStoreTypePingOneRegion = "NA"
+	ENUMPROPAGATIONSTORETYPEPINGONEREGION_AP EnumPropagationStoreTypePingOneRegion = "AP"
+	ENUMPROPAGATIONSTORETYPEPINGONEREGION_AU EnumPropagationStoreTypePingOneRegion = "AU"
 	ENUMPROPAGATIONSTORETYPEPINGONEREGION_CA EnumPropagationStoreTypePingOneRegion = "CA"
 	ENUMPROPAGATIONSTORETYPEPINGONEREGION_EU EnumPropagationStoreTypePingOneRegion = "EU"
-	ENUMPROPAGATIONSTORETYPEPINGONEREGION_AP EnumPropagationStoreTypePingOneRegion = "AP"
+	ENUMPROPAGATIONSTORETYPEPINGONEREGION_NA EnumPropagationStoreTypePingOneRegion = "NA"
+	ENUMPROPAGATIONSTORETYPEPINGONEREGION_SG EnumPropagationStoreTypePingOneRegion = "SG"
 )
 
 // All allowed values of EnumPropagationStoreTypePingOneRegion enum
 var AllowedEnumPropagationStoreTypePingOneRegionEnumValues = []EnumPropagationStoreTypePingOneRegion{
-	"NA",
+	"AP",
+	"AU",
 	"CA",
 	"EU",
-	"AP",
+	"NA",
+	"SG",
 }
 
 func (v *EnumPropagationStoreTypePingOneRegion) UnmarshalJSON(src []byte) error {
