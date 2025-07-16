@@ -1,6 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.59.0 => v0.60.0 [#469](https://github.com/patrickcping/pingone-go-sdk-v2/pull/469)
   * **Enhancement** Add support for Singapore in region selection. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.60.0](./management/CHANGELOG.md)  
   * **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
