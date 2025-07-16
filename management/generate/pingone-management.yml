@@ -536,8 +536,8 @@ components:
       description: The default authentication method. Options are `Email 1`, `SMS 1`, or `Voice 1`.
     EnumPropagationStoreTypePingOneRegion:
       type: string
-      enum: [NA, CA, EU, AP]
-      description: A supported region. Options are `NA`, `CA`, `EU`, or `AP`.
+      enum: [AP, AU, CA, EU, NA, SG]
+      description: A supported region.
     EnumPropagationStoreTypeSalesforceContactsRecordType:
       type: string
       enum: [Lead, Contact]
@@ -565,11 +565,11 @@ components:
       default: JWT Bearer Token
     EnumRegionCode:
       type: string
-      enum: [AP, AU, CA, EU, NA]
+      enum: [AP, AU, CA, EU, NA, SG]
       description: A string that specifies the environment region code. The value is set when the environment is created and cannot be updated.
     EnumRegionCodeLicense:
       type: string
-      enum: [AP, CA, EU, NORTH_AMERICA]
+      enum: [AP, AU, CA, EU, NORTH_AMERICA, SG]
     EnumResourceAttributeType:
       type: string
       enum: [CORE, CUSTOM, PREDEFINED]
