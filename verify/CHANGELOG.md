@@ -1,4 +1,4 @@
-# v0.10.0 (2025-08-06)
+# v0.10.0 (Unreleased)
 
 * **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object.
 * **Enhancement** Added `VerifyAamva` to the `GovernmentIdConfiguration` object.
