@@ -1812,6 +1812,22 @@ components:
               verify: null
               threshold: null
             id: id
+            identityRecordMatching:
+              address:
+                fieldRequired: true
+                threshold: null
+              birth_date:
+                fieldRequired: true
+                threshold: null
+              name:
+                fieldRequired: true
+                threshold: null
+              given_name:
+                fieldRequired: true
+                threshold: null
+              family_name:
+                fieldRequired: true
+                threshold: null
             email:
               createMfaDevice: true
               verify: null
@@ -1847,6 +1863,7 @@ components:
               failExpiredId: true
               retry:
                 attempts: 0
+              verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - voice:
               verify: null
@@ -1898,6 +1915,22 @@ components:
               verify: null
               threshold: null
             id: id
+            identityRecordMatching:
+              address:
+                fieldRequired: true
+                threshold: null
+              birth_date:
+                fieldRequired: true
+                threshold: null
+              name:
+                fieldRequired: true
+                threshold: null
+              given_name:
+                fieldRequired: true
+                threshold: null
+              family_name:
+                fieldRequired: true
+                threshold: null
             email:
               createMfaDevice: true
               verify: null
@@ -1933,6 +1966,7 @@ components:
               failExpiredId: true
               retry:
                 attempts: 0
+              verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           voicePhrases:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -2044,6 +2078,7 @@ components:
         failExpiredId: true
         retry:
           attempts: 0
+        verifyAamva: true
       properties:
         failExpiredId:
           description: Indicates whether verification should fail if the ID is expired.
@@ -2056,8 +2091,41 @@ components:
           $ref: '#/components/schemas/ObjectRetry'
         verify:
           $ref: '#/components/schemas/EnumVerify'
+        verifyAamva:
+          description: "Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses)\
+            \ verification is enabled"
+          type: boolean
       required:
       - verify
+      type: object
+    IdentityRecordMatching:
+      example:
+        address:
+          fieldRequired: true
+          threshold: null
+        birth_date:
+          fieldRequired: true
+          threshold: null
+        name:
+          fieldRequired: true
+          threshold: null
+        given_name:
+          fieldRequired: true
+          threshold: null
+        family_name:
+          fieldRequired: true
+          threshold: null
+      properties:
+        address:
+          $ref: '#/components/schemas/IdentityRecordMatching_address'
+        birth_date:
+          $ref: '#/components/schemas/IdentityRecordMatching_birth_date'
+        family_name:
+          $ref: '#/components/schemas/IdentityRecordMatching_family_name'
+        given_name:
+          $ref: '#/components/schemas/IdentityRecordMatching_given_name'
+        name:
+          $ref: '#/components/schemas/IdentityRecordMatching_name'
       type: object
     LivenessConfiguration:
       example:
@@ -2363,6 +2431,22 @@ components:
           verify: null
           threshold: null
         id: id
+        identityRecordMatching:
+          address:
+            fieldRequired: true
+            threshold: null
+          birth_date:
+            fieldRequired: true
+            threshold: null
+          name:
+            fieldRequired: true
+            threshold: null
+          given_name:
+            fieldRequired: true
+            threshold: null
+          family_name:
+            fieldRequired: true
+            threshold: null
         email:
           createMfaDevice: true
           verify: null
@@ -2398,6 +2482,7 @@ components:
           failExpiredId: true
           retry:
             attempts: 0
+          verifyAamva: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -2424,6 +2509,8 @@ components:
           $ref: '#/components/schemas/GovernmentIdConfiguration'
         facialComparison:
           $ref: '#/components/schemas/FacialComparisonConfiguration'
+        identityRecordMatching:
+          $ref: '#/components/schemas/IdentityRecordMatching'
         liveness:
           $ref: '#/components/schemas/LivenessConfiguration'
         email:
@@ -2528,6 +2615,22 @@ components:
             verify: null
             threshold: null
           id: id
+          identityRecordMatching:
+            address:
+              fieldRequired: true
+              threshold: null
+            birth_date:
+              fieldRequired: true
+              threshold: null
+            name:
+              fieldRequired: true
+              threshold: null
+            given_name:
+              fieldRequired: true
+              threshold: null
+            family_name:
+              fieldRequired: true
+              threshold: null
           email:
             createMfaDevice: true
             verify: null
@@ -2563,6 +2666,7 @@ components:
             failExpiredId: true
             retry:
               attempts: 0
+            verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - voice:
             verify: null
@@ -2614,6 +2718,22 @@ components:
             verify: null
             threshold: null
           id: id
+          identityRecordMatching:
+            address:
+              fieldRequired: true
+              threshold: null
+            birth_date:
+              fieldRequired: true
+              threshold: null
+            name:
+              fieldRequired: true
+              threshold: null
+            given_name:
+              fieldRequired: true
+              threshold: null
+            family_name:
+              fieldRequired: true
+              threshold: null
           email:
             createMfaDevice: true
             verify: null
@@ -2649,6 +2769,7 @@ components:
             failExpiredId: true
             retry:
               attempts: 0
+            verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         voicePhrases:
         - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -2686,6 +2807,81 @@ components:
           $ref: '#/components/schemas/EnumProviderAuto'
         manual:
           $ref: '#/components/schemas/EnumProviderManual'
+      type: object
+    IdentityRecordMatching_address:
+      description: Address of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_birth_date:
+      description: Birth date of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_family_name:
+      description: Family name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_given_name:
+      description: Given name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_name:
+      description: Full name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
       type: object
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.

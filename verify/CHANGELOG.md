@@ -1,3 +1,8 @@
+# v0.10.0 (2025-08-06)
+
+* **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object.
+* **Enhancement** Added `VerifyAamva` to the `GovernmentIdConfiguration` object.
+
 # v0.9.1 (2025-06-11)
 
 * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)

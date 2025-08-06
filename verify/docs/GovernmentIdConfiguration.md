@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Provider** | Pointer to [**GovernmentIdConfigurationProvider**](GovernmentIdConfigurationProvider.md) |  | [optional] 
 **Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
 **Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**VerifyAamva** | Pointer to **bool** | Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses) verification is enabled | [optional] 
 
 ## Methods
 
@@ -148,6 +149,31 @@ and a boolean to check if the value has been set.
 
 SetVerify sets Verify field to given value.
 
+
+### GetVerifyAamva
+
+`func (o *GovernmentIdConfiguration) GetVerifyAamva() bool`
+
+GetVerifyAamva returns the VerifyAamva field if non-nil, zero value otherwise.
+
+### GetVerifyAamvaOk
+
+`func (o *GovernmentIdConfiguration) GetVerifyAamvaOk() (*bool, bool)`
+
+GetVerifyAamvaOk returns a tuple with the VerifyAamva field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerifyAamva
+
+`func (o *GovernmentIdConfiguration) SetVerifyAamva(v bool)`
+
+SetVerifyAamva sets VerifyAamva field to given value.
+
+### HasVerifyAamva
+
+`func (o *GovernmentIdConfiguration) HasVerifyAamva() bool`
+
+HasVerifyAamva returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

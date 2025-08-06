@@ -18,6 +18,12 @@ docs/EnvironmentsApi.md
 docs/FacialComparisonConfiguration.md
 docs/GovernmentIdConfiguration.md
 docs/GovernmentIdConfigurationProvider.md
+docs/IdentityRecordMatching.md
+docs/IdentityRecordMatchingAddress.md
+docs/IdentityRecordMatchingBirthDate.md
+docs/IdentityRecordMatchingFamilyName.md
+docs/IdentityRecordMatchingGivenName.md
+docs/IdentityRecordMatchingName.md
 docs/LinksHATEOASValue.md
 docs/LivenessConfiguration.md
 docs/OTPDeviceConfiguration.md
@@ -62,6 +68,12 @@ model_environment.go
 model_facial_comparison_configuration.go
 model_government_id_configuration.go
 model_government_id_configuration_provider.go
+model_identity_record_matching.go
+model_identity_record_matching_address.go
+model_identity_record_matching_birth_date.go
+model_identity_record_matching_family_name.go
+model_identity_record_matching_given_name.go
+model_identity_record_matching_name.go
 model_links_hateoas_value.go
 model_liveness_configuration.go
 model_object_environment.go
