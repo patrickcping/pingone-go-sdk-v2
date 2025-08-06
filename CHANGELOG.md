@@ -1,3 +1,13 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.1
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.12.0](./credentials/CHANGELOG.md)
+  * **Feature** Add support for the Credential Type Versions API. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+  * **Enhancement** Added `Expiration` and `Version` fields to the `CredentialType` object model. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.10.0](./verify/CHANGELOG.md)
+  * **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+  * **Enhancement** Added `VerifyAamva` to the `GovernmentIdConfiguration` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+
 # Release (2025-07-16)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.0
