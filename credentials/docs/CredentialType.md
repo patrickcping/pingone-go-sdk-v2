@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | A string that specifies the description of the credential type. | [optional] 
 **DeletedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Expiration** | Pointer to [**CredentialTypeExpiration**](CredentialTypeExpiration.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential type. | [optional] [readonly] 
 **Issuer** | Pointer to [**ObjectIssuer**](ObjectIssuer.md) |  | [optional] 
 **IssuerName** | Pointer to **string** | A string that specifies the issuer name associated with the card, can differ from title. | [optional] 
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **OnDelete** | Pointer to [**CredentialTypeOnDelete**](CredentialTypeOnDelete.md) |  | [optional] 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
 **UpdatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was last updated; can be null. | [optional] [readonly] 
+**Version** | Pointer to [**CredentialTypeVersion**](CredentialTypeVersion.md) |  | [optional] 
 
 ## Methods
 
@@ -209,6 +211,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *CredentialType) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetExpiration
+
+`func (o *CredentialType) GetExpiration() CredentialTypeExpiration`
+
+GetExpiration returns the Expiration field if non-nil, zero value otherwise.
+
+### GetExpirationOk
+
+`func (o *CredentialType) GetExpirationOk() (*CredentialTypeExpiration, bool)`
+
+GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiration
+
+`func (o *CredentialType) SetExpiration(v CredentialTypeExpiration)`
+
+SetExpiration sets Expiration field to given value.
+
+### HasExpiration
+
+`func (o *CredentialType) HasExpiration() bool`
+
+HasExpiration returns a boolean if a field has been set.
 
 ### GetId
 
@@ -424,6 +451,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *CredentialType) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *CredentialType) GetVersion() CredentialTypeVersion`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *CredentialType) GetVersionOk() (*CredentialTypeVersion, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *CredentialType) SetVersion(v CredentialTypeVersion)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *CredentialType) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

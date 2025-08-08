@@ -1,3 +1,8 @@
+# v0.12.0 (Unreleased)
+
+* **Feature** Add support for the Credential Type Versions API. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+* **Enhancement** Added `Expiration` and `Version` fields to the `CredentialType` object model. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+
 # v0.11.1 (2025-06-11)
 
 * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)

@@ -30,8 +30,9 @@ type CredentialType struct {
 	// A string that specifies the description of the credential type.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \"soft delete\".
-	DeletedAt   *time.Time         `json:"deletedAt,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	DeletedAt   *time.Time                `json:"deletedAt,omitempty"`
+	Environment *ObjectEnvironment        `json:"environment,omitempty"`
+	Expiration  *CredentialTypeExpiration `json:"expiration,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential type.
 	Id     *string       `json:"id,omitempty"`
 	Issuer *ObjectIssuer `json:"issuer,omitempty"`
@@ -44,7 +45,8 @@ type CredentialType struct {
 	// A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title.
 	Title string `json:"title"`
 	// A string that specifies the date and time the credential type was last updated; can be null.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time             `json:"updatedAt,omitempty"`
+	Version   *CredentialTypeVersion `json:"version,omitempty"`
 }
 
 // NewCredentialType instantiates a new CredentialType object
@@ -281,6 +283,38 @@ func (o *CredentialType) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *CredentialType) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetExpiration returns the Expiration field value if set, zero value otherwise.
+func (o *CredentialType) GetExpiration() CredentialTypeExpiration {
+	if o == nil || IsNil(o.Expiration) {
+		var ret CredentialTypeExpiration
+		return ret
+	}
+	return *o.Expiration
+}
+
+// GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetExpirationOk() (*CredentialTypeExpiration, bool) {
+	if o == nil || IsNil(o.Expiration) {
+		return nil, false
+	}
+	return o.Expiration, true
+}
+
+// HasExpiration returns a boolean if a field has been set.
+func (o *CredentialType) HasExpiration() bool {
+	if o != nil && !IsNil(o.Expiration) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiration gets a reference to the given CredentialTypeExpiration and assigns it to the Expiration field.
+func (o *CredentialType) SetExpiration(v CredentialTypeExpiration) {
+	o.Expiration = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -555,6 +589,38 @@ func (o *CredentialType) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *CredentialType) GetVersion() CredentialTypeVersion {
+	if o == nil || IsNil(o.Version) {
+		var ret CredentialTypeVersion
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetVersionOk() (*CredentialTypeVersion, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *CredentialType) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given CredentialTypeVersion and assigns it to the Version field.
+func (o *CredentialType) SetVersion(v CredentialTypeVersion) {
+	o.Version = &v
+}
+
 func (o CredentialType) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -584,6 +650,9 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
+	if !IsNil(o.Expiration) {
+		toSerialize["expiration"] = o.Expiration
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -606,6 +675,9 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	toSerialize["title"] = o.Title
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }
