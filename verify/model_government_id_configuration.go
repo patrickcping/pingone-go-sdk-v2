@@ -19,6 +19,7 @@ var _ MappedNullable = &GovernmentIdConfiguration{}
 
 // GovernmentIdConfiguration struct for GovernmentIdConfiguration
 type GovernmentIdConfiguration struct {
+	Aadhaar *GovernmentIdConfigurationAadhaar `json:"aadhaar,omitempty"`
 	// Indicates whether verification should fail if the ID is expired.
 	FailExpiredId  *bool                              `json:"failExpiredId,omitempty"`
 	InspectionType *EnumInspectionType                `json:"inspectionType,omitempty"`
@@ -45,6 +46,38 @@ func NewGovernmentIdConfiguration(verify EnumVerify) *GovernmentIdConfiguration 
 func NewGovernmentIdConfigurationWithDefaults() *GovernmentIdConfiguration {
 	this := GovernmentIdConfiguration{}
 	return &this
+}
+
+// GetAadhaar returns the Aadhaar field value if set, zero value otherwise.
+func (o *GovernmentIdConfiguration) GetAadhaar() GovernmentIdConfigurationAadhaar {
+	if o == nil || IsNil(o.Aadhaar) {
+		var ret GovernmentIdConfigurationAadhaar
+		return ret
+	}
+	return *o.Aadhaar
+}
+
+// GetAadhaarOk returns a tuple with the Aadhaar field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GovernmentIdConfiguration) GetAadhaarOk() (*GovernmentIdConfigurationAadhaar, bool) {
+	if o == nil || IsNil(o.Aadhaar) {
+		return nil, false
+	}
+	return o.Aadhaar, true
+}
+
+// HasAadhaar returns a boolean if a field has been set.
+func (o *GovernmentIdConfiguration) HasAadhaar() bool {
+	if o != nil && !IsNil(o.Aadhaar) {
+		return true
+	}
+
+	return false
+}
+
+// SetAadhaar gets a reference to the given GovernmentIdConfigurationAadhaar and assigns it to the Aadhaar field.
+func (o *GovernmentIdConfiguration) SetAadhaar(v GovernmentIdConfigurationAadhaar) {
+	o.Aadhaar = &v
 }
 
 // GetFailExpiredId returns the FailExpiredId field value if set, zero value otherwise.
@@ -241,6 +274,9 @@ func (o GovernmentIdConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o GovernmentIdConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Aadhaar) {
+		toSerialize["aadhaar"] = o.Aadhaar
+	}
 	if !IsNil(o.FailExpiredId) {
 		toSerialize["failExpiredId"] = o.FailExpiredId
 	}

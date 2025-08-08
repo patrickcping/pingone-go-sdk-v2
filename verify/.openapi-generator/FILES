@@ -17,6 +17,10 @@ docs/Environment.md
 docs/EnvironmentsApi.md
 docs/FacialComparisonConfiguration.md
 docs/GovernmentIdConfiguration.md
+docs/GovernmentIdConfigurationAadhaar.md
+docs/GovernmentIdConfigurationAadhaarOtp.md
+docs/GovernmentIdConfigurationAadhaarOtpDeliveries.md
+docs/GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown.md
 docs/GovernmentIdConfigurationProvider.md
 docs/IdentityRecordMatching.md
 docs/IdentityRecordMatchingAddress.md
@@ -67,6 +71,10 @@ model_enum_verify.go
 model_environment.go
 model_facial_comparison_configuration.go
 model_government_id_configuration.go
+model_government_id_configuration_aadhaar.go
+model_government_id_configuration_aadhaar_otp.go
+model_government_id_configuration_aadhaar_otp_deliveries.go
+model_government_id_configuration_aadhaar_otp_deliveries_cool_down.go
 model_government_id_configuration_provider.go
 model_identity_record_matching.go
 model_identity_record_matching_address.go

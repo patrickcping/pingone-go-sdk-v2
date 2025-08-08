@@ -125,6 +125,35 @@ components:
     GovernmentIdConfiguration:
       type: object
       properties:
+        aadhaar:
+          type: object
+          description: Aadhaar configuration
+          properties:
+            enabled:
+              type: boolean
+              description: Whether Aadhaar verification is enabled or not
+            otp:
+              type: object
+              description: Aadhaar one-time password (OTP) configuration
+              properties:
+                deliveries:
+                  type: object
+                  description: OTP delivery configuration
+                  properties:
+                    coolDown:
+                      type: object
+                      description: Cooldown (waiting period between OTP deliveries) configuration
+                      properties:
+                        duration:
+                          type: integer
+                          description: Cooldown duration configuration; can be 60-1800 seconds (1-30 minutes)
+                        timeUnit:
+                          $ref: '#/components/schemas/EnumTimeUnit'
+                    count:
+                      type: integer
+                      minimum: 1
+                      maximum: 3
+                      description: Maximum number of OTP deliveries. Must be 1 to 3.
         failExpiredId:
           type: boolean
           description: Indicates whether verification should fail if the ID is expired.

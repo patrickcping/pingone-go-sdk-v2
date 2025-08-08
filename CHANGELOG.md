@@ -6,7 +6,7 @@
   * **Enhancement** Added `Expiration` and `Version` fields to the `CredentialType` object model. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
 * `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.10.0](./verify/CHANGELOG.md)
   * **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
-  * **Enhancement** Added `VerifyAamva` to the `GovernmentIdConfiguration` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+  * **Enhancement** Added `VerifyAamva` and `Aadhaar` to the `GovernmentIdConfiguration` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
 
 # Release (2025-07-16)
 
