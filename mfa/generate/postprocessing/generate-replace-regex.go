@@ -115,9 +115,20 @@ var (
 	// try to unmarshal data into DeviceAuthenticationPolicy
 	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicy)
 	if err == nil {
-		if v, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok && v != nil && *v != "" {
-			match++
-		} else {
+		switch mfaTyp := dst.DeviceAuthenticationPolicy.GetActualInstance().(type) {
+		case *DeviceAuthenticationPolicyPingID:
+			if v, ok := mfaTyp.GetNameOk(); ok && v != nil && *v != "" {
+				match++
+			} else {
+				dst.DeviceAuthenticationPolicy = nil
+			}
+		case *DeviceAuthenticationPolicyPingOneMFA:
+			if v, ok := mfaTyp.GetNameOk(); ok && v != nil && *v != "" {
+				match++
+			} else {
+				dst.DeviceAuthenticationPolicy = nil
+			}
+		default:
 			dst.DeviceAuthenticationPolicy = nil
 		}
 	} else {
@@ -162,9 +173,20 @@ var (
 	// try to unmarshal data into DeviceAuthenticationPolicy
 	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicy)
 	if err == nil {
-		if v, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok && v != nil && *v != "" {
-			match++
-		} else {
+		switch mfaTyp := dst.DeviceAuthenticationPolicy.GetActualInstance().(type) {
+		case *DeviceAuthenticationPolicyPingID:
+			if v, ok := mfaTyp.GetNameOk(); ok && v != nil && *v != "" {
+				match++
+			} else {
+				dst.DeviceAuthenticationPolicy = nil
+			}
+		case *DeviceAuthenticationPolicyPingOneMFA:
+			if v, ok := mfaTyp.GetNameOk(); ok && v != nil && *v != "" {
+				match++
+			} else {
+				dst.DeviceAuthenticationPolicy = nil
+			}
+		default:
 			dst.DeviceAuthenticationPolicy = nil
 		}
 	} else {
@@ -193,6 +215,60 @@ var (
 		return nil // exactly one match
 	} else { // no match
 		return fmt.Errorf("data failed to match schemas in oneOf(DeviceAuthenticationPolicyPostResponse)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// DeviceAuthenticationPolicy model
+		{
+			fileSelectPattern: "model_device_authentication_policy.go",
+			pattern:           `(func \(dst \*DeviceAuthenticationPolicy\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *DeviceAuthenticationPolicy) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into DeviceAuthenticationPolicyPingID
+	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicyPingID)
+	if err == nil {
+		if dst.DeviceAuthenticationPolicyPingID.Desktop != nil || dst.DeviceAuthenticationPolicyPingID.OathToken != nil || dst.DeviceAuthenticationPolicyPingID.Yubikey != nil {
+			match++
+		} else if len(dst.DeviceAuthenticationPolicyPingID.Mobile.Applications) > 0 {
+			for _, app := range dst.DeviceAuthenticationPolicyPingID.Mobile.Applications {
+				if app.Type == ENUMPINGIDAPPLICATIONTYPE_PING_ID_APP_CONFIG {
+					match++
+				}
+			}
+		} else {
+			dst.DeviceAuthenticationPolicyPingID = nil
+		}
+	} else {
+		dst.DeviceAuthenticationPolicyPingID = nil
+	}
+
+	// try to unmarshal data into DeviceAuthenticationPolicyPingOneMFA
+	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicyPingOneMFA)
+	if err == nil {
+		jsonDeviceAuthenticationPolicyPingOneMFA, _ := json.Marshal(dst.DeviceAuthenticationPolicyPingOneMFA)
+		if string(jsonDeviceAuthenticationPolicyPingOneMFA) == "{}" { // empty struct
+			dst.DeviceAuthenticationPolicyPingOneMFA = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.DeviceAuthenticationPolicyPingOneMFA = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.DeviceAuthenticationPolicyPingID = nil
+		dst.DeviceAuthenticationPolicyPingOneMFA = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(DeviceAuthenticationPolicy)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(DeviceAuthenticationPolicy)")
 	}
 }
 
