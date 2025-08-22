@@ -9,24 +9,29 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Device authentication policy&#39;s UUID. | [optional] [readonly] 
 **Name** | **string** | Device authentication policy&#39;s name. | 
 **NewDeviceNotification** | Pointer to [**EnumMFADevicePolicyNewDeviceNotification**](EnumMFADevicePolicyNewDeviceNotification.md) |  | [optional] 
-**Authentication** | Pointer to [**DeviceAuthenticationPolicyAuthentication**](DeviceAuthenticationPolicyAuthentication.md) |  | [optional] 
+**Authentication** | Pointer to [**DeviceAuthenticationPolicyCommonAuthentication**](DeviceAuthenticationPolicyCommonAuthentication.md) |  | [optional] 
 **Sms** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Voice** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Email** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
-**Fido2** | Pointer to [**DeviceAuthenticationPolicyFido2**](DeviceAuthenticationPolicyFido2.md) |  | [optional] 
-**Mobile** | [**DeviceAuthenticationPolicyMobile**](DeviceAuthenticationPolicyMobile.md) |  | 
-**Totp** | [**DeviceAuthenticationPolicyTotp**](DeviceAuthenticationPolicyTotp.md) |  | 
-**SecurityKey** | Pointer to [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | [optional] 
-**Platform** | Pointer to [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | [optional] 
+**Fido2** | Pointer to [**DeviceAuthenticationPolicyCommonFido2**](DeviceAuthenticationPolicyCommonFido2.md) |  | [optional] 
+**Totp** | [**DeviceAuthenticationPolicyCommonTotp**](DeviceAuthenticationPolicyCommonTotp.md) |  | 
 **Default** | **bool** | A boolean that specifies whether the policy is the default for the environment. | 
-**ForSignOnPolicy** | **bool** |  | 
+**ForSignOnPolicy** | **bool** |  | [readonly] 
+**IgnoreUserLock** | Pointer to **bool** | When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set &#x60;ignoreUserLock&#x60; to &#x60;true&#x60; if you want PingOne to skip this account lock check. | [optional] 
+**NotificationsPolicy** | Pointer to [**DeviceAuthenticationPolicyCommonNotificationsPolicy**](DeviceAuthenticationPolicyCommonNotificationsPolicy.md) |  | [optional] 
+**RememberMe** | Pointer to [**DeviceAuthenticationPolicyCommonRememberMe**](DeviceAuthenticationPolicyCommonRememberMe.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**Mobile** | [**DeviceAuthenticationPolicyPingIDAllOfMobile**](DeviceAuthenticationPolicyPingIDAllOfMobile.md) |  | 
+**Whatsapp** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
+**Desktop** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
+**Yubikey** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
+**OathToken** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicy
 
-`func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyMobile, totp DeviceAuthenticationPolicyTotp, default_ bool, forSignOnPolicy bool, ) *DeviceAuthenticationPolicy`
+`func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool, mobile DeviceAuthenticationPolicyPingIDAllOfMobile, ) *DeviceAuthenticationPolicy`
 
 NewDeviceAuthenticationPolicy instantiates a new DeviceAuthenticationPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -163,20 +168,20 @@ HasNewDeviceNotification returns a boolean if a field has been set.
 
 ### GetAuthentication
 
-`func (o *DeviceAuthenticationPolicy) GetAuthentication() DeviceAuthenticationPolicyAuthentication`
+`func (o *DeviceAuthenticationPolicy) GetAuthentication() DeviceAuthenticationPolicyCommonAuthentication`
 
 GetAuthentication returns the Authentication field if non-nil, zero value otherwise.
 
 ### GetAuthenticationOk
 
-`func (o *DeviceAuthenticationPolicy) GetAuthenticationOk() (*DeviceAuthenticationPolicyAuthentication, bool)`
+`func (o *DeviceAuthenticationPolicy) GetAuthenticationOk() (*DeviceAuthenticationPolicyCommonAuthentication, bool)`
 
 GetAuthenticationOk returns a tuple with the Authentication field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthentication
 
-`func (o *DeviceAuthenticationPolicy) SetAuthentication(v DeviceAuthenticationPolicyAuthentication)`
+`func (o *DeviceAuthenticationPolicy) SetAuthentication(v DeviceAuthenticationPolicyCommonAuthentication)`
 
 SetAuthentication sets Authentication field to given value.
 
@@ -248,20 +253,20 @@ SetEmail sets Email field to given value.
 
 ### GetFido2
 
-`func (o *DeviceAuthenticationPolicy) GetFido2() DeviceAuthenticationPolicyFido2`
+`func (o *DeviceAuthenticationPolicy) GetFido2() DeviceAuthenticationPolicyCommonFido2`
 
 GetFido2 returns the Fido2 field if non-nil, zero value otherwise.
 
 ### GetFido2Ok
 
-`func (o *DeviceAuthenticationPolicy) GetFido2Ok() (*DeviceAuthenticationPolicyFido2, bool)`
+`func (o *DeviceAuthenticationPolicy) GetFido2Ok() (*DeviceAuthenticationPolicyCommonFido2, bool)`
 
 GetFido2Ok returns a tuple with the Fido2 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFido2
 
-`func (o *DeviceAuthenticationPolicy) SetFido2(v DeviceAuthenticationPolicyFido2)`
+`func (o *DeviceAuthenticationPolicy) SetFido2(v DeviceAuthenticationPolicyCommonFido2)`
 
 SetFido2 sets Fido2 field to given value.
 
@@ -271,95 +276,25 @@ SetFido2 sets Fido2 field to given value.
 
 HasFido2 returns a boolean if a field has been set.
 
-### GetMobile
-
-`func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyMobile`
-
-GetMobile returns the Mobile field if non-nil, zero value otherwise.
-
-### GetMobileOk
-
-`func (o *DeviceAuthenticationPolicy) GetMobileOk() (*DeviceAuthenticationPolicyMobile, bool)`
-
-GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMobile
-
-`func (o *DeviceAuthenticationPolicy) SetMobile(v DeviceAuthenticationPolicyMobile)`
-
-SetMobile sets Mobile field to given value.
-
-
 ### GetTotp
 
-`func (o *DeviceAuthenticationPolicy) GetTotp() DeviceAuthenticationPolicyTotp`
+`func (o *DeviceAuthenticationPolicy) GetTotp() DeviceAuthenticationPolicyCommonTotp`
 
 GetTotp returns the Totp field if non-nil, zero value otherwise.
 
 ### GetTotpOk
 
-`func (o *DeviceAuthenticationPolicy) GetTotpOk() (*DeviceAuthenticationPolicyTotp, bool)`
+`func (o *DeviceAuthenticationPolicy) GetTotpOk() (*DeviceAuthenticationPolicyCommonTotp, bool)`
 
 GetTotpOk returns a tuple with the Totp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotp
 
-`func (o *DeviceAuthenticationPolicy) SetTotp(v DeviceAuthenticationPolicyTotp)`
+`func (o *DeviceAuthenticationPolicy) SetTotp(v DeviceAuthenticationPolicyCommonTotp)`
 
 SetTotp sets Totp field to given value.
 
-
-### GetSecurityKey
-
-`func (o *DeviceAuthenticationPolicy) GetSecurityKey() DeviceAuthenticationPolicyFIDODevice`
-
-GetSecurityKey returns the SecurityKey field if non-nil, zero value otherwise.
-
-### GetSecurityKeyOk
-
-`func (o *DeviceAuthenticationPolicy) GetSecurityKeyOk() (*DeviceAuthenticationPolicyFIDODevice, bool)`
-
-GetSecurityKeyOk returns a tuple with the SecurityKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSecurityKey
-
-`func (o *DeviceAuthenticationPolicy) SetSecurityKey(v DeviceAuthenticationPolicyFIDODevice)`
-
-SetSecurityKey sets SecurityKey field to given value.
-
-### HasSecurityKey
-
-`func (o *DeviceAuthenticationPolicy) HasSecurityKey() bool`
-
-HasSecurityKey returns a boolean if a field has been set.
-
-### GetPlatform
-
-`func (o *DeviceAuthenticationPolicy) GetPlatform() DeviceAuthenticationPolicyFIDODevice`
-
-GetPlatform returns the Platform field if non-nil, zero value otherwise.
-
-### GetPlatformOk
-
-`func (o *DeviceAuthenticationPolicy) GetPlatformOk() (*DeviceAuthenticationPolicyFIDODevice, bool)`
-
-GetPlatformOk returns a tuple with the Platform field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPlatform
-
-`func (o *DeviceAuthenticationPolicy) SetPlatform(v DeviceAuthenticationPolicyFIDODevice)`
-
-SetPlatform sets Platform field to given value.
-
-### HasPlatform
-
-`func (o *DeviceAuthenticationPolicy) HasPlatform() bool`
-
-HasPlatform returns a boolean if a field has been set.
 
 ### GetDefault
 
@@ -401,6 +336,81 @@ and a boolean to check if the value has been set.
 SetForSignOnPolicy sets ForSignOnPolicy field to given value.
 
 
+### GetIgnoreUserLock
+
+`func (o *DeviceAuthenticationPolicy) GetIgnoreUserLock() bool`
+
+GetIgnoreUserLock returns the IgnoreUserLock field if non-nil, zero value otherwise.
+
+### GetIgnoreUserLockOk
+
+`func (o *DeviceAuthenticationPolicy) GetIgnoreUserLockOk() (*bool, bool)`
+
+GetIgnoreUserLockOk returns a tuple with the IgnoreUserLock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIgnoreUserLock
+
+`func (o *DeviceAuthenticationPolicy) SetIgnoreUserLock(v bool)`
+
+SetIgnoreUserLock sets IgnoreUserLock field to given value.
+
+### HasIgnoreUserLock
+
+`func (o *DeviceAuthenticationPolicy) HasIgnoreUserLock() bool`
+
+HasIgnoreUserLock returns a boolean if a field has been set.
+
+### GetNotificationsPolicy
+
+`func (o *DeviceAuthenticationPolicy) GetNotificationsPolicy() DeviceAuthenticationPolicyCommonNotificationsPolicy`
+
+GetNotificationsPolicy returns the NotificationsPolicy field if non-nil, zero value otherwise.
+
+### GetNotificationsPolicyOk
+
+`func (o *DeviceAuthenticationPolicy) GetNotificationsPolicyOk() (*DeviceAuthenticationPolicyCommonNotificationsPolicy, bool)`
+
+GetNotificationsPolicyOk returns a tuple with the NotificationsPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotificationsPolicy
+
+`func (o *DeviceAuthenticationPolicy) SetNotificationsPolicy(v DeviceAuthenticationPolicyCommonNotificationsPolicy)`
+
+SetNotificationsPolicy sets NotificationsPolicy field to given value.
+
+### HasNotificationsPolicy
+
+`func (o *DeviceAuthenticationPolicy) HasNotificationsPolicy() bool`
+
+HasNotificationsPolicy returns a boolean if a field has been set.
+
+### GetRememberMe
+
+`func (o *DeviceAuthenticationPolicy) GetRememberMe() DeviceAuthenticationPolicyCommonRememberMe`
+
+GetRememberMe returns the RememberMe field if non-nil, zero value otherwise.
+
+### GetRememberMeOk
+
+`func (o *DeviceAuthenticationPolicy) GetRememberMeOk() (*DeviceAuthenticationPolicyCommonRememberMe, bool)`
+
+GetRememberMeOk returns a tuple with the RememberMe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRememberMe
+
+`func (o *DeviceAuthenticationPolicy) SetRememberMe(v DeviceAuthenticationPolicyCommonRememberMe)`
+
+SetRememberMe sets RememberMe field to given value.
+
+### HasRememberMe
+
+`func (o *DeviceAuthenticationPolicy) HasRememberMe() bool`
+
+HasRememberMe returns a boolean if a field has been set.
+
 ### GetUpdatedAt
 
 `func (o *DeviceAuthenticationPolicy) GetUpdatedAt() time.Time`
@@ -425,6 +435,126 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *DeviceAuthenticationPolicy) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetMobile
+
+`func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyPingIDAllOfMobile`
+
+GetMobile returns the Mobile field if non-nil, zero value otherwise.
+
+### GetMobileOk
+
+`func (o *DeviceAuthenticationPolicy) GetMobileOk() (*DeviceAuthenticationPolicyPingIDAllOfMobile, bool)`
+
+GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMobile
+
+`func (o *DeviceAuthenticationPolicy) SetMobile(v DeviceAuthenticationPolicyPingIDAllOfMobile)`
+
+SetMobile sets Mobile field to given value.
+
+
+### GetWhatsapp
+
+`func (o *DeviceAuthenticationPolicy) GetWhatsapp() DeviceAuthenticationPolicyOfflineDevice`
+
+GetWhatsapp returns the Whatsapp field if non-nil, zero value otherwise.
+
+### GetWhatsappOk
+
+`func (o *DeviceAuthenticationPolicy) GetWhatsappOk() (*DeviceAuthenticationPolicyOfflineDevice, bool)`
+
+GetWhatsappOk returns a tuple with the Whatsapp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWhatsapp
+
+`func (o *DeviceAuthenticationPolicy) SetWhatsapp(v DeviceAuthenticationPolicyOfflineDevice)`
+
+SetWhatsapp sets Whatsapp field to given value.
+
+### HasWhatsapp
+
+`func (o *DeviceAuthenticationPolicy) HasWhatsapp() bool`
+
+HasWhatsapp returns a boolean if a field has been set.
+
+### GetDesktop
+
+`func (o *DeviceAuthenticationPolicy) GetDesktop() DeviceAuthenticationPolicyPingIDDevice`
+
+GetDesktop returns the Desktop field if non-nil, zero value otherwise.
+
+### GetDesktopOk
+
+`func (o *DeviceAuthenticationPolicy) GetDesktopOk() (*DeviceAuthenticationPolicyPingIDDevice, bool)`
+
+GetDesktopOk returns a tuple with the Desktop field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDesktop
+
+`func (o *DeviceAuthenticationPolicy) SetDesktop(v DeviceAuthenticationPolicyPingIDDevice)`
+
+SetDesktop sets Desktop field to given value.
+
+### HasDesktop
+
+`func (o *DeviceAuthenticationPolicy) HasDesktop() bool`
+
+HasDesktop returns a boolean if a field has been set.
+
+### GetYubikey
+
+`func (o *DeviceAuthenticationPolicy) GetYubikey() DeviceAuthenticationPolicyPingIDDevice`
+
+GetYubikey returns the Yubikey field if non-nil, zero value otherwise.
+
+### GetYubikeyOk
+
+`func (o *DeviceAuthenticationPolicy) GetYubikeyOk() (*DeviceAuthenticationPolicyPingIDDevice, bool)`
+
+GetYubikeyOk returns a tuple with the Yubikey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYubikey
+
+`func (o *DeviceAuthenticationPolicy) SetYubikey(v DeviceAuthenticationPolicyPingIDDevice)`
+
+SetYubikey sets Yubikey field to given value.
+
+### HasYubikey
+
+`func (o *DeviceAuthenticationPolicy) HasYubikey() bool`
+
+HasYubikey returns a boolean if a field has been set.
+
+### GetOathToken
+
+`func (o *DeviceAuthenticationPolicy) GetOathToken() DeviceAuthenticationPolicyPingIDDevice`
+
+GetOathToken returns the OathToken field if non-nil, zero value otherwise.
+
+### GetOathTokenOk
+
+`func (o *DeviceAuthenticationPolicy) GetOathTokenOk() (*DeviceAuthenticationPolicyPingIDDevice, bool)`
+
+GetOathTokenOk returns a tuple with the OathToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOathToken
+
+`func (o *DeviceAuthenticationPolicy) SetOathToken(v DeviceAuthenticationPolicyPingIDDevice)`
+
+SetOathToken sets OathToken field to given value.
+
+### HasOathToken
+
+`func (o *DeviceAuthenticationPolicy) HasOathToken() bool`
+
+HasOathToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
