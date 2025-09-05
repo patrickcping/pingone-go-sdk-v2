@@ -29,23 +29,23 @@ type PasswordPolicy struct {
 	// Indicates whether this password policy is enforced within the environment. When set to true, all other password policies are set to false.
 	Default *bool `json:"default,omitempty"`
 	// Specifies the brief description of the password policy.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Set this to true to ensure the password is not one of the commonly used passwords.
 	ExcludesCommonlyUsed bool `json:"excludesCommonlyUsed"`
 	// Set this to true to ensure the password is not an exact match for the value of any attribute in the user’s profile, such as name, phone number, or address.
-	ExcludesProfileData bool `json:"excludesProfileData"`
-	History *PasswordPolicyHistory `json:"history,omitempty"`
+	ExcludesProfileData bool                   `json:"excludesProfileData"`
+	History             *PasswordPolicyHistory `json:"history,omitempty"`
 	// The password resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
-	Length *PasswordPolicyLength `json:"length,omitempty"`
+	Id      *string                `json:"id,omitempty"`
+	Length  *PasswordPolicyLength  `json:"length,omitempty"`
 	Lockout *PasswordPolicyLockout `json:"lockout,omitempty"`
 	// The maximum number of days the same password can be used before it must be changed. The value must be a positive, non-zero integer.  The value must be greater than the sum of minAgeDays (if set) + 21 (the expiration warning interval for passwords).
 	MaxAgeDays *int32 `json:"maxAgeDays,omitempty"`
 	// The maximum number of repeated characters allowed. This property is not enforced when not present.
 	MaxRepeatedCharacters *int32 `json:"maxRepeatedCharacters,omitempty"`
 	// The minimum number of days a password must be used before changing. The value must be a positive, non-zero integer. This property is not enforced when not present.
-	MinAgeDays *int32 `json:"minAgeDays,omitempty"`
+	MinAgeDays    *int32                       `json:"minAgeDays,omitempty"`
 	MinCharacters *PasswordPolicyMinCharacters `json:"minCharacters,omitempty"`
 	// The minimum complexity of the password based on the concept of password haystacks. The value is the number of days required to exhaust the entire search space during a brute force attack. This property is not enforced when not present.
 	MinComplexity *int32 `json:"minComplexity,omitempty"`
@@ -825,7 +825,7 @@ func (o *PasswordPolicy) SetUpdatedAt(v string) {
 }
 
 func (o PasswordPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -936,5 +936,3 @@ func (v *NullablePasswordPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

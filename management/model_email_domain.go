@@ -23,7 +23,7 @@ type EmailDomain struct {
 	// A string that specifies the auto-generated ID of the email domain.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment (for example, auth.shopco.com). This is a required property. Wildcards are NOT supported.
-	DomainName string `json:"domainName"`
+	DomainName  string             `json:"domainName"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 }
 
@@ -166,7 +166,7 @@ func (o *EmailDomain) SetEnvironment(v ObjectEnvironment) {
 }
 
 func (o EmailDomain) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -223,5 +223,3 @@ func (v *NullableEmailDomain) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

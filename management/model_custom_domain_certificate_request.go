@@ -19,7 +19,7 @@ var _ MappedNullable = &CustomDomainCertificateRequest{}
 
 // CustomDomainCertificateRequest struct for CustomDomainCertificateRequest
 type CustomDomainCertificateRequest struct {
-	// A string that specifies the PEM-encoded certificate to import. This is a required property. The following validation is performed on the certificate: \\ It must not be expired. \\ It MUST not be self signed. \\ The custom domain name MUST match one of the subject alternative name (SAN) values on the certificate. 
+	// A string that specifies the PEM-encoded certificate to import. This is a required property. The following validation is performed on the certificate: \\ It must not be expired. \\ It MUST not be self signed. \\ The custom domain name MUST match one of the subject alternative name (SAN) values on the certificate.
 	Certificate string `json:"certificate"`
 	// A string that specifies the PEM-encoded certificate chain.
 	IntermediateCertificates *string `json:"intermediateCertificates,omitempty"`
@@ -127,7 +127,7 @@ func (o *CustomDomainCertificateRequest) SetPrivateKey(v string) {
 }
 
 func (o CustomDomainCertificateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,5 +179,3 @@ func (v *NullableCustomDomainCertificateRequest) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

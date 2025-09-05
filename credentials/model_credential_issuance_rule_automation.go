@@ -19,7 +19,7 @@ var _ MappedNullable = &CredentialIssuanceRuleAutomation{}
 
 // CredentialIssuanceRuleAutomation struct for CredentialIssuanceRuleAutomation
 type CredentialIssuanceRuleAutomation struct {
-	Issue EnumCredentialIssuanceRuleAutomationMethod `json:"issue"`
+	Issue  EnumCredentialIssuanceRuleAutomationMethod `json:"issue"`
 	Update EnumCredentialIssuanceRuleAutomationMethod `json:"update"`
 	Revoke EnumCredentialIssuanceRuleAutomationMethod `json:"revoke"`
 }
@@ -117,7 +117,7 @@ func (o *CredentialIssuanceRuleAutomation) SetRevoke(v EnumCredentialIssuanceRul
 }
 
 func (o CredentialIssuanceRuleAutomation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,5 +167,3 @@ func (v *NullableCredentialIssuanceRuleAutomation) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

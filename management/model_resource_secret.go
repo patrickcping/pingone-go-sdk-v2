@@ -21,7 +21,7 @@ var _ MappedNullable = &ResourceSecret{}
 type ResourceSecret struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// An auto-generated resource client secret. Possible characters are a-z, A-Z, 0-9, -, ., _, ~. The secret has a minimum length of 64 characters per SHA-512 requirements when using the HS512 algorithm to sign ID tokens using the secret as the key.
-	Secret *string `json:"secret,omitempty"`
+	Secret   *string                 `json:"secret,omitempty"`
 	Previous *ResourceSecretPrevious `json:"previous,omitempty"`
 }
 
@@ -139,7 +139,7 @@ func (o *ResourceSecret) SetPrevious(v ResourceSecretPrevious) {
 }
 
 func (o ResourceSecret) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,5 +195,3 @@ func (v *NullableResourceSecret) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

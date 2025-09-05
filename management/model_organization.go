@@ -29,8 +29,8 @@ type Organization struct {
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
-	Type *EnumOrganizationType `json:"type,omitempty"`
+	UpdatedAt          *string                               `json:"updatedAt,omitempty"`
+	Type               *EnumOrganizationType                 `json:"type,omitempty"`
 	BillingConnections []OrganizationBillingConnectionsInner `json:"billingConnections,omitempty"`
 }
 
@@ -308,7 +308,7 @@ func (o *Organization) SetBillingConnections(v []OrganizationBillingConnectionsI
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -379,5 +379,3 @@ func (v *NullableOrganization) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

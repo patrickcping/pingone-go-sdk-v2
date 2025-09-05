@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPushLim
 // DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration struct for DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration
 type DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration struct {
 	// The length of time that push notifications should be blocked for the application if the defined limit has been reached. The minimum value is 1 minute and the maximum value is 120 minutes. If this parameter is not provided, the default value is 30 minutes.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -94,7 +94,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration)
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockDuration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -143,5 +143,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPushLimitLockD
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the Environment type satisfies the MappedNullable interface at compile time
@@ -19,22 +20,27 @@ var _ MappedNullable = &Environment{}
 
 // Environment struct for Environment
 type Environment struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	BillOfMaterials *BillOfMaterials `json:"billOfMaterials,omitempty"`
+	Links           *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	BillOfMaterials *BillOfMaterials              `json:"billOfMaterials,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies the description of the population.
 	Description *string `json:"description,omitempty"`
+	// The time when the soft-deleted Production environment (set to `DELETE_PENDING` status) can be completely deleted (a hard delete). When a soft-deleted environment is restored, this value is cleared.
+	HardDeletedAllowedAt *time.Time `json:"hardDeletedAllowedAt,omitempty"`
 	// The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF.
 	Icon *string `json:"icon,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id      *string            `json:"id,omitempty"`
 	License EnvironmentLicense `json:"license"`
 	// A string that specifies the environment name, which must be provided and must be unique within an organization.
-	Name string `json:"name"`
+	Name         string                   `json:"name"`
 	Organization *EnvironmentOrganization `json:"organization,omitempty"`
-	Region EnvironmentRegion `json:"region"`
-	Type EnumEnvironmentType `json:"type"`
+	Region       EnvironmentRegion        `json:"region"`
+	// The time the Production environment was set to the `DELETE_PENDING` status. When a soft-deleted environment is restored, this value is cleared.
+	SoftDeletedAt *time.Time             `json:"softDeletedAt,omitempty"`
+	Status        *EnumEnvironmentStatus `json:"status,omitempty"`
+	Type          EnumEnvironmentType    `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -186,6 +192,38 @@ func (o *Environment) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Environment) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetHardDeletedAllowedAt returns the HardDeletedAllowedAt field value if set, zero value otherwise.
+func (o *Environment) GetHardDeletedAllowedAt() time.Time {
+	if o == nil || IsNil(o.HardDeletedAllowedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.HardDeletedAllowedAt
+}
+
+// GetHardDeletedAllowedAtOk returns a tuple with the HardDeletedAllowedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetHardDeletedAllowedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.HardDeletedAllowedAt) {
+		return nil, false
+	}
+	return o.HardDeletedAllowedAt, true
+}
+
+// HasHardDeletedAllowedAt returns a boolean if a field has been set.
+func (o *Environment) HasHardDeletedAllowedAt() bool {
+	if o != nil && !IsNil(o.HardDeletedAllowedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetHardDeletedAllowedAt gets a reference to the given time.Time and assigns it to the HardDeletedAllowedAt field.
+func (o *Environment) SetHardDeletedAllowedAt(v time.Time) {
+	o.HardDeletedAllowedAt = &v
 }
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
@@ -356,6 +394,70 @@ func (o *Environment) SetRegion(v EnvironmentRegion) {
 	o.Region = v
 }
 
+// GetSoftDeletedAt returns the SoftDeletedAt field value if set, zero value otherwise.
+func (o *Environment) GetSoftDeletedAt() time.Time {
+	if o == nil || IsNil(o.SoftDeletedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.SoftDeletedAt
+}
+
+// GetSoftDeletedAtOk returns a tuple with the SoftDeletedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetSoftDeletedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.SoftDeletedAt) {
+		return nil, false
+	}
+	return o.SoftDeletedAt, true
+}
+
+// HasSoftDeletedAt returns a boolean if a field has been set.
+func (o *Environment) HasSoftDeletedAt() bool {
+	if o != nil && !IsNil(o.SoftDeletedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetSoftDeletedAt gets a reference to the given time.Time and assigns it to the SoftDeletedAt field.
+func (o *Environment) SetSoftDeletedAt(v time.Time) {
+	o.SoftDeletedAt = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *Environment) GetStatus() EnumEnvironmentStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret EnumEnvironmentStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetStatusOk() (*EnumEnvironmentStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *Environment) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given EnumEnvironmentStatus and assigns it to the Status field.
+func (o *Environment) SetStatus(v EnumEnvironmentStatus) {
+	o.Status = &v
+}
+
 // GetType returns the Type field value
 func (o *Environment) GetType() EnumEnvironmentType {
 	if o == nil {
@@ -413,7 +515,7 @@ func (o *Environment) SetUpdatedAt(v string) {
 }
 
 func (o Environment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -434,6 +536,9 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.HardDeletedAllowedAt) {
+		toSerialize["hardDeletedAllowedAt"] = o.HardDeletedAllowedAt
+	}
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
@@ -446,6 +551,12 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 		toSerialize["organization"] = o.Organization
 	}
 	toSerialize["region"] = o.Region
+	if !IsNil(o.SoftDeletedAt) {
+		toSerialize["softDeletedAt"] = o.SoftDeletedAt
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	toSerialize["type"] = o.Type
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
@@ -488,5 +599,3 @@ func (v *NullableEnvironment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

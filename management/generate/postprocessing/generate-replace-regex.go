@@ -50,6 +50,12 @@ var (
 		repl              string
 	}{
 
+		{
+			fileSelectPattern: "*Api.md",
+			pattern:           `PACKAGENAME`,
+			repl:              `management`,
+		},
+
 		// Password policy model
 		{
 			fileSelectPattern: "model_password_policy_min_characters.go",
@@ -94,7 +100,7 @@ var (
 	err = newStrictDecoder(data).Decode(&dst.EnumRegionCode)
 	if err == nil {
 		jsonEnumRegionCode, _ := json.Marshal(dst.EnumRegionCode)
-		if string(jsonEnumRegionCode) == "{}" { // empty struct
+		if string(jsonEnumRegionCode) == "{}" || dst.EnumRegionCode == nil || *dst.EnumRegionCode == "UNKNOWN" { // empty struct
 			dst.EnumRegionCode = nil
 		} else {
 			match = true
@@ -403,6 +409,17 @@ var (
 			pattern:           `(func \(dst \*EntityArrayEmbeddedRolesInner\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
 			repl: `func (dst *EntityArrayEmbeddedRolesInner) UnmarshalJSON(data []byte) error {
 	var err error
+	// try to unmarshal JSON data into CustomAdminRole
+	err = json.Unmarshal(data, &dst.CustomAdminRole)
+	if err == nil {
+		if dst.CustomAdminRole.Type != nil && *dst.CustomAdminRole.Type == ENUMCUSTOMADMINROLETYPE_CUSTOM { // custom role type
+			return nil // data stored in dst.CustomAdminRole, return on the first match
+		} else {
+			dst.CustomAdminRole = nil
+		}
+	} else {
+		dst.CustomAdminRole = nil
+	}
 	// try to unmarshal JSON data into Role
 	err = json.Unmarshal(data, &dst.Role)
 	if err == nil {
@@ -469,6 +486,127 @@ var (
 		}
 	default:
 		return fmt.Errorf("Data failed to match schemas in oneOf(IntegrationVersion)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// Management: NotificationsSettingsEmailDeliverySettings model
+		{
+			fileSelectPattern: "model_notifications_settings_email_delivery_settings.go",
+			pattern:           `(func \(dst \*NotificationsSettingsEmailDeliverySettings\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *NotificationsSettingsEmailDeliverySettings) UnmarshalJSON(data []byte) error {
+
+	var common NotificationsSettingsEmailDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
+	dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
+
+	objType := common.GetProtocol()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_HTTP:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsCustom); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTP, ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTPS:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsSMTP); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// Management: IdentityProvider model
+		{
+			fileSelectPattern: "model_identity_provider.go",
+			pattern:           `(func \(dst \*IdentityProvider\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *IdentityProvider) UnmarshalJSON(data []byte) error {
+
+	var common IdentityProviderCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.IdentityProviderApple = nil
+	dst.IdentityProviderClientIDClientSecret = nil
+	dst.IdentityProviderFacebook = nil
+	dst.IdentityProviderMicrosoft = nil
+	dst.IdentityProviderOIDC = nil
+	dst.IdentityProviderPaypal = nil
+	dst.IdentityProviderSAML = nil
+
+	switch common.GetType() {
+	case ENUMIDENTITYPROVIDEREXT_FACEBOOK:
+		if err := json.Unmarshal(data, &dst.IdentityProviderFacebook); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_GOOGLE:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_LINKEDIN:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_LINKEDIN_OIDC:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_APPLE:
+		if err := json.Unmarshal(data, &dst.IdentityProviderApple); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_TWITTER:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_AMAZON:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_YAHOO:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_MICROSOFT:
+		if err := json.Unmarshal(data, &dst.IdentityProviderMicrosoft); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_PAYPAL:
+		if err := json.Unmarshal(data, &dst.IdentityProviderPaypal); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_GITHUB:
+		if err := json.Unmarshal(data, &dst.IdentityProviderClientIDClientSecret); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_OPENID_CONNECT:
+		if err := json.Unmarshal(data, &dst.IdentityProviderOIDC); err != nil { // simple model
+			return err
+		}
+	case ENUMIDENTITYPROVIDEREXT_SAML:
+		if err := json.Unmarshal(data, &dst.IdentityProviderSAML); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(IdentityProvider)")
 	}
 	return nil
 }

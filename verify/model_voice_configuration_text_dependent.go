@@ -19,8 +19,8 @@ var _ MappedNullable = &VoiceConfigurationTextDependent{}
 
 // VoiceConfigurationTextDependent struct for VoiceConfigurationTextDependent
 type VoiceConfigurationTextDependent struct {
-	Samples int32 `json:"samples"`
-	Phrase VoiceConfigurationTextDependentPhrase `json:"phrase"`
+	Samples int32                                 `json:"samples"`
+	Phrase  VoiceConfigurationTextDependentPhrase `json:"phrase"`
 }
 
 // NewVoiceConfigurationTextDependent instantiates a new VoiceConfigurationTextDependent object
@@ -91,7 +91,7 @@ func (o *VoiceConfigurationTextDependent) SetPhrase(v VoiceConfigurationTextDepe
 }
 
 func (o VoiceConfigurationTextDependent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableVoiceConfigurationTextDependent) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

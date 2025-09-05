@@ -141,7 +141,7 @@ func (o *APIServerDeploymentStatusError) SetMessage(v string) {
 }
 
 func (o APIServerDeploymentStatusError) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,5 +197,3 @@ func (v *NullableAPIServerDeploymentStatusError) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

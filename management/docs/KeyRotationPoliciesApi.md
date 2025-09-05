@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateKeyRotationPolicy
 
-> KeyRotationPolicy CreateKeyRotationPolicy(ctx, environmentID).KeyRotationPolicy(keyRotationPolicy).Execute()
+> KeyRotationPolicy CreateKeyRotationPolicy(ctx, environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).KeyRotationPolicy(keyRotationPolicy).Execute()
 
 CREATE Key Rotation Policy
 
@@ -32,11 +32,13 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
     keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING")) // KeyRotationPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.KeyRotationPoliciesApi.CreateKeyRotationPolicy(context.Background(), environmentID).KeyRotationPolicy(keyRotationPolicy).Execute()
+    resp, r, err := apiClient.KeyRotationPoliciesApi.CreateKeyRotationPolicy(context.Background(), environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).KeyRotationPolicy(keyRotationPolicy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `KeyRotationPoliciesApi.CreateKeyRotationPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,6 +64,8 @@ Other parameters are passed through a pointer to a apiCreateKeyRotationPolicyReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
  **keyRotationPolicy** | [**KeyRotationPolicy**](KeyRotationPolicy.md) |  | 
 
 ### Return type
@@ -84,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## DeleteKeyRotationPolicy
 
-> DeleteKeyRotationPolicy(ctx, environmentID, keyRotationPolicyID).Execute()
+> DeleteKeyRotationPolicy(ctx, environmentID, keyRotationPolicyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 DELETE Key Rotation Policy
 
@@ -103,10 +107,12 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyRotationPolicyID := "keyRotationPolicyID_example" // string | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.KeyRotationPoliciesApi.DeleteKeyRotationPolicy(context.Background(), environmentID, keyRotationPolicyID).Execute()
+    r, err := apiClient.KeyRotationPoliciesApi.DeleteKeyRotationPolicy(context.Background(), environmentID, keyRotationPolicyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `KeyRotationPoliciesApi.DeleteKeyRotationPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,6 +138,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -153,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## GetKeyRotationPolicies
 
-> EntityArray GetKeyRotationPolicies(ctx, environmentID).Execute()
+> EntityArrayPagedIterator GetKeyRotationPolicies(ctx, environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 GET Key Rotation Policies
 
@@ -171,15 +179,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.KeyRotationPoliciesApi.GetKeyRotationPolicies(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.KeyRotationPoliciesApi.GetKeyRotationPolicies(context.Background(), environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `KeyRotationPoliciesApi.GetKeyRotationPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetKeyRotationPolicies`: EntityArray
+    // response from `GetKeyRotationPolicies`: EntityArrayPagedIterator
     fmt.Fprintf(os.Stdout, "Response from `KeyRotationPoliciesApi.GetKeyRotationPolicies`: %v\n", resp)
 }
 ```
@@ -200,10 +210,12 @@ Other parameters are passed through a pointer to a apiGetKeyRotationPoliciesRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**EntityArrayPagedIterator**](EntityArrayPagedIterator.md)
 
 ### Authorization
 
@@ -221,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## GetKeyRotationPolicy
 
-> KeyRotationPolicy GetKeyRotationPolicy(ctx, environmentID, keyRotationPolicyID).Execute()
+> KeyRotationPolicy GetKeyRotationPolicy(ctx, environmentID, keyRotationPolicyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 GET Key Rotation Policy
 
@@ -240,10 +252,12 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyRotationPolicyID := "keyRotationPolicyID_example" // string | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.KeyRotationPoliciesApi.GetKeyRotationPolicy(context.Background(), environmentID, keyRotationPolicyID).Execute()
+    resp, r, err := apiClient.KeyRotationPoliciesApi.GetKeyRotationPolicy(context.Background(), environmentID, keyRotationPolicyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `KeyRotationPoliciesApi.GetKeyRotationPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -271,6 +285,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -292,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## UpdateKeyRotationPolicy
 
-> KeyRotationPolicy UpdateKeyRotationPolicy(ctx, environmentID, keyRotationPolicyID).KeyRotationPolicy(keyRotationPolicy).Execute()
+> KeyRotationPolicy UpdateKeyRotationPolicy(ctx, environmentID, keyRotationPolicyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).KeyRotationPolicy(keyRotationPolicy).Execute()
 
 UPDATE Key Rotation Policy
 
@@ -311,11 +327,13 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyRotationPolicyID := "keyRotationPolicyID_example" // string | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
     keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING")) // KeyRotationPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.KeyRotationPoliciesApi.UpdateKeyRotationPolicy(context.Background(), environmentID, keyRotationPolicyID).KeyRotationPolicy(keyRotationPolicy).Execute()
+    resp, r, err := apiClient.KeyRotationPoliciesApi.UpdateKeyRotationPolicy(context.Background(), environmentID, keyRotationPolicyID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).KeyRotationPolicy(keyRotationPolicy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `KeyRotationPoliciesApi.UpdateKeyRotationPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,6 +361,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
  **keyRotationPolicy** | [**KeyRotationPolicy**](KeyRotationPolicy.md) |  | 
 
 ### Return type

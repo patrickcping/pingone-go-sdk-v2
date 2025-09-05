@@ -20,7 +20,7 @@ type EnumGroupMembershipType string
 
 // List of EnumGroupMembershipType
 const (
-	ENUMGROUPMEMBERSHIPTYPE_DIRECT EnumGroupMembershipType = "DIRECT"
+	ENUMGROUPMEMBERSHIPTYPE_DIRECT   EnumGroupMembershipType = "DIRECT"
 	ENUMGROUPMEMBERSHIPTYPE_INDIRECT EnumGroupMembershipType = "INDIRECT"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumGroupMembershipType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

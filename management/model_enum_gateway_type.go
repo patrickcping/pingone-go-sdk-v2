@@ -20,11 +20,11 @@ type EnumGatewayType string
 
 // List of EnumGatewayType
 const (
-	ENUMGATEWAYTYPE_LDAP EnumGatewayType = "LDAP"
-	ENUMGATEWAYTYPE_PING_FEDERATE EnumGatewayType = "PING_FEDERATE"
-	ENUMGATEWAYTYPE_PING_INTELLIGENCE EnumGatewayType = "PING_INTELLIGENCE"
+	ENUMGATEWAYTYPE_LDAP                    EnumGatewayType = "LDAP"
+	ENUMGATEWAYTYPE_PING_FEDERATE           EnumGatewayType = "PING_FEDERATE"
+	ENUMGATEWAYTYPE_PING_INTELLIGENCE       EnumGatewayType = "PING_INTELLIGENCE"
 	ENUMGATEWAYTYPE_API_GATEWAY_INTEGRATION EnumGatewayType = "API_GATEWAY_INTEGRATION"
-	ENUMGATEWAYTYPE_RADIUS EnumGatewayType = "RADIUS"
+	ENUMGATEWAYTYPE_RADIUS                  EnumGatewayType = "RADIUS"
 )
 
 // All allowed values of EnumGatewayType enum
@@ -115,4 +115,3 @@ func (v *NullableEnumGatewayType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

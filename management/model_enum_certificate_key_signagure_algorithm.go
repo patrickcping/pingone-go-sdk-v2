@@ -20,9 +20,9 @@ type EnumCertificateKeySignagureAlgorithm string
 
 // List of EnumCertificateKeySignagureAlgorithm
 const (
-	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA256WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA256withRSA"
-	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA384WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA384withRSA"
-	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA512WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA512withRSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA256WITH_RSA   EnumCertificateKeySignagureAlgorithm = "SHA256withRSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA384WITH_RSA   EnumCertificateKeySignagureAlgorithm = "SHA384withRSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA512WITH_RSA   EnumCertificateKeySignagureAlgorithm = "SHA512withRSA"
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA256WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA256withECDSA"
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA384WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA384withECDSA"
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA512WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA512withECDSA"
@@ -117,4 +117,3 @@ func (v *NullableEnumCertificateKeySignagureAlgorithm) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

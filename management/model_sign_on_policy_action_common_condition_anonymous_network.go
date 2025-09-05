@@ -20,7 +20,7 @@ var _ MappedNullable = &SignOnPolicyActionCommonConditionAnonymousNetwork{}
 // SignOnPolicyActionCommonConditionAnonymousNetwork struct for SignOnPolicyActionCommonConditionAnonymousNetwork
 type SignOnPolicyActionCommonConditionAnonymousNetwork struct {
 	AnonymousNetwork []string `json:"anonymousNetwork"`
-	Valid string `json:"valid"`
+	Valid            string   `json:"valid"`
 }
 
 // NewSignOnPolicyActionCommonConditionAnonymousNetwork instantiates a new SignOnPolicyActionCommonConditionAnonymousNetwork object
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionCommonConditionAnonymousNetwork) SetValid(v string) {
 }
 
 func (o SignOnPolicyActionCommonConditionAnonymousNetwork) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionCommonConditionAnonymousNetwork) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

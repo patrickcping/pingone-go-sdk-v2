@@ -82,6 +82,11 @@ func init() {
 			Selectable:  true,
 		},
 		{
+			APICode:     management.ENUMPRODUCTTYPE_ONE_ID,
+			ProductCode: "PingID-v2",
+			Selectable:  true,
+		},
+		{
 			APICode:     management.ENUMPRODUCTTYPE_FEDERATE,
 			ProductCode: "PingFederate",
 			Selectable:  true,

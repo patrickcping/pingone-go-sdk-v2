@@ -21,19 +21,19 @@ var _ MappedNullable = &Gateway{}
 type Gateway struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Id          *string             `json:"id,omitempty"`
+	Environment *ObjectEnvironment  `json:"environment,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
 	Name string `json:"name"`
 	// A string that specifies the description of the resource.
-	Description *string `json:"description,omitempty"`
-	Type EnumGatewayType `json:"type"`
+	Description *string         `json:"description,omitempty"`
+	Type        EnumGatewayType `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.
 	Enabled bool `json:"enabled"`
 	// An array that lists the LDAP gateway versions associated with this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways request, and it is used to trigger alerts if the gateway tries to connect with an unsupported version (or a version that is not the latest or recommended version).
 	SupportedVersions []GatewaySupportedVersionsInner `json:"supportedVersions,omitempty"`
-	CurrentAlerts []map[string]interface{} `json:"currentAlerts,omitempty"`
+	CurrentAlerts     []map[string]interface{}        `json:"currentAlerts,omitempty"`
 }
 
 // NewGateway instantiates a new Gateway object
@@ -353,7 +353,7 @@ func (o *Gateway) SetCurrentAlerts(v []map[string]interface{}) {
 }
 
 func (o Gateway) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -424,5 +424,3 @@ func (v *NullableGateway) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

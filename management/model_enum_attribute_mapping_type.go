@@ -20,8 +20,8 @@ type EnumAttributeMappingType string
 
 // List of EnumAttributeMappingType
 const (
-	ENUMATTRIBUTEMAPPINGTYPE_CORE EnumAttributeMappingType = "CORE"
-	ENUMATTRIBUTEMAPPINGTYPE_SCOPE EnumAttributeMappingType = "SCOPE"
+	ENUMATTRIBUTEMAPPINGTYPE_CORE   EnumAttributeMappingType = "CORE"
+	ENUMATTRIBUTEMAPPINGTYPE_SCOPE  EnumAttributeMappingType = "SCOPE"
 	ENUMATTRIBUTEMAPPINGTYPE_CUSTOM EnumAttributeMappingType = "CUSTOM"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumAttributeMappingType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

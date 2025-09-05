@@ -1,7 +1,98 @@
-# v0.44.0 (Unreleased)
+# v0.61.0 (Unreleased)
 
-* **Note** Upgraded go version to 1.22 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#376](https://github.com/patrickcping/pingone-go-sdk-v2/pull/376)
 * **Enhancement** Added the ability to create applications with a custom client ID and secret. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+
+# v0.60.0 (2025-07-16)
+
+* **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* **Enhancement** Added the `SG` region code to the `EnumRegionCode` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* **Enhancement** Added the `AU` and `SG` region codes to the `EnumRegionCodeLicense` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+
+# v0.59.0 (2025-06-27)
+
+* **Enhancement** Added the `PING_ONE_ID` product type to support PingID (v2). [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
+
+# v0.58.0 (2025-06-24)
+
+* **Enhancement** Add support for `VirtualServerIdSettings` in SAML application objects. [#462](https://github.com/patrickcping/pingone-go-sdk-v2/pull/462)
+
+# v0.57.1 (2025-06-11)
+
+* **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+
+# v0.57.0 (2025-05-29)
+
+* **Feature** Add support for the Locale Translations API. [#457](https://github.com/patrickcping/pingone-go-sdk-v2/pull/457)
+* **Enhancement** Add support for assigning application scope to custom roles. [#458](https://github.com/patrickcping/pingone-go-sdk-v2/pull/458)
+
+# v0.56.0 (2025-05-20)
+
+* **Enhancement** Support `SubjectNameIdentifierFormat` on WS-FED application data models. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
+* **Bug** Corrected `WS_FED` enum value typo on the `EnumApplicationProtocol` model. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
+
+# v0.55.0 (2025-05-13)
+
+* **Feature** Add support for the Environment Status API. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
+* **Enhancement** Support `HardDeletedAllowedAt`, `SoftDeletedAt`, `Status` on the `Environment` data model. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
+* **Enhancement** Support `AlternativeIdentifiers` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+* **Enhancement** Support `PreferredLanguage` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+* **Enhancement** Support `Theme` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+* **Bug** Corrected `EnvironmentRegion` model unmarshalling when using custom region string values. [#452](https://github.com/patrickcping/pingone-go-sdk-v2/pull/452)
+
+# v0.54.0 (2025-04-28)
+
+* **Enhancement** Support the new `LINKEDIN_OIDC` Identity provider type. [#445](https://github.com/patrickcping/pingone-go-sdk-v2/pull/445)
+
+# v0.53.0 (2025-03-11)
+
+* **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model. [#433](https://github.com/patrickcping/pingone-go-sdk-v2/pull/433)
+
+# v0.52.0 (2025-03-04)
+
+* **Breaking change** The `AdministratorSecurity` model has been aligned to the service. [#429](https://github.com/patrickcping/pingone-go-sdk-v2/pull/429)
+
+# v0.51.0 (2025-02-24)
+
+* **Breaking change** The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model when using the `IdentityProvider` model. [#427](https://github.com/patrickcping/pingone-go-sdk-v2/pull/427)
+
+# v0.50.0 (2025-02-21)
+
+* **Breaking change** Added support for the `TenantId` field on Microsoft Identity providers. The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model. [#425](https://github.com/patrickcping/pingone-go-sdk-v2/pull/425)
+
+# v0.49.0 (2025-02-10)
+
+* **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)
+* **Enhancement** Added API functions for `X-Ping-External-Transaction-ID` and `X-Ping-External-Session-ID` for transaction and session telemetry. [#419](https://github.com/patrickcping/pingone-go-sdk-v2/pull/419)
+* **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments (again). [#417](https://github.com/patrickcping/pingone-go-sdk-v2/pull/417)
+
+# v0.48.0 (2025-02-05)
+
+* **Enhancement** Added the `filter` query string parameter function to the `ReadAllCustomAdminRoles(..)` API request model. [#414](https://github.com/patrickcping/pingone-go-sdk-v2/pull/414)
+* **Bug** Corrected `data matches more than one schema in oneOf(NotificationsSettingsEmailDeliverySettings)` error for email notification settings on new environments. [#415](https://github.com/patrickcping/pingone-go-sdk-v2/pull/415)
+
+# v0.47.0 (2025-01-23)
+
+* **Enhancement** Added `EnvironmentDnsRecord` to the `EmailDomainOwnershipStatus` model. [#412](https://github.com/patrickcping/pingone-go-sdk-v2/pull/412)
+
+# v0.46.0 (2025-01-21)
+
+* **Enhancement** Added roles `Advanced Identity Cloud Super Admin`, `Advanced Identity Cloud Tenant Admin` and `Custom Roles Admin` to the `EnumRoleName` model. [#407](https://github.com/patrickcping/pingone-go-sdk-v2/pull/407)
+* **Enhancement** Added `BlastRadiusMitigation` to the `GatewayTypeRADIUSAllOfRadiusClients` model. [#410](https://github.com/patrickcping/pingone-go-sdk-v2/pull/410)
+
+# v0.45.0 (2024-12-18)
+
+* **Enhancement** Added `SUSPICIOUS_TRAFFIC` enum to `EnumAlertChannelAlertType` model. [#399](https://github.com/patrickcping/pingone-go-sdk-v2/pull/399)
+
+# v0.44.0 (2024-11-15)
+
+* **Breaking change** `(Api[a-zA-Z]Request).Execute()` and `(*Api[a-zA-Z]Request).[a-zA-Z]Execute()` API functions now returns the `EntityArrayPagedIterator` data type to for code clients to implement paging of results. [#392](https://github.com/patrickcping/pingone-go-sdk-v2/pull/392)
+* **Breaking change** Model `NotificationsSettingsEmailDeliverySettings` is now a compound model supporting both SMTP and custom notification models. [#386](https://github.com/patrickcping/pingone-go-sdk-v2/pull/386)
+* **Note** Upgraded go version to 1.23 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#395](https://github.com/patrickcping/pingone-go-sdk-v2/pull/395)
+* **Feature** Added support for the Administrator Security API. [#381](https://github.com/patrickcping/pingone-go-sdk-v2/pull/381)
+* **Feature** Added support for custom email notification providers. [#386](https://github.com/patrickcping/pingone-go-sdk-v2/pull/386)
+* **Feature** Added support for the Custom Admin Roles API. [#388](https://github.com/patrickcping/pingone-go-sdk-v2/pull/388)
+* **Enhancement** Added `(Api[a-zA-Z]Request).ExecuteInitialPage()` and `(*Api[a-zA-Z]Request).[a-zA-Z]ExecuteInitialPage()` API functions to just return the initial page of a paged response. [#392](https://github.com/patrickcping/pingone-go-sdk-v2/pull/392)
+* **Enhancement** Added the `SessionNotOnOrAfterDuration` field to the `ApplicationSAML` data model. [#387](https://github.com/patrickcping/pingone-go-sdk-v2/pull/387)
 
 # v0.43.0 (2024-07-22)
 

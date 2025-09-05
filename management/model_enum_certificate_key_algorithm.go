@@ -20,8 +20,8 @@ type EnumCertificateKeyAlgorithm string
 
 // List of EnumCertificateKeyAlgorithm
 const (
-	ENUMCERTIFICATEKEYALGORITHM_RSA EnumCertificateKeyAlgorithm = "RSA"
-	ENUMCERTIFICATEKEYALGORITHM_EC EnumCertificateKeyAlgorithm = "EC"
+	ENUMCERTIFICATEKEYALGORITHM_RSA     EnumCertificateKeyAlgorithm = "RSA"
+	ENUMCERTIFICATEKEYALGORITHM_EC      EnumCertificateKeyAlgorithm = "EC"
 	ENUMCERTIFICATEKEYALGORITHM_UNKNOWN EnumCertificateKeyAlgorithm = "UNKNOWN"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumCertificateKeyAlgorithm) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

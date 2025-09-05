@@ -73,7 +73,7 @@ func (o *SubscriptionTlsClientAuthKeyPair) SetId(v string) {
 }
 
 func (o SubscriptionTlsClientAuthKeyPair) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,5 +123,3 @@ func (v *NullableSubscriptionTlsClientAuthKeyPair) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

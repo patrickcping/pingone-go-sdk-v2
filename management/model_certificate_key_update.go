@@ -20,7 +20,7 @@ var _ MappedNullable = &CertificateKeyUpdate{}
 // CertificateKeyUpdate struct for CertificateKeyUpdate
 type CertificateKeyUpdate struct {
 	// Specifies whether this is the default key for the specified environment.
-	Default bool `json:"default"`
+	Default   bool                        `json:"default"`
 	UsageType EnumCertificateKeyUsageType `json:"usageType"`
 	// Specifies the distinguished name of the certificate issuer.
 	IssuerDN *string `json:"issuerDN,omitempty"`
@@ -126,7 +126,7 @@ func (o *CertificateKeyUpdate) SetIssuerDN(v string) {
 }
 
 func (o CertificateKeyUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +178,3 @@ func (v *NullableCertificateKeyUpdate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

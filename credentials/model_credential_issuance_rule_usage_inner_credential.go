@@ -66,7 +66,7 @@ func (o *CredentialIssuanceRuleUsageInnerCredential) SetId(v string) {
 }
 
 func (o CredentialIssuanceRuleUsageInnerCredential) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableCredentialIssuanceRuleUsageInnerCredential) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,12 +21,12 @@ var _ MappedNullable = &Certificate{}
 
 // Certificate struct for Certificate
 type Certificate struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Algorithm EnumCertificateKeyAlgorithm `json:"algorithm"`
+	Links     *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Algorithm EnumCertificateKeyAlgorithm   `json:"algorithm"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Specifies whether this is the default key for the specified environment.
-	Default *bool `json:"default,omitempty"`
+	Default     *bool              `json:"default,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the key resource expires.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
@@ -37,16 +37,16 @@ type Certificate struct {
 	// The key length. For RSA keys, options are `2048`, `3072`, `4096`, and `7680`. For elliptical curve (EC) keys, options are `224`, `256`, `384`, and `521`.
 	KeyLength int32 `json:"keyLength"`
 	// Specifies the resource name.
-	Name string `json:"name"`
+	Name         string              `json:"name"`
 	Organization *ObjectOrganization `json:"organization,omitempty"`
 	// Specifies the serial number of the key or certificate.
-	SerialNumber *big.Int `json:"serialNumber,omitempty"`
+	SerialNumber       *big.Int                               `json:"serialNumber,omitempty"`
 	SignatureAlgorithm EnumCertificateKeySignagureAlgorithm `json:"signatureAlgorithm"`
 	// The time the validity period starts.
-	StartsAt *time.Time `json:"startsAt,omitempty"`
-	Status *EnumCertificateKeyStatus `json:"status,omitempty"`
+	StartsAt *time.Time                `json:"startsAt,omitempty"`
+	Status   *EnumCertificateKeyStatus `json:"status,omitempty"`
 	// Specifies the distinguished name of the subject being secured.
-	SubjectDN string `json:"subjectDN"`
+	SubjectDN string                      `json:"subjectDN"`
 	UsageType EnumCertificateKeyUsageType `json:"usageType"`
 	// Specifies the number of days the key is valid.
 	ValidityPeriod int32 `json:"validityPeriod"`
@@ -631,7 +631,7 @@ func (o *Certificate) SetCustomCRL(v string) {
 }
 
 func (o Certificate) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -721,5 +721,3 @@ func (v *NullableCertificate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

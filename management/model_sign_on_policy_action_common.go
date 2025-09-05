@@ -19,15 +19,15 @@ var _ MappedNullable = &SignOnPolicyActionCommon{}
 
 // SignOnPolicyActionCommon struct for SignOnPolicyActionCommon
 type SignOnPolicyActionCommon struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue               `json:"_links,omitempty"`
+	Condition   *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
+	Environment *ObjectEnvironment                          `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
-	Priority int32 `json:"priority"`
+	Priority     int32                                 `json:"priority"`
 	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
-	Type EnumSignOnPolicyType `json:"type"`
+	Type         EnumSignOnPolicyType                  `json:"type"`
 }
 
 // NewSignOnPolicyActionCommon instantiates a new SignOnPolicyActionCommon object
@@ -258,7 +258,7 @@ func (o *SignOnPolicyActionCommon) SetType(v EnumSignOnPolicyType) {
 }
 
 func (o SignOnPolicyActionCommon) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,5 +322,3 @@ func (v *NullableSignOnPolicyActionCommon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## DeleteEmailDeliverySettings
 
-> DeleteEmailDeliverySettings(ctx, environmentID).Execute()
+> DeleteEmailDeliverySettings(ctx, environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 DELETE Email Delivery Settings
 
@@ -30,10 +30,12 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NotificationsSettingsSMTPApi.DeleteEmailDeliverySettings(context.Background(), environmentID).Execute()
+    r, err := apiClient.NotificationsSettingsSMTPApi.DeleteEmailDeliverySettings(context.Background(), environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsSMTPApi.DeleteEmailDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -57,6 +59,8 @@ Other parameters are passed through a pointer to a apiDeleteEmailDeliverySetting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -78,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## ReadEmailNotificationsSettings
 
-> NotificationsSettingsEmailDeliverySettings ReadEmailNotificationsSettings(ctx, environmentID).Execute()
+> NotificationsSettingsEmailDeliverySettings ReadEmailNotificationsSettings(ctx, environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
 
 READ Email Notifications Settings
 
@@ -96,10 +100,12 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsSMTPApi.ReadEmailNotificationsSettings(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.NotificationsSettingsSMTPApi.ReadEmailNotificationsSettings(context.Background(), environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsSMTPApi.ReadEmailNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -125,6 +131,8 @@ Other parameters are passed through a pointer to a apiReadEmailNotificationsSett
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
 
 ### Return type
 
@@ -146,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## UpdateEmailNotificationsSettings
 
-> NotificationsSettingsEmailDeliverySettings UpdateEmailNotificationsSettings(ctx, environmentID).NotificationsSettingsEmailDeliverySettings(notificationsSettingsEmailDeliverySettings).Execute()
+> NotificationsSettingsEmailDeliverySettings UpdateEmailNotificationsSettings(ctx, environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).NotificationsSettingsEmailDeliverySettings(notificationsSettingsEmailDeliverySettings).Execute()
 
 UPDATE Email Notifications Settings
 
@@ -164,11 +172,13 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    notificationsSettingsEmailDeliverySettings := *openapiclient.NewNotificationsSettingsEmailDeliverySettings() // NotificationsSettingsEmailDeliverySettings |  (optional)
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    notificationsSettingsEmailDeliverySettings := openapiclient.NotificationsSettingsEmailDeliverySettings{NotificationsSettingsEmailDeliverySettingsCustom: openapiclient.NewNotificationsSettingsEmailDeliverySettingsCustom(openapiclient.EnumNotificationsSettingsEmailDeliverySettingsProtocol("HTTP"), *openapiclient.NewNotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication(openapiclient.EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod("BASIC")), "Name_example", []openapiclient.NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests{*openapiclient.NewNotificationsSettingsEmailDeliverySettingsCustomAllOfRequests(openapiclient.EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod("EMAIL"), openapiclient.EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod("GET"), "Url_example")})} // NotificationsSettingsEmailDeliverySettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsSMTPApi.UpdateEmailNotificationsSettings(context.Background(), environmentID).NotificationsSettingsEmailDeliverySettings(notificationsSettingsEmailDeliverySettings).Execute()
+    resp, r, err := apiClient.NotificationsSettingsSMTPApi.UpdateEmailNotificationsSettings(context.Background(), environmentID).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).NotificationsSettingsEmailDeliverySettings(notificationsSettingsEmailDeliverySettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsSMTPApi.UpdateEmailNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -194,6 +204,8 @@ Other parameters are passed through a pointer to a apiUpdateEmailNotificationsSe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
  **notificationsSettingsEmailDeliverySettings** | [**NotificationsSettingsEmailDeliverySettings**](NotificationsSettingsEmailDeliverySettings.md) |  | 
 
 ### Return type

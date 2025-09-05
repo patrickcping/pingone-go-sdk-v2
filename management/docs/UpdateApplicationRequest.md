@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is &#x60;false&#x60;. | [optional] [default to false]
+**SessionNotOnOrAfterDuration** | Pointer to **int32** | Update this value if the SAML application requires a different &#x60;SessionNotOnOrAfter&#x60; attribute value within the &#x60;AuthnStatement&#x60; element than the &#x60;NotOnOrAfter&#x60; value set by the &#x60;assertionDuration&#x60; property. | [optional] 
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] [default to ENUMAPPLICATIONSAMLSLOBINDING_POST]
 **SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
@@ -36,6 +37,7 @@ Name | Type | Description | Notes
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 **Template** | Pointer to [**ApplicationTemplate**](ApplicationTemplate.md) |  | [optional] 
+**VirtualServerIdSettings** | Pointer to [**ApplicationSAMLAllOfVirtualServerIdSettings**](ApplicationSAMLAllOfVirtualServerIdSettings.md) |  | [optional] 
 **AdditionalRefreshTokenReplayProtectionEnabled** | Pointer to **bool** | When set to &#x60;true&#x60; (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a &#x60;false&#x60; setting. | [optional] [default to true]
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
@@ -45,6 +47,7 @@ Name | Type | Description | Notes
 **DeviceCustomVerificationUri** | Pointer to **string** | A string that specifies an optional custom verification URI that is returned for the &#x60;/device_authorization&#x60; endpoint. | [optional] 
 **DeviceTimeout** | Pointer to **int32** | An integer that specifies the length of time (in seconds) that the &#x60;userCode&#x60; and &#x60;deviceCode&#x60; returned by the &#x60;/device_authorization&#x60; endpoint are valid. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;600&#x60; seconds. It can have a value of no more than &#x60;3600&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;3600&#x60;). | [optional] [default to 600]
 **DevicePollingInterval** | Pointer to **int32** | An integer that specifies the frequency (in seconds) for the client to poll the &#x60;/as/token&#x60; endpoint. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;5&#x60; seconds. It can have a value of no more than &#x60;60&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;60&#x60;). | [optional] [default to 5]
+**IdpSignoff** | Pointer to **bool** | Set this to true to allow an application to request to terminate a user session using only the ID token. The application is not required to have access to the session token cookie. | [optional] 
 **Jwks** | Pointer to **string** | A JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwksUrl&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwksUrl&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **JwksUrl** | Pointer to **string** | A URL (supports &#x60;https://&#x60; only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwks&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwks&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
@@ -71,6 +74,7 @@ Name | Type | Description | Notes
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
+**SubjectNameIdentifierFormat** | Pointer to [**EnumApplicationWSFEDSubjectNameIdentifierFormat**](EnumApplicationWSFEDSubjectNameIdentifierFormat.md) |  | [optional] 
 **ApplyDefaultTheme** | **bool** | If &#x60;true&#x60;, applies the default theme to the self service application. | 
 **EnableDefaultThemeFooter** | Pointer to **bool** | If &#x60;true&#x60;, shows the default theme footer on the self service application. Applies only if &#x60;applyDefaultTheme&#x60; is also &#x60;true&#x60;. | [optional] 
 
@@ -653,6 +657,31 @@ SetResponseSigned sets ResponseSigned field to given value.
 
 HasResponseSigned returns a boolean if a field has been set.
 
+### GetSessionNotOnOrAfterDuration
+
+`func (o *UpdateApplicationRequest) GetSessionNotOnOrAfterDuration() int32`
+
+GetSessionNotOnOrAfterDuration returns the SessionNotOnOrAfterDuration field if non-nil, zero value otherwise.
+
+### GetSessionNotOnOrAfterDurationOk
+
+`func (o *UpdateApplicationRequest) GetSessionNotOnOrAfterDurationOk() (*int32, bool)`
+
+GetSessionNotOnOrAfterDurationOk returns a tuple with the SessionNotOnOrAfterDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionNotOnOrAfterDuration
+
+`func (o *UpdateApplicationRequest) SetSessionNotOnOrAfterDuration(v int32)`
+
+SetSessionNotOnOrAfterDuration sets SessionNotOnOrAfterDuration field to given value.
+
+### HasSessionNotOnOrAfterDuration
+
+`func (o *UpdateApplicationRequest) HasSessionNotOnOrAfterDuration() bool`
+
+HasSessionNotOnOrAfterDuration returns a boolean if a field has been set.
+
 ### GetSloBinding
 
 `func (o *UpdateApplicationRequest) GetSloBinding() EnumApplicationSAMLSloBinding`
@@ -847,6 +876,31 @@ SetTemplate sets Template field to given value.
 `func (o *UpdateApplicationRequest) HasTemplate() bool`
 
 HasTemplate returns a boolean if a field has been set.
+
+### GetVirtualServerIdSettings
+
+`func (o *UpdateApplicationRequest) GetVirtualServerIdSettings() ApplicationSAMLAllOfVirtualServerIdSettings`
+
+GetVirtualServerIdSettings returns the VirtualServerIdSettings field if non-nil, zero value otherwise.
+
+### GetVirtualServerIdSettingsOk
+
+`func (o *UpdateApplicationRequest) GetVirtualServerIdSettingsOk() (*ApplicationSAMLAllOfVirtualServerIdSettings, bool)`
+
+GetVirtualServerIdSettingsOk returns a tuple with the VirtualServerIdSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualServerIdSettings
+
+`func (o *UpdateApplicationRequest) SetVirtualServerIdSettings(v ApplicationSAMLAllOfVirtualServerIdSettings)`
+
+SetVirtualServerIdSettings sets VirtualServerIdSettings field to given value.
+
+### HasVirtualServerIdSettings
+
+`func (o *UpdateApplicationRequest) HasVirtualServerIdSettings() bool`
+
+HasVirtualServerIdSettings returns a boolean if a field has been set.
 
 ### GetAdditionalRefreshTokenReplayProtectionEnabled
 
@@ -1072,6 +1126,31 @@ SetDevicePollingInterval sets DevicePollingInterval field to given value.
 `func (o *UpdateApplicationRequest) HasDevicePollingInterval() bool`
 
 HasDevicePollingInterval returns a boolean if a field has been set.
+
+### GetIdpSignoff
+
+`func (o *UpdateApplicationRequest) GetIdpSignoff() bool`
+
+GetIdpSignoff returns the IdpSignoff field if non-nil, zero value otherwise.
+
+### GetIdpSignoffOk
+
+`func (o *UpdateApplicationRequest) GetIdpSignoffOk() (*bool, bool)`
+
+GetIdpSignoffOk returns a tuple with the IdpSignoff field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdpSignoff
+
+`func (o *UpdateApplicationRequest) SetIdpSignoff(v bool)`
+
+SetIdpSignoff sets IdpSignoff field to given value.
+
+### HasIdpSignoff
+
+`func (o *UpdateApplicationRequest) HasIdpSignoff() bool`
+
+HasIdpSignoff returns a boolean if a field has been set.
 
 ### GetJwks
 
@@ -1702,6 +1781,31 @@ and a boolean to check if the value has been set.
 
 SetReplyUrl sets ReplyUrl field to given value.
 
+
+### GetSubjectNameIdentifierFormat
+
+`func (o *UpdateApplicationRequest) GetSubjectNameIdentifierFormat() EnumApplicationWSFEDSubjectNameIdentifierFormat`
+
+GetSubjectNameIdentifierFormat returns the SubjectNameIdentifierFormat field if non-nil, zero value otherwise.
+
+### GetSubjectNameIdentifierFormatOk
+
+`func (o *UpdateApplicationRequest) GetSubjectNameIdentifierFormatOk() (*EnumApplicationWSFEDSubjectNameIdentifierFormat, bool)`
+
+GetSubjectNameIdentifierFormatOk returns a tuple with the SubjectNameIdentifierFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubjectNameIdentifierFormat
+
+`func (o *UpdateApplicationRequest) SetSubjectNameIdentifierFormat(v EnumApplicationWSFEDSubjectNameIdentifierFormat)`
+
+SetSubjectNameIdentifierFormat sets SubjectNameIdentifierFormat field to given value.
+
+### HasSubjectNameIdentifierFormat
+
+`func (o *UpdateApplicationRequest) HasSubjectNameIdentifierFormat() bool`
+
+HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
 
 ### GetApplyDefaultTheme
 

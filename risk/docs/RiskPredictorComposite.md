@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Name** | **string** | A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights. | 
 **CompactName** | **string** | A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details). | 
 **Type** | [**EnumPredictorType**](EnumPredictorType.md) |  | 
@@ -16,7 +17,6 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
-**Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
 **Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
 
 ## Methods
@@ -87,6 +87,31 @@ SetId sets Id field to given value.
 `func (o *RiskPredictorComposite) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *RiskPredictorComposite) GetEnvironment() ObjectEnvironment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *RiskPredictorComposite) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *RiskPredictorComposite) SetEnvironment(v ObjectEnvironment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *RiskPredictorComposite) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetName
 
@@ -322,31 +347,6 @@ SetCondition sets Condition field to given value.
 `func (o *RiskPredictorComposite) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
-
-### GetComposition
-
-`func (o *RiskPredictorComposite) GetComposition() RiskPredictorCompositeAllOfComposition`
-
-GetComposition returns the Composition field if non-nil, zero value otherwise.
-
-### GetCompositionOk
-
-`func (o *RiskPredictorComposite) GetCompositionOk() (*RiskPredictorCompositeAllOfComposition, bool)`
-
-GetCompositionOk returns a tuple with the Composition field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetComposition
-
-`func (o *RiskPredictorComposite) SetComposition(v RiskPredictorCompositeAllOfComposition)`
-
-SetComposition sets Composition field to given value.
-
-### HasComposition
-
-`func (o *RiskPredictorComposite) HasComposition() bool`
-
-HasComposition returns a boolean if a field has been set.
 
 ### GetCompositions
 

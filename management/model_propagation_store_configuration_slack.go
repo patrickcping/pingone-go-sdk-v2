@@ -26,8 +26,8 @@ type PropagationStoreConfigurationSlack struct {
 	// Whether or not users are allowed to be disabled. Must be set to `true`.
 	DISABLE_USERS *bool `json:"DISABLE_USERS,omitempty"`
 	// OAuth 2 access token.
-	OAUTH_ACCESS_TOKEN string `json:"OAUTH_ACCESS_TOKEN"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisable `json:"REMOVE_ACTION,omitempty"`
+	OAUTH_ACCESS_TOKEN     string                                            `json:"OAUTH_ACCESS_TOKEN"`
+	REMOVE_ACTION          *EnumPropagationStoreTypeRemoveActionDisable      `json:"REMOVE_ACTION,omitempty"`
 	UNIQUE_USER_IDENTIFIER EnumPropagationStoreTypeSlackUniqueUserIdentifier `json:"UNIQUE_USER_IDENTIFIER"`
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
@@ -261,7 +261,7 @@ func (o *PropagationStoreConfigurationSlack) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationSlack) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -325,5 +325,3 @@ func (v *NullablePropagationStoreConfigurationSlack) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

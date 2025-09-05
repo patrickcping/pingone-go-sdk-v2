@@ -19,8 +19,8 @@ var _ MappedNullable = &OTPDeviceConfigurationOtpNotification{}
 
 // OTPDeviceConfigurationOtpNotification OTP notification template configuration.
 type OTPDeviceConfigurationOtpNotification struct {
-	TemplateName string `json:"templateName"`
-	VariantName *string `json:"variantName,omitempty"`
+	TemplateName string  `json:"templateName"`
+	VariantName  *string `json:"variantName,omitempty"`
 }
 
 // NewOTPDeviceConfigurationOtpNotification instantiates a new OTPDeviceConfigurationOtpNotification object
@@ -98,7 +98,7 @@ func (o *OTPDeviceConfigurationOtpNotification) SetVariantName(v string) {
 }
 
 func (o OTPDeviceConfigurationOtpNotification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullableOTPDeviceConfigurationOtpNotification) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

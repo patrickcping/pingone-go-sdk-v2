@@ -20,15 +20,15 @@ type EnumIntegrationTag string
 
 // List of EnumIntegrationTag
 const (
-	ENUMINTEGRATIONTAG_SSO EnumIntegrationTag = "SSO"
+	ENUMINTEGRATIONTAG_SSO            EnumIntegrationTag = "SSO"
 	ENUMINTEGRATIONTAG_AUTHENTICATION EnumIntegrationTag = "AUTHENTICATION"
-	ENUMINTEGRATIONTAG_MFA EnumIntegrationTag = "MFA"
-	ENUMINTEGRATIONTAG_INTELLIGENCE EnumIntegrationTag = "INTELLIGENCE"
-	ENUMINTEGRATIONTAG_GOVERNANCE EnumIntegrationTag = "GOVERNANCE"
-	ENUMINTEGRATIONTAG_IDAAS EnumIntegrationTag = "IDAAS"
-	ENUMINTEGRATIONTAG_ACCESS EnumIntegrationTag = "ACCESS"
-	ENUMINTEGRATIONTAG_DIRECTORY EnumIntegrationTag = "DIRECTORY"
-	ENUMINTEGRATIONTAG_PROVISIONING EnumIntegrationTag = "PROVISIONING"
+	ENUMINTEGRATIONTAG_MFA            EnumIntegrationTag = "MFA"
+	ENUMINTEGRATIONTAG_INTELLIGENCE   EnumIntegrationTag = "INTELLIGENCE"
+	ENUMINTEGRATIONTAG_GOVERNANCE     EnumIntegrationTag = "GOVERNANCE"
+	ENUMINTEGRATIONTAG_IDAAS          EnumIntegrationTag = "IDAAS"
+	ENUMINTEGRATIONTAG_ACCESS         EnumIntegrationTag = "ACCESS"
+	ENUMINTEGRATIONTAG_DIRECTORY      EnumIntegrationTag = "DIRECTORY"
+	ENUMINTEGRATIONTAG_PROVISIONING   EnumIntegrationTag = "PROVISIONING"
 )
 
 // All allowed values of EnumIntegrationTag enum
@@ -123,4 +123,3 @@ func (v *NullableEnumIntegrationTag) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

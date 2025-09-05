@@ -20,9 +20,9 @@ type EnumThreshold string
 
 // List of EnumThreshold
 const (
-	ENUMTHRESHOLD_LOW EnumThreshold = "LOW"
+	ENUMTHRESHOLD_LOW    EnumThreshold = "LOW"
 	ENUMTHRESHOLD_MEDIUM EnumThreshold = "MEDIUM"
-	ENUMTHRESHOLD_HIGH EnumThreshold = "HIGH"
+	ENUMTHRESHOLD_HIGH   EnumThreshold = "HIGH"
 )
 
 // All allowed values of EnumThreshold enum
@@ -111,4 +111,3 @@ func (v *NullableEnumThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

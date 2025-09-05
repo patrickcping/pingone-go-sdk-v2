@@ -20,11 +20,11 @@ type EnumCertificateKeyStatus string
 
 // List of EnumCertificateKeyStatus
 const (
-	ENUMCERTIFICATEKEYSTATUS_VALID EnumCertificateKeyStatus = "VALID"
-	ENUMCERTIFICATEKEYSTATUS_EXPIRING EnumCertificateKeyStatus = "EXPIRING"
-	ENUMCERTIFICATEKEYSTATUS_EXPIRED EnumCertificateKeyStatus = "EXPIRED"
+	ENUMCERTIFICATEKEYSTATUS_VALID         EnumCertificateKeyStatus = "VALID"
+	ENUMCERTIFICATEKEYSTATUS_EXPIRING      EnumCertificateKeyStatus = "EXPIRING"
+	ENUMCERTIFICATEKEYSTATUS_EXPIRED       EnumCertificateKeyStatus = "EXPIRED"
 	ENUMCERTIFICATEKEYSTATUS_NOT_YET_VALID EnumCertificateKeyStatus = "NOT_YET_VALID"
-	ENUMCERTIFICATEKEYSTATUS_REVOKED EnumCertificateKeyStatus = "REVOKED"
+	ENUMCERTIFICATEKEYSTATUS_REVOKED       EnumCertificateKeyStatus = "REVOKED"
 )
 
 // All allowed values of EnumCertificateKeyStatus enum
@@ -115,4 +115,3 @@ func (v *NullableEnumCertificateKeyStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

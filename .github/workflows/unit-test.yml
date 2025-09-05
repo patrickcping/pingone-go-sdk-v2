@@ -3,6 +3,7 @@
 #
 name: Unit Tests
 on:
+  workflow_dispatch:
   pull_request:
     paths-ignore:
       - 'README.md'
@@ -65,9 +66,9 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      PINGONE_CLIENT_ID_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_ID }}
-      PINGONE_CLIENT_SECRET_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_SECRET }}
-      PINGONE_ENVIRONMENT_ID_TESTACC: ${{ secrets.EU_PINGONE_ENVIRONMENT_ID }}
+      PINGONE_CLIENT_ID_TESTACC: ${{ vars.PINGONE_PROD_EU_CLIENT_ID_CLIENT_SECRET_BASIC }}
+      PINGONE_CLIENT_SECRET_TESTACC: ${{ secrets.PINGONE_PROD_EU_CLIENT_SECRET_CLIENT_SECRET_BASIC }}
+      PINGONE_ENVIRONMENT_ID_TESTACC: ${{ vars.PINGONE_PROD_EU_ENVIRONMENT_ID }}
       PINGONE_REGION_TESTACC: Europe
       PINGONE_REGION_CODE_TESTACC: EU
       PINGONE_API_ACCESS_TOKEN: testtest

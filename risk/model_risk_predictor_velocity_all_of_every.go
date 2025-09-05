@@ -19,9 +19,9 @@ var _ MappedNullable = &RiskPredictorVelocityAllOfEvery{}
 
 // RiskPredictorVelocityAllOfEvery struct for RiskPredictorVelocityAllOfEvery
 type RiskPredictorVelocityAllOfEvery struct {
-	Unit *EnumPredictorUnit `json:"unit,omitempty"`
-	Quantity *int32 `json:"quantity,omitempty"`
-	MinSample *int32 `json:"minSample,omitempty"`
+	Unit      *EnumPredictorUnit `json:"unit,omitempty"`
+	Quantity  *int32             `json:"quantity,omitempty"`
+	MinSample *int32             `json:"minSample,omitempty"`
 }
 
 // NewRiskPredictorVelocityAllOfEvery instantiates a new RiskPredictorVelocityAllOfEvery object
@@ -138,7 +138,7 @@ func (o *RiskPredictorVelocityAllOfEvery) SetMinSample(v int32) {
 }
 
 func (o RiskPredictorVelocityAllOfEvery) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableRiskPredictorVelocityAllOfEvery) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

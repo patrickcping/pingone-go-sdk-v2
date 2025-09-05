@@ -21,7 +21,7 @@ type EnumSignOnPolicyNoDeviceMode string
 // List of EnumSignOnPolicyNoDeviceMode
 const (
 	ENUMSIGNONPOLICYNODEVICEMODE_BYPASS EnumSignOnPolicyNoDeviceMode = "BYPASS"
-	ENUMSIGNONPOLICYNODEVICEMODE_BLOCK EnumSignOnPolicyNoDeviceMode = "BLOCK"
+	ENUMSIGNONPOLICYNODEVICEMODE_BLOCK  EnumSignOnPolicyNoDeviceMode = "BLOCK"
 )
 
 // All allowed values of EnumSignOnPolicyNoDeviceMode enum
@@ -109,4 +109,3 @@ func (v *NullableEnumSignOnPolicyNoDeviceMode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

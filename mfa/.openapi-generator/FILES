@@ -3,6 +3,7 @@ api/openapi.yaml
 api_applications_application_mfa_push_credentials.go
 api_device_authentication_policy.go
 api_enable_users_mfa.go
+api_environments.go
 api_fido2_policy.go
 api_fido_device.go
 api_fido_policy.go
@@ -50,6 +51,7 @@ docs/EnumFIDO2PolicyAuthenticatorAttachment.md
 docs/EnumFIDO2PolicyDiscoverableCredentials.md
 docs/EnumFIDO2PolicyMDSAuthenticatorOption.md
 docs/EnumFIDO2PolicyUserVerificationOption.md
+docs/EnumFIDO2PublicKeyCredentialHint.md
 docs/EnumFIDOAttestationRequirements.md
 docs/EnumFIDOResidentKeyRequirement.md
 docs/EnumMFADevicePolicyMobileExtraVerification.md
@@ -62,6 +64,8 @@ docs/EnumMFASettingsPairingKeyFormat.md
 docs/EnumTimeUnit.md
 docs/EnumTimeUnitPairingKeyLifetime.md
 docs/EnumTimeUnitPushTimeout.md
+docs/Environment.md
+docs/EnvironmentsApi.md
 docs/FIDO2Policy.md
 docs/FIDO2PolicyApi.md
 docs/FIDO2PolicyBackupEligibility.md
@@ -70,6 +74,7 @@ docs/FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner.md
 docs/FIDO2PolicyUserDisplayNameAttributes.md
 docs/FIDO2PolicyUserDisplayNameAttributesAttributesInner.md
 docs/FIDO2PolicyUserDisplayNameAttributesAttributesInnerSubAttributesInner.md
+docs/FIDO2PolicyUserPresenceTimeout.md
 docs/FIDO2PolicyUserVerification.md
 docs/FIDODeviceApi.md
 docs/FIDOPolicy.md
@@ -136,6 +141,7 @@ model_enum_fido2_policy_authenticator_attachment.go
 model_enum_fido2_policy_discoverable_credentials.go
 model_enum_fido2_policy_mds_authenticator_option.go
 model_enum_fido2_policy_user_verification_option.go
+model_enum_fido2_public_key_credential_hint.go
 model_enum_fido_attestation_requirements.go
 model_enum_fido_resident_key_requirement.go
 model_enum_mfa_device_policy_mobile_extra_verification.go
@@ -148,6 +154,7 @@ model_enum_mfa_settings_pairing_key_format.go
 model_enum_time_unit.go
 model_enum_time_unit_pairing_key_lifetime.go
 model_enum_time_unit_push_timeout.go
+model_environment.go
 model_fido2_policy.go
 model_fido2_policy_backup_eligibility.go
 model_fido2_policy_mds_authenticators_requirements.go
@@ -155,6 +162,7 @@ model_fido2_policy_mds_authenticators_requirements_allowed_authenticators_inner.
 model_fido2_policy_user_display_name_attributes.go
 model_fido2_policy_user_display_name_attributes_attributes_inner.go
 model_fido2_policy_user_display_name_attributes_attributes_inner_sub_attributes_inner.go
+model_fido2_policy_user_presence_timeout.go
 model_fido2_policy_user_verification.go
 model_fido_policy.go
 model_fido_policy_allowed_authenticators_inner.go

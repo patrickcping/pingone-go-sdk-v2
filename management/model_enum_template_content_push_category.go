@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// EnumTemplateContentPushCategory For Push content, you can specify what type of banner should be displayed to the user. The available options are: * `BANNER_BUTTONS` - the banner contains both Approve and Deny buttons * `WITHOUT_BANNER_BUTTONS` - when the user clicks the banner, they are taken to an application that contains the necessary approval controls. * `APPROVE_AND_OPEN_APP` - when the Approve button is clicked, authentication is completed and the user is taken to the relevant application.  If this parameter is not provided, the default is `BANNER_BUTTONS`. Note that to use the non-default push banners, you must implement them in your application code, using the PingOne SDK. For details, see the [README for iOS](https://github.com/pingidentity/pingone-mobile-sdk-ios/#171-push-notifications-categories) and the [README for Android](https://github.com/pingidentity/pingone-mobile-sdk-android). 
+// EnumTemplateContentPushCategory For Push content, you can specify what type of banner should be displayed to the user. The available options are: * `BANNER_BUTTONS` - the banner contains both Approve and Deny buttons * `WITHOUT_BANNER_BUTTONS` - when the user clicks the banner, they are taken to an application that contains the necessary approval controls. * `APPROVE_AND_OPEN_APP` - when the Approve button is clicked, authentication is completed and the user is taken to the relevant application.  If this parameter is not provided, the default is `BANNER_BUTTONS`. Note that to use the non-default push banners, you must implement them in your application code, using the PingOne SDK. For details, see the [README for iOS](https://github.com/pingidentity/pingone-mobile-sdk-ios/#171-push-notifications-categories) and the [README for Android](https://github.com/pingidentity/pingone-mobile-sdk-android).
 type EnumTemplateContentPushCategory string
 
 // List of EnumTemplateContentPushCategory
 const (
-	ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS EnumTemplateContentPushCategory = "BANNER_BUTTONS"
+	ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS         EnumTemplateContentPushCategory = "BANNER_BUTTONS"
 	ENUMTEMPLATECONTENTPUSHCATEGORY_WITHOUT_BANNER_BUTTONS EnumTemplateContentPushCategory = "WITHOUT_BANNER_BUTTONS"
-	ENUMTEMPLATECONTENTPUSHCATEGORY_APPROVE_AND_OPEN_APP EnumTemplateContentPushCategory = "APPROVE_AND_OPEN_APP"
+	ENUMTEMPLATECONTENTPUSHCATEGORY_APPROVE_AND_OPEN_APP   EnumTemplateContentPushCategory = "APPROVE_AND_OPEN_APP"
 )
 
 // All allowed values of EnumTemplateContentPushCategory enum
@@ -111,4 +111,3 @@ func (v *NullableEnumTemplateContentPushCategory) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

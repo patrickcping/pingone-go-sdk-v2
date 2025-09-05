@@ -26,9 +26,9 @@ type ApplicationOIDCAllOfMobile struct {
 	// The unique identifier for the app on the device and in the Huawei Mobile Service AppGallery. The value of the `huaweiAppId` property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem.
 	HuaweiAppId *string `json:"huaweiAppId,omitempty"`
 	// The package name associated with the application, for push notifications in native apps. The value of the `huaweiPackageName` property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem.
-	HuaweiPackageName *string `json:"huaweiPackageName,omitempty"`
+	HuaweiPackageName       *string                                            `json:"huaweiPackageName,omitempty"`
 	PasscodeRefreshDuration *ApplicationOIDCAllOfMobilePasscodeRefreshDuration `json:"passcodeRefreshDuration,omitempty"`
-	IntegrityDetection *ApplicationOIDCAllOfMobileIntegrityDetection `json:"integrityDetection,omitempty"`
+	IntegrityDetection      *ApplicationOIDCAllOfMobileIntegrityDetection      `json:"integrityDetection,omitempty"`
 	// A string that specifies a URI prefix that enables direct triggering of the mobile application when scanning a QR code. The URI prefix can be set to a universal link with a valid value (which can be a URL address that starts with `HTTP://` or `HTTPS://`, such as `https://www.acme.com`), or an app schema, which is just a string and requires no special validation.
 	UriPrefix *string `json:"uriPrefix,omitempty"`
 }
@@ -275,7 +275,7 @@ func (o *ApplicationOIDCAllOfMobile) SetUriPrefix(v string) {
 }
 
 func (o ApplicationOIDCAllOfMobile) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -343,5 +343,3 @@ func (v *NullableApplicationOIDCAllOfMobile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

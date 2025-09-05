@@ -21,10 +21,10 @@ type EnumApplicationOIDCGrantType string
 // List of EnumApplicationOIDCGrantType
 const (
 	ENUMAPPLICATIONOIDCGRANTTYPE_AUTHORIZATION_CODE EnumApplicationOIDCGrantType = "AUTHORIZATION_CODE"
-	ENUMAPPLICATIONOIDCGRANTTYPE_IMPLICIT EnumApplicationOIDCGrantType = "IMPLICIT"
-	ENUMAPPLICATIONOIDCGRANTTYPE_REFRESH_TOKEN EnumApplicationOIDCGrantType = "REFRESH_TOKEN"
+	ENUMAPPLICATIONOIDCGRANTTYPE_IMPLICIT           EnumApplicationOIDCGrantType = "IMPLICIT"
+	ENUMAPPLICATIONOIDCGRANTTYPE_REFRESH_TOKEN      EnumApplicationOIDCGrantType = "REFRESH_TOKEN"
 	ENUMAPPLICATIONOIDCGRANTTYPE_CLIENT_CREDENTIALS EnumApplicationOIDCGrantType = "CLIENT_CREDENTIALS"
-	ENUMAPPLICATIONOIDCGRANTTYPE_DEVICE_CODE EnumApplicationOIDCGrantType = "DEVICE_CODE"
+	ENUMAPPLICATIONOIDCGRANTTYPE_DEVICE_CODE        EnumApplicationOIDCGrantType = "DEVICE_CODE"
 )
 
 // All allowed values of EnumApplicationOIDCGrantType enum
@@ -115,4 +115,3 @@ func (v *NullableEnumApplicationOIDCGrantType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,9 +20,9 @@ type EnumLicenseStatus string
 
 // List of EnumLicenseStatus
 const (
-	ENUMLICENSESTATUS_ACTIVE EnumLicenseStatus = "ACTIVE"
-	ENUMLICENSESTATUS_EXPIRED EnumLicenseStatus = "EXPIRED"
-	ENUMLICENSESTATUS_FUTURE EnumLicenseStatus = "FUTURE"
+	ENUMLICENSESTATUS_ACTIVE     EnumLicenseStatus = "ACTIVE"
+	ENUMLICENSESTATUS_EXPIRED    EnumLicenseStatus = "EXPIRED"
+	ENUMLICENSESTATUS_FUTURE     EnumLicenseStatus = "FUTURE"
 	ENUMLICENSESTATUS_TERMINATED EnumLicenseStatus = "TERMINATED"
 )
 
@@ -113,4 +113,3 @@ func (v *NullableEnumLicenseStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

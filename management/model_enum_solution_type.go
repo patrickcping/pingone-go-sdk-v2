@@ -15,15 +15,15 @@ import (
 	"fmt"
 )
 
-// EnumSolutionType The solution type selected when creating the environment. Ignored on PUT operations. The following values are supported: `CIAM_TRIAL`. The Customer trial experience. Indicates the Customer solution type, and the Solution Designer was selected. `WF_TRIAL`. The Workforce trial experience. Indicates the Workforce solution type, and the Solution Designer was selected. `CUSTOMER`. Indicates the Customer solution type was selected. This solution type uses PingOne MFA, rather than PingID. `WORKFORCE`. Indicates the Workforce solution type was selected. This solution type uses PingID, rather than PingOne MFA. 
+// EnumSolutionType The solution type selected when creating the environment. Ignored on PUT operations. The following values are supported: `CIAM_TRIAL`. The Customer trial experience. Indicates the Customer solution type, and the Solution Designer was selected. `WF_TRIAL`. The Workforce trial experience. Indicates the Workforce solution type, and the Solution Designer was selected. `CUSTOMER`. Indicates the Customer solution type was selected. This solution type uses PingOne MFA, rather than PingID. `WORKFORCE`. Indicates the Workforce solution type was selected. This solution type uses PingID, rather than PingOne MFA.
 type EnumSolutionType string
 
 // List of EnumSolutionType
 const (
-	ENUMSOLUTIONTYPE_WORKFORCE EnumSolutionType = "WORKFORCE"
-	ENUMSOLUTIONTYPE_CUSTOMER EnumSolutionType = "CUSTOMER"
+	ENUMSOLUTIONTYPE_WORKFORCE  EnumSolutionType = "WORKFORCE"
+	ENUMSOLUTIONTYPE_CUSTOMER   EnumSolutionType = "CUSTOMER"
 	ENUMSOLUTIONTYPE_CIAM_TRIAL EnumSolutionType = "CIAM_TRIAL"
-	ENUMSOLUTIONTYPE_WF_TRIAL EnumSolutionType = "WF_TRIAL"
+	ENUMSOLUTIONTYPE_WF_TRIAL   EnumSolutionType = "WF_TRIAL"
 )
 
 // All allowed values of EnumSolutionType enum
@@ -113,4 +113,3 @@ func (v *NullableEnumSolutionType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

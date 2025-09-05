@@ -21,7 +21,7 @@ type EnumFormElementLayout string
 // List of EnumFormElementLayout
 const (
 	ENUMFORMELEMENTLAYOUT_HORIZONTAL EnumFormElementLayout = "HORIZONTAL"
-	ENUMFORMELEMENTLAYOUT_VERTICAL EnumFormElementLayout = "VERTICAL"
+	ENUMFORMELEMENTLAYOUT_VERTICAL   EnumFormElementLayout = "VERTICAL"
 )
 
 // All allowed values of EnumFormElementLayout enum
@@ -109,4 +109,3 @@ func (v *NullableEnumFormElementLayout) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

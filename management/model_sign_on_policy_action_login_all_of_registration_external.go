@@ -66,7 +66,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistrationExternal) SetHref(v string) {
 }
 
 func (o SignOnPolicyActionLoginAllOfRegistrationExternal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableSignOnPolicyActionLoginAllOfRegistrationExternal) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

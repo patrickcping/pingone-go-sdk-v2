@@ -28,14 +28,14 @@ type TemplateContentVoice struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// Specifies whether the template is a predefined default template.
 	Default *bool `json:"default,omitempty"`
-	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`. 
-	Locale string `json:"locale"`
+	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`.
+	Locale         string                            `json:"locale"`
 	DeliveryMethod EnumTemplateContentDeliveryMethod `json:"deliveryMethod"`
 	// Holds the unique user-defined name for each content variant that uses the same template + `deliveryMethod` + `locale` combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents).
 	Variant *string `json:"variant,omitempty"`
-	// The voice text.  Limited to 1Kb characters.   The following substitution place holders can be embedded in the message:   * `<pause1sec>`: Pauses the message narration for 1 second.     The pause interval <pause1sec> cannot be modified. To pause the message narration for more than one second, repeat multiple `<pause1sec>` occurrences in succession, according to the desired pause interval duration. For example, `<pause1sec><pause1sec><pause1sec>` pauses the message narration for three seconds.   * `<sayCharValue> .. </sayCharValue>`: Reads the character name of each character of the enclosed string separately.   * `<repeatMessage val=x> .. </repeatMessage>`: Narrates the enclosed text `<val>` number of times.      In the following message example, `${otp}` is assigned the value `\"123456\"`, and `${email}` is assigned the value `\"joe@bxz.com\"`:   ```   Hello <pause1sec> your authentication code is    <sayCharValue>${otp}</​sayCharValue>    <repeatMessage val=2> I repeat your code is    <sayCharValue>${otp}</​sayCharValue>   </​repeatMessage> <pause1sec>    Mail <sayCharValue>${email}</​sayCharValue> for help   ```   The narrated message on the voice call sounds like:   ```   HELLO <1 second silence> YOUR AUTHENTICATION CODE IS    ONE TWO THREE FOUR FIVE SIX    I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX    I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX <1 second silence>    MAIL JAY OH EE AT BEE EX ZEE DOT SEE OH EM FOR HELP   ``` 
+	// The voice text.  Limited to 1Kb characters.   The following substitution place holders can be embedded in the message:   * `<pause1sec>`: Pauses the message narration for 1 second.     The pause interval <pause1sec> cannot be modified. To pause the message narration for more than one second, repeat multiple `<pause1sec>` occurrences in succession, according to the desired pause interval duration. For example, `<pause1sec><pause1sec><pause1sec>` pauses the message narration for three seconds.   * `<sayCharValue> .. </sayCharValue>`: Reads the character name of each character of the enclosed string separately.   * `<repeatMessage val=x> .. </repeatMessage>`: Narrates the enclosed text `<val>` number of times.      In the following message example, `${otp}` is assigned the value `\"123456\"`, and `${email}` is assigned the value `\"joe@bxz.com\"`:   ```   Hello <pause1sec> your authentication code is    <sayCharValue>${otp}</​sayCharValue>    <repeatMessage val=2> I repeat your code is    <sayCharValue>${otp}</​sayCharValue>   </​repeatMessage> <pause1sec>    Mail <sayCharValue>${email}</​sayCharValue> for help   ```   The narrated message on the voice call sounds like:   ```   HELLO <1 second silence> YOUR AUTHENTICATION CODE IS    ONE TWO THREE FOUR FIVE SIX    I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX    I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX <1 second silence>    MAIL JAY OH EE AT BEE EX ZEE DOT SEE OH EM FOR HELP   ```
 	Content string `json:"content"`
-	// Voice OTP supports vendor-specific voices.   * Supported Twilio voices:     * Man, Woman       Supported locales (default: en):       en, en_GB, es, fr, de     * Alice (Twilio only)       Supported locales (default: en US):       da_DK, de_DE, en_AU, en_CA, en_GB, en_US, ca_ES, es_ES, es_MX, fi_FI, fr_CA, fr_FR, it_IT, ja_JP, ko_KR, nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, zh_CN, zh_HK, zh_TW     * Amazon Polly       cy_GB, ro_RO, is_IS, hi_IN tr_TR   * Supported Syniverse voices:     * Man, Woman       Supported locales:       en_US, en_GB, es_ES, es_US, fr_FR, de_DE, it_IT, en_AU, da_DK, is_IS, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, ja_JP     * Woman only       Supported locales:       cmn_CN, cy_GB, en_IN, fr_CA, hi_IN, nb_NO, ro_RO, sv_SE, tr_TR, ko_KR, ar 
+	// Voice OTP supports vendor-specific voices.   * Supported Twilio voices:     * Man, Woman       Supported locales (default: en):       en, en_GB, es, fr, de     * Alice (Twilio only)       Supported locales (default: en US):       da_DK, de_DE, en_AU, en_CA, en_GB, en_US, ca_ES, es_ES, es_MX, fi_FI, fr_CA, fr_FR, it_IT, ja_JP, ko_KR, nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, zh_CN, zh_HK, zh_TW     * Amazon Polly       cy_GB, ro_RO, is_IS, hi_IN tr_TR   * Supported Syniverse voices:     * Man, Woman       Supported locales:       en_US, en_GB, es_ES, es_US, fr_FR, de_DE, it_IT, en_AU, da_DK, is_IS, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, ja_JP     * Woman only       Supported locales:       cmn_CN, cy_GB, en_IN, fr_CA, hi_IN, nb_NO, ro_RO, sv_SE, tr_TR, ko_KR, ar
 	Voice *string `json:"voice,omitempty"`
 }
 
@@ -356,7 +356,7 @@ func (o *TemplateContentVoice) SetVoice(v string) {
 }
 
 func (o TemplateContentVoice) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -427,5 +427,3 @@ func (v *NullableTemplateContentVoice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

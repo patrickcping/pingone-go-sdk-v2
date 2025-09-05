@@ -21,7 +21,7 @@ type EnumIdentityProviderAttributeMappingUpdate string
 // List of EnumIdentityProviderAttributeMappingUpdate
 const (
 	ENUMIDENTITYPROVIDERATTRIBUTEMAPPINGUPDATE_EMPTY_ONLY EnumIdentityProviderAttributeMappingUpdate = "EMPTY_ONLY"
-	ENUMIDENTITYPROVIDERATTRIBUTEMAPPINGUPDATE_ALWAYS EnumIdentityProviderAttributeMappingUpdate = "ALWAYS"
+	ENUMIDENTITYPROVIDERATTRIBUTEMAPPINGUPDATE_ALWAYS     EnumIdentityProviderAttributeMappingUpdate = "ALWAYS"
 )
 
 // All allowed values of EnumIdentityProviderAttributeMappingUpdate enum
@@ -109,4 +109,3 @@ func (v *NullableEnumIdentityProviderAttributeMappingUpdate) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

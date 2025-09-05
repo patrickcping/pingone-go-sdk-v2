@@ -20,12 +20,12 @@ var _ MappedNullable = &EmailDomainTrustedEmail{}
 // EmailDomainTrustedEmail struct for EmailDomainTrustedEmail
 type EmailDomainTrustedEmail struct {
 	// A string that specifies the auto generated ID of the trusted email address.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Domain *EmailDomainTrustedEmailDomain `json:"domain,omitempty"`
+	Id          *string                        `json:"id,omitempty"`
+	Environment *ObjectEnvironment             `json:"environment,omitempty"`
+	Domain      *EmailDomainTrustedEmailDomain `json:"domain,omitempty"`
 	// A string that specifies the trusted email address, for example john.smith@shopco.com.
-	EmailAddress string `json:"emailAddress"`
-	Status *EnumTrustedEmailStatus `json:"status,omitempty"`
+	EmailAddress string                  `json:"emailAddress"`
+	Status       *EnumTrustedEmailStatus `json:"status,omitempty"`
 	// A string that specifies the trusted email domain resource’s unique identifier associated with the resource.
 	DomainId *string `json:"domainId,omitempty"`
 }
@@ -233,7 +233,7 @@ func (o *EmailDomainTrustedEmail) SetDomainId(v string) {
 }
 
 func (o EmailDomainTrustedEmail) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -296,5 +296,3 @@ func (v *NullableEmailDomainTrustedEmail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

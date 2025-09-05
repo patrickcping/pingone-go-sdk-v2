@@ -20,7 +20,7 @@ var _ MappedNullable = &ResourceApplicationPermissionResourceServer{}
 // ResourceApplicationPermissionResourceServer An object that identifies the associated application resource server.
 type ResourceApplicationPermissionResourceServer struct {
 	// The ID for the associated application resource server.
-	Id *string `json:"id,omitempty"`
+	Id          *string                                                 `json:"id,omitempty"`
 	Environment *ResourceApplicationPermissionResourceServerEnvironment `json:"environment,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *ResourceApplicationPermissionResourceServer) SetEnvironment(v ResourceA
 }
 
 func (o ResourceApplicationPermissionResourceServer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,5 +159,3 @@ func (v *NullableResourceApplicationPermissionResourceServer) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

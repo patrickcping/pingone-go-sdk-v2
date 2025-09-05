@@ -20,7 +20,7 @@ type EnumMFADevicePolicyMobileExtraVerification string
 
 // List of EnumMFADevicePolicyMobileExtraVerification
 const (
-	ENUMMFADEVICEPOLICYMOBILEEXTRAVERIFICATION_PERMISSIVE EnumMFADevicePolicyMobileExtraVerification = "permissive"
+	ENUMMFADEVICEPOLICYMOBILEEXTRAVERIFICATION_PERMISSIVE  EnumMFADevicePolicyMobileExtraVerification = "permissive"
 	ENUMMFADEVICEPOLICYMOBILEEXTRAVERIFICATION_RESTRICTIVE EnumMFADevicePolicyMobileExtraVerification = "restrictive"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumMFADevicePolicyMobileExtraVerification) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

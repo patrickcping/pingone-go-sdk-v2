@@ -21,8 +21,8 @@ type EnumInspectionType string
 // List of EnumInspectionType
 const (
 	ENUMINSPECTIONTYPE_AUTOMATIC EnumInspectionType = "AUTOMATIC"
-	ENUMINSPECTIONTYPE_MANUAL EnumInspectionType = "MANUAL"
-	ENUMINSPECTIONTYPE_STEP_UP EnumInspectionType = "STEP_UP"
+	ENUMINSPECTIONTYPE_MANUAL    EnumInspectionType = "MANUAL"
+	ENUMINSPECTIONTYPE_STEP_UP   EnumInspectionType = "STEP_UP"
 )
 
 // All allowed values of EnumInspectionType enum
@@ -111,4 +111,3 @@ func (v *NullableEnumInspectionType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,8 +20,8 @@ var _ MappedNullable = &MFASettingsPairing{}
 // MFASettingsPairing An object that contains pairing settings.
 type MFASettingsPairing struct {
 	// An integer that defines the maximum number of MFA devices each user can have. This can be any number up to 15. The default value is 5.
-	MaxAllowedDevices int32 `json:"maxAllowedDevices"`
-	PairingKeyFormat EnumMFASettingsPairingKeyFormat `json:"pairingKeyFormat"`
+	MaxAllowedDevices int32                           `json:"maxAllowedDevices"`
+	PairingKeyFormat  EnumMFASettingsPairingKeyFormat `json:"pairingKeyFormat"`
 }
 
 // NewMFASettingsPairing instantiates a new MFASettingsPairing object
@@ -94,7 +94,7 @@ func (o *MFASettingsPairing) SetPairingKeyFormat(v EnumMFASettingsPairingKeyForm
 }
 
 func (o MFASettingsPairing) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -143,5 +143,3 @@ func (v *NullableMFASettingsPairing) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

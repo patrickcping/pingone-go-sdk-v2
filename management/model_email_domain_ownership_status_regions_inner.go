@@ -20,7 +20,7 @@ var _ MappedNullable = &EmailDomainOwnershipStatusRegionsInner{}
 // EmailDomainOwnershipStatusRegionsInner struct for EmailDomainOwnershipStatusRegionsInner
 type EmailDomainOwnershipStatusRegionsInner struct {
 	// The name of the region.
-	Name *string `json:"name,omitempty"`
+	Name   *string                `json:"name,omitempty"`
 	Status *EnumEmailDomainStatus `json:"status,omitempty"`
 	// Record name.
 	Key *string `json:"key,omitempty"`
@@ -174,7 +174,7 @@ func (o *EmailDomainOwnershipStatusRegionsInner) SetValue(v string) {
 }
 
 func (o EmailDomainOwnershipStatusRegionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableEmailDomainOwnershipStatusRegionsInner) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

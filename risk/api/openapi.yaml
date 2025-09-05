@@ -37,10 +37,126 @@ tags:
 - name: Risk Evaluations
 - name: Risk Advanced Predictors
 paths:
+  /environments/{environmentID}:
+    get:
+      operationId: readOneEnvironment
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+          description: Successful response
+      summary: READ One Environment
+      tags:
+      - Environments
   /environments/{environmentID}/riskPolicySets:
     get:
       operationId: readRiskPolicySets
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -104,6 +220,32 @@ paths:
     post:
       operationId: createRiskPolicySet
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -142,6 +284,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -180,6 +323,32 @@ paths:
     delete:
       operationId: deleteRiskPolicySet
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -246,6 +415,32 @@ paths:
     get:
       operationId: readOneRiskPolicySet
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -316,6 +511,32 @@ paths:
     put:
       operationId: updateRiskPolicySet
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -392,6 +613,32 @@ paths:
     post:
       operationId: createRiskEvaluation
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -430,6 +677,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -468,6 +716,32 @@ paths:
     get:
       operationId: readOneRiskEvaluation
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -539,6 +813,32 @@ paths:
     put:
       operationId: updateRiskEvaluation
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -615,6 +915,32 @@ paths:
     get:
       operationId: readAllRiskPredictors
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -678,6 +1004,32 @@ paths:
     post:
       operationId: createRiskPredictor
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -716,6 +1068,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -754,6 +1107,32 @@ paths:
     delete:
       operationId: deleteRiskAdvancedPredictor
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -820,6 +1199,32 @@ paths:
     get:
       operationId: readOneRiskPredictor
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -890,6 +1295,32 @@ paths:
     put:
       operationId: updateRiskPredictor
       parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -1308,6 +1739,8 @@ components:
     EnumPredictorCompositeConditionType:
       enum:
       - VALUE_COMPARISON
+      - IP_RANGE
+      - IP_COMPARISON
       - STRING_LIST
       - AND
       - NOT
@@ -1330,11 +1763,12 @@ components:
       - ANONYMOUS_NETWORK
       - BOT
       - COMPOSITE
+      - DEVICE
       - EMAIL_REPUTATION
       - GEO_VELOCITY
       - IP_REPUTATION
       - MAP
-      - DEVICE
+      - TRAFFIC_ANOMALY
       - USER_LOCATION_ANOMALY
       - USER_RISK_BEHAVIOR
       - VELOCITY
@@ -1355,6 +1789,19 @@ components:
     EnumPredictorVelocityUseType:
       enum:
       - POISSON_WITH_MAX
+      type: string
+    EnumRiskPredictorTrafficAnomalyRuleIntervalUnit:
+      description: The time unit for defining the timeframe for tracking number of
+        users on the device - can be `DAY` or `HOUR`
+      enum:
+      - DAY
+      - HOUR
+      type: string
+    EnumRiskPredictorTrafficAnomalyRuleType:
+      description: The type of rule. Currently the only valid value is `UNIQUE_USERS_PER_DEVICE`
+        - for tracking the number of unique users for a device over a defined timeframe.
+      enum:
+      - UNIQUE_USERS_PER_DEVICE
       type: string
     EnumResultType:
       description: A string that specifies the risk evaluation result type. Options
@@ -1404,6 +1851,25 @@ components:
       enum:
       - EXTERNAL
       type: string
+    Environment:
+      example:
+        createdAt: createdAt
+        id: id
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+      type: object
     ObjectEnvironment:
       example:
         id: id
@@ -2092,16 +2558,17 @@ components:
       type: object
     RiskPredictor:
       oneOf:
-      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorAdversaryInTheMiddle'
       - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
       - $ref: '#/components/schemas/RiskPredictorBotDetection'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorComposite'
       - $ref: '#/components/schemas/RiskPredictorCustom'
+      - $ref: '#/components/schemas/RiskPredictorDevice'
       - $ref: '#/components/schemas/RiskPredictorEmailReputation'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity'
       - $ref: '#/components/schemas/RiskPredictorIPReputation'
-      - $ref: '#/components/schemas/RiskPredictorDevice'
+      - $ref: '#/components/schemas/RiskPredictorTrafficAnomaly'
       - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
       - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
       - $ref: '#/components/schemas/RiskPredictorVelocity'
@@ -2116,6 +2583,8 @@ components:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
           type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         name:
           description: "A string type. A unique, friendly name for the predictor.\
             \ This name is displayed in the Risk Policies UI, when the admin is asked\
@@ -2190,12 +2659,16 @@ components:
     RiskPredictorBotDetection:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
+      - properties:
+          includeRepeatedEventsWithoutSdk:
+            description: Set the value of `includeRepeatedEventsWithoutSdk` to `true`
+              to expand the range of bot activity that PingOne Protect can detect.
+            type: boolean
+        type: object
     RiskPredictorComposite:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - properties:
-          composition:
-            $ref: '#/components/schemas/RiskPredictorComposite_allOf_composition'
           compositions:
             description: Contains the objects that specify the conditions to test
               and the risk level that should be assigned if the conditions are met.
@@ -2227,6 +2700,7 @@ components:
       - $ref: '#/components/schemas/RiskPredictorCompositeNot'
       - $ref: '#/components/schemas/RiskPredictorCompositeOr'
       - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
+      - $ref: '#/components/schemas/RiskPredictorCompositeIPRange'
       - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf'
       - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1'
     RiskPredictorCompositeNot:
@@ -2248,6 +2722,35 @@ components:
           $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - or
+      type: object
+    RiskPredictorCompositeIPRange:
+      description: The mapping of risk levels for the IP ranges specified.
+      properties:
+        contains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        notContains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        equals:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        notEquals:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
+        ipRange:
+          description: List of CIDRs to include
+          items:
+            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+            type: string
+          type: array
+        ip:
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+          type: string
+      required:
+      - ipRange
       type: object
     RiskPredictorCustom:
       allOf:
@@ -2350,6 +2853,16 @@ components:
       - properties:
           detect:
             $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
+          shouldValidatePayloadSignature:
+            description: "Relevant only for Suspicious Device predictors. If `shouldValidatePayloadSignature`\
+              \ is set to `true`, then any risk policies that include this predictor\
+              \ will require that the Signals SDK payload be provided as a signed\
+              \ JWT whose signature will be verified before proceeding with risk evaluation.\
+              \ You instruct the Signals SDK to provide the payload as a signed JWT\
+              \ by using the `universalDeviceIdentification` flag during initialization\
+              \ of the SDK, or by selecting the relevant setting for the `skrisk`\
+              \ component in DaVinci flows."
+            type: boolean
           activationAt:
             description: You can use the `activationAt` parameter to specify a date
               on which the learning process for the predictor should be restarted.
@@ -2361,6 +2874,17 @@ components:
             type: string
         required:
         - detect
+        type: object
+    RiskPredictorTrafficAnomaly:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictorCommon'
+      - properties:
+          rules:
+            items:
+              $ref: '#/components/schemas/RiskPredictorTrafficAnomaly_allOf_rules'
+            type: array
+        required:
+        - rules
         type: object
     RiskPredictorUserLocationAnomaly:
       allOf:
@@ -3329,18 +3853,6 @@ components:
           type: array
       readOnly: true
       type: object
-    RiskPredictorComposite_allOf_composition:
-      deprecated: true
-      properties:
-        condition:
-          $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
-        level:
-          $ref: '#/components/schemas/EnumRiskLevel'
-      required:
-      - condition
-      - level
-      type: object
-      example: null
     RiskPredictorComposite_allOf_compositions_inner:
       properties:
         condition:
@@ -3417,6 +3929,57 @@ components:
       - maxScore
       - minScore
       type: object
+    RiskPredictorTrafficAnomaly_allOf_interval:
+      description: Object that contains the fields used to define the timeframe to
+        consider. The timeframe can be between 1 hour and 14 days.
+      properties:
+        unit:
+          $ref: '#/components/schemas/EnumRiskPredictorTrafficAnomalyRuleIntervalUnit'
+        quantity:
+          description: The number of days or hours for the timeframe for tracking
+            number of users on the device.
+          type: integer
+      required:
+      - quantity
+      - unit
+      type: object
+      example: null
+    RiskPredictorTrafficAnomaly_allOf_threshold:
+      description: Object that contains the fields used to define the risk thresholds.
+      properties:
+        medium:
+          description: Number of users during the defined timeframe that will be considered
+            Medium risk.
+          format: float
+          type: number
+        high:
+          description: Number of users during the defined timeframe that will be considered
+            High risk.
+          format: float
+          type: number
+      required:
+      - high
+      - medium
+      type: object
+      example: null
+    RiskPredictorTrafficAnomaly_allOf_rules:
+      properties:
+        enabled:
+          description: Set to true to use the defined rule in the predictor.
+          type: boolean
+        interval:
+          $ref: '#/components/schemas/RiskPredictorTrafficAnomaly_allOf_interval'
+        threshold:
+          $ref: '#/components/schemas/RiskPredictorTrafficAnomaly_allOf_threshold'
+        type:
+          $ref: '#/components/schemas/EnumRiskPredictorTrafficAnomalyRuleType'
+      required:
+      - enabled
+      - interval
+      - threshold
+      - type
+      type: object
+      example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:
       properties:
         distance:

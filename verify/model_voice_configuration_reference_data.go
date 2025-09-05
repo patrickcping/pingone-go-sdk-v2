@@ -20,8 +20,8 @@ var _ MappedNullable = &VoiceConfigurationReferenceData{}
 // VoiceConfigurationReferenceData struct for VoiceConfigurationReferenceData
 type VoiceConfigurationReferenceData struct {
 	RetainOriginalRecordings *bool `json:"retainOriginalRecordings,omitempty"`
-	UpdateOnReenrollment *bool `json:"updateOnReenrollment,omitempty"`
-	UpdateOnVerification *bool `json:"updateOnVerification,omitempty"`
+	UpdateOnReenrollment     *bool `json:"updateOnReenrollment,omitempty"`
+	UpdateOnVerification     *bool `json:"updateOnVerification,omitempty"`
 }
 
 // NewVoiceConfigurationReferenceData instantiates a new VoiceConfigurationReferenceData object
@@ -138,7 +138,7 @@ func (o *VoiceConfigurationReferenceData) SetUpdateOnVerification(v bool) {
 }
 
 func (o VoiceConfigurationReferenceData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableVoiceConfigurationReferenceData) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,13 +19,13 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	ApiServers []APIServer `json:"apiServers,omitempty"`
-	Assignments []ApplicationRoleAssignment `json:"assignments,omitempty"`
-	DecisionEndpoints []DecisionEndpoint `json:"decisionEndpoints,omitempty"`
-	Operations []APIServerOperation `json:"operations,omitempty"`
-	Permissions []EntityArrayEmbeddedPermissionsInner `json:"permissions,omitempty"`
-	Resources []ApplicationResource `json:"resources,omitempty"`
-	Roles []ApplicationRole `json:"roles,omitempty"`
+	ApiServers        []APIServer                           `json:"apiServers,omitempty"`
+	Assignments       []ApplicationRoleAssignment           `json:"assignments,omitempty"`
+	DecisionEndpoints []DecisionEndpoint                    `json:"decisionEndpoints,omitempty"`
+	Operations        []APIServerOperation                  `json:"operations,omitempty"`
+	Permissions       []EntityArrayEmbeddedPermissionsInner `json:"permissions,omitempty"`
+	Resources         []ApplicationResource                 `json:"resources,omitempty"`
+	Roles             []ApplicationRole                     `json:"roles,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -270,7 +270,7 @@ func (o *EntityArrayEmbedded) SetRoles(v []ApplicationRole) {
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,5 +338,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

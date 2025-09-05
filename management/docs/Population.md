@@ -5,15 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
+**AlternativeIdentifiers** | Pointer to **[]string** | Alternative identifiers that can be used to search for populations besides &#x60;name&#x60;. | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Default** | Pointer to **bool** | The population to use as the default population for the environment. Only one population per environment can be the default. New users are assigned to the default population if it exists, and the Population ID is not provided in the [Create User](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user) request. | [optional] 
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the population name, which must be provided and must be unique within an environment. | 
+**PreferredLanguage** | Pointer to **string** | The language locale for the population. If absent, the environment default is used. | [optional] 
 **PasswordPolicy** | Pointer to [**PopulationPasswordPolicy**](PopulationPasswordPolicy.md) |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **UserCount** | Pointer to **int32** | The number of users that belong to the population | [optional] [readonly] 
+**Theme** | Pointer to [**PopulationTheme**](PopulationTheme.md) |  | [optional] 
 
 ## Methods
 
@@ -58,6 +61,31 @@ SetLinks sets Links field to given value.
 `func (o *Population) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetAlternativeIdentifiers
+
+`func (o *Population) GetAlternativeIdentifiers() []string`
+
+GetAlternativeIdentifiers returns the AlternativeIdentifiers field if non-nil, zero value otherwise.
+
+### GetAlternativeIdentifiersOk
+
+`func (o *Population) GetAlternativeIdentifiersOk() (*[]string, bool)`
+
+GetAlternativeIdentifiersOk returns a tuple with the AlternativeIdentifiers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlternativeIdentifiers
+
+`func (o *Population) SetAlternativeIdentifiers(v []string)`
+
+SetAlternativeIdentifiers sets AlternativeIdentifiers field to given value.
+
+### HasAlternativeIdentifiers
+
+`func (o *Population) HasAlternativeIdentifiers() bool`
+
+HasAlternativeIdentifiers returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -204,6 +232,31 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetPreferredLanguage
+
+`func (o *Population) GetPreferredLanguage() string`
+
+GetPreferredLanguage returns the PreferredLanguage field if non-nil, zero value otherwise.
+
+### GetPreferredLanguageOk
+
+`func (o *Population) GetPreferredLanguageOk() (*string, bool)`
+
+GetPreferredLanguageOk returns a tuple with the PreferredLanguage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreferredLanguage
+
+`func (o *Population) SetPreferredLanguage(v string)`
+
+SetPreferredLanguage sets PreferredLanguage field to given value.
+
+### HasPreferredLanguage
+
+`func (o *Population) HasPreferredLanguage() bool`
+
+HasPreferredLanguage returns a boolean if a field has been set.
+
 ### GetPasswordPolicy
 
 `func (o *Population) GetPasswordPolicy() PopulationPasswordPolicy`
@@ -278,6 +331,31 @@ SetUserCount sets UserCount field to given value.
 `func (o *Population) HasUserCount() bool`
 
 HasUserCount returns a boolean if a field has been set.
+
+### GetTheme
+
+`func (o *Population) GetTheme() PopulationTheme`
+
+GetTheme returns the Theme field if non-nil, zero value otherwise.
+
+### GetThemeOk
+
+`func (o *Population) GetThemeOk() (*PopulationTheme, bool)`
+
+GetThemeOk returns a tuple with the Theme field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTheme
+
+`func (o *Population) SetTheme(v PopulationTheme)`
+
+SetTheme sets Theme field to given value.
+
+### HasTheme
+
+`func (o *Population) HasTheme() bool`
+
+HasTheme returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

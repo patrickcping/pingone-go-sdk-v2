@@ -25,7 +25,7 @@ type ApplicationResource struct {
 	// The resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	// The application resource name. The name value must be unique.
-	Name string `json:"name"`
+	Name   string                     `json:"name"`
 	Parent *ApplicationResourceParent `json:"parent,omitempty"`
 }
 
@@ -200,7 +200,7 @@ func (o *ApplicationResource) SetParent(v ApplicationResourceParent) {
 }
 
 func (o ApplicationResource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -260,5 +260,3 @@ func (v *NullableApplicationResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

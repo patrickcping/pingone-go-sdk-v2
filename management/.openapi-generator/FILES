@@ -1,6 +1,7 @@
 README.md
 api/openapi.yaml
 api_active_identity_counts.go
+api_administrator_security.go
 api_agreement_languages_resources.go
 api_agreement_revisions_resources.go
 api_agreements_resources.go
@@ -20,6 +21,7 @@ api_bill_of_materials_bom.go
 api_branding_settings.go
 api_branding_themes.go
 api_capabilities.go
+api_custom_admin_roles.go
 api_custom_domains.go
 api_enable_users.go
 api_environments.go
@@ -66,6 +68,7 @@ api_sign_on_policies.go
 api_sign_on_policy_actions.go
 api_subscriptions_webhooks.go
 api_total_identities.go
+api_translations.go
 api_trusted_email_addresses.go
 api_trusted_email_domains.go
 api_user_accounts.go
@@ -79,6 +82,10 @@ api_user_role_assignments.go
 api_users.go
 configuration.go
 docs/ActiveIdentityCountsApi.md
+docs/AdministratorSecurity.md
+docs/AdministratorSecurityAllowedMethods.md
+docs/AdministratorSecurityApi.md
+docs/AdministratorSecurityProvider.md
 docs/Agreement.md
 docs/AgreementLanguage.md
 docs/AgreementLanguageAgreement.md
@@ -133,6 +140,8 @@ docs/ApplicationSAMLAllOfSpEncryption.md
 docs/ApplicationSAMLAllOfSpEncryptionCertificate.md
 docs/ApplicationSAMLAllOfSpVerification.md
 docs/ApplicationSAMLAllOfSpVerificationCertificates.md
+docs/ApplicationSAMLAllOfVirtualServerIdSettings.md
+docs/ApplicationSAMLAllOfVirtualServerIdSettingsVirtualServerIds.md
 docs/ApplicationSecret.md
 docs/ApplicationSecretApi.md
 docs/ApplicationSecretPrevious.md
@@ -171,6 +180,10 @@ docs/CreateApplication201Response.md
 docs/CreateApplicationRequest.md
 docs/CreateGateway201Response.md
 docs/CreateGatewayRequest.md
+docs/CustomAdminRole.md
+docs/CustomAdminRoleCanAssignInner.md
+docs/CustomAdminRolePermissionsInner.md
+docs/CustomAdminRolesApi.md
 docs/CustomDomain.md
 docs/CustomDomainCertificate.md
 docs/CustomDomainCertificateRequest.md
@@ -180,6 +193,7 @@ docs/EmailDomainDKIMStatus.md
 docs/EmailDomainDKIMStatusRegionsInner.md
 docs/EmailDomainDKIMStatusRegionsInnerTokensInner.md
 docs/EmailDomainOwnershipStatus.md
+docs/EmailDomainOwnershipStatusEnvironmentDnsRecord.md
 docs/EmailDomainOwnershipStatusRegionsInner.md
 docs/EmailDomainSPFStatus.md
 docs/EmailDomainTrustedEmail.md
@@ -192,6 +206,8 @@ docs/EntityArrayEmbeddedGatewaysInner.md
 docs/EntityArrayEmbeddedLanguagesInner.md
 docs/EntityArrayEmbeddedResourcesInner.md
 docs/EntityArrayEmbeddedRolesInner.md
+docs/EnumAdministratorSecurityAuthenticationMethod.md
+docs/EnumAdministratorSecurityMfaStatus.md
 docs/EnumAgreementRevisionContentType.md
 docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
@@ -211,6 +227,7 @@ docs/EnumApplicationTags.md
 docs/EnumApplicationType.md
 docs/EnumApplicationWSFEDIDPSigningAlgorithm.md
 docs/EnumApplicationWSFEDKerberosGatewayType.md
+docs/EnumApplicationWSFEDSubjectNameIdentifierFormat.md
 docs/EnumAttributeMappingType.md
 docs/EnumBillOfMaterialsProductTags.md
 docs/EnumBrandingLogoType.md
@@ -224,11 +241,14 @@ docs/EnumCertificateKeySignagureAlgorithm.md
 docs/EnumCertificateKeyStatus.md
 docs/EnumCertificateKeyUsageType.md
 docs/EnumCreateCertificateAcceptHeader.md
+docs/EnumCustomAdminRoleApplicableTo.md
+docs/EnumCustomAdminRoleType.md
 docs/EnumCustomDomainPostHeader.md
 docs/EnumCustomDomainStatus.md
 docs/EnumDurationUnitMinsHours.md
 docs/EnumEmailDomainStatus.md
 docs/EnumEnabledStatus.md
+docs/EnumEnvironmentStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumFlowPolicyTriggerType.md
 docs/EnumFormCategory.md
@@ -279,6 +299,11 @@ docs/EnumNotificationsPolicyCountryLimitType.md
 docs/EnumNotificationsPolicyQuotaDeliveryMethods.md
 docs/EnumNotificationsPolicyQuotaItemType.md
 docs/EnumNotificationsSettingsDeliveryMode.md
+docs/EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod.md
+docs/EnumNotificationsSettingsEmailDeliverySettingsCustomProvider.md
+docs/EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsDeliveryMethod.md
+docs/EnumNotificationsSettingsEmailDeliverySettingsCustomRequestsMethod.md
+docs/EnumNotificationsSettingsEmailDeliverySettingsProtocol.md
 docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod.md
 docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod.md
 docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat.md
@@ -340,6 +365,7 @@ docs/Environment.md
 docs/EnvironmentLicense.md
 docs/EnvironmentOrganization.md
 docs/EnvironmentRegion.md
+docs/EnvironmentStatus.md
 docs/EnvironmentsApi.md
 docs/FlowPoliciesApi.md
 docs/FlowPolicy.md
@@ -402,6 +428,7 @@ docs/GatewayTypeLDAPAllOfNewUserLookupAttributeMappings.md
 docs/GatewayTypeLDAPAllOfNewUserLookupPopulation.md
 docs/GatewayTypeLDAPAllOfUserTypes.md
 docs/GatewayTypeRADIUS.md
+docs/GatewayTypeRADIUSAllOfBlastRadiusMitigation.md
 docs/GatewayTypeRADIUSAllOfDavinci.md
 docs/GatewayTypeRADIUSAllOfDavinciPolicy.md
 docs/GatewayTypeRADIUSAllOfNetworkPolicyServer.md
@@ -431,6 +458,7 @@ docs/IdentityProviderCommonLoginButtonIcon.md
 docs/IdentityProviderCommonRegistration.md
 docs/IdentityProviderCommonRegistrationPopulation.md
 docs/IdentityProviderFacebook.md
+docs/IdentityProviderMicrosoft.md
 docs/IdentityProviderOIDC.md
 docs/IdentityProviderPaypal.md
 docs/IdentityProviderSAML.md
@@ -487,6 +515,7 @@ docs/LicenseVerify.md
 docs/LicensesApi.md
 docs/LinkedAccountsApi.md
 docs/LinksHATEOASValue.md
+docs/LocaleTranslation.md
 docs/MFAPairingKeysApi.md
 docs/NotificationsPoliciesApi.md
 docs/NotificationsPolicy.md
@@ -495,8 +524,15 @@ docs/NotificationsPolicyQuotasInner.md
 docs/NotificationsSettings.md
 docs/NotificationsSettingsApi.md
 docs/NotificationsSettingsEmailDeliverySettings.md
-docs/NotificationsSettingsEmailDeliverySettingsFrom.md
-docs/NotificationsSettingsEmailDeliverySettingsReplyTo.md
+docs/NotificationsSettingsEmailDeliverySettingsCommon.md
+docs/NotificationsSettingsEmailDeliverySettingsCustom.md
+docs/NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication.md
+docs/NotificationsSettingsEmailDeliverySettingsCustomAllOfFrom.md
+docs/NotificationsSettingsEmailDeliverySettingsCustomAllOfReplyTo.md
+docs/NotificationsSettingsEmailDeliverySettingsCustomAllOfRequests.md
+docs/NotificationsSettingsEmailDeliverySettingsSMTP.md
+docs/NotificationsSettingsEmailDeliverySettingsSMTPAllOfFrom.md
+docs/NotificationsSettingsEmailDeliverySettingsSMTPAllOfReplyTo.md
 docs/NotificationsSettingsFrom.md
 docs/NotificationsSettingsPhoneDeliverySettings.md
 docs/NotificationsSettingsPhoneDeliverySettingsCommon.md
@@ -531,6 +567,7 @@ docs/PhoneDeliverySettingsApi.md
 docs/Population.md
 docs/PopulationDefaultIdp.md
 docs/PopulationPasswordPolicy.md
+docs/PopulationTheme.md
 docs/PopulationsApi.md
 docs/PropagationMappingsApi.md
 docs/PropagationRevisionsApi.md
@@ -658,6 +695,7 @@ docs/TemplateContentPush.md
 docs/TemplateContentSMS.md
 docs/TemplateContentVoice.md
 docs/TotalIdentitiesApi.md
+docs/TranslationsApi.md
 docs/TrustedEmailAddressesApi.md
 docs/TrustedEmailDomainsApi.md
 docs/UpdateApplicationRequest.md
@@ -688,6 +726,9 @@ docs/UserRoleAssignmentsApi.md
 docs/UsersApi.md
 go.mod
 go.sum
+model_administrator_security.go
+model_administrator_security_allowed_methods.go
+model_administrator_security_provider.go
 model_agreement.go
 model_agreement_language.go
 model_agreement_language_agreement.go
@@ -732,6 +773,8 @@ model_application_saml_all_of_sp_encryption.go
 model_application_saml_all_of_sp_encryption_certificate.go
 model_application_saml_all_of_sp_verification.go
 model_application_saml_all_of_sp_verification_certificates.go
+model_application_saml_all_of_virtual_server_id_settings.go
+model_application_saml_all_of_virtual_server_id_settings_virtual_server_ids.go
 model_application_secret.go
 model_application_secret_previous.go
 model_application_template.go
@@ -757,6 +800,9 @@ model_branding_theme_configuration_logo.go
 model_branding_theme_default.go
 model_certificate.go
 model_certificate_key_update.go
+model_custom_admin_role.go
+model_custom_admin_role_can_assign_inner.go
+model_custom_admin_role_permissions_inner.go
 model_custom_domain.go
 model_custom_domain_certificate.go
 model_custom_domain_certificate_request.go
@@ -765,6 +811,7 @@ model_email_domain_dkim_status.go
 model_email_domain_dkim_status_regions_inner.go
 model_email_domain_dkim_status_regions_inner_tokens_inner.go
 model_email_domain_ownership_status.go
+model_email_domain_ownership_status_environment_dns_record.go
 model_email_domain_ownership_status_regions_inner.go
 model_email_domain_spf_status.go
 model_email_domain_trusted_email.go
@@ -774,6 +821,8 @@ model_entity_array__embedded.go
 model_entity_array__embedded_gateways_inner.go
 model_entity_array__embedded_resources_inner.go
 model_entity_array__embedded_roles_inner.go
+model_enum_administrator_security_authentication_method.go
+model_enum_administrator_security_mfa_status.go
 model_enum_agreement_revision_content_type.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
@@ -792,6 +841,7 @@ model_enum_application_saml_slo_binding.go
 model_enum_application_tags.go
 model_enum_application_type.go
 model_enum_application_wsfed_kerberos_gateway_type.go
+model_enum_application_wsfed_subject_name_identifier_format.go
 model_enum_application_wsfedidp_signing_algorithm.go
 model_enum_attribute_mapping_type.go
 model_enum_bill_of_materials_product_tags.go
@@ -806,11 +856,14 @@ model_enum_certificate_key_usage_type.go
 model_enum_create_certificate_accept_header.go
 model_enum_csr_export_header.go
 model_enum_csr_response_import_header.go
+model_enum_custom_admin_role_applicable_to.go
+model_enum_custom_admin_role_type.go
 model_enum_custom_domain_post_header.go
 model_enum_custom_domain_status.go
 model_enum_duration_unit_mins_hours.go
 model_enum_email_domain_status.go
 model_enum_enabled_status.go
+model_enum_environment_status.go
 model_enum_environment_type.go
 model_enum_flow_policy_trigger_type.go
 model_enum_form_category.go
@@ -861,6 +914,11 @@ model_enum_notifications_policy_country_limit_type.go
 model_enum_notifications_policy_quota_delivery_methods.go
 model_enum_notifications_policy_quota_item_type.go
 model_enum_notifications_settings_delivery_mode.go
+model_enum_notifications_settings_email_delivery_settings_custom_authentication_method.go
+model_enum_notifications_settings_email_delivery_settings_custom_provider.go
+model_enum_notifications_settings_email_delivery_settings_custom_requests_delivery_method.go
+model_enum_notifications_settings_email_delivery_settings_custom_requests_method.go
+model_enum_notifications_settings_email_delivery_settings_protocol.go
 model_enum_notifications_settings_phone_delivery_settings_custom_auth_method.go
 model_enum_notifications_settings_phone_delivery_settings_custom_delivery_method.go
 model_enum_notifications_settings_phone_delivery_settings_custom_number_format.go
@@ -922,6 +980,7 @@ model_environment.go
 model_environment_license.go
 model_environment_organization.go
 model_environment_region.go
+model_environment_status.go
 model_flow_policy.go
 model_flow_policy_application.go
 model_flow_policy_assignment.go
@@ -978,6 +1037,7 @@ model_gateway_type_ldap_all_of_new_user_lookup_attribute_mappings.go
 model_gateway_type_ldap_all_of_new_user_lookup_population.go
 model_gateway_type_ldap_all_of_user_types.go
 model_gateway_type_radius.go
+model_gateway_type_radius_all_of_blast_radius_mitigation.go
 model_gateway_type_radius_all_of_davinci.go
 model_gateway_type_radius_all_of_davinci_policy.go
 model_gateway_type_radius_all_of_network_policy_server.go
@@ -990,6 +1050,7 @@ model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
 model_identity_propagation_plan.go
+model_identity_provider.go
 model_identity_provider_apple.go
 model_identity_provider_attribute.go
 model_identity_provider_attribute_identity_provider.go
@@ -1000,6 +1061,7 @@ model_identity_provider_common_login_button_icon.go
 model_identity_provider_common_registration.go
 model_identity_provider_common_registration_population.go
 model_identity_provider_facebook.go
+model_identity_provider_microsoft.go
 model_identity_provider_oidc.go
 model_identity_provider_paypal.go
 model_identity_provider_saml.go
@@ -1048,13 +1110,21 @@ model_license_replaces_license.go
 model_license_users.go
 model_license_verify.go
 model_links_hateoas_value.go
+model_locale_translation.go
 model_notifications_policy.go
 model_notifications_policy_country_limit.go
 model_notifications_policy_quotas_inner.go
 model_notifications_settings.go
 model_notifications_settings_email_delivery_settings.go
-model_notifications_settings_email_delivery_settings_from.go
-model_notifications_settings_email_delivery_settings_reply_to.go
+model_notifications_settings_email_delivery_settings_common.go
+model_notifications_settings_email_delivery_settings_custom.go
+model_notifications_settings_email_delivery_settings_custom_all_of_authentication.go
+model_notifications_settings_email_delivery_settings_custom_all_of_from.go
+model_notifications_settings_email_delivery_settings_custom_all_of_reply_to.go
+model_notifications_settings_email_delivery_settings_custom_all_of_requests.go
+model_notifications_settings_email_delivery_settings_smtp.go
+model_notifications_settings_email_delivery_settings_smtp_all_of_from.go
+model_notifications_settings_email_delivery_settings_smtp_all_of_reply_to.go
 model_notifications_settings_from.go
 model_notifications_settings_phone_delivery_settings.go
 model_notifications_settings_phone_delivery_settings_common.go
@@ -1084,6 +1154,7 @@ model_password_policy_min_characters.go
 model_population.go
 model_population_default_idp.go
 model_population_password_policy.go
+model_population_theme.go
 model_propagation_store.go
 model_propagation_store_configuration_aquera.go
 model_propagation_store_configuration_azure_adsamlv2.go

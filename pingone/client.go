@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
@@ -30,7 +31,7 @@ type Client struct {
 	Region               model.RegionMapping
 }
 
-var version = "0.12.4"
+var version = "0.14.0"
 
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
@@ -706,6 +707,11 @@ func testForRetryable(err error, currentBackoff time.Duration) (time.Duration, b
 			log.Printf("HTTP status code %d detected, available for retry", v)
 			return backoff, true
 		}
+	}
+
+	if m, mErr := regexp.MatchString("unsupported authentication method", strings.ToLower(err.Error())); mErr == nil && m {
+		log.Printf("Unsupported authentication method detected, available for retry")
+		return backoff, true
 	}
 
 	return backoff, false

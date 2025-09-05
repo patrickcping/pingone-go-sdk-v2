@@ -19,7 +19,7 @@ var _ MappedNullable = &IntegrationVersionSAMLAllOfThirdParty{}
 
 // IntegrationVersionSAMLAllOfThirdParty Third-party IdP information.
 type IntegrationVersionSAMLAllOfThirdParty struct {
-	Metadata *IntegrationVersionSAMLAllOfThirdPartyMetadata `json:"metadata,omitempty"`
+	Metadata     *IntegrationVersionSAMLAllOfThirdPartyMetadata     `json:"metadata,omitempty"`
 	Instructions *IntegrationVersionSAMLAllOfThirdPartyInstructions `json:"instructions,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *IntegrationVersionSAMLAllOfThirdParty) SetInstructions(v IntegrationVer
 }
 
 func (o IntegrationVersionSAMLAllOfThirdParty) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableIntegrationVersionSAMLAllOfThirdParty) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

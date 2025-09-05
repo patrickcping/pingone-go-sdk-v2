@@ -21,33 +21,33 @@ var _ MappedNullable = &GatewayTypeLDAP{}
 type GatewayTypeLDAP struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Id          *string             `json:"id,omitempty"`
+	Environment *ObjectEnvironment  `json:"environment,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
 	Name string `json:"name"`
 	// A string that specifies the description of the resource.
-	Description *string `json:"description,omitempty"`
-	Type EnumGatewayType `json:"type"`
+	Description *string         `json:"description,omitempty"`
+	Type        EnumGatewayType `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.
 	Enabled bool `json:"enabled"`
 	// An array that lists the LDAP gateway versions associated with this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways request, and it is used to trigger alerts if the gateway tries to connect with an unsupported version (or a version that is not the latest or recommended version).
 	SupportedVersions []GatewaySupportedVersionsInner `json:"supportedVersions,omitempty"`
-	CurrentAlerts []map[string]interface{} `json:"currentAlerts,omitempty"`
+	CurrentAlerts     []map[string]interface{}        `json:"currentAlerts,omitempty"`
 	// A string that specifies the distinguished name information to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com).
 	BindDN string `json:"bindDN"`
 	// A string that specifies the bind password for the LDAP database. This is a required property.
-	BindPassword string `json:"bindPassword"`
-	ConnectionSecurity *EnumGatewayTypeLDAPSecurity `json:"connectionSecurity,omitempty"`
-	Kerberos *GatewayTypeLDAPAllOfKerberos `json:"kerberos,omitempty"`
+	BindPassword       string                        `json:"bindPassword"`
+	ConnectionSecurity *EnumGatewayTypeLDAPSecurity  `json:"connectionSecurity,omitempty"`
+	Kerberos           *GatewayTypeLDAPAllOfKerberos `json:"kerberos,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [`ds1.example.com:389`, `ds2.example.com:389`]).
 	ServersHostAndPort []string `json:"serversHostAndPort"`
 	// An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
 	UserTypes []GatewayTypeLDAPAllOfUserTypes `json:"userTypes,omitempty"`
 	// A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted.
-	ValidateTlsCertificates *bool `json:"validateTlsCertificates,omitempty"`
-	Vendor EnumGatewayVendor `json:"vendor"`
-	FollowReferrals *bool `json:"followReferrals,omitempty"`
+	ValidateTlsCertificates *bool             `json:"validateTlsCertificates,omitempty"`
+	Vendor                  EnumGatewayVendor `json:"vendor"`
+	FollowReferrals         *bool             `json:"followReferrals,omitempty"`
 }
 
 // NewGatewayTypeLDAP instantiates a new GatewayTypeLDAP object
@@ -631,7 +631,7 @@ func (o *GatewayTypeLDAP) SetFollowReferrals(v bool) {
 }
 
 func (o GatewayTypeLDAP) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -721,5 +721,3 @@ func (v *NullableGatewayTypeLDAP) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

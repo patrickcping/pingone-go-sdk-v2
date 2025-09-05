@@ -24,7 +24,7 @@ type PropagationStoreConfigurationPingOne struct {
 	// The PingOne client secret.
 	CLIENT_SECRET *string `json:"CLIENT_SECRET,omitempty"`
 	// Whether or not users are allowed to be created.
-	CREATE_USERS *bool `json:"CREATE_USERS,omitempty"`
+	CREATE_USERS        *bool                                             `json:"CREATE_USERS,omitempty"`
 	DEFAULT_AUTH_METHOD *EnumPropagationStoreTypePingOneDefaultAuthMethod `json:"DEFAULT_AUTH_METHOD,omitempty"`
 	// Whether or not users are allowed to be disabled.
 	DISABLE_USERS *bool `json:"DISABLE_USERS,omitempty"`
@@ -33,9 +33,9 @@ type PropagationStoreConfigurationPingOne struct {
 	// How to manage MFA user devices when synchronizing. Options are either Merge with devices in PingOne or Overwrite devices in PingOne.
 	MFA_USER_DEVICE_MANAGEMENT *string `json:"MFA_USER_DEVICE_MANAGEMENT,omitempty"`
 	// Whether or not disabled users can be provisioned.
-	PROVISION_DISABLED_USERS_PROV_OPT *bool `json:"PROVISION_DISABLED_USERS_PROV_OPT,omitempty"`
-	REGION EnumPropagationStoreTypePingOneRegion `json:"REGION"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
+	PROVISION_DISABLED_USERS_PROV_OPT *bool                                              `json:"PROVISION_DISABLED_USERS_PROV_OPT,omitempty"`
+	REGION                            EnumPropagationStoreTypePingOneRegion              `json:"REGION"`
+	REMOVE_ACTION                     *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
@@ -396,7 +396,7 @@ func (o *PropagationStoreConfigurationPingOne) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationPingOne) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -472,5 +472,3 @@ func (v *NullablePropagationStoreConfigurationPingOne) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

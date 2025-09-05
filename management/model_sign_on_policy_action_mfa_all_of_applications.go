@@ -19,8 +19,8 @@ var _ MappedNullable = &SignOnPolicyActionMFAAllOfApplications{}
 
 // SignOnPolicyActionMFAAllOfApplications struct for SignOnPolicyActionMFAAllOfApplications
 type SignOnPolicyActionMFAAllOfApplications struct {
-	Id string `json:"id"`
-	AutoEnrollment *SignOnPolicyActionMFAAllOfAutoEnrollment `json:"autoEnrollment,omitempty"`
+	Id                  string                                         `json:"id"`
+	AutoEnrollment      *SignOnPolicyActionMFAAllOfAutoEnrollment      `json:"autoEnrollment,omitempty"`
 	DeviceAuthorization *SignOnPolicyActionMFAAllOfDeviceAuthorization `json:"deviceAuthorization,omitempty"`
 }
 
@@ -131,7 +131,7 @@ func (o *SignOnPolicyActionMFAAllOfApplications) SetDeviceAuthorization(v SignOn
 }
 
 func (o SignOnPolicyActionMFAAllOfApplications) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,5 +185,3 @@ func (v *NullableSignOnPolicyActionMFAAllOfApplications) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

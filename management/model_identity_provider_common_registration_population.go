@@ -73,7 +73,7 @@ func (o *IdentityProviderCommonRegistrationPopulation) SetId(v string) {
 }
 
 func (o IdentityProviderCommonRegistrationPopulation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,5 +123,3 @@ func (v *NullableIdentityProviderCommonRegistrationPopulation) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

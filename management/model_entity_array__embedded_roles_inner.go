@@ -17,8 +17,16 @@ import (
 
 // EntityArrayEmbeddedRolesInner - struct for EntityArrayEmbeddedRolesInner
 type EntityArrayEmbeddedRolesInner struct {
-	Role *Role
+	CustomAdminRole               *CustomAdminRole
+	Role                          *Role
 	UserApplicationRoleAssignment *UserApplicationRoleAssignment
+}
+
+// CustomAdminRoleAsEntityArrayEmbeddedRolesInner is a convenience function that returns CustomAdminRole wrapped in EntityArrayEmbeddedRolesInner
+func CustomAdminRoleAsEntityArrayEmbeddedRolesInner(v *CustomAdminRole) EntityArrayEmbeddedRolesInner {
+	return EntityArrayEmbeddedRolesInner{
+		CustomAdminRole: v,
+	}
 }
 
 // RoleAsEntityArrayEmbeddedRolesInner is a convenience function that returns Role wrapped in EntityArrayEmbeddedRolesInner
@@ -35,10 +43,20 @@ func UserApplicationRoleAssignmentAsEntityArrayEmbeddedRolesInner(v *UserApplica
 	}
 }
 
-
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EntityArrayEmbeddedRolesInner) UnmarshalJSON(data []byte) error {
 	var err error
+	// try to unmarshal JSON data into CustomAdminRole
+	err = json.Unmarshal(data, &dst.CustomAdminRole)
+	if err == nil {
+		if dst.CustomAdminRole.Type != nil && *dst.CustomAdminRole.Type == ENUMCUSTOMADMINROLETYPE_CUSTOM { // custom role type
+			return nil // data stored in dst.CustomAdminRole, return on the first match
+		} else {
+			dst.CustomAdminRole = nil
+		}
+	} else {
+		dst.CustomAdminRole = nil
+	}
 	// try to unmarshal JSON data into Role
 	err = json.Unmarshal(data, &dst.Role)
 	if err == nil {
@@ -72,6 +90,10 @@ func (dst *EntityArrayEmbeddedRolesInner) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src EntityArrayEmbeddedRolesInner) MarshalJSON() ([]byte, error) {
+	if src.CustomAdminRole != nil {
+		return json.Marshal(&src.CustomAdminRole)
+	}
+
 	if src.Role != nil {
 		return json.Marshal(&src.Role)
 	}
@@ -84,10 +106,14 @@ func (src EntityArrayEmbeddedRolesInner) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *EntityArrayEmbeddedRolesInner) GetActualInstance() (interface{}) {
+func (obj *EntityArrayEmbeddedRolesInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
+	if obj.CustomAdminRole != nil {
+		return obj.CustomAdminRole
+	}
+
 	if obj.Role != nil {
 		return obj.Role
 	}
@@ -135,5 +161,3 @@ func (v *NullableEntityArrayEmbeddedRolesInner) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

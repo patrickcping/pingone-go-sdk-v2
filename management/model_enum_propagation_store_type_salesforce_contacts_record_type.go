@@ -20,7 +20,7 @@ type EnumPropagationStoreTypeSalesforceContactsRecordType string
 
 // List of EnumPropagationStoreTypeSalesforceContactsRecordType
 const (
-	ENUMPROPAGATIONSTORETYPESALESFORCECONTACTSRECORDTYPE_LEAD EnumPropagationStoreTypeSalesforceContactsRecordType = "Lead"
+	ENUMPROPAGATIONSTORETYPESALESFORCECONTACTSRECORDTYPE_LEAD    EnumPropagationStoreTypeSalesforceContactsRecordType = "Lead"
 	ENUMPROPAGATIONSTORETYPESALESFORCECONTACTSRECORDTYPE_CONTACT EnumPropagationStoreTypeSalesforceContactsRecordType = "Contact"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeSalesforceContactsRecordType) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

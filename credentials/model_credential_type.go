@@ -30,17 +30,17 @@ type CredentialType struct {
 	// A string that specifies the description of the credential type.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \"soft delete\".
-	DeletedAt *time.Time `json:"deletedAt,omitempty"`
+	DeletedAt   *time.Time         `json:"deletedAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential type.
-	Id *string `json:"id,omitempty"`
+	Id     *string       `json:"id,omitempty"`
 	Issuer *ObjectIssuer `json:"issuer,omitempty"`
 	// A string that specifies the issuer name associated with the card, can differ from title.
-	IssuerName *string `json:"issuerName,omitempty"`
+	IssuerName *string                   `json:"issuerName,omitempty"`
 	Management *CredentialTypeManagement `json:"management,omitempty"`
-	Metadata CredentialTypeMetaData `json:"metadata"`
-	Multiple *CredentialTypeMultiple `json:"multiple,omitempty"`
-	OnDelete *CredentialTypeOnDelete `json:"onDelete,omitempty"`
+	Metadata   CredentialTypeMetaData    `json:"metadata"`
+	Multiple   *CredentialTypeMultiple   `json:"multiple,omitempty"`
+	OnDelete   *CredentialTypeOnDelete   `json:"onDelete,omitempty"`
 	// A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title.
 	Title string `json:"title"`
 	// A string that specifies the date and time the credential type was last updated; can be null.
@@ -556,7 +556,7 @@ func (o *CredentialType) SetUpdatedAt(v time.Time) {
 }
 
 func (o CredentialType) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -645,5 +645,3 @@ func (v *NullableCredentialType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

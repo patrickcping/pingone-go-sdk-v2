@@ -20,14 +20,14 @@ var _ MappedNullable = &KeyRotationPolicy{}
 
 // KeyRotationPolicy struct for KeyRotationPolicy
 type KeyRotationPolicy struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links     *map[string]LinksHATEOASValue  `json:"_links,omitempty"`
 	Algorithm EnumKeyRotationPolicyAlgorithm `json:"algorithm"`
 	// The `kid` (key identifier) of the `KrpKey` designated as `CURRENT`.
 	CurrentKeyId *string `json:"currentKeyId,omitempty"`
 	// The DN this KRP will apply to generated `KrpKeys`. Is applied as both `issuerDN` and `subjectDN` because generated `KrpKeys` are self-signed.
 	Dn string `json:"dn"`
 	// The resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The number of bytes of a cryptographic key this KRP will apply to generated `KrpKeys`.
 	KeyLength int32 `json:"keyLength"`
@@ -38,9 +38,9 @@ type KeyRotationPolicy struct {
 	// The last time this KRP was rotated.
 	RotatedAt *time.Time `json:"rotatedAt,omitempty"`
 	// The number of days to elapse before this KRP rotates `KrpKeys`. The default value is `90` days. The minimum value is `30` days. The maximum value is 1 day less than the `validityPeriod` value.
-	RotationPeriod *int32 `json:"rotationPeriod,omitempty"`
+	RotationPeriod     *int32                            `json:"rotationPeriod,omitempty"`
 	SignatureAlgorithm EnumKeyRotationPolicySigAlgorithm `json:"signatureAlgorithm"`
-	UsageType EnumKeyRotationPolicyUsageType `json:"usageType"`
+	UsageType          EnumKeyRotationPolicyUsageType    `json:"usageType"`
 	// Controls the `startsAt` and `expiresAt` fields this KRP will apply to generated `KrpKeys`. The default value is `365` days.
 	ValidityPeriod *int32 `json:"validityPeriod,omitempty"`
 }
@@ -477,7 +477,7 @@ func (o *KeyRotationPolicy) SetValidityPeriod(v int32) {
 }
 
 func (o KeyRotationPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -554,5 +554,3 @@ func (v *NullableKeyRotationPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

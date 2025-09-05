@@ -17,11 +17,12 @@ import (
 
 // RiskPredictorCompositeCondition - struct for RiskPredictorCompositeCondition
 type RiskPredictorCompositeCondition struct {
-	RiskPredictorCompositeAnd *RiskPredictorCompositeAnd
-	RiskPredictorCompositeConditionOneOf *RiskPredictorCompositeConditionOneOf
+	RiskPredictorCompositeAnd             *RiskPredictorCompositeAnd
+	RiskPredictorCompositeConditionOneOf  *RiskPredictorCompositeConditionOneOf
 	RiskPredictorCompositeConditionOneOf1 *RiskPredictorCompositeConditionOneOf1
-	RiskPredictorCompositeNot *RiskPredictorCompositeNot
-	RiskPredictorCompositeOr *RiskPredictorCompositeOr
+	RiskPredictorCompositeIPRange         *RiskPredictorCompositeIPRange
+	RiskPredictorCompositeNot             *RiskPredictorCompositeNot
+	RiskPredictorCompositeOr              *RiskPredictorCompositeOr
 }
 
 // RiskPredictorCompositeAndAsRiskPredictorCompositeCondition is a convenience function that returns RiskPredictorCompositeAnd wrapped in RiskPredictorCompositeCondition
@@ -45,6 +46,13 @@ func RiskPredictorCompositeConditionOneOf1AsRiskPredictorCompositeCondition(v *R
 	}
 }
 
+// RiskPredictorCompositeIPRangeAsRiskPredictorCompositeCondition is a convenience function that returns RiskPredictorCompositeIPRange wrapped in RiskPredictorCompositeCondition
+func RiskPredictorCompositeIPRangeAsRiskPredictorCompositeCondition(v *RiskPredictorCompositeIPRange) RiskPredictorCompositeCondition {
+	return RiskPredictorCompositeCondition{
+		RiskPredictorCompositeIPRange: v,
+	}
+}
+
 // RiskPredictorCompositeNotAsRiskPredictorCompositeCondition is a convenience function that returns RiskPredictorCompositeNot wrapped in RiskPredictorCompositeCondition
 func RiskPredictorCompositeNotAsRiskPredictorCompositeCondition(v *RiskPredictorCompositeNot) RiskPredictorCompositeCondition {
 	return RiskPredictorCompositeCondition{
@@ -59,7 +67,6 @@ func RiskPredictorCompositeOrAsRiskPredictorCompositeCondition(v *RiskPredictorC
 	}
 }
 
-
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 
@@ -73,6 +80,7 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 	dst.RiskPredictorCompositeAnd = nil
 	dst.RiskPredictorCompositeConditionOneOf = nil
 	dst.RiskPredictorCompositeConditionOneOf1 = nil
+	dst.RiskPredictorCompositeIPRange = nil
 	dst.RiskPredictorCompositeNot = nil
 	dst.RiskPredictorCompositeOr = nil
 
@@ -104,6 +112,20 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 		match++
 	}
 
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_RANGE) {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeIPRange); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_IP_COMPARISON) {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeIPRange); err != nil {
+			return err
+		}
+		match++
+	}
+
 	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON) {
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf1); err != nil {
 			return err
@@ -116,6 +138,7 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 		dst.RiskPredictorCompositeAnd = nil
 		dst.RiskPredictorCompositeConditionOneOf = nil
 		dst.RiskPredictorCompositeConditionOneOf1 = nil
+		dst.RiskPredictorCompositeIPRange = nil
 		dst.RiskPredictorCompositeNot = nil
 		dst.RiskPredictorCompositeOr = nil
 
@@ -141,6 +164,10 @@ func (src RiskPredictorCompositeCondition) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RiskPredictorCompositeConditionOneOf1)
 	}
 
+	if src.RiskPredictorCompositeIPRange != nil {
+		return json.Marshal(&src.RiskPredictorCompositeIPRange)
+	}
+
 	if src.RiskPredictorCompositeNot != nil {
 		return json.Marshal(&src.RiskPredictorCompositeNot)
 	}
@@ -153,7 +180,7 @@ func (src RiskPredictorCompositeCondition) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RiskPredictorCompositeCondition) GetActualInstance() (interface{}) {
+func (obj *RiskPredictorCompositeCondition) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -167,6 +194,10 @@ func (obj *RiskPredictorCompositeCondition) GetActualInstance() (interface{}) {
 
 	if obj.RiskPredictorCompositeConditionOneOf1 != nil {
 		return obj.RiskPredictorCompositeConditionOneOf1
+	}
+
+	if obj.RiskPredictorCompositeIPRange != nil {
+		return obj.RiskPredictorCompositeIPRange
 	}
 
 	if obj.RiskPredictorCompositeNot != nil {
@@ -216,5 +247,3 @@ func (v *NullableRiskPredictorCompositeCondition) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

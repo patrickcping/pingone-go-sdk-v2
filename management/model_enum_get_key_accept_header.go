@@ -20,9 +20,9 @@ type EnumGetKeyAcceptHeader string
 
 // List of EnumGetKeyAcceptHeader
 const (
-	ENUMGETKEYACCEPTHEADER_JSON EnumGetKeyAcceptHeader = "application/json"
+	ENUMGETKEYACCEPTHEADER_JSON                 EnumGetKeyAcceptHeader = "application/json"
 	ENUMGETKEYACCEPTHEADER_X_PKCS7_CERTIFICATES EnumGetKeyAcceptHeader = "application/x-pkcs7-certificates"
-	ENUMGETKEYACCEPTHEADER_X_X509_CA_CERT EnumGetKeyAcceptHeader = "application/x-x509-ca-cert"
+	ENUMGETKEYACCEPTHEADER_X_X509_CA_CERT       EnumGetKeyAcceptHeader = "application/x-x509-ca-cert"
 )
 
 // All allowed values of EnumGetKeyAcceptHeader enum
@@ -111,4 +111,3 @@ func (v *NullableEnumGetKeyAcceptHeader) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

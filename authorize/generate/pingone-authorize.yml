@@ -49,6 +49,21 @@ components:
             description: The HREF of the link.
         required:
           - href
+    Environment:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          description: The time the resource was created.
+          readOnly: true
+        id:
+          type: string
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+        updatedAt:
+          type: string
+          description: The time the resource was last updated.
+          readOnly: true
     APIServer:
       type: object
       properties:
@@ -674,6 +689,61 @@ tags:
   - name: Policy Decision Authorization
   - name: API Servers
 paths:
+  /environments/{environmentID}:
+    get:
+      tags:
+        - Environments
+      summary: READ One Environment
+      operationId: readOneEnvironment
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
   /environments/{environmentID}/decisionEndpoints:
     get:
       tags:
@@ -681,6 +751,28 @@ paths:
       summary: READ All Decision Endpoints
       operationId: readAllDecisionEndpoints
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -718,6 +810,28 @@ paths:
             schema:
               $ref: '#/components/schemas/DecisionEndpoint'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -731,7 +845,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -753,6 +872,28 @@ paths:
       summary: READ One Decision Endpoint
       operationId: readOneDecisionEndpoint
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -795,6 +936,28 @@ paths:
             schema:
               $ref: '#/components/schemas/DecisionEndpoint'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -832,6 +995,28 @@ paths:
       summary: DELETE Decision Endpoint
       operationId: deleteDecisionEndpoint
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -866,6 +1051,28 @@ paths:
       summary: READ All API Servers
       operationId: readAllAPIServers
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -903,6 +1110,28 @@ paths:
             schema:
               $ref: '#/components/schemas/APIServer'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -916,7 +1145,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -938,6 +1172,28 @@ paths:
       summary: READ One API Server
       operationId: readOneAPIServer
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -980,6 +1236,28 @@ paths:
             schema:
               $ref: '#/components/schemas/APIServer'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1017,6 +1295,28 @@ paths:
       summary: DELETE API Server
       operationId: deleteAPIServer
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1051,6 +1351,28 @@ paths:
       summary: READ API Server Deployment Status
       operationId: readDeploymentStatus
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1088,6 +1410,28 @@ paths:
       summary: Deploy API Server
       operationId: deployAPIServer
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1134,6 +1478,28 @@ paths:
       summary: READ All API Server Operations
       operationId: readAllAPIServerOperations
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1176,6 +1542,28 @@ paths:
             schema:
               $ref: '#/components/schemas/APIServerOperation'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1216,6 +1604,28 @@ paths:
       summary: READ One API Server Operation
       operationId: readOneAPIServerOperation
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1263,6 +1673,28 @@ paths:
             schema:
               $ref: '#/components/schemas/APIServerOperation'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1305,6 +1737,28 @@ paths:
       summary: DELETE API Server Operation
       operationId: deleteAPIServerOperation
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1344,6 +1798,28 @@ paths:
       summary: READ Application Resources
       operationId: readApplicationResources
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1377,6 +1853,28 @@ paths:
       summary: READ One Application Resource
       operationId: readOneApplicationResource
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1415,6 +1913,28 @@ paths:
       summary: READ Application Permissions
       operationId: readApplicationPermissions
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1457,6 +1977,28 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationResourcePermission'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1497,6 +2039,28 @@ paths:
       summary: READ One Application Permission
       operationId: readOneApplicationPermission
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1544,6 +2108,28 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationResourcePermission'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1586,6 +2172,28 @@ paths:
       summary: DELETE Application Permission
       operationId: deleteApplicationPermission
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1625,6 +2233,28 @@ paths:
       summary: READ Application Roles
       operationId: readApplicationRoles
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1662,6 +2292,28 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationRole'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1675,7 +2327,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -1697,6 +2354,28 @@ paths:
       summary: READ One Application Role
       operationId: readOneApplicationRole
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1739,6 +2418,28 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationRole'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1776,6 +2477,28 @@ paths:
       summary: DELETE Application Role
       operationId: deleteApplicationRole
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1810,6 +2533,28 @@ paths:
       summary: READ Application Role Permissions
       operationId: readApplicationRolePermissions
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1852,6 +2597,28 @@ paths:
             schema:
               $ref: '#/components/schemas/ApplicationRolePermission'
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1892,6 +2659,28 @@ paths:
       summary: DELETE Application Role Permission
       operationId: deleteApplicationRolePermission
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:
@@ -1931,6 +2720,28 @@ paths:
       summary: READ Application Role Assignments
       operationId: readApplicationRoleAssignments
       parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
         - name: environmentID
           in: path
           schema:

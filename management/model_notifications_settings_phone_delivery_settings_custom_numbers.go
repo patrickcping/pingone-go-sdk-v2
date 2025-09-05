@@ -20,15 +20,15 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCustomNumbers{
 // NotificationsSettingsPhoneDeliverySettingsCustomNumbers struct for NotificationsSettingsPhoneDeliverySettingsCustomNumbers
 type NotificationsSettingsPhoneDeliverySettingsCustomNumbers struct {
 	// The phone number, toll-free number or short code.
-	Number string `json:"number"`
-	Type EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType `json:"type"`
+	Number string                                                          `json:"number"`
+	Type   EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType `json:"type"`
 	// Specifies whether the number is selected by the admin for sending messages.
 	Selected *bool `json:"selected,omitempty"`
 	// Specifies whether the number is currently available in the provider account.
 	Available *bool `json:"available,omitempty"`
 	// A collection of the phone delivery service capabilities.
 	Capabilities []EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability `json:"capabilities,omitempty"`
-	// Specifies the `number`'s supported countries for notification recipients, depending on the phone number type: `SHORT_CODE`: A collection containing a single 2-character ISO country code, for example, `US`, `GB`, `CA`. If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null. For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified short code number can only be used to dispatch notifications to United States recipient numbers. `TOLL_FREE`: A collection of valid 2-character country ISO codes, for example, `US`, `GB`, `CA`. If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null. For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified toll-free number can only be used to dispatch notifications to United States recipient numbers. `PHONE_NUMBER`: `supportedCountries` can not be specified. If an SMS template has an alphanumeric `sender` ID and also has short code, the `sender` ID will be used for destination countries that support both alphanumeric senders and short codes. For Unites States and Canada that don't support alphanumeric sender IDs, a short code will be used if both an alphanumeric sender and a short code are specified. 
+	// Specifies the `number`'s supported countries for notification recipients, depending on the phone number type: `SHORT_CODE`: A collection containing a single 2-character ISO country code, for example, `US`, `GB`, `CA`. If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null. For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified short code number can only be used to dispatch notifications to United States recipient numbers. `TOLL_FREE`: A collection of valid 2-character country ISO codes, for example, `US`, `GB`, `CA`. If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null. For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified toll-free number can only be used to dispatch notifications to United States recipient numbers. `PHONE_NUMBER`: `supportedCountries` can not be specified. If an SMS template has an alphanumeric `sender` ID and also has short code, the `sender` ID will be used for destination countries that support both alphanumeric senders and short codes. For Unites States and Canada that don't support alphanumeric sender IDs, a short code will be used if both an alphanumeric sender and a short code are specified.
 	SupportedCountries []string `json:"supportedCountries,omitempty"`
 }
 
@@ -228,7 +228,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomNumbers) SetSupportedCo
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsCustomNumbers) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -289,5 +289,3 @@ func (v *NullableNotificationsSettingsPhoneDeliverySettingsCustomNumbers) Unmars
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

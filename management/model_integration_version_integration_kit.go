@@ -23,17 +23,17 @@ type IntegrationVersionIntegrationKit struct {
 	// Unicode characters. The description of this integration metadata version.
 	Description *string `json:"description,omitempty"`
 	// The platform-generated ID of this integration metadata version.
-	Id *string `json:"id,omitempty"`
+	Id          *string                              `json:"id,omitempty"`
 	Integration *IntegrationVersionCommonIntegration `json:"integration,omitempty"`
 	// A unique name for the integration metadata version.
 	Name string `json:"name"`
 	// Unique number for the integration version.
-	Number string `json:"number"`
-	Type *EnumIntegrationVersionType `json:"type,omitempty"`
+	Number string                      `json:"number"`
+	Type   *EnumIntegrationVersionType `json:"type,omitempty"`
 	// Absolute URL to the documentation.
 	DocumentationUrl *string `json:"documentationUrl,omitempty"`
 	// EOL support date in the form yyyy-mm-dd.
-	EndOfLifeOn *string `json:"endOfLifeOn,omitempty"`
+	EndOfLifeOn    *string                                              `json:"endOfLifeOn,omitempty"`
 	IntegratedWith *IntegrationVersionIntegrationKitAllOfIntegratedWith `json:"integratedWith,omitempty"`
 	// Release date in the form yyyy-mm-dd.
 	ReleasedOn string `json:"releasedOn"`
@@ -388,7 +388,7 @@ func (o *IntegrationVersionIntegrationKit) SetReleasedOn(v string) {
 }
 
 func (o IntegrationVersionIntegrationKit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -462,5 +462,3 @@ func (v *NullableIntegrationVersionIntegrationKit) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

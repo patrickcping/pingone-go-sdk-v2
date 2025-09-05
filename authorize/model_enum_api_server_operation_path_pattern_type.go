@@ -20,7 +20,7 @@ type EnumAPIServerOperationPathPatternType string
 
 // List of EnumAPIServerOperationPathPatternType
 const (
-	ENUMAPISERVEROPERATIONPATHPATTERNTYPE_EXACT EnumAPIServerOperationPathPatternType = "EXACT"
+	ENUMAPISERVEROPERATIONPATHPATTERNTYPE_EXACT     EnumAPIServerOperationPathPatternType = "EXACT"
 	ENUMAPISERVEROPERATIONPATHPATTERNTYPE_PARAMETER EnumAPIServerOperationPathPatternType = "PARAMETER"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumAPIServerOperationPathPatternType) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

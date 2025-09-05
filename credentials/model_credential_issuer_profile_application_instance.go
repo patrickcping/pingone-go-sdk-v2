@@ -73,7 +73,7 @@ func (o *CredentialIssuerProfileApplicationInstance) SetId(v string) {
 }
 
 func (o CredentialIssuerProfileApplicationInstance) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,5 +123,3 @@ func (v *NullableCredentialIssuerProfileApplicationInstance) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

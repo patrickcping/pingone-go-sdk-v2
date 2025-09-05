@@ -21,11 +21,11 @@ var _ MappedNullable = &Group{}
 type Group struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupIDs.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// For external groups, set during user creation/update. For groups created on PingOne, this parameter is identical to `name`.
-	DisplayName *string `json:"displayName,omitempty"`
-	Population *GroupPopulation `json:"population,omitempty"`
+	DisplayName *string          `json:"displayName,omitempty"`
+	Population  *GroupPopulation `json:"population,omitempty"`
 	// The group name. A group name can be reused across populations, but the same user cannot belong to multiple groups with the same group name. Population groups cannot share a group name with an environment group. Search all groups for a specific group name with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group names associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupNames. Use this operation to determine group membership in attribute mappings for claims and assertions.
 	Name string `json:"name"`
 	// A SCIM filter that determines which users are dynamically added to the group. For more information, see Adding users to a group and Removing users from a group.
@@ -37,10 +37,10 @@ type Group struct {
 	// Optional User-defined custom data.
 	CustomData map[string]interface{} `json:"customData,omitempty"`
 	// External groups only. Set during user creation/update.
-	SourceId *string `json:"sourceId,omitempty"`
-	SourceType *EnumGroupSourceType `json:"sourceType,omitempty"`
+	SourceId           *string                  `json:"sourceId,omitempty"`
+	SourceType         *EnumGroupSourceType     `json:"sourceType,omitempty"`
 	DirectMemberCounts *GroupDirectMemberCounts `json:"directMemberCounts,omitempty"`
-	TotalMemberCounts *GroupTotalMemberCounts `json:"totalMemberCounts,omitempty"`
+	TotalMemberCounts  *GroupTotalMemberCounts  `json:"totalMemberCounts,omitempty"`
 }
 
 // NewGroup instantiates a new Group object
@@ -502,7 +502,7 @@ func (o *Group) SetTotalMemberCounts(v GroupTotalMemberCounts) {
 }
 
 func (o Group) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -589,5 +589,3 @@ func (v *NullableGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

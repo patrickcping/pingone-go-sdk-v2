@@ -27,9 +27,9 @@ type GatewaySupportedVersionsInner struct {
 	// A boolean that specifies whether this is the recommended LDAP gateway version.
 	Recommended *bool `json:"recommended,omitempty"`
 	// A boolean that specifies whether this is the latest LDAP gateway version.
-	Latest *bool `json:"latest,omitempty"`
-	SupportEndsOn *time.Time `json:"supportEndsOn,omitempty"`
-	DaysUntilSupportEnds *int32 `json:"daysUntilSupportEnds,omitempty"`
+	Latest               *bool      `json:"latest,omitempty"`
+	SupportEndsOn        *time.Time `json:"supportEndsOn,omitempty"`
+	DaysUntilSupportEnds *int32     `json:"daysUntilSupportEnds,omitempty"`
 }
 
 // NewGatewaySupportedVersionsInner instantiates a new GatewaySupportedVersionsInner object
@@ -242,7 +242,7 @@ func (o *GatewaySupportedVersionsInner) SetDaysUntilSupportEnds(v int32) {
 }
 
 func (o GatewaySupportedVersionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,5 +307,3 @@ func (v *NullableGatewaySupportedVersionsInner) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

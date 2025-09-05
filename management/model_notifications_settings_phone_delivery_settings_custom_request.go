@@ -20,17 +20,17 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCustomRequest{
 // NotificationsSettingsPhoneDeliverySettingsCustomRequest struct for NotificationsSettingsPhoneDeliverySettingsCustomRequest
 type NotificationsSettingsPhoneDeliverySettingsCustomRequest struct {
 	DeliveryMethod EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod `json:"deliveryMethod"`
-	// The provider's remote gateway or customer gateway URL. For requests using the POST method, use the provider's remote gateway URL. For requests using the GET method, use the provider's remote gateway URL, including the `${to}` and `${message}` mandatory variables, and the optional `${from}` variable, for example: `https://api.transmitsms.com/send-sms.json?to=${to}&from=${from}&message=${message}` 
+	// The provider's remote gateway or customer gateway URL. For requests using the POST method, use the provider's remote gateway URL. For requests using the GET method, use the provider's remote gateway URL, including the `${to}` and `${message}` mandatory variables, and the optional `${from}` variable, for example: `https://api.transmitsms.com/send-sms.json?to=${to}&from=${from}&message=${message}`
 	Url string `json:"url"`
-	// The notification's request body. The body should include the ${to} and ${message} mandatory variables. For some vendors, the optional ${from} variable may also be required. For example: `messageType=ARN&message=${message}&phoneNumber=${to}&sender=${from}` In addition, you can use the following optional variables: `${voice}` - the type of voice configured for notifications `${locale}` - locale `${otp}` - OTP `${user.user.name}` - user's username `${user.name.given}` - user's given name `${user.name.family}` - user's family name You can also use dynamic variables in the body. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables). 
+	// The notification's request body. The body should include the ${to} and ${message} mandatory variables. For some vendors, the optional ${from} variable may also be required. For example: `messageType=ARN&message=${message}&phoneNumber=${to}&sender=${from}` In addition, you can use the following optional variables: `${voice}` - the type of voice configured for notifications `${locale}` - locale `${otp}` - OTP `${user.user.name}` - user's username `${user.name.given}` - user's given name `${user.name.family}` - user's family name You can also use dynamic variables in the body. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables).
 	Body *string `json:"body,omitempty"`
-	// A map of the notification's request headers 
-	Headers *map[string]string `json:"headers,omitempty"`
-	Method EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod `json:"method"`
-	PhoneNumberFormat EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat `json:"phoneNumberFormat"`
-	// For voice OTP notifications only. An opening tag which is commonly used by custom providers for defining a pause between each number in the OTP number string. Possible value: `<Say>` 
+	// A map of the notification's request headers
+	Headers           *map[string]string                                                `json:"headers,omitempty"`
+	Method            EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod `json:"method"`
+	PhoneNumberFormat EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat  `json:"phoneNumberFormat"`
+	// For voice OTP notifications only. An opening tag which is commonly used by custom providers for defining a pause between each number in the OTP number string. Possible value: `<Say>`
 	BeforeTag *string `json:"beforeTag,omitempty"`
-	// For voice OTP notifications only. A closing tag which is commonly used by custom providers for defining a pause between each number in the OTP number string. Possible value: `</Say> <Pause length=\"1\"/>` 
+	// For voice OTP notifications only. A closing tag which is commonly used by custom providers for defining a pause between each number in the OTP number string. Possible value: `</Say> <Pause length=\"1\"/>`
 	AfterTag *string `json:"afterTag,omitempty"`
 }
 
@@ -282,7 +282,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomRequest) SetAfterTag(v 
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsCustomRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,5 +345,3 @@ func (v *NullableNotificationsSettingsPhoneDeliverySettingsCustomRequest) Unmars
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

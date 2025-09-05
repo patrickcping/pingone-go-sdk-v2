@@ -25,7 +25,7 @@ type SchemaAttribute struct {
 	// A string that specifies an optional property that specifies the display name of the attribute such as 'T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
 	DisplayName *string `json:"displayName,omitempty"`
 	// A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read.
-	Enabled bool `json:"enabled"`
+	Enabled     bool               `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -34,18 +34,18 @@ type SchemaAttribute struct {
 	// A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens.
 	Name string `json:"name"`
 	// A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided.
-	Required *bool `json:"required,omitempty"`
-	Schema *SchemaAttributeSchema `json:"schema,omitempty"`
+	Required   *bool                          `json:"required,omitempty"`
+	Schema     *SchemaAttributeSchema         `json:"schema,omitempty"`
 	SchemaType *EnumSchemaAttributeSchemaType `json:"schemaType,omitempty"`
 	// The list of sub-attributes of this attribute. Only `COMPLEX` attribute types can have sub-attributes, and only one-level of nesting is allowed. The leaf attribute definition must have a type of `STRING` or `JSON`. A `COMPLEX` attribute definition must have at least one child attribute definition.
-	SubAttributes []SchemaAttribute `json:"subAttributes,omitempty"`
-	Type EnumSchemaAttributeType `json:"type"`
+	SubAttributes []SchemaAttribute       `json:"subAttributes,omitempty"`
+	Type          EnumSchemaAttributeType `json:"type"`
 	// A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null.
 	Unique *bool `json:"unique,omitempty"`
 	// A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000.
-	MultiValued *bool `json:"multiValued,omitempty"`
+	MultiValued      *bool                                  `json:"multiValued,omitempty"`
 	EnumeratedValues []SchemaAttributeEnumeratedValuesInner `json:"enumeratedValues,omitempty"`
-	RegexValidation *SchemaAttributeRegexValidation `json:"regexValidation,omitempty"`
+	RegexValidation  *SchemaAttributeRegexValidation        `json:"regexValidation,omitempty"`
 }
 
 // NewSchemaAttribute instantiates a new SchemaAttribute object
@@ -591,7 +591,7 @@ func (o *SchemaAttribute) SetRegexValidation(v SchemaAttributeRegexValidation) {
 }
 
 func (o SchemaAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -683,5 +683,3 @@ func (v *NullableSchemaAttribute) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

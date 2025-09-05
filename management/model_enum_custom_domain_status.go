@@ -20,8 +20,8 @@ type EnumCustomDomainStatus string
 
 // List of EnumCustomDomainStatus
 const (
-	ENUMCUSTOMDOMAINSTATUS_ACTIVE EnumCustomDomainStatus = "ACTIVE"
-	ENUMCUSTOMDOMAINSTATUS_VERIFICATION_REQUIRED EnumCustomDomainStatus = "VERIFICATION_REQUIRED"
+	ENUMCUSTOMDOMAINSTATUS_ACTIVE                   EnumCustomDomainStatus = "ACTIVE"
+	ENUMCUSTOMDOMAINSTATUS_VERIFICATION_REQUIRED    EnumCustomDomainStatus = "VERIFICATION_REQUIRED"
 	ENUMCUSTOMDOMAINSTATUS_SSL_CERTIFICATE_REQUIRED EnumCustomDomainStatus = "SSL_CERTIFICATE_REQUIRED"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumCustomDomainStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

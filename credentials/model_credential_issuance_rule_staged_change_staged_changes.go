@@ -22,13 +22,13 @@ var _ MappedNullable = &CredentialIssuanceRuleStagedChangeStagedChanges{}
 type CredentialIssuanceRuleStagedChangeStagedChanges struct {
 	Action *EnumCredentialIssuanceRuleAutomationMethod `json:"action,omitempty"`
 	// A string that specifies the date and time the change was staged by the service.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt      *time.Time                                                     `json:"createdAt,omitempty"`
 	CredentialType *CredentialIssuanceRuleStagedChangeStagedChangesCredentialType `json:"credentialType,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	IssuanceRule *CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule `json:"issuanceRule,omitempty"`
+	Environment    *ObjectEnvironment                                             `json:"environment,omitempty"`
+	IssuanceRule   *CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule   `json:"issuanceRule,omitempty"`
 	// A boolean that specifies whether or not the staged change is scheduled.
-	Scheduled *bool `json:"scheduled,omitempty"`
-	User *CredentialIssuanceRuleStagedChangeStagedChangesUser `json:"user,omitempty"`
+	Scheduled *bool                                                `json:"scheduled,omitempty"`
+	User      *CredentialIssuanceRuleStagedChangeStagedChangesUser `json:"user,omitempty"`
 }
 
 // NewCredentialIssuanceRuleStagedChangeStagedChanges instantiates a new CredentialIssuanceRuleStagedChangeStagedChanges object
@@ -273,7 +273,7 @@ func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetUser(v CredentialIs
 }
 
 func (o CredentialIssuanceRuleStagedChangeStagedChanges) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -341,5 +341,3 @@ func (v *NullableCredentialIssuanceRuleStagedChangeStagedChanges) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

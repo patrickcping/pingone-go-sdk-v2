@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Name** | **string** | A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights. | 
 **CompactName** | **string** | A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details). | 
 **Type** | [**EnumPredictorType**](EnumPredictorType.md) |  | 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
+**IncludeRepeatedEventsWithoutSdk** | Pointer to **bool** | Set the value of &#x60;includeRepeatedEventsWithoutSdk&#x60; to &#x60;true&#x60; to expand the range of bot activity that PingOne Protect can detect. | [optional] 
 
 ## Methods
 
@@ -85,6 +87,31 @@ SetId sets Id field to given value.
 `func (o *RiskPredictorBotDetection) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *RiskPredictorBotDetection) GetEnvironment() ObjectEnvironment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *RiskPredictorBotDetection) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *RiskPredictorBotDetection) SetEnvironment(v ObjectEnvironment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *RiskPredictorBotDetection) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetName
 
@@ -320,6 +347,31 @@ SetCondition sets Condition field to given value.
 `func (o *RiskPredictorBotDetection) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
+
+### GetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictorBotDetection) GetIncludeRepeatedEventsWithoutSdk() bool`
+
+GetIncludeRepeatedEventsWithoutSdk returns the IncludeRepeatedEventsWithoutSdk field if non-nil, zero value otherwise.
+
+### GetIncludeRepeatedEventsWithoutSdkOk
+
+`func (o *RiskPredictorBotDetection) GetIncludeRepeatedEventsWithoutSdkOk() (*bool, bool)`
+
+GetIncludeRepeatedEventsWithoutSdkOk returns a tuple with the IncludeRepeatedEventsWithoutSdk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictorBotDetection) SetIncludeRepeatedEventsWithoutSdk(v bool)`
+
+SetIncludeRepeatedEventsWithoutSdk sets IncludeRepeatedEventsWithoutSdk field to given value.
+
+### HasIncludeRepeatedEventsWithoutSdk
+
+`func (o *RiskPredictorBotDetection) HasIncludeRepeatedEventsWithoutSdk() bool`
+
+HasIncludeRepeatedEventsWithoutSdk returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

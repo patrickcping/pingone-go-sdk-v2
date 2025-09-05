@@ -66,7 +66,7 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) SetId(v string) {
 }
 
 func (o SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableSignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

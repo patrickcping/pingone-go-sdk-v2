@@ -22,15 +22,15 @@ var _ MappedNullable = &FIDO2Policy{}
 type FIDO2Policy struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// FIDO policy's UUID.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt               *time.Time                             `json:"updatedAt,omitempty"`
 	AttestationRequirements EnumFIDO2PolicyAttestationRequirements `json:"attestationRequirements"`
 	AuthenticatorAttachment EnumFIDO2PolicyAuthenticatorAttachment `json:"authenticatorAttachment"`
-	BackupEligibility FIDO2PolicyBackupEligibility `json:"backupEligibility"`
+	BackupEligibility       FIDO2PolicyBackupEligibility           `json:"backupEligibility"`
 	// Whether this policy should serve as the default FIDO policy.
 	Default *bool `json:"default,omitempty"`
 	// Description of the FIDO policy.
@@ -38,15 +38,18 @@ type FIDO2Policy struct {
 	// The device authentication policies that use the relevant FIDO policy. If you include the parameter `expand=deviceAuthenticationPolicies` in the URL of the request, this array is included in the response when reading FIDO policies. Each object in the array contains the ID and the name of the device authentication policy.
 	DeviceAuthenticationPolicies []string `json:"deviceAuthenticationPolicies,omitempty"`
 	// The name to display for the device in registration and authentication windows. Can be up to 100 characters. If you want to use translatable text, you can use any of the keys listed on the *FIDO Policy* page of the *Self-Service* module and the *Sign On Policy* module. The value of the parameter should include only the part of the key name that comes after the module name, for example, `fidoPolicy.deviceDisplayName01` or `fidoPolicy.deviceDisplayName07`. See the pages in the UI for the full list of keys. For more information on translatable keys, see [Modifying translatable keys](https://docs.pingidentity.com/access/sources/dita/topic?category=p1&resourceid=pingone_modifying_translatable_keys) in the PingOne documentation.
-	DeviceDisplayName string `json:"deviceDisplayName"`
-	DiscoverableCredentials EnumFIDO2PolicyDiscoverableCredentials `json:"discoverableCredentials"`
+	DeviceDisplayName             string                                   `json:"deviceDisplayName"`
+	DiscoverableCredentials       EnumFIDO2PolicyDiscoverableCredentials   `json:"discoverableCredentials"`
 	MdsAuthenticatorsRequirements FIDO2PolicyMdsAuthenticatorsRequirements `json:"mdsAuthenticatorsRequirements"`
 	// The name to use for the FIDO policy. Can be up to 256 characters.
 	Name string `json:"name"`
+	// The `publicKeyCredentialHints` array is used to indicate that you want to provide public key credential hints to the browser to help give priority to the authentication method that the user is most likely to use. You can include in the array one or more of the following values `SECURITY_KEY`, `CLIENT_DEVICE`, `HYBRID`.
+	PublicKeyCredentialHints []EnumFIDO2PublicKeyCredentialHint `json:"publicKeyCredentialHints,omitempty"`
 	// The ID of the relying party. The value should be a domain name, such as `example.com` (in lower-case characters).
-	RelyingPartyId string `json:"relyingPartyId"`
+	RelyingPartyId            string                               `json:"relyingPartyId"`
 	UserDisplayNameAttributes FIDO2PolicyUserDisplayNameAttributes `json:"userDisplayNameAttributes"`
-	UserVerification FIDO2PolicyUserVerification `json:"userVerification"`
+	UserPresenceTimeout       *FIDO2PolicyUserPresenceTimeout      `json:"userPresenceTimeout,omitempty"`
+	UserVerification          FIDO2PolicyUserVerification          `json:"userVerification"`
 }
 
 // NewFIDO2Policy instantiates a new FIDO2Policy object
@@ -500,6 +503,38 @@ func (o *FIDO2Policy) SetName(v string) {
 	o.Name = v
 }
 
+// GetPublicKeyCredentialHints returns the PublicKeyCredentialHints field value if set, zero value otherwise.
+func (o *FIDO2Policy) GetPublicKeyCredentialHints() []EnumFIDO2PublicKeyCredentialHint {
+	if o == nil || IsNil(o.PublicKeyCredentialHints) {
+		var ret []EnumFIDO2PublicKeyCredentialHint
+		return ret
+	}
+	return o.PublicKeyCredentialHints
+}
+
+// GetPublicKeyCredentialHintsOk returns a tuple with the PublicKeyCredentialHints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FIDO2Policy) GetPublicKeyCredentialHintsOk() ([]EnumFIDO2PublicKeyCredentialHint, bool) {
+	if o == nil || IsNil(o.PublicKeyCredentialHints) {
+		return nil, false
+	}
+	return o.PublicKeyCredentialHints, true
+}
+
+// HasPublicKeyCredentialHints returns a boolean if a field has been set.
+func (o *FIDO2Policy) HasPublicKeyCredentialHints() bool {
+	if o != nil && !IsNil(o.PublicKeyCredentialHints) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKeyCredentialHints gets a reference to the given []EnumFIDO2PublicKeyCredentialHint and assigns it to the PublicKeyCredentialHints field.
+func (o *FIDO2Policy) SetPublicKeyCredentialHints(v []EnumFIDO2PublicKeyCredentialHint) {
+	o.PublicKeyCredentialHints = v
+}
+
 // GetRelyingPartyId returns the RelyingPartyId field value
 func (o *FIDO2Policy) GetRelyingPartyId() string {
 	if o == nil {
@@ -548,6 +583,38 @@ func (o *FIDO2Policy) SetUserDisplayNameAttributes(v FIDO2PolicyUserDisplayNameA
 	o.UserDisplayNameAttributes = v
 }
 
+// GetUserPresenceTimeout returns the UserPresenceTimeout field value if set, zero value otherwise.
+func (o *FIDO2Policy) GetUserPresenceTimeout() FIDO2PolicyUserPresenceTimeout {
+	if o == nil || IsNil(o.UserPresenceTimeout) {
+		var ret FIDO2PolicyUserPresenceTimeout
+		return ret
+	}
+	return *o.UserPresenceTimeout
+}
+
+// GetUserPresenceTimeoutOk returns a tuple with the UserPresenceTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FIDO2Policy) GetUserPresenceTimeoutOk() (*FIDO2PolicyUserPresenceTimeout, bool) {
+	if o == nil || IsNil(o.UserPresenceTimeout) {
+		return nil, false
+	}
+	return o.UserPresenceTimeout, true
+}
+
+// HasUserPresenceTimeout returns a boolean if a field has been set.
+func (o *FIDO2Policy) HasUserPresenceTimeout() bool {
+	if o != nil && !IsNil(o.UserPresenceTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPresenceTimeout gets a reference to the given FIDO2PolicyUserPresenceTimeout and assigns it to the UserPresenceTimeout field.
+func (o *FIDO2Policy) SetUserPresenceTimeout(v FIDO2PolicyUserPresenceTimeout) {
+	o.UserPresenceTimeout = &v
+}
+
 // GetUserVerification returns the UserVerification field value
 func (o *FIDO2Policy) GetUserVerification() FIDO2PolicyUserVerification {
 	if o == nil {
@@ -573,7 +640,7 @@ func (o *FIDO2Policy) SetUserVerification(v FIDO2PolicyUserVerification) {
 }
 
 func (o FIDO2Policy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -613,8 +680,14 @@ func (o FIDO2Policy) ToMap() (map[string]interface{}, error) {
 	toSerialize["discoverableCredentials"] = o.DiscoverableCredentials
 	toSerialize["mdsAuthenticatorsRequirements"] = o.MdsAuthenticatorsRequirements
 	toSerialize["name"] = o.Name
+	if !IsNil(o.PublicKeyCredentialHints) {
+		toSerialize["publicKeyCredentialHints"] = o.PublicKeyCredentialHints
+	}
 	toSerialize["relyingPartyId"] = o.RelyingPartyId
 	toSerialize["userDisplayNameAttributes"] = o.UserDisplayNameAttributes
+	if !IsNil(o.UserPresenceTimeout) {
+		toSerialize["userPresenceTimeout"] = o.UserPresenceTimeout
+	}
 	toSerialize["userVerification"] = o.UserVerification
 	return toSerialize, nil
 }
@@ -654,5 +727,3 @@ func (v *NullableFIDO2Policy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

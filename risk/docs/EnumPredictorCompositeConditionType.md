@@ -5,6 +5,10 @@
 
 * `VALUE_COMPARISON` (value: `"VALUE_COMPARISON"`)
 
+* `IP_RANGE` (value: `"IP_RANGE"`)
+
+* `IP_COMPARISON` (value: `"IP_COMPARISON"`)
+
 * `STRING_LIST` (value: `"STRING_LIST"`)
 
 * `AND` (value: `"AND"`)

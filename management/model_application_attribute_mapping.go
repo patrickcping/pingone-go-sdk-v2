@@ -22,10 +22,10 @@ var _ MappedNullable = &ApplicationAttributeMapping{}
 type ApplicationAttributeMapping struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the application ID.
-	Id *string `json:"id,omitempty"`
+	Id          *string                                 `json:"id,omitempty"`
 	Application *ApplicationAttributeMappingApplication `json:"application,omitempty"`
 	// The time the resource was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt   *time.Time                `json:"createdAt,omitempty"`
 	MappingType *EnumAttributeMappingType `json:"mappingType,omitempty"`
 	// A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property.
 	Name string `json:"name"`
@@ -466,7 +466,7 @@ func (o *ApplicationAttributeMapping) SetOidcScopes(v []string) {
 }
 
 func (o ApplicationAttributeMapping) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -546,5 +546,3 @@ func (v *NullableApplicationAttributeMapping) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

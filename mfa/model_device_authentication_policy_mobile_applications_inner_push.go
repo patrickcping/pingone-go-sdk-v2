@@ -66,7 +66,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) SetEnabled(v boo
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPush) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerPush) Unmarsha
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ type EnumCredentialIssuanceRuleStatus string
 
 // List of EnumCredentialIssuanceRuleStatus
 const (
-	ENUMCREDENTIALISSUANCERULESTATUS_ACTIVE EnumCredentialIssuanceRuleStatus = "ACTIVE"
+	ENUMCREDENTIALISSUANCERULESTATUS_ACTIVE   EnumCredentialIssuanceRuleStatus = "ACTIVE"
 	ENUMCREDENTIALISSUANCERULESTATUS_DISABLED EnumCredentialIssuanceRuleStatus = "DISABLED"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumCredentialIssuanceRuleStatus) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

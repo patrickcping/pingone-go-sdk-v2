@@ -7,7 +7,7 @@
 
 * `SAML` (value: `"SAML"`)
 
-* `WS_FED` (value: `"WS-FED"`)
+* `WS_FED` (value: `"WS_FED"`)
 
 * `EXTERNAL_LINK` (value: `"EXTERNAL_LINK"`)
 

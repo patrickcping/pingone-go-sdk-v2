@@ -20,7 +20,7 @@ var _ MappedNullable = &TransactionConfigurationTimeout{}
 // TransactionConfigurationTimeout struct for TransactionConfigurationTimeout
 type TransactionConfigurationTimeout struct {
 	// Length of time before transaction timeout expires; range is 0-30 minutes or 0-1800 seconds.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -92,7 +92,7 @@ func (o *TransactionConfigurationTimeout) SetTimeUnit(v EnumTimeUnit) {
 }
 
 func (o TransactionConfigurationTimeout) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableTransactionConfigurationTimeout) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

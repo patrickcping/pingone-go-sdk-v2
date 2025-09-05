@@ -20,7 +20,7 @@ type EnumNotificationsPolicyQuotaDeliveryMethods string
 
 // List of EnumNotificationsPolicyQuotaDeliveryMethods
 const (
-	ENUMNOTIFICATIONSPOLICYQUOTADELIVERYMETHODS_SMS EnumNotificationsPolicyQuotaDeliveryMethods = "SMS"
+	ENUMNOTIFICATIONSPOLICYQUOTADELIVERYMETHODS_SMS   EnumNotificationsPolicyQuotaDeliveryMethods = "SMS"
 	ENUMNOTIFICATIONSPOLICYQUOTADELIVERYMETHODS_VOICE EnumNotificationsPolicyQuotaDeliveryMethods = "Voice"
 	ENUMNOTIFICATIONSPOLICYQUOTADELIVERYMETHODS_EMAIL EnumNotificationsPolicyQuotaDeliveryMethods = "Email"
 )
@@ -111,4 +111,3 @@ func (v *NullableEnumNotificationsPolicyQuotaDeliveryMethods) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,7 +20,7 @@ var _ MappedNullable = &PropagationStoreConfigurationAquera{}
 // PropagationStoreConfigurationAquera struct for PropagationStoreConfigurationAquera
 type PropagationStoreConfigurationAquera struct {
 	// A string specifying the access token for account authentication.
-	ACCESS_TOKEN *string `json:"ACCESS_TOKEN,omitempty"`
+	ACCESS_TOKEN          *string                                            `json:"ACCESS_TOKEN,omitempty"`
 	AUTHENTICATION_METHOD EnumPropagationStoreTypeAqueraAuthenticationMethod `json:"AUTHENTICATION_METHOD"`
 	// The password for account authentication.
 	BASIC_AUTH_PASSWORD string `json:"BASIC_AUTH_PASSWORD"`
@@ -29,9 +29,9 @@ type PropagationStoreConfigurationAquera struct {
 	// Whether or not users are allowed to be created.
 	CREATE_USERS *bool `json:"CREATE_USERS,omitempty"`
 	// Whether or not users are allowed to be disabled.
-	DISABLE_USERS *bool `json:"DISABLE_USERS,omitempty"`
-	GROUP_NAME_SOURCE *EnumPropagationStoreTypeAqueraGroupSourceName `json:"GROUP_NAME_SOURCE,omitempty"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
+	DISABLE_USERS     *bool                                              `json:"DISABLE_USERS,omitempty"`
+	GROUP_NAME_SOURCE *EnumPropagationStoreTypeAqueraGroupSourceName     `json:"GROUP_NAME_SOURCE,omitempty"`
+	REMOVE_ACTION     *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
 	// The SCIM URL.
 	SCIM_URL string `json:"SCIM_URL"`
 	// Whether or not users are allowed to be updated.
@@ -348,7 +348,7 @@ func (o *PropagationStoreConfigurationAquera) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationAquera) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -417,5 +417,3 @@ func (v *NullablePropagationStoreConfigurationAquera) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

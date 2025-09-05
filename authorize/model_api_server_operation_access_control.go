@@ -19,9 +19,9 @@ var _ MappedNullable = &APIServerOperationAccessControl{}
 
 // APIServerOperationAccessControl The access control configuration for the operation.
 type APIServerOperationAccessControl struct {
-	Group *APIServerOperationAccessControlGroup `json:"group,omitempty"`
+	Group      *APIServerOperationAccessControlGroup      `json:"group,omitempty"`
 	Permission *APIServerOperationAccessControlPermission `json:"permission,omitempty"`
-	Scope *APIServerOperationAccessControlScope `json:"scope,omitempty"`
+	Scope      *APIServerOperationAccessControlScope      `json:"scope,omitempty"`
 }
 
 // NewAPIServerOperationAccessControl instantiates a new APIServerOperationAccessControl object
@@ -138,7 +138,7 @@ func (o *APIServerOperationAccessControl) SetScope(v APIServerOperationAccessCon
 }
 
 func (o APIServerOperationAccessControl) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableAPIServerOperationAccessControl) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

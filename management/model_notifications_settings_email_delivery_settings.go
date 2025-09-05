@@ -12,376 +12,90 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the NotificationsSettingsEmailDeliverySettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationsSettingsEmailDeliverySettings{}
-
-// NotificationsSettingsEmailDeliverySettings struct for NotificationsSettingsEmailDeliverySettings
+// NotificationsSettingsEmailDeliverySettings - struct for NotificationsSettingsEmailDeliverySettings
 type NotificationsSettingsEmailDeliverySettings struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	// A string that specifies the organization's SMTP server.
-	Host *string `json:"host,omitempty"`
-	// An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
-	Port *int32 `json:"port,omitempty"`
-	// A string that specifies the organization's SMTP server's protocol.
-	Protocol *string `json:"protocol,omitempty"`
-	// A string that specifies the organization's SMTP server's username.
-	Username *string `json:"username,omitempty"`
-	// A string that specifies the organization's SMTP server's password.
-	Password *string `json:"password,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	From *NotificationsSettingsEmailDeliverySettingsFrom `json:"from,omitempty"`
-	ReplyTo *NotificationsSettingsEmailDeliverySettingsReplyTo `json:"replyTo,omitempty"`
+	NotificationsSettingsEmailDeliverySettingsCustom *NotificationsSettingsEmailDeliverySettingsCustom
+	NotificationsSettingsEmailDeliverySettingsSMTP   *NotificationsSettingsEmailDeliverySettingsSMTP
 }
 
-// NewNotificationsSettingsEmailDeliverySettings instantiates a new NotificationsSettingsEmailDeliverySettings object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewNotificationsSettingsEmailDeliverySettings() *NotificationsSettingsEmailDeliverySettings {
-	this := NotificationsSettingsEmailDeliverySettings{}
-	var port int32 = 465
-	this.Port = &port
-	return &this
-}
-
-// NewNotificationsSettingsEmailDeliverySettingsWithDefaults instantiates a new NotificationsSettingsEmailDeliverySettings object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewNotificationsSettingsEmailDeliverySettingsWithDefaults() *NotificationsSettingsEmailDeliverySettings {
-	this := NotificationsSettingsEmailDeliverySettings{}
-	var port int32 = 465
-	this.Port = &port
-	return &this
-}
-
-// GetLinks returns the Links field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetLinks() map[string]LinksHATEOASValue {
-	if o == nil || IsNil(o.Links) {
-		var ret map[string]LinksHATEOASValue
-		return ret
+// NotificationsSettingsEmailDeliverySettingsCustomAsNotificationsSettingsEmailDeliverySettings is a convenience function that returns NotificationsSettingsEmailDeliverySettingsCustom wrapped in NotificationsSettingsEmailDeliverySettings
+func NotificationsSettingsEmailDeliverySettingsCustomAsNotificationsSettingsEmailDeliverySettings(v *NotificationsSettingsEmailDeliverySettingsCustom) NotificationsSettingsEmailDeliverySettings {
+	return NotificationsSettingsEmailDeliverySettings{
+		NotificationsSettingsEmailDeliverySettingsCustom: v,
 	}
-	return *o.Links
 }
 
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
-	if o == nil || IsNil(o.Links) {
-		return nil, false
+// NotificationsSettingsEmailDeliverySettingsSMTPAsNotificationsSettingsEmailDeliverySettings is a convenience function that returns NotificationsSettingsEmailDeliverySettingsSMTP wrapped in NotificationsSettingsEmailDeliverySettings
+func NotificationsSettingsEmailDeliverySettingsSMTPAsNotificationsSettingsEmailDeliverySettings(v *NotificationsSettingsEmailDeliverySettingsSMTP) NotificationsSettingsEmailDeliverySettings {
+	return NotificationsSettingsEmailDeliverySettings{
+		NotificationsSettingsEmailDeliverySettingsSMTP: v,
 	}
-	return o.Links, true
 }
 
-// HasLinks returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
-		return true
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *NotificationsSettingsEmailDeliverySettings) UnmarshalJSON(data []byte) error {
+
+	var common NotificationsSettingsEmailDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
 	}
 
-	return false
-}
+	dst.NotificationsSettingsEmailDeliverySettingsCustom = nil
+	dst.NotificationsSettingsEmailDeliverySettingsSMTP = nil
 
-// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetLinks(v map[string]LinksHATEOASValue) {
-	o.Links = &v
-}
+	objType := common.GetProtocol()
 
-// GetHost returns the Host field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetHost() string {
-	if o == nil || IsNil(o.Host) {
-		var ret string
-		return ret
-	}
-	return *o.Host
-}
-
-// GetHostOk returns a tuple with the Host field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetHostOk() (*string, bool) {
-	if o == nil || IsNil(o.Host) {
-		return nil, false
-	}
-	return o.Host, true
-}
-
-// HasHost returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasHost() bool {
-	if o != nil && !IsNil(o.Host) {
-		return true
+	if !objType.IsValid() {
+		return nil
 	}
 
-	return false
+	switch objType {
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_HTTP:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsCustom); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTP, ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSPROTOCOL_SMTPS:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsEmailDeliverySettingsSMTP); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
+	}
+	return nil
 }
 
-// SetHost gets a reference to the given string and assigns it to the Host field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetHost(v string) {
-	o.Host = &v
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src NotificationsSettingsEmailDeliverySettings) MarshalJSON() ([]byte, error) {
+	if src.NotificationsSettingsEmailDeliverySettingsCustom != nil {
+		return json.Marshal(&src.NotificationsSettingsEmailDeliverySettingsCustom)
+	}
+
+	if src.NotificationsSettingsEmailDeliverySettingsSMTP != nil {
+		return json.Marshal(&src.NotificationsSettingsEmailDeliverySettingsSMTP)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-// GetPort returns the Port field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetPort() int32 {
-	if o == nil || IsNil(o.Port) {
-		var ret int32
-		return ret
+// Get the actual instance
+func (obj *NotificationsSettingsEmailDeliverySettings) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
 	}
-	return *o.Port
-}
-
-// GetPortOk returns a tuple with the Port field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetPortOk() (*int32, bool) {
-	if o == nil || IsNil(o.Port) {
-		return nil, false
-	}
-	return o.Port, true
-}
-
-// HasPort returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasPort() bool {
-	if o != nil && !IsNil(o.Port) {
-		return true
+	if obj.NotificationsSettingsEmailDeliverySettingsCustom != nil {
+		return obj.NotificationsSettingsEmailDeliverySettingsCustom
 	}
 
-	return false
-}
-
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetPort(v int32) {
-	o.Port = &v
-}
-
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetProtocol() string {
-	if o == nil || IsNil(o.Protocol) {
-		var ret string
-		return ret
-	}
-	return *o.Protocol
-}
-
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetProtocolOk() (*string, bool) {
-	if o == nil || IsNil(o.Protocol) {
-		return nil, false
-	}
-	return o.Protocol, true
-}
-
-// HasProtocol returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasProtocol() bool {
-	if o != nil && !IsNil(o.Protocol) {
-		return true
+	if obj.NotificationsSettingsEmailDeliverySettingsSMTP != nil {
+		return obj.NotificationsSettingsEmailDeliverySettingsSMTP
 	}
 
-	return false
-}
-
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetProtocol(v string) {
-	o.Protocol = &v
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetUsername(v string) {
-	o.Username = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetPassword(v string) {
-	o.Password = &v
-}
-
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetEnvironment() ObjectEnvironment {
-	if o == nil || IsNil(o.Environment) {
-		var ret ObjectEnvironment
-		return ret
-	}
-	return *o.Environment
-}
-
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || IsNil(o.Environment) {
-		return nil, false
-	}
-	return o.Environment, true
-}
-
-// HasEnvironment returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetEnvironment(v ObjectEnvironment) {
-	o.Environment = &v
-}
-
-// GetFrom returns the From field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetFrom() NotificationsSettingsEmailDeliverySettingsFrom {
-	if o == nil || IsNil(o.From) {
-		var ret NotificationsSettingsEmailDeliverySettingsFrom
-		return ret
-	}
-	return *o.From
-}
-
-// GetFromOk returns a tuple with the From field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetFromOk() (*NotificationsSettingsEmailDeliverySettingsFrom, bool) {
-	if o == nil || IsNil(o.From) {
-		return nil, false
-	}
-	return o.From, true
-}
-
-// HasFrom returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasFrom() bool {
-	if o != nil && !IsNil(o.From) {
-		return true
-	}
-
-	return false
-}
-
-// SetFrom gets a reference to the given NotificationsSettingsEmailDeliverySettingsFrom and assigns it to the From field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetFrom(v NotificationsSettingsEmailDeliverySettingsFrom) {
-	o.From = &v
-}
-
-// GetReplyTo returns the ReplyTo field value if set, zero value otherwise.
-func (o *NotificationsSettingsEmailDeliverySettings) GetReplyTo() NotificationsSettingsEmailDeliverySettingsReplyTo {
-	if o == nil || IsNil(o.ReplyTo) {
-		var ret NotificationsSettingsEmailDeliverySettingsReplyTo
-		return ret
-	}
-	return *o.ReplyTo
-}
-
-// GetReplyToOk returns a tuple with the ReplyTo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) GetReplyToOk() (*NotificationsSettingsEmailDeliverySettingsReplyTo, bool) {
-	if o == nil || IsNil(o.ReplyTo) {
-		return nil, false
-	}
-	return o.ReplyTo, true
-}
-
-// HasReplyTo returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettings) HasReplyTo() bool {
-	if o != nil && !IsNil(o.ReplyTo) {
-		return true
-	}
-
-	return false
-}
-
-// SetReplyTo gets a reference to the given NotificationsSettingsEmailDeliverySettingsReplyTo and assigns it to the ReplyTo field.
-func (o *NotificationsSettingsEmailDeliverySettings) SetReplyTo(v NotificationsSettingsEmailDeliverySettingsReplyTo) {
-	o.ReplyTo = &v
-}
-
-func (o NotificationsSettingsEmailDeliverySettings) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o NotificationsSettingsEmailDeliverySettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !IsNil(o.Host) {
-		toSerialize["host"] = o.Host
-	}
-	if !IsNil(o.Port) {
-		toSerialize["port"] = o.Port
-	}
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
-	if !IsNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !IsNil(o.From) {
-		toSerialize["from"] = o.From
-	}
-	if !IsNil(o.ReplyTo) {
-		toSerialize["replyTo"] = o.ReplyTo
-	}
-	return toSerialize, nil
+	// all schemas are nil
+	return nil
 }
 
 type NullableNotificationsSettingsEmailDeliverySettings struct {
@@ -419,5 +133,3 @@ func (v *NullableNotificationsSettingsEmailDeliverySettings) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

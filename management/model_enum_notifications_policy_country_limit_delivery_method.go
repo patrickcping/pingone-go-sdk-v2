@@ -20,7 +20,7 @@ type EnumNotificationsPolicyCountryLimitDeliveryMethod string
 
 // List of EnumNotificationsPolicyCountryLimitDeliveryMethod
 const (
-	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITDELIVERYMETHOD_SMS EnumNotificationsPolicyCountryLimitDeliveryMethod = "SMS"
+	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITDELIVERYMETHOD_SMS   EnumNotificationsPolicyCountryLimitDeliveryMethod = "SMS"
 	ENUMNOTIFICATIONSPOLICYCOUNTRYLIMITDELIVERYMETHOD_VOICE EnumNotificationsPolicyCountryLimitDeliveryMethod = "Voice"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsPolicyCountryLimitDeliveryMethod) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

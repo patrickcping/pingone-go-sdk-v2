@@ -46,6 +46,11 @@ func init() {
 			URLSuffix: "ca",
 			APICode:   management.ENUMREGIONCODE_CA,
 		},
+		{
+			Region:    "Singapore",
+			URLSuffix: "sg",
+			APICode:   management.ENUMREGIONCODE_SG,
+		},
 	}
 }
 

@@ -20,7 +20,7 @@ var _ MappedNullable = &OTPDeviceConfigurationOtpDeliveries{}
 // OTPDeviceConfigurationOtpDeliveries OTP delivery configuration.
 type OTPDeviceConfigurationOtpDeliveries struct {
 	// Count of OTP deliveries.
-	Count int32 `json:"count"`
+	Count    int32                                       `json:"count"`
 	Cooldown OTPDeviceConfigurationOtpDeliveriesCooldown `json:"cooldown"`
 }
 
@@ -92,7 +92,7 @@ func (o *OTPDeviceConfigurationOtpDeliveries) SetCooldown(v OTPDeviceConfigurati
 }
 
 func (o OTPDeviceConfigurationOtpDeliveries) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableOTPDeviceConfigurationOtpDeliveries) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

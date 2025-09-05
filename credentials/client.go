@@ -53,6 +53,8 @@ type APIClient struct {
 
 	DigitalWalletsApi *DigitalWalletsApiService
 
+	EnvironmentsApi *EnvironmentsApiService
+
 	HALApi *HALApiService
 
 	UserCredentialsApi *UserCredentialsApiService
@@ -99,6 +101,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CredentialTypesApi = (*CredentialTypesApiService)(&c.common)
 	c.DigitalWalletAppsApi = (*DigitalWalletAppsApiService)(&c.common)
 	c.DigitalWalletsApi = (*DigitalWalletsApiService)(&c.common)
+	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.HALApi = (*HALApiService)(&c.common)
 	c.UserCredentialsApi = (*UserCredentialsApiService)(&c.common)
 

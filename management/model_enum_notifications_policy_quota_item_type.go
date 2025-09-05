@@ -20,7 +20,7 @@ type EnumNotificationsPolicyQuotaItemType string
 
 // List of EnumNotificationsPolicyQuotaItemType
 const (
-	ENUMNOTIFICATIONSPOLICYQUOTAITEMTYPE_USER EnumNotificationsPolicyQuotaItemType = "USER"
+	ENUMNOTIFICATIONSPOLICYQUOTAITEMTYPE_USER        EnumNotificationsPolicyQuotaItemType = "USER"
 	ENUMNOTIFICATIONSPOLICYQUOTAITEMTYPE_ENVIRONMENT EnumNotificationsPolicyQuotaItemType = "ENVIRONMENT"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsPolicyQuotaItemType) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

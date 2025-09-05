@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationWSFEDAllOfIdpSigning{}
 // ApplicationWSFEDAllOfIdpSigning Contains the information about the signing of requests by the identity provider (IdP).
 type ApplicationWSFEDAllOfIdpSigning struct {
 	Algorithm EnumApplicationWSFEDIDPSigningAlgorithm `json:"algorithm"`
-	Key ApplicationWSFEDAllOfIdpSigningKey `json:"key"`
+	Key       ApplicationWSFEDAllOfIdpSigningKey      `json:"key"`
 }
 
 // NewApplicationWSFEDAllOfIdpSigning instantiates a new ApplicationWSFEDAllOfIdpSigning object
@@ -91,7 +91,7 @@ func (o *ApplicationWSFEDAllOfIdpSigning) SetKey(v ApplicationWSFEDAllOfIdpSigni
 }
 
 func (o ApplicationWSFEDAllOfIdpSigning) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableApplicationWSFEDAllOfIdpSigning) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

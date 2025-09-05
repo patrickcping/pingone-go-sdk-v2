@@ -20,16 +20,16 @@ var _ MappedNullable = &MFASettings{}
 
 // MFASettings struct for MFASettings
 type MFASettings struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Environment *ObjectEnvironment            `json:"environment,omitempty"`
 	// Deprecated
-	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
-	Lockout *MFASettingsLockout `json:"lockout,omitempty"`
-	Pairing MFASettingsPairing `json:"pairing"`
+	Authentication  *MFASettingsAuthentication  `json:"authentication,omitempty"`
+	Lockout         *MFASettingsLockout         `json:"lockout,omitempty"`
+	Pairing         MFASettingsPairing          `json:"pairing"`
 	PhoneExtensions *MFASettingsPhoneExtensions `json:"phoneExtensions,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Users *MFASettingsUsers `json:"users,omitempty"`
+	UpdatedAt *time.Time        `json:"updatedAt,omitempty"`
+	Users     *MFASettingsUsers `json:"users,omitempty"`
 }
 
 // NewMFASettings instantiates a new MFASettings object
@@ -302,7 +302,7 @@ func (o *MFASettings) SetUsers(v MFASettingsUsers) {
 }
 
 func (o MFASettings) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -371,5 +371,3 @@ func (v *NullableMFASettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

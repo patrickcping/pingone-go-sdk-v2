@@ -19,34 +19,34 @@ var _ MappedNullable = &RiskEvaluationEventBrowser{}
 
 // RiskEvaluationEventBrowser An object that specifies the browser fingerprint attributes. Browser data can be retrieved using browser fingerprint JS. For more information, see Overview of the PingOne Risk Integration Kit.
 type RiskEvaluationEventBrowser struct {
-	UserAgent *string `json:"userAgent,omitempty"`
-	Cookie *string `json:"cookie,omitempty"`
-	Language *string `json:"language,omitempty"`
-	ColorDepth *float32 `json:"colorDepth,omitempty"`
-	DeviceMemory *float32 `json:"deviceMemory,omitempty"`
-	HardwareConcurrency *float32 `json:"hardwareConcurrency,omitempty"`
-	ScreenResolution []float32 `json:"screenResolution,omitempty"`
-	AvailableScreenResolution []float32 `json:"availableScreenResolution,omitempty"`
-	TimezoneOffset *float32 `json:"timezoneOffset,omitempty"`
-	Timezone *string `json:"timezone,omitempty"`
-	SessionStorage *bool `json:"sessionStorage,omitempty"`
-	LocalStorage *bool `json:"localStorage,omitempty"`
-	IndexedDb *bool `json:"indexedDb,omitempty"`
-	AddBehaviour map[string]interface{} `json:"addBehaviour,omitempty"`
-	OpenDatabase *bool `json:"openDatabase,omitempty"`
-	CpuClass *string `json:"cpuClass,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	Plugins []map[string]interface{} `json:"plugins,omitempty"`
-	WebglVendorAndRenderer *string `json:"webglVendorAndRenderer,omitempty"`
-	Webgl []string `json:"webgl,omitempty"`
-	AdBlock *bool `json:"adBlock,omitempty"`
-	HasLiedLanguages *bool `json:"hasLiedLanguages,omitempty"`
-	HasLiedResolution *bool `json:"hasLiedResolution,omitempty"`
-	HasLiedOs *bool `json:"hasLiedOs,omitempty"`
-	HasLiedBrowser *bool `json:"hasLiedBrowser,omitempty"`
-	TouchSupport []string `json:"touchSupport,omitempty"`
-	Fonts []string `json:"fonts,omitempty"`
-	Audio *string `json:"audio,omitempty"`
+	UserAgent                 *string                  `json:"userAgent,omitempty"`
+	Cookie                    *string                  `json:"cookie,omitempty"`
+	Language                  *string                  `json:"language,omitempty"`
+	ColorDepth                *float32                 `json:"colorDepth,omitempty"`
+	DeviceMemory              *float32                 `json:"deviceMemory,omitempty"`
+	HardwareConcurrency       *float32                 `json:"hardwareConcurrency,omitempty"`
+	ScreenResolution          []float32                `json:"screenResolution,omitempty"`
+	AvailableScreenResolution []float32                `json:"availableScreenResolution,omitempty"`
+	TimezoneOffset            *float32                 `json:"timezoneOffset,omitempty"`
+	Timezone                  *string                  `json:"timezone,omitempty"`
+	SessionStorage            *bool                    `json:"sessionStorage,omitempty"`
+	LocalStorage              *bool                    `json:"localStorage,omitempty"`
+	IndexedDb                 *bool                    `json:"indexedDb,omitempty"`
+	AddBehaviour              map[string]interface{}   `json:"addBehaviour,omitempty"`
+	OpenDatabase              *bool                    `json:"openDatabase,omitempty"`
+	CpuClass                  *string                  `json:"cpuClass,omitempty"`
+	Platform                  *string                  `json:"platform,omitempty"`
+	Plugins                   []map[string]interface{} `json:"plugins,omitempty"`
+	WebglVendorAndRenderer    *string                  `json:"webglVendorAndRenderer,omitempty"`
+	Webgl                     []string                 `json:"webgl,omitempty"`
+	AdBlock                   *bool                    `json:"adBlock,omitempty"`
+	HasLiedLanguages          *bool                    `json:"hasLiedLanguages,omitempty"`
+	HasLiedResolution         *bool                    `json:"hasLiedResolution,omitempty"`
+	HasLiedOs                 *bool                    `json:"hasLiedOs,omitempty"`
+	HasLiedBrowser            *bool                    `json:"hasLiedBrowser,omitempty"`
+	TouchSupport              []string                 `json:"touchSupport,omitempty"`
+	Fonts                     []string                 `json:"fonts,omitempty"`
+	Audio                     *string                  `json:"audio,omitempty"`
 }
 
 // NewRiskEvaluationEventBrowser instantiates a new RiskEvaluationEventBrowser object
@@ -963,7 +963,7 @@ func (o *RiskEvaluationEventBrowser) SetAudio(v string) {
 }
 
 func (o RiskEvaluationEventBrowser) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1094,5 +1094,3 @@ func (v *NullableRiskEvaluationEventBrowser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

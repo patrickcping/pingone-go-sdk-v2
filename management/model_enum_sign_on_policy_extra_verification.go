@@ -15,13 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumSignOnPolicyExtraVerification Specifies the level of further verification when deviceAuthorization is enabled. The PingOne platform performs an extra verification check by sending a silent push notification to the customer native application, and receives a confirmation in return.  `extraVerification` can be one of the following levels: `disabled` (default): The PingOne platform does not perform the extra verification check. `permissive`: The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as successfully completed. `restrictive`: The PingOne platform performs the extra verification check.The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as failed. 
+// EnumSignOnPolicyExtraVerification Specifies the level of further verification when deviceAuthorization is enabled. The PingOne platform performs an extra verification check by sending a silent push notification to the customer native application, and receives a confirmation in return.  `extraVerification` can be one of the following levels: `disabled` (default): The PingOne platform does not perform the extra verification check. `permissive`: The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as successfully completed. `restrictive`: The PingOne platform performs the extra verification check.The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as failed.
 type EnumSignOnPolicyExtraVerification string
 
 // List of EnumSignOnPolicyExtraVerification
 const (
-	ENUMSIGNONPOLICYEXTRAVERIFICATION_DISABLED EnumSignOnPolicyExtraVerification = "disabled"
-	ENUMSIGNONPOLICYEXTRAVERIFICATION_PERMISSIVE EnumSignOnPolicyExtraVerification = "permissive"
+	ENUMSIGNONPOLICYEXTRAVERIFICATION_DISABLED    EnumSignOnPolicyExtraVerification = "disabled"
+	ENUMSIGNONPOLICYEXTRAVERIFICATION_PERMISSIVE  EnumSignOnPolicyExtraVerification = "permissive"
 	ENUMSIGNONPOLICYEXTRAVERIFICATION_RESTRICTIVE EnumSignOnPolicyExtraVerification = "restrictive"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumSignOnPolicyExtraVerification) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

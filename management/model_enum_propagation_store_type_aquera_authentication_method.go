@@ -21,7 +21,7 @@ type EnumPropagationStoreTypeAqueraAuthenticationMethod string
 // List of EnumPropagationStoreTypeAqueraAuthenticationMethod
 const (
 	ENUMPROPAGATIONSTORETYPEAQUERAAUTHENTICATIONMETHOD_O_AUTH_BEARER_TOKEN EnumPropagationStoreTypeAqueraAuthenticationMethod = "OAuth Bearer Token"
-	ENUMPROPAGATIONSTORETYPEAQUERAAUTHENTICATIONMETHOD_BASIC_AUTH EnumPropagationStoreTypeAqueraAuthenticationMethod = "Basic Auth"
+	ENUMPROPAGATIONSTORETYPEAQUERAAUTHENTICATIONMETHOD_BASIC_AUTH          EnumPropagationStoreTypeAqueraAuthenticationMethod = "Basic Auth"
 )
 
 // All allowed values of EnumPropagationStoreTypeAqueraAuthenticationMethod enum
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeAqueraAuthenticationMethod) UnmarshalJS
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

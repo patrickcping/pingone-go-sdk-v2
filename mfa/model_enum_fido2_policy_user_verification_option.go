@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// EnumFIDO2PolicyUserVerificationOption Can be one of the following values: - `REQUIRED` - only FIDO devices supporting user verification can be used - `DISCOURAGED` - user verification is not required, even when supported by the FIDO device. In cases where user verification is required by the FIDO device itself, this setting does not override the device setting. - `PREFERRED` - user verification is required if the user's FIDO device supports it, but is not required if the user's device does not support it. For usernameless flows, only FIDO devices supporting user verification can be used, regardless of the value you set for `userVerification.option`. 
+// EnumFIDO2PolicyUserVerificationOption Can be one of the following values: - `REQUIRED` - only FIDO devices supporting user verification can be used - `DISCOURAGED` - user verification is not required, even when supported by the FIDO device. In cases where user verification is required by the FIDO device itself, this setting does not override the device setting. - `PREFERRED` - user verification is required if the user's FIDO device supports it, but is not required if the user's device does not support it. For usernameless flows, only FIDO devices supporting user verification can be used, regardless of the value you set for `userVerification.option`.
 type EnumFIDO2PolicyUserVerificationOption string
 
 // List of EnumFIDO2PolicyUserVerificationOption
 const (
-	ENUMFIDO2POLICYUSERVERIFICATIONOPTION_REQUIRED EnumFIDO2PolicyUserVerificationOption = "REQUIRED"
+	ENUMFIDO2POLICYUSERVERIFICATIONOPTION_REQUIRED    EnumFIDO2PolicyUserVerificationOption = "REQUIRED"
 	ENUMFIDO2POLICYUSERVERIFICATIONOPTION_DISCOURAGED EnumFIDO2PolicyUserVerificationOption = "DISCOURAGED"
-	ENUMFIDO2POLICYUSERVERIFICATIONOPTION_PREFERRED EnumFIDO2PolicyUserVerificationOption = "PREFERRED"
+	ENUMFIDO2POLICYUSERVERIFICATIONOPTION_PREFERRED   EnumFIDO2PolicyUserVerificationOption = "PREFERRED"
 )
 
 // All allowed values of EnumFIDO2PolicyUserVerificationOption enum
@@ -110,4 +110,3 @@ func (v *NullableEnumFIDO2PolicyUserVerificationOption) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

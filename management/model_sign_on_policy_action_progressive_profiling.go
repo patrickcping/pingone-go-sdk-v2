@@ -19,16 +19,16 @@ var _ MappedNullable = &SignOnPolicyActionProgressiveProfiling{}
 
 // SignOnPolicyActionProgressiveProfiling struct for SignOnPolicyActionProgressiveProfiling
 type SignOnPolicyActionProgressiveProfiling struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue               `json:"_links,omitempty"`
+	Condition   *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
+	Environment *ObjectEnvironment                          `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
-	Priority int32 `json:"priority"`
-	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
-	Type EnumSignOnPolicyType `json:"type"`
-	Attributes []SignOnPolicyActionProgressiveProfilingAllOfAttributes `json:"attributes"`
+	Priority     int32                                                   `json:"priority"`
+	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy                   `json:"signOnPolicy,omitempty"`
+	Type         EnumSignOnPolicyType                                    `json:"type"`
+	Attributes   []SignOnPolicyActionProgressiveProfilingAllOfAttributes `json:"attributes"`
 	// A boolean that specifies whether the progressive profiling action will not be executed if another progressive profiling action has already been executed during the flow. This property is required.
 	PreventMultiplePromptsPerFlow bool `json:"preventMultiplePromptsPerFlow"`
 	// An integer that specifies how often to prompt the user to provide profile data for the configured attributes for which they do not have values. This property is required.
@@ -365,7 +365,7 @@ func (o *SignOnPolicyActionProgressiveProfiling) SetPromptText(v string) {
 }
 
 func (o SignOnPolicyActionProgressiveProfiling) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -433,5 +433,3 @@ func (v *NullableSignOnPolicyActionProgressiveProfiling) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

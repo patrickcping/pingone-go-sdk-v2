@@ -66,7 +66,7 @@ func (o *FIDOPolicyAllowedAuthenticatorsInner) SetId(v string) {
 }
 
 func (o FIDOPolicyAllowedAuthenticatorsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableFIDOPolicyAllowedAuthenticatorsInner) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

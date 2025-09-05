@@ -21,8 +21,8 @@ type EnumIdentityProviderOIDCTokenAuthMethod string
 // List of EnumIdentityProviderOIDCTokenAuthMethod
 const (
 	ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_BASIC EnumIdentityProviderOIDCTokenAuthMethod = "CLIENT_SECRET_BASIC"
-	ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_POST EnumIdentityProviderOIDCTokenAuthMethod = "CLIENT_SECRET_POST"
-	ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_NONE EnumIdentityProviderOIDCTokenAuthMethod = "NONE"
+	ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_POST  EnumIdentityProviderOIDCTokenAuthMethod = "CLIENT_SECRET_POST"
+	ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_NONE                EnumIdentityProviderOIDCTokenAuthMethod = "NONE"
 )
 
 // All allowed values of EnumIdentityProviderOIDCTokenAuthMethod enum
@@ -111,4 +111,3 @@ func (v *NullableEnumIdentityProviderOIDCTokenAuthMethod) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,7 +20,7 @@ type EnumApplicationCorsSettingsBehavior string
 
 // List of EnumApplicationCorsSettingsBehavior
 const (
-	ENUMAPPLICATIONCORSSETTINGSBEHAVIOR_NO_ORIGINS EnumApplicationCorsSettingsBehavior = "ALLOW_NO_ORIGINS"
+	ENUMAPPLICATIONCORSSETTINGSBEHAVIOR_NO_ORIGINS       EnumApplicationCorsSettingsBehavior = "ALLOW_NO_ORIGINS"
 	ENUMAPPLICATIONCORSSETTINGSBEHAVIOR_SPECIFIC_ORIGINS EnumApplicationCorsSettingsBehavior = "ALLOW_SPECIFIC_ORIGINS"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumApplicationCorsSettingsBehavior) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

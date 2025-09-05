@@ -20,9 +20,9 @@ type EnumFormItemAlignment string
 
 // List of EnumFormItemAlignment
 const (
-	ENUMFORMITEMALIGNMENT_LEFT EnumFormItemAlignment = "LEFT"
+	ENUMFORMITEMALIGNMENT_LEFT   EnumFormItemAlignment = "LEFT"
 	ENUMFORMITEMALIGNMENT_CENTER EnumFormItemAlignment = "CENTER"
-	ENUMFORMITEMALIGNMENT_RIGHT EnumFormItemAlignment = "RIGHT"
+	ENUMFORMITEMALIGNMENT_RIGHT  EnumFormItemAlignment = "RIGHT"
 )
 
 // All allowed values of EnumFormItemAlignment enum
@@ -111,4 +111,3 @@ func (v *NullableEnumFormItemAlignment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

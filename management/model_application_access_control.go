@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationAccessControl{}
 
 // ApplicationAccessControl struct for ApplicationAccessControl
 type ApplicationAccessControl struct {
-	Role *ApplicationAccessControlRole `json:"role,omitempty"`
+	Role  *ApplicationAccessControlRole  `json:"role,omitempty"`
 	Group *ApplicationAccessControlGroup `json:"group,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *ApplicationAccessControl) SetGroup(v ApplicationAccessControlGroup) {
 }
 
 func (o ApplicationAccessControl) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableApplicationAccessControl) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,7 +21,7 @@ type EnumPropagationStoreTypeRemoveActionDisableDelete string
 // List of EnumPropagationStoreTypeRemoveActionDisableDelete
 const (
 	ENUMPROPAGATIONSTORETYPEREMOVEACTIONDISABLEDELETE_DISABLE EnumPropagationStoreTypeRemoveActionDisableDelete = "Disable"
-	ENUMPROPAGATIONSTORETYPEREMOVEACTIONDISABLEDELETE_DELETE EnumPropagationStoreTypeRemoveActionDisableDelete = "Delete"
+	ENUMPROPAGATIONSTORETYPEREMOVEACTIONDISABLEDELETE_DELETE  EnumPropagationStoreTypeRemoveActionDisableDelete = "Delete"
 )
 
 // All allowed values of EnumPropagationStoreTypeRemoveActionDisableDelete enum
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeRemoveActionDisableDelete) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

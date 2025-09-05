@@ -22,12 +22,13 @@ var _ MappedNullable = &RiskPredictorDevice{}
 type RiskPredictorDevice struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
 	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
-	CompactName string `json:"compactName"`
-	Type EnumPredictorType `json:"type"`
+	CompactName string            `json:"compactName"`
+	Type        EnumPredictorType `json:"type"`
 	// A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
@@ -37,10 +38,12 @@ type RiskPredictorDevice struct {
 	// Indicates whether PingOne Risk is licensed for the environment.
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
-	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
-	Detect EnumPredictorNewDeviceDetectType `json:"detect"`
+	Deletable *bool                            `json:"deletable,omitempty"`
+	Default   *RiskPredictorCommonDefault      `json:"default,omitempty"`
+	Condition *RiskPredictorCommonCondition    `json:"condition,omitempty"`
+	Detect    EnumPredictorNewDeviceDetectType `json:"detect"`
+	// Relevant only for Suspicious Device predictors. If `shouldValidatePayloadSignature` is set to `true`, then any risk policies that include this predictor will require that the Signals SDK payload be provided as a signed JWT whose signature will be verified before proceeding with risk evaluation. You instruct the Signals SDK to provide the payload as a signed JWT by using the `universalDeviceIdentification` flag during initialization of the SDK, or by selecting the relevant setting for the `skrisk` component in DaVinci flows.
+	ShouldValidatePayloadSignature *bool `json:"shouldValidatePayloadSignature,omitempty"`
 	// You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
 	ActivationAt *time.Time `json:"activationAt,omitempty"`
 }
@@ -128,6 +131,38 @@ func (o *RiskPredictorDevice) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *RiskPredictorDevice) SetId(v string) {
 	o.Id = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *RiskPredictorDevice) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorDevice) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *RiskPredictorDevice) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *RiskPredictorDevice) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
 }
 
 // GetName returns the Name field value
@@ -450,6 +485,38 @@ func (o *RiskPredictorDevice) SetDetect(v EnumPredictorNewDeviceDetectType) {
 	o.Detect = v
 }
 
+// GetShouldValidatePayloadSignature returns the ShouldValidatePayloadSignature field value if set, zero value otherwise.
+func (o *RiskPredictorDevice) GetShouldValidatePayloadSignature() bool {
+	if o == nil || IsNil(o.ShouldValidatePayloadSignature) {
+		var ret bool
+		return ret
+	}
+	return *o.ShouldValidatePayloadSignature
+}
+
+// GetShouldValidatePayloadSignatureOk returns a tuple with the ShouldValidatePayloadSignature field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorDevice) GetShouldValidatePayloadSignatureOk() (*bool, bool) {
+	if o == nil || IsNil(o.ShouldValidatePayloadSignature) {
+		return nil, false
+	}
+	return o.ShouldValidatePayloadSignature, true
+}
+
+// HasShouldValidatePayloadSignature returns a boolean if a field has been set.
+func (o *RiskPredictorDevice) HasShouldValidatePayloadSignature() bool {
+	if o != nil && !IsNil(o.ShouldValidatePayloadSignature) {
+		return true
+	}
+
+	return false
+}
+
+// SetShouldValidatePayloadSignature gets a reference to the given bool and assigns it to the ShouldValidatePayloadSignature field.
+func (o *RiskPredictorDevice) SetShouldValidatePayloadSignature(v bool) {
+	o.ShouldValidatePayloadSignature = &v
+}
+
 // GetActivationAt returns the ActivationAt field value if set, zero value otherwise.
 func (o *RiskPredictorDevice) GetActivationAt() time.Time {
 	if o == nil || IsNil(o.ActivationAt) {
@@ -483,7 +550,7 @@ func (o *RiskPredictorDevice) SetActivationAt(v time.Time) {
 }
 
 func (o RiskPredictorDevice) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -497,6 +564,9 @@ func (o RiskPredictorDevice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["compactName"] = o.CompactName
@@ -523,6 +593,9 @@ func (o RiskPredictorDevice) ToMap() (map[string]interface{}, error) {
 		toSerialize["condition"] = o.Condition
 	}
 	toSerialize["detect"] = o.Detect
+	if !IsNil(o.ShouldValidatePayloadSignature) {
+		toSerialize["shouldValidatePayloadSignature"] = o.ShouldValidatePayloadSignature
+	}
 	if !IsNil(o.ActivationAt) {
 		toSerialize["activationAt"] = o.ActivationAt
 	}
@@ -564,5 +637,3 @@ func (v *NullableRiskPredictorDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

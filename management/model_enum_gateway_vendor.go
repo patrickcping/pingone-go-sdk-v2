@@ -20,14 +20,14 @@ type EnumGatewayVendor string
 
 // List of EnumGatewayVendor
 const (
-	ENUMGATEWAYVENDOR_PING_DIRECTORY EnumGatewayVendor = "PingDirectory"
-	ENUMGATEWAYVENDOR_MICROSOFT_ACTIVE_DIRECTORY EnumGatewayVendor = "Microsoft Active Directory"
+	ENUMGATEWAYVENDOR_PING_DIRECTORY                             EnumGatewayVendor = "PingDirectory"
+	ENUMGATEWAYVENDOR_MICROSOFT_ACTIVE_DIRECTORY                 EnumGatewayVendor = "Microsoft Active Directory"
 	ENUMGATEWAYVENDOR_ORACLE_DIRECTORY_SERVER_ENTERPRISE_EDITION EnumGatewayVendor = "Oracle Directory Server Enterprise Edition"
-	ENUMGATEWAYVENDOR_ORACLE_UNIFIED_DIRECTORY EnumGatewayVendor = "Oracle Unified Directory"
-	ENUMGATEWAYVENDOR_CA_DIRECTORY EnumGatewayVendor = "CA Directory"
-	ENUMGATEWAYVENDOR_OPEN_DJ_DIRECTORY_SERVER EnumGatewayVendor = "OpenDJ Directory Server"
-	ENUMGATEWAYVENDOR_IBM__TIVOLI_SECURITY_DIRECTORY_SERVER EnumGatewayVendor = "IBM (Tivoli) Security Directory Server"
-	ENUMGATEWAYVENDOR_LDAPV3_COMPLIANT_DIRECTORY_SERVER EnumGatewayVendor = "LDAPv3-compliant Directory Server"
+	ENUMGATEWAYVENDOR_ORACLE_UNIFIED_DIRECTORY                   EnumGatewayVendor = "Oracle Unified Directory"
+	ENUMGATEWAYVENDOR_CA_DIRECTORY                               EnumGatewayVendor = "CA Directory"
+	ENUMGATEWAYVENDOR_OPEN_DJ_DIRECTORY_SERVER                   EnumGatewayVendor = "OpenDJ Directory Server"
+	ENUMGATEWAYVENDOR_IBM__TIVOLI_SECURITY_DIRECTORY_SERVER      EnumGatewayVendor = "IBM (Tivoli) Security Directory Server"
+	ENUMGATEWAYVENDOR_LDAPV3_COMPLIANT_DIRECTORY_SERVER          EnumGatewayVendor = "LDAPv3-compliant Directory Server"
 )
 
 // All allowed values of EnumGatewayVendor enum
@@ -121,4 +121,3 @@ func (v *NullableEnumGatewayVendor) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

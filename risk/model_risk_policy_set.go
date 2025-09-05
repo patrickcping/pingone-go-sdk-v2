@@ -24,10 +24,10 @@ type RiskPolicySet struct {
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether this risk policy set is the environment's default risk policy set, which is used whenever an explicit policySet ID is not specified in the risk policy evaluation request. If this property is not specified, the value defaults to false, and this risk policy set is not regarded as the default risk policy set for the environment. When this property is set to true (in PUT or POST requests), the default property of all other risk policy sets in the environment is set to false.
-	Default *bool `json:"default,omitempty"`
+	Default       *bool                       `json:"default,omitempty"`
 	DefaultResult *RiskPolicySetDefaultResult `json:"defaultResult,omitempty"`
 	// A string that specifies a description for this policy set. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -438,7 +438,7 @@ func (o *RiskPolicySet) SetTriggers(v []RiskPolicySetTriggersInner) {
 }
 
 func (o RiskPolicySet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -519,5 +519,3 @@ func (v *NullableRiskPolicySet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

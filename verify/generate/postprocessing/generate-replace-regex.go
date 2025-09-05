@@ -48,5 +48,11 @@ var (
 		fileSelectPattern string
 		pattern           string
 		repl              string
-	}{}
+	}{
+		{
+			fileSelectPattern: "*Api.md",
+			pattern:           `PACKAGENAME`,
+			repl:              `verify`,
+		},
+	}
 )

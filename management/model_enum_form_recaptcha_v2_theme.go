@@ -21,7 +21,7 @@ type EnumFormRecaptchaV2Theme string
 // List of EnumFormRecaptchaV2Theme
 const (
 	ENUMFORMRECAPTCHAV2THEME_LIGHT EnumFormRecaptchaV2Theme = "LIGHT"
-	ENUMFORMRECAPTCHAV2THEME_DARK EnumFormRecaptchaV2Theme = "DARK"
+	ENUMFORMRECAPTCHAV2THEME_DARK  EnumFormRecaptchaV2Theme = "DARK"
 )
 
 // All allowed values of EnumFormRecaptchaV2Theme enum
@@ -108,4 +108,3 @@ func (v *NullableEnumFormRecaptchaV2Theme) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

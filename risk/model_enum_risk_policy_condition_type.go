@@ -15,15 +15,15 @@ import (
 	"fmt"
 )
 
-// EnumRiskPolicyConditionType Indicates the type of policy you are defining. Can be one of the following values: `AGGREGATED_SCORES`, `AGGREGATED_WEIGHTS`, `VALUE_COMPARISON`, and `IP_RANGE` (for override policies or custom predictors). 
+// EnumRiskPolicyConditionType Indicates the type of policy you are defining. Can be one of the following values: `AGGREGATED_SCORES`, `AGGREGATED_WEIGHTS`, `VALUE_COMPARISON`, and `IP_RANGE` (for override policies or custom predictors).
 type EnumRiskPolicyConditionType string
 
 // List of EnumRiskPolicyConditionType
 const (
 	ENUMRISKPOLICYCONDITIONTYPE_AGGREGATED_WEIGHTS EnumRiskPolicyConditionType = "AGGREGATED_WEIGHTS"
-	ENUMRISKPOLICYCONDITIONTYPE_AGGREGATED_SCORES EnumRiskPolicyConditionType = "AGGREGATED_SCORES"
-	ENUMRISKPOLICYCONDITIONTYPE_VALUE_COMPARISON EnumRiskPolicyConditionType = "VALUE_COMPARISON"
-	ENUMRISKPOLICYCONDITIONTYPE_IP_RANGE EnumRiskPolicyConditionType = "IP_RANGE"
+	ENUMRISKPOLICYCONDITIONTYPE_AGGREGATED_SCORES  EnumRiskPolicyConditionType = "AGGREGATED_SCORES"
+	ENUMRISKPOLICYCONDITIONTYPE_VALUE_COMPARISON   EnumRiskPolicyConditionType = "VALUE_COMPARISON"
+	ENUMRISKPOLICYCONDITIONTYPE_IP_RANGE           EnumRiskPolicyConditionType = "IP_RANGE"
 )
 
 // All allowed values of EnumRiskPolicyConditionType enum
@@ -113,4 +113,3 @@ func (v *NullableEnumRiskPolicyConditionType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

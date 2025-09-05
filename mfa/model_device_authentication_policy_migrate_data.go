@@ -100,7 +100,7 @@ func (o *DeviceAuthenticationPolicyMigrateData) SetFido2PolicyId(v string) {
 }
 
 func (o DeviceAuthenticationPolicyMigrateData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,5 +151,3 @@ func (v *NullableDeviceAuthenticationPolicyMigrateData) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

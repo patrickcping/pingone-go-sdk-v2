@@ -22,12 +22,13 @@ var _ MappedNullable = &RiskPredictorAnonymousNetwork{}
 type RiskPredictorAnonymousNetwork struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id          *string            `json:"id,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
 	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
-	CompactName string `json:"compactName"`
-	Type EnumPredictorType `json:"type"`
+	CompactName string            `json:"compactName"`
+	Type        EnumPredictorType `json:"type"`
 	// A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
@@ -37,8 +38,8 @@ type RiskPredictorAnonymousNetwork struct {
 	// Indicates whether PingOne Risk is licensed for the environment.
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
-	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
+	Deletable *bool                         `json:"deletable,omitempty"`
+	Default   *RiskPredictorCommonDefault   `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	// A list of IP addresses (CIDRs) that are ignored for the predictor results.
 	WhiteList []string `json:"whiteList,omitempty"`
@@ -126,6 +127,38 @@ func (o *RiskPredictorAnonymousNetwork) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *RiskPredictorAnonymousNetwork) SetId(v string) {
 	o.Id = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *RiskPredictorAnonymousNetwork) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorAnonymousNetwork) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *RiskPredictorAnonymousNetwork) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *RiskPredictorAnonymousNetwork) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
 }
 
 // GetName returns the Name field value
@@ -457,7 +490,7 @@ func (o *RiskPredictorAnonymousNetwork) SetWhiteList(v []string) {
 }
 
 func (o RiskPredictorAnonymousNetwork) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -471,6 +504,9 @@ func (o RiskPredictorAnonymousNetwork) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["compactName"] = o.CompactName
@@ -537,5 +573,3 @@ func (v *NullableRiskPredictorAnonymousNetwork) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

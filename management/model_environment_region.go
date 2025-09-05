@@ -18,7 +18,7 @@ import (
 // EnvironmentRegion - struct for EnvironmentRegion
 type EnvironmentRegion struct {
 	EnumRegionCode *EnumRegionCode
-	String *string
+	String         *string
 }
 
 // EnumRegionCodeAsEnvironmentRegion is a convenience function that returns EnumRegionCode wrapped in EnvironmentRegion
@@ -35,7 +35,6 @@ func StringAsEnvironmentRegion(v *string) EnvironmentRegion {
 	}
 }
 
-
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EnvironmentRegion) UnmarshalJSON(data []byte) error {
 
@@ -45,7 +44,7 @@ func (dst *EnvironmentRegion) UnmarshalJSON(data []byte) error {
 	err = newStrictDecoder(data).Decode(&dst.EnumRegionCode)
 	if err == nil {
 		jsonEnumRegionCode, _ := json.Marshal(dst.EnumRegionCode)
-		if string(jsonEnumRegionCode) == "{}" { // empty struct
+		if string(jsonEnumRegionCode) == "{}" || dst.EnumRegionCode == nil || *dst.EnumRegionCode == "UNKNOWN" { // empty struct
 			dst.EnumRegionCode = nil
 		} else {
 			match = true
@@ -90,7 +89,7 @@ func (src EnvironmentRegion) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *EnvironmentRegion) GetActualInstance() (interface{}) {
+func (obj *EnvironmentRegion) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -141,5 +140,3 @@ func (v *NullableEnvironmentRegion) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

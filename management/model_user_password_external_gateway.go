@@ -20,8 +20,8 @@ var _ MappedNullable = &UserPasswordExternalGateway{}
 // UserPasswordExternalGateway An object containing the gateway properties. When this is value is specified, the user’s password is managed in an external directory. You can set the user password using Create User (Import) or Update Password (Set).
 type UserPasswordExternalGateway struct {
 	// The UUID of the linked gateway that references the remote directory.
-	Id *string `json:"id,omitempty"`
-	Type *EnumGatewayType `json:"type,omitempty"`
+	Id       *string                              `json:"id,omitempty"`
+	Type     *EnumGatewayType                     `json:"type,omitempty"`
 	UserType *UserPasswordExternalGatewayUserType `json:"userType,omitempty"`
 	// An object that maps the external LDAP directory attributes to PingOne attributes. We use the correlationAttributes values to read the attributes from the external LDAP directory and map them to the corresponding PingOne attributes.
 	CorrelationAttributes map[string]interface{} `json:"correlationAttributes,omitempty"`
@@ -173,7 +173,7 @@ func (o *UserPasswordExternalGateway) SetCorrelationAttributes(v map[string]inte
 }
 
 func (o UserPasswordExternalGateway) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -232,5 +232,3 @@ func (v *NullableUserPasswordExternalGateway) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,21 +20,21 @@ type EnumTemplateName string
 
 // List of EnumTemplateName
 const (
-	ENUMTEMPLATENAME_CREDENTIAL_ISSUED EnumTemplateName = "credential_issued"
-	ENUMTEMPLATENAME_CREDENTIAL_REVOKED EnumTemplateName = "credential_revoked"
-	ENUMTEMPLATENAME_CREDENTIAL_UPDATED EnumTemplateName = "credential_updated"
-	ENUMTEMPLATENAME_CREDENTIAL_VERIFICATION EnumTemplateName = "credential_verification"
-	ENUMTEMPLATENAME_DEVICE_PAIRING EnumTemplateName = "device_pairing"
-	ENUMTEMPLATENAME_DIGITAL_WALLET_PAIRING EnumTemplateName = "digital_wallet_pairing"
-	ENUMTEMPLATENAME_EMAIL_VERIFICATION_ADMIN EnumTemplateName = "email_verification_admin"
-	ENUMTEMPLATENAME_EMAIL_VERIFICATION_USER EnumTemplateName = "email_verification_user"
-	ENUMTEMPLATENAME_EMAIL_PHONE_VERIFICATION EnumTemplateName = "email_phone_verification"
-	ENUMTEMPLATENAME_GENERAL EnumTemplateName = "general"
-	ENUMTEMPLATENAME_ID_VERIFICATION EnumTemplateName = "id_verification"
-	ENUMTEMPLATENAME_NEW_DEVICE_PAIRED EnumTemplateName = "new_device_paired"
-	ENUMTEMPLATENAME_RECOVERY_CODE_TEMPLATE EnumTemplateName = "recovery_code_template"
-	ENUMTEMPLATENAME_STRONG_AUTHENTICATION EnumTemplateName = "strong_authentication"
-	ENUMTEMPLATENAME_TRANSACTION EnumTemplateName = "transaction"
+	ENUMTEMPLATENAME_CREDENTIAL_ISSUED          EnumTemplateName = "credential_issued"
+	ENUMTEMPLATENAME_CREDENTIAL_REVOKED         EnumTemplateName = "credential_revoked"
+	ENUMTEMPLATENAME_CREDENTIAL_UPDATED         EnumTemplateName = "credential_updated"
+	ENUMTEMPLATENAME_CREDENTIAL_VERIFICATION    EnumTemplateName = "credential_verification"
+	ENUMTEMPLATENAME_DEVICE_PAIRING             EnumTemplateName = "device_pairing"
+	ENUMTEMPLATENAME_DIGITAL_WALLET_PAIRING     EnumTemplateName = "digital_wallet_pairing"
+	ENUMTEMPLATENAME_EMAIL_VERIFICATION_ADMIN   EnumTemplateName = "email_verification_admin"
+	ENUMTEMPLATENAME_EMAIL_VERIFICATION_USER    EnumTemplateName = "email_verification_user"
+	ENUMTEMPLATENAME_EMAIL_PHONE_VERIFICATION   EnumTemplateName = "email_phone_verification"
+	ENUMTEMPLATENAME_GENERAL                    EnumTemplateName = "general"
+	ENUMTEMPLATENAME_ID_VERIFICATION            EnumTemplateName = "id_verification"
+	ENUMTEMPLATENAME_NEW_DEVICE_PAIRED          EnumTemplateName = "new_device_paired"
+	ENUMTEMPLATENAME_RECOVERY_CODE_TEMPLATE     EnumTemplateName = "recovery_code_template"
+	ENUMTEMPLATENAME_STRONG_AUTHENTICATION      EnumTemplateName = "strong_authentication"
+	ENUMTEMPLATENAME_TRANSACTION                EnumTemplateName = "transaction"
 	ENUMTEMPLATENAME_VERIFICATION_CODE_TEMPLATE EnumTemplateName = "verification_code_template"
 )
 
@@ -137,4 +137,3 @@ func (v *NullableEnumTemplateName) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

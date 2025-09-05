@@ -20,10 +20,10 @@ var _ MappedNullable = &RiskPredictorCommonDefault{}
 // RiskPredictorCommonDefault Contains the default values used for a new risk predictor.
 type RiskPredictorCommonDefault struct {
 	// An integer type. This specifies the weight assigned to the risk predictor in a new policy by default.
-	Weight int32 `json:"weight"`
-	Score *int32 `json:"score,omitempty"`
-	Evaluated *bool `json:"evaluated,omitempty"`
-	Result *RiskPredictorCommonDefaultResult `json:"result,omitempty"`
+	Weight    int32                             `json:"weight"`
+	Score     *int32                            `json:"score,omitempty"`
+	Evaluated *bool                             `json:"evaluated,omitempty"`
+	Result    *RiskPredictorCommonDefaultResult `json:"result,omitempty"`
 }
 
 // NewRiskPredictorCommonDefault instantiates a new RiskPredictorCommonDefault object
@@ -165,7 +165,7 @@ func (o *RiskPredictorCommonDefault) SetResult(v RiskPredictorCommonDefaultResul
 }
 
 func (o RiskPredictorCommonDefault) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -222,5 +222,3 @@ func (v *NullableRiskPredictorCommonDefault) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

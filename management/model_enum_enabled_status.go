@@ -20,7 +20,7 @@ type EnumEnabledStatus string
 
 // List of EnumEnabledStatus
 const (
-	ENUMENABLEDSTATUS_ENABLED EnumEnabledStatus = "ENABLED"
+	ENUMENABLEDSTATUS_ENABLED  EnumEnabledStatus = "ENABLED"
 	ENUMENABLEDSTATUS_DISABLED EnumEnabledStatus = "DISABLED"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumEnabledStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

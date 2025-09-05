@@ -22,15 +22,15 @@ var _ MappedNullable = &LanguageLocalizationStatus{}
 type LanguageLocalizationStatus struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the language localization status resource was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt   *time.Time         `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id     *string                           `json:"id,omitempty"`
 	Locale *LanguageLocalizationStatusLocale `json:"locale,omitempty"`
 	// The name of the service associated with this resource.
-	Service string `json:"service"`
-	LocalizationComplete *bool `json:"localizationComplete,omitempty"`
-	StatusDetails *string `json:"statusDetails,omitempty"`
+	Service              string  `json:"service"`
+	LocalizationComplete *bool   `json:"localizationComplete,omitempty"`
+	StatusDetails        *string `json:"statusDetails,omitempty"`
 	// The time the language localization status resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -334,7 +334,7 @@ func (o *LanguageLocalizationStatus) SetUpdatedAt(v time.Time) {
 }
 
 func (o LanguageLocalizationStatus) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -406,5 +406,3 @@ func (v *NullableLanguageLocalizationStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

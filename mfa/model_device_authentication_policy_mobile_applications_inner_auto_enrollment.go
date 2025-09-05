@@ -66,7 +66,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) SetEna
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

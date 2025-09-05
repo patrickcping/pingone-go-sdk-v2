@@ -18,7 +18,7 @@ import (
 // EntityArrayEmbeddedPermissionsInner - struct for EntityArrayEmbeddedPermissionsInner
 type EntityArrayEmbeddedPermissionsInner struct {
 	ApplicationResourcePermission *ApplicationResourcePermission
-	ApplicationRolePermission *ApplicationRolePermission
+	ApplicationRolePermission     *ApplicationRolePermission
 }
 
 // ApplicationResourcePermissionAsEntityArrayEmbeddedPermissionsInner is a convenience function that returns ApplicationResourcePermission wrapped in EntityArrayEmbeddedPermissionsInner
@@ -34,7 +34,6 @@ func ApplicationRolePermissionAsEntityArrayEmbeddedPermissionsInner(v *Applicati
 		ApplicationRolePermission: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EntityArrayEmbeddedPermissionsInner) UnmarshalJSON(data []byte) error {
@@ -91,7 +90,7 @@ func (src EntityArrayEmbeddedPermissionsInner) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *EntityArrayEmbeddedPermissionsInner) GetActualInstance() (interface{}) {
+func (obj *EntityArrayEmbeddedPermissionsInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -142,5 +141,3 @@ func (v *NullableEntityArrayEmbeddedPermissionsInner) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -26,8 +26,8 @@ type PropagationStoreConfigurationGithubEMU struct {
 	// Whether or not users are allowed to be deprovisioned (removed) following action specified in `REMOVE_ACTION`.
 	DEPROVISION_USERS *bool `json:"DEPROVISION_USERS,omitempty"`
 	// OAuth 2 access token.
-	OAUTH_ACCESS_TOKEN string `json:"OAUTH_ACCESS_TOKEN"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
+	OAUTH_ACCESS_TOKEN string                                             `json:"OAUTH_ACCESS_TOKEN"`
+	REMOVE_ACTION      *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
@@ -228,7 +228,7 @@ func (o *PropagationStoreConfigurationGithubEMU) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationGithubEMU) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -289,5 +289,3 @@ func (v *NullablePropagationStoreConfigurationGithubEMU) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

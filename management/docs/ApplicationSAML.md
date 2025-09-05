@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **IdpSigning** | Pointer to [**ApplicationSAMLAllOfIdpSigning**](ApplicationSAMLAllOfIdpSigning.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is &#x60;false&#x60;. | [optional] [default to false]
+**SessionNotOnOrAfterDuration** | Pointer to **int32** | Update this value if the SAML application requires a different &#x60;SessionNotOnOrAfter&#x60; attribute value within the &#x60;AuthnStatement&#x60; element than the &#x60;NotOnOrAfter&#x60; value set by the &#x60;assertionDuration&#x60; property. | [optional] 
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] [default to ENUMAPPLICATIONSAMLSLOBINDING_POST]
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
@@ -36,6 +37,7 @@ Name | Type | Description | Notes
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 **Template** | Pointer to [**ApplicationTemplate**](ApplicationTemplate.md) |  | [optional] 
+**VirtualServerIdSettings** | Pointer to [**ApplicationSAMLAllOfVirtualServerIdSettings**](ApplicationSAMLAllOfVirtualServerIdSettings.md) |  | [optional] 
 
 ## Methods
 
@@ -626,6 +628,31 @@ SetResponseSigned sets ResponseSigned field to given value.
 
 HasResponseSigned returns a boolean if a field has been set.
 
+### GetSessionNotOnOrAfterDuration
+
+`func (o *ApplicationSAML) GetSessionNotOnOrAfterDuration() int32`
+
+GetSessionNotOnOrAfterDuration returns the SessionNotOnOrAfterDuration field if non-nil, zero value otherwise.
+
+### GetSessionNotOnOrAfterDurationOk
+
+`func (o *ApplicationSAML) GetSessionNotOnOrAfterDurationOk() (*int32, bool)`
+
+GetSessionNotOnOrAfterDurationOk returns a tuple with the SessionNotOnOrAfterDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionNotOnOrAfterDuration
+
+`func (o *ApplicationSAML) SetSessionNotOnOrAfterDuration(v int32)`
+
+SetSessionNotOnOrAfterDuration sets SessionNotOnOrAfterDuration field to given value.
+
+### HasSessionNotOnOrAfterDuration
+
+`func (o *ApplicationSAML) HasSessionNotOnOrAfterDuration() bool`
+
+HasSessionNotOnOrAfterDuration returns a boolean if a field has been set.
+
 ### GetSloBinding
 
 `func (o *ApplicationSAML) GetSloBinding() EnumApplicationSAMLSloBinding`
@@ -820,6 +847,31 @@ SetTemplate sets Template field to given value.
 `func (o *ApplicationSAML) HasTemplate() bool`
 
 HasTemplate returns a boolean if a field has been set.
+
+### GetVirtualServerIdSettings
+
+`func (o *ApplicationSAML) GetVirtualServerIdSettings() ApplicationSAMLAllOfVirtualServerIdSettings`
+
+GetVirtualServerIdSettings returns the VirtualServerIdSettings field if non-nil, zero value otherwise.
+
+### GetVirtualServerIdSettingsOk
+
+`func (o *ApplicationSAML) GetVirtualServerIdSettingsOk() (*ApplicationSAMLAllOfVirtualServerIdSettings, bool)`
+
+GetVirtualServerIdSettingsOk returns a tuple with the VirtualServerIdSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualServerIdSettings
+
+`func (o *ApplicationSAML) SetVirtualServerIdSettings(v ApplicationSAMLAllOfVirtualServerIdSettings)`
+
+SetVirtualServerIdSettings sets VirtualServerIdSettings field to given value.
+
+### HasVirtualServerIdSettings
+
+`func (o *ApplicationSAML) HasVirtualServerIdSettings() bool`
+
+HasVirtualServerIdSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

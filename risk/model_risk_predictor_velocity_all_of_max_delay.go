@@ -19,8 +19,8 @@ var _ MappedNullable = &RiskPredictorVelocityAllOfMaxDelay{}
 
 // RiskPredictorVelocityAllOfMaxDelay struct for RiskPredictorVelocityAllOfMaxDelay
 type RiskPredictorVelocityAllOfMaxDelay struct {
-	Unit *EnumPredictorUnit `json:"unit,omitempty"`
-	Quantity *int32 `json:"quantity,omitempty"`
+	Unit     *EnumPredictorUnit `json:"unit,omitempty"`
+	Quantity *int32             `json:"quantity,omitempty"`
 }
 
 // NewRiskPredictorVelocityAllOfMaxDelay instantiates a new RiskPredictorVelocityAllOfMaxDelay object
@@ -105,7 +105,7 @@ func (o *RiskPredictorVelocityAllOfMaxDelay) SetQuantity(v int32) {
 }
 
 func (o RiskPredictorVelocityAllOfMaxDelay) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableRiskPredictorVelocityAllOfMaxDelay) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
