@@ -38555,6 +38555,7 @@ components:
               must be a minimum of 8 alpha-numeric characters.
             format: password
             minLength: 8
+            readOnly: true
             type: string
           corsSettings:
             $ref: '#/components/schemas/ApplicationCorsSettings'

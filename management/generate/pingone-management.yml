@@ -1244,6 +1244,7 @@ components:
             clientSecret:
               type: string
               format: password
+              readOnly: true
               minLength: 8
               description: (Required when `clientId` is specified.) Supported only for `POST` operations. This is the client secret associated with `clientId` for an external application that is being migrated to PingOne. This must be a minimum of 8 alpha-numeric characters.
             corsSettings:
