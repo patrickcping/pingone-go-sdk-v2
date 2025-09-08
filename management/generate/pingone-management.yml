@@ -1240,13 +1240,13 @@ components:
             clientId:
               type: string
               minLength: 8
-              description: (Required when `clientSecret` is specified.) Supported only for `POST` operations. This is the UUID of an external application that is being migrated to PingOne. The UUID must be a minimum of 8 alpha-numeric characters, and must be globally unique in PingOne.
+              description: (Required when `clientSecret` is specified.) Supported only for `POST` operations. To modify the value of this field, the environment must be enabled with the feature flag to allow importing applications with administrator defined client ID and client secret values. This is the UUID of an external application that is being migrated to PingOne. The UUID must be a minimum of 8 alpha-numeric characters, and must be globally unique in PingOne.
             clientSecret:
               type: string
               format: password
               readOnly: true
               minLength: 8
-              description: (Required when `clientId` is specified.) Supported only for `POST` operations. This is the client secret associated with `clientId` for an external application that is being migrated to PingOne. This must be a minimum of 8 alpha-numeric characters.
+              description: (Required when `clientId` is specified.) Supported only for `POST` operations. To modify the value of this field, the environment must be enabled with the feature flag to allow importing applications with administrator defined client ID and client secret values. This is the client secret associated with `clientId` for an external application that is being migrated to PingOne. This must be a minimum of 8 alpha-numeric characters.
             corsSettings:
               $ref: '#/components/schemas/ApplicationCorsSettings'
             devicePathId:
