@@ -1,9 +1,14 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.61.0](./management/CHANGELOG.md)
+  * **Enhancement** Added the ability to import applications with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+
 # Release (2025-07-16)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.0
   * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.59.0 => v0.60.0 [#469](https://github.com/patrickcping/pingone-go-sdk-v2/pull/469)
   * **Enhancement** Add support for Singapore in region selection. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.60.0](./management/CHANGELOG.md)  
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.60.0](./management/CHANGELOG.md)
   * **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
   * **Enhancement** Added the `SG` region code to the `EnumRegionCode` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
   * **Enhancement** Added the `AU` and `SG` region codes to the `EnumRegionCodeLicense` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
@@ -13,7 +18,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.13.0
   * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.58.0 => v0.59.0 [#466](https://github.com/patrickcping/pingone-go-sdk-v2/pull/466)
   * **Enhancement** Add support for PingID v2 environments in product selection. [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.59.0](./management/CHANGELOG.md)  
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.59.0](./management/CHANGELOG.md)
   * **Enhancement** Added the `PING_ONE_ID` product type to support PingID (v2). [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
 
 # Release (2025-06-24)
