@@ -19,14 +19,17 @@ var _ MappedNullable = &RiskPredictorCompositeConditionOneOf1{}
 
 // RiskPredictorCompositeConditionOneOf1 struct for RiskPredictorCompositeConditionOneOf1
 type RiskPredictorCompositeConditionOneOf1 struct {
-	Equals        *RiskPredictorCompositeConditionOneOf1Equals `json:"equals,omitempty"`
-	NotEquals     *RiskPredictorCompositeConditionOneOf1Equals `json:"notEquals,omitempty"`
-	Greater       *int32                                       `json:"greater,omitempty"`
-	GreaterEquals *int32                                       `json:"greaterEquals,omitempty"`
-	Lower         *int32                                       `json:"lower,omitempty"`
-	LowerEquals   *int32                                       `json:"lowerEquals,omitempty"`
-	Value         string                                       `json:"value"`
-	Type          *EnumPredictorCompositeConditionType         `json:"type,omitempty"`
+	Equals             *RiskPredictorCompositeConditionOneOf1Equals `json:"equals,omitempty"`
+	NotEquals          *RiskPredictorCompositeConditionOneOf1Equals `json:"notEquals,omitempty"`
+	Greater            *int32                                       `json:"greater,omitempty"`
+	GreaterEquals      *int32                                       `json:"greaterEquals,omitempty"`
+	Lower              *int32                                       `json:"lower,omitempty"`
+	LowerEquals        *int32                                       `json:"lowerEquals,omitempty"`
+	StartsWith         *string                                      `json:"startsWith,omitempty"`
+	EndsWith           *string                                      `json:"endsWith,omitempty"`
+	ContainsIgnoreCase *string                                      `json:"containsIgnoreCase,omitempty"`
+	Value              string                                       `json:"value"`
+	Type               *EnumPredictorCompositeConditionType         `json:"type,omitempty"`
 }
 
 // NewRiskPredictorCompositeConditionOneOf1 instantiates a new RiskPredictorCompositeConditionOneOf1 object
@@ -239,6 +242,102 @@ func (o *RiskPredictorCompositeConditionOneOf1) SetLowerEquals(v int32) {
 	o.LowerEquals = &v
 }
 
+// GetStartsWith returns the StartsWith field value if set, zero value otherwise.
+func (o *RiskPredictorCompositeConditionOneOf1) GetStartsWith() string {
+	if o == nil || IsNil(o.StartsWith) {
+		var ret string
+		return ret
+	}
+	return *o.StartsWith
+}
+
+// GetStartsWithOk returns a tuple with the StartsWith field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorCompositeConditionOneOf1) GetStartsWithOk() (*string, bool) {
+	if o == nil || IsNil(o.StartsWith) {
+		return nil, false
+	}
+	return o.StartsWith, true
+}
+
+// HasStartsWith returns a boolean if a field has been set.
+func (o *RiskPredictorCompositeConditionOneOf1) HasStartsWith() bool {
+	if o != nil && !IsNil(o.StartsWith) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartsWith gets a reference to the given string and assigns it to the StartsWith field.
+func (o *RiskPredictorCompositeConditionOneOf1) SetStartsWith(v string) {
+	o.StartsWith = &v
+}
+
+// GetEndsWith returns the EndsWith field value if set, zero value otherwise.
+func (o *RiskPredictorCompositeConditionOneOf1) GetEndsWith() string {
+	if o == nil || IsNil(o.EndsWith) {
+		var ret string
+		return ret
+	}
+	return *o.EndsWith
+}
+
+// GetEndsWithOk returns a tuple with the EndsWith field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorCompositeConditionOneOf1) GetEndsWithOk() (*string, bool) {
+	if o == nil || IsNil(o.EndsWith) {
+		return nil, false
+	}
+	return o.EndsWith, true
+}
+
+// HasEndsWith returns a boolean if a field has been set.
+func (o *RiskPredictorCompositeConditionOneOf1) HasEndsWith() bool {
+	if o != nil && !IsNil(o.EndsWith) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndsWith gets a reference to the given string and assigns it to the EndsWith field.
+func (o *RiskPredictorCompositeConditionOneOf1) SetEndsWith(v string) {
+	o.EndsWith = &v
+}
+
+// GetContainsIgnoreCase returns the ContainsIgnoreCase field value if set, zero value otherwise.
+func (o *RiskPredictorCompositeConditionOneOf1) GetContainsIgnoreCase() string {
+	if o == nil || IsNil(o.ContainsIgnoreCase) {
+		var ret string
+		return ret
+	}
+	return *o.ContainsIgnoreCase
+}
+
+// GetContainsIgnoreCaseOk returns a tuple with the ContainsIgnoreCase field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorCompositeConditionOneOf1) GetContainsIgnoreCaseOk() (*string, bool) {
+	if o == nil || IsNil(o.ContainsIgnoreCase) {
+		return nil, false
+	}
+	return o.ContainsIgnoreCase, true
+}
+
+// HasContainsIgnoreCase returns a boolean if a field has been set.
+func (o *RiskPredictorCompositeConditionOneOf1) HasContainsIgnoreCase() bool {
+	if o != nil && !IsNil(o.ContainsIgnoreCase) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainsIgnoreCase gets a reference to the given string and assigns it to the ContainsIgnoreCase field.
+func (o *RiskPredictorCompositeConditionOneOf1) SetContainsIgnoreCase(v string) {
+	o.ContainsIgnoreCase = &v
+}
+
 // GetValue returns the Value field value
 func (o *RiskPredictorCompositeConditionOneOf1) GetValue() string {
 	if o == nil {
@@ -322,6 +421,15 @@ func (o RiskPredictorCompositeConditionOneOf1) ToMap() (map[string]interface{}, 
 	}
 	if !IsNil(o.LowerEquals) {
 		toSerialize["lowerEquals"] = o.LowerEquals
+	}
+	if !IsNil(o.StartsWith) {
+		toSerialize["startsWith"] = o.StartsWith
+	}
+	if !IsNil(o.EndsWith) {
+		toSerialize["endsWith"] = o.EndsWith
+	}
+	if !IsNil(o.ContainsIgnoreCase) {
+		toSerialize["containsIgnoreCase"] = o.ContainsIgnoreCase
 	}
 	toSerialize["value"] = o.Value
 	if !IsNil(o.Type) {

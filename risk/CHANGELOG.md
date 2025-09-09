@@ -1,3 +1,7 @@
+# v0.20.0 (Unreleased)
+
+* **Enhancement** Add support for `startsWith`, `endsWith` and `notContains` conditions. [#478](https://github.com/patrickcping/pingone-go-sdk-v2/pull/478)
+
 # v0.19.1 (2025-06-11)
 
 * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
