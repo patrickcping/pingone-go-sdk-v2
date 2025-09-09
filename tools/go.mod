@@ -1,6 +1,6 @@
 module github.com/patrickcping/pingone-go-sdk-v2/tools
 
-go 1.23.3
+go 1.24.4
 
 require (
 	github.com/golangci/golangci-lint v1.63.4
