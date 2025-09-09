@@ -7,6 +7,8 @@
   * **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
   * **Enhancement** Added the `SG` region code to the `EnumRegionCode` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
   * **Enhancement** Added the `AU` and `SG` region codes to the `EnumRegionCodeLicense` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.20.0](./mfa/CHANGELOG.md)
+  * **Enhancement** Add support for `startsWith`, `endsWith` and `notContains` conditions.
 
 # Release (2025-06-27)
 

@@ -959,6 +959,9 @@ components:
             contains:
               type: string
               format: ^\${(event|details)[a-z\.]+}$
+            notContains:
+              type: string
+              format: ^\${(event|details)[a-z\.]+}$
             list:
               type: array
               items:
@@ -987,6 +990,12 @@ components:
               type: integer
             lowerEquals:
               type: integer
+            startsWith:
+              type: string
+            endsWith:
+              type: string
+            containsIgnoreCase:
+              type: string
             value:
               type: string
               format: ^\${(event|details)[a-z\.]+}$
