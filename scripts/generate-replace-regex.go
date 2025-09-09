@@ -53,7 +53,7 @@ var (
 		{
 			fileSelectPattern: "go.mod",
 			pattern:           `go 1.18`,
-			repl:              `go 1.23.3`,
+			repl:              `go 1.24.4`,
 		},
 
 		/////////////////////////
@@ -282,7 +282,7 @@ func main() {
 		{
 			fileSelectPattern: "*Api.md",
 			pattern:           `\^\^\^`,
-			repl: "`",
+			repl:              "`",
 		},
 		{
 			fileSelectPattern: "README.md",
