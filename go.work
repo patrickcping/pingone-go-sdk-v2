@@ -9,5 +9,4 @@ use (
 	./risk
 	./authorize
 	./verify
-	./tools
 )

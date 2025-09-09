@@ -6,9 +6,6 @@ VERSION=0.14.0
 
 default: build
 
-tools:
-	go generate -tags tools tools/tools.go
-
 build: fmtcheck
 	@go mod tidy
 	@go work vendor
@@ -38,13 +35,13 @@ vet:
 
 golangci-lint:
 	@echo "==> Checking source code with golangci-lint..."
-	@golangci-lint run ./...
+	@go tool golangci-lint run ./...
 
 lint: golangci-lint
 	@./scripts/lint-all.sh
 
 gosec:
-	@gosec -exclude-generated ./...
+	@go tool gosec -exclude-generated ./...
 
 generate: generate-core generate-modules
 
