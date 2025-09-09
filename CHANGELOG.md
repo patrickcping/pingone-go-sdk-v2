@@ -1,11 +1,22 @@
 # Release (Unreleased)
 
-* `github.com/patrickcping/pingone-go-sdk-v2` : v0.15.0
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.1
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.2](./authorize/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.11.2](./credentials/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.61.0](./management/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
   * **Enhancement** Added the ability to import applications with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
   * **Enhancement** Added the ability to import custom resources with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.23.2](./mfa/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.20.0](./risk/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
   * **Enhancement** Add support for `startsWith`, `endsWith` and `notContains` conditions. [#478](https://github.com/patrickcping/pingone-go-sdk-v2/pull/478)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.9.2](./verify/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
 
 # Release (2025-07-16)
 

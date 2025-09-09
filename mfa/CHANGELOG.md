@@ -1,3 +1,7 @@
+# v0.23.2 (Unreleased)
+
+* **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+
 # v0.23.1 (2025-06-11)
 
 * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
