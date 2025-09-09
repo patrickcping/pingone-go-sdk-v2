@@ -1,6 +1,6 @@
 # v0.20.0 (Unreleased)
 
-* **Enhancement** Add support for `startsWith`, `endsWith` and `notContains` conditions.
+* **Enhancement** Add support for `startsWith`, `endsWith` and `notContains` conditions. [#478](https://github.com/patrickcping/pingone-go-sdk-v2/pull/478)
 
 # v0.19.1 (2025-06-11)
 
