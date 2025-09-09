@@ -1,6 +1,7 @@
 # v0.61.0 (Unreleased)
 
 * **Enhancement** Added the ability to import applications with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+* **Enhancement** Added the ability to import custom resources with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
 
 # v0.60.0 (2025-07-16)
 

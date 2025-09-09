@@ -26,9 +26,9 @@ type Resource struct {
 	ApplicationPermissionsSettings *ResourceApplicationPermissionsSettings `json:"applicationPermissionsSettings,omitempty"`
 	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`). If a URL is not specified, the resource name is used.
 	Audience *string `json:"audience,omitempty"`
-	// (Required when `clientSecret` is specified.) Supported only for the `POST` operation. This is the UUID of an external resource that is being migrated to PingOne. The UUID must be a minimum of 8 alpha-numeric characters, and must be globally unique in PingOne.
+	// (Required when `clientSecret` is specified.) Supported only for the `POST` operation. To modify the value of this field, the environment must be enabled with the feature flag to allow importing resources with administrator defined client ID and client secret values. This is the unique client ID of an external resource that is being migrated to PingOne. The ID must be a minimum of 8 alpha-numeric characters, and must be globally unique in PingOne.
 	ClientId *string `json:"clientId,omitempty"`
-	// (Required when clientId is specified.) Supported only for the POST operation. This is the client secret associated with clientId for an external resource that is being migrated to PingOne. This must be a minimum of 8 alpha-numeric characters.
+	// (Required when clientId is specified.) Supported only for the POST operation. To modify the value of this field, the environment must be enabled with the feature flag to allow importing resources with administrator defined client ID and client secret values. This is the client secret associated with clientId for an external resource that is being migrated to PingOne. This must be a minimum of 8 alpha-numeric characters.
 	ClientSecret *string `json:"clientSecret,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
