@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `AUTHORIZE_GATEWAY_POLICY_EVALUATOR` (value: `"Authorize Gateway Policy Evaluator"`)
+
 * `ADVANCED_IDENTITY_CLOUD_SUPER_ADMIN` (value: `"Advanced Identity Cloud Super Admin"`)
 
 * `ADVANCED_IDENTITY_CLOUD_TENANT_ADMIN` (value: `"Advanced Identity Cloud Tenant Admin"`)
@@ -20,6 +22,8 @@
 * `DA_VINCI_ADMIN` (value: `"DaVinci Admin"`)
 
 * `ENVIRONMENT_ADMIN` (value: `"Environment Admin"`)
+
+* `HELP_DESK_ADMIN` (value: `"Help Desk Admin"`)
 
 * `IDENTITY_DATA_ADMIN` (value: `"Identity Data Admin"`)
 
