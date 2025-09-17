@@ -20,6 +20,7 @@ type EnumRoleName string
 
 // List of EnumRoleName
 const (
+	ENUMROLENAME_AUTHORIZE_GATEWAY_POLICY_EVALUATOR     EnumRoleName = "Authorize Gateway Policy Evaluator"
 	ENUMROLENAME_ADVANCED_IDENTITY_CLOUD_SUPER_ADMIN    EnumRoleName = "Advanced Identity Cloud Super Admin"
 	ENUMROLENAME_ADVANCED_IDENTITY_CLOUD_TENANT_ADMIN   EnumRoleName = "Advanced Identity Cloud Tenant Admin"
 	ENUMROLENAME_APPLICATION_OWNER                      EnumRoleName = "Application Owner"
@@ -29,6 +30,7 @@ const (
 	ENUMROLENAME_DA_VINCI_ADMIN_READ_ONLY               EnumRoleName = "DaVinci Admin Read Only"
 	ENUMROLENAME_DA_VINCI_ADMIN                         EnumRoleName = "DaVinci Admin"
 	ENUMROLENAME_ENVIRONMENT_ADMIN                      EnumRoleName = "Environment Admin"
+	ENUMROLENAME_HELP_DESK_ADMIN                        EnumRoleName = "Help Desk Admin"
 	ENUMROLENAME_IDENTITY_DATA_ADMIN                    EnumRoleName = "Identity Data Admin"
 	ENUMROLENAME_IDENTITY_DATA_READ_ONLY                EnumRoleName = "Identity Data Read Only"
 	ENUMROLENAME_ORGANIZATION_ADMIN                     EnumRoleName = "Organization Admin"
@@ -41,6 +43,7 @@ const (
 
 // All allowed values of EnumRoleName enum
 var AllowedEnumRoleNameEnumValues = []EnumRoleName{
+	"Authorize Gateway Policy Evaluator",
 	"Advanced Identity Cloud Super Admin",
 	"Advanced Identity Cloud Tenant Admin",
 	"Application Owner",
@@ -50,6 +53,7 @@ var AllowedEnumRoleNameEnumValues = []EnumRoleName{
 	"DaVinci Admin Read Only",
 	"DaVinci Admin",
 	"Environment Admin",
+	"Help Desk Admin",
 	"Identity Data Admin",
 	"Identity Data Read Only",
 	"Organization Admin",

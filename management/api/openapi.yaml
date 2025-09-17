@@ -37735,6 +37735,7 @@ components:
     EnumRoleName:
       description: The name of the role
       enum:
+      - Authorize Gateway Policy Evaluator
       - Advanced Identity Cloud Super Admin
       - Advanced Identity Cloud Tenant Admin
       - Application Owner
@@ -37744,6 +37745,7 @@ components:
       - DaVinci Admin Read Only
       - DaVinci Admin
       - Environment Admin
+      - Help Desk Admin
       - Identity Data Admin
       - Identity Data Read Only
       - Organization Admin
