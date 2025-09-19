@@ -1,4 +1,4 @@
-# v0.8.2 (Unreleased)
+# v0.8.2 (2025-09-19)
 
 * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
 
