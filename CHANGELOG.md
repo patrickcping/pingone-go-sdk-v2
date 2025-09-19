@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2025-09-19)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.1
   * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.1 => v0.8.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
