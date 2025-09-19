@@ -1,12 +1,12 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.1
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.1 => v0.8.2
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.1 => v0.11.2
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.60.0 => v0.61.0
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.1 => v0.23.2
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.19.1 => v0.20.0
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.1 => v0.9.2
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.1 => v0.8.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.1 => v0.11.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.60.0 => v0.61.0 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.1 => v0.23.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.19.1 => v0.20.0 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.1 => v0.9.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
   * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.2](./authorize/CHANGELOG.md)
   * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
