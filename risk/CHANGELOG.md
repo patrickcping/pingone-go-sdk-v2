@@ -1,6 +1,6 @@
 # v0.21.0 (Unreleased)
 
-* **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type.
+* **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type. [#483](https://github.com/patrickcping/pingone-go-sdk-v2/pull/483)
 
 # v0.20.0 (2025-09-19)
 
