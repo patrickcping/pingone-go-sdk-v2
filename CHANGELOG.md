@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.21.0](./risk/CHANGELOG.md)
+  * **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type.
+
 # Release (2025-09-19)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.1

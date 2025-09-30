@@ -1745,6 +1745,7 @@ components:
       - AND
       - NOT
       - OR
+      - GROUPS_INTERSECTION
       type: string
     EnumPredictorNewDeviceDetectType:
       description: Used only for New Device predictors and Suspicious Device predictors.
