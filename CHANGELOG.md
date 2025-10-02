@@ -1,9 +1,10 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.2
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.2 => v0.12.0
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.20.0 => v0.21.0
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.2 => v0.10.0
+  * **Note** bump `golang.org/x/oauth2` v0.30.0 => v0.31.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.2 => v0.12.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.20.0 => v0.21.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.2 => v0.10.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.12.0](./credentials/CHANGELOG.md)
   * **Feature** Add support for the Credential Type Versions API. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
   * **Enhancement** Added `Expiration` and `Version` fields to the `CredentialType` object model. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
