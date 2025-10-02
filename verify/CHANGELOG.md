@@ -1,4 +1,4 @@
-# v0.10.0 (Unreleased)
+# v0.10.0 (2025-10-02)
 
 * **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
 * **Enhancement** Added `VerifyAamva` and `Aadhaar` to the `GovernmentIdConfiguration` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
