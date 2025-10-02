@@ -1,5 +1,12 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.2
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.12.0](./credentials/CHANGELOG.md)
+  * **Feature** Add support for the Credential Type Versions API. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+  * **Enhancement** Added `Expiration` and `Version` fields to the `CredentialType` object model. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.10.0](./verify/CHANGELOG.md)
+  * **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+  * **Enhancement** Added `VerifyAamva` and `Aadhaar` to the `GovernmentIdConfiguration` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.21.0](./risk/CHANGELOG.md)
   * **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type. [#483](https://github.com/patrickcping/pingone-go-sdk-v2/pull/483)
 

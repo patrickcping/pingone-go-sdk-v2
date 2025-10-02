@@ -1737,7 +1737,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 9.301444243932576
+        size: 2.027123023002322
         _links:
           key:
             href: https://openapi-generator.tech
@@ -1784,7 +1784,7 @@ components:
               verify: null
               threshold: null
               retry:
-                attempts: 0
+                attempts: 1
             description: description
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -1798,20 +1798,36 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 5
+                  duration: 7
                   timeUnit: null
                 attempts:
-                  count: 6
+                  count: 5
                 deliveries:
-                  count: 1
+                  count: 5
                   cooldown:
-                    duration: 5
+                    duration: 2
                     timeUnit: null
             name: name
             facialComparison:
               verify: null
               threshold: null
             id: id
+            identityRecordMatching:
+              address:
+                fieldRequired: true
+                threshold: null
+              birth_date:
+                fieldRequired: true
+                threshold: null
+              name:
+                fieldRequired: true
+                threshold: null
+              given_name:
+                fieldRequired: true
+                threshold: null
+              family_name:
+                fieldRequired: true
+                threshold: null
             email:
               createMfaDevice: true
               verify: null
@@ -1820,23 +1836,23 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 5
+                  duration: 7
                   timeUnit: null
                 attempts:
-                  count: 6
+                  count: 5
                 deliveries:
-                  count: 1
+                  count: 5
                   cooldown:
-                    duration: 5
+                    duration: 2
                     timeUnit: null
             transaction:
               dataCollectionOnly: true
               timeout:
-                duration: 2
+                duration: 9
                 timeUnit: null
               dataCollection:
                 timeout:
-                  duration: 7
+                  duration: 3
                   timeUnit: null
             governmentId:
               provider:
@@ -1844,9 +1860,18 @@ components:
                 manual: null
               inspectionType: null
               verify: null
+              aadhaar:
+                otp:
+                  deliveries:
+                    cooldown:
+                      duration: 0
+                      timeUnit: null
+                    count: 2
+                enabled: true
               failExpiredId: true
               retry:
-                attempts: 0
+                attempts: 1
+              verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - voice:
               verify: null
@@ -1870,7 +1895,7 @@ components:
               verify: null
               threshold: null
               retry:
-                attempts: 0
+                attempts: 1
             description: description
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -1884,20 +1909,36 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 5
+                  duration: 7
                   timeUnit: null
                 attempts:
-                  count: 6
+                  count: 5
                 deliveries:
-                  count: 1
+                  count: 5
                   cooldown:
-                    duration: 5
+                    duration: 2
                     timeUnit: null
             name: name
             facialComparison:
               verify: null
               threshold: null
             id: id
+            identityRecordMatching:
+              address:
+                fieldRequired: true
+                threshold: null
+              birth_date:
+                fieldRequired: true
+                threshold: null
+              name:
+                fieldRequired: true
+                threshold: null
+              given_name:
+                fieldRequired: true
+                threshold: null
+              family_name:
+                fieldRequired: true
+                threshold: null
             email:
               createMfaDevice: true
               verify: null
@@ -1906,23 +1947,23 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 5
+                  duration: 7
                   timeUnit: null
                 attempts:
-                  count: 6
+                  count: 5
                 deliveries:
-                  count: 1
+                  count: 5
                   cooldown:
-                    duration: 5
+                    duration: 2
                     timeUnit: null
             transaction:
               dataCollectionOnly: true
               timeout:
-                duration: 2
+                duration: 9
                 timeUnit: null
               dataCollection:
                 timeout:
-                  duration: 7
+                  duration: 3
                   timeUnit: null
             governmentId:
               provider:
@@ -1930,9 +1971,18 @@ components:
                 manual: null
               inspectionType: null
               verify: null
+              aadhaar:
+                otp:
+                  deliveries:
+                    cooldown:
+                      duration: 0
+                      timeUnit: null
+                    count: 2
+                enabled: true
               failExpiredId: true
               retry:
-                attempts: 0
+                attempts: 1
+              verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           voicePhrases:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -2041,10 +2091,21 @@ components:
           manual: null
         inspectionType: null
         verify: null
+        aadhaar:
+          otp:
+            deliveries:
+              cooldown:
+                duration: 0
+                timeUnit: null
+              count: 2
+          enabled: true
         failExpiredId: true
         retry:
-          attempts: 0
+          attempts: 1
+        verifyAamva: true
       properties:
+        aadhaar:
+          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar'
         failExpiredId:
           description: Indicates whether verification should fail if the ID is expired.
           type: boolean
@@ -2056,15 +2117,48 @@ components:
           $ref: '#/components/schemas/ObjectRetry'
         verify:
           $ref: '#/components/schemas/EnumVerify'
+        verifyAamva:
+          description: "Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses)\
+            \ verification is enabled"
+          type: boolean
       required:
       - verify
+      type: object
+    IdentityRecordMatching:
+      example:
+        address:
+          fieldRequired: true
+          threshold: null
+        birth_date:
+          fieldRequired: true
+          threshold: null
+        name:
+          fieldRequired: true
+          threshold: null
+        given_name:
+          fieldRequired: true
+          threshold: null
+        family_name:
+          fieldRequired: true
+          threshold: null
+      properties:
+        address:
+          $ref: '#/components/schemas/IdentityRecordMatching_address'
+        birth_date:
+          $ref: '#/components/schemas/IdentityRecordMatching_birth_date'
+        family_name:
+          $ref: '#/components/schemas/IdentityRecordMatching_family_name'
+        given_name:
+          $ref: '#/components/schemas/IdentityRecordMatching_given_name'
+        name:
+          $ref: '#/components/schemas/IdentityRecordMatching_name'
       type: object
     LivenessConfiguration:
       example:
         verify: null
         threshold: null
         retry:
-          attempts: 0
+          attempts: 1
       properties:
         retry:
           $ref: '#/components/schemas/ObjectRetry'
@@ -2089,7 +2183,7 @@ components:
       type: object
     ObjectRetry:
       example:
-        attempts: 0
+        attempts: 1
       properties:
         attempts:
           description: The number of retries permitted.
@@ -2104,14 +2198,14 @@ components:
             templateName: templateName
             variantName: variantName
           lifeTime:
-            duration: 5
+            duration: 7
             timeUnit: null
           attempts:
-            count: 6
+            count: 5
           deliveries:
-            count: 1
+            count: 5
             cooldown:
-              duration: 5
+              duration: 2
               timeUnit: null
       properties:
         verify:
@@ -2154,11 +2248,11 @@ components:
       example:
         dataCollectionOnly: true
         timeout:
-          duration: 2
+          duration: 9
           timeUnit: null
         dataCollection:
           timeout:
-            duration: 7
+            duration: 3
             timeUnit: null
       properties:
         timeout:
@@ -2335,7 +2429,7 @@ components:
           verify: null
           threshold: null
           retry:
-            attempts: 0
+            attempts: 1
         description: description
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -2349,20 +2443,36 @@ components:
               templateName: templateName
               variantName: variantName
             lifeTime:
-              duration: 5
+              duration: 7
               timeUnit: null
             attempts:
-              count: 6
+              count: 5
             deliveries:
-              count: 1
+              count: 5
               cooldown:
-                duration: 5
+                duration: 2
                 timeUnit: null
         name: name
         facialComparison:
           verify: null
           threshold: null
         id: id
+        identityRecordMatching:
+          address:
+            fieldRequired: true
+            threshold: null
+          birth_date:
+            fieldRequired: true
+            threshold: null
+          name:
+            fieldRequired: true
+            threshold: null
+          given_name:
+            fieldRequired: true
+            threshold: null
+          family_name:
+            fieldRequired: true
+            threshold: null
         email:
           createMfaDevice: true
           verify: null
@@ -2371,23 +2481,23 @@ components:
               templateName: templateName
               variantName: variantName
             lifeTime:
-              duration: 5
+              duration: 7
               timeUnit: null
             attempts:
-              count: 6
+              count: 5
             deliveries:
-              count: 1
+              count: 5
               cooldown:
-                duration: 5
+                duration: 2
                 timeUnit: null
         transaction:
           dataCollectionOnly: true
           timeout:
-            duration: 2
+            duration: 9
             timeUnit: null
           dataCollection:
             timeout:
-              duration: 7
+              duration: 3
               timeUnit: null
         governmentId:
           provider:
@@ -2395,9 +2505,18 @@ components:
             manual: null
           inspectionType: null
           verify: null
+          aadhaar:
+            otp:
+              deliveries:
+                cooldown:
+                  duration: 0
+                  timeUnit: null
+                count: 2
+            enabled: true
           failExpiredId: true
           retry:
-            attempts: 0
+            attempts: 1
+          verifyAamva: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -2424,6 +2543,8 @@ components:
           $ref: '#/components/schemas/GovernmentIdConfiguration'
         facialComparison:
           $ref: '#/components/schemas/FacialComparisonConfiguration'
+        identityRecordMatching:
+          $ref: '#/components/schemas/IdentityRecordMatching'
         liveness:
           $ref: '#/components/schemas/LivenessConfiguration'
         email:
@@ -2500,7 +2621,7 @@ components:
             verify: null
             threshold: null
             retry:
-              attempts: 0
+              attempts: 1
           description: description
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -2514,20 +2635,36 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 5
+                duration: 7
                 timeUnit: null
               attempts:
-                count: 6
+                count: 5
               deliveries:
-                count: 1
+                count: 5
                 cooldown:
-                  duration: 5
+                  duration: 2
                   timeUnit: null
           name: name
           facialComparison:
             verify: null
             threshold: null
           id: id
+          identityRecordMatching:
+            address:
+              fieldRequired: true
+              threshold: null
+            birth_date:
+              fieldRequired: true
+              threshold: null
+            name:
+              fieldRequired: true
+              threshold: null
+            given_name:
+              fieldRequired: true
+              threshold: null
+            family_name:
+              fieldRequired: true
+              threshold: null
           email:
             createMfaDevice: true
             verify: null
@@ -2536,23 +2673,23 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 5
+                duration: 7
                 timeUnit: null
               attempts:
-                count: 6
+                count: 5
               deliveries:
-                count: 1
+                count: 5
                 cooldown:
-                  duration: 5
+                  duration: 2
                   timeUnit: null
           transaction:
             dataCollectionOnly: true
             timeout:
-              duration: 2
+              duration: 9
               timeUnit: null
             dataCollection:
               timeout:
-                duration: 7
+                duration: 3
                 timeUnit: null
           governmentId:
             provider:
@@ -2560,9 +2697,18 @@ components:
               manual: null
             inspectionType: null
             verify: null
+            aadhaar:
+              otp:
+                deliveries:
+                  cooldown:
+                    duration: 0
+                    timeUnit: null
+                  count: 2
+              enabled: true
             failExpiredId: true
             retry:
-              attempts: 0
+              attempts: 1
+            verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - voice:
             verify: null
@@ -2586,7 +2732,7 @@ components:
             verify: null
             threshold: null
             retry:
-              attempts: 0
+              attempts: 1
           description: description
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -2600,20 +2746,36 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 5
+                duration: 7
                 timeUnit: null
               attempts:
-                count: 6
+                count: 5
               deliveries:
-                count: 1
+                count: 5
                 cooldown:
-                  duration: 5
+                  duration: 2
                   timeUnit: null
           name: name
           facialComparison:
             verify: null
             threshold: null
           id: id
+          identityRecordMatching:
+            address:
+              fieldRequired: true
+              threshold: null
+            birth_date:
+              fieldRequired: true
+              threshold: null
+            name:
+              fieldRequired: true
+              threshold: null
+            given_name:
+              fieldRequired: true
+              threshold: null
+            family_name:
+              fieldRequired: true
+              threshold: null
           email:
             createMfaDevice: true
             verify: null
@@ -2622,23 +2784,23 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 5
+                duration: 7
                 timeUnit: null
               attempts:
-                count: 6
+                count: 5
               deliveries:
-                count: 1
+                count: 5
                 cooldown:
-                  duration: 5
+                  duration: 2
                   timeUnit: null
           transaction:
             dataCollectionOnly: true
             timeout:
-              duration: 2
+              duration: 9
               timeUnit: null
             dataCollection:
               timeout:
-                duration: 7
+                duration: 3
                 timeUnit: null
           governmentId:
             provider:
@@ -2646,9 +2808,18 @@ components:
               manual: null
             inspectionType: null
             verify: null
+            aadhaar:
+              otp:
+                deliveries:
+                  cooldown:
+                    duration: 0
+                    timeUnit: null
+                  count: 2
+              enabled: true
             failExpiredId: true
             retry:
-              attempts: 0
+              attempts: 1
+            verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         voicePhrases:
         - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -2677,6 +2848,64 @@ components:
             $ref: '#/components/schemas/VoicePhraseContents'
           type: array
       type: object
+    GovernmentIdConfiguration_aadhaar_otp_deliveries_cooldown:
+      description: Cooldown (waiting period between OTP deliveries) configuration
+      example:
+        duration: 0
+        timeUnit: null
+      properties:
+        duration:
+          description: Cooldown duration configuration; can be 60-1800 seconds (1-30
+            minutes)
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      type: object
+    GovernmentIdConfiguration_aadhaar_otp_deliveries:
+      description: OTP delivery configuration
+      example:
+        cooldown:
+          duration: 0
+          timeUnit: null
+        count: 2
+      properties:
+        cooldown:
+          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp_deliveries_cooldown'
+        count:
+          description: Maximum number of OTP deliveries. Must be 1 to 3.
+          maximum: 3
+          minimum: 1
+          type: integer
+      type: object
+    GovernmentIdConfiguration_aadhaar_otp:
+      description: Aadhaar one-time password (OTP) configuration
+      example:
+        deliveries:
+          cooldown:
+            duration: 0
+            timeUnit: null
+          count: 2
+      properties:
+        deliveries:
+          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp_deliveries'
+      type: object
+    GovernmentIdConfiguration_aadhaar:
+      description: Aadhaar configuration
+      example:
+        otp:
+          deliveries:
+            cooldown:
+              duration: 0
+              timeUnit: null
+            count: 2
+        enabled: true
+      properties:
+        enabled:
+          description: Whether Aadhaar verification is enabled or not
+          type: boolean
+        otp:
+          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp'
+      type: object
     GovernmentIdConfiguration_provider:
       example:
         auto: null
@@ -2687,10 +2916,85 @@ components:
         manual:
           $ref: '#/components/schemas/EnumProviderManual'
       type: object
+    IdentityRecordMatching_address:
+      description: Address of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_birth_date:
+      description: Birth date of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_family_name:
+      description: Family name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_given_name:
+      description: Given name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_name:
+      description: Full name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.
       example:
-        count: 6
+        count: 5
       properties:
         count:
           description: Count of OTP failures.
@@ -2701,7 +3005,7 @@ components:
     OTPDeviceConfiguration_otp_deliveries_cooldown:
       description: Cooldown (waiting period between OTP attempts) configuration.
       example:
-        duration: 5
+        duration: 2
         timeUnit: null
       properties:
         duration:
@@ -2716,9 +3020,9 @@ components:
     OTPDeviceConfiguration_otp_deliveries:
       description: OTP delivery configuration.
       example:
-        count: 1
+        count: 5
         cooldown:
-          duration: 5
+          duration: 2
           timeUnit: null
       properties:
         count:
@@ -2733,7 +3037,7 @@ components:
     OTPDeviceConfiguration_otp_lifeTime:
       description: The length of time for which the OTP is valid.
       example:
-        duration: 5
+        duration: 7
         timeUnit: null
       properties:
         duration:
@@ -2764,14 +3068,14 @@ components:
           templateName: templateName
           variantName: variantName
         lifeTime:
-          duration: 5
+          duration: 7
           timeUnit: null
         attempts:
-          count: 6
+          count: 5
         deliveries:
-          count: 1
+          count: 5
           cooldown:
-            duration: 5
+            duration: 2
             timeUnit: null
       properties:
         attempts:
@@ -2836,7 +3140,7 @@ components:
       type: object
     TransactionConfiguration_timeout:
       example:
-        duration: 2
+        duration: 9
         timeUnit: null
       properties:
         duration:
@@ -2851,7 +3155,7 @@ components:
       type: object
     TransactionConfiguration_dataCollection_timeout:
       example:
-        duration: 7
+        duration: 3
         timeUnit: null
       properties:
         duration:
@@ -2867,7 +3171,7 @@ components:
     TransactionConfiguration_dataCollection:
       example:
         timeout:
-          duration: 7
+          duration: 3
           timeUnit: null
       properties:
         timeout:

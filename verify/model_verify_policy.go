@@ -28,16 +28,17 @@ type VerifyPolicy struct {
 	// Description displayed in PingOne Admin UI, 1-1024 characters.
 	Description *string `json:"description,omitempty"`
 	// Required as true to set this verify policy as the default policy for the environment; otherwise optional and defaults to false.
-	Default          *bool                          `json:"default,omitempty"`
-	GovernmentId     *GovernmentIdConfiguration     `json:"governmentId,omitempty"`
-	FacialComparison *FacialComparisonConfiguration `json:"facialComparison,omitempty"`
-	Liveness         *LivenessConfiguration         `json:"liveness,omitempty"`
-	Email            *OTPDeviceConfiguration        `json:"email,omitempty"`
-	Phone            *OTPDeviceConfiguration        `json:"phone,omitempty"`
-	Transaction      *TransactionConfiguration      `json:"transaction,omitempty"`
-	Voice            *VoiceConfiguration            `json:"voice,omitempty"`
-	CreatedAt        *time.Time                     `json:"createdAt,omitempty"`
-	UpdatedAt        *time.Time                     `json:"updatedAt,omitempty"`
+	Default                *bool                          `json:"default,omitempty"`
+	GovernmentId           *GovernmentIdConfiguration     `json:"governmentId,omitempty"`
+	FacialComparison       *FacialComparisonConfiguration `json:"facialComparison,omitempty"`
+	IdentityRecordMatching *IdentityRecordMatching        `json:"identityRecordMatching,omitempty"`
+	Liveness               *LivenessConfiguration         `json:"liveness,omitempty"`
+	Email                  *OTPDeviceConfiguration        `json:"email,omitempty"`
+	Phone                  *OTPDeviceConfiguration        `json:"phone,omitempty"`
+	Transaction            *TransactionConfiguration      `json:"transaction,omitempty"`
+	Voice                  *VoiceConfiguration            `json:"voice,omitempty"`
+	CreatedAt              *time.Time                     `json:"createdAt,omitempty"`
+	UpdatedAt              *time.Time                     `json:"updatedAt,omitempty"`
 }
 
 // NewVerifyPolicy instantiates a new VerifyPolicy object
@@ -306,6 +307,38 @@ func (o *VerifyPolicy) SetFacialComparison(v FacialComparisonConfiguration) {
 	o.FacialComparison = &v
 }
 
+// GetIdentityRecordMatching returns the IdentityRecordMatching field value if set, zero value otherwise.
+func (o *VerifyPolicy) GetIdentityRecordMatching() IdentityRecordMatching {
+	if o == nil || IsNil(o.IdentityRecordMatching) {
+		var ret IdentityRecordMatching
+		return ret
+	}
+	return *o.IdentityRecordMatching
+}
+
+// GetIdentityRecordMatchingOk returns a tuple with the IdentityRecordMatching field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyPolicy) GetIdentityRecordMatchingOk() (*IdentityRecordMatching, bool) {
+	if o == nil || IsNil(o.IdentityRecordMatching) {
+		return nil, false
+	}
+	return o.IdentityRecordMatching, true
+}
+
+// HasIdentityRecordMatching returns a boolean if a field has been set.
+func (o *VerifyPolicy) HasIdentityRecordMatching() bool {
+	if o != nil && !IsNil(o.IdentityRecordMatching) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityRecordMatching gets a reference to the given IdentityRecordMatching and assigns it to the IdentityRecordMatching field.
+func (o *VerifyPolicy) SetIdentityRecordMatching(v IdentityRecordMatching) {
+	o.IdentityRecordMatching = &v
+}
+
 // GetLiveness returns the Liveness field value if set, zero value otherwise.
 func (o *VerifyPolicy) GetLiveness() LivenessConfiguration {
 	if o == nil || IsNil(o.Liveness) {
@@ -561,6 +594,9 @@ func (o VerifyPolicy) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FacialComparison) {
 		toSerialize["facialComparison"] = o.FacialComparison
+	}
+	if !IsNil(o.IdentityRecordMatching) {
+		toSerialize["identityRecordMatching"] = o.IdentityRecordMatching
 	}
 	if !IsNil(o.Liveness) {
 		toSerialize["liveness"] = o.Liveness

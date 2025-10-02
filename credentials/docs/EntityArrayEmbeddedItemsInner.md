@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | A string that specifies the description of the credential type. | [optional] 
 **DeletedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Expiration** | Pointer to [**CredentialTypeExpiration**](CredentialTypeExpiration.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Issuer** | Pointer to [**ObjectIssuer**](ObjectIssuer.md) |  | [optional] 
 **IssuerName** | Pointer to **string** | A string that specifies the issuer name associated with the card, can differ from title. | [optional] 
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **OnDelete** | Pointer to [**CredentialTypeOnDelete**](CredentialTypeOnDelete.md) |  | [optional] 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**Version** | Pointer to [**CredentialTypeVersion**](CredentialTypeVersion.md) |  | [optional] 
 **CredentialType** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
 **ExpiresAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Notification** | Pointer to [**CredentialDigitalWalletNotification**](CredentialDigitalWalletNotification.md) |  | [optional] 
@@ -215,6 +217,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *EntityArrayEmbeddedItemsInner) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetExpiration
+
+`func (o *EntityArrayEmbeddedItemsInner) GetExpiration() CredentialTypeExpiration`
+
+GetExpiration returns the Expiration field if non-nil, zero value otherwise.
+
+### GetExpirationOk
+
+`func (o *EntityArrayEmbeddedItemsInner) GetExpirationOk() (*CredentialTypeExpiration, bool)`
+
+GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiration
+
+`func (o *EntityArrayEmbeddedItemsInner) SetExpiration(v CredentialTypeExpiration)`
+
+SetExpiration sets Expiration field to given value.
+
+### HasExpiration
+
+`func (o *EntityArrayEmbeddedItemsInner) HasExpiration() bool`
+
+HasExpiration returns a boolean if a field has been set.
 
 ### GetId
 
@@ -430,6 +457,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *EntityArrayEmbeddedItemsInner) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *EntityArrayEmbeddedItemsInner) GetVersion() CredentialTypeVersion`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *EntityArrayEmbeddedItemsInner) GetVersionOk() (*CredentialTypeVersion, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *EntityArrayEmbeddedItemsInner) SetVersion(v CredentialTypeVersion)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *EntityArrayEmbeddedItemsInner) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 ### GetCredentialType
 

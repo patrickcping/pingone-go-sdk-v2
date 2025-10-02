@@ -125,6 +125,35 @@ components:
     GovernmentIdConfiguration:
       type: object
       properties:
+        aadhaar:
+          type: object
+          description: Aadhaar configuration
+          properties:
+            enabled:
+              type: boolean
+              description: Whether Aadhaar verification is enabled or not
+            otp:
+              type: object
+              description: Aadhaar one-time password (OTP) configuration
+              properties:
+                deliveries:
+                  type: object
+                  description: OTP delivery configuration
+                  properties:
+                    cooldown:
+                      type: object
+                      description: Cooldown (waiting period between OTP deliveries) configuration
+                      properties:
+                        duration:
+                          type: integer
+                          description: Cooldown duration configuration; can be 60-1800 seconds (1-30 minutes)
+                        timeUnit:
+                          $ref: '#/components/schemas/EnumTimeUnit'
+                    count:
+                      type: integer
+                      minimum: 1
+                      maximum: 3
+                      description: Maximum number of OTP deliveries. Must be 1 to 3.
         failExpiredId:
           type: boolean
           description: Indicates whether verification should fail if the ID is expired.
@@ -143,8 +172,74 @@ components:
         verify:
           $ref: '#/components/schemas/EnumVerify'
           description: Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED.
+        verifyAamva:
+          type: boolean
+          description: Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses) verification is enabled
       required:
         - verify
+    IdentityRecordMatching:
+      type: object
+      properties:
+        address:
+          type: object
+          description: Address of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        birth_date:
+          type: object
+          description: Birth date of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        family_name:
+          type: object
+          description: Family name of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        given_name:
+          type: object
+          description: Given name of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        name:
+          type: object
+          description: Full name of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
     LivenessConfiguration:
       type: object
       properties:
@@ -357,7 +452,6 @@ components:
         textDependent:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent'
         comparison:
-          properties:
           $ref: '#/components/schemas/VoiceConfiguration_threshold'
         liveness:
           $ref: '#/components/schemas/VoiceConfiguration_threshold'
@@ -487,6 +581,8 @@ components:
           $ref: '#/components/schemas/GovernmentIdConfiguration'
         facialComparison:
           $ref: '#/components/schemas/FacialComparisonConfiguration'
+        identityRecordMatching:
+          $ref: '#/components/schemas/IdentityRecordMatching'
         liveness:
           $ref: '#/components/schemas/LivenessConfiguration'
         email:
