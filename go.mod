@@ -10,11 +10,11 @@ tool (
 
 require (
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.8.2
-	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.11.2
+	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.12.0
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.61.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.23.2
-	github.com/patrickcping/pingone-go-sdk-v2/risk v0.20.0
-	github.com/patrickcping/pingone-go-sdk-v2/verify v0.9.2
+	github.com/patrickcping/pingone-go-sdk-v2/risk v0.21.0
+	github.com/patrickcping/pingone-go-sdk-v2/verify v0.10.0
 	golang.org/x/oauth2 v0.30.0
 )
 
