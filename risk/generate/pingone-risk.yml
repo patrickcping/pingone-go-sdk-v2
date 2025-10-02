@@ -108,7 +108,7 @@ components:
       description: A string that specifies the trigger type for the policy set. The only option is `POLICY_SET_STAGING`.
     EnumPredictorCompositeConditionType:
       type: string
-      enum: [VALUE_COMPARISON, IP_RANGE, IP_COMPARISON, STRING_LIST, AND, NOT, OR]
+      enum: [VALUE_COMPARISON, IP_RANGE, IP_COMPARISON, STRING_LIST, AND, NOT, OR, GROUPS_INTERSECTION]
     EnumPredictorNewDeviceDetectType:
       type: string
       description: Used only for New Device predictors and Suspicious Device predictors. Both of these predictor types use the value `DEVICE` for `type`. The `detect` field is used to specify the kind of devices you are trying to detect.
@@ -959,6 +959,9 @@ components:
             contains:
               type: string
               format: ^\${(event|details)[a-z\.]+}$
+            notContains:
+              type: string
+              format: ^\${(event|details)[a-z\.]+}$
             list:
               type: array
               items:
@@ -987,6 +990,12 @@ components:
               type: integer
             lowerEquals:
               type: integer
+            startsWith:
+              type: string
+            endsWith:
+              type: string
+            containsIgnoreCase:
+              type: string
             value:
               type: string
               format: ^\${(event|details)[a-z\.]+}$

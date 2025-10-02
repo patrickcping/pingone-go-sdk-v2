@@ -19,9 +19,10 @@ var _ MappedNullable = &RiskPredictorCompositeConditionOneOf{}
 
 // RiskPredictorCompositeConditionOneOf struct for RiskPredictorCompositeConditionOneOf
 type RiskPredictorCompositeConditionOneOf struct {
-	Contains string                              `json:"contains"`
-	List     []string                            `json:"list"`
-	Type     EnumPredictorCompositeConditionType `json:"type"`
+	Contains    string                              `json:"contains"`
+	NotContains *string                             `json:"notContains,omitempty"`
+	List        []string                            `json:"list"`
+	Type        EnumPredictorCompositeConditionType `json:"type"`
 }
 
 // NewRiskPredictorCompositeConditionOneOf instantiates a new RiskPredictorCompositeConditionOneOf object
@@ -66,6 +67,38 @@ func (o *RiskPredictorCompositeConditionOneOf) GetContainsOk() (*string, bool) {
 // SetContains sets field value
 func (o *RiskPredictorCompositeConditionOneOf) SetContains(v string) {
 	o.Contains = v
+}
+
+// GetNotContains returns the NotContains field value if set, zero value otherwise.
+func (o *RiskPredictorCompositeConditionOneOf) GetNotContains() string {
+	if o == nil || IsNil(o.NotContains) {
+		var ret string
+		return ret
+	}
+	return *o.NotContains
+}
+
+// GetNotContainsOk returns a tuple with the NotContains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorCompositeConditionOneOf) GetNotContainsOk() (*string, bool) {
+	if o == nil || IsNil(o.NotContains) {
+		return nil, false
+	}
+	return o.NotContains, true
+}
+
+// HasNotContains returns a boolean if a field has been set.
+func (o *RiskPredictorCompositeConditionOneOf) HasNotContains() bool {
+	if o != nil && !IsNil(o.NotContains) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotContains gets a reference to the given string and assigns it to the NotContains field.
+func (o *RiskPredictorCompositeConditionOneOf) SetNotContains(v string) {
+	o.NotContains = &v
 }
 
 // GetList returns the List field value
@@ -127,6 +160,9 @@ func (o RiskPredictorCompositeConditionOneOf) MarshalJSON() ([]byte, error) {
 func (o RiskPredictorCompositeConditionOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["contains"] = o.Contains
+	if !IsNil(o.NotContains) {
+		toSerialize["notContains"] = o.NotContains
+	}
 	toSerialize["list"] = o.List
 	toSerialize["type"] = o.Type
 	return toSerialize, nil

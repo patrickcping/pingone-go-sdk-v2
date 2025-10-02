@@ -220,6 +220,13 @@ var (
 		match++
 	}
 
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_GROUPS_INTERSECTION) {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf); err != nil {
+			return err
+		}
+		match++
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.RiskPredictorCompositeAnd = nil

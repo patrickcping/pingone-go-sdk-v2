@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **GreaterEquals** | Pointer to **int32** |  | [optional] 
 **Lower** | Pointer to **int32** |  | [optional] 
 **LowerEquals** | Pointer to **int32** |  | [optional] 
+**StartsWith** | Pointer to **string** |  | [optional] 
+**EndsWith** | Pointer to **string** |  | [optional] 
+**ContainsIgnoreCase** | Pointer to **string** |  | [optional] 
 **Value** | **string** |  | 
 **Type** | Pointer to [**EnumPredictorCompositeConditionType**](EnumPredictorCompositeConditionType.md) |  | [optional] 
 
@@ -181,6 +184,81 @@ SetLowerEquals sets LowerEquals field to given value.
 `func (o *RiskPredictorCompositeConditionOneOf1) HasLowerEquals() bool`
 
 HasLowerEquals returns a boolean if a field has been set.
+
+### GetStartsWith
+
+`func (o *RiskPredictorCompositeConditionOneOf1) GetStartsWith() string`
+
+GetStartsWith returns the StartsWith field if non-nil, zero value otherwise.
+
+### GetStartsWithOk
+
+`func (o *RiskPredictorCompositeConditionOneOf1) GetStartsWithOk() (*string, bool)`
+
+GetStartsWithOk returns a tuple with the StartsWith field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartsWith
+
+`func (o *RiskPredictorCompositeConditionOneOf1) SetStartsWith(v string)`
+
+SetStartsWith sets StartsWith field to given value.
+
+### HasStartsWith
+
+`func (o *RiskPredictorCompositeConditionOneOf1) HasStartsWith() bool`
+
+HasStartsWith returns a boolean if a field has been set.
+
+### GetEndsWith
+
+`func (o *RiskPredictorCompositeConditionOneOf1) GetEndsWith() string`
+
+GetEndsWith returns the EndsWith field if non-nil, zero value otherwise.
+
+### GetEndsWithOk
+
+`func (o *RiskPredictorCompositeConditionOneOf1) GetEndsWithOk() (*string, bool)`
+
+GetEndsWithOk returns a tuple with the EndsWith field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndsWith
+
+`func (o *RiskPredictorCompositeConditionOneOf1) SetEndsWith(v string)`
+
+SetEndsWith sets EndsWith field to given value.
+
+### HasEndsWith
+
+`func (o *RiskPredictorCompositeConditionOneOf1) HasEndsWith() bool`
+
+HasEndsWith returns a boolean if a field has been set.
+
+### GetContainsIgnoreCase
+
+`func (o *RiskPredictorCompositeConditionOneOf1) GetContainsIgnoreCase() string`
+
+GetContainsIgnoreCase returns the ContainsIgnoreCase field if non-nil, zero value otherwise.
+
+### GetContainsIgnoreCaseOk
+
+`func (o *RiskPredictorCompositeConditionOneOf1) GetContainsIgnoreCaseOk() (*string, bool)`
+
+GetContainsIgnoreCaseOk returns a tuple with the ContainsIgnoreCase field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContainsIgnoreCase
+
+`func (o *RiskPredictorCompositeConditionOneOf1) SetContainsIgnoreCase(v string)`
+
+SetContainsIgnoreCase sets ContainsIgnoreCase field to given value.
+
+### HasContainsIgnoreCase
+
+`func (o *RiskPredictorCompositeConditionOneOf1) HasContainsIgnoreCase() bool`
+
+HasContainsIgnoreCase returns a boolean if a field has been set.
 
 ### GetValue
 
