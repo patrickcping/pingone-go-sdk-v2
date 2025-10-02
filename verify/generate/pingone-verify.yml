@@ -140,7 +140,7 @@ components:
                   type: object
                   description: OTP delivery configuration
                   properties:
-                    coolDown:
+                    cooldown:
                       type: object
                       description: Cooldown (waiting period between OTP deliveries) configuration
                       properties:

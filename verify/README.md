@@ -111,7 +111,7 @@ Class | Method | HTTP request | Description
  - [GovernmentIdConfigurationAadhaar](docs/GovernmentIdConfigurationAadhaar.md)
  - [GovernmentIdConfigurationAadhaarOtp](docs/GovernmentIdConfigurationAadhaarOtp.md)
  - [GovernmentIdConfigurationAadhaarOtpDeliveries](docs/GovernmentIdConfigurationAadhaarOtpDeliveries.md)
- - [GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown](docs/GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown.md)
+ - [GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown](docs/GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown.md)
  - [GovernmentIdConfigurationProvider](docs/GovernmentIdConfigurationProvider.md)
  - [IdentityRecordMatching](docs/IdentityRecordMatching.md)
  - [IdentityRecordMatchingAddress](docs/IdentityRecordMatchingAddress.md)

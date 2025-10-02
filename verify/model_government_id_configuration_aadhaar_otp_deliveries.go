@@ -19,7 +19,7 @@ var _ MappedNullable = &GovernmentIdConfigurationAadhaarOtpDeliveries{}
 
 // GovernmentIdConfigurationAadhaarOtpDeliveries OTP delivery configuration
 type GovernmentIdConfigurationAadhaarOtpDeliveries struct {
-	CoolDown *GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown `json:"coolDown,omitempty"`
+	Cooldown *GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown `json:"cooldown,omitempty"`
 	// Maximum number of OTP deliveries. Must be 1 to 3.
 	Count *int32 `json:"count,omitempty"`
 }
@@ -41,36 +41,36 @@ func NewGovernmentIdConfigurationAadhaarOtpDeliveriesWithDefaults() *GovernmentI
 	return &this
 }
 
-// GetCoolDown returns the CoolDown field value if set, zero value otherwise.
-func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCoolDown() GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown {
-	if o == nil || IsNil(o.CoolDown) {
-		var ret GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown
+// GetCooldown returns the Cooldown field value if set, zero value otherwise.
+func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCooldown() GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown {
+	if o == nil || IsNil(o.Cooldown) {
+		var ret GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown
 		return ret
 	}
-	return *o.CoolDown
+	return *o.Cooldown
 }
 
-// GetCoolDownOk returns a tuple with the CoolDown field value if set, nil otherwise
+// GetCooldownOk returns a tuple with the Cooldown field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCoolDownOk() (*GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown, bool) {
-	if o == nil || IsNil(o.CoolDown) {
+func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCooldownOk() (*GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown, bool) {
+	if o == nil || IsNil(o.Cooldown) {
 		return nil, false
 	}
-	return o.CoolDown, true
+	return o.Cooldown, true
 }
 
-// HasCoolDown returns a boolean if a field has been set.
-func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) HasCoolDown() bool {
-	if o != nil && !IsNil(o.CoolDown) {
+// HasCooldown returns a boolean if a field has been set.
+func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) HasCooldown() bool {
+	if o != nil && !IsNil(o.Cooldown) {
 		return true
 	}
 
 	return false
 }
 
-// SetCoolDown gets a reference to the given GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown and assigns it to the CoolDown field.
-func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) SetCoolDown(v GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown) {
-	o.CoolDown = &v
+// SetCooldown gets a reference to the given GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown and assigns it to the Cooldown field.
+func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) SetCooldown(v GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown) {
+	o.Cooldown = &v
 }
 
 // GetCount returns the Count field value if set, zero value otherwise.
@@ -115,8 +115,8 @@ func (o GovernmentIdConfigurationAadhaarOtpDeliveries) MarshalJSON() ([]byte, er
 
 func (o GovernmentIdConfigurationAadhaarOtpDeliveries) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CoolDown) {
-		toSerialize["coolDown"] = o.CoolDown
+	if !IsNil(o.Cooldown) {
+		toSerialize["cooldown"] = o.Cooldown
 	}
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count

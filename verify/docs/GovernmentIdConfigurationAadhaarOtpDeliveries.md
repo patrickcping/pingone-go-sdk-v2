@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CoolDown** | Pointer to [**GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown**](GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown.md) |  | [optional] 
+**Cooldown** | Pointer to [**GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown**](GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown.md) |  | [optional] 
 **Count** | Pointer to **int32** | Maximum number of OTP deliveries. Must be 1 to 3. | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewGovernmentIdConfigurationAadhaarOtpDeliveriesWithDefaults instantiates a new 
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCoolDown
+### GetCooldown
 
-`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCoolDown() GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown`
+`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCooldown() GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown`
 
-GetCoolDown returns the CoolDown field if non-nil, zero value otherwise.
+GetCooldown returns the Cooldown field if non-nil, zero value otherwise.
 
-### GetCoolDownOk
+### GetCooldownOk
 
-`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCoolDownOk() (*GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown, bool)`
+`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) GetCooldownOk() (*GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown, bool)`
 
-GetCoolDownOk returns a tuple with the CoolDown field if it's non-nil, zero value otherwise
+GetCooldownOk returns a tuple with the Cooldown field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCoolDown
+### SetCooldown
 
-`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) SetCoolDown(v GovernmentIdConfigurationAadhaarOtpDeliveriesCoolDown)`
+`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) SetCooldown(v GovernmentIdConfigurationAadhaarOtpDeliveriesCooldown)`
 
-SetCoolDown sets CoolDown field to given value.
+SetCooldown sets Cooldown field to given value.
 
-### HasCoolDown
+### HasCooldown
 
-`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) HasCoolDown() bool`
+`func (o *GovernmentIdConfigurationAadhaarOtpDeliveries) HasCooldown() bool`
 
-HasCoolDown returns a boolean if a field has been set.
+HasCooldown returns a boolean if a field has been set.
 
 ### GetCount
 

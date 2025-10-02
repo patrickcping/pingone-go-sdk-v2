@@ -1863,10 +1863,10 @@ components:
               aadhaar:
                 otp:
                   deliveries:
-                    count: 2
-                    coolDown:
+                    cooldown:
                       duration: 0
                       timeUnit: null
+                    count: 2
                 enabled: true
               failExpiredId: true
               retry:
@@ -1974,10 +1974,10 @@ components:
               aadhaar:
                 otp:
                   deliveries:
-                    count: 2
-                    coolDown:
+                    cooldown:
                       duration: 0
                       timeUnit: null
+                    count: 2
                 enabled: true
               failExpiredId: true
               retry:
@@ -2094,10 +2094,10 @@ components:
         aadhaar:
           otp:
             deliveries:
-              count: 2
-              coolDown:
+              cooldown:
                 duration: 0
                 timeUnit: null
+              count: 2
           enabled: true
         failExpiredId: true
         retry:
@@ -2508,10 +2508,10 @@ components:
           aadhaar:
             otp:
               deliveries:
-                count: 2
-                coolDown:
+                cooldown:
                   duration: 0
                   timeUnit: null
+                count: 2
             enabled: true
           failExpiredId: true
           retry:
@@ -2700,10 +2700,10 @@ components:
             aadhaar:
               otp:
                 deliveries:
-                  count: 2
-                  coolDown:
+                  cooldown:
                     duration: 0
                     timeUnit: null
+                  count: 2
               enabled: true
             failExpiredId: true
             retry:
@@ -2811,10 +2811,10 @@ components:
             aadhaar:
               otp:
                 deliveries:
-                  count: 2
-                  coolDown:
+                  cooldown:
                     duration: 0
                     timeUnit: null
+                  count: 2
               enabled: true
             failExpiredId: true
             retry:
@@ -2848,7 +2848,7 @@ components:
             $ref: '#/components/schemas/VoicePhraseContents'
           type: array
       type: object
-    GovernmentIdConfiguration_aadhaar_otp_deliveries_coolDown:
+    GovernmentIdConfiguration_aadhaar_otp_deliveries_cooldown:
       description: Cooldown (waiting period between OTP deliveries) configuration
       example:
         duration: 0
@@ -2864,13 +2864,13 @@ components:
     GovernmentIdConfiguration_aadhaar_otp_deliveries:
       description: OTP delivery configuration
       example:
-        count: 2
-        coolDown:
+        cooldown:
           duration: 0
           timeUnit: null
+        count: 2
       properties:
-        coolDown:
-          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp_deliveries_coolDown'
+        cooldown:
+          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp_deliveries_cooldown'
         count:
           description: Maximum number of OTP deliveries. Must be 1 to 3.
           maximum: 3
@@ -2881,10 +2881,10 @@ components:
       description: Aadhaar one-time password (OTP) configuration
       example:
         deliveries:
-          count: 2
-          coolDown:
+          cooldown:
             duration: 0
             timeUnit: null
+          count: 2
       properties:
         deliveries:
           $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp_deliveries'
@@ -2894,10 +2894,10 @@ components:
       example:
         otp:
           deliveries:
-            count: 2
-            coolDown:
+            cooldown:
               duration: 0
               timeUnit: null
+            count: 2
         enabled: true
       properties:
         enabled:
