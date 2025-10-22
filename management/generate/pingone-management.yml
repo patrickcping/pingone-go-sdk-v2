@@ -404,6 +404,13 @@ components:
       type: string
       enum: [GET, POST]
       description: Use method to specify the type of API request the email provider requires. Valid values are `GET` and `POST`.
+    EnumNotificationsPolicyProviderConfigurationConditionsDeliveryMethods:
+      type: string
+      enum: [VOICE,SMS]
+    EnumNotificationsPolicyCooldownConfigurationMethodPeriodTimeUnit:
+      type: string
+      enum: [SECONDS, MINUTES]
+      description: The time unit for the cooldown period. Options are `SECONDS` and `MINUTES`.
     EnumNotificationsPolicyCountryLimitDeliveryMethod:
       type: string
       enum: [SMS, Voice]
@@ -4589,27 +4596,23 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        createdAt:
-          type: string
-          format: date-time
-          readOnly: true
-          description: The time the resource was created.
-        updatedAt:
-          type: string
-          format: date-time
-          readOnly: true
-          description: The time the resource was last updated.
-        id:
-          type: string
-          readOnly: true
-          description: A string that specifies the resource’s unique identifier.
-        name:
-          type: string
-          description: The name to use for the notification policy. Must be unique among the notification policies in the environment.
-        default:
-          type: boolean
-          description: Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is `false`
-          default: false
+        cooldownConfiguration:
+          type: object
+          description: Include the cooldownConfiguration object in the request if you want to specify a period of time that users must wait before requesting an additional notification such as an additional OTP.
+          properties:
+            email:
+              $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+            sms:
+              $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+            voice:
+              $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+            whatsApp:
+              $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+          required:
+            - email
+            - sms
+            - voice
+            - whatsApp
         countryLimit:
           type: object
           description: You can use the `countryLimit` object to limit the countries where you can send SMS and voice notifications.
@@ -4630,6 +4633,56 @@ components:
           required:
             - type
             - countries
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was created.
+        default:
+          type: boolean
+          description: Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is `false`
+          default: false
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
+        name:
+          type: string
+          description: The name to use for the notification policy. Must be unique among the notification policies in the environment.
+        providerConfiguration:
+          type: object
+          description: If you have defined more than one custom provider, you can use the providerConfiguration object to specify the provider preference to use for different countries and for the different methods (SMS and Voice).
+          properties:
+            conditions:
+              type: array
+              description: Each element in the conditions array represents the provider fallback order to use for a specific group of countries for the specified methods (SMS and/or Voice). Note that in addition to any country-specific orders specified, the array must contain a fallback order without the countries array in the object. This order is used for all countries that were not specified in one of the other fallback orders defined.
+              items:
+                type: object
+                properties:
+                  deliveryMethods:
+                    type: array
+                    description: The authentication methods that the fallback order should be used for. The array can contain VOICE, SMS, or both.
+                    items:
+                      $ref: '#/components/schemas/EnumNotificationsPolicyProviderConfigurationConditionsDeliveryMethods'
+                  countries:
+                    type: array
+                    description: The countries for which the fallback order should be used. Use the two-letter country codes from ISO 3166-1.
+                    items:
+                      type: string
+                      pattern: '^(A(D|E|F|G|I|L|M|N|O|R|S|T|Q|U|W|X|Z)|B(A|B|D|E|F|G|H|I|J|L|M|N|O|R|S|T|V|W|Y|Z)|C(A|C|D|F|G|H|I|K|L|M|N|O|R|U|V|X|Y|Z)|D(E|J|K|M|O|Z)|E(C|E|G|H|R|S|T)|F(I|J|K|M|O|R)|G(A|B|D|E|F|G|H|I|L|M|N|P|Q|R|S|T|U|W|Y)|H(K|M|N|R|T|U)|I(D|E|Q|L|M|N|O|R|S|T)|J(E|M|O|P)|K(E|G|H|I|M|N|P|R|W|Y|Z)|L(A|B|C|I|K|R|S|T|U|V|Y)|M(A|C|D|E|F|G|H|K|L|M|N|O|Q|P|R|S|T|U|V|W|X|Y|Z)|N(A|C|E|F|G|I|L|O|P|R|U|Z)|OM|P(A|E|F|G|H|K|L|M|N|R|S|T|W|Y)|QA|R(E|O|S|U|W)|S(A|B|C|D|E|G|H|I|J|K|L|M|N|O|R|T|V|Y|Z)|T(C|D|F|G|H|J|K|L|M|N|O|R|T|V|W|Z)|U(A|G|M|S|Y|Z)|V(A|C|E|G|I|N|U)|W(F|S)|Y(E|T)|Z(A|M|W))$'
+                  fallbackChain:
+                    type: array
+                    description: An array containing the IDs of the defined custom providers, in the order that they should be used if available.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The ID of one of the defined custom providers. This is the ID that is returned when you create the provider using the phoneDeliverySettings endpoint or when you run the GET request with that endpoint to retrieve the details of all the providers.
+                      required:
+                        - id
         quotas:
           type: array
           description: Collection of objects that define the SMS/Voice limits. Each object contain the following elements- `type`, `deliveryMethods`, `total`. Currently, a policy can contain ony one such object. Note that instead of `total`, you can use the pair of fields- `claimed` and `unclaimed`.
@@ -4657,9 +4710,48 @@ components:
             required:
               - type
               - deliveryMethods
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was last updated.
       required:
         - name
         - quotas
+    NotificationsPolicyCooldownConfigurationMethod:
+      type: object
+      description: Required if you have included the cooldownConfiguration object. Contains the notification cooldown period settings for email, SMS, voice or WhatsApp notifications.
+      properties:
+        enabled:
+          type: boolean
+          description: Set to true if you want to specify notification cooldown periods for the authentication method. Set to false if you don't want notification cooldown periods for this authentication method.
+        periods:
+          type: array
+          description: |
+            Use the periods array to specify the amount of time the user has to wait before requesting another notification such as another OTP. The array should contain three objects: the time to wait before the first retry, the time to wait before the second retry, and the time to wait before any subsequent retries.
+          items:
+            type: object
+            properties:
+              duration:
+                type: integer
+                description: Used in conjunction with timeUnit to specify the waiting period. Minimum is ten seconds, maximum is ten minutes.
+                minimum: 10
+                maximum: 600
+              timeUnit:
+                $ref: '#/components/schemas/EnumNotificationsPolicyCooldownConfigurationMethodPeriodTimeUnit'
+            required:
+              - duration
+              - timeUnit
+        groupBy: 
+          type: string
+          description: Since bad actors may try to target multiple users at a single email address or phone number, by default the cooldown settings (both waiting period and maximum retries) are applied to the email address or phone number. If you want the settings to be applied at the single-user level for the address/number, include the groupBy parameter in the request and set it to USER_ID.
+        resendLimit:
+          type: integer
+          description: The maximum number of requests that a user can send to receive another notification, such as another OTP, before they are blocked for 30 minutes.
+      required:
+        - enabled
+        - periods
+        - resendLimit
     NotificationsSettings:
       type: object
       properties:

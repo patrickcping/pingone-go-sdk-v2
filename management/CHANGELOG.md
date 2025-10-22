@@ -1,3 +1,7 @@
+# v0.62.0 (Unreleased)
+
+* **Enhancement** Add support for `CooldownConfiguration` and `ProviderConfiguration` in the `NotificationsPolicy` object.
+
 # v0.61.0 (2025-09-19)
 
 * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)

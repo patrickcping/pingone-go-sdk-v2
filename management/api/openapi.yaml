@@ -37386,6 +37386,18 @@ components:
       - GET
       - POST
       type: string
+    EnumNotificationsPolicyProviderConfigurationConditionsDeliveryMethods:
+      enum:
+      - VOICE
+      - SMS
+      type: string
+    EnumNotificationsPolicyCooldownConfigurationMethodPeriodTimeUnit:
+      description: The time unit for the cooldown period. Options are `SECONDS` and
+        `MINUTES`.
+      enum:
+      - SECONDS
+      - MINUTES
+      type: string
     EnumNotificationsPolicyCountryLimitDeliveryMethod:
       description: "The delivery method that the defined limitation should be applied\
         \ to.  Options are `SMS`, `Voice`."
@@ -39613,7 +39625,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 3.0576100241049344
+        size: 5.533258397034986
         _links:
           key:
             href: https://openapi-generator.tech
@@ -39972,17 +39984,17 @@ components:
             key: key
           passwordPolicies:
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
               "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-              abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 0
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+              abcdefghijklmnopqrstuvwxyz: 0
+            populationCount: 8
             _links:
               key:
                 href: https://openapi-generator.tech
             length:
-              min: 11
-              max: 6
+              min: 24
+              max: 2
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -39990,7 +40002,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 7
+            minComplexity: 0
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -40001,25 +40013,25 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 6
+            minUniqueCharacters: 4
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 5
+            maxRepeatedCharacters: 3
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
               "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-              abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 0
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+              abcdefghijklmnopqrstuvwxyz: 0
+            populationCount: 8
             _links:
               key:
                 href: https://openapi-generator.tech
             length:
-              min: 11
-              max: 6
+              min: 24
+              max: 2
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -40027,7 +40039,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 7
+            minComplexity: 0
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -40038,11 +40050,11 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 6
+            minUniqueCharacters: 4
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 5
+            maxRepeatedCharacters: 3
             minAgeDays: 1
             updatedAt: updatedAt
           revisions:
@@ -40193,17 +40205,19 @@ components:
           notificationsPolicies:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
+            environment:
+              id: id
             quotas:
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
@@ -40212,7 +40226,6 @@ components:
               key:
                 href: https://openapi-generator.tech
             name: name
-            id: id
             countryLimit:
               countries:
               - countries
@@ -40221,20 +40234,80 @@ components:
               deliveryMethods:
               - null
               - null
+            id: id
+            providerConfiguration:
+              conditions:
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+            cooldownConfiguration:
+              voice:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              whatsApp:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              sms:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              email:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
+            environment:
+              id: id
             quotas:
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
@@ -40243,7 +40316,6 @@ components:
               key:
                 href: https://openapi-generator.tech
             name: name
-            id: id
             countryLimit:
               countries:
               - countries
@@ -40252,6 +40324,64 @@ components:
               deliveryMethods:
               - null
               - null
+            id: id
+            providerConfiguration:
+              conditions:
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+            cooldownConfiguration:
+              voice:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              whatsApp:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              sms:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              email:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           languages:
           - null
@@ -40440,7 +40570,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 3
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -40511,7 +40641,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 3
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41156,7 +41286,7 @@ components:
             default: true
             environment:
               id: id
-            userCount: 4
+            userCount: 7
             name: name
             theme:
               id: id
@@ -41176,7 +41306,7 @@ components:
             default: true
             environment:
               id: id
-            userCount: 4
+            userCount: 7
             name: name
             theme:
               id: id
@@ -41277,7 +41407,7 @@ components:
           applications:
           - null
           - null
-        count: 3.0205796992916243
+        count: 7.04836565559697
       properties:
         _links:
           additionalProperties:
@@ -43409,17 +43539,19 @@ components:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         default: false
+        environment:
+          id: id
         quotas:
-        - total: 6
-          unclaimed: 9
-          claimed: 8
+        - total: 9
+          unclaimed: 3
+          claimed: 6
           type: null
           deliveryMethods:
           - null
           - null
-        - total: 6
-          unclaimed: 9
-          claimed: 8
+        - total: 9
+          unclaimed: 3
+          claimed: 6
           type: null
           deliveryMethods:
           - null
@@ -43428,7 +43560,6 @@ components:
           key:
             href: https://openapi-generator.tech
         name: name
-        id: id
         countryLimit:
           countries:
           - countries
@@ -43437,6 +43568,64 @@ components:
           deliveryMethods:
           - null
           - null
+        id: id
+        providerConfiguration:
+          conditions:
+          - countries:
+            - countries
+            - countries
+            deliveryMethods:
+            - null
+            - null
+            fallbackChain:
+            - id: id
+            - id: id
+          - countries:
+            - countries
+            - countries
+            deliveryMethods:
+            - null
+            - null
+            fallbackChain:
+            - id: id
+            - id: id
+        cooldownConfiguration:
+          voice:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
+          whatsApp:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
+          sms:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
+          email:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -43444,16 +43633,23 @@ components:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
+        cooldownConfiguration:
+          $ref: '#/components/schemas/NotificationsPolicy_cooldownConfiguration'
+        countryLimit:
+          $ref: '#/components/schemas/NotificationsPolicy_countryLimit'
         createdAt:
           description: The time the resource was created.
           format: date-time
           readOnly: true
           type: string
-        updatedAt:
-          description: The time the resource was last updated.
-          format: date-time
-          readOnly: true
-          type: string
+        default:
+          default: false
+          description: "Indication of whether this policy is the default notification\
+            \ policy for the environment. If the parameter is not provided, the value\
+            \ used is `false`"
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -43462,14 +43658,8 @@ components:
           description: The name to use for the notification policy. Must be unique
             among the notification policies in the environment.
           type: string
-        default:
-          default: false
-          description: "Indication of whether this policy is the default notification\
-            \ policy for the environment. If the parameter is not provided, the value\
-            \ used is `false`"
-          type: boolean
-        countryLimit:
-          $ref: '#/components/schemas/NotificationsPolicy_countryLimit'
+        providerConfiguration:
+          $ref: '#/components/schemas/NotificationsPolicy_providerConfiguration'
         quotas:
           description: "Collection of objects that define the SMS/Voice limits. Each\
             \ object contain the following elements- `type`, `deliveryMethods`, `total`.\
@@ -43478,9 +43668,57 @@ components:
           items:
             $ref: '#/components/schemas/NotificationsPolicy_quotas_inner'
           type: array
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - name
       - quotas
+      type: object
+    NotificationsPolicyCooldownConfigurationMethod:
+      description: "Required if you have included the cooldownConfiguration object.\
+        \ Contains the notification cooldown period settings for email, SMS, voice\
+        \ or WhatsApp notifications."
+      example:
+        resendLimit: 8
+        periods:
+        - duration: 404
+          timeUnit: null
+        - duration: 404
+          timeUnit: null
+        groupBy: groupBy
+        enabled: true
+      properties:
+        enabled:
+          description: Set to true if you want to specify notification cooldown periods
+            for the authentication method. Set to false if you don't want notification
+            cooldown periods for this authentication method.
+          type: boolean
+        periods:
+          description: |
+            Use the periods array to specify the amount of time the user has to wait before requesting another notification such as another OTP. The array should contain three objects: the time to wait before the first retry, the time to wait before the second retry, and the time to wait before any subsequent retries.
+          items:
+            $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod_periods_inner'
+          type: array
+        groupBy:
+          description: "Since bad actors may try to target multiple users at a single\
+            \ email address or phone number, by default the cooldown settings (both\
+            \ waiting period and maximum retries) are applied to the email address\
+            \ or phone number. If you want the settings to be applied at the single-user\
+            \ level for the address/number, include the groupBy parameter in the request\
+            \ and set it to USER_ID."
+          type: string
+        resendLimit:
+          description: "The maximum number of requests that a user can send to receive\
+            \ another notification, such as another OTP, before they are blocked for\
+            \ 30 minutes."
+          type: integer
+      required:
+      - enabled
+      - periods
+      - resendLimit
       type: object
     NotificationsSettings:
       example:
@@ -43927,17 +44165,17 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
           "0123456789": 7
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-          abcdefghijklmnopqrstuvwxyz: 3
-        populationCount: 0
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+          abcdefghijklmnopqrstuvwxyz: 0
+        populationCount: 8
         _links:
           key:
             href: https://openapi-generator.tech
         length:
-          min: 11
-          max: 6
+          min: 24
+          max: 2
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -43945,7 +44183,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 7
+        minComplexity: 0
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -43956,11 +44194,11 @@ components:
           durationSeconds: 1
           failureCount: 1
         bypassPolicy: false
-        minUniqueCharacters: 6
+        minUniqueCharacters: 4
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 5
+        maxRepeatedCharacters: 3
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -44123,7 +44361,7 @@ components:
         default: true
         environment:
           id: id
-        userCount: 4
+        userCount: 7
         name: name
         theme:
           id: id
@@ -46481,7 +46719,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 7
+          secondsUntilUnlock: 3
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -46713,7 +46951,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 7
+        secondsUntilUnlock: 3
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -48125,17 +48363,17 @@ components:
           key: key
         passwordPolicies:
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
             "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-            abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 0
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+            abcdefghijklmnopqrstuvwxyz: 0
+          populationCount: 8
           _links:
             key:
               href: https://openapi-generator.tech
           length:
-            min: 11
-            max: 6
+            min: 24
+            max: 2
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -48143,7 +48381,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 7
+          minComplexity: 0
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -48154,25 +48392,25 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 6
+          minUniqueCharacters: 4
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 5
+          maxRepeatedCharacters: 3
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
             "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-            abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 0
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+            abcdefghijklmnopqrstuvwxyz: 0
+          populationCount: 8
           _links:
             key:
               href: https://openapi-generator.tech
           length:
-            min: 11
-            max: 6
+            min: 24
+            max: 2
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -48180,7 +48418,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 7
+          minComplexity: 0
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -48191,11 +48429,11 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 6
+          minUniqueCharacters: 4
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 5
+          maxRepeatedCharacters: 3
           minAgeDays: 1
           updatedAt: updatedAt
         revisions:
@@ -48346,17 +48584,19 @@ components:
         notificationsPolicies:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
+          environment:
+            id: id
           quotas:
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
@@ -48365,7 +48605,6 @@ components:
             key:
               href: https://openapi-generator.tech
           name: name
-          id: id
           countryLimit:
             countries:
             - countries
@@ -48374,20 +48613,80 @@ components:
             deliveryMethods:
             - null
             - null
+          id: id
+          providerConfiguration:
+            conditions:
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+          cooldownConfiguration:
+            voice:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            whatsApp:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            sms:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            email:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
+          environment:
+            id: id
           quotas:
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
@@ -48396,7 +48695,6 @@ components:
             key:
               href: https://openapi-generator.tech
           name: name
-          id: id
           countryLimit:
             countries:
             - countries
@@ -48405,6 +48703,64 @@ components:
             deliveryMethods:
             - null
             - null
+          id: id
+          providerConfiguration:
+            conditions:
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+          cooldownConfiguration:
+            voice:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            whatsApp:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            sms:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            email:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         languages:
         - null
@@ -48593,7 +48949,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 3
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -48664,7 +49020,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 3
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -49309,7 +49665,7 @@ components:
           default: true
           environment:
             id: id
-          userCount: 4
+          userCount: 7
           name: name
           theme:
             id: id
@@ -49329,7 +49685,7 @@ components:
           default: true
           environment:
             id: id
-          userCount: 4
+          userCount: 7
           name: name
           theme:
             id: id
@@ -50619,6 +50975,62 @@ components:
           type: boolean
       readOnly: true
       type: object
+    NotificationsPolicy_cooldownConfiguration:
+      description: Include the cooldownConfiguration object in the request if you
+        want to specify a period of time that users must wait before requesting an
+        additional notification such as an additional OTP.
+      example:
+        voice:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+        whatsApp:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+        sms:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+        email:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+      properties:
+        email:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+        sms:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+        voice:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+        whatsApp:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+      required:
+      - email
+      - sms
+      - voice
+      - whatsApp
+      type: object
     NotificationsPolicy_countryLimit:
       description: You can use the `countryLimit` object to limit the countries where
         you can send SMS and voice notifications.
@@ -50651,11 +51063,92 @@ components:
       - countries
       - type
       type: object
+    NotificationsPolicy_providerConfiguration_conditions_inner_fallbackChain_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: The ID of one of the defined custom providers. This is the
+            ID that is returned when you create the provider using the phoneDeliverySettings
+            endpoint or when you run the GET request with that endpoint to retrieve
+            the details of all the providers.
+          type: string
+      required:
+      - id
+      type: object
+    NotificationsPolicy_providerConfiguration_conditions_inner:
+      example:
+        countries:
+        - countries
+        - countries
+        deliveryMethods:
+        - null
+        - null
+        fallbackChain:
+        - id: id
+        - id: id
+      properties:
+        deliveryMethods:
+          description: "The authentication methods that the fallback order should\
+            \ be used for. The array can contain VOICE, SMS, or both."
+          items:
+            $ref: '#/components/schemas/EnumNotificationsPolicyProviderConfigurationConditionsDeliveryMethods'
+          type: array
+        countries:
+          description: The countries for which the fallback order should be used.
+            Use the two-letter country codes from ISO 3166-1.
+          items:
+            pattern: ^(A(D|E|F|G|I|L|M|N|O|R|S|T|Q|U|W|X|Z)|B(A|B|D|E|F|G|H|I|J|L|M|N|O|R|S|T|V|W|Y|Z)|C(A|C|D|F|G|H|I|K|L|M|N|O|R|U|V|X|Y|Z)|D(E|J|K|M|O|Z)|E(C|E|G|H|R|S|T)|F(I|J|K|M|O|R)|G(A|B|D|E|F|G|H|I|L|M|N|P|Q|R|S|T|U|W|Y)|H(K|M|N|R|T|U)|I(D|E|Q|L|M|N|O|R|S|T)|J(E|M|O|P)|K(E|G|H|I|M|N|P|R|W|Y|Z)|L(A|B|C|I|K|R|S|T|U|V|Y)|M(A|C|D|E|F|G|H|K|L|M|N|O|Q|P|R|S|T|U|V|W|X|Y|Z)|N(A|C|E|F|G|I|L|O|P|R|U|Z)|OM|P(A|E|F|G|H|K|L|M|N|R|S|T|W|Y)|QA|R(E|O|S|U|W)|S(A|B|C|D|E|G|H|I|J|K|L|M|N|O|R|T|V|Y|Z)|T(C|D|F|G|H|J|K|L|M|N|O|R|T|V|W|Z)|U(A|G|M|S|Y|Z)|V(A|C|E|G|I|N|U)|W(F|S)|Y(E|T)|Z(A|M|W))$
+            type: string
+          type: array
+        fallbackChain:
+          description: "An array containing the IDs of the defined custom providers,\
+            \ in the order that they should be used if available."
+          items:
+            $ref: '#/components/schemas/NotificationsPolicy_providerConfiguration_conditions_inner_fallbackChain_inner'
+          type: array
+      type: object
+    NotificationsPolicy_providerConfiguration:
+      description: "If you have defined more than one custom provider, you can use\
+        \ the providerConfiguration object to specify the provider preference to use\
+        \ for different countries and for the different methods (SMS and Voice)."
+      example:
+        conditions:
+        - countries:
+          - countries
+          - countries
+          deliveryMethods:
+          - null
+          - null
+          fallbackChain:
+          - id: id
+          - id: id
+        - countries:
+          - countries
+          - countries
+          deliveryMethods:
+          - null
+          - null
+          fallbackChain:
+          - id: id
+          - id: id
+      properties:
+        conditions:
+          description: "Each element in the conditions array represents the provider\
+            \ fallback order to use for a specific group of countries for the specified\
+            \ methods (SMS and/or Voice). Note that in addition to any country-specific\
+            \ orders specified, the array must contain a fallback order without the\
+            \ countries array in the object. This order is used for all countries\
+            \ that were not specified in one of the other fallback orders defined."
+          items:
+            $ref: '#/components/schemas/NotificationsPolicy_providerConfiguration_conditions_inner'
+          type: array
+      type: object
     NotificationsPolicy_quotas_inner:
       example:
-        total: 6
-        unclaimed: 9
-        claimed: 8
+        total: 9
+        unclaimed: 3
+        claimed: 6
         type: null
         deliveryMethods:
         - null
@@ -50686,6 +51179,23 @@ components:
       required:
       - deliveryMethods
       - type
+      type: object
+    NotificationsPolicyCooldownConfigurationMethod_periods_inner:
+      example:
+        duration: 404
+        timeUnit: null
+      properties:
+        duration:
+          description: "Used in conjunction with timeUnit to specify the waiting period.\
+            \ Minimum is ten seconds, maximum is ten minutes."
+          maximum: 600
+          minimum: 10
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumNotificationsPolicyCooldownConfigurationMethodPeriodTimeUnit'
+      required:
+      - duration
+      - timeUnit
       type: object
     NotificationsSettings_restrictions_smsVoiceQuota:
       example:
@@ -50950,8 +51460,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 11
-        max: 6
+        min: 24
+        max: 2
       properties:
         max:
           default: 255
@@ -50993,10 +51503,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
         "0123456789": 7
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-        abcdefghijklmnopqrstuvwxyz: 3
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+        abcdefghijklmnopqrstuvwxyz: 0
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)

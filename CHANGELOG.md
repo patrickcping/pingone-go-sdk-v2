@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.62.0](./management/CHANGELOG.md)
+  * **Enhancement** Added support for `CooldownConfiguration` and `ProviderConfiguration` in the `NotificationsPolicy` object.
+
 # Release (2025-10-02)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.2
