@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.62.0](./management/CHANGELOG.md)
-  * **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values.
+  * **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values. [#488](https://github.com/patrickcping/pingone-go-sdk-v2/pull/488)
 
 # Release (2025-10-02)
 
