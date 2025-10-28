@@ -34,6 +34,8 @@ const (
 	ENUMALERTCHANNELALERTTYPE_LICENSE_USER_SOFT_LIMIT_EXCEEDED   EnumAlertChannelAlertType = "LICENSE_USER_SOFT_LIMIT_EXCEEDED"
 	ENUMALERTCHANNELALERTTYPE_RISK_CONFIGURATION                 EnumAlertChannelAlertType = "RISK_CONFIGURATION"
 	ENUMALERTCHANNELALERTTYPE_SUSPICIOUS_TRAFFIC                 EnumAlertChannelAlertType = "SUSPICIOUS_TRAFFIC"
+	ENUMALERTCHANNELALERTTYPE_RATE_LIMIT_EXCEEDED                EnumAlertChannelAlertType = "RATE_LIMIT_EXCEEDED"
+	ENUMALERTCHANNELALERTTYPE_RATE_LIMIT_WARNING                 EnumAlertChannelAlertType = "RATE_LIMIT_WARNING"
 )
 
 // All allowed values of EnumAlertChannelAlertType enum
@@ -52,6 +54,8 @@ var AllowedEnumAlertChannelAlertTypeEnumValues = []EnumAlertChannelAlertType{
 	"LICENSE_USER_SOFT_LIMIT_EXCEEDED",
 	"RISK_CONFIGURATION",
 	"SUSPICIOUS_TRAFFIC",
+	"RATE_LIMIT_EXCEEDED",
+	"RATE_LIMIT_WARNING",
 }
 
 func (v *EnumAlertChannelAlertType) UnmarshalJSON(src []byte) error {

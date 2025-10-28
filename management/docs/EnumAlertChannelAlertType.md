@@ -31,6 +31,10 @@
 
 * `SUSPICIOUS_TRAFFIC` (value: `"SUSPICIOUS_TRAFFIC"`)
 
+* `RATE_LIMIT_EXCEEDED` (value: `"RATE_LIMIT_EXCEEDED"`)
+
+* `RATE_LIMIT_WARNING` (value: `"RATE_LIMIT_WARNING"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

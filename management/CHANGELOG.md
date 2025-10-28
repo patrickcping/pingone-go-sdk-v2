@@ -1,3 +1,7 @@
+# v0.62.0 (Unreleased)
+
+* **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values.
+
 # v0.61.0 (2025-09-19)
 
 * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
