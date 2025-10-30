@@ -43717,8 +43717,6 @@ components:
           type: integer
       required:
       - enabled
-      - periods
-      - resendLimit
       type: object
     NotificationsSettings:
       example:

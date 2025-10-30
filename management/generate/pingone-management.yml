@@ -4750,8 +4750,6 @@ components:
           description: The maximum number of requests that a user can send to receive another notification, such as another OTP, before they are blocked for 30 minutes.
       required:
         - enabled
-        - periods
-        - resendLimit
     NotificationsSettings:
       type: object
       properties:

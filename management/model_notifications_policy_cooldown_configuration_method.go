@@ -22,22 +22,20 @@ type NotificationsPolicyCooldownConfigurationMethod struct {
 	// Set to true if you want to specify notification cooldown periods for the authentication method. Set to false if you don't want notification cooldown periods for this authentication method.
 	Enabled bool `json:"enabled"`
 	// Use the periods array to specify the amount of time the user has to wait before requesting another notification such as another OTP. The array should contain three objects: the time to wait before the first retry, the time to wait before the second retry, and the time to wait before any subsequent retries.
-	Periods []NotificationsPolicyCooldownConfigurationMethodPeriodsInner `json:"periods"`
+	Periods []NotificationsPolicyCooldownConfigurationMethodPeriodsInner `json:"periods,omitempty"`
 	// Since bad actors may try to target multiple users at a single email address or phone number, by default the cooldown settings (both waiting period and maximum retries) are applied to the email address or phone number. If you want the settings to be applied at the single-user level for the address/number, include the groupBy parameter in the request and set it to USER_ID.
 	GroupBy *string `json:"groupBy,omitempty"`
 	// The maximum number of requests that a user can send to receive another notification, such as another OTP, before they are blocked for 30 minutes.
-	ResendLimit int32 `json:"resendLimit"`
+	ResendLimit *int32 `json:"resendLimit,omitempty"`
 }
 
 // NewNotificationsPolicyCooldownConfigurationMethod instantiates a new NotificationsPolicyCooldownConfigurationMethod object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationsPolicyCooldownConfigurationMethod(enabled bool, periods []NotificationsPolicyCooldownConfigurationMethodPeriodsInner, resendLimit int32) *NotificationsPolicyCooldownConfigurationMethod {
+func NewNotificationsPolicyCooldownConfigurationMethod(enabled bool) *NotificationsPolicyCooldownConfigurationMethod {
 	this := NotificationsPolicyCooldownConfigurationMethod{}
 	this.Enabled = enabled
-	this.Periods = periods
-	this.ResendLimit = resendLimit
 	return &this
 }
 
@@ -73,26 +71,34 @@ func (o *NotificationsPolicyCooldownConfigurationMethod) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
-// GetPeriods returns the Periods field value
+// GetPeriods returns the Periods field value if set, zero value otherwise.
 func (o *NotificationsPolicyCooldownConfigurationMethod) GetPeriods() []NotificationsPolicyCooldownConfigurationMethodPeriodsInner {
-	if o == nil {
+	if o == nil || IsNil(o.Periods) {
 		var ret []NotificationsPolicyCooldownConfigurationMethodPeriodsInner
 		return ret
 	}
-
 	return o.Periods
 }
 
-// GetPeriodsOk returns a tuple with the Periods field value
+// GetPeriodsOk returns a tuple with the Periods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicyCooldownConfigurationMethod) GetPeriodsOk() ([]NotificationsPolicyCooldownConfigurationMethodPeriodsInner, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Periods) {
 		return nil, false
 	}
 	return o.Periods, true
 }
 
-// SetPeriods sets field value
+// HasPeriods returns a boolean if a field has been set.
+func (o *NotificationsPolicyCooldownConfigurationMethod) HasPeriods() bool {
+	if o != nil && !IsNil(o.Periods) {
+		return true
+	}
+
+	return false
+}
+
+// SetPeriods gets a reference to the given []NotificationsPolicyCooldownConfigurationMethodPeriodsInner and assigns it to the Periods field.
 func (o *NotificationsPolicyCooldownConfigurationMethod) SetPeriods(v []NotificationsPolicyCooldownConfigurationMethodPeriodsInner) {
 	o.Periods = v
 }
@@ -129,28 +135,36 @@ func (o *NotificationsPolicyCooldownConfigurationMethod) SetGroupBy(v string) {
 	o.GroupBy = &v
 }
 
-// GetResendLimit returns the ResendLimit field value
+// GetResendLimit returns the ResendLimit field value if set, zero value otherwise.
 func (o *NotificationsPolicyCooldownConfigurationMethod) GetResendLimit() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.ResendLimit) {
 		var ret int32
 		return ret
 	}
-
-	return o.ResendLimit
+	return *o.ResendLimit
 }
 
-// GetResendLimitOk returns a tuple with the ResendLimit field value
+// GetResendLimitOk returns a tuple with the ResendLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicyCooldownConfigurationMethod) GetResendLimitOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResendLimit) {
 		return nil, false
 	}
-	return &o.ResendLimit, true
+	return o.ResendLimit, true
 }
 
-// SetResendLimit sets field value
+// HasResendLimit returns a boolean if a field has been set.
+func (o *NotificationsPolicyCooldownConfigurationMethod) HasResendLimit() bool {
+	if o != nil && !IsNil(o.ResendLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetResendLimit gets a reference to the given int32 and assigns it to the ResendLimit field.
 func (o *NotificationsPolicyCooldownConfigurationMethod) SetResendLimit(v int32) {
-	o.ResendLimit = v
+	o.ResendLimit = &v
 }
 
 func (o NotificationsPolicyCooldownConfigurationMethod) MarshalJSON() ([]byte, error) {
@@ -164,11 +178,15 @@ func (o NotificationsPolicyCooldownConfigurationMethod) MarshalJSON() ([]byte, e
 func (o NotificationsPolicyCooldownConfigurationMethod) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
-	toSerialize["periods"] = o.Periods
+	if !IsNil(o.Periods) {
+		toSerialize["periods"] = o.Periods
+	}
 	if !IsNil(o.GroupBy) {
 		toSerialize["groupBy"] = o.GroupBy
 	}
-	toSerialize["resendLimit"] = o.ResendLimit
+	if !IsNil(o.ResendLimit) {
+		toSerialize["resendLimit"] = o.ResendLimit
+	}
 	return toSerialize, nil
 }
 

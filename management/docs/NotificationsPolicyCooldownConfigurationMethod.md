@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** | Set to true if you want to specify notification cooldown periods for the authentication method. Set to false if you don&#39;t want notification cooldown periods for this authentication method. | 
-**Periods** | [**[]NotificationsPolicyCooldownConfigurationMethodPeriodsInner**](NotificationsPolicyCooldownConfigurationMethodPeriodsInner.md) | Use the periods array to specify the amount of time the user has to wait before requesting another notification such as another OTP. The array should contain three objects: the time to wait before the first retry, the time to wait before the second retry, and the time to wait before any subsequent retries.  | 
+**Periods** | Pointer to [**[]NotificationsPolicyCooldownConfigurationMethodPeriodsInner**](NotificationsPolicyCooldownConfigurationMethodPeriodsInner.md) | Use the periods array to specify the amount of time the user has to wait before requesting another notification such as another OTP. The array should contain three objects: the time to wait before the first retry, the time to wait before the second retry, and the time to wait before any subsequent retries.  | [optional] 
 **GroupBy** | Pointer to **string** | Since bad actors may try to target multiple users at a single email address or phone number, by default the cooldown settings (both waiting period and maximum retries) are applied to the email address or phone number. If you want the settings to be applied at the single-user level for the address/number, include the groupBy parameter in the request and set it to USER_ID. | [optional] 
-**ResendLimit** | **int32** | The maximum number of requests that a user can send to receive another notification, such as another OTP, before they are blocked for 30 minutes. | 
+**ResendLimit** | Pointer to **int32** | The maximum number of requests that a user can send to receive another notification, such as another OTP, before they are blocked for 30 minutes. | [optional] 
 
 ## Methods
 
 ### NewNotificationsPolicyCooldownConfigurationMethod
 
-`func NewNotificationsPolicyCooldownConfigurationMethod(enabled bool, periods []NotificationsPolicyCooldownConfigurationMethodPeriodsInner, resendLimit int32, ) *NotificationsPolicyCooldownConfigurationMethod`
+`func NewNotificationsPolicyCooldownConfigurationMethod(enabled bool, ) *NotificationsPolicyCooldownConfigurationMethod`
 
 NewNotificationsPolicyCooldownConfigurationMethod instantiates a new NotificationsPolicyCooldownConfigurationMethod object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +67,11 @@ and a boolean to check if the value has been set.
 
 SetPeriods sets Periods field to given value.
 
+### HasPeriods
+
+`func (o *NotificationsPolicyCooldownConfigurationMethod) HasPeriods() bool`
+
+HasPeriods returns a boolean if a field has been set.
 
 ### GetGroupBy
 
@@ -112,6 +117,11 @@ and a boolean to check if the value has been set.
 
 SetResendLimit sets ResendLimit field to given value.
 
+### HasResendLimit
+
+`func (o *NotificationsPolicyCooldownConfigurationMethod) HasResendLimit() bool`
+
+HasResendLimit returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
