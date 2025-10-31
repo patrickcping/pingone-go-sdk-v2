@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.3
+  * **Note** bump `golang.org/x/oauth2` v0.31.0 => v0.32.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.61.0 => v0.62.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.62.0](./management/CHANGELOG.md)
   * **Enhancement** Added support for `CooldownConfiguration` and `ProviderConfiguration` in the `NotificationsPolicy` object. [#487](https://github.com/patrickcping/pingone-go-sdk-v2/pull/487)
   * **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values. [#488](https://github.com/patrickcping/pingone-go-sdk-v2/pull/488)
