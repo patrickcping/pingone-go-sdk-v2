@@ -1,4 +1,4 @@
-# v0.62.0 (Unreleased)
+# v0.62.0 (2025-10-31)
 
 * **Enhancement** Add support for `CooldownConfiguration` and `ProviderConfiguration` in the `NotificationsPolicy` object. [#487](https://github.com/patrickcping/pingone-go-sdk-v2/pull/487)
 * **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values. [#488](https://github.com/patrickcping/pingone-go-sdk-v2/pull/488)
