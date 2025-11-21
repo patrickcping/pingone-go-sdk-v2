@@ -1745,6 +1745,7 @@ components:
       - AND
       - NOT
       - OR
+      - GROUPS_INTERSECTION
       type: string
     EnumPredictorNewDeviceDetectType:
       description: Used only for New Device predictors and Suspicious Device predictors.
@@ -3867,6 +3868,9 @@ components:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
+        notContains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
         list:
           items:
             type: string
@@ -3896,6 +3900,12 @@ components:
           type: integer
         lowerEquals:
           type: integer
+        startsWith:
+          type: string
+        endsWith:
+          type: string
+        containsIgnoreCase:
+          type: string
         value:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string

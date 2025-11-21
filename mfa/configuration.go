@@ -65,9 +65,9 @@ type ServerVariable struct {
 
 // ServerConfiguration stores the information about a server
 type ServerConfiguration struct {
-	URL string
+	URL         string
 	Description string
-	Variables map[string]ServerVariable
+	Variables   map[string]ServerVariable
 }
 
 // ServerConfigurations stores multiple ServerConfiguration items
@@ -75,32 +75,32 @@ type ServerConfigurations []ServerConfiguration
 
 // Configuration stores the configuration of the API client
 type Configuration struct {
-	Host             string            `json:"host,omitempty"`
-	Scheme           string            `json:"scheme,omitempty"`
-	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
-	UserAgent        string            `json:"userAgent,omitempty"`
-	Debug            bool              `json:"debug,omitempty"`
-	DefaultServerIndex int             `json:"defaultServerIndex,omitempty"`
-	ProxyURL         *string           `json:"proxyURL,omitempty"`
-	Servers          ServerConfigurations
-	OperationServers map[string]ServerConfigurations
-	HTTPClient       *http.Client
+	Host               string            `json:"host,omitempty"`
+	Scheme             string            `json:"scheme,omitempty"`
+	DefaultHeader      map[string]string `json:"defaultHeader,omitempty"`
+	UserAgent          string            `json:"userAgent,omitempty"`
+	Debug              bool              `json:"debug,omitempty"`
+	DefaultServerIndex int               `json:"defaultServerIndex,omitempty"`
+	ProxyURL           *string           `json:"proxyURL,omitempty"`
+	Servers            ServerConfigurations
+	OperationServers   map[string]ServerConfigurations
+	HTTPClient         *http.Client
 }
 
 // NewConfiguration returns a new Configuration object
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		DefaultHeader:    make(map[string]string),
-		UserAgent:        "pingtools PingOne-GOLANG-SDK-mfa/0.24.0",
-		Debug:            false,
+		DefaultHeader:      make(map[string]string),
+		UserAgent:          "pingtools PingOne-GOLANG-SDK-mfa/0.24.0",
+		Debug:              false,
 		DefaultServerIndex: 0,
-		Servers:          ServerConfigurations{
+		Servers: ServerConfigurations{
 			{
-				URL: "{protocol}://{baseDomain}.{suffix}/v1",
+				URL:         "{protocol}://{baseDomain}.{suffix}/v1",
 				Description: "PingOne Platform API Endpoint",
 				Variables: map[string]ServerVariable{
 					"suffix": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "com",
 						EnumValues: []string{
 							"asia",
@@ -111,32 +111,31 @@ func NewConfiguration() *Configuration {
 						},
 					},
 					"baseDomain": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "api.pingone",
 					},
 					"protocol": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "https",
 					},
 				},
 			},
 			{
-				URL: "{protocol}://{baseHostname}/v1",
+				URL:         "{protocol}://{baseHostname}/v1",
 				Description: "PingOne Platform API Endpoint",
 				Variables: map[string]ServerVariable{
 					"baseHostname": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "api.pingone.com",
 					},
 					"protocol": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "https",
 					},
 				},
 			},
 		},
-		OperationServers: map[string]ServerConfigurations{
-		},
+		OperationServers: map[string]ServerConfigurations{},
 	}
 	return cfg
 }

@@ -1,3 +1,15 @@
+# v0.62.0 (2025-10-31)
+
+* **Enhancement** Add support for `CooldownConfiguration` and `ProviderConfiguration` in the `NotificationsPolicy` object. [#487](https://github.com/patrickcping/pingone-go-sdk-v2/pull/487)
+* **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values. [#488](https://github.com/patrickcping/pingone-go-sdk-v2/pull/488)
+
+# v0.61.0 (2025-09-19)
+
+* **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* **Enhancement** Added the `Help Desk Admin` and `Authorize Gateway Policy Evaluator` administrator roles. [#481](https://github.com/patrickcping/pingone-go-sdk-v2/pull/481)
+* **Enhancement** Added the ability to import applications with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+* **Enhancement** Added the ability to import custom resources with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+
 # v0.60.0 (2025-07-16)
 
 * **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)

@@ -5,13 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
+**CooldownConfiguration** | Pointer to [**NotificationsPolicyCooldownConfiguration**](NotificationsPolicyCooldownConfiguration.md) |  | [optional] 
+**CountryLimit** | Pointer to [**NotificationsPolicyCountryLimit**](NotificationsPolicyCountryLimit.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
-**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**Default** | Pointer to **bool** | Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is &#x60;false&#x60; | [optional] [default to false]
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | The name to use for the notification policy. Must be unique among the notification policies in the environment. | 
-**Default** | Pointer to **bool** | Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is &#x60;false&#x60; | [optional] [default to false]
-**CountryLimit** | Pointer to [**NotificationsPolicyCountryLimit**](NotificationsPolicyCountryLimit.md) |  | [optional] 
+**ProviderConfiguration** | Pointer to [**NotificationsPolicyProviderConfiguration**](NotificationsPolicyProviderConfiguration.md) |  | [optional] 
 **Quotas** | [**[]NotificationsPolicyQuotasInner**](NotificationsPolicyQuotasInner.md) | Collection of objects that define the SMS/Voice limits. Each object contain the following elements- &#x60;type&#x60;, &#x60;deliveryMethods&#x60;, &#x60;total&#x60;. Currently, a policy can contain ony one such object. Note that instead of &#x60;total&#x60;, you can use the pair of fields- &#x60;claimed&#x60; and &#x60;unclaimed&#x60;. | 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
@@ -57,6 +60,56 @@ SetLinks sets Links field to given value.
 
 HasLinks returns a boolean if a field has been set.
 
+### GetCooldownConfiguration
+
+`func (o *NotificationsPolicy) GetCooldownConfiguration() NotificationsPolicyCooldownConfiguration`
+
+GetCooldownConfiguration returns the CooldownConfiguration field if non-nil, zero value otherwise.
+
+### GetCooldownConfigurationOk
+
+`func (o *NotificationsPolicy) GetCooldownConfigurationOk() (*NotificationsPolicyCooldownConfiguration, bool)`
+
+GetCooldownConfigurationOk returns a tuple with the CooldownConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCooldownConfiguration
+
+`func (o *NotificationsPolicy) SetCooldownConfiguration(v NotificationsPolicyCooldownConfiguration)`
+
+SetCooldownConfiguration sets CooldownConfiguration field to given value.
+
+### HasCooldownConfiguration
+
+`func (o *NotificationsPolicy) HasCooldownConfiguration() bool`
+
+HasCooldownConfiguration returns a boolean if a field has been set.
+
+### GetCountryLimit
+
+`func (o *NotificationsPolicy) GetCountryLimit() NotificationsPolicyCountryLimit`
+
+GetCountryLimit returns the CountryLimit field if non-nil, zero value otherwise.
+
+### GetCountryLimitOk
+
+`func (o *NotificationsPolicy) GetCountryLimitOk() (*NotificationsPolicyCountryLimit, bool)`
+
+GetCountryLimitOk returns a tuple with the CountryLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountryLimit
+
+`func (o *NotificationsPolicy) SetCountryLimit(v NotificationsPolicyCountryLimit)`
+
+SetCountryLimit sets CountryLimit field to given value.
+
+### HasCountryLimit
+
+`func (o *NotificationsPolicy) HasCountryLimit() bool`
+
+HasCountryLimit returns a boolean if a field has been set.
+
 ### GetCreatedAt
 
 `func (o *NotificationsPolicy) GetCreatedAt() time.Time`
@@ -82,30 +135,55 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### GetUpdatedAt
+### GetDefault
 
-`func (o *NotificationsPolicy) GetUpdatedAt() time.Time`
+`func (o *NotificationsPolicy) GetDefault() bool`
 
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+GetDefault returns the Default field if non-nil, zero value otherwise.
 
-### GetUpdatedAtOk
+### GetDefaultOk
 
-`func (o *NotificationsPolicy) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *NotificationsPolicy) GetDefaultOk() (*bool, bool)`
 
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+GetDefaultOk returns a tuple with the Default field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUpdatedAt
+### SetDefault
 
-`func (o *NotificationsPolicy) SetUpdatedAt(v time.Time)`
+`func (o *NotificationsPolicy) SetDefault(v bool)`
 
-SetUpdatedAt sets UpdatedAt field to given value.
+SetDefault sets Default field to given value.
 
-### HasUpdatedAt
+### HasDefault
 
-`func (o *NotificationsPolicy) HasUpdatedAt() bool`
+`func (o *NotificationsPolicy) HasDefault() bool`
 
-HasUpdatedAt returns a boolean if a field has been set.
+HasDefault returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *NotificationsPolicy) GetEnvironment() ObjectEnvironment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *NotificationsPolicy) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *NotificationsPolicy) SetEnvironment(v ObjectEnvironment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *NotificationsPolicy) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetId
 
@@ -152,55 +230,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetDefault
+### GetProviderConfiguration
 
-`func (o *NotificationsPolicy) GetDefault() bool`
+`func (o *NotificationsPolicy) GetProviderConfiguration() NotificationsPolicyProviderConfiguration`
 
-GetDefault returns the Default field if non-nil, zero value otherwise.
+GetProviderConfiguration returns the ProviderConfiguration field if non-nil, zero value otherwise.
 
-### GetDefaultOk
+### GetProviderConfigurationOk
 
-`func (o *NotificationsPolicy) GetDefaultOk() (*bool, bool)`
+`func (o *NotificationsPolicy) GetProviderConfigurationOk() (*NotificationsPolicyProviderConfiguration, bool)`
 
-GetDefaultOk returns a tuple with the Default field if it's non-nil, zero value otherwise
+GetProviderConfigurationOk returns a tuple with the ProviderConfiguration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDefault
+### SetProviderConfiguration
 
-`func (o *NotificationsPolicy) SetDefault(v bool)`
+`func (o *NotificationsPolicy) SetProviderConfiguration(v NotificationsPolicyProviderConfiguration)`
 
-SetDefault sets Default field to given value.
+SetProviderConfiguration sets ProviderConfiguration field to given value.
 
-### HasDefault
+### HasProviderConfiguration
 
-`func (o *NotificationsPolicy) HasDefault() bool`
+`func (o *NotificationsPolicy) HasProviderConfiguration() bool`
 
-HasDefault returns a boolean if a field has been set.
-
-### GetCountryLimit
-
-`func (o *NotificationsPolicy) GetCountryLimit() NotificationsPolicyCountryLimit`
-
-GetCountryLimit returns the CountryLimit field if non-nil, zero value otherwise.
-
-### GetCountryLimitOk
-
-`func (o *NotificationsPolicy) GetCountryLimitOk() (*NotificationsPolicyCountryLimit, bool)`
-
-GetCountryLimitOk returns a tuple with the CountryLimit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountryLimit
-
-`func (o *NotificationsPolicy) SetCountryLimit(v NotificationsPolicyCountryLimit)`
-
-SetCountryLimit sets CountryLimit field to given value.
-
-### HasCountryLimit
-
-`func (o *NotificationsPolicy) HasCountryLimit() bool`
-
-HasCountryLimit returns a boolean if a field has been set.
+HasProviderConfiguration returns a boolean if a field has been set.
 
 ### GetQuotas
 
@@ -221,6 +274,31 @@ and a boolean to check if the value has been set.
 
 SetQuotas sets Quotas field to given value.
 
+
+### GetUpdatedAt
+
+`func (o *NotificationsPolicy) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *NotificationsPolicy) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *NotificationsPolicy) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *NotificationsPolicy) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
