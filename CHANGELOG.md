@@ -1,6 +1,6 @@
 # Release (Unreleased)
 
-* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.1
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.4
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.24.0](./mfa/CHANGELOG.md)
   * **Enhancement** Added support for PingID in device authentication policies.
 
