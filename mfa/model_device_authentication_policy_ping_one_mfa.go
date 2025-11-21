@@ -40,6 +40,7 @@ type DeviceAuthenticationPolicyPingOneMFA struct {
 	// When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set `ignoreUserLock` to `true` if you want PingOne to skip this account lock check.
 	IgnoreUserLock      *bool                                                `json:"ignoreUserLock,omitempty"`
 	NotificationsPolicy *DeviceAuthenticationPolicyCommonNotificationsPolicy `json:"notificationsPolicy,omitempty"`
+	OathToken           *DeviceAuthenticationPolicyOathToken                 `json:"oathToken,omitempty"`
 	RememberMe          *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time                                      `json:"updatedAt,omitempty"`
@@ -499,6 +500,38 @@ func (o *DeviceAuthenticationPolicyPingOneMFA) SetNotificationsPolicy(v DeviceAu
 	o.NotificationsPolicy = &v
 }
 
+// GetOathToken returns the OathToken field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetOathToken() DeviceAuthenticationPolicyOathToken {
+	if o == nil || IsNil(o.OathToken) {
+		var ret DeviceAuthenticationPolicyOathToken
+		return ret
+	}
+	return *o.OathToken
+}
+
+// GetOathTokenOk returns a tuple with the OathToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetOathTokenOk() (*DeviceAuthenticationPolicyOathToken, bool) {
+	if o == nil || IsNil(o.OathToken) {
+		return nil, false
+	}
+	return o.OathToken, true
+}
+
+// HasOathToken returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) HasOathToken() bool {
+	if o != nil && !IsNil(o.OathToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetOathToken gets a reference to the given DeviceAuthenticationPolicyOathToken and assigns it to the OathToken field.
+func (o *DeviceAuthenticationPolicyPingOneMFA) SetOathToken(v DeviceAuthenticationPolicyOathToken) {
+	o.OathToken = &v
+}
+
 // GetRememberMe returns the RememberMe field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyPingOneMFA) GetRememberMe() DeviceAuthenticationPolicyCommonRememberMe {
 	if o == nil || IsNil(o.RememberMe) {
@@ -659,6 +692,9 @@ func (o DeviceAuthenticationPolicyPingOneMFA) ToMap() (map[string]interface{}, e
 	}
 	if !IsNil(o.NotificationsPolicy) {
 		toSerialize["notificationsPolicy"] = o.NotificationsPolicy
+	}
+	if !IsNil(o.OathToken) {
+		toSerialize["oathToken"] = o.OathToken
 	}
 	if !IsNil(o.RememberMe) {
 		toSerialize["rememberMe"] = o.RememberMe

@@ -133,6 +133,7 @@ Class | Method | HTTP request | Description
  - [DeviceAuthenticationPolicyCommonTotp](docs/DeviceAuthenticationPolicyCommonTotp.md)
  - [DeviceAuthenticationPolicyMigrate](docs/DeviceAuthenticationPolicyMigrate.md)
  - [DeviceAuthenticationPolicyMigrateData](docs/DeviceAuthenticationPolicyMigrateData.md)
+ - [DeviceAuthenticationPolicyOathToken](docs/DeviceAuthenticationPolicyOathToken.md)
  - [DeviceAuthenticationPolicyOfflineDevice](docs/DeviceAuthenticationPolicyOfflineDevice.md)
  - [DeviceAuthenticationPolicyOfflineDeviceOtp](docs/DeviceAuthenticationPolicyOfflineDeviceOtp.md)
  - [DeviceAuthenticationPolicyOfflineDeviceOtpFailure](docs/DeviceAuthenticationPolicyOfflineDeviceOtpFailure.md)

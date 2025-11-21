@@ -231,7 +231,7 @@ var (
 	// try to unmarshal data into DeviceAuthenticationPolicyPingID
 	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicyPingID)
 	if err == nil {
-		if dst.DeviceAuthenticationPolicyPingID.Desktop != nil || dst.DeviceAuthenticationPolicyPingID.OathToken != nil || dst.DeviceAuthenticationPolicyPingID.Yubikey != nil {
+		if dst.DeviceAuthenticationPolicyPingID.Desktop != nil || dst.DeviceAuthenticationPolicyPingID.Yubikey != nil {
 			match++
 		} else if len(dst.DeviceAuthenticationPolicyPingID.Mobile.Applications) > 0 {
 			for _, app := range dst.DeviceAuthenticationPolicyPingID.Mobile.Applications {

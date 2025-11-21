@@ -4263,6 +4263,30 @@ components:
       - enabled
       - otp
       type: object
+    DeviceAuthenticationPolicyOathToken:
+      properties:
+        enabled:
+          description: Enabled or disabled in the policy.
+          type: boolean
+        pairingDisabled:
+          description: You can set `pairingDisabled` to true to prevent users from
+            pairing new devices with the relevant method. You can use this option
+            if you want to phase out an existing authentication method but want to
+            allow users to continue using the method for authentication for existing
+            devices.
+          type: boolean
+        otp:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice_otp'
+        promptForNicknameOnPairing:
+          description: Set to `true` if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
+        pairingKeyLifetime:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice_pairingKeyLifetime'
+      required:
+      - enabled
+      - otp
+      type: object
     DeviceAuthenticationPolicyPingOneMFA:
       allOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon'
@@ -4289,8 +4313,6 @@ components:
           desktop:
             $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice'
           yubikey:
-            $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice'
-          oathToken:
             $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice'
         required:
         - default
@@ -4347,6 +4369,8 @@ components:
           type: boolean
         notificationsPolicy:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_notificationsPolicy'
+        oathToken:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyOathToken'
         rememberMe:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_rememberMe'
         updatedAt:

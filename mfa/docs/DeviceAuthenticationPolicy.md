@@ -19,13 +19,13 @@ Name | Type | Description | Notes
 **ForSignOnPolicy** | **bool** |  | [readonly] 
 **IgnoreUserLock** | Pointer to **bool** | When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set &#x60;ignoreUserLock&#x60; to &#x60;true&#x60; if you want PingOne to skip this account lock check. | [optional] 
 **NotificationsPolicy** | Pointer to [**DeviceAuthenticationPolicyCommonNotificationsPolicy**](DeviceAuthenticationPolicyCommonNotificationsPolicy.md) |  | [optional] 
+**OathToken** | Pointer to [**DeviceAuthenticationPolicyOathToken**](DeviceAuthenticationPolicyOathToken.md) |  | [optional] 
 **RememberMe** | Pointer to [**DeviceAuthenticationPolicyCommonRememberMe**](DeviceAuthenticationPolicyCommonRememberMe.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **Mobile** | [**DeviceAuthenticationPolicyPingIDAllOfMobile**](DeviceAuthenticationPolicyPingIDAllOfMobile.md) |  | 
 **Whatsapp** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
 **Desktop** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
 **Yubikey** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
-**OathToken** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
 
 ## Methods
 
@@ -386,6 +386,31 @@ SetNotificationsPolicy sets NotificationsPolicy field to given value.
 
 HasNotificationsPolicy returns a boolean if a field has been set.
 
+### GetOathToken
+
+`func (o *DeviceAuthenticationPolicy) GetOathToken() DeviceAuthenticationPolicyOathToken`
+
+GetOathToken returns the OathToken field if non-nil, zero value otherwise.
+
+### GetOathTokenOk
+
+`func (o *DeviceAuthenticationPolicy) GetOathTokenOk() (*DeviceAuthenticationPolicyOathToken, bool)`
+
+GetOathTokenOk returns a tuple with the OathToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOathToken
+
+`func (o *DeviceAuthenticationPolicy) SetOathToken(v DeviceAuthenticationPolicyOathToken)`
+
+SetOathToken sets OathToken field to given value.
+
+### HasOathToken
+
+`func (o *DeviceAuthenticationPolicy) HasOathToken() bool`
+
+HasOathToken returns a boolean if a field has been set.
+
 ### GetRememberMe
 
 `func (o *DeviceAuthenticationPolicy) GetRememberMe() DeviceAuthenticationPolicyCommonRememberMe`
@@ -530,31 +555,6 @@ SetYubikey sets Yubikey field to given value.
 `func (o *DeviceAuthenticationPolicy) HasYubikey() bool`
 
 HasYubikey returns a boolean if a field has been set.
-
-### GetOathToken
-
-`func (o *DeviceAuthenticationPolicy) GetOathToken() DeviceAuthenticationPolicyPingIDDevice`
-
-GetOathToken returns the OathToken field if non-nil, zero value otherwise.
-
-### GetOathTokenOk
-
-`func (o *DeviceAuthenticationPolicy) GetOathTokenOk() (*DeviceAuthenticationPolicyPingIDDevice, bool)`
-
-GetOathTokenOk returns a tuple with the OathToken field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOathToken
-
-`func (o *DeviceAuthenticationPolicy) SetOathToken(v DeviceAuthenticationPolicyPingIDDevice)`
-
-SetOathToken sets OathToken field to given value.
-
-### HasOathToken
-
-`func (o *DeviceAuthenticationPolicy) HasOathToken() bool`
-
-HasOathToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -173,6 +173,57 @@ components:
       required:
         - enabled
         - otp
+    DeviceAuthenticationPolicyOathToken:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Enabled or disabled in the policy.
+        pairingDisabled:
+          type: boolean
+          description: You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
+        otp:
+          type: object
+          properties:
+            failure:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  description: The maximum number of times that the OTP entry can fail for a user, before they are blocked.
+                coolDown:
+                  type: object
+                  properties:
+                    duration:
+                      type: integer
+                      description: The duration (number of time units) the user is blocked after reaching the maximum number of passcode failures.
+                    timeUnit:
+                      $ref: '#/components/schemas/EnumTimeUnit'
+                  required:
+                    - duration
+                    - timeUnit
+              required:
+                - count
+                - coolDown
+          required:
+            - failure
+        promptForNicknameOnPairing:
+          type: boolean
+          description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
+        pairingKeyLifetime:
+          type: object
+          properties:
+            duration:
+              type: integer
+              description: For "desktop" only. The amount of time the pairing key is valid. Can be expressed in minutes or hours. Minimum is one minute, maximum is 48 hours. If the `pairingKeyLifetime` object is not provided, then 48 hours is used.
+            timeUnit:
+              $ref: '#/components/schemas/EnumTimeUnit'
+          required:
+            - duration
+            - timeUnit
+      required:
+        - enabled
+        - otp
     DeviceAuthenticationPolicyPingOneMFA:
       allOf:
         - $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon'
@@ -523,8 +574,6 @@ components:
               $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice'
             yubikey:
               $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice'
-            oathToken:
-              $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice'
           required:
             - name
             - sms
@@ -644,6 +693,8 @@ components:
               description: If you want the MFA policy to use a specific notification policy rather than just using the default notification policy, use this attribute to specify the ID of the notification policy that should be used.
           required:
             - id
+        oathToken:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyOathToken'
         rememberMe:
           type: object
           description: Object used to specify that the MFA policy should include a "remember me" option so that users do not have to authenticate when accessing applications from a device they have used already.

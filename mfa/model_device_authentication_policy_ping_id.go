@@ -40,13 +40,13 @@ type DeviceAuthenticationPolicyPingID struct {
 	// When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set `ignoreUserLock` to `true` if you want PingOne to skip this account lock check.
 	IgnoreUserLock      *bool                                                `json:"ignoreUserLock,omitempty"`
 	NotificationsPolicy *DeviceAuthenticationPolicyCommonNotificationsPolicy `json:"notificationsPolicy,omitempty"`
+	OathToken           *DeviceAuthenticationPolicyOathToken                 `json:"oathToken,omitempty"`
 	RememberMe          *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time                                  `json:"updatedAt,omitempty"`
 	Mobile    DeviceAuthenticationPolicyPingIDAllOfMobile `json:"mobile"`
 	Desktop   *DeviceAuthenticationPolicyPingIDDevice     `json:"desktop,omitempty"`
 	Yubikey   *DeviceAuthenticationPolicyPingIDDevice     `json:"yubikey,omitempty"`
-	OathToken *DeviceAuthenticationPolicyPingIDDevice     `json:"oathToken,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyPingID instantiates a new DeviceAuthenticationPolicyPingID object
@@ -501,6 +501,38 @@ func (o *DeviceAuthenticationPolicyPingID) SetNotificationsPolicy(v DeviceAuthen
 	o.NotificationsPolicy = &v
 }
 
+// GetOathToken returns the OathToken field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyPingID) GetOathToken() DeviceAuthenticationPolicyOathToken {
+	if o == nil || IsNil(o.OathToken) {
+		var ret DeviceAuthenticationPolicyOathToken
+		return ret
+	}
+	return *o.OathToken
+}
+
+// GetOathTokenOk returns a tuple with the OathToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyPingID) GetOathTokenOk() (*DeviceAuthenticationPolicyOathToken, bool) {
+	if o == nil || IsNil(o.OathToken) {
+		return nil, false
+	}
+	return o.OathToken, true
+}
+
+// HasOathToken returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyPingID) HasOathToken() bool {
+	if o != nil && !IsNil(o.OathToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetOathToken gets a reference to the given DeviceAuthenticationPolicyOathToken and assigns it to the OathToken field.
+func (o *DeviceAuthenticationPolicyPingID) SetOathToken(v DeviceAuthenticationPolicyOathToken) {
+	o.OathToken = &v
+}
+
 // GetRememberMe returns the RememberMe field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyPingID) GetRememberMe() DeviceAuthenticationPolicyCommonRememberMe {
 	if o == nil || IsNil(o.RememberMe) {
@@ -653,38 +685,6 @@ func (o *DeviceAuthenticationPolicyPingID) SetYubikey(v DeviceAuthenticationPoli
 	o.Yubikey = &v
 }
 
-// GetOathToken returns the OathToken field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyPingID) GetOathToken() DeviceAuthenticationPolicyPingIDDevice {
-	if o == nil || IsNil(o.OathToken) {
-		var ret DeviceAuthenticationPolicyPingIDDevice
-		return ret
-	}
-	return *o.OathToken
-}
-
-// GetOathTokenOk returns a tuple with the OathToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyPingID) GetOathTokenOk() (*DeviceAuthenticationPolicyPingIDDevice, bool) {
-	if o == nil || IsNil(o.OathToken) {
-		return nil, false
-	}
-	return o.OathToken, true
-}
-
-// HasOathToken returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyPingID) HasOathToken() bool {
-	if o != nil && !IsNil(o.OathToken) {
-		return true
-	}
-
-	return false
-}
-
-// SetOathToken gets a reference to the given DeviceAuthenticationPolicyPingIDDevice and assigns it to the OathToken field.
-func (o *DeviceAuthenticationPolicyPingID) SetOathToken(v DeviceAuthenticationPolicyPingIDDevice) {
-	o.OathToken = &v
-}
-
 func (o DeviceAuthenticationPolicyPingID) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -726,6 +726,9 @@ func (o DeviceAuthenticationPolicyPingID) ToMap() (map[string]interface{}, error
 	if !IsNil(o.NotificationsPolicy) {
 		toSerialize["notificationsPolicy"] = o.NotificationsPolicy
 	}
+	if !IsNil(o.OathToken) {
+		toSerialize["oathToken"] = o.OathToken
+	}
 	if !IsNil(o.RememberMe) {
 		toSerialize["rememberMe"] = o.RememberMe
 	}
@@ -738,9 +741,6 @@ func (o DeviceAuthenticationPolicyPingID) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.Yubikey) {
 		toSerialize["yubikey"] = o.Yubikey
-	}
-	if !IsNil(o.OathToken) {
-		toSerialize["oathToken"] = o.OathToken
 	}
 	return toSerialize, nil
 }
