@@ -1,3 +1,10 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.63.0](./management/CHANGELOG.md)
+  * **Enhancement** Added `IncludeX5t` field to the `ApplicationOIDC` model to support X.509 certificate thumbprint in JWT signatures. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+  * **Enhancement** Added `OpSessionCheckEnabled` field to the `ApplicationOIDC` model to support session state checking in authentication responses. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+  * **Enhancement** Added `RequestScopesForMultipleResourcesEnabled` field to the `ApplicationOIDC` model to support requesting scopes for multiple resources. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+
 # Release (2025-10-31)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.3
