@@ -38661,8 +38661,8 @@ components:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
           grantTypes:
             description: "A string that specifies the grant type for the authorization\
-              \ request. This is a required property. Options are AUTHORIZATION_CODE,\
-              \ IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS."
+              \ request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN,\
+              \ CLIENT_CREDENTIALS."
             items:
               $ref: '#/components/schemas/EnumApplicationOIDCGrantType'
             type: array
@@ -38771,7 +38771,6 @@ components:
           signing:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_signing'
         required:
-        - grantTypes
         - tokenEndpointAuthMethod
         type: object
     ApplicationOIDCInternal:
