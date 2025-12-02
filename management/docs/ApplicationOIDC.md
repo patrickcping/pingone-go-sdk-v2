@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 **BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
 **PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
 **Kerberos** | Pointer to [**ApplicationOIDCAllOfKerberos**](ApplicationOIDCAllOfKerberos.md) |  | [optional] 
-**GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
+**GrantTypes** | Pointer to [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | [optional] 
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
 **InitiateLoginUri** | Pointer to **string** | A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information. | [optional] 
 **OpSessionCheckEnabled** | Pointer to **bool** | When enabled, PingOne includes the &#x60;session_state&#x60; parameter in the authentication response, per spec with [OpenID Connect Session Management 1.0](https://openid.net/specs/openid-connect-session-1_0.html). Refer to [OIDC Session Management](https://apidocs.pingidentity.com/pingone/main/v1/api/#oidc-session-management) in the Developer&#39;s Foundations for more information. This property is disabled by default. | [optional] [default to false]
@@ -62,7 +62,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationOIDC
 
-`func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *ApplicationOIDC`
+`func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *ApplicationOIDC`
 
 NewApplicationOIDC instantiates a new ApplicationOIDC object
 This constructor will assign default values to properties that have it defined,
@@ -876,6 +876,11 @@ and a boolean to check if the value has been set.
 
 SetGrantTypes sets GrantTypes field to given value.
 
+### HasGrantTypes
+
+`func (o *ApplicationOIDC) HasGrantTypes() bool`
+
+HasGrantTypes returns a boolean if a field has been set.
 
 ### GetHomePageUrl
 

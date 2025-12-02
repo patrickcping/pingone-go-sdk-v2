@@ -77,8 +77,8 @@ type ApplicationOIDC struct {
 	// Deprecated
 	PackageName *string                       `json:"packageName,omitempty"`
 	Kerberos    *ApplicationOIDCAllOfKerberos `json:"kerberos,omitempty"`
-	// A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
-	GrantTypes []EnumApplicationOIDCGrantType `json:"grantTypes"`
+	// A string that specifies the grant type for the authorization request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
+	GrantTypes []EnumApplicationOIDCGrantType `json:"grantTypes,omitempty"`
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl *string `json:"homePageUrl,omitempty"`
 	// A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information.
@@ -120,7 +120,7 @@ type ApplicationOIDC struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod) *ApplicationOIDC {
+func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod) *ApplicationOIDC {
 	this := ApplicationOIDC{}
 	this.Enabled = enabled
 	this.Name = name
@@ -132,7 +132,6 @@ func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProto
 	this.DeviceTimeout = &deviceTimeout
 	var devicePollingInterval int32 = 5
 	this.DevicePollingInterval = &devicePollingInterval
-	this.GrantTypes = grantTypes
 	var opSessionCheckEnabled bool = false
 	this.OpSessionCheckEnabled = &opSessionCheckEnabled
 	var parRequirement EnumApplicationOIDCPARRequirement = ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL
@@ -1169,26 +1168,34 @@ func (o *ApplicationOIDC) SetKerberos(v ApplicationOIDCAllOfKerberos) {
 	o.Kerberos = &v
 }
 
-// GetGrantTypes returns the GrantTypes field value
+// GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetGrantTypes() []EnumApplicationOIDCGrantType {
-	if o == nil {
+	if o == nil || IsNil(o.GrantTypes) {
 		var ret []EnumApplicationOIDCGrantType
 		return ret
 	}
-
 	return o.GrantTypes
 }
 
-// GetGrantTypesOk returns a tuple with the GrantTypes field value
+// GetGrantTypesOk returns a tuple with the GrantTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetGrantTypesOk() ([]EnumApplicationOIDCGrantType, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GrantTypes) {
 		return nil, false
 	}
 	return o.GrantTypes, true
 }
 
-// SetGrantTypes sets field value
+// HasGrantTypes returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasGrantTypes() bool {
+	if o != nil && !IsNil(o.GrantTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrantTypes gets a reference to the given []EnumApplicationOIDCGrantType and assigns it to the GrantTypes field.
 func (o *ApplicationOIDC) SetGrantTypes(v []EnumApplicationOIDCGrantType) {
 	o.GrantTypes = v
 }
@@ -1923,7 +1930,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Kerberos) {
 		toSerialize["kerberos"] = o.Kerberos
 	}
-	toSerialize["grantTypes"] = o.GrantTypes
+	if !IsNil(o.GrantTypes) {
+		toSerialize["grantTypes"] = o.GrantTypes
+	}
 	if !IsNil(o.HomePageUrl) {
 		toSerialize["homePageUrl"] = o.HomePageUrl
 	}
