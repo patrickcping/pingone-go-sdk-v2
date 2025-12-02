@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.63.0](./management/CHANGELOG.md)
+  * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)
+
 # Release (2025-10-31)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.3
