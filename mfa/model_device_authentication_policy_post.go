@@ -42,20 +42,9 @@ func (dst *DeviceAuthenticationPolicyPost) UnmarshalJSON(data []byte) error {
 	// try to unmarshal data into DeviceAuthenticationPolicy
 	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicy)
 	if err == nil {
-		switch mfaTyp := dst.DeviceAuthenticationPolicy.GetActualInstance().(type) {
-		case *DeviceAuthenticationPolicyPingID:
-			if v, ok := mfaTyp.GetNameOk(); ok && v != nil && *v != "" {
-				match++
-			} else {
-				dst.DeviceAuthenticationPolicy = nil
-			}
-		case *DeviceAuthenticationPolicyPingOneMFA:
-			if v, ok := mfaTyp.GetNameOk(); ok && v != nil && *v != "" {
-				match++
-			} else {
-				dst.DeviceAuthenticationPolicy = nil
-			}
-		default:
+		if v, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok && v != nil && *v != "" {
+			match++
+		} else {
 			dst.DeviceAuthenticationPolicy = nil
 		}
 	} else {
