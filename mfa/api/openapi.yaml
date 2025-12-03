@@ -4389,7 +4389,7 @@ components:
       - voice
       type: object
     DeviceAuthenticationPolicy:
-      oneOf:
+      allOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA'
       - $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID'
     DeviceAuthenticationPolicyPost:

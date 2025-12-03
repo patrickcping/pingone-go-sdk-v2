@@ -735,7 +735,7 @@ components:
         - default
         - forSignOnPolicy
     DeviceAuthenticationPolicy:
-      oneOf:
+      allOf:
         - $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA'
         - $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID'
     DeviceAuthenticationPolicyPost:
