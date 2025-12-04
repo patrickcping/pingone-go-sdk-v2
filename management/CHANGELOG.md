@@ -1,6 +1,7 @@
 # v0.63.0 (Unreleased)
 
 * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)
+* **Feature** Add support for the Rate Limit Configuration API. [#493](https://github.com/patrickcping/pingone-go-sdk-v2/pull/493)
 
 # v0.62.0 (2025-10-31)
 

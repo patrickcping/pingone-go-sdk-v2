@@ -24427,6 +24427,388 @@ paths:
       summary: UPDATE Population Default Identity Provider
       tags:
       - Populations
+  /environments/{environmentID}/rateLimitIpConfigs:
+    get:
+      operationId: readAllRateLimitConfigurations
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+          x-pingone-docs-8830: true
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Rate Limit Configurations
+      tags:
+      - Rate Limiting
+    post:
+      operationId: createRateLimitConfiguration
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RateLimitConfiguration'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+          x-pingone-docs-8830: true
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitConfiguration'
+          description: Successful response
+      summary: CREATE Rate Limit Configuration
+      tags:
+      - Rate Limiting
+  /environments/{environmentID}/rateLimitIpConfigs/{rateLimitConfigurationID}:
+    delete:
+      operationId: deleteRateLimitConfiguration
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: rateLimitConfigurationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Rate Limit Configuration
+      tags:
+      - Rate Limiting
+    get:
+      operationId: readOneRateLimitConfiguration
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: rateLimitConfigurationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitConfiguration'
+          description: Successful response
+      summary: READ One Rate Limit Configuration
+      tags:
+      - Rate Limiting
   /environments/{environmentID}/recaptchaV2Config:
     delete:
       operationId: deleteRecaptchaConfiguration
@@ -37692,6 +38074,13 @@ components:
       - JWT Bearer Token
       - OAuth Bearer Token
       type: string
+    EnumRateLimitConfigurationType:
+      description: "The type of rate limit configuration. Currently, the only type\
+        \ supported is \"WHITELIST\", indicating that the IP address in value is to\
+        \ be excluded from rate limiting."
+      enum:
+      - WHITELIST
+      type: string
     EnumRegionCode:
       description: A string that specifies the environment region code. The value
         is set when the environment is created and cannot be updated.
@@ -40904,6 +41293,17 @@ components:
             status: null
             subjectDN: subjectDN
             usageType: null
+          rateLimitIpConfigs:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            value: value
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            value: value
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           contents:
           - null
           - null
@@ -45045,6 +45445,40 @@ components:
           type: boolean
       required:
       - SCIM_URL
+      type: object
+    RateLimitConfiguration:
+      description: |
+        Rate Limit Configuration object
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: null
+        value: value
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: The UUID of the rate limit configuration.
+          readOnly: true
+          type: string
+        createdAt:
+          description: The date and time the rate limit configuration was created.
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The date and time the rate limit configuration was updated.
+          format: date-time
+          readOnly: true
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumRateLimitConfigurationType'
+        value:
+          description: "The IP address (v4 or v6), or a CIDR range, for the IP address\
+            \ or addresses to be excluded."
+          type: string
+      required:
+      - type
+      - value
       type: object
     RecaptchaConfiguration:
       example:
@@ -49281,6 +49715,17 @@ components:
           status: null
           subjectDN: subjectDN
           usageType: null
+        rateLimitIpConfigs:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          value: value
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          value: value
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         contents:
         - null
         - null
@@ -49913,6 +50358,10 @@ components:
         populations:
           items:
             $ref: '#/components/schemas/Population'
+          type: array
+        rateLimitIpConfigs:
+          items:
+            $ref: '#/components/schemas/RateLimitConfiguration'
           type: array
         resources:
           items:

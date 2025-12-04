@@ -163,6 +163,8 @@ type APIClient struct {
 
 	PropagationStoresApi *PropagationStoresApiService
 
+	RateLimitingApi *RateLimitingApiService
+
 	RecaptchaConfigurationApi *RecaptchaConfigurationApiService
 
 	ResourceAttributesApi *ResourceAttributesApiService
@@ -308,6 +310,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PropagationRulesApi = (*PropagationRulesApiService)(&c.common)
 	c.PropagationStoreMetadataApi = (*PropagationStoreMetadataApiService)(&c.common)
 	c.PropagationStoresApi = (*PropagationStoresApiService)(&c.common)
+	c.RateLimitingApi = (*RateLimitingApiService)(&c.common)
 	c.RecaptchaConfigurationApi = (*RecaptchaConfigurationApiService)(&c.common)
 	c.ResourceAttributesApi = (*ResourceAttributesApiService)(&c.common)
 	c.ResourceClientSecretApi = (*ResourceClientSecretApiService)(&c.common)

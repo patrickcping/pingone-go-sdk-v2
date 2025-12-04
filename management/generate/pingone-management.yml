@@ -570,6 +570,11 @@ components:
       enum: [JWT Bearer Token, OAuth Bearer Token]
       description: Account authentication method. Case sensitive. Can be JWT Bearer Token or OAuth Bearer Token. Defaults to JWT Bearer Token.
       default: JWT Bearer Token
+    EnumRateLimitConfigurationType:
+      type: string
+      description: The type of rate limit configuration. Currently, the only type supported is "WHITELIST", indicating that the IP address in value is to be excluded from rate limiting.
+      enum: 
+        - WHITELIST
     EnumRegionCode:
       type: string
       enum: [AP, AU, CA, EU, NA, SG]
@@ -2412,6 +2417,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Population'
+            rateLimitIpConfigs:
+              type: array
+              items:
+                $ref: '#/components/schemas/RateLimitConfiguration'
             resources:
               type: array
               items:
@@ -6083,6 +6092,33 @@ components:
           description: Whether or not users are allowed to be updated.
       required:
         - SCIM_URL
+    RateLimitConfiguration:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The UUID of the rate limit configuration.
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the rate limit configuration was created.
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the rate limit configuration was updated.
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/EnumRateLimitConfigurationType'
+        value:
+          type: string
+          description: The IP address (v4 or v6), or a CIDR range, for the IP address or addresses to be excluded.
+      description: |
+        Rate Limit Configuration object
+      required:
+        - type
+        - value
     RecaptchaConfiguration:
       type: object
       properties:
@@ -23407,6 +23443,247 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PopulationDefaultIdp'
+  /environments/{environmentID}/rateLimitIpConfigs:
+    get:
+      tags:
+        - Rate Limiting
+      summary: READ All Rate Limit Configurations
+      operationId: readAllRateLimitConfigurations
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    post:
+      tags:
+        - Rate Limiting
+      summary: CREATE Rate Limit Configuration
+      operationId: createRateLimitConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RateLimitConfiguration'
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitConfiguration'
+  /environments/{environmentID}/rateLimitIpConfigs/{rateLimitConfigurationID}:
+    get:
+      tags:
+        - Rate Limiting
+      summary: READ One Rate Limit Configuration
+      operationId: readOneRateLimitConfiguration
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: rateLimitConfigurationID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitConfiguration'
+    delete:
+      tags:
+        - Rate Limiting
+      summary: DELETE Rate Limit Configuration
+      operationId: deleteRateLimitConfiguration
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: rateLimitConfigurationID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '204':
+          description: Successful response
   /environments/{environmentID}/recaptchaV2Config:
     get:
       tags:

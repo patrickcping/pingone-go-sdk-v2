@@ -344,6 +344,10 @@ Class | Method | HTTP request | Description
 *PropagationStoresApi* | [**ReadOnePropagationStore**](docs/PropagationStoresApi.md#readonepropagationstore) | **Get** /environments/{environmentID}/propagation/stores/{storeID} | READ One Store
 *PropagationStoresApi* | [**TestConnectionConfiguration**](docs/PropagationStoresApi.md#testconnectionconfiguration) | **Post** /environments/{environmentID}/propagation/stores/connection/status | TEST Connection Configuration
 *PropagationStoresApi* | [**UpdatePropagationStore**](docs/PropagationStoresApi.md#updatepropagationstore) | **Put** /environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
+*RateLimitingApi* | [**CreateRateLimitConfiguration**](docs/RateLimitingApi.md#createratelimitconfiguration) | **Post** /environments/{environmentID}/rateLimitIpConfigs | CREATE Rate Limit Configuration
+*RateLimitingApi* | [**DeleteRateLimitConfiguration**](docs/RateLimitingApi.md#deleteratelimitconfiguration) | **Delete** /environments/{environmentID}/rateLimitIpConfigs/{rateLimitConfigurationID} | DELETE Rate Limit Configuration
+*RateLimitingApi* | [**ReadAllRateLimitConfigurations**](docs/RateLimitingApi.md#readallratelimitconfigurations) | **Get** /environments/{environmentID}/rateLimitIpConfigs | READ All Rate Limit Configurations
+*RateLimitingApi* | [**ReadOneRateLimitConfiguration**](docs/RateLimitingApi.md#readoneratelimitconfiguration) | **Get** /environments/{environmentID}/rateLimitIpConfigs/{rateLimitConfigurationID} | READ One Rate Limit Configuration
 *RecaptchaConfigurationApi* | [**DeleteRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#deleterecaptchaconfiguration) | **Delete** /environments/{environmentID}/recaptchaV2Config | DELETE Recaptcha Configuration
 *RecaptchaConfigurationApi* | [**ReadRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#readrecaptchaconfiguration) | **Get** /environments/{environmentID}/recaptchaV2Config | READ Recaptcha Configuration
 *RecaptchaConfigurationApi* | [**UpdateRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#updaterecaptchaconfiguration) | **Put** /environments/{environmentID}/recaptchaV2Config | UPDATE Recaptcha Configuration
@@ -674,6 +678,7 @@ Class | Method | HTTP request | Description
  - [EnumPropagationStoreTypeSalesforceContactsRecordType](docs/EnumPropagationStoreTypeSalesforceContactsRecordType.md)
  - [EnumPropagationStoreTypeSlackUniqueUserIdentifier](docs/EnumPropagationStoreTypeSlackUniqueUserIdentifier.md)
  - [EnumPropagationStoreTypeZoomAuthenticationMethod](docs/EnumPropagationStoreTypeZoomAuthenticationMethod.md)
+ - [EnumRateLimitConfigurationType](docs/EnumRateLimitConfigurationType.md)
  - [EnumRegionCode](docs/EnumRegionCode.md)
  - [EnumRegionCodeLicense](docs/EnumRegionCodeLicense.md)
  - [EnumResourceApplicationResourceType](docs/EnumResourceApplicationResourceType.md)
@@ -905,6 +910,7 @@ Class | Method | HTTP request | Description
  - [PropagationStoreConfigurationZoom](docs/PropagationStoreConfigurationZoom.md)
  - [PropagationStoreImage](docs/PropagationStoreImage.md)
  - [PropagationStoreSyncStatus](docs/PropagationStoreSyncStatus.md)
+ - [RateLimitConfiguration](docs/RateLimitConfiguration.md)
  - [ReadOneApplication200Response](docs/ReadOneApplication200Response.md)
  - [RecaptchaConfiguration](docs/RecaptchaConfiguration.md)
  - [Resource](docs/Resource.md)

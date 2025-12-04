@@ -56,6 +56,7 @@ api_propagation_revisions.go
 api_propagation_rules.go
 api_propagation_store_metadata.go
 api_propagation_stores.go
+api_rate_limiting.go
 api_recaptcha_configuration.go
 api_resource_attributes.go
 api_resource_client_secret.go
@@ -335,6 +336,7 @@ docs/EnumPropagationStoreTypeSCIMUniqueUserIdentifier.md
 docs/EnumPropagationStoreTypeSalesforceContactsRecordType.md
 docs/EnumPropagationStoreTypeSlackUniqueUserIdentifier.md
 docs/EnumPropagationStoreTypeZoomAuthenticationMethod.md
+docs/EnumRateLimitConfigurationType.md
 docs/EnumRegionCode.md
 docs/EnumRegionCodeLicense.md
 docs/EnumResourceApplicationResourceType.md
@@ -598,6 +600,8 @@ docs/PropagationStoreImage.md
 docs/PropagationStoreMetadataApi.md
 docs/PropagationStoreSyncStatus.md
 docs/PropagationStoresApi.md
+docs/RateLimitConfiguration.md
+docs/RateLimitingApi.md
 docs/ReadOneApplication200Response.md
 docs/RecaptchaConfiguration.md
 docs/RecaptchaConfigurationApi.md
@@ -958,6 +962,7 @@ model_enum_propagation_store_type_scim_group_name_source.go
 model_enum_propagation_store_type_scim_unique_user_identifier.go
 model_enum_propagation_store_type_slack_unique_user_identifier.go
 model_enum_propagation_store_type_zoom_authentication_method.go
+model_enum_rate_limit_configuration_type.go
 model_enum_region_code.go
 model_enum_region_code_license.go
 model_enum_resource_application_resource_type.go
@@ -1187,6 +1192,7 @@ model_propagation_store_configuration_workday.go
 model_propagation_store_configuration_zoom.go
 model_propagation_store_image.go
 model_propagation_store_sync_status.go
+model_rate_limit_configuration.go
 model_recaptcha_configuration.go
 model_resource.go
 model_resource_application_permission.go
