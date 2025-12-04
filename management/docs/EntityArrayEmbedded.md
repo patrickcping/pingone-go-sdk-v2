@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **PhoneDeliverySettings** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md) |  | [optional] 
 **Plans** | Pointer to [**[]IdentityPropagationPlan**](IdentityPropagationPlan.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
+**RateLimitIpConfigs** | Pointer to [**[]RateLimitConfiguration**](RateLimitConfiguration.md) |  | [optional] 
 **Resources** | Pointer to [**[]EntityArrayEmbeddedResourcesInner**](EntityArrayEmbeddedResourcesInner.md) |  | [optional] 
 **Revisions** | Pointer to [**[]AgreementLanguageRevision**](AgreementLanguageRevision.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
@@ -870,6 +871,31 @@ SetPopulations sets Populations field to given value.
 `func (o *EntityArrayEmbedded) HasPopulations() bool`
 
 HasPopulations returns a boolean if a field has been set.
+
+### GetRateLimitIpConfigs
+
+`func (o *EntityArrayEmbedded) GetRateLimitIpConfigs() []RateLimitConfiguration`
+
+GetRateLimitIpConfigs returns the RateLimitIpConfigs field if non-nil, zero value otherwise.
+
+### GetRateLimitIpConfigsOk
+
+`func (o *EntityArrayEmbedded) GetRateLimitIpConfigsOk() (*[]RateLimitConfiguration, bool)`
+
+GetRateLimitIpConfigsOk returns a tuple with the RateLimitIpConfigs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRateLimitIpConfigs
+
+`func (o *EntityArrayEmbedded) SetRateLimitIpConfigs(v []RateLimitConfiguration)`
+
+SetRateLimitIpConfigs sets RateLimitIpConfigs field to given value.
+
+### HasRateLimitIpConfigs
+
+`func (o *EntityArrayEmbedded) HasRateLimitIpConfigs() bool`
+
+HasRateLimitIpConfigs returns a boolean if a field has been set.
 
 ### GetResources
 
