@@ -51,6 +51,7 @@ type EntityArrayEmbedded struct {
 	PhoneDeliverySettings   []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
 	Plans                   []IdentityPropagationPlan                    `json:"plans,omitempty"`
 	Populations             []Population                                 `json:"populations,omitempty"`
+	RateLimitIpConfigs      []RateLimitConfiguration                     `json:"rateLimitIpConfigs,omitempty"`
 	Resources               []EntityArrayEmbeddedResourcesInner          `json:"resources,omitempty"`
 	Revisions               []AgreementLanguageRevision                  `json:"revisions,omitempty"`
 	Scopes                  []ResourceScope                              `json:"scopes,omitempty"`
@@ -1109,6 +1110,38 @@ func (o *EntityArrayEmbedded) SetPopulations(v []Population) {
 	o.Populations = v
 }
 
+// GetRateLimitIpConfigs returns the RateLimitIpConfigs field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetRateLimitIpConfigs() []RateLimitConfiguration {
+	if o == nil || IsNil(o.RateLimitIpConfigs) {
+		var ret []RateLimitConfiguration
+		return ret
+	}
+	return o.RateLimitIpConfigs
+}
+
+// GetRateLimitIpConfigsOk returns a tuple with the RateLimitIpConfigs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetRateLimitIpConfigsOk() ([]RateLimitConfiguration, bool) {
+	if o == nil || IsNil(o.RateLimitIpConfigs) {
+		return nil, false
+	}
+	return o.RateLimitIpConfigs, true
+}
+
+// HasRateLimitIpConfigs returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasRateLimitIpConfigs() bool {
+	if o != nil && !IsNil(o.RateLimitIpConfigs) {
+		return true
+	}
+
+	return false
+}
+
+// SetRateLimitIpConfigs gets a reference to the given []RateLimitConfiguration and assigns it to the RateLimitIpConfigs field.
+func (o *EntityArrayEmbedded) SetRateLimitIpConfigs(v []RateLimitConfiguration) {
+	o.RateLimitIpConfigs = v
+}
+
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetResources() []EntityArrayEmbeddedResourcesInner {
 	if o == nil || IsNil(o.Resources) {
@@ -1694,6 +1727,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Populations) {
 		toSerialize["populations"] = o.Populations
+	}
+	if !IsNil(o.RateLimitIpConfigs) {
+		toSerialize["rateLimitIpConfigs"] = o.RateLimitIpConfigs
 	}
 	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources

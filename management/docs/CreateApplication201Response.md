@@ -54,7 +54,7 @@ Name | Type | Description | Notes
 **BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
 **PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
 **Kerberos** | Pointer to [**ApplicationWSFEDAllOfKerberos**](ApplicationWSFEDAllOfKerberos.md) |  | [optional] 
-**GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
+**GrantTypes** | Pointer to [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | [optional] 
 **InitiateLoginUri** | Pointer to **string** | A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information. | [optional] 
 **PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
@@ -80,7 +80,7 @@ Name | Type | Description | Notes
 
 ### NewCreateApplication201Response
 
-`func NewCreateApplication201Response(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, homePageUrl string, acsUrls []string, assertionDuration int32, idpSigning ApplicationWSFEDAllOfIdpSigning, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, domainName string, replyUrl string, ) *CreateApplication201Response`
+`func NewCreateApplication201Response(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, homePageUrl string, acsUrls []string, assertionDuration int32, idpSigning ApplicationWSFEDAllOfIdpSigning, spEntityId string, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, domainName string, replyUrl string, ) *CreateApplication201Response`
 
 NewCreateApplication201Response instantiates a new CreateApplication201Response object
 This constructor will assign default values to properties that have it defined,
@@ -1319,6 +1319,11 @@ and a boolean to check if the value has been set.
 
 SetGrantTypes sets GrantTypes field to given value.
 
+### HasGrantTypes
+
+`func (o *CreateApplication201Response) HasGrantTypes() bool`
+
+HasGrantTypes returns a boolean if a field has been set.
 
 ### GetInitiateLoginUri
 
