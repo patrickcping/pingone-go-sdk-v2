@@ -63,6 +63,8 @@ type ApplicationOIDC struct {
 	DevicePollingInterval *int32 `json:"devicePollingInterval,omitempty"`
 	// Set this to true to allow an application to request to terminate a user session using only the ID token. The application is not required to have access to the session token cookie.
 	IdpSignoff *bool `json:"idpSignoff,omitempty"`
+	// Specifies whether tokens signed for this application include the `x5t`` signature header in the signed JWT. Refer to [JSON Web Signature (JWS), section \"x5t\" (X.509 Certificate SHA-1 Thumbprint) Header Parameter](https://www.rfc-editor.org/rfc/rfc7515.html#section-4.1.7).
+	IncludeX5t *bool `json:"includeX5t,omitempty"`
 	// A JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwksUrl` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwksUrl` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
 	Jwks *string `json:"jwks,omitempty"`
 	// A URL (supports `https://` only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwks` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwks` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
@@ -80,8 +82,13 @@ type ApplicationOIDC struct {
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl *string `json:"homePageUrl,omitempty"`
 	// A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information.
-	InitiateLoginUri *string                        `json:"initiateLoginUri,omitempty"`
-	PkceEnforcement  *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
+	InitiateLoginUri *string `json:"initiateLoginUri,omitempty"`
+	// When enabled, PingOne includes the `session_state` parameter in the authentication response, per spec with [OpenID Connect Session Management 1.0](https://openid.net/specs/openid-connect-session-1_0.html). Refer to [OIDC Session Management](https://apidocs.pingidentity.com/pingone/main/v1/api/#oidc-session-management) in the Developer's Foundations for more information. This property is disabled by default.
+	OpSessionCheckEnabled *bool                              `json:"opSessionCheckEnabled,omitempty"`
+	ParRequirement        *EnumApplicationOIDCPARRequirement `json:"parRequirement,omitempty"`
+	// PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
+	ParTimeout      *int32                         `json:"parTimeout,omitempty"`
+	PkceEnforcement *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
 	// A string that specifies the URLs that the browser can be redirected to after logout.
 	PostLogoutRedirectUris []string `json:"postLogoutRedirectUris,omitempty"`
 	// A string that specifies the callback URI for the authentication response.
@@ -92,10 +99,13 @@ type ApplicationOIDC struct {
 	RefreshTokenRollingDuration *int32 `json:"refreshTokenRollingDuration,omitempty"`
 	// The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
 	RefreshTokenRollingGracePeriodDuration *int32 `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
-	// The code or token type returned by an authorization request. Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type).
-	ResponseTypes []EnumApplicationOIDCResponseType `json:"responseTypes,omitempty"`
+	// Specifies whether the application can request scopes from multiple custom resources. The default value is `false`. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes).
+	RequestScopesForMultipleResourcesEnabled *bool `json:"requestScopesForMultipleResourcesEnabled,omitempty"`
 	// Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
 	RequireSignedRequestObject *bool `json:"requireSignedRequestObject,omitempty"`
+	// The code or token type returned by an authorization request. Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type).
+	ResponseTypes []EnumApplicationOIDCResponseType `json:"responseTypes,omitempty"`
+	Signing       *ApplicationOIDCAllOfSigning      `json:"signing,omitempty"`
 	// A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
 	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 	// An array that specifies the list of labels associated with the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only applicable for creating worker applications.
@@ -104,10 +114,6 @@ type ApplicationOIDC struct {
 	TargetLinkUri           *string                            `json:"targetLinkUri,omitempty"`
 	Template                *ApplicationTemplate               `json:"template,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
-	ParRequirement          *EnumApplicationOIDCPARRequirement `json:"parRequirement,omitempty"`
-	// PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
-	ParTimeout *int32                       `json:"parTimeout,omitempty"`
-	Signing    *ApplicationOIDCAllOfSigning `json:"signing,omitempty"`
 }
 
 // NewApplicationOIDC instantiates a new ApplicationOIDC object
@@ -126,13 +132,17 @@ func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProto
 	this.DeviceTimeout = &deviceTimeout
 	var devicePollingInterval int32 = 5
 	this.DevicePollingInterval = &devicePollingInterval
-	var refreshTokenDuration int32 = 2592000
-	this.RefreshTokenDuration = &refreshTokenDuration
-	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
+	var opSessionCheckEnabled bool = false
+	this.OpSessionCheckEnabled = &opSessionCheckEnabled
 	var parRequirement EnumApplicationOIDCPARRequirement = ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL
 	this.ParRequirement = &parRequirement
 	var parTimeout int32 = 60
 	this.ParTimeout = &parTimeout
+	var refreshTokenDuration int32 = 2592000
+	this.RefreshTokenDuration = &refreshTokenDuration
+	var requestScopesForMultipleResourcesEnabled bool = false
+	this.RequestScopesForMultipleResourcesEnabled = &requestScopesForMultipleResourcesEnabled
+	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
 	return &this
 }
 
@@ -147,12 +157,16 @@ func NewApplicationOIDCWithDefaults() *ApplicationOIDC {
 	this.DeviceTimeout = &deviceTimeout
 	var devicePollingInterval int32 = 5
 	this.DevicePollingInterval = &devicePollingInterval
-	var refreshTokenDuration int32 = 2592000
-	this.RefreshTokenDuration = &refreshTokenDuration
+	var opSessionCheckEnabled bool = false
+	this.OpSessionCheckEnabled = &opSessionCheckEnabled
 	var parRequirement EnumApplicationOIDCPARRequirement = ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL
 	this.ParRequirement = &parRequirement
 	var parTimeout int32 = 60
 	this.ParTimeout = &parTimeout
+	var refreshTokenDuration int32 = 2592000
+	this.RefreshTokenDuration = &refreshTokenDuration
+	var requestScopesForMultipleResourcesEnabled bool = false
+	this.RequestScopesForMultipleResourcesEnabled = &requestScopesForMultipleResourcesEnabled
 	return &this
 }
 
@@ -924,6 +938,38 @@ func (o *ApplicationOIDC) SetIdpSignoff(v bool) {
 	o.IdpSignoff = &v
 }
 
+// GetIncludeX5t returns the IncludeX5t field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetIncludeX5t() bool {
+	if o == nil || IsNil(o.IncludeX5t) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeX5t
+}
+
+// GetIncludeX5tOk returns a tuple with the IncludeX5t field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetIncludeX5tOk() (*bool, bool) {
+	if o == nil || IsNil(o.IncludeX5t) {
+		return nil, false
+	}
+	return o.IncludeX5t, true
+}
+
+// HasIncludeX5t returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasIncludeX5t() bool {
+	if o != nil && !IsNil(o.IncludeX5t) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeX5t gets a reference to the given bool and assigns it to the IncludeX5t field.
+func (o *ApplicationOIDC) SetIncludeX5t(v bool) {
+	o.IncludeX5t = &v
+}
+
 // GetJwks returns the Jwks field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetJwks() string {
 	if o == nil || IsNil(o.Jwks) {
@@ -1218,6 +1264,102 @@ func (o *ApplicationOIDC) SetInitiateLoginUri(v string) {
 	o.InitiateLoginUri = &v
 }
 
+// GetOpSessionCheckEnabled returns the OpSessionCheckEnabled field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetOpSessionCheckEnabled() bool {
+	if o == nil || IsNil(o.OpSessionCheckEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.OpSessionCheckEnabled
+}
+
+// GetOpSessionCheckEnabledOk returns a tuple with the OpSessionCheckEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetOpSessionCheckEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.OpSessionCheckEnabled) {
+		return nil, false
+	}
+	return o.OpSessionCheckEnabled, true
+}
+
+// HasOpSessionCheckEnabled returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasOpSessionCheckEnabled() bool {
+	if o != nil && !IsNil(o.OpSessionCheckEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpSessionCheckEnabled gets a reference to the given bool and assigns it to the OpSessionCheckEnabled field.
+func (o *ApplicationOIDC) SetOpSessionCheckEnabled(v bool) {
+	o.OpSessionCheckEnabled = &v
+}
+
+// GetParRequirement returns the ParRequirement field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetParRequirement() EnumApplicationOIDCPARRequirement {
+	if o == nil || IsNil(o.ParRequirement) {
+		var ret EnumApplicationOIDCPARRequirement
+		return ret
+	}
+	return *o.ParRequirement
+}
+
+// GetParRequirementOk returns a tuple with the ParRequirement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetParRequirementOk() (*EnumApplicationOIDCPARRequirement, bool) {
+	if o == nil || IsNil(o.ParRequirement) {
+		return nil, false
+	}
+	return o.ParRequirement, true
+}
+
+// HasParRequirement returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasParRequirement() bool {
+	if o != nil && !IsNil(o.ParRequirement) {
+		return true
+	}
+
+	return false
+}
+
+// SetParRequirement gets a reference to the given EnumApplicationOIDCPARRequirement and assigns it to the ParRequirement field.
+func (o *ApplicationOIDC) SetParRequirement(v EnumApplicationOIDCPARRequirement) {
+	o.ParRequirement = &v
+}
+
+// GetParTimeout returns the ParTimeout field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetParTimeout() int32 {
+	if o == nil || IsNil(o.ParTimeout) {
+		var ret int32
+		return ret
+	}
+	return *o.ParTimeout
+}
+
+// GetParTimeoutOk returns a tuple with the ParTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetParTimeoutOk() (*int32, bool) {
+	if o == nil || IsNil(o.ParTimeout) {
+		return nil, false
+	}
+	return o.ParTimeout, true
+}
+
+// HasParTimeout returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasParTimeout() bool {
+	if o != nil && !IsNil(o.ParTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetParTimeout gets a reference to the given int32 and assigns it to the ParTimeout field.
+func (o *ApplicationOIDC) SetParTimeout(v int32) {
+	o.ParTimeout = &v
+}
+
 // GetPkceEnforcement returns the PkceEnforcement field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetPkceEnforcement() EnumApplicationOIDCPKCEOption {
 	if o == nil || IsNil(o.PkceEnforcement) {
@@ -1410,36 +1552,36 @@ func (o *ApplicationOIDC) SetRefreshTokenRollingGracePeriodDuration(v int32) {
 	o.RefreshTokenRollingGracePeriodDuration = &v
 }
 
-// GetResponseTypes returns the ResponseTypes field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetResponseTypes() []EnumApplicationOIDCResponseType {
-	if o == nil || IsNil(o.ResponseTypes) {
-		var ret []EnumApplicationOIDCResponseType
+// GetRequestScopesForMultipleResourcesEnabled returns the RequestScopesForMultipleResourcesEnabled field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetRequestScopesForMultipleResourcesEnabled() bool {
+	if o == nil || IsNil(o.RequestScopesForMultipleResourcesEnabled) {
+		var ret bool
 		return ret
 	}
-	return o.ResponseTypes
+	return *o.RequestScopesForMultipleResourcesEnabled
 }
 
-// GetResponseTypesOk returns a tuple with the ResponseTypes field value if set, nil otherwise
+// GetRequestScopesForMultipleResourcesEnabledOk returns a tuple with the RequestScopesForMultipleResourcesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetResponseTypesOk() ([]EnumApplicationOIDCResponseType, bool) {
-	if o == nil || IsNil(o.ResponseTypes) {
+func (o *ApplicationOIDC) GetRequestScopesForMultipleResourcesEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequestScopesForMultipleResourcesEnabled) {
 		return nil, false
 	}
-	return o.ResponseTypes, true
+	return o.RequestScopesForMultipleResourcesEnabled, true
 }
 
-// HasResponseTypes returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasResponseTypes() bool {
-	if o != nil && !IsNil(o.ResponseTypes) {
+// HasRequestScopesForMultipleResourcesEnabled returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasRequestScopesForMultipleResourcesEnabled() bool {
+	if o != nil && !IsNil(o.RequestScopesForMultipleResourcesEnabled) {
 		return true
 	}
 
 	return false
 }
 
-// SetResponseTypes gets a reference to the given []EnumApplicationOIDCResponseType and assigns it to the ResponseTypes field.
-func (o *ApplicationOIDC) SetResponseTypes(v []EnumApplicationOIDCResponseType) {
-	o.ResponseTypes = v
+// SetRequestScopesForMultipleResourcesEnabled gets a reference to the given bool and assigns it to the RequestScopesForMultipleResourcesEnabled field.
+func (o *ApplicationOIDC) SetRequestScopesForMultipleResourcesEnabled(v bool) {
+	o.RequestScopesForMultipleResourcesEnabled = &v
 }
 
 // GetRequireSignedRequestObject returns the RequireSignedRequestObject field value if set, zero value otherwise.
@@ -1472,6 +1614,70 @@ func (o *ApplicationOIDC) HasRequireSignedRequestObject() bool {
 // SetRequireSignedRequestObject gets a reference to the given bool and assigns it to the RequireSignedRequestObject field.
 func (o *ApplicationOIDC) SetRequireSignedRequestObject(v bool) {
 	o.RequireSignedRequestObject = &v
+}
+
+// GetResponseTypes returns the ResponseTypes field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetResponseTypes() []EnumApplicationOIDCResponseType {
+	if o == nil || IsNil(o.ResponseTypes) {
+		var ret []EnumApplicationOIDCResponseType
+		return ret
+	}
+	return o.ResponseTypes
+}
+
+// GetResponseTypesOk returns a tuple with the ResponseTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetResponseTypesOk() ([]EnumApplicationOIDCResponseType, bool) {
+	if o == nil || IsNil(o.ResponseTypes) {
+		return nil, false
+	}
+	return o.ResponseTypes, true
+}
+
+// HasResponseTypes returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasResponseTypes() bool {
+	if o != nil && !IsNil(o.ResponseTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetResponseTypes gets a reference to the given []EnumApplicationOIDCResponseType and assigns it to the ResponseTypes field.
+func (o *ApplicationOIDC) SetResponseTypes(v []EnumApplicationOIDCResponseType) {
+	o.ResponseTypes = v
+}
+
+// GetSigning returns the Signing field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetSigning() ApplicationOIDCAllOfSigning {
+	if o == nil || IsNil(o.Signing) {
+		var ret ApplicationOIDCAllOfSigning
+		return ret
+	}
+	return *o.Signing
+}
+
+// GetSigningOk returns a tuple with the Signing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetSigningOk() (*ApplicationOIDCAllOfSigning, bool) {
+	if o == nil || IsNil(o.Signing) {
+		return nil, false
+	}
+	return o.Signing, true
+}
+
+// HasSigning returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasSigning() bool {
+	if o != nil && !IsNil(o.Signing) {
+		return true
+	}
+
+	return false
+}
+
+// SetSigning gets a reference to the given ApplicationOIDCAllOfSigning and assigns it to the Signing field.
+func (o *ApplicationOIDC) SetSigning(v ApplicationOIDCAllOfSigning) {
+	o.Signing = &v
 }
 
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
@@ -1626,102 +1832,6 @@ func (o *ApplicationOIDC) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenA
 	o.TokenEndpointAuthMethod = v
 }
 
-// GetParRequirement returns the ParRequirement field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetParRequirement() EnumApplicationOIDCPARRequirement {
-	if o == nil || IsNil(o.ParRequirement) {
-		var ret EnumApplicationOIDCPARRequirement
-		return ret
-	}
-	return *o.ParRequirement
-}
-
-// GetParRequirementOk returns a tuple with the ParRequirement field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetParRequirementOk() (*EnumApplicationOIDCPARRequirement, bool) {
-	if o == nil || IsNil(o.ParRequirement) {
-		return nil, false
-	}
-	return o.ParRequirement, true
-}
-
-// HasParRequirement returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasParRequirement() bool {
-	if o != nil && !IsNil(o.ParRequirement) {
-		return true
-	}
-
-	return false
-}
-
-// SetParRequirement gets a reference to the given EnumApplicationOIDCPARRequirement and assigns it to the ParRequirement field.
-func (o *ApplicationOIDC) SetParRequirement(v EnumApplicationOIDCPARRequirement) {
-	o.ParRequirement = &v
-}
-
-// GetParTimeout returns the ParTimeout field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetParTimeout() int32 {
-	if o == nil || IsNil(o.ParTimeout) {
-		var ret int32
-		return ret
-	}
-	return *o.ParTimeout
-}
-
-// GetParTimeoutOk returns a tuple with the ParTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetParTimeoutOk() (*int32, bool) {
-	if o == nil || IsNil(o.ParTimeout) {
-		return nil, false
-	}
-	return o.ParTimeout, true
-}
-
-// HasParTimeout returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasParTimeout() bool {
-	if o != nil && !IsNil(o.ParTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetParTimeout gets a reference to the given int32 and assigns it to the ParTimeout field.
-func (o *ApplicationOIDC) SetParTimeout(v int32) {
-	o.ParTimeout = &v
-}
-
-// GetSigning returns the Signing field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetSigning() ApplicationOIDCAllOfSigning {
-	if o == nil || IsNil(o.Signing) {
-		var ret ApplicationOIDCAllOfSigning
-		return ret
-	}
-	return *o.Signing
-}
-
-// GetSigningOk returns a tuple with the Signing field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetSigningOk() (*ApplicationOIDCAllOfSigning, bool) {
-	if o == nil || IsNil(o.Signing) {
-		return nil, false
-	}
-	return o.Signing, true
-}
-
-// HasSigning returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasSigning() bool {
-	if o != nil && !IsNil(o.Signing) {
-		return true
-	}
-
-	return false
-}
-
-// SetSigning gets a reference to the given ApplicationOIDCAllOfSigning and assigns it to the Signing field.
-func (o *ApplicationOIDC) SetSigning(v ApplicationOIDCAllOfSigning) {
-	o.Signing = &v
-}
-
 func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1799,6 +1909,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IdpSignoff) {
 		toSerialize["idpSignoff"] = o.IdpSignoff
 	}
+	if !IsNil(o.IncludeX5t) {
+		toSerialize["includeX5t"] = o.IncludeX5t
+	}
 	if !IsNil(o.Jwks) {
 		toSerialize["jwks"] = o.Jwks
 	}
@@ -1826,6 +1939,15 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InitiateLoginUri) {
 		toSerialize["initiateLoginUri"] = o.InitiateLoginUri
 	}
+	if !IsNil(o.OpSessionCheckEnabled) {
+		toSerialize["opSessionCheckEnabled"] = o.OpSessionCheckEnabled
+	}
+	if !IsNil(o.ParRequirement) {
+		toSerialize["parRequirement"] = o.ParRequirement
+	}
+	if !IsNil(o.ParTimeout) {
+		toSerialize["parTimeout"] = o.ParTimeout
+	}
 	if !IsNil(o.PkceEnforcement) {
 		toSerialize["pkceEnforcement"] = o.PkceEnforcement
 	}
@@ -1844,11 +1966,17 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RefreshTokenRollingGracePeriodDuration) {
 		toSerialize["refreshTokenRollingGracePeriodDuration"] = o.RefreshTokenRollingGracePeriodDuration
 	}
-	if !IsNil(o.ResponseTypes) {
-		toSerialize["responseTypes"] = o.ResponseTypes
+	if !IsNil(o.RequestScopesForMultipleResourcesEnabled) {
+		toSerialize["requestScopesForMultipleResourcesEnabled"] = o.RequestScopesForMultipleResourcesEnabled
 	}
 	if !IsNil(o.RequireSignedRequestObject) {
 		toSerialize["requireSignedRequestObject"] = o.RequireSignedRequestObject
+	}
+	if !IsNil(o.ResponseTypes) {
+		toSerialize["responseTypes"] = o.ResponseTypes
+	}
+	if !IsNil(o.Signing) {
+		toSerialize["signing"] = o.Signing
 	}
 	if !IsNil(o.SupportUnsignedRequestObject) {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
@@ -1863,15 +1991,6 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 		toSerialize["template"] = o.Template
 	}
 	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
-	if !IsNil(o.ParRequirement) {
-		toSerialize["parRequirement"] = o.ParRequirement
-	}
-	if !IsNil(o.ParTimeout) {
-		toSerialize["parTimeout"] = o.ParTimeout
-	}
-	if !IsNil(o.Signing) {
-		toSerialize["signing"] = o.Signing
-	}
 	return toSerialize, nil
 }
 

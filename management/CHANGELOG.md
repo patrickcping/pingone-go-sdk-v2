@@ -2,6 +2,9 @@
 
 * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)
 * **Feature** Add support for the Rate Limit Configuration API. [#493](https://github.com/patrickcping/pingone-go-sdk-v2/pull/493)
+* **Enhancement** Added `IncludeX5t` field to the `ApplicationOIDC` model to support X.509 certificate thumbprint in JWT signatures. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+* **Enhancement** Added `OpSessionCheckEnabled` field to the `ApplicationOIDC` model to support session state checking in authentication responses. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+* **Enhancement** Added `RequestScopesForMultipleResourcesEnabled` field to the `ApplicationOIDC` model to support requesting scopes for multiple resources. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
 
 # v0.62.0 (2025-10-31)
 
