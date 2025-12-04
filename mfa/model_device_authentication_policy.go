@@ -32,6 +32,7 @@ type DeviceAuthenticationPolicy struct {
 	Voice                 DeviceAuthenticationPolicyOfflineDevice         `json:"voice"`
 	Email                 DeviceAuthenticationPolicyOfflineDevice         `json:"email"`
 	Fido2                 *DeviceAuthenticationPolicyCommonFido2          `json:"fido2,omitempty"`
+	Mobile                DeviceAuthenticationPolicyCommonMobile          `json:"mobile"`
 	Totp                  DeviceAuthenticationPolicyCommonTotp            `json:"totp"`
 	// A boolean that specifies whether the policy is the default for the environment.
 	Default bool `json:"default"`
@@ -43,27 +44,26 @@ type DeviceAuthenticationPolicy struct {
 	OathToken           *DeviceAuthenticationPolicyOathToken                 `json:"oathToken,omitempty"`
 	RememberMe          *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time                                  `json:"updatedAt,omitempty"`
-	Mobile    DeviceAuthenticationPolicyPingIDAllOfMobile `json:"mobile"`
-	Whatsapp  *DeviceAuthenticationPolicyOfflineDevice    `json:"whatsapp,omitempty"`
-	Desktop   *DeviceAuthenticationPolicyPingIDDevice     `json:"desktop,omitempty"`
-	Yubikey   *DeviceAuthenticationPolicyPingIDDevice     `json:"yubikey,omitempty"`
+	UpdatedAt *time.Time                               `json:"updatedAt,omitempty"`
+	Whatsapp  *DeviceAuthenticationPolicyOfflineDevice `json:"whatsapp,omitempty"`
+	Desktop   *DeviceAuthenticationPolicyPingIDDevice  `json:"desktop,omitempty"`
+	Yubikey   *DeviceAuthenticationPolicyPingIDDevice  `json:"yubikey,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicy instantiates a new DeviceAuthenticationPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool, mobile DeviceAuthenticationPolicyPingIDAllOfMobile) *DeviceAuthenticationPolicy {
+func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyCommonMobile, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicy {
 	this := DeviceAuthenticationPolicy{}
 	this.Name = name
 	this.Sms = sms
 	this.Voice = voice
 	this.Email = email
+	this.Mobile = mobile
 	this.Totp = totp
 	this.Default = default_
 	this.ForSignOnPolicy = forSignOnPolicy
-	this.Mobile = mobile
 	return &this
 }
 
@@ -363,6 +363,30 @@ func (o *DeviceAuthenticationPolicy) SetFido2(v DeviceAuthenticationPolicyCommon
 	o.Fido2 = &v
 }
 
+// GetMobile returns the Mobile field value
+func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyCommonMobile {
+	if o == nil {
+		var ret DeviceAuthenticationPolicyCommonMobile
+		return ret
+	}
+
+	return o.Mobile
+}
+
+// GetMobileOk returns a tuple with the Mobile field value
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetMobileOk() (*DeviceAuthenticationPolicyCommonMobile, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Mobile, true
+}
+
+// SetMobile sets field value
+func (o *DeviceAuthenticationPolicy) SetMobile(v DeviceAuthenticationPolicyCommonMobile) {
+	o.Mobile = v
+}
+
 // GetTotp returns the Totp field value
 func (o *DeviceAuthenticationPolicy) GetTotp() DeviceAuthenticationPolicyCommonTotp {
 	if o == nil {
@@ -598,30 +622,6 @@ func (o *DeviceAuthenticationPolicy) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetMobile returns the Mobile field value
-func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyPingIDAllOfMobile {
-	if o == nil {
-		var ret DeviceAuthenticationPolicyPingIDAllOfMobile
-		return ret
-	}
-
-	return o.Mobile
-}
-
-// GetMobileOk returns a tuple with the Mobile field value
-// and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicy) GetMobileOk() (*DeviceAuthenticationPolicyPingIDAllOfMobile, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Mobile, true
-}
-
-// SetMobile sets field value
-func (o *DeviceAuthenticationPolicy) SetMobile(v DeviceAuthenticationPolicyPingIDAllOfMobile) {
-	o.Mobile = v
-}
-
 // GetWhatsapp returns the Whatsapp field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicy) GetWhatsapp() DeviceAuthenticationPolicyOfflineDevice {
 	if o == nil || IsNil(o.Whatsapp) {
@@ -750,6 +750,7 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Fido2) {
 		toSerialize["fido2"] = o.Fido2
 	}
+	toSerialize["mobile"] = o.Mobile
 	toSerialize["totp"] = o.Totp
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
@@ -768,7 +769,6 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	toSerialize["mobile"] = o.Mobile
 	if !IsNil(o.Whatsapp) {
 		toSerialize["whatsapp"] = o.Whatsapp
 	}

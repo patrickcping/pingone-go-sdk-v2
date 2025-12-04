@@ -4291,8 +4291,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon'
       - properties:
-          mobile:
-            $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile'
           whatsapp:
             $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice'
         required:
@@ -4308,8 +4306,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon'
       - properties:
-          mobile:
-            $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile'
           desktop:
             $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice'
           yubikey:
@@ -4351,6 +4347,8 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice'
         fido2:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_fido2'
+        mobile:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile'
         totp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_totp'
         default:
@@ -5312,376 +5310,6 @@ components:
       - duration
       - timeUnit
       type: object
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_failure_coolDown:
-      properties:
-        duration:
-          description: The duration (number of time units) the user is blocked after
-            reaching the maximum number of passcode failures.
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnit'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_failure:
-      properties:
-        count:
-          description: "The maximum number of times that the OTP entry can fail for\
-            \ a user, before they are blocked."
-          type: integer
-        coolDown:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_failure_coolDown'
-      required:
-      - coolDown
-      - count
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_window_stepSize:
-      properties:
-        duration:
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnit'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_window:
-      properties:
-        stepSize:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_window_stepSize'
-      required:
-      - stepSize
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp:
-      properties:
-        failure:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_failure'
-        window:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_window'
-      required:
-      - failure
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_push:
-      properties:
-        enabled:
-          description: Specifies whether push notification is enabled or disabled
-            for the policy.
-          type: boolean
-      required:
-      - enabled
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushTimeout:
-      properties:
-        duration:
-          default: 40
-          description: "The amount of time a user has to respond to a push notification\
-            \ before it expires. Minimum is 40 seconds and maximum is 150 seconds.\
-            \ If this parameter is not provided, the duration is set to 40 seconds."
-          maximum: 150
-          minimum: 40
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnitPushTimeout'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pairingKeyLifetime:
-      properties:
-        duration:
-          default: 10
-          description: "The amount of time an issued pairing key can be used until\
-            \ it expires. Minimum is 1 minute and maximum is 48 hours. If this parameter\
-            \ is not provided, the duration is set to 10 minutes."
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnitPairingKeyLifetime'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushLimit_lockDuration:
-      properties:
-        duration:
-          default: 30
-          description: "The length of time that push notifications should be blocked\
-            \ for the application if the defined limit has been reached. The minimum\
-            \ value is 1 minute and the maximum value is 120 minutes. If this parameter\
-            \ is not provided, the default value is 30 minutes."
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnit'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushLimit_timePeriod:
-      properties:
-        duration:
-          default: 10
-          description: "The time period in which the push notifications are counted\
-            \ towards the defined limit. The minimum value is 1 minute and the maximum\
-            \ value is 120 minutes. If this parameter is not provided, the default\
-            \ value is 10 minutes."
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnit'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushLimit:
-      properties:
-        count:
-          default: 5
-          description: "The number of consecutive push notifications that can be ignored\
-            \ or rejected by a user within a defined period before push notifications\
-            \ are blocked for the application. The minimum value is 1 and the maximum\
-            \ value is 50. If this parameter is not provided, the default value is\
-            \ 5."
-          maximum: 50
-          minimum: 1
-          type: integer
-        lockDuration:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushLimit_lockDuration'
-        timePeriod:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushLimit_timePeriod'
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_1:
-      properties:
-        enabled:
-          description: Specifies whether OTP authentication is enabled or disabled
-            for the policy.
-          type: boolean
-      required:
-      - enabled
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_deviceAuthorization:
-      properties:
-        enabled:
-          description: "Specifies the enabled or disabled state of automatic MFA for\
-            \ native devices paired with the user, for the specified application."
-          type: boolean
-        extraVerification:
-          $ref: '#/components/schemas/EnumMFADevicePolicyMobileExtraVerification'
-      required:
-      - enabled
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_autoEnrollment:
-      properties:
-        enabled:
-          description: "Set to true if you want the application to allow Auto Enrollment.\
-            \ Auto Enrollment means that the user can authenticate for the first time\
-            \ from an unpaired device, and the successful authentication will result\
-            \ in the pairing of the device for MFA."
-          type: boolean
-      required:
-      - enabled
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_applications:
-      properties:
-        id:
-          description: The application's ID.
-          type: string
-        push:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_push'
-        pushTimeout:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushTimeout'
-        pairingKeyLifetime:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pairingKeyLifetime'
-        pushLimit:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushLimit'
-        otp:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_1'
-        deviceAuthorization:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_deviceAuthorization'
-        autoEnrollment:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_autoEnrollment'
-        pairingDisabled:
-          description: You can set `pairingDisabled` to true to prevent users from
-            pairing new devices with the relevant method. You can use this option
-            if you want to phase out an existing authentication method but want to
-            allow users to continue using the method for authentication for existing
-            devices.
-          type: boolean
-        integrityDetection:
-          $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
-      required:
-      - id
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingOneMFA_allOf_mobile:
-      description: Mobile device authentication policy settings.
-      properties:
-        enabled:
-          description: A boolean that specifies whether the method is enabled or disabled
-            in the policy.
-          type: boolean
-        otp:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp'
-        applications:
-          items:
-            $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_applications'
-          type: array
-        promptForNicknameOnPairing:
-          description: Set to `true` if you want to allow users to provide nicknames
-            for devices during pairing.
-          type: boolean
-      required:
-      - enabled
-      - otp
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile_otp:
-      properties:
-        failure:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_failure'
-      required:
-      - failure
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile_push:
-      properties:
-        enabled:
-          description: Specifies whether push notification is enabled or disabled
-            for the policy.
-          type: boolean
-        numberMatching:
-          description: Set to `true` if you want to require the authenticating user
-            to select a number that was displayed to them on the accessing device.
-          type: boolean
-      required:
-      - enabled
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile_newRequestDurationConfiguration_deviceTimeout:
-      properties:
-        duration:
-          description: "The amount of time an authentication request notification\
-            \ has to reach the device before timing out. Minimum is 15 seconds, maximum\
-            \ is 75 seconds."
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnitSeconds'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile_newRequestDurationConfiguration_totalTimeout:
-      properties:
-        duration:
-          description: "The total amount of time an authentication request notification\
-            \ has to be handled by the user before timing out. This includes both\
-            \ the time until the notification is displayed to the user and the time\
-            \ the user takes to respond. Minimum is 30 seconds, maximum is 90 seconds.\
-            \ totalTimeout.duration must exceed deviceTimeout.duration by at least\
-            \ 15 seconds."
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnitSeconds'
-      required:
-      - duration
-      - timeUnit
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile_newRequestDurationConfiguration:
-      properties:
-        deviceTimeout:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile_newRequestDurationConfiguration_deviceTimeout'
-        totalTimeout:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile_newRequestDurationConfiguration_totalTimeout'
-      required:
-      - deviceTimeout
-      - totalTimeout
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile_applications:
-      properties:
-        id:
-          description: The application's ID.
-          type: string
-        type:
-          $ref: '#/components/schemas/EnumPingIDApplicationType'
-        push:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile_push'
-        pairingKeyLifetime:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pairingKeyLifetime'
-        pushLimit:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_pushLimit'
-        otp:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_otp_1'
-        autoEnrollment:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingOneMFA_allOf_mobile_autoEnrollment'
-        biometricsEnabled:
-          description: "You can set `biometricsEnabled` to true to allow users to\
-            \ use biometric authentication methods (such as fingerprint or facial\
-            \ recognition) for MFA. If set to false, users will not be able to use\
-            \ biometric methods for authentication."
-          type: boolean
-        newRequestDurationConfiguration:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile_newRequestDurationConfiguration'
-      required:
-      - id
-      - type
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile_ipPairingConfiguration:
-      properties:
-        anyIPAdress:
-          description: "If you want to limit users to specific IP addresses when pairing\
-            \ their device, set `anyIPAdress` to false, and use `ipPairingConfiguration.onlyTheseIpAddresses`\
-            \ to specify the valid IP addresses."
-          type: boolean
-        onlyTheseIpAddresses:
-          description: "If you set `ipPairingConfiguration.anyIPAdress` to `false`,\
-            \ use `onlyTheseIpAddresses` to specify the IP addresses from which users\
-            \ can pair their devices. Each item in the array should be an IP address\
-            \ or an address range using CIDR notation, for example, `192.168.0.1/24`"
-          items:
-            type: string
-          type: array
-      type: object
-      example: null
-    DeviceAuthenticationPolicyPingID_allOf_mobile:
-      description: PingID mobile device authentication policy settings.
-      properties:
-        enabled:
-          description: A boolean that specifies whether the method is enabled or disabled
-            in the policy.
-          type: boolean
-        otp:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile_otp'
-        applications:
-          items:
-            $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile_applications'
-          type: array
-        ipPairingConfiguration:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingID_allOf_mobile_ipPairingConfiguration'
-        promptForNicknameOnPairing:
-          description: Set to `true` if you want to allow users to provide nicknames
-            for devices during pairing.
-          type: boolean
-      required:
-      - enabled
-      - otp
-      type: object
-      example: null
     DeviceAuthenticationPolicyCommon_authentication:
       description: An object that contains the device selection settings.
       properties:
@@ -5714,6 +5342,272 @@ components:
           type: boolean
       required:
       - enabled
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_otp_window_stepSize:
+      properties:
+        duration:
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_otp_window:
+      properties:
+        stepSize:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_otp_window_stepSize'
+      required:
+      - stepSize
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_otp:
+      properties:
+        failure:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp_failure'
+        window:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_otp_window'
+      required:
+      - failure
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_push:
+      properties:
+        enabled:
+          description: Specifies whether push notification is enabled or disabled
+            for the policy.
+          type: boolean
+        numberMatching:
+          description: Set to `true` if you want to require the authenticating user
+            to select a number that was displayed to them on the accessing device.
+          type: boolean
+      required:
+      - enabled
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushTimeout:
+      properties:
+        duration:
+          default: 40
+          description: "The amount of time a user has to respond to a push notification\
+            \ before it expires. Minimum is 40 seconds and maximum is 150 seconds.\
+            \ If this parameter is not provided, the duration is set to 40 seconds."
+          maximum: 150
+          minimum: 40
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnitPushTimeout'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_pairingKeyLifetime:
+      properties:
+        duration:
+          default: 10
+          description: "The amount of time an issued pairing key can be used until\
+            \ it expires. Minimum is 1 minute and maximum is 48 hours. If this parameter\
+            \ is not provided, the duration is set to 10 minutes."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnitPairingKeyLifetime'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushLimit_lockDuration:
+      properties:
+        duration:
+          default: 30
+          description: "The length of time that push notifications should be blocked\
+            \ for the application if the defined limit has been reached. The minimum\
+            \ value is 1 minute and the maximum value is 120 minutes. If this parameter\
+            \ is not provided, the default value is 30 minutes."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushLimit_timePeriod:
+      properties:
+        duration:
+          default: 10
+          description: "The time period in which the push notifications are counted\
+            \ towards the defined limit. The minimum value is 1 minute and the maximum\
+            \ value is 120 minutes. If this parameter is not provided, the default\
+            \ value is 10 minutes."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushLimit:
+      properties:
+        count:
+          default: 5
+          description: "The number of consecutive push notifications that can be ignored\
+            \ or rejected by a user within a defined period before push notifications\
+            \ are blocked for the application. The minimum value is 1 and the maximum\
+            \ value is 50. If this parameter is not provided, the default value is\
+            \ 5."
+          maximum: 50
+          minimum: 1
+          type: integer
+        lockDuration:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushLimit_lockDuration'
+        timePeriod:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushLimit_timePeriod'
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_otp:
+      properties:
+        enabled:
+          description: Specifies whether OTP authentication is enabled or disabled
+            for the policy.
+          type: boolean
+      required:
+      - enabled
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_deviceAuthorization:
+      properties:
+        enabled:
+          description: "Specifies the enabled or disabled state of automatic MFA for\
+            \ native devices paired with the user, for the specified application."
+          type: boolean
+        extraVerification:
+          $ref: '#/components/schemas/EnumMFADevicePolicyMobileExtraVerification'
+      required:
+      - enabled
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_autoEnrollment:
+      properties:
+        enabled:
+          description: "Set to true if you want the application to allow Auto Enrollment.\
+            \ Auto Enrollment means that the user can authenticate for the first time\
+            \ from an unpaired device, and the successful authentication will result\
+            \ in the pairing of the device for MFA."
+          type: boolean
+      required:
+      - enabled
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration_deviceTimeout:
+      properties:
+        duration:
+          description: "The amount of time an authentication request notification\
+            \ has to reach the device before timing out. Minimum is 15 seconds, maximum\
+            \ is 75 seconds."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnitSeconds'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration_totalTimeout:
+      properties:
+        duration:
+          description: "The total amount of time an authentication request notification\
+            \ has to be handled by the user before timing out. This includes both\
+            \ the time until the notification is displayed to the user and the time\
+            \ the user takes to respond. Minimum is 30 seconds, maximum is 90 seconds.\
+            \ totalTimeout.duration must exceed deviceTimeout.duration by at least\
+            \ 15 seconds."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnitSeconds'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration:
+      properties:
+        deviceTimeout:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration_deviceTimeout'
+        totalTimeout:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration_totalTimeout'
+      required:
+      - deviceTimeout
+      - totalTimeout
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner:
+      properties:
+        id:
+          description: The application's ID.
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumPingIDApplicationType'
+        push:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_push'
+        pushTimeout:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushTimeout'
+        pairingKeyLifetime:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_pairingKeyLifetime'
+        pushLimit:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_pushLimit'
+        otp:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_otp'
+        deviceAuthorization:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_deviceAuthorization'
+        autoEnrollment:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_autoEnrollment'
+        biometricsEnabled:
+          description: "You can set `biometricsEnabled` to true to allow users to\
+            \ use biometric authentication methods (such as fingerprint or facial\
+            \ recognition) for MFA. If set to false, users will not be able to use\
+            \ biometric methods for authentication."
+          type: boolean
+        pairingDisabled:
+          description: You can set `pairingDisabled` to true to prevent users from
+            pairing new devices with the relevant method. You can use this option
+            if you want to phase out an existing authentication method but want to
+            allow users to continue using the method for authentication for existing
+            devices.
+          type: boolean
+        integrityDetection:
+          $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
+        newRequestDurationConfiguration:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration'
+      required:
+      - id
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile_ipPairingConfiguration:
+      properties:
+        anyIPAdress:
+          description: "If you want to limit users to specific IP addresses when pairing\
+            \ their device, set `anyIPAdress` to false, and use `ipPairingConfiguration.onlyTheseIpAddresses`\
+            \ to specify the valid IP addresses."
+          type: boolean
+        onlyTheseIpAddresses:
+          description: "If you set `ipPairingConfiguration.anyIPAdress` to `false`,\
+            \ use `onlyTheseIpAddresses` to specify the IP addresses from which users\
+            \ can pair their devices. Each item in the array should be an IP address\
+            \ or an address range using CIDR notation, for example, `192.168.0.1/24`"
+          items:
+            type: string
+          type: array
+      type: object
+    DeviceAuthenticationPolicyCommon_mobile:
+      description: Mobile device authentication policy settings.
+      properties:
+        enabled:
+          description: A boolean that specifies whether the method is enabled or disabled
+            in the policy.
+          type: boolean
+        otp:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_otp'
+        applications:
+          items:
+            $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner'
+          type: array
+        ipPairingConfiguration:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_ipPairingConfiguration'
+        promptForNicknameOnPairing:
+          description: Set to `true` if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
+      required:
+      - enabled
+      - otp
       type: object
     DeviceAuthenticationPolicyCommon_totp:
       description: TOTP device authentication policy settings.

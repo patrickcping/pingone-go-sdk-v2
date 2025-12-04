@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Voice** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Email** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Fido2** | Pointer to [**DeviceAuthenticationPolicyCommonFido2**](DeviceAuthenticationPolicyCommonFido2.md) |  | [optional] 
+**Mobile** | [**DeviceAuthenticationPolicyCommonMobile**](DeviceAuthenticationPolicyCommonMobile.md) |  | 
 **Totp** | [**DeviceAuthenticationPolicyCommonTotp**](DeviceAuthenticationPolicyCommonTotp.md) |  | 
 **Default** | **bool** | A boolean that specifies whether the policy is the default for the environment. | 
 **ForSignOnPolicy** | **bool** |  | [readonly] 
@@ -22,7 +23,6 @@ Name | Type | Description | Notes
 **OathToken** | Pointer to [**DeviceAuthenticationPolicyOathToken**](DeviceAuthenticationPolicyOathToken.md) |  | [optional] 
 **RememberMe** | Pointer to [**DeviceAuthenticationPolicyCommonRememberMe**](DeviceAuthenticationPolicyCommonRememberMe.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
-**Mobile** | [**DeviceAuthenticationPolicyPingIDAllOfMobile**](DeviceAuthenticationPolicyPingIDAllOfMobile.md) |  | 
 **Whatsapp** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
 **Desktop** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
 **Yubikey** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceAuthenticationPolicyPostResponse
 
-`func NewDeviceAuthenticationPolicyPostResponse(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool, mobile DeviceAuthenticationPolicyPingIDAllOfMobile, ) *DeviceAuthenticationPolicyPostResponse`
+`func NewDeviceAuthenticationPolicyPostResponse(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyCommonMobile, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool, ) *DeviceAuthenticationPolicyPostResponse`
 
 NewDeviceAuthenticationPolicyPostResponse instantiates a new DeviceAuthenticationPolicyPostResponse object
 This constructor will assign default values to properties that have it defined,
@@ -279,6 +279,26 @@ SetFido2 sets Fido2 field to given value.
 
 HasFido2 returns a boolean if a field has been set.
 
+### GetMobile
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetMobile() DeviceAuthenticationPolicyCommonMobile`
+
+GetMobile returns the Mobile field if non-nil, zero value otherwise.
+
+### GetMobileOk
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetMobileOk() (*DeviceAuthenticationPolicyCommonMobile, bool)`
+
+GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMobile
+
+`func (o *DeviceAuthenticationPolicyPostResponse) SetMobile(v DeviceAuthenticationPolicyCommonMobile)`
+
+SetMobile sets Mobile field to given value.
+
+
 ### GetTotp
 
 `func (o *DeviceAuthenticationPolicyPostResponse) GetTotp() DeviceAuthenticationPolicyCommonTotp`
@@ -463,26 +483,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *DeviceAuthenticationPolicyPostResponse) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### GetMobile
-
-`func (o *DeviceAuthenticationPolicyPostResponse) GetMobile() DeviceAuthenticationPolicyPingIDAllOfMobile`
-
-GetMobile returns the Mobile field if non-nil, zero value otherwise.
-
-### GetMobileOk
-
-`func (o *DeviceAuthenticationPolicyPostResponse) GetMobileOk() (*DeviceAuthenticationPolicyPingIDAllOfMobile, bool)`
-
-GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMobile
-
-`func (o *DeviceAuthenticationPolicyPostResponse) SetMobile(v DeviceAuthenticationPolicyPingIDAllOfMobile)`
-
-SetMobile sets Mobile field to given value.
-
 
 ### GetWhatsapp
 

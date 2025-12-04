@@ -32,6 +32,7 @@ type DeviceAuthenticationPolicyPingOneMFA struct {
 	Voice                 DeviceAuthenticationPolicyOfflineDevice         `json:"voice"`
 	Email                 DeviceAuthenticationPolicyOfflineDevice         `json:"email"`
 	Fido2                 *DeviceAuthenticationPolicyCommonFido2          `json:"fido2,omitempty"`
+	Mobile                DeviceAuthenticationPolicyCommonMobile          `json:"mobile"`
 	Totp                  DeviceAuthenticationPolicyCommonTotp            `json:"totp"`
 	// A boolean that specifies whether the policy is the default for the environment.
 	Default bool `json:"default"`
@@ -43,25 +44,24 @@ type DeviceAuthenticationPolicyPingOneMFA struct {
 	OathToken           *DeviceAuthenticationPolicyOathToken                 `json:"oathToken,omitempty"`
 	RememberMe          *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time                                      `json:"updatedAt,omitempty"`
-	Mobile    DeviceAuthenticationPolicyPingOneMFAAllOfMobile `json:"mobile"`
-	Whatsapp  *DeviceAuthenticationPolicyOfflineDevice        `json:"whatsapp,omitempty"`
+	UpdatedAt *time.Time                               `json:"updatedAt,omitempty"`
+	Whatsapp  *DeviceAuthenticationPolicyOfflineDevice `json:"whatsapp,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyPingOneMFA instantiates a new DeviceAuthenticationPolicyPingOneMFA object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyPingOneMFA(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool, mobile DeviceAuthenticationPolicyPingOneMFAAllOfMobile) *DeviceAuthenticationPolicyPingOneMFA {
+func NewDeviceAuthenticationPolicyPingOneMFA(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyCommonMobile, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicyPingOneMFA {
 	this := DeviceAuthenticationPolicyPingOneMFA{}
 	this.Name = name
 	this.Sms = sms
 	this.Voice = voice
 	this.Email = email
+	this.Mobile = mobile
 	this.Totp = totp
 	this.Default = default_
 	this.ForSignOnPolicy = forSignOnPolicy
-	this.Mobile = mobile
 	return &this
 }
 
@@ -361,6 +361,30 @@ func (o *DeviceAuthenticationPolicyPingOneMFA) SetFido2(v DeviceAuthenticationPo
 	o.Fido2 = &v
 }
 
+// GetMobile returns the Mobile field value
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetMobile() DeviceAuthenticationPolicyCommonMobile {
+	if o == nil {
+		var ret DeviceAuthenticationPolicyCommonMobile
+		return ret
+	}
+
+	return o.Mobile
+}
+
+// GetMobileOk returns a tuple with the Mobile field value
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetMobileOk() (*DeviceAuthenticationPolicyCommonMobile, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Mobile, true
+}
+
+// SetMobile sets field value
+func (o *DeviceAuthenticationPolicyPingOneMFA) SetMobile(v DeviceAuthenticationPolicyCommonMobile) {
+	o.Mobile = v
+}
+
 // GetTotp returns the Totp field value
 func (o *DeviceAuthenticationPolicyPingOneMFA) GetTotp() DeviceAuthenticationPolicyCommonTotp {
 	if o == nil {
@@ -596,30 +620,6 @@ func (o *DeviceAuthenticationPolicyPingOneMFA) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetMobile returns the Mobile field value
-func (o *DeviceAuthenticationPolicyPingOneMFA) GetMobile() DeviceAuthenticationPolicyPingOneMFAAllOfMobile {
-	if o == nil {
-		var ret DeviceAuthenticationPolicyPingOneMFAAllOfMobile
-		return ret
-	}
-
-	return o.Mobile
-}
-
-// GetMobileOk returns a tuple with the Mobile field value
-// and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyPingOneMFA) GetMobileOk() (*DeviceAuthenticationPolicyPingOneMFAAllOfMobile, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Mobile, true
-}
-
-// SetMobile sets field value
-func (o *DeviceAuthenticationPolicyPingOneMFA) SetMobile(v DeviceAuthenticationPolicyPingOneMFAAllOfMobile) {
-	o.Mobile = v
-}
-
 // GetWhatsapp returns the Whatsapp field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyPingOneMFA) GetWhatsapp() DeviceAuthenticationPolicyOfflineDevice {
 	if o == nil || IsNil(o.Whatsapp) {
@@ -684,6 +684,7 @@ func (o DeviceAuthenticationPolicyPingOneMFA) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Fido2) {
 		toSerialize["fido2"] = o.Fido2
 	}
+	toSerialize["mobile"] = o.Mobile
 	toSerialize["totp"] = o.Totp
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
@@ -702,7 +703,6 @@ func (o DeviceAuthenticationPolicyPingOneMFA) ToMap() (map[string]interface{}, e
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	toSerialize["mobile"] = o.Mobile
 	if !IsNil(o.Whatsapp) {
 		toSerialize["whatsapp"] = o.Whatsapp
 	}

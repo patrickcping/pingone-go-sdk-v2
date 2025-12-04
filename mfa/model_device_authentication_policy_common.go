@@ -32,6 +32,7 @@ type DeviceAuthenticationPolicyCommon struct {
 	Voice                 DeviceAuthenticationPolicyOfflineDevice         `json:"voice"`
 	Email                 DeviceAuthenticationPolicyOfflineDevice         `json:"email"`
 	Fido2                 *DeviceAuthenticationPolicyCommonFido2          `json:"fido2,omitempty"`
+	Mobile                DeviceAuthenticationPolicyCommonMobile          `json:"mobile"`
 	Totp                  DeviceAuthenticationPolicyCommonTotp            `json:"totp"`
 	// A boolean that specifies whether the policy is the default for the environment.
 	Default bool `json:"default"`
@@ -50,12 +51,13 @@ type DeviceAuthenticationPolicyCommon struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyCommon(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicyCommon {
+func NewDeviceAuthenticationPolicyCommon(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyCommonMobile, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicyCommon {
 	this := DeviceAuthenticationPolicyCommon{}
 	this.Name = name
 	this.Sms = sms
 	this.Voice = voice
 	this.Email = email
+	this.Mobile = mobile
 	this.Totp = totp
 	this.Default = default_
 	this.ForSignOnPolicy = forSignOnPolicy
@@ -358,6 +360,30 @@ func (o *DeviceAuthenticationPolicyCommon) SetFido2(v DeviceAuthenticationPolicy
 	o.Fido2 = &v
 }
 
+// GetMobile returns the Mobile field value
+func (o *DeviceAuthenticationPolicyCommon) GetMobile() DeviceAuthenticationPolicyCommonMobile {
+	if o == nil {
+		var ret DeviceAuthenticationPolicyCommonMobile
+		return ret
+	}
+
+	return o.Mobile
+}
+
+// GetMobileOk returns a tuple with the Mobile field value
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyCommon) GetMobileOk() (*DeviceAuthenticationPolicyCommonMobile, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Mobile, true
+}
+
+// SetMobile sets field value
+func (o *DeviceAuthenticationPolicyCommon) SetMobile(v DeviceAuthenticationPolicyCommonMobile) {
+	o.Mobile = v
+}
+
 // GetTotp returns the Totp field value
 func (o *DeviceAuthenticationPolicyCommon) GetTotp() DeviceAuthenticationPolicyCommonTotp {
 	if o == nil {
@@ -625,6 +651,7 @@ func (o DeviceAuthenticationPolicyCommon) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Fido2) {
 		toSerialize["fido2"] = o.Fido2
 	}
+	toSerialize["mobile"] = o.Mobile
 	toSerialize["totp"] = o.Totp
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy

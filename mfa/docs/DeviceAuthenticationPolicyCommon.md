@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Voice** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Email** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Fido2** | Pointer to [**DeviceAuthenticationPolicyCommonFido2**](DeviceAuthenticationPolicyCommonFido2.md) |  | [optional] 
+**Mobile** | [**DeviceAuthenticationPolicyCommonMobile**](DeviceAuthenticationPolicyCommonMobile.md) |  | 
 **Totp** | [**DeviceAuthenticationPolicyCommonTotp**](DeviceAuthenticationPolicyCommonTotp.md) |  | 
 **Default** | **bool** | A boolean that specifies whether the policy is the default for the environment. | 
 **ForSignOnPolicy** | **bool** |  | [readonly] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceAuthenticationPolicyCommon
 
-`func NewDeviceAuthenticationPolicyCommon(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool, ) *DeviceAuthenticationPolicyCommon`
+`func NewDeviceAuthenticationPolicyCommon(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyCommonMobile, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool, ) *DeviceAuthenticationPolicyCommon`
 
 NewDeviceAuthenticationPolicyCommon instantiates a new DeviceAuthenticationPolicyCommon object
 This constructor will assign default values to properties that have it defined,
@@ -271,6 +272,26 @@ SetFido2 sets Fido2 field to given value.
 `func (o *DeviceAuthenticationPolicyCommon) HasFido2() bool`
 
 HasFido2 returns a boolean if a field has been set.
+
+### GetMobile
+
+`func (o *DeviceAuthenticationPolicyCommon) GetMobile() DeviceAuthenticationPolicyCommonMobile`
+
+GetMobile returns the Mobile field if non-nil, zero value otherwise.
+
+### GetMobileOk
+
+`func (o *DeviceAuthenticationPolicyCommon) GetMobileOk() (*DeviceAuthenticationPolicyCommonMobile, bool)`
+
+GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMobile
+
+`func (o *DeviceAuthenticationPolicyCommon) SetMobile(v DeviceAuthenticationPolicyCommonMobile)`
+
+SetMobile sets Mobile field to given value.
+
 
 ### GetTotp
 
