@@ -1,9 +1,9 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.4
-  * **Note** bump `golang.org/x/oauth2` v0.32.0 => v0.33.0
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.62.0 => v0.63.0
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.2 => v0.24.0
+  * **Note** bump `golang.org/x/oauth2` v0.32.0 => v0.33.0 [#496](https://github.com/patrickcping/pingone-go-sdk-v2/pull/496)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.62.0 => v0.63.0 [#496](https://github.com/patrickcping/pingone-go-sdk-v2/pull/496)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.2 => v0.24.0 [#496](https://github.com/patrickcping/pingone-go-sdk-v2/pull/496)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.63.0](./management/CHANGELOG.md)
   * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)
   * **Feature** Add support for the Rate Limit Configuration API. [#493](https://github.com/patrickcping/pingone-go-sdk-v2/pull/493)
