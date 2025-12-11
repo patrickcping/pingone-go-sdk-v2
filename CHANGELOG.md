@@ -7,7 +7,7 @@
   * **Enhancement** Added `OpSessionCheckEnabled` field to the `ApplicationOIDC` model to support session state checking in authentication responses. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
   * **Enhancement** Added `RequestScopesForMultipleResourcesEnabled` field to the `ApplicationOIDC` model to support requesting scopes for multiple resources. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.24.0](./mfa/CHANGELOG.md)
-  * **Enhancement** Added support for PingID in device authentication policies.
+  * **Enhancement** Added support for PingID in device authentication policies. [#473](https://github.com/patrickcping/pingone-go-sdk-v2/pull/473)
 
 # Release (2025-10-31)
 
