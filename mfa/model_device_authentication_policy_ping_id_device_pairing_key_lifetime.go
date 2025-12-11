@@ -20,15 +20,15 @@ var _ MappedNullable = &DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime
 // DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime struct for DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime
 type DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime struct {
 	// For \"desktop\" only. The amount of time the pairing key is valid. Can be expressed in minutes or hours. Minimum is one minute, maximum is 48 hours. If the `pairingKeyLifetime` object is not provided, then 48 hours is used.
-	Duration int32        `json:"duration"`
-	TimeUnit EnumTimeUnit `json:"timeUnit"`
+	Duration int32                          `json:"duration"`
+	TimeUnit EnumTimeUnitPairingKeyLifetime `json:"timeUnit"`
 }
 
 // NewDeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime instantiates a new DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime(duration int32, timeUnit EnumTimeUnit) *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime {
+func NewDeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime(duration int32, timeUnit EnumTimeUnitPairingKeyLifetime) *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime {
 	this := DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime{}
 	this.Duration = duration
 	this.TimeUnit = timeUnit
@@ -68,9 +68,9 @@ func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) SetDuration(v
 }
 
 // GetTimeUnit returns the TimeUnit field value
-func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) GetTimeUnit() EnumTimeUnit {
+func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) GetTimeUnit() EnumTimeUnitPairingKeyLifetime {
 	if o == nil {
-		var ret EnumTimeUnit
+		var ret EnumTimeUnitPairingKeyLifetime
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) GetTimeUnit()
 
 // GetTimeUnitOk returns a tuple with the TimeUnit field value
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) GetTimeUnitOk() (*EnumTimeUnit, bool) {
+func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) GetTimeUnitOk() (*EnumTimeUnitPairingKeyLifetime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) GetTimeUnitOk
 }
 
 // SetTimeUnit sets field value
-func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) SetTimeUnit(v EnumTimeUnit) {
+func (o *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) SetTimeUnit(v EnumTimeUnitPairingKeyLifetime) {
 	o.TimeUnit = v
 }
 

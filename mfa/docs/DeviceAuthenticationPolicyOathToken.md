@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **PairingDisabled** | Pointer to **bool** | You can set &#x60;pairingDisabled&#x60; to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices. | [optional] 
 **Otp** | [**DeviceAuthenticationPolicyPingIDDeviceOtp**](DeviceAuthenticationPolicyPingIDDeviceOtp.md) |  | 
 **PromptForNicknameOnPairing** | Pointer to **bool** | Set to &#x60;true&#x60; if you want to allow users to provide nicknames for devices during pairing. | [optional] 
-**PairingKeyLifetime** | Pointer to [**DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime**](DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime.md) |  | [optional] 
+**PairingKeyLifetime** | Pointer to [**DeviceAuthenticationPolicyOathTokenPairingKeyLifetime**](DeviceAuthenticationPolicyOathTokenPairingKeyLifetime.md) |  | [optional] 
 
 ## Methods
 
@@ -121,20 +121,20 @@ HasPromptForNicknameOnPairing returns a boolean if a field has been set.
 
 ### GetPairingKeyLifetime
 
-`func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetime() DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime`
+`func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetime() DeviceAuthenticationPolicyOathTokenPairingKeyLifetime`
 
 GetPairingKeyLifetime returns the PairingKeyLifetime field if non-nil, zero value otherwise.
 
 ### GetPairingKeyLifetimeOk
 
-`func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetimeOk() (*DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime, bool)`
+`func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetimeOk() (*DeviceAuthenticationPolicyOathTokenPairingKeyLifetime, bool)`
 
 GetPairingKeyLifetimeOk returns a tuple with the PairingKeyLifetime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPairingKeyLifetime
 
-`func (o *DeviceAuthenticationPolicyOathToken) SetPairingKeyLifetime(v DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime)`
+`func (o *DeviceAuthenticationPolicyOathToken) SetPairingKeyLifetime(v DeviceAuthenticationPolicyOathTokenPairingKeyLifetime)`
 
 SetPairingKeyLifetime sets PairingKeyLifetime field to given value.
 

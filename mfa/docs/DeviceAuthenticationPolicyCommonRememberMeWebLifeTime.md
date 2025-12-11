@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TimeUnit** | Pointer to [**EnumTimeUnit**](EnumTimeUnit.md) |  | [optional] 
+**TimeUnit** | Pointer to [**EnumTimeUnitRememberMeWebLifeTime**](EnumTimeUnitRememberMeWebLifeTime.md) |  | [optional] 
 **Duration** | Pointer to **int32** | Used in conjunction with &#x60;timeUnit&#x60; to define the \&quot;remember me\&quot; period. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTimeUnit
 
-`func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnit() EnumTimeUnit`
+`func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnit() EnumTimeUnitRememberMeWebLifeTime`
 
 GetTimeUnit returns the TimeUnit field if non-nil, zero value otherwise.
 
 ### GetTimeUnitOk
 
-`func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnitOk() (*EnumTimeUnit, bool)`
+`func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnitOk() (*EnumTimeUnitRememberMeWebLifeTime, bool)`
 
 GetTimeUnitOk returns a tuple with the TimeUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeUnit
 
-`func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) SetTimeUnit(v EnumTimeUnit)`
+`func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) SetTimeUnit(v EnumTimeUnitRememberMeWebLifeTime)`
 
 SetTimeUnit sets TimeUnit field to given value.
 

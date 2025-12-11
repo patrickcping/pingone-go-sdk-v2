@@ -20,9 +20,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyCommonMobileApplicationsInnerP
 // DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush struct for DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush
 type DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush struct {
 	// Specifies whether push notification is enabled or disabled for the policy.
-	Enabled bool `json:"enabled"`
-	// Set to `true` if you want to require the authenticating user to select a number that was displayed to them on the accessing device.
-	NumberMatching *bool `json:"numberMatching,omitempty"`
+	Enabled        bool                                                                       `json:"enabled"`
+	NumberMatching *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching `json:"numberMatching,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyCommonMobileApplicationsInnerPush instantiates a new DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush object
@@ -68,9 +67,9 @@ func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) SetEnabled
 }
 
 // GetNumberMatching returns the NumberMatching field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatching() bool {
+func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatching() DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching {
 	if o == nil || IsNil(o.NumberMatching) {
-		var ret bool
+		var ret DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching
 		return ret
 	}
 	return *o.NumberMatching
@@ -78,7 +77,7 @@ func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberM
 
 // GetNumberMatchingOk returns a tuple with the NumberMatching field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatchingOk() (*bool, bool) {
+func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatchingOk() (*DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching, bool) {
 	if o == nil || IsNil(o.NumberMatching) {
 		return nil, false
 	}
@@ -94,8 +93,8 @@ func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) HasNumberM
 	return false
 }
 
-// SetNumberMatching gets a reference to the given bool and assigns it to the NumberMatching field.
-func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) SetNumberMatching(v bool) {
+// SetNumberMatching gets a reference to the given DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching and assigns it to the NumberMatching field.
+func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) SetNumberMatching(v DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching) {
 	o.NumberMatching = &v
 }
 

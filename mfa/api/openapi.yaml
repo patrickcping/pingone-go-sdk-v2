@@ -4282,7 +4282,7 @@ components:
             for devices during pairing.
           type: boolean
         pairingKeyLifetime:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice_pairingKeyLifetime'
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyOathToken_pairingKeyLifetime'
       required:
       - enabled
       - otp
@@ -4776,6 +4776,13 @@ components:
       enum:
       - MINUTES
       - HOURS
+      type: string
+    EnumTimeUnitRememberMeWebLifeTime:
+      description: The time unit for the `rememberMe.duration` parameter.
+      enum:
+      - MINUTES
+      - HOURS
+      - DAYS
       type: string
     EnumTimeUnitPushTimeout:
       description: "The time unit for the `pushTimeout.duration` parameter. Currently,\
@@ -5305,6 +5312,20 @@ components:
             \ then 48 hours is used."
           type: integer
         timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnitPairingKeyLifetime'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicyOathToken_pairingKeyLifetime:
+      properties:
+        duration:
+          description: "For \"desktop\" only. The amount of time the pairing key is\
+            \ valid. Can be expressed in minutes or hours. Minimum is one minute,\
+            \ maximum is 48 hours. If the `pairingKeyLifetime` object is not provided,\
+            \ then 48 hours is used."
+          type: integer
+        timeUnit:
           $ref: '#/components/schemas/EnumTimeUnit'
       required:
       - duration
@@ -5369,6 +5390,15 @@ components:
       required:
       - failure
       type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_push_numberMatching:
+      properties:
+        enabled:
+          description: Set to `true` if you want to require the authenticating user
+            to select a number that was displayed to them on the accessing device.
+          type: boolean
+      required:
+      - enabled
+      type: object
     DeviceAuthenticationPolicyCommon_mobile_applications_inner_push:
       properties:
         enabled:
@@ -5376,9 +5406,7 @@ components:
             for the policy.
           type: boolean
         numberMatching:
-          description: Set to `true` if you want to require the authenticating user
-            to select a number that was displayed to them on the accessing device.
-          type: boolean
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_push_numberMatching'
       required:
       - enabled
       type: object
@@ -5660,7 +5688,7 @@ components:
         "remember me" period can be anywhere from 1 hour to 90 days.
       properties:
         timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnit'
+          $ref: '#/components/schemas/EnumTimeUnitRememberMeWebLifeTime'
         duration:
           description: Used in conjunction with `timeUnit` to define the "remember
             me" period.

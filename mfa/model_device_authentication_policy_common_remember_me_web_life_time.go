@@ -19,7 +19,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyCommonRememberMeWebLifeTime{}
 
 // DeviceAuthenticationPolicyCommonRememberMeWebLifeTime Used to define the period during which users will not have to authenticate if they are accessing applications from a device they have used before. The \"remember me\" period can be anywhere from 1 hour to 90 days.
 type DeviceAuthenticationPolicyCommonRememberMeWebLifeTime struct {
-	TimeUnit *EnumTimeUnit `json:"timeUnit,omitempty"`
+	TimeUnit *EnumTimeUnitRememberMeWebLifeTime `json:"timeUnit,omitempty"`
 	// Used in conjunction with `timeUnit` to define the \"remember me\" period.
 	Duration *int32 `json:"duration,omitempty"`
 }
@@ -42,9 +42,9 @@ func NewDeviceAuthenticationPolicyCommonRememberMeWebLifeTimeWithDefaults() *Dev
 }
 
 // GetTimeUnit returns the TimeUnit field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnit() EnumTimeUnit {
+func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnit() EnumTimeUnitRememberMeWebLifeTime {
 	if o == nil || IsNil(o.TimeUnit) {
-		var ret EnumTimeUnit
+		var ret EnumTimeUnitRememberMeWebLifeTime
 		return ret
 	}
 	return *o.TimeUnit
@@ -52,7 +52,7 @@ func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnit() En
 
 // GetTimeUnitOk returns a tuple with the TimeUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnitOk() (*EnumTimeUnit, bool) {
+func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) GetTimeUnitOk() (*EnumTimeUnitRememberMeWebLifeTime, bool) {
 	if o == nil || IsNil(o.TimeUnit) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) HasTimeUnit() bo
 	return false
 }
 
-// SetTimeUnit gets a reference to the given EnumTimeUnit and assigns it to the TimeUnit field.
-func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) SetTimeUnit(v EnumTimeUnit) {
+// SetTimeUnit gets a reference to the given EnumTimeUnitRememberMeWebLifeTime and assigns it to the TimeUnit field.
+func (o *DeviceAuthenticationPolicyCommonRememberMeWebLifeTime) SetTimeUnit(v EnumTimeUnitRememberMeWebLifeTime) {
 	o.TimeUnit = &v
 }
 

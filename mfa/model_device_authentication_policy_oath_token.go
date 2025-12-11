@@ -25,8 +25,8 @@ type DeviceAuthenticationPolicyOathToken struct {
 	PairingDisabled *bool                                     `json:"pairingDisabled,omitempty"`
 	Otp             DeviceAuthenticationPolicyPingIDDeviceOtp `json:"otp"`
 	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
-	PromptForNicknameOnPairing *bool                                                     `json:"promptForNicknameOnPairing,omitempty"`
-	PairingKeyLifetime         *DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime `json:"pairingKeyLifetime,omitempty"`
+	PromptForNicknameOnPairing *bool                                                  `json:"promptForNicknameOnPairing,omitempty"`
+	PairingKeyLifetime         *DeviceAuthenticationPolicyOathTokenPairingKeyLifetime `json:"pairingKeyLifetime,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyOathToken instantiates a new DeviceAuthenticationPolicyOathToken object
@@ -161,9 +161,9 @@ func (o *DeviceAuthenticationPolicyOathToken) SetPromptForNicknameOnPairing(v bo
 }
 
 // GetPairingKeyLifetime returns the PairingKeyLifetime field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetime() DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime {
+func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetime() DeviceAuthenticationPolicyOathTokenPairingKeyLifetime {
 	if o == nil || IsNil(o.PairingKeyLifetime) {
-		var ret DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime
+		var ret DeviceAuthenticationPolicyOathTokenPairingKeyLifetime
 		return ret
 	}
 	return *o.PairingKeyLifetime
@@ -171,7 +171,7 @@ func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetime() DeviceAuth
 
 // GetPairingKeyLifetimeOk returns a tuple with the PairingKeyLifetime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetimeOk() (*DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime, bool) {
+func (o *DeviceAuthenticationPolicyOathToken) GetPairingKeyLifetimeOk() (*DeviceAuthenticationPolicyOathTokenPairingKeyLifetime, bool) {
 	if o == nil || IsNil(o.PairingKeyLifetime) {
 		return nil, false
 	}
@@ -187,8 +187,8 @@ func (o *DeviceAuthenticationPolicyOathToken) HasPairingKeyLifetime() bool {
 	return false
 }
 
-// SetPairingKeyLifetime gets a reference to the given DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime and assigns it to the PairingKeyLifetime field.
-func (o *DeviceAuthenticationPolicyOathToken) SetPairingKeyLifetime(v DeviceAuthenticationPolicyPingIDDevicePairingKeyLifetime) {
+// SetPairingKeyLifetime gets a reference to the given DeviceAuthenticationPolicyOathTokenPairingKeyLifetime and assigns it to the PairingKeyLifetime field.
+func (o *DeviceAuthenticationPolicyOathToken) SetPairingKeyLifetime(v DeviceAuthenticationPolicyOathTokenPairingKeyLifetime) {
 	o.PairingKeyLifetime = &v
 }
 

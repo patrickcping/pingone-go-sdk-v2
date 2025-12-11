@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** | Specifies whether push notification is enabled or disabled for the policy. | 
-**NumberMatching** | Pointer to **bool** | Set to &#x60;true&#x60; if you want to require the authenticating user to select a number that was displayed to them on the accessing device. | [optional] 
+**NumberMatching** | Pointer to [**DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching**](DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching.md) |  | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetEnabled sets Enabled field to given value.
 
 ### GetNumberMatching
 
-`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatching() bool`
+`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatching() DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching`
 
 GetNumberMatching returns the NumberMatching field if non-nil, zero value otherwise.
 
 ### GetNumberMatchingOk
 
-`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatchingOk() (*bool, bool)`
+`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) GetNumberMatchingOk() (*DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching, bool)`
 
 GetNumberMatchingOk returns a tuple with the NumberMatching field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNumberMatching
 
-`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) SetNumberMatching(v bool)`
+`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInnerPush) SetNumberMatching(v DeviceAuthenticationPolicyCommonMobileApplicationsInnerPushNumberMatching)`
 
 SetNumberMatching sets NumberMatching field to given value.
 
