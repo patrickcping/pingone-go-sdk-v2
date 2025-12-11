@@ -39009,6 +39009,12 @@ components:
               a user session using only the ID token. The application is not required
               to have access to the session token cookie.
             type: boolean
+          includeX5t:
+            description: "Specifies whether tokens signed for this application include\
+              \ the `x5t`` signature header in the signed JWT. Refer to [JSON Web\
+              \ Signature (JWS), section \"x5t\" (X.509 Certificate SHA-1 Thumbprint)\
+              \ Header Parameter](https://www.rfc-editor.org/rfc/rfc7515.html#section-4.1.7)."
+            type: boolean
           jwks:
             description: "A JWKS string that validates the signature of signed JWTs\
               \ for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`.\
@@ -39069,6 +39075,24 @@ components:
               \ specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin)\
               \ for more information."
             type: string
+          opSessionCheckEnabled:
+            default: false
+            description: "When enabled, PingOne includes the `session_state` parameter\
+              \ in the authentication response, per spec with [OpenID Connect Session\
+              \ Management 1.0](https://openid.net/specs/openid-connect-session-1_0.html).\
+              \ Refer to [OIDC Session Management](https://apidocs.pingidentity.com/pingone/main/v1/api/#oidc-session-management)\
+              \ in the Developer's Foundations for more information. This property\
+              \ is disabled by default."
+            type: boolean
+          parRequirement:
+            $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
+          parTimeout:
+            default: 60
+            description: PAR timeout in seconds. Must be between `1` and `600`. The
+              default value is `60`.
+            maximum: 600
+            minimum: 1
+            type: integer
           pkceEnforcement:
             $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
           postLogoutRedirectUris:
@@ -39112,13 +39136,12 @@ components:
               0 and 86400 seconds. Null is treated the same as 0.
             maximum: 86400
             type: integer
-          responseTypes:
-            description: "The code or token type returned by an authorization request.\
-              \ Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that\
-              \ specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type)."
-            items:
-              $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
-            type: array
+          requestScopesForMultipleResourcesEnabled:
+            default: false
+            description: "Specifies whether the application can request scopes from\
+              \ multiple custom resources. The default value is `false`. For more\
+              \ information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes)."
+            type: boolean
           requireSignedRequestObject:
             description: "Indicates that the Java Web Token (JWT) for the [request\
               \ query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
@@ -39126,6 +39149,15 @@ components:
               \ a signed request object is not required. Both `supportUnsignedRequestObject`\
               \ and this property cannot be set to `true`."
             type: boolean
+          responseTypes:
+            description: "The code or token type returned by an authorization request.\
+              \ Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that\
+              \ specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type)."
+            items:
+              $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
+            type: array
+          signing:
+            $ref: '#/components/schemas/ApplicationOIDC_allOf_signing'
           supportUnsignedRequestObject:
             description: "A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
               \ parameter JWT is allowed to be unsigned. If false or null (default),\
@@ -39148,17 +39180,6 @@ components:
             $ref: '#/components/schemas/ApplicationTemplate'
           tokenEndpointAuthMethod:
             $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
-          parRequirement:
-            $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
-          parTimeout:
-            default: 60
-            description: PAR timeout in seconds. Must be between `1` and `600`. The
-              default value is `60`.
-            maximum: 600
-            minimum: 1
-            type: integer
-          signing:
-            $ref: '#/components/schemas/ApplicationOIDC_allOf_signing'
         required:
         - tokenEndpointAuthMethod
         type: object

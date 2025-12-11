@@ -1285,6 +1285,9 @@ components:
             idpSignoff:
               type: boolean
               description: Set this to true to allow an application to request to terminate a user session using only the ID token. The application is not required to have access to the session token cookie.
+            includeX5t:
+              type: boolean
+              description: Specifies whether tokens signed for this application include the `x5t`` signature header in the signed JWT. Refer to [JSON Web Signature (JWS), section "x5t" (X.509 Certificate SHA-1 Thumbprint) Header Parameter](https://www.rfc-editor.org/rfc/rfc7515.html#section-4.1.7).
             jwks:
               type: string
               description: A JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwksUrl` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwksUrl` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
@@ -1398,6 +1401,18 @@ components:
             initiateLoginUri:
               type: string
               description: A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information.
+            opSessionCheckEnabled:
+              type: boolean
+              description: When enabled, PingOne includes the `session_state` parameter in the authentication response, per spec with [OpenID Connect Session Management 1.0](https://openid.net/specs/openid-connect-session-1_0.html). Refer to [OIDC Session Management](https://apidocs.pingidentity.com/pingone/main/v1/api/#oidc-session-management) in the Developer's Foundations for more information. This property is disabled by default.
+              default: false
+            parRequirement:
+              $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
+            parTimeout:
+              type: integer
+              description: PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
+              minimum: 1
+              maximum: 600
+              default: 60
             pkceEnforcement:
               $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
             postLogoutRedirectUris:
@@ -1424,37 +1439,18 @@ components:
               type: integer
               description: The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
               maximum: 86400
+            requestScopesForMultipleResourcesEnabled:
+              type: boolean
+              description: Specifies whether the application can request scopes from multiple custom resources. The default value is `false`. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes).
+              default: false
+            requireSignedRequestObject:
+              type: boolean
+              description: Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
             responseTypes:
               type: array
               description: The code or token type returned by an authorization request. Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type).
               items:
                 $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
-            requireSignedRequestObject:
-              type: boolean
-              description: Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
-            supportUnsignedRequestObject:
-              type: boolean
-              description: A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
-            tags:
-              type: array
-              description: An array that specifies the list of labels associated with the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only applicable for creating worker applications.
-              items:
-                $ref: '#/components/schemas/EnumApplicationTags'
-            targetLinkUri:
-              type: string
-              description: The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
-            template:
-              $ref: '#/components/schemas/ApplicationTemplate'
-            tokenEndpointAuthMethod:
-              $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
-            parRequirement:
-              $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
-            parTimeout:
-              type: integer
-              description: PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
-              minimum: 1
-              maximum: 600
-              default: 60
             signing:
               type: object
               description: Configuration for the signing key. If absent, application tokens will be signed and verified by the PingOne default key at runtime. This property only applies to OIDC applications of type `WEB_APP`, `NATIVE_APP`, `SINGLE_PAGE_APP`, and `CUSTOM_APP`.
@@ -1470,6 +1466,21 @@ components:
                     - id
               required:
                 - keyRotationPolicy
+            supportUnsignedRequestObject:
+              type: boolean
+              description: A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
+            tags:
+              type: array
+              description: An array that specifies the list of labels associated with the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only applicable for creating worker applications.
+              items:
+                $ref: '#/components/schemas/EnumApplicationTags'
+            targetLinkUri:
+              type: string
+              description: The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
+            template:
+              $ref: '#/components/schemas/ApplicationTemplate'
+            tokenEndpointAuthMethod:
+              $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
           required:
             - tokenEndpointAuthMethod
     ApplicationOIDCInternal:
