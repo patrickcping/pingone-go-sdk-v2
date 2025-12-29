@@ -1,4 +1,4 @@
-# v0.24.1 (Unreleased)
+# v0.24.1 (2025-12-29)
 
 * **Bug** `IpPairingConfiguration` moved to the `DeviceAuthenticationPolicyCommonMobileApplicationsInner` model. [#499](https://github.com/patrickcping/pingone-go-sdk-v2/pull/499)
 
