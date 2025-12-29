@@ -469,6 +469,17 @@ components:
                     description: You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
                   integrityDetection:
                     $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
+                  ipPairingConfiguration:
+                    type: object
+                    properties:
+                      anyIPAdress:
+                        type: boolean
+                        description: If you want to limit users to specific IP addresses when pairing their device, set `anyIPAdress` to false, and use `ipPairingConfiguration.onlyTheseIpAddresses` to specify the valid IP addresses.
+                      onlyTheseIpAddresses:
+                        type: array
+                        items:
+                          type: string
+                        description: If you set `ipPairingConfiguration.anyIPAdress` to `false`, use `onlyTheseIpAddresses` to specify the IP addresses from which users can pair their devices. Each item in the array should be an IP address or an address range using CIDR notation, for example, `192.168.0.1/24`      
                   newRequestDurationConfiguration:
                     type: object
                     properties:
@@ -499,17 +510,6 @@ components:
                       - totalTimeout
                 required:
                   - id
-            ipPairingConfiguration:
-              type: object
-              properties:
-                anyIPAdress:
-                  type: boolean
-                  description: If you want to limit users to specific IP addresses when pairing their device, set `anyIPAdress` to false, and use `ipPairingConfiguration.onlyTheseIpAddresses` to specify the valid IP addresses.
-                onlyTheseIpAddresses:
-                  type: array
-                  items:
-                    type: string
-                  description: If you set `ipPairingConfiguration.anyIPAdress` to `false`, use `onlyTheseIpAddresses` to specify the IP addresses from which users can pair their devices. Each item in the array should be an IP address or an address range using CIDR notation, for example, `192.168.0.1/24`
             promptForNicknameOnPairing:
               type: boolean
               description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
@@ -602,6 +602,7 @@ components:
                     duration:
                       type: integer
                       description: Used in conjunction with `timeUnit` to define the "remember me" period.
+                      minimum: 1
               required:
                 - enabled
                 - lifeTime

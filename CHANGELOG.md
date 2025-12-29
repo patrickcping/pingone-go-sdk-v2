@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.24.1](./mfa/CHANGELOG.md)
+  * **Bug** `IpPairingConfiguration` moved to the `DeviceAuthenticationPolicyCommonMobileApplicationsInner` model. [#499](https://github.com/patrickcping/pingone-go-sdk-v2/pull/499)
+
 # Release (2025-12-11)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.4

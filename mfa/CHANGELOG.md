@@ -1,3 +1,7 @@
+# v0.24.1 (Unreleased)
+
+* **Bug** `IpPairingConfiguration` moved to the `DeviceAuthenticationPolicyCommonMobileApplicationsInner` model. [#499](https://github.com/patrickcping/pingone-go-sdk-v2/pull/499)
+
 # v0.24.0 (2025-12-11)
 
 * **Enhancement** Added support for PingID in device authentication policies. [#473](https://github.com/patrickcping/pingone-go-sdk-v2/pull/473)

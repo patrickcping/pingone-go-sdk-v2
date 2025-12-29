@@ -5518,6 +5518,22 @@ components:
       required:
       - enabled
       type: object
+    DeviceAuthenticationPolicyCommon_mobile_applications_inner_ipPairingConfiguration:
+      properties:
+        anyIPAdress:
+          description: "If you want to limit users to specific IP addresses when pairing\
+            \ their device, set `anyIPAdress` to false, and use `ipPairingConfiguration.onlyTheseIpAddresses`\
+            \ to specify the valid IP addresses."
+          type: boolean
+        onlyTheseIpAddresses:
+          description: "If you set `ipPairingConfiguration.anyIPAdress` to `false`,\
+            \ use `onlyTheseIpAddresses` to specify the IP addresses from which users\
+            \ can pair their devices. Each item in the array should be an IP address\
+            \ or an address range using CIDR notation, for example, `192.168.0.1/24`"
+          items:
+            type: string
+          type: array
+      type: object
     DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration_deviceTimeout:
       properties:
         duration:
@@ -5593,26 +5609,12 @@ components:
           type: boolean
         integrityDetection:
           $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
+        ipPairingConfiguration:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_ipPairingConfiguration'
         newRequestDurationConfiguration:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner_newRequestDurationConfiguration'
       required:
       - id
-      type: object
-    DeviceAuthenticationPolicyCommon_mobile_ipPairingConfiguration:
-      properties:
-        anyIPAdress:
-          description: "If you want to limit users to specific IP addresses when pairing\
-            \ their device, set `anyIPAdress` to false, and use `ipPairingConfiguration.onlyTheseIpAddresses`\
-            \ to specify the valid IP addresses."
-          type: boolean
-        onlyTheseIpAddresses:
-          description: "If you set `ipPairingConfiguration.anyIPAdress` to `false`,\
-            \ use `onlyTheseIpAddresses` to specify the IP addresses from which users\
-            \ can pair their devices. Each item in the array should be an IP address\
-            \ or an address range using CIDR notation, for example, `192.168.0.1/24`"
-          items:
-            type: string
-          type: array
       type: object
     DeviceAuthenticationPolicyCommon_mobile:
       description: Mobile device authentication policy settings.
@@ -5627,8 +5629,6 @@ components:
           items:
             $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_applications_inner'
           type: array
-        ipPairingConfiguration:
-          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile_ipPairingConfiguration'
         promptForNicknameOnPairing:
           description: Set to `true` if you want to allow users to provide nicknames
             for devices during pairing.
@@ -5692,6 +5692,7 @@ components:
         duration:
           description: Used in conjunction with `timeUnit` to define the "remember
             me" period.
+          minimum: 1
           type: integer
       type: object
     DeviceAuthenticationPolicyCommon_rememberMe_web:

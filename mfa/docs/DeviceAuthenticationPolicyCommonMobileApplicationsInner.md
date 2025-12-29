@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **BiometricsEnabled** | Pointer to **bool** | You can set &#x60;biometricsEnabled&#x60; to true to allow users to use biometric authentication methods (such as fingerprint or facial recognition) for MFA. If set to false, users will not be able to use biometric methods for authentication. | [optional] 
 **PairingDisabled** | Pointer to **bool** | You can set &#x60;pairingDisabled&#x60; to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices. | [optional] 
 **IntegrityDetection** | Pointer to [**EnumMFADevicePolicyMobileIntegrityDetection**](EnumMFADevicePolicyMobileIntegrityDetection.md) |  | [optional] 
+**IpPairingConfiguration** | Pointer to [**DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration**](DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration.md) |  | [optional] 
 **NewRequestDurationConfiguration** | Pointer to [**DeviceAuthenticationPolicyCommonMobileApplicationsInnerNewRequestDurationConfiguration**](DeviceAuthenticationPolicyCommonMobileApplicationsInnerNewRequestDurationConfiguration.md) |  | [optional] 
 
 ## Methods
@@ -331,6 +332,31 @@ SetIntegrityDetection sets IntegrityDetection field to given value.
 `func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) HasIntegrityDetection() bool`
 
 HasIntegrityDetection returns a boolean if a field has been set.
+
+### GetIpPairingConfiguration
+
+`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) GetIpPairingConfiguration() DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration`
+
+GetIpPairingConfiguration returns the IpPairingConfiguration field if non-nil, zero value otherwise.
+
+### GetIpPairingConfigurationOk
+
+`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) GetIpPairingConfigurationOk() (*DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration, bool)`
+
+GetIpPairingConfigurationOk returns a tuple with the IpPairingConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpPairingConfiguration
+
+`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) SetIpPairingConfiguration(v DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration)`
+
+SetIpPairingConfiguration sets IpPairingConfiguration field to given value.
+
+### HasIpPairingConfiguration
+
+`func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) HasIpPairingConfiguration() bool`
+
+HasIpPairingConfiguration returns a boolean if a field has been set.
 
 ### GetNewRequestDurationConfiguration
 
