@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.5
+  * **Note** bump `golang.org/x/oauth2` v0.33.0 => v0.34.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.24.0 => v0.24.1
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.24.1](./mfa/CHANGELOG.md)
   * **Bug** `IpPairingConfiguration` moved to the `DeviceAuthenticationPolicyCommonMobileApplicationsInner` model. [#499](https://github.com/patrickcping/pingone-go-sdk-v2/pull/499)
 
