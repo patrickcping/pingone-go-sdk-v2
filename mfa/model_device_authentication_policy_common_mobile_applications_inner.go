@@ -34,6 +34,7 @@ type DeviceAuthenticationPolicyCommonMobileApplicationsInner struct {
 	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
 	PairingDisabled                 *bool                                                                                   `json:"pairingDisabled,omitempty"`
 	IntegrityDetection              *EnumMFADevicePolicyMobileIntegrityDetection                                            `json:"integrityDetection,omitempty"`
+	IpPairingConfiguration          *DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration          `json:"ipPairingConfiguration,omitempty"`
 	NewRequestDurationConfiguration *DeviceAuthenticationPolicyCommonMobileApplicationsInnerNewRequestDurationConfiguration `json:"newRequestDurationConfiguration,omitempty"`
 }
 
@@ -431,6 +432,38 @@ func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) SetIntegrityDe
 	o.IntegrityDetection = &v
 }
 
+// GetIpPairingConfiguration returns the IpPairingConfiguration field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) GetIpPairingConfiguration() DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration {
+	if o == nil || IsNil(o.IpPairingConfiguration) {
+		var ret DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration
+		return ret
+	}
+	return *o.IpPairingConfiguration
+}
+
+// GetIpPairingConfigurationOk returns a tuple with the IpPairingConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) GetIpPairingConfigurationOk() (*DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration, bool) {
+	if o == nil || IsNil(o.IpPairingConfiguration) {
+		return nil, false
+	}
+	return o.IpPairingConfiguration, true
+}
+
+// HasIpPairingConfiguration returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) HasIpPairingConfiguration() bool {
+	if o != nil && !IsNil(o.IpPairingConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpPairingConfiguration gets a reference to the given DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration and assigns it to the IpPairingConfiguration field.
+func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) SetIpPairingConfiguration(v DeviceAuthenticationPolicyCommonMobileApplicationsInnerIpPairingConfiguration) {
+	o.IpPairingConfiguration = &v
+}
+
 // GetNewRequestDurationConfiguration returns the NewRequestDurationConfiguration field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyCommonMobileApplicationsInner) GetNewRequestDurationConfiguration() DeviceAuthenticationPolicyCommonMobileApplicationsInnerNewRequestDurationConfiguration {
 	if o == nil || IsNil(o.NewRequestDurationConfiguration) {
@@ -506,6 +539,9 @@ func (o DeviceAuthenticationPolicyCommonMobileApplicationsInner) ToMap() (map[st
 	}
 	if !IsNil(o.IntegrityDetection) {
 		toSerialize["integrityDetection"] = o.IntegrityDetection
+	}
+	if !IsNil(o.IpPairingConfiguration) {
+		toSerialize["ipPairingConfiguration"] = o.IpPairingConfiguration
 	}
 	if !IsNil(o.NewRequestDurationConfiguration) {
 		toSerialize["newRequestDurationConfiguration"] = o.NewRequestDurationConfiguration

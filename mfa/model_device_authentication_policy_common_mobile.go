@@ -20,10 +20,9 @@ var _ MappedNullable = &DeviceAuthenticationPolicyCommonMobile{}
 // DeviceAuthenticationPolicyCommonMobile Mobile device authentication policy settings.
 type DeviceAuthenticationPolicyCommonMobile struct {
 	// A boolean that specifies whether the method is enabled or disabled in the policy.
-	Enabled                bool                                                          `json:"enabled"`
-	Otp                    DeviceAuthenticationPolicyCommonMobileOtp                     `json:"otp"`
-	Applications           []DeviceAuthenticationPolicyCommonMobileApplicationsInner     `json:"applications,omitempty"`
-	IpPairingConfiguration *DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration `json:"ipPairingConfiguration,omitempty"`
+	Enabled      bool                                                      `json:"enabled"`
+	Otp          DeviceAuthenticationPolicyCommonMobileOtp                 `json:"otp"`
+	Applications []DeviceAuthenticationPolicyCommonMobileApplicationsInner `json:"applications,omitempty"`
 	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 }
@@ -127,38 +126,6 @@ func (o *DeviceAuthenticationPolicyCommonMobile) SetApplications(v []DeviceAuthe
 	o.Applications = v
 }
 
-// GetIpPairingConfiguration returns the IpPairingConfiguration field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyCommonMobile) GetIpPairingConfiguration() DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration {
-	if o == nil || IsNil(o.IpPairingConfiguration) {
-		var ret DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration
-		return ret
-	}
-	return *o.IpPairingConfiguration
-}
-
-// GetIpPairingConfigurationOk returns a tuple with the IpPairingConfiguration field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyCommonMobile) GetIpPairingConfigurationOk() (*DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration, bool) {
-	if o == nil || IsNil(o.IpPairingConfiguration) {
-		return nil, false
-	}
-	return o.IpPairingConfiguration, true
-}
-
-// HasIpPairingConfiguration returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyCommonMobile) HasIpPairingConfiguration() bool {
-	if o != nil && !IsNil(o.IpPairingConfiguration) {
-		return true
-	}
-
-	return false
-}
-
-// SetIpPairingConfiguration gets a reference to the given DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration and assigns it to the IpPairingConfiguration field.
-func (o *DeviceAuthenticationPolicyCommonMobile) SetIpPairingConfiguration(v DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration) {
-	o.IpPairingConfiguration = &v
-}
-
 // GetPromptForNicknameOnPairing returns the PromptForNicknameOnPairing field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyCommonMobile) GetPromptForNicknameOnPairing() bool {
 	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
@@ -205,9 +172,6 @@ func (o DeviceAuthenticationPolicyCommonMobile) ToMap() (map[string]interface{},
 	toSerialize["otp"] = o.Otp
 	if !IsNil(o.Applications) {
 		toSerialize["applications"] = o.Applications
-	}
-	if !IsNil(o.IpPairingConfiguration) {
-		toSerialize["ipPairingConfiguration"] = o.IpPairingConfiguration
 	}
 	if !IsNil(o.PromptForNicknameOnPairing) {
 		toSerialize["promptForNicknameOnPairing"] = o.PromptForNicknameOnPairing

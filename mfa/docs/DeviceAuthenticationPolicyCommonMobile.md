@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | A boolean that specifies whether the method is enabled or disabled in the policy. | 
 **Otp** | [**DeviceAuthenticationPolicyCommonMobileOtp**](DeviceAuthenticationPolicyCommonMobileOtp.md) |  | 
 **Applications** | Pointer to [**[]DeviceAuthenticationPolicyCommonMobileApplicationsInner**](DeviceAuthenticationPolicyCommonMobileApplicationsInner.md) |  | [optional] 
-**IpPairingConfiguration** | Pointer to [**DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration**](DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration.md) |  | [optional] 
 **PromptForNicknameOnPairing** | Pointer to **bool** | Set to &#x60;true&#x60; if you want to allow users to provide nicknames for devices during pairing. | [optional] 
 
 ## Methods
@@ -93,31 +92,6 @@ SetApplications sets Applications field to given value.
 `func (o *DeviceAuthenticationPolicyCommonMobile) HasApplications() bool`
 
 HasApplications returns a boolean if a field has been set.
-
-### GetIpPairingConfiguration
-
-`func (o *DeviceAuthenticationPolicyCommonMobile) GetIpPairingConfiguration() DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration`
-
-GetIpPairingConfiguration returns the IpPairingConfiguration field if non-nil, zero value otherwise.
-
-### GetIpPairingConfigurationOk
-
-`func (o *DeviceAuthenticationPolicyCommonMobile) GetIpPairingConfigurationOk() (*DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration, bool)`
-
-GetIpPairingConfigurationOk returns a tuple with the IpPairingConfiguration field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpPairingConfiguration
-
-`func (o *DeviceAuthenticationPolicyCommonMobile) SetIpPairingConfiguration(v DeviceAuthenticationPolicyCommonMobileIpPairingConfiguration)`
-
-SetIpPairingConfiguration sets IpPairingConfiguration field to given value.
-
-### HasIpPairingConfiguration
-
-`func (o *DeviceAuthenticationPolicyCommonMobile) HasIpPairingConfiguration() bool`
-
-HasIpPairingConfiguration returns a boolean if a field has been set.
 
 ### GetPromptForNicknameOnPairing
 
