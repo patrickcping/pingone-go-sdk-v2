@@ -1,3 +1,9 @@
+# v0.64.0 (Unreleased)
+
+* **Note** Remove redundant data models.
+* **Enhancement** Re-aligned the `FormFieldQrCode` model to the API contract for DaVinci Forms.
+* **Enhancement** Added support for `FormFieldPolling`, `FormFieldFIDO2`, `FormFieldSingleCheckbox` and `FormFieldAgreement` data models for DaVinci Forms.
+
 # v0.63.0 (2025-12-11)
 
 * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)

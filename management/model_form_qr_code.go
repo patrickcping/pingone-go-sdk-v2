@@ -19,23 +19,20 @@ var _ MappedNullable = &FormQrCode{}
 
 // FormQrCode struct for FormQrCode
 type FormQrCode struct {
-	// A string that specifies an identifier for the field component.
-	Key        string                `json:"key"`
-	QrCodeType EnumFormQrCodeType    `json:"qrCodeType"`
-	Alignment  EnumFormItemAlignment `json:"alignment"`
-	// A boolean that specifies the border visibility.
-	ShowBorder *bool `json:"showBorder,omitempty"`
+	Alignment EnumFormItemAlignment `json:"alignment"`
+	Size      EnumFormItemSize      `json:"size"`
+	// A string that specifies the text label for fallback under the QR code.
+	FallbackText *string `json:"fallbackText,omitempty"`
 }
 
 // NewFormQrCode instantiates a new FormQrCode object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormQrCode(key string, qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment) *FormQrCode {
+func NewFormQrCode(alignment EnumFormItemAlignment, size EnumFormItemSize) *FormQrCode {
 	this := FormQrCode{}
-	this.Key = key
-	this.QrCodeType = qrCodeType
 	this.Alignment = alignment
+	this.Size = size
 	return &this
 }
 
@@ -45,54 +42,6 @@ func NewFormQrCode(key string, qrCodeType EnumFormQrCodeType, alignment EnumForm
 func NewFormQrCodeWithDefaults() *FormQrCode {
 	this := FormQrCode{}
 	return &this
-}
-
-// GetKey returns the Key field value
-func (o *FormQrCode) GetKey() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value
-// and a boolean to check if the value has been set.
-func (o *FormQrCode) GetKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Key, true
-}
-
-// SetKey sets field value
-func (o *FormQrCode) SetKey(v string) {
-	o.Key = v
-}
-
-// GetQrCodeType returns the QrCodeType field value
-func (o *FormQrCode) GetQrCodeType() EnumFormQrCodeType {
-	if o == nil {
-		var ret EnumFormQrCodeType
-		return ret
-	}
-
-	return o.QrCodeType
-}
-
-// GetQrCodeTypeOk returns a tuple with the QrCodeType field value
-// and a boolean to check if the value has been set.
-func (o *FormQrCode) GetQrCodeTypeOk() (*EnumFormQrCodeType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.QrCodeType, true
-}
-
-// SetQrCodeType sets field value
-func (o *FormQrCode) SetQrCodeType(v EnumFormQrCodeType) {
-	o.QrCodeType = v
 }
 
 // GetAlignment returns the Alignment field value
@@ -119,36 +68,60 @@ func (o *FormQrCode) SetAlignment(v EnumFormItemAlignment) {
 	o.Alignment = v
 }
 
-// GetShowBorder returns the ShowBorder field value if set, zero value otherwise.
-func (o *FormQrCode) GetShowBorder() bool {
-	if o == nil || IsNil(o.ShowBorder) {
-		var ret bool
+// GetSize returns the Size field value
+func (o *FormQrCode) GetSize() EnumFormItemSize {
+	if o == nil {
+		var ret EnumFormItemSize
 		return ret
 	}
-	return *o.ShowBorder
+
+	return o.Size
 }
 
-// GetShowBorderOk returns a tuple with the ShowBorder field value if set, nil otherwise
+// GetSizeOk returns a tuple with the Size field value
 // and a boolean to check if the value has been set.
-func (o *FormQrCode) GetShowBorderOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShowBorder) {
+func (o *FormQrCode) GetSizeOk() (*EnumFormItemSize, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShowBorder, true
+	return &o.Size, true
 }
 
-// HasShowBorder returns a boolean if a field has been set.
-func (o *FormQrCode) HasShowBorder() bool {
-	if o != nil && !IsNil(o.ShowBorder) {
+// SetSize sets field value
+func (o *FormQrCode) SetSize(v EnumFormItemSize) {
+	o.Size = v
+}
+
+// GetFallbackText returns the FallbackText field value if set, zero value otherwise.
+func (o *FormQrCode) GetFallbackText() string {
+	if o == nil || IsNil(o.FallbackText) {
+		var ret string
+		return ret
+	}
+	return *o.FallbackText
+}
+
+// GetFallbackTextOk returns a tuple with the FallbackText field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormQrCode) GetFallbackTextOk() (*string, bool) {
+	if o == nil || IsNil(o.FallbackText) {
+		return nil, false
+	}
+	return o.FallbackText, true
+}
+
+// HasFallbackText returns a boolean if a field has been set.
+func (o *FormQrCode) HasFallbackText() bool {
+	if o != nil && !IsNil(o.FallbackText) {
 		return true
 	}
 
 	return false
 }
 
-// SetShowBorder gets a reference to the given bool and assigns it to the ShowBorder field.
-func (o *FormQrCode) SetShowBorder(v bool) {
-	o.ShowBorder = &v
+// SetFallbackText gets a reference to the given string and assigns it to the FallbackText field.
+func (o *FormQrCode) SetFallbackText(v string) {
+	o.FallbackText = &v
 }
 
 func (o FormQrCode) MarshalJSON() ([]byte, error) {
@@ -161,11 +134,10 @@ func (o FormQrCode) MarshalJSON() ([]byte, error) {
 
 func (o FormQrCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
-	toSerialize["qrCodeType"] = o.QrCodeType
 	toSerialize["alignment"] = o.Alignment
-	if !IsNil(o.ShowBorder) {
-		toSerialize["showBorder"] = o.ShowBorder
+	toSerialize["size"] = o.Size
+	if !IsNil(o.FallbackText) {
+		toSerialize["fallbackText"] = o.FallbackText
 	}
 	return toSerialize, nil
 }

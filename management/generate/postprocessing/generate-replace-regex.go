@@ -163,6 +163,10 @@ var (
 	dst.FormFieldSocialLoginButton = nil
 	dst.FormFieldSubmitButton = nil
 	dst.FormFieldText = nil
+	dst.FormFieldPolling = nil
+    dst.FormFieldFIDO2 = nil
+    dst.FormFieldSingleCheckbox = nil
+    dst.FormFieldFormAgreement = nil
 
 	objType := common.GetType()
 
@@ -207,10 +211,6 @@ var (
 		if err := json.Unmarshal(data, &dst.FormFieldEmptyField); err != nil {
 			return err
 		}
-	case ENUMFORMFIELDTYPE_TEXTBLOB:
-		if err := json.Unmarshal(data, &dst.FormFieldSlateTextblob); err != nil {
-			return err
-		}
 	case ENUMFORMFIELDTYPE_SLATE_TEXTBLOB:
 		if err := json.Unmarshal(data, &dst.FormFieldSlateTextblob); err != nil {
 			return err
@@ -241,6 +241,22 @@ var (
 		}
 	case ENUMFORMFIELDTYPE_SOCIAL_LOGIN_BUTTON:
 		if err := json.Unmarshal(data, &dst.FormFieldSocialLoginButton); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_POLLING:
+		if err := json.Unmarshal(data, &dst.FormFieldPolling); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_FIDO2:
+		if err := json.Unmarshal(data, &dst.FormFieldFIDO2); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_SINGLE_CHECKBOX:
+		if err := json.Unmarshal(data, &dst.FormFieldSingleCheckbox); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_AGREEMENT:
+		if err := json.Unmarshal(data, &dst.FormFieldFormAgreement); err != nil {
 			return err
 		}
 	default:

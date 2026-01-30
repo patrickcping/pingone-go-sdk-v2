@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
+**Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetPosition sets Position field to given value.
 
+
+### GetVisibility
+
+`func (o *FormFieldCommon) GetVisibility() FormFieldCommonVisibility`
+
+GetVisibility returns the Visibility field if non-nil, zero value otherwise.
+
+### GetVisibilityOk
+
+`func (o *FormFieldCommon) GetVisibilityOk() (*FormFieldCommonVisibility, bool)`
+
+GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVisibility
+
+`func (o *FormFieldCommon) SetVisibility(v FormFieldCommonVisibility)`
+
+SetVisibility sets Visibility field to given value.
+
+### HasVisibility
+
+`func (o *FormFieldCommon) HasVisibility() bool`
+
+HasVisibility returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

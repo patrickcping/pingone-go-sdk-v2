@@ -19,8 +19,9 @@ var _ MappedNullable = &FormFieldSocialLoginButton{}
 
 // FormFieldSocialLoginButton struct for FormFieldSocialLoginButton
 type FormFieldSocialLoginButton struct {
-	Type     EnumFormFieldType       `json:"type"`
-	Position FormFieldCommonPosition `json:"position"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
 	// A string that specifies an identifier for the field component.
 	Key *string `json:"key,omitempty"`
 	// A string that specifies the social login button label.
@@ -105,6 +106,38 @@ func (o *FormFieldSocialLoginButton) GetPositionOk() (*FormFieldCommonPosition, 
 // SetPosition sets field value
 func (o *FormFieldSocialLoginButton) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
+}
+
+// GetVisibility returns the Visibility field value if set, zero value otherwise.
+func (o *FormFieldSocialLoginButton) GetVisibility() FormFieldCommonVisibility {
+	if o == nil || IsNil(o.Visibility) {
+		var ret FormFieldCommonVisibility
+		return ret
+	}
+	return *o.Visibility
+}
+
+// GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSocialLoginButton) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
+	if o == nil || IsNil(o.Visibility) {
+		return nil, false
+	}
+	return o.Visibility, true
+}
+
+// HasVisibility returns a boolean if a field has been set.
+func (o *FormFieldSocialLoginButton) HasVisibility() bool {
+	if o != nil && !IsNil(o.Visibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
+func (o *FormFieldSocialLoginButton) SetVisibility(v FormFieldCommonVisibility) {
+	o.Visibility = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -303,6 +336,9 @@ func (o FormFieldSocialLoginButton) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	if !IsNil(o.Visibility) {
+		toSerialize["visibility"] = o.Visibility
+	}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
