@@ -1,3 +1,7 @@
+# v0.64.0 (Unreleased)
+
+* **Enhancement** Added `AlphabetSequenceRule`, `NumberSequenceRule`, `ShiftedNumberRowSequenceRule`, `QwertySequenceRule` to the `PasswordPolicy` data model.  Removed `BypassPolicy`, `CurrentPassword`, `NewPassword` from the `PasswordPolicy` data model per API contract. [#502](https://github.com/patrickcping/pingone-go-sdk-v2/pull/502)
+
 # v0.63.0 (2025-12-11)
 
 * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)
