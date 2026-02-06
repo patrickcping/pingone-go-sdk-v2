@@ -5,9 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**BypassPolicy** | Pointer to **bool** | Determines whether the password policy for a user will be ignored. If this property is omitted from a CREATE Password Policy request, its value is set to false. | [optional] [default to false]
+**AlphabetSequenceRule** | Pointer to [**PasswordPolicyAlphabetSequenceRule**](PasswordPolicyAlphabetSequenceRule.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The date and time the resource was created (format ISO-8061). | [optional] [readonly] 
-**CurrentPassword** | Pointer to **string** | The current password to be verified before the new password is set. Required for self-change when the user already has a password (the user whose password is being changed is the same as the actor in the access token). | [optional] 
 **Default** | Pointer to **bool** | Indicates whether this password policy is enforced within the environment. When set to true, all other password policies are set to false. | [optional] 
 **Description** | Pointer to **string** | Specifies the brief description of the password policy. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -24,10 +23,12 @@ Name | Type | Description | Notes
 **MinComplexity** | Pointer to **int32** | The minimum complexity of the password based on the concept of password haystacks. The value is the number of days required to exhaust the entire search space during a brute force attack. This property is not enforced when not present. | [optional] 
 **MinUniqueCharacters** | Pointer to **int32** | The minimum number of unique characters required. This property is not enforced when not present. | [optional] 
 **Name** | **string** | The name of the password policy. This value must be unique within the environment. | 
-**NewPassword** | Pointer to **string** | The new password (must satisfy all requirements). | [optional] 
 **NotSimilarToCurrent** | **bool** | Set this to true to ensure that the proposed password is not too similar to the user&#39;s current password based on the Levenshtein distance algorithm. The value of this parameter is evaluated only for password change actions in which the user enters both the current and the new password. By design, PingOne does not know the user&#39;s current password. | 
+**NumberSequenceRule** | Pointer to [**PasswordPolicyNumberSequenceRule**](PasswordPolicyNumberSequenceRule.md) |  | [optional] 
+**ShiftedNumberRowSequenceRule** | Pointer to [**PasswordPolicyShiftedNumberRowSequenceRule**](PasswordPolicyShiftedNumberRowSequenceRule.md) |  | [optional] 
 **PopulationCount** | Pointer to **int32** | Returned in the response. The number of populations associated with the password policy. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **string** | The date and time the resource was last updated (format ISO-8061). | [optional] [readonly] 
+**QwertySequenceRule** | Pointer to [**PasswordPolicyQwertySequenceRule**](PasswordPolicyQwertySequenceRule.md) |  | [optional] 
 
 ## Methods
 
@@ -73,30 +74,30 @@ SetLinks sets Links field to given value.
 
 HasLinks returns a boolean if a field has been set.
 
-### GetBypassPolicy
+### GetAlphabetSequenceRule
 
-`func (o *PasswordPolicy) GetBypassPolicy() bool`
+`func (o *PasswordPolicy) GetAlphabetSequenceRule() PasswordPolicyAlphabetSequenceRule`
 
-GetBypassPolicy returns the BypassPolicy field if non-nil, zero value otherwise.
+GetAlphabetSequenceRule returns the AlphabetSequenceRule field if non-nil, zero value otherwise.
 
-### GetBypassPolicyOk
+### GetAlphabetSequenceRuleOk
 
-`func (o *PasswordPolicy) GetBypassPolicyOk() (*bool, bool)`
+`func (o *PasswordPolicy) GetAlphabetSequenceRuleOk() (*PasswordPolicyAlphabetSequenceRule, bool)`
 
-GetBypassPolicyOk returns a tuple with the BypassPolicy field if it's non-nil, zero value otherwise
+GetAlphabetSequenceRuleOk returns a tuple with the AlphabetSequenceRule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBypassPolicy
+### SetAlphabetSequenceRule
 
-`func (o *PasswordPolicy) SetBypassPolicy(v bool)`
+`func (o *PasswordPolicy) SetAlphabetSequenceRule(v PasswordPolicyAlphabetSequenceRule)`
 
-SetBypassPolicy sets BypassPolicy field to given value.
+SetAlphabetSequenceRule sets AlphabetSequenceRule field to given value.
 
-### HasBypassPolicy
+### HasAlphabetSequenceRule
 
-`func (o *PasswordPolicy) HasBypassPolicy() bool`
+`func (o *PasswordPolicy) HasAlphabetSequenceRule() bool`
 
-HasBypassPolicy returns a boolean if a field has been set.
+HasAlphabetSequenceRule returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -122,31 +123,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *PasswordPolicy) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
-### GetCurrentPassword
-
-`func (o *PasswordPolicy) GetCurrentPassword() string`
-
-GetCurrentPassword returns the CurrentPassword field if non-nil, zero value otherwise.
-
-### GetCurrentPasswordOk
-
-`func (o *PasswordPolicy) GetCurrentPasswordOk() (*string, bool)`
-
-GetCurrentPasswordOk returns a tuple with the CurrentPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrentPassword
-
-`func (o *PasswordPolicy) SetCurrentPassword(v string)`
-
-SetCurrentPassword sets CurrentPassword field to given value.
-
-### HasCurrentPassword
-
-`func (o *PasswordPolicy) HasCurrentPassword() bool`
-
-HasCurrentPassword returns a boolean if a field has been set.
 
 ### GetDefault
 
@@ -533,31 +509,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetNewPassword
-
-`func (o *PasswordPolicy) GetNewPassword() string`
-
-GetNewPassword returns the NewPassword field if non-nil, zero value otherwise.
-
-### GetNewPasswordOk
-
-`func (o *PasswordPolicy) GetNewPasswordOk() (*string, bool)`
-
-GetNewPasswordOk returns a tuple with the NewPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNewPassword
-
-`func (o *PasswordPolicy) SetNewPassword(v string)`
-
-SetNewPassword sets NewPassword field to given value.
-
-### HasNewPassword
-
-`func (o *PasswordPolicy) HasNewPassword() bool`
-
-HasNewPassword returns a boolean if a field has been set.
-
 ### GetNotSimilarToCurrent
 
 `func (o *PasswordPolicy) GetNotSimilarToCurrent() bool`
@@ -577,6 +528,56 @@ and a boolean to check if the value has been set.
 
 SetNotSimilarToCurrent sets NotSimilarToCurrent field to given value.
 
+
+### GetNumberSequenceRule
+
+`func (o *PasswordPolicy) GetNumberSequenceRule() PasswordPolicyNumberSequenceRule`
+
+GetNumberSequenceRule returns the NumberSequenceRule field if non-nil, zero value otherwise.
+
+### GetNumberSequenceRuleOk
+
+`func (o *PasswordPolicy) GetNumberSequenceRuleOk() (*PasswordPolicyNumberSequenceRule, bool)`
+
+GetNumberSequenceRuleOk returns a tuple with the NumberSequenceRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumberSequenceRule
+
+`func (o *PasswordPolicy) SetNumberSequenceRule(v PasswordPolicyNumberSequenceRule)`
+
+SetNumberSequenceRule sets NumberSequenceRule field to given value.
+
+### HasNumberSequenceRule
+
+`func (o *PasswordPolicy) HasNumberSequenceRule() bool`
+
+HasNumberSequenceRule returns a boolean if a field has been set.
+
+### GetShiftedNumberRowSequenceRule
+
+`func (o *PasswordPolicy) GetShiftedNumberRowSequenceRule() PasswordPolicyShiftedNumberRowSequenceRule`
+
+GetShiftedNumberRowSequenceRule returns the ShiftedNumberRowSequenceRule field if non-nil, zero value otherwise.
+
+### GetShiftedNumberRowSequenceRuleOk
+
+`func (o *PasswordPolicy) GetShiftedNumberRowSequenceRuleOk() (*PasswordPolicyShiftedNumberRowSequenceRule, bool)`
+
+GetShiftedNumberRowSequenceRuleOk returns a tuple with the ShiftedNumberRowSequenceRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShiftedNumberRowSequenceRule
+
+`func (o *PasswordPolicy) SetShiftedNumberRowSequenceRule(v PasswordPolicyShiftedNumberRowSequenceRule)`
+
+SetShiftedNumberRowSequenceRule sets ShiftedNumberRowSequenceRule field to given value.
+
+### HasShiftedNumberRowSequenceRule
+
+`func (o *PasswordPolicy) HasShiftedNumberRowSequenceRule() bool`
+
+HasShiftedNumberRowSequenceRule returns a boolean if a field has been set.
 
 ### GetPopulationCount
 
@@ -627,6 +628,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *PasswordPolicy) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetQwertySequenceRule
+
+`func (o *PasswordPolicy) GetQwertySequenceRule() PasswordPolicyQwertySequenceRule`
+
+GetQwertySequenceRule returns the QwertySequenceRule field if non-nil, zero value otherwise.
+
+### GetQwertySequenceRuleOk
+
+`func (o *PasswordPolicy) GetQwertySequenceRuleOk() (*PasswordPolicyQwertySequenceRule, bool)`
+
+GetQwertySequenceRuleOk returns a tuple with the QwertySequenceRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQwertySequenceRule
+
+`func (o *PasswordPolicy) SetQwertySequenceRule(v PasswordPolicyQwertySequenceRule)`
+
+SetQwertySequenceRule sets QwertySequenceRule field to given value.
+
+### HasQwertySequenceRule
+
+`func (o *PasswordPolicy) HasQwertySequenceRule() bool`
+
+HasQwertySequenceRule returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
