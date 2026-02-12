@@ -219,6 +219,14 @@ components:
       type: string
       enum: [SMALL, MEDIUM, LARGE]
       description: A string that specifies the size of the item.
+    EnumFormItemIconType:
+      type: string
+      enum: [NONE, AGREEMENT, ALERT, CALL, FAILURE, FINGERPRINT, LINK, MAIL, MOBILE_PHONE, PASSKEY, SUCCESS, QR_CODE, TEXT_MESSAGE, USB_KEY]
+      description: A string that specifies the icon type.
+    EnumFormItemIconSize:
+      type: string
+      enum: [SMALL, MEDIUM, LARGE]
+      description: A string that specifies the icon size.
     EnumFormAgreementInputType:
       type: string
       description: A string that specifies the type of field. Value should be set to READ_ONLY_TEXT.
@@ -2688,56 +2696,65 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        id:
+        created:
           type: string
+          format: date-time
           readOnly: true
-          description: A string that specifies the resource’s unique identifier.
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        name:
-          type: string
-          description: A string that specifies the form name, which must be provided and must be unique within an environment.
-        description:
-          type: string
-          description: A string that specifies the description of the form.
+          description: The date the resouce was created (ISO-8061 format).
         category:
           $ref: '#/components/schemas/EnumFormCategory'
-        components:
-          $ref: '#/components/schemas/FormComponents'
         cols:
           type: integer
           description: An integer that specifies the number of columns in the form (min = 1; max = 4).
           minimum: 1
           maximum: 4
-        markOptional:
-          type: boolean
-          description: A boolean that specifies whether optional fields are highlighted in the rendered form.
-        markRequired:
-          type: boolean
-          description: A boolean that specifies whether required fields are highlighted in the rendered form.
-        translationMethod:
-          $ref: '#/components/schemas/EnumFormTranslationMethod'
+        components:
+          $ref: '#/components/schemas/FormComponents'
+        description:
+          type: string
+          description: A string that specifies the description of the form.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         fieldTypes:
           type: array
           readOnly: true
           description: A read-only object that specifies the list of the FormField types in the form.
           items:
             $ref: '#/components/schemas/EnumFormFieldType'
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
         languageBundle:
           type: object
           description: An object that provides a map of i18n keys to their translations. This object includes both the keys and their default translations. The PingOne language management service finds this object, and creates the new keys for translation for this form.
           additionalProperties:
             type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          description: The date the resouce was created (ISO-8061 format).
+        markOptional:
+          type: boolean
+          description: A boolean that specifies whether optional fields are highlighted in the rendered form.
+        markRequired:
+          type: boolean
+          description: A boolean that specifies whether required fields are highlighted in the rendered form.
         modified:
           type: string
           format: date-time
           readOnly: true
           description: The date the resouce was modified (ISO-8061 format).
+        name:
+          type: string
+          description: A string that specifies the form name, which must be provided and must be unique within an environment.
+        passwordAutoCompleteEnabled:
+          type: boolean
+          description: A boolean that specifies whether the password auto-complete feature is enabled.
+        showPasswordRequirements:
+          type: boolean
+          description: A boolean that specifies whether to return the password requirements during a DaVinci flow. A form with a new password field does not show the password policy information automatically in the response. To return the password policy information, the value of this property must be set to true.
+        textAutoCompleteEnabled:
+          type: boolean
+          description: A boolean that specifies whether the text auto-complete feature is enabled.
+        translationMethod:
+          $ref: '#/components/schemas/EnumFormTranslationMethod'
       required:
         - category
         - components
@@ -2830,7 +2847,6 @@ components:
         - $ref: '#/components/schemas/FormFieldCombobox'
         - $ref: '#/components/schemas/FormFieldDivider'
         - $ref: '#/components/schemas/FormFieldEmptyField'
-        - $ref: '#/components/schemas/FormFieldTextblob'
         - $ref: '#/components/schemas/FormFieldSlateTextblob'
         - $ref: '#/components/schemas/FormFieldSubmitButton'
         - $ref: '#/components/schemas/FormFieldErrorDisplay'
@@ -3024,14 +3040,11 @@ components:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormItem'
-    FormFieldTextblob:
-      allOf:
-        - $ref: '#/components/schemas/FormFieldCommon'
-        - $ref: '#/components/schemas/FormItem'
     FormFieldSlateTextblob:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormItem'
+        - $ref: '#/components/schemas/FormItemWithIcon'
     FormFieldSubmitButton:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -3043,7 +3056,7 @@ components:
     FormFieldFlowLink:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
-        - $ref: '#/components/schemas/FormFlowLink'
+        - $ref: '#/components/schemas/FormLinkCustom'
     FormFieldFlowButton:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -3082,11 +3095,40 @@ components:
           type: string
           description: A string that specifies the button label.
         styles:
-          $ref: '#/components/schemas/FormStyles'
+          width:
+            type: integer
+            description: An integer that specifies the button width. Set as a percentage.
+          widthUnit:
+            $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+          alignment:
+            $ref: '#/components/schemas/EnumFormItemAlignment'
+          padding:
+            $ref: '#/components/schemas/FormStylesPadding'
+          backgroundColor:
+            type: string
+            description: A string that specifies the button background color. The value must be a valid hexadecimal color.
+          textColor:
+            type: string
+            description: A string that specifies the button text color. The value must be a valid hexadecimal color.
+          borderColor:
+            type: string
+            description: A string that specifies the button border color. The value must be a valid hexadecimal color.
+          enabled:
+            type: boolean
+            description: A boolean that specifies whether the button is enabled.
+          displayDefaultThemeButtonBackgroundColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s background color.
+          displayDefaultThemeButtonBorderColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s border color.
+          displayDefaultThemeButtonTextColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s text color.
       required:
         - key
         - label
-    FormFlowLink:
+    FormLinkCustom:
       type: object
       properties:
         key:
@@ -3108,6 +3150,9 @@ components:
               description: A boolean that specifies whether the link is enabled.
             padding:
               $ref: '#/components/schemas/FormStylesPadding'
+            displayDefaultThemeLinkColor:
+              type: boolean
+              description: A boolean that specifies whether the default theme’s link color is enabled.
       required:
         - key
         - label
@@ -3117,6 +3162,20 @@ components:
         content:
           type: string
           description: A string that specifies the field content.
+    FormItemWithIcon:
+      type: object
+      properties:
+        icon:
+          type: object
+          description: An object that specifies the icon for the field.
+          properties:
+            type:
+              $ref: '#/components/schemas/EnumFormItemIconType'
+            size:
+              $ref: '#/components/schemas/EnumFormItemIconSize'
+          required:
+            - type
+            - size
     FormFIDO2:
       type: object
       properties:
@@ -3228,14 +3287,41 @@ components:
     FormSocialLoginButton:
       type: object
       properties:
-        key:
-          type: string
-          description: A string that specifies an identifier for the field component.
         label:
           type: string
           description: A string that specifies the social login button label.
+        iconSrc:
+          type: string
+          description: A string that specifies the external edentity provider’s image icon URL.
+        width:
         styles:
-          $ref: '#/components/schemas/FormStyles'
+          alignment:
+            $ref: '#/components/schemas/EnumFormItemAlignment'
+          textColor:
+            type: string
+            description: A string that specifies the button text color. The value must be a valid hexadecimal color.
+          borderColor:
+            type: string
+            description: A string that specifies the button border color. The value must be a valid hexadecimal color.
+          enabled:
+            type: boolean
+            description: A boolean that specifies whether the button is enabled.
+          padding:
+            $ref: '#/components/schemas/FormStylesPadding'
+          width:
+            type: integer
+            description: An integer that specifies the button width. Set as a percentage.
+          widthUnit:
+            $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+          displayDefaultThemeButtonBackgroundColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s background color.
+          displayDefaultThemeButtonBorderColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s border color.
+          displayDefaultThemeButtonTextColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s text color.
         idpType:
           $ref: '#/components/schemas/EnumFormSocialLoginIdpType'
         idpName:
@@ -3263,7 +3349,36 @@ components:
           type: string
           description: A string that specifies the button label.
         styles:
-          $ref: '#/components/schemas/FormStyles'
+          width:
+            type: integer
+            description: An integer that specifies the button width. Set as a percentage.
+          widthUnit:
+            $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+          alignment:
+            $ref: '#/components/schemas/EnumFormItemAlignment'
+          padding:
+            $ref: '#/components/schemas/FormStylesPadding'
+          backgroundColor:
+            type: string
+            description: A string that specifies the button background color. The value must be a valid hexadecimal color.
+          textColor:
+            type: string
+            description: A string that specifies the button text color. The value must be a valid hexadecimal color.
+          borderColor:
+            type: string
+            description: A string that specifies the button border color. The value must be a valid hexadecimal color.
+          enabled:
+            type: boolean
+            description: A boolean that specifies whether the button is enabled.
+          displayDefaultThemeButtonBackgroundColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s background color.
+          displayDefaultThemeButtonBorderColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s border color.
+          displayDefaultThemeButtonTextColor:
+            type: boolean
+            description: A boolean that specifies whether the button uses the default theme’s text color.
       required:
         - label
     FormQrCode:
