@@ -19,8 +19,9 @@ var _ MappedNullable = &FormFieldCombobox{}
 
 // FormFieldCombobox struct for FormFieldCombobox
 type FormFieldCombobox struct {
-	Type     EnumFormFieldType       `json:"type"`
-	Position FormFieldCommonPosition `json:"position"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
 	// A boolean that specifies whether the linked directory attribute is disabled.
 	AttributeDisabled *bool `json:"attributeDisabled,omitempty"`
 	// A string that specifies an identifier for the field component.
@@ -114,6 +115,38 @@ func (o *FormFieldCombobox) GetPositionOk() (*FormFieldCommonPosition, bool) {
 // SetPosition sets field value
 func (o *FormFieldCombobox) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
+}
+
+// GetVisibility returns the Visibility field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetVisibility() FormFieldCommonVisibility {
+	if o == nil || IsNil(o.Visibility) {
+		var ret FormFieldCommonVisibility
+		return ret
+	}
+	return *o.Visibility
+}
+
+// GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
+	if o == nil || IsNil(o.Visibility) {
+		return nil, false
+	}
+	return o.Visibility, true
+}
+
+// HasVisibility returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasVisibility() bool {
+	if o != nil && !IsNil(o.Visibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
+func (o *FormFieldCombobox) SetVisibility(v FormFieldCommonVisibility) {
+	o.Visibility = &v
 }
 
 // GetAttributeDisabled returns the AttributeDisabled field value if set, zero value otherwise.
@@ -520,6 +553,9 @@ func (o FormFieldCombobox) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	if !IsNil(o.Visibility) {
+		toSerialize["visibility"] = o.Visibility
+	}
 	if !IsNil(o.AttributeDisabled) {
 		toSerialize["attributeDisabled"] = o.AttributeDisabled
 	}

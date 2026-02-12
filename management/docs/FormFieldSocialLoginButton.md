@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
+**Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **Key** | Pointer to **string** | A string that specifies an identifier for the field component. | [optional] 
 **Label** | **string** | A string that specifies the social login button label. | 
 **Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
@@ -72,6 +73,31 @@ and a boolean to check if the value has been set.
 
 SetPosition sets Position field to given value.
 
+
+### GetVisibility
+
+`func (o *FormFieldSocialLoginButton) GetVisibility() FormFieldCommonVisibility`
+
+GetVisibility returns the Visibility field if non-nil, zero value otherwise.
+
+### GetVisibilityOk
+
+`func (o *FormFieldSocialLoginButton) GetVisibilityOk() (*FormFieldCommonVisibility, bool)`
+
+GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVisibility
+
+`func (o *FormFieldSocialLoginButton) SetVisibility(v FormFieldCommonVisibility)`
+
+SetVisibility sets Visibility field to given value.
+
+### HasVisibility
+
+`func (o *FormFieldSocialLoginButton) HasVisibility() bool`
+
+HasVisibility returns a boolean if a field has been set.
 
 ### GetKey
 

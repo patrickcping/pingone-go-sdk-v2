@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
-**Key** | **string** | A string that specifies an identifier for the field component. | 
-**QrCodeType** | [**EnumFormQrCodeType**](EnumFormQrCodeType.md) |  | 
+**Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
-**ShowBorder** | Pointer to **bool** | A boolean that specifies the border visibility. | [optional] 
+**Size** | [**EnumFormItemSize**](EnumFormItemSize.md) |  | 
+**FallbackText** | Pointer to **string** | A string that specifies the text label for fallback under the QR code. | [optional] 
 
 ## Methods
 
 ### NewFormFieldQrCode
 
-`func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment, ) *FormFieldQrCode`
+`func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, alignment EnumFormItemAlignment, size EnumFormItemSize, ) *FormFieldQrCode`
 
 NewFormFieldQrCode instantiates a new FormFieldQrCode object
 This constructor will assign default values to properties that have it defined,
@@ -70,45 +70,30 @@ and a boolean to check if the value has been set.
 SetPosition sets Position field to given value.
 
 
-### GetKey
+### GetVisibility
 
-`func (o *FormFieldQrCode) GetKey() string`
+`func (o *FormFieldQrCode) GetVisibility() FormFieldCommonVisibility`
 
-GetKey returns the Key field if non-nil, zero value otherwise.
+GetVisibility returns the Visibility field if non-nil, zero value otherwise.
 
-### GetKeyOk
+### GetVisibilityOk
 
-`func (o *FormFieldQrCode) GetKeyOk() (*string, bool)`
+`func (o *FormFieldQrCode) GetVisibilityOk() (*FormFieldCommonVisibility, bool)`
 
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKey
+### SetVisibility
 
-`func (o *FormFieldQrCode) SetKey(v string)`
+`func (o *FormFieldQrCode) SetVisibility(v FormFieldCommonVisibility)`
 
-SetKey sets Key field to given value.
+SetVisibility sets Visibility field to given value.
 
+### HasVisibility
 
-### GetQrCodeType
+`func (o *FormFieldQrCode) HasVisibility() bool`
 
-`func (o *FormFieldQrCode) GetQrCodeType() EnumFormQrCodeType`
-
-GetQrCodeType returns the QrCodeType field if non-nil, zero value otherwise.
-
-### GetQrCodeTypeOk
-
-`func (o *FormFieldQrCode) GetQrCodeTypeOk() (*EnumFormQrCodeType, bool)`
-
-GetQrCodeTypeOk returns a tuple with the QrCodeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQrCodeType
-
-`func (o *FormFieldQrCode) SetQrCodeType(v EnumFormQrCodeType)`
-
-SetQrCodeType sets QrCodeType field to given value.
-
+HasVisibility returns a boolean if a field has been set.
 
 ### GetAlignment
 
@@ -130,30 +115,50 @@ and a boolean to check if the value has been set.
 SetAlignment sets Alignment field to given value.
 
 
-### GetShowBorder
+### GetSize
 
-`func (o *FormFieldQrCode) GetShowBorder() bool`
+`func (o *FormFieldQrCode) GetSize() EnumFormItemSize`
 
-GetShowBorder returns the ShowBorder field if non-nil, zero value otherwise.
+GetSize returns the Size field if non-nil, zero value otherwise.
 
-### GetShowBorderOk
+### GetSizeOk
 
-`func (o *FormFieldQrCode) GetShowBorderOk() (*bool, bool)`
+`func (o *FormFieldQrCode) GetSizeOk() (*EnumFormItemSize, bool)`
 
-GetShowBorderOk returns a tuple with the ShowBorder field if it's non-nil, zero value otherwise
+GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetShowBorder
+### SetSize
 
-`func (o *FormFieldQrCode) SetShowBorder(v bool)`
+`func (o *FormFieldQrCode) SetSize(v EnumFormItemSize)`
 
-SetShowBorder sets ShowBorder field to given value.
+SetSize sets Size field to given value.
 
-### HasShowBorder
 
-`func (o *FormFieldQrCode) HasShowBorder() bool`
+### GetFallbackText
 
-HasShowBorder returns a boolean if a field has been set.
+`func (o *FormFieldQrCode) GetFallbackText() string`
+
+GetFallbackText returns the FallbackText field if non-nil, zero value otherwise.
+
+### GetFallbackTextOk
+
+`func (o *FormFieldQrCode) GetFallbackTextOk() (*string, bool)`
+
+GetFallbackTextOk returns a tuple with the FallbackText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFallbackText
+
+`func (o *FormFieldQrCode) SetFallbackText(v string)`
+
+SetFallbackText sets FallbackText field to given value.
+
+### HasFallbackText
+
+`func (o *FormFieldQrCode) HasFallbackText() bool`
+
+HasFallbackText returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

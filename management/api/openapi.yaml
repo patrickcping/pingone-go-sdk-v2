@@ -37354,6 +37354,32 @@ components:
       - CENTER
       - RIGHT
       type: string
+    EnumFormItemSize:
+      description: A string that specifies the size of the item.
+      enum:
+      - SMALL
+      - MEDIUM
+      - LARGE
+      type: string
+    EnumFormAgreementInputType:
+      description: A string that specifies the type of field. Value should be set
+        to READ_ONLY_TEXT.
+      enum:
+      - READ_ONLY_TEXT
+      type: string
+    EnumFormSingleCheckboxInputType:
+      description: A string that specifies the type of field. Value should be set
+        to BOOLEAN.
+      enum:
+      - BOOLEAN
+      type: string
+    EnumFormSingleCheckboxAppearance:
+      description: A string that specifies the checkbox appearance. Options are CHECKBOX
+        and SWITCH.
+      enum:
+      - CHECKBOX
+      - SWITCH
+      type: string
     EnumFormCategory:
       description: A string that specifies the type of form. The `CUSTOM` form type
         allows the form to be built with fields that do not map specifically to the
@@ -37387,21 +37413,42 @@ components:
       - TEXT
       - PASSWORD
       - PASSWORD_VERIFY
+      - PHONE_NUMBER
       - RADIO
       - CHECKBOX
       - DROPDOWN
       - COMBOBOX
       - DIVIDER
       - EMPTY_FIELD
-      - TEXTBLOB
       - SLATE_TEXTBLOB
       - SUBMIT_BUTTON
       - ERROR_DISPLAY
       - FLOW_LINK
       - FLOW_BUTTON
+      - SOCIAL_LOGIN_BUTTON
       - RECAPTCHA_V2
       - QR_CODE
-      - SOCIAL_LOGIN_BUTTON
+      - DEVICE_ENROLLMENT
+      - DEVICE_REGISTRATION
+      - DEVICE_AUTHENTICATION
+      - POLLING
+      - FIDO2
+      - SINGLE_CHECKBOX
+      - AGREEMENT
+      type: string
+    EnumFormFieldVisibility:
+      description: A string that specifies the visibility behavior for the field.
+      enum:
+      - ALWAYS_VISIBLE
+      - SHOW_BY_DEFAULT
+      - HIDE_BY_DEFAULT
+      type: string
+    EnumFormPollingAppearance:
+      description: A string that specifies the polling activity indicator appearance.
+      enum:
+      - NONE
+      - DOTS
+      - SPINNER
       type: string
     EnumFormRecaptchaV2Size:
       description: A string that specifies the size of the reCAPTCHA widget.
@@ -37414,6 +37461,18 @@ components:
       enum:
       - LIGHT
       - DARK
+      type: string
+    EnumFormFIDO2Trigger:
+      description: A string that specifies the FIDO2 UI trigger type.
+      enum:
+      - BUTTON
+      - AUTOMATIC
+      type: string
+    EnumFormFIDO2Action:
+      description: A string that specifies the FIDO2 action.
+      enum:
+      - REGISTER
+      - AUTHENTICATE
       type: string
     EnumFormSocialLoginIdpType:
       description: A string that specifies the external identity provider type.
@@ -37445,11 +37504,6 @@ components:
       - TRANSLATE
       - DEFAULT_VALUE
       - KEY
-      type: string
-    EnumFormQrCodeType:
-      description: A string that specifies the QR Code type.
-      enum:
-      - MFA_AUTH
       type: string
     EnumFlowPolicyTriggerType:
       description: An enum string that specifies the trigger type associated with
@@ -42216,6 +42270,10 @@ components:
           RECAPTCHA_V2: '#/components/schemas/FormFieldRecaptchaV2'
           QR_CODE: '#/components/schemas/FormFieldQrCode'
           SOCIAL_LOGIN_BUTTON: '#/components/schemas/FormFieldSocialLoginButton'
+          POLLING: '#/components/schemas/FormFieldPolling'
+          FIDO2: '#/components/schemas/FormFieldFIDO2'
+          SINGLE_CHECKBOX: '#/components/schemas/FormFieldSingleCheckbox'
+          AGREEMENT: '#/components/schemas/FormFieldFormAgreement'
         propertyName: type
       oneOf:
       - $ref: '#/components/schemas/FormFieldText'
@@ -42236,12 +42294,18 @@ components:
       - $ref: '#/components/schemas/FormFieldRecaptchaV2'
       - $ref: '#/components/schemas/FormFieldQrCode'
       - $ref: '#/components/schemas/FormFieldSocialLoginButton'
+      - $ref: '#/components/schemas/FormFieldPolling'
+      - $ref: '#/components/schemas/FormFieldFIDO2'
+      - $ref: '#/components/schemas/FormFieldSingleCheckbox'
+      - $ref: '#/components/schemas/FormFieldFormAgreement'
     FormFieldCommon:
       properties:
         type:
           $ref: '#/components/schemas/EnumFormFieldType'
         position:
           $ref: '#/components/schemas/FormFieldCommon_position'
+        visibility:
+          $ref: '#/components/schemas/FormFieldCommon_visibility'
       required:
       - position
       - type
@@ -42372,6 +42436,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormItem'
+    FormFieldPolling:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormPolling'
     FormFieldEmptyField:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -42408,6 +42476,18 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormQrCode'
+    FormFieldFIDO2:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormFIDO2'
+    FormFieldSingleCheckbox:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormSingleCheckbox'
+    FormFieldFormAgreement:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormAgreement'
     FormFieldSocialLoginButton:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -42445,6 +42525,57 @@ components:
         content:
           description: A string that specifies the field content.
           type: string
+      type: object
+    FormFIDO2:
+      properties:
+        trigger:
+          $ref: '#/components/schemas/EnumFormFIDO2Trigger'
+        action:
+          $ref: '#/components/schemas/EnumFormFIDO2Action'
+        label:
+          description: A string that specifies the text label for the FIDO2 button.
+          type: string
+      required:
+      - action
+      - label
+      - trigger
+      type: object
+    FormPolling:
+      properties:
+        pollingAppearance:
+          $ref: '#/components/schemas/EnumFormPollingAppearance'
+        size:
+          $ref: '#/components/schemas/EnumFormItemSize'
+      required:
+      - pollingAppearance
+      - size
+      type: object
+    FormSingleCheckbox:
+      properties:
+        appearance:
+          $ref: '#/components/schemas/EnumFormSingleCheckboxAppearance'
+        errorMessage:
+          description: A string that specifies the message to display if validation
+            fails.
+          type: string
+        inputType:
+          $ref: '#/components/schemas/EnumFormSingleCheckboxInputType'
+      required:
+      - appearance
+      - inputType
+      type: object
+    FormAgreement:
+      properties:
+        inputType:
+          $ref: '#/components/schemas/EnumFormAgreementInputType'
+        titleEnabled:
+          description: Specifies whether the title is enabled.
+          type: boolean
+        agreement:
+          $ref: '#/components/schemas/FormAgreement_agreement'
+      required:
+      - inputType
+      - titleEnabled
       type: object
     FormRecaptchaV2:
       properties:
@@ -42543,20 +42674,17 @@ components:
       type: object
     FormQrCode:
       properties:
-        key:
-          description: A string that specifies an identifier for the field component.
-          type: string
-        qrCodeType:
-          $ref: '#/components/schemas/EnumFormQrCodeType'
         alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
-        showBorder:
-          description: A boolean that specifies the border visibility.
-          type: boolean
+        size:
+          $ref: '#/components/schemas/EnumFormItemSize'
+        fallbackText:
+          description: A string that specifies the text label for fallback under the
+            QR code.
+          type: string
       required:
       - alignment
-      - key
-      - qrCodeType
+      - size
       type: object
     Gateway:
       properties:
@@ -50525,6 +50653,18 @@ components:
       - col
       - row
       type: object
+    FormFieldCommon_visibility:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumFormFieldVisibility'
+        key:
+          description: "A non-unique string associated with the field when visibility\
+            \ is evaluated by DaVinci at runtime. If the `type` property is set to\
+            \ `SHOW_BY_DEFAULT` or `HIDE_BY_DEFAULT`, then this property is required."
+          type: string
+      required:
+      - type
+      type: object
     FormFlowLink_styles:
       properties:
         alignment:
@@ -50538,6 +50678,17 @@ components:
           type: boolean
         padding:
           $ref: '#/components/schemas/FormStylesPadding'
+      type: object
+    FormAgreement_agreement:
+      properties:
+        id:
+          description: An identifier that specifies the ID of the agreement.
+          format: uuid
+          type: string
+        useDynamicAgreement:
+          description: An agreement option that specifies whether to use the agreement
+            identified in the DaVinci form node.
+          type: boolean
       type: object
     Gateway_supportedVersions_inner:
       properties:

@@ -4,16 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** | A string that specifies an identifier for the field component. | 
-**QrCodeType** | [**EnumFormQrCodeType**](EnumFormQrCodeType.md) |  | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
-**ShowBorder** | Pointer to **bool** | A boolean that specifies the border visibility. | [optional] 
+**Size** | [**EnumFormItemSize**](EnumFormItemSize.md) |  | 
+**FallbackText** | Pointer to **string** | A string that specifies the text label for fallback under the QR code. | [optional] 
 
 ## Methods
 
 ### NewFormQrCode
 
-`func NewFormQrCode(key string, qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment, ) *FormQrCode`
+`func NewFormQrCode(alignment EnumFormItemAlignment, size EnumFormItemSize, ) *FormQrCode`
 
 NewFormQrCode instantiates a new FormQrCode object
 This constructor will assign default values to properties that have it defined,
@@ -27,46 +26,6 @@ will change when the set of required properties is changed
 NewFormQrCodeWithDefaults instantiates a new FormQrCode object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetKey
-
-`func (o *FormQrCode) GetKey() string`
-
-GetKey returns the Key field if non-nil, zero value otherwise.
-
-### GetKeyOk
-
-`func (o *FormQrCode) GetKeyOk() (*string, bool)`
-
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKey
-
-`func (o *FormQrCode) SetKey(v string)`
-
-SetKey sets Key field to given value.
-
-
-### GetQrCodeType
-
-`func (o *FormQrCode) GetQrCodeType() EnumFormQrCodeType`
-
-GetQrCodeType returns the QrCodeType field if non-nil, zero value otherwise.
-
-### GetQrCodeTypeOk
-
-`func (o *FormQrCode) GetQrCodeTypeOk() (*EnumFormQrCodeType, bool)`
-
-GetQrCodeTypeOk returns a tuple with the QrCodeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQrCodeType
-
-`func (o *FormQrCode) SetQrCodeType(v EnumFormQrCodeType)`
-
-SetQrCodeType sets QrCodeType field to given value.
-
 
 ### GetAlignment
 
@@ -88,30 +47,50 @@ and a boolean to check if the value has been set.
 SetAlignment sets Alignment field to given value.
 
 
-### GetShowBorder
+### GetSize
 
-`func (o *FormQrCode) GetShowBorder() bool`
+`func (o *FormQrCode) GetSize() EnumFormItemSize`
 
-GetShowBorder returns the ShowBorder field if non-nil, zero value otherwise.
+GetSize returns the Size field if non-nil, zero value otherwise.
 
-### GetShowBorderOk
+### GetSizeOk
 
-`func (o *FormQrCode) GetShowBorderOk() (*bool, bool)`
+`func (o *FormQrCode) GetSizeOk() (*EnumFormItemSize, bool)`
 
-GetShowBorderOk returns a tuple with the ShowBorder field if it's non-nil, zero value otherwise
+GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetShowBorder
+### SetSize
 
-`func (o *FormQrCode) SetShowBorder(v bool)`
+`func (o *FormQrCode) SetSize(v EnumFormItemSize)`
 
-SetShowBorder sets ShowBorder field to given value.
+SetSize sets Size field to given value.
 
-### HasShowBorder
 
-`func (o *FormQrCode) HasShowBorder() bool`
+### GetFallbackText
 
-HasShowBorder returns a boolean if a field has been set.
+`func (o *FormQrCode) GetFallbackText() string`
+
+GetFallbackText returns the FallbackText field if non-nil, zero value otherwise.
+
+### GetFallbackTextOk
+
+`func (o *FormQrCode) GetFallbackTextOk() (*string, bool)`
+
+GetFallbackTextOk returns a tuple with the FallbackText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFallbackText
+
+`func (o *FormQrCode) SetFallbackText(v string)`
+
+SetFallbackText sets FallbackText field to given value.
+
+### HasFallbackText
+
+`func (o *FormQrCode) HasFallbackText() bool`
+
+HasFallbackText returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

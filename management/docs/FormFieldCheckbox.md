@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
+**Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **AttributeDisabled** | Pointer to **bool** | A boolean that specifies whether the linked directory attribute is disabled. | [optional] [readonly] 
 **Key** | **string** | A string that specifies an identifier for the field component. | 
 **Label** | **string** | A string of escaped JSON that is designed to store a series of text and translatable keys. | 
@@ -78,6 +79,31 @@ and a boolean to check if the value has been set.
 
 SetPosition sets Position field to given value.
 
+
+### GetVisibility
+
+`func (o *FormFieldCheckbox) GetVisibility() FormFieldCommonVisibility`
+
+GetVisibility returns the Visibility field if non-nil, zero value otherwise.
+
+### GetVisibilityOk
+
+`func (o *FormFieldCheckbox) GetVisibilityOk() (*FormFieldCommonVisibility, bool)`
+
+GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVisibility
+
+`func (o *FormFieldCheckbox) SetVisibility(v FormFieldCommonVisibility)`
+
+SetVisibility sets Visibility field to given value.
+
+### HasVisibility
+
+`func (o *FormFieldCheckbox) HasVisibility() bool`
+
+HasVisibility returns a boolean if a field has been set.
 
 ### GetAttributeDisabled
 
