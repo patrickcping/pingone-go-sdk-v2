@@ -93,8 +93,9 @@ components:
       description: A string that defines the verification comparison threshold. Options are `LOW`, `MEDIUM` and `HIGH`.      
     EnumVerify:
       type: string
-      enum: [REQUIRED, OPTIONAL, DISABLED]
-      description: A string that defines the verification check requirements. Options are `REQUIRED`, `OPTIONAL` and `DISABLED`.
+      enum: [REQUIRED, DISABLED]
+      default: DISABLED
+      description: A string that defines the verification check requirements. Options are `REQUIRED` and `DISABLED`.
     Environment:
       type: object
       properties:
@@ -132,28 +133,6 @@ components:
             enabled:
               type: boolean
               description: Whether Aadhaar verification is enabled or not
-            otp:
-              type: object
-              description: Aadhaar one-time password (OTP) configuration
-              properties:
-                deliveries:
-                  type: object
-                  description: OTP delivery configuration
-                  properties:
-                    cooldown:
-                      type: object
-                      description: Cooldown (waiting period between OTP deliveries) configuration
-                      properties:
-                        duration:
-                          type: integer
-                          description: Cooldown duration configuration; can be 60-1800 seconds (1-30 minutes)
-                        timeUnit:
-                          $ref: '#/components/schemas/EnumTimeUnit'
-                    count:
-                      type: integer
-                      minimum: 1
-                      maximum: 3
-                      description: Maximum number of OTP deliveries. Must be 1 to 3.
         failExpiredId:
           type: boolean
           description: Indicates whether verification should fail if the ID is expired.
@@ -449,6 +428,7 @@ components:
           $ref: '#/components/schemas/EnumVerify'  
         enrollment:
           type: boolean
+          deprecated: true
         textDependent:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent'
         comparison:
@@ -462,7 +442,8 @@ components:
       - enrollment
       - comparison
       - liveness
-      type: object      
+      type: object
+      deprecated: true   
     VoiceConfiguration_referenceData:
       example:
         retainOriginalRecordings: true
@@ -471,11 +452,15 @@ components:
       properties:
         retainOriginalRecordings:
           type: boolean
+          deprecated: true
         updateOnReenrollment:
           type: boolean
+          deprecated: true
         updateOnVerification:
-          type: boolean          
-      type: object  
+          type: boolean   
+          deprecated: true       
+      type: object
+      deprecated: true
     VoiceConfiguration_threshold:
       example:
         threshold: null
@@ -485,15 +470,18 @@ components:
       required:
       - threshold
       type: object
+      deprecated: true
     VoiceConfiguration_textDependent_phrase:
       example:
         id: id
       properties:
         id:
           type: string
+          deprecated: true
       required:
       - id
       type: object
+      deprecated: true
     VoiceConfiguration_textDependent:
       example:
         samples: null
@@ -502,21 +490,25 @@ components:
       properties:
         samples:
           type: integer
+          deprecated: true
         phrase:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent_phrase'
       required:
       - samples
       - phrase
-      type: object 
+      type: object
+      deprecated: true
     VoicePhrase:
       properties:
         id:
           type: string
           readOnly: true
+          deprecated: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         displayName:
           type: string
+          deprecated: true
         createdAt:
           type: string
           format: date-time
@@ -528,23 +520,28 @@ components:
       required:
       - displayName        
       type: object 
+      deprecated: true
     VoicePhraseContents:
       properties:
         id:
           type: string
           readOnly: true
+          deprecated: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         voicePhrase:
           properties:
             id:
               type: string
+              deprecated: true
           required:
           - id
         locale:
           type: string
+          deprecated: true
         content:
           type: string          
+          deprecated: true
         createdAt:
           type: string
           format: date-time
@@ -558,6 +555,7 @@ components:
       - content
       - voicePhrase        
       type: object 
+      deprecated: true
     VerifyPolicy:
       type: object
       properties:

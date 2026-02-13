@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **InspectionType** | Pointer to [**EnumInspectionType**](EnumInspectionType.md) |  | [optional] 
 **Provider** | Pointer to [**GovernmentIdConfigurationProvider**](GovernmentIdConfigurationProvider.md) |  | [optional] 
 **Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) |  | [default to ENUMVERIFY_DISABLED]
 **VerifyAamva** | Pointer to **bool** | Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses) verification is enabled | [optional] 
 
 ## Methods

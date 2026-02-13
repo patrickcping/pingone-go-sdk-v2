@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) |  | [default to ENUMVERIFY_DISABLED]
 **Enrollment** | **bool** |  | 
 **TextDependent** | Pointer to [**VoiceConfigurationTextDependent**](VoiceConfigurationTextDependent.md) |  | [optional] 
 **Comparison** | [**VoiceConfigurationThreshold**](VoiceConfigurationThreshold.md) |  | 

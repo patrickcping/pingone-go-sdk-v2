@@ -45,6 +45,8 @@ func NewGovernmentIdConfiguration(verify EnumVerify) *GovernmentIdConfiguration 
 // but it doesn't guarantee that properties required by API are set
 func NewGovernmentIdConfigurationWithDefaults() *GovernmentIdConfiguration {
 	this := GovernmentIdConfiguration{}
+	var verify EnumVerify = ENUMVERIFY_DISABLED
+	this.Verify = verify
 	return &this
 }
 

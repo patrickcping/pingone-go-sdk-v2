@@ -5,8 +5,6 @@
 
 * `REQUIRED` (value: `"REQUIRED"`)
 
-* `OPTIONAL` (value: `"OPTIONAL"`)
-
 * `DISABLED` (value: `"DISABLED"`)
 
 
