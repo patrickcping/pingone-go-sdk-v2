@@ -1,4 +1,4 @@
-# v0.11.0 (Unreleased)
+# v0.11.0 (2025-02-13)
 
 * **Breaking Change** Removed `OPTIONAL` enum value from `EnumVerify` as the API no longer supports this value. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
 * **Breaking Change** Removed deprecated `Otp` field from the `GovernmentIdConfigurationAadhaar` model as the API no longer supports this capability. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
