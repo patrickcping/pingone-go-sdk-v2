@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.6
+  * **Note** bump `golang.org/x/oauth2` v0.34.0 => v0.35.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.10.0 => v0.11.0
 * `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.11.0](./verify/CHANGELOG.md)
   * **Breaking Change** Removed `OPTIONAL` enum value from `EnumVerify` as the API no longer supports this value. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
   * **Breaking Change** Removed deprecated `Otp` field from the `GovernmentIdConfigurationAadhaar` model as the API no longer supports this capability. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
