@@ -19,11 +19,16 @@ var _ MappedNullable = &VoiceConfiguration{}
 
 // VoiceConfiguration struct for VoiceConfiguration
 type VoiceConfiguration struct {
-	Verify        EnumVerify                       `json:"verify"`
-	Enrollment    bool                             `json:"enrollment"`
+	Verify EnumVerify `json:"verify"`
+	// Deprecated
+	Enrollment bool `json:"enrollment"`
+	// Deprecated
 	TextDependent *VoiceConfigurationTextDependent `json:"textDependent,omitempty"`
-	Comparison    VoiceConfigurationThreshold      `json:"comparison"`
-	Liveness      VoiceConfigurationThreshold      `json:"liveness"`
+	// Deprecated
+	Comparison VoiceConfigurationThreshold `json:"comparison"`
+	// Deprecated
+	Liveness VoiceConfigurationThreshold `json:"liveness"`
+	// Deprecated
 	ReferenceData *VoiceConfigurationReferenceData `json:"referenceData,omitempty"`
 }
 
@@ -45,6 +50,8 @@ func NewVoiceConfiguration(verify EnumVerify, enrollment bool, comparison VoiceC
 // but it doesn't guarantee that properties required by API are set
 func NewVoiceConfigurationWithDefaults() *VoiceConfiguration {
 	this := VoiceConfiguration{}
+	var verify EnumVerify = ENUMVERIFY_DISABLED
+	this.Verify = verify
 	return &this
 }
 
@@ -73,6 +80,7 @@ func (o *VoiceConfiguration) SetVerify(v EnumVerify) {
 }
 
 // GetEnrollment returns the Enrollment field value
+// Deprecated
 func (o *VoiceConfiguration) GetEnrollment() bool {
 	if o == nil {
 		var ret bool
@@ -84,6 +92,7 @@ func (o *VoiceConfiguration) GetEnrollment() bool {
 
 // GetEnrollmentOk returns a tuple with the Enrollment field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfiguration) GetEnrollmentOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
@@ -92,11 +101,13 @@ func (o *VoiceConfiguration) GetEnrollmentOk() (*bool, bool) {
 }
 
 // SetEnrollment sets field value
+// Deprecated
 func (o *VoiceConfiguration) SetEnrollment(v bool) {
 	o.Enrollment = v
 }
 
 // GetTextDependent returns the TextDependent field value if set, zero value otherwise.
+// Deprecated
 func (o *VoiceConfiguration) GetTextDependent() VoiceConfigurationTextDependent {
 	if o == nil || IsNil(o.TextDependent) {
 		var ret VoiceConfigurationTextDependent
@@ -107,6 +118,7 @@ func (o *VoiceConfiguration) GetTextDependent() VoiceConfigurationTextDependent 
 
 // GetTextDependentOk returns a tuple with the TextDependent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfiguration) GetTextDependentOk() (*VoiceConfigurationTextDependent, bool) {
 	if o == nil || IsNil(o.TextDependent) {
 		return nil, false
@@ -124,11 +136,13 @@ func (o *VoiceConfiguration) HasTextDependent() bool {
 }
 
 // SetTextDependent gets a reference to the given VoiceConfigurationTextDependent and assigns it to the TextDependent field.
+// Deprecated
 func (o *VoiceConfiguration) SetTextDependent(v VoiceConfigurationTextDependent) {
 	o.TextDependent = &v
 }
 
 // GetComparison returns the Comparison field value
+// Deprecated
 func (o *VoiceConfiguration) GetComparison() VoiceConfigurationThreshold {
 	if o == nil {
 		var ret VoiceConfigurationThreshold
@@ -140,6 +154,7 @@ func (o *VoiceConfiguration) GetComparison() VoiceConfigurationThreshold {
 
 // GetComparisonOk returns a tuple with the Comparison field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfiguration) GetComparisonOk() (*VoiceConfigurationThreshold, bool) {
 	if o == nil {
 		return nil, false
@@ -148,11 +163,13 @@ func (o *VoiceConfiguration) GetComparisonOk() (*VoiceConfigurationThreshold, bo
 }
 
 // SetComparison sets field value
+// Deprecated
 func (o *VoiceConfiguration) SetComparison(v VoiceConfigurationThreshold) {
 	o.Comparison = v
 }
 
 // GetLiveness returns the Liveness field value
+// Deprecated
 func (o *VoiceConfiguration) GetLiveness() VoiceConfigurationThreshold {
 	if o == nil {
 		var ret VoiceConfigurationThreshold
@@ -164,6 +181,7 @@ func (o *VoiceConfiguration) GetLiveness() VoiceConfigurationThreshold {
 
 // GetLivenessOk returns a tuple with the Liveness field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfiguration) GetLivenessOk() (*VoiceConfigurationThreshold, bool) {
 	if o == nil {
 		return nil, false
@@ -172,11 +190,13 @@ func (o *VoiceConfiguration) GetLivenessOk() (*VoiceConfigurationThreshold, bool
 }
 
 // SetLiveness sets field value
+// Deprecated
 func (o *VoiceConfiguration) SetLiveness(v VoiceConfigurationThreshold) {
 	o.Liveness = v
 }
 
 // GetReferenceData returns the ReferenceData field value if set, zero value otherwise.
+// Deprecated
 func (o *VoiceConfiguration) GetReferenceData() VoiceConfigurationReferenceData {
 	if o == nil || IsNil(o.ReferenceData) {
 		var ret VoiceConfigurationReferenceData
@@ -187,6 +207,7 @@ func (o *VoiceConfiguration) GetReferenceData() VoiceConfigurationReferenceData 
 
 // GetReferenceDataOk returns a tuple with the ReferenceData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfiguration) GetReferenceDataOk() (*VoiceConfigurationReferenceData, bool) {
 	if o == nil || IsNil(o.ReferenceData) {
 		return nil, false
@@ -204,6 +225,7 @@ func (o *VoiceConfiguration) HasReferenceData() bool {
 }
 
 // SetReferenceData gets a reference to the given VoiceConfigurationReferenceData and assigns it to the ReferenceData field.
+// Deprecated
 func (o *VoiceConfiguration) SetReferenceData(v VoiceConfigurationReferenceData) {
 	o.ReferenceData = &v
 }

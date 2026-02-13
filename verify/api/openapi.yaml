@@ -1737,7 +1737,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 2.027123023002322
+        size: 9.301444243932576
         _links:
           key:
             href: https://openapi-generator.tech
@@ -1784,7 +1784,7 @@ components:
               verify: null
               threshold: null
               retry:
-                attempts: 1
+                attempts: 0
             description: description
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -1798,14 +1798,14 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 7
+                  duration: 5
                   timeUnit: null
                 attempts:
-                  count: 5
+                  count: 6
                 deliveries:
-                  count: 5
+                  count: 1
                   cooldown:
-                    duration: 2
+                    duration: 5
                     timeUnit: null
             name: name
             facialComparison:
@@ -1836,23 +1836,23 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 7
+                  duration: 5
                   timeUnit: null
                 attempts:
-                  count: 5
+                  count: 6
                 deliveries:
-                  count: 5
+                  count: 1
                   cooldown:
-                    duration: 2
+                    duration: 5
                     timeUnit: null
             transaction:
               dataCollectionOnly: true
               timeout:
-                duration: 9
+                duration: 2
                 timeUnit: null
               dataCollection:
                 timeout:
-                  duration: 3
+                  duration: 7
                   timeUnit: null
             governmentId:
               provider:
@@ -1861,16 +1861,10 @@ components:
               inspectionType: null
               verify: null
               aadhaar:
-                otp:
-                  deliveries:
-                    cooldown:
-                      duration: 0
-                      timeUnit: null
-                    count: 2
                 enabled: true
               failExpiredId: true
               retry:
-                attempts: 1
+                attempts: 0
               verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - voice:
@@ -1895,7 +1889,7 @@ components:
               verify: null
               threshold: null
               retry:
-                attempts: 1
+                attempts: 0
             description: description
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -1909,14 +1903,14 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 7
+                  duration: 5
                   timeUnit: null
                 attempts:
-                  count: 5
+                  count: 6
                 deliveries:
-                  count: 5
+                  count: 1
                   cooldown:
-                    duration: 2
+                    duration: 5
                     timeUnit: null
             name: name
             facialComparison:
@@ -1947,23 +1941,23 @@ components:
                   templateName: templateName
                   variantName: variantName
                 lifeTime:
-                  duration: 7
+                  duration: 5
                   timeUnit: null
                 attempts:
-                  count: 5
+                  count: 6
                 deliveries:
-                  count: 5
+                  count: 1
                   cooldown:
-                    duration: 2
+                    duration: 5
                     timeUnit: null
             transaction:
               dataCollectionOnly: true
               timeout:
-                duration: 9
+                duration: 2
                 timeUnit: null
               dataCollection:
                 timeout:
-                  duration: 3
+                  duration: 7
                   timeUnit: null
             governmentId:
               provider:
@@ -1972,16 +1966,10 @@ components:
               inspectionType: null
               verify: null
               aadhaar:
-                otp:
-                  deliveries:
-                    cooldown:
-                      duration: 0
-                      timeUnit: null
-                    count: 2
                 enabled: true
               failExpiredId: true
               retry:
-                attempts: 1
+                attempts: 0
               verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           voicePhrases:
@@ -2045,11 +2033,11 @@ components:
       - HIGH
       type: string
     EnumVerify:
-      description: "A string that defines the verification check requirements. Options\
-        \ are `REQUIRED`, `OPTIONAL` and `DISABLED`."
+      default: DISABLED
+      description: A string that defines the verification check requirements. Options
+        are `REQUIRED` and `DISABLED`.
       enum:
       - REQUIRED
-      - OPTIONAL
       - DISABLED
       type: string
     Environment:
@@ -2092,16 +2080,10 @@ components:
         inspectionType: null
         verify: null
         aadhaar:
-          otp:
-            deliveries:
-              cooldown:
-                duration: 0
-                timeUnit: null
-              count: 2
           enabled: true
         failExpiredId: true
         retry:
-          attempts: 1
+          attempts: 0
         verifyAamva: true
       properties:
         aadhaar:
@@ -2158,7 +2140,7 @@ components:
         verify: null
         threshold: null
         retry:
-          attempts: 1
+          attempts: 0
       properties:
         retry:
           $ref: '#/components/schemas/ObjectRetry'
@@ -2183,7 +2165,7 @@ components:
       type: object
     ObjectRetry:
       example:
-        attempts: 1
+        attempts: 0
       properties:
         attempts:
           description: The number of retries permitted.
@@ -2198,14 +2180,14 @@ components:
             templateName: templateName
             variantName: variantName
           lifeTime:
-            duration: 7
+            duration: 5
             timeUnit: null
           attempts:
-            count: 5
+            count: 6
           deliveries:
-            count: 5
+            count: 1
             cooldown:
-              duration: 2
+              duration: 5
               timeUnit: null
       properties:
         verify:
@@ -2248,11 +2230,11 @@ components:
       example:
         dataCollectionOnly: true
         timeout:
-          duration: 9
+          duration: 2
           timeUnit: null
         dataCollection:
           timeout:
-            duration: 3
+            duration: 7
             timeUnit: null
       properties:
         timeout:
@@ -2263,6 +2245,7 @@ components:
           type: boolean
       type: object
     VoiceConfiguration:
+      deprecated: true
       example:
         verify: null
         enrollment: true
@@ -2282,6 +2265,7 @@ components:
         verify:
           $ref: '#/components/schemas/EnumVerify'
         enrollment:
+          deprecated: true
           type: boolean
         textDependent:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent'
@@ -2298,19 +2282,24 @@ components:
       - verify
       type: object
     VoiceConfiguration_referenceData:
+      deprecated: true
       example:
         retainOriginalRecordings: true
         updateOnReenrollment: true
         updateOnVerification: true
       properties:
         retainOriginalRecordings:
+          deprecated: true
           type: boolean
         updateOnReenrollment:
+          deprecated: true
           type: boolean
         updateOnVerification:
+          deprecated: true
           type: boolean
       type: object
     VoiceConfiguration_threshold:
+      deprecated: true
       example:
         threshold: null
       properties:
@@ -2320,21 +2309,25 @@ components:
       - threshold
       type: object
     VoiceConfiguration_textDependent_phrase:
+      deprecated: true
       example:
         id: id
       properties:
         id:
+          deprecated: true
           type: string
       required:
       - id
       type: object
     VoiceConfiguration_textDependent:
+      deprecated: true
       example:
         samples: null
         phrase:
           id: id
       properties:
         samples:
+          deprecated: true
           type: integer
         phrase:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent_phrase'
@@ -2343,6 +2336,7 @@ components:
       - samples
       type: object
     VoicePhrase:
+      deprecated: true
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -2352,11 +2346,13 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          deprecated: true
           readOnly: true
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         displayName:
+          deprecated: true
           type: string
         createdAt:
           format: date-time
@@ -2370,6 +2366,7 @@ components:
       - displayName
       type: object
     VoicePhraseContents:
+      deprecated: true
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -2382,6 +2379,7 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          deprecated: true
           readOnly: true
           type: string
         environment:
@@ -2389,8 +2387,10 @@ components:
         voicePhrase:
           $ref: '#/components/schemas/VoicePhraseContents_voicePhrase'
         locale:
+          deprecated: true
           type: string
         content:
+          deprecated: true
           type: string
         createdAt:
           format: date-time
@@ -2429,7 +2429,7 @@ components:
           verify: null
           threshold: null
           retry:
-            attempts: 1
+            attempts: 0
         description: description
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -2443,14 +2443,14 @@ components:
               templateName: templateName
               variantName: variantName
             lifeTime:
-              duration: 7
+              duration: 5
               timeUnit: null
             attempts:
-              count: 5
+              count: 6
             deliveries:
-              count: 5
+              count: 1
               cooldown:
-                duration: 2
+                duration: 5
                 timeUnit: null
         name: name
         facialComparison:
@@ -2481,23 +2481,23 @@ components:
               templateName: templateName
               variantName: variantName
             lifeTime:
-              duration: 7
+              duration: 5
               timeUnit: null
             attempts:
-              count: 5
+              count: 6
             deliveries:
-              count: 5
+              count: 1
               cooldown:
-                duration: 2
+                duration: 5
                 timeUnit: null
         transaction:
           dataCollectionOnly: true
           timeout:
-            duration: 9
+            duration: 2
             timeUnit: null
           dataCollection:
             timeout:
-              duration: 3
+              duration: 7
               timeUnit: null
         governmentId:
           provider:
@@ -2506,16 +2506,10 @@ components:
           inspectionType: null
           verify: null
           aadhaar:
-            otp:
-              deliveries:
-                cooldown:
-                  duration: 0
-                  timeUnit: null
-                count: 2
             enabled: true
           failExpiredId: true
           retry:
-            attempts: 1
+            attempts: 0
           verifyAamva: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -2621,7 +2615,7 @@ components:
             verify: null
             threshold: null
             retry:
-              attempts: 1
+              attempts: 0
           description: description
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -2635,14 +2629,14 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 7
+                duration: 5
                 timeUnit: null
               attempts:
-                count: 5
+                count: 6
               deliveries:
-                count: 5
+                count: 1
                 cooldown:
-                  duration: 2
+                  duration: 5
                   timeUnit: null
           name: name
           facialComparison:
@@ -2673,23 +2667,23 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 7
+                duration: 5
                 timeUnit: null
               attempts:
-                count: 5
+                count: 6
               deliveries:
-                count: 5
+                count: 1
                 cooldown:
-                  duration: 2
+                  duration: 5
                   timeUnit: null
           transaction:
             dataCollectionOnly: true
             timeout:
-              duration: 9
+              duration: 2
               timeUnit: null
             dataCollection:
               timeout:
-                duration: 3
+                duration: 7
                 timeUnit: null
           governmentId:
             provider:
@@ -2698,16 +2692,10 @@ components:
             inspectionType: null
             verify: null
             aadhaar:
-              otp:
-                deliveries:
-                  cooldown:
-                    duration: 0
-                    timeUnit: null
-                  count: 2
               enabled: true
             failExpiredId: true
             retry:
-              attempts: 1
+              attempts: 0
             verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - voice:
@@ -2732,7 +2720,7 @@ components:
             verify: null
             threshold: null
             retry:
-              attempts: 1
+              attempts: 0
           description: description
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -2746,14 +2734,14 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 7
+                duration: 5
                 timeUnit: null
               attempts:
-                count: 5
+                count: 6
               deliveries:
-                count: 5
+                count: 1
                 cooldown:
-                  duration: 2
+                  duration: 5
                   timeUnit: null
           name: name
           facialComparison:
@@ -2784,23 +2772,23 @@ components:
                 templateName: templateName
                 variantName: variantName
               lifeTime:
-                duration: 7
+                duration: 5
                 timeUnit: null
               attempts:
-                count: 5
+                count: 6
               deliveries:
-                count: 5
+                count: 1
                 cooldown:
-                  duration: 2
+                  duration: 5
                   timeUnit: null
           transaction:
             dataCollectionOnly: true
             timeout:
-              duration: 9
+              duration: 2
               timeUnit: null
             dataCollection:
               timeout:
-                duration: 3
+                duration: 7
                 timeUnit: null
           governmentId:
             provider:
@@ -2809,16 +2797,10 @@ components:
             inspectionType: null
             verify: null
             aadhaar:
-              otp:
-                deliveries:
-                  cooldown:
-                    duration: 0
-                    timeUnit: null
-                  count: 2
               enabled: true
             failExpiredId: true
             retry:
-              attempts: 1
+              attempts: 0
             verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         voicePhrases:
@@ -2848,63 +2830,14 @@ components:
             $ref: '#/components/schemas/VoicePhraseContents'
           type: array
       type: object
-    GovernmentIdConfiguration_aadhaar_otp_deliveries_cooldown:
-      description: Cooldown (waiting period between OTP deliveries) configuration
-      example:
-        duration: 0
-        timeUnit: null
-      properties:
-        duration:
-          description: Cooldown duration configuration; can be 60-1800 seconds (1-30
-            minutes)
-          type: integer
-        timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnit'
-      type: object
-    GovernmentIdConfiguration_aadhaar_otp_deliveries:
-      description: OTP delivery configuration
-      example:
-        cooldown:
-          duration: 0
-          timeUnit: null
-        count: 2
-      properties:
-        cooldown:
-          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp_deliveries_cooldown'
-        count:
-          description: Maximum number of OTP deliveries. Must be 1 to 3.
-          maximum: 3
-          minimum: 1
-          type: integer
-      type: object
-    GovernmentIdConfiguration_aadhaar_otp:
-      description: Aadhaar one-time password (OTP) configuration
-      example:
-        deliveries:
-          cooldown:
-            duration: 0
-            timeUnit: null
-          count: 2
-      properties:
-        deliveries:
-          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp_deliveries'
-      type: object
     GovernmentIdConfiguration_aadhaar:
       description: Aadhaar configuration
       example:
-        otp:
-          deliveries:
-            cooldown:
-              duration: 0
-              timeUnit: null
-            count: 2
         enabled: true
       properties:
         enabled:
           description: Whether Aadhaar verification is enabled or not
           type: boolean
-        otp:
-          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar_otp'
       type: object
     GovernmentIdConfiguration_provider:
       example:
@@ -2994,7 +2927,7 @@ components:
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.
       example:
-        count: 5
+        count: 6
       properties:
         count:
           description: Count of OTP failures.
@@ -3005,7 +2938,7 @@ components:
     OTPDeviceConfiguration_otp_deliveries_cooldown:
       description: Cooldown (waiting period between OTP attempts) configuration.
       example:
-        duration: 2
+        duration: 5
         timeUnit: null
       properties:
         duration:
@@ -3020,9 +2953,9 @@ components:
     OTPDeviceConfiguration_otp_deliveries:
       description: OTP delivery configuration.
       example:
-        count: 5
+        count: 1
         cooldown:
-          duration: 2
+          duration: 5
           timeUnit: null
       properties:
         count:
@@ -3037,7 +2970,7 @@ components:
     OTPDeviceConfiguration_otp_lifeTime:
       description: The length of time for which the OTP is valid.
       example:
-        duration: 7
+        duration: 5
         timeUnit: null
       properties:
         duration:
@@ -3068,14 +3001,14 @@ components:
           templateName: templateName
           variantName: variantName
         lifeTime:
-          duration: 7
+          duration: 5
           timeUnit: null
         attempts:
-          count: 5
+          count: 6
         deliveries:
-          count: 5
+          count: 1
           cooldown:
-            duration: 2
+            duration: 5
             timeUnit: null
       properties:
         attempts:
@@ -3140,7 +3073,7 @@ components:
       type: object
     TransactionConfiguration_timeout:
       example:
-        duration: 9
+        duration: 2
         timeUnit: null
       properties:
         duration:
@@ -3155,7 +3088,7 @@ components:
       type: object
     TransactionConfiguration_dataCollection_timeout:
       example:
-        duration: 3
+        duration: 7
         timeUnit: null
       properties:
         duration:
@@ -3171,7 +3104,7 @@ components:
     TransactionConfiguration_dataCollection:
       example:
         timeout:
-          duration: 3
+          duration: 7
           timeUnit: null
       properties:
         timeout:
@@ -3184,6 +3117,7 @@ components:
         id: id
       properties:
         id:
+          deprecated: true
           type: string
       required:
       - id
