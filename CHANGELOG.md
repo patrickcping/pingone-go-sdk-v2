@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.7
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.11.0 => v0.11.1
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.11.0 => v0.11.1 [#508](https://github.com/patrickcping/pingone-go-sdk-v2/pull/508)
 * `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.11.1](./verify/CHANGELOG.md)
   * **Bug Fix** Added back `OPTIONAL` enum value to `EnumVerify`, removed in error. [#507](https://github.com/patrickcping/pingone-go-sdk-v2/pull/507)
 
