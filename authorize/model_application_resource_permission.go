@@ -23,10 +23,10 @@ type ApplicationResourcePermission struct {
 	// The action associated with this permission.
 	Action string `json:"action"`
 	// The resource's description.
-	Description *string `json:"description,omitempty"`
+	Description *string            `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The resource's unique identifier.
-	Id *string `json:"id,omitempty"`
+	Id       *string                                `json:"id,omitempty"`
 	Resource *ApplicationResourcePermissionResource `json:"resource,omitempty"`
 }
 
@@ -233,7 +233,7 @@ func (o *ApplicationResourcePermission) SetResource(v ApplicationResourcePermiss
 }
 
 func (o ApplicationResourcePermission) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -296,5 +296,3 @@ func (v *NullableApplicationResourcePermission) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

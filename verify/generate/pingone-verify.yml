@@ -93,8 +93,24 @@ components:
       description: A string that defines the verification comparison threshold. Options are `LOW`, `MEDIUM` and `HIGH`.      
     EnumVerify:
       type: string
-      enum: [REQUIRED, OPTIONAL, DISABLED]
-      description: A string that defines the verification check requirements. Options are `REQUIRED`, `OPTIONAL` and `DISABLED`.
+      enum: [REQUIRED, DISABLED]
+      default: DISABLED
+      description: A string that defines the verification check requirements. Options are `REQUIRED` and `DISABLED`.
+    Environment:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          description: The time the resource was created.
+          readOnly: true
+        id:
+          type: string
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+        updatedAt:
+          type: string
+          description: The time the resource was last updated.
+          readOnly: true
     FacialComparisonConfiguration:
       type: object
       properties:
@@ -110,6 +126,13 @@ components:
     GovernmentIdConfiguration:
       type: object
       properties:
+        aadhaar:
+          type: object
+          description: Aadhaar configuration
+          properties:
+            enabled:
+              type: boolean
+              description: Whether Aadhaar verification is enabled or not
         failExpiredId:
           type: boolean
           description: Indicates whether verification should fail if the ID is expired.
@@ -128,8 +151,74 @@ components:
         verify:
           $ref: '#/components/schemas/EnumVerify'
           description: Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED.
+        verifyAamva:
+          type: boolean
+          description: Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses) verification is enabled
       required:
         - verify
+    IdentityRecordMatching:
+      type: object
+      properties:
+        address:
+          type: object
+          description: Address of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        birth_date:
+          type: object
+          description: Birth date of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        family_name:
+          type: object
+          description: Family name of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        given_name:
+          type: object
+          description: Given name of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
+        name:
+          type: object
+          description: Full name of the user.
+          properties:
+            fieldRequired:
+              type: boolean
+              description: Whether the field is required or not
+            threshold:
+              $ref: '#/components/schemas/EnumThreshold'
+          required:
+            - fieldRequired
+            - threshold
     LivenessConfiguration:
       type: object
       properties:
@@ -339,10 +428,10 @@ components:
           $ref: '#/components/schemas/EnumVerify'  
         enrollment:
           type: boolean
+          deprecated: true
         textDependent:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent'
         comparison:
-          properties:
           $ref: '#/components/schemas/VoiceConfiguration_threshold'
         liveness:
           $ref: '#/components/schemas/VoiceConfiguration_threshold'
@@ -353,7 +442,8 @@ components:
       - enrollment
       - comparison
       - liveness
-      type: object      
+      type: object
+      deprecated: true   
     VoiceConfiguration_referenceData:
       example:
         retainOriginalRecordings: true
@@ -362,11 +452,15 @@ components:
       properties:
         retainOriginalRecordings:
           type: boolean
+          deprecated: true
         updateOnReenrollment:
           type: boolean
+          deprecated: true
         updateOnVerification:
-          type: boolean          
-      type: object  
+          type: boolean   
+          deprecated: true       
+      type: object
+      deprecated: true
     VoiceConfiguration_threshold:
       example:
         threshold: null
@@ -376,15 +470,18 @@ components:
       required:
       - threshold
       type: object
+      deprecated: true
     VoiceConfiguration_textDependent_phrase:
       example:
         id: id
       properties:
         id:
           type: string
+          deprecated: true
       required:
       - id
       type: object
+      deprecated: true
     VoiceConfiguration_textDependent:
       example:
         samples: null
@@ -393,21 +490,25 @@ components:
       properties:
         samples:
           type: integer
+          deprecated: true
         phrase:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent_phrase'
       required:
       - samples
       - phrase
-      type: object 
+      type: object
+      deprecated: true
     VoicePhrase:
       properties:
         id:
           type: string
           readOnly: true
+          deprecated: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         displayName:
           type: string
+          deprecated: true
         createdAt:
           type: string
           format: date-time
@@ -419,23 +520,28 @@ components:
       required:
       - displayName        
       type: object 
+      deprecated: true
     VoicePhraseContents:
       properties:
         id:
           type: string
           readOnly: true
+          deprecated: true
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         voicePhrase:
           properties:
             id:
               type: string
+              deprecated: true
           required:
           - id
         locale:
           type: string
+          deprecated: true
         content:
           type: string          
+          deprecated: true
         createdAt:
           type: string
           format: date-time
@@ -449,6 +555,7 @@ components:
       - content
       - voicePhrase        
       type: object 
+      deprecated: true
     VerifyPolicy:
       type: object
       properties:
@@ -472,6 +579,8 @@ components:
           $ref: '#/components/schemas/GovernmentIdConfiguration'
         facialComparison:
           $ref: '#/components/schemas/FacialComparisonConfiguration'
+        identityRecordMatching:
+          $ref: '#/components/schemas/IdentityRecordMatching'
         liveness:
           $ref: '#/components/schemas/LivenessConfiguration'
         email:
@@ -546,6 +655,61 @@ security:
 tags:
   - name: Verify Policies
 paths:
+  /environments/{environmentID}:
+    get:
+      tags:
+        - Environments
+      summary: READ One Environment
+      operationId: readOneEnvironment
+      parameters:
+        - name: X-Ping-External-Transaction-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: X-Ping-External-Session-ID
+          in: header
+          description: |
+            An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+            Any invalid characters will be converted to underscores. The following characters are allowed:
+            Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+            `/`, `@`, `=`, `#`, `+`
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
   /environments/{environmentID}/verifyPolicies:
     post:
       tags:
@@ -646,7 +810,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':
@@ -955,7 +1124,12 @@ paths:
         '403':
           $ref: '#/components/responses/403'
         '404':
-          $ref: '#/components/responses/404'
+          description: Not found.
+          x-pingone-docs-8830: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
         '405':
           $ref: '#/components/responses/405'
         '409':

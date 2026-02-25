@@ -1,3 +1,16 @@
+# v0.21.0 (2025-10-02)
+
+* **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type. [#483](https://github.com/patrickcping/pingone-go-sdk-v2/pull/483)
+
+# v0.20.0 (2025-09-19)
+
+* **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* **Enhancement** Add support for `startsWith`, `endsWith` and `notContains` conditions. [#478](https://github.com/patrickcping/pingone-go-sdk-v2/pull/478)
+
+# v0.19.1 (2025-06-11)
+
+* **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+
 # v0.19.0 (2025-02-10)
 
 * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)

@@ -20,7 +20,7 @@ type EnumPropagationStoreTypeZoomAuthenticationMethod string
 
 // List of EnumPropagationStoreTypeZoomAuthenticationMethod
 const (
-	ENUMPROPAGATIONSTORETYPEZOOMAUTHENTICATIONMETHOD_JWT_BEARER_TOKEN EnumPropagationStoreTypeZoomAuthenticationMethod = "JWT Bearer Token"
+	ENUMPROPAGATIONSTORETYPEZOOMAUTHENTICATIONMETHOD_JWT_BEARER_TOKEN    EnumPropagationStoreTypeZoomAuthenticationMethod = "JWT Bearer Token"
 	ENUMPROPAGATIONSTORETYPEZOOMAUTHENTICATIONMETHOD_O_AUTH_BEARER_TOKEN EnumPropagationStoreTypeZoomAuthenticationMethod = "OAuth Bearer Token"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeZoomAuthenticationMethod) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

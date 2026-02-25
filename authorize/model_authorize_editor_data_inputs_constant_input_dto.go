@@ -19,8 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataInputsConstantInputDTO{}
 
 // AuthorizeEditorDataInputsConstantInputDTO struct for AuthorizeEditorDataInputsConstantInputDTO
 type AuthorizeEditorDataInputsConstantInputDTO struct {
-	Type EnumAuthorizeEditorDataInputDTOType `json:"type"`
-	Value string `json:"value"`
+	Type  EnumAuthorizeEditorDataInputDTOType `json:"type"`
+	Value string                              `json:"value"`
 }
 
 // NewAuthorizeEditorDataInputsConstantInputDTO instantiates a new AuthorizeEditorDataInputsConstantInputDTO object
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataInputsConstantInputDTO) SetValue(v string) {
 }
 
 func (o AuthorizeEditorDataInputsConstantInputDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataInputsConstantInputDTO) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

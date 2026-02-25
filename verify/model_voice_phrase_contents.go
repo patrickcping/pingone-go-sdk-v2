@@ -20,11 +20,14 @@ var _ MappedNullable = &VoicePhraseContents{}
 
 // VoicePhraseContents struct for VoicePhraseContents
 type VoicePhraseContents struct {
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// Deprecated
+	Id          *string                        `json:"id,omitempty"`
+	Environment *ObjectEnvironment             `json:"environment,omitempty"`
 	VoicePhrase VoicePhraseContentsVoicePhrase `json:"voicePhrase"`
+	// Deprecated
 	Locale string `json:"locale"`
-	Content string `json:"content"`
+	// Deprecated
+	Content   string     `json:"content"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -50,6 +53,7 @@ func NewVoicePhraseContentsWithDefaults() *VoicePhraseContents {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
+// Deprecated
 func (o *VoicePhraseContents) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -60,6 +64,7 @@ func (o *VoicePhraseContents) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoicePhraseContents) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
@@ -77,6 +82,7 @@ func (o *VoicePhraseContents) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
+// Deprecated
 func (o *VoicePhraseContents) SetId(v string) {
 	o.Id = &v
 }
@@ -138,6 +144,7 @@ func (o *VoicePhraseContents) SetVoicePhrase(v VoicePhraseContentsVoicePhrase) {
 }
 
 // GetLocale returns the Locale field value
+// Deprecated
 func (o *VoicePhraseContents) GetLocale() string {
 	if o == nil {
 		var ret string
@@ -149,6 +156,7 @@ func (o *VoicePhraseContents) GetLocale() string {
 
 // GetLocaleOk returns a tuple with the Locale field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoicePhraseContents) GetLocaleOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -157,11 +165,13 @@ func (o *VoicePhraseContents) GetLocaleOk() (*string, bool) {
 }
 
 // SetLocale sets field value
+// Deprecated
 func (o *VoicePhraseContents) SetLocale(v string) {
 	o.Locale = v
 }
 
 // GetContent returns the Content field value
+// Deprecated
 func (o *VoicePhraseContents) GetContent() string {
 	if o == nil {
 		var ret string
@@ -173,6 +183,7 @@ func (o *VoicePhraseContents) GetContent() string {
 
 // GetContentOk returns a tuple with the Content field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoicePhraseContents) GetContentOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -181,6 +192,7 @@ func (o *VoicePhraseContents) GetContentOk() (*string, bool) {
 }
 
 // SetContent sets field value
+// Deprecated
 func (o *VoicePhraseContents) SetContent(v string) {
 	o.Content = v
 }
@@ -250,7 +262,7 @@ func (o *VoicePhraseContents) SetUpdatedAt(v time.Time) {
 }
 
 func (o VoicePhraseContents) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -312,5 +324,3 @@ func (v *NullableVoicePhraseContents) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

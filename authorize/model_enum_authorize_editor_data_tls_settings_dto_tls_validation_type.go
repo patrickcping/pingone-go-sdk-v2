@@ -21,7 +21,7 @@ type EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType string
 // List of EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType
 const (
 	ENUMAUTHORIZEEDITORDATATLSSETTINGSDTOTLSVALIDATIONTYPE_DEFAULT EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType = "DEFAULT"
-	ENUMAUTHORIZEEDITORDATATLSSETTINGSDTOTLSVALIDATIONTYPE_NONE EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType = "NONE"
+	ENUMAUTHORIZEEDITORDATATLSSETTINGSDTOTLSVALIDATIONTYPE_NONE    EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType = "NONE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

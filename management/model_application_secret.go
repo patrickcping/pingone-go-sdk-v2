@@ -19,10 +19,10 @@ var _ MappedNullable = &ApplicationSecret{}
 
 // ApplicationSecret struct for ApplicationSecret
 type ApplicationSecret struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Environment *ObjectEnvironment            `json:"environment,omitempty"`
 	// A string that specifies the application secret ID used to authenticate to the authorization server.
-	Secret *string `json:"secret,omitempty"`
+	Secret   *string                    `json:"secret,omitempty"`
 	Previous *ApplicationSecretPrevious `json:"previous,omitempty"`
 }
 
@@ -172,7 +172,7 @@ func (o *ApplicationSecret) SetPrevious(v ApplicationSecretPrevious) {
 }
 
 func (o ApplicationSecret) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,5 +231,3 @@ func (v *NullableApplicationSecret) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

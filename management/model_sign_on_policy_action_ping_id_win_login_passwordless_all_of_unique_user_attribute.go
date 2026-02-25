@@ -66,7 +66,7 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) S
 }
 
 func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -114,5 +114,3 @@ func (v *NullableSignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -107,4 +107,3 @@ func (v *NullableEnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsD
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

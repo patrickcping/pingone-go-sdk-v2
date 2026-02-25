@@ -17,7 +17,7 @@ import (
 
 // EntityArrayEmbeddedResourcesInner - struct for EntityArrayEmbeddedResourcesInner
 type EntityArrayEmbeddedResourcesInner struct {
-	Resource *Resource
+	Resource                    *Resource
 	ResourceApplicationResource *ResourceApplicationResource
 }
 
@@ -34,7 +34,6 @@ func ResourceApplicationResourceAsEntityArrayEmbeddedResourcesInner(v *ResourceA
 		ResourceApplicationResource: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EntityArrayEmbeddedResourcesInner) UnmarshalJSON(data []byte) error {
@@ -87,7 +86,7 @@ func (src EntityArrayEmbeddedResourcesInner) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *EntityArrayEmbeddedResourcesInner) GetActualInstance() (interface{}) {
+func (obj *EntityArrayEmbeddedResourcesInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -138,5 +137,3 @@ func (v *NullableEntityArrayEmbeddedResourcesInner) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

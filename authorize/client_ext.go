@@ -12,7 +12,6 @@ import (
 	"slices"
 	"strconv"
 	"strings"
-	"sync"
 	"time"
 )
 
@@ -22,7 +21,6 @@ var (
 	maxRetries                       = 10
 	maximumRetryAfterBackoff         = 30
 	maximumRetryAfterBackoffDuration = time.Duration(maximumRetryAfterBackoff) * time.Second
-	requestMutex                     sync.Mutex
 )
 
 func processResponse(f SDKInterfaceFunc, targetObject any) (*http.Response, error) {
@@ -51,10 +49,6 @@ func reformError(err error) error {
 }
 
 func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, error) {
-	// This API action isn't thread safe - the environment may be switched by another thread.  We need to lock it
-	requestMutex.Lock()
-	defer requestMutex.Unlock()
-
 	var obj interface{}
 	var resp *http.Response
 	var err error

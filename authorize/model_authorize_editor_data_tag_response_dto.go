@@ -22,9 +22,9 @@ var _ MappedNullable = &AuthorizeEditorDataTagResponseDTO{}
 type AuthorizeEditorDataTagResponseDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// HAL embedded resources
-	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Embedded    map[string]map[string]interface{} `json:"_embedded,omitempty"`
+	UpdatedAt   *time.Time                        `json:"updatedAt,omitempty"`
+	Description *string                           `json:"description,omitempty"`
 	// The resource's unique identifier
 	Id *string `json:"id,omitempty"`
 }
@@ -207,7 +207,7 @@ func (o *AuthorizeEditorDataTagResponseDTO) SetId(v string) {
 }
 
 func (o AuthorizeEditorDataTagResponseDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,5 +269,3 @@ func (v *NullableAuthorizeEditorDataTagResponseDTO) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

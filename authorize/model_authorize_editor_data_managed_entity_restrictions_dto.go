@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataManagedEntityRestrictionsDTO{}
 
 // AuthorizeEditorDataManagedEntityRestrictionsDTO struct for AuthorizeEditorDataManagedEntityRestrictionsDTO
 type AuthorizeEditorDataManagedEntityRestrictionsDTO struct {
-	ReadOnly *bool `json:"readOnly,omitempty"`
+	ReadOnly         *bool `json:"readOnly,omitempty"`
 	DisallowChildren *bool `json:"disallowChildren,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *AuthorizeEditorDataManagedEntityRestrictionsDTO) SetDisallowChildren(v 
 }
 
 func (o AuthorizeEditorDataManagedEntityRestrictionsDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableAuthorizeEditorDataManagedEntityRestrictionsDTO) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

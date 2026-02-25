@@ -19,8 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
 
 // AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO struct for AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
 type AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO struct {
-	Type EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
-	Token AuthorizeEditorDataReferenceObjectDTO `json:"token"`
+	Type  EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
+	Token AuthorizeEditorDataReferenceObjectDTO        `json:"token"`
 }
 
 // NewAuthorizeEditorDataAuthenticationsTokenAuthenticationDTO instantiates a new AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO object
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO) SetToken(v Au
 }
 
 func (o AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataAuthenticationsTokenAuthenticationDTO) Unmar
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

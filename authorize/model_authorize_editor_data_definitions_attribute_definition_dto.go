@@ -21,23 +21,23 @@ var _ MappedNullable = &AuthorizeEditorDataDefinitionsAttributeDefinitionDTO{}
 type AuthorizeEditorDataDefinitionsAttributeDefinitionDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// HAL embedded resources
-	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Embedded    map[string]map[string]interface{} `json:"_embedded,omitempty"`
+	Environment *ObjectEnvironment                `json:"environment,omitempty"`
 	// The resource's unique identifier
-	Id *string `json:"id,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Name string `json:"name"`
-	FullName *string `json:"fullName,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType `json:"type,omitempty"`
-	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
-	Resolvers []AuthorizeEditorDataResolverDTO `json:"resolvers,omitempty"`
-	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
-	ValueType AuthorizeEditorDataValueTypeDTO `json:"valueType"`
-	DefaultValue *string `json:"defaultValue,omitempty"`
-	RepetitionSource *AuthorizeEditorDataReferenceObjectDTO `json:"repetitionSource,omitempty"`
-	ValueSchema *string `json:"valueSchema,omitempty"`
-	ManagedEntity *AuthorizeEditorDataManagedEntityDTO `json:"managedEntity,omitempty"`
+	Id               *string                                                       `json:"id,omitempty"`
+	Version          *string                                                       `json:"version,omitempty"`
+	Name             string                                                        `json:"name"`
+	FullName         *string                                                       `json:"fullName,omitempty"`
+	Description      *string                                                       `json:"description,omitempty"`
+	Type             *EnumAuthorizeEditorDataDefinitionsAttributeDefinitionDTOType `json:"type,omitempty"`
+	Parent           *AuthorizeEditorDataReferenceObjectDTO                        `json:"parent,omitempty"`
+	Resolvers        []AuthorizeEditorDataResolverDTO                              `json:"resolvers,omitempty"`
+	Processor        *AuthorizeEditorDataProcessorDTO                              `json:"processor,omitempty"`
+	ValueType        AuthorizeEditorDataValueTypeDTO                               `json:"valueType"`
+	DefaultValue     *string                                                       `json:"defaultValue,omitempty"`
+	RepetitionSource *AuthorizeEditorDataReferenceObjectDTO                        `json:"repetitionSource,omitempty"`
+	ValueSchema      *string                                                       `json:"valueSchema,omitempty"`
+	ManagedEntity    *AuthorizeEditorDataManagedEntityDTO                          `json:"managedEntity,omitempty"`
 }
 
 // NewAuthorizeEditorDataDefinitionsAttributeDefinitionDTO instantiates a new AuthorizeEditorDataDefinitionsAttributeDefinitionDTO object
@@ -588,7 +588,7 @@ func (o *AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) SetManagedEntity(
 }
 
 func (o AuthorizeEditorDataDefinitionsAttributeDefinitionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -682,5 +682,3 @@ func (v *NullableAuthorizeEditorDataDefinitionsAttributeDefinitionDTO) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

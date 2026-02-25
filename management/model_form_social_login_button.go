@@ -22,8 +22,8 @@ type FormSocialLoginButton struct {
 	// A string that specifies an identifier for the field component.
 	Key *string `json:"key,omitempty"`
 	// A string that specifies the social login button label.
-	Label string `json:"label"`
-	Styles *FormStyles `json:"styles,omitempty"`
+	Label   string                     `json:"label"`
+	Styles  *FormStyles                `json:"styles,omitempty"`
 	IdpType EnumFormSocialLoginIdpType `json:"idpType"`
 	// A string that specifies the external identity provider name.
 	IdpName string `json:"idpName"`
@@ -240,7 +240,7 @@ func (o *FormSocialLoginButton) SetIdpEnabled(v bool) {
 }
 
 func (o FormSocialLoginButton) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -298,5 +298,3 @@ func (v *NullableFormSocialLoginButton) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

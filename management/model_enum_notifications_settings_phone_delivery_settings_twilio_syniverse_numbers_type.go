@@ -15,13 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType The type of phone number. Possible values: `SHORT_CODE`, `TOLL_FREE`, `PHONE_NUMBER` 
+// EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType The type of phone number. Possible values: `SHORT_CODE`, `TOLL_FREE`, `PHONE_NUMBER`
 type EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSTYPE_SHORT_CODE EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType = "SHORT_CODE"
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSTYPE_TOLL_FREE EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType = "TOLL_FREE"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSTYPE_SHORT_CODE   EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType = "SHORT_CODE"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSTYPE_TOLL_FREE    EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType = "TOLL_FREE"
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSTWILIOSYNIVERSENUMBERSTYPE_PHONE_NUMBER EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType = "PHONE_NUMBER"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNu
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

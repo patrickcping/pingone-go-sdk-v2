@@ -19,16 +19,16 @@ var _ MappedNullable = &APIServer{}
 
 // APIServer struct for APIServer
 type APIServer struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	AccessControl *APIServerAccessControl `json:"accessControl,omitempty"`
-	AuthorizationServer APIServerAuthorizationServer `json:"authorizationServer"`
+	Links               *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	AccessControl       *APIServerAccessControl       `json:"accessControl,omitempty"`
+	AuthorizationServer APIServerAuthorizationServer  `json:"authorizationServer"`
 	// An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer's API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters.
-	BaseUrls []string `json:"baseUrls"`
+	BaseUrls  []string            `json:"baseUrls"`
 	Directory *APIServerDirectory `json:"directory,omitempty"`
 	// A string that specifies the resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the API server resource name. The name value must be unique among all API servers, and it must be a valid resource name.
-	Name string `json:"name"`
+	Name   string           `json:"name"`
 	Policy *APIServerPolicy `json:"policy,omitempty"`
 }
 
@@ -285,7 +285,7 @@ func (o *APIServer) SetPolicy(v APIServerPolicy) {
 }
 
 func (o APIServer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -350,5 +350,3 @@ func (v *NullableAPIServer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

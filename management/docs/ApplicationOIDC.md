@@ -21,42 +21,48 @@ Name | Type | Description | Notes
 **AdditionalRefreshTokenReplayProtectionEnabled** | Pointer to **bool** | When set to &#x60;true&#x60; (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a &#x60;false&#x60; setting. | [optional] [default to true]
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
+**ClientId** | Pointer to **string** | (Required when &#x60;clientSecret&#x60; is specified.) Supported only for &#x60;POST&#x60; operations. To modify the value of this field, the environment must be enabled with the feature flag to allow importing applications with administrator defined client ID and client secret values. This is the unique ID of an external application that is being migrated to PingOne. The ID must be a minimum of 8 alpha-numeric characters, and must be globally unique in PingOne. | [optional] 
+**ClientSecret** | Pointer to **string** | (Required when &#x60;clientId&#x60; is specified.) Supported only for &#x60;POST&#x60; operations. To modify the value of this field, the environment must be enabled with the feature flag to allow importing applications with administrator defined client ID and client secret values. This is the client secret associated with &#x60;clientId&#x60; for an external application that is being migrated to PingOne. This must be a minimum of 8 alpha-numeric characters. | [optional] [readonly] 
 **CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
 **DevicePathId** | Pointer to **string** | A string that specifies a unique identifier within an environment for a device authorization grant flow to provide a short identifier to the application. This property is ignored when the &#x60;deviceCustomVerificationUri&#x60; property is configured. The string can contain any letters, numbers, and some special characters (regex &#x60;a-zA-Z0-9_-&#x60;). It can have a length of no more than 50 characters (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;50&#x60;). | [optional] 
 **DeviceCustomVerificationUri** | Pointer to **string** | A string that specifies an optional custom verification URI that is returned for the &#x60;/device_authorization&#x60; endpoint. | [optional] 
 **DeviceTimeout** | Pointer to **int32** | An integer that specifies the length of time (in seconds) that the &#x60;userCode&#x60; and &#x60;deviceCode&#x60; returned by the &#x60;/device_authorization&#x60; endpoint are valid. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;600&#x60; seconds. It can have a value of no more than &#x60;3600&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;3600&#x60;). | [optional] [default to 600]
 **DevicePollingInterval** | Pointer to **int32** | An integer that specifies the frequency (in seconds) for the client to poll the &#x60;/as/token&#x60; endpoint. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;5&#x60; seconds. It can have a value of no more than &#x60;60&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;60&#x60;). | [optional] [default to 5]
+**IdpSignoff** | Pointer to **bool** | Set this to true to allow an application to request to terminate a user session using only the ID token. The application is not required to have access to the session token cookie. | [optional] 
+**IncludeX5t** | Pointer to **bool** | Specifies whether tokens signed for this application include the &#x60;x5t&#x60;&#x60; signature header in the signed JWT. Refer to [JSON Web Signature (JWS), section \&quot;x5t\&quot; (X.509 Certificate SHA-1 Thumbprint) Header Parameter](https://www.rfc-editor.org/rfc/rfc7515.html#section-4.1.7). | [optional] 
 **Jwks** | Pointer to **string** | A JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwksUrl&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwksUrl&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **JwksUrl** | Pointer to **string** | A URL (supports &#x60;https://&#x60; only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwks&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwks&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
 **PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
 **Kerberos** | Pointer to [**ApplicationOIDCAllOfKerberos**](ApplicationOIDCAllOfKerberos.md) |  | [optional] 
-**GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
+**GrantTypes** | Pointer to [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | [optional] 
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
 **InitiateLoginUri** | Pointer to **string** | A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information. | [optional] 
+**OpSessionCheckEnabled** | Pointer to **bool** | When enabled, PingOne includes the &#x60;session_state&#x60; parameter in the authentication response, per spec with [OpenID Connect Session Management 1.0](https://openid.net/specs/openid-connect-session-1_0.html). Refer to [OIDC Session Management](https://apidocs.pingidentity.com/pingone/main/v1/api/#oidc-session-management) in the Developer&#39;s Foundations for more information. This property is disabled by default. | [optional] [default to false]
+**ParRequirement** | Pointer to [**EnumApplicationOIDCPARRequirement**](EnumApplicationOIDCPARRequirement.md) |  | [optional] [default to ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL]
+**ParTimeout** | Pointer to **int32** | PAR timeout in seconds. Must be between &#x60;1&#x60; and &#x60;600&#x60;. The default value is &#x60;60&#x60;. | [optional] [default to 60]
 **PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
 **RedirectUris** | Pointer to **[]string** | A string that specifies the callback URI for the authentication response. | [optional] 
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the &#x60;refreshTokenRollingDuration&#x60; property is specified for the application, then this property must be less than or equal to the value of &#x60;refreshTokenRollingDuration&#x60;. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] [default to 2592000]
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingGracePeriodDuration** | Pointer to **int32** | The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0. | [optional] 
-**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | The code or token type returned by an authorization request. Options are &#x60;TOKEN&#x60;, &#x60;ID_TOKEN&#x60;, and &#x60;CODE&#x60;. For hybrid flows that specify &#x60;CODE&#x60; with &#x60;TOKEN&#x60; or &#x60;ID_TOKEN&#x60;, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type). | [optional] 
+**RequestScopesForMultipleResourcesEnabled** | Pointer to **bool** | Specifies whether the application can request scopes from multiple custom resources. The default value is &#x60;false&#x60;. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes). | [optional] [default to false]
 **RequireSignedRequestObject** | Pointer to **bool** | Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If &#x60;false&#x60; or null (default), a signed request object is not required. Both &#x60;supportUnsignedRequestObject&#x60; and this property cannot be set to &#x60;true&#x60;. | [optional] 
+**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | The code or token type returned by an authorization request. Options are &#x60;TOKEN&#x60;, &#x60;ID_TOKEN&#x60;, and &#x60;CODE&#x60;. For hybrid flows that specify &#x60;CODE&#x60; with &#x60;TOKEN&#x60; or &#x60;ID_TOKEN&#x60;, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type). | [optional] 
+**Signing** | Pointer to [**ApplicationOIDCAllOfSigning**](ApplicationOIDCAllOfSigning.md) |  | [optional] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are &#x60;PING_FED_CONNECTION_INTEGRATION&#x60;.  Only applicable for creating worker applications. | [optional] 
 **TargetLinkUri** | Pointer to **string** | The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the &#x60;target_link_uri&#x60; parameter used for the Initiate Single Sign-On URL field. | [optional] 
 **Template** | Pointer to [**ApplicationTemplate**](ApplicationTemplate.md) |  | [optional] 
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
-**ParRequirement** | Pointer to [**EnumApplicationOIDCPARRequirement**](EnumApplicationOIDCPARRequirement.md) |  | [optional] [default to ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL]
-**ParTimeout** | Pointer to **int32** | PAR timeout in seconds. Must be between &#x60;1&#x60; and &#x60;600&#x60;. The default value is &#x60;60&#x60;. | [optional] [default to 60]
-**Signing** | Pointer to [**ApplicationOIDCAllOfSigning**](ApplicationOIDCAllOfSigning.md) |  | [optional] 
 
 ## Methods
 
 ### NewApplicationOIDC
 
-`func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *ApplicationOIDC`
+`func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *ApplicationOIDC`
 
 NewApplicationOIDC instantiates a new ApplicationOIDC object
 This constructor will assign default values to properties that have it defined,
@@ -476,6 +482,56 @@ SetAssignActorRoles sets AssignActorRoles field to given value.
 
 HasAssignActorRoles returns a boolean if a field has been set.
 
+### GetClientId
+
+`func (o *ApplicationOIDC) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *ApplicationOIDC) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *ApplicationOIDC) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *ApplicationOIDC) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+
+### GetClientSecret
+
+`func (o *ApplicationOIDC) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *ApplicationOIDC) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *ApplicationOIDC) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
+
+### HasClientSecret
+
+`func (o *ApplicationOIDC) HasClientSecret() bool`
+
+HasClientSecret returns a boolean if a field has been set.
+
 ### GetCorsSettings
 
 `func (o *ApplicationOIDC) GetCorsSettings() ApplicationCorsSettings`
@@ -600,6 +656,56 @@ SetDevicePollingInterval sets DevicePollingInterval field to given value.
 `func (o *ApplicationOIDC) HasDevicePollingInterval() bool`
 
 HasDevicePollingInterval returns a boolean if a field has been set.
+
+### GetIdpSignoff
+
+`func (o *ApplicationOIDC) GetIdpSignoff() bool`
+
+GetIdpSignoff returns the IdpSignoff field if non-nil, zero value otherwise.
+
+### GetIdpSignoffOk
+
+`func (o *ApplicationOIDC) GetIdpSignoffOk() (*bool, bool)`
+
+GetIdpSignoffOk returns a tuple with the IdpSignoff field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdpSignoff
+
+`func (o *ApplicationOIDC) SetIdpSignoff(v bool)`
+
+SetIdpSignoff sets IdpSignoff field to given value.
+
+### HasIdpSignoff
+
+`func (o *ApplicationOIDC) HasIdpSignoff() bool`
+
+HasIdpSignoff returns a boolean if a field has been set.
+
+### GetIncludeX5t
+
+`func (o *ApplicationOIDC) GetIncludeX5t() bool`
+
+GetIncludeX5t returns the IncludeX5t field if non-nil, zero value otherwise.
+
+### GetIncludeX5tOk
+
+`func (o *ApplicationOIDC) GetIncludeX5tOk() (*bool, bool)`
+
+GetIncludeX5tOk returns a tuple with the IncludeX5t field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeX5t
+
+`func (o *ApplicationOIDC) SetIncludeX5t(v bool)`
+
+SetIncludeX5t sets IncludeX5t field to given value.
+
+### HasIncludeX5t
+
+`func (o *ApplicationOIDC) HasIncludeX5t() bool`
+
+HasIncludeX5t returns a boolean if a field has been set.
 
 ### GetJwks
 
@@ -770,6 +876,11 @@ and a boolean to check if the value has been set.
 
 SetGrantTypes sets GrantTypes field to given value.
 
+### HasGrantTypes
+
+`func (o *ApplicationOIDC) HasGrantTypes() bool`
+
+HasGrantTypes returns a boolean if a field has been set.
 
 ### GetHomePageUrl
 
@@ -820,6 +931,81 @@ SetInitiateLoginUri sets InitiateLoginUri field to given value.
 `func (o *ApplicationOIDC) HasInitiateLoginUri() bool`
 
 HasInitiateLoginUri returns a boolean if a field has been set.
+
+### GetOpSessionCheckEnabled
+
+`func (o *ApplicationOIDC) GetOpSessionCheckEnabled() bool`
+
+GetOpSessionCheckEnabled returns the OpSessionCheckEnabled field if non-nil, zero value otherwise.
+
+### GetOpSessionCheckEnabledOk
+
+`func (o *ApplicationOIDC) GetOpSessionCheckEnabledOk() (*bool, bool)`
+
+GetOpSessionCheckEnabledOk returns a tuple with the OpSessionCheckEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpSessionCheckEnabled
+
+`func (o *ApplicationOIDC) SetOpSessionCheckEnabled(v bool)`
+
+SetOpSessionCheckEnabled sets OpSessionCheckEnabled field to given value.
+
+### HasOpSessionCheckEnabled
+
+`func (o *ApplicationOIDC) HasOpSessionCheckEnabled() bool`
+
+HasOpSessionCheckEnabled returns a boolean if a field has been set.
+
+### GetParRequirement
+
+`func (o *ApplicationOIDC) GetParRequirement() EnumApplicationOIDCPARRequirement`
+
+GetParRequirement returns the ParRequirement field if non-nil, zero value otherwise.
+
+### GetParRequirementOk
+
+`func (o *ApplicationOIDC) GetParRequirementOk() (*EnumApplicationOIDCPARRequirement, bool)`
+
+GetParRequirementOk returns a tuple with the ParRequirement field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParRequirement
+
+`func (o *ApplicationOIDC) SetParRequirement(v EnumApplicationOIDCPARRequirement)`
+
+SetParRequirement sets ParRequirement field to given value.
+
+### HasParRequirement
+
+`func (o *ApplicationOIDC) HasParRequirement() bool`
+
+HasParRequirement returns a boolean if a field has been set.
+
+### GetParTimeout
+
+`func (o *ApplicationOIDC) GetParTimeout() int32`
+
+GetParTimeout returns the ParTimeout field if non-nil, zero value otherwise.
+
+### GetParTimeoutOk
+
+`func (o *ApplicationOIDC) GetParTimeoutOk() (*int32, bool)`
+
+GetParTimeoutOk returns a tuple with the ParTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParTimeout
+
+`func (o *ApplicationOIDC) SetParTimeout(v int32)`
+
+SetParTimeout sets ParTimeout field to given value.
+
+### HasParTimeout
+
+`func (o *ApplicationOIDC) HasParTimeout() bool`
+
+HasParTimeout returns a boolean if a field has been set.
 
 ### GetPkceEnforcement
 
@@ -971,30 +1157,30 @@ SetRefreshTokenRollingGracePeriodDuration sets RefreshTokenRollingGracePeriodDur
 
 HasRefreshTokenRollingGracePeriodDuration returns a boolean if a field has been set.
 
-### GetResponseTypes
+### GetRequestScopesForMultipleResourcesEnabled
 
-`func (o *ApplicationOIDC) GetResponseTypes() []EnumApplicationOIDCResponseType`
+`func (o *ApplicationOIDC) GetRequestScopesForMultipleResourcesEnabled() bool`
 
-GetResponseTypes returns the ResponseTypes field if non-nil, zero value otherwise.
+GetRequestScopesForMultipleResourcesEnabled returns the RequestScopesForMultipleResourcesEnabled field if non-nil, zero value otherwise.
 
-### GetResponseTypesOk
+### GetRequestScopesForMultipleResourcesEnabledOk
 
-`func (o *ApplicationOIDC) GetResponseTypesOk() (*[]EnumApplicationOIDCResponseType, bool)`
+`func (o *ApplicationOIDC) GetRequestScopesForMultipleResourcesEnabledOk() (*bool, bool)`
 
-GetResponseTypesOk returns a tuple with the ResponseTypes field if it's non-nil, zero value otherwise
+GetRequestScopesForMultipleResourcesEnabledOk returns a tuple with the RequestScopesForMultipleResourcesEnabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResponseTypes
+### SetRequestScopesForMultipleResourcesEnabled
 
-`func (o *ApplicationOIDC) SetResponseTypes(v []EnumApplicationOIDCResponseType)`
+`func (o *ApplicationOIDC) SetRequestScopesForMultipleResourcesEnabled(v bool)`
 
-SetResponseTypes sets ResponseTypes field to given value.
+SetRequestScopesForMultipleResourcesEnabled sets RequestScopesForMultipleResourcesEnabled field to given value.
 
-### HasResponseTypes
+### HasRequestScopesForMultipleResourcesEnabled
 
-`func (o *ApplicationOIDC) HasResponseTypes() bool`
+`func (o *ApplicationOIDC) HasRequestScopesForMultipleResourcesEnabled() bool`
 
-HasResponseTypes returns a boolean if a field has been set.
+HasRequestScopesForMultipleResourcesEnabled returns a boolean if a field has been set.
 
 ### GetRequireSignedRequestObject
 
@@ -1020,6 +1206,56 @@ SetRequireSignedRequestObject sets RequireSignedRequestObject field to given val
 `func (o *ApplicationOIDC) HasRequireSignedRequestObject() bool`
 
 HasRequireSignedRequestObject returns a boolean if a field has been set.
+
+### GetResponseTypes
+
+`func (o *ApplicationOIDC) GetResponseTypes() []EnumApplicationOIDCResponseType`
+
+GetResponseTypes returns the ResponseTypes field if non-nil, zero value otherwise.
+
+### GetResponseTypesOk
+
+`func (o *ApplicationOIDC) GetResponseTypesOk() (*[]EnumApplicationOIDCResponseType, bool)`
+
+GetResponseTypesOk returns a tuple with the ResponseTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResponseTypes
+
+`func (o *ApplicationOIDC) SetResponseTypes(v []EnumApplicationOIDCResponseType)`
+
+SetResponseTypes sets ResponseTypes field to given value.
+
+### HasResponseTypes
+
+`func (o *ApplicationOIDC) HasResponseTypes() bool`
+
+HasResponseTypes returns a boolean if a field has been set.
+
+### GetSigning
+
+`func (o *ApplicationOIDC) GetSigning() ApplicationOIDCAllOfSigning`
+
+GetSigning returns the Signing field if non-nil, zero value otherwise.
+
+### GetSigningOk
+
+`func (o *ApplicationOIDC) GetSigningOk() (*ApplicationOIDCAllOfSigning, bool)`
+
+GetSigningOk returns a tuple with the Signing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSigning
+
+`func (o *ApplicationOIDC) SetSigning(v ApplicationOIDCAllOfSigning)`
+
+SetSigning sets Signing field to given value.
+
+### HasSigning
+
+`func (o *ApplicationOIDC) HasSigning() bool`
+
+HasSigning returns a boolean if a field has been set.
 
 ### GetSupportUnsignedRequestObject
 
@@ -1140,81 +1376,6 @@ and a boolean to check if the value has been set.
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
 
-
-### GetParRequirement
-
-`func (o *ApplicationOIDC) GetParRequirement() EnumApplicationOIDCPARRequirement`
-
-GetParRequirement returns the ParRequirement field if non-nil, zero value otherwise.
-
-### GetParRequirementOk
-
-`func (o *ApplicationOIDC) GetParRequirementOk() (*EnumApplicationOIDCPARRequirement, bool)`
-
-GetParRequirementOk returns a tuple with the ParRequirement field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetParRequirement
-
-`func (o *ApplicationOIDC) SetParRequirement(v EnumApplicationOIDCPARRequirement)`
-
-SetParRequirement sets ParRequirement field to given value.
-
-### HasParRequirement
-
-`func (o *ApplicationOIDC) HasParRequirement() bool`
-
-HasParRequirement returns a boolean if a field has been set.
-
-### GetParTimeout
-
-`func (o *ApplicationOIDC) GetParTimeout() int32`
-
-GetParTimeout returns the ParTimeout field if non-nil, zero value otherwise.
-
-### GetParTimeoutOk
-
-`func (o *ApplicationOIDC) GetParTimeoutOk() (*int32, bool)`
-
-GetParTimeoutOk returns a tuple with the ParTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetParTimeout
-
-`func (o *ApplicationOIDC) SetParTimeout(v int32)`
-
-SetParTimeout sets ParTimeout field to given value.
-
-### HasParTimeout
-
-`func (o *ApplicationOIDC) HasParTimeout() bool`
-
-HasParTimeout returns a boolean if a field has been set.
-
-### GetSigning
-
-`func (o *ApplicationOIDC) GetSigning() ApplicationOIDCAllOfSigning`
-
-GetSigning returns the Signing field if non-nil, zero value otherwise.
-
-### GetSigningOk
-
-`func (o *ApplicationOIDC) GetSigningOk() (*ApplicationOIDCAllOfSigning, bool)`
-
-GetSigningOk returns a tuple with the Signing field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSigning
-
-`func (o *ApplicationOIDC) SetSigning(v ApplicationOIDCAllOfSigning)`
-
-SetSigning sets Signing field to given value.
-
-### HasSigning
-
-`func (o *ApplicationOIDC) HasSigning() bool`
-
-HasSigning returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,7 +20,7 @@ type EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod st
 
 // List of EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod
 const (
-	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONMETHOD_BASIC EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod = "BASIC"
+	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONMETHOD_BASIC  EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod = "BASIC"
 	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONMETHOD_BEARER EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod = "BEARER"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticat
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

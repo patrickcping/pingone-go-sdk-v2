@@ -21,7 +21,7 @@ type EnumGatewayPasswordAuthority string
 // List of EnumGatewayPasswordAuthority
 const (
 	ENUMGATEWAYPASSWORDAUTHORITY_PING_ONE EnumGatewayPasswordAuthority = "PING_ONE"
-	ENUMGATEWAYPASSWORDAUTHORITY_LDAP EnumGatewayPasswordAuthority = "LDAP"
+	ENUMGATEWAYPASSWORDAUTHORITY_LDAP     EnumGatewayPasswordAuthority = "LDAP"
 )
 
 // All allowed values of EnumGatewayPasswordAuthority enum
@@ -109,4 +109,3 @@ func (v *NullableEnumGatewayPasswordAuthority) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
 **Threshold** | [**EnumThreshold**](EnumThreshold.md) |  | 
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) |  | [default to ENUMVERIFY_DISABLED]
 
 ## Methods
 

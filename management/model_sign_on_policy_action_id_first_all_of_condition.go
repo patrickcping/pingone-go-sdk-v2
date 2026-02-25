@@ -20,7 +20,7 @@ var _ MappedNullable = &SignOnPolicyActionIDFirstAllOfCondition{}
 // SignOnPolicyActionIDFirstAllOfCondition struct for SignOnPolicyActionIDFirstAllOfCondition
 type SignOnPolicyActionIDFirstAllOfCondition struct {
 	Contains string `json:"contains"`
-	Value string `json:"value"`
+	Value    string `json:"value"`
 }
 
 // NewSignOnPolicyActionIDFirstAllOfCondition instantiates a new SignOnPolicyActionIDFirstAllOfCondition object
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionIDFirstAllOfCondition) SetValue(v string) {
 }
 
 func (o SignOnPolicyActionIDFirstAllOfCondition) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionIDFirstAllOfCondition) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -23,7 +23,7 @@ const (
 	ENUMAUTHORIZEEDITORDATACHANGEDETAILSDTOCHANGETYPE_CREATE EnumAuthorizeEditorDataChangeDetailsDTOChangeType = "CREATE"
 	ENUMAUTHORIZEEDITORDATACHANGEDETAILSDTOCHANGETYPE_UPDATE EnumAuthorizeEditorDataChangeDetailsDTOChangeType = "UPDATE"
 	ENUMAUTHORIZEEDITORDATACHANGEDETAILSDTOCHANGETYPE_DELETE EnumAuthorizeEditorDataChangeDetailsDTOChangeType = "DELETE"
-	ENUMAUTHORIZEEDITORDATACHANGEDETAILSDTOCHANGETYPE_NONE EnumAuthorizeEditorDataChangeDetailsDTOChangeType = "NONE"
+	ENUMAUTHORIZEEDITORDATACHANGEDETAILSDTOCHANGETYPE_NONE   EnumAuthorizeEditorDataChangeDetailsDTOChangeType = "NONE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataChangeDetailsDTOChangeType enum
@@ -113,4 +113,3 @@ func (v *NullableEnumAuthorizeEditorDataChangeDetailsDTOChangeType) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

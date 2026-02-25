@@ -19,14 +19,14 @@ var _ MappedNullable = &AuthorizeEditorDataPoliciesPolicyChildRule{}
 
 // AuthorizeEditorDataPoliciesPolicyChildRule struct for AuthorizeEditorDataPoliciesPolicyChildRule
 type AuthorizeEditorDataPoliciesPolicyChildRule struct {
-	Type EnumAuthorizeEditorDataPoliciesPolicyChildCommonType `json:"type"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	Value *AuthorizeEditorDataReferenceObjectDTO `json:"value,omitempty"`
-	EffectSettings *AuthorizeEditorDataRulesEffectSettingsDTO `json:"effectSettings,omitempty"`
+	Type           EnumAuthorizeEditorDataPoliciesPolicyChildCommonType `json:"type"`
+	Name           *string                                              `json:"name,omitempty"`
+	Description    *string                                              `json:"description,omitempty"`
+	Enabled        *bool                                                `json:"enabled,omitempty"`
+	Statements     []map[string]interface{}                             `json:"statements,omitempty"`
+	Condition      *AuthorizeEditorDataConditionDTO                     `json:"condition,omitempty"`
+	Value          *AuthorizeEditorDataReferenceObjectDTO               `json:"value,omitempty"`
+	EffectSettings *AuthorizeEditorDataRulesEffectSettingsDTO           `json:"effectSettings,omitempty"`
 }
 
 // NewAuthorizeEditorDataPoliciesPolicyChildRule instantiates a new AuthorizeEditorDataPoliciesPolicyChildRule object
@@ -296,7 +296,7 @@ func (o *AuthorizeEditorDataPoliciesPolicyChildRule) SetEffectSettings(v Authori
 }
 
 func (o AuthorizeEditorDataPoliciesPolicyChildRule) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -365,5 +365,3 @@ func (v *NullableAuthorizeEditorDataPoliciesPolicyChildRule) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

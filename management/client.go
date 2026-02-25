@@ -59,13 +59,13 @@ type APIClient struct {
 
 	ApplicationFlowPolicyAssignmentsApi *ApplicationFlowPolicyAssignmentsApiService
 
+	ApplicationPermissionsApi *ApplicationPermissionsApiService
+
 	ApplicationResourceGrantsApi *ApplicationResourceGrantsApiService
 
 	ApplicationResourcesApi *ApplicationResourcesApiService
 
 	ApplicationRoleAssignmentsApi *ApplicationRoleAssignmentsApiService
-
-	ApplicationPermissionsApi *ApplicationPermissionsApiService
 
 	ApplicationSecretApi *ApplicationSecretApiService
 
@@ -115,6 +115,8 @@ type APIClient struct {
 
 	HALApi *HALApiService
 
+	IdentityPropagationPlansApi *IdentityPropagationPlansApiService
+
 	IdentityProviderAttributesApi *IdentityProviderAttributesApiService
 
 	IdentityProvidersApi *IdentityProvidersApiService
@@ -153,8 +155,6 @@ type APIClient struct {
 
 	PropagationMappingsApi *PropagationMappingsApiService
 
-	IdentityPropagationPlansApi *IdentityPropagationPlansApiService
-
 	PropagationRevisionsApi *PropagationRevisionsApiService
 
 	PropagationRulesApi *PropagationRulesApiService
@@ -162,6 +162,8 @@ type APIClient struct {
 	PropagationStoreMetadataApi *PropagationStoreMetadataApiService
 
 	PropagationStoresApi *PropagationStoresApiService
+
+	RateLimitingApi *RateLimitingApiService
 
 	RecaptchaConfigurationApi *RecaptchaConfigurationApiService
 
@@ -186,6 +188,8 @@ type APIClient struct {
 	SubscriptionsWebhooksApi *SubscriptionsWebhooksApiService
 
 	TotalIdentitiesApi *TotalIdentitiesApiService
+
+	TranslationsApi *TranslationsApiService
 
 	TrustedEmailAddressesApi *TrustedEmailAddressesApiService
 
@@ -254,10 +258,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlertingApi = (*AlertingApiService)(&c.common)
 	c.ApplicationAttributeMappingApi = (*ApplicationAttributeMappingApiService)(&c.common)
 	c.ApplicationFlowPolicyAssignmentsApi = (*ApplicationFlowPolicyAssignmentsApiService)(&c.common)
+	c.ApplicationPermissionsApi = (*ApplicationPermissionsApiService)(&c.common)
 	c.ApplicationResourceGrantsApi = (*ApplicationResourceGrantsApiService)(&c.common)
 	c.ApplicationResourcesApi = (*ApplicationResourcesApiService)(&c.common)
 	c.ApplicationRoleAssignmentsApi = (*ApplicationRoleAssignmentsApiService)(&c.common)
-	c.ApplicationPermissionsApi = (*ApplicationPermissionsApiService)(&c.common)
 	c.ApplicationSecretApi = (*ApplicationSecretApiService)(&c.common)
 	c.ApplicationSignOnPolicyAssignmentsApi = (*ApplicationSignOnPolicyAssignmentsApiService)(&c.common)
 	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
@@ -282,6 +286,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.GroupRoleAssignmentsApi = (*GroupRoleAssignmentsApiService)(&c.common)
 	c.GroupsApi = (*GroupsApiService)(&c.common)
 	c.HALApi = (*HALApiService)(&c.common)
+	c.IdentityPropagationPlansApi = (*IdentityPropagationPlansApiService)(&c.common)
 	c.IdentityProviderAttributesApi = (*IdentityProviderAttributesApiService)(&c.common)
 	c.IdentityProvidersApi = (*IdentityProvidersApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
@@ -301,11 +306,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PhoneDeliverySettingsApi = (*PhoneDeliverySettingsApiService)(&c.common)
 	c.PopulationsApi = (*PopulationsApiService)(&c.common)
 	c.PropagationMappingsApi = (*PropagationMappingsApiService)(&c.common)
-	c.IdentityPropagationPlansApi = (*IdentityPropagationPlansApiService)(&c.common)
 	c.PropagationRevisionsApi = (*PropagationRevisionsApiService)(&c.common)
 	c.PropagationRulesApi = (*PropagationRulesApiService)(&c.common)
 	c.PropagationStoreMetadataApi = (*PropagationStoreMetadataApiService)(&c.common)
 	c.PropagationStoresApi = (*PropagationStoresApiService)(&c.common)
+	c.RateLimitingApi = (*RateLimitingApiService)(&c.common)
 	c.RecaptchaConfigurationApi = (*RecaptchaConfigurationApiService)(&c.common)
 	c.ResourceAttributesApi = (*ResourceAttributesApiService)(&c.common)
 	c.ResourceClientSecretApi = (*ResourceClientSecretApiService)(&c.common)
@@ -318,6 +323,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SignOnPolicyActionsApi = (*SignOnPolicyActionsApiService)(&c.common)
 	c.SubscriptionsWebhooksApi = (*SubscriptionsWebhooksApiService)(&c.common)
 	c.TotalIdentitiesApi = (*TotalIdentitiesApiService)(&c.common)
+	c.TranslationsApi = (*TranslationsApiService)(&c.common)
 	c.TrustedEmailAddressesApi = (*TrustedEmailAddressesApiService)(&c.common)
 	c.TrustedEmailDomainsApi = (*TrustedEmailDomainsApiService)(&c.common)
 	c.UserAccountsApi = (*UserAccountsApiService)(&c.common)

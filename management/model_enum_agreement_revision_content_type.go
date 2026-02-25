@@ -20,7 +20,7 @@ type EnumAgreementRevisionContentType string
 
 // List of EnumAgreementRevisionContentType
 const (
-	ENUMAGREEMENTREVISIONCONTENTTYPE_HTML EnumAgreementRevisionContentType = "text/html"
+	ENUMAGREEMENTREVISIONCONTENTTYPE_HTML  EnumAgreementRevisionContentType = "text/html"
 	ENUMAGREEMENTREVISIONCONTENTTYPE_PLAIN EnumAgreementRevisionContentType = "text/plain"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumAgreementRevisionContentType) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

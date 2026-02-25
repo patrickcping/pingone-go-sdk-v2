@@ -19,6 +19,7 @@ var _ MappedNullable = &VoiceConfigurationTextDependentPhrase{}
 
 // VoiceConfigurationTextDependentPhrase struct for VoiceConfigurationTextDependentPhrase
 type VoiceConfigurationTextDependentPhrase struct {
+	// Deprecated
 	Id string `json:"id"`
 }
 
@@ -41,6 +42,7 @@ func NewVoiceConfigurationTextDependentPhraseWithDefaults() *VoiceConfigurationT
 }
 
 // GetId returns the Id field value
+// Deprecated
 func (o *VoiceConfigurationTextDependentPhrase) GetId() string {
 	if o == nil {
 		var ret string
@@ -52,6 +54,7 @@ func (o *VoiceConfigurationTextDependentPhrase) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfigurationTextDependentPhrase) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -60,12 +63,13 @@ func (o *VoiceConfigurationTextDependentPhrase) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
+// Deprecated
 func (o *VoiceConfigurationTextDependentPhrase) SetId(v string) {
 	o.Id = v
 }
 
 func (o VoiceConfigurationTextDependentPhrase) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -113,5 +117,3 @@ func (v *NullableVoiceConfigurationTextDependentPhrase) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

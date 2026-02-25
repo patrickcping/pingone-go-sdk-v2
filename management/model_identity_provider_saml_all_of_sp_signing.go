@@ -20,7 +20,7 @@ var _ MappedNullable = &IdentityProviderSAMLAllOfSpSigning{}
 // IdentityProviderSAMLAllOfSpSigning struct for IdentityProviderSAMLAllOfSpSigning
 type IdentityProviderSAMLAllOfSpSigning struct {
 	Algorithm *EnumIdentityProviderSAMLSigningAlgorithm `json:"algorithm,omitempty"`
-	Key IdentityProviderSAMLAllOfSpSigningKey `json:"key"`
+	Key       IdentityProviderSAMLAllOfSpSigningKey     `json:"key"`
 }
 
 // NewIdentityProviderSAMLAllOfSpSigning instantiates a new IdentityProviderSAMLAllOfSpSigning object
@@ -98,7 +98,7 @@ func (o *IdentityProviderSAMLAllOfSpSigning) SetKey(v IdentityProviderSAMLAllOfS
 }
 
 func (o IdentityProviderSAMLAllOfSpSigning) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullableIdentityProviderSAMLAllOfSpSigning) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

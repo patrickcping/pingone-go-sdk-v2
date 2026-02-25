@@ -21,7 +21,7 @@ type EnumAuthorizeEditorDataPoliciesPolicyChildCommonType string
 // List of EnumAuthorizeEditorDataPoliciesPolicyChildCommonType
 const (
 	ENUMAUTHORIZEEDITORDATAPOLICIESPOLICYCHILDCOMMONTYPE_POLICY EnumAuthorizeEditorDataPoliciesPolicyChildCommonType = "POLICY"
-	ENUMAUTHORIZEEDITORDATAPOLICIESPOLICYCHILDCOMMONTYPE_RULE EnumAuthorizeEditorDataPoliciesPolicyChildCommonType = "RULE"
+	ENUMAUTHORIZEEDITORDATAPOLICIESPOLICYCHILDCOMMONTYPE_RULE   EnumAuthorizeEditorDataPoliciesPolicyChildCommonType = "RULE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataPoliciesPolicyChildCommonType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumAuthorizeEditorDataPoliciesPolicyChildCommonType) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

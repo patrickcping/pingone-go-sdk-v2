@@ -19,7 +19,7 @@ var _ MappedNullable = &FormFieldCommon{}
 
 // FormFieldCommon struct for FormFieldCommon
 type FormFieldCommon struct {
-	Type EnumFormFieldType `json:"type"`
+	Type     EnumFormFieldType       `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
 }
 
@@ -91,7 +91,7 @@ func (o *FormFieldCommon) SetPosition(v FormFieldCommonPosition) {
 }
 
 func (o FormFieldCommon) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableFormFieldCommon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

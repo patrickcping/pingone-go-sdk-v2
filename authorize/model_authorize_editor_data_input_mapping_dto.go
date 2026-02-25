@@ -18,7 +18,7 @@ import (
 // AuthorizeEditorDataInputMappingDTO - struct for AuthorizeEditorDataInputMappingDTO
 type AuthorizeEditorDataInputMappingDTO struct {
 	AuthorizeEditorDataInputMappingsAttributeInputMappingDTO *AuthorizeEditorDataInputMappingsAttributeInputMappingDTO
-	AuthorizeEditorDataInputMappingsInputInputMappingDTO *AuthorizeEditorDataInputMappingsInputInputMappingDTO
+	AuthorizeEditorDataInputMappingsInputInputMappingDTO     *AuthorizeEditorDataInputMappingsInputInputMappingDTO
 }
 
 // AuthorizeEditorDataInputMappingsAttributeInputMappingDTOAsAuthorizeEditorDataInputMappingDTO is a convenience function that returns AuthorizeEditorDataInputMappingsAttributeInputMappingDTO wrapped in AuthorizeEditorDataInputMappingDTO
@@ -34,7 +34,6 @@ func AuthorizeEditorDataInputMappingsInputInputMappingDTOAsAuthorizeEditorDataIn
 		AuthorizeEditorDataInputMappingsInputInputMappingDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataInputMappingDTO) UnmarshalJSON(data []byte) error {
@@ -93,7 +92,7 @@ func (src AuthorizeEditorDataInputMappingDTO) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataInputMappingDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataInputMappingDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -144,5 +143,3 @@ func (v *NullableAuthorizeEditorDataInputMappingDTO) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,3 +1,22 @@
+# v0.11.0 (2026-02-13)
+
+* **Breaking Change** Removed `OPTIONAL` enum value from `EnumVerify` as the API no longer supports this value. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+* **Breaking Change** Removed deprecated `Otp` field from the `GovernmentIdConfigurationAadhaar` model as the API no longer supports this capability. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+* **Note** Deprecated much of the voice verification functionality as it deprecated on the API. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+
+# v0.10.0 (2025-10-02)
+
+* **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+* **Enhancement** Added `VerifyAamva` and `Aadhaar` to the `GovernmentIdConfiguration` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+
+# v0.9.2 (2025-09-19)
+
+* **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+
+# v0.9.1 (2025-06-11)
+
+* **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+
 # v0.9.0 (2025-02-10)
 
 * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)

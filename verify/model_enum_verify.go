@@ -15,20 +15,18 @@ import (
 	"fmt"
 )
 
-// EnumVerify A string that defines the verification check requirements. Options are `REQUIRED`, `OPTIONAL` and `DISABLED`.
+// EnumVerify A string that defines the verification check requirements. Options are `REQUIRED` and `DISABLED`.
 type EnumVerify string
 
 // List of EnumVerify
 const (
 	ENUMVERIFY_REQUIRED EnumVerify = "REQUIRED"
-	ENUMVERIFY_OPTIONAL EnumVerify = "OPTIONAL"
 	ENUMVERIFY_DISABLED EnumVerify = "DISABLED"
 )
 
 // All allowed values of EnumVerify enum
 var AllowedEnumVerifyEnumValues = []EnumVerify{
 	"REQUIRED",
-	"OPTIONAL",
 	"DISABLED",
 }
 
@@ -111,4 +109,3 @@ func (v *NullableEnumVerify) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

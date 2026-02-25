@@ -19,8 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsNotConditionDTO{}
 
 // AuthorizeEditorDataConditionsNotConditionDTO struct for AuthorizeEditorDataConditionsNotConditionDTO
 type AuthorizeEditorDataConditionsNotConditionDTO struct {
-	Type EnumAuthorizeEditorDataConditionDTOType `json:"type"`
-	Condition AuthorizeEditorDataConditionDTO `json:"condition"`
+	Type      EnumAuthorizeEditorDataConditionDTOType `json:"type"`
+	Condition AuthorizeEditorDataConditionDTO         `json:"condition"`
 }
 
 // NewAuthorizeEditorDataConditionsNotConditionDTO instantiates a new AuthorizeEditorDataConditionsNotConditionDTO object
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataConditionsNotConditionDTO) SetCondition(v AuthorizeE
 }
 
 func (o AuthorizeEditorDataConditionsNotConditionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataConditionsNotConditionDTO) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

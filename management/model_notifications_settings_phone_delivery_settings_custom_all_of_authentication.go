@@ -167,7 +167,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) Se
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -224,5 +224,3 @@ func (v *NullableNotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentica
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

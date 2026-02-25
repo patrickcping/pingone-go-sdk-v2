@@ -15,19 +15,17 @@ import (
 	"fmt"
 )
 
-// EnumAdministratorSecurityMfaStatus This applies only to the specified environment, and can be either `OPT_IN` (indicating MFA is to be used for administrator sign-ons), or `OPT_OUT` (indicating MFA is not to be used for administrator sign-ons). This currently defaults to `OPT_OUT`.
+// EnumAdministratorSecurityMfaStatus This property must be set to `ENFORCE` as MFA is required for administrator sign-ons. This property applies only to the specified environment.
 type EnumAdministratorSecurityMfaStatus string
 
 // List of EnumAdministratorSecurityMfaStatus
 const (
-	ENUMADMINISTRATORSECURITYMFASTATUS_IN EnumAdministratorSecurityMfaStatus = "OPT_IN"
-	ENUMADMINISTRATORSECURITYMFASTATUS_OUT EnumAdministratorSecurityMfaStatus = "OPT_OUT"
+	ENUMADMINISTRATORSECURITYMFASTATUS_ENFORCE EnumAdministratorSecurityMfaStatus = "ENFORCE"
 )
 
 // All allowed values of EnumAdministratorSecurityMfaStatus enum
 var AllowedEnumAdministratorSecurityMfaStatusEnumValues = []EnumAdministratorSecurityMfaStatus{
-	"OPT_IN",
-	"OPT_OUT",
+	"ENFORCE",
 }
 
 func (v *EnumAdministratorSecurityMfaStatus) UnmarshalJSON(src []byte) error {
@@ -109,4 +107,3 @@ func (v *NullableEnumAdministratorSecurityMfaStatus) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

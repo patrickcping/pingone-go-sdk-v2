@@ -20,7 +20,7 @@ type EnumPropagationStoreTypeLDAPGatewayLDAPType string
 
 // List of EnumPropagationStoreTypeLDAPGatewayLDAPType
 const (
-	ENUMPROPAGATIONSTORETYPELDAPGATEWAYLDAPTYPE_PING_DIRECTORY EnumPropagationStoreTypeLDAPGatewayLDAPType = "PingDirectory"
+	ENUMPROPAGATIONSTORETYPELDAPGATEWAYLDAPTYPE_PING_DIRECTORY             EnumPropagationStoreTypeLDAPGatewayLDAPType = "PingDirectory"
 	ENUMPROPAGATIONSTORETYPELDAPGATEWAYLDAPTYPE_MICROSOFT_ACTIVE_DIRECTORY EnumPropagationStoreTypeLDAPGatewayLDAPType = "Microsoft Active Directory"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeLDAPGatewayLDAPType) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

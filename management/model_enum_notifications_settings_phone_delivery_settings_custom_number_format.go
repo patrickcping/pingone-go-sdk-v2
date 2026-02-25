@@ -15,12 +15,12 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat The phone number format. Possible values: `FULL` (default) The phone number format with a leading `+` sign, in the E.164 standard format. For example: `+14155552671` `NUMBER_ONLY` The phone number format without a leading `+` sign, in the E.164 standard format. For example: `14155552671` 
+// EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat The phone number format. Possible values: `FULL` (default) The phone number format with a leading `+` sign, in the E.164 standard format. For example: `+14155552671` `NUMBER_ONLY` The phone number format without a leading `+` sign, in the E.164 standard format. For example: `14155552671`
 type EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERFORMAT_FULL EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat = "FULL"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERFORMAT_FULL        EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat = "FULL"
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMNUMBERFORMAT_NUMBER_ONLY EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat = "NUMBER_ONLY"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsCustomNumberForma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

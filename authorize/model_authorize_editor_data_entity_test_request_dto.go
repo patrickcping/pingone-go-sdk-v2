@@ -19,9 +19,9 @@ var _ MappedNullable = &AuthorizeEditorDataEntityTestRequestDTO{}
 
 // AuthorizeEditorDataEntityTestRequestDTO struct for AuthorizeEditorDataEntityTestRequestDTO
 type AuthorizeEditorDataEntityTestRequestDTO struct {
-	Parameters []AuthorizeEditorDataEntityTestingParameterDTO `json:"parameters"`
+	Parameters  []AuthorizeEditorDataEntityTestingParameterDTO  `json:"parameters"`
 	UserContext *AuthorizeEditorDataEntityTestingUserContextDTO `json:"userContext,omitempty"`
-	Overrides []AuthorizeEditorDataEntityTestingOverrideDTO `json:"overrides,omitempty"`
+	Overrides   []AuthorizeEditorDataEntityTestingOverrideDTO   `json:"overrides,omitempty"`
 }
 
 // NewAuthorizeEditorDataEntityTestRequestDTO instantiates a new AuthorizeEditorDataEntityTestRequestDTO object
@@ -131,7 +131,7 @@ func (o *AuthorizeEditorDataEntityTestRequestDTO) SetOverrides(v []AuthorizeEdit
 }
 
 func (o AuthorizeEditorDataEntityTestRequestDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,5 +185,3 @@ func (v *NullableAuthorizeEditorDataEntityTestRequestDTO) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

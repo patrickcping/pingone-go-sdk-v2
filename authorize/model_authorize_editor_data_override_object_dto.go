@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataOverrideObjectDTO{}
 
 // AuthorizeEditorDataOverrideObjectDTO struct for AuthorizeEditorDataOverrideObjectDTO
 type AuthorizeEditorDataOverrideObjectDTO struct {
-	Id string `json:"id"`
+	Id       string `json:"id"`
 	Override string `json:"override"`
 }
 
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataOverrideObjectDTO) SetOverride(v string) {
 }
 
 func (o AuthorizeEditorDataOverrideObjectDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataOverrideObjectDTO) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

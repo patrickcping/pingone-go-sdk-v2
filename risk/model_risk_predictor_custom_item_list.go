@@ -19,8 +19,8 @@ var _ MappedNullable = &RiskPredictorCustomItemList{}
 
 // RiskPredictorCustomItemList The mapping of risk levels for the list of all results.
 type RiskPredictorCustomItemList struct {
-	Contains string `json:"contains"`
-	Type *string `json:"type,omitempty"`
+	Contains string  `json:"contains"`
+	Type     *string `json:"type,omitempty"`
 	// An array that specifies the list of entities that represent the risk conditions.
 	List []string `json:"list"`
 }
@@ -125,7 +125,7 @@ func (o *RiskPredictorCustomItemList) SetList(v []string) {
 }
 
 func (o RiskPredictorCustomItemList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,5 +177,3 @@ func (v *NullableRiskPredictorCustomItemList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

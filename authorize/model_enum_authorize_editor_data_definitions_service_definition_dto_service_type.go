@@ -20,8 +20,8 @@ type EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType string
 
 // List of EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType
 const (
-	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_NONE EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType = "NONE"
-	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_HTTP EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType = "HTTP"
+	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_NONE      EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType = "NONE"
+	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_HTTP      EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType = "HTTP"
 	ENUMAUTHORIZEEDITORDATADEFINITIONSSERVICEDEFINITIONDTOSERVICETYPE_CONNECTOR EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType = "CONNECTOR"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceTy
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

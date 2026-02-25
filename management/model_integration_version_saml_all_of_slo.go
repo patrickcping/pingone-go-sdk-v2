@@ -22,8 +22,8 @@ type IntegrationVersionSAMLAllOfSlo struct {
 	// The endpoint where SLO requests are sent.
 	RequestEndpoint *string `json:"requestEndpoint,omitempty"`
 	// The endpoint where SLO responses are sent.
-	ResponseEndpoint *string `json:"responseEndpoint,omitempty"`
-	Binding *EnumIntegrationVersionSAMLSLOBinding `json:"binding,omitempty"`
+	ResponseEndpoint *string                               `json:"responseEndpoint,omitempty"`
+	Binding          *EnumIntegrationVersionSAMLSLOBinding `json:"binding,omitempty"`
 }
 
 // NewIntegrationVersionSAMLAllOfSlo instantiates a new IntegrationVersionSAMLAllOfSlo object
@@ -140,7 +140,7 @@ func (o *IntegrationVersionSAMLAllOfSlo) SetBinding(v EnumIntegrationVersionSAML
 }
 
 func (o IntegrationVersionSAMLAllOfSlo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,5 +196,3 @@ func (v *NullableIntegrationVersionSAMLAllOfSlo) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -23,16 +23,16 @@ type AuthorizeEditorDataStatementsStatementDTO struct {
 	// HAL embedded resources
 	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
 	// The resource's unique identifier
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Code string `json:"code"`
-	AppliesTo EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo `json:"appliesTo"`
-	AppliesIf EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf `json:"appliesIf"`
-	Payload string `json:"payload"`
-	Obligatory *bool `json:"obligatory,omitempty"`
-	Attributes []AuthorizeEditorDataReferenceObjectDTO `json:"attributes"`
+	Id          *string                                                `json:"id,omitempty"`
+	Environment *ObjectEnvironment                                     `json:"environment,omitempty"`
+	Name        string                                                 `json:"name"`
+	Description *string                                                `json:"description,omitempty"`
+	Code        string                                                 `json:"code"`
+	AppliesTo   EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo `json:"appliesTo"`
+	AppliesIf   EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf `json:"appliesIf"`
+	Payload     string                                                 `json:"payload"`
+	Obligatory  *bool                                                  `json:"obligatory,omitempty"`
+	Attributes  []AuthorizeEditorDataReferenceObjectDTO                `json:"attributes"`
 }
 
 // NewAuthorizeEditorDataStatementsStatementDTO instantiates a new AuthorizeEditorDataStatementsStatementDTO object
@@ -395,7 +395,7 @@ func (o *AuthorizeEditorDataStatementsStatementDTO) SetAttributes(v []AuthorizeE
 }
 
 func (o AuthorizeEditorDataStatementsStatementDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -466,5 +466,3 @@ func (v *NullableAuthorizeEditorDataStatementsStatementDTO) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

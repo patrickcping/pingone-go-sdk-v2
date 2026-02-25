@@ -20,10 +20,10 @@ type EnumAuthorizeEditorDataAuthenticationDTOType string
 
 // List of EnumAuthorizeEditorDataAuthenticationDTOType
 const (
-	ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_BASIC EnumAuthorizeEditorDataAuthenticationDTOType = "BASIC"
+	ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_BASIC              EnumAuthorizeEditorDataAuthenticationDTOType = "BASIC"
 	ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_CLIENT_CREDENTIALS EnumAuthorizeEditorDataAuthenticationDTOType = "CLIENT_CREDENTIALS"
-	ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_NONE EnumAuthorizeEditorDataAuthenticationDTOType = "NONE"
-	ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_TOKEN EnumAuthorizeEditorDataAuthenticationDTOType = "TOKEN"
+	ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_NONE               EnumAuthorizeEditorDataAuthenticationDTOType = "NONE"
+	ENUMAUTHORIZEEDITORDATAAUTHENTICATIONDTOTYPE_TOKEN              EnumAuthorizeEditorDataAuthenticationDTOType = "TOKEN"
 )
 
 // All allowed values of EnumAuthorizeEditorDataAuthenticationDTOType enum
@@ -113,4 +113,3 @@ func (v *NullableEnumAuthorizeEditorDataAuthenticationDTOType) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

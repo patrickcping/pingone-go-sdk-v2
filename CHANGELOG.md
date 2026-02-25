@@ -1,3 +1,202 @@
+# Release (2026-02-13)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.6
+  * **Note** bump `golang.org/x/oauth2` v0.34.0 => v0.35.0 [#505](https://github.com/patrickcping/pingone-go-sdk-v2/pull/505)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.10.0 => v0.11.0 [#505](https://github.com/patrickcping/pingone-go-sdk-v2/pull/505)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.11.0](./verify/CHANGELOG.md)
+  * **Breaking Change** Removed `OPTIONAL` enum value from `EnumVerify` as the API no longer supports this value. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+  * **Breaking Change** Removed deprecated `Otp` field from the `GovernmentIdConfigurationAadhaar` model as the API no longer supports this capability. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+  * **Note** Deprecated much of the voice verification functionality as it deprecated on the API. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+
+# Release (2025-12-29)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.5
+  * **Note** bump `golang.org/x/oauth2` v0.33.0 => v0.34.0 [#500](https://github.com/patrickcping/pingone-go-sdk-v2/pull/500)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.24.0 => v0.24.1 [#500](https://github.com/patrickcping/pingone-go-sdk-v2/pull/500)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.24.1](./mfa/CHANGELOG.md)
+  * **Bug** `IpPairingConfiguration` moved to the `DeviceAuthenticationPolicyCommonMobileApplicationsInner` model. [#499](https://github.com/patrickcping/pingone-go-sdk-v2/pull/499)
+
+# Release (2025-12-11)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.4
+  * **Note** bump `golang.org/x/oauth2` v0.32.0 => v0.33.0 [#496](https://github.com/patrickcping/pingone-go-sdk-v2/pull/496)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.62.0 => v0.63.0 [#496](https://github.com/patrickcping/pingone-go-sdk-v2/pull/496)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.2 => v0.24.0 [#496](https://github.com/patrickcping/pingone-go-sdk-v2/pull/496)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.63.0](./management/CHANGELOG.md)
+  * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)
+  * **Feature** Add support for the Rate Limit Configuration API. [#493](https://github.com/patrickcping/pingone-go-sdk-v2/pull/493)
+  * **Enhancement** Added `IncludeX5t` field to the `ApplicationOIDC` model to support X.509 certificate thumbprint in JWT signatures. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+  * **Enhancement** Added `OpSessionCheckEnabled` field to the `ApplicationOIDC` model to support session state checking in authentication responses. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+  * **Enhancement** Added `RequestScopesForMultipleResourcesEnabled` field to the `ApplicationOIDC` model to support requesting scopes for multiple resources. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.24.0](./mfa/CHANGELOG.md)
+  * **Enhancement** Added support for PingID in device authentication policies. [#473](https://github.com/patrickcping/pingone-go-sdk-v2/pull/473)
+
+# Release (2025-10-31)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.3
+  * **Note** bump `golang.org/x/oauth2` v0.31.0 => v0.32.0 [#489](https://github.com/patrickcping/pingone-go-sdk-v2/pull/489)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.61.0 => v0.62.0 [#489](https://github.com/patrickcping/pingone-go-sdk-v2/pull/489)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.62.0](./management/CHANGELOG.md)
+  * **Enhancement** Added support for `CooldownConfiguration` and `ProviderConfiguration` in the `NotificationsPolicy` object. [#487](https://github.com/patrickcping/pingone-go-sdk-v2/pull/487)
+  * **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values. [#488](https://github.com/patrickcping/pingone-go-sdk-v2/pull/488)
+
+# Release (2025-10-02)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.2
+  * **Note** bump `golang.org/x/oauth2` v0.30.0 => v0.31.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.2 => v0.12.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.20.0 => v0.21.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.2 => v0.10.0 [#484](https://github.com/patrickcping/pingone-go-sdk-v2/pull/484)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.12.0](./credentials/CHANGELOG.md)
+  * **Feature** Add support for the Credential Type Versions API. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+  * **Enhancement** Added `Expiration` and `Version` fields to the `CredentialType` object model. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.21.0](./risk/CHANGELOG.md)
+  * **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type. [#483](https://github.com/patrickcping/pingone-go-sdk-v2/pull/483)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.10.0](./verify/CHANGELOG.md)
+  * **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+  * **Enhancement** Added `VerifyAamva` and `Aadhaar` to the `GovernmentIdConfiguration` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
+
+# Release (2025-09-19)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.1
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.1 => v0.8.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.1 => v0.11.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.60.0 => v0.61.0 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.1 => v0.23.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.19.1 => v0.20.0 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.1 => v0.9.2 [#482](https://github.com/patrickcping/pingone-go-sdk-v2/pull/482)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.2](./authorize/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.11.2](./credentials/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.61.0](./management/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+  * **Enhancement** Added the `Help Desk Admin` and `Authorize Gateway Policy Evaluator` administrator roles. [#481](https://github.com/patrickcping/pingone-go-sdk-v2/pull/481)
+  * **Enhancement** Added the ability to import applications with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+  * **Enhancement** Added the ability to import custom resources with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.23.2](./mfa/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.20.0](./risk/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+  * **Enhancement** Add support for `startsWith`, `endsWith` and `notContains` conditions. [#478](https://github.com/patrickcping/pingone-go-sdk-v2/pull/478)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.9.2](./verify/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+
+# Release (2025-07-16)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.59.0 => v0.60.0 [#469](https://github.com/patrickcping/pingone-go-sdk-v2/pull/469)
+  * **Enhancement** Add support for Singapore in region selection. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.60.0](./management/CHANGELOG.md)
+  * **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+  * **Enhancement** Added the `SG` region code to the `EnumRegionCode` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+  * **Enhancement** Added the `AU` and `SG` region codes to the `EnumRegionCodeLicense` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+
+# Release (2025-06-27)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.13.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.58.0 => v0.59.0 [#466](https://github.com/patrickcping/pingone-go-sdk-v2/pull/466)
+  * **Enhancement** Add support for PingID v2 environments in product selection. [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.59.0](./management/CHANGELOG.md)
+  * **Enhancement** Added the `PING_ONE_ID` product type to support PingID (v2). [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
+
+# Release (2025-06-24)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.19
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.57.1 => v0.58.0 [#464](https://github.com/patrickcping/pingone-go-sdk-v2/pull/464)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.58.0](./management/CHANGELOG.md)
+  * **Enhancement** Add support for `VirtualServerIdSettings` in SAML application objects. [#462](https://github.com/patrickcping/pingone-go-sdk-v2/pull/462)
+
+# Release (2025-06-11)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.18
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.0 => v0.8.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.11.0 => v0.11.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.57.0 => v0.57.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.23.0 => v0.23.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.19.0 => v0.19.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.9.0 => v0.9.1 [#461](https://github.com/patrickcping/pingone-go-sdk-v2/pull/461)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.1](./authorize/CHANGELOG.md)
+  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.11.1](./credentials/CHANGELOG.md)
+  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.57.1](./management/CHANGELOG.md)
+  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.23.1](./mfa/CHANGELOG.md)
+  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.19.1](./risk/CHANGELOG.md)
+  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.9.1](./verify/CHANGELOG.md)
+  * **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+
+# Release (2025-05-29)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.17
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.56.0 => v0.57.0 [#459](https://github.com/patrickcping/pingone-go-sdk-v2/pull/459)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.57.0](./management/CHANGELOG.md)
+  * **Feature** Add support for the Locale Translations API. [#457](https://github.com/patrickcping/pingone-go-sdk-v2/pull/457)
+  * **Enhancement** Add support for assigning application scope to custom roles. [#458](https://github.com/patrickcping/pingone-go-sdk-v2/pull/458)
+
+# Release (2025-05-20)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.16
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.55.0 => v0.56.0 [#456](https://github.com/patrickcping/pingone-go-sdk-v2/pull/456)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.56.0](./management/CHANGELOG.md)
+  * **Enhancement** Support `SubjectNameIdentifierFormat` on WS-FED application data models. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
+  * **Bug** Corrected `WS_FED` enum value typo on the `EnumApplicationProtocol` model. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
+
+# Release (2025-05-13)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.15
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.54.0 => v0.55.0 [#454](https://github.com/patrickcping/pingone-go-sdk-v2/pull/454)
+  * **Note** bump `golang.org/x/oauth2` v0.29.0 => v0.30.0 [#454](https://github.com/patrickcping/pingone-go-sdk-v2/pull/454)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.55.0](./management/CHANGELOG.md)
+  * **Feature** Add support for the Environment Status API. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
+  * **Enhancement** Support `HardDeletedAllowedAt`, `SoftDeletedAt`, `Status` on the `Environment` data model. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
+  * **Enhancement** Support `AlternativeIdentifiers` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+  * **Enhancement** Support `PreferredLanguage` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+  * **Enhancement** Support `Theme` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+  * **Bug** Corrected `EnvironmentRegion` model unmarshalling when using custom region string values. [#452](https://github.com/patrickcping/pingone-go-sdk-v2/pull/452)
+
+# Release (2025-04-28)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.14
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.53.0 => v0.54.0 [#447](https://github.com/patrickcping/pingone-go-sdk-v2/pull/447)
+  * **Note** bump `golang.org/x/oauth2` v0.28.0 => v0.29.0 [#441](https://github.com/patrickcping/pingone-go-sdk-v2/pull/441)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.54.0](./management/CHANGELOG.md)
+  * **Enhancement** Support the new `LINKEDIN_OIDC` Identity provider type. [#445](https://github.com/patrickcping/pingone-go-sdk-v2/pull/445)
+
+# Release (2025-03-11)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.13
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.52.0 => v0.53.0 [#436](https://github.com/patrickcping/pingone-go-sdk-v2/pull/436)
+  * **Note** bump `golang.org/x/oauth2` v0.27.0 => v0.28.0 [#436](https://github.com/patrickcping/pingone-go-sdk-v2/pull/436)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.53.0](./management/CHANGELOG.md)
+  * **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model. [#433](https://github.com/patrickcping/pingone-go-sdk-v2/pull/433)
+
+# Release (2025-03-04)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.12
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.51.0 => v0.52.0 [#432](https://github.com/patrickcping/pingone-go-sdk-v2/pull/432)
+  * **Note** bump `golang.org/x/oauth2` v0.26.0 => v0.27.0 [#432](https://github.com/patrickcping/pingone-go-sdk-v2/pull/432)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.52.0](./management/CHANGELOG.md)
+  * **Breaking change** The `AdministratorSecurity` model has been aligned to the service. [#429](https://github.com/patrickcping/pingone-go-sdk-v2/pull/429)
+ 
+# Release (2025-02-24)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.11
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.50.0 => v0.51.0 [#428](https://github.com/patrickcping/pingone-go-sdk-v2/pull/428)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.51.0](./management/CHANGELOG.md)
+  * **Breaking change** The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model when using the `IdentityProvider` model. [#427](https://github.com/patrickcping/pingone-go-sdk-v2/pull/427)
+
+# Release (2025-02-21)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.10
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.49.0 => v0.50.0 [#426](https://github.com/patrickcping/pingone-go-sdk-v2/pull/426)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.50.0](./management/CHANGELOG.md)
+  * **Breaking change** Added support for the `TenantId` field on Microsoft Identity providers. The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model. [#425](https://github.com/patrickcping/pingone-go-sdk-v2/pull/425)
+ 
 # Release (2025-02-10)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.9

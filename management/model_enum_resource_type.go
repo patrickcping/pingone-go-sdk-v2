@@ -21,8 +21,8 @@ type EnumResourceType string
 // List of EnumResourceType
 const (
 	ENUMRESOURCETYPE_OPENID_CONNECT EnumResourceType = "OPENID_CONNECT"
-	ENUMRESOURCETYPE_PINGONE_API EnumResourceType = "PINGONE_API"
-	ENUMRESOURCETYPE_CUSTOM EnumResourceType = "CUSTOM"
+	ENUMRESOURCETYPE_PINGONE_API    EnumResourceType = "PINGONE_API"
+	ENUMRESOURCETYPE_CUSTOM         EnumResourceType = "CUSTOM"
 )
 
 // All allowed values of EnumResourceType enum
@@ -111,4 +111,3 @@ func (v *NullableEnumResourceType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

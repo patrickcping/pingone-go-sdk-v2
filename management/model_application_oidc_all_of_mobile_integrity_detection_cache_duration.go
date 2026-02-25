@@ -20,8 +20,8 @@ var _ MappedNullable = &ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuratio
 // ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration struct for ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration
 type ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration struct {
 	// An integer that specifies the number of minutes or hours that specify the duration between successful integrity detection calls. Every attestation request entails a certain time tradeoff. You can choose to cache successful integrity detection calls for a predefined duration, between a minimum of 1 minute and a maximum of 48 hours. If mobile.integrityDetection.mode is ENABLED, the cache duration must be set.
-	Amount *int32 `json:"amount,omitempty"`
-	Units *EnumDurationUnitMinsHours `json:"units,omitempty"`
+	Amount *int32                     `json:"amount,omitempty"`
+	Units  *EnumDurationUnitMinsHours `json:"units,omitempty"`
 }
 
 // NewApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration instantiates a new ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration object
@@ -106,7 +106,7 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) SetUnits(v E
 }
 
 func (o ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,5 +159,3 @@ func (v *NullableApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) Unma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

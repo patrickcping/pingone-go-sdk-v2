@@ -65,7 +65,7 @@ func (o *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) SetType(v Enum
 }
 
 func (o AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -113,5 +113,3 @@ func (v *NullableAuthorizeEditorDataAuthenticationsNoneAuthenticationDTO) Unmars
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

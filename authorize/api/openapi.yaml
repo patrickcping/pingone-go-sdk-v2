@@ -43,6 +43,96 @@ tags:
 - name: Application Role Permissions
 - name: Authorize Editor
 paths:
+  /environments/{environmentID}:
+    get:
+      operationId: readOneEnvironment
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+          description: Successful response
+      summary: READ One Environment
+      tags:
+      - Environments
   /environments/{environmentID}/decisionEndpoints:
     get:
       operationId: readAllDecisionEndpoints
@@ -200,6 +290,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -681,6 +772,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -2590,6 +2682,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -9277,6 +9370,25 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
+      type: object
+    Environment:
+      example:
+        createdAt: createdAt
+        id: id
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
       type: object
     APIServer:
       example:

@@ -19,11 +19,11 @@ var _ MappedNullable = &AuthorizeEditorDataChangeDetailsDTO{}
 
 // AuthorizeEditorDataChangeDetailsDTO struct for AuthorizeEditorDataChangeDetailsDTO
 type AuthorizeEditorDataChangeDetailsDTO struct {
-	ChangedResource *TypedRelationship `json:"changedResource,omitempty"`
-	ChangeType *EnumAuthorizeEditorDataChangeDetailsDTOChangeType `json:"changeType,omitempty"`
-	ChangedEntityName *string `json:"changedEntityName,omitempty"`
-	ChangedEntityType *string `json:"changedEntityType,omitempty"`
-	User *AuthorizeEditorDataUserDTO `json:"user,omitempty"`
+	ChangedResource   *TypedRelationship                                 `json:"changedResource,omitempty"`
+	ChangeType        *EnumAuthorizeEditorDataChangeDetailsDTOChangeType `json:"changeType,omitempty"`
+	ChangedEntityName *string                                            `json:"changedEntityName,omitempty"`
+	ChangedEntityType *string                                            `json:"changedEntityType,omitempty"`
+	User              *AuthorizeEditorDataUserDTO                        `json:"user,omitempty"`
 }
 
 // NewAuthorizeEditorDataChangeDetailsDTO instantiates a new AuthorizeEditorDataChangeDetailsDTO object
@@ -204,7 +204,7 @@ func (o *AuthorizeEditorDataChangeDetailsDTO) SetUser(v AuthorizeEditorDataUserD
 }
 
 func (o AuthorizeEditorDataChangeDetailsDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,5 +266,3 @@ func (v *NullableAuthorizeEditorDataChangeDetailsDTO) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,9 +19,9 @@ var _ MappedNullable = &AuthorizeEditorDataManagedEntityManagedEntityReferenceDT
 
 // AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO struct for AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO
 type AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO struct {
-	Id *string `json:"id,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Id         *string `json:"id,omitempty"`
+	Type       *string `json:"type,omitempty"`
+	Name       *string `json:"name,omitempty"`
 	UiDeepLink *string `json:"uiDeepLink,omitempty"`
 }
 
@@ -171,7 +171,7 @@ func (o *AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO) SetUiDeepLin
 }
 
 func (o AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableAuthorizeEditorDataManagedEntityManagedEntityReferenceDTO) Unma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

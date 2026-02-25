@@ -19,52 +19,54 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	Actions []SignOnPolicyAction `json:"actions,omitempty"`
-	Agreements []Agreement `json:"agreements,omitempty"`
-	AlertChannels []AlertChannel `json:"alertChannels,omitempty"`
-	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
-	Applications []ReadOneApplication200Response `json:"applications,omitempty"`
-	Certificates []Certificate `json:"certificates,omitempty"`
-	Contents []TemplateContent `json:"contents,omitempty"`
-	Credentials []GatewayCredential `json:"credentials,omitempty"`
-	CustomDomains []CustomDomain `json:"customDomains,omitempty"`
-	EmailDomains []EmailDomain `json:"emailDomains,omitempty"`
-	Environments []Environment `json:"environments,omitempty"`
-	FlowPolicies []FlowPolicy `json:"flowPolicies,omitempty"`
-	FlowPolicyAssignments []FlowPolicyAssignment `json:"flowPolicyAssignments,omitempty"`
-	Forms []Form `json:"forms,omitempty"`
-	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
-	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
-	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
-	Groups []Group `json:"groups,omitempty"`
-	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
-	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
-	Integrations []Integration `json:"integrations,omitempty"`
-	Keys []Certificate `json:"keys,omitempty"`
-	KeyRotationPolicies []KeyRotationPolicy `json:"keyRotationPolicies,omitempty"`
-	Languages []EntityArrayEmbeddedLanguagesInner `json:"languages,omitempty"`
-	Licenses []License `json:"licenses,omitempty"`
-	NotificationsPolicies []NotificationsPolicy `json:"notificationsPolicies,omitempty"`
-	Organizations []Organization `json:"organizations,omitempty"`
-	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
-	Permissions []ResourceApplicationPermission `json:"permissions,omitempty"`
-	PhoneDeliverySettings []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
-	Plans []IdentityPropagationPlan `json:"plans,omitempty"`
-	Populations []Population `json:"populations,omitempty"`
-	Resources []EntityArrayEmbeddedResourcesInner `json:"resources,omitempty"`
-	Revisions []AgreementLanguageRevision `json:"revisions,omitempty"`
-	Scopes []ResourceScope `json:"scopes,omitempty"`
-	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
-	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
-	Subscriptions []Subscription `json:"subscriptions,omitempty"`
-	Templates []Template `json:"templates,omitempty"`
-	Themes []BrandingTheme `json:"themes,omitempty"`
-	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
-	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
-	Roles []EntityArrayEmbeddedRolesInner `json:"roles,omitempty"`
-	Schemas []Schema `json:"schemas,omitempty"`
-	Users []User `json:"users,omitempty"`
-	Versions []IntegrationVersion `json:"versions,omitempty"`
+	Actions                 []SignOnPolicyAction                         `json:"actions,omitempty"`
+	Agreements              []Agreement                                  `json:"agreements,omitempty"`
+	AlertChannels           []AlertChannel                               `json:"alertChannels,omitempty"`
+	Attributes              []EntityArrayEmbeddedAttributesInner         `json:"attributes,omitempty"`
+	Applications            []ReadOneApplication200Response              `json:"applications,omitempty"`
+	Certificates            []Certificate                                `json:"certificates,omitempty"`
+	Contents                []TemplateContent                            `json:"contents,omitempty"`
+	Credentials             []GatewayCredential                          `json:"credentials,omitempty"`
+	CustomDomains           []CustomDomain                               `json:"customDomains,omitempty"`
+	EmailDomains            []EmailDomain                                `json:"emailDomains,omitempty"`
+	Environments            []Environment                                `json:"environments,omitempty"`
+	FlowPolicies            []FlowPolicy                                 `json:"flowPolicies,omitempty"`
+	FlowPolicyAssignments   []FlowPolicyAssignment                       `json:"flowPolicyAssignments,omitempty"`
+	Forms                   []Form                                       `json:"forms,omitempty"`
+	GatewayInstances        []GatewayInstance                            `json:"gatewayInstances,omitempty"`
+	Gateways                []EntityArrayEmbeddedGatewaysInner           `json:"gateways,omitempty"`
+	Grants                  []ApplicationResourceGrant                   `json:"grants,omitempty"`
+	Groups                  []Group                                      `json:"groups,omitempty"`
+	GroupMemberships        []GroupMembership                            `json:"groupMemberships,omitempty"`
+	IdentityProviders       []IdentityProvider                           `json:"identityProviders,omitempty"`
+	Integrations            []Integration                                `json:"integrations,omitempty"`
+	Keys                    []Certificate                                `json:"keys,omitempty"`
+	KeyRotationPolicies     []KeyRotationPolicy                          `json:"keyRotationPolicies,omitempty"`
+	Languages               []EntityArrayEmbeddedLanguagesInner          `json:"languages,omitempty"`
+	Licenses                []License                                    `json:"licenses,omitempty"`
+	NotificationsPolicies   []NotificationsPolicy                        `json:"notificationsPolicies,omitempty"`
+	Organizations           []Organization                               `json:"organizations,omitempty"`
+	PasswordPolicies        []PasswordPolicy                             `json:"passwordPolicies,omitempty"`
+	Permissions             []ResourceApplicationPermission              `json:"permissions,omitempty"`
+	PhoneDeliverySettings   []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
+	Plans                   []IdentityPropagationPlan                    `json:"plans,omitempty"`
+	Populations             []Population                                 `json:"populations,omitempty"`
+	RateLimitIpConfigs      []RateLimitConfiguration                     `json:"rateLimitIpConfigs,omitempty"`
+	Resources               []EntityArrayEmbeddedResourcesInner          `json:"resources,omitempty"`
+	Revisions               []AgreementLanguageRevision                  `json:"revisions,omitempty"`
+	Scopes                  []ResourceScope                              `json:"scopes,omitempty"`
+	SignOnPolicies          []SignOnPolicy                               `json:"signOnPolicies,omitempty"`
+	SignOnPolicyAssignments []SignOnPolicyAssignment                     `json:"signOnPolicyAssignments,omitempty"`
+	Subscriptions           []Subscription                               `json:"subscriptions,omitempty"`
+	Templates               []Template                                   `json:"templates,omitempty"`
+	Themes                  []BrandingTheme                              `json:"themes,omitempty"`
+	Translations            []LocaleTranslation                          `json:"translations,omitempty"`
+	TrustedEmails           []EmailDomainTrustedEmail                    `json:"trustedEmails,omitempty"`
+	RoleAssignments         []RoleAssignment                             `json:"roleAssignments,omitempty"`
+	Roles                   []EntityArrayEmbeddedRolesInner              `json:"roles,omitempty"`
+	Schemas                 []Schema                                     `json:"schemas,omitempty"`
+	Users                   []User                                       `json:"users,omitempty"`
+	Versions                []IntegrationVersion                         `json:"versions,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -1108,6 +1110,38 @@ func (o *EntityArrayEmbedded) SetPopulations(v []Population) {
 	o.Populations = v
 }
 
+// GetRateLimitIpConfigs returns the RateLimitIpConfigs field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetRateLimitIpConfigs() []RateLimitConfiguration {
+	if o == nil || IsNil(o.RateLimitIpConfigs) {
+		var ret []RateLimitConfiguration
+		return ret
+	}
+	return o.RateLimitIpConfigs
+}
+
+// GetRateLimitIpConfigsOk returns a tuple with the RateLimitIpConfigs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetRateLimitIpConfigsOk() ([]RateLimitConfiguration, bool) {
+	if o == nil || IsNil(o.RateLimitIpConfigs) {
+		return nil, false
+	}
+	return o.RateLimitIpConfigs, true
+}
+
+// HasRateLimitIpConfigs returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasRateLimitIpConfigs() bool {
+	if o != nil && !IsNil(o.RateLimitIpConfigs) {
+		return true
+	}
+
+	return false
+}
+
+// SetRateLimitIpConfigs gets a reference to the given []RateLimitConfiguration and assigns it to the RateLimitIpConfigs field.
+func (o *EntityArrayEmbedded) SetRateLimitIpConfigs(v []RateLimitConfiguration) {
+	o.RateLimitIpConfigs = v
+}
+
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetResources() []EntityArrayEmbeddedResourcesInner {
 	if o == nil || IsNil(o.Resources) {
@@ -1364,6 +1398,38 @@ func (o *EntityArrayEmbedded) SetThemes(v []BrandingTheme) {
 	o.Themes = v
 }
 
+// GetTranslations returns the Translations field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetTranslations() []LocaleTranslation {
+	if o == nil || IsNil(o.Translations) {
+		var ret []LocaleTranslation
+		return ret
+	}
+	return o.Translations
+}
+
+// GetTranslationsOk returns a tuple with the Translations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetTranslationsOk() ([]LocaleTranslation, bool) {
+	if o == nil || IsNil(o.Translations) {
+		return nil, false
+	}
+	return o.Translations, true
+}
+
+// HasTranslations returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasTranslations() bool {
+	if o != nil && !IsNil(o.Translations) {
+		return true
+	}
+
+	return false
+}
+
+// SetTranslations gets a reference to the given []LocaleTranslation and assigns it to the Translations field.
+func (o *EntityArrayEmbedded) SetTranslations(v []LocaleTranslation) {
+	o.Translations = v
+}
+
 // GetTrustedEmails returns the TrustedEmails field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetTrustedEmails() []EmailDomainTrustedEmail {
 	if o == nil || IsNil(o.TrustedEmails) {
@@ -1557,7 +1623,7 @@ func (o *EntityArrayEmbedded) SetVersions(v []IntegrationVersion) {
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1662,6 +1728,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Populations) {
 		toSerialize["populations"] = o.Populations
 	}
+	if !IsNil(o.RateLimitIpConfigs) {
+		toSerialize["rateLimitIpConfigs"] = o.RateLimitIpConfigs
+	}
 	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
@@ -1685,6 +1754,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Themes) {
 		toSerialize["themes"] = o.Themes
+	}
+	if !IsNil(o.Translations) {
+		toSerialize["translations"] = o.Translations
 	}
 	if !IsNil(o.TrustedEmails) {
 		toSerialize["trustedEmails"] = o.TrustedEmails
@@ -1742,5 +1814,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

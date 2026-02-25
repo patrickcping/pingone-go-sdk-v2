@@ -15,13 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumCredentialTypeMetaDataFieldsType Specifies the type of data in the defined field within a credential type: `Alphanumeric Text` - static text string of letters, numbers, or punctuation set on fields.value `Issued Timestamp` - date and time the credential was issued `Directory Attribute` - any PingOne Directory standard or custom attribute. 
+// EnumCredentialTypeMetaDataFieldsType Specifies the type of data in the defined field within a credential type: `Alphanumeric Text` - static text string of letters, numbers, or punctuation set on fields.value `Issued Timestamp` - date and time the credential was issued `Directory Attribute` - any PingOne Directory standard or custom attribute.
 type EnumCredentialTypeMetaDataFieldsType string
 
 // List of EnumCredentialTypeMetaDataFieldsType
 const (
-	ENUMCREDENTIALTYPEMETADATAFIELDSTYPE_ALPHANUMERIC_TEXT EnumCredentialTypeMetaDataFieldsType = "Alphanumeric Text"
-	ENUMCREDENTIALTYPEMETADATAFIELDSTYPE_ISSUED_TIMESTAMP EnumCredentialTypeMetaDataFieldsType = "Issued Timestamp"
+	ENUMCREDENTIALTYPEMETADATAFIELDSTYPE_ALPHANUMERIC_TEXT   EnumCredentialTypeMetaDataFieldsType = "Alphanumeric Text"
+	ENUMCREDENTIALTYPEMETADATAFIELDSTYPE_ISSUED_TIMESTAMP    EnumCredentialTypeMetaDataFieldsType = "Issued Timestamp"
 	ENUMCREDENTIALTYPEMETADATAFIELDSTYPE_DIRECTORY_ATTRIBUTE EnumCredentialTypeMetaDataFieldsType = "Directory Attribute"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumCredentialTypeMetaDataFieldsType) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

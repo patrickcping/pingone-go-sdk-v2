@@ -1,3 +1,80 @@
+# v0.63.0 (2025-12-11)
+
+* **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)
+* **Feature** Add support for the Rate Limit Configuration API. [#493](https://github.com/patrickcping/pingone-go-sdk-v2/pull/493)
+* **Enhancement** Added `IncludeX5t` field to the `ApplicationOIDC` model to support X.509 certificate thumbprint in JWT signatures. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+* **Enhancement** Added `OpSessionCheckEnabled` field to the `ApplicationOIDC` model to support session state checking in authentication responses. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+* **Enhancement** Added `RequestScopesForMultipleResourcesEnabled` field to the `ApplicationOIDC` model to support requesting scopes for multiple resources. [#494](https://github.com/patrickcping/pingone-go-sdk-v2/pull/494)
+
+# v0.62.0 (2025-10-31)
+
+* **Enhancement** Add support for `CooldownConfiguration` and `ProviderConfiguration` in the `NotificationsPolicy` object. [#487](https://github.com/patrickcping/pingone-go-sdk-v2/pull/487)
+* **Enhancement** Added the new `RATE_LIMIT_EXCEEDED`, `RATE_LIMIT_WARNING` alert types values. [#488](https://github.com/patrickcping/pingone-go-sdk-v2/pull/488)
+
+# v0.61.0 (2025-09-19)
+
+* **Note** Upgraded go version to 1.24 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#479](https://github.com/patrickcping/pingone-go-sdk-v2/pull/479)
+* **Enhancement** Added the `Help Desk Admin` and `Authorize Gateway Policy Evaluator` administrator roles. [#481](https://github.com/patrickcping/pingone-go-sdk-v2/pull/481)
+* **Enhancement** Added the ability to import applications with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+* **Enhancement** Added the ability to import custom resources with a custom client ID and secret. **This feature is in beta or experimental**. Use of this field is subject to change at any time and to be used with caution. The API may change without notice that may lead to errors. Please ensure the environment has been provisioned with the appropriate feature flag to enable this feature. [#377](https://github.com/patrickcping/pingone-go-sdk-v2/pull/377)
+
+# v0.60.0 (2025-07-16)
+
+* **Enhancement** Added the `AU` and `SG` region codes to the `EnumPropagationStoreTypePingOneRegion` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* **Enhancement** Added the `SG` region code to the `EnumRegionCode` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+* **Enhancement** Added the `AU` and `SG` region codes to the `EnumRegionCodeLicense` model. [#468](https://github.com/patrickcping/pingone-go-sdk-v2/pull/468)
+
+# v0.59.0 (2025-06-27)
+
+* **Enhancement** Added the `PING_ONE_ID` product type to support PingID (v2). [#465](https://github.com/patrickcping/pingone-go-sdk-v2/pull/465)
+
+# v0.58.0 (2025-06-24)
+
+* **Enhancement** Add support for `VirtualServerIdSettings` in SAML application objects. [#462](https://github.com/patrickcping/pingone-go-sdk-v2/pull/462)
+
+# v0.57.1 (2025-06-11)
+
+* **Note** Add backoff retry on transient 404 errors expected after environment creation. [#460](https://github.com/patrickcping/pingone-go-sdk-v2/pull/460)
+
+# v0.57.0 (2025-05-29)
+
+* **Feature** Add support for the Locale Translations API. [#457](https://github.com/patrickcping/pingone-go-sdk-v2/pull/457)
+* **Enhancement** Add support for assigning application scope to custom roles. [#458](https://github.com/patrickcping/pingone-go-sdk-v2/pull/458)
+
+# v0.56.0 (2025-05-20)
+
+* **Enhancement** Support `SubjectNameIdentifierFormat` on WS-FED application data models. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
+* **Bug** Corrected `WS_FED` enum value typo on the `EnumApplicationProtocol` model. [#455](https://github.com/patrickcping/pingone-go-sdk-v2/pull/455)
+
+# v0.55.0 (2025-05-13)
+
+* **Feature** Add support for the Environment Status API. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
+* **Enhancement** Support `HardDeletedAllowedAt`, `SoftDeletedAt`, `Status` on the `Environment` data model. [#453](https://github.com/patrickcping/pingone-go-sdk-v2/pull/453)
+* **Enhancement** Support `AlternativeIdentifiers` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+* **Enhancement** Support `PreferredLanguage` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+* **Enhancement** Support `Theme` on the `Population` data model. [#449](https://github.com/patrickcping/pingone-go-sdk-v2/pull/449)
+* **Bug** Corrected `EnvironmentRegion` model unmarshalling when using custom region string values. [#452](https://github.com/patrickcping/pingone-go-sdk-v2/pull/452)
+
+# v0.54.0 (2025-04-28)
+
+* **Enhancement** Support the new `LINKEDIN_OIDC` Identity provider type. [#445](https://github.com/patrickcping/pingone-go-sdk-v2/pull/445)
+
+# v0.53.0 (2025-03-11)
+
+* **Enhancement** Added `IdpSignoff` to the `ApplicationOIDC` model. [#433](https://github.com/patrickcping/pingone-go-sdk-v2/pull/433)
+
+# v0.52.0 (2025-03-04)
+
+* **Breaking change** The `AdministratorSecurity` model has been aligned to the service. [#429](https://github.com/patrickcping/pingone-go-sdk-v2/pull/429)
+
+# v0.51.0 (2025-02-24)
+
+* **Breaking change** The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model when using the `IdentityProvider` model. [#427](https://github.com/patrickcping/pingone-go-sdk-v2/pull/427)
+
+# v0.50.0 (2025-02-21)
+
+* **Breaking change** Added support for the `TenantId` field on Microsoft Identity providers. The Microsoft Identity provider now uses the `IdentityProviderMicrosoft` model. [#425](https://github.com/patrickcping/pingone-go-sdk-v2/pull/425)
+
 # v0.49.0 (2025-02-10)
 
 * **Note** Enhance backoff retry logic for transient errors according to [best practices](https://apidocs.pingidentity.com/pingone/platform/v1/api/#retries-best-practice-for-managing-transient-api-errors). [#418](https://github.com/patrickcping/pingone-go-sdk-v2/pull/418) [#421](https://github.com/patrickcping/pingone-go-sdk-v2/pull/421)

@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationSAMLAllOfSpEncryption{}
 
 // ApplicationSAMLAllOfSpEncryption Enables PingOne to encrypt SAML assertions to be sent to the application. Assertions are not encrypted by default.
 type ApplicationSAMLAllOfSpEncryption struct {
-	Algorithm EnumCertificateKeyEncryptionAlgorithm `json:"algorithm"`
+	Algorithm   EnumCertificateKeyEncryptionAlgorithm       `json:"algorithm"`
 	Certificate ApplicationSAMLAllOfSpEncryptionCertificate `json:"certificate"`
 }
 
@@ -91,7 +91,7 @@ func (o *ApplicationSAMLAllOfSpEncryption) SetCertificate(v ApplicationSAMLAllOf
 }
 
 func (o ApplicationSAMLAllOfSpEncryption) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableApplicationSAMLAllOfSpEncryption) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

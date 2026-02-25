@@ -24,7 +24,7 @@ type FormElement struct {
 	// A string that specifies an identifier for the field component.
 	Key string `json:"key"`
 	// A string of escaped JSON that is designed to store a series of text and translatable keys.
-	Label string `json:"label"`
+	Label     string                    `json:"label"`
 	LabelMode *EnumFormElementLabelMode `json:"labelMode,omitempty"`
 	// A boolean that specifies whether the field is required.
 	Required *bool `json:"required,omitempty"`
@@ -364,7 +364,7 @@ func (o *FormElement) SetOtherOptionAttributeDisabled(v bool) {
 }
 
 func (o FormElement) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -437,5 +437,3 @@ func (v *NullableFormElement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,16 +19,16 @@ var _ MappedNullable = &AuthorizeEditorDataPoliciesPolicyChildPolicy{}
 
 // AuthorizeEditorDataPoliciesPolicyChildPolicy struct for AuthorizeEditorDataPoliciesPolicyChildPolicy
 type AuthorizeEditorDataPoliciesPolicyChildPolicy struct {
-	Type EnumAuthorizeEditorDataPoliciesPolicyChildCommonType `json:"type"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	Value *AuthorizeEditorDataReferenceObjectDTO `json:"value,omitempty"`
-	CombiningAlgorithm *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO `json:"combiningAlgorithm,omitempty"`
-	Children []AuthorizeEditorDataPoliciesPolicyChild `json:"children,omitempty"`
-	RepetitionSettings *AuthorizeEditorDataPoliciesRepetitionSettingsDTO `json:"repetitionSettings,omitempty"`
+	Type               EnumAuthorizeEditorDataPoliciesPolicyChildCommonType `json:"type"`
+	Name               *string                                              `json:"name,omitempty"`
+	Description        *string                                              `json:"description,omitempty"`
+	Enabled            *bool                                                `json:"enabled,omitempty"`
+	Statements         []map[string]interface{}                             `json:"statements,omitempty"`
+	Condition          *AuthorizeEditorDataConditionDTO                     `json:"condition,omitempty"`
+	Value              *AuthorizeEditorDataReferenceObjectDTO               `json:"value,omitempty"`
+	CombiningAlgorithm *AuthorizeEditorDataPoliciesCombiningAlgorithmDTO    `json:"combiningAlgorithm,omitempty"`
+	Children           []AuthorizeEditorDataPoliciesPolicyChild             `json:"children,omitempty"`
+	RepetitionSettings *AuthorizeEditorDataPoliciesRepetitionSettingsDTO    `json:"repetitionSettings,omitempty"`
 }
 
 // NewAuthorizeEditorDataPoliciesPolicyChildPolicy instantiates a new AuthorizeEditorDataPoliciesPolicyChildPolicy object
@@ -362,7 +362,7 @@ func (o *AuthorizeEditorDataPoliciesPolicyChildPolicy) SetRepetitionSettings(v A
 }
 
 func (o AuthorizeEditorDataPoliciesPolicyChildPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -437,5 +437,3 @@ func (v *NullableAuthorizeEditorDataPoliciesPolicyChildPolicy) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

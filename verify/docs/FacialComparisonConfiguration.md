@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) |  | [default to ENUMVERIFY_DISABLED]
 **Threshold** | [**EnumThreshold**](EnumThreshold.md) |  | 
 
 ## Methods

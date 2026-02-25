@@ -18,7 +18,7 @@ import (
 // AuthorizeEditorDataPoliciesPolicyChild - struct for AuthorizeEditorDataPoliciesPolicyChild
 type AuthorizeEditorDataPoliciesPolicyChild struct {
 	AuthorizeEditorDataPoliciesPolicyChildPolicy *AuthorizeEditorDataPoliciesPolicyChildPolicy
-	AuthorizeEditorDataPoliciesPolicyChildRule *AuthorizeEditorDataPoliciesPolicyChildRule
+	AuthorizeEditorDataPoliciesPolicyChildRule   *AuthorizeEditorDataPoliciesPolicyChildRule
 }
 
 // AuthorizeEditorDataPoliciesPolicyChildPolicyAsAuthorizeEditorDataPoliciesPolicyChild is a convenience function that returns AuthorizeEditorDataPoliciesPolicyChildPolicy wrapped in AuthorizeEditorDataPoliciesPolicyChild
@@ -34,7 +34,6 @@ func AuthorizeEditorDataPoliciesPolicyChildRuleAsAuthorizeEditorDataPoliciesPoli
 		AuthorizeEditorDataPoliciesPolicyChildRule: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataPoliciesPolicyChild) UnmarshalJSON(data []byte) error {
@@ -77,7 +76,7 @@ func (src AuthorizeEditorDataPoliciesPolicyChild) MarshalJSON() ([]byte, error) 
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataPoliciesPolicyChild) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataPoliciesPolicyChild) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -128,5 +127,3 @@ func (v *NullableAuthorizeEditorDataPoliciesPolicyChild) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

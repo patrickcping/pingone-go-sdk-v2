@@ -19,16 +19,16 @@ var _ MappedNullable = &RiskPolicyCondition{}
 
 // RiskPolicyCondition Contains the condition logic that determines when a policy is evaluated to true and when it is evaluated to false.
 type RiskPolicyCondition struct {
-	Type *EnumRiskPolicyConditionType `json:"type,omitempty"`
-	Contains *string `json:"contains,omitempty"`
-	IpRange []string `json:"ipRange,omitempty"`
-	Value *string `json:"value,omitempty"`
-	Equals *RiskPolicyConditionEquals `json:"equals,omitempty"`
+	Type     *EnumRiskPolicyConditionType `json:"type,omitempty"`
+	Contains *string                      `json:"contains,omitempty"`
+	IpRange  []string                     `json:"ipRange,omitempty"`
+	Value    *string                      `json:"value,omitempty"`
+	Equals   *RiskPolicyConditionEquals   `json:"equals,omitempty"`
 	// Required for weights-based policies. The elements in the array are `value`-`weight` pairs, representing a weighting for the weighted average calculation that should be assigned to a specific predictor when it is determined that there is a high risk for the predictor.
 	AggregatedWeights []RiskPolicyConditionAggregatedWeightsInner `json:"aggregatedWeights,omitempty"`
 	// Required for score-based policies. The elements in the array are `value`-`score` pairs, representing the score that should be assigned to a specific predictor when it is determined that there is a high risk for the predictor.
 	AggregatedScores []RiskPolicyConditionAggregatedScoresInner `json:"aggregatedScores,omitempty"`
-	Between *RiskPolicyConditionBetween `json:"between,omitempty"`
+	Between          *RiskPolicyConditionBetween                `json:"between,omitempty"`
 }
 
 // NewRiskPolicyCondition instantiates a new RiskPolicyCondition object
@@ -305,7 +305,7 @@ func (o *RiskPolicyCondition) SetBetween(v RiskPolicyConditionBetween) {
 }
 
 func (o RiskPolicyCondition) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -376,5 +376,3 @@ func (v *NullableRiskPolicyCondition) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

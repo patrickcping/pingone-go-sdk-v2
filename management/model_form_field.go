@@ -17,24 +17,24 @@ import (
 
 // FormField - struct for FormField
 type FormField struct {
-	FormFieldCheckbox *FormFieldCheckbox
-	FormFieldCombobox *FormFieldCombobox
-	FormFieldDivider *FormFieldDivider
-	FormFieldDropdown *FormFieldDropdown
-	FormFieldEmptyField *FormFieldEmptyField
-	FormFieldErrorDisplay *FormFieldErrorDisplay
-	FormFieldFlowButton *FormFieldFlowButton
-	FormFieldFlowLink *FormFieldFlowLink
-	FormFieldPassword *FormFieldPassword
-	FormFieldPasswordVerify *FormFieldPasswordVerify
-	FormFieldQrCode *FormFieldQrCode
-	FormFieldRadio *FormFieldRadio
-	FormFieldRecaptchaV2 *FormFieldRecaptchaV2
-	FormFieldSlateTextblob *FormFieldSlateTextblob
+	FormFieldCheckbox          *FormFieldCheckbox
+	FormFieldCombobox          *FormFieldCombobox
+	FormFieldDivider           *FormFieldDivider
+	FormFieldDropdown          *FormFieldDropdown
+	FormFieldEmptyField        *FormFieldEmptyField
+	FormFieldErrorDisplay      *FormFieldErrorDisplay
+	FormFieldFlowButton        *FormFieldFlowButton
+	FormFieldFlowLink          *FormFieldFlowLink
+	FormFieldPassword          *FormFieldPassword
+	FormFieldPasswordVerify    *FormFieldPasswordVerify
+	FormFieldQrCode            *FormFieldQrCode
+	FormFieldRadio             *FormFieldRadio
+	FormFieldRecaptchaV2       *FormFieldRecaptchaV2
+	FormFieldSlateTextblob     *FormFieldSlateTextblob
 	FormFieldSocialLoginButton *FormFieldSocialLoginButton
-	FormFieldSubmitButton *FormFieldSubmitButton
-	FormFieldText *FormFieldText
-	FormFieldTextblob *FormFieldTextblob
+	FormFieldSubmitButton      *FormFieldSubmitButton
+	FormFieldText              *FormFieldText
+	FormFieldTextblob          *FormFieldTextblob
 }
 
 // FormFieldCheckboxAsFormField is a convenience function that returns FormFieldCheckbox wrapped in FormField
@@ -162,7 +162,6 @@ func FormFieldTextblobAsFormField(v *FormFieldTextblob) FormField {
 		FormFieldTextblob: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FormField) UnmarshalJSON(data []byte) error {
@@ -354,7 +353,7 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *FormField) GetActualInstance() (interface{}) {
+func (obj *FormField) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -469,5 +468,3 @@ func (v *NullableFormField) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

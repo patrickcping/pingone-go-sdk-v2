@@ -23,18 +23,18 @@ type AuthorizeEditorDataPoliciesReferenceablePolicyDTO struct {
 	// HAL embedded resources
 	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
 	// The resource's unique identifier
-	Id string `json:"id"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	CombiningAlgorithm AuthorizeEditorDataPoliciesCombiningAlgorithmDTO `json:"combiningAlgorithm"`
-	Children []AuthorizeEditorDataPoliciesPolicyChild `json:"children,omitempty"`
+	Id                 string                                            `json:"id"`
+	Environment        *ObjectEnvironment                                `json:"environment,omitempty"`
+	Name               string                                            `json:"name"`
+	Description        *string                                           `json:"description,omitempty"`
+	Enabled            *bool                                             `json:"enabled,omitempty"`
+	Statements         []map[string]interface{}                          `json:"statements,omitempty"`
+	Condition          *AuthorizeEditorDataConditionDTO                  `json:"condition,omitempty"`
+	CombiningAlgorithm AuthorizeEditorDataPoliciesCombiningAlgorithmDTO  `json:"combiningAlgorithm"`
+	Children           []AuthorizeEditorDataPoliciesPolicyChild          `json:"children,omitempty"`
 	RepetitionSettings *AuthorizeEditorDataPoliciesRepetitionSettingsDTO `json:"repetitionSettings,omitempty"`
-	ManagedEntity *AuthorizeEditorDataManagedEntityDTO `json:"managedEntity,omitempty"`
-	Version string `json:"version"`
+	ManagedEntity      *AuthorizeEditorDataManagedEntityDTO              `json:"managedEntity,omitempty"`
+	Version            string                                            `json:"version"`
 }
 
 // NewAuthorizeEditorDataPoliciesReferenceablePolicyDTO instantiates a new AuthorizeEditorDataPoliciesReferenceablePolicyDTO object
@@ -475,7 +475,7 @@ func (o *AuthorizeEditorDataPoliciesReferenceablePolicyDTO) SetVersion(v string)
 }
 
 func (o AuthorizeEditorDataPoliciesReferenceablePolicyDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -556,5 +556,3 @@ func (v *NullableAuthorizeEditorDataPoliciesReferenceablePolicyDTO) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

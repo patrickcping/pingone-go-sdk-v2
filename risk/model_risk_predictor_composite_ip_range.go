@@ -19,14 +19,14 @@ var _ MappedNullable = &RiskPredictorCompositeIPRange{}
 
 // RiskPredictorCompositeIPRange The mapping of risk levels for the IP ranges specified.
 type RiskPredictorCompositeIPRange struct {
-	Contains *string `json:"contains,omitempty"`
-	NotContains *string `json:"notContains,omitempty"`
-	Equals *string `json:"equals,omitempty"`
-	NotEquals *string `json:"notEquals,omitempty"`
-	Type *EnumPredictorCompositeConditionType `json:"type,omitempty"`
+	Contains    *string                              `json:"contains,omitempty"`
+	NotContains *string                              `json:"notContains,omitempty"`
+	Equals      *string                              `json:"equals,omitempty"`
+	NotEquals   *string                              `json:"notEquals,omitempty"`
+	Type        *EnumPredictorCompositeConditionType `json:"type,omitempty"`
 	// List of CIDRs to include
 	IpRange []string `json:"ipRange"`
-	Ip *string `json:"ip,omitempty"`
+	Ip      *string  `json:"ip,omitempty"`
 }
 
 // NewRiskPredictorCompositeIPRange instantiates a new RiskPredictorCompositeIPRange object
@@ -264,7 +264,7 @@ func (o *RiskPredictorCompositeIPRange) SetIp(v string) {
 }
 
 func (o RiskPredictorCompositeIPRange) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -330,5 +330,3 @@ func (v *NullableRiskPredictorCompositeIPRange) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,8 +19,8 @@ var _ MappedNullable = &AgreementLanguage{}
 
 // AgreementLanguage struct for AgreementLanguage
 type AgreementLanguage struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
+	Links           *map[string]LinksHATEOASValue     `json:"_links,omitempty"`
+	Agreement       *AgreementLanguageAgreement       `json:"agreement,omitempty"`
 	CurrentRevision *AgreementLanguageCurrentRevision `json:"currentRevision,omitempty"`
 	// A string that is used as the title of the agreement for the language presented to the user. This is a required property.
 	DisplayName string `json:"displayName"`
@@ -29,7 +29,7 @@ type AgreementLanguage struct {
 	// A string that specifies the language ID.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the tag for identifying the language resource associated with this agreement consent (for example, en-US). This is a required property. For more information about language tags, see Tags for Identifying Languages.
-	Locale string `json:"locale"`
+	Locale         string                           `json:"locale"`
 	UserExperience *AgreementLanguageUserExperience `json:"userExperience,omitempty"`
 }
 
@@ -286,7 +286,7 @@ func (o *AgreementLanguage) SetUserExperience(v AgreementLanguageUserExperience)
 }
 
 func (o AgreementLanguage) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -351,5 +351,3 @@ func (v *NullableAgreementLanguage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

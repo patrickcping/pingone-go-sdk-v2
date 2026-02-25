@@ -15,17 +15,17 @@ import (
 	"fmt"
 )
 
-// EnumAPIServerDeploymentStatusCode The deployment status code. - `POLICIES_CREATE_IN_PROGRESS` The policy bundle for the API service's managed policies is being created. - `DECISION_ENDPOINT_CREATE_IN_PROGRESS` A decision endpoint is being created for the API service. - `DECISION_ENDPOINT_UPDATE_IN_PROGRESS` The API service's decision endpoint is being updated. - `DEPLOYMENT_SUCCESSFUL` The API service's policies have been successfully deployed. - `DEPLOYMENT_FAILED` HAP-MGMT was unable to deploy the API service's Policies - `DEPLOYMENT_UNINITIALIZED` A deployment has not yet been attempted. 
+// EnumAPIServerDeploymentStatusCode The deployment status code. - `POLICIES_CREATE_IN_PROGRESS` The policy bundle for the API service's managed policies is being created. - `DECISION_ENDPOINT_CREATE_IN_PROGRESS` A decision endpoint is being created for the API service. - `DECISION_ENDPOINT_UPDATE_IN_PROGRESS` The API service's decision endpoint is being updated. - `DEPLOYMENT_SUCCESSFUL` The API service's policies have been successfully deployed. - `DEPLOYMENT_FAILED` HAP-MGMT was unable to deploy the API service's Policies - `DEPLOYMENT_UNINITIALIZED` A deployment has not yet been attempted.
 type EnumAPIServerDeploymentStatusCode string
 
 // List of EnumAPIServerDeploymentStatusCode
 const (
-	ENUMAPISERVERDEPLOYMENTSTATUSCODE_POLICIES_CREATE_IN_PROGRESS EnumAPIServerDeploymentStatusCode = "POLICIES_CREATE_IN_PROGRESS"
+	ENUMAPISERVERDEPLOYMENTSTATUSCODE_POLICIES_CREATE_IN_PROGRESS          EnumAPIServerDeploymentStatusCode = "POLICIES_CREATE_IN_PROGRESS"
 	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DECISION_ENDPOINT_CREATE_IN_PROGRESS EnumAPIServerDeploymentStatusCode = "DECISION_ENDPOINT_CREATE_IN_PROGRESS"
 	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DECISION_ENDPOINT_UPDATE_IN_PROGRESS EnumAPIServerDeploymentStatusCode = "DECISION_ENDPOINT_UPDATE_IN_PROGRESS"
-	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DEPLOYMENT_SUCCESSFUL EnumAPIServerDeploymentStatusCode = "DEPLOYMENT_SUCCESSFUL"
-	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DEPLOYMENT_FAILED EnumAPIServerDeploymentStatusCode = "DEPLOYMENT_FAILED"
-	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DEPLOYMENT_UNINITIALIZED EnumAPIServerDeploymentStatusCode = "DEPLOYMENT_UNINITIALIZED"
+	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DEPLOYMENT_SUCCESSFUL                EnumAPIServerDeploymentStatusCode = "DEPLOYMENT_SUCCESSFUL"
+	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DEPLOYMENT_FAILED                    EnumAPIServerDeploymentStatusCode = "DEPLOYMENT_FAILED"
+	ENUMAPISERVERDEPLOYMENTSTATUSCODE_DEPLOYMENT_UNINITIALIZED             EnumAPIServerDeploymentStatusCode = "DEPLOYMENT_UNINITIALIZED"
 )
 
 // All allowed values of EnumAPIServerDeploymentStatusCode enum
@@ -117,4 +117,3 @@ func (v *NullableEnumAPIServerDeploymentStatusCode) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

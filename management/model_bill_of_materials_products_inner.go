@@ -20,13 +20,13 @@ var _ MappedNullable = &BillOfMaterialsProductsInner{}
 // BillOfMaterialsProductsInner struct for BillOfMaterialsProductsInner
 type BillOfMaterialsProductsInner struct {
 	// A string that specifies the BOM ID
-	Id *string `json:"id,omitempty"`
+	Id   *string         `json:"id,omitempty"`
 	Type EnumProductType `json:"type"`
 	// A string that specifies the description of the product or standalone service
-	Description *string `json:"description,omitempty"`
-	Console *BillOfMaterialsProductsInnerConsole `json:"console,omitempty"`
-	Tags []EnumBillOfMaterialsProductTags `json:"tags,omitempty"`
-	Deployment *BillOfMaterialsProductsInnerDeployment `json:"deployment,omitempty"`
+	Description *string                                 `json:"description,omitempty"`
+	Console     *BillOfMaterialsProductsInnerConsole    `json:"console,omitempty"`
+	Tags        []EnumBillOfMaterialsProductTags        `json:"tags,omitempty"`
+	Deployment  *BillOfMaterialsProductsInnerDeployment `json:"deployment,omitempty"`
 	// Optional array of custom bookmarks. Maximum of five bookmarks per product.
 	Bookmarks []BillOfMaterialsProductsInnerBookmarksInner `json:"bookmarks,omitempty"`
 }
@@ -266,7 +266,7 @@ func (o *BillOfMaterialsProductsInner) SetBookmarks(v []BillOfMaterialsProductsI
 }
 
 func (o BillOfMaterialsProductsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -332,5 +332,3 @@ func (v *NullableBillOfMaterialsProductsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

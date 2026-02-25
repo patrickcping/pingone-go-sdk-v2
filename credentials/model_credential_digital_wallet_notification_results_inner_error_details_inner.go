@@ -19,7 +19,7 @@ var _ MappedNullable = &CredentialDigitalWalletNotificationResultsInnerErrorDeta
 
 // CredentialDigitalWalletNotificationResultsInnerErrorDetailsInner struct for CredentialDigitalWalletNotificationResultsInnerErrorDetailsInner
 type CredentialDigitalWalletNotificationResultsInnerErrorDetailsInner struct {
-	Code *string `json:"code,omitempty"`
+	Code    *string `json:"code,omitempty"`
 	Message *string `json:"message,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *CredentialDigitalWalletNotificationResultsInnerErrorDetailsInner) SetMe
 }
 
 func (o CredentialDigitalWalletNotificationResultsInnerErrorDetailsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableCredentialDigitalWalletNotificationResultsInnerErrorDetailsInne
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

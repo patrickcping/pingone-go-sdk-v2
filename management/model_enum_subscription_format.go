@@ -21,7 +21,7 @@ type EnumSubscriptionFormat string
 // List of EnumSubscriptionFormat
 const (
 	ENUMSUBSCRIPTIONFORMAT_ACTIVITY EnumSubscriptionFormat = "ACTIVITY"
-	ENUMSUBSCRIPTIONFORMAT_SPLUNK EnumSubscriptionFormat = "SPLUNK"
+	ENUMSUBSCRIPTIONFORMAT_SPLUNK   EnumSubscriptionFormat = "SPLUNK"
 	ENUMSUBSCRIPTIONFORMAT_NEWRELIC EnumSubscriptionFormat = "NEWRELIC"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumSubscriptionFormat) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

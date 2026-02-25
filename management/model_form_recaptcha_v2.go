@@ -19,9 +19,9 @@ var _ MappedNullable = &FormRecaptchaV2{}
 
 // FormRecaptchaV2 struct for FormRecaptchaV2
 type FormRecaptchaV2 struct {
-	Size EnumFormRecaptchaV2Size `json:"size"`
-	Theme EnumFormRecaptchaV2Theme `json:"theme"`
-	Alignment EnumFormItemAlignment `json:"alignment"`
+	Size      EnumFormRecaptchaV2Size  `json:"size"`
+	Theme     EnumFormRecaptchaV2Theme `json:"theme"`
+	Alignment EnumFormItemAlignment    `json:"alignment"`
 }
 
 // NewFormRecaptchaV2 instantiates a new FormRecaptchaV2 object
@@ -117,7 +117,7 @@ func (o *FormRecaptchaV2) SetAlignment(v EnumFormItemAlignment) {
 }
 
 func (o FormRecaptchaV2) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,5 +167,3 @@ func (v *NullableFormRecaptchaV2) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -27,7 +27,6 @@ func AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTOAsAuthorizeEdit
 	}
 }
 
-
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataAttributeResolversUserQueryDTO) UnmarshalJSON(data []byte) error {
 
@@ -60,7 +59,7 @@ func (src AuthorizeEditorDataAttributeResolversUserQueryDTO) MarshalJSON() ([]by
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataAttributeResolversUserQueryDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -107,5 +106,3 @@ func (v *NullableAuthorizeEditorDataAttributeResolversUserQueryDTO) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

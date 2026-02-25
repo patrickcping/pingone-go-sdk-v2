@@ -93,7 +93,7 @@ func (o *RiskPolicyConditionAggregatedWeightsInner) SetWeight(v int32) {
 }
 
 func (o RiskPolicyConditionAggregatedWeightsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -142,5 +142,3 @@ func (v *NullableRiskPolicyConditionAggregatedWeightsInner) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

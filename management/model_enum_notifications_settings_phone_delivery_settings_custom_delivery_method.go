@@ -15,12 +15,12 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod The notification's delivery method. Possible values: `SMS` `VOICE` 
+// EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod The notification's delivery method. Possible values: `SMS` `VOICE`
 type EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMDELIVERYMETHOD_SMS EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod = "SMS"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMDELIVERYMETHOD_SMS   EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod = "SMS"
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMDELIVERYMETHOD_VOICE EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod = "VOICE"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMet
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

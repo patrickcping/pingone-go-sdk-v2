@@ -107,4 +107,3 @@ func (v *NullableEnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType) U
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

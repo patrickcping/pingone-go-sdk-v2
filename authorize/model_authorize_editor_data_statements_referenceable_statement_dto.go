@@ -21,16 +21,16 @@ var _ MappedNullable = &AuthorizeEditorDataStatementsReferenceableStatementDTO{}
 type AuthorizeEditorDataStatementsReferenceableStatementDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The resource's unique identifier
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Code string `json:"code"`
-	AppliesTo EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo `json:"appliesTo"`
-	AppliesIf EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf `json:"appliesIf"`
-	Payload string `json:"payload"`
-	Obligatory *bool `json:"obligatory,omitempty"`
-	Attributes []AuthorizeEditorDataReferenceObjectDTO `json:"attributes"`
-	Version string `json:"version"`
+	Id          string                                                              `json:"id"`
+	Name        string                                                              `json:"name"`
+	Description *string                                                             `json:"description,omitempty"`
+	Code        string                                                              `json:"code"`
+	AppliesTo   EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesTo `json:"appliesTo"`
+	AppliesIf   EnumAuthorizeEditorDataStatementsReferenceableStatementDTOAppliesIf `json:"appliesIf"`
+	Payload     string                                                              `json:"payload"`
+	Obligatory  *bool                                                               `json:"obligatory,omitempty"`
+	Attributes  []AuthorizeEditorDataReferenceObjectDTO                             `json:"attributes"`
+	Version     string                                                              `json:"version"`
 }
 
 // NewAuthorizeEditorDataStatementsReferenceableStatementDTO instantiates a new AuthorizeEditorDataStatementsReferenceableStatementDTO object
@@ -347,7 +347,7 @@ func (o *AuthorizeEditorDataStatementsReferenceableStatementDTO) SetVersion(v st
 }
 
 func (o AuthorizeEditorDataStatementsReferenceableStatementDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,5 +411,3 @@ func (v *NullableAuthorizeEditorDataStatementsReferenceableStatementDTO) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

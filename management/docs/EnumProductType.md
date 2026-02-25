@@ -43,6 +43,8 @@
 
 * `ID` (value: `"PING_ID"`)
 
+* `ONE_ID` (value: `"PING_ONE_ID"`)
+
 * `INTELLIGENCE` (value: `"PING_INTELLIGENCE"`)
 
 * `CENTRAL` (value: `"PING_CENTRAL"`)

@@ -34,6 +34,96 @@ security:
 tags:
 - name: Verify Policies
 paths:
+  /environments/{environmentID}:
+    get:
+      operationId: readOneEnvironment
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+          description: Successful response
+      summary: READ One Environment
+      tags:
+      - Environments
   /environments/{environmentID}/verifyPolicies:
     get:
       operationId: readAllVerifyPolicies
@@ -244,6 +334,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -739,6 +830,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -1720,6 +1812,22 @@ components:
               verify: null
               threshold: null
             id: id
+            identityRecordMatching:
+              address:
+                fieldRequired: true
+                threshold: null
+              birth_date:
+                fieldRequired: true
+                threshold: null
+              name:
+                fieldRequired: true
+                threshold: null
+              given_name:
+                fieldRequired: true
+                threshold: null
+              family_name:
+                fieldRequired: true
+                threshold: null
             email:
               createMfaDevice: true
               verify: null
@@ -1752,9 +1860,12 @@ components:
                 manual: null
               inspectionType: null
               verify: null
+              aadhaar:
+                enabled: true
               failExpiredId: true
               retry:
                 attempts: 0
+              verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - voice:
               verify: null
@@ -1806,6 +1917,22 @@ components:
               verify: null
               threshold: null
             id: id
+            identityRecordMatching:
+              address:
+                fieldRequired: true
+                threshold: null
+              birth_date:
+                fieldRequired: true
+                threshold: null
+              name:
+                fieldRequired: true
+                threshold: null
+              given_name:
+                fieldRequired: true
+                threshold: null
+              family_name:
+                fieldRequired: true
+                threshold: null
             email:
               createMfaDevice: true
               verify: null
@@ -1838,9 +1965,12 @@ components:
                 manual: null
               inspectionType: null
               verify: null
+              aadhaar:
+                enabled: true
               failExpiredId: true
               retry:
                 attempts: 0
+              verifyAamva: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           voicePhrases:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -1903,13 +2033,32 @@ components:
       - HIGH
       type: string
     EnumVerify:
-      description: "A string that defines the verification check requirements. Options\
-        \ are `REQUIRED`, `OPTIONAL` and `DISABLED`."
+      default: DISABLED
+      description: A string that defines the verification check requirements. Options
+        are `REQUIRED` and `DISABLED`.
       enum:
       - REQUIRED
-      - OPTIONAL
       - DISABLED
       type: string
+    Environment:
+      example:
+        createdAt: createdAt
+        id: id
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+      type: object
     FacialComparisonConfiguration:
       example:
         verify: null
@@ -1930,10 +2079,15 @@ components:
           manual: null
         inspectionType: null
         verify: null
+        aadhaar:
+          enabled: true
         failExpiredId: true
         retry:
           attempts: 0
+        verifyAamva: true
       properties:
+        aadhaar:
+          $ref: '#/components/schemas/GovernmentIdConfiguration_aadhaar'
         failExpiredId:
           description: Indicates whether verification should fail if the ID is expired.
           type: boolean
@@ -1945,8 +2099,41 @@ components:
           $ref: '#/components/schemas/ObjectRetry'
         verify:
           $ref: '#/components/schemas/EnumVerify'
+        verifyAamva:
+          description: "Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses)\
+            \ verification is enabled"
+          type: boolean
       required:
       - verify
+      type: object
+    IdentityRecordMatching:
+      example:
+        address:
+          fieldRequired: true
+          threshold: null
+        birth_date:
+          fieldRequired: true
+          threshold: null
+        name:
+          fieldRequired: true
+          threshold: null
+        given_name:
+          fieldRequired: true
+          threshold: null
+        family_name:
+          fieldRequired: true
+          threshold: null
+      properties:
+        address:
+          $ref: '#/components/schemas/IdentityRecordMatching_address'
+        birth_date:
+          $ref: '#/components/schemas/IdentityRecordMatching_birth_date'
+        family_name:
+          $ref: '#/components/schemas/IdentityRecordMatching_family_name'
+        given_name:
+          $ref: '#/components/schemas/IdentityRecordMatching_given_name'
+        name:
+          $ref: '#/components/schemas/IdentityRecordMatching_name'
       type: object
     LivenessConfiguration:
       example:
@@ -2058,6 +2245,7 @@ components:
           type: boolean
       type: object
     VoiceConfiguration:
+      deprecated: true
       example:
         verify: null
         enrollment: true
@@ -2077,6 +2265,7 @@ components:
         verify:
           $ref: '#/components/schemas/EnumVerify'
         enrollment:
+          deprecated: true
           type: boolean
         textDependent:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent'
@@ -2093,19 +2282,24 @@ components:
       - verify
       type: object
     VoiceConfiguration_referenceData:
+      deprecated: true
       example:
         retainOriginalRecordings: true
         updateOnReenrollment: true
         updateOnVerification: true
       properties:
         retainOriginalRecordings:
+          deprecated: true
           type: boolean
         updateOnReenrollment:
+          deprecated: true
           type: boolean
         updateOnVerification:
+          deprecated: true
           type: boolean
       type: object
     VoiceConfiguration_threshold:
+      deprecated: true
       example:
         threshold: null
       properties:
@@ -2115,21 +2309,25 @@ components:
       - threshold
       type: object
     VoiceConfiguration_textDependent_phrase:
+      deprecated: true
       example:
         id: id
       properties:
         id:
+          deprecated: true
           type: string
       required:
       - id
       type: object
     VoiceConfiguration_textDependent:
+      deprecated: true
       example:
         samples: null
         phrase:
           id: id
       properties:
         samples:
+          deprecated: true
           type: integer
         phrase:
           $ref: '#/components/schemas/VoiceConfiguration_textDependent_phrase'
@@ -2138,6 +2336,7 @@ components:
       - samples
       type: object
     VoicePhrase:
+      deprecated: true
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -2147,11 +2346,13 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          deprecated: true
           readOnly: true
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         displayName:
+          deprecated: true
           type: string
         createdAt:
           format: date-time
@@ -2165,6 +2366,7 @@ components:
       - displayName
       type: object
     VoicePhraseContents:
+      deprecated: true
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
@@ -2177,6 +2379,7 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          deprecated: true
           readOnly: true
           type: string
         environment:
@@ -2184,8 +2387,10 @@ components:
         voicePhrase:
           $ref: '#/components/schemas/VoicePhraseContents_voicePhrase'
         locale:
+          deprecated: true
           type: string
         content:
+          deprecated: true
           type: string
         createdAt:
           format: date-time
@@ -2252,6 +2457,22 @@ components:
           verify: null
           threshold: null
         id: id
+        identityRecordMatching:
+          address:
+            fieldRequired: true
+            threshold: null
+          birth_date:
+            fieldRequired: true
+            threshold: null
+          name:
+            fieldRequired: true
+            threshold: null
+          given_name:
+            fieldRequired: true
+            threshold: null
+          family_name:
+            fieldRequired: true
+            threshold: null
         email:
           createMfaDevice: true
           verify: null
@@ -2284,9 +2505,12 @@ components:
             manual: null
           inspectionType: null
           verify: null
+          aadhaar:
+            enabled: true
           failExpiredId: true
           retry:
             attempts: 0
+          verifyAamva: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -2313,6 +2537,8 @@ components:
           $ref: '#/components/schemas/GovernmentIdConfiguration'
         facialComparison:
           $ref: '#/components/schemas/FacialComparisonConfiguration'
+        identityRecordMatching:
+          $ref: '#/components/schemas/IdentityRecordMatching'
         liveness:
           $ref: '#/components/schemas/LivenessConfiguration'
         email:
@@ -2417,6 +2643,22 @@ components:
             verify: null
             threshold: null
           id: id
+          identityRecordMatching:
+            address:
+              fieldRequired: true
+              threshold: null
+            birth_date:
+              fieldRequired: true
+              threshold: null
+            name:
+              fieldRequired: true
+              threshold: null
+            given_name:
+              fieldRequired: true
+              threshold: null
+            family_name:
+              fieldRequired: true
+              threshold: null
           email:
             createMfaDevice: true
             verify: null
@@ -2449,9 +2691,12 @@ components:
               manual: null
             inspectionType: null
             verify: null
+            aadhaar:
+              enabled: true
             failExpiredId: true
             retry:
               attempts: 0
+            verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - voice:
             verify: null
@@ -2503,6 +2748,22 @@ components:
             verify: null
             threshold: null
           id: id
+          identityRecordMatching:
+            address:
+              fieldRequired: true
+              threshold: null
+            birth_date:
+              fieldRequired: true
+              threshold: null
+            name:
+              fieldRequired: true
+              threshold: null
+            given_name:
+              fieldRequired: true
+              threshold: null
+            family_name:
+              fieldRequired: true
+              threshold: null
           email:
             createMfaDevice: true
             verify: null
@@ -2535,9 +2796,12 @@ components:
               manual: null
             inspectionType: null
             verify: null
+            aadhaar:
+              enabled: true
             failExpiredId: true
             retry:
               attempts: 0
+            verifyAamva: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         voicePhrases:
         - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -2566,6 +2830,15 @@ components:
             $ref: '#/components/schemas/VoicePhraseContents'
           type: array
       type: object
+    GovernmentIdConfiguration_aadhaar:
+      description: Aadhaar configuration
+      example:
+        enabled: true
+      properties:
+        enabled:
+          description: Whether Aadhaar verification is enabled or not
+          type: boolean
+      type: object
     GovernmentIdConfiguration_provider:
       example:
         auto: null
@@ -2575,6 +2848,81 @@ components:
           $ref: '#/components/schemas/EnumProviderAuto'
         manual:
           $ref: '#/components/schemas/EnumProviderManual'
+      type: object
+    IdentityRecordMatching_address:
+      description: Address of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_birth_date:
+      description: Birth date of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_family_name:
+      description: Family name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_given_name:
+      description: Given name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
+      type: object
+    IdentityRecordMatching_name:
+      description: Full name of the user.
+      example:
+        fieldRequired: true
+        threshold: null
+      properties:
+        fieldRequired:
+          description: Whether the field is required or not
+          type: boolean
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - fieldRequired
+      - threshold
       type: object
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.
@@ -2769,6 +3117,7 @@ components:
         id: id
       properties:
         id:
+          deprecated: true
           type: string
       required:
       - id

@@ -23,15 +23,15 @@ type AuthorizeEditorDataRulesReferenceableRuleDTO struct {
 	// HAL embedded resources
 	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
 	// The resource's unique identifier
-	Id string `json:"id"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
+	Id             string                                    `json:"id"`
+	Environment    *ObjectEnvironment                        `json:"environment,omitempty"`
+	Name           string                                    `json:"name"`
+	Description    *string                                   `json:"description,omitempty"`
+	Enabled        *bool                                     `json:"enabled,omitempty"`
+	Statements     []map[string]interface{}                  `json:"statements,omitempty"`
+	Condition      *AuthorizeEditorDataConditionDTO          `json:"condition,omitempty"`
 	EffectSettings AuthorizeEditorDataRulesEffectSettingsDTO `json:"effectSettings"`
-	Version string `json:"version"`
+	Version        string                                    `json:"version"`
 }
 
 // NewAuthorizeEditorDataRulesReferenceableRuleDTO instantiates a new AuthorizeEditorDataRulesReferenceableRuleDTO object
@@ -376,7 +376,7 @@ func (o *AuthorizeEditorDataRulesReferenceableRuleDTO) SetVersion(v string) {
 }
 
 func (o AuthorizeEditorDataRulesReferenceableRuleDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -448,5 +448,3 @@ func (v *NullableAuthorizeEditorDataRulesReferenceableRuleDTO) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

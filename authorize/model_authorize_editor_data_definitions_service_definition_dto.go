@@ -18,8 +18,8 @@ import (
 // AuthorizeEditorDataDefinitionsServiceDefinitionDTO - struct for AuthorizeEditorDataDefinitionsServiceDefinitionDTO
 type AuthorizeEditorDataDefinitionsServiceDefinitionDTO struct {
 	AuthorizeEditorDataServicesConnectorServiceDefinitionDTO *AuthorizeEditorDataServicesConnectorServiceDefinitionDTO
-	AuthorizeEditorDataServicesHttpServiceDefinitionDTO *AuthorizeEditorDataServicesHttpServiceDefinitionDTO
-	AuthorizeEditorDataServicesNoneServiceDefinitionDTO *AuthorizeEditorDataServicesNoneServiceDefinitionDTO
+	AuthorizeEditorDataServicesHttpServiceDefinitionDTO      *AuthorizeEditorDataServicesHttpServiceDefinitionDTO
+	AuthorizeEditorDataServicesNoneServiceDefinitionDTO      *AuthorizeEditorDataServicesNoneServiceDefinitionDTO
 }
 
 // AuthorizeEditorDataServicesConnectorServiceDefinitionDTOAsAuthorizeEditorDataDefinitionsServiceDefinitionDTO is a convenience function that returns AuthorizeEditorDataServicesConnectorServiceDefinitionDTO wrapped in AuthorizeEditorDataDefinitionsServiceDefinitionDTO
@@ -42,7 +42,6 @@ func AuthorizeEditorDataServicesNoneServiceDefinitionDTOAsAuthorizeEditorDataDef
 		AuthorizeEditorDataServicesNoneServiceDefinitionDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) UnmarshalJSON(data []byte) error {
@@ -94,7 +93,7 @@ func (src AuthorizeEditorDataDefinitionsServiceDefinitionDTO) MarshalJSON() ([]b
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataDefinitionsServiceDefinitionDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -149,5 +148,3 @@ func (v *NullableAuthorizeEditorDataDefinitionsServiceDefinitionDTO) UnmarshalJS
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

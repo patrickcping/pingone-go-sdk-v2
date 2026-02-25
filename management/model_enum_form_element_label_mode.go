@@ -21,7 +21,7 @@ type EnumFormElementLabelMode string
 // List of EnumFormElementLabelMode
 const (
 	ENUMFORMELEMENTLABELMODE_DEFAULT EnumFormElementLabelMode = "DEFAULT"
-	ENUMFORMELEMENTLABELMODE_FLOAT EnumFormElementLabelMode = "FLOAT"
+	ENUMFORMELEMENTLABELMODE_FLOAT   EnumFormElementLabelMode = "FLOAT"
 )
 
 // All allowed values of EnumFormElementLabelMode enum
@@ -109,4 +109,3 @@ func (v *NullableEnumFormElementLabelMode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

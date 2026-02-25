@@ -19,12 +19,15 @@ var _ MappedNullable = &GovernmentIdConfiguration{}
 
 // GovernmentIdConfiguration struct for GovernmentIdConfiguration
 type GovernmentIdConfiguration struct {
+	Aadhaar *GovernmentIdConfigurationAadhaar `json:"aadhaar,omitempty"`
 	// Indicates whether verification should fail if the ID is expired.
-	FailExpiredId *bool `json:"failExpiredId,omitempty"`
-	InspectionType *EnumInspectionType `json:"inspectionType,omitempty"`
-	Provider *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
-	Retry *ObjectRetry `json:"retry,omitempty"`
-	Verify EnumVerify `json:"verify"`
+	FailExpiredId  *bool                              `json:"failExpiredId,omitempty"`
+	InspectionType *EnumInspectionType                `json:"inspectionType,omitempty"`
+	Provider       *GovernmentIdConfigurationProvider `json:"provider,omitempty"`
+	Retry          *ObjectRetry                       `json:"retry,omitempty"`
+	Verify         EnumVerify                         `json:"verify"`
+	// Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses) verification is enabled
+	VerifyAamva *bool `json:"verifyAamva,omitempty"`
 }
 
 // NewGovernmentIdConfiguration instantiates a new GovernmentIdConfiguration object
@@ -42,7 +45,41 @@ func NewGovernmentIdConfiguration(verify EnumVerify) *GovernmentIdConfiguration 
 // but it doesn't guarantee that properties required by API are set
 func NewGovernmentIdConfigurationWithDefaults() *GovernmentIdConfiguration {
 	this := GovernmentIdConfiguration{}
+	var verify EnumVerify = ENUMVERIFY_DISABLED
+	this.Verify = verify
 	return &this
+}
+
+// GetAadhaar returns the Aadhaar field value if set, zero value otherwise.
+func (o *GovernmentIdConfiguration) GetAadhaar() GovernmentIdConfigurationAadhaar {
+	if o == nil || IsNil(o.Aadhaar) {
+		var ret GovernmentIdConfigurationAadhaar
+		return ret
+	}
+	return *o.Aadhaar
+}
+
+// GetAadhaarOk returns a tuple with the Aadhaar field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GovernmentIdConfiguration) GetAadhaarOk() (*GovernmentIdConfigurationAadhaar, bool) {
+	if o == nil || IsNil(o.Aadhaar) {
+		return nil, false
+	}
+	return o.Aadhaar, true
+}
+
+// HasAadhaar returns a boolean if a field has been set.
+func (o *GovernmentIdConfiguration) HasAadhaar() bool {
+	if o != nil && !IsNil(o.Aadhaar) {
+		return true
+	}
+
+	return false
+}
+
+// SetAadhaar gets a reference to the given GovernmentIdConfigurationAadhaar and assigns it to the Aadhaar field.
+func (o *GovernmentIdConfiguration) SetAadhaar(v GovernmentIdConfigurationAadhaar) {
+	o.Aadhaar = &v
 }
 
 // GetFailExpiredId returns the FailExpiredId field value if set, zero value otherwise.
@@ -197,8 +234,40 @@ func (o *GovernmentIdConfiguration) SetVerify(v EnumVerify) {
 	o.Verify = v
 }
 
+// GetVerifyAamva returns the VerifyAamva field value if set, zero value otherwise.
+func (o *GovernmentIdConfiguration) GetVerifyAamva() bool {
+	if o == nil || IsNil(o.VerifyAamva) {
+		var ret bool
+		return ret
+	}
+	return *o.VerifyAamva
+}
+
+// GetVerifyAamvaOk returns a tuple with the VerifyAamva field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GovernmentIdConfiguration) GetVerifyAamvaOk() (*bool, bool) {
+	if o == nil || IsNil(o.VerifyAamva) {
+		return nil, false
+	}
+	return o.VerifyAamva, true
+}
+
+// HasVerifyAamva returns a boolean if a field has been set.
+func (o *GovernmentIdConfiguration) HasVerifyAamva() bool {
+	if o != nil && !IsNil(o.VerifyAamva) {
+		return true
+	}
+
+	return false
+}
+
+// SetVerifyAamva gets a reference to the given bool and assigns it to the VerifyAamva field.
+func (o *GovernmentIdConfiguration) SetVerifyAamva(v bool) {
+	o.VerifyAamva = &v
+}
+
 func (o GovernmentIdConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,6 +276,9 @@ func (o GovernmentIdConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o GovernmentIdConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Aadhaar) {
+		toSerialize["aadhaar"] = o.Aadhaar
+	}
 	if !IsNil(o.FailExpiredId) {
 		toSerialize["failExpiredId"] = o.FailExpiredId
 	}
@@ -220,6 +292,9 @@ func (o GovernmentIdConfiguration) ToMap() (map[string]interface{}, error) {
 		toSerialize["retry"] = o.Retry
 	}
 	toSerialize["verify"] = o.Verify
+	if !IsNil(o.VerifyAamva) {
+		toSerialize["verifyAamva"] = o.VerifyAamva
+	}
 	return toSerialize, nil
 }
 
@@ -258,5 +333,3 @@ func (v *NullableGovernmentIdConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,7 +19,7 @@ import (
 type RiskPredictorCustomItem struct {
 	RiskPredictorCustomItemBetween *RiskPredictorCustomItemBetween
 	RiskPredictorCustomItemIPRange *RiskPredictorCustomItemIPRange
-	RiskPredictorCustomItemList *RiskPredictorCustomItemList
+	RiskPredictorCustomItemList    *RiskPredictorCustomItemList
 }
 
 // RiskPredictorCustomItemBetweenAsRiskPredictorCustomItem is a convenience function that returns RiskPredictorCustomItemBetween wrapped in RiskPredictorCustomItem
@@ -42,7 +42,6 @@ func RiskPredictorCustomItemListAsRiskPredictorCustomItem(v *RiskPredictorCustom
 		RiskPredictorCustomItemList: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictorCustomItem) UnmarshalJSON(data []byte) error {
@@ -119,7 +118,7 @@ func (src RiskPredictorCustomItem) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RiskPredictorCustomItem) GetActualInstance() (interface{}) {
+func (obj *RiskPredictorCustomItem) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -174,5 +173,3 @@ func (v *NullableRiskPredictorCustomItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

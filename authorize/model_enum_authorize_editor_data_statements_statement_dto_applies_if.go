@@ -20,9 +20,9 @@ type EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf string
 
 // List of EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf
 const (
-	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESIF_ANYTHING EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf = "ANYTHING"
+	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESIF_ANYTHING               EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf = "ANYTHING"
 	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESIF_FINAL_DECISION_MATCHES EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf = "FINAL_DECISION_MATCHES"
-	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESIF_PATH_MATCHES EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf = "PATH_MATCHES"
+	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESIF_PATH_MATCHES           EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf = "PATH_MATCHES"
 )
 
 // All allowed values of EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf enum
@@ -111,4 +111,3 @@ func (v *NullableEnumAuthorizeEditorDataStatementsStatementDTOAppliesIf) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

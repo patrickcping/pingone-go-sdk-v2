@@ -15,12 +15,12 @@ import (
 	"fmt"
 )
 
-// EnumCredentialIssuanceRuleAutomationMethod Specifies the method the service uses to issue, revoke, or update credentials with the credential issuance rule: `PERIODIC` - the issuance rule is invoked by the credentials service on a scheduled interval `ON_DEMAND` - the issuance rule is invoked in real-time by the calling service applying staged changes. 
+// EnumCredentialIssuanceRuleAutomationMethod Specifies the method the service uses to issue, revoke, or update credentials with the credential issuance rule: `PERIODIC` - the issuance rule is invoked by the credentials service on a scheduled interval `ON_DEMAND` - the issuance rule is invoked in real-time by the calling service applying staged changes.
 type EnumCredentialIssuanceRuleAutomationMethod string
 
 // List of EnumCredentialIssuanceRuleAutomationMethod
 const (
-	ENUMCREDENTIALISSUANCERULEAUTOMATIONMETHOD_PERIODIC EnumCredentialIssuanceRuleAutomationMethod = "PERIODIC"
+	ENUMCREDENTIALISSUANCERULEAUTOMATIONMETHOD_PERIODIC  EnumCredentialIssuanceRuleAutomationMethod = "PERIODIC"
 	ENUMCREDENTIALISSUANCERULEAUTOMATIONMETHOD_ON_DEMAND EnumCredentialIssuanceRuleAutomationMethod = "ON_DEMAND"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumCredentialIssuanceRuleAutomationMethod) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

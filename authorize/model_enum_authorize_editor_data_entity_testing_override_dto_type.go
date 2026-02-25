@@ -21,7 +21,7 @@ type EnumAuthorizeEditorDataEntityTestingOverrideDTOType string
 // List of EnumAuthorizeEditorDataEntityTestingOverrideDTOType
 const (
 	ENUMAUTHORIZEEDITORDATAENTITYTESTINGOVERRIDEDTOTYPE_ATTRIBUTE EnumAuthorizeEditorDataEntityTestingOverrideDTOType = "ATTRIBUTE"
-	ENUMAUTHORIZEEDITORDATAENTITYTESTINGOVERRIDEDTOTYPE_SERVICE EnumAuthorizeEditorDataEntityTestingOverrideDTOType = "SERVICE"
+	ENUMAUTHORIZEEDITORDATAENTITYTESTINGOVERRIDEDTOTYPE_SERVICE   EnumAuthorizeEditorDataEntityTestingOverrideDTOType = "SERVICE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataEntityTestingOverrideDTOType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumAuthorizeEditorDataEntityTestingOverrideDTOType) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

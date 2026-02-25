@@ -38,8 +38,8 @@ type PropagationStoreConfigurationGoogleApps struct {
 	// OAuth 2 refresh token.
 	OAUTH_REFRESH_TOKEN string `json:"OAUTH_REFRESH_TOKEN"`
 	// Whether or not disabled users can be provisioned. Defaults to `true` and, if used, must be set to `true`.
-	PROVISION_DISABLED_USERS_PROV_OPT *bool `json:"PROVISION_DISABLED_USERS_PROV_OPT,omitempty"`
-	REMOVE_ACTION *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
+	PROVISION_DISABLED_USERS_PROV_OPT *bool                                              `json:"PROVISION_DISABLED_USERS_PROV_OPT,omitempty"`
+	REMOVE_ACTION                     *EnumPropagationStoreTypeRemoveActionDisableDelete `json:"REMOVE_ACTION,omitempty"`
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
@@ -408,7 +408,7 @@ func (o *PropagationStoreConfigurationGoogleApps) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationGoogleApps) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -479,5 +479,3 @@ func (v *NullablePropagationStoreConfigurationGoogleApps) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

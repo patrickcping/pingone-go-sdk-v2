@@ -15,13 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumMFADevicePolicySelection The default method that should be used for authentication. Can take one of the following values: * `DEFAULT_TO_FIRST` - use the method that the user set as their default * `PROMPT_TO_SELECT` - always have the user select the method to use if there is more than one method available * `ALWAYS_DISPLAY_DEVICES` - always have the user select the method to use even if there is only one method available If this parameter is not provided, the `DEFAULT_TO_FIRST` option is used. 
+// EnumMFADevicePolicySelection The default method that should be used for authentication. Can take one of the following values: * `DEFAULT_TO_FIRST` - use the method that the user set as their default * `PROMPT_TO_SELECT` - always have the user select the method to use if there is more than one method available * `ALWAYS_DISPLAY_DEVICES` - always have the user select the method to use even if there is only one method available If this parameter is not provided, the `DEFAULT_TO_FIRST` option is used.
 type EnumMFADevicePolicySelection string
 
 // List of EnumMFADevicePolicySelection
 const (
-	ENUMMFADEVICEPOLICYSELECTION_DEFAULT_TO_FIRST EnumMFADevicePolicySelection = "DEFAULT_TO_FIRST"
-	ENUMMFADEVICEPOLICYSELECTION_PROMPT_TO_SELECT EnumMFADevicePolicySelection = "PROMPT_TO_SELECT"
+	ENUMMFADEVICEPOLICYSELECTION_DEFAULT_TO_FIRST       EnumMFADevicePolicySelection = "DEFAULT_TO_FIRST"
+	ENUMMFADEVICEPOLICYSELECTION_PROMPT_TO_SELECT       EnumMFADevicePolicySelection = "PROMPT_TO_SELECT"
 	ENUMMFADEVICEPOLICYSELECTION_ALWAYS_DISPLAY_DEVICES EnumMFADevicePolicySelection = "ALWAYS_DISPLAY_DEVICES"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEnumMFADevicePolicySelection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

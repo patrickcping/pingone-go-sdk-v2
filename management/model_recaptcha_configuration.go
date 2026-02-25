@@ -21,7 +21,7 @@ var _ MappedNullable = &RecaptchaConfiguration{}
 // RecaptchaConfiguration struct for RecaptchaConfiguration
 type RecaptchaConfiguration struct {
 	// The time the configuration was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created     *time.Time         `json:"created,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the configuration was last updated.
 	Modified *time.Time `json:"modified,omitempty"`
@@ -195,7 +195,7 @@ func (o *RecaptchaConfiguration) SetSecretKey(v string) {
 }
 
 func (o RecaptchaConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,5 +253,3 @@ func (v *NullableRecaptchaConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

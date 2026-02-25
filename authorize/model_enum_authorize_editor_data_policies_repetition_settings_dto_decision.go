@@ -20,10 +20,10 @@ type EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision string
 
 // List of EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision
 const (
-	ENUMAUTHORIZEEDITORDATAPOLICIESREPETITIONSETTINGSDTODECISION_PERMIT EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision = "PERMIT"
-	ENUMAUTHORIZEEDITORDATAPOLICIESREPETITIONSETTINGSDTODECISION_DENY EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision = "DENY"
+	ENUMAUTHORIZEEDITORDATAPOLICIESREPETITIONSETTINGSDTODECISION_PERMIT         EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision = "PERMIT"
+	ENUMAUTHORIZEEDITORDATAPOLICIESREPETITIONSETTINGSDTODECISION_DENY           EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision = "DENY"
 	ENUMAUTHORIZEEDITORDATAPOLICIESREPETITIONSETTINGSDTODECISION_NOT_APPLICABLE EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision = "NOT_APPLICABLE"
-	ENUMAUTHORIZEEDITORDATAPOLICIESREPETITIONSETTINGSDTODECISION_INDETERMINATE EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision = "INDETERMINATE"
+	ENUMAUTHORIZEEDITORDATAPOLICIESREPETITIONSETTINGSDTODECISION_INDETERMINATE  EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision = "INDETERMINATE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision enum
@@ -113,4 +113,3 @@ func (v *NullableEnumAuthorizeEditorDataPoliciesRepetitionSettingsDTODecision) U
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

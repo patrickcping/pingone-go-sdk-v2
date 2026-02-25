@@ -21,7 +21,7 @@ type EnumAuthorizeEditorDataConditionsComparandDTOType string
 // List of EnumAuthorizeEditorDataConditionsComparandDTOType
 const (
 	ENUMAUTHORIZEEDITORDATACONDITIONSCOMPARANDDTOTYPE_ATTRIBUTE EnumAuthorizeEditorDataConditionsComparandDTOType = "ATTRIBUTE"
-	ENUMAUTHORIZEEDITORDATACONDITIONSCOMPARANDDTOTYPE_CONSTANT EnumAuthorizeEditorDataConditionsComparandDTOType = "CONSTANT"
+	ENUMAUTHORIZEEDITORDATACONDITIONSCOMPARANDDTOTYPE_CONSTANT  EnumAuthorizeEditorDataConditionsComparandDTOType = "CONSTANT"
 )
 
 // All allowed values of EnumAuthorizeEditorDataConditionsComparandDTOType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumAuthorizeEditorDataConditionsComparandDTOType) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

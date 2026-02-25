@@ -20,20 +20,23 @@ var _ MappedNullable = &NotificationsPolicy{}
 
 // NotificationsPolicy struct for NotificationsPolicy
 type NotificationsPolicy struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links                 *map[string]LinksHATEOASValue             `json:"_links,omitempty"`
+	CooldownConfiguration *NotificationsPolicyCooldownConfiguration `json:"cooldownConfiguration,omitempty"`
+	CountryLimit          *NotificationsPolicyCountryLimit          `json:"countryLimit,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is `false`
+	Default     *bool              `json:"default,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// The name to use for the notification policy. Must be unique among the notification policies in the environment.
-	Name string `json:"name"`
-	// Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is `false`
-	Default *bool `json:"default,omitempty"`
-	CountryLimit *NotificationsPolicyCountryLimit `json:"countryLimit,omitempty"`
+	Name                  string                                    `json:"name"`
+	ProviderConfiguration *NotificationsPolicyProviderConfiguration `json:"providerConfiguration,omitempty"`
 	// Collection of objects that define the SMS/Voice limits. Each object contain the following elements- `type`, `deliveryMethods`, `total`. Currently, a policy can contain ony one such object. Note that instead of `total`, you can use the pair of fields- `claimed` and `unclaimed`.
 	Quotas []NotificationsPolicyQuotasInner `json:"quotas"`
+	// The time the resource was last updated.
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewNotificationsPolicy instantiates a new NotificationsPolicy object
@@ -42,9 +45,9 @@ type NotificationsPolicy struct {
 // will change when the set of required properties is changed
 func NewNotificationsPolicy(name string, quotas []NotificationsPolicyQuotasInner) *NotificationsPolicy {
 	this := NotificationsPolicy{}
-	this.Name = name
 	var default_ bool = false
 	this.Default = &default_
+	this.Name = name
 	this.Quotas = quotas
 	return &this
 }
@@ -91,6 +94,70 @@ func (o *NotificationsPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
+// GetCooldownConfiguration returns the CooldownConfiguration field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetCooldownConfiguration() NotificationsPolicyCooldownConfiguration {
+	if o == nil || IsNil(o.CooldownConfiguration) {
+		var ret NotificationsPolicyCooldownConfiguration
+		return ret
+	}
+	return *o.CooldownConfiguration
+}
+
+// GetCooldownConfigurationOk returns a tuple with the CooldownConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsPolicy) GetCooldownConfigurationOk() (*NotificationsPolicyCooldownConfiguration, bool) {
+	if o == nil || IsNil(o.CooldownConfiguration) {
+		return nil, false
+	}
+	return o.CooldownConfiguration, true
+}
+
+// HasCooldownConfiguration returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasCooldownConfiguration() bool {
+	if o != nil && !IsNil(o.CooldownConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetCooldownConfiguration gets a reference to the given NotificationsPolicyCooldownConfiguration and assigns it to the CooldownConfiguration field.
+func (o *NotificationsPolicy) SetCooldownConfiguration(v NotificationsPolicyCooldownConfiguration) {
+	o.CooldownConfiguration = &v
+}
+
+// GetCountryLimit returns the CountryLimit field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetCountryLimit() NotificationsPolicyCountryLimit {
+	if o == nil || IsNil(o.CountryLimit) {
+		var ret NotificationsPolicyCountryLimit
+		return ret
+	}
+	return *o.CountryLimit
+}
+
+// GetCountryLimitOk returns a tuple with the CountryLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsPolicy) GetCountryLimitOk() (*NotificationsPolicyCountryLimit, bool) {
+	if o == nil || IsNil(o.CountryLimit) {
+		return nil, false
+	}
+	return o.CountryLimit, true
+}
+
+// HasCountryLimit returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasCountryLimit() bool {
+	if o != nil && !IsNil(o.CountryLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountryLimit gets a reference to the given NotificationsPolicyCountryLimit and assigns it to the CountryLimit field.
+func (o *NotificationsPolicy) SetCountryLimit(v NotificationsPolicyCountryLimit) {
+	o.CountryLimit = &v
+}
+
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *NotificationsPolicy) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
@@ -123,36 +190,68 @@ func (o *NotificationsPolicy) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *NotificationsPolicy) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
+// GetDefault returns the Default field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetDefault() bool {
+	if o == nil || IsNil(o.Default) {
+		var ret bool
 		return ret
 	}
-	return *o.UpdatedAt
+	return *o.Default
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationsPolicy) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+func (o *NotificationsPolicy) GetDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return o.Default, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *NotificationsPolicy) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+// HasDefault returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasDefault() bool {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *NotificationsPolicy) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
+// SetDefault gets a reference to the given bool and assigns it to the Default field.
+func (o *NotificationsPolicy) SetDefault(v bool) {
+	o.Default = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsPolicy) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *NotificationsPolicy) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -211,68 +310,36 @@ func (o *NotificationsPolicy) SetName(v string) {
 	o.Name = v
 }
 
-// GetDefault returns the Default field value if set, zero value otherwise.
-func (o *NotificationsPolicy) GetDefault() bool {
-	if o == nil || IsNil(o.Default) {
-		var ret bool
+// GetProviderConfiguration returns the ProviderConfiguration field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetProviderConfiguration() NotificationsPolicyProviderConfiguration {
+	if o == nil || IsNil(o.ProviderConfiguration) {
+		var ret NotificationsPolicyProviderConfiguration
 		return ret
 	}
-	return *o.Default
+	return *o.ProviderConfiguration
 }
 
-// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
+// GetProviderConfigurationOk returns a tuple with the ProviderConfiguration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationsPolicy) GetDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.Default) {
+func (o *NotificationsPolicy) GetProviderConfigurationOk() (*NotificationsPolicyProviderConfiguration, bool) {
+	if o == nil || IsNil(o.ProviderConfiguration) {
 		return nil, false
 	}
-	return o.Default, true
+	return o.ProviderConfiguration, true
 }
 
-// HasDefault returns a boolean if a field has been set.
-func (o *NotificationsPolicy) HasDefault() bool {
-	if o != nil && !IsNil(o.Default) {
+// HasProviderConfiguration returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasProviderConfiguration() bool {
+	if o != nil && !IsNil(o.ProviderConfiguration) {
 		return true
 	}
 
 	return false
 }
 
-// SetDefault gets a reference to the given bool and assigns it to the Default field.
-func (o *NotificationsPolicy) SetDefault(v bool) {
-	o.Default = &v
-}
-
-// GetCountryLimit returns the CountryLimit field value if set, zero value otherwise.
-func (o *NotificationsPolicy) GetCountryLimit() NotificationsPolicyCountryLimit {
-	if o == nil || IsNil(o.CountryLimit) {
-		var ret NotificationsPolicyCountryLimit
-		return ret
-	}
-	return *o.CountryLimit
-}
-
-// GetCountryLimitOk returns a tuple with the CountryLimit field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsPolicy) GetCountryLimitOk() (*NotificationsPolicyCountryLimit, bool) {
-	if o == nil || IsNil(o.CountryLimit) {
-		return nil, false
-	}
-	return o.CountryLimit, true
-}
-
-// HasCountryLimit returns a boolean if a field has been set.
-func (o *NotificationsPolicy) HasCountryLimit() bool {
-	if o != nil && !IsNil(o.CountryLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetCountryLimit gets a reference to the given NotificationsPolicyCountryLimit and assigns it to the CountryLimit field.
-func (o *NotificationsPolicy) SetCountryLimit(v NotificationsPolicyCountryLimit) {
-	o.CountryLimit = &v
+// SetProviderConfiguration gets a reference to the given NotificationsPolicyProviderConfiguration and assigns it to the ProviderConfiguration field.
+func (o *NotificationsPolicy) SetProviderConfiguration(v NotificationsPolicyProviderConfiguration) {
+	o.ProviderConfiguration = &v
 }
 
 // GetQuotas returns the Quotas field value
@@ -299,8 +366,40 @@ func (o *NotificationsPolicy) SetQuotas(v []NotificationsPolicyQuotasInner) {
 	o.Quotas = v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetUpdatedAt() time.Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsPolicy) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *NotificationsPolicy) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
+}
+
 func (o NotificationsPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -312,23 +411,32 @@ func (o NotificationsPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
+	if !IsNil(o.CooldownConfiguration) {
+		toSerialize["cooldownConfiguration"] = o.CooldownConfiguration
+	}
+	if !IsNil(o.CountryLimit) {
+		toSerialize["countryLimit"] = o.CountryLimit
+	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Default) {
-		toSerialize["default"] = o.Default
-	}
-	if !IsNil(o.CountryLimit) {
-		toSerialize["countryLimit"] = o.CountryLimit
+	if !IsNil(o.ProviderConfiguration) {
+		toSerialize["providerConfiguration"] = o.ProviderConfiguration
 	}
 	toSerialize["quotas"] = o.Quotas
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 
@@ -367,5 +475,3 @@ func (v *NullableNotificationsPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

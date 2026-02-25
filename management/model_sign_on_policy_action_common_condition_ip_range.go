@@ -19,8 +19,8 @@ var _ MappedNullable = &SignOnPolicyActionCommonConditionIPRange{}
 
 // SignOnPolicyActionCommonConditionIPRange struct for SignOnPolicyActionCommonConditionIPRange
 type SignOnPolicyActionCommonConditionIPRange struct {
-	Contains string `json:"contains"`
-	IpRange []string `json:"ipRange"`
+	Contains string   `json:"contains"`
+	IpRange  []string `json:"ipRange"`
 }
 
 // NewSignOnPolicyActionCommonConditionIPRange instantiates a new SignOnPolicyActionCommonConditionIPRange object
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionCommonConditionIPRange) SetIpRange(v []string) {
 }
 
 func (o SignOnPolicyActionCommonConditionIPRange) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionCommonConditionIPRange) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

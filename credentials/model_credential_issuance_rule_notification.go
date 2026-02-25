@@ -19,8 +19,8 @@ var _ MappedNullable = &CredentialIssuanceRuleNotification{}
 
 // CredentialIssuanceRuleNotification struct for CredentialIssuanceRuleNotification
 type CredentialIssuanceRuleNotification struct {
-	Methods []EnumCredentialIssuanceRuleNotificationMethod `json:"methods,omitempty"`
-	Template *CredentialIssuanceRuleNotificationTemplate `json:"template,omitempty"`
+	Methods  []EnumCredentialIssuanceRuleNotificationMethod `json:"methods,omitempty"`
+	Template *CredentialIssuanceRuleNotificationTemplate    `json:"template,omitempty"`
 }
 
 // NewCredentialIssuanceRuleNotification instantiates a new CredentialIssuanceRuleNotification object
@@ -105,7 +105,7 @@ func (o *CredentialIssuanceRuleNotification) SetTemplate(v CredentialIssuanceRul
 }
 
 func (o CredentialIssuanceRuleNotification) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableCredentialIssuanceRuleNotification) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

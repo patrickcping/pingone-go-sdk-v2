@@ -21,7 +21,7 @@ type EnumAuthorizeEditorDataInputMappingDTOType string
 // List of EnumAuthorizeEditorDataInputMappingDTOType
 const (
 	ENUMAUTHORIZEEDITORDATAINPUTMAPPINGDTOTYPE_ATTRIBUTE EnumAuthorizeEditorDataInputMappingDTOType = "ATTRIBUTE"
-	ENUMAUTHORIZEEDITORDATAINPUTMAPPINGDTOTYPE_INPUT EnumAuthorizeEditorDataInputMappingDTOType = "INPUT"
+	ENUMAUTHORIZEEDITORDATAINPUTMAPPINGDTOTYPE_INPUT     EnumAuthorizeEditorDataInputMappingDTOType = "INPUT"
 )
 
 // All allowed values of EnumAuthorizeEditorDataInputMappingDTOType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumAuthorizeEditorDataInputMappingDTOType) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

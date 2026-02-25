@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataEntityTestingDecisionStatusDTO{}
 
 // AuthorizeEditorDataEntityTestingDecisionStatusDTO struct for AuthorizeEditorDataEntityTestingDecisionStatusDTO
 type AuthorizeEditorDataEntityTestingDecisionStatusDTO struct {
-	Code *string `json:"code,omitempty"`
+	Code     *string  `json:"code,omitempty"`
 	Messages []string `json:"messages,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *AuthorizeEditorDataEntityTestingDecisionStatusDTO) SetMessages(v []stri
 }
 
 func (o AuthorizeEditorDataEntityTestingDecisionStatusDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableAuthorizeEditorDataEntityTestingDecisionStatusDTO) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

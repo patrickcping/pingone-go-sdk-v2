@@ -22,7 +22,7 @@ type RiskEvaluationEventUser struct {
 	// A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property.
 	Id string `json:"id"`
 	// A string that specifies the name of the user associated with the event (maximum size 1024 characters).
-	Name *string `json:"name,omitempty"`
+	Name *string      `json:"name,omitempty"`
 	Type EnumUserType `json:"type"`
 	// An array of group names.
 	Groups []RiskEvaluationEventUserGroupsInner `json:"groups,omitempty"`
@@ -160,7 +160,7 @@ func (o *RiskEvaluationEventUser) SetGroups(v []RiskEvaluationEventUserGroupsInn
 }
 
 func (o RiskEvaluationEventUser) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,5 +215,3 @@ func (v *NullableRiskEvaluationEventUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

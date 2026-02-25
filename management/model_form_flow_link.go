@@ -22,7 +22,7 @@ type FormFlowLink struct {
 	// A string that specifies an identifier for the field component.
 	Key string `json:"key"`
 	// A string that specifies the link label.
-	Label string `json:"label"`
+	Label  string              `json:"label"`
 	Styles *FormFlowLinkStyles `json:"styles,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (o *FormFlowLink) SetStyles(v FormFlowLinkStyles) {
 }
 
 func (o FormFlowLink) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +178,3 @@ func (v *NullableFormFlowLink) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

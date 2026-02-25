@@ -20,12 +20,12 @@ type EnumAuthorizeEditorDataConditionDTOType string
 
 // List of EnumAuthorizeEditorDataConditionDTOType
 const (
-	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_AND EnumAuthorizeEditorDataConditionDTOType = "AND"
+	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_AND        EnumAuthorizeEditorDataConditionDTOType = "AND"
 	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_COMPARISON EnumAuthorizeEditorDataConditionDTOType = "COMPARISON"
-	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_EMPTY EnumAuthorizeEditorDataConditionDTOType = "EMPTY"
-	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_NOT EnumAuthorizeEditorDataConditionDTOType = "NOT"
-	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_OR EnumAuthorizeEditorDataConditionDTOType = "OR"
-	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_REFERENCE EnumAuthorizeEditorDataConditionDTOType = "REFERENCE"
+	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_EMPTY      EnumAuthorizeEditorDataConditionDTOType = "EMPTY"
+	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_NOT        EnumAuthorizeEditorDataConditionDTOType = "NOT"
+	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_OR         EnumAuthorizeEditorDataConditionDTOType = "OR"
+	ENUMAUTHORIZEEDITORDATACONDITIONDTOTYPE_REFERENCE  EnumAuthorizeEditorDataConditionDTOType = "REFERENCE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataConditionDTOType enum
@@ -117,4 +117,3 @@ func (v *NullableEnumAuthorizeEditorDataConditionDTOType) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

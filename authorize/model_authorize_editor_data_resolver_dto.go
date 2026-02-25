@@ -17,14 +17,14 @@ import (
 
 // AuthorizeEditorDataResolverDTO - struct for AuthorizeEditorDataResolverDTO
 type AuthorizeEditorDataResolverDTO struct {
-	AuthorizeEditorDataAttributeResolversAttributeResolverDTO *AuthorizeEditorDataAttributeResolversAttributeResolverDTO
-	AuthorizeEditorDataAttributeResolversConstantResolverDTO *AuthorizeEditorDataAttributeResolversConstantResolverDTO
+	AuthorizeEditorDataAttributeResolversAttributeResolverDTO              *AuthorizeEditorDataAttributeResolversAttributeResolverDTO
+	AuthorizeEditorDataAttributeResolversConstantResolverDTO               *AuthorizeEditorDataAttributeResolversConstantResolverDTO
 	AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO *AuthorizeEditorDataAttributeResolversCurrentRepetitionValueResolverDTO
-	AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO *AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO
-	AuthorizeEditorDataAttributeResolversRequestResolverDTO *AuthorizeEditorDataAttributeResolversRequestResolverDTO
-	AuthorizeEditorDataAttributeResolversServiceResolverDTO *AuthorizeEditorDataAttributeResolversServiceResolverDTO
-	AuthorizeEditorDataAttributeResolversSystemResolverDTO *AuthorizeEditorDataAttributeResolversSystemResolverDTO
-	AuthorizeEditorDataAttributeResolversUserResolverDTO *AuthorizeEditorDataAttributeResolversUserResolverDTO
+	AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO          *AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO
+	AuthorizeEditorDataAttributeResolversRequestResolverDTO                *AuthorizeEditorDataAttributeResolversRequestResolverDTO
+	AuthorizeEditorDataAttributeResolversServiceResolverDTO                *AuthorizeEditorDataAttributeResolversServiceResolverDTO
+	AuthorizeEditorDataAttributeResolversSystemResolverDTO                 *AuthorizeEditorDataAttributeResolversSystemResolverDTO
+	AuthorizeEditorDataAttributeResolversUserResolverDTO                   *AuthorizeEditorDataAttributeResolversUserResolverDTO
 }
 
 // AuthorizeEditorDataAttributeResolversAttributeResolverDTOAsAuthorizeEditorDataResolverDTO is a convenience function that returns AuthorizeEditorDataAttributeResolversAttributeResolverDTO wrapped in AuthorizeEditorDataResolverDTO
@@ -82,7 +82,6 @@ func AuthorizeEditorDataAttributeResolversUserResolverDTOAsAuthorizeEditorDataRe
 		AuthorizeEditorDataAttributeResolversUserResolverDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataResolverDTO) UnmarshalJSON(data []byte) error {
@@ -179,7 +178,7 @@ func (src AuthorizeEditorDataResolverDTO) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataResolverDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataResolverDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -254,5 +253,3 @@ func (v *NullableAuthorizeEditorDataResolverDTO) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,10 +19,10 @@ var _ MappedNullable = &AuthorizeEditorDataConnectorsConnectorSchema{}
 
 // AuthorizeEditorDataConnectorsConnectorSchema struct for AuthorizeEditorDataConnectorsConnectorSchema
 type AuthorizeEditorDataConnectorsConnectorSchema struct {
-	Version *int32 `json:"version,omitempty"`
-	VersionName *string `json:"versionName,omitempty"`
-	Input map[string]interface{} `json:"input,omitempty"`
-	Output map[string]interface{} `json:"output,omitempty"`
+	Version     *int32                 `json:"version,omitempty"`
+	VersionName *string                `json:"versionName,omitempty"`
+	Input       map[string]interface{} `json:"input,omitempty"`
+	Output      map[string]interface{} `json:"output,omitempty"`
 }
 
 // NewAuthorizeEditorDataConnectorsConnectorSchema instantiates a new AuthorizeEditorDataConnectorsConnectorSchema object
@@ -171,7 +171,7 @@ func (o *AuthorizeEditorDataConnectorsConnectorSchema) SetOutput(v map[string]in
 }
 
 func (o AuthorizeEditorDataConnectorsConnectorSchema) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableAuthorizeEditorDataConnectorsConnectorSchema) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

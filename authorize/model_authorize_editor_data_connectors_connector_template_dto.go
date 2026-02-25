@@ -21,13 +21,13 @@ var _ MappedNullable = &AuthorizeEditorDataConnectorsConnectorTemplateDTO{}
 type AuthorizeEditorDataConnectorsConnectorTemplateDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// HAL embedded resources
-	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
-	Code *string `json:"code,omitempty"`
-	Channel *string `json:"channel,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Embedded            map[string]map[string]interface{}                  `json:"_embedded,omitempty"`
+	Code                *string                                            `json:"code,omitempty"`
+	Channel             *string                                            `json:"channel,omitempty"`
+	Name                *string                                            `json:"name,omitempty"`
+	Description         *string                                            `json:"description,omitempty"`
 	ConnectorCapability []AuthorizeEditorDataConnectorsConnectorCapability `json:"ConnectorCapability,omitempty"`
-	Capabilities []AuthorizeEditorDataConnectorsConnectorCapability `json:"capabilities,omitempty"`
+	Capabilities        []AuthorizeEditorDataConnectorsConnectorCapability `json:"capabilities,omitempty"`
 }
 
 // NewAuthorizeEditorDataConnectorsConnectorTemplateDTO instantiates a new AuthorizeEditorDataConnectorsConnectorTemplateDTO object
@@ -304,7 +304,7 @@ func (o *AuthorizeEditorDataConnectorsConnectorTemplateDTO) SetCapabilities(v []
 }
 
 func (o AuthorizeEditorDataConnectorsConnectorTemplateDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -375,5 +375,3 @@ func (v *NullableAuthorizeEditorDataConnectorsConnectorTemplateDTO) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

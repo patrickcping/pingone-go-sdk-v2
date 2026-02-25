@@ -19,9 +19,9 @@ var _ MappedNullable = &AuthorizeEditorDataProcessorsReferenceProcessorDTO{}
 
 // AuthorizeEditorDataProcessorsReferenceProcessorDTO struct for AuthorizeEditorDataProcessorsReferenceProcessorDTO
 type AuthorizeEditorDataProcessorsReferenceProcessorDTO struct {
-	Name string `json:"name"`
-	Type EnumAuthorizeEditorDataProcessorDTOType `json:"type"`
-	Processor AuthorizeEditorDataReferenceObjectDTO `json:"processor"`
+	Name      string                                  `json:"name"`
+	Type      EnumAuthorizeEditorDataProcessorDTOType `json:"type"`
+	Processor AuthorizeEditorDataReferenceObjectDTO   `json:"processor"`
 }
 
 // NewAuthorizeEditorDataProcessorsReferenceProcessorDTO instantiates a new AuthorizeEditorDataProcessorsReferenceProcessorDTO object
@@ -117,7 +117,7 @@ func (o *AuthorizeEditorDataProcessorsReferenceProcessorDTO) SetProcessor(v Auth
 }
 
 func (o AuthorizeEditorDataProcessorsReferenceProcessorDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,5 +167,3 @@ func (v *NullableAuthorizeEditorDataProcessorsReferenceProcessorDTO) UnmarshalJS
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

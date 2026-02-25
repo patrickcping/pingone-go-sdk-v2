@@ -28,7 +28,7 @@ type LicenseIntelligence struct {
 	// A read-only boolean that specifies whether the customer has opted in to allow user and event behavior analytics (UEBA) data collection.
 	AllowDataConsent *bool `json:"allowDataConsent,omitempty"`
 	// A read-only boolean that specifies whether your license permits you to configure risk features such as sign-on policies that include rules to detect anomalous changes to your locations (such as impossible travel). This capability is supported for TRIAL, RISK, and MFARISK license packages. Note, The sharing of user data to enable our machine-learning engine, which is integral to PingOne Risk, is captured in the license property license.intelligence.allowDataConsent, but it is not set to true by default in any license package. This license capability always requires active consent by the customer before it can be enabled, and if consent is given, then it allows the full scope of intelligence features included in PingOne Risk (and PingOne Risk plus MFA).
-	AllowRisk *bool `json:"allowRisk,omitempty"`
+	AllowRisk               *bool `json:"allowRisk,omitempty"`
 	AllowAdvancedPredictors *bool `json:"allowAdvancedPredictors,omitempty"`
 }
 
@@ -242,7 +242,7 @@ func (o *LicenseIntelligence) SetAllowAdvancedPredictors(v bool) {
 }
 
 func (o LicenseIntelligence) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,5 +307,3 @@ func (v *NullableLicenseIntelligence) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

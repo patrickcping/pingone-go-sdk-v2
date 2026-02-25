@@ -20,7 +20,7 @@ type EnumPropagationStoreTypeSCIMUniqueUserIdentifier string
 
 // List of EnumPropagationStoreTypeSCIMUniqueUserIdentifier
 const (
-	ENUMPROPAGATIONSTORETYPESCIMUNIQUEUSERIDENTIFIER_USER_NAME EnumPropagationStoreTypeSCIMUniqueUserIdentifier = "userName"
+	ENUMPROPAGATIONSTORETYPESCIMUNIQUEUSERIDENTIFIER_USER_NAME  EnumPropagationStoreTypeSCIMUniqueUserIdentifier = "userName"
 	ENUMPROPAGATIONSTORETYPESCIMUNIQUEUSERIDENTIFIER_WORK_EMAIL EnumPropagationStoreTypeSCIMUniqueUserIdentifier = "workEmail"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreTypeSCIMUniqueUserIdentifier) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

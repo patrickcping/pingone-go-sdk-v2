@@ -3,6 +3,7 @@
 #
 name: Acceptance Tests (EU)
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -28,15 +29,15 @@ jobs:
     steps:
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4.1.1
+      uses: actions/checkout@v6
 
     - name: Set up Go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@v6
       with:
         go-version-file: 'go.mod'
         cache: true
       id: go
-    - uses: actions/cache@v4
+    - uses: actions/cache@v5
       continue-on-error: true
       timeout-minutes: 2
       with:
@@ -58,9 +59,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PINGONE_CLIENT_ID_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_ID }}
-      PINGONE_CLIENT_SECRET_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_SECRET }}
-      PINGONE_ENVIRONMENT_ID_TESTACC: ${{ secrets.EU_PINGONE_ENVIRONMENT_ID }}
+      PINGONE_CLIENT_ID_TESTACC: ${{ vars.PINGONE_PROD_EU_CLIENT_ID_CLIENT_SECRET_BASIC }}
+      PINGONE_CLIENT_SECRET_TESTACC: ${{ secrets.PINGONE_PROD_EU_CLIENT_SECRET_CLIENT_SECRET_BASIC }}
+      PINGONE_ENVIRONMENT_ID_TESTACC: ${{ vars.PINGONE_PROD_EU_ENVIRONMENT_ID }}
       # Dummy values follow to test the env var defaulting behaviours
       PINGONE_REGION_TESTACC: Europe
       PINGONE_REGION_CODE_TESTACC: EU
@@ -79,15 +80,15 @@ jobs:
     steps:
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4.1.1
+      uses: actions/checkout@v6
 
     - name: Set up Go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@v6
       with:
         go-version-file: 'go.mod'
         cache: true
       id: go
-    - uses: actions/cache@v4
+    - uses: actions/cache@v5
       continue-on-error: true
       timeout-minutes: 2
       with:

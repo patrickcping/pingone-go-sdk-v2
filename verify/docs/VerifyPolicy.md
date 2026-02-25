@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Default** | Pointer to **bool** | Required as true to set this verify policy as the default policy for the environment; otherwise optional and defaults to false. | [optional] 
 **GovernmentId** | Pointer to [**GovernmentIdConfiguration**](GovernmentIdConfiguration.md) |  | [optional] 
 **FacialComparison** | Pointer to [**FacialComparisonConfiguration**](FacialComparisonConfiguration.md) |  | [optional] 
+**IdentityRecordMatching** | Pointer to [**IdentityRecordMatching**](IdentityRecordMatching.md) |  | [optional] 
 **Liveness** | Pointer to [**LivenessConfiguration**](LivenessConfiguration.md) |  | [optional] 
 **Email** | Pointer to [**OTPDeviceConfiguration**](OTPDeviceConfiguration.md) |  | [optional] 
 **Phone** | Pointer to [**OTPDeviceConfiguration**](OTPDeviceConfiguration.md) |  | [optional] 
@@ -233,6 +234,31 @@ SetFacialComparison sets FacialComparison field to given value.
 `func (o *VerifyPolicy) HasFacialComparison() bool`
 
 HasFacialComparison returns a boolean if a field has been set.
+
+### GetIdentityRecordMatching
+
+`func (o *VerifyPolicy) GetIdentityRecordMatching() IdentityRecordMatching`
+
+GetIdentityRecordMatching returns the IdentityRecordMatching field if non-nil, zero value otherwise.
+
+### GetIdentityRecordMatchingOk
+
+`func (o *VerifyPolicy) GetIdentityRecordMatchingOk() (*IdentityRecordMatching, bool)`
+
+GetIdentityRecordMatchingOk returns a tuple with the IdentityRecordMatching field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityRecordMatching
+
+`func (o *VerifyPolicy) SetIdentityRecordMatching(v IdentityRecordMatching)`
+
+SetIdentityRecordMatching sets IdentityRecordMatching field to given value.
+
+### HasIdentityRecordMatching
+
+`func (o *VerifyPolicy) HasIdentityRecordMatching() bool`
+
+HasIdentityRecordMatching returns a boolean if a field has been set.
 
 ### GetLiveness
 

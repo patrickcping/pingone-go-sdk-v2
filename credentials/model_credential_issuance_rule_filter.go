@@ -19,9 +19,9 @@ var _ MappedNullable = &CredentialIssuanceRuleFilter{}
 
 // CredentialIssuanceRuleFilter struct for CredentialIssuanceRuleFilter
 type CredentialIssuanceRuleFilter struct {
-	GroupIds []string `json:"groupIds,omitempty"`
+	GroupIds      []string `json:"groupIds,omitempty"`
 	PopulationIds []string `json:"populationIds,omitempty"`
-	Scim *string `json:"scim,omitempty"`
+	Scim          *string  `json:"scim,omitempty"`
 }
 
 // NewCredentialIssuanceRuleFilter instantiates a new CredentialIssuanceRuleFilter object
@@ -138,7 +138,7 @@ func (o *CredentialIssuanceRuleFilter) SetScim(v string) {
 }
 
 func (o CredentialIssuanceRuleFilter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableCredentialIssuanceRuleFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

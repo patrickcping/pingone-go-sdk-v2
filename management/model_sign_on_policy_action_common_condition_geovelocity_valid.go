@@ -19,7 +19,7 @@ var _ MappedNullable = &SignOnPolicyActionCommonConditionGeovelocityValid{}
 
 // SignOnPolicyActionCommonConditionGeovelocityValid struct for SignOnPolicyActionCommonConditionGeovelocityValid
 type SignOnPolicyActionCommonConditionGeovelocityValid struct {
-	PreviousSuccessfulAuthenticationIp string `json:"previousSuccessfulAuthenticationIp"`
+	PreviousSuccessfulAuthenticationIp   string `json:"previousSuccessfulAuthenticationIp"`
 	PreviousSuccessfulAuthenticationTime string `json:"previousSuccessfulAuthenticationTime"`
 }
 
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionCommonConditionGeovelocityValid) SetPreviousSuccessfu
 }
 
 func (o SignOnPolicyActionCommonConditionGeovelocityValid) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionCommonConditionGeovelocityValid) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

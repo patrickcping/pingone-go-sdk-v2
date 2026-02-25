@@ -22,8 +22,8 @@ type GatewayTypeLDAPAllOfNewUserLookup struct {
 	// A list of objects supplying a mapping of PingOne attributes to external LDAP attributes. One of the entries must be a mapping for \"username`. This is required for the PingOne user schema.
 	AttributeMappings []GatewayTypeLDAPAllOfNewUserLookupAttributeMappings `json:"attributeMappings"`
 	// The LDAP user search filter to use to match users against the entered user identifier at login. For example, (((uid=${identifier})(mail=${identifier})). Alternatively, this can be a search against the user directory.
-	LdapFilterPattern string `json:"ldapFilterPattern"`
-	Population GatewayTypeLDAPAllOfNewUserLookupPopulation `json:"population"`
+	LdapFilterPattern string                                      `json:"ldapFilterPattern"`
+	Population        GatewayTypeLDAPAllOfNewUserLookupPopulation `json:"population"`
 }
 
 // NewGatewayTypeLDAPAllOfNewUserLookup instantiates a new GatewayTypeLDAPAllOfNewUserLookup object
@@ -119,7 +119,7 @@ func (o *GatewayTypeLDAPAllOfNewUserLookup) SetPopulation(v GatewayTypeLDAPAllOf
 }
 
 func (o GatewayTypeLDAPAllOfNewUserLookup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,5 +169,3 @@ func (v *NullableGatewayTypeLDAPAllOfNewUserLookup) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

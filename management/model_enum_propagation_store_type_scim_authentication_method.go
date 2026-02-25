@@ -21,8 +21,8 @@ type EnumPropagationStoreTypeSCIMAuthenticationMethod string
 // List of EnumPropagationStoreTypeSCIMAuthenticationMethod
 const (
 	ENUMPROPAGATIONSTORETYPESCIMAUTHENTICATIONMETHOD_O_AUTH_2_CLIENT_CREDENTIALS EnumPropagationStoreTypeSCIMAuthenticationMethod = "OAuth 2 Client Credentials"
-	ENUMPROPAGATIONSTORETYPESCIMAUTHENTICATIONMETHOD_O_AUTH_2_BEARER_TOKEN EnumPropagationStoreTypeSCIMAuthenticationMethod = "OAuth 2 Bearer Token"
-	ENUMPROPAGATIONSTORETYPESCIMAUTHENTICATIONMETHOD_BASIC_AUTHENTICATION EnumPropagationStoreTypeSCIMAuthenticationMethod = "Basic Authentication"
+	ENUMPROPAGATIONSTORETYPESCIMAUTHENTICATIONMETHOD_O_AUTH_2_BEARER_TOKEN       EnumPropagationStoreTypeSCIMAuthenticationMethod = "OAuth 2 Bearer Token"
+	ENUMPROPAGATIONSTORETYPESCIMAUTHENTICATIONMETHOD_BASIC_AUTHENTICATION        EnumPropagationStoreTypeSCIMAuthenticationMethod = "Basic Authentication"
 )
 
 // All allowed values of EnumPropagationStoreTypeSCIMAuthenticationMethod enum
@@ -111,4 +111,3 @@ func (v *NullableEnumPropagationStoreTypeSCIMAuthenticationMethod) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -19,8 +19,8 @@ import (
 type AuthorizeEditorDataRulesEffectSettingsDTO struct {
 	AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
 	AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO *AuthorizeEditorDataRulesEffectSettingsConditionalPermitElseDenyDTO
-	AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
-	AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
+	AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO         *AuthorizeEditorDataRulesEffectSettingsUnconditionalDenyDTO
+	AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO       *AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO
 }
 
 // AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTOAsAuthorizeEditorDataRulesEffectSettingsDTO is a convenience function that returns AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO wrapped in AuthorizeEditorDataRulesEffectSettingsDTO
@@ -50,7 +50,6 @@ func AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTOAsAuthorizeEdit
 		AuthorizeEditorDataRulesEffectSettingsUnconditionalPermitDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataRulesEffectSettingsDTO) UnmarshalJSON(data []byte) error {
@@ -111,7 +110,7 @@ func (src AuthorizeEditorDataRulesEffectSettingsDTO) MarshalJSON() ([]byte, erro
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataRulesEffectSettingsDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataRulesEffectSettingsDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -170,5 +169,3 @@ func (v *NullableAuthorizeEditorDataRulesEffectSettingsDTO) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

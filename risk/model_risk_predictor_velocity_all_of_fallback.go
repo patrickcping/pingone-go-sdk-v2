@@ -20,8 +20,8 @@ var _ MappedNullable = &RiskPredictorVelocityAllOfFallback{}
 // RiskPredictorVelocityAllOfFallback struct for RiskPredictorVelocityAllOfFallback
 type RiskPredictorVelocityAllOfFallback struct {
 	Strategy *EnumPredictorVelocityFallbackStrategy `json:"strategy,omitempty"`
-	High *float32 `json:"high,omitempty"`
-	Medium *float32 `json:"medium,omitempty"`
+	High     *float32                               `json:"high,omitempty"`
+	Medium   *float32                               `json:"medium,omitempty"`
 }
 
 // NewRiskPredictorVelocityAllOfFallback instantiates a new RiskPredictorVelocityAllOfFallback object
@@ -138,7 +138,7 @@ func (o *RiskPredictorVelocityAllOfFallback) SetMedium(v float32) {
 }
 
 func (o RiskPredictorVelocityAllOfFallback) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableRiskPredictorVelocityAllOfFallback) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

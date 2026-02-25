@@ -21,17 +21,17 @@ var _ MappedNullable = &AuthorizeEditorDataDefinitionsConditionDefinitionDTO{}
 type AuthorizeEditorDataDefinitionsConditionDefinitionDTO struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// HAL embedded resources
-	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Embedded    map[string]map[string]interface{} `json:"_embedded,omitempty"`
+	Environment *ObjectEnvironment                `json:"environment,omitempty"`
 	// The resource's unique identifier
-	Id *string `json:"id,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Name string `json:"name"`
-	FullName *string `json:"fullName,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Type *EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType `json:"type,omitempty"`
-	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
-	Condition AuthorizeEditorDataConditionDTO `json:"condition"`
+	Id          *string                                                       `json:"id,omitempty"`
+	Version     *string                                                       `json:"version,omitempty"`
+	Name        string                                                        `json:"name"`
+	FullName    *string                                                       `json:"fullName,omitempty"`
+	Description *string                                                       `json:"description,omitempty"`
+	Type        *EnumAuthorizeEditorDataDefinitionsConditionDefinitionDTOType `json:"type,omitempty"`
+	Parent      *AuthorizeEditorDataReferenceObjectDTO                        `json:"parent,omitempty"`
+	Condition   AuthorizeEditorDataConditionDTO                               `json:"condition"`
 }
 
 // NewAuthorizeEditorDataDefinitionsConditionDefinitionDTO instantiates a new AuthorizeEditorDataDefinitionsConditionDefinitionDTO object
@@ -390,7 +390,7 @@ func (o *AuthorizeEditorDataDefinitionsConditionDefinitionDTO) SetCondition(v Au
 }
 
 func (o AuthorizeEditorDataDefinitionsConditionDefinitionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -466,5 +466,3 @@ func (v *NullableAuthorizeEditorDataDefinitionsConditionDefinitionDTO) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

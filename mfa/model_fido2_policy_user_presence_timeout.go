@@ -20,7 +20,7 @@ var _ MappedNullable = &FIDO2PolicyUserPresenceTimeout{}
 // FIDO2PolicyUserPresenceTimeout Used to specify the amount of time the user has to perform a user presence gesture with their FIDO device before the request expires. The defined timeout applies also to the pairing of the device. Note that the information is provided as a hint to the authenticator so the actual time given may differ from what you defined.
 type FIDO2PolicyUserPresenceTimeout struct {
 	// The amount of time a user presence gesture will be accepted for the authentication request. Minimum is one minute, maximum is ten minutes. Can be set in minutes or seconds.
-	Duration *int32 `json:"duration,omitempty"`
+	Duration *int32        `json:"duration,omitempty"`
 	TimeUnit *EnumTimeUnit `json:"timeUnit,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *FIDO2PolicyUserPresenceTimeout) SetTimeUnit(v EnumTimeUnit) {
 }
 
 func (o FIDO2PolicyUserPresenceTimeout) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,5 +159,3 @@ func (v *NullableFIDO2PolicyUserPresenceTimeout) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataProcessorDTOCommon{}
 
 // AuthorizeEditorDataProcessorDTOCommon struct for AuthorizeEditorDataProcessorDTOCommon
 type AuthorizeEditorDataProcessorDTOCommon struct {
-	Name string `json:"name"`
+	Name string                                  `json:"name"`
 	Type EnumAuthorizeEditorDataProcessorDTOType `json:"type"`
 }
 
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataProcessorDTOCommon) SetType(v EnumAuthorizeEditorDat
 }
 
 func (o AuthorizeEditorDataProcessorDTOCommon) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataProcessorDTOCommon) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

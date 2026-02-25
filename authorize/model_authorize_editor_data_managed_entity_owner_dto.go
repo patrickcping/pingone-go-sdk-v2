@@ -65,7 +65,7 @@ func (o *AuthorizeEditorDataManagedEntityOwnerDTO) SetService(v AuthorizeEditorD
 }
 
 func (o AuthorizeEditorDataManagedEntityOwnerDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -113,5 +113,3 @@ func (v *NullableAuthorizeEditorDataManagedEntityOwnerDTO) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

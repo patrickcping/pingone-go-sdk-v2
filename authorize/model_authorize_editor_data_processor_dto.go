@@ -17,13 +17,13 @@ import (
 
 // AuthorizeEditorDataProcessorDTO - struct for AuthorizeEditorDataProcessorDTO
 type AuthorizeEditorDataProcessorDTO struct {
-	AuthorizeEditorDataProcessorsChainProcessorDTO *AuthorizeEditorDataProcessorsChainProcessorDTO
-	AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO *AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO
+	AuthorizeEditorDataProcessorsChainProcessorDTO               *AuthorizeEditorDataProcessorsChainProcessorDTO
+	AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO    *AuthorizeEditorDataProcessorsCollectionFilterProcessorDTO
 	AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO *AuthorizeEditorDataProcessorsCollectionTransformProcessorDTO
-	AuthorizeEditorDataProcessorsJsonPathProcessorDTO *AuthorizeEditorDataProcessorsJsonPathProcessorDTO
-	AuthorizeEditorDataProcessorsReferenceProcessorDTO *AuthorizeEditorDataProcessorsReferenceProcessorDTO
-	AuthorizeEditorDataProcessorsSpelProcessorDTO *AuthorizeEditorDataProcessorsSpelProcessorDTO
-	AuthorizeEditorDataProcessorsXPathProcessorDTO *AuthorizeEditorDataProcessorsXPathProcessorDTO
+	AuthorizeEditorDataProcessorsJsonPathProcessorDTO            *AuthorizeEditorDataProcessorsJsonPathProcessorDTO
+	AuthorizeEditorDataProcessorsReferenceProcessorDTO           *AuthorizeEditorDataProcessorsReferenceProcessorDTO
+	AuthorizeEditorDataProcessorsSpelProcessorDTO                *AuthorizeEditorDataProcessorsSpelProcessorDTO
+	AuthorizeEditorDataProcessorsXPathProcessorDTO               *AuthorizeEditorDataProcessorsXPathProcessorDTO
 }
 
 // AuthorizeEditorDataProcessorsChainProcessorDTOAsAuthorizeEditorDataProcessorDTO is a convenience function that returns AuthorizeEditorDataProcessorsChainProcessorDTO wrapped in AuthorizeEditorDataProcessorDTO
@@ -74,7 +74,6 @@ func AuthorizeEditorDataProcessorsXPathProcessorDTOAsAuthorizeEditorDataProcesso
 		AuthorizeEditorDataProcessorsXPathProcessorDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataProcessorDTO) UnmarshalJSON(data []byte) error {
@@ -162,7 +161,7 @@ func (src AuthorizeEditorDataProcessorDTO) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataProcessorDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataProcessorDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -233,5 +232,3 @@ func (v *NullableAuthorizeEditorDataProcessorDTO) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

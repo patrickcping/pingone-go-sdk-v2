@@ -19,10 +19,10 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversCurrentUserIDResolv
 
 // AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO struct for AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO
 type AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO struct {
-	Name *string `json:"name,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
-	Type EnumAuthorizeEditorDataResolverDTOType `json:"type"`
+	Name      *string                                `json:"name,omitempty"`
+	Condition *AuthorizeEditorDataConditionDTO       `json:"condition,omitempty"`
+	Processor *AuthorizeEditorDataProcessorDTO       `json:"processor,omitempty"`
+	Type      EnumAuthorizeEditorDataResolverDTOType `json:"type"`
 }
 
 // NewAuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO instantiates a new AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO object
@@ -164,7 +164,7 @@ func (o *AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO) SetType(
 }
 
 func (o AuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -221,5 +221,3 @@ func (v *NullableAuthorizeEditorDataAttributeResolversCurrentUserIDResolverDTO) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

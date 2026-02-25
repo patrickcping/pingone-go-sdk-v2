@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataHttpRequestHeaderDTO{}
 
 // AuthorizeEditorDataHttpRequestHeaderDTO struct for AuthorizeEditorDataHttpRequestHeaderDTO
 type AuthorizeEditorDataHttpRequestHeaderDTO struct {
-	Key string `json:"key"`
+	Key   string                       `json:"key"`
 	Value *AuthorizeEditorDataInputDTO `json:"value,omitempty"`
 }
 
@@ -98,7 +98,7 @@ func (o *AuthorizeEditorDataHttpRequestHeaderDTO) SetValue(v AuthorizeEditorData
 }
 
 func (o AuthorizeEditorDataHttpRequestHeaderDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullableAuthorizeEditorDataHttpRequestHeaderDTO) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

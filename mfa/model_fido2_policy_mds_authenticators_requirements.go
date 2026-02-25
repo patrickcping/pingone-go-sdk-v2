@@ -22,8 +22,8 @@ type FIDO2PolicyMdsAuthenticatorsRequirements struct {
 	// If you set `mdsAuthenticatorsRequirements.option` to `SPECIFIC`, use this array to specify the authenticators that you want to allow.
 	AllowedAuthenticators []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner `json:"allowedAuthenticators,omitempty"`
 	// Set to true if you want the device characteristics related to attestation to be checked again at each authentication attempt and not just once during registration. Set to false to have them checked only at registration.
-	EnforceDuringAuthentication bool `json:"enforceDuringAuthentication"`
-	Option EnumFIDO2PolicyMDSAuthenticatorOption `json:"option"`
+	EnforceDuringAuthentication bool                                  `json:"enforceDuringAuthentication"`
+	Option                      EnumFIDO2PolicyMDSAuthenticatorOption `json:"option"`
 }
 
 // NewFIDO2PolicyMdsAuthenticatorsRequirements instantiates a new FIDO2PolicyMdsAuthenticatorsRequirements object
@@ -126,7 +126,7 @@ func (o *FIDO2PolicyMdsAuthenticatorsRequirements) SetOption(v EnumFIDO2PolicyMD
 }
 
 func (o FIDO2PolicyMdsAuthenticatorsRequirements) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +178,3 @@ func (v *NullableFIDO2PolicyMdsAuthenticatorsRequirements) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

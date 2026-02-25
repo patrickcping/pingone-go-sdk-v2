@@ -25,10 +25,10 @@ type LicenseMfa struct {
 	AllowNotificationOutsideWhitelist *bool `json:"allowNotificationOutsideWhitelist,omitempty"`
 	// A read-only boolean that specifies whether FIDO2 devices are allowed. For TRIAL (unpaid) licenses, the default value is true. For other license package types, adoption of the feature determines the default value.
 	AllowFido2Devices *bool `json:"allowFido2Devices,omitempty"`
-	AllowVoiceOtp *bool `json:"allowVoiceOtp,omitempty"`
-	AllowEmailOtp *bool `json:"allowEmailOtp,omitempty"`
-	AllowSmsOtp *bool `json:"allowSmsOtp,omitempty"`
-	AllowTotp *bool `json:"allowTotp,omitempty"`
+	AllowVoiceOtp     *bool `json:"allowVoiceOtp,omitempty"`
+	AllowEmailOtp     *bool `json:"allowEmailOtp,omitempty"`
+	AllowSmsOtp       *bool `json:"allowSmsOtp,omitempty"`
+	AllowTotp         *bool `json:"allowTotp,omitempty"`
 }
 
 // NewLicenseMfa instantiates a new LicenseMfa object
@@ -273,7 +273,7 @@ func (o *LicenseMfa) SetAllowTotp(v bool) {
 }
 
 func (o LicenseMfa) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -341,5 +341,3 @@ func (v *NullableLicenseMfa) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

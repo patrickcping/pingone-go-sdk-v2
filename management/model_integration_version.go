@@ -18,7 +18,7 @@ import (
 // IntegrationVersion - struct for IntegrationVersion
 type IntegrationVersion struct {
 	IntegrationVersionIntegrationKit *IntegrationVersionIntegrationKit
-	IntegrationVersionSAML *IntegrationVersionSAML
+	IntegrationVersionSAML           *IntegrationVersionSAML
 }
 
 // IntegrationVersionIntegrationKitAsIntegrationVersion is a convenience function that returns IntegrationVersionIntegrationKit wrapped in IntegrationVersion
@@ -34,7 +34,6 @@ func IntegrationVersionSAMLAsIntegrationVersion(v *IntegrationVersionSAML) Integ
 		IntegrationVersionSAML: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *IntegrationVersion) UnmarshalJSON(data []byte) error {
@@ -83,7 +82,7 @@ func (src IntegrationVersion) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *IntegrationVersion) GetActualInstance() (interface{}) {
+func (obj *IntegrationVersion) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -134,5 +133,3 @@ func (v *NullableIntegrationVersion) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

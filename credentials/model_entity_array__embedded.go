@@ -19,12 +19,13 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	Items []EntityArrayEmbeddedItemsInner `json:"items,omitempty"`
-	IssuanceRules []CredentialIssuanceRule `json:"issuanceRules,omitempty"`
-	StagedChanges []CredentialIssuanceRuleStagedChange `json:"stagedChanges,omitempty"`
-	DigitalWalletApplications []DigitalWalletApplication `json:"digitalWalletApplications,omitempty"`
-	DigitalWallets []CredentialDigitalWallet `json:"digitalWallets,omitempty"`
-	ProvisionedCredentials []ProvisionedCredential `json:"provisionedCredentials,omitempty"`
+	Items                     []EntityArrayEmbeddedItemsInner      `json:"items,omitempty"`
+	IssuanceRules             []CredentialIssuanceRule             `json:"issuanceRules,omitempty"`
+	StagedChanges             []CredentialIssuanceRuleStagedChange `json:"stagedChanges,omitempty"`
+	DigitalWalletApplications []DigitalWalletApplication           `json:"digitalWalletApplications,omitempty"`
+	DigitalWallets            []CredentialDigitalWallet            `json:"digitalWallets,omitempty"`
+	ProvisionedCredentials    []ProvisionedCredential              `json:"provisionedCredentials,omitempty"`
+	Versions                  []CredentialTypeVersion              `json:"versions,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -236,8 +237,40 @@ func (o *EntityArrayEmbedded) SetProvisionedCredentials(v []ProvisionedCredentia
 	o.ProvisionedCredentials = v
 }
 
+// GetVersions returns the Versions field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetVersions() []CredentialTypeVersion {
+	if o == nil || IsNil(o.Versions) {
+		var ret []CredentialTypeVersion
+		return ret
+	}
+	return o.Versions
+}
+
+// GetVersionsOk returns a tuple with the Versions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetVersionsOk() ([]CredentialTypeVersion, bool) {
+	if o == nil || IsNil(o.Versions) {
+		return nil, false
+	}
+	return o.Versions, true
+}
+
+// HasVersions returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasVersions() bool {
+	if o != nil && !IsNil(o.Versions) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersions gets a reference to the given []CredentialTypeVersion and assigns it to the Versions field.
+func (o *EntityArrayEmbedded) SetVersions(v []CredentialTypeVersion) {
+	o.Versions = v
+}
+
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -263,6 +296,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProvisionedCredentials) {
 		toSerialize["provisionedCredentials"] = o.ProvisionedCredentials
+	}
+	if !IsNil(o.Versions) {
+		toSerialize["versions"] = o.Versions
 	}
 	return toSerialize, nil
 }
@@ -302,5 +338,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

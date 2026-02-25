@@ -56,6 +56,7 @@ api_propagation_revisions.go
 api_propagation_rules.go
 api_propagation_store_metadata.go
 api_propagation_stores.go
+api_rate_limiting.go
 api_recaptcha_configuration.go
 api_resource_attributes.go
 api_resource_client_secret.go
@@ -68,6 +69,7 @@ api_sign_on_policies.go
 api_sign_on_policy_actions.go
 api_subscriptions_webhooks.go
 api_total_identities.go
+api_translations.go
 api_trusted_email_addresses.go
 api_trusted_email_domains.go
 api_user_accounts.go
@@ -82,8 +84,8 @@ api_users.go
 configuration.go
 docs/ActiveIdentityCountsApi.md
 docs/AdministratorSecurity.md
+docs/AdministratorSecurityAllowedMethods.md
 docs/AdministratorSecurityApi.md
-docs/AdministratorSecurityPolicy.md
 docs/AdministratorSecurityProvider.md
 docs/Agreement.md
 docs/AgreementLanguage.md
@@ -139,6 +141,8 @@ docs/ApplicationSAMLAllOfSpEncryption.md
 docs/ApplicationSAMLAllOfSpEncryptionCertificate.md
 docs/ApplicationSAMLAllOfSpVerification.md
 docs/ApplicationSAMLAllOfSpVerificationCertificates.md
+docs/ApplicationSAMLAllOfVirtualServerIdSettings.md
+docs/ApplicationSAMLAllOfVirtualServerIdSettingsVirtualServerIds.md
 docs/ApplicationSecret.md
 docs/ApplicationSecretApi.md
 docs/ApplicationSecretPrevious.md
@@ -203,7 +207,6 @@ docs/EntityArrayEmbeddedGatewaysInner.md
 docs/EntityArrayEmbeddedLanguagesInner.md
 docs/EntityArrayEmbeddedResourcesInner.md
 docs/EntityArrayEmbeddedRolesInner.md
-docs/EnumAdministratorSecurityAllowedMethods.md
 docs/EnumAdministratorSecurityAuthenticationMethod.md
 docs/EnumAdministratorSecurityMfaStatus.md
 docs/EnumAgreementRevisionContentType.md
@@ -225,6 +228,7 @@ docs/EnumApplicationTags.md
 docs/EnumApplicationType.md
 docs/EnumApplicationWSFEDIDPSigningAlgorithm.md
 docs/EnumApplicationWSFEDKerberosGatewayType.md
+docs/EnumApplicationWSFEDSubjectNameIdentifierFormat.md
 docs/EnumAttributeMappingType.md
 docs/EnumBillOfMaterialsProductTags.md
 docs/EnumBrandingLogoType.md
@@ -245,6 +249,7 @@ docs/EnumCustomDomainStatus.md
 docs/EnumDurationUnitMinsHours.md
 docs/EnumEmailDomainStatus.md
 docs/EnumEnabledStatus.md
+docs/EnumEnvironmentStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumFlowPolicyTriggerType.md
 docs/EnumFormCategory.md
@@ -290,8 +295,10 @@ docs/EnumKeyRotationPolicySigAlgorithm.md
 docs/EnumKeyRotationPolicyUsageType.md
 docs/EnumLicenseStatus.md
 docs/EnumMobileIntegrityDetectionPlatform.md
+docs/EnumNotificationsPolicyCooldownConfigurationMethodPeriodTimeUnit.md
 docs/EnumNotificationsPolicyCountryLimitDeliveryMethod.md
 docs/EnumNotificationsPolicyCountryLimitType.md
+docs/EnumNotificationsPolicyProviderConfigurationConditionsDeliveryMethods.md
 docs/EnumNotificationsPolicyQuotaDeliveryMethods.md
 docs/EnumNotificationsPolicyQuotaItemType.md
 docs/EnumNotificationsSettingsDeliveryMode.md
@@ -329,6 +336,7 @@ docs/EnumPropagationStoreTypeSCIMUniqueUserIdentifier.md
 docs/EnumPropagationStoreTypeSalesforceContactsRecordType.md
 docs/EnumPropagationStoreTypeSlackUniqueUserIdentifier.md
 docs/EnumPropagationStoreTypeZoomAuthenticationMethod.md
+docs/EnumRateLimitConfigurationType.md
 docs/EnumRegionCode.md
 docs/EnumRegionCodeLicense.md
 docs/EnumResourceApplicationResourceType.md
@@ -361,6 +369,7 @@ docs/Environment.md
 docs/EnvironmentLicense.md
 docs/EnvironmentOrganization.md
 docs/EnvironmentRegion.md
+docs/EnvironmentStatus.md
 docs/EnvironmentsApi.md
 docs/FlowPoliciesApi.md
 docs/FlowPolicy.md
@@ -453,6 +462,7 @@ docs/IdentityProviderCommonLoginButtonIcon.md
 docs/IdentityProviderCommonRegistration.md
 docs/IdentityProviderCommonRegistrationPopulation.md
 docs/IdentityProviderFacebook.md
+docs/IdentityProviderMicrosoft.md
 docs/IdentityProviderOIDC.md
 docs/IdentityProviderPaypal.md
 docs/IdentityProviderSAML.md
@@ -509,10 +519,17 @@ docs/LicenseVerify.md
 docs/LicensesApi.md
 docs/LinkedAccountsApi.md
 docs/LinksHATEOASValue.md
+docs/LocaleTranslation.md
 docs/MFAPairingKeysApi.md
 docs/NotificationsPoliciesApi.md
 docs/NotificationsPolicy.md
+docs/NotificationsPolicyCooldownConfiguration.md
+docs/NotificationsPolicyCooldownConfigurationMethod.md
+docs/NotificationsPolicyCooldownConfigurationMethodPeriodsInner.md
 docs/NotificationsPolicyCountryLimit.md
+docs/NotificationsPolicyProviderConfiguration.md
+docs/NotificationsPolicyProviderConfigurationConditionsInner.md
+docs/NotificationsPolicyProviderConfigurationConditionsInnerFallbackChainInner.md
 docs/NotificationsPolicyQuotasInner.md
 docs/NotificationsSettings.md
 docs/NotificationsSettingsApi.md
@@ -560,6 +577,7 @@ docs/PhoneDeliverySettingsApi.md
 docs/Population.md
 docs/PopulationDefaultIdp.md
 docs/PopulationPasswordPolicy.md
+docs/PopulationTheme.md
 docs/PopulationsApi.md
 docs/PropagationMappingsApi.md
 docs/PropagationRevisionsApi.md
@@ -582,6 +600,8 @@ docs/PropagationStoreImage.md
 docs/PropagationStoreMetadataApi.md
 docs/PropagationStoreSyncStatus.md
 docs/PropagationStoresApi.md
+docs/RateLimitConfiguration.md
+docs/RateLimitingApi.md
 docs/ReadOneApplication200Response.md
 docs/RecaptchaConfiguration.md
 docs/RecaptchaConfigurationApi.md
@@ -687,6 +707,7 @@ docs/TemplateContentPush.md
 docs/TemplateContentSMS.md
 docs/TemplateContentVoice.md
 docs/TotalIdentitiesApi.md
+docs/TranslationsApi.md
 docs/TrustedEmailAddressesApi.md
 docs/TrustedEmailDomainsApi.md
 docs/UpdateApplicationRequest.md
@@ -718,7 +739,7 @@ docs/UsersApi.md
 go.mod
 go.sum
 model_administrator_security.go
-model_administrator_security_policy.go
+model_administrator_security_allowed_methods.go
 model_administrator_security_provider.go
 model_agreement.go
 model_agreement_language.go
@@ -764,6 +785,8 @@ model_application_saml_all_of_sp_encryption.go
 model_application_saml_all_of_sp_encryption_certificate.go
 model_application_saml_all_of_sp_verification.go
 model_application_saml_all_of_sp_verification_certificates.go
+model_application_saml_all_of_virtual_server_id_settings.go
+model_application_saml_all_of_virtual_server_id_settings_virtual_server_ids.go
 model_application_secret.go
 model_application_secret_previous.go
 model_application_template.go
@@ -810,7 +833,6 @@ model_entity_array__embedded.go
 model_entity_array__embedded_gateways_inner.go
 model_entity_array__embedded_resources_inner.go
 model_entity_array__embedded_roles_inner.go
-model_enum_administrator_security_allowed_methods.go
 model_enum_administrator_security_authentication_method.go
 model_enum_administrator_security_mfa_status.go
 model_enum_agreement_revision_content_type.go
@@ -831,6 +853,7 @@ model_enum_application_saml_slo_binding.go
 model_enum_application_tags.go
 model_enum_application_type.go
 model_enum_application_wsfed_kerberos_gateway_type.go
+model_enum_application_wsfed_subject_name_identifier_format.go
 model_enum_application_wsfedidp_signing_algorithm.go
 model_enum_attribute_mapping_type.go
 model_enum_bill_of_materials_product_tags.go
@@ -852,6 +875,7 @@ model_enum_custom_domain_status.go
 model_enum_duration_unit_mins_hours.go
 model_enum_email_domain_status.go
 model_enum_enabled_status.go
+model_enum_environment_status.go
 model_enum_environment_type.go
 model_enum_flow_policy_trigger_type.go
 model_enum_form_category.go
@@ -897,8 +921,10 @@ model_enum_key_rotation_policy_sig_algorithm.go
 model_enum_key_rotation_policy_usage_type.go
 model_enum_license_status.go
 model_enum_mobile_integrity_detection_platform.go
+model_enum_notifications_policy_cooldown_configuration_method_period_time_unit.go
 model_enum_notifications_policy_country_limit_delivery_method.go
 model_enum_notifications_policy_country_limit_type.go
+model_enum_notifications_policy_provider_configuration_conditions_delivery_methods.go
 model_enum_notifications_policy_quota_delivery_methods.go
 model_enum_notifications_policy_quota_item_type.go
 model_enum_notifications_settings_delivery_mode.go
@@ -936,6 +962,7 @@ model_enum_propagation_store_type_scim_group_name_source.go
 model_enum_propagation_store_type_scim_unique_user_identifier.go
 model_enum_propagation_store_type_slack_unique_user_identifier.go
 model_enum_propagation_store_type_zoom_authentication_method.go
+model_enum_rate_limit_configuration_type.go
 model_enum_region_code.go
 model_enum_region_code_license.go
 model_enum_resource_application_resource_type.go
@@ -968,6 +995,7 @@ model_environment.go
 model_environment_license.go
 model_environment_organization.go
 model_environment_region.go
+model_environment_status.go
 model_flow_policy.go
 model_flow_policy_application.go
 model_flow_policy_assignment.go
@@ -1037,6 +1065,7 @@ model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
 model_identity_propagation_plan.go
+model_identity_provider.go
 model_identity_provider_apple.go
 model_identity_provider_attribute.go
 model_identity_provider_attribute_identity_provider.go
@@ -1047,6 +1076,7 @@ model_identity_provider_common_login_button_icon.go
 model_identity_provider_common_registration.go
 model_identity_provider_common_registration_population.go
 model_identity_provider_facebook.go
+model_identity_provider_microsoft.go
 model_identity_provider_oidc.go
 model_identity_provider_paypal.go
 model_identity_provider_saml.go
@@ -1095,8 +1125,15 @@ model_license_replaces_license.go
 model_license_users.go
 model_license_verify.go
 model_links_hateoas_value.go
+model_locale_translation.go
 model_notifications_policy.go
+model_notifications_policy_cooldown_configuration.go
+model_notifications_policy_cooldown_configuration_method.go
+model_notifications_policy_cooldown_configuration_method_periods_inner.go
 model_notifications_policy_country_limit.go
+model_notifications_policy_provider_configuration.go
+model_notifications_policy_provider_configuration_conditions_inner.go
+model_notifications_policy_provider_configuration_conditions_inner_fallback_chain_inner.go
 model_notifications_policy_quotas_inner.go
 model_notifications_settings.go
 model_notifications_settings_email_delivery_settings.go
@@ -1138,6 +1175,7 @@ model_password_policy_min_characters.go
 model_population.go
 model_population_default_idp.go
 model_population_password_policy.go
+model_population_theme.go
 model_propagation_store.go
 model_propagation_store_configuration_aquera.go
 model_propagation_store_configuration_azure_adsamlv2.go
@@ -1154,6 +1192,7 @@ model_propagation_store_configuration_workday.go
 model_propagation_store_configuration_zoom.go
 model_propagation_store_image.go
 model_propagation_store_sync_status.go
+model_rate_limit_configuration.go
 model_recaptcha_configuration.go
 model_resource.go
 model_resource_application_permission.go

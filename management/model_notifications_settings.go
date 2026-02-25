@@ -22,17 +22,17 @@ var _ MappedNullable = &NotificationsSettings{}
 type NotificationsSettings struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	UpdatedAt    *time.Time                             `json:"updatedAt,omitempty"`
+	Environment  *ObjectEnvironment                     `json:"environment,omitempty"`
 	DeliveryMode *EnumNotificationsSettingsDeliveryMode `json:"deliveryMode,omitempty"`
-	Restrictions *NotificationsSettingsRestrictions `json:"restrictions,omitempty"`
+	Restrictions *NotificationsSettingsRestrictions     `json:"restrictions,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A list which represents the execution order of different SMS/Voice providers configured for the environment. The providers and their accounts’ configurations are represented in the list by the ID of the corresponding `PhoneDeliverySettings` resource. The only provider which is not represented by a `phoneDeliverySettingsID` is the PingOne Twilio provider. The PingOne Twilio provider is represented by the `PINGONE_TWILIO` string. If the `smsProvidersFallbackChain` list is empty, an SMS or voice message will be sent using the default Ping Twilio account. Otherwise, an SMS or voice message will be sent using the first provider in the list. If the server fails to queue the message using that provider, it will use the next provider in the list to try to send the message. This process will go on until there are no more providers in the list. If the server failed to send the message using all providers, the notification status is set to `FAILED`.
-	SmsProvidersFallbackChain []string `json:"smsProvidersFallbackChain,omitempty"`
-	From *NotificationsSettingsFrom `json:"from,omitempty"`
-	ReplyTo *NotificationsSettingsReplyTo `json:"replyTo,omitempty"`
-	Whitelist []NotificationsSettingsWhitelistInner `json:"whitelist,omitempty"`
+	SmsProvidersFallbackChain []string                              `json:"smsProvidersFallbackChain,omitempty"`
+	From                      *NotificationsSettingsFrom            `json:"from,omitempty"`
+	ReplyTo                   *NotificationsSettingsReplyTo         `json:"replyTo,omitempty"`
+	Whitelist                 []NotificationsSettingsWhitelistInner `json:"whitelist,omitempty"`
 }
 
 // NewNotificationsSettings instantiates a new NotificationsSettings object
@@ -373,7 +373,7 @@ func (o *NotificationsSettings) SetWhitelist(v []NotificationsSettingsWhitelistI
 }
 
 func (o NotificationsSettings) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -450,5 +450,3 @@ func (v *NullableNotificationsSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

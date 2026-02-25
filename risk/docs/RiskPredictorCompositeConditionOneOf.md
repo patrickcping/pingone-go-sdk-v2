@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Contains** | **string** |  | 
+**NotContains** | Pointer to **string** |  | [optional] 
 **List** | **[]string** |  | 
 **Type** | [**EnumPredictorCompositeConditionType**](EnumPredictorCompositeConditionType.md) |  | 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetContains sets Contains field to given value.
 
+
+### GetNotContains
+
+`func (o *RiskPredictorCompositeConditionOneOf) GetNotContains() string`
+
+GetNotContains returns the NotContains field if non-nil, zero value otherwise.
+
+### GetNotContainsOk
+
+`func (o *RiskPredictorCompositeConditionOneOf) GetNotContainsOk() (*string, bool)`
+
+GetNotContainsOk returns a tuple with the NotContains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotContains
+
+`func (o *RiskPredictorCompositeConditionOneOf) SetNotContains(v string)`
+
+SetNotContains sets NotContains field to given value.
+
+### HasNotContains
+
+`func (o *RiskPredictorCompositeConditionOneOf) HasNotContains() bool`
+
+HasNotContains returns a boolean if a field has been set.
 
 ### GetList
 

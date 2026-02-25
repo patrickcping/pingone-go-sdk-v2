@@ -19,8 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataRulesEffectSettingsConditionalDenyEls
 
 // AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO struct for AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO
 type AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO struct {
-	Type EnumAuthorizeEditorDataRulesEffectSettingsDTOType `json:"type"`
-	Condition AuthorizeEditorDataConditionDTO `json:"condition"`
+	Type      EnumAuthorizeEditorDataRulesEffectSettingsDTOType `json:"type"`
+	Condition AuthorizeEditorDataConditionDTO                   `json:"condition"`
 }
 
 // NewAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO instantiates a new AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO object
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) Set
 }
 
 func (o AuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermitDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataRulesEffectSettingsConditionalDenyElsePermit
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

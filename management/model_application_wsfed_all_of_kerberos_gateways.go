@@ -20,9 +20,9 @@ var _ MappedNullable = &ApplicationWSFEDAllOfKerberosGateways{}
 // ApplicationWSFEDAllOfKerberosGateways struct for ApplicationWSFEDAllOfKerberosGateways
 type ApplicationWSFEDAllOfKerberosGateways struct {
 	// The UUID of the LDAP gateway.
-	Id string `json:"id"`
-	Type EnumApplicationWSFEDKerberosGatewayType `json:"type"`
-	UserType ApplicationWSFEDAllOfKerberosUserType `json:"userType"`
+	Id       string                                  `json:"id"`
+	Type     EnumApplicationWSFEDKerberosGatewayType `json:"type"`
+	UserType ApplicationWSFEDAllOfKerberosUserType   `json:"userType"`
 }
 
 // NewApplicationWSFEDAllOfKerberosGateways instantiates a new ApplicationWSFEDAllOfKerberosGateways object
@@ -118,7 +118,7 @@ func (o *ApplicationWSFEDAllOfKerberosGateways) SetUserType(v ApplicationWSFEDAl
 }
 
 func (o ApplicationWSFEDAllOfKerberosGateways) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,5 +168,3 @@ func (v *NullableApplicationWSFEDAllOfKerberosGateways) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

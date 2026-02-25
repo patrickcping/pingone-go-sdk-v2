@@ -18,7 +18,7 @@ import (
 // AuthorizeEditorDataInputDTO - struct for AuthorizeEditorDataInputDTO
 type AuthorizeEditorDataInputDTO struct {
 	AuthorizeEditorDataInputsAttributeInputDTO *AuthorizeEditorDataInputsAttributeInputDTO
-	AuthorizeEditorDataInputsConstantInputDTO *AuthorizeEditorDataInputsConstantInputDTO
+	AuthorizeEditorDataInputsConstantInputDTO  *AuthorizeEditorDataInputsConstantInputDTO
 }
 
 // AuthorizeEditorDataInputsAttributeInputDTOAsAuthorizeEditorDataInputDTO is a convenience function that returns AuthorizeEditorDataInputsAttributeInputDTO wrapped in AuthorizeEditorDataInputDTO
@@ -34,7 +34,6 @@ func AuthorizeEditorDataInputsConstantInputDTOAsAuthorizeEditorDataInputDTO(v *A
 		AuthorizeEditorDataInputsConstantInputDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataInputDTO) UnmarshalJSON(data []byte) error {
@@ -77,7 +76,7 @@ func (src AuthorizeEditorDataInputDTO) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataInputDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataInputDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -128,5 +127,3 @@ func (v *NullableAuthorizeEditorDataInputDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

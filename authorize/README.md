@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *AuthorizeEditorStatementsApi* | [**GetStatement**](docs/AuthorizeEditorStatementsApi.md#getstatement) | **Get** /environments/{environmentID}/authorizationStatements/{statementID} | Get a Statement by ID
 *AuthorizeEditorStatementsApi* | [**ListStatements**](docs/AuthorizeEditorStatementsApi.md#liststatements) | **Get** /environments/{environmentID}/authorizationStatements | List Statements
 *AuthorizeEditorStatementsApi* | [**UpdateStatement**](docs/AuthorizeEditorStatementsApi.md#updatestatement) | **Put** /environments/{environmentID}/authorizationStatements/{statementID} | Update a Statement
+*EnvironmentsApi* | [**ReadOneEnvironment**](docs/EnvironmentsApi.md#readoneenvironment) | **Get** /environments/{environmentID} | READ One Environment
 *PolicyDecisionManagementApi* | [**CreateDecisionEndpoint**](docs/PolicyDecisionManagementApi.md#createdecisionendpoint) | **Post** /environments/{environmentID}/decisionEndpoints | CREATE Decision Endpoint
 *PolicyDecisionManagementApi* | [**DeleteDecisionEndpoint**](docs/PolicyDecisionManagementApi.md#deletedecisionendpoint) | **Delete** /environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | DELETE Decision Endpoint
 *PolicyDecisionManagementApi* | [**ReadAllDecisionEndpoints**](docs/PolicyDecisionManagementApi.md#readalldecisionendpoints) | **Get** /environments/{environmentID}/decisionEndpoints | READ All Decision Endpoints
@@ -341,6 +342,7 @@ Class | Method | HTTP request | Description
  - [EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo](docs/EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo.md)
  - [EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType](docs/EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType.md)
  - [EnumAuthorizeEditorDataValueTypeDTO](docs/EnumAuthorizeEditorDataValueTypeDTO.md)
+ - [Environment](docs/Environment.md)
  - [Filter](docs/Filter.md)
  - [LinksHATEOASValue](docs/LinksHATEOASValue.md)
  - [ObjectApplication](docs/ObjectApplication.md)

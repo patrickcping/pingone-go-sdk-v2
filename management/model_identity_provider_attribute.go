@@ -19,16 +19,16 @@ var _ MappedNullable = &IdentityProviderAttribute{}
 
 // IdentityProviderAttribute struct for IdentityProviderAttribute
 type IdentityProviderAttribute struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links       *map[string]LinksHATEOASValue             `json:"_links,omitempty"`
 	MappingType *EnumIdentityProviderAttributeMappingType `json:"mappingType,omitempty"`
 	// The user attribute, which is unique per provider. The attribute must not be defined as read only from the user schema or of type COMPLEX based on the user schema. Valid examples username, and name.first. The following attributes may not be used account, id, created, updated, lifecycle, mfaEnabled, and enabled.
 	Name string `json:"name"`
 	// A placeholder referring to the attribute (or attributes) from the provider. Placeholders must be valid for the attributes returned by the IdP type and use the ${} syntax (for example, username=`${email}`). For SAML, any placeholder is acceptable, and it is mapped against the attributes available in the SAML assertion after authentication. The ${samlAssertion.subject} placeholder is a special reserved placeholder used to refer to the subject name ID in the SAML assertion response.
-	Value string `json:"value"`
+	Value  string                                     `json:"value"`
 	Update EnumIdentityProviderAttributeMappingUpdate `json:"update"`
 	// The unique identifier for the resource.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Id               *string                                    `json:"id,omitempty"`
+	Environment      *ObjectEnvironment                         `json:"environment,omitempty"`
 	IdentityProvider *IdentityProviderAttributeIdentityProvider `json:"identityProvider,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
@@ -353,7 +353,7 @@ func (o *IdentityProviderAttribute) SetUpdatedAt(v string) {
 }
 
 func (o IdentityProviderAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -424,5 +424,3 @@ func (v *NullableIdentityProviderAttribute) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

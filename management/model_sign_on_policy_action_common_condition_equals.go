@@ -19,7 +19,7 @@ var _ MappedNullable = &SignOnPolicyActionCommonConditionEquals{}
 
 // SignOnPolicyActionCommonConditionEquals struct for SignOnPolicyActionCommonConditionEquals
 type SignOnPolicyActionCommonConditionEquals struct {
-	Value string `json:"value"`
+	Value  string                                        `json:"value"`
 	Equals SignOnPolicyActionCommonConditionEqualsEquals `json:"equals"`
 }
 
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionCommonConditionEquals) SetEquals(v SignOnPolicyAction
 }
 
 func (o SignOnPolicyActionCommonConditionEquals) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionCommonConditionEquals) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

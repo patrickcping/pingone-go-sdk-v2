@@ -20,11 +20,13 @@ var _ MappedNullable = &VoicePhrase{}
 
 // VoicePhrase struct for VoicePhrase
 type VoicePhrase struct {
-	Id *string `json:"id,omitempty"`
+	// Deprecated
+	Id          *string            `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	DisplayName string `json:"displayName"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// Deprecated
+	DisplayName string     `json:"displayName"`
+	CreatedAt   *time.Time `json:"createdAt,omitempty"`
+	UpdatedAt   *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewVoicePhrase instantiates a new VoicePhrase object
@@ -46,6 +48,7 @@ func NewVoicePhraseWithDefaults() *VoicePhrase {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
+// Deprecated
 func (o *VoicePhrase) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -56,6 +59,7 @@ func (o *VoicePhrase) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoicePhrase) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
@@ -73,6 +77,7 @@ func (o *VoicePhrase) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
+// Deprecated
 func (o *VoicePhrase) SetId(v string) {
 	o.Id = &v
 }
@@ -110,6 +115,7 @@ func (o *VoicePhrase) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetDisplayName returns the DisplayName field value
+// Deprecated
 func (o *VoicePhrase) GetDisplayName() string {
 	if o == nil {
 		var ret string
@@ -121,6 +127,7 @@ func (o *VoicePhrase) GetDisplayName() string {
 
 // GetDisplayNameOk returns a tuple with the DisplayName field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoicePhrase) GetDisplayNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -129,6 +136,7 @@ func (o *VoicePhrase) GetDisplayNameOk() (*string, bool) {
 }
 
 // SetDisplayName sets field value
+// Deprecated
 func (o *VoicePhrase) SetDisplayName(v string) {
 	o.DisplayName = v
 }
@@ -198,7 +206,7 @@ func (o *VoicePhrase) SetUpdatedAt(v time.Time) {
 }
 
 func (o VoicePhrase) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -258,5 +266,3 @@ func (v *NullableVoicePhrase) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

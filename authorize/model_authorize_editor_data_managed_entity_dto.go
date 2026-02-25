@@ -19,9 +19,9 @@ var _ MappedNullable = &AuthorizeEditorDataManagedEntityDTO{}
 
 // AuthorizeEditorDataManagedEntityDTO struct for AuthorizeEditorDataManagedEntityDTO
 type AuthorizeEditorDataManagedEntityDTO struct {
-	Owner AuthorizeEditorDataManagedEntityOwnerDTO `json:"owner"`
-	Restrictions *AuthorizeEditorDataManagedEntityRestrictionsDTO `json:"restrictions,omitempty"`
-	Reference *AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO `json:"reference,omitempty"`
+	Owner        AuthorizeEditorDataManagedEntityOwnerDTO                   `json:"owner"`
+	Restrictions *AuthorizeEditorDataManagedEntityRestrictionsDTO           `json:"restrictions,omitempty"`
+	Reference    *AuthorizeEditorDataManagedEntityManagedEntityReferenceDTO `json:"reference,omitempty"`
 }
 
 // NewAuthorizeEditorDataManagedEntityDTO instantiates a new AuthorizeEditorDataManagedEntityDTO object
@@ -131,7 +131,7 @@ func (o *AuthorizeEditorDataManagedEntityDTO) SetReference(v AuthorizeEditorData
 }
 
 func (o AuthorizeEditorDataManagedEntityDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,5 +185,3 @@ func (v *NullableAuthorizeEditorDataManagedEntityDTO) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

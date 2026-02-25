@@ -19,8 +19,11 @@ var _ MappedNullable = &VoiceConfigurationReferenceData{}
 
 // VoiceConfigurationReferenceData struct for VoiceConfigurationReferenceData
 type VoiceConfigurationReferenceData struct {
+	// Deprecated
 	RetainOriginalRecordings *bool `json:"retainOriginalRecordings,omitempty"`
+	// Deprecated
 	UpdateOnReenrollment *bool `json:"updateOnReenrollment,omitempty"`
+	// Deprecated
 	UpdateOnVerification *bool `json:"updateOnVerification,omitempty"`
 }
 
@@ -42,6 +45,7 @@ func NewVoiceConfigurationReferenceDataWithDefaults() *VoiceConfigurationReferen
 }
 
 // GetRetainOriginalRecordings returns the RetainOriginalRecordings field value if set, zero value otherwise.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) GetRetainOriginalRecordings() bool {
 	if o == nil || IsNil(o.RetainOriginalRecordings) {
 		var ret bool
@@ -52,6 +56,7 @@ func (o *VoiceConfigurationReferenceData) GetRetainOriginalRecordings() bool {
 
 // GetRetainOriginalRecordingsOk returns a tuple with the RetainOriginalRecordings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) GetRetainOriginalRecordingsOk() (*bool, bool) {
 	if o == nil || IsNil(o.RetainOriginalRecordings) {
 		return nil, false
@@ -69,11 +74,13 @@ func (o *VoiceConfigurationReferenceData) HasRetainOriginalRecordings() bool {
 }
 
 // SetRetainOriginalRecordings gets a reference to the given bool and assigns it to the RetainOriginalRecordings field.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) SetRetainOriginalRecordings(v bool) {
 	o.RetainOriginalRecordings = &v
 }
 
 // GetUpdateOnReenrollment returns the UpdateOnReenrollment field value if set, zero value otherwise.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) GetUpdateOnReenrollment() bool {
 	if o == nil || IsNil(o.UpdateOnReenrollment) {
 		var ret bool
@@ -84,6 +91,7 @@ func (o *VoiceConfigurationReferenceData) GetUpdateOnReenrollment() bool {
 
 // GetUpdateOnReenrollmentOk returns a tuple with the UpdateOnReenrollment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) GetUpdateOnReenrollmentOk() (*bool, bool) {
 	if o == nil || IsNil(o.UpdateOnReenrollment) {
 		return nil, false
@@ -101,11 +109,13 @@ func (o *VoiceConfigurationReferenceData) HasUpdateOnReenrollment() bool {
 }
 
 // SetUpdateOnReenrollment gets a reference to the given bool and assigns it to the UpdateOnReenrollment field.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) SetUpdateOnReenrollment(v bool) {
 	o.UpdateOnReenrollment = &v
 }
 
 // GetUpdateOnVerification returns the UpdateOnVerification field value if set, zero value otherwise.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) GetUpdateOnVerification() bool {
 	if o == nil || IsNil(o.UpdateOnVerification) {
 		var ret bool
@@ -116,6 +126,7 @@ func (o *VoiceConfigurationReferenceData) GetUpdateOnVerification() bool {
 
 // GetUpdateOnVerificationOk returns a tuple with the UpdateOnVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) GetUpdateOnVerificationOk() (*bool, bool) {
 	if o == nil || IsNil(o.UpdateOnVerification) {
 		return nil, false
@@ -133,12 +144,13 @@ func (o *VoiceConfigurationReferenceData) HasUpdateOnVerification() bool {
 }
 
 // SetUpdateOnVerification gets a reference to the given bool and assigns it to the UpdateOnVerification field.
+// Deprecated
 func (o *VoiceConfigurationReferenceData) SetUpdateOnVerification(v bool) {
 	o.UpdateOnVerification = &v
 }
 
 func (o VoiceConfigurationReferenceData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +206,3 @@ func (v *NullableVoiceConfigurationReferenceData) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

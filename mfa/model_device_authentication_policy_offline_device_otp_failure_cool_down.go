@@ -20,7 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDow
 // DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown struct for DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown
 type DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown struct {
 	// The duration (number of time units) the user is blocked after reaching the maximum number of passcode failures.
-	Duration int32 `json:"duration"`
+	Duration int32        `json:"duration"`
 	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
@@ -92,7 +92,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) SetTimeUnit(
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,5 +141,3 @@ func (v *NullableDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) Unma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

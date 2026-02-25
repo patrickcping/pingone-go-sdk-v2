@@ -21,16 +21,16 @@ type EnumApplicationProtocol string
 // List of EnumApplicationProtocol
 const (
 	ENUMAPPLICATIONPROTOCOL_OPENID_CONNECT EnumApplicationProtocol = "OPENID_CONNECT"
-	ENUMAPPLICATIONPROTOCOL_SAML EnumApplicationProtocol = "SAML"
-	ENUMAPPLICATIONPROTOCOL_WS_FED EnumApplicationProtocol = "WS-FED"
-	ENUMAPPLICATIONPROTOCOL_EXTERNAL_LINK EnumApplicationProtocol = "EXTERNAL_LINK"
+	ENUMAPPLICATIONPROTOCOL_SAML           EnumApplicationProtocol = "SAML"
+	ENUMAPPLICATIONPROTOCOL_WS_FED         EnumApplicationProtocol = "WS_FED"
+	ENUMAPPLICATIONPROTOCOL_EXTERNAL_LINK  EnumApplicationProtocol = "EXTERNAL_LINK"
 )
 
 // All allowed values of EnumApplicationProtocol enum
 var AllowedEnumApplicationProtocolEnumValues = []EnumApplicationProtocol{
 	"OPENID_CONNECT",
 	"SAML",
-	"WS-FED",
+	"WS_FED",
 	"EXTERNAL_LINK",
 }
 
@@ -113,4 +113,3 @@ func (v *NullableEnumApplicationProtocol) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

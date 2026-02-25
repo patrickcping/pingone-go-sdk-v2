@@ -20,9 +20,9 @@ type EnumRiskLevel string
 
 // List of EnumRiskLevel
 const (
-	ENUMRISKLEVEL_LOW EnumRiskLevel = "LOW"
+	ENUMRISKLEVEL_LOW    EnumRiskLevel = "LOW"
 	ENUMRISKLEVEL_MEDIUM EnumRiskLevel = "MEDIUM"
-	ENUMRISKLEVEL_HIGH EnumRiskLevel = "HIGH"
+	ENUMRISKLEVEL_HIGH   EnumRiskLevel = "HIGH"
 )
 
 // All allowed values of EnumRiskLevel enum
@@ -111,4 +111,3 @@ func (v *NullableEnumRiskLevel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

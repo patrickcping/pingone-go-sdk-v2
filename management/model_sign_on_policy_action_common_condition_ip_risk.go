@@ -20,7 +20,7 @@ var _ MappedNullable = &SignOnPolicyActionCommonConditionIPRisk{}
 // SignOnPolicyActionCommonConditionIPRisk struct for SignOnPolicyActionCommonConditionIPRisk
 type SignOnPolicyActionCommonConditionIPRisk struct {
 	IpRisk SignOnPolicyActionCommonConditionIPRiskIpRisk `json:"ipRisk"`
-	Valid string `json:"valid"`
+	Valid  string                                        `json:"valid"`
 }
 
 // NewSignOnPolicyActionCommonConditionIPRisk instantiates a new SignOnPolicyActionCommonConditionIPRisk object
@@ -91,7 +91,7 @@ func (o *SignOnPolicyActionCommonConditionIPRisk) SetValid(v string) {
 }
 
 func (o SignOnPolicyActionCommonConditionIPRisk) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableSignOnPolicyActionCommonConditionIPRisk) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

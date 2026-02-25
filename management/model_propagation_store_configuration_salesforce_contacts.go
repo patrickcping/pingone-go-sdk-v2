@@ -42,8 +42,8 @@ type PropagationStoreConfigurationSalesforceContacts struct {
 	// The Salesforce profile ID.
 	PROFILE_ID *string `json:"PROFILE_ID,omitempty"`
 	// Whether or not disabled users can be provisioned.
-	PROVISION_DISABLED_USERS *bool `json:"PROVISION_DISABLED_USERS,omitempty"`
-	RECORD_TYPE EnumPropagationStoreTypeSalesforceContactsRecordType `json:"RECORD_TYPE"`
+	PROVISION_DISABLED_USERS *bool                                                `json:"PROVISION_DISABLED_USERS,omitempty"`
+	RECORD_TYPE              EnumPropagationStoreTypeSalesforceContactsRecordType `json:"RECORD_TYPE"`
 	// The account's salesforce.com domain.
 	SALESFORCE_DOMAIN string `json:"SALESFORCE_DOMAIN"`
 	// Whether or not users are allowed to be updated.
@@ -506,7 +506,7 @@ func (o *PropagationStoreConfigurationSalesforceContacts) SetUPDATE_USERS(v bool
 }
 
 func (o PropagationStoreConfigurationSalesforceContacts) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -586,5 +586,3 @@ func (v *NullablePropagationStoreConfigurationSalesforceContacts) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

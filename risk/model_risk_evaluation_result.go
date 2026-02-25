@@ -19,8 +19,8 @@ var _ MappedNullable = &RiskEvaluationResult{}
 
 // RiskEvaluationResult struct for RiskEvaluationResult
 type RiskEvaluationResult struct {
-	Type *EnumResultType `json:"type,omitempty"`
-	Level *EnumRiskLevel `json:"level,omitempty"`
+	Type  *EnumResultType `json:"type,omitempty"`
+	Level *EnumRiskLevel  `json:"level,omitempty"`
 	// A string that specifies any custom attribute the administrator defines.
 	Value *string `json:"value,omitempty"`
 }
@@ -139,7 +139,7 @@ func (o *RiskEvaluationResult) SetValue(v string) {
 }
 
 func (o RiskEvaluationResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,5 +195,3 @@ func (v *NullableRiskEvaluationResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

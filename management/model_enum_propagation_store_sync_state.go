@@ -21,7 +21,7 @@ type EnumPropagationStoreSyncState string
 // List of EnumPropagationStoreSyncState
 const (
 	ENUMPROPAGATIONSTORESYNCSTATE_SYNCING EnumPropagationStoreSyncState = "SYNCING"
-	ENUMPROPAGATIONSTORESYNCSTATE_FAILED EnumPropagationStoreSyncState = "FAILED"
+	ENUMPROPAGATIONSTORESYNCSTATE_FAILED  EnumPropagationStoreSyncState = "FAILED"
 )
 
 // All allowed values of EnumPropagationStoreSyncState enum
@@ -109,4 +109,3 @@ func (v *NullableEnumPropagationStoreSyncState) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

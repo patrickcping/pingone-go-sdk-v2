@@ -19,21 +19,21 @@ var _ MappedNullable = &AuthorizeEditorDataServicesHttpServiceDefinitionDTO{}
 
 // AuthorizeEditorDataServicesHttpServiceDefinitionDTO struct for AuthorizeEditorDataServicesHttpServiceDefinitionDTO
 type AuthorizeEditorDataServicesHttpServiceDefinitionDTO struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Environment *ObjectEnvironment            `json:"environment,omitempty"`
 	// The resource's unique identifier
-	Id *string `json:"id,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Name string `json:"name"`
-	FullName *string `json:"fullName,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Parent *AuthorizeEditorDataReferenceObjectDTO `json:"parent,omitempty"`
-	Type *EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType `json:"type,omitempty"`
-	CacheSettings *AuthorizeEditorDataCacheSettingsDTO `json:"cacheSettings,omitempty"`
-	ServiceType EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType `json:"serviceType"`
-	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
-	ValueType AuthorizeEditorDataValueTypeDTO `json:"valueType"`
-	ServiceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO `json:"serviceSettings"`
+	Id              *string                                                           `json:"id,omitempty"`
+	Version         *string                                                           `json:"version,omitempty"`
+	Name            string                                                            `json:"name"`
+	FullName        *string                                                           `json:"fullName,omitempty"`
+	Description     *string                                                           `json:"description,omitempty"`
+	Parent          *AuthorizeEditorDataReferenceObjectDTO                            `json:"parent,omitempty"`
+	Type            *EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOType       `json:"type,omitempty"`
+	CacheSettings   *AuthorizeEditorDataCacheSettingsDTO                              `json:"cacheSettings,omitempty"`
+	ServiceType     EnumAuthorizeEditorDataDefinitionsServiceDefinitionDTOServiceType `json:"serviceType"`
+	Processor       *AuthorizeEditorDataProcessorDTO                                  `json:"processor,omitempty"`
+	ValueType       AuthorizeEditorDataValueTypeDTO                                   `json:"valueType"`
+	ServiceSettings AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO          `json:"serviceSettings"`
 }
 
 // NewAuthorizeEditorDataServicesHttpServiceDefinitionDTO instantiates a new AuthorizeEditorDataServicesHttpServiceDefinitionDTO object
@@ -474,7 +474,7 @@ func (o *AuthorizeEditorDataServicesHttpServiceDefinitionDTO) SetServiceSettings
 }
 
 func (o AuthorizeEditorDataServicesHttpServiceDefinitionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -555,5 +555,3 @@ func (v *NullableAuthorizeEditorDataServicesHttpServiceDefinitionDTO) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

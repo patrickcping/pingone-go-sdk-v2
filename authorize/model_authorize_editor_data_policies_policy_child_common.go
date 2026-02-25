@@ -19,13 +19,13 @@ var _ MappedNullable = &AuthorizeEditorDataPoliciesPolicyChildCommon{}
 
 // AuthorizeEditorDataPoliciesPolicyChildCommon struct for AuthorizeEditorDataPoliciesPolicyChildCommon
 type AuthorizeEditorDataPoliciesPolicyChildCommon struct {
-	Type EnumAuthorizeEditorDataPoliciesPolicyChildCommonType `json:"type"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Statements []map[string]interface{} `json:"statements,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	Value *AuthorizeEditorDataReferenceObjectDTO `json:"value,omitempty"`
+	Type        EnumAuthorizeEditorDataPoliciesPolicyChildCommonType `json:"type"`
+	Name        *string                                              `json:"name,omitempty"`
+	Description *string                                              `json:"description,omitempty"`
+	Enabled     *bool                                                `json:"enabled,omitempty"`
+	Statements  []map[string]interface{}                             `json:"statements,omitempty"`
+	Condition   *AuthorizeEditorDataConditionDTO                     `json:"condition,omitempty"`
+	Value       *AuthorizeEditorDataReferenceObjectDTO               `json:"value,omitempty"`
 }
 
 // NewAuthorizeEditorDataPoliciesPolicyChildCommon instantiates a new AuthorizeEditorDataPoliciesPolicyChildCommon object
@@ -263,7 +263,7 @@ func (o *AuthorizeEditorDataPoliciesPolicyChildCommon) SetValue(v AuthorizeEdito
 }
 
 func (o AuthorizeEditorDataPoliciesPolicyChildCommon) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -329,5 +329,3 @@ func (v *NullableAuthorizeEditorDataPoliciesPolicyChildCommon) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

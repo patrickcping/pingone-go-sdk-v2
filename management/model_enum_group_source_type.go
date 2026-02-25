@@ -21,7 +21,7 @@ type EnumGroupSourceType string
 // List of EnumGroupSourceType
 const (
 	ENUMGROUPSOURCETYPE_GATEWAY EnumGroupSourceType = "GATEWAY"
-	ENUMGROUPSOURCETYPE_IDP EnumGroupSourceType = "IDP"
+	ENUMGROUPSOURCETYPE_IDP     EnumGroupSourceType = "IDP"
 )
 
 // All allowed values of EnumGroupSourceType enum
@@ -109,4 +109,3 @@ func (v *NullableEnumGroupSourceType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

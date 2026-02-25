@@ -19,11 +19,11 @@ var _ MappedNullable = &AuthorizeEditorDataEntityTestResponseDTO{}
 
 // AuthorizeEditorDataEntityTestResponseDTO struct for AuthorizeEditorDataEntityTestResponseDTO
 type AuthorizeEditorDataEntityTestResponseDTO struct {
-	ElapsedMicroseconds *int32 `json:"elapsedMicroseconds,omitempty"`
-	Request AuthorizeEditorDataEntityTestRequestDTO `json:"request"`
-	Authorized *bool `json:"authorized,omitempty"`
-	Status AuthorizeEditorDataEntityTestingDecisionStatusDTO `json:"status"`
-	Result *AuthorizeEditorDataEntityTestingDecisionResultDTO `json:"result,omitempty"`
+	ElapsedMicroseconds *int32                                             `json:"elapsedMicroseconds,omitempty"`
+	Request             AuthorizeEditorDataEntityTestRequestDTO            `json:"request"`
+	Authorized          *bool                                              `json:"authorized,omitempty"`
+	Status              AuthorizeEditorDataEntityTestingDecisionStatusDTO  `json:"status"`
+	Result              *AuthorizeEditorDataEntityTestingDecisionResultDTO `json:"result,omitempty"`
 }
 
 // NewAuthorizeEditorDataEntityTestResponseDTO instantiates a new AuthorizeEditorDataEntityTestResponseDTO object
@@ -190,7 +190,7 @@ func (o *AuthorizeEditorDataEntityTestResponseDTO) SetResult(v AuthorizeEditorDa
 }
 
 func (o AuthorizeEditorDataEntityTestResponseDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -248,5 +248,3 @@ func (v *NullableAuthorizeEditorDataEntityTestResponseDTO) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

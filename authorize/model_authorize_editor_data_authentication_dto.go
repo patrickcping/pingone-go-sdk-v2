@@ -17,10 +17,10 @@ import (
 
 // AuthorizeEditorDataAuthenticationDTO - struct for AuthorizeEditorDataAuthenticationDTO
 type AuthorizeEditorDataAuthenticationDTO struct {
-	AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
+	AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO             *AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO
 	AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO
-	AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO
-	AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO *AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
+	AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO              *AuthorizeEditorDataAuthenticationsNoneAuthenticationDTO
+	AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO             *AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO
 }
 
 // AuthorizeEditorDataAuthenticationsBasicAuthenticationDTOAsAuthorizeEditorDataAuthenticationDTO is a convenience function that returns AuthorizeEditorDataAuthenticationsBasicAuthenticationDTO wrapped in AuthorizeEditorDataAuthenticationDTO
@@ -50,7 +50,6 @@ func AuthorizeEditorDataAuthenticationsTokenAuthenticationDTOAsAuthorizeEditorDa
 		AuthorizeEditorDataAuthenticationsTokenAuthenticationDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataAuthenticationDTO) UnmarshalJSON(data []byte) error {
@@ -111,7 +110,7 @@ func (src AuthorizeEditorDataAuthenticationDTO) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataAuthenticationDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataAuthenticationDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -170,5 +169,3 @@ func (v *NullableAuthorizeEditorDataAuthenticationDTO) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

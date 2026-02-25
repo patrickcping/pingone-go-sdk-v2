@@ -20,9 +20,9 @@ type EnumFormTranslationMethod string
 
 // List of EnumFormTranslationMethod
 const (
-	ENUMFORMTRANSLATIONMETHOD_TRANSLATE EnumFormTranslationMethod = "TRANSLATE"
+	ENUMFORMTRANSLATIONMETHOD_TRANSLATE     EnumFormTranslationMethod = "TRANSLATE"
 	ENUMFORMTRANSLATIONMETHOD_DEFAULT_VALUE EnumFormTranslationMethod = "DEFAULT_VALUE"
-	ENUMFORMTRANSLATIONMETHOD_KEY EnumFormTranslationMethod = "KEY"
+	ENUMFORMTRANSLATIONMETHOD_KEY           EnumFormTranslationMethod = "KEY"
 )
 
 // All allowed values of EnumFormTranslationMethod enum
@@ -111,4 +111,3 @@ func (v *NullableEnumFormTranslationMethod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

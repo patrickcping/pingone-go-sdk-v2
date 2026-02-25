@@ -20,15 +20,15 @@ var _ MappedNullable = &CredentialDigitalWalletPairingSession{}
 
 // CredentialDigitalWalletPairingSession struct for CredentialDigitalWalletPairingSession
 type CredentialDigitalWalletPairingSession struct {
-	Id *string `json:"id,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	User *CredentialDigitalWalletNotificationResultsInnerNotification `json:"user,omitempty"`
+	Id            *string                                                      `json:"id,omitempty"`
+	CreatedAt     *time.Time                                                   `json:"createdAt,omitempty"`
+	UpdatedAt     *time.Time                                                   `json:"updatedAt,omitempty"`
+	Environment   *ObjectEnvironment                                           `json:"environment,omitempty"`
+	User          *CredentialDigitalWalletNotificationResultsInnerNotification `json:"user,omitempty"`
 	DigitalWallet *CredentialDigitalWalletNotificationResultsInnerNotification `json:"digitalWallet,omitempty"`
-	Challenge *string `json:"challenge,omitempty"`
-	QrUrl *string `json:"qrUrl,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Challenge     *string                                                      `json:"challenge,omitempty"`
+	QrUrl         *string                                                      `json:"qrUrl,omitempty"`
+	Status        *string                                                      `json:"status,omitempty"`
 }
 
 // NewCredentialDigitalWalletPairingSession instantiates a new CredentialDigitalWalletPairingSession object
@@ -337,7 +337,7 @@ func (o *CredentialDigitalWalletPairingSession) SetStatus(v string) {
 }
 
 func (o CredentialDigitalWalletPairingSession) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,5 +411,3 @@ func (v *NullableCredentialDigitalWalletPairingSession) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

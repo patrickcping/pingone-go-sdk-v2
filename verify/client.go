@@ -43,6 +43,8 @@ type APIClient struct {
 
 	// API Services
 
+	EnvironmentsApi *EnvironmentsApiService
+
 	HALApi *HALApiService
 
 	VerifyPoliciesApi *VerifyPoliciesApiService
@@ -88,6 +90,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.HALApi = (*HALApiService)(&c.common)
 	c.VerifyPoliciesApi = (*VerifyPoliciesApiService)(&c.common)
 	c.VoicePhrasesApi = (*VoicePhrasesApiService)(&c.common)

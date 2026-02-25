@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsPhoneDeliverySettingsProvider The ID of the provider of phone delivery service. Possible values: `PINGONE_TWILIO`: Specifies that Ping Identity's Twilio account is the SMS/voice provider. `CUSTOM_TWILIO`: Specifies that your Twilio account is the SMS/voice provider. `CUSTOM_SYNIVERSE`: Specifies that your Syniverse account is the SMS/voice provider. `CUSTOM_PROVIDER`: Specifies a custom-defined SMS provider (excluding Twilio and Syniverse). 
+// EnumNotificationsSettingsPhoneDeliverySettingsProvider The ID of the provider of phone delivery service. Possible values: `PINGONE_TWILIO`: Specifies that Ping Identity's Twilio account is the SMS/voice provider. `CUSTOM_TWILIO`: Specifies that your Twilio account is the SMS/voice provider. `CUSTOM_SYNIVERSE`: Specifies that your Syniverse account is the SMS/voice provider. `CUSTOM_PROVIDER`: Specifies a custom-defined SMS provider (excluding Twilio and Syniverse).
 type EnumNotificationsSettingsPhoneDeliverySettingsProvider string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsProvider
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_TWILIO EnumNotificationsSettingsPhoneDeliverySettingsProvider = "CUSTOM_TWILIO"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_TWILIO    EnumNotificationsSettingsPhoneDeliverySettingsProvider = "CUSTOM_TWILIO"
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_SYNIVERSE EnumNotificationsSettingsPhoneDeliverySettingsProvider = "CUSTOM_SYNIVERSE"
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_PROVIDER EnumNotificationsSettingsPhoneDeliverySettingsProvider = "CUSTOM_PROVIDER"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_PROVIDER  EnumNotificationsSettingsPhoneDeliverySettingsProvider = "CUSTOM_PROVIDER"
 )
 
 // All allowed values of EnumNotificationsSettingsPhoneDeliverySettingsProvider enum
@@ -111,4 +111,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsProvider) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

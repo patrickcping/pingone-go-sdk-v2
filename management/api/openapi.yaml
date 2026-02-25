@@ -981,6 +981,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -1165,6 +1166,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -2598,6 +2600,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -2889,6 +2892,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -2983,6 +2987,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -6652,6 +6657,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -6836,6 +6842,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -7302,6 +7309,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -7801,6 +7809,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -8605,6 +8614,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -9094,6 +9104,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -9989,6 +10000,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -10485,6 +10497,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -11777,6 +11790,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -13319,6 +13333,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -13413,6 +13428,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -17697,6 +17713,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -18622,6 +18639,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -19730,6 +19748,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -21516,6 +21535,204 @@ paths:
       summary: UPDATE Content
       tags:
       - Notifications Templates
+  /environments/{environmentID}/translations/{locale}:
+    get:
+      operationId: readTranslations
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: locale
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: Read Translations by locale
+      tags:
+      - Translations
+    put:
+      operationId: updateTranslations
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: locale
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocaleTranslations'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocaleTranslations'
+          description: Successful response
+      summary: Update Translations by locale
+      tags:
+      - Translations
   /environments/{environmentID}/notificationsSettings:
     delete:
       operationId: deleteNotificationsSettings
@@ -21762,6 +21979,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -23076,6 +23294,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -23171,6 +23390,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -23588,6 +23808,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -23683,6 +23904,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -24205,6 +24427,388 @@ paths:
       summary: UPDATE Population Default Identity Provider
       tags:
       - Populations
+  /environments/{environmentID}/rateLimitIpConfigs:
+    get:
+      operationId: readAllRateLimitConfigurations
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+          x-pingone-docs-8830: true
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Rate Limit Configurations
+      tags:
+      - Rate Limiting
+    post:
+      operationId: createRateLimitConfiguration
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RateLimitConfiguration'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+          x-pingone-docs-8830: true
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitConfiguration'
+          description: Successful response
+      summary: CREATE Rate Limit Configuration
+      tags:
+      - Rate Limiting
+  /environments/{environmentID}/rateLimitIpConfigs/{rateLimitConfigurationID}:
+    delete:
+      operationId: deleteRateLimitConfiguration
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: rateLimitConfigurationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Rate Limit Configuration
+      tags:
+      - Rate Limiting
+    get:
+      operationId: readOneRateLimitConfiguration
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: rateLimitConfigurationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitConfiguration'
+          description: Successful response
+      summary: READ One Rate Limit Configuration
+      tags:
+      - Rate Limiting
   /environments/{environmentID}/recaptchaV2Config:
     delete:
       operationId: deleteRecaptchaConfiguration
@@ -24447,6 +25051,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -24544,6 +25149,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -24638,6 +25244,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -26975,6 +27582,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -27069,6 +27677,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -27456,6 +28065,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -28361,6 +28971,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -29201,6 +29812,102 @@ paths:
       summary: UPDATE Sign-On Policy Action
       tags:
       - Sign-On Policy Actions
+  /environments/{environmentID}/status:
+    put:
+      operationId: updateEnvironmentStatus
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentStatus'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+          x-pingone-docs-8830: true
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+          description: Successful response
+      summary: Update Environment Status
+      tags:
+      - Environments
   /environments/{environmentID}/subscriptions:
     get:
       operationId: readAllSubscriptions
@@ -29358,6 +30065,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -29745,6 +30453,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "409":
           content:
             application/json:
@@ -29839,6 +30548,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -30748,6 +31458,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+          x-pingone-docs-8830: true
         "405":
           content:
             application/json:
@@ -36287,14 +36998,6 @@ components:
         $ref: '#/components/schemas/LinksHATEOAS_value'
       readOnly: true
       type: object
-    EnumAdministratorSecurityAllowedMethods:
-      description: "Indicates the methods to enable or disable for admin sign-on.\
-        \ Possible values are `TOTP` (temporary one-time password), `FIDO2`, or `EMAIL`."
-      enum:
-      - TOTP
-      - FIDO2
-      - EMAIL
-      type: string
     EnumAdministratorSecurityAuthenticationMethod:
       default: PINGONE
       description: "Indicates whether to use PingOne MFA, an external IdP, or a combination\
@@ -36306,14 +37009,10 @@ components:
       - HYBRID
       type: string
     EnumAdministratorSecurityMfaStatus:
-      default: OPT_OUT
-      description: "This applies only to the specified environment, and can be either\
-        \ `OPT_IN` (indicating MFA is to be used for administrator sign-ons), or `OPT_OUT`\
-        \ (indicating MFA is not to be used for administrator sign-ons). This currently\
-        \ defaults to `OPT_OUT`."
+      description: This property must be set to `ENFORCE` as MFA is required for administrator
+        sign-ons. This property applies only to the specified environment.
       enum:
-      - OPT_IN
-      - OPT_OUT
+      - ENFORCE
       type: string
     EnumAgreementRevisionContentType:
       description: "An immutable string that specifies the content type of text. Options\
@@ -36329,16 +37028,18 @@ components:
       enum:
       - CERTIFICATE_EXPIRED
       - CERTIFICATE_EXPIRING
-      - KEY_PAIR_EXPIRED
-      - KEY_PAIR_EXPIRING
       - GATEWAY_VERSION_DEPRECATED
       - GATEWAY_VERSION_DEPRECATING
+      - KEY_PAIR_EXPIRED
+      - KEY_PAIR_EXPIRING
       - LICENSE_90_PERCENT_USER_SOFT_LIMIT
       - LICENSE_EXPIRED
       - LICENSE_EXPIRING
       - LICENSE_ROTATED
       - LICENSE_USER_HARD_LIMIT_EXCEEDED
       - LICENSE_USER_SOFT_LIMIT_EXCEEDED
+      - RATE_LIMIT_EXCEEDED
+      - RATE_LIMIT_WARNING
       - RISK_CONFIGURATION
       - SUSPICIOUS_TRAFFIC
       type: string
@@ -36442,7 +37143,7 @@ components:
       enum:
       - OPENID_CONNECT
       - SAML
-      - WS-FED
+      - WS_FED
       - EXTERNAL_LINK
       type: string
     EnumApplicationSAMLSloBinding:
@@ -36597,12 +37298,12 @@ components:
       - application/x-pem-file
       type: string
     EnumCustomAdminRoleApplicableTo:
-      description: "The scope types to which the role can be applied. Options are\
-        \ ORGANIZATION, ENVIRONMENT, and POPULATION."
+      description: The scope types to which the role can be applied.
       enum:
       - ORGANIZATION
       - ENVIRONMENT
       - POPULATION
+      - APPLICATION
       type: string
     EnumCustomAdminRoleType:
       description: A value that indicates whether the role is a built-in role or a
@@ -36630,6 +37331,15 @@ components:
       enum:
       - ACTIVE
       - VERIFICATION_REQUIRED
+      type: string
+    EnumEnvironmentStatus:
+      description: "The status of an environment. (*Required for the Update Environment\
+        \ Status request.) This can be null, `ACTIVE` and `DELETE_PENDING` (soft-delete).\
+        \ The maximum number of Production environments that can be in the `DELETE_PENDING`\
+        \ state is set to 100."
+      enum:
+      - ACTIVE
+      - DELETE_PENDING
       type: string
     EnumEnvironmentType:
       description: A string that specifies the type of environment to use.
@@ -36713,6 +37423,7 @@ components:
       - GOOGLE
       - AMAZON
       - LINKEDIN
+      - LINKEDIN_OIDC
       - MICROSOFT
       - TWITTER
       - YAHOO
@@ -36831,6 +37542,7 @@ components:
       - FACEBOOK
       - GOOGLE
       - LINKEDIN
+      - LINKEDIN_OIDC
       - APPLE
       - TWITTER
       - AMAZON
@@ -36866,6 +37578,7 @@ components:
       - FACEBOOK
       - GOOGLE
       - LINKEDIN
+      - LINKEDIN_OIDC
       - APPLE
       - TWITTER
       - AMAZON
@@ -37057,6 +37770,18 @@ components:
       - GET
       - POST
       type: string
+    EnumNotificationsPolicyProviderConfigurationConditionsDeliveryMethods:
+      enum:
+      - VOICE
+      - SMS
+      type: string
+    EnumNotificationsPolicyCooldownConfigurationMethodPeriodTimeUnit:
+      description: The time unit for the cooldown period. Options are `SECONDS` and
+        `MINUTES`.
+      enum:
+      - SECONDS
+      - MINUTES
+      type: string
     EnumNotificationsPolicyCountryLimitDeliveryMethod:
       description: "The delivery method that the defined limitation should be applied\
         \ to.  Options are `SMS`, `Voice`."
@@ -37215,6 +37940,7 @@ components:
       - PING_DIRECTORY
       - PING_AUTHORIZE
       - PING_ID
+      - PING_ONE_ID
       - PING_INTELLIGENCE
       - PING_CENTRAL
       type: string
@@ -37297,12 +38023,14 @@ components:
       - Voice 1
       type: string
     EnumPropagationStoreTypePingOneRegion:
-      description: "A supported region. Options are `NA`, `CA`, `EU`, or `AP`."
+      description: A supported region.
       enum:
-      - NA
+      - AP
+      - AU
       - CA
       - EU
-      - AP
+      - NA
+      - SG
       type: string
     EnumPropagationStoreTypeSalesforceContactsRecordType:
       description: The type of Salesforce record. Options are either Lead or Contact.
@@ -37346,6 +38074,13 @@ components:
       - JWT Bearer Token
       - OAuth Bearer Token
       type: string
+    EnumRateLimitConfigurationType:
+      description: "The type of rate limit configuration. Currently, the only type\
+        \ supported is \"WHITELIST\", indicating that the IP address in value is to\
+        \ be excluded from rate limiting."
+      enum:
+      - WHITELIST
+      type: string
     EnumRegionCode:
       description: A string that specifies the environment region code. The value
         is set when the environment is created and cannot be updated.
@@ -37355,13 +38090,16 @@ components:
       - CA
       - EU
       - NA
+      - SG
       type: string
     EnumRegionCodeLicense:
       enum:
       - AP
+      - AU
       - CA
       - EU
       - NORTH_AMERICA
+      - SG
       type: string
     EnumResourceAttributeType:
       description: |
@@ -37400,6 +38138,7 @@ components:
     EnumRoleName:
       description: The name of the role
       enum:
+      - Authorize Gateway Policy Evaluator
       - Advanced Identity Cloud Super Admin
       - Advanced Identity Cloud Tenant Admin
       - Application Owner
@@ -37409,6 +38148,7 @@ components:
       - DaVinci Admin Read Only
       - DaVinci Admin
       - Environment Admin
+      - Help Desk Admin
       - Identity Data Admin
       - Identity Data Read Only
       - Organization Admin
@@ -37653,22 +38393,31 @@ components:
       - ENABLED
       - DISABLED
       type: string
+    EnumApplicationWSFEDSubjectNameIdentifierFormat:
+      description: The format to use for the SubjectNameIdentifier element.
+      enum:
+      - urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+      - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+      type: string
     AdministratorSecurity:
       example:
         mfaStatus: null
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
+        hasFido2Capabilities: true
         _links:
           key:
             href: https://openapi-generator.tech
         authenticationMethod: null
         provider:
           id: id
-        allowedMethods: null
+        allowedMethods:
+          TOTP: TOTP
+          FIDO2: FIDO2
+          EMAIL: EMAIL
         recovery: true
-        policy:
-          id: id
+        isPingIDInBOM: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -37677,20 +38426,27 @@ components:
           readOnly: true
           type: object
         allowedMethods:
-          $ref: '#/components/schemas/EnumAdministratorSecurityAllowedMethods'
+          $ref: '#/components/schemas/AdministratorSecurity_allowedMethods'
         authenticationMethod:
           $ref: '#/components/schemas/EnumAdministratorSecurityAuthenticationMethod'
         createdAt:
-          description: The time the resource was created.
+          description: The timestamp the resource was created.
           format: date-time
           readOnly: true
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        hasFido2Capabilities:
+          description: Indicates whether the environment supports FIDO2 passkeys for
+            MFA.
+          readOnly: true
+          type: boolean
+        isPingIDInBOM:
+          description: Indicates whether the environment supports PingID for MFA.
+          readOnly: true
+          type: boolean
         mfaStatus:
           $ref: '#/components/schemas/EnumAdministratorSecurityMfaStatus'
-        policy:
-          $ref: '#/components/schemas/AdministratorSecurity_policy'
         provider:
           $ref: '#/components/schemas/AdministratorSecurity_provider'
         recovery:
@@ -37698,12 +38454,13 @@ components:
             policy.
           type: boolean
         updatedAt:
-          description: The time the resource was last updated.
+          description: The timestamp the resource was last updated.
           format: date-time
           readOnly: true
           type: string
       required:
       - authenticationMethod
+      - mfaStatus
       - recovery
       type: object
     Agreement:
@@ -38161,6 +38918,8 @@ components:
             $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification'
           template:
             $ref: '#/components/schemas/ApplicationTemplate'
+          virtualServerIdSettings:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_virtualServerIdSettings'
         required:
         - acsUrls
         - assertionDuration
@@ -38187,6 +38946,28 @@ components:
               only on the POST request. The property is ignored when included in a
               PUT request.
             type: boolean
+          clientId:
+            description: "(Required when `clientSecret` is specified.) Supported only\
+              \ for `POST` operations. To modify the value of this field, the environment\
+              \ must be enabled with the feature flag to allow importing applications\
+              \ with administrator defined client ID and client secret values. This\
+              \ is the unique ID of an external application that is being migrated\
+              \ to PingOne. The ID must be a minimum of 8 alpha-numeric characters,\
+              \ and must be globally unique in PingOne."
+            minLength: 8
+            type: string
+          clientSecret:
+            description: "(Required when `clientId` is specified.) Supported only\
+              \ for `POST` operations. To modify the value of this field, the environment\
+              \ must be enabled with the feature flag to allow importing applications\
+              \ with administrator defined client ID and client secret values. This\
+              \ is the client secret associated with `clientId` for an external application\
+              \ that is being migrated to PingOne. This must be a minimum of 8 alpha-numeric\
+              \ characters."
+            format: password
+            minLength: 8
+            readOnly: true
+            type: string
           corsSettings:
             $ref: '#/components/schemas/ApplicationCorsSettings'
           devicePathId:
@@ -38223,6 +39004,17 @@ components:
             maximum: 60
             minimum: 1
             type: integer
+          idpSignoff:
+            description: Set this to true to allow an application to request to terminate
+              a user session using only the ID token. The application is not required
+              to have access to the session token cookie.
+            type: boolean
+          includeX5t:
+            description: "Specifies whether tokens signed for this application include\
+              \ the `x5t`` signature header in the signed JWT. Refer to [JSON Web\
+              \ Signature (JWS), section \"x5t\" (X.509 Certificate SHA-1 Thumbprint)\
+              \ Header Parameter](https://www.rfc-editor.org/rfc/rfc7515.html#section-4.1.7)."
+            type: boolean
           jwks:
             description: "A JWKS string that validates the signature of signed JWTs\
               \ for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`.\
@@ -38264,8 +39056,8 @@ components:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
           grantTypes:
             description: "A string that specifies the grant type for the authorization\
-              \ request. This is a required property. Options are AUTHORIZATION_CODE,\
-              \ IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS."
+              \ request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN,\
+              \ CLIENT_CREDENTIALS."
             items:
               $ref: '#/components/schemas/EnumApplicationOIDCGrantType'
             type: array
@@ -38283,6 +39075,24 @@ components:
               \ specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin)\
               \ for more information."
             type: string
+          opSessionCheckEnabled:
+            default: false
+            description: "When enabled, PingOne includes the `session_state` parameter\
+              \ in the authentication response, per spec with [OpenID Connect Session\
+              \ Management 1.0](https://openid.net/specs/openid-connect-session-1_0.html).\
+              \ Refer to [OIDC Session Management](https://apidocs.pingidentity.com/pingone/main/v1/api/#oidc-session-management)\
+              \ in the Developer's Foundations for more information. This property\
+              \ is disabled by default."
+            type: boolean
+          parRequirement:
+            $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
+          parTimeout:
+            default: 60
+            description: PAR timeout in seconds. Must be between `1` and `600`. The
+              default value is `60`.
+            maximum: 600
+            minimum: 1
+            type: integer
           pkceEnforcement:
             $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
           postLogoutRedirectUris:
@@ -38326,13 +39136,12 @@ components:
               0 and 86400 seconds. Null is treated the same as 0.
             maximum: 86400
             type: integer
-          responseTypes:
-            description: "The code or token type returned by an authorization request.\
-              \ Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that\
-              \ specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type)."
-            items:
-              $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
-            type: array
+          requestScopesForMultipleResourcesEnabled:
+            default: false
+            description: "Specifies whether the application can request scopes from\
+              \ multiple custom resources. The default value is `false`. For more\
+              \ information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes)."
+            type: boolean
           requireSignedRequestObject:
             description: "Indicates that the Java Web Token (JWT) for the [request\
               \ query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
@@ -38340,6 +39149,15 @@ components:
               \ a signed request object is not required. Both `supportUnsignedRequestObject`\
               \ and this property cannot be set to `true`."
             type: boolean
+          responseTypes:
+            description: "The code or token type returned by an authorization request.\
+              \ Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that\
+              \ specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type)."
+            items:
+              $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
+            type: array
+          signing:
+            $ref: '#/components/schemas/ApplicationOIDC_allOf_signing'
           supportUnsignedRequestObject:
             description: "A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
               \ parameter JWT is allowed to be unsigned. If false or null (default),\
@@ -38362,19 +39180,7 @@ components:
             $ref: '#/components/schemas/ApplicationTemplate'
           tokenEndpointAuthMethod:
             $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
-          parRequirement:
-            $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
-          parTimeout:
-            default: 60
-            description: PAR timeout in seconds. Must be between `1` and `600`. The
-              default value is `60`.
-            maximum: 600
-            minimum: 1
-            type: integer
-          signing:
-            $ref: '#/components/schemas/ApplicationOIDC_allOf_signing'
         required:
-        - grantTypes
         - tokenEndpointAuthMethod
         type: object
     ApplicationOIDCInternal:
@@ -38622,12 +39428,12 @@ components:
             default: urn:federation:MicrosoftOnline
             description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
             type: string
+          corsSettings:
+            $ref: '#/components/schemas/ApplicationCorsSettings'
           domainName:
             description: "The federated domain name (for example, the Azure custom\
               \ domain)."
             type: string
-          corsSettings:
-            $ref: '#/components/schemas/ApplicationCorsSettings'
           idpSigning:
             $ref: '#/components/schemas/ApplicationWSFED_allOf_idpSigning'
           kerberos:
@@ -38640,6 +39446,8 @@ components:
           sloEndpoint:
             description: The single logout endpoint URL.
             type: string
+          subjectNameIdentifierFormat:
+            $ref: '#/components/schemas/EnumApplicationWSFEDSubjectNameIdentifierFormat'
         required:
         - domainName
         - idpSigning
@@ -39228,7 +40036,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 3.0576100241049344
+        size: 5.533258397034986
         _links:
           key:
             href: https://openapi-generator.tech
@@ -39574,19 +40382,30 @@ components:
             description: description
             id: id
             key: key
+          translations:
+          - translatedText: translatedText
+            referenceText: referenceText
+            shortKey: shortKey
+            id: id
+            key: key
+          - translatedText: translatedText
+            referenceText: referenceText
+            shortKey: shortKey
+            id: id
+            key: key
           passwordPolicies:
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
               "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-              abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 0
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+              abcdefghijklmnopqrstuvwxyz: 0
+            populationCount: 8
             _links:
               key:
                 href: https://openapi-generator.tech
             length:
-              min: 11
-              max: 6
+              min: 24
+              max: 2
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -39594,7 +40413,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 7
+            minComplexity: 0
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -39605,25 +40424,25 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 6
+            minUniqueCharacters: 4
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 5
+            maxRepeatedCharacters: 3
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
               "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-              abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 0
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+              abcdefghijklmnopqrstuvwxyz: 0
+            populationCount: 8
             _links:
               key:
                 href: https://openapi-generator.tech
             length:
-              min: 11
-              max: 6
+              min: 24
+              max: 2
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -39631,7 +40450,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 7
+            minComplexity: 0
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -39642,11 +40461,11 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 6
+            minUniqueCharacters: 4
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 5
+            maxRepeatedCharacters: 3
             minAgeDays: 1
             updatedAt: updatedAt
           revisions:
@@ -39797,17 +40616,19 @@ components:
           notificationsPolicies:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
+            environment:
+              id: id
             quotas:
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
@@ -39816,7 +40637,6 @@ components:
               key:
                 href: https://openapi-generator.tech
             name: name
-            id: id
             countryLimit:
               countries:
               - countries
@@ -39825,20 +40645,80 @@ components:
               deliveryMethods:
               - null
               - null
+            id: id
+            providerConfiguration:
+              conditions:
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+            cooldownConfiguration:
+              voice:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              whatsApp:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              sms:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              email:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
+            environment:
+              id: id
             quotas:
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 6
-              unclaimed: 9
-              claimed: 8
+            - total: 9
+              unclaimed: 3
+              claimed: 6
               type: null
               deliveryMethods:
               - null
@@ -39847,7 +40727,6 @@ components:
               key:
                 href: https://openapi-generator.tech
             name: name
-            id: id
             countryLimit:
               countries:
               - countries
@@ -39856,6 +40735,64 @@ components:
               deliveryMethods:
               - null
               - null
+            id: id
+            providerConfiguration:
+              conditions:
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+              - countries:
+                - countries
+                - countries
+                deliveryMethods:
+                - null
+                - null
+                fallbackChain:
+                - id: id
+                - id: id
+            cooldownConfiguration:
+              voice:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              whatsApp:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              sms:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
+              email:
+                resendLimit: 8
+                periods:
+                - duration: 404
+                  timeUnit: null
+                - duration: 404
+                  timeUnit: null
+                groupBy: groupBy
+                enabled: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           languages:
           - null
@@ -40044,7 +40981,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 3
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -40115,7 +41052,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 3
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -40377,6 +41314,17 @@ components:
             status: null
             subjectDN: subjectDN
             usageType: null
+          rateLimitIpConfigs:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            value: value
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            value: value
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           contents:
           - null
           - null
@@ -40746,32 +41694,44 @@ components:
             - null
             - null
           populations:
-          - createdAt: createdAt
-            default: true
-            environment:
-              id: id
+          - preferredLanguage: preferredLanguage
             passwordPolicy:
               id: id
-            userCount: 4
             _links:
               key:
                 href: https://openapi-generator.tech
-            name: name
             description: description
+            createdAt: createdAt
+            alternativeIdentifiers:
+            - alternativeIdentifiers
+            - alternativeIdentifiers
+            default: true
+            environment:
+              id: id
+            userCount: 7
+            name: name
+            theme:
+              id: id
             id: id
             updatedAt: updatedAt
-          - createdAt: createdAt
-            default: true
-            environment:
-              id: id
+          - preferredLanguage: preferredLanguage
             passwordPolicy:
               id: id
-            userCount: 4
             _links:
               key:
                 href: https://openapi-generator.tech
-            name: name
             description: description
+            createdAt: createdAt
+            alternativeIdentifiers:
+            - alternativeIdentifiers
+            - alternativeIdentifiers
+            default: true
+            environment:
+              id: id
+            userCount: 7
+            name: name
+            theme:
+              id: id
             id: id
             updatedAt: updatedAt
           forms:
@@ -40869,7 +41829,7 @@ components:
           applications:
           - null
           - null
-        count: 3.0205796992916243
+        count: 7.04836565559697
       properties:
         _links:
           additionalProperties:
@@ -40912,6 +41872,13 @@ components:
         description:
           description: A string that specifies the description of the population.
           type: string
+        hardDeletedAllowedAt:
+          description: "The time when the soft-deleted Production environment (set\
+            \ to `DELETE_PENDING` status) can be completely deleted (a hard delete).\
+            \ When a soft-deleted environment is restored, this value is cleared."
+          format: date-time
+          readOnly: true
+          type: string
         icon:
           description: "The URL referencing the image to use for the environment icon.\
             \ The supported image types are JPEG/JPG, PNG, and GIF."
@@ -40930,6 +41897,14 @@ components:
           $ref: '#/components/schemas/Environment_organization'
         region:
           $ref: '#/components/schemas/Environment_region'
+        softDeletedAt:
+          description: "The time the Production environment was set to the `DELETE_PENDING`\
+            \ status. When a soft-deleted environment is restored, this value is cleared."
+          format: date-time
+          readOnly: true
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumEnvironmentStatus'
         type:
           $ref: '#/components/schemas/EnumEnvironmentType'
         updatedAt:
@@ -40941,6 +41916,15 @@ components:
       - name
       - region
       - type
+      type: object
+    EnvironmentStatus:
+      example:
+        status: null
+      properties:
+        status:
+          $ref: '#/components/schemas/EnumEnvironmentStatus'
+      required:
+      - status
       type: object
     FlowPolicy:
       example:
@@ -42004,6 +42988,7 @@ components:
       - $ref: '#/components/schemas/IdentityProviderOIDC'
       - $ref: '#/components/schemas/IdentityProviderApple'
       - $ref: '#/components/schemas/IdentityProviderPaypal'
+      - $ref: '#/components/schemas/IdentityProviderMicrosoft'
       - $ref: '#/components/schemas/IdentityProviderSAML'
     IdentityProviderAttribute:
       example:
@@ -42144,6 +43129,15 @@ components:
         required:
         - clientId
         - clientSecret
+        type: object
+    IdentityProviderMicrosoft:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderClientIDClientSecret'
+      - properties:
+          tenantId:
+            description: A string that specifies the tenant ID from Microsoft Entra
+              ID. This property is required if Entra ID is enabled.
+            type: string
         type: object
     IdentityProviderOIDC:
       allOf:
@@ -42926,21 +43920,60 @@ components:
       required:
       - name
       type: object
+    LocaleTranslation:
+      example:
+        translatedText: translatedText
+        referenceText: referenceText
+        shortKey: shortKey
+        id: id
+        key: key
+      properties:
+        id:
+          description: The translation ID for a specific string.
+          readOnly: true
+          type: string
+        key:
+          description: "The page and name of the interface element to be localized\
+            \ (for example, `flow-ui.button.cancel`)."
+          minLength: 1
+          type: string
+        shortKey:
+          description: "The interace element only (for example, `button.cancel`)."
+          readOnly: true
+          type: string
+        referenceText:
+          description: The English string text associated with the interface element.
+          readOnly: true
+          type: string
+        translatedText:
+          description: The translated string text associated with the interface element.
+          type: string
+      required:
+      - key
+      - translatedText
+      type: object
+    LocaleTranslations:
+      items:
+        $ref: '#/components/schemas/LocaleTranslation'
+      type: array
+      uniqueItems: true
     NotificationsPolicy:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         default: false
+        environment:
+          id: id
         quotas:
-        - total: 6
-          unclaimed: 9
-          claimed: 8
+        - total: 9
+          unclaimed: 3
+          claimed: 6
           type: null
           deliveryMethods:
           - null
           - null
-        - total: 6
-          unclaimed: 9
-          claimed: 8
+        - total: 9
+          unclaimed: 3
+          claimed: 6
           type: null
           deliveryMethods:
           - null
@@ -42949,7 +43982,6 @@ components:
           key:
             href: https://openapi-generator.tech
         name: name
-        id: id
         countryLimit:
           countries:
           - countries
@@ -42958,6 +43990,64 @@ components:
           deliveryMethods:
           - null
           - null
+        id: id
+        providerConfiguration:
+          conditions:
+          - countries:
+            - countries
+            - countries
+            deliveryMethods:
+            - null
+            - null
+            fallbackChain:
+            - id: id
+            - id: id
+          - countries:
+            - countries
+            - countries
+            deliveryMethods:
+            - null
+            - null
+            fallbackChain:
+            - id: id
+            - id: id
+        cooldownConfiguration:
+          voice:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
+          whatsApp:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
+          sms:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
+          email:
+            resendLimit: 8
+            periods:
+            - duration: 404
+              timeUnit: null
+            - duration: 404
+              timeUnit: null
+            groupBy: groupBy
+            enabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -42965,16 +44055,23 @@ components:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
+        cooldownConfiguration:
+          $ref: '#/components/schemas/NotificationsPolicy_cooldownConfiguration'
+        countryLimit:
+          $ref: '#/components/schemas/NotificationsPolicy_countryLimit'
         createdAt:
           description: The time the resource was created.
           format: date-time
           readOnly: true
           type: string
-        updatedAt:
-          description: The time the resource was last updated.
-          format: date-time
-          readOnly: true
-          type: string
+        default:
+          default: false
+          description: "Indication of whether this policy is the default notification\
+            \ policy for the environment. If the parameter is not provided, the value\
+            \ used is `false`"
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -42983,14 +44080,8 @@ components:
           description: The name to use for the notification policy. Must be unique
             among the notification policies in the environment.
           type: string
-        default:
-          default: false
-          description: "Indication of whether this policy is the default notification\
-            \ policy for the environment. If the parameter is not provided, the value\
-            \ used is `false`"
-          type: boolean
-        countryLimit:
-          $ref: '#/components/schemas/NotificationsPolicy_countryLimit'
+        providerConfiguration:
+          $ref: '#/components/schemas/NotificationsPolicy_providerConfiguration'
         quotas:
           description: "Collection of objects that define the SMS/Voice limits. Each\
             \ object contain the following elements- `type`, `deliveryMethods`, `total`.\
@@ -42999,9 +44090,55 @@ components:
           items:
             $ref: '#/components/schemas/NotificationsPolicy_quotas_inner'
           type: array
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - name
       - quotas
+      type: object
+    NotificationsPolicyCooldownConfigurationMethod:
+      description: "Required if you have included the cooldownConfiguration object.\
+        \ Contains the notification cooldown period settings for email, SMS, voice\
+        \ or WhatsApp notifications."
+      example:
+        resendLimit: 8
+        periods:
+        - duration: 404
+          timeUnit: null
+        - duration: 404
+          timeUnit: null
+        groupBy: groupBy
+        enabled: true
+      properties:
+        enabled:
+          description: Set to true if you want to specify notification cooldown periods
+            for the authentication method. Set to false if you don't want notification
+            cooldown periods for this authentication method.
+          type: boolean
+        periods:
+          description: |
+            Use the periods array to specify the amount of time the user has to wait before requesting another notification such as another OTP. The array should contain three objects: the time to wait before the first retry, the time to wait before the second retry, and the time to wait before any subsequent retries.
+          items:
+            $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod_periods_inner'
+          type: array
+        groupBy:
+          description: "Since bad actors may try to target multiple users at a single\
+            \ email address or phone number, by default the cooldown settings (both\
+            \ waiting period and maximum retries) are applied to the email address\
+            \ or phone number. If you want the settings to be applied at the single-user\
+            \ level for the address/number, include the groupBy parameter in the request\
+            \ and set it to USER_ID."
+          type: string
+        resendLimit:
+          description: "The maximum number of requests that a user can send to receive\
+            \ another notification, such as another OTP, before they are blocked for\
+            \ 30 minutes."
+          type: integer
+      required:
+      - enabled
       type: object
     NotificationsSettings:
       example:
@@ -43448,17 +44585,17 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
           "0123456789": 7
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-          abcdefghijklmnopqrstuvwxyz: 3
-        populationCount: 0
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+          abcdefghijklmnopqrstuvwxyz: 0
+        populationCount: 8
         _links:
           key:
             href: https://openapi-generator.tech
         length:
-          min: 11
-          max: 6
+          min: 24
+          max: 2
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -43466,7 +44603,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 7
+        minComplexity: 0
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -43477,11 +44614,11 @@ components:
           durationSeconds: 1
           failureCount: 1
         bypassPolicy: false
-        minUniqueCharacters: 6
+        minUniqueCharacters: 4
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 5
+        maxRepeatedCharacters: 3
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -43630,18 +44767,24 @@ components:
       type: object
     Population:
       example:
-        createdAt: createdAt
-        default: true
-        environment:
-          id: id
+        preferredLanguage: preferredLanguage
         passwordPolicy:
           id: id
-        userCount: 4
         _links:
           key:
             href: https://openapi-generator.tech
-        name: name
         description: description
+        createdAt: createdAt
+        alternativeIdentifiers:
+        - alternativeIdentifiers
+        - alternativeIdentifiers
+        default: true
+        environment:
+          id: id
+        userCount: 7
+        name: name
+        theme:
+          id: id
         id: id
         updatedAt: updatedAt
       properties:
@@ -43650,6 +44793,12 @@ components:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
+        alternativeIdentifiers:
+          description: Alternative identifiers that can be used to search for populations
+            besides `name`.
+          items:
+            type: string
+          type: array
         createdAt:
           description: The time the resource was created.
           readOnly: true
@@ -43674,6 +44823,10 @@ components:
           description: "A string that specifies the population name, which must be\
             \ provided and must be unique within an environment."
           type: string
+        preferredLanguage:
+          description: "The language locale for the population. If absent, the environment\
+            \ default is used."
+          type: string
         passwordPolicy:
           $ref: '#/components/schemas/Population_passwordPolicy'
         updatedAt:
@@ -43684,6 +44837,8 @@ components:
           description: The number of users that belong to the population
           readOnly: true
           type: integer
+        theme:
+          $ref: '#/components/schemas/Population_theme'
       required:
       - name
       type: object
@@ -44312,6 +45467,40 @@ components:
       required:
       - SCIM_URL
       type: object
+    RateLimitConfiguration:
+      description: |
+        Rate Limit Configuration object
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: null
+        value: value
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: The UUID of the rate limit configuration.
+          readOnly: true
+          type: string
+        createdAt:
+          description: The date and time the rate limit configuration was created.
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The date and time the rate limit configuration was updated.
+          format: date-time
+          readOnly: true
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumRateLimitConfigurationType'
+        value:
+          description: "The IP address (v4 or v6), or a CIDR range, for the IP address\
+            \ or addresses to be excluded."
+          type: string
+      required:
+      - type
+      - value
+      type: object
     RecaptchaConfiguration:
       example:
         environment:
@@ -44350,6 +45539,7 @@ components:
         applicationPermissionsSettings:
           claimEnabled: true
         audience: audience
+        clientId: clientId
         _links:
           key:
             href: https://openapi-generator.tech
@@ -44362,6 +45552,7 @@ components:
           id: id
         accessTokenValiditySeconds: 0
         name: name
+        clientSecret: clientSecret
         id: id
         introspectEndpointAuthMethod: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -44383,6 +45574,28 @@ components:
           description: "A string that specifies a URL without a fragment or `@ObjectName`\
             \ and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`).\
             \ If a URL is not specified, the resource name is used."
+          type: string
+        clientId:
+          description: "(Required when `clientSecret` is specified.) Supported only\
+            \ for the `POST` operation. To modify the value of this field, the environment\
+            \ must be enabled with the feature flag to allow importing resources with\
+            \ administrator defined client ID and client secret values. This is the\
+            \ unique client ID of an external resource that is being migrated to PingOne.\
+            \ The ID must be a minimum of 8 alpha-numeric characters, and must be\
+            \ globally unique in PingOne."
+          minLength: 8
+          type: string
+        clientSecret:
+          description: "(Required when clientId is specified.) Supported only for\
+            \ the POST operation. To modify the value of this field, the environment\
+            \ must be enabled with the feature flag to allow importing resources with\
+            \ administrator defined client ID and client secret values. This is the\
+            \ client secret associated with clientId for an external resource that\
+            \ is being migrated to PingOne. This must be a minimum of 8 alpha-numeric\
+            \ characters."
+          format: password
+          minLength: 8
+          readOnly: true
           type: string
         createdAt:
           description: The time the resource was created.
@@ -45960,7 +47173,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 7
+          secondsUntilUnlock: 3
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -46192,7 +47405,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 7
+        secondsUntilUnlock: 3
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -46353,15 +47566,31 @@ components:
       required:
       - href
       type: object
-    AdministratorSecurity_policy:
+    AdministratorSecurity_allowedMethods:
+      description: "Indicates the methods to enable or disable for admin sign-on.\
+        \ Required properties are `TOTP` (temporary one-time password), `FIDO2`, or\
+        \ `EMAIL`."
       example:
-        id: id
+        TOTP: TOTP
+        FIDO2: FIDO2
+        EMAIL: EMAIL
       properties:
-        id:
-          description: The admin sign-on policy ID.
-          readOnly: true
+        EMAIL:
+          description: "Indicates whether to enable email for sign-on. Must be set\
+            \ to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`."
           type: string
-      readOnly: true
+        FIDO2:
+          description: "Indicates whether to enable FIDO2 for sign-on. Must be set\
+            \ to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`."
+          type: string
+        TOTP:
+          description: "Indicates whether to enable TOTP for sign-on. Must be set\
+            \ to either `{\\\"enabled\\\":true}` or `{\\\"enabled\\\":false}`."
+          type: string
+      required:
+      - EMAIL
+      - FIDO2
+      - TOTP
       type: object
     AdministratorSecurity_provider:
       example:
@@ -46549,6 +47778,35 @@ components:
           type: array
       required:
       - certificates
+      type: object
+      example: null
+    ApplicationSAML_allOf_virtualServerIdSettings_virtualServerIds:
+      properties:
+        vsId:
+          description: This must be a valid SAML entity ID.
+          type: string
+        default:
+          description: Indicates whether the virtual server identified by the associated
+            `vsId` is to be used as the default virtual server.
+          type: boolean
+      required:
+      - vsId
+      type: object
+      example: null
+    ApplicationSAML_allOf_virtualServerIdSettings:
+      description: Contains the virtual server ID or IDs to be used.
+      properties:
+        enabled:
+          default: false
+          description: Indicates whether the virtual server ID or IDs specified are
+            to be used. Defaults to `false`.
+          type: boolean
+        virtualServerIds:
+          description: Required if `enabled` is `true`. Contains the list of virtual
+            ID or IDs to be used.
+          items:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_virtualServerIdSettings_virtualServerIds'
+          type: array
       type: object
       example: null
     ApplicationOIDC_allOf_mobile_passcodeRefreshDuration:
@@ -47546,19 +48804,30 @@ components:
           description: description
           id: id
           key: key
+        translations:
+        - translatedText: translatedText
+          referenceText: referenceText
+          shortKey: shortKey
+          id: id
+          key: key
+        - translatedText: translatedText
+          referenceText: referenceText
+          shortKey: shortKey
+          id: id
+          key: key
         passwordPolicies:
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
             "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-            abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 0
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+            abcdefghijklmnopqrstuvwxyz: 0
+          populationCount: 8
           _links:
             key:
               href: https://openapi-generator.tech
           length:
-            min: 11
-            max: 6
+            min: 24
+            max: 2
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -47566,7 +48835,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 7
+          minComplexity: 0
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -47577,25 +48846,25 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 6
+          minUniqueCharacters: 4
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 5
+          maxRepeatedCharacters: 3
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
             "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-            abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 0
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+            abcdefghijklmnopqrstuvwxyz: 0
+          populationCount: 8
           _links:
             key:
               href: https://openapi-generator.tech
           length:
-            min: 11
-            max: 6
+            min: 24
+            max: 2
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -47603,7 +48872,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 7
+          minComplexity: 0
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -47614,11 +48883,11 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 6
+          minUniqueCharacters: 4
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 5
+          maxRepeatedCharacters: 3
           minAgeDays: 1
           updatedAt: updatedAt
         revisions:
@@ -47769,17 +49038,19 @@ components:
         notificationsPolicies:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
+          environment:
+            id: id
           quotas:
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
@@ -47788,7 +49059,6 @@ components:
             key:
               href: https://openapi-generator.tech
           name: name
-          id: id
           countryLimit:
             countries:
             - countries
@@ -47797,20 +49067,80 @@ components:
             deliveryMethods:
             - null
             - null
+          id: id
+          providerConfiguration:
+            conditions:
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+          cooldownConfiguration:
+            voice:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            whatsApp:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            sms:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            email:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
+          environment:
+            id: id
           quotas:
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 6
-            unclaimed: 9
-            claimed: 8
+          - total: 9
+            unclaimed: 3
+            claimed: 6
             type: null
             deliveryMethods:
             - null
@@ -47819,7 +49149,6 @@ components:
             key:
               href: https://openapi-generator.tech
           name: name
-          id: id
           countryLimit:
             countries:
             - countries
@@ -47828,6 +49157,64 @@ components:
             deliveryMethods:
             - null
             - null
+          id: id
+          providerConfiguration:
+            conditions:
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+            - countries:
+              - countries
+              - countries
+              deliveryMethods:
+              - null
+              - null
+              fallbackChain:
+              - id: id
+              - id: id
+          cooldownConfiguration:
+            voice:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            whatsApp:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            sms:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
+            email:
+              resendLimit: 8
+              periods:
+              - duration: 404
+                timeUnit: null
+              - duration: 404
+                timeUnit: null
+              groupBy: groupBy
+              enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         languages:
         - null
@@ -48016,7 +49403,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 3
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -48087,7 +49474,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 3
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -48349,6 +49736,17 @@ components:
           status: null
           subjectDN: subjectDN
           usageType: null
+        rateLimitIpConfigs:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          value: value
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          value: value
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         contents:
         - null
         - null
@@ -48718,32 +50116,44 @@ components:
           - null
           - null
         populations:
-        - createdAt: createdAt
-          default: true
-          environment:
-            id: id
+        - preferredLanguage: preferredLanguage
           passwordPolicy:
             id: id
-          userCount: 4
           _links:
             key:
               href: https://openapi-generator.tech
-          name: name
           description: description
+          createdAt: createdAt
+          alternativeIdentifiers:
+          - alternativeIdentifiers
+          - alternativeIdentifiers
+          default: true
+          environment:
+            id: id
+          userCount: 7
+          name: name
+          theme:
+            id: id
           id: id
           updatedAt: updatedAt
-        - createdAt: createdAt
-          default: true
-          environment:
-            id: id
+        - preferredLanguage: preferredLanguage
           passwordPolicy:
             id: id
-          userCount: 4
           _links:
             key:
               href: https://openapi-generator.tech
-          name: name
           description: description
+          createdAt: createdAt
+          alternativeIdentifiers:
+          - alternativeIdentifiers
+          - alternativeIdentifiers
+          default: true
+          environment:
+            id: id
+          userCount: 7
+          name: name
+          theme:
+            id: id
           id: id
           updatedAt: updatedAt
         forms:
@@ -48970,6 +50380,10 @@ components:
           items:
             $ref: '#/components/schemas/Population'
           type: array
+        rateLimitIpConfigs:
+          items:
+            $ref: '#/components/schemas/RateLimitConfiguration'
+          type: array
         resources:
           items:
             $ref: '#/components/schemas/EntityArray__embedded_resources_inner'
@@ -49001,6 +50415,10 @@ components:
         themes:
           items:
             $ref: '#/components/schemas/BrandingTheme'
+          type: array
+        translations:
+          items:
+            $ref: '#/components/schemas/LocaleTranslation'
           type: array
         trustedEmails:
           items:
@@ -50026,6 +51444,62 @@ components:
           type: boolean
       readOnly: true
       type: object
+    NotificationsPolicy_cooldownConfiguration:
+      description: Include the cooldownConfiguration object in the request if you
+        want to specify a period of time that users must wait before requesting an
+        additional notification such as an additional OTP.
+      example:
+        voice:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+        whatsApp:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+        sms:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+        email:
+          resendLimit: 8
+          periods:
+          - duration: 404
+            timeUnit: null
+          - duration: 404
+            timeUnit: null
+          groupBy: groupBy
+          enabled: true
+      properties:
+        email:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+        sms:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+        voice:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+        whatsApp:
+          $ref: '#/components/schemas/NotificationsPolicyCooldownConfigurationMethod'
+      required:
+      - email
+      - sms
+      - voice
+      - whatsApp
+      type: object
     NotificationsPolicy_countryLimit:
       description: You can use the `countryLimit` object to limit the countries where
         you can send SMS and voice notifications.
@@ -50058,11 +51532,92 @@ components:
       - countries
       - type
       type: object
+    NotificationsPolicy_providerConfiguration_conditions_inner_fallbackChain_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: The ID of one of the defined custom providers. This is the
+            ID that is returned when you create the provider using the phoneDeliverySettings
+            endpoint or when you run the GET request with that endpoint to retrieve
+            the details of all the providers.
+          type: string
+      required:
+      - id
+      type: object
+    NotificationsPolicy_providerConfiguration_conditions_inner:
+      example:
+        countries:
+        - countries
+        - countries
+        deliveryMethods:
+        - null
+        - null
+        fallbackChain:
+        - id: id
+        - id: id
+      properties:
+        deliveryMethods:
+          description: "The authentication methods that the fallback order should\
+            \ be used for. The array can contain VOICE, SMS, or both."
+          items:
+            $ref: '#/components/schemas/EnumNotificationsPolicyProviderConfigurationConditionsDeliveryMethods'
+          type: array
+        countries:
+          description: The countries for which the fallback order should be used.
+            Use the two-letter country codes from ISO 3166-1.
+          items:
+            pattern: ^(A(D|E|F|G|I|L|M|N|O|R|S|T|Q|U|W|X|Z)|B(A|B|D|E|F|G|H|I|J|L|M|N|O|R|S|T|V|W|Y|Z)|C(A|C|D|F|G|H|I|K|L|M|N|O|R|U|V|X|Y|Z)|D(E|J|K|M|O|Z)|E(C|E|G|H|R|S|T)|F(I|J|K|M|O|R)|G(A|B|D|E|F|G|H|I|L|M|N|P|Q|R|S|T|U|W|Y)|H(K|M|N|R|T|U)|I(D|E|Q|L|M|N|O|R|S|T)|J(E|M|O|P)|K(E|G|H|I|M|N|P|R|W|Y|Z)|L(A|B|C|I|K|R|S|T|U|V|Y)|M(A|C|D|E|F|G|H|K|L|M|N|O|Q|P|R|S|T|U|V|W|X|Y|Z)|N(A|C|E|F|G|I|L|O|P|R|U|Z)|OM|P(A|E|F|G|H|K|L|M|N|R|S|T|W|Y)|QA|R(E|O|S|U|W)|S(A|B|C|D|E|G|H|I|J|K|L|M|N|O|R|T|V|Y|Z)|T(C|D|F|G|H|J|K|L|M|N|O|R|T|V|W|Z)|U(A|G|M|S|Y|Z)|V(A|C|E|G|I|N|U)|W(F|S)|Y(E|T)|Z(A|M|W))$
+            type: string
+          type: array
+        fallbackChain:
+          description: "An array containing the IDs of the defined custom providers,\
+            \ in the order that they should be used if available."
+          items:
+            $ref: '#/components/schemas/NotificationsPolicy_providerConfiguration_conditions_inner_fallbackChain_inner'
+          type: array
+      type: object
+    NotificationsPolicy_providerConfiguration:
+      description: "If you have defined more than one custom provider, you can use\
+        \ the providerConfiguration object to specify the provider preference to use\
+        \ for different countries and for the different methods (SMS and Voice)."
+      example:
+        conditions:
+        - countries:
+          - countries
+          - countries
+          deliveryMethods:
+          - null
+          - null
+          fallbackChain:
+          - id: id
+          - id: id
+        - countries:
+          - countries
+          - countries
+          deliveryMethods:
+          - null
+          - null
+          fallbackChain:
+          - id: id
+          - id: id
+      properties:
+        conditions:
+          description: "Each element in the conditions array represents the provider\
+            \ fallback order to use for a specific group of countries for the specified\
+            \ methods (SMS and/or Voice). Note that in addition to any country-specific\
+            \ orders specified, the array must contain a fallback order without the\
+            \ countries array in the object. This order is used for all countries\
+            \ that were not specified in one of the other fallback orders defined."
+          items:
+            $ref: '#/components/schemas/NotificationsPolicy_providerConfiguration_conditions_inner'
+          type: array
+      type: object
     NotificationsPolicy_quotas_inner:
       example:
-        total: 6
-        unclaimed: 9
-        claimed: 8
+        total: 9
+        unclaimed: 3
+        claimed: 6
         type: null
         deliveryMethods:
         - null
@@ -50093,6 +51648,23 @@ components:
       required:
       - deliveryMethods
       - type
+      type: object
+    NotificationsPolicyCooldownConfigurationMethod_periods_inner:
+      example:
+        duration: 404
+        timeUnit: null
+      properties:
+        duration:
+          description: "Used in conjunction with timeUnit to specify the waiting period.\
+            \ Minimum is ten seconds, maximum is ten minutes."
+          maximum: 600
+          minimum: 10
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumNotificationsPolicyCooldownConfigurationMethodPeriodTimeUnit'
+      required:
+      - duration
+      - timeUnit
       type: object
     NotificationsSettings_restrictions_smsVoiceQuota:
       example:
@@ -50357,8 +51929,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 11
-        max: 6
+        min: 24
+        max: 2
       properties:
         max:
           default: 255
@@ -50400,10 +51972,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
         "0123456789": 7
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
-        abcdefghijklmnopqrstuvwxyz: 3
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
+        abcdefghijklmnopqrstuvwxyz: 0
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
@@ -50435,6 +52007,16 @@ components:
           type: string
       required:
       - id
+      type: object
+    Population_theme:
+      description: The object reference to the theme resource.
+      example:
+        id: id
+      properties:
+        id:
+          description: "The ID of the theme to use for the population. If absent,\
+            \ the environment's default is used."
+          type: string
       type: object
     PropagationStore_image:
       example:

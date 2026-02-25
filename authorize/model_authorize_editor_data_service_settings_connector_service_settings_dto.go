@@ -19,14 +19,14 @@ var _ MappedNullable = &AuthorizeEditorDataServiceSettingsConnectorServiceSettin
 
 // AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO struct for AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO
 type AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO struct {
-	MaximumConcurrentRequests *int32 `json:"maximumConcurrentRequests,omitempty"`
-	MaximumRequestsPerSecond *float64 `json:"maximumRequestsPerSecond,omitempty"`
-	TimeoutMilliseconds *int32 `json:"timeoutMilliseconds,omitempty"`
-	Channel EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel `json:"channel"`
-	Code EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode `json:"code"`
-	Capability string `json:"capability"`
-	SchemaVersion *int32 `json:"schemaVersion,omitempty"`
-	InputMappings []AuthorizeEditorDataInputMappingDTO `json:"inputMappings"`
+	MaximumConcurrentRequests *int32                                                                   `json:"maximumConcurrentRequests,omitempty"`
+	MaximumRequestsPerSecond  *float64                                                                 `json:"maximumRequestsPerSecond,omitempty"`
+	TimeoutMilliseconds       *int32                                                                   `json:"timeoutMilliseconds,omitempty"`
+	Channel                   EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOChannel `json:"channel"`
+	Code                      EnumAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTOCode    `json:"code"`
+	Capability                string                                                                   `json:"capability"`
+	SchemaVersion             *int32                                                                   `json:"schemaVersion,omitempty"`
+	InputMappings             []AuthorizeEditorDataInputMappingDTO                                     `json:"inputMappings"`
 }
 
 // NewAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO instantiates a new AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO object
@@ -275,7 +275,7 @@ func (o *AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) SetInput
 }
 
 func (o AuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,5 +338,3 @@ func (v *NullableAuthorizeEditorDataServiceSettingsConnectorServiceSettingsDTO) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

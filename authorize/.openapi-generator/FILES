@@ -17,6 +17,7 @@ api_authorize_editor_processors.go
 api_authorize_editor_rules.go
 api_authorize_editor_services.go
 api_authorize_editor_statements.go
+api_environments.go
 api_policy_decision_management.go
 configuration.go
 docs/APIServer.md
@@ -214,6 +215,8 @@ docs/EnumAuthorizeEditorDataStatementsStatementDTOAppliesIf.md
 docs/EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo.md
 docs/EnumAuthorizeEditorDataTlsSettingsDTOTlsValidationType.md
 docs/EnumAuthorizeEditorDataValueTypeDTO.md
+docs/Environment.md
+docs/EnvironmentsApi.md
 docs/Filter.md
 docs/LinksHATEOASValue.md
 docs/ObjectApplication.md
@@ -405,6 +408,7 @@ model_enum_authorize_editor_data_statements_statement_dto_applies_if.go
 model_enum_authorize_editor_data_statements_statement_dto_applies_to.go
 model_enum_authorize_editor_data_tls_settings_dto_tls_validation_type.go
 model_enum_authorize_editor_data_value_type_dto.go
+model_environment.go
 model_filter.go
 model_links_hateoas_value.go
 model_object_application.go

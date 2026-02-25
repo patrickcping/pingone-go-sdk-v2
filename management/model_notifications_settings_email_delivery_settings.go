@@ -18,7 +18,7 @@ import (
 // NotificationsSettingsEmailDeliverySettings - struct for NotificationsSettingsEmailDeliverySettings
 type NotificationsSettingsEmailDeliverySettings struct {
 	NotificationsSettingsEmailDeliverySettingsCustom *NotificationsSettingsEmailDeliverySettingsCustom
-	NotificationsSettingsEmailDeliverySettingsSMTP *NotificationsSettingsEmailDeliverySettingsSMTP
+	NotificationsSettingsEmailDeliverySettingsSMTP   *NotificationsSettingsEmailDeliverySettingsSMTP
 }
 
 // NotificationsSettingsEmailDeliverySettingsCustomAsNotificationsSettingsEmailDeliverySettings is a convenience function that returns NotificationsSettingsEmailDeliverySettingsCustom wrapped in NotificationsSettingsEmailDeliverySettings
@@ -34,7 +34,6 @@ func NotificationsSettingsEmailDeliverySettingsSMTPAsNotificationsSettingsEmailD
 		NotificationsSettingsEmailDeliverySettingsSMTP: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *NotificationsSettingsEmailDeliverySettings) UnmarshalJSON(data []byte) error {
@@ -83,7 +82,7 @@ func (src NotificationsSettingsEmailDeliverySettings) MarshalJSON() ([]byte, err
 }
 
 // Get the actual instance
-func (obj *NotificationsSettingsEmailDeliverySettings) GetActualInstance() (interface{}) {
+func (obj *NotificationsSettingsEmailDeliverySettings) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -134,5 +133,3 @@ func (v *NullableNotificationsSettingsEmailDeliverySettings) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

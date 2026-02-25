@@ -20,9 +20,9 @@ type EnumSchemaAttributeSchemaType string
 
 // List of EnumSchemaAttributeSchemaType
 const (
-	ENUMSCHEMAATTRIBUTESCHEMATYPE_CORE EnumSchemaAttributeSchemaType = "CORE"
+	ENUMSCHEMAATTRIBUTESCHEMATYPE_CORE     EnumSchemaAttributeSchemaType = "CORE"
 	ENUMSCHEMAATTRIBUTESCHEMATYPE_STANDARD EnumSchemaAttributeSchemaType = "STANDARD"
-	ENUMSCHEMAATTRIBUTESCHEMATYPE_CUSTOM EnumSchemaAttributeSchemaType = "CUSTOM"
+	ENUMSCHEMAATTRIBUTESCHEMATYPE_CUSTOM   EnumSchemaAttributeSchemaType = "CUSTOM"
 )
 
 // All allowed values of EnumSchemaAttributeSchemaType enum
@@ -111,4 +111,3 @@ func (v *NullableEnumSchemaAttributeSchemaType) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

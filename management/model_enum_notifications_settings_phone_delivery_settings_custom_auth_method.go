@@ -15,12 +15,12 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod The custom provider account's authentication method. Possible values: `BASIC`, `BEARER` 
+// EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`
 type EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_BASIC EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "BASIC"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_BASIC  EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "BASIC"
 	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_BEARER EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "BEARER"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

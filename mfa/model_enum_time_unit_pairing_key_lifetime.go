@@ -21,7 +21,7 @@ type EnumTimeUnitPairingKeyLifetime string
 // List of EnumTimeUnitPairingKeyLifetime
 const (
 	ENUMTIMEUNITPAIRINGKEYLIFETIME_MINUTES EnumTimeUnitPairingKeyLifetime = "MINUTES"
-	ENUMTIMEUNITPAIRINGKEYLIFETIME_HOURS EnumTimeUnitPairingKeyLifetime = "HOURS"
+	ENUMTIMEUNITPAIRINGKEYLIFETIME_HOURS   EnumTimeUnitPairingKeyLifetime = "HOURS"
 )
 
 // All allowed values of EnumTimeUnitPairingKeyLifetime enum
@@ -109,4 +109,3 @@ func (v *NullableEnumTimeUnitPairingKeyLifetime) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

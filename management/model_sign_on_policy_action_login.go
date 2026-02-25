@@ -19,20 +19,20 @@ var _ MappedNullable = &SignOnPolicyActionLogin{}
 
 // SignOnPolicyActionLogin struct for SignOnPolicyActionLogin
 type SignOnPolicyActionLogin struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue               `json:"_links,omitempty"`
+	Condition   *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
+	Environment *ObjectEnvironment                          `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
-	Priority int32 `json:"priority"`
+	Priority     int32                                 `json:"priority"`
 	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
-	Type EnumSignOnPolicyType `json:"type"`
+	Type         EnumSignOnPolicyType                  `json:"type"`
 	// A boolean that if set to true and if the user's account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented.
-	EnforceLockoutForIdentityProviders *bool `json:"enforceLockoutForIdentityProviders,omitempty"`
-	NewUserProvisioning *SignOnPolicyActionLoginAllOfNewUserProvisioning `json:"newUserProvisioning,omitempty"`
-	Recovery *SignOnPolicyActionLoginAllOfRecovery `json:"recovery,omitempty"`
-	Registration *SignOnPolicyActionLoginAllOfRegistration `json:"registration,omitempty"`
+	EnforceLockoutForIdentityProviders *bool                                            `json:"enforceLockoutForIdentityProviders,omitempty"`
+	NewUserProvisioning                *SignOnPolicyActionLoginAllOfNewUserProvisioning `json:"newUserProvisioning,omitempty"`
+	Recovery                           *SignOnPolicyActionLoginAllOfRecovery            `json:"recovery,omitempty"`
+	Registration                       *SignOnPolicyActionLoginAllOfRegistration        `json:"registration,omitempty"`
 	// An array of strings that specifies the IDs of the identity providers that can be used for the social login sign-on flow.
 	SocialProviders []SignOnPolicyActionLoginAllOfSocialProviders `json:"socialProviders,omitempty"`
 }
@@ -425,7 +425,7 @@ func (o *SignOnPolicyActionLogin) SetSocialProviders(v []SignOnPolicyActionLogin
 }
 
 func (o SignOnPolicyActionLogin) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -504,5 +504,3 @@ func (v *NullableSignOnPolicyActionLogin) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

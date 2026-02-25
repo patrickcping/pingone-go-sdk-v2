@@ -18,7 +18,7 @@ import (
 // AuthorizeEditorDataConditionsComparandRightDTO - struct for AuthorizeEditorDataConditionsComparandRightDTO
 type AuthorizeEditorDataConditionsComparandRightDTO struct {
 	AuthorizeEditorDataConditionsComparandsAttributeComparandDTO *AuthorizeEditorDataConditionsComparandsAttributeComparandDTO
-	AuthorizeEditorDataConditionsComparandsConstantComparandDTO *AuthorizeEditorDataConditionsComparandsConstantComparandDTO
+	AuthorizeEditorDataConditionsComparandsConstantComparandDTO  *AuthorizeEditorDataConditionsComparandsConstantComparandDTO
 }
 
 // AuthorizeEditorDataConditionsComparandsAttributeComparandDTOAsAuthorizeEditorDataConditionsComparandRightDTO is a convenience function that returns AuthorizeEditorDataConditionsComparandsAttributeComparandDTO wrapped in AuthorizeEditorDataConditionsComparandRightDTO
@@ -34,7 +34,6 @@ func AuthorizeEditorDataConditionsComparandsConstantComparandDTOAsAuthorizeEdito
 		AuthorizeEditorDataConditionsComparandsConstantComparandDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataConditionsComparandRightDTO) UnmarshalJSON(data []byte) error {
@@ -93,7 +92,7 @@ func (src AuthorizeEditorDataConditionsComparandRightDTO) MarshalJSON() ([]byte,
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataConditionsComparandRightDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataConditionsComparandRightDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -144,5 +143,3 @@ func (v *NullableAuthorizeEditorDataConditionsComparandRightDTO) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,13 +20,13 @@ type EnumAuthorizeEditorDataProcessorDTOType string
 
 // List of EnumAuthorizeEditorDataProcessorDTOType
 const (
-	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_CHAIN EnumAuthorizeEditorDataProcessorDTOType = "CHAIN"
-	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_COLLECTION_FILTER EnumAuthorizeEditorDataProcessorDTOType = "COLLECTION_FILTER"
+	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_CHAIN                EnumAuthorizeEditorDataProcessorDTOType = "CHAIN"
+	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_COLLECTION_FILTER    EnumAuthorizeEditorDataProcessorDTOType = "COLLECTION_FILTER"
 	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_COLLECTION_TRANSFORM EnumAuthorizeEditorDataProcessorDTOType = "COLLECTION_TRANSFORM"
-	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_JSON_PATH EnumAuthorizeEditorDataProcessorDTOType = "JSON_PATH"
-	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_REFERENCE EnumAuthorizeEditorDataProcessorDTOType = "REFERENCE"
-	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_SPEL EnumAuthorizeEditorDataProcessorDTOType = "SPEL"
-	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_XPATH EnumAuthorizeEditorDataProcessorDTOType = "XPATH"
+	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_JSON_PATH            EnumAuthorizeEditorDataProcessorDTOType = "JSON_PATH"
+	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_REFERENCE            EnumAuthorizeEditorDataProcessorDTOType = "REFERENCE"
+	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_SPEL                 EnumAuthorizeEditorDataProcessorDTOType = "SPEL"
+	ENUMAUTHORIZEEDITORDATAPROCESSORDTOTYPE_XPATH                EnumAuthorizeEditorDataProcessorDTOType = "XPATH"
 )
 
 // All allowed values of EnumAuthorizeEditorDataProcessorDTOType enum
@@ -119,4 +119,3 @@ func (v *NullableEnumAuthorizeEditorDataProcessorDTOType) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

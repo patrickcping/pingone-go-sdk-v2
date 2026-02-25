@@ -21,7 +21,7 @@ type EnumDistanceUnit string
 // List of EnumDistanceUnit
 const (
 	ENUMDISTANCEUNIT_KILOMETERS EnumDistanceUnit = "kilometers"
-	ENUMDISTANCEUNIT_MILES EnumDistanceUnit = "miles"
+	ENUMDISTANCEUNIT_MILES      EnumDistanceUnit = "miles"
 )
 
 // All allowed values of EnumDistanceUnit enum
@@ -109,4 +109,3 @@ func (v *NullableEnumDistanceUnit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

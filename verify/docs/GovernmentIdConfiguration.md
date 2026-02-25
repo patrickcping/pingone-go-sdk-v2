@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Aadhaar** | Pointer to [**GovernmentIdConfigurationAadhaar**](GovernmentIdConfigurationAadhaar.md) |  | [optional] 
 **FailExpiredId** | Pointer to **bool** | Indicates whether verification should fail if the ID is expired. | [optional] 
 **InspectionType** | Pointer to [**EnumInspectionType**](EnumInspectionType.md) |  | [optional] 
 **Provider** | Pointer to [**GovernmentIdConfigurationProvider**](GovernmentIdConfigurationProvider.md) |  | [optional] 
 **Retry** | Pointer to [**ObjectRetry**](ObjectRetry.md) |  | [optional] 
-**Verify** | [**EnumVerify**](EnumVerify.md) |  | 
+**Verify** | [**EnumVerify**](EnumVerify.md) |  | [default to ENUMVERIFY_DISABLED]
+**VerifyAamva** | Pointer to **bool** | Whether [AAMVA DLDV](https://apidocs.pingidentity.com/pingone/platform/v1/api/#us-based-driver-licenses) verification is enabled | [optional] 
 
 ## Methods
 
@@ -28,6 +30,31 @@ will change when the set of required properties is changed
 NewGovernmentIdConfigurationWithDefaults instantiates a new GovernmentIdConfiguration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAadhaar
+
+`func (o *GovernmentIdConfiguration) GetAadhaar() GovernmentIdConfigurationAadhaar`
+
+GetAadhaar returns the Aadhaar field if non-nil, zero value otherwise.
+
+### GetAadhaarOk
+
+`func (o *GovernmentIdConfiguration) GetAadhaarOk() (*GovernmentIdConfigurationAadhaar, bool)`
+
+GetAadhaarOk returns a tuple with the Aadhaar field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAadhaar
+
+`func (o *GovernmentIdConfiguration) SetAadhaar(v GovernmentIdConfigurationAadhaar)`
+
+SetAadhaar sets Aadhaar field to given value.
+
+### HasAadhaar
+
+`func (o *GovernmentIdConfiguration) HasAadhaar() bool`
+
+HasAadhaar returns a boolean if a field has been set.
 
 ### GetFailExpiredId
 
@@ -148,6 +175,31 @@ and a boolean to check if the value has been set.
 
 SetVerify sets Verify field to given value.
 
+
+### GetVerifyAamva
+
+`func (o *GovernmentIdConfiguration) GetVerifyAamva() bool`
+
+GetVerifyAamva returns the VerifyAamva field if non-nil, zero value otherwise.
+
+### GetVerifyAamvaOk
+
+`func (o *GovernmentIdConfiguration) GetVerifyAamvaOk() (*bool, bool)`
+
+GetVerifyAamvaOk returns a tuple with the VerifyAamva field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerifyAamva
+
+`func (o *GovernmentIdConfiguration) SetVerifyAamva(v bool)`
+
+SetVerifyAamva sets VerifyAamva field to given value.
+
+### HasVerifyAamva
+
+`func (o *GovernmentIdConfiguration) HasVerifyAamva() bool`
+
+HasVerifyAamva returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

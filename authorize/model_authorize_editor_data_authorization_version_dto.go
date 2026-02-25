@@ -23,11 +23,11 @@ type AuthorizeEditorDataAuthorizationVersionDTO struct {
 	// HAL embedded resources
 	Embedded map[string]map[string]interface{} `json:"_embedded,omitempty"`
 	// The resource's unique identifier
-	Id *string `json:"id,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
+	Id            *string                              `json:"id,omitempty"`
+	CreatedAt     *string                              `json:"createdAt,omitempty"`
 	ChangeDetails *AuthorizeEditorDataChangeDetailsDTO `json:"changeDetails,omitempty"`
-	Tag *AuthorizeEditorDataTagResponseDTO `json:"tag,omitempty"`
-	Environment *AuthorizeEditorDataEnvironmentDTO `json:"environment,omitempty"`
+	Tag           *AuthorizeEditorDataTagResponseDTO   `json:"tag,omitempty"`
+	Environment   *AuthorizeEditorDataEnvironmentDTO   `json:"environment,omitempty"`
 }
 
 // NewAuthorizeEditorDataAuthorizationVersionDTO instantiates a new AuthorizeEditorDataAuthorizationVersionDTO object
@@ -272,7 +272,7 @@ func (o *AuthorizeEditorDataAuthorizationVersionDTO) SetEnvironment(v AuthorizeE
 }
 
 func (o AuthorizeEditorDataAuthorizationVersionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,5 +340,3 @@ func (v *NullableAuthorizeEditorDataAuthorizationVersionDTO) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

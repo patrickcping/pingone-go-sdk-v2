@@ -459,7 +459,7 @@ func (o *PropagationStoreConfigurationSalesforce) SetUPDATE_USERS(v bool) {
 }
 
 func (o PropagationStoreConfigurationSalesforce) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -532,5 +532,3 @@ func (v *NullablePropagationStoreConfigurationSalesforce) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

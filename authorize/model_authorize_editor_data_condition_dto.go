@@ -17,12 +17,12 @@ import (
 
 // AuthorizeEditorDataConditionDTO - struct for AuthorizeEditorDataConditionDTO
 type AuthorizeEditorDataConditionDTO struct {
-	AuthorizeEditorDataConditionsAndConditionDTO *AuthorizeEditorDataConditionsAndConditionDTO
+	AuthorizeEditorDataConditionsAndConditionDTO        *AuthorizeEditorDataConditionsAndConditionDTO
 	AuthorizeEditorDataConditionsComparisonConditionDTO *AuthorizeEditorDataConditionsComparisonConditionDTO
-	AuthorizeEditorDataConditionsEmptyConditionDTO *AuthorizeEditorDataConditionsEmptyConditionDTO
-	AuthorizeEditorDataConditionsNotConditionDTO *AuthorizeEditorDataConditionsNotConditionDTO
-	AuthorizeEditorDataConditionsOrConditionDTO *AuthorizeEditorDataConditionsOrConditionDTO
-	AuthorizeEditorDataConditionsReferenceConditionDTO *AuthorizeEditorDataConditionsReferenceConditionDTO
+	AuthorizeEditorDataConditionsEmptyConditionDTO      *AuthorizeEditorDataConditionsEmptyConditionDTO
+	AuthorizeEditorDataConditionsNotConditionDTO        *AuthorizeEditorDataConditionsNotConditionDTO
+	AuthorizeEditorDataConditionsOrConditionDTO         *AuthorizeEditorDataConditionsOrConditionDTO
+	AuthorizeEditorDataConditionsReferenceConditionDTO  *AuthorizeEditorDataConditionsReferenceConditionDTO
 }
 
 // AuthorizeEditorDataConditionsAndConditionDTOAsAuthorizeEditorDataConditionDTO is a convenience function that returns AuthorizeEditorDataConditionsAndConditionDTO wrapped in AuthorizeEditorDataConditionDTO
@@ -66,7 +66,6 @@ func AuthorizeEditorDataConditionsReferenceConditionDTOAsAuthorizeEditorDataCond
 		AuthorizeEditorDataConditionsReferenceConditionDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AuthorizeEditorDataConditionDTO) UnmarshalJSON(data []byte) error {
@@ -145,7 +144,7 @@ func (src AuthorizeEditorDataConditionDTO) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *AuthorizeEditorDataConditionDTO) GetActualInstance() (interface{}) {
+func (obj *AuthorizeEditorDataConditionDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -212,5 +211,3 @@ func (v *NullableAuthorizeEditorDataConditionDTO) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

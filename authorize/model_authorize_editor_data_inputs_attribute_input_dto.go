@@ -19,7 +19,7 @@ var _ MappedNullable = &AuthorizeEditorDataInputsAttributeInputDTO{}
 
 // AuthorizeEditorDataInputsAttributeInputDTO struct for AuthorizeEditorDataInputsAttributeInputDTO
 type AuthorizeEditorDataInputsAttributeInputDTO struct {
-	Type EnumAuthorizeEditorDataInputDTOType `json:"type"`
+	Type      EnumAuthorizeEditorDataInputDTOType   `json:"type"`
 	Attribute AuthorizeEditorDataReferenceObjectDTO `json:"attribute"`
 }
 
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataInputsAttributeInputDTO) SetAttribute(v AuthorizeEdi
 }
 
 func (o AuthorizeEditorDataInputsAttributeInputDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataInputsAttributeInputDTO) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

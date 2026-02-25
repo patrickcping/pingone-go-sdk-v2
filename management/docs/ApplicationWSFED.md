@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
-**DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
+**DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **Kerberos** | Pointer to [**ApplicationWSFEDAllOfKerberos**](ApplicationWSFEDAllOfKerberos.md) |  | [optional] 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
 **SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
+**SubjectNameIdentifierFormat** | Pointer to [**EnumApplicationWSFEDSubjectNameIdentifierFormat**](EnumApplicationWSFEDSubjectNameIdentifierFormat.md) |  | [optional] 
 
 ## Methods
 
@@ -400,26 +401,6 @@ SetAudienceRestriction sets AudienceRestriction field to given value.
 
 HasAudienceRestriction returns a boolean if a field has been set.
 
-### GetDomainName
-
-`func (o *ApplicationWSFED) GetDomainName() string`
-
-GetDomainName returns the DomainName field if non-nil, zero value otherwise.
-
-### GetDomainNameOk
-
-`func (o *ApplicationWSFED) GetDomainNameOk() (*string, bool)`
-
-GetDomainNameOk returns a tuple with the DomainName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDomainName
-
-`func (o *ApplicationWSFED) SetDomainName(v string)`
-
-SetDomainName sets DomainName field to given value.
-
-
 ### GetCorsSettings
 
 `func (o *ApplicationWSFED) GetCorsSettings() ApplicationCorsSettings`
@@ -444,6 +425,26 @@ SetCorsSettings sets CorsSettings field to given value.
 `func (o *ApplicationWSFED) HasCorsSettings() bool`
 
 HasCorsSettings returns a boolean if a field has been set.
+
+### GetDomainName
+
+`func (o *ApplicationWSFED) GetDomainName() string`
+
+GetDomainName returns the DomainName field if non-nil, zero value otherwise.
+
+### GetDomainNameOk
+
+`func (o *ApplicationWSFED) GetDomainNameOk() (*string, bool)`
+
+GetDomainNameOk returns a tuple with the DomainName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainName
+
+`func (o *ApplicationWSFED) SetDomainName(v string)`
+
+SetDomainName sets DomainName field to given value.
+
 
 ### GetIdpSigning
 
@@ -534,6 +535,31 @@ SetSloEndpoint sets SloEndpoint field to given value.
 `func (o *ApplicationWSFED) HasSloEndpoint() bool`
 
 HasSloEndpoint returns a boolean if a field has been set.
+
+### GetSubjectNameIdentifierFormat
+
+`func (o *ApplicationWSFED) GetSubjectNameIdentifierFormat() EnumApplicationWSFEDSubjectNameIdentifierFormat`
+
+GetSubjectNameIdentifierFormat returns the SubjectNameIdentifierFormat field if non-nil, zero value otherwise.
+
+### GetSubjectNameIdentifierFormatOk
+
+`func (o *ApplicationWSFED) GetSubjectNameIdentifierFormatOk() (*EnumApplicationWSFEDSubjectNameIdentifierFormat, bool)`
+
+GetSubjectNameIdentifierFormatOk returns a tuple with the SubjectNameIdentifierFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubjectNameIdentifierFormat
+
+`func (o *ApplicationWSFED) SetSubjectNameIdentifierFormat(v EnumApplicationWSFEDSubjectNameIdentifierFormat)`
+
+SetSubjectNameIdentifierFormat sets SubjectNameIdentifierFormat field to given value.
+
+### HasSubjectNameIdentifierFormat
+
+`func (o *ApplicationWSFED) HasSubjectNameIdentifierFormat() bool`
+
+HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

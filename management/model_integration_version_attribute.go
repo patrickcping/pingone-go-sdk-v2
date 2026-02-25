@@ -20,14 +20,14 @@ var _ MappedNullable = &IntegrationVersionAttribute{}
 // IntegrationVersionAttribute struct for IntegrationVersionAttribute
 type IntegrationVersionAttribute struct {
 	// Auto-generated ID of this attribute.
-	Id *string `json:"id,omitempty"`
+	Id          *string                                 `json:"id,omitempty"`
 	Integration *IntegrationVersionAttributeIntegration `json:"integration,omitempty"`
 	// Attribute name the application expects. Unique within the integration version and in the form `urn:oasis:names:tc:SAML:2.0:attrname-format:uri`.
 	Name *string `json:"name,omitempty"`
 	// Whether or not the attribute is required. If true, the value property must be set with a non-empty value. Default is false.
 	Required *bool `json:"required,omitempty"`
 	// A JSON schema describing the current attribute mapping.
-	Schema string `json:"schema"`
+	Schema  string                              `json:"schema"`
 	Version *IntegrationVersionAttributeVersion `json:"version,omitempty"`
 }
 
@@ -234,7 +234,7 @@ func (o *IntegrationVersionAttribute) SetVersion(v IntegrationVersionAttributeVe
 }
 
 func (o IntegrationVersionAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -297,5 +297,3 @@ func (v *NullableIntegrationVersionAttribute) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

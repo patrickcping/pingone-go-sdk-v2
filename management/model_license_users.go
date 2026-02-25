@@ -32,7 +32,7 @@ type LicenseUsers struct {
 	// A read-only boolean that specifies whether the license supports using password policies in the specified environment.
 	AllowPasswordPolicy *bool `json:"allowPasswordPolicy,omitempty"`
 	// A read-only boolean that specifies whether the license supports using provisioning capabilities in the specified environment.
-	AllowProvisioning *bool `json:"allowProvisioning,omitempty"`
+	AllowProvisioning        *bool `json:"allowProvisioning,omitempty"`
 	AllowInboundProvisioning *bool `json:"allowInboundProvisioning,omitempty"`
 	// A read-only boolean that specifies whether the license supports role assignments in the specified environment.
 	AllowRoleAssignment *bool `json:"allowRoleAssignment,omitempty"`
@@ -43,7 +43,7 @@ type LicenseUsers struct {
 	// A read-only boolean that specifies whether the license allows PingOne support.
 	EntitledToSupport *bool `json:"entitledToSupport,omitempty"`
 	// An read-only integer that specifies the maximum number of users allowed per environment.
-	Max *int32 `json:"max,omitempty"`
+	Max          *int32 `json:"max,omitempty"`
 	HardLimitMax *int32 `json:"hardLimitMax,omitempty"`
 	// A read-only integer that specifies a soft limit on the number of active identities across all environments on the license per year. This property is not visible if a value is not provided at the time the license is created.
 	AnnualActiveIncluded *int32 `json:"annualActiveIncluded,omitempty"`
@@ -581,7 +581,7 @@ func (o *LicenseUsers) SetMonthlyActiveIncluded(v int32) {
 }
 
 func (o LicenseUsers) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -676,5 +676,3 @@ func (v *NullableLicenseUsers) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

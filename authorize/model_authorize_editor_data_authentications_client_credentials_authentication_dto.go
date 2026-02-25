@@ -19,11 +19,11 @@ var _ MappedNullable = &AuthorizeEditorDataAuthenticationsClientCredentialsAuthe
 
 // AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO struct for AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO
 type AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO struct {
-	Type EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
-	TokenEndpoint string `json:"tokenEndpoint"`
-	ClientId string `json:"clientId"`
-	ClientSecret AuthorizeEditorDataReferenceObjectDTO `json:"clientSecret"`
-	Scope string `json:"scope"`
+	Type          EnumAuthorizeEditorDataAuthenticationDTOType `json:"type"`
+	TokenEndpoint string                                       `json:"tokenEndpoint"`
+	ClientId      string                                       `json:"clientId"`
+	ClientSecret  AuthorizeEditorDataReferenceObjectDTO        `json:"clientSecret"`
+	Scope         string                                       `json:"scope"`
 }
 
 // NewAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO instantiates a new AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO object
@@ -169,7 +169,7 @@ func (o *AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) S
 }
 
 func (o AuthorizeEditorDataAuthenticationsClientCredentialsAuthenticationDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -221,5 +221,3 @@ func (v *NullableAuthorizeEditorDataAuthenticationsClientCredentialsAuthenticati
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

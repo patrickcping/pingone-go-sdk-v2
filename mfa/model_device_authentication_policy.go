@@ -20,37 +20,41 @@ var _ MappedNullable = &DeviceAuthenticationPolicy{}
 
 // DeviceAuthenticationPolicy struct for DeviceAuthenticationPolicy
 type DeviceAuthenticationPolicy struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Links       *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Environment *ObjectEnvironment            `json:"environment,omitempty"`
 	// Device authentication policy's UUID.
 	Id *string `json:"id,omitempty"`
 	// Device authentication policy's name.
-	Name string `json:"name"`
-	NewDeviceNotification *EnumMFADevicePolicyNewDeviceNotification `json:"newDeviceNotification,omitempty"`
-	Authentication *DeviceAuthenticationPolicyAuthentication `json:"authentication,omitempty"`
-	Sms DeviceAuthenticationPolicyOfflineDevice `json:"sms"`
-	Voice DeviceAuthenticationPolicyOfflineDevice `json:"voice"`
-	Email DeviceAuthenticationPolicyOfflineDevice `json:"email"`
-	Fido2 *DeviceAuthenticationPolicyFido2 `json:"fido2,omitempty"`
-	Mobile DeviceAuthenticationPolicyMobile `json:"mobile"`
-	Totp DeviceAuthenticationPolicyTotp `json:"totp"`
-	// Deprecated
-	SecurityKey *DeviceAuthenticationPolicyFIDODevice `json:"securityKey,omitempty"`
-	// Deprecated
-	Platform *DeviceAuthenticationPolicyFIDODevice `json:"platform,omitempty"`
+	Name                  string                                          `json:"name"`
+	NewDeviceNotification *EnumMFADevicePolicyNewDeviceNotification       `json:"newDeviceNotification,omitempty"`
+	Authentication        *DeviceAuthenticationPolicyCommonAuthentication `json:"authentication,omitempty"`
+	Sms                   DeviceAuthenticationPolicyOfflineDevice         `json:"sms"`
+	Voice                 DeviceAuthenticationPolicyOfflineDevice         `json:"voice"`
+	Email                 DeviceAuthenticationPolicyOfflineDevice         `json:"email"`
+	Fido2                 *DeviceAuthenticationPolicyCommonFido2          `json:"fido2,omitempty"`
+	Mobile                DeviceAuthenticationPolicyCommonMobile          `json:"mobile"`
+	Totp                  DeviceAuthenticationPolicyCommonTotp            `json:"totp"`
 	// A boolean that specifies whether the policy is the default for the environment.
 	Default bool `json:"default"`
 	// Deprecated
 	ForSignOnPolicy bool `json:"forSignOnPolicy"`
+	// When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set `ignoreUserLock` to `true` if you want PingOne to skip this account lock check.
+	IgnoreUserLock      *bool                                                `json:"ignoreUserLock,omitempty"`
+	NotificationsPolicy *DeviceAuthenticationPolicyCommonNotificationsPolicy `json:"notificationsPolicy,omitempty"`
+	OathToken           *DeviceAuthenticationPolicyOathToken                 `json:"oathToken,omitempty"`
+	RememberMe          *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time                               `json:"updatedAt,omitempty"`
+	Whatsapp  *DeviceAuthenticationPolicyOfflineDevice `json:"whatsapp,omitempty"`
+	Desktop   *DeviceAuthenticationPolicyPingIDDevice  `json:"desktop,omitempty"`
+	Yubikey   *DeviceAuthenticationPolicyPingIDDevice  `json:"yubikey,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicy instantiates a new DeviceAuthenticationPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyMobile, totp DeviceAuthenticationPolicyTotp, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicy {
+func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyCommonMobile, totp DeviceAuthenticationPolicyCommonTotp, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicy {
 	this := DeviceAuthenticationPolicy{}
 	this.Name = name
 	this.Sms = sms
@@ -224,9 +228,9 @@ func (o *DeviceAuthenticationPolicy) SetNewDeviceNotification(v EnumMFADevicePol
 }
 
 // GetAuthentication returns the Authentication field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicy) GetAuthentication() DeviceAuthenticationPolicyAuthentication {
+func (o *DeviceAuthenticationPolicy) GetAuthentication() DeviceAuthenticationPolicyCommonAuthentication {
 	if o == nil || IsNil(o.Authentication) {
-		var ret DeviceAuthenticationPolicyAuthentication
+		var ret DeviceAuthenticationPolicyCommonAuthentication
 		return ret
 	}
 	return *o.Authentication
@@ -234,7 +238,7 @@ func (o *DeviceAuthenticationPolicy) GetAuthentication() DeviceAuthenticationPol
 
 // GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicy) GetAuthenticationOk() (*DeviceAuthenticationPolicyAuthentication, bool) {
+func (o *DeviceAuthenticationPolicy) GetAuthenticationOk() (*DeviceAuthenticationPolicyCommonAuthentication, bool) {
 	if o == nil || IsNil(o.Authentication) {
 		return nil, false
 	}
@@ -250,8 +254,8 @@ func (o *DeviceAuthenticationPolicy) HasAuthentication() bool {
 	return false
 }
 
-// SetAuthentication gets a reference to the given DeviceAuthenticationPolicyAuthentication and assigns it to the Authentication field.
-func (o *DeviceAuthenticationPolicy) SetAuthentication(v DeviceAuthenticationPolicyAuthentication) {
+// SetAuthentication gets a reference to the given DeviceAuthenticationPolicyCommonAuthentication and assigns it to the Authentication field.
+func (o *DeviceAuthenticationPolicy) SetAuthentication(v DeviceAuthenticationPolicyCommonAuthentication) {
 	o.Authentication = &v
 }
 
@@ -328,9 +332,9 @@ func (o *DeviceAuthenticationPolicy) SetEmail(v DeviceAuthenticationPolicyOfflin
 }
 
 // GetFido2 returns the Fido2 field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicy) GetFido2() DeviceAuthenticationPolicyFido2 {
+func (o *DeviceAuthenticationPolicy) GetFido2() DeviceAuthenticationPolicyCommonFido2 {
 	if o == nil || IsNil(o.Fido2) {
-		var ret DeviceAuthenticationPolicyFido2
+		var ret DeviceAuthenticationPolicyCommonFido2
 		return ret
 	}
 	return *o.Fido2
@@ -338,7 +342,7 @@ func (o *DeviceAuthenticationPolicy) GetFido2() DeviceAuthenticationPolicyFido2 
 
 // GetFido2Ok returns a tuple with the Fido2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicy) GetFido2Ok() (*DeviceAuthenticationPolicyFido2, bool) {
+func (o *DeviceAuthenticationPolicy) GetFido2Ok() (*DeviceAuthenticationPolicyCommonFido2, bool) {
 	if o == nil || IsNil(o.Fido2) {
 		return nil, false
 	}
@@ -354,15 +358,15 @@ func (o *DeviceAuthenticationPolicy) HasFido2() bool {
 	return false
 }
 
-// SetFido2 gets a reference to the given DeviceAuthenticationPolicyFido2 and assigns it to the Fido2 field.
-func (o *DeviceAuthenticationPolicy) SetFido2(v DeviceAuthenticationPolicyFido2) {
+// SetFido2 gets a reference to the given DeviceAuthenticationPolicyCommonFido2 and assigns it to the Fido2 field.
+func (o *DeviceAuthenticationPolicy) SetFido2(v DeviceAuthenticationPolicyCommonFido2) {
 	o.Fido2 = &v
 }
 
 // GetMobile returns the Mobile field value
-func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyMobile {
+func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyCommonMobile {
 	if o == nil {
-		var ret DeviceAuthenticationPolicyMobile
+		var ret DeviceAuthenticationPolicyCommonMobile
 		return ret
 	}
 
@@ -371,7 +375,7 @@ func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyMobil
 
 // GetMobileOk returns a tuple with the Mobile field value
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicy) GetMobileOk() (*DeviceAuthenticationPolicyMobile, bool) {
+func (o *DeviceAuthenticationPolicy) GetMobileOk() (*DeviceAuthenticationPolicyCommonMobile, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -379,14 +383,14 @@ func (o *DeviceAuthenticationPolicy) GetMobileOk() (*DeviceAuthenticationPolicyM
 }
 
 // SetMobile sets field value
-func (o *DeviceAuthenticationPolicy) SetMobile(v DeviceAuthenticationPolicyMobile) {
+func (o *DeviceAuthenticationPolicy) SetMobile(v DeviceAuthenticationPolicyCommonMobile) {
 	o.Mobile = v
 }
 
 // GetTotp returns the Totp field value
-func (o *DeviceAuthenticationPolicy) GetTotp() DeviceAuthenticationPolicyTotp {
+func (o *DeviceAuthenticationPolicy) GetTotp() DeviceAuthenticationPolicyCommonTotp {
 	if o == nil {
-		var ret DeviceAuthenticationPolicyTotp
+		var ret DeviceAuthenticationPolicyCommonTotp
 		return ret
 	}
 
@@ -395,7 +399,7 @@ func (o *DeviceAuthenticationPolicy) GetTotp() DeviceAuthenticationPolicyTotp {
 
 // GetTotpOk returns a tuple with the Totp field value
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicy) GetTotpOk() (*DeviceAuthenticationPolicyTotp, bool) {
+func (o *DeviceAuthenticationPolicy) GetTotpOk() (*DeviceAuthenticationPolicyCommonTotp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -403,78 +407,8 @@ func (o *DeviceAuthenticationPolicy) GetTotpOk() (*DeviceAuthenticationPolicyTot
 }
 
 // SetTotp sets field value
-func (o *DeviceAuthenticationPolicy) SetTotp(v DeviceAuthenticationPolicyTotp) {
+func (o *DeviceAuthenticationPolicy) SetTotp(v DeviceAuthenticationPolicyCommonTotp) {
 	o.Totp = v
-}
-
-// GetSecurityKey returns the SecurityKey field value if set, zero value otherwise.
-// Deprecated
-func (o *DeviceAuthenticationPolicy) GetSecurityKey() DeviceAuthenticationPolicyFIDODevice {
-	if o == nil || IsNil(o.SecurityKey) {
-		var ret DeviceAuthenticationPolicyFIDODevice
-		return ret
-	}
-	return *o.SecurityKey
-}
-
-// GetSecurityKeyOk returns a tuple with the SecurityKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *DeviceAuthenticationPolicy) GetSecurityKeyOk() (*DeviceAuthenticationPolicyFIDODevice, bool) {
-	if o == nil || IsNil(o.SecurityKey) {
-		return nil, false
-	}
-	return o.SecurityKey, true
-}
-
-// HasSecurityKey returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicy) HasSecurityKey() bool {
-	if o != nil && !IsNil(o.SecurityKey) {
-		return true
-	}
-
-	return false
-}
-
-// SetSecurityKey gets a reference to the given DeviceAuthenticationPolicyFIDODevice and assigns it to the SecurityKey field.
-// Deprecated
-func (o *DeviceAuthenticationPolicy) SetSecurityKey(v DeviceAuthenticationPolicyFIDODevice) {
-	o.SecurityKey = &v
-}
-
-// GetPlatform returns the Platform field value if set, zero value otherwise.
-// Deprecated
-func (o *DeviceAuthenticationPolicy) GetPlatform() DeviceAuthenticationPolicyFIDODevice {
-	if o == nil || IsNil(o.Platform) {
-		var ret DeviceAuthenticationPolicyFIDODevice
-		return ret
-	}
-	return *o.Platform
-}
-
-// GetPlatformOk returns a tuple with the Platform field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *DeviceAuthenticationPolicy) GetPlatformOk() (*DeviceAuthenticationPolicyFIDODevice, bool) {
-	if o == nil || IsNil(o.Platform) {
-		return nil, false
-	}
-	return o.Platform, true
-}
-
-// HasPlatform returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicy) HasPlatform() bool {
-	if o != nil && !IsNil(o.Platform) {
-		return true
-	}
-
-	return false
-}
-
-// SetPlatform gets a reference to the given DeviceAuthenticationPolicyFIDODevice and assigns it to the Platform field.
-// Deprecated
-func (o *DeviceAuthenticationPolicy) SetPlatform(v DeviceAuthenticationPolicyFIDODevice) {
-	o.Platform = &v
 }
 
 // GetDefault returns the Default field value
@@ -528,6 +462,134 @@ func (o *DeviceAuthenticationPolicy) SetForSignOnPolicy(v bool) {
 	o.ForSignOnPolicy = v
 }
 
+// GetIgnoreUserLock returns the IgnoreUserLock field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetIgnoreUserLock() bool {
+	if o == nil || IsNil(o.IgnoreUserLock) {
+		var ret bool
+		return ret
+	}
+	return *o.IgnoreUserLock
+}
+
+// GetIgnoreUserLockOk returns a tuple with the IgnoreUserLock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetIgnoreUserLockOk() (*bool, bool) {
+	if o == nil || IsNil(o.IgnoreUserLock) {
+		return nil, false
+	}
+	return o.IgnoreUserLock, true
+}
+
+// HasIgnoreUserLock returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasIgnoreUserLock() bool {
+	if o != nil && !IsNil(o.IgnoreUserLock) {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreUserLock gets a reference to the given bool and assigns it to the IgnoreUserLock field.
+func (o *DeviceAuthenticationPolicy) SetIgnoreUserLock(v bool) {
+	o.IgnoreUserLock = &v
+}
+
+// GetNotificationsPolicy returns the NotificationsPolicy field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetNotificationsPolicy() DeviceAuthenticationPolicyCommonNotificationsPolicy {
+	if o == nil || IsNil(o.NotificationsPolicy) {
+		var ret DeviceAuthenticationPolicyCommonNotificationsPolicy
+		return ret
+	}
+	return *o.NotificationsPolicy
+}
+
+// GetNotificationsPolicyOk returns a tuple with the NotificationsPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetNotificationsPolicyOk() (*DeviceAuthenticationPolicyCommonNotificationsPolicy, bool) {
+	if o == nil || IsNil(o.NotificationsPolicy) {
+		return nil, false
+	}
+	return o.NotificationsPolicy, true
+}
+
+// HasNotificationsPolicy returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasNotificationsPolicy() bool {
+	if o != nil && !IsNil(o.NotificationsPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotificationsPolicy gets a reference to the given DeviceAuthenticationPolicyCommonNotificationsPolicy and assigns it to the NotificationsPolicy field.
+func (o *DeviceAuthenticationPolicy) SetNotificationsPolicy(v DeviceAuthenticationPolicyCommonNotificationsPolicy) {
+	o.NotificationsPolicy = &v
+}
+
+// GetOathToken returns the OathToken field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetOathToken() DeviceAuthenticationPolicyOathToken {
+	if o == nil || IsNil(o.OathToken) {
+		var ret DeviceAuthenticationPolicyOathToken
+		return ret
+	}
+	return *o.OathToken
+}
+
+// GetOathTokenOk returns a tuple with the OathToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetOathTokenOk() (*DeviceAuthenticationPolicyOathToken, bool) {
+	if o == nil || IsNil(o.OathToken) {
+		return nil, false
+	}
+	return o.OathToken, true
+}
+
+// HasOathToken returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasOathToken() bool {
+	if o != nil && !IsNil(o.OathToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetOathToken gets a reference to the given DeviceAuthenticationPolicyOathToken and assigns it to the OathToken field.
+func (o *DeviceAuthenticationPolicy) SetOathToken(v DeviceAuthenticationPolicyOathToken) {
+	o.OathToken = &v
+}
+
+// GetRememberMe returns the RememberMe field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetRememberMe() DeviceAuthenticationPolicyCommonRememberMe {
+	if o == nil || IsNil(o.RememberMe) {
+		var ret DeviceAuthenticationPolicyCommonRememberMe
+		return ret
+	}
+	return *o.RememberMe
+}
+
+// GetRememberMeOk returns a tuple with the RememberMe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetRememberMeOk() (*DeviceAuthenticationPolicyCommonRememberMe, bool) {
+	if o == nil || IsNil(o.RememberMe) {
+		return nil, false
+	}
+	return o.RememberMe, true
+}
+
+// HasRememberMe returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasRememberMe() bool {
+	if o != nil && !IsNil(o.RememberMe) {
+		return true
+	}
+
+	return false
+}
+
+// SetRememberMe gets a reference to the given DeviceAuthenticationPolicyCommonRememberMe and assigns it to the RememberMe field.
+func (o *DeviceAuthenticationPolicy) SetRememberMe(v DeviceAuthenticationPolicyCommonRememberMe) {
+	o.RememberMe = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicy) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -560,8 +622,104 @@ func (o *DeviceAuthenticationPolicy) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetWhatsapp returns the Whatsapp field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetWhatsapp() DeviceAuthenticationPolicyOfflineDevice {
+	if o == nil || IsNil(o.Whatsapp) {
+		var ret DeviceAuthenticationPolicyOfflineDevice
+		return ret
+	}
+	return *o.Whatsapp
+}
+
+// GetWhatsappOk returns a tuple with the Whatsapp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetWhatsappOk() (*DeviceAuthenticationPolicyOfflineDevice, bool) {
+	if o == nil || IsNil(o.Whatsapp) {
+		return nil, false
+	}
+	return o.Whatsapp, true
+}
+
+// HasWhatsapp returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasWhatsapp() bool {
+	if o != nil && !IsNil(o.Whatsapp) {
+		return true
+	}
+
+	return false
+}
+
+// SetWhatsapp gets a reference to the given DeviceAuthenticationPolicyOfflineDevice and assigns it to the Whatsapp field.
+func (o *DeviceAuthenticationPolicy) SetWhatsapp(v DeviceAuthenticationPolicyOfflineDevice) {
+	o.Whatsapp = &v
+}
+
+// GetDesktop returns the Desktop field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetDesktop() DeviceAuthenticationPolicyPingIDDevice {
+	if o == nil || IsNil(o.Desktop) {
+		var ret DeviceAuthenticationPolicyPingIDDevice
+		return ret
+	}
+	return *o.Desktop
+}
+
+// GetDesktopOk returns a tuple with the Desktop field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetDesktopOk() (*DeviceAuthenticationPolicyPingIDDevice, bool) {
+	if o == nil || IsNil(o.Desktop) {
+		return nil, false
+	}
+	return o.Desktop, true
+}
+
+// HasDesktop returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasDesktop() bool {
+	if o != nil && !IsNil(o.Desktop) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesktop gets a reference to the given DeviceAuthenticationPolicyPingIDDevice and assigns it to the Desktop field.
+func (o *DeviceAuthenticationPolicy) SetDesktop(v DeviceAuthenticationPolicyPingIDDevice) {
+	o.Desktop = &v
+}
+
+// GetYubikey returns the Yubikey field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetYubikey() DeviceAuthenticationPolicyPingIDDevice {
+	if o == nil || IsNil(o.Yubikey) {
+		var ret DeviceAuthenticationPolicyPingIDDevice
+		return ret
+	}
+	return *o.Yubikey
+}
+
+// GetYubikeyOk returns a tuple with the Yubikey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetYubikeyOk() (*DeviceAuthenticationPolicyPingIDDevice, bool) {
+	if o == nil || IsNil(o.Yubikey) {
+		return nil, false
+	}
+	return o.Yubikey, true
+}
+
+// HasYubikey returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasYubikey() bool {
+	if o != nil && !IsNil(o.Yubikey) {
+		return true
+	}
+
+	return false
+}
+
+// SetYubikey gets a reference to the given DeviceAuthenticationPolicyPingIDDevice and assigns it to the Yubikey field.
+func (o *DeviceAuthenticationPolicy) SetYubikey(v DeviceAuthenticationPolicyPingIDDevice) {
+	o.Yubikey = &v
+}
+
 func (o DeviceAuthenticationPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -594,16 +752,31 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["mobile"] = o.Mobile
 	toSerialize["totp"] = o.Totp
-	if !IsNil(o.SecurityKey) {
-		toSerialize["securityKey"] = o.SecurityKey
-	}
-	if !IsNil(o.Platform) {
-		toSerialize["platform"] = o.Platform
-	}
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
+	if !IsNil(o.IgnoreUserLock) {
+		toSerialize["ignoreUserLock"] = o.IgnoreUserLock
+	}
+	if !IsNil(o.NotificationsPolicy) {
+		toSerialize["notificationsPolicy"] = o.NotificationsPolicy
+	}
+	if !IsNil(o.OathToken) {
+		toSerialize["oathToken"] = o.OathToken
+	}
+	if !IsNil(o.RememberMe) {
+		toSerialize["rememberMe"] = o.RememberMe
+	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.Whatsapp) {
+		toSerialize["whatsapp"] = o.Whatsapp
+	}
+	if !IsNil(o.Desktop) {
+		toSerialize["desktop"] = o.Desktop
+	}
+	if !IsNil(o.Yubikey) {
+		toSerialize["yubikey"] = o.Yubikey
 	}
 	return toSerialize, nil
 }
@@ -643,5 +816,3 @@ func (v *NullableDeviceAuthenticationPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

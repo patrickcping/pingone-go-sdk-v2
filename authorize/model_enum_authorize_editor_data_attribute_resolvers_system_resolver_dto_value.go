@@ -20,7 +20,7 @@ type EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue string
 
 // List of EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue
 const (
-	ENUMAUTHORIZEEDITORDATAATTRIBUTERESOLVERSSYSTEMRESOLVERDTOVALUE_NULL EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue = "NULL"
+	ENUMAUTHORIZEEDITORDATAATTRIBUTERESOLVERSSYSTEMRESOLVERDTOVALUE_NULL              EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue = "NULL"
 	ENUMAUTHORIZEEDITORDATAATTRIBUTERESOLVERSSYSTEMRESOLVERDTOVALUE_CURRENT_DATE_TIME EnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue = "CURRENT_DATE_TIME"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEnumAuthorizeEditorDataAttributeResolversSystemResolverDTOValue
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

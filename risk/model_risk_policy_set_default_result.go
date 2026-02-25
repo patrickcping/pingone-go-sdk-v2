@@ -20,7 +20,7 @@ var _ MappedNullable = &RiskPolicySetDefaultResult{}
 // RiskPolicySetDefaultResult A result object that specifies the default result returned if none of the conditions in the policy set are evaluated to true. At this time, the defaultResultLevel value must be LOW.
 type RiskPolicySetDefaultResult struct {
 	Level EnumRiskPolicyResultLevel `json:"level"`
-	Type *EnumResultType `json:"type,omitempty"`
+	Type  *EnumResultType           `json:"type,omitempty"`
 }
 
 // NewRiskPolicySetDefaultResult instantiates a new RiskPolicySetDefaultResult object
@@ -98,7 +98,7 @@ func (o *RiskPolicySetDefaultResult) SetType(v EnumResultType) {
 }
 
 func (o RiskPolicySetDefaultResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullableRiskPolicySetDefaultResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,11 @@ type EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo string
 
 // List of EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo
 const (
-	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_ANYTHING EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "ANYTHING"
-	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_PERMIT EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "PERMIT"
-	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_DENY EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "DENY"
+	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_ANYTHING       EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "ANYTHING"
+	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_PERMIT         EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "PERMIT"
+	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_DENY           EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "DENY"
 	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_PERMIT_OR_DENY EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "PERMIT_OR_DENY"
-	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_INDETERMINATE EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "INDETERMINATE"
+	ENUMAUTHORIZEEDITORDATASTATEMENTSSTATEMENTDTOAPPLIESTO_INDETERMINATE  EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo = "INDETERMINATE"
 )
 
 // All allowed values of EnumAuthorizeEditorDataStatementsStatementDTOAppliesTo enum
@@ -115,4 +115,3 @@ func (v *NullableEnumAuthorizeEditorDataStatementsStatementDTOAppliesTo) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

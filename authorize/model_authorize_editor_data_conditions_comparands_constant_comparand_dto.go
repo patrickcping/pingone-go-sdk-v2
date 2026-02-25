@@ -19,8 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataConditionsComparandsConstantComparand
 
 // AuthorizeEditorDataConditionsComparandsConstantComparandDTO struct for AuthorizeEditorDataConditionsComparandsConstantComparandDTO
 type AuthorizeEditorDataConditionsComparandsConstantComparandDTO struct {
-	Type EnumAuthorizeEditorDataConditionsComparandDTOType `json:"type"`
-	Value string `json:"value"`
+	Type  EnumAuthorizeEditorDataConditionsComparandDTOType `json:"type"`
+	Value string                                            `json:"value"`
 }
 
 // NewAuthorizeEditorDataConditionsComparandsConstantComparandDTO instantiates a new AuthorizeEditorDataConditionsComparandsConstantComparandDTO object
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataConditionsComparandsConstantComparandDTO) SetValue(v
 }
 
 func (o AuthorizeEditorDataConditionsComparandsConstantComparandDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataConditionsComparandsConstantComparandDTO) Un
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

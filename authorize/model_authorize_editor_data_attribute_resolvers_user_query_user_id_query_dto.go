@@ -19,8 +19,8 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversUserQueryUserIdQuer
 
 // AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct for AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO
 type AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO struct {
-	Type EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType `json:"type"`
-	UserId string `json:"userId"`
+	Type   EnumAuthorizeEditorDataAttributeResolversUserQueryDTOType `json:"type"`
+	UserId string                                                    `json:"userId"`
 }
 
 // NewAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO instantiates a new AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO object
@@ -91,7 +91,7 @@ func (o *AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) SetUserId
 }
 
 func (o AuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableAuthorizeEditorDataAttributeResolversUserQueryUserIdQueryDTO) U
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,11 +19,11 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	PushCredentials []MFAPushCredentialResponse `json:"pushCredentials,omitempty"`
+	PushCredentials              []MFAPushCredentialResponse  `json:"pushCredentials,omitempty"`
 	DeviceAuthenticationPolicies []DeviceAuthenticationPolicy `json:"deviceAuthenticationPolicies,omitempty"`
-	FidoDevicesMetadata []map[string]interface{} `json:"fidoDevicesMetadata,omitempty"`
+	FidoDevicesMetadata          []map[string]interface{}     `json:"fidoDevicesMetadata,omitempty"`
 	// Deprecated
-	FidoPolicies []FIDOPolicy `json:"fidoPolicies,omitempty"`
+	FidoPolicies  []FIDOPolicy  `json:"fidoPolicies,omitempty"`
 	Fido2Policies []FIDO2Policy `json:"fido2Policies,omitempty"`
 }
 
@@ -208,7 +208,7 @@ func (o *EntityArrayEmbedded) SetFido2Policies(v []FIDO2Policy) {
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,5 +270,3 @@ func (v *NullableEntityArrayEmbedded) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

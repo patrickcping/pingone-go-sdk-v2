@@ -19,16 +19,16 @@ var _ MappedNullable = &AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO
 
 // AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO struct for AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO
 type AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO struct {
-	MaximumConcurrentRequests *int32 `json:"maximumConcurrentRequests,omitempty"`
-	MaximumRequestsPerSecond *float64 `json:"maximumRequestsPerSecond,omitempty"`
-	TimeoutMilliseconds *int32 `json:"timeoutMilliseconds,omitempty"`
-	Url string `json:"url"`
-	Verb EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb `json:"verb"`
-	Body *string `json:"body,omitempty"`
-	ContentType *string `json:"contentType,omitempty"`
-	Headers []AuthorizeEditorDataHttpRequestHeaderDTO `json:"headers,omitempty"`
-	Authentication AuthorizeEditorDataAuthenticationDTO `json:"authentication"`
-	TlsSettings AuthorizeEditorDataTlsSettingsDTO `json:"tlsSettings"`
+	MaximumConcurrentRequests *int32                                                           `json:"maximumConcurrentRequests,omitempty"`
+	MaximumRequestsPerSecond  *float64                                                         `json:"maximumRequestsPerSecond,omitempty"`
+	TimeoutMilliseconds       *int32                                                           `json:"timeoutMilliseconds,omitempty"`
+	Url                       string                                                           `json:"url"`
+	Verb                      EnumAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTOVerb `json:"verb"`
+	Body                      *string                                                          `json:"body,omitempty"`
+	ContentType               *string                                                          `json:"contentType,omitempty"`
+	Headers                   []AuthorizeEditorDataHttpRequestHeaderDTO                        `json:"headers,omitempty"`
+	Authentication            AuthorizeEditorDataAuthenticationDTO                             `json:"authentication"`
+	TlsSettings               AuthorizeEditorDataTlsSettingsDTO                                `json:"tlsSettings"`
 }
 
 // NewAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO instantiates a new AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO object
@@ -341,7 +341,7 @@ func (o *AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) SetTlsSetting
 }
 
 func (o AuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -410,5 +410,3 @@ func (v *NullableAuthorizeEditorDataServiceSettingsHttpServiceSettingsDTO) Unmar
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

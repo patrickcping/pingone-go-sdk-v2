@@ -19,12 +19,12 @@ var _ MappedNullable = &AuthorizeEditorDataAttributeResolversConstantResolverDTO
 
 // AuthorizeEditorDataAttributeResolversConstantResolverDTO struct for AuthorizeEditorDataAttributeResolversConstantResolverDTO
 type AuthorizeEditorDataAttributeResolversConstantResolverDTO struct {
-	Name *string `json:"name,omitempty"`
-	Condition *AuthorizeEditorDataConditionDTO `json:"condition,omitempty"`
-	Processor *AuthorizeEditorDataProcessorDTO `json:"processor,omitempty"`
-	Type EnumAuthorizeEditorDataResolverDTOType `json:"type"`
-	Value string `json:"value"`
-	ValueType AuthorizeEditorDataValueTypeDTO `json:"valueType"`
+	Name      *string                                `json:"name,omitempty"`
+	Condition *AuthorizeEditorDataConditionDTO       `json:"condition,omitempty"`
+	Processor *AuthorizeEditorDataProcessorDTO       `json:"processor,omitempty"`
+	Type      EnumAuthorizeEditorDataResolverDTOType `json:"type"`
+	Value     string                                 `json:"value"`
+	ValueType AuthorizeEditorDataValueTypeDTO        `json:"valueType"`
 }
 
 // NewAuthorizeEditorDataAttributeResolversConstantResolverDTO instantiates a new AuthorizeEditorDataAttributeResolversConstantResolverDTO object
@@ -216,7 +216,7 @@ func (o *AuthorizeEditorDataAttributeResolversConstantResolverDTO) SetValueType(
 }
 
 func (o AuthorizeEditorDataAttributeResolversConstantResolverDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,5 +275,3 @@ func (v *NullableAuthorizeEditorDataAttributeResolversConstantResolverDTO) Unmar
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

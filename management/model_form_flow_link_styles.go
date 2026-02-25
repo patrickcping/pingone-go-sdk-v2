@@ -23,7 +23,7 @@ type FormFlowLinkStyles struct {
 	// A string that specifies the link text color. The value must be a valid hexadecimal color.
 	TextColor *string `json:"textColor,omitempty"`
 	// A boolean that specifies whether the link is enabled.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool              `json:"enabled,omitempty"`
 	Padding *FormStylesPadding `json:"padding,omitempty"`
 }
 
@@ -173,7 +173,7 @@ func (o *FormFlowLinkStyles) SetPadding(v FormStylesPadding) {
 }
 
 func (o FormFlowLinkStyles) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -232,5 +232,3 @@ func (v *NullableFormFlowLinkStyles) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

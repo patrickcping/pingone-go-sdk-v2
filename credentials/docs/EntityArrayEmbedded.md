@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DigitalWalletApplications** | Pointer to [**[]DigitalWalletApplication**](DigitalWalletApplication.md) |  | [optional] 
 **DigitalWallets** | Pointer to [**[]CredentialDigitalWallet**](CredentialDigitalWallet.md) |  | [optional] 
 **ProvisionedCredentials** | Pointer to [**[]ProvisionedCredential**](ProvisionedCredential.md) |  | [optional] 
+**Versions** | Pointer to [**[]CredentialTypeVersion**](CredentialTypeVersion.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetProvisionedCredentials sets ProvisionedCredentials field to given value.
 `func (o *EntityArrayEmbedded) HasProvisionedCredentials() bool`
 
 HasProvisionedCredentials returns a boolean if a field has been set.
+
+### GetVersions
+
+`func (o *EntityArrayEmbedded) GetVersions() []CredentialTypeVersion`
+
+GetVersions returns the Versions field if non-nil, zero value otherwise.
+
+### GetVersionsOk
+
+`func (o *EntityArrayEmbedded) GetVersionsOk() (*[]CredentialTypeVersion, bool)`
+
+GetVersionsOk returns a tuple with the Versions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersions
+
+`func (o *EntityArrayEmbedded) SetVersions(v []CredentialTypeVersion)`
+
+SetVersions sets Versions field to given value.
+
+### HasVersions
+
+`func (o *EntityArrayEmbedded) HasVersions() bool`
+
+HasVersions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

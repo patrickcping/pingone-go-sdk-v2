@@ -2,12 +2,9 @@
 TEST?=$$(go list ./...)
 OWNER=patrickcping
 REPO=pingone-go-sdk-v2
-VERSION=0.12.9
+VERSION=0.14.6
 
 default: build
-
-tools:
-	go generate -tags tools tools/tools.go
 
 build: fmtcheck
 	@go mod tidy
@@ -38,13 +35,13 @@ vet:
 
 golangci-lint:
 	@echo "==> Checking source code with golangci-lint..."
-	@golangci-lint run ./...
+	@go tool golangci-lint run ./...
 
 lint: golangci-lint
 	@./scripts/lint-all.sh
 
 gosec:
-	@gosec -exclude-generated ./...
+	@go tool gosec -exclude-generated ./...
 
 generate: generate-core generate-modules
 
@@ -56,4 +53,4 @@ generate-modules:
 
 devcheck: build vet lint gosec test testacc
 	
-.PHONY: tools build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate generate-core generate-modules securitycheck devcheck
+.PHONY: build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate generate-core generate-modules securitycheck devcheck

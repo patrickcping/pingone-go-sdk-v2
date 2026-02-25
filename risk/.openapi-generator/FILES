@@ -1,5 +1,6 @@
 README.md
 api/openapi.yaml
+api_environments.go
 api_risk_advanced_predictors.go
 api_risk_evaluations.go
 api_risk_policies.go
@@ -27,6 +28,8 @@ docs/EnumRiskPredictorTrafficAnomalyRuleType.md
 docs/EnumThresholdSource.md
 docs/EnumUserRiskBehaviorRiskModel.md
 docs/EnumUserType.md
+docs/Environment.md
+docs/EnvironmentsApi.md
 docs/LinksHATEOASValue.md
 docs/ObjectEnvironment.md
 docs/P1Error.md
@@ -138,6 +141,7 @@ model_enum_risk_predictor_traffic_anomaly_rule_type.go
 model_enum_threshold_source.go
 model_enum_user_risk_behavior_risk_model.go
 model_enum_user_type.go
+model_environment.go
 model_links_hateoas_value.go
 model_object_environment.go
 model_p1_error.go

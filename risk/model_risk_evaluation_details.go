@@ -20,8 +20,8 @@ var _ MappedNullable = &RiskEvaluationDetails{}
 // RiskEvaluationDetails struct for RiskEvaluationDetails
 type RiskEvaluationDetails struct {
 	IpAddressReputation *RiskEvaluationDetailsIpAddressReputation `json:"ipAddressReputation,omitempty"`
-	IpVelocityByUser *RiskEvaluationDetailsIpVelocityByUser `json:"ipVelocityByUser,omitempty"`
-	UserVelocityByIp *RiskEvaluationDetailsUserVelocityByIp `json:"userVelocityByIp,omitempty"`
+	IpVelocityByUser    *RiskEvaluationDetailsIpVelocityByUser    `json:"ipVelocityByUser,omitempty"`
+	UserVelocityByIp    *RiskEvaluationDetailsUserVelocityByIp    `json:"userVelocityByIp,omitempty"`
 	// A boolean that specifies whether the distance between the location of the user in their previous successful authentication and current authentication infers that the user had to travel at a speed greater than 1000 kilometers per hour. This condition is marked as fulfilled, only if: Location data is available for the current and previous IP address of the user. This is not the first transaction that the user has performed. The user’s previous successful transaction was performed less than 24 hours ago. The user moved a distance of at least 100 kilometers. Thus, even if the user moved very fast, but moved only a distance of 90 kilometers, the condition is not fulfilled. The user moved at a speed greater than 1000 kilometers per hour.
 	ImpossibleTravel *bool `json:"impossibleTravel,omitempty"`
 	// The calculated travel speed in units of kilometers per hour.
@@ -37,10 +37,10 @@ type RiskEvaluationDetails struct {
 	// A double-precision floating point that specifies the longitude related to current transaction from the IP address. Values range from -90 to 90.
 	Longitude *float32 `json:"longitude,omitempty"`
 	// A double-precision floating point that specifies the latitude related to current transaction from the IP address. Values range from -180 to 180.
-	Latitude *float32 `json:"latitude,omitempty"`
+	Latitude                      *float32                                            `json:"latitude,omitempty"`
 	PreviousSuccessfulTransaction *RiskEvaluationDetailsPreviousSuccessfulTransaction `json:"previousSuccessfulTransaction,omitempty"`
-	UserBasedRiskBehavior *RiskEvaluationDetailsUserBasedRiskBehavior `json:"userBasedRiskBehavior,omitempty"`
-	UserRiskBehavior *RiskEvaluationDetailsUserRiskBehavior `json:"userRiskBehavior,omitempty"`
+	UserBasedRiskBehavior         *RiskEvaluationDetailsUserBasedRiskBehavior         `json:"userBasedRiskBehavior,omitempty"`
+	UserRiskBehavior              *RiskEvaluationDetailsUserRiskBehavior              `json:"userRiskBehavior,omitempty"`
 }
 
 // NewRiskEvaluationDetails instantiates a new RiskEvaluationDetails object
@@ -509,7 +509,7 @@ func (o *RiskEvaluationDetails) SetUserRiskBehavior(v RiskEvaluationDetailsUserR
 }
 
 func (o RiskEvaluationDetails) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -598,5 +598,3 @@ func (v *NullableRiskEvaluationDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
