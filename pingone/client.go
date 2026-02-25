@@ -23,6 +23,7 @@ import (
 
 type Client struct {
 	AuthorizeAPIClient   *authorize.APIClient
+	BetaAPIClients
 	CredentialsAPIClient *credentials.APIClient
 	ManagementAPIClient  *management.APIClient
 	MFAAPIClient         *mfa.APIClient
@@ -36,6 +37,11 @@ var version = "0.14.6"
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
 	authorizeClient, err := c.AuthorizeAPIClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	betaClients, err := c.betaAPIClients(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -76,12 +82,13 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
 	apiClient := &Client{
 		AuthorizeAPIClient:   authorizeClient,
+		BetaAPIClients:       betaClients,
 		CredentialsAPIClient: credentialsClient,
-		ManagementAPIClient:  managementClient,
-		MFAAPIClient:         mfaClient,
-		RiskAPIClient:        riskClient,
-		VerifyAPIClient:      verifyClient,
-		Region:               region,
+		ManagementAPIClient:      managementClient,
+		MFAAPIClient:             mfaClient,
+		RiskAPIClient:            riskClient,
+		VerifyAPIClient:          verifyClient,
+		Region:                   region,
 	}
 
 	return apiClient, nil
