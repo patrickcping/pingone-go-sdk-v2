@@ -1,4 +1,4 @@
-# v0.11.1 (Unreleased)
+# v0.11.1 (2026-02-25)
 
 * **Bug Fix** Added back `OPTIONAL` enum value to `EnumVerify`, removed in error. [#507](https://github.com/patrickcping/pingone-go-sdk-v2/pull/507)
 
