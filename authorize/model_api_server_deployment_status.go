@@ -19,8 +19,9 @@ var _ MappedNullable = &APIServerDeploymentStatus{}
 
 // APIServerDeploymentStatus struct for APIServerDeploymentStatus
 type APIServerDeploymentStatus struct {
-	Code  *EnumAPIServerDeploymentStatusCode `json:"code,omitempty"`
-	Error *APIServerDeploymentStatusError    `json:"error,omitempty"`
+	// The deployment status code. - `POLICIES_CREATE_IN_PROGRESS` The policy bundle for the API service's managed policies is being created. - `DECISION_ENDPOINT_CREATE_IN_PROGRESS` A decision endpoint is being created for the API service. - `DECISION_ENDPOINT_UPDATE_IN_PROGRESS` The API service's decision endpoint is being updated. - `DEPLOYMENT_SUCCESSFUL` The API service's policies have been successfully deployed. - `DEPLOYMENT_FAILED` HAP-MGMT was unable to deploy the API service's policies. - `DEPLOYMENT_UNINITIALIZED` A deployment has not yet been attempted.
+	Code  *string                         `json:"code,omitempty"`
+	Error *APIServerDeploymentStatusError `json:"error,omitempty"`
 }
 
 // NewAPIServerDeploymentStatus instantiates a new APIServerDeploymentStatus object
@@ -41,9 +42,9 @@ func NewAPIServerDeploymentStatusWithDefaults() *APIServerDeploymentStatus {
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
-func (o *APIServerDeploymentStatus) GetCode() EnumAPIServerDeploymentStatusCode {
+func (o *APIServerDeploymentStatus) GetCode() string {
 	if o == nil || IsNil(o.Code) {
-		var ret EnumAPIServerDeploymentStatusCode
+		var ret string
 		return ret
 	}
 	return *o.Code
@@ -51,7 +52,7 @@ func (o *APIServerDeploymentStatus) GetCode() EnumAPIServerDeploymentStatusCode 
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *APIServerDeploymentStatus) GetCodeOk() (*EnumAPIServerDeploymentStatusCode, bool) {
+func (o *APIServerDeploymentStatus) GetCodeOk() (*string, bool) {
 	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
@@ -67,8 +68,8 @@ func (o *APIServerDeploymentStatus) HasCode() bool {
 	return false
 }
 
-// SetCode gets a reference to the given EnumAPIServerDeploymentStatusCode and assigns it to the Code field.
-func (o *APIServerDeploymentStatus) SetCode(v EnumAPIServerDeploymentStatusCode) {
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *APIServerDeploymentStatus) SetCode(v string) {
 	o.Code = &v
 }
 
