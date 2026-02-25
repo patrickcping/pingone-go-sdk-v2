@@ -2034,10 +2034,11 @@ components:
       type: string
     EnumVerify:
       default: DISABLED
-      description: A string that defines the verification check requirements. Options
-        are `REQUIRED` and `DISABLED`.
+      description: "A string that defines the verification check requirements. Options\
+        \ are `REQUIRED`, `OPTIONAL`, and `DISABLED`."
       enum:
       - REQUIRED
+      - OPTIONAL
       - DISABLED
       type: string
     Environment:
