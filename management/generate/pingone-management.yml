@@ -5289,17 +5289,20 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
-        bypassPolicy:
-          type: boolean
-          default: false
-          description: Determines whether the password policy for a user will be ignored. If this property is omitted from a CREATE Password Policy request, its value is set to false.
+        alphabetSequenceRule:
+          type: object
+          description: Number sequence rule options
+          properties:
+            maxLength:
+              type: integer
+              format: int32
+              minimum: 2
+              maximum: 3
+              description: Maximum number of allowed sequential English letters in the password. Must be a value of 2 or 3.
         createdAt:
           type: string
           description: The date and time the resource was created (format ISO-8061).
           readOnly: true
-        currentPassword:
-          type: string
-          description: The current password to be verified before the new password is set. Required for self-change when the user already has a password (the user whose password is being changed is the same as the actor in the access token).
         default:
           type: boolean
           description: Indicates whether this password policy is enforced within the environment. When set to true, all other password policies are set to false.
@@ -5392,12 +5395,29 @@ components:
         name:
           type: string
           description: The name of the password policy. This value must be unique within the environment.
-        newPassword:
-          type: string
-          description: The new password (must satisfy all requirements).
         notSimilarToCurrent:
           type: boolean
           description: Set this to true to ensure that the proposed password is not too similar to the user's current password based on the Levenshtein distance algorithm. The value of this parameter is evaluated only for password change actions in which the user enters both the current and the new password. By design, PingOne does not know the user's current password.
+        numberSequenceRule:
+          type: object
+          description: Number sequence rule options
+          properties:
+            maxLength:
+              type: integer
+              format: int32
+              minimum: 2
+              maximum: 3
+              description: Maximum number of allowed sequential numbers in the password. Must be a value of 2 or 3.
+        shiftedNumberRowSequenceRule:
+          type: object
+          description: Options to control policy rules for the allowed sequential symbol row characters.
+          properties:
+            maxLength:
+              type: integer
+              format: int32
+              minimum: 3
+              maximum: 3
+              description: Maximum number of allowed sequential symbol row characters. Must be a value of 3.
         populationCount:
           type: integer
           description: Returned in the response. The number of populations associated with the password policy.
@@ -5406,11 +5426,21 @@ components:
           type: string
           description: The date and time the resource was last updated (format ISO-8061).
           readOnly: true
+        qwertySequenceRule:
+          type: object
+          description: Options to control policy rules for the number of allowed sequential QWERTY keyboard characters in the password.
+          properties:
+            maxLength:
+              type: integer
+              format: int32
+              minimum: 3
+              maximum: 3
+              description: Maximum number of allowed sequential QWERTY keyboard characters in the password. Must be a value of 3.
       required:
+        - excludesCommonlyUsed
+        - excludesProfileData
         - name
         - notSimilarToCurrent
-        - excludesProfileData
-        - excludesCommonlyUsed
     PKICAResponseFileUpload:
       type: object
       properties:

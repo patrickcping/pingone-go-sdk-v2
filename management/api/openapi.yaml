@@ -40036,7 +40036,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 5.533258397034986
+        size: 6.628464275087742
         _links:
           key:
             href: https://openapi-generator.tech
@@ -40394,80 +40394,90 @@ components:
             id: id
             key: key
           passwordPolicies:
-          - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-              "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-              abcdefghijklmnopqrstuvwxyz: 0
-            populationCount: 8
+          - populationCount: 3
             _links:
               key:
                 href: https://openapi-generator.tech
-            length:
-              min: 24
-              max: 2
-            notSimilarToCurrent: true
             description: description
-            newPassword: newPassword
             excludesCommonlyUsed: true
-            history:
-              retentionDays: 1
-              count: 1
-            minComplexity: 0
-            excludesProfileData: true
-            currentPassword: currentPassword
+            minComplexity: 4
             createdAt: createdAt
             default: true
-            environment:
-              id: id
-            lockout:
-              durationSeconds: 1
-              failureCount: 1
-            bypassPolicy: false
-            minUniqueCharacters: 4
-            name: name
+            minUniqueCharacters: 8
             maxAgeDays: 1
             id: id
             maxRepeatedCharacters: 3
-            minAgeDays: 1
+            shiftedNumberRowSequenceRule:
+              maxLength: 3
             updatedAt: updatedAt
-          - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-              "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-              abcdefghijklmnopqrstuvwxyz: 0
-            populationCount: 8
+            minCharacters:
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+              abcdefghijklmnopqrstuvwxyz: 7
+            length:
+              min: 24
+              max: 6
+            notSimilarToCurrent: true
+            alphabetSequenceRule:
+              maxLength: 2
+            history:
+              retentionDays: 1
+              count: 1
+            qwertySequenceRule:
+              maxLength: 3
+            excludesProfileData: true
+            environment:
+              id: id
+            numberSequenceRule:
+              maxLength: 2
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            name: name
+            minAgeDays: 1
+          - populationCount: 3
             _links:
               key:
                 href: https://openapi-generator.tech
-            length:
-              min: 24
-              max: 2
-            notSimilarToCurrent: true
             description: description
-            newPassword: newPassword
             excludesCommonlyUsed: true
-            history:
-              retentionDays: 1
-              count: 1
-            minComplexity: 0
-            excludesProfileData: true
-            currentPassword: currentPassword
+            minComplexity: 4
             createdAt: createdAt
             default: true
-            environment:
-              id: id
-            lockout:
-              durationSeconds: 1
-              failureCount: 1
-            bypassPolicy: false
-            minUniqueCharacters: 4
-            name: name
+            minUniqueCharacters: 8
             maxAgeDays: 1
             id: id
             maxRepeatedCharacters: 3
-            minAgeDays: 1
+            shiftedNumberRowSequenceRule:
+              maxLength: 3
             updatedAt: updatedAt
+            minCharacters:
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+              abcdefghijklmnopqrstuvwxyz: 7
+            length:
+              min: 24
+              max: 6
+            notSimilarToCurrent: true
+            alphabetSequenceRule:
+              maxLength: 2
+            history:
+              retentionDays: 1
+              count: 1
+            qwertySequenceRule:
+              maxLength: 3
+            excludesProfileData: true
+            environment:
+              id: id
+            numberSequenceRule:
+              maxLength: 2
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            name: name
+            minAgeDays: 1
           revisions:
           - agreement:
               id: id
@@ -40981,7 +40991,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 4
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41052,7 +41062,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 4
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41708,7 +41718,7 @@ components:
             default: true
             environment:
               id: id
-            userCount: 7
+            userCount: 5
             name: name
             theme:
               id: id
@@ -41728,7 +41738,7 @@ components:
             default: true
             environment:
               id: id
-            userCount: 7
+            userCount: 5
             name: name
             theme:
               id: id
@@ -41829,7 +41839,7 @@ components:
           applications:
           - null
           - null
-        count: 7.04836565559697
+        count: 0.2025324113236393
       properties:
         _links:
           additionalProperties:
@@ -44584,64 +44594,59 @@ components:
       type: object
     PasswordPolicy:
       example:
-        minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-          "0123456789": 7
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-          abcdefghijklmnopqrstuvwxyz: 0
-        populationCount: 8
+        populationCount: 3
         _links:
           key:
             href: https://openapi-generator.tech
-        length:
-          min: 24
-          max: 2
-        notSimilarToCurrent: true
         description: description
-        newPassword: newPassword
         excludesCommonlyUsed: true
-        history:
-          retentionDays: 1
-          count: 1
-        minComplexity: 0
-        excludesProfileData: true
-        currentPassword: currentPassword
+        minComplexity: 4
         createdAt: createdAt
         default: true
-        environment:
-          id: id
-        lockout:
-          durationSeconds: 1
-          failureCount: 1
-        bypassPolicy: false
-        minUniqueCharacters: 4
-        name: name
+        minUniqueCharacters: 8
         maxAgeDays: 1
         id: id
         maxRepeatedCharacters: 3
-        minAgeDays: 1
+        shiftedNumberRowSequenceRule:
+          maxLength: 3
         updatedAt: updatedAt
+        minCharacters:
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+          "0123456789": 6
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+          abcdefghijklmnopqrstuvwxyz: 7
+        length:
+          min: 24
+          max: 6
+        notSimilarToCurrent: true
+        alphabetSequenceRule:
+          maxLength: 2
+        history:
+          retentionDays: 1
+          count: 1
+        qwertySequenceRule:
+          maxLength: 3
+        excludesProfileData: true
+        environment:
+          id: id
+        numberSequenceRule:
+          maxLength: 2
+        lockout:
+          durationSeconds: 1
+          failureCount: 1
+        name: name
+        minAgeDays: 1
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        bypassPolicy:
-          default: false
-          description: "Determines whether the password policy for a user will be\
-            \ ignored. If this property is omitted from a CREATE Password Policy request,\
-            \ its value is set to false."
-          type: boolean
+        alphabetSequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_alphabetSequenceRule'
         createdAt:
           description: The date and time the resource was created (format ISO-8061).
           readOnly: true
-          type: string
-        currentPassword:
-          description: The current password to be verified before the new password
-            is set. Required for self-change when the user already has a password
-            (the user whose password is being changed is the same as the actor in
-            the access token).
           type: string
         default:
           description: "Indicates whether this password policy is enforced within\
@@ -44705,9 +44710,6 @@ components:
           description: The name of the password policy. This value must be unique
             within the environment.
           type: string
-        newPassword:
-          description: The new password (must satisfy all requirements).
-          type: string
         notSimilarToCurrent:
           description: "Set this to true to ensure that the proposed password is not\
             \ too similar to the user's current password based on the Levenshtein\
@@ -44716,6 +44718,10 @@ components:
             \ the new password. By design, PingOne does not know the user's current\
             \ password."
           type: boolean
+        numberSequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_numberSequenceRule'
+        shiftedNumberRowSequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_shiftedNumberRowSequenceRule'
         populationCount:
           description: Returned in the response. The number of populations associated
             with the password policy.
@@ -44725,6 +44731,8 @@ components:
           description: The date and time the resource was last updated (format ISO-8061).
           readOnly: true
           type: string
+        qwertySequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_qwertySequenceRule'
       required:
       - excludesCommonlyUsed
       - excludesProfileData
@@ -44781,7 +44789,7 @@ components:
         default: true
         environment:
           id: id
-        userCount: 7
+        userCount: 5
         name: name
         theme:
           id: id
@@ -47173,7 +47181,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 3
+          secondsUntilUnlock: 4
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -47405,7 +47413,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 3
+        secondsUntilUnlock: 4
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -48816,80 +48824,90 @@ components:
           id: id
           key: key
         passwordPolicies:
-        - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-            "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-            abcdefghijklmnopqrstuvwxyz: 0
-          populationCount: 8
+        - populationCount: 3
           _links:
             key:
               href: https://openapi-generator.tech
-          length:
-            min: 24
-            max: 2
-          notSimilarToCurrent: true
           description: description
-          newPassword: newPassword
           excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 0
-          excludesProfileData: true
-          currentPassword: currentPassword
+          minComplexity: 4
           createdAt: createdAt
           default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 4
-          name: name
+          minUniqueCharacters: 8
           maxAgeDays: 1
           id: id
           maxRepeatedCharacters: 3
-          minAgeDays: 1
+          shiftedNumberRowSequenceRule:
+            maxLength: 3
           updatedAt: updatedAt
-        - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-            "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-            abcdefghijklmnopqrstuvwxyz: 0
-          populationCount: 8
+          minCharacters:
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+            abcdefghijklmnopqrstuvwxyz: 7
+          length:
+            min: 24
+            max: 6
+          notSimilarToCurrent: true
+          alphabetSequenceRule:
+            maxLength: 2
+          history:
+            retentionDays: 1
+            count: 1
+          qwertySequenceRule:
+            maxLength: 3
+          excludesProfileData: true
+          environment:
+            id: id
+          numberSequenceRule:
+            maxLength: 2
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          name: name
+          minAgeDays: 1
+        - populationCount: 3
           _links:
             key:
               href: https://openapi-generator.tech
-          length:
-            min: 24
-            max: 2
-          notSimilarToCurrent: true
           description: description
-          newPassword: newPassword
           excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 0
-          excludesProfileData: true
-          currentPassword: currentPassword
+          minComplexity: 4
           createdAt: createdAt
           default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 4
-          name: name
+          minUniqueCharacters: 8
           maxAgeDays: 1
           id: id
           maxRepeatedCharacters: 3
-          minAgeDays: 1
+          shiftedNumberRowSequenceRule:
+            maxLength: 3
           updatedAt: updatedAt
+          minCharacters:
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+            abcdefghijklmnopqrstuvwxyz: 7
+          length:
+            min: 24
+            max: 6
+          notSimilarToCurrent: true
+          alphabetSequenceRule:
+            maxLength: 2
+          history:
+            retentionDays: 1
+            count: 1
+          qwertySequenceRule:
+            maxLength: 3
+          excludesProfileData: true
+          environment:
+            id: id
+          numberSequenceRule:
+            maxLength: 2
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          name: name
+          minAgeDays: 1
         revisions:
         - agreement:
             id: id
@@ -49403,7 +49421,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 4
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -49474,7 +49492,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 4
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -50130,7 +50148,7 @@ components:
           default: true
           environment:
             id: id
-          userCount: 7
+          userCount: 5
           name: name
           theme:
             id: id
@@ -50150,7 +50168,7 @@ components:
           default: true
           environment:
             id: id
-          userCount: 7
+          userCount: 5
           name: name
           theme:
             id: id
@@ -51909,6 +51927,19 @@ components:
         innerError:
           $ref: '#/components/schemas/P1Error_details_inner_innerError'
       type: object
+    PasswordPolicy_alphabetSequenceRule:
+      description: Number sequence rule options
+      example:
+        maxLength: 2
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential English letters in the
+            password. Must be a value of 2 or 3.
+          format: int32
+          maximum: 3
+          minimum: 2
+          type: integer
+      type: object
     PasswordPolicy_history:
       description: Settings to control the users password history
       example:
@@ -51930,7 +51961,7 @@ components:
       description: Settings to control the user's password length
       example:
         min: 24
-        max: 2
+        max: 6
       properties:
         max:
           default: 255
@@ -51972,10 +52003,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-        "0123456789": 7
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-        abcdefghijklmnopqrstuvwxyz: 0
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+        "0123456789": 6
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+        abcdefghijklmnopqrstuvwxyz: 7
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
@@ -51992,6 +52023,47 @@ components:
         "~!@#$%^&*()-_=+[]{}|;:,.<>/?":
           description: "Count of special characters (`~!@#$%^&*()-_=+[]{}\\\\|;:,.<>/?`)\
             \ that should feature in the user's password."
+          type: integer
+      type: object
+    PasswordPolicy_numberSequenceRule:
+      description: Number sequence rule options
+      example:
+        maxLength: 2
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential numbers in the password.
+            Must be a value of 2 or 3.
+          format: int32
+          maximum: 3
+          minimum: 2
+          type: integer
+      type: object
+    PasswordPolicy_shiftedNumberRowSequenceRule:
+      description: Options to control policy rules for the allowed sequential symbol
+        row characters.
+      example:
+        maxLength: 3
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential symbol row characters.
+            Must be a value of 3.
+          format: int32
+          maximum: 3
+          minimum: 3
+          type: integer
+      type: object
+    PasswordPolicy_qwertySequenceRule:
+      description: Options to control policy rules for the number of allowed sequential
+        QWERTY keyboard characters in the password.
+      example:
+        maxLength: 3
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential QWERTY keyboard characters
+            in the password. Must be a value of 3.
+          format: int32
+          maximum: 3
+          minimum: 3
           type: integer
       type: object
     Population_passwordPolicy:
