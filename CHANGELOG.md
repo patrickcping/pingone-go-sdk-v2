@@ -3,6 +3,23 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.64.0](./management/CHANGELOG.md)
   * **Enhancement** Added `AlphabetSequenceRule`, `NumberSequenceRule`, `ShiftedNumberRowSequenceRule`, `QwertySequenceRule` to the `PasswordPolicy` data model.  Removed `BypassPolicy`, `CurrentPassword`, `NewPassword` from the `PasswordPolicy` data model per API contract. [#502](https://github.com/patrickcping/pingone-go-sdk-v2/pull/502)
 
+# Release (2026-02-25)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.7
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.11.0 => v0.11.1 [#508](https://github.com/patrickcping/pingone-go-sdk-v2/pull/508)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.11.1](./verify/CHANGELOG.md)
+  * **Bug Fix** Added back `OPTIONAL` enum value to `EnumVerify`, removed in error. [#507](https://github.com/patrickcping/pingone-go-sdk-v2/pull/507)
+
+# Release (2026-02-13)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.6
+  * **Note** bump `golang.org/x/oauth2` v0.34.0 => v0.35.0 [#505](https://github.com/patrickcping/pingone-go-sdk-v2/pull/505)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.10.0 => v0.11.0 [#505](https://github.com/patrickcping/pingone-go-sdk-v2/pull/505)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.11.0](./verify/CHANGELOG.md)
+  * **Breaking Change** Removed `OPTIONAL` enum value from `EnumVerify` as the API no longer supports this value. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+  * **Breaking Change** Removed deprecated `Otp` field from the `GovernmentIdConfigurationAadhaar` model as the API no longer supports this capability. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+  * **Note** Deprecated much of the voice verification functionality as it deprecated on the API. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+
 # Release (2025-12-29)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.5

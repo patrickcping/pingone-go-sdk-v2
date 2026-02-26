@@ -36,9 +36,10 @@ type VerifyPolicy struct {
 	Email                  *OTPDeviceConfiguration        `json:"email,omitempty"`
 	Phone                  *OTPDeviceConfiguration        `json:"phone,omitempty"`
 	Transaction            *TransactionConfiguration      `json:"transaction,omitempty"`
-	Voice                  *VoiceConfiguration            `json:"voice,omitempty"`
-	CreatedAt              *time.Time                     `json:"createdAt,omitempty"`
-	UpdatedAt              *time.Time                     `json:"updatedAt,omitempty"`
+	// Deprecated
+	Voice     *VoiceConfiguration `json:"voice,omitempty"`
+	CreatedAt *time.Time          `json:"createdAt,omitempty"`
+	UpdatedAt *time.Time          `json:"updatedAt,omitempty"`
 }
 
 // NewVerifyPolicy instantiates a new VerifyPolicy object
@@ -468,6 +469,7 @@ func (o *VerifyPolicy) SetTransaction(v TransactionConfiguration) {
 }
 
 // GetVoice returns the Voice field value if set, zero value otherwise.
+// Deprecated
 func (o *VerifyPolicy) GetVoice() VoiceConfiguration {
 	if o == nil || IsNil(o.Voice) {
 		var ret VoiceConfiguration
@@ -478,6 +480,7 @@ func (o *VerifyPolicy) GetVoice() VoiceConfiguration {
 
 // GetVoiceOk returns a tuple with the Voice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VerifyPolicy) GetVoiceOk() (*VoiceConfiguration, bool) {
 	if o == nil || IsNil(o.Voice) {
 		return nil, false
@@ -495,6 +498,7 @@ func (o *VerifyPolicy) HasVoice() bool {
 }
 
 // SetVoice gets a reference to the given VoiceConfiguration and assigns it to the Voice field.
+// Deprecated
 func (o *VerifyPolicy) SetVoice(v VoiceConfiguration) {
 	o.Voice = &v
 }

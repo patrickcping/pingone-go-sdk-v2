@@ -39,6 +39,8 @@ func NewFacialComparisonConfiguration(verify EnumVerify, threshold EnumThreshold
 // but it doesn't guarantee that properties required by API are set
 func NewFacialComparisonConfigurationWithDefaults() *FacialComparisonConfiguration {
 	this := FacialComparisonConfiguration{}
+	var verify EnumVerify = ENUMVERIFY_DISABLED
+	this.Verify = verify
 	return &this
 }
 
