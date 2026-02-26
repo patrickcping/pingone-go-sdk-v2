@@ -1,4 +1,4 @@
-# v0.64.0 (Unreleased)
+# v0.64.0 (2026-02-26)
 
 * **Enhancement** Added `AlphabetSequenceRule`, `NumberSequenceRule`, `ShiftedNumberRowSequenceRule`, `QwertySequenceRule` to the `PasswordPolicy` data model.  Removed `BypassPolicy`, `CurrentPassword`, `NewPassword` from the `PasswordPolicy` data model per API contract. [#502](https://github.com/patrickcping/pingone-go-sdk-v2/pull/502)
 
