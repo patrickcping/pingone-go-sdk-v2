@@ -21711,6 +21711,12 @@ paths:
           schema:
             type: string
           required: true
+        - name: filter
+          in: query
+          schema:
+            type: string
+          description: Adding a SCIM filter to filter the data. `module` and `block` are supported
+          example: module eq "flow-ui" and block eq "UpdateProfile"
       responses:
         '400':
           $ref: '#/components/responses/400'
