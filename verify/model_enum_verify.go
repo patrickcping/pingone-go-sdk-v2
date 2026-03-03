@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumVerify A string that defines the verification check requirements. Options are `REQUIRED`, `OPTIONAL` and `DISABLED`.
+// EnumVerify A string that defines the verification check requirements. Options are `REQUIRED`, `OPTIONAL`, and `DISABLED`.
 type EnumVerify string
 
 // List of EnumVerify

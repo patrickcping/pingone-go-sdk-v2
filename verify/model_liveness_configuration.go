@@ -40,6 +40,8 @@ func NewLivenessConfiguration(threshold EnumThreshold, verify EnumVerify) *Liven
 // but it doesn't guarantee that properties required by API are set
 func NewLivenessConfigurationWithDefaults() *LivenessConfiguration {
 	this := LivenessConfiguration{}
+	var verify EnumVerify = ENUMVERIFY_DISABLED
+	this.Verify = verify
 	return &this
 }
 

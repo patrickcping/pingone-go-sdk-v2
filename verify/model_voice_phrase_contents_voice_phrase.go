@@ -19,6 +19,7 @@ var _ MappedNullable = &VoicePhraseContentsVoicePhrase{}
 
 // VoicePhraseContentsVoicePhrase struct for VoicePhraseContentsVoicePhrase
 type VoicePhraseContentsVoicePhrase struct {
+	// Deprecated
 	Id string `json:"id"`
 }
 
@@ -41,6 +42,7 @@ func NewVoicePhraseContentsVoicePhraseWithDefaults() *VoicePhraseContentsVoicePh
 }
 
 // GetId returns the Id field value
+// Deprecated
 func (o *VoicePhraseContentsVoicePhrase) GetId() string {
 	if o == nil {
 		var ret string
@@ -52,6 +54,7 @@ func (o *VoicePhraseContentsVoicePhrase) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoicePhraseContentsVoicePhrase) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -60,6 +63,7 @@ func (o *VoicePhraseContentsVoicePhrase) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
+// Deprecated
 func (o *VoicePhraseContentsVoicePhrase) SetId(v string) {
 	o.Id = v
 }

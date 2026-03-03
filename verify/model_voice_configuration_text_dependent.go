@@ -19,8 +19,10 @@ var _ MappedNullable = &VoiceConfigurationTextDependent{}
 
 // VoiceConfigurationTextDependent struct for VoiceConfigurationTextDependent
 type VoiceConfigurationTextDependent struct {
-	Samples int32                                 `json:"samples"`
-	Phrase  VoiceConfigurationTextDependentPhrase `json:"phrase"`
+	// Deprecated
+	Samples int32 `json:"samples"`
+	// Deprecated
+	Phrase VoiceConfigurationTextDependentPhrase `json:"phrase"`
 }
 
 // NewVoiceConfigurationTextDependent instantiates a new VoiceConfigurationTextDependent object
@@ -43,6 +45,7 @@ func NewVoiceConfigurationTextDependentWithDefaults() *VoiceConfigurationTextDep
 }
 
 // GetSamples returns the Samples field value
+// Deprecated
 func (o *VoiceConfigurationTextDependent) GetSamples() int32 {
 	if o == nil {
 		var ret int32
@@ -54,6 +57,7 @@ func (o *VoiceConfigurationTextDependent) GetSamples() int32 {
 
 // GetSamplesOk returns a tuple with the Samples field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfigurationTextDependent) GetSamplesOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
@@ -62,11 +66,13 @@ func (o *VoiceConfigurationTextDependent) GetSamplesOk() (*int32, bool) {
 }
 
 // SetSamples sets field value
+// Deprecated
 func (o *VoiceConfigurationTextDependent) SetSamples(v int32) {
 	o.Samples = v
 }
 
 // GetPhrase returns the Phrase field value
+// Deprecated
 func (o *VoiceConfigurationTextDependent) GetPhrase() VoiceConfigurationTextDependentPhrase {
 	if o == nil {
 		var ret VoiceConfigurationTextDependentPhrase
@@ -78,6 +84,7 @@ func (o *VoiceConfigurationTextDependent) GetPhrase() VoiceConfigurationTextDepe
 
 // GetPhraseOk returns a tuple with the Phrase field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *VoiceConfigurationTextDependent) GetPhraseOk() (*VoiceConfigurationTextDependentPhrase, bool) {
 	if o == nil {
 		return nil, false
@@ -86,6 +93,7 @@ func (o *VoiceConfigurationTextDependent) GetPhraseOk() (*VoiceConfigurationText
 }
 
 // SetPhrase sets field value
+// Deprecated
 func (o *VoiceConfigurationTextDependent) SetPhrase(v VoiceConfigurationTextDependentPhrase) {
 	o.Phrase = v
 }

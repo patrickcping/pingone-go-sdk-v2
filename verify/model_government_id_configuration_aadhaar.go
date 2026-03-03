@@ -20,8 +20,7 @@ var _ MappedNullable = &GovernmentIdConfigurationAadhaar{}
 // GovernmentIdConfigurationAadhaar Aadhaar configuration
 type GovernmentIdConfigurationAadhaar struct {
 	// Whether Aadhaar verification is enabled or not
-	Enabled *bool                                `json:"enabled,omitempty"`
-	Otp     *GovernmentIdConfigurationAadhaarOtp `json:"otp,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewGovernmentIdConfigurationAadhaar instantiates a new GovernmentIdConfigurationAadhaar object
@@ -73,38 +72,6 @@ func (o *GovernmentIdConfigurationAadhaar) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetOtp returns the Otp field value if set, zero value otherwise.
-func (o *GovernmentIdConfigurationAadhaar) GetOtp() GovernmentIdConfigurationAadhaarOtp {
-	if o == nil || IsNil(o.Otp) {
-		var ret GovernmentIdConfigurationAadhaarOtp
-		return ret
-	}
-	return *o.Otp
-}
-
-// GetOtpOk returns a tuple with the Otp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GovernmentIdConfigurationAadhaar) GetOtpOk() (*GovernmentIdConfigurationAadhaarOtp, bool) {
-	if o == nil || IsNil(o.Otp) {
-		return nil, false
-	}
-	return o.Otp, true
-}
-
-// HasOtp returns a boolean if a field has been set.
-func (o *GovernmentIdConfigurationAadhaar) HasOtp() bool {
-	if o != nil && !IsNil(o.Otp) {
-		return true
-	}
-
-	return false
-}
-
-// SetOtp gets a reference to the given GovernmentIdConfigurationAadhaarOtp and assigns it to the Otp field.
-func (o *GovernmentIdConfigurationAadhaar) SetOtp(v GovernmentIdConfigurationAadhaarOtp) {
-	o.Otp = &v
-}
-
 func (o GovernmentIdConfigurationAadhaar) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -117,9 +84,6 @@ func (o GovernmentIdConfigurationAadhaar) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Otp) {
-		toSerialize["otp"] = o.Otp
 	}
 	return toSerialize, nil
 }

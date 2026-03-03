@@ -19,13 +19,10 @@ var _ MappedNullable = &PasswordPolicy{}
 
 // PasswordPolicy struct for PasswordPolicy
 type PasswordPolicy struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	// Determines whether the password policy for a user will be ignored. If this property is omitted from a CREATE Password Policy request, its value is set to false.
-	BypassPolicy *bool `json:"bypassPolicy,omitempty"`
+	Links                *map[string]LinksHATEOASValue       `json:"_links,omitempty"`
+	AlphabetSequenceRule *PasswordPolicyAlphabetSequenceRule `json:"alphabetSequenceRule,omitempty"`
 	// The date and time the resource was created (format ISO-8061).
 	CreatedAt *string `json:"createdAt,omitempty"`
-	// The current password to be verified before the new password is set. Required for self-change when the user already has a password (the user whose password is being changed is the same as the actor in the access token).
-	CurrentPassword *string `json:"currentPassword,omitempty"`
 	// Indicates whether this password policy is enforced within the environment. When set to true, all other password policies are set to false.
 	Default *bool `json:"default,omitempty"`
 	// Specifies the brief description of the password policy.
@@ -53,14 +50,15 @@ type PasswordPolicy struct {
 	MinUniqueCharacters *int32 `json:"minUniqueCharacters,omitempty"`
 	// The name of the password policy. This value must be unique within the environment.
 	Name string `json:"name"`
-	// The new password (must satisfy all requirements).
-	NewPassword *string `json:"newPassword,omitempty"`
 	// Set this to true to ensure that the proposed password is not too similar to the user's current password based on the Levenshtein distance algorithm. The value of this parameter is evaluated only for password change actions in which the user enters both the current and the new password. By design, PingOne does not know the user's current password.
-	NotSimilarToCurrent bool `json:"notSimilarToCurrent"`
+	NotSimilarToCurrent          bool                                        `json:"notSimilarToCurrent"`
+	NumberSequenceRule           *PasswordPolicyNumberSequenceRule           `json:"numberSequenceRule,omitempty"`
+	ShiftedNumberRowSequenceRule *PasswordPolicyShiftedNumberRowSequenceRule `json:"shiftedNumberRowSequenceRule,omitempty"`
 	// Returned in the response. The number of populations associated with the password policy.
 	PopulationCount *int32 `json:"populationCount,omitempty"`
 	// The date and time the resource was last updated (format ISO-8061).
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt          *string                           `json:"updatedAt,omitempty"`
+	QwertySequenceRule *PasswordPolicyQwertySequenceRule `json:"qwertySequenceRule,omitempty"`
 }
 
 // NewPasswordPolicy instantiates a new PasswordPolicy object
@@ -69,8 +67,6 @@ type PasswordPolicy struct {
 // will change when the set of required properties is changed
 func NewPasswordPolicy(excludesCommonlyUsed bool, excludesProfileData bool, name string, notSimilarToCurrent bool) *PasswordPolicy {
 	this := PasswordPolicy{}
-	var bypassPolicy bool = false
-	this.BypassPolicy = &bypassPolicy
 	this.ExcludesCommonlyUsed = excludesCommonlyUsed
 	this.ExcludesProfileData = excludesProfileData
 	this.Name = name
@@ -83,8 +79,6 @@ func NewPasswordPolicy(excludesCommonlyUsed bool, excludesProfileData bool, name
 // but it doesn't guarantee that properties required by API are set
 func NewPasswordPolicyWithDefaults() *PasswordPolicy {
 	this := PasswordPolicy{}
-	var bypassPolicy bool = false
-	this.BypassPolicy = &bypassPolicy
 	return &this
 }
 
@@ -120,36 +114,36 @@ func (o *PasswordPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
-// GetBypassPolicy returns the BypassPolicy field value if set, zero value otherwise.
-func (o *PasswordPolicy) GetBypassPolicy() bool {
-	if o == nil || IsNil(o.BypassPolicy) {
-		var ret bool
+// GetAlphabetSequenceRule returns the AlphabetSequenceRule field value if set, zero value otherwise.
+func (o *PasswordPolicy) GetAlphabetSequenceRule() PasswordPolicyAlphabetSequenceRule {
+	if o == nil || IsNil(o.AlphabetSequenceRule) {
+		var ret PasswordPolicyAlphabetSequenceRule
 		return ret
 	}
-	return *o.BypassPolicy
+	return *o.AlphabetSequenceRule
 }
 
-// GetBypassPolicyOk returns a tuple with the BypassPolicy field value if set, nil otherwise
+// GetAlphabetSequenceRuleOk returns a tuple with the AlphabetSequenceRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordPolicy) GetBypassPolicyOk() (*bool, bool) {
-	if o == nil || IsNil(o.BypassPolicy) {
+func (o *PasswordPolicy) GetAlphabetSequenceRuleOk() (*PasswordPolicyAlphabetSequenceRule, bool) {
+	if o == nil || IsNil(o.AlphabetSequenceRule) {
 		return nil, false
 	}
-	return o.BypassPolicy, true
+	return o.AlphabetSequenceRule, true
 }
 
-// HasBypassPolicy returns a boolean if a field has been set.
-func (o *PasswordPolicy) HasBypassPolicy() bool {
-	if o != nil && !IsNil(o.BypassPolicy) {
+// HasAlphabetSequenceRule returns a boolean if a field has been set.
+func (o *PasswordPolicy) HasAlphabetSequenceRule() bool {
+	if o != nil && !IsNil(o.AlphabetSequenceRule) {
 		return true
 	}
 
 	return false
 }
 
-// SetBypassPolicy gets a reference to the given bool and assigns it to the BypassPolicy field.
-func (o *PasswordPolicy) SetBypassPolicy(v bool) {
-	o.BypassPolicy = &v
+// SetAlphabetSequenceRule gets a reference to the given PasswordPolicyAlphabetSequenceRule and assigns it to the AlphabetSequenceRule field.
+func (o *PasswordPolicy) SetAlphabetSequenceRule(v PasswordPolicyAlphabetSequenceRule) {
+	o.AlphabetSequenceRule = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -182,38 +176,6 @@ func (o *PasswordPolicy) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *PasswordPolicy) SetCreatedAt(v string) {
 	o.CreatedAt = &v
-}
-
-// GetCurrentPassword returns the CurrentPassword field value if set, zero value otherwise.
-func (o *PasswordPolicy) GetCurrentPassword() string {
-	if o == nil || IsNil(o.CurrentPassword) {
-		var ret string
-		return ret
-	}
-	return *o.CurrentPassword
-}
-
-// GetCurrentPasswordOk returns a tuple with the CurrentPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PasswordPolicy) GetCurrentPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.CurrentPassword) {
-		return nil, false
-	}
-	return o.CurrentPassword, true
-}
-
-// HasCurrentPassword returns a boolean if a field has been set.
-func (o *PasswordPolicy) HasCurrentPassword() bool {
-	if o != nil && !IsNil(o.CurrentPassword) {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrentPassword gets a reference to the given string and assigns it to the CurrentPassword field.
-func (o *PasswordPolicy) SetCurrentPassword(v string) {
-	o.CurrentPassword = &v
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
@@ -704,38 +666,6 @@ func (o *PasswordPolicy) SetName(v string) {
 	o.Name = v
 }
 
-// GetNewPassword returns the NewPassword field value if set, zero value otherwise.
-func (o *PasswordPolicy) GetNewPassword() string {
-	if o == nil || IsNil(o.NewPassword) {
-		var ret string
-		return ret
-	}
-	return *o.NewPassword
-}
-
-// GetNewPasswordOk returns a tuple with the NewPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PasswordPolicy) GetNewPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.NewPassword) {
-		return nil, false
-	}
-	return o.NewPassword, true
-}
-
-// HasNewPassword returns a boolean if a field has been set.
-func (o *PasswordPolicy) HasNewPassword() bool {
-	if o != nil && !IsNil(o.NewPassword) {
-		return true
-	}
-
-	return false
-}
-
-// SetNewPassword gets a reference to the given string and assigns it to the NewPassword field.
-func (o *PasswordPolicy) SetNewPassword(v string) {
-	o.NewPassword = &v
-}
-
 // GetNotSimilarToCurrent returns the NotSimilarToCurrent field value
 func (o *PasswordPolicy) GetNotSimilarToCurrent() bool {
 	if o == nil {
@@ -758,6 +688,70 @@ func (o *PasswordPolicy) GetNotSimilarToCurrentOk() (*bool, bool) {
 // SetNotSimilarToCurrent sets field value
 func (o *PasswordPolicy) SetNotSimilarToCurrent(v bool) {
 	o.NotSimilarToCurrent = v
+}
+
+// GetNumberSequenceRule returns the NumberSequenceRule field value if set, zero value otherwise.
+func (o *PasswordPolicy) GetNumberSequenceRule() PasswordPolicyNumberSequenceRule {
+	if o == nil || IsNil(o.NumberSequenceRule) {
+		var ret PasswordPolicyNumberSequenceRule
+		return ret
+	}
+	return *o.NumberSequenceRule
+}
+
+// GetNumberSequenceRuleOk returns a tuple with the NumberSequenceRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PasswordPolicy) GetNumberSequenceRuleOk() (*PasswordPolicyNumberSequenceRule, bool) {
+	if o == nil || IsNil(o.NumberSequenceRule) {
+		return nil, false
+	}
+	return o.NumberSequenceRule, true
+}
+
+// HasNumberSequenceRule returns a boolean if a field has been set.
+func (o *PasswordPolicy) HasNumberSequenceRule() bool {
+	if o != nil && !IsNil(o.NumberSequenceRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumberSequenceRule gets a reference to the given PasswordPolicyNumberSequenceRule and assigns it to the NumberSequenceRule field.
+func (o *PasswordPolicy) SetNumberSequenceRule(v PasswordPolicyNumberSequenceRule) {
+	o.NumberSequenceRule = &v
+}
+
+// GetShiftedNumberRowSequenceRule returns the ShiftedNumberRowSequenceRule field value if set, zero value otherwise.
+func (o *PasswordPolicy) GetShiftedNumberRowSequenceRule() PasswordPolicyShiftedNumberRowSequenceRule {
+	if o == nil || IsNil(o.ShiftedNumberRowSequenceRule) {
+		var ret PasswordPolicyShiftedNumberRowSequenceRule
+		return ret
+	}
+	return *o.ShiftedNumberRowSequenceRule
+}
+
+// GetShiftedNumberRowSequenceRuleOk returns a tuple with the ShiftedNumberRowSequenceRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PasswordPolicy) GetShiftedNumberRowSequenceRuleOk() (*PasswordPolicyShiftedNumberRowSequenceRule, bool) {
+	if o == nil || IsNil(o.ShiftedNumberRowSequenceRule) {
+		return nil, false
+	}
+	return o.ShiftedNumberRowSequenceRule, true
+}
+
+// HasShiftedNumberRowSequenceRule returns a boolean if a field has been set.
+func (o *PasswordPolicy) HasShiftedNumberRowSequenceRule() bool {
+	if o != nil && !IsNil(o.ShiftedNumberRowSequenceRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetShiftedNumberRowSequenceRule gets a reference to the given PasswordPolicyShiftedNumberRowSequenceRule and assigns it to the ShiftedNumberRowSequenceRule field.
+func (o *PasswordPolicy) SetShiftedNumberRowSequenceRule(v PasswordPolicyShiftedNumberRowSequenceRule) {
+	o.ShiftedNumberRowSequenceRule = &v
 }
 
 // GetPopulationCount returns the PopulationCount field value if set, zero value otherwise.
@@ -824,6 +818,38 @@ func (o *PasswordPolicy) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
+// GetQwertySequenceRule returns the QwertySequenceRule field value if set, zero value otherwise.
+func (o *PasswordPolicy) GetQwertySequenceRule() PasswordPolicyQwertySequenceRule {
+	if o == nil || IsNil(o.QwertySequenceRule) {
+		var ret PasswordPolicyQwertySequenceRule
+		return ret
+	}
+	return *o.QwertySequenceRule
+}
+
+// GetQwertySequenceRuleOk returns a tuple with the QwertySequenceRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PasswordPolicy) GetQwertySequenceRuleOk() (*PasswordPolicyQwertySequenceRule, bool) {
+	if o == nil || IsNil(o.QwertySequenceRule) {
+		return nil, false
+	}
+	return o.QwertySequenceRule, true
+}
+
+// HasQwertySequenceRule returns a boolean if a field has been set.
+func (o *PasswordPolicy) HasQwertySequenceRule() bool {
+	if o != nil && !IsNil(o.QwertySequenceRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetQwertySequenceRule gets a reference to the given PasswordPolicyQwertySequenceRule and assigns it to the QwertySequenceRule field.
+func (o *PasswordPolicy) SetQwertySequenceRule(v PasswordPolicyQwertySequenceRule) {
+	o.QwertySequenceRule = &v
+}
+
 func (o PasswordPolicy) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -837,14 +863,11 @@ func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !IsNil(o.BypassPolicy) {
-		toSerialize["bypassPolicy"] = o.BypassPolicy
+	if !IsNil(o.AlphabetSequenceRule) {
+		toSerialize["alphabetSequenceRule"] = o.AlphabetSequenceRule
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.CurrentPassword) {
-		toSerialize["currentPassword"] = o.CurrentPassword
 	}
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
@@ -888,15 +911,21 @@ func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 		toSerialize["minUniqueCharacters"] = o.MinUniqueCharacters
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.NewPassword) {
-		toSerialize["newPassword"] = o.NewPassword
-	}
 	toSerialize["notSimilarToCurrent"] = o.NotSimilarToCurrent
+	if !IsNil(o.NumberSequenceRule) {
+		toSerialize["numberSequenceRule"] = o.NumberSequenceRule
+	}
+	if !IsNil(o.ShiftedNumberRowSequenceRule) {
+		toSerialize["shiftedNumberRowSequenceRule"] = o.ShiftedNumberRowSequenceRule
+	}
 	if !IsNil(o.PopulationCount) {
 		toSerialize["populationCount"] = o.PopulationCount
 	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.QwertySequenceRule) {
+		toSerialize["qwertySequenceRule"] = o.QwertySequenceRule
 	}
 	return toSerialize, nil
 }

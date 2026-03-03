@@ -1,3 +1,13 @@
+# v0.11.1 (2026-02-25)
+
+* **Bug Fix** Added back `OPTIONAL` enum value to `EnumVerify`, removed in error. [#507](https://github.com/patrickcping/pingone-go-sdk-v2/pull/507)
+
+# v0.11.0 (2026-02-13)
+
+* **Breaking Change** Removed `OPTIONAL` enum value from `EnumVerify` as the API no longer supports this value. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+* **Breaking Change** Removed deprecated `Otp` field from the `GovernmentIdConfigurationAadhaar` model as the API no longer supports this capability. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+* **Note** Deprecated much of the voice verification functionality as it deprecated on the API. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)
+
 # v0.10.0 (2025-10-02)
 
 * **Enhancement** Added `IdentityRecordMatching` to the `VerifyPolicy` object. [#471](https://github.com/patrickcping/pingone-go-sdk-v2/pull/471)
