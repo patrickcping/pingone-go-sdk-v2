@@ -30,6 +30,7 @@ type ApiReadTranslationsRequest struct {
 	locale                     string
 	xPingExternalTransactionID *string
 	xPingExternalSessionID     *string
+	filter                     *string
 }
 
 // An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
@@ -41,6 +42,12 @@ func (r ApiReadTranslationsRequest) XPingExternalTransactionID(xPingExternalTran
 // An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
 func (r ApiReadTranslationsRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiReadTranslationsRequest {
 	r.xPingExternalSessionID = &xPingExternalSessionID
+	return r
+}
+
+// Adding a SCIM filter to filter the data. &#x60;module&#x60; and &#x60;block&#x60; are supported
+func (r ApiReadTranslationsRequest) Filter(filter string) ApiReadTranslationsRequest {
+	r.filter = &filter
 	return r
 }
 
@@ -113,6 +120,9 @@ func (a *TranslationsApiService) internalReadTranslationsExecute(r ApiReadTransl
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

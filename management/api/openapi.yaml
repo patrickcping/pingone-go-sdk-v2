@@ -21579,6 +21579,16 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Adding a SCIM filter to filter the data. `module` and `block`
+          are supported
+        example: module eq "flow-ui" and block eq "UpdateProfile"
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "400":
           content:
