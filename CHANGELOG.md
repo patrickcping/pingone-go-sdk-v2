@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.65.0](./management/CHANGELOG.md)
+  * **Enhancement** Added `filter` parameter to language translations API.
+
 # Release (2026-02-26)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.8
