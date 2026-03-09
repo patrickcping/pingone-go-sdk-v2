@@ -1,3 +1,3 @@
 module github.com/patrickcping/pingone-go-sdk-v2/authorize
 
-go 1.25.0
+go 1.25.6

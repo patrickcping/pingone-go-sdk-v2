@@ -53,7 +53,7 @@ var (
 		{
 			fileSelectPattern: "go.mod",
 			pattern:           `go 1.18`,
-			repl:              `go 1.25.0`,
+			repl:              `go 1.25.6`,
 		},
 
 		/////////////////////////
