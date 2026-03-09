@@ -2,6 +2,12 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.9
   * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.2 => v0.8.3 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.12.0 => v0.12.1 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.64.0 => v0.65.0 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.24.1 => v0.24.2 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.21.0 => v0.21.1 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.11.1 => v0.11.2 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.3](./authorize/CHANGELOG.md)
   * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.12.1](./credentials/CHANGELOG.md)
