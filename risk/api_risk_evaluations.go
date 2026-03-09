@@ -102,7 +102,7 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskEvaluations"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -378,8 +378,8 @@ func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiRe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskEvaluations/{riskEvaluationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskEvaluationID"+"}", url.PathEscape(parameterValueToString(r.riskEvaluationID, "riskEvaluationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskEvaluationID"+"}", url.PathEscape(parameterValueToString(r.riskEvaluationID, "riskEvaluationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -622,8 +622,8 @@ func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpd
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskEvaluationID"+"}", url.PathEscape(parameterValueToString(r.riskEvaluationID, "riskEvaluationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskEvaluationID"+"}", url.PathEscape(parameterValueToString(r.riskEvaluationID, "riskEvaluationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

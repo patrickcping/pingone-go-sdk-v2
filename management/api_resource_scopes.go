@@ -104,8 +104,8 @@ func (a *ResourceScopesApiService) internalCreateResourceScopeExecute(r ApiCreat
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/resources/{resourceID}/scopes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *ResourceScopesApiService) internalDeleteResourceScopeExecute(r ApiDelet
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"scopeID"+"}", url.PathEscape(parameterValueToString(r.scopeID, "scopeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"scopeID"+"}", url.PathEscape(parameterValueToString(r.scopeID, "scopeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *ResourceScopesApiService) internalReadAllResourceScopesExecute(r ApiRea
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/resources/{resourceID}/scopes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *ResourceScopesApiService) internalReadOneResourceScopeExecute(r ApiRead
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"scopeID"+"}", url.PathEscape(parameterValueToString(r.scopeID, "scopeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"scopeID"+"}", url.PathEscape(parameterValueToString(r.scopeID, "scopeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *ResourceScopesApiService) internalUpdateResourceScopeExecute(r ApiUpdat
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"scopeID"+"}", url.PathEscape(parameterValueToString(r.scopeID, "scopeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"resourceID"+"}", url.PathEscape(parameterValueToString(r.resourceID, "resourceID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"scopeID"+"}", url.PathEscape(parameterValueToString(r.scopeID, "scopeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -69,7 +69,7 @@ func (dst *EntityArrayEmbeddedResourcesInner) UnmarshalJSON(data []byte) error {
 		dst.ResourceApplicationResource = nil
 	}
 
-	return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedResourcesInner)")
+	return fmt.Errorf("data failed to match schemas in oneOf(EntityArrayEmbeddedResourcesInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

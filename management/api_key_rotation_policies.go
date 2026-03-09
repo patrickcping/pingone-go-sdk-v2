@@ -102,7 +102,7 @@ func (a *KeyRotationPoliciesApiService) internalCreateKeyRotationPolicyExecute(r
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/keyRotationPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *KeyRotationPoliciesApiService) internalDeleteKeyRotationPolicyExecute(r
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyRotationPolicyID"+"}", url.PathEscape(parameterValueToString(r.keyRotationPolicyID, "keyRotationPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"keyRotationPolicyID"+"}", url.PathEscape(parameterValueToString(r.keyRotationPolicyID, "keyRotationPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *KeyRotationPoliciesApiService) internalGetKeyRotationPoliciesExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/keyRotationPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *KeyRotationPoliciesApiService) internalGetKeyRotationPolicyExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyRotationPolicyID"+"}", url.PathEscape(parameterValueToString(r.keyRotationPolicyID, "keyRotationPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"keyRotationPolicyID"+"}", url.PathEscape(parameterValueToString(r.keyRotationPolicyID, "keyRotationPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *KeyRotationPoliciesApiService) internalUpdateKeyRotationPolicyExecute(r
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyRotationPolicyID"+"}", url.PathEscape(parameterValueToString(r.keyRotationPolicyID, "keyRotationPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"keyRotationPolicyID"+"}", url.PathEscape(parameterValueToString(r.keyRotationPolicyID, "keyRotationPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

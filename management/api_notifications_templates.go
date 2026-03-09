@@ -104,8 +104,8 @@ func (a *NotificationsTemplatesApiService) internalCreateContentExecute(r ApiCre
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}/contents"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -358,8 +358,8 @@ func (a *NotificationsTemplatesApiService) internalDeleteBulkVariantContentsExec
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}/contents"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -590,9 +590,9 @@ func (a *NotificationsTemplatesApiService) internalDeleteContentExecute(r ApiDel
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}/contents/{contentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"contentID"+"}", url.PathEscape(parameterValueToString(r.contentID, "contentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"contentID"+"}", url.PathEscape(parameterValueToString(r.contentID, "contentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -840,8 +840,8 @@ func (a *NotificationsTemplatesApiService) internalPatchBulkVariantContentsExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}/contents"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1098,8 +1098,8 @@ func (a *NotificationsTemplatesApiService) internalReadAllTemplateContentsExecut
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}/contents"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1363,7 +1363,7 @@ func (a *NotificationsTemplatesApiService) internalReadAllTemplatesExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1612,9 +1612,9 @@ func (a *NotificationsTemplatesApiService) internalReadOneContentExecute(r ApiRe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}/contents/{contentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"contentID"+"}", url.PathEscape(parameterValueToString(r.contentID, "contentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"contentID"+"}", url.PathEscape(parameterValueToString(r.contentID, "contentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1851,8 +1851,8 @@ func (a *NotificationsTemplatesApiService) internalReadOneTemplateExecute(r ApiR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2098,9 +2098,9 @@ func (a *NotificationsTemplatesApiService) internalUpdateContentExecute(r ApiUpd
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/templates/{templateName}/contents/{contentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"contentID"+"}", url.PathEscape(parameterValueToString(r.contentID, "contentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"templateName"+"}", url.PathEscape(parameterValueToString(r.templateName, "templateName")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"contentID"+"}", url.PathEscape(parameterValueToString(r.contentID, "contentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -102,7 +102,7 @@ func (a *GroupsApiService) internalCreateGroupExecute(r ApiCreateGroupRequest) (
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -384,8 +384,8 @@ func (a *GroupsApiService) internalCreateGroupNestingExecute(r ApiCreateGroupNes
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups/{groupID}/memberOfGroups"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -632,8 +632,8 @@ func (a *GroupsApiService) internalDeleteGroupExecute(r ApiDeleteGroupRequest) (
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -861,9 +861,9 @@ func (a *GroupsApiService) internalDeleteGroupNestingExecute(r ApiDeleteGroupNes
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"nestedGroupID"+"}", url.PathEscape(parameterValueToString(r.nestedGroupID, "nestedGroupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"nestedGroupID"+"}", url.PathEscape(parameterValueToString(r.nestedGroupID, "nestedGroupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1116,7 +1116,7 @@ func (a *GroupsApiService) internalReadAllGroupsExecute(r ApiReadAllGroupsReques
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1396,8 +1396,8 @@ func (a *GroupsApiService) internalReadGroupNestingExecute(r ApiReadGroupNesting
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups/{groupID}/memberOfGroups"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1640,8 +1640,8 @@ func (a *GroupsApiService) internalReadOneGroupExecute(r ApiReadOneGroupRequest)
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1884,9 +1884,9 @@ func (a *GroupsApiService) internalReadOneGroupNestingExecute(r ApiReadOneGroupN
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"nestedGroupID"+"}", url.PathEscape(parameterValueToString(r.nestedGroupID, "nestedGroupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"nestedGroupID"+"}", url.PathEscape(parameterValueToString(r.nestedGroupID, "nestedGroupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2129,8 +2129,8 @@ func (a *GroupsApiService) internalUpdateGroupExecute(r ApiUpdateGroupRequest) (
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/groups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

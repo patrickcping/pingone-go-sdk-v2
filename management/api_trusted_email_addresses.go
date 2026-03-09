@@ -104,8 +104,8 @@ func (a *TrustedEmailAddressesApiService) internalCreateTrustedEmailAddressExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *TrustedEmailAddressesApiService) internalDeleteTrustedEmailAddressExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterValueToString(r.trustedEmailId, "trustedEmailId")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterValueToString(r.trustedEmailId, "trustedEmailId")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *TrustedEmailAddressesApiService) internalReadAllTrustedEmailAddressesEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *TrustedEmailAddressesApiService) internalReadOneTrustedEmailAddressExec
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterValueToString(r.trustedEmailId, "trustedEmailId")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterValueToString(r.trustedEmailId, "trustedEmailId")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *TrustedEmailAddressesApiService) internalResendVerificationCodeToEmailE
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterValueToString(r.trustedEmailId, "trustedEmailId")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterValueToString(r.emailDomainID, "emailDomainID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"trustedEmailId"+"}", url.PathEscape(parameterValueToString(r.trustedEmailId, "trustedEmailId")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

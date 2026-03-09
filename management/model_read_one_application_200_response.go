@@ -123,7 +123,7 @@ func (dst *ReadOneApplication200Response) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedApplicationsInner)")
+		return fmt.Errorf("data failed to match schemas in oneOf(EntityArrayEmbeddedApplicationsInner)")
 	}
 	return nil
 }

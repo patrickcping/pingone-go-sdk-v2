@@ -104,8 +104,8 @@ func (a *GroupMembershipApiService) internalAddUserToGroupExecute(r ApiAddUserTo
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/memberOfGroups"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -388,8 +388,8 @@ func (a *GroupMembershipApiService) internalReadAllGroupMembershipsForUserExecut
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/memberOfGroups"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -647,9 +647,9 @@ func (a *GroupMembershipApiService) internalReadOneGroupMembershipForUserExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -889,9 +889,9 @@ func (a *GroupMembershipApiService) internalRemoveUserFromGroupExecute(r ApiRemo
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"groupID"+"}", url.PathEscape(parameterValueToString(r.groupID, "groupID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -42,27 +42,27 @@ func TestClient(ctx context.Context) (*pingone.Client, error) {
 	}
 
 	if client.AuthorizeAPIClient == nil {
-		return nil, fmt.Errorf("Authorize Client not successfully retrieved, authorize is null")
+		return nil, fmt.Errorf("authorize Client not successfully retrieved, authorize is null")
 	}
 
 	if client.CredentialsAPIClient == nil {
-		return nil, fmt.Errorf("Credentials Client not successfully retrieved, credentials is null")
+		return nil, fmt.Errorf("credentials Client not successfully retrieved, credentials is null")
 	}
 
 	if client.ManagementAPIClient == nil {
-		return nil, fmt.Errorf("Management Client not successfully retrieved, management is null")
+		return nil, fmt.Errorf("management Client not successfully retrieved, management is null")
 	}
 
 	if client.MFAAPIClient == nil {
-		return nil, fmt.Errorf("Management Client not successfully retrieved, mfa is null")
+		return nil, fmt.Errorf("management Client not successfully retrieved, mfa is null")
 	}
 
 	if client.RiskAPIClient == nil {
-		return nil, fmt.Errorf("Management Client not successfully retrieved, risk is null")
+		return nil, fmt.Errorf("management Client not successfully retrieved, risk is null")
 	}
 
 	if client.VerifyAPIClient == nil {
-		return nil, fmt.Errorf("Management Client not successfully retrieved, verify is null")
+		return nil, fmt.Errorf("management Client not successfully retrieved, verify is null")
 	}
 
 	return client, nil

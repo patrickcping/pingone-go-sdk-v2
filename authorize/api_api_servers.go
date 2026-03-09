@@ -102,7 +102,7 @@ func (a *APIServersApiService) internalCreateAPIServerExecute(r ApiCreateAPIServ
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/apiServers"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *APIServersApiService) internalDeleteAPIServerExecute(r ApiDeleteAPIServ
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/apiServers/{apiServerID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiServerID"+"}", url.PathEscape(parameterValueToString(r.apiServerID, "apiServerID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"apiServerID"+"}", url.PathEscape(parameterValueToString(r.apiServerID, "apiServerID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *APIServersApiService) internalReadAllAPIServersExecute(r ApiReadAllAPIS
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/apiServers"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *APIServersApiService) internalReadOneAPIServerExecute(r ApiReadOneAPISe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/apiServers/{apiServerID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiServerID"+"}", url.PathEscape(parameterValueToString(r.apiServerID, "apiServerID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"apiServerID"+"}", url.PathEscape(parameterValueToString(r.apiServerID, "apiServerID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *APIServersApiService) internalUpdateAPIServerExecute(r ApiUpdateAPIServ
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/apiServers/{apiServerID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiServerID"+"}", url.PathEscape(parameterValueToString(r.apiServerID, "apiServerID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"apiServerID"+"}", url.PathEscape(parameterValueToString(r.apiServerID, "apiServerID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

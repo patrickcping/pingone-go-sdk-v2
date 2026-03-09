@@ -125,11 +125,11 @@ func (dst *SignOnPolicyActionCommonConditionOrOrInner) UnmarshalJSON(data []byte
 		dst.SignOnPolicyActionCommonConditionNot = nil
 		dst.SignOnPolicyActionCommonConditionOr = nil
 
-		return fmt.Errorf("Data matches more than one schema in oneOf(SignOnPolicyActionCommonConditionOrOrInner)")
+		return fmt.Errorf("data matches more than one schema in oneOf(SignOnPolicyActionCommonConditionOrOrInner)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("Data failed to match schemas in oneOf(SignOnPolicyActionCommonConditionOrOrInner)")
+		return fmt.Errorf("data failed to match schemas in oneOf(SignOnPolicyActionCommonConditionOrOrInner)")
 	}
 }
 

@@ -102,7 +102,7 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

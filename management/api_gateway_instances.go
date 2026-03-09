@@ -106,8 +106,8 @@ func (a *GatewayInstancesApiService) internalReadAllGatewayInstancesExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/instances"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -347,9 +347,9 @@ func (a *GatewayInstancesApiService) internalReadOneGatewayInstanceExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/instances/{instanceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceID"+"}", url.PathEscape(parameterValueToString(r.instanceID, "instanceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"instanceID"+"}", url.PathEscape(parameterValueToString(r.instanceID, "instanceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

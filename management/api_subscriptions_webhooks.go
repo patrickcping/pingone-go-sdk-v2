@@ -102,7 +102,7 @@ func (a *SubscriptionsWebhooksApiService) internalCreateSubscriptionExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/subscriptions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *SubscriptionsWebhooksApiService) internalDeleteSubscriptionExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/subscriptions/{subscriptionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterValueToString(r.subscriptionID, "subscriptionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterValueToString(r.subscriptionID, "subscriptionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *SubscriptionsWebhooksApiService) internalReadAllSubscriptionsExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/subscriptions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *SubscriptionsWebhooksApiService) internalReadOneSubscriptionExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/subscriptions/{subscriptionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterValueToString(r.subscriptionID, "subscriptionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterValueToString(r.subscriptionID, "subscriptionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *SubscriptionsWebhooksApiService) internalUpdateSubscriptionExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/subscriptions/{subscriptionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterValueToString(r.subscriptionID, "subscriptionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"subscriptionID"+"}", url.PathEscape(parameterValueToString(r.subscriptionID, "subscriptionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -107,9 +107,9 @@ func (a *AgreementRevisionsResourcesApiService) internalCreateAgreementLanguageR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -362,10 +362,10 @@ func (a *AgreementRevisionsResourcesApiService) internalDeleteAgreementLanguageR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"revisionID"+"}", url.PathEscape(parameterValueToString(r.revisionID, "revisionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"revisionID"+"}", url.PathEscape(parameterValueToString(r.revisionID, "revisionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -604,9 +604,9 @@ func (a *AgreementRevisionsResourcesApiService) internalReadAllAgreementLanguage
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -849,10 +849,10 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"revisionID"+"}", url.PathEscape(parameterValueToString(r.revisionID, "revisionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"revisionID"+"}", url.PathEscape(parameterValueToString(r.revisionID, "revisionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

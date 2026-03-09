@@ -102,7 +102,7 @@ func (a *FIDO2PolicyApiService) internalCreateFIDO2PolicyExecute(r ApiCreateFIDO
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fido2Policies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *FIDO2PolicyApiService) internalDeleteFIDO2PolicyExecute(r ApiDeleteFIDO
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fido2Policies/{fido2PolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *FIDO2PolicyApiService) internalReadFIDO2PoliciesExecute(r ApiReadFIDO2P
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fido2Policies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -852,8 +852,8 @@ func (a *FIDO2PolicyApiService) internalReadOneFIDO2PolicyExecute(r ApiReadOneFI
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fido2Policies/{fido2PolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1099,8 +1099,8 @@ func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fido2Policies/{fido2PolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

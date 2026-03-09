@@ -102,7 +102,7 @@ func (a *LanguagesApiService) internalCreateLanguageExecute(r ApiCreateLanguageR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/languages"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *LanguagesApiService) internalDeleteLanguageExecute(r ApiDeleteLanguageR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *LanguagesApiService) internalReadLanguagesExecute(r ApiReadLanguagesReq
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/languages"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *LanguagesApiService) internalReadOneLanguageExecute(r ApiReadOneLanguag
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *LanguagesApiService) internalUpdateLanguageExecute(r ApiUpdateLanguageR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

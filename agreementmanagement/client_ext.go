@@ -26,10 +26,10 @@ func processResponse(f SDKInterfaceFunc, targetObject any) (*http.Response, erro
 	if targetObject != nil {
 		v := reflect.ValueOf(targetObject)
 		if v.Kind() != reflect.Ptr {
-			return nil, fmt.Errorf("Target object must be a pointer.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
+			return nil, fmt.Errorf("target object must be a pointer.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
 		}
 		if !v.Elem().IsValid() {
-			return nil, fmt.Errorf("Target object is not valid.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
+			return nil, fmt.Errorf("target object is not valid.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
 		}
 
 		if obj != nil {
