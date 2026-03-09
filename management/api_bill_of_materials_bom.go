@@ -96,7 +96,7 @@ func (a *BillOfMaterialsBOMApiService) internalReadOneBillOfMaterialsExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/billOfMaterials"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -336,7 +336,7 @@ func (a *BillOfMaterialsBOMApiService) internalUpdateBillOfMaterialsExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/billOfMaterials"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

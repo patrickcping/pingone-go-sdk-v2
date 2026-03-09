@@ -104,8 +104,8 @@ func (a *UserRoleAssignmentsApiService) internalCreateUserRoleAssignmentExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/roleAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *UserRoleAssignmentsApiService) internalDeleteUserRoleAssignmentExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.roleAssignmentID, "roleAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"roleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.roleAssignmentID, "roleAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -588,9 +588,9 @@ func (a *UserRoleAssignmentsApiService) internalReadOneUserRoleAssignmentExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.roleAssignmentID, "roleAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"roleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.roleAssignmentID, "roleAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -835,8 +835,8 @@ func (a *UserRoleAssignmentsApiService) internalReadUserRoleAssignmentsExecute(r
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/roleAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -63,7 +63,7 @@ func (dst *IntegrationVersion) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(IntegrationVersion)")
+		return fmt.Errorf("data failed to match schemas in oneOf(IntegrationVersion)")
 	}
 	return nil
 }

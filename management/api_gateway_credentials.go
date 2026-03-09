@@ -98,8 +98,8 @@ func (a *GatewayCredentialsApiService) internalCreateGatewayCredentialExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -347,9 +347,9 @@ func (a *GatewayCredentialsApiService) internalDeleteGatewayCredentialExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialID"+"}", url.PathEscape(parameterValueToString(r.credentialID, "credentialID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialID"+"}", url.PathEscape(parameterValueToString(r.credentialID, "credentialID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -585,8 +585,8 @@ func (a *GatewayCredentialsApiService) internalReadAllGatewayCredentialsExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -826,9 +826,9 @@ func (a *GatewayCredentialsApiService) internalReadOneGatewayCredentialExecute(r
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialID"+"}", url.PathEscape(parameterValueToString(r.credentialID, "credentialID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialID"+"}", url.PathEscape(parameterValueToString(r.credentialID, "credentialID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

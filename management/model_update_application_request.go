@@ -112,7 +112,7 @@ func (dst *UpdateApplicationRequest) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(UpdateApplicationRequest)")
+		return fmt.Errorf("data failed to match schemas in oneOf(UpdateApplicationRequest)")
 	}
 	return nil
 }

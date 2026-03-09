@@ -102,7 +102,7 @@ func (a *CustomDomainsApiService) internalCreateDomainExecute(r ApiCreateDomainR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/customDomains"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *CustomDomainsApiService) internalDeleteDomainExecute(r ApiDeleteDomainR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/customDomains/{customDomainID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"customDomainID"+"}", url.PathEscape(parameterValueToString(r.customDomainID, "customDomainID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"customDomainID"+"}", url.PathEscape(parameterValueToString(r.customDomainID, "customDomainID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *CustomDomainsApiService) internalReadAllDomainsExecute(r ApiReadAllDoma
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/customDomains"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *CustomDomainsApiService) internalReadOneDomainExecute(r ApiReadOneDomai
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/customDomains/{customDomainID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"customDomainID"+"}", url.PathEscape(parameterValueToString(r.customDomainID, "customDomainID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"customDomainID"+"}", url.PathEscape(parameterValueToString(r.customDomainID, "customDomainID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1096,8 +1096,8 @@ func (a *CustomDomainsApiService) internalUpdateDomainExecute(r ApiUpdateDomainR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/customDomains/{customDomainID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"customDomainID"+"}", url.PathEscape(parameterValueToString(r.customDomainID, "customDomainID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"customDomainID"+"}", url.PathEscape(parameterValueToString(r.customDomainID, "customDomainID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

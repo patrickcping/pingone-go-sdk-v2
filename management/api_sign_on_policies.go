@@ -102,7 +102,7 @@ func (a *SignOnPoliciesApiService) internalCreateSignOnPolicyExecute(r ApiCreate
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/signOnPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *SignOnPoliciesApiService) internalDeleteSignOnPolicyExecute(r ApiDelete
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/signOnPolicies/{policyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterValueToString(r.policyID, "policyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterValueToString(r.policyID, "policyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *SignOnPoliciesApiService) internalReadAllSignOnPoliciesExecute(r ApiRea
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/signOnPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *SignOnPoliciesApiService) internalReadOneSignOnPolicyExecute(r ApiReadO
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/signOnPolicies/{policyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterValueToString(r.policyID, "policyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterValueToString(r.policyID, "policyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *SignOnPoliciesApiService) internalUpdateSignOnPolicyExecute(r ApiUpdate
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/signOnPolicies/{policyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterValueToString(r.policyID, "policyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"policyID"+"}", url.PathEscape(parameterValueToString(r.policyID, "policyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

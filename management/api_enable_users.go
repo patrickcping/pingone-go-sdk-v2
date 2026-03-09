@@ -98,8 +98,8 @@ func (a *EnableUsersApiService) internalReadUserEnabledExecute(r ApiReadUserEnab
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/enabled"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -342,8 +342,8 @@ func (a *EnableUsersApiService) internalUpdateUserEnabledExecute(r ApiUpdateUser
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/enabled"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

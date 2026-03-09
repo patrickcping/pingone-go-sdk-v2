@@ -102,7 +102,7 @@ func (a *PopulationsApiService) internalCreatePopulationExecute(r ApiCreatePopul
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/populations"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -378,8 +378,8 @@ func (a *PopulationsApiService) internalDeletePopulationExecute(r ApiDeletePopul
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/populations/{populationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -633,7 +633,7 @@ func (a *PopulationsApiService) internalReadAllPopulationsExecute(r ApiReadAllPo
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/populations"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -905,8 +905,8 @@ func (a *PopulationsApiService) internalReadOnePopulationExecute(r ApiReadOnePop
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/populations/{populationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1143,8 +1143,8 @@ func (a *PopulationsApiService) internalReadOnePopulationDefaultIdpExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/populations/{populationID}/defaultIdentityProvider"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1387,8 +1387,8 @@ func (a *PopulationsApiService) internalUpdatePopulationExecute(r ApiUpdatePopul
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/populations/{populationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1633,8 +1633,8 @@ func (a *PopulationsApiService) internalUpdatePopulationDefaultIdpExecute(r ApiU
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/populations/{populationID}/defaultIdentityProvider"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"populationID"+"}", url.PathEscape(parameterValueToString(r.populationID, "populationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

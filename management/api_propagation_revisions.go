@@ -98,7 +98,7 @@ func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropag
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/revisions/id:latest"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -323,7 +323,7 @@ func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropag
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/revisions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -565,8 +565,8 @@ func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropag
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/revisions/{previousRevisionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"previousRevisionID"+"}", url.PathEscape(parameterValueToString(r.previousRevisionID, "previousRevisionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"previousRevisionID"+"}", url.PathEscape(parameterValueToString(r.previousRevisionID, "previousRevisionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

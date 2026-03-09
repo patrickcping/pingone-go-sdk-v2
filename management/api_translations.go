@@ -120,8 +120,8 @@ func (a *TranslationsApiService) internalReadTranslationsExecute(r ApiReadTransl
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/translations/{locale}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"locale"+"}", url.PathEscape(parameterValueToString(r.locale, "locale")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"locale"+"}", url.PathEscape(parameterValueToString(r.locale, "locale")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,8 +354,8 @@ func (a *TranslationsApiService) UpdateTranslationsExecute(r ApiUpdateTranslatio
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/translations/{locale}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"locale"+"}", url.PathEscape(parameterValueToString(r.locale, "locale")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"locale"+"}", url.PathEscape(parameterValueToString(r.locale, "locale")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

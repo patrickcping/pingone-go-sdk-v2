@@ -58,7 +58,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 			// Parse the proxy URL
 			proxyURLParsed, err := url.Parse(*v)
 			if err != nil {
-				fmt.Println("Failed to parse proxy URL:", err)
+				fmt.Println("failed to parse proxy URL:", err)
 				return nil
 			}
 

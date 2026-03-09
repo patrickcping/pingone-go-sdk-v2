@@ -95,8 +95,8 @@ func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSession
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/sessions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -324,9 +324,9 @@ func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSession
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/sessions/{sessionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionID"+"}", url.PathEscape(parameterValueToString(r.sessionID, "sessionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"sessionID"+"}", url.PathEscape(parameterValueToString(r.sessionID, "sessionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -554,9 +554,9 @@ func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSession
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/sessions/{sessionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionID"+"}", url.PathEscape(parameterValueToString(r.sessionID, "sessionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"sessionID"+"}", url.PathEscape(parameterValueToString(r.sessionID, "sessionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

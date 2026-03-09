@@ -101,7 +101,7 @@ func (a *PhoneDeliverySettingsApiService) internalCreatePhoneDeliverySettingsExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsSettings/phoneDeliverySettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -348,8 +348,8 @@ func (a *PhoneDeliverySettingsApiService) internalDeletePhoneDeliverySettingsExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phoneDeliverySettingsID"+"}", url.PathEscape(parameterValueToString(r.phoneDeliverySettingsID, "phoneDeliverySettingsID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"phoneDeliverySettingsID"+"}", url.PathEscape(parameterValueToString(r.phoneDeliverySettingsID, "phoneDeliverySettingsID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -582,7 +582,7 @@ func (a *PhoneDeliverySettingsApiService) internalReadAllPhoneDeliverySettingsEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsSettings/phoneDeliverySettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -819,8 +819,8 @@ func (a *PhoneDeliverySettingsApiService) internalReadOnePhoneDeliverySettingsEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phoneDeliverySettingsID"+"}", url.PathEscape(parameterValueToString(r.phoneDeliverySettingsID, "phoneDeliverySettingsID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"phoneDeliverySettingsID"+"}", url.PathEscape(parameterValueToString(r.phoneDeliverySettingsID, "phoneDeliverySettingsID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1063,8 +1063,8 @@ func (a *PhoneDeliverySettingsApiService) internalUpdatePhoneDeliverySettingsExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phoneDeliverySettingsID"+"}", url.PathEscape(parameterValueToString(r.phoneDeliverySettingsID, "phoneDeliverySettingsID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"phoneDeliverySettingsID"+"}", url.PathEscape(parameterValueToString(r.phoneDeliverySettingsID, "phoneDeliverySettingsID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

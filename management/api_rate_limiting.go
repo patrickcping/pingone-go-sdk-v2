@@ -102,7 +102,7 @@ func (a *RateLimitingApiService) internalCreateRateLimitConfigurationExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/rateLimitIpConfigs"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *RateLimitingApiService) internalDeleteRateLimitConfigurationExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/rateLimitIpConfigs/{rateLimitConfigurationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rateLimitConfigurationID"+"}", url.PathEscape(parameterValueToString(r.rateLimitConfigurationID, "rateLimitConfigurationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"rateLimitConfigurationID"+"}", url.PathEscape(parameterValueToString(r.rateLimitConfigurationID, "rateLimitConfigurationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *RateLimitingApiService) internalReadAllRateLimitConfigurationsExecute(r
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/rateLimitIpConfigs"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -872,8 +872,8 @@ func (a *RateLimitingApiService) internalReadOneRateLimitConfigurationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/rateLimitIpConfigs/{rateLimitConfigurationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rateLimitConfigurationID"+"}", url.PathEscape(parameterValueToString(r.rateLimitConfigurationID, "rateLimitConfigurationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"rateLimitConfigurationID"+"}", url.PathEscape(parameterValueToString(r.rateLimitConfigurationID, "rateLimitConfigurationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

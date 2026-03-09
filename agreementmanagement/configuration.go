@@ -65,9 +65,9 @@ type ServerVariable struct {
 
 // ServerConfiguration stores the information about a server
 type ServerConfiguration struct {
-	URL string
+	URL         string
 	Description string
-	Variables map[string]ServerVariable
+	Variables   map[string]ServerVariable
 }
 
 // ServerConfigurations stores multiple ServerConfiguration items
@@ -75,32 +75,32 @@ type ServerConfigurations []ServerConfiguration
 
 // Configuration stores the configuration of the API client
 type Configuration struct {
-	Host             string            `json:"host,omitempty"`
-	Scheme           string            `json:"scheme,omitempty"`
-	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
-	UserAgent        string            `json:"userAgent,omitempty"`
-	Debug            bool              `json:"debug,omitempty"`
-	DefaultServerIndex int             `json:"defaultServerIndex,omitempty"`
-	ProxyURL         *string           `json:"proxyURL,omitempty"`
-	Servers          ServerConfigurations
-	OperationServers map[string]ServerConfigurations
-	HTTPClient       *http.Client
+	Host               string            `json:"host,omitempty"`
+	Scheme             string            `json:"scheme,omitempty"`
+	DefaultHeader      map[string]string `json:"defaultHeader,omitempty"`
+	UserAgent          string            `json:"userAgent,omitempty"`
+	Debug              bool              `json:"debug,omitempty"`
+	DefaultServerIndex int               `json:"defaultServerIndex,omitempty"`
+	ProxyURL           *string           `json:"proxyURL,omitempty"`
+	Servers            ServerConfigurations
+	OperationServers   map[string]ServerConfigurations
+	HTTPClient         *http.Client
 }
 
 // NewConfiguration returns a new Configuration object
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		DefaultHeader:    make(map[string]string),
-		UserAgent:        "pingtools PingOne-GOLANG-SDK-agreementmanagement/0.3.2",
-		Debug:            false,
+		DefaultHeader:      make(map[string]string),
+		UserAgent:          "pingtools PingOne-GOLANG-SDK-agreementmanagement/0.3.2",
+		Debug:              false,
 		DefaultServerIndex: 0,
-		Servers:          ServerConfigurations{
+		Servers: ServerConfigurations{
 			{
-				URL: "{protocol}://{baseDomain}.{suffix}",
+				URL:         "{protocol}://{baseDomain}.{suffix}",
 				Description: "PingOne Platform API Endpoint",
 				Variables: map[string]ServerVariable{
 					"suffix": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "com",
 						EnumValues: []string{
 							"eu",
@@ -110,32 +110,31 @@ func NewConfiguration() *Configuration {
 						},
 					},
 					"baseDomain": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "agreement-mgmt.pingone",
 					},
 					"protocol": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "https",
 					},
 				},
 			},
 			{
-				URL: "{protocol}://{baseHostname}",
+				URL:         "{protocol}://{baseHostname}",
 				Description: "PingOne Platform API Endpoint",
 				Variables: map[string]ServerVariable{
 					"baseHostname": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "agreement-mgmt.pingone.com",
 					},
 					"protocol": ServerVariable{
-						Description: "No description provided",
+						Description:  "No description provided",
 						DefaultValue: "https",
 					},
 				},
 			},
 		},
-		OperationServers: map[string]ServerConfigurations{
-		},
+		OperationServers: map[string]ServerConfigurations{},
 	}
 	return cfg
 }
@@ -199,9 +198,9 @@ func (sc ServerConfigurations) URL(index int, variables map[string]string) (stri
 			if !found {
 				return "", fmt.Errorf("the variable %s in the server URL has invalid value %v. Must be %v", name, value, variable.EnumValues)
 			}
-			url = strings.Replace(url, "{"+name+"}", value, -1)
+			url = strings.ReplaceAll(url, "{"+name+"}", value)
 		} else {
-			url = strings.Replace(url, "{"+name+"}", variable.DefaultValue, -1)
+			url = strings.ReplaceAll(url, "{"+name+"}", variable.DefaultValue)
 		}
 	}
 	return url, nil

@@ -85,7 +85,7 @@ func (dst *EntityArrayEmbeddedRolesInner) UnmarshalJSON(data []byte) error {
 	} else {
 		dst.UserApplicationRoleAssignment = nil
 	}
-	return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedRolesInner)")
+	return fmt.Errorf("data failed to match schemas in oneOf(EntityArrayEmbeddedRolesInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

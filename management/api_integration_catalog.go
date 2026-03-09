@@ -101,9 +101,9 @@ func (a *IntegrationCatalogApiService) internalDownloadOneIntegrationVersionAsse
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -357,7 +357,7 @@ func (a *IntegrationCatalogApiService) internalReadAllIntegrationMetadataExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -611,9 +611,9 @@ func (a *IntegrationCatalogApiService) internalReadAllIntegrationVersionAttribut
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -858,8 +858,8 @@ func (a *IntegrationCatalogApiService) internalReadIntegrationVersionMetadataExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1096,8 +1096,8 @@ func (a *IntegrationCatalogApiService) internalReadOneIntegrationMetadataExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1340,10 +1340,10 @@ func (a *IntegrationCatalogApiService) internalReadOneIntegrationVersionAttribut
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/attributes/{integrationVersionAttributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionAttributeID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionAttributeID, "integrationVersionAttributeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationVersionAttributeID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionAttributeID, "integrationVersionAttributeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1583,9 +1583,9 @@ func (a *IntegrationCatalogApiService) internalReadOneIntegrationVersionMetadata
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationID"+"}", url.PathEscape(parameterValueToString(r.integrationID, "integrationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"integrationVersionID"+"}", url.PathEscape(parameterValueToString(r.integrationVersionID, "integrationVersionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

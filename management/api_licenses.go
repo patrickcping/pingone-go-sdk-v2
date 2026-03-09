@@ -116,7 +116,7 @@ func (a *LicensesApiService) internalReadAllLicensesExecute(r ApiReadAllLicenses
 	}
 
 	localVarPath := localBasePath + "/organizations/{organizationID}/licenses"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -359,8 +359,8 @@ func (a *LicensesApiService) internalReadOneLicenseExecute(r ApiReadOneLicenseRe
 	}
 
 	localVarPath := localBasePath + "/organizations/{organizationID}/licenses/{licenseID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -597,8 +597,8 @@ func (a *LicensesApiService) internalReadOneLicenseNameExecute(r ApiReadOneLicen
 	}
 
 	localVarPath := localBasePath + "/organizations/{organizationID}/licenses/{licenseID}/name"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -841,8 +841,8 @@ func (a *LicensesApiService) internalUpdateOneLicenseNameExecute(r ApiUpdateOneL
 	}
 
 	localVarPath := localBasePath + "/organizations/{organizationID}/licenses/{licenseID}/name"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
