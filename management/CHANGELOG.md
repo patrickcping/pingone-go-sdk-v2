@@ -1,6 +1,6 @@
 # v0.65.0 (Unreleased)
 
-* **Enhancement** Added `filter` parameter to language translations API. [#511](https://github.com/patrickcping/pingone-go-sdk-v2/pull/511)
+* **Enhancement** Added `filter` parameter to language translations API. [#511](https://github.com/patrickcping/pingone-go-sdk-v2/pull/511) [#513](https://github.com/patrickcping/pingone-go-sdk-v2/pull/513)
 
 # v0.64.0 (2026-02-26)
 
