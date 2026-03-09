@@ -101,7 +101,7 @@ func (a *IdentityPropagationPlansApiService) internalCreatePlanExecute(r ApiCrea
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/plans"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,8 +354,8 @@ func (a *IdentityPropagationPlansApiService) internalDeletePlanExecute(r ApiDele
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/plans/{planID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"planID"+"}", url.PathEscape(parameterValueToString(r.planID, "planID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"planID"+"}", url.PathEscape(parameterValueToString(r.planID, "planID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -597,7 +597,7 @@ func (a *IdentityPropagationPlansApiService) internalReadAllPlansExecute(r ApiRe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/plans"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -843,8 +843,8 @@ func (a *IdentityPropagationPlansApiService) internalReadOnePlanExecute(r ApiRea
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/plans/{planID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"planID"+"}", url.PathEscape(parameterValueToString(r.planID, "planID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"planID"+"}", url.PathEscape(parameterValueToString(r.planID, "planID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *IdentityPropagationPlansApiService) internalUpdatePlanExecute(r ApiUpda
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/plans/{planID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"planID"+"}", url.PathEscape(parameterValueToString(r.planID, "planID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"planID"+"}", url.PathEscape(parameterValueToString(r.planID, "planID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

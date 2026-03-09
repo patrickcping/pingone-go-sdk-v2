@@ -97,7 +97,7 @@ var (
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(MFAPushCredentialRequest)")
+		return fmt.Errorf("data failed to match schemas in oneOf(MFAPushCredentialRequest)")
 	}
 	return nil
 }

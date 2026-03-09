@@ -108,7 +108,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/deviceAuthenticationPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -384,8 +384,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticatio
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterValueToString(r.deviceAuthenticationPolicyID, "deviceAuthenticationPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterValueToString(r.deviceAuthenticationPolicyID, "deviceAuthenticationPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -618,7 +618,7 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationP
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/deviceAuthenticationPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -855,8 +855,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticati
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterValueToString(r.deviceAuthenticationPolicyID, "deviceAuthenticationPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterValueToString(r.deviceAuthenticationPolicyID, "deviceAuthenticationPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1099,8 +1099,8 @@ func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticatio
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterValueToString(r.deviceAuthenticationPolicyID, "deviceAuthenticationPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterValueToString(r.deviceAuthenticationPolicyID, "deviceAuthenticationPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

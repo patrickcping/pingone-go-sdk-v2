@@ -102,7 +102,7 @@ func (a *CustomAdminRolesApiService) internalCreateCustomAdminRoleExecute(r ApiC
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/roles"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *CustomAdminRolesApiService) internalDeleteCustomAdminRoleExecute(r ApiD
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/roles/{customRoleID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"customRoleID"+"}", url.PathEscape(parameterValueToString(r.customRoleID, "customRoleID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"customRoleID"+"}", url.PathEscape(parameterValueToString(r.customRoleID, "customRoleID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -615,7 +615,7 @@ func (a *CustomAdminRolesApiService) internalReadAllCustomAdminRolesExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/roles"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -881,8 +881,8 @@ func (a *CustomAdminRolesApiService) internalReadOneCustomAdminRoleExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/roles/{customRoleID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"customRoleID"+"}", url.PathEscape(parameterValueToString(r.customRoleID, "customRoleID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"customRoleID"+"}", url.PathEscape(parameterValueToString(r.customRoleID, "customRoleID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1125,8 +1125,8 @@ func (a *CustomAdminRolesApiService) internalUpdateCustomAdminRoleExecute(r ApiU
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/roles/{customRoleID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"customRoleID"+"}", url.PathEscape(parameterValueToString(r.customRoleID, "customRoleID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"customRoleID"+"}", url.PathEscape(parameterValueToString(r.customRoleID, "customRoleID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -67,7 +67,7 @@ func (dst *NotificationsSettingsPhoneDeliverySettings) UnmarshalJSON(data []byte
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
+		return fmt.Errorf("data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
 	}
 	return nil
 }

@@ -104,8 +104,8 @@ func (a *ApplicationAttributeMappingApiService) internalCreateApplicationAttribu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *ApplicationAttributeMappingApiService) internalDeleteApplicationAttribu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attrMappingID"+"}", url.PathEscape(parameterValueToString(r.attrMappingID, "attrMappingID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"attrMappingID"+"}", url.PathEscape(parameterValueToString(r.attrMappingID, "attrMappingID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *ApplicationAttributeMappingApiService) internalReadAllApplicationAttrib
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *ApplicationAttributeMappingApiService) internalReadOneApplicationAttrib
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attrMappingID"+"}", url.PathEscape(parameterValueToString(r.attrMappingID, "attrMappingID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"attrMappingID"+"}", url.PathEscape(parameterValueToString(r.attrMappingID, "attrMappingID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *ApplicationAttributeMappingApiService) internalUpdateApplicationAttribu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attrMappingID"+"}", url.PathEscape(parameterValueToString(r.attrMappingID, "attrMappingID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"attrMappingID"+"}", url.PathEscape(parameterValueToString(r.attrMappingID, "attrMappingID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

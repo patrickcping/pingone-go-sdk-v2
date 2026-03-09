@@ -109,7 +109,7 @@ func (a *FlowPoliciesApiService) internalReadAllFlowPoliciesExecute(r ApiReadAll
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/flowPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -349,8 +349,8 @@ func (a *FlowPoliciesApiService) internalReadOneFlowPolicyExecute(r ApiReadOneFl
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/flowPolicies/{flowPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"flowPolicyID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyID, "flowPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"flowPolicyID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyID, "flowPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

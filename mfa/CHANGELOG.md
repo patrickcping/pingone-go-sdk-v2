@@ -1,3 +1,7 @@
+# v0.24.2 (Unreleased)
+
+* **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
+
 # v0.24.1 (2025-12-29)
 
 * **Bug** `IpPairingConfiguration` moved to the `DeviceAuthenticationPolicyCommonMobileApplicationsInner` model. [#499](https://github.com/patrickcping/pingone-go-sdk-v2/pull/499)

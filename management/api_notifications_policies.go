@@ -101,7 +101,7 @@ func (a *NotificationsPoliciesApiService) internalCreateNotificationsPolicyExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -337,8 +337,8 @@ func (a *NotificationsPoliciesApiService) internalDeleteNotificationsPolicyExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"notificationsPolicyID"+"}", url.PathEscape(parameterValueToString(r.notificationsPolicyID, "notificationsPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"notificationsPolicyID"+"}", url.PathEscape(parameterValueToString(r.notificationsPolicyID, "notificationsPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -571,7 +571,7 @@ func (a *NotificationsPoliciesApiService) internalReadAllNotificationsPoliciesEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -808,8 +808,8 @@ func (a *NotificationsPoliciesApiService) internalReadOneNotificationsPolicyExec
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"notificationsPolicyID"+"}", url.PathEscape(parameterValueToString(r.notificationsPolicyID, "notificationsPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"notificationsPolicyID"+"}", url.PathEscape(parameterValueToString(r.notificationsPolicyID, "notificationsPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1052,8 +1052,8 @@ func (a *NotificationsPoliciesApiService) internalUpdateNotificationsPolicyExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"notificationsPolicyID"+"}", url.PathEscape(parameterValueToString(r.notificationsPolicyID, "notificationsPolicyID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"notificationsPolicyID"+"}", url.PathEscape(parameterValueToString(r.notificationsPolicyID, "notificationsPolicyID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

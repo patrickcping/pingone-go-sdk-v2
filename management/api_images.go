@@ -112,7 +112,7 @@ func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/images"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -392,8 +392,8 @@ func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/images/{imgID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -602,8 +602,8 @@ func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Ima
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/images/{imgID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

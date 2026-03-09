@@ -106,8 +106,8 @@ func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssign
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationRoles/{applicationRoleID}/assignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationRoleID"+"}", url.PathEscape(parameterValueToString(r.applicationRoleID, "applicationRoleID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationRoleID"+"}", url.PathEscape(parameterValueToString(r.applicationRoleID, "applicationRoleID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

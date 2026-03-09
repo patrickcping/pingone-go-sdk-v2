@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 // AgreementRevisionsResourcesApiService AgreementRevisionsResourcesApi service
 type AgreementRevisionsResourcesApiService service
 
 type ApiReadOneAgreementLanguageRevisionRequest struct {
-	ctx context.Context
-	ApiService *AgreementRevisionsResourcesApiService
+	ctx           context.Context
+	ApiService    *AgreementRevisionsResourcesApiService
 	environmentID string
-	agreementID string
-	languageID string
-	revisionID string
+	agreementID   string
+	languageID    string
+	revisionID    string
 }
 
 func (r ApiReadOneAgreementLanguageRevisionRequest) Execute() (*AgreementRevisionText, *http.Response, error) {
@@ -39,33 +38,34 @@ func (r ApiReadOneAgreementLanguageRevisionRequest) Execute() (*AgreementRevisio
 /*
 ReadOneAgreementLanguageRevision READ One Agreement Language Revision
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param agreementID
- @param languageID
- @param revisionID
- @return ApiReadOneAgreementLanguageRevisionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param agreementID
+	@param languageID
+	@param revisionID
+	@return ApiReadOneAgreementLanguageRevisionRequest
 */
 func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevision(ctx context.Context, environmentID string, agreementID string, languageID string, revisionID string) ApiReadOneAgreementLanguageRevisionRequest {
 	return ApiReadOneAgreementLanguageRevisionRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentID: environmentID,
-		agreementID: agreementID,
-		languageID: languageID,
-		revisionID: revisionID,
+		agreementID:   agreementID,
+		languageID:    languageID,
+		revisionID:    revisionID,
 	}
 }
 
 // Execute executes the request
-//  @return AgreementRevisionText
+//
+//	@return AgreementRevisionText
 func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevisionExecute(r ApiReadOneAgreementLanguageRevisionRequest) (*AgreementRevisionText, *http.Response, error) {
 	var (
-		err                  error
-		response             *http.Response
-		localVarReturnValue  *AgreementRevisionText
+		err                 error
+		response            *http.Response
+		localVarReturnValue *AgreementRevisionText
 	)
-	
+
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneAgreementLanguageRevisionExecute(r)
@@ -74,13 +74,13 @@ func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevision
 	)
 	return localVarReturnValue, response, err
 }
-			
+
 func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguageRevisionExecute(r ApiReadOneAgreementLanguageRevisionRequest) (*AgreementRevisionText, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AgreementRevisionText
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AgreementRevisionText
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementRevisionsResourcesApiService.ReadOneAgreementLanguageRevision")
@@ -89,10 +89,10 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}.json"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"revisionID"+"}", url.PathEscape(parameterValueToString(r.revisionID, "revisionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterValueToString(r.agreementID, "agreementID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterValueToString(r.languageID, "languageID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"revisionID"+"}", url.PathEscape(parameterValueToString(r.revisionID, "revisionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -144,8 +144,8 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -155,8 +155,8 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -166,8 +166,8 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -177,8 +177,8 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -188,8 +188,8 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -199,8 +199,8 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -210,8 +210,8 @@ func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

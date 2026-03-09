@@ -53,7 +53,7 @@ func TestAccAPIClient_Deprecated_Success(t *testing.T) {
 	}
 
 	if client.ManagementAPIClient == nil {
-		t.Fatalf("Management Client not successfully retrieved")
+		t.Fatalf("management Client not successfully retrieved")
 	}
 
 	if client.MFAAPIClient == nil {
@@ -117,7 +117,7 @@ func TestAccAPIClient_Success(t *testing.T) {
 	}
 
 	if client.ManagementAPIClient == nil {
-		t.Fatalf("Management Client not successfully retrieved")
+		t.Fatalf("management Client not successfully retrieved")
 	}
 
 	if client.MFAAPIClient == nil {

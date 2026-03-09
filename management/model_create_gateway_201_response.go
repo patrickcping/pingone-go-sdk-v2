@@ -76,7 +76,7 @@ func (dst *CreateGateway201Response) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(CreateGateway201Response)")
+		return fmt.Errorf("data failed to match schemas in oneOf(CreateGateway201Response)")
 	}
 	return nil
 }

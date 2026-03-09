@@ -96,7 +96,7 @@ func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASetti
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/mfaSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -330,7 +330,7 @@ func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASet
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/mfaSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -570,7 +570,7 @@ func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFAS
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/mfaSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

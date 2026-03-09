@@ -102,7 +102,7 @@ func (a *AlertingApiService) internalCreateAlertChannelExecute(r ApiCreateAlertC
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/alertChannels"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *AlertingApiService) internalDeleteAlertChannelExecute(r ApiDeleteAlertC
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/alertChannels/{alertChannelID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"alertChannelID"+"}", url.PathEscape(parameterValueToString(r.alertChannelID, "alertChannelID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"alertChannelID"+"}", url.PathEscape(parameterValueToString(r.alertChannelID, "alertChannelID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *AlertingApiService) internalReadAllAlertChannelsExecute(r ApiReadAllAle
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/alertChannels"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -852,8 +852,8 @@ func (a *AlertingApiService) internalUpdateAlertChannelExecute(r ApiUpdateAlertC
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/alertChannels/{alertChannelID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"alertChannelID"+"}", url.PathEscape(parameterValueToString(r.alertChannelID, "alertChannelID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"alertChannelID"+"}", url.PathEscape(parameterValueToString(r.alertChannelID, "alertChannelID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

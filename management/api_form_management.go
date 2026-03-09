@@ -102,7 +102,7 @@ func (a *FormManagementApiService) internalCreateFormExecute(r ApiCreateFormRequ
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/forms"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *FormManagementApiService) internalDeleteFormExecute(r ApiDeleteFormRequ
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/forms/{formID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"formID"+"}", url.PathEscape(parameterValueToString(r.formID, "formID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"formID"+"}", url.PathEscape(parameterValueToString(r.formID, "formID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *FormManagementApiService) internalReadAllFormsExecute(r ApiReadAllForms
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/forms"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -852,8 +852,8 @@ func (a *FormManagementApiService) internalReadFormExecute(r ApiReadFormRequest)
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/forms/{formID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"formID"+"}", url.PathEscape(parameterValueToString(r.formID, "formID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"formID"+"}", url.PathEscape(parameterValueToString(r.formID, "formID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1099,8 +1099,8 @@ func (a *FormManagementApiService) internalUpdateFormExecute(r ApiUpdateFormRequ
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/forms/{formID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"formID"+"}", url.PathEscape(parameterValueToString(r.formID, "formID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"formID"+"}", url.PathEscape(parameterValueToString(r.formID, "formID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

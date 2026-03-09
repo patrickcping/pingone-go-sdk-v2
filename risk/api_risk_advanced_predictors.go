@@ -102,7 +102,7 @@ func (a *RiskAdvancedPredictorsApiService) internalCreateRiskPredictorExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPredictors"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *RiskAdvancedPredictorsApiService) internalDeleteRiskAdvancedPredictorEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPredictors/{riskPredictorID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskPredictorID"+"}", url.PathEscape(parameterValueToString(r.riskPredictorID, "riskPredictorID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskPredictorID"+"}", url.PathEscape(parameterValueToString(r.riskPredictorID, "riskPredictorID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *RiskAdvancedPredictorsApiService) internalReadAllRiskPredictorsExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPredictors"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *RiskAdvancedPredictorsApiService) internalReadOneRiskPredictorExecute(r
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPredictors/{riskPredictorID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskPredictorID"+"}", url.PathEscape(parameterValueToString(r.riskPredictorID, "riskPredictorID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskPredictorID"+"}", url.PathEscape(parameterValueToString(r.riskPredictorID, "riskPredictorID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *RiskAdvancedPredictorsApiService) internalUpdateRiskPredictorExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPredictors/{riskPredictorID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskPredictorID"+"}", url.PathEscape(parameterValueToString(r.riskPredictorID, "riskPredictorID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskPredictorID"+"}", url.PathEscape(parameterValueToString(r.riskPredictorID, "riskPredictorID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

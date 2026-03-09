@@ -333,7 +333,7 @@ func (a *RolesApiService) internalReadOneRoleExecute(r ApiReadOneRoleRequest) (*
 	}
 
 	localVarPath := localBasePath + "/roles/{roleID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"roleID"+"}", url.PathEscape(parameterValueToString(r.roleID, "roleID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"roleID"+"}", url.PathEscape(parameterValueToString(r.roleID, "roleID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
