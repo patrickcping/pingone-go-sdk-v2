@@ -1,6 +1,6 @@
 module github.com/patrickcping/pingone-go-sdk-v2
 
-go 1.24.4
+go 1.25.0
 
 tool (
 	github.com/golangci/golangci-lint/cmd/golangci-lint

@@ -1,3 +1,7 @@
+# v0.21.1 (Unreleased)
+
+* **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
+
 # v0.21.0 (2025-10-02)
 
 * **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type. [#483](https://github.com/patrickcping/pingone-go-sdk-v2/pull/483)

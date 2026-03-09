@@ -1,7 +1,20 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.9
+  * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.8.3](./authorize/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.12.1](./credentials/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.65.0](./management/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
   * **Enhancement** Added `block` and `module` parameters to be able to filter results on the language translations API. [#511](https://github.com/patrickcping/pingone-go-sdk-v2/pull/511) [#513](https://github.com/patrickcping/pingone-go-sdk-v2/pull/513)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.24.2](./mfa/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.21.1](./risk/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.11.2](./verify/CHANGELOG.md)
+  * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
 
 # Release (2026-02-26)
 
