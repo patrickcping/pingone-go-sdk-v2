@@ -2,6 +2,7 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.9
   * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
+  * **Note** bump `golang.org/x/oauth2` v0.35.0 => v0.36.0 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
   * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.8.2 => v0.8.3 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
   * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.12.0 => v0.12.1 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
   * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.64.0 => v0.65.0 [#514](https://github.com/patrickcping/pingone-go-sdk-v2/pull/514)
