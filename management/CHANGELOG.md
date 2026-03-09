@@ -1,4 +1,4 @@
-# v0.65.0 (Unreleased)
+# v0.65.0 (2026-03-09)
 
 * **Enhancement** Added `block` and `module` parameters to be able to filter results on the language translations API. [#511](https://github.com/patrickcping/pingone-go-sdk-v2/pull/511) [#513](https://github.com/patrickcping/pingone-go-sdk-v2/pull/513)
 
