@@ -1,4 +1,4 @@
-# v0.12.1 (Unreleased)
+# v0.12.1 (2026-03-09)
 
 * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
 
