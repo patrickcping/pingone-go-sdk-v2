@@ -21711,12 +21711,18 @@ paths:
           schema:
             type: string
           required: true
-        - name: filter
+        - name: block
           in: query
           schema:
             type: string
-          description: Adding a SCIM filter to filter the data. `module` and `block` are supported
-          example: module eq "flow-ui" and block eq "UpdateProfile"
+          description: Filter by the UI block the translation belongs to. The block field is only applicable for flows translations.
+          example: UpdateProfile
+        - name: module
+          in: query
+          schema:
+            type: string
+          description: Filter by the UI module the translation belongs to. The module field is only applicable for flows translations.
+          example: flow-ui
       responses:
         '400':
           $ref: '#/components/responses/400'
