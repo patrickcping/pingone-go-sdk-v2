@@ -1,6 +1,6 @@
 # v0.65.0 (2026-03-09)
 
-* **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy).
+* **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
 * **Enhancement** Added `block` and `module` parameters to be able to filter results on the language translations API. [#511](https://github.com/patrickcping/pingone-go-sdk-v2/pull/511) [#513](https://github.com/patrickcping/pingone-go-sdk-v2/pull/513)
 
 # v0.64.0 (2026-02-26)
