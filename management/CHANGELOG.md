@@ -1,6 +1,6 @@
 # v0.66.0 (Unreleased)
 
-* **Enhancement** Added `PayloadOptions` to the `Subscription` data model.
+* **Enhancement** Added `PayloadOptions` to the `Subscription` data model. [#519](https://github.com/patrickcping/pingone-go-sdk-v2/pull/519)
 
 # v0.65.0 (2026-03-09)
 

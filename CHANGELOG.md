@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.66.0](./management/CHANGELOG.md)
-  * **Enhancement** Added `PayloadOptions` to the `Subscription` data model.
+  * **Enhancement** Added `PayloadOptions` to the `Subscription` data model. [#519](https://github.com/patrickcping/pingone-go-sdk-v2/pull/519)
 
 # Release (2026-03-09)
 
