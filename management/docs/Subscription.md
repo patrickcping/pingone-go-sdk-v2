@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | A string that specifies the user resource’s unique identifier. | [optional] [readonly] 
 **HttpEndpoint** | [**SubscriptionHttpEndpoint**](SubscriptionHttpEndpoint.md) |  | 
 **Name** | **string** | A string that specifies the subscription name. This is a required property. | 
+**PayloadOptions** | Pointer to [**SubscriptionPayloadOptions**](SubscriptionPayloadOptions.md) |  | [optional] 
 **TlsClientAuthKeyPair** | Pointer to [**SubscriptionTlsClientAuthKeyPair**](SubscriptionTlsClientAuthKeyPair.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The date and time at which the subscription resource was last updated (ISO 8601 format). | [optional] [readonly] 
 **VerifyTlsCertificates** | **bool** | A boolean that specifies whether a certificates should be verified. If this property&#39;s value is set to false, then all certificates are trusted. (Setting this property&#39;s value to false introduces a security risk.) This is a required property. | 
@@ -235,6 +236,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPayloadOptions
+
+`func (o *Subscription) GetPayloadOptions() SubscriptionPayloadOptions`
+
+GetPayloadOptions returns the PayloadOptions field if non-nil, zero value otherwise.
+
+### GetPayloadOptionsOk
+
+`func (o *Subscription) GetPayloadOptionsOk() (*SubscriptionPayloadOptions, bool)`
+
+GetPayloadOptionsOk returns a tuple with the PayloadOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayloadOptions
+
+`func (o *Subscription) SetPayloadOptions(v SubscriptionPayloadOptions)`
+
+SetPayloadOptions sets PayloadOptions field to given value.
+
+### HasPayloadOptions
+
+`func (o *Subscription) HasPayloadOptions() bool`
+
+HasPayloadOptions returns a boolean if a field has been set.
 
 ### GetTlsClientAuthKeyPair
 

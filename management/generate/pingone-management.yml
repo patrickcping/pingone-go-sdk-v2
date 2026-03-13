@@ -677,6 +677,14 @@ components:
       type: string
       enum: [ACTIVITY, SPLUNK, NEWRELIC]
       description: A string that specifies one of the supported subscription formats. Options are ACTIVITY, SPLUNK, and NEWRELIC. This is a required property.
+    EnumSubscriptionPayloadOptionsMaximumPayloadLimitType:
+      type: string
+      enum: [EVENTS_PER_PAYLOAD, KB_PER_PAYLOAD]
+      description: The type of payload to use for limiting subscriptions.
+    EnumSubscriptionPayloadFormatHttpsFormat:
+      type: string
+      enum: [JSON_ARRAY, ND_JSON]
+      description: The payload format.
     EnumTemplateContentDeliveryMethod:
       type: string
       enum: [Email, SMS, Voice, Push]
@@ -7422,6 +7430,31 @@ components:
         name:
           type: string
           description: A string that specifies the subscription name. This is a required property.
+        payloadOptions:
+          type: object
+          properties:
+            maximumPayloadLimit:
+              type: object
+              properties:
+                type:
+                  $ref: '#/components/schemas/EnumSubscriptionPayloadOptionsMaximumPayloadLimitType'
+                size:
+                  type: integer
+                  description: The maximum size of the payload based on `type`. For `EVENTS_PER_PAYLOAD` this can be from `1` to `500` events (defaults to `500`). For `KB_PER_PAYLOAD` this can be from `1` to `4096` kilobytes.
+            payloadFormat:
+              type: object
+              properties:
+                format:
+                  type: object
+                  properties:
+                    https:
+                      type: object
+                      properties:
+                        format:
+                          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatHttpsFormat'
+                        prettyPrint:
+                          type: boolean
+                          description: Only applicable when `format` is `JSON_ARRAY`. Pretty-print is enabled when `true`.
         tlsClientAuthKeyPair:
           type: object
           description: An onject that describes the TLS client authentication key pair to use for mTLS.
