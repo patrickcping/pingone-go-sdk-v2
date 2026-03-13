@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.25.0](./mfa/CHANGELOG.md)
+  * **Enhancement** Added `PasscodeGracePeriod` to the `DeviceAuthenticationPolicyCommonTotp` data model.
+  * **Enhancement** Added `Failure` to the `DeviceAuthenticationPolicyCommonFido2` data model.
+
 # Release (2026-03-09)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.9
