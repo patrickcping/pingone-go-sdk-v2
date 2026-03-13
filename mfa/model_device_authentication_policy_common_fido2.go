@@ -20,8 +20,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyCommonFido2{}
 // DeviceAuthenticationPolicyCommonFido2 struct for DeviceAuthenticationPolicyCommonFido2
 type DeviceAuthenticationPolicyCommonFido2 struct {
 	// A boolean that specifies whether the method is enabled or disabled in the policy.
-	Enabled bool                                          `json:"enabled"`
-	Failure *DeviceAuthenticationPolicyCommonFido2Failure `json:"failure,omitempty"`
+	Enabled bool `json:"enabled"`
 	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
 	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	// Specifies the UUID that represents the FIDO2 policy in PingOne. This property can be null. When null, the environment's default FIDO2 Policy is used.
@@ -70,38 +69,6 @@ func (o *DeviceAuthenticationPolicyCommonFido2) GetEnabledOk() (*bool, bool) {
 // SetEnabled sets field value
 func (o *DeviceAuthenticationPolicyCommonFido2) SetEnabled(v bool) {
 	o.Enabled = v
-}
-
-// GetFailure returns the Failure field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyCommonFido2) GetFailure() DeviceAuthenticationPolicyCommonFido2Failure {
-	if o == nil || IsNil(o.Failure) {
-		var ret DeviceAuthenticationPolicyCommonFido2Failure
-		return ret
-	}
-	return *o.Failure
-}
-
-// GetFailureOk returns a tuple with the Failure field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyCommonFido2) GetFailureOk() (*DeviceAuthenticationPolicyCommonFido2Failure, bool) {
-	if o == nil || IsNil(o.Failure) {
-		return nil, false
-	}
-	return o.Failure, true
-}
-
-// HasFailure returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyCommonFido2) HasFailure() bool {
-	if o != nil && !IsNil(o.Failure) {
-		return true
-	}
-
-	return false
-}
-
-// SetFailure gets a reference to the given DeviceAuthenticationPolicyCommonFido2Failure and assigns it to the Failure field.
-func (o *DeviceAuthenticationPolicyCommonFido2) SetFailure(v DeviceAuthenticationPolicyCommonFido2Failure) {
-	o.Failure = &v
 }
 
 // GetPairingDisabled returns the PairingDisabled field value if set, zero value otherwise.
@@ -211,9 +178,6 @@ func (o DeviceAuthenticationPolicyCommonFido2) MarshalJSON() ([]byte, error) {
 func (o DeviceAuthenticationPolicyCommonFido2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
-	if !IsNil(o.Failure) {
-		toSerialize["failure"] = o.Failure
-	}
 	if !IsNil(o.PairingDisabled) {
 		toSerialize["pairingDisabled"] = o.PairingDisabled
 	}
