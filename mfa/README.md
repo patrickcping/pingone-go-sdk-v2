@@ -126,6 +126,8 @@ Class | Method | HTTP request | Description
  - [DeviceAuthenticationPolicyCommon](docs/DeviceAuthenticationPolicyCommon.md)
  - [DeviceAuthenticationPolicyCommonAuthentication](docs/DeviceAuthenticationPolicyCommonAuthentication.md)
  - [DeviceAuthenticationPolicyCommonFido2](docs/DeviceAuthenticationPolicyCommonFido2.md)
+ - [DeviceAuthenticationPolicyCommonFido2Failure](docs/DeviceAuthenticationPolicyCommonFido2Failure.md)
+ - [DeviceAuthenticationPolicyCommonFido2FailureCoolDown](docs/DeviceAuthenticationPolicyCommonFido2FailureCoolDown.md)
  - [DeviceAuthenticationPolicyCommonMobile](docs/DeviceAuthenticationPolicyCommonMobile.md)
  - [DeviceAuthenticationPolicyCommonMobileApplicationsInner](docs/DeviceAuthenticationPolicyCommonMobileApplicationsInner.md)
  - [DeviceAuthenticationPolicyCommonMobileApplicationsInnerAutoEnrollment](docs/DeviceAuthenticationPolicyCommonMobileApplicationsInnerAutoEnrollment.md)
