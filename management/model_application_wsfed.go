@@ -54,6 +54,8 @@ type ApplicationWSFED struct {
 	// The single logout endpoint URL.
 	SloEndpoint                 *string                                          `json:"sloEndpoint,omitempty"`
 	SubjectNameIdentifierFormat *EnumApplicationWSFEDSubjectNameIdentifierFormat `json:"subjectNameIdentifierFormat,omitempty"`
+	// The WS-Trust (Web Services Trust) version to use. Valid values are `1.2` and `1.3`.
+	WsTrustVersion *string `json:"wsTrustVersion,omitempty"`
 }
 
 // NewApplicationWSFED instantiates a new ApplicationWSFED object
@@ -732,6 +734,38 @@ func (o *ApplicationWSFED) SetSubjectNameIdentifierFormat(v EnumApplicationWSFED
 	o.SubjectNameIdentifierFormat = &v
 }
 
+// GetWsTrustVersion returns the WsTrustVersion field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetWsTrustVersion() string {
+	if o == nil || IsNil(o.WsTrustVersion) {
+		var ret string
+		return ret
+	}
+	return *o.WsTrustVersion
+}
+
+// GetWsTrustVersionOk returns a tuple with the WsTrustVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetWsTrustVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.WsTrustVersion) {
+		return nil, false
+	}
+	return o.WsTrustVersion, true
+}
+
+// HasWsTrustVersion returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasWsTrustVersion() bool {
+	if o != nil && !IsNil(o.WsTrustVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetWsTrustVersion gets a reference to the given string and assigns it to the WsTrustVersion field.
+func (o *ApplicationWSFED) SetWsTrustVersion(v string) {
+	o.WsTrustVersion = &v
+}
+
 func (o ApplicationWSFED) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -793,6 +827,9 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SubjectNameIdentifierFormat) {
 		toSerialize["subjectNameIdentifierFormat"] = o.SubjectNameIdentifierFormat
+	}
+	if !IsNil(o.WsTrustVersion) {
+		toSerialize["wsTrustVersion"] = o.WsTrustVersion
 	}
 	return toSerialize, nil
 }

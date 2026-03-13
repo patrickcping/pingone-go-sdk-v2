@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
 **DefaultTargetUrl** | Pointer to **string** | This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application&#39;s ACS URL as a separate RelayState key value (not within the SAMLResponse key value). | [optional] 
 **EnableRequestedAuthnContext** | Pointer to **bool** | Indicates whether &#x60;requestedAuthnContext&#x60; is taken into account in policy decision-making during authentication. | [optional] 
+**EnableAlwaysAcceptAcsUrlInSignedAuthnRequest** | Pointer to **bool** | If enabled (true), this indicates that when a service provider (SP) specifies an ACS URL in its AuthnRequest, and signs the AuthnRequest, then assuming the identity provider (IdP) can validate the signature, the IdP can accept the ACS URL as valid. This is so, regardless of whether the ACS URL is specified in acsUrls as an allowable ACS URL (refer to [Applications SAML metadata settings data model](https://developer.pingidentity.com/pingone-api/platform/applications/applications-1.html#applications-saml-settings-metadata-model)). Enabling this setting is useful when an SP generates ACS URLs dynamically. | [optional] 
 **IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is &#x60;false&#x60;. | [optional] [default to false]
@@ -52,8 +53,6 @@ Name | Type | Description | Notes
 **Jwks** | Pointer to **string** | A JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwksUrl&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwksUrl&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **JwksUrl** | Pointer to **string** | A URL (supports &#x60;https://&#x60; only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwks&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwks&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
-**BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
-**PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
 **Kerberos** | Pointer to [**ApplicationWSFEDAllOfKerberos**](ApplicationWSFEDAllOfKerberos.md) |  | [optional] 
 **GrantTypes** | Pointer to [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | [optional] 
 **InitiateLoginUri** | Pointer to **string** | A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information. | [optional] 
@@ -66,6 +65,7 @@ Name | Type | Description | Notes
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the &#x60;refreshTokenRollingDuration&#x60; property is specified for the application, then this property must be less than or equal to the value of &#x60;refreshTokenRollingDuration&#x60;. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] [default to 2592000]
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingGracePeriodDuration** | Pointer to **int32** | The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0. | [optional] 
+**RefreshTokenType** | Pointer to [**[]EnumApplicationOIDCRefreshTokenType**](EnumApplicationOIDCRefreshTokenType.md) |  | [optional] 
 **RequestScopesForMultipleResourcesEnabled** | Pointer to **bool** | Specifies whether the application can request scopes from multiple custom resources. The default value is &#x60;false&#x60;. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes). | [optional] [default to false]
 **RequireSignedRequestObject** | Pointer to **bool** | Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If &#x60;false&#x60; or null (default), a signed request object is not required. Both &#x60;supportUnsignedRequestObject&#x60; and this property cannot be set to &#x60;true&#x60;. | [optional] 
 **ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | The code or token type returned by an authorization request. Options are &#x60;TOKEN&#x60;, &#x60;ID_TOKEN&#x60;, and &#x60;CODE&#x60;. For hybrid flows that specify &#x60;CODE&#x60; with &#x60;TOKEN&#x60; or &#x60;ID_TOKEN&#x60;, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type). | [optional] 
@@ -78,6 +78,8 @@ Name | Type | Description | Notes
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
 **SubjectNameIdentifierFormat** | Pointer to [**EnumApplicationWSFEDSubjectNameIdentifierFormat**](EnumApplicationWSFEDSubjectNameIdentifierFormat.md) |  | [optional] 
+**WsTrustVersion** | Pointer to **string** | The WS-Trust (Web Services Trust) version to use. Valid values are &#x60;1.2&#x60; and &#x60;1.3&#x60;. | [optional] 
+**ExternalId** | Pointer to **string** | For applications whose type is &#x60;PORTAL_LINK_APP&#x60;, you can use this field to specify an external ID that should be used for the application in contexts such as targeted risk policies. Note that &#x60;PORTAL_LINK_APP&#x60; applications that do not have an external ID specified are not displayed in the list of applications when defining a targeted risk policy in the UI. | [optional] 
 
 ## Methods
 
@@ -587,6 +589,31 @@ SetEnableRequestedAuthnContext sets EnableRequestedAuthnContext field to given v
 `func (o *CreateApplication201Response) HasEnableRequestedAuthnContext() bool`
 
 HasEnableRequestedAuthnContext returns a boolean if a field has been set.
+
+### GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest
+
+`func (o *CreateApplication201Response) GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest() bool`
+
+GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest returns the EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field if non-nil, zero value otherwise.
+
+### GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk
+
+`func (o *CreateApplication201Response) GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk() (*bool, bool)`
+
+GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk returns a tuple with the EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest
+
+`func (o *CreateApplication201Response) SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest(v bool)`
+
+SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest sets EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field to given value.
+
+### HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest
+
+`func (o *CreateApplication201Response) HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest() bool`
+
+HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest returns a boolean if a field has been set.
 
 ### GetIdpSigning
 
@@ -1253,56 +1280,6 @@ SetMobile sets Mobile field to given value.
 
 HasMobile returns a boolean if a field has been set.
 
-### GetBundleId
-
-`func (o *CreateApplication201Response) GetBundleId() string`
-
-GetBundleId returns the BundleId field if non-nil, zero value otherwise.
-
-### GetBundleIdOk
-
-`func (o *CreateApplication201Response) GetBundleIdOk() (*string, bool)`
-
-GetBundleIdOk returns a tuple with the BundleId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBundleId
-
-`func (o *CreateApplication201Response) SetBundleId(v string)`
-
-SetBundleId sets BundleId field to given value.
-
-### HasBundleId
-
-`func (o *CreateApplication201Response) HasBundleId() bool`
-
-HasBundleId returns a boolean if a field has been set.
-
-### GetPackageName
-
-`func (o *CreateApplication201Response) GetPackageName() string`
-
-GetPackageName returns the PackageName field if non-nil, zero value otherwise.
-
-### GetPackageNameOk
-
-`func (o *CreateApplication201Response) GetPackageNameOk() (*string, bool)`
-
-GetPackageNameOk returns a tuple with the PackageName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPackageName
-
-`func (o *CreateApplication201Response) SetPackageName(v string)`
-
-SetPackageName sets PackageName field to given value.
-
-### HasPackageName
-
-`func (o *CreateApplication201Response) HasPackageName() bool`
-
-HasPackageName returns a boolean if a field has been set.
-
 ### GetKerberos
 
 `func (o *CreateApplication201Response) GetKerberos() ApplicationWSFEDAllOfKerberos`
@@ -1603,6 +1580,31 @@ SetRefreshTokenRollingGracePeriodDuration sets RefreshTokenRollingGracePeriodDur
 
 HasRefreshTokenRollingGracePeriodDuration returns a boolean if a field has been set.
 
+### GetRefreshTokenType
+
+`func (o *CreateApplication201Response) GetRefreshTokenType() []EnumApplicationOIDCRefreshTokenType`
+
+GetRefreshTokenType returns the RefreshTokenType field if non-nil, zero value otherwise.
+
+### GetRefreshTokenTypeOk
+
+`func (o *CreateApplication201Response) GetRefreshTokenTypeOk() (*[]EnumApplicationOIDCRefreshTokenType, bool)`
+
+GetRefreshTokenTypeOk returns a tuple with the RefreshTokenType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenType
+
+`func (o *CreateApplication201Response) SetRefreshTokenType(v []EnumApplicationOIDCRefreshTokenType)`
+
+SetRefreshTokenType sets RefreshTokenType field to given value.
+
+### HasRefreshTokenType
+
+`func (o *CreateApplication201Response) HasRefreshTokenType() bool`
+
+HasRefreshTokenType returns a boolean if a field has been set.
+
 ### GetRequestScopesForMultipleResourcesEnabled
 
 `func (o *CreateApplication201Response) GetRequestScopesForMultipleResourcesEnabled() bool`
@@ -1887,6 +1889,56 @@ SetSubjectNameIdentifierFormat sets SubjectNameIdentifierFormat field to given v
 `func (o *CreateApplication201Response) HasSubjectNameIdentifierFormat() bool`
 
 HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
+
+### GetWsTrustVersion
+
+`func (o *CreateApplication201Response) GetWsTrustVersion() string`
+
+GetWsTrustVersion returns the WsTrustVersion field if non-nil, zero value otherwise.
+
+### GetWsTrustVersionOk
+
+`func (o *CreateApplication201Response) GetWsTrustVersionOk() (*string, bool)`
+
+GetWsTrustVersionOk returns a tuple with the WsTrustVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWsTrustVersion
+
+`func (o *CreateApplication201Response) SetWsTrustVersion(v string)`
+
+SetWsTrustVersion sets WsTrustVersion field to given value.
+
+### HasWsTrustVersion
+
+`func (o *CreateApplication201Response) HasWsTrustVersion() bool`
+
+HasWsTrustVersion returns a boolean if a field has been set.
+
+### GetExternalId
+
+`func (o *CreateApplication201Response) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *CreateApplication201Response) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *CreateApplication201Response) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
+
+### HasExternalId
+
+`func (o *CreateApplication201Response) HasExternalId() bool`
+
+HasExternalId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

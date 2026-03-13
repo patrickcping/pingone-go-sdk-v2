@@ -1,3 +1,13 @@
+# v0.66.0 (Unreleased)
+
+* **Note** Removed previously deprecated `BundleId` and `PackageName` from the `ApplicationOIDC` data model.
+* **Enhancement** Added `RefreshTokenType` to the `ApplicationOIDC` data model.
+* **Enhancement** Added `PasscodeGracePeriod` and `Push` to the `ApplicationOIDCAllOfMobile` data model.
+* **Enhancement** Added `EnableAlwaysAcceptAcsUrlInSignedAuthnRequest` to the `ApplicationSAML` data model.
+* **Enhancement** Added `WsTrustVersion` to the `ApplicationWSFED` data model.
+* **Enhancement** Added `ExternalId` to the `ApplicationExternalLink` data model.
+* **Enhancement** Added `TOKEN_EXCHANGE` and `CIBA` values to the `EnumApplicationOIDCGrantType` enum type.
+
 # v0.65.0 (2026-03-09)
 
 * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)

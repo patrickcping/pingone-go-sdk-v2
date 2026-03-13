@@ -1,3 +1,14 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.66.0](./management/CHANGELOG.md)
+  * **Note** Removed previously deprecated `BundleId` and `PackageName` from the `ApplicationOIDC` data model.
+  * **Enhancement** Added `RefreshTokenType` to the `ApplicationOIDC` data model.
+  * **Enhancement** Added `PasscodeGracePeriod` and `Push` to the `ApplicationOIDCAllOfMobile` data model.
+  * **Enhancement** Added `EnableAlwaysAcceptAcsUrlInSignedAuthnRequest` to the `ApplicationSAML` data model.
+  * **Enhancement** Added `WsTrustVersion` to the `ApplicationWSFED` data model.
+  * **Enhancement** Added `ExternalId` to the `ApplicationExternalLink` data model.
+  * **Enhancement** Added `TOKEN_EXCHANGE` and `CIBA` values to the `EnumApplicationOIDCGrantType` enum type.
+
 # Release (2026-03-09)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.9

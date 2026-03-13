@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
 **SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
 **SubjectNameIdentifierFormat** | Pointer to [**EnumApplicationWSFEDSubjectNameIdentifierFormat**](EnumApplicationWSFEDSubjectNameIdentifierFormat.md) |  | [optional] 
+**WsTrustVersion** | Pointer to **string** | The WS-Trust (Web Services Trust) version to use. Valid values are &#x60;1.2&#x60; and &#x60;1.3&#x60;. | [optional] 
 
 ## Methods
 
@@ -560,6 +561,31 @@ SetSubjectNameIdentifierFormat sets SubjectNameIdentifierFormat field to given v
 `func (o *ApplicationWSFED) HasSubjectNameIdentifierFormat() bool`
 
 HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
+
+### GetWsTrustVersion
+
+`func (o *ApplicationWSFED) GetWsTrustVersion() string`
+
+GetWsTrustVersion returns the WsTrustVersion field if non-nil, zero value otherwise.
+
+### GetWsTrustVersionOk
+
+`func (o *ApplicationWSFED) GetWsTrustVersionOk() (*string, bool)`
+
+GetWsTrustVersionOk returns a tuple with the WsTrustVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWsTrustVersion
+
+`func (o *ApplicationWSFED) SetWsTrustVersion(v string)`
+
+SetWsTrustVersion sets WsTrustVersion field to given value.
+
+### HasWsTrustVersion
+
+`func (o *ApplicationWSFED) HasWsTrustVersion() bool`
+
+HasWsTrustVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
