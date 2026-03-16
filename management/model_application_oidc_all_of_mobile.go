@@ -26,9 +26,12 @@ type ApplicationOIDCAllOfMobile struct {
 	// The unique identifier for the app on the device and in the Huawei Mobile Service AppGallery. The value of the `huaweiAppId` property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem.
 	HuaweiAppId *string `json:"huaweiAppId,omitempty"`
 	// The package name associated with the application, for push notifications in native apps. The value of the `huaweiPackageName` property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem.
-	HuaweiPackageName       *string                                            `json:"huaweiPackageName,omitempty"`
+	HuaweiPackageName *string `json:"huaweiPackageName,omitempty"`
+	// To cover time synchronization issues, you can use this field to customize the grace period during which the passcode can still be used even after the passcode has been refreshed. The value of the parameter should be the number of windows to use (min 1, max 10). In this context, a window is equal to the passcode refresh period in either direction. For example, if you defined a passcode refresh duration of 30 seconds and a grace period of 2 windows, the passcode is valid for 150 seconds (from 60 seconds behind the time of issue until 60 seconds past the expiration time). When this field is not included, the default value used is 5 windows.
+	PasscodeGracePeriod     *int32                                             `json:"passcodeGracePeriod,omitempty"`
 	PasscodeRefreshDuration *ApplicationOIDCAllOfMobilePasscodeRefreshDuration `json:"passcodeRefreshDuration,omitempty"`
 	IntegrityDetection      *ApplicationOIDCAllOfMobileIntegrityDetection      `json:"integrityDetection,omitempty"`
+	Push                    *ApplicationOIDCAllOfMobilePush                    `json:"push,omitempty"`
 	// A string that specifies a URI prefix that enables direct triggering of the mobile application when scanning a QR code. The URI prefix can be set to a universal link with a valid value (which can be a URL address that starts with `HTTP://` or `HTTPS://`, such as `https://www.acme.com`), or an app schema, which is just a string and requires no special validation.
 	UriPrefix *string `json:"uriPrefix,omitempty"`
 }
@@ -178,6 +181,38 @@ func (o *ApplicationOIDCAllOfMobile) SetHuaweiPackageName(v string) {
 	o.HuaweiPackageName = &v
 }
 
+// GetPasscodeGracePeriod returns the PasscodeGracePeriod field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobile) GetPasscodeGracePeriod() int32 {
+	if o == nil || IsNil(o.PasscodeGracePeriod) {
+		var ret int32
+		return ret
+	}
+	return *o.PasscodeGracePeriod
+}
+
+// GetPasscodeGracePeriodOk returns a tuple with the PasscodeGracePeriod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobile) GetPasscodeGracePeriodOk() (*int32, bool) {
+	if o == nil || IsNil(o.PasscodeGracePeriod) {
+		return nil, false
+	}
+	return o.PasscodeGracePeriod, true
+}
+
+// HasPasscodeGracePeriod returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobile) HasPasscodeGracePeriod() bool {
+	if o != nil && !IsNil(o.PasscodeGracePeriod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasscodeGracePeriod gets a reference to the given int32 and assigns it to the PasscodeGracePeriod field.
+func (o *ApplicationOIDCAllOfMobile) SetPasscodeGracePeriod(v int32) {
+	o.PasscodeGracePeriod = &v
+}
+
 // GetPasscodeRefreshDuration returns the PasscodeRefreshDuration field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDuration() ApplicationOIDCAllOfMobilePasscodeRefreshDuration {
 	if o == nil || IsNil(o.PasscodeRefreshDuration) {
@@ -242,6 +277,38 @@ func (o *ApplicationOIDCAllOfMobile) SetIntegrityDetection(v ApplicationOIDCAllO
 	o.IntegrityDetection = &v
 }
 
+// GetPush returns the Push field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobile) GetPush() ApplicationOIDCAllOfMobilePush {
+	if o == nil || IsNil(o.Push) {
+		var ret ApplicationOIDCAllOfMobilePush
+		return ret
+	}
+	return *o.Push
+}
+
+// GetPushOk returns a tuple with the Push field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobile) GetPushOk() (*ApplicationOIDCAllOfMobilePush, bool) {
+	if o == nil || IsNil(o.Push) {
+		return nil, false
+	}
+	return o.Push, true
+}
+
+// HasPush returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobile) HasPush() bool {
+	if o != nil && !IsNil(o.Push) {
+		return true
+	}
+
+	return false
+}
+
+// SetPush gets a reference to the given ApplicationOIDCAllOfMobilePush and assigns it to the Push field.
+func (o *ApplicationOIDCAllOfMobile) SetPush(v ApplicationOIDCAllOfMobilePush) {
+	o.Push = &v
+}
+
 // GetUriPrefix returns the UriPrefix field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetUriPrefix() string {
 	if o == nil || IsNil(o.UriPrefix) {
@@ -296,11 +363,17 @@ func (o ApplicationOIDCAllOfMobile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HuaweiPackageName) {
 		toSerialize["huaweiPackageName"] = o.HuaweiPackageName
 	}
+	if !IsNil(o.PasscodeGracePeriod) {
+		toSerialize["passcodeGracePeriod"] = o.PasscodeGracePeriod
+	}
 	if !IsNil(o.PasscodeRefreshDuration) {
 		toSerialize["passcodeRefreshDuration"] = o.PasscodeRefreshDuration
 	}
 	if !IsNil(o.IntegrityDetection) {
 		toSerialize["integrityDetection"] = o.IntegrityDetection
+	}
+	if !IsNil(o.Push) {
+		toSerialize["push"] = o.Push
 	}
 	if !IsNil(o.UriPrefix) {
 		toSerialize["uriPrefix"] = o.UriPrefix

@@ -92,7 +92,7 @@ components:
       description: The type of verification that should be used. The possible values are `GOOGLE` and `INTERNAL`. Using internal verification will not count against your Google API call quota. The value you select for `verificationType` determines what other parameters you must provide. When set to `GOOGLE`, you must provide `serviceAccountCredentials`. When set to `INTERNAL`, you must provide `decryptionKey` and `verificationKey`.
     EnumApplicationOIDCGrantType:
       type: string
-      enum: [AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS, DEVICE_CODE]
+      enum: [AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS, DEVICE_CODE, TOKEN_EXCHANGE, CIBA]
     EnumApplicationOIDCPARRequirement:
       type: string
       description: Whether pushed authorization requests (PAR) are required. Options are `REQUIRED` and `OPTIONAL`. The default value is `OPTIONAL`.
@@ -110,10 +110,21 @@ components:
       type: string
       enum: [NONE, CLIENT_SECRET_BASIC, CLIENT_SECRET_POST, PRIVATE_KEY_JWT, CLIENT_SECRET_JWT]
       description: A string that specifies the client authentication methods supported by the token endpoint.
+    EnumApplicationOIDCRefreshTokenType:
+      type: string
+      enum: [JSON_WEB_TOKEN, OPAQUE_TOKEN]
+      description: The format of the refresh token. As opaque tokens are more secure and the recommended format, Ping Identity is shifting towards deprecating JWT tokens. For more information, refer to [Refresh Tokens](https://developer.pingidentity.com/pingone-api/foundations/authentication-concepts/access-tokens-and-id-tokens.html#refresh-tokens).
     EnumApplicationProtocol:
       type: string
       enum: [OPENID_CONNECT, SAML, WS_FED, EXTERNAL_LINK]
       description: A string that specifies the protocol for the Application.
+    EnumApplicationPushNumberMatchingType:
+      type: string
+      description: |
+        This option is used to specify the type of number matching that should be used in MFA policies where number matching has been enabled for the application. The possible values are:
+         - `SELECT_NUMBER` - Users must select the correct number from a group of three numbers
+         - `ENTER_MANUALLY` - Users must enter the number that was shown
+      enum: [SELECT_NUMBER, ENTER_MANUALLY]
     EnumApplicationSAMLSloBinding:
       type: string
       enum: [HTTP_REDIRECT, HTTP_POST]
@@ -1110,6 +1121,9 @@ components:
             homePageUrl:
               type: string
               description: A string that specifies the custom home page URL for the application.
+            externalId:
+              type: string
+              description: For applications whose type is `PORTAL_LINK_APP`, you can use this field to specify an external ID that should be used for the application in contexts such as targeted risk policies. Note that `PORTAL_LINK_APP` applications that do not have an external ID specified are not displayed in the list of applications when defining a targeted risk policy in the UI.
           required:
             - homePageUrl
     ApplicationSAML:
@@ -1140,6 +1154,9 @@ components:
             enableRequestedAuthnContext:
               type: boolean
               description: Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
+            enableAlwaysAcceptAcsUrlInSignedAuthnRequest:
+              type: boolean
+              description: If enabled (true), this indicates that when a service provider (SP) specifies an ACS URL in its AuthnRequest, and signs the AuthnRequest, then assuming the identity provider (IdP) can validate the signature, the IdP can accept the ACS URL as valid. This is so, regardless of whether the ACS URL is specified in acsUrls as an allowable ACS URL (refer to [Applications SAML metadata settings data model](https://developer.pingidentity.com/pingone-api/platform/applications/applications-1.html#applications-saml-settings-metadata-model)). Enabling this setting is useful when an SP generates ACS URLs dynamically.
             idpSigning:
               type: object
               properties:
@@ -1317,6 +1334,9 @@ components:
                 huaweiPackageName:
                   type: string
                   description: The package name associated with the application, for push notifications in native apps. The value of the `huaweiPackageName` property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem.
+                passcodeGracePeriod:
+                  type: integer
+                  description: To cover time synchronization issues, you can use this field to customize the grace period during which the passcode can still be used even after the passcode has been refreshed. The value of the parameter should be the number of windows to use (min 1, max 10). In this context, a window is equal to the passcode refresh period in either direction. For example, if you defined a passcode refresh duration of 30 seconds and a grace period of 2 windows, the passcode is valid for 150 seconds (from 60 seconds behind the time of issue until 60 seconds past the expiration time). When this field is not included, the default value used is 5 windows.
                 passcodeRefreshDuration:
                   type: object
                   properties:
@@ -1370,19 +1390,17 @@ components:
                           description: Play Integrity verdict signature verification key from your Google Play Services account. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType` to `INTERNAL`.
                         verificationType:
                           $ref: '#/components/schemas/EnumApplicationNativeGooglePlayVerificationType'
+                push:
+                  type: object
+                  properties:
+                    numberMatching:
+                      type: object
+                      properties:
+                        type:
+                          $ref: '#/components/schemas/EnumApplicationPushNumberMatchingType'
                 uriPrefix:
                   type: string
                   description: A string that specifies a URI prefix that enables direct triggering of the mobile application when scanning a QR code. The URI prefix can be set to a universal link with a valid value (which can be a URL address that starts with `HTTP://` or `HTTPS://`, such as `https://www.acme.com`), or an app schema, which is just a string and requires no special validation.
-            bundleId:
-              type: string
-              deprecated: true
-              description: |
-                **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
-            packageName:
-              type: string
-              deprecated: true
-              description: |
-                **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
             kerberos:
               type: object
               description: Object containing Kerberos settings
@@ -1447,6 +1465,10 @@ components:
               type: integer
               description: The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
               maximum: 86400
+            refreshTokenType:
+              type: array
+              items:
+                $ref: '#/components/schemas/EnumApplicationOIDCRefreshTokenType'
             requestScopesForMultipleResourcesEnabled:
               type: boolean
               description: Specifies whether the application can request scopes from multiple custom resources. The default value is `false`. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes).
@@ -1701,6 +1723,12 @@ components:
         - $ref: '#/components/schemas/Application'
         - type: object
           properties:
+            assertionDuration:
+              type: integer
+              description: The assertion validity duration in seconds. The default value is 300 seconds (5 minutes). Valid values are between 300 and 3932100.
+              default: 300
+              minimum: 300
+              maximum: 3932100
             audienceRestriction:
               type: string
               description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
@@ -1761,6 +1789,10 @@ components:
               description: The single logout endpoint URL.
             subjectNameIdentifierFormat:
               $ref: '#/components/schemas/EnumApplicationWSFEDSubjectNameIdentifierFormat'
+            wsTrustVersion:
+              type: string
+              description: The WS-Trust (Web Services Trust) version to use. Valid values are `1.2` and `1.3`.
+              pattern: '^(1\.2|1\.3)$'
           required:
             - domainName
             - idpSigning

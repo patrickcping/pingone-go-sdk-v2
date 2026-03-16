@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**AssertionDuration** | Pointer to **int32** | The assertion validity duration in seconds. The default value is 300 seconds (5 minutes). Valid values are between 300 and 3932100. | [optional] [default to 300]
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
@@ -26,6 +27,7 @@ Name | Type | Description | Notes
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
 **SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
 **SubjectNameIdentifierFormat** | Pointer to [**EnumApplicationWSFEDSubjectNameIdentifierFormat**](EnumApplicationWSFEDSubjectNameIdentifierFormat.md) |  | [optional] 
+**WsTrustVersion** | Pointer to **string** | The WS-Trust (Web Services Trust) version to use. Valid values are &#x60;1.2&#x60; and &#x60;1.3&#x60;. | [optional] 
 
 ## Methods
 
@@ -376,6 +378,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
+### GetAssertionDuration
+
+`func (o *ApplicationWSFED) GetAssertionDuration() int32`
+
+GetAssertionDuration returns the AssertionDuration field if non-nil, zero value otherwise.
+
+### GetAssertionDurationOk
+
+`func (o *ApplicationWSFED) GetAssertionDurationOk() (*int32, bool)`
+
+GetAssertionDurationOk returns a tuple with the AssertionDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssertionDuration
+
+`func (o *ApplicationWSFED) SetAssertionDuration(v int32)`
+
+SetAssertionDuration sets AssertionDuration field to given value.
+
+### HasAssertionDuration
+
+`func (o *ApplicationWSFED) HasAssertionDuration() bool`
+
+HasAssertionDuration returns a boolean if a field has been set.
+
 ### GetAudienceRestriction
 
 `func (o *ApplicationWSFED) GetAudienceRestriction() string`
@@ -560,6 +587,31 @@ SetSubjectNameIdentifierFormat sets SubjectNameIdentifierFormat field to given v
 `func (o *ApplicationWSFED) HasSubjectNameIdentifierFormat() bool`
 
 HasSubjectNameIdentifierFormat returns a boolean if a field has been set.
+
+### GetWsTrustVersion
+
+`func (o *ApplicationWSFED) GetWsTrustVersion() string`
+
+GetWsTrustVersion returns the WsTrustVersion field if non-nil, zero value otherwise.
+
+### GetWsTrustVersionOk
+
+`func (o *ApplicationWSFED) GetWsTrustVersionOk() (*string, bool)`
+
+GetWsTrustVersionOk returns a tuple with the WsTrustVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWsTrustVersion
+
+`func (o *ApplicationWSFED) SetWsTrustVersion(v string)`
+
+SetWsTrustVersion sets WsTrustVersion field to given value.
+
+### HasWsTrustVersion
+
+`func (o *ApplicationWSFED) HasWsTrustVersion() bool`
+
+HasWsTrustVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

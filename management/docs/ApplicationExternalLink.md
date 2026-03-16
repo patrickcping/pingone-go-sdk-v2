@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **HomePageUrl** | **string** | A string that specifies the custom home page URL for the application. | 
+**ExternalId** | Pointer to **string** | For applications whose type is &#x60;PORTAL_LINK_APP&#x60;, you can use this field to specify an external ID that should be used for the application in contexts such as targeted risk policies. Note that &#x60;PORTAL_LINK_APP&#x60; applications that do not have an external ID specified are not displayed in the list of applications when defining a targeted risk policy in the UI. | [optional] 
 
 ## Methods
 
@@ -388,6 +389,31 @@ and a boolean to check if the value has been set.
 
 SetHomePageUrl sets HomePageUrl field to given value.
 
+
+### GetExternalId
+
+`func (o *ApplicationExternalLink) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *ApplicationExternalLink) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *ApplicationExternalLink) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
+
+### HasExternalId
+
+`func (o *ApplicationExternalLink) HasExternalId() bool`
+
+HasExternalId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
