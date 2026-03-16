@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**AssertionDuration** | Pointer to **int32** | The assertion validity duration in seconds. The default value is 300 seconds (5 minutes). Valid values are between 300 and 3932100. | [optional] [default to 300]
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
@@ -376,6 +377,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *ApplicationWSFED) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetAssertionDuration
+
+`func (o *ApplicationWSFED) GetAssertionDuration() int32`
+
+GetAssertionDuration returns the AssertionDuration field if non-nil, zero value otherwise.
+
+### GetAssertionDurationOk
+
+`func (o *ApplicationWSFED) GetAssertionDurationOk() (*int32, bool)`
+
+GetAssertionDurationOk returns a tuple with the AssertionDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssertionDuration
+
+`func (o *ApplicationWSFED) SetAssertionDuration(v int32)`
+
+SetAssertionDuration sets AssertionDuration field to given value.
+
+### HasAssertionDuration
+
+`func (o *ApplicationWSFED) HasAssertionDuration() bool`
+
+HasAssertionDuration returns a boolean if a field has been set.
 
 ### GetAudienceRestriction
 

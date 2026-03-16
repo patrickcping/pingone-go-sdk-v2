@@ -1723,6 +1723,12 @@ components:
         - $ref: '#/components/schemas/Application'
         - type: object
           properties:
+            assertionDuration:
+              type: integer
+              description: The assertion validity duration in seconds. The default value is 300 seconds (5 minutes). Valid values are between 300 and 3932100.
+              default: 300
+              minimum: 300
+              maximum: 3932100
             audienceRestriction:
               type: string
               description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.

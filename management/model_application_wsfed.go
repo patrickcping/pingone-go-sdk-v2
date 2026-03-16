@@ -42,6 +42,8 @@ type ApplicationWSFED struct {
 	Type     EnumApplicationType     `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// The assertion validity duration in seconds. The default value is 300 seconds (5 minutes). Valid values are between 300 and 3932100.
+	AssertionDuration *int32 `json:"assertionDuration,omitempty"`
 	// The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
 	AudienceRestriction *string                  `json:"audienceRestriction,omitempty"`
 	CorsSettings        *ApplicationCorsSettings `json:"corsSettings,omitempty"`
@@ -68,6 +70,8 @@ func NewApplicationWSFED(enabled bool, name string, protocol EnumApplicationProt
 	this.Name = name
 	this.Protocol = protocol
 	this.Type = type_
+	var assertionDuration int32 = 300
+	this.AssertionDuration = &assertionDuration
 	var audienceRestriction string = "urn:federation:MicrosoftOnline"
 	this.AudienceRestriction = &audienceRestriction
 	this.DomainName = domainName
@@ -81,6 +85,8 @@ func NewApplicationWSFED(enabled bool, name string, protocol EnumApplicationProt
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationWSFEDWithDefaults() *ApplicationWSFED {
 	this := ApplicationWSFED{}
+	var assertionDuration int32 = 300
+	this.AssertionDuration = &assertionDuration
 	var audienceRestriction string = "urn:federation:MicrosoftOnline"
 	this.AudienceRestriction = &audienceRestriction
 	return &this
@@ -502,6 +508,38 @@ func (o *ApplicationWSFED) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetAssertionDuration returns the AssertionDuration field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetAssertionDuration() int32 {
+	if o == nil || IsNil(o.AssertionDuration) {
+		var ret int32
+		return ret
+	}
+	return *o.AssertionDuration
+}
+
+// GetAssertionDurationOk returns a tuple with the AssertionDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetAssertionDurationOk() (*int32, bool) {
+	if o == nil || IsNil(o.AssertionDuration) {
+		return nil, false
+	}
+	return o.AssertionDuration, true
+}
+
+// HasAssertionDuration returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasAssertionDuration() bool {
+	if o != nil && !IsNil(o.AssertionDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssertionDuration gets a reference to the given int32 and assigns it to the AssertionDuration field.
+func (o *ApplicationWSFED) SetAssertionDuration(v int32) {
+	o.AssertionDuration = &v
+}
+
 // GetAudienceRestriction returns the AudienceRestriction field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetAudienceRestriction() string {
 	if o == nil || IsNil(o.AudienceRestriction) {
@@ -809,6 +847,9 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.AssertionDuration) {
+		toSerialize["assertionDuration"] = o.AssertionDuration
 	}
 	if !IsNil(o.AudienceRestriction) {
 		toSerialize["audienceRestriction"] = o.AudienceRestriction
