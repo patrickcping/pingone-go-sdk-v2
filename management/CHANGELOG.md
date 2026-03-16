@@ -1,4 +1,4 @@
-# v0.66.0 (Unreleased)
+# v0.66.0 (2026-03-16)
 
 * **Note** Removed previously deprecated `BundleId` and `PackageName` from the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
 * **Enhancement** Added `RefreshTokenType` to the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)

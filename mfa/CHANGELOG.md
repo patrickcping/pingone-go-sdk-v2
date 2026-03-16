@@ -1,4 +1,4 @@
-# v0.25.0 (Unreleased)
+# v0.25.0 (2026-03-16)
 
 * **Enhancement** Added `PasscodeGracePeriod` to the `DeviceAuthenticationPolicyCommonTotp` data model. [#517](https://github.com/patrickcping/pingone-go-sdk-v2/pull/517)
 * **Enhancement** Added `Failure` to the `DeviceAuthenticationPolicyCommonFido2` data model. [#517](https://github.com/patrickcping/pingone-go-sdk-v2/pull/517)
