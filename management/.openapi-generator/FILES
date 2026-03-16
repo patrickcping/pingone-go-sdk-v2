@@ -358,6 +358,8 @@ docs/EnumSignOnPolicyType.md
 docs/EnumSolutionType.md
 docs/EnumSubscriptionFilterIncludedTags.md
 docs/EnumSubscriptionFormat.md
+docs/EnumSubscriptionPayloadFormatHttpsFormat.md
+docs/EnumSubscriptionPayloadOptionsMaximumPayloadLimitType.md
 docs/EnumTemplateContentDeliveryMethod.md
 docs/EnumTemplateContentPushCategory.md
 docs/EnumTemplateName.md
@@ -703,6 +705,11 @@ docs/Subscription.md
 docs/SubscriptionFilterOptions.md
 docs/SubscriptionFilterOptionsIncludedApplicationsInner.md
 docs/SubscriptionHttpEndpoint.md
+docs/SubscriptionPayloadOptions.md
+docs/SubscriptionPayloadOptionsMaximumPayloadLimit.md
+docs/SubscriptionPayloadOptionsPayloadFormat.md
+docs/SubscriptionPayloadOptionsPayloadFormatFormat.md
+docs/SubscriptionPayloadOptionsPayloadFormatFormatHttps.md
 docs/SubscriptionTlsClientAuthKeyPair.md
 docs/SubscriptionsWebhooksApi.md
 docs/Template.md
@@ -992,6 +999,8 @@ model_enum_sign_on_policy_type.go
 model_enum_solution_type.go
 model_enum_subscription_filter_included_tags.go
 model_enum_subscription_format.go
+model_enum_subscription_payload_format_https_format.go
+model_enum_subscription_payload_options_maximum_payload_limit_type.go
 model_enum_template_content_delivery_method.go
 model_enum_template_content_push_category.go
 model_enum_template_name.go
@@ -1289,6 +1298,11 @@ model_subscription.go
 model_subscription_filter_options.go
 model_subscription_filter_options_included_applications_inner.go
 model_subscription_http_endpoint.go
+model_subscription_payload_options.go
+model_subscription_payload_options_maximum_payload_limit.go
+model_subscription_payload_options_payload_format.go
+model_subscription_payload_options_payload_format_format.go
+model_subscription_payload_options_payload_format_format_https.go
 model_subscription_tls_client_auth_key_pair.go
 model_template.go
 model_template_content_common.go

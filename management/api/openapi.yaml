@@ -38302,6 +38302,18 @@ components:
       - SPLUNK
       - NEWRELIC
       type: string
+    EnumSubscriptionPayloadOptionsMaximumPayloadLimitType:
+      description: The type of payload to use for limiting subscriptions.
+      enum:
+      - EVENTS_PER_PAYLOAD
+      - KB_PER_PAYLOAD
+      type: string
+    EnumSubscriptionPayloadFormatHttpsFormat:
+      description: The payload format.
+      enum:
+      - JSON_ARRAY
+      - ND_JSON
+      type: string
     EnumTemplateContentDeliveryMethod:
       description: "The content's delivery method. Possible values are `Email`, `SMS`,\
         \ `Voice` or `Push`. Cannot be changed after it is initially set in `POST\
@@ -40091,7 +40103,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 6.628464275087742
+        size: 4.258773108174356
         _links:
           key:
             href: https://openapi-generator.tech
@@ -40124,22 +40136,32 @@ components:
               type: null
             enabled: true
           subscriptions:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            _links:
+          - _links:
               key:
                 href: https://openapi-generator.tech
             format: null
+            tlsClientAuthKeyPair:
+              id: id
+            payloadOptions:
+              maximumPayloadLimit:
+                size: 4
+                type: null
+              payloadFormat:
+                format:
+                  https:
+                    prettyPrint: true
+                    format: null
+            enabled: true
+            verifyTlsCertificates: true
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             httpEndpoint:
               headers:
                 key: headers
               url: url
             name: name
-            tlsClientAuthKeyPair:
-              id: id
             id: id
-            enabled: true
             filterOptions:
               includedActionTypes:
               - includedActionTypes
@@ -40155,24 +40177,33 @@ components:
               includedApplications:
               - id: id
               - id: id
-            verifyTlsCertificates: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            _links:
+          - _links:
               key:
                 href: https://openapi-generator.tech
             format: null
+            tlsClientAuthKeyPair:
+              id: id
+            payloadOptions:
+              maximumPayloadLimit:
+                size: 4
+                type: null
+              payloadFormat:
+                format:
+                  https:
+                    prettyPrint: true
+                    format: null
+            enabled: true
+            verifyTlsCertificates: true
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             httpEndpoint:
               headers:
                 key: headers
               url: url
             name: name
-            tlsClientAuthKeyPair:
-              id: id
             id: id
-            enabled: true
             filterOptions:
               includedActionTypes:
               - includedActionTypes
@@ -40188,7 +40219,6 @@ components:
               includedApplications:
               - id: id
               - id: id
-            verifyTlsCertificates: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           credentials:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -41046,7 +41076,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 4
+              secondsUntilUnlock: 0
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41117,7 +41147,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 4
+              secondsUntilUnlock: 0
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41894,7 +41924,7 @@ components:
           applications:
           - null
           - null
-        count: 0.2025324113236393
+        count: 6.628464275087742
       properties:
         _links:
           additionalProperties:
@@ -46836,22 +46866,32 @@ components:
       type: object
     Subscription:
       example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        environment:
-          id: id
         _links:
           key:
             href: https://openapi-generator.tech
         format: null
+        tlsClientAuthKeyPair:
+          id: id
+        payloadOptions:
+          maximumPayloadLimit:
+            size: 4
+            type: null
+          payloadFormat:
+            format:
+              https:
+                prettyPrint: true
+                format: null
+        enabled: true
+        verifyTlsCertificates: true
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
         httpEndpoint:
           headers:
             key: headers
           url: url
         name: name
-        tlsClientAuthKeyPair:
-          id: id
         id: id
-        enabled: true
         filterOptions:
           includedActionTypes:
           - includedActionTypes
@@ -46867,7 +46907,6 @@ components:
           includedApplications:
           - id: id
           - id: id
-        verifyTlsCertificates: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -46907,6 +46946,8 @@ components:
           description: A string that specifies the subscription name. This is a required
             property.
           type: string
+        payloadOptions:
+          $ref: '#/components/schemas/Subscription_payloadOptions'
         tlsClientAuthKeyPair:
           $ref: '#/components/schemas/Subscription_tlsClientAuthKeyPair'
         updatedAt:
@@ -47236,7 +47277,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 4
+          secondsUntilUnlock: 0
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -47468,7 +47509,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 4
+        secondsUntilUnlock: 0
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -48580,22 +48621,32 @@ components:
             type: null
           enabled: true
         subscriptions:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          _links:
+        - _links:
             key:
               href: https://openapi-generator.tech
           format: null
+          tlsClientAuthKeyPair:
+            id: id
+          payloadOptions:
+            maximumPayloadLimit:
+              size: 4
+              type: null
+            payloadFormat:
+              format:
+                https:
+                  prettyPrint: true
+                  format: null
+          enabled: true
+          verifyTlsCertificates: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           httpEndpoint:
             headers:
               key: headers
             url: url
           name: name
-          tlsClientAuthKeyPair:
-            id: id
           id: id
-          enabled: true
           filterOptions:
             includedActionTypes:
             - includedActionTypes
@@ -48611,24 +48662,33 @@ components:
             includedApplications:
             - id: id
             - id: id
-          verifyTlsCertificates: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          _links:
+        - _links:
             key:
               href: https://openapi-generator.tech
           format: null
+          tlsClientAuthKeyPair:
+            id: id
+          payloadOptions:
+            maximumPayloadLimit:
+              size: 4
+              type: null
+            payloadFormat:
+              format:
+                https:
+                  prettyPrint: true
+                  format: null
+          enabled: true
+          verifyTlsCertificates: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           httpEndpoint:
             headers:
               key: headers
             url: url
           name: name
-          tlsClientAuthKeyPair:
-            id: id
           id: id
-          enabled: true
           filterOptions:
             includedActionTypes:
             - includedActionTypes
@@ -48644,7 +48704,6 @@ components:
             includedApplications:
             - id: id
             - id: id
-          verifyTlsCertificates: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         credentials:
         - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -49502,7 +49561,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 4
+            secondsUntilUnlock: 0
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -49573,7 +49632,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 4
+            secondsUntilUnlock: 0
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -52928,6 +52987,66 @@ components:
           type: object
       required:
       - url
+      type: object
+    Subscription_payloadOptions_maximumPayloadLimit:
+      example:
+        size: 4
+        type: null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumSubscriptionPayloadOptionsMaximumPayloadLimitType'
+        size:
+          description: The maximum size of the payload based on `type`. For `EVENTS_PER_PAYLOAD`
+            this can be from `1` to `500` events (defaults to `500`). For `KB_PER_PAYLOAD`
+            this can be from `1` to `4096` kilobytes.
+          type: integer
+      type: object
+    Subscription_payloadOptions_payloadFormat_format_https:
+      example:
+        prettyPrint: true
+        format: null
+      properties:
+        format:
+          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatHttpsFormat'
+        prettyPrint:
+          description: Only applicable when `format` is `JSON_ARRAY`. Pretty-print
+            is enabled when `true`.
+          type: boolean
+      type: object
+    Subscription_payloadOptions_payloadFormat_format:
+      example:
+        https:
+          prettyPrint: true
+          format: null
+      properties:
+        https:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format_https'
+      type: object
+    Subscription_payloadOptions_payloadFormat:
+      example:
+        format:
+          https:
+            prettyPrint: true
+            format: null
+      properties:
+        format:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format'
+      type: object
+    Subscription_payloadOptions:
+      example:
+        maximumPayloadLimit:
+          size: 4
+          type: null
+        payloadFormat:
+          format:
+            https:
+              prettyPrint: true
+              format: null
+      properties:
+        maximumPayloadLimit:
+          $ref: '#/components/schemas/Subscription_payloadOptions_maximumPayloadLimit'
+        payloadFormat:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat'
       type: object
     Subscription_tlsClientAuthKeyPair:
       description: An onject that describes the TLS client authentication key pair
