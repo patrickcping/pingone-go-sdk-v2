@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** | A boolean that specifies whether the method is enabled or disabled in the policy. | 
+**Failure** | Pointer to [**DeviceAuthenticationPolicyCommonFido2Failure**](DeviceAuthenticationPolicyCommonFido2Failure.md) |  | [optional] 
 **PairingDisabled** | Pointer to **bool** | You can set &#x60;pairingDisabled&#x60; to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices. | [optional] 
 **Fido2PolicyId** | Pointer to **string** | Specifies the UUID that represents the FIDO2 policy in PingOne. This property can be null. When null, the environment&#39;s default FIDO2 Policy is used. | [optional] 
 **PromptForNicknameOnPairing** | Pointer to **bool** | Set to &#x60;true&#x60; if you want to allow users to provide nicknames for devices during pairing. | [optional] 
@@ -47,6 +48,31 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
+
+### GetFailure
+
+`func (o *DeviceAuthenticationPolicyCommonFido2) GetFailure() DeviceAuthenticationPolicyCommonFido2Failure`
+
+GetFailure returns the Failure field if non-nil, zero value otherwise.
+
+### GetFailureOk
+
+`func (o *DeviceAuthenticationPolicyCommonFido2) GetFailureOk() (*DeviceAuthenticationPolicyCommonFido2Failure, bool)`
+
+GetFailureOk returns a tuple with the Failure field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailure
+
+`func (o *DeviceAuthenticationPolicyCommonFido2) SetFailure(v DeviceAuthenticationPolicyCommonFido2Failure)`
+
+SetFailure sets Failure field to given value.
+
+### HasFailure
+
+`func (o *DeviceAuthenticationPolicyCommonFido2) HasFailure() bool`
+
+HasFailure returns a boolean if a field has been set.
 
 ### GetPairingDisabled
 
