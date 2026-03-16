@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.10
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.65.0 => v0.66.0 [#520](https://github.com/patrickcping/pingone-go-sdk-v2/pull/520)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.24.2 => v0.25.0 [#520](https://github.com/patrickcping/pingone-go-sdk-v2/pull/520)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.66.0](./management/CHANGELOG.md)
   * **Note** Removed previously deprecated `BundleId` and `PackageName` from the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
   * **Enhancement** Added `RefreshTokenType` to the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
