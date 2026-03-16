@@ -44,6 +44,8 @@ type ApplicationExternalLink struct {
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl string `json:"homePageUrl"`
+	// For applications whose type is `PORTAL_LINK_APP`, you can use this field to specify an external ID that should be used for the application in contexts such as targeted risk policies. Note that `PORTAL_LINK_APP` applications that do not have an external ID specified are not displayed in the list of applications when defining a targeted risk policy in the UI.
+	ExternalId *string `json:"externalId,omitempty"`
 }
 
 // NewApplicationExternalLink instantiates a new ApplicationExternalLink object
@@ -508,6 +510,38 @@ func (o *ApplicationExternalLink) SetHomePageUrl(v string) {
 	o.HomePageUrl = v
 }
 
+// GetExternalId returns the ExternalId field value if set, zero value otherwise.
+func (o *ApplicationExternalLink) GetExternalId() string {
+	if o == nil || IsNil(o.ExternalId) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationExternalLink) GetExternalIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalId) {
+		return nil, false
+	}
+	return o.ExternalId, true
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *ApplicationExternalLink) HasExternalId() bool {
+	if o != nil && !IsNil(o.ExternalId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *ApplicationExternalLink) SetExternalId(v string) {
+	o.ExternalId = &v
+}
+
 func (o ApplicationExternalLink) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -553,6 +587,9 @@ func (o ApplicationExternalLink) ToMap() (map[string]interface{}, error) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	toSerialize["homePageUrl"] = o.HomePageUrl
+	if !IsNil(o.ExternalId) {
+		toSerialize["externalId"] = o.ExternalId
+	}
 	return toSerialize, nil
 }
 

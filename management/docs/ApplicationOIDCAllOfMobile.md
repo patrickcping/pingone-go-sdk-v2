@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  this setting overrides the top-level packageName field. | [optional] 
 **HuaweiAppId** | Pointer to **string** | The unique identifier for the app on the device and in the Huawei Mobile Service AppGallery. The value of the &#x60;huaweiAppId&#x60; property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem. | [optional] 
 **HuaweiPackageName** | Pointer to **string** | The package name associated with the application, for push notifications in native apps. The value of the &#x60;huaweiPackageName&#x60; property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem. | [optional] 
+**PasscodeGracePeriod** | Pointer to **int32** | To cover time synchronization issues, you can use this field to customize the grace period during which the passcode can still be used even after the passcode has been refreshed. The value of the parameter should be the number of windows to use (min 1, max 10). In this context, a window is equal to the passcode refresh period in either direction. For example, if you defined a passcode refresh duration of 30 seconds and a grace period of 2 windows, the passcode is valid for 150 seconds (from 60 seconds behind the time of issue until 60 seconds past the expiration time). When this field is not included, the default value used is 5 windows. | [optional] 
 **PasscodeRefreshDuration** | Pointer to [**ApplicationOIDCAllOfMobilePasscodeRefreshDuration**](ApplicationOIDCAllOfMobilePasscodeRefreshDuration.md) |  | [optional] 
 **IntegrityDetection** | Pointer to [**ApplicationOIDCAllOfMobileIntegrityDetection**](ApplicationOIDCAllOfMobileIntegrityDetection.md) |  | [optional] 
+**Push** | Pointer to [**ApplicationOIDCAllOfMobilePush**](ApplicationOIDCAllOfMobilePush.md) |  | [optional] 
 **UriPrefix** | Pointer to **string** | A string that specifies a URI prefix that enables direct triggering of the mobile application when scanning a QR code. The URI prefix can be set to a universal link with a valid value (which can be a URL address that starts with &#x60;HTTP://&#x60; or &#x60;HTTPS://&#x60;, such as &#x60;https://www.acme.com&#x60;), or an app schema, which is just a string and requires no special validation. | [optional] 
 
 ## Methods
@@ -131,6 +133,31 @@ SetHuaweiPackageName sets HuaweiPackageName field to given value.
 
 HasHuaweiPackageName returns a boolean if a field has been set.
 
+### GetPasscodeGracePeriod
+
+`func (o *ApplicationOIDCAllOfMobile) GetPasscodeGracePeriod() int32`
+
+GetPasscodeGracePeriod returns the PasscodeGracePeriod field if non-nil, zero value otherwise.
+
+### GetPasscodeGracePeriodOk
+
+`func (o *ApplicationOIDCAllOfMobile) GetPasscodeGracePeriodOk() (*int32, bool)`
+
+GetPasscodeGracePeriodOk returns a tuple with the PasscodeGracePeriod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasscodeGracePeriod
+
+`func (o *ApplicationOIDCAllOfMobile) SetPasscodeGracePeriod(v int32)`
+
+SetPasscodeGracePeriod sets PasscodeGracePeriod field to given value.
+
+### HasPasscodeGracePeriod
+
+`func (o *ApplicationOIDCAllOfMobile) HasPasscodeGracePeriod() bool`
+
+HasPasscodeGracePeriod returns a boolean if a field has been set.
+
 ### GetPasscodeRefreshDuration
 
 `func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDuration() ApplicationOIDCAllOfMobilePasscodeRefreshDuration`
@@ -180,6 +207,31 @@ SetIntegrityDetection sets IntegrityDetection field to given value.
 `func (o *ApplicationOIDCAllOfMobile) HasIntegrityDetection() bool`
 
 HasIntegrityDetection returns a boolean if a field has been set.
+
+### GetPush
+
+`func (o *ApplicationOIDCAllOfMobile) GetPush() ApplicationOIDCAllOfMobilePush`
+
+GetPush returns the Push field if non-nil, zero value otherwise.
+
+### GetPushOk
+
+`func (o *ApplicationOIDCAllOfMobile) GetPushOk() (*ApplicationOIDCAllOfMobilePush, bool)`
+
+GetPushOk returns a tuple with the Push field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPush
+
+`func (o *ApplicationOIDCAllOfMobile) SetPush(v ApplicationOIDCAllOfMobilePush)`
+
+SetPush sets Push field to given value.
+
+### HasPush
+
+`func (o *ApplicationOIDCAllOfMobile) HasPush() bool`
+
+HasPush returns a boolean if a field has been set.
 
 ### GetUriPrefix
 

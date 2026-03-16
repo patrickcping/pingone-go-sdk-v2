@@ -1,3 +1,14 @@
+# v0.66.0 (Unreleased)
+
+* **Note** Removed previously deprecated `BundleId` and `PackageName` from the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `RefreshTokenType` to the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `PasscodeGracePeriod` and `Push` to the `ApplicationOIDCAllOfMobile` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `EnableAlwaysAcceptAcsUrlInSignedAuthnRequest` to the `ApplicationSAML` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `AssertionDuration` and `WsTrustVersion` to the `ApplicationWSFED` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `ExternalId` to the `ApplicationExternalLink` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `TOKEN_EXCHANGE` and `CIBA` values to the `EnumApplicationOIDCGrantType` enum type. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `PayloadOptions` to the `Subscription` data model. [#519](https://github.com/patrickcping/pingone-go-sdk-v2/pull/519)
+
 # v0.65.0 (2026-03-09)
 
 * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)

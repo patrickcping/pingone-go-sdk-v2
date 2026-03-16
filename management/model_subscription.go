@@ -33,6 +33,7 @@ type Subscription struct {
 	HttpEndpoint SubscriptionHttpEndpoint `json:"httpEndpoint"`
 	// A string that specifies the subscription name. This is a required property.
 	Name                 string                            `json:"name"`
+	PayloadOptions       *SubscriptionPayloadOptions       `json:"payloadOptions,omitempty"`
 	TlsClientAuthKeyPair *SubscriptionTlsClientAuthKeyPair `json:"tlsClientAuthKeyPair,omitempty"`
 	// The date and time at which the subscription resource was last updated (ISO 8601 format).
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
@@ -311,6 +312,38 @@ func (o *Subscription) SetName(v string) {
 	o.Name = v
 }
 
+// GetPayloadOptions returns the PayloadOptions field value if set, zero value otherwise.
+func (o *Subscription) GetPayloadOptions() SubscriptionPayloadOptions {
+	if o == nil || IsNil(o.PayloadOptions) {
+		var ret SubscriptionPayloadOptions
+		return ret
+	}
+	return *o.PayloadOptions
+}
+
+// GetPayloadOptionsOk returns a tuple with the PayloadOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Subscription) GetPayloadOptionsOk() (*SubscriptionPayloadOptions, bool) {
+	if o == nil || IsNil(o.PayloadOptions) {
+		return nil, false
+	}
+	return o.PayloadOptions, true
+}
+
+// HasPayloadOptions returns a boolean if a field has been set.
+func (o *Subscription) HasPayloadOptions() bool {
+	if o != nil && !IsNil(o.PayloadOptions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPayloadOptions gets a reference to the given SubscriptionPayloadOptions and assigns it to the PayloadOptions field.
+func (o *Subscription) SetPayloadOptions(v SubscriptionPayloadOptions) {
+	o.PayloadOptions = &v
+}
+
 // GetTlsClientAuthKeyPair returns the TlsClientAuthKeyPair field value if set, zero value otherwise.
 func (o *Subscription) GetTlsClientAuthKeyPair() SubscriptionTlsClientAuthKeyPair {
 	if o == nil || IsNil(o.TlsClientAuthKeyPair) {
@@ -426,6 +459,9 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["httpEndpoint"] = o.HttpEndpoint
 	toSerialize["name"] = o.Name
+	if !IsNil(o.PayloadOptions) {
+		toSerialize["payloadOptions"] = o.PayloadOptions
+	}
 	if !IsNil(o.TlsClientAuthKeyPair) {
 		toSerialize["tlsClientAuthKeyPair"] = o.TlsClientAuthKeyPair
 	}
