@@ -19,24 +19,22 @@ var _ MappedNullable = &FormFieldFlowButton{}
 
 // FormFieldFlowButton struct for FormFieldFlowButton
 type FormFieldFlowButton struct {
-	Type     EnumFormFieldType       `json:"type"`
-	Position FormFieldCommonPosition `json:"position"`
-	// A string that specifies an identifier for the field component.
-	Key string `json:"key"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
 	// A string that specifies the button label.
-	Label  string      `json:"label"`
-	Styles *FormStyles `json:"styles,omitempty"`
+	Label  string                `json:"label"`
+	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
 }
 
 // NewFormFieldFlowButton instantiates a new FormFieldFlowButton object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string) *FormFieldFlowButton {
+func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, label string) *FormFieldFlowButton {
 	this := FormFieldFlowButton{}
 	this.Type = type_
 	this.Position = position
-	this.Key = key
 	this.Label = label
 	return &this
 }
@@ -97,28 +95,36 @@ func (o *FormFieldFlowButton) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
-// GetKey returns the Key field value
-func (o *FormFieldFlowButton) GetKey() string {
-	if o == nil {
-		var ret string
+// GetVisibility returns the Visibility field value if set, zero value otherwise.
+func (o *FormFieldFlowButton) GetVisibility() FormFieldCommonVisibility {
+	if o == nil || IsNil(o.Visibility) {
+		var ret FormFieldCommonVisibility
 		return ret
 	}
-
-	return o.Key
+	return *o.Visibility
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldFlowButton) GetKeyOk() (*string, bool) {
-	if o == nil {
+func (o *FormFieldFlowButton) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
+	if o == nil || IsNil(o.Visibility) {
 		return nil, false
 	}
-	return &o.Key, true
+	return o.Visibility, true
 }
 
-// SetKey sets field value
-func (o *FormFieldFlowButton) SetKey(v string) {
-	o.Key = v
+// HasVisibility returns a boolean if a field has been set.
+func (o *FormFieldFlowButton) HasVisibility() bool {
+	if o != nil && !IsNil(o.Visibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
+func (o *FormFieldFlowButton) SetVisibility(v FormFieldCommonVisibility) {
+	o.Visibility = &v
 }
 
 // GetLabel returns the Label field value
@@ -146,9 +152,9 @@ func (o *FormFieldFlowButton) SetLabel(v string) {
 }
 
 // GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormFieldFlowButton) GetStyles() FormStyles {
+func (o *FormFieldFlowButton) GetStyles() FormFlowButtonStyles {
 	if o == nil || IsNil(o.Styles) {
-		var ret FormStyles
+		var ret FormFlowButtonStyles
 		return ret
 	}
 	return *o.Styles
@@ -156,7 +162,7 @@ func (o *FormFieldFlowButton) GetStyles() FormStyles {
 
 // GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldFlowButton) GetStylesOk() (*FormStyles, bool) {
+func (o *FormFieldFlowButton) GetStylesOk() (*FormFlowButtonStyles, bool) {
 	if o == nil || IsNil(o.Styles) {
 		return nil, false
 	}
@@ -172,8 +178,8 @@ func (o *FormFieldFlowButton) HasStyles() bool {
 	return false
 }
 
-// SetStyles gets a reference to the given FormStyles and assigns it to the Styles field.
-func (o *FormFieldFlowButton) SetStyles(v FormStyles) {
+// SetStyles gets a reference to the given FormFlowButtonStyles and assigns it to the Styles field.
+func (o *FormFieldFlowButton) SetStyles(v FormFlowButtonStyles) {
 	o.Styles = &v
 }
 
@@ -189,7 +195,9 @@ func (o FormFieldFlowButton) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
-	toSerialize["key"] = o.Key
+	if !IsNil(o.Visibility) {
+		toSerialize["visibility"] = o.Visibility
+	}
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles

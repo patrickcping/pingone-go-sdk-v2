@@ -21,43 +21,53 @@ var _ MappedNullable = &Form{}
 // Form struct for Form
 type Form struct {
 	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	// A string that specifies the resource’s unique identifier.
-	Id          *string            `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	// A string that specifies the form name, which must be provided and must be unique within an environment.
-	Name string `json:"name"`
-	// A string that specifies the description of the form.
-	Description *string          `json:"description,omitempty"`
-	Category    EnumFormCategory `json:"category"`
-	Components  FormComponents   `json:"components"`
+	// The date the resouce was created (ISO-8061 format).
+	Created  *time.Time       `json:"created,omitempty"`
+	Category EnumFormCategory `json:"category"`
 	// An integer that specifies the number of columns in the form (min = 1; max = 4).
-	Cols *int32 `json:"cols,omitempty"`
+	Cols       *int32         `json:"cols,omitempty"`
+	Components FormComponents `json:"components"`
+	// A string that specifies the description of the form.
+	Description *string            `json:"description,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A read-only object that specifies the list of the FormField types in the form.
+	FieldTypes []EnumFormFieldType `json:"fieldTypes,omitempty"`
+	// A string that specifies the resource’s unique identifier.
+	Id *string `json:"id,omitempty"`
+	// An object that provides a map of i18n keys to their translations. This object includes both the keys and their default translations. The PingOne language management service finds this object, and creates the new keys for translation for this form.
+	LanguageBundle *map[string]string `json:"languageBundle,omitempty"`
 	// A boolean that specifies whether optional fields are highlighted in the rendered form.
 	MarkOptional bool `json:"markOptional"`
 	// A boolean that specifies whether required fields are highlighted in the rendered form.
-	MarkRequired      bool                       `json:"markRequired"`
-	TranslationMethod *EnumFormTranslationMethod `json:"translationMethod,omitempty"`
-	// A read-only object that specifies the list of the FormField types in the form.
-	FieldTypes []EnumFormFieldType `json:"fieldTypes,omitempty"`
-	// An object that provides a map of i18n keys to their translations. This object includes both the keys and their default translations. The PingOne language management service finds this object, and creates the new keys for translation for this form.
-	LanguageBundle *map[string]string `json:"languageBundle,omitempty"`
-	// The date the resouce was created (ISO-8061 format).
-	Created *time.Time `json:"created,omitempty"`
+	MarkRequired bool `json:"markRequired"`
 	// The date the resouce was modified (ISO-8061 format).
 	Modified *time.Time `json:"modified,omitempty"`
+	// A string that specifies the form name, which must be provided and must be unique within an environment.
+	Name string `json:"name"`
+	// A boolean that specifies whether the password auto-complete feature is enabled.
+	PasswordAutoCompleteEnabled *bool `json:"passwordAutoCompleteEnabled,omitempty"`
+	// A boolean that specifies whether to return the password requirements during a DaVinci flow. A form with a new password field does not show the password policy information automatically in the response. To return the password policy information, the value of this property must be set to true.
+	ShowPasswordRequirements *bool `json:"showPasswordRequirements,omitempty"`
+	// A boolean that specifies whether the text auto-complete feature is enabled.
+	TextAutoCompleteEnabled *bool                      `json:"textAutoCompleteEnabled,omitempty"`
+	TranslationMethod       *EnumFormTranslationMethod `json:"translationMethod,omitempty"`
 }
 
 // NewForm instantiates a new Form object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewForm(name string, category EnumFormCategory, components FormComponents, markOptional bool, markRequired bool) *Form {
+func NewForm(category EnumFormCategory, components FormComponents, markOptional bool, markRequired bool, name string) *Form {
 	this := Form{}
-	this.Name = name
 	this.Category = category
 	this.Components = components
 	this.MarkOptional = markOptional
 	this.MarkRequired = markRequired
+	this.Name = name
+	var passwordAutoCompleteEnabled bool = false
+	this.PasswordAutoCompleteEnabled = &passwordAutoCompleteEnabled
+	var textAutoCompleteEnabled bool = false
+	this.TextAutoCompleteEnabled = &textAutoCompleteEnabled
 	return &this
 }
 
@@ -66,6 +76,10 @@ func NewForm(name string, category EnumFormCategory, components FormComponents, 
 // but it doesn't guarantee that properties required by API are set
 func NewFormWithDefaults() *Form {
 	this := Form{}
+	var passwordAutoCompleteEnabled bool = false
+	this.PasswordAutoCompleteEnabled = &passwordAutoCompleteEnabled
+	var textAutoCompleteEnabled bool = false
+	this.TextAutoCompleteEnabled = &textAutoCompleteEnabled
 	return &this
 }
 
@@ -101,92 +115,116 @@ func (o *Form) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Form) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *Form) GetCreated() time.Time {
+	if o == nil || IsNil(o.Created) {
+		var ret time.Time
 		return ret
 	}
-	return *o.Id
+	return *o.Created
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Form) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *Form) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Created, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Form) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasCreated returns a boolean if a field has been set.
+func (o *Form) HasCreated() bool {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Form) SetId(v string) {
-	o.Id = &v
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Form) SetCreated(v time.Time) {
+	o.Created = &v
 }
 
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *Form) GetEnvironment() ObjectEnvironment {
-	if o == nil || IsNil(o.Environment) {
-		var ret ObjectEnvironment
+// GetCategory returns the Category field value
+func (o *Form) GetCategory() EnumFormCategory {
+	if o == nil {
+		var ret EnumFormCategory
 		return ret
 	}
-	return *o.Environment
+
+	return o.Category
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// GetCategoryOk returns a tuple with the Category field value
 // and a boolean to check if the value has been set.
-func (o *Form) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || IsNil(o.Environment) {
+func (o *Form) GetCategoryOk() (*EnumFormCategory, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Environment, true
+	return &o.Category, true
 }
 
-// HasEnvironment returns a boolean if a field has been set.
-func (o *Form) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
+// SetCategory sets field value
+func (o *Form) SetCategory(v EnumFormCategory) {
+	o.Category = v
+}
+
+// GetCols returns the Cols field value if set, zero value otherwise.
+func (o *Form) GetCols() int32 {
+	if o == nil || IsNil(o.Cols) {
+		var ret int32
+		return ret
+	}
+	return *o.Cols
+}
+
+// GetColsOk returns a tuple with the Cols field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetColsOk() (*int32, bool) {
+	if o == nil || IsNil(o.Cols) {
+		return nil, false
+	}
+	return o.Cols, true
+}
+
+// HasCols returns a boolean if a field has been set.
+func (o *Form) HasCols() bool {
+	if o != nil && !IsNil(o.Cols) {
 		return true
 	}
 
 	return false
 }
 
-// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *Form) SetEnvironment(v ObjectEnvironment) {
-	o.Environment = &v
+// SetCols gets a reference to the given int32 and assigns it to the Cols field.
+func (o *Form) SetCols(v int32) {
+	o.Cols = &v
 }
 
-// GetName returns the Name field value
-func (o *Form) GetName() string {
+// GetComponents returns the Components field value
+func (o *Form) GetComponents() FormComponents {
 	if o == nil {
-		var ret string
+		var ret FormComponents
 		return ret
 	}
 
-	return o.Name
+	return o.Components
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetComponentsOk returns a tuple with the Components field value
 // and a boolean to check if the value has been set.
-func (o *Form) GetNameOk() (*string, bool) {
+func (o *Form) GetComponentsOk() (*FormComponents, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.Components, true
 }
 
-// SetName sets field value
-func (o *Form) SetName(v string) {
-	o.Name = v
+// SetComponents sets field value
+func (o *Form) SetComponents(v FormComponents) {
+	o.Components = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -221,84 +259,132 @@ func (o *Form) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetCategory returns the Category field value
-func (o *Form) GetCategory() EnumFormCategory {
-	if o == nil {
-		var ret EnumFormCategory
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *Form) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
 		return ret
 	}
-
-	return o.Category
+	return *o.Environment
 }
 
-// GetCategoryOk returns a tuple with the Category field value
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Form) GetCategoryOk() (*EnumFormCategory, bool) {
-	if o == nil {
+func (o *Form) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
-	return &o.Category, true
+	return o.Environment, true
 }
 
-// SetCategory sets field value
-func (o *Form) SetCategory(v EnumFormCategory) {
-	o.Category = v
-}
-
-// GetComponents returns the Components field value
-func (o *Form) GetComponents() FormComponents {
-	if o == nil {
-		var ret FormComponents
-		return ret
-	}
-
-	return o.Components
-}
-
-// GetComponentsOk returns a tuple with the Components field value
-// and a boolean to check if the value has been set.
-func (o *Form) GetComponentsOk() (*FormComponents, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Components, true
-}
-
-// SetComponents sets field value
-func (o *Form) SetComponents(v FormComponents) {
-	o.Components = v
-}
-
-// GetCols returns the Cols field value if set, zero value otherwise.
-func (o *Form) GetCols() int32 {
-	if o == nil || IsNil(o.Cols) {
-		var ret int32
-		return ret
-	}
-	return *o.Cols
-}
-
-// GetColsOk returns a tuple with the Cols field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Form) GetColsOk() (*int32, bool) {
-	if o == nil || IsNil(o.Cols) {
-		return nil, false
-	}
-	return o.Cols, true
-}
-
-// HasCols returns a boolean if a field has been set.
-func (o *Form) HasCols() bool {
-	if o != nil && !IsNil(o.Cols) {
+// HasEnvironment returns a boolean if a field has been set.
+func (o *Form) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
 	return false
 }
 
-// SetCols gets a reference to the given int32 and assigns it to the Cols field.
-func (o *Form) SetCols(v int32) {
-	o.Cols = &v
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *Form) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetFieldTypes returns the FieldTypes field value if set, zero value otherwise.
+func (o *Form) GetFieldTypes() []EnumFormFieldType {
+	if o == nil || IsNil(o.FieldTypes) {
+		var ret []EnumFormFieldType
+		return ret
+	}
+	return o.FieldTypes
+}
+
+// GetFieldTypesOk returns a tuple with the FieldTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetFieldTypesOk() ([]EnumFormFieldType, bool) {
+	if o == nil || IsNil(o.FieldTypes) {
+		return nil, false
+	}
+	return o.FieldTypes, true
+}
+
+// HasFieldTypes returns a boolean if a field has been set.
+func (o *Form) HasFieldTypes() bool {
+	if o != nil && !IsNil(o.FieldTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetFieldTypes gets a reference to the given []EnumFormFieldType and assigns it to the FieldTypes field.
+func (o *Form) SetFieldTypes(v []EnumFormFieldType) {
+	o.FieldTypes = v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Form) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Form) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Form) SetId(v string) {
+	o.Id = &v
+}
+
+// GetLanguageBundle returns the LanguageBundle field value if set, zero value otherwise.
+func (o *Form) GetLanguageBundle() map[string]string {
+	if o == nil || IsNil(o.LanguageBundle) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.LanguageBundle
+}
+
+// GetLanguageBundleOk returns a tuple with the LanguageBundle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetLanguageBundleOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.LanguageBundle) {
+		return nil, false
+	}
+	return o.LanguageBundle, true
+}
+
+// HasLanguageBundle returns a boolean if a field has been set.
+func (o *Form) HasLanguageBundle() bool {
+	if o != nil && !IsNil(o.LanguageBundle) {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguageBundle gets a reference to the given map[string]string and assigns it to the LanguageBundle field.
+func (o *Form) SetLanguageBundle(v map[string]string) {
+	o.LanguageBundle = &v
 }
 
 // GetMarkOptional returns the MarkOptional field value
@@ -349,134 +435,6 @@ func (o *Form) SetMarkRequired(v bool) {
 	o.MarkRequired = v
 }
 
-// GetTranslationMethod returns the TranslationMethod field value if set, zero value otherwise.
-func (o *Form) GetTranslationMethod() EnumFormTranslationMethod {
-	if o == nil || IsNil(o.TranslationMethod) {
-		var ret EnumFormTranslationMethod
-		return ret
-	}
-	return *o.TranslationMethod
-}
-
-// GetTranslationMethodOk returns a tuple with the TranslationMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Form) GetTranslationMethodOk() (*EnumFormTranslationMethod, bool) {
-	if o == nil || IsNil(o.TranslationMethod) {
-		return nil, false
-	}
-	return o.TranslationMethod, true
-}
-
-// HasTranslationMethod returns a boolean if a field has been set.
-func (o *Form) HasTranslationMethod() bool {
-	if o != nil && !IsNil(o.TranslationMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetTranslationMethod gets a reference to the given EnumFormTranslationMethod and assigns it to the TranslationMethod field.
-func (o *Form) SetTranslationMethod(v EnumFormTranslationMethod) {
-	o.TranslationMethod = &v
-}
-
-// GetFieldTypes returns the FieldTypes field value if set, zero value otherwise.
-func (o *Form) GetFieldTypes() []EnumFormFieldType {
-	if o == nil || IsNil(o.FieldTypes) {
-		var ret []EnumFormFieldType
-		return ret
-	}
-	return o.FieldTypes
-}
-
-// GetFieldTypesOk returns a tuple with the FieldTypes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Form) GetFieldTypesOk() ([]EnumFormFieldType, bool) {
-	if o == nil || IsNil(o.FieldTypes) {
-		return nil, false
-	}
-	return o.FieldTypes, true
-}
-
-// HasFieldTypes returns a boolean if a field has been set.
-func (o *Form) HasFieldTypes() bool {
-	if o != nil && !IsNil(o.FieldTypes) {
-		return true
-	}
-
-	return false
-}
-
-// SetFieldTypes gets a reference to the given []EnumFormFieldType and assigns it to the FieldTypes field.
-func (o *Form) SetFieldTypes(v []EnumFormFieldType) {
-	o.FieldTypes = v
-}
-
-// GetLanguageBundle returns the LanguageBundle field value if set, zero value otherwise.
-func (o *Form) GetLanguageBundle() map[string]string {
-	if o == nil || IsNil(o.LanguageBundle) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.LanguageBundle
-}
-
-// GetLanguageBundleOk returns a tuple with the LanguageBundle field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Form) GetLanguageBundleOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.LanguageBundle) {
-		return nil, false
-	}
-	return o.LanguageBundle, true
-}
-
-// HasLanguageBundle returns a boolean if a field has been set.
-func (o *Form) HasLanguageBundle() bool {
-	if o != nil && !IsNil(o.LanguageBundle) {
-		return true
-	}
-
-	return false
-}
-
-// SetLanguageBundle gets a reference to the given map[string]string and assigns it to the LanguageBundle field.
-func (o *Form) SetLanguageBundle(v map[string]string) {
-	o.LanguageBundle = &v
-}
-
-// GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Form) GetCreated() time.Time {
-	if o == nil || IsNil(o.Created) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Created
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Form) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Created) {
-		return nil, false
-	}
-	return o.Created, true
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *Form) HasCreated() bool {
-	if o != nil && !IsNil(o.Created) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Form) SetCreated(v time.Time) {
-	o.Created = &v
-}
-
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Form) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
@@ -509,6 +467,158 @@ func (o *Form) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
+// GetName returns the Name field value
+func (o *Form) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *Form) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *Form) SetName(v string) {
+	o.Name = v
+}
+
+// GetPasswordAutoCompleteEnabled returns the PasswordAutoCompleteEnabled field value if set, zero value otherwise.
+func (o *Form) GetPasswordAutoCompleteEnabled() bool {
+	if o == nil || IsNil(o.PasswordAutoCompleteEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PasswordAutoCompleteEnabled
+}
+
+// GetPasswordAutoCompleteEnabledOk returns a tuple with the PasswordAutoCompleteEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetPasswordAutoCompleteEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PasswordAutoCompleteEnabled) {
+		return nil, false
+	}
+	return o.PasswordAutoCompleteEnabled, true
+}
+
+// HasPasswordAutoCompleteEnabled returns a boolean if a field has been set.
+func (o *Form) HasPasswordAutoCompleteEnabled() bool {
+	if o != nil && !IsNil(o.PasswordAutoCompleteEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordAutoCompleteEnabled gets a reference to the given bool and assigns it to the PasswordAutoCompleteEnabled field.
+func (o *Form) SetPasswordAutoCompleteEnabled(v bool) {
+	o.PasswordAutoCompleteEnabled = &v
+}
+
+// GetShowPasswordRequirements returns the ShowPasswordRequirements field value if set, zero value otherwise.
+func (o *Form) GetShowPasswordRequirements() bool {
+	if o == nil || IsNil(o.ShowPasswordRequirements) {
+		var ret bool
+		return ret
+	}
+	return *o.ShowPasswordRequirements
+}
+
+// GetShowPasswordRequirementsOk returns a tuple with the ShowPasswordRequirements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetShowPasswordRequirementsOk() (*bool, bool) {
+	if o == nil || IsNil(o.ShowPasswordRequirements) {
+		return nil, false
+	}
+	return o.ShowPasswordRequirements, true
+}
+
+// HasShowPasswordRequirements returns a boolean if a field has been set.
+func (o *Form) HasShowPasswordRequirements() bool {
+	if o != nil && !IsNil(o.ShowPasswordRequirements) {
+		return true
+	}
+
+	return false
+}
+
+// SetShowPasswordRequirements gets a reference to the given bool and assigns it to the ShowPasswordRequirements field.
+func (o *Form) SetShowPasswordRequirements(v bool) {
+	o.ShowPasswordRequirements = &v
+}
+
+// GetTextAutoCompleteEnabled returns the TextAutoCompleteEnabled field value if set, zero value otherwise.
+func (o *Form) GetTextAutoCompleteEnabled() bool {
+	if o == nil || IsNil(o.TextAutoCompleteEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.TextAutoCompleteEnabled
+}
+
+// GetTextAutoCompleteEnabledOk returns a tuple with the TextAutoCompleteEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetTextAutoCompleteEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.TextAutoCompleteEnabled) {
+		return nil, false
+	}
+	return o.TextAutoCompleteEnabled, true
+}
+
+// HasTextAutoCompleteEnabled returns a boolean if a field has been set.
+func (o *Form) HasTextAutoCompleteEnabled() bool {
+	if o != nil && !IsNil(o.TextAutoCompleteEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetTextAutoCompleteEnabled gets a reference to the given bool and assigns it to the TextAutoCompleteEnabled field.
+func (o *Form) SetTextAutoCompleteEnabled(v bool) {
+	o.TextAutoCompleteEnabled = &v
+}
+
+// GetTranslationMethod returns the TranslationMethod field value if set, zero value otherwise.
+func (o *Form) GetTranslationMethod() EnumFormTranslationMethod {
+	if o == nil || IsNil(o.TranslationMethod) {
+		var ret EnumFormTranslationMethod
+		return ret
+	}
+	return *o.TranslationMethod
+}
+
+// GetTranslationMethodOk returns a tuple with the TranslationMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Form) GetTranslationMethodOk() (*EnumFormTranslationMethod, bool) {
+	if o == nil || IsNil(o.TranslationMethod) {
+		return nil, false
+	}
+	return o.TranslationMethod, true
+}
+
+// HasTranslationMethod returns a boolean if a field has been set.
+func (o *Form) HasTranslationMethod() bool {
+	if o != nil && !IsNil(o.TranslationMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetTranslationMethod gets a reference to the given EnumFormTranslationMethod and assigns it to the TranslationMethod field.
+func (o *Form) SetTranslationMethod(v EnumFormTranslationMethod) {
+	o.TranslationMethod = &v
+}
+
 func (o Form) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -522,37 +632,46 @@ func (o Form) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	toSerialize["category"] = o.Category
+	if !IsNil(o.Cols) {
+		toSerialize["cols"] = o.Cols
+	}
+	toSerialize["components"] = o.Components
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	toSerialize["category"] = o.Category
-	toSerialize["components"] = o.Components
-	if !IsNil(o.Cols) {
-		toSerialize["cols"] = o.Cols
-	}
-	toSerialize["markOptional"] = o.MarkOptional
-	toSerialize["markRequired"] = o.MarkRequired
-	if !IsNil(o.TranslationMethod) {
-		toSerialize["translationMethod"] = o.TranslationMethod
-	}
 	if !IsNil(o.FieldTypes) {
 		toSerialize["fieldTypes"] = o.FieldTypes
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.LanguageBundle) {
 		toSerialize["languageBundle"] = o.LanguageBundle
 	}
-	if !IsNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
+	toSerialize["markOptional"] = o.MarkOptional
+	toSerialize["markRequired"] = o.MarkRequired
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.PasswordAutoCompleteEnabled) {
+		toSerialize["passwordAutoCompleteEnabled"] = o.PasswordAutoCompleteEnabled
+	}
+	if !IsNil(o.ShowPasswordRequirements) {
+		toSerialize["showPasswordRequirements"] = o.ShowPasswordRequirements
+	}
+	if !IsNil(o.TextAutoCompleteEnabled) {
+		toSerialize["textAutoCompleteEnabled"] = o.TextAutoCompleteEnabled
+	}
+	if !IsNil(o.TranslationMethod) {
+		toSerialize["translationMethod"] = o.TranslationMethod
 	}
 	return toSerialize, nil
 }

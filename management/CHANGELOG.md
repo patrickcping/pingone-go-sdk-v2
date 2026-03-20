@@ -1,3 +1,9 @@
+# v0.67.0 (Unreleased)
+
+* **Note** Remove redundant data models. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
+* **Enhancement** Re-aligned the `FormFieldQrCode` model to the API contract for DaVinci Forms. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
+* **Enhancement** Added support for `FormFieldPolling`, `FormFieldFIDO2`, `FormFieldSingleCheckbox` and `FormFieldAgreement` data models for DaVinci Forms. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
+
 # v0.66.0 (2026-03-16)
 
 * **Note** Removed previously deprecated `BundleId` and `PackageName` from the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)

@@ -23,18 +23,21 @@ type FormField struct {
 	FormFieldDropdown          *FormFieldDropdown
 	FormFieldEmptyField        *FormFieldEmptyField
 	FormFieldErrorDisplay      *FormFieldErrorDisplay
+	FormFieldFIDO2             *FormFieldFIDO2
 	FormFieldFlowButton        *FormFieldFlowButton
 	FormFieldFlowLink          *FormFieldFlowLink
+	FormFieldFormAgreement     *FormFieldFormAgreement
 	FormFieldPassword          *FormFieldPassword
 	FormFieldPasswordVerify    *FormFieldPasswordVerify
+	FormFieldPolling           *FormFieldPolling
 	FormFieldQrCode            *FormFieldQrCode
 	FormFieldRadio             *FormFieldRadio
 	FormFieldRecaptchaV2       *FormFieldRecaptchaV2
+	FormFieldSingleCheckbox    *FormFieldSingleCheckbox
 	FormFieldSlateTextblob     *FormFieldSlateTextblob
 	FormFieldSocialLoginButton *FormFieldSocialLoginButton
 	FormFieldSubmitButton      *FormFieldSubmitButton
 	FormFieldText              *FormFieldText
-	FormFieldTextblob          *FormFieldTextblob
 }
 
 // FormFieldCheckboxAsFormField is a convenience function that returns FormFieldCheckbox wrapped in FormField
@@ -79,6 +82,13 @@ func FormFieldErrorDisplayAsFormField(v *FormFieldErrorDisplay) FormField {
 	}
 }
 
+// FormFieldFIDO2AsFormField is a convenience function that returns FormFieldFIDO2 wrapped in FormField
+func FormFieldFIDO2AsFormField(v *FormFieldFIDO2) FormField {
+	return FormField{
+		FormFieldFIDO2: v,
+	}
+}
+
 // FormFieldFlowButtonAsFormField is a convenience function that returns FormFieldFlowButton wrapped in FormField
 func FormFieldFlowButtonAsFormField(v *FormFieldFlowButton) FormField {
 	return FormField{
@@ -93,6 +103,13 @@ func FormFieldFlowLinkAsFormField(v *FormFieldFlowLink) FormField {
 	}
 }
 
+// FormFieldFormAgreementAsFormField is a convenience function that returns FormFieldFormAgreement wrapped in FormField
+func FormFieldFormAgreementAsFormField(v *FormFieldFormAgreement) FormField {
+	return FormField{
+		FormFieldFormAgreement: v,
+	}
+}
+
 // FormFieldPasswordAsFormField is a convenience function that returns FormFieldPassword wrapped in FormField
 func FormFieldPasswordAsFormField(v *FormFieldPassword) FormField {
 	return FormField{
@@ -104,6 +121,13 @@ func FormFieldPasswordAsFormField(v *FormFieldPassword) FormField {
 func FormFieldPasswordVerifyAsFormField(v *FormFieldPasswordVerify) FormField {
 	return FormField{
 		FormFieldPasswordVerify: v,
+	}
+}
+
+// FormFieldPollingAsFormField is a convenience function that returns FormFieldPolling wrapped in FormField
+func FormFieldPollingAsFormField(v *FormFieldPolling) FormField {
+	return FormField{
+		FormFieldPolling: v,
 	}
 }
 
@@ -125,6 +149,13 @@ func FormFieldRadioAsFormField(v *FormFieldRadio) FormField {
 func FormFieldRecaptchaV2AsFormField(v *FormFieldRecaptchaV2) FormField {
 	return FormField{
 		FormFieldRecaptchaV2: v,
+	}
+}
+
+// FormFieldSingleCheckboxAsFormField is a convenience function that returns FormFieldSingleCheckbox wrapped in FormField
+func FormFieldSingleCheckboxAsFormField(v *FormFieldSingleCheckbox) FormField {
+	return FormField{
+		FormFieldSingleCheckbox: v,
 	}
 }
 
@@ -156,13 +187,6 @@ func FormFieldTextAsFormField(v *FormFieldText) FormField {
 	}
 }
 
-// FormFieldTextblobAsFormField is a convenience function that returns FormFieldTextblob wrapped in FormField
-func FormFieldTextblobAsFormField(v *FormFieldTextblob) FormField {
-	return FormField{
-		FormFieldTextblob: v,
-	}
-}
-
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FormField) UnmarshalJSON(data []byte) error {
 
@@ -189,6 +213,10 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 	dst.FormFieldSocialLoginButton = nil
 	dst.FormFieldSubmitButton = nil
 	dst.FormFieldText = nil
+	dst.FormFieldPolling = nil
+    dst.FormFieldFIDO2 = nil
+    dst.FormFieldSingleCheckbox = nil
+    dst.FormFieldFormAgreement = nil
 
 	objType := common.GetType()
 
@@ -233,10 +261,6 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &dst.FormFieldEmptyField); err != nil {
 			return err
 		}
-	case ENUMFORMFIELDTYPE_TEXTBLOB:
-		if err := json.Unmarshal(data, &dst.FormFieldSlateTextblob); err != nil {
-			return err
-		}
 	case ENUMFORMFIELDTYPE_SLATE_TEXTBLOB:
 		if err := json.Unmarshal(data, &dst.FormFieldSlateTextblob); err != nil {
 			return err
@@ -267,6 +291,22 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 		}
 	case ENUMFORMFIELDTYPE_SOCIAL_LOGIN_BUTTON:
 		if err := json.Unmarshal(data, &dst.FormFieldSocialLoginButton); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_POLLING:
+		if err := json.Unmarshal(data, &dst.FormFieldPolling); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_FIDO2:
+		if err := json.Unmarshal(data, &dst.FormFieldFIDO2); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_SINGLE_CHECKBOX:
+		if err := json.Unmarshal(data, &dst.FormFieldSingleCheckbox); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_AGREEMENT:
+		if err := json.Unmarshal(data, &dst.FormFieldFormAgreement); err != nil {
 			return err
 		}
 	default:
@@ -301,6 +341,10 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FormFieldErrorDisplay)
 	}
 
+	if src.FormFieldFIDO2 != nil {
+		return json.Marshal(&src.FormFieldFIDO2)
+	}
+
 	if src.FormFieldFlowButton != nil {
 		return json.Marshal(&src.FormFieldFlowButton)
 	}
@@ -309,12 +353,20 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FormFieldFlowLink)
 	}
 
+	if src.FormFieldFormAgreement != nil {
+		return json.Marshal(&src.FormFieldFormAgreement)
+	}
+
 	if src.FormFieldPassword != nil {
 		return json.Marshal(&src.FormFieldPassword)
 	}
 
 	if src.FormFieldPasswordVerify != nil {
 		return json.Marshal(&src.FormFieldPasswordVerify)
+	}
+
+	if src.FormFieldPolling != nil {
+		return json.Marshal(&src.FormFieldPolling)
 	}
 
 	if src.FormFieldQrCode != nil {
@@ -327,6 +379,10 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 
 	if src.FormFieldRecaptchaV2 != nil {
 		return json.Marshal(&src.FormFieldRecaptchaV2)
+	}
+
+	if src.FormFieldSingleCheckbox != nil {
+		return json.Marshal(&src.FormFieldSingleCheckbox)
 	}
 
 	if src.FormFieldSlateTextblob != nil {
@@ -343,10 +399,6 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 
 	if src.FormFieldText != nil {
 		return json.Marshal(&src.FormFieldText)
-	}
-
-	if src.FormFieldTextblob != nil {
-		return json.Marshal(&src.FormFieldTextblob)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -381,6 +433,10 @@ func (obj *FormField) GetActualInstance() interface{} {
 		return obj.FormFieldErrorDisplay
 	}
 
+	if obj.FormFieldFIDO2 != nil {
+		return obj.FormFieldFIDO2
+	}
+
 	if obj.FormFieldFlowButton != nil {
 		return obj.FormFieldFlowButton
 	}
@@ -389,12 +445,20 @@ func (obj *FormField) GetActualInstance() interface{} {
 		return obj.FormFieldFlowLink
 	}
 
+	if obj.FormFieldFormAgreement != nil {
+		return obj.FormFieldFormAgreement
+	}
+
 	if obj.FormFieldPassword != nil {
 		return obj.FormFieldPassword
 	}
 
 	if obj.FormFieldPasswordVerify != nil {
 		return obj.FormFieldPasswordVerify
+	}
+
+	if obj.FormFieldPolling != nil {
+		return obj.FormFieldPolling
 	}
 
 	if obj.FormFieldQrCode != nil {
@@ -407,6 +471,10 @@ func (obj *FormField) GetActualInstance() interface{} {
 
 	if obj.FormFieldRecaptchaV2 != nil {
 		return obj.FormFieldRecaptchaV2
+	}
+
+	if obj.FormFieldSingleCheckbox != nil {
+		return obj.FormFieldSingleCheckbox
 	}
 
 	if obj.FormFieldSlateTextblob != nil {
@@ -423,10 +491,6 @@ func (obj *FormField) GetActualInstance() interface{} {
 
 	if obj.FormFieldText != nil {
 		return obj.FormFieldText
-	}
-
-	if obj.FormFieldTextblob != nil {
-		return obj.FormFieldTextblob
 	}
 
 	// all schemas are nil

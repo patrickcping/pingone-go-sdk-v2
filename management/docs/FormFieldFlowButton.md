@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
-**Key** | **string** | A string that specifies an identifier for the field component. | 
+**Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **Label** | **string** | A string that specifies the button label. | 
-**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
 
 ## Methods
 
 ### NewFormFieldFlowButton
 
-`func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, ) *FormFieldFlowButton`
+`func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, ) *FormFieldFlowButton`
 
 NewFormFieldFlowButton instantiates a new FormFieldFlowButton object
 This constructor will assign default values to properties that have it defined,
@@ -69,25 +69,30 @@ and a boolean to check if the value has been set.
 SetPosition sets Position field to given value.
 
 
-### GetKey
+### GetVisibility
 
-`func (o *FormFieldFlowButton) GetKey() string`
+`func (o *FormFieldFlowButton) GetVisibility() FormFieldCommonVisibility`
 
-GetKey returns the Key field if non-nil, zero value otherwise.
+GetVisibility returns the Visibility field if non-nil, zero value otherwise.
 
-### GetKeyOk
+### GetVisibilityOk
 
-`func (o *FormFieldFlowButton) GetKeyOk() (*string, bool)`
+`func (o *FormFieldFlowButton) GetVisibilityOk() (*FormFieldCommonVisibility, bool)`
 
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKey
+### SetVisibility
 
-`func (o *FormFieldFlowButton) SetKey(v string)`
+`func (o *FormFieldFlowButton) SetVisibility(v FormFieldCommonVisibility)`
 
-SetKey sets Key field to given value.
+SetVisibility sets Visibility field to given value.
 
+### HasVisibility
+
+`func (o *FormFieldFlowButton) HasVisibility() bool`
+
+HasVisibility returns a boolean if a field has been set.
 
 ### GetLabel
 
@@ -111,20 +116,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormFieldFlowButton) GetStyles() FormStyles`
+`func (o *FormFieldFlowButton) GetStyles() FormFlowButtonStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormFieldFlowButton) GetStylesOk() (*FormStyles, bool)`
+`func (o *FormFieldFlowButton) GetStylesOk() (*FormFlowButtonStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormFieldFlowButton) SetStyles(v FormStyles)`
+`func (o *FormFieldFlowButton) SetStyles(v FormFlowButtonStyles)`
 
 SetStyles sets Styles field to given value.
 

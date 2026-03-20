@@ -19,20 +19,17 @@ var _ MappedNullable = &FormFlowButton{}
 
 // FormFlowButton struct for FormFlowButton
 type FormFlowButton struct {
-	// A string that specifies an identifier for the field component.
-	Key string `json:"key"`
 	// A string that specifies the button label.
-	Label  string      `json:"label"`
-	Styles *FormStyles `json:"styles,omitempty"`
+	Label  string                `json:"label"`
+	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
 }
 
 // NewFormFlowButton instantiates a new FormFlowButton object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFlowButton(key string, label string) *FormFlowButton {
+func NewFormFlowButton(label string) *FormFlowButton {
 	this := FormFlowButton{}
-	this.Key = key
 	this.Label = label
 	return &this
 }
@@ -43,30 +40,6 @@ func NewFormFlowButton(key string, label string) *FormFlowButton {
 func NewFormFlowButtonWithDefaults() *FormFlowButton {
 	this := FormFlowButton{}
 	return &this
-}
-
-// GetKey returns the Key field value
-func (o *FormFlowButton) GetKey() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value
-// and a boolean to check if the value has been set.
-func (o *FormFlowButton) GetKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Key, true
-}
-
-// SetKey sets field value
-func (o *FormFlowButton) SetKey(v string) {
-	o.Key = v
 }
 
 // GetLabel returns the Label field value
@@ -94,9 +67,9 @@ func (o *FormFlowButton) SetLabel(v string) {
 }
 
 // GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormFlowButton) GetStyles() FormStyles {
+func (o *FormFlowButton) GetStyles() FormFlowButtonStyles {
 	if o == nil || IsNil(o.Styles) {
-		var ret FormStyles
+		var ret FormFlowButtonStyles
 		return ret
 	}
 	return *o.Styles
@@ -104,7 +77,7 @@ func (o *FormFlowButton) GetStyles() FormStyles {
 
 // GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFlowButton) GetStylesOk() (*FormStyles, bool) {
+func (o *FormFlowButton) GetStylesOk() (*FormFlowButtonStyles, bool) {
 	if o == nil || IsNil(o.Styles) {
 		return nil, false
 	}
@@ -120,8 +93,8 @@ func (o *FormFlowButton) HasStyles() bool {
 	return false
 }
 
-// SetStyles gets a reference to the given FormStyles and assigns it to the Styles field.
-func (o *FormFlowButton) SetStyles(v FormStyles) {
+// SetStyles gets a reference to the given FormFlowButtonStyles and assigns it to the Styles field.
+func (o *FormFlowButton) SetStyles(v FormFlowButtonStyles) {
 	o.Styles = &v
 }
 
@@ -135,7 +108,6 @@ func (o FormFlowButton) MarshalJSON() ([]byte, error) {
 
 func (o FormFlowButton) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles

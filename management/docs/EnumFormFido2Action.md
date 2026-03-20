@@ -1,13 +1,11 @@
-# EnumAdministratorSecurityAllowedMethods
+# EnumFormFIDO2Action
 
 ## Enum
 
 
-* `TOTP` (value: `"TOTP"`)
+* `REGISTER` (value: `"REGISTER"`)
 
-* `FIDO2` (value: `"FIDO2"`)
-
-* `EMAIL` (value: `"EMAIL"`)
+* `AUTHENTICATE` (value: `"AUTHENTICATE"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
