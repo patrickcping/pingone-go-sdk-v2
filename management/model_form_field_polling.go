@@ -19,21 +19,24 @@ var _ MappedNullable = &FormFieldPolling{}
 
 // FormFieldPolling struct for FormFieldPolling
 type FormFieldPolling struct {
-	Type              EnumFormFieldType          `json:"type"`
-	Position          FormFieldCommonPosition    `json:"position"`
-	Visibility        *FormFieldCommonVisibility `json:"visibility,omitempty"`
-	PollingAppearance EnumFormPollingAppearance  `json:"pollingAppearance"`
-	Size              EnumFormItemSize           `json:"size"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
+	// A string that specifies an identifier for the field component.
+	Key               string                    `json:"key"`
+	PollingAppearance EnumFormPollingAppearance `json:"pollingAppearance"`
+	Size              EnumFormItemSize          `json:"size"`
 }
 
 // NewFormFieldPolling instantiates a new FormFieldPolling object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldPolling(type_ EnumFormFieldType, position FormFieldCommonPosition, pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize) *FormFieldPolling {
+func NewFormFieldPolling(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize) *FormFieldPolling {
 	this := FormFieldPolling{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
 	this.PollingAppearance = pollingAppearance
 	this.Size = size
 	return &this
@@ -127,6 +130,30 @@ func (o *FormFieldPolling) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
 }
 
+// GetKey returns the Key field value
+func (o *FormFieldPolling) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldPolling) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldPolling) SetKey(v string) {
+	o.Key = v
+}
+
 // GetPollingAppearance returns the PollingAppearance field value
 func (o *FormFieldPolling) GetPollingAppearance() EnumFormPollingAppearance {
 	if o == nil {
@@ -190,6 +217,7 @@ func (o FormFieldPolling) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
 	}
+	toSerialize["key"] = o.Key
 	toSerialize["pollingAppearance"] = o.PollingAppearance
 	toSerialize["size"] = o.Size
 	return toSerialize, nil

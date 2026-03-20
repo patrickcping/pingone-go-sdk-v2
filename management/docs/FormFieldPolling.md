@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **PollingAppearance** | [**EnumFormPollingAppearance**](EnumFormPollingAppearance.md) |  | 
 **Size** | [**EnumFormItemSize**](EnumFormItemSize.md) |  | 
 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewFormFieldPolling
 
-`func NewFormFieldPolling(type_ EnumFormFieldType, position FormFieldCommonPosition, pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize, ) *FormFieldPolling`
+`func NewFormFieldPolling(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize, ) *FormFieldPolling`
 
 NewFormFieldPolling instantiates a new FormFieldPolling object
 This constructor will assign default values to properties that have it defined,
@@ -93,6 +94,26 @@ SetVisibility sets Visibility field to given value.
 `func (o *FormFieldPolling) HasVisibility() bool`
 
 HasVisibility returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *FormFieldPolling) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFieldPolling) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFieldPolling) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetPollingAppearance
 

@@ -38,7 +38,6 @@ type FormField struct {
 	FormFieldSocialLoginButton *FormFieldSocialLoginButton
 	FormFieldSubmitButton      *FormFieldSubmitButton
 	FormFieldText              *FormFieldText
-	FormFieldTextblob          *FormFieldTextblob
 }
 
 // FormFieldCheckboxAsFormField is a convenience function that returns FormFieldCheckbox wrapped in FormField
@@ -185,13 +184,6 @@ func FormFieldSubmitButtonAsFormField(v *FormFieldSubmitButton) FormField {
 func FormFieldTextAsFormField(v *FormFieldText) FormField {
 	return FormField{
 		FormFieldText: v,
-	}
-}
-
-// FormFieldTextblobAsFormField is a convenience function that returns FormFieldTextblob wrapped in FormField
-func FormFieldTextblobAsFormField(v *FormFieldTextblob) FormField {
-	return FormField{
-		FormFieldTextblob: v,
 	}
 }
 
@@ -409,10 +401,6 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FormFieldText)
 	}
 
-	if src.FormFieldTextblob != nil {
-		return json.Marshal(&src.FormFieldTextblob)
-	}
-
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -503,10 +491,6 @@ func (obj *FormField) GetActualInstance() interface{} {
 
 	if obj.FormFieldText != nil {
 		return obj.FormFieldText
-	}
-
-	if obj.FormFieldTextblob != nil {
-		return obj.FormFieldTextblob
 	}
 
 	// all schemas are nil

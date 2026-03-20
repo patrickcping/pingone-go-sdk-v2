@@ -22,20 +22,23 @@ type FormFieldFormAgreement struct {
 	Type       EnumFormFieldType          `json:"type"`
 	Position   FormFieldCommonPosition    `json:"position"`
 	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
-	InputType  EnumFormAgreementInputType `json:"inputType"`
+	// A string that specifies an identifier for the field component.
+	Key       string                     `json:"key"`
+	InputType EnumFormAgreementInputType `json:"inputType"`
 	// Specifies whether the title is enabled.
-	TitleEnabled bool                    `json:"titleEnabled"`
-	Agreement    *FormAgreementAgreement `json:"agreement,omitempty"`
+	TitleEnabled bool                         `json:"titleEnabled"`
+	Agreement    *FormAgreementAllOfAgreement `json:"agreement,omitempty"`
 }
 
 // NewFormFieldFormAgreement instantiates a new FormFieldFormAgreement object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldFormAgreement(type_ EnumFormFieldType, position FormFieldCommonPosition, inputType EnumFormAgreementInputType, titleEnabled bool) *FormFieldFormAgreement {
+func NewFormFieldFormAgreement(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, inputType EnumFormAgreementInputType, titleEnabled bool) *FormFieldFormAgreement {
 	this := FormFieldFormAgreement{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
 	this.InputType = inputType
 	this.TitleEnabled = titleEnabled
 	return &this
@@ -129,6 +132,30 @@ func (o *FormFieldFormAgreement) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
 }
 
+// GetKey returns the Key field value
+func (o *FormFieldFormAgreement) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldFormAgreement) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldFormAgreement) SetKey(v string) {
+	o.Key = v
+}
+
 // GetInputType returns the InputType field value
 func (o *FormFieldFormAgreement) GetInputType() EnumFormAgreementInputType {
 	if o == nil {
@@ -178,9 +205,9 @@ func (o *FormFieldFormAgreement) SetTitleEnabled(v bool) {
 }
 
 // GetAgreement returns the Agreement field value if set, zero value otherwise.
-func (o *FormFieldFormAgreement) GetAgreement() FormAgreementAgreement {
+func (o *FormFieldFormAgreement) GetAgreement() FormAgreementAllOfAgreement {
 	if o == nil || IsNil(o.Agreement) {
-		var ret FormAgreementAgreement
+		var ret FormAgreementAllOfAgreement
 		return ret
 	}
 	return *o.Agreement
@@ -188,7 +215,7 @@ func (o *FormFieldFormAgreement) GetAgreement() FormAgreementAgreement {
 
 // GetAgreementOk returns a tuple with the Agreement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldFormAgreement) GetAgreementOk() (*FormAgreementAgreement, bool) {
+func (o *FormFieldFormAgreement) GetAgreementOk() (*FormAgreementAllOfAgreement, bool) {
 	if o == nil || IsNil(o.Agreement) {
 		return nil, false
 	}
@@ -204,8 +231,8 @@ func (o *FormFieldFormAgreement) HasAgreement() bool {
 	return false
 }
 
-// SetAgreement gets a reference to the given FormAgreementAgreement and assigns it to the Agreement field.
-func (o *FormFieldFormAgreement) SetAgreement(v FormAgreementAgreement) {
+// SetAgreement gets a reference to the given FormAgreementAllOfAgreement and assigns it to the Agreement field.
+func (o *FormFieldFormAgreement) SetAgreement(v FormAgreementAllOfAgreement) {
 	o.Agreement = &v
 }
 
@@ -224,6 +251,7 @@ func (o FormFieldFormAgreement) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
 	}
+	toSerialize["key"] = o.Key
 	toSerialize["inputType"] = o.InputType
 	toSerialize["titleEnabled"] = o.TitleEnabled
 	if !IsNil(o.Agreement) {

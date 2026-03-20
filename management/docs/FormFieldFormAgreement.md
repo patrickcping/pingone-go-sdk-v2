@@ -7,15 +7,16 @@ Name | Type | Description | Notes
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **InputType** | [**EnumFormAgreementInputType**](EnumFormAgreementInputType.md) |  | 
 **TitleEnabled** | **bool** | Specifies whether the title is enabled. | 
-**Agreement** | Pointer to [**FormAgreementAgreement**](FormAgreementAgreement.md) |  | [optional] 
+**Agreement** | Pointer to [**FormAgreementAllOfAgreement**](FormAgreementAllOfAgreement.md) |  | [optional] 
 
 ## Methods
 
 ### NewFormFieldFormAgreement
 
-`func NewFormFieldFormAgreement(type_ EnumFormFieldType, position FormFieldCommonPosition, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormFieldFormAgreement`
+`func NewFormFieldFormAgreement(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormFieldFormAgreement`
 
 NewFormFieldFormAgreement instantiates a new FormFieldFormAgreement object
 This constructor will assign default values to properties that have it defined,
@@ -95,6 +96,26 @@ SetVisibility sets Visibility field to given value.
 
 HasVisibility returns a boolean if a field has been set.
 
+### GetKey
+
+`func (o *FormFieldFormAgreement) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFieldFormAgreement) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFieldFormAgreement) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+
 ### GetInputType
 
 `func (o *FormFieldFormAgreement) GetInputType() EnumFormAgreementInputType`
@@ -137,20 +158,20 @@ SetTitleEnabled sets TitleEnabled field to given value.
 
 ### GetAgreement
 
-`func (o *FormFieldFormAgreement) GetAgreement() FormAgreementAgreement`
+`func (o *FormFieldFormAgreement) GetAgreement() FormAgreementAllOfAgreement`
 
 GetAgreement returns the Agreement field if non-nil, zero value otherwise.
 
 ### GetAgreementOk
 
-`func (o *FormFieldFormAgreement) GetAgreementOk() (*FormAgreementAgreement, bool)`
+`func (o *FormFieldFormAgreement) GetAgreementOk() (*FormAgreementAllOfAgreement, bool)`
 
 GetAgreementOk returns a tuple with the Agreement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAgreement
 
-`func (o *FormFieldFormAgreement) SetAgreement(v FormAgreementAgreement)`
+`func (o *FormFieldFormAgreement) SetAgreement(v FormAgreementAllOfAgreement)`
 
 SetAgreement sets Agreement field to given value.
 

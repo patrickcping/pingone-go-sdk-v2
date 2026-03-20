@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **PollingAppearance** | [**EnumFormPollingAppearance**](EnumFormPollingAppearance.md) |  | 
 **Size** | [**EnumFormItemSize**](EnumFormItemSize.md) |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewFormPolling
 
-`func NewFormPolling(pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize, ) *FormPolling`
+`func NewFormPolling(key string, pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize, ) *FormPolling`
 
 NewFormPolling instantiates a new FormPolling object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewFormPollingWithDefaults instantiates a new FormPolling object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKey
+
+`func (o *FormPolling) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormPolling) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormPolling) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetPollingAppearance
 

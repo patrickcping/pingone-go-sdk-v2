@@ -7,9 +7,8 @@ Name | Type | Description | Notes
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
-**Key** | Pointer to **string** | A string that specifies an identifier for the field component. | [optional] 
 **Label** | **string** | A string that specifies the button label. | 
-**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
 
 ## Methods
 
@@ -95,31 +94,6 @@ SetVisibility sets Visibility field to given value.
 
 HasVisibility returns a boolean if a field has been set.
 
-### GetKey
-
-`func (o *FormFieldSubmitButton) GetKey() string`
-
-GetKey returns the Key field if non-nil, zero value otherwise.
-
-### GetKeyOk
-
-`func (o *FormFieldSubmitButton) GetKeyOk() (*string, bool)`
-
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKey
-
-`func (o *FormFieldSubmitButton) SetKey(v string)`
-
-SetKey sets Key field to given value.
-
-### HasKey
-
-`func (o *FormFieldSubmitButton) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
-
 ### GetLabel
 
 `func (o *FormFieldSubmitButton) GetLabel() string`
@@ -142,20 +116,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormFieldSubmitButton) GetStyles() FormStyles`
+`func (o *FormFieldSubmitButton) GetStyles() FormFlowButtonStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormFieldSubmitButton) GetStylesOk() (*FormStyles, bool)`
+`func (o *FormFieldSubmitButton) GetStylesOk() (*FormFlowButtonStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormFieldSubmitButton) SetStyles(v FormStyles)`
+`func (o *FormFieldSubmitButton) SetStyles(v FormFlowButtonStyles)`
 
 SetStyles sets Styles field to given value.
 

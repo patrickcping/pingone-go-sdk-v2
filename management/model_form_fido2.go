@@ -19,6 +19,8 @@ var _ MappedNullable = &FormFIDO2{}
 
 // FormFIDO2 struct for FormFIDO2
 type FormFIDO2 struct {
+	// A string that specifies an identifier for the field component.
+	Key     string               `json:"key"`
 	Trigger EnumFormFIDO2Trigger `json:"trigger"`
 	Action  EnumFormFIDO2Action  `json:"action"`
 	// A string that specifies the text label for the FIDO2 button.
@@ -29,8 +31,9 @@ type FormFIDO2 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFIDO2(trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string) *FormFIDO2 {
+func NewFormFIDO2(key string, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string) *FormFIDO2 {
 	this := FormFIDO2{}
+	this.Key = key
 	this.Trigger = trigger
 	this.Action = action
 	this.Label = label
@@ -43,6 +46,30 @@ func NewFormFIDO2(trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, labe
 func NewFormFIDO2WithDefaults() *FormFIDO2 {
 	this := FormFIDO2{}
 	return &this
+}
+
+// GetKey returns the Key field value
+func (o *FormFIDO2) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFIDO2) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFIDO2) SetKey(v string) {
+	o.Key = v
 }
 
 // GetTrigger returns the Trigger field value
@@ -127,6 +154,7 @@ func (o FormFIDO2) MarshalJSON() ([]byte, error) {
 
 func (o FormFIDO2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
 	toSerialize["trigger"] = o.Trigger
 	toSerialize["action"] = o.Action
 	toSerialize["label"] = o.Label

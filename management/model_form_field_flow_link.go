@@ -25,8 +25,8 @@ type FormFieldFlowLink struct {
 	// A string that specifies an identifier for the field component.
 	Key string `json:"key"`
 	// A string that specifies the link label.
-	Label  string              `json:"label"`
-	Styles *FormFlowLinkStyles `json:"styles,omitempty"`
+	Label  string                     `json:"label"`
+	Styles *FormLinkCustomAllOfStyles `json:"styles,omitempty"`
 }
 
 // NewFormFieldFlowLink instantiates a new FormFieldFlowLink object
@@ -179,9 +179,9 @@ func (o *FormFieldFlowLink) SetLabel(v string) {
 }
 
 // GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormFieldFlowLink) GetStyles() FormFlowLinkStyles {
+func (o *FormFieldFlowLink) GetStyles() FormLinkCustomAllOfStyles {
 	if o == nil || IsNil(o.Styles) {
-		var ret FormFlowLinkStyles
+		var ret FormLinkCustomAllOfStyles
 		return ret
 	}
 	return *o.Styles
@@ -189,7 +189,7 @@ func (o *FormFieldFlowLink) GetStyles() FormFlowLinkStyles {
 
 // GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldFlowLink) GetStylesOk() (*FormFlowLinkStyles, bool) {
+func (o *FormFieldFlowLink) GetStylesOk() (*FormLinkCustomAllOfStyles, bool) {
 	if o == nil || IsNil(o.Styles) {
 		return nil, false
 	}
@@ -205,8 +205,8 @@ func (o *FormFieldFlowLink) HasStyles() bool {
 	return false
 }
 
-// SetStyles gets a reference to the given FormFlowLinkStyles and assigns it to the Styles field.
-func (o *FormFieldFlowLink) SetStyles(v FormFlowLinkStyles) {
+// SetStyles gets a reference to the given FormLinkCustomAllOfStyles and assigns it to the Styles field.
+func (o *FormFieldFlowLink) SetStyles(v FormLinkCustomAllOfStyles) {
 	o.Styles = &v
 }
 

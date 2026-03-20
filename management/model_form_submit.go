@@ -19,11 +19,9 @@ var _ MappedNullable = &FormSubmit{}
 
 // FormSubmit struct for FormSubmit
 type FormSubmit struct {
-	// A string that specifies an identifier for the field component.
-	Key *string `json:"key,omitempty"`
 	// A string that specifies the button label.
-	Label  string      `json:"label"`
-	Styles *FormStyles `json:"styles,omitempty"`
+	Label  string                `json:"label"`
+	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
 }
 
 // NewFormSubmit instantiates a new FormSubmit object
@@ -42,38 +40,6 @@ func NewFormSubmit(label string) *FormSubmit {
 func NewFormSubmitWithDefaults() *FormSubmit {
 	this := FormSubmit{}
 	return &this
-}
-
-// GetKey returns the Key field value if set, zero value otherwise.
-func (o *FormSubmit) GetKey() string {
-	if o == nil || IsNil(o.Key) {
-		var ret string
-		return ret
-	}
-	return *o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormSubmit) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
-		return nil, false
-	}
-	return o.Key, true
-}
-
-// HasKey returns a boolean if a field has been set.
-func (o *FormSubmit) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
-func (o *FormSubmit) SetKey(v string) {
-	o.Key = &v
 }
 
 // GetLabel returns the Label field value
@@ -101,9 +67,9 @@ func (o *FormSubmit) SetLabel(v string) {
 }
 
 // GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormSubmit) GetStyles() FormStyles {
+func (o *FormSubmit) GetStyles() FormFlowButtonStyles {
 	if o == nil || IsNil(o.Styles) {
-		var ret FormStyles
+		var ret FormFlowButtonStyles
 		return ret
 	}
 	return *o.Styles
@@ -111,7 +77,7 @@ func (o *FormSubmit) GetStyles() FormStyles {
 
 // GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormSubmit) GetStylesOk() (*FormStyles, bool) {
+func (o *FormSubmit) GetStylesOk() (*FormFlowButtonStyles, bool) {
 	if o == nil || IsNil(o.Styles) {
 		return nil, false
 	}
@@ -127,8 +93,8 @@ func (o *FormSubmit) HasStyles() bool {
 	return false
 }
 
-// SetStyles gets a reference to the given FormStyles and assigns it to the Styles field.
-func (o *FormSubmit) SetStyles(v FormStyles) {
+// SetStyles gets a reference to the given FormFlowButtonStyles and assigns it to the Styles field.
+func (o *FormSubmit) SetStyles(v FormFlowButtonStyles) {
 	o.Styles = &v
 }
 
@@ -142,9 +108,6 @@ func (o FormSubmit) MarshalJSON() ([]byte, error) {
 
 func (o FormSubmit) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles

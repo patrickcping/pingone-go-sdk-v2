@@ -22,8 +22,10 @@ type FormFieldFIDO2 struct {
 	Type       EnumFormFieldType          `json:"type"`
 	Position   FormFieldCommonPosition    `json:"position"`
 	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
-	Trigger    EnumFormFIDO2Trigger       `json:"trigger"`
-	Action     EnumFormFIDO2Action        `json:"action"`
+	// A string that specifies an identifier for the field component.
+	Key     string               `json:"key"`
+	Trigger EnumFormFIDO2Trigger `json:"trigger"`
+	Action  EnumFormFIDO2Action  `json:"action"`
 	// A string that specifies the text label for the FIDO2 button.
 	Label string `json:"label"`
 }
@@ -32,10 +34,11 @@ type FormFieldFIDO2 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldFIDO2(type_ EnumFormFieldType, position FormFieldCommonPosition, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string) *FormFieldFIDO2 {
+func NewFormFieldFIDO2(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string) *FormFieldFIDO2 {
 	this := FormFieldFIDO2{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
 	this.Trigger = trigger
 	this.Action = action
 	this.Label = label
@@ -130,6 +133,30 @@ func (o *FormFieldFIDO2) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
 }
 
+// GetKey returns the Key field value
+func (o *FormFieldFIDO2) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldFIDO2) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldFIDO2) SetKey(v string) {
+	o.Key = v
+}
+
 // GetTrigger returns the Trigger field value
 func (o *FormFieldFIDO2) GetTrigger() EnumFormFIDO2Trigger {
 	if o == nil {
@@ -217,6 +244,7 @@ func (o FormFieldFIDO2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
 	}
+	toSerialize["key"] = o.Key
 	toSerialize["trigger"] = o.Trigger
 	toSerialize["action"] = o.Action
 	toSerialize["label"] = o.Label

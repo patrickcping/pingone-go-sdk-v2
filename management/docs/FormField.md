@@ -23,15 +23,17 @@ Name | Type | Description | Notes
 **ShowPasswordRequirements** | Pointer to **bool** | A boolean that specifies whether the password requirements are displayed. | [optional] 
 **LabelPasswordVerify** | Pointer to **string** | A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field. | [optional] 
 **Content** | Pointer to **string** | A string that specifies the field content. | [optional] 
-**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
+**Icon** | Pointer to [**FormItemWithIconAllOfIcon**](FormItemWithIconAllOfIcon.md) |  | [optional] 
+**Styles** | Pointer to [**FormSocialLoginButtonAllOfStyles**](FormSocialLoginButtonAllOfStyles.md) |  | [optional] 
 **Size** | [**EnumFormItemSize**](EnumFormItemSize.md) |  | 
 **Theme** | [**EnumFormRecaptchaV2Theme**](EnumFormRecaptchaV2Theme.md) |  | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
 **FallbackText** | Pointer to **string** | A string that specifies the text label for fallback under the QR code. | [optional] 
-**IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpName** | **string** | A string that specifies the external identity provider name. | 
+**IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
 **IdpEnabled** | **bool** | A boolean that specifies whether the external identity provider is enabled. | 
+**IconSrc** | Pointer to **string** | A string that specifies the external edentity provider’s image icon URL. | [optional] 
 **PollingAppearance** | [**EnumFormPollingAppearance**](EnumFormPollingAppearance.md) |  | 
 **Trigger** | [**EnumFormFIDO2Trigger**](EnumFormFIDO2Trigger.md) |  | 
 **Action** | [**EnumFormFIDO2Action**](EnumFormFIDO2Action.md) |  | 
@@ -39,13 +41,13 @@ Name | Type | Description | Notes
 **ErrorMessage** | Pointer to **string** | A string that specifies the message to display if validation fails. | [optional] 
 **InputType** | [**EnumFormAgreementInputType**](EnumFormAgreementInputType.md) |  | 
 **TitleEnabled** | **bool** | Specifies whether the title is enabled. | 
-**Agreement** | Pointer to [**FormAgreementAgreement**](FormAgreementAgreement.md) |  | [optional] 
+**Agreement** | Pointer to [**FormAgreementAllOfAgreement**](FormAgreementAllOfAgreement.md) |  | [optional] 
 
 ## Methods
 
 ### NewFormField
 
-`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormItemSize, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, pollingAppearance EnumFormPollingAppearance, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormField`
+`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormItemSize, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, idpEnabled bool, pollingAppearance EnumFormPollingAppearance, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormField`
 
 NewFormField instantiates a new FormField object
 This constructor will assign default values to properties that have it defined,
@@ -500,22 +502,47 @@ SetContent sets Content field to given value.
 
 HasContent returns a boolean if a field has been set.
 
+### GetIcon
+
+`func (o *FormField) GetIcon() FormItemWithIconAllOfIcon`
+
+GetIcon returns the Icon field if non-nil, zero value otherwise.
+
+### GetIconOk
+
+`func (o *FormField) GetIconOk() (*FormItemWithIconAllOfIcon, bool)`
+
+GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIcon
+
+`func (o *FormField) SetIcon(v FormItemWithIconAllOfIcon)`
+
+SetIcon sets Icon field to given value.
+
+### HasIcon
+
+`func (o *FormField) HasIcon() bool`
+
+HasIcon returns a boolean if a field has been set.
+
 ### GetStyles
 
-`func (o *FormField) GetStyles() FormStyles`
+`func (o *FormField) GetStyles() FormSocialLoginButtonAllOfStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormField) GetStylesOk() (*FormStyles, bool)`
+`func (o *FormField) GetStylesOk() (*FormSocialLoginButtonAllOfStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormField) SetStyles(v FormStyles)`
+`func (o *FormField) SetStyles(v FormSocialLoginButtonAllOfStyles)`
 
 SetStyles sets Styles field to given value.
 
@@ -610,26 +637,6 @@ SetFallbackText sets FallbackText field to given value.
 
 HasFallbackText returns a boolean if a field has been set.
 
-### GetIdpType
-
-`func (o *FormField) GetIdpType() EnumFormSocialLoginIdpType`
-
-GetIdpType returns the IdpType field if non-nil, zero value otherwise.
-
-### GetIdpTypeOk
-
-`func (o *FormField) GetIdpTypeOk() (*EnumFormSocialLoginIdpType, bool)`
-
-GetIdpTypeOk returns a tuple with the IdpType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIdpType
-
-`func (o *FormField) SetIdpType(v EnumFormSocialLoginIdpType)`
-
-SetIdpType sets IdpType field to given value.
-
-
 ### GetIdpName
 
 `func (o *FormField) GetIdpName() string`
@@ -648,6 +655,26 @@ and a boolean to check if the value has been set.
 `func (o *FormField) SetIdpName(v string)`
 
 SetIdpName sets IdpName field to given value.
+
+
+### GetIdpType
+
+`func (o *FormField) GetIdpType() EnumFormSocialLoginIdpType`
+
+GetIdpType returns the IdpType field if non-nil, zero value otherwise.
+
+### GetIdpTypeOk
+
+`func (o *FormField) GetIdpTypeOk() (*EnumFormSocialLoginIdpType, bool)`
+
+GetIdpTypeOk returns a tuple with the IdpType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdpType
+
+`func (o *FormField) SetIdpType(v EnumFormSocialLoginIdpType)`
+
+SetIdpType sets IdpType field to given value.
 
 
 ### GetIdpId
@@ -689,6 +716,31 @@ and a boolean to check if the value has been set.
 
 SetIdpEnabled sets IdpEnabled field to given value.
 
+
+### GetIconSrc
+
+`func (o *FormField) GetIconSrc() string`
+
+GetIconSrc returns the IconSrc field if non-nil, zero value otherwise.
+
+### GetIconSrcOk
+
+`func (o *FormField) GetIconSrcOk() (*string, bool)`
+
+GetIconSrcOk returns a tuple with the IconSrc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconSrc
+
+`func (o *FormField) SetIconSrc(v string)`
+
+SetIconSrc sets IconSrc field to given value.
+
+### HasIconSrc
+
+`func (o *FormField) HasIconSrc() bool`
+
+HasIconSrc returns a boolean if a field has been set.
 
 ### GetPollingAppearance
 
@@ -837,20 +889,20 @@ SetTitleEnabled sets TitleEnabled field to given value.
 
 ### GetAgreement
 
-`func (o *FormField) GetAgreement() FormAgreementAgreement`
+`func (o *FormField) GetAgreement() FormAgreementAllOfAgreement`
 
 GetAgreement returns the Agreement field if non-nil, zero value otherwise.
 
 ### GetAgreementOk
 
-`func (o *FormField) GetAgreementOk() (*FormAgreementAgreement, bool)`
+`func (o *FormField) GetAgreementOk() (*FormAgreementAllOfAgreement, bool)`
 
 GetAgreementOk returns a tuple with the Agreement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAgreement
 
-`func (o *FormField) SetAgreement(v FormAgreementAgreement)`
+`func (o *FormField) SetAgreement(v FormAgreementAllOfAgreement)`
 
 SetAgreement sets Agreement field to given value.
 

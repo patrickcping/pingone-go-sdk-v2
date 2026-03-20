@@ -24,6 +24,9 @@ type FormFieldSlateTextblob struct {
 	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
 	// A string that specifies the field content.
 	Content *string `json:"content,omitempty"`
+	// A string that specifies the field content.
+	Key  *string                    `json:"key,omitempty"`
+	Icon *FormItemWithIconAllOfIcon `json:"icon,omitempty"`
 }
 
 // NewFormFieldSlateTextblob instantiates a new FormFieldSlateTextblob object
@@ -157,6 +160,70 @@ func (o *FormFieldSlateTextblob) SetContent(v string) {
 	o.Content = &v
 }
 
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *FormFieldSlateTextblob) GetKey() string {
+	if o == nil || IsNil(o.Key) {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSlateTextblob) GetKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.Key) {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *FormFieldSlateTextblob) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *FormFieldSlateTextblob) SetKey(v string) {
+	o.Key = &v
+}
+
+// GetIcon returns the Icon field value if set, zero value otherwise.
+func (o *FormFieldSlateTextblob) GetIcon() FormItemWithIconAllOfIcon {
+	if o == nil || IsNil(o.Icon) {
+		var ret FormItemWithIconAllOfIcon
+		return ret
+	}
+	return *o.Icon
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSlateTextblob) GetIconOk() (*FormItemWithIconAllOfIcon, bool) {
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
+	}
+	return o.Icon, true
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *FormFieldSlateTextblob) HasIcon() bool {
+	if o != nil && !IsNil(o.Icon) {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given FormItemWithIconAllOfIcon and assigns it to the Icon field.
+func (o *FormFieldSlateTextblob) SetIcon(v FormItemWithIconAllOfIcon) {
+	o.Icon = &v
+}
+
 func (o FormFieldSlateTextblob) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -174,6 +241,12 @@ func (o FormFieldSlateTextblob) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Content) {
 		toSerialize["content"] = o.Content
+	}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
 	}
 	return toSerialize, nil
 }

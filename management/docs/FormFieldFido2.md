@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **Trigger** | [**EnumFormFIDO2Trigger**](EnumFormFIDO2Trigger.md) |  | 
 **Action** | [**EnumFormFIDO2Action**](EnumFormFIDO2Action.md) |  | 
 **Label** | **string** | A string that specifies the text label for the FIDO2 button. | 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewFormFieldFIDO2
 
-`func NewFormFieldFIDO2(type_ EnumFormFieldType, position FormFieldCommonPosition, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string, ) *FormFieldFIDO2`
+`func NewFormFieldFIDO2(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string, ) *FormFieldFIDO2`
 
 NewFormFieldFIDO2 instantiates a new FormFieldFIDO2 object
 This constructor will assign default values to properties that have it defined,
@@ -94,6 +95,26 @@ SetVisibility sets Visibility field to given value.
 `func (o *FormFieldFIDO2) HasVisibility() bool`
 
 HasVisibility returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *FormFieldFIDO2) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFieldFIDO2) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFieldFIDO2) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetTrigger
 

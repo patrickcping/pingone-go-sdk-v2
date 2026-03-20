@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **Key** | **string** | A string that specifies an identifier for the field component. | 
 **Label** | **string** | A string that specifies the link label. | 
-**Styles** | Pointer to [**FormFlowLinkStyles**](FormFlowLinkStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormLinkCustomAllOfStyles**](FormLinkCustomAllOfStyles.md) |  | [optional] 
 
 ## Methods
 
@@ -137,20 +137,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormFieldFlowLink) GetStyles() FormFlowLinkStyles`
+`func (o *FormFieldFlowLink) GetStyles() FormLinkCustomAllOfStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormFieldFlowLink) GetStylesOk() (*FormFlowLinkStyles, bool)`
+`func (o *FormFieldFlowLink) GetStylesOk() (*FormLinkCustomAllOfStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormFieldFlowLink) SetStyles(v FormFlowLinkStyles)`
+`func (o *FormFieldFlowLink) SetStyles(v FormLinkCustomAllOfStyles)`
 
 SetStyles sets Styles field to given value.
 

@@ -19,18 +19,21 @@ var _ MappedNullable = &FormAgreement{}
 
 // FormAgreement struct for FormAgreement
 type FormAgreement struct {
+	// A string that specifies an identifier for the field component.
+	Key       string                     `json:"key"`
 	InputType EnumFormAgreementInputType `json:"inputType"`
 	// Specifies whether the title is enabled.
-	TitleEnabled bool                    `json:"titleEnabled"`
-	Agreement    *FormAgreementAgreement `json:"agreement,omitempty"`
+	TitleEnabled bool                         `json:"titleEnabled"`
+	Agreement    *FormAgreementAllOfAgreement `json:"agreement,omitempty"`
 }
 
 // NewFormAgreement instantiates a new FormAgreement object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormAgreement(inputType EnumFormAgreementInputType, titleEnabled bool) *FormAgreement {
+func NewFormAgreement(key string, inputType EnumFormAgreementInputType, titleEnabled bool) *FormAgreement {
 	this := FormAgreement{}
+	this.Key = key
 	this.InputType = inputType
 	this.TitleEnabled = titleEnabled
 	return &this
@@ -42,6 +45,30 @@ func NewFormAgreement(inputType EnumFormAgreementInputType, titleEnabled bool) *
 func NewFormAgreementWithDefaults() *FormAgreement {
 	this := FormAgreement{}
 	return &this
+}
+
+// GetKey returns the Key field value
+func (o *FormAgreement) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormAgreement) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormAgreement) SetKey(v string) {
+	o.Key = v
 }
 
 // GetInputType returns the InputType field value
@@ -93,9 +120,9 @@ func (o *FormAgreement) SetTitleEnabled(v bool) {
 }
 
 // GetAgreement returns the Agreement field value if set, zero value otherwise.
-func (o *FormAgreement) GetAgreement() FormAgreementAgreement {
+func (o *FormAgreement) GetAgreement() FormAgreementAllOfAgreement {
 	if o == nil || IsNil(o.Agreement) {
-		var ret FormAgreementAgreement
+		var ret FormAgreementAllOfAgreement
 		return ret
 	}
 	return *o.Agreement
@@ -103,7 +130,7 @@ func (o *FormAgreement) GetAgreement() FormAgreementAgreement {
 
 // GetAgreementOk returns a tuple with the Agreement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormAgreement) GetAgreementOk() (*FormAgreementAgreement, bool) {
+func (o *FormAgreement) GetAgreementOk() (*FormAgreementAllOfAgreement, bool) {
 	if o == nil || IsNil(o.Agreement) {
 		return nil, false
 	}
@@ -119,8 +146,8 @@ func (o *FormAgreement) HasAgreement() bool {
 	return false
 }
 
-// SetAgreement gets a reference to the given FormAgreementAgreement and assigns it to the Agreement field.
-func (o *FormAgreement) SetAgreement(v FormAgreementAgreement) {
+// SetAgreement gets a reference to the given FormAgreementAllOfAgreement and assigns it to the Agreement field.
+func (o *FormAgreement) SetAgreement(v FormAgreementAllOfAgreement) {
 	o.Agreement = &v
 }
 
@@ -134,6 +161,7 @@ func (o FormAgreement) MarshalJSON() ([]byte, error) {
 
 func (o FormAgreement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
 	toSerialize["inputType"] = o.InputType
 	toSerialize["titleEnabled"] = o.TitleEnabled
 	if !IsNil(o.Agreement) {

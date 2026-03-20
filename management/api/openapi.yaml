@@ -37400,6 +37400,31 @@ components:
       - MEDIUM
       - LARGE
       type: string
+    EnumFormItemIconType:
+      description: A string that specifies the icon type.
+      enum:
+      - NONE
+      - AGREEMENT
+      - ALERT
+      - CALL
+      - FAILURE
+      - FINGERPRINT
+      - LINK
+      - MAIL
+      - MOBILE_PHONE
+      - PASSKEY
+      - SUCCESS
+      - QR_CODE
+      - TEXT_MESSAGE
+      - USB_KEY
+      type: string
+    EnumFormItemIconSize:
+      description: A string that specifies the icon size.
+      enum:
+      - SMALL
+      - MEDIUM
+      - LARGE
+      type: string
     EnumFormAgreementInputType:
       description: A string that specifies the type of field. Value should be set
         to READ_ONLY_TEXT.
@@ -41895,6 +41920,7 @@ components:
               fields:
               - null
               - null
+            showPasswordRequirements: true
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -41905,9 +41931,11 @@ components:
               id: id
             markOptional: true
             translationMethod: null
+            passwordAutoCompleteEnabled: false
             fieldTypes:
             - null
             - null
+            textAutoCompleteEnabled: false
             name: name
             modified: 2000-01-23T04:56:07.000+00:00
             languageBundle:
@@ -41919,6 +41947,7 @@ components:
               fields:
               - null
               - null
+            showPasswordRequirements: true
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -41929,9 +41958,11 @@ components:
               id: id
             markOptional: true
             translationMethod: null
+            passwordAutoCompleteEnabled: false
             fieldTypes:
             - null
             - null
+            textAutoCompleteEnabled: false
             name: name
             modified: 2000-01-23T04:56:07.000+00:00
             languageBundle:
@@ -42168,6 +42199,7 @@ components:
           fields:
           - null
           - null
+        showPasswordRequirements: true
         _links:
           key:
             href: https://openapi-generator.tech
@@ -42178,9 +42210,11 @@ components:
           id: id
         markOptional: true
         translationMethod: null
+        passwordAutoCompleteEnabled: false
         fieldTypes:
         - null
         - null
+        textAutoCompleteEnabled: false
         name: name
         modified: 2000-01-23T04:56:07.000+00:00
         languageBundle:
@@ -42194,39 +42228,26 @@ components:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        id:
-          description: A string that specifies the resource’s unique identifier.
+        created:
+          description: The date the resouce was created (ISO-8061 format).
+          format: date-time
           readOnly: true
-          type: string
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        name:
-          description: "A string that specifies the form name, which must be provided\
-            \ and must be unique within an environment."
-          type: string
-        description:
-          description: A string that specifies the description of the form.
           type: string
         category:
           $ref: '#/components/schemas/EnumFormCategory'
-        components:
-          $ref: '#/components/schemas/FormComponents'
         cols:
           description: An integer that specifies the number of columns in the form
             (min = 1; max = 4).
           maximum: 4
           minimum: 1
           type: integer
-        markOptional:
-          description: A boolean that specifies whether optional fields are highlighted
-            in the rendered form.
-          type: boolean
-        markRequired:
-          description: A boolean that specifies whether required fields are highlighted
-            in the rendered form.
-          type: boolean
-        translationMethod:
-          $ref: '#/components/schemas/EnumFormTranslationMethod'
+        components:
+          $ref: '#/components/schemas/FormComponents'
+        description:
+          description: A string that specifies the description of the form.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         fieldTypes:
           description: A read-only object that specifies the list of the FormField
             types in the form.
@@ -42234,6 +42255,10 @@ components:
             $ref: '#/components/schemas/EnumFormFieldType'
           readOnly: true
           type: array
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
         languageBundle:
           additionalProperties:
             type: string
@@ -42242,16 +42267,42 @@ components:
             \ PingOne language management service finds this object, and creates the\
             \ new keys for translation for this form."
           type: object
-        created:
-          description: The date the resouce was created (ISO-8061 format).
-          format: date-time
-          readOnly: true
-          type: string
+        markOptional:
+          description: A boolean that specifies whether optional fields are highlighted
+            in the rendered form.
+          type: boolean
+        markRequired:
+          description: A boolean that specifies whether required fields are highlighted
+            in the rendered form.
+          type: boolean
         modified:
           description: The date the resouce was modified (ISO-8061 format).
           format: date-time
           readOnly: true
           type: string
+        name:
+          description: "A string that specifies the form name, which must be provided\
+            \ and must be unique within an environment."
+          type: string
+        passwordAutoCompleteEnabled:
+          default: false
+          description: A boolean that specifies whether the password auto-complete
+            feature is enabled.
+          type: boolean
+        showPasswordRequirements:
+          description: "A boolean that specifies whether to return the password requirements\
+            \ during a DaVinci flow. A form with a new password field does not show\
+            \ the password policy information automatically in the response. To return\
+            \ the password policy information, the value of this property must be\
+            \ set to true."
+          type: boolean
+        textAutoCompleteEnabled:
+          default: false
+          description: A boolean that specifies whether the text auto-complete feature
+            is enabled.
+          type: boolean
+        translationMethod:
+          $ref: '#/components/schemas/EnumFormTranslationMethod'
       required:
       - category
       - components
@@ -42387,7 +42438,6 @@ components:
       - $ref: '#/components/schemas/FormFieldCombobox'
       - $ref: '#/components/schemas/FormFieldDivider'
       - $ref: '#/components/schemas/FormFieldEmptyField'
-      - $ref: '#/components/schemas/FormFieldTextblob'
       - $ref: '#/components/schemas/FormFieldSlateTextblob'
       - $ref: '#/components/schemas/FormFieldSubmitButton'
       - $ref: '#/components/schemas/FormFieldErrorDisplay'
@@ -42546,14 +42596,11 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormItem'
-    FormFieldTextblob:
-      allOf:
-      - $ref: '#/components/schemas/FormFieldCommon'
-      - $ref: '#/components/schemas/FormItem'
     FormFieldSlateTextblob:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormItem'
+      - $ref: '#/components/schemas/FormItemWithIcon'
     FormFieldSubmitButton:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -42565,7 +42612,7 @@ components:
     FormFieldFlowLink:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - $ref: '#/components/schemas/FormFlowLink'
+      - $ref: '#/components/schemas/FormLinkCustom'
     FormFieldFlowButton:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -42594,64 +42641,85 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormSocialLoginButton'
-    FormFlowButton:
+    FormFieldWithKey:
       properties:
         key:
           description: A string that specifies an identifier for the field component.
           type: string
+      required:
+      - key
+      type: object
+    FormFlowButton:
+      properties:
         label:
           description: A string that specifies the button label.
           type: string
         styles:
-          $ref: '#/components/schemas/FormStyles'
+          $ref: '#/components/schemas/FormFlowButton_styles'
       required:
       - key
       - label
       type: object
-    FormFlowLink:
-      properties:
-        key:
-          description: A string that specifies an identifier for the field component.
-          type: string
-        label:
-          description: A string that specifies the link label.
-          type: string
-        styles:
-          $ref: '#/components/schemas/FormFlowLink_styles'
-      required:
-      - key
-      - label
-      type: object
+    FormLinkCustom:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          label:
+            description: A string that specifies the link label.
+            type: string
+          styles:
+            $ref: '#/components/schemas/FormLinkCustom_allOf_styles'
+        required:
+        - key
+        - label
+        type: object
     FormItem:
       properties:
         content:
           description: A string that specifies the field content.
           type: string
       type: object
-    FormFIDO2:
+    FormItemWithOptionalKey:
       properties:
-        trigger:
-          $ref: '#/components/schemas/EnumFormFIDO2Trigger'
-        action:
-          $ref: '#/components/schemas/EnumFormFIDO2Action'
-        label:
-          description: A string that specifies the text label for the FIDO2 button.
+        key:
+          description: A string that specifies the field content.
           type: string
-      required:
-      - action
-      - label
-      - trigger
       type: object
+    FormItemWithIcon:
+      allOf:
+      - $ref: '#/components/schemas/FormItemWithOptionalKey'
+      - properties:
+          icon:
+            $ref: '#/components/schemas/FormItemWithIcon_allOf_icon'
+        type: object
+    FormFIDO2:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          trigger:
+            $ref: '#/components/schemas/EnumFormFIDO2Trigger'
+          action:
+            $ref: '#/components/schemas/EnumFormFIDO2Action'
+          label:
+            description: A string that specifies the text label for the FIDO2 button.
+            type: string
+        required:
+        - action
+        - label
+        - trigger
+        type: object
     FormPolling:
-      properties:
-        pollingAppearance:
-          $ref: '#/components/schemas/EnumFormPollingAppearance'
-        size:
-          $ref: '#/components/schemas/EnumFormItemSize'
-      required:
-      - pollingAppearance
-      - size
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          pollingAppearance:
+            $ref: '#/components/schemas/EnumFormPollingAppearance'
+          size:
+            $ref: '#/components/schemas/EnumFormItemSize'
+        required:
+        - pollingAppearance
+        - size
+        type: object
     FormSingleCheckbox:
       properties:
         appearance:
@@ -42667,18 +42735,20 @@ components:
       - inputType
       type: object
     FormAgreement:
-      properties:
-        inputType:
-          $ref: '#/components/schemas/EnumFormAgreementInputType'
-        titleEnabled:
-          description: Specifies whether the title is enabled.
-          type: boolean
-        agreement:
-          $ref: '#/components/schemas/FormAgreement_agreement'
-      required:
-      - inputType
-      - titleEnabled
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          inputType:
+            $ref: '#/components/schemas/EnumFormAgreementInputType'
+          titleEnabled:
+            description: Specifies whether the title is enabled.
+            type: boolean
+          agreement:
+            $ref: '#/components/schemas/FormAgreement_allOf_agreement'
+        required:
+        - inputType
+        - titleEnabled
+        type: object
     FormRecaptchaV2:
       properties:
         size:
@@ -42733,61 +42803,64 @@ components:
           type: integer
       type: object
     FormSocialLoginButton:
-      properties:
-        key:
-          description: A string that specifies an identifier for the field component.
-          type: string
-        label:
-          description: A string that specifies the social login button label.
-          type: string
-        styles:
-          $ref: '#/components/schemas/FormStyles'
-        idpType:
-          $ref: '#/components/schemas/EnumFormSocialLoginIdpType'
-        idpName:
-          description: A string that specifies the external identity provider name.
-          type: string
-        idpId:
-          description: A string that specifies the external identity provider's ID.
-          type: string
-        idpEnabled:
-          description: A boolean that specifies whether the external identity provider
-            is enabled.
-          type: boolean
-      required:
-      - idpEnabled
-      - idpId
-      - idpName
-      - idpType
-      - label
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          idpName:
+            description: A string that specifies the external identity provider name.
+            type: string
+          idpType:
+            $ref: '#/components/schemas/EnumFormSocialLoginIdpType'
+          idpId:
+            description: A string that specifies the external identity provider's
+              ID.
+            type: string
+          idpEnabled:
+            description: A boolean that specifies whether the external identity provider
+              is enabled.
+            type: boolean
+          iconSrc:
+            description: A string that specifies the external edentity provider’s
+              image icon URL.
+            type: string
+          label:
+            description: A string that specifies the social login button label.
+            type: string
+          styles:
+            $ref: '#/components/schemas/FormSocialLoginButton_allOf_styles'
+        required:
+        - idpEnabled
+        - idpId
+        - idpName
+        - idpType
+        - label
+        type: object
     FormSubmit:
       properties:
-        key:
-          description: A string that specifies an identifier for the field component.
-          type: string
         label:
           description: A string that specifies the button label.
           type: string
         styles:
-          $ref: '#/components/schemas/FormStyles'
+          $ref: '#/components/schemas/FormFlowButton_styles'
       required:
       - label
       type: object
     FormQrCode:
-      properties:
-        alignment:
-          $ref: '#/components/schemas/EnumFormItemAlignment'
-        size:
-          $ref: '#/components/schemas/EnumFormItemSize'
-        fallbackText:
-          description: A string that specifies the text label for fallback under the
-            QR code.
-          type: string
-      required:
-      - alignment
-      - size
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          alignment:
+            $ref: '#/components/schemas/EnumFormItemAlignment'
+          size:
+            $ref: '#/components/schemas/EnumFormItemSize'
+          fallbackText:
+            description: A string that specifies the text label for fallback under
+              the QR code.
+            type: string
+        required:
+        - alignment
+        - size
+        type: object
     Gateway:
       properties:
         _links:
@@ -50454,6 +50527,7 @@ components:
             fields:
             - null
             - null
+          showPasswordRequirements: true
           _links:
             key:
               href: https://openapi-generator.tech
@@ -50464,9 +50538,11 @@ components:
             id: id
           markOptional: true
           translationMethod: null
+          passwordAutoCompleteEnabled: false
           fieldTypes:
           - null
           - null
+          textAutoCompleteEnabled: false
           name: name
           modified: 2000-01-23T04:56:07.000+00:00
           languageBundle:
@@ -50478,6 +50554,7 @@ components:
             fields:
             - null
             - null
+          showPasswordRequirements: true
           _links:
             key:
               href: https://openapi-generator.tech
@@ -50488,9 +50565,11 @@ components:
             id: id
           markOptional: true
           translationMethod: null
+          passwordAutoCompleteEnabled: false
           fieldTypes:
           - null
           - null
+          textAutoCompleteEnabled: false
           name: name
           modified: 2000-01-23T04:56:07.000+00:00
           languageBundle:
@@ -50830,7 +50909,49 @@ components:
       required:
       - type
       type: object
-    FormFlowLink_styles:
+    FormFlowButton_styles:
+      properties:
+        height:
+          description: An integer that specifies the button height.
+          type: integer
+        width:
+          description: An integer that specifies the button width.
+          type: integer
+        widthUnit:
+          $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+        alignment:
+          $ref: '#/components/schemas/EnumFormItemAlignment'
+        padding:
+          $ref: '#/components/schemas/FormStylesPadding'
+        backgroundColor:
+          description: A string that specifies the button background color. The value
+            must be a valid hexadecimal color.
+          type: string
+        textColor:
+          description: A string that specifies the button text color. The value must
+            be a valid hexadecimal color.
+          type: string
+        borderColor:
+          description: A string that specifies the button border color. The value
+            must be a valid hexadecimal color.
+          type: string
+        enabled:
+          description: A boolean that specifies whether the button is enabled.
+          type: boolean
+        displayDefaultThemeButtonBackgroundColor:
+          description: A boolean that specifies whether the button uses the default
+            theme’s background color.
+          type: boolean
+        displayDefaultThemeButtonBorderColor:
+          description: A boolean that specifies whether the button uses the default
+            theme’s border color.
+          type: boolean
+        displayDefaultThemeButtonTextColor:
+          description: A boolean that specifies whether the button uses the default
+            theme’s text color.
+          type: boolean
+      type: object
+    FormLinkCustom_allOf_styles:
       properties:
         alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
@@ -50843,8 +50964,25 @@ components:
           type: boolean
         padding:
           $ref: '#/components/schemas/FormStylesPadding'
+        displayDefaultThemeLinkColor:
+          description: A boolean that specifies whether the default theme’s link color
+            is enabled.
+          type: boolean
       type: object
-    FormAgreement_agreement:
+      example: null
+    FormItemWithIcon_allOf_icon:
+      description: An object that specifies the icon for the field.
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumFormItemIconType'
+        size:
+          $ref: '#/components/schemas/EnumFormItemIconSize'
+      required:
+      - size
+      - type
+      type: object
+      example: null
+    FormAgreement_allOf_agreement:
       properties:
         id:
           description: An identifier that specifies the ID of the agreement.
@@ -50855,6 +50993,46 @@ components:
             identified in the DaVinci form node.
           type: boolean
       type: object
+      example: null
+    FormSocialLoginButton_allOf_styles:
+      properties:
+        alignment:
+          $ref: '#/components/schemas/EnumFormItemAlignment'
+        textColor:
+          description: A string that specifies the button text color. The value must
+            be a valid hexadecimal color.
+          type: string
+        enabled:
+          description: A boolean that specifies whether the button is enabled.
+          type: boolean
+        height:
+          description: An integer that specifies the button height.
+          type: integer
+        width:
+          description: An integer that specifies the button width.
+          type: integer
+        widthUnit:
+          $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+        padding:
+          $ref: '#/components/schemas/FormStylesPadding'
+        borderColor:
+          description: A string that specifies the button border color. The value
+            must be a valid hexadecimal color.
+          type: string
+        displayDefaultThemeButtonBackgroundColor:
+          description: A boolean that specifies whether the button uses the default
+            theme’s background color.
+          type: boolean
+        displayDefaultThemeButtonBorderColor:
+          description: A boolean that specifies whether the button uses the default
+            theme’s border color.
+          type: boolean
+        displayDefaultThemeButtonTextColor:
+          description: A boolean that specifies whether the button uses the default
+            theme’s text color.
+          type: boolean
+      type: object
+      example: null
     Gateway_supportedVersions_inner:
       properties:
         version:

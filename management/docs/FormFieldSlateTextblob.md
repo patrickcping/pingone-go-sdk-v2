@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **Content** | Pointer to **string** | A string that specifies the field content. | [optional] 
+**Key** | Pointer to **string** | A string that specifies the field content. | [optional] 
+**Icon** | Pointer to [**FormItemWithIconAllOfIcon**](FormItemWithIconAllOfIcon.md) |  | [optional] 
 
 ## Methods
 
@@ -117,6 +119,56 @@ SetContent sets Content field to given value.
 `func (o *FormFieldSlateTextblob) HasContent() bool`
 
 HasContent returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *FormFieldSlateTextblob) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFieldSlateTextblob) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFieldSlateTextblob) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+### HasKey
+
+`func (o *FormFieldSlateTextblob) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
+
+### GetIcon
+
+`func (o *FormFieldSlateTextblob) GetIcon() FormItemWithIconAllOfIcon`
+
+GetIcon returns the Icon field if non-nil, zero value otherwise.
+
+### GetIconOk
+
+`func (o *FormFieldSlateTextblob) GetIconOk() (*FormItemWithIconAllOfIcon, bool)`
+
+GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIcon
+
+`func (o *FormFieldSlateTextblob) SetIcon(v FormItemWithIconAllOfIcon)`
+
+SetIcon sets Icon field to given value.
+
+### HasIcon
+
+`func (o *FormFieldSlateTextblob) HasIcon() bool`
+
+HasIcon returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
 **Size** | [**EnumFormItemSize**](EnumFormItemSize.md) |  | 
 **FallbackText** | Pointer to **string** | A string that specifies the text label for fallback under the QR code. | [optional] 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewFormQrCode
 
-`func NewFormQrCode(alignment EnumFormItemAlignment, size EnumFormItemSize, ) *FormQrCode`
+`func NewFormQrCode(key string, alignment EnumFormItemAlignment, size EnumFormItemSize, ) *FormQrCode`
 
 NewFormQrCode instantiates a new FormQrCode object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewFormQrCodeWithDefaults instantiates a new FormQrCode object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKey
+
+`func (o *FormQrCode) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormQrCode) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormQrCode) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetAlignment
 

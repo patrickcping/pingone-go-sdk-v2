@@ -19,6 +19,8 @@ var _ MappedNullable = &FormQrCode{}
 
 // FormQrCode struct for FormQrCode
 type FormQrCode struct {
+	// A string that specifies an identifier for the field component.
+	Key       string                `json:"key"`
 	Alignment EnumFormItemAlignment `json:"alignment"`
 	Size      EnumFormItemSize      `json:"size"`
 	// A string that specifies the text label for fallback under the QR code.
@@ -29,8 +31,9 @@ type FormQrCode struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormQrCode(alignment EnumFormItemAlignment, size EnumFormItemSize) *FormQrCode {
+func NewFormQrCode(key string, alignment EnumFormItemAlignment, size EnumFormItemSize) *FormQrCode {
 	this := FormQrCode{}
+	this.Key = key
 	this.Alignment = alignment
 	this.Size = size
 	return &this
@@ -42,6 +45,30 @@ func NewFormQrCode(alignment EnumFormItemAlignment, size EnumFormItemSize) *Form
 func NewFormQrCodeWithDefaults() *FormQrCode {
 	this := FormQrCode{}
 	return &this
+}
+
+// GetKey returns the Key field value
+func (o *FormQrCode) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormQrCode) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormQrCode) SetKey(v string) {
+	o.Key = v
 }
 
 // GetAlignment returns the Alignment field value
@@ -134,6 +161,7 @@ func (o FormQrCode) MarshalJSON() ([]byte, error) {
 
 func (o FormQrCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
 	toSerialize["alignment"] = o.Alignment
 	toSerialize["size"] = o.Size
 	if !IsNil(o.FallbackText) {

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
 **Size** | [**EnumFormItemSize**](EnumFormItemSize.md) |  | 
 **FallbackText** | Pointer to **string** | A string that specifies the text label for fallback under the QR code. | [optional] 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewFormFieldQrCode
 
-`func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, alignment EnumFormItemAlignment, size EnumFormItemSize, ) *FormFieldQrCode`
+`func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, alignment EnumFormItemAlignment, size EnumFormItemSize, ) *FormFieldQrCode`
 
 NewFormFieldQrCode instantiates a new FormFieldQrCode object
 This constructor will assign default values to properties that have it defined,
@@ -94,6 +95,26 @@ SetVisibility sets Visibility field to given value.
 `func (o *FormFieldQrCode) HasVisibility() bool`
 
 HasVisibility returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *FormFieldQrCode) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFieldQrCode) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFieldQrCode) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetAlignment
 

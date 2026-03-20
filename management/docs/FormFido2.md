@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **Trigger** | [**EnumFormFIDO2Trigger**](EnumFormFIDO2Trigger.md) |  | 
 **Action** | [**EnumFormFIDO2Action**](EnumFormFIDO2Action.md) |  | 
 **Label** | **string** | A string that specifies the text label for the FIDO2 button. | 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewFormFIDO2
 
-`func NewFormFIDO2(trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string, ) *FormFIDO2`
+`func NewFormFIDO2(key string, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, label string, ) *FormFIDO2`
 
 NewFormFIDO2 instantiates a new FormFIDO2 object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewFormFIDO2WithDefaults instantiates a new FormFIDO2 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKey
+
+`func (o *FormFIDO2) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFIDO2) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFIDO2) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetTrigger
 

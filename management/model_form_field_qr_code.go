@@ -22,8 +22,10 @@ type FormFieldQrCode struct {
 	Type       EnumFormFieldType          `json:"type"`
 	Position   FormFieldCommonPosition    `json:"position"`
 	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
-	Alignment  EnumFormItemAlignment      `json:"alignment"`
-	Size       EnumFormItemSize           `json:"size"`
+	// A string that specifies an identifier for the field component.
+	Key       string                `json:"key"`
+	Alignment EnumFormItemAlignment `json:"alignment"`
+	Size      EnumFormItemSize      `json:"size"`
 	// A string that specifies the text label for fallback under the QR code.
 	FallbackText *string `json:"fallbackText,omitempty"`
 }
@@ -32,10 +34,11 @@ type FormFieldQrCode struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, alignment EnumFormItemAlignment, size EnumFormItemSize) *FormFieldQrCode {
+func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, alignment EnumFormItemAlignment, size EnumFormItemSize) *FormFieldQrCode {
 	this := FormFieldQrCode{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
 	this.Alignment = alignment
 	this.Size = size
 	return &this
@@ -127,6 +130,30 @@ func (o *FormFieldQrCode) HasVisibility() bool {
 // SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
 func (o *FormFieldQrCode) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
+}
+
+// GetKey returns the Key field value
+func (o *FormFieldQrCode) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldQrCode) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldQrCode) SetKey(v string) {
+	o.Key = v
 }
 
 // GetAlignment returns the Alignment field value
@@ -224,6 +251,7 @@ func (o FormFieldQrCode) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
 	}
+	toSerialize["key"] = o.Key
 	toSerialize["alignment"] = o.Alignment
 	toSerialize["size"] = o.Size
 	if !IsNil(o.FallbackText) {

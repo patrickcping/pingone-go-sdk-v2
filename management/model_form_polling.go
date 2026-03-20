@@ -19,6 +19,8 @@ var _ MappedNullable = &FormPolling{}
 
 // FormPolling struct for FormPolling
 type FormPolling struct {
+	// A string that specifies an identifier for the field component.
+	Key               string                    `json:"key"`
 	PollingAppearance EnumFormPollingAppearance `json:"pollingAppearance"`
 	Size              EnumFormItemSize          `json:"size"`
 }
@@ -27,8 +29,9 @@ type FormPolling struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormPolling(pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize) *FormPolling {
+func NewFormPolling(key string, pollingAppearance EnumFormPollingAppearance, size EnumFormItemSize) *FormPolling {
 	this := FormPolling{}
+	this.Key = key
 	this.PollingAppearance = pollingAppearance
 	this.Size = size
 	return &this
@@ -40,6 +43,30 @@ func NewFormPolling(pollingAppearance EnumFormPollingAppearance, size EnumFormIt
 func NewFormPollingWithDefaults() *FormPolling {
 	this := FormPolling{}
 	return &this
+}
+
+// GetKey returns the Key field value
+func (o *FormPolling) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormPolling) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormPolling) SetKey(v string) {
+	o.Key = v
 }
 
 // GetPollingAppearance returns the PollingAppearance field value
@@ -100,6 +127,7 @@ func (o FormPolling) MarshalJSON() ([]byte, error) {
 
 func (o FormPolling) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
 	toSerialize["pollingAppearance"] = o.PollingAppearance
 	toSerialize["size"] = o.Size
 	return toSerialize, nil

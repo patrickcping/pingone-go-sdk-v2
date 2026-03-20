@@ -22,11 +22,9 @@ type FormFieldSubmitButton struct {
 	Type       EnumFormFieldType          `json:"type"`
 	Position   FormFieldCommonPosition    `json:"position"`
 	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
-	// A string that specifies an identifier for the field component.
-	Key *string `json:"key,omitempty"`
 	// A string that specifies the button label.
-	Label  string      `json:"label"`
-	Styles *FormStyles `json:"styles,omitempty"`
+	Label  string                `json:"label"`
+	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
 }
 
 // NewFormFieldSubmitButton instantiates a new FormFieldSubmitButton object
@@ -129,38 +127,6 @@ func (o *FormFieldSubmitButton) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
-func (o *FormFieldSubmitButton) GetKey() string {
-	if o == nil || IsNil(o.Key) {
-		var ret string
-		return ret
-	}
-	return *o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormFieldSubmitButton) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
-		return nil, false
-	}
-	return o.Key, true
-}
-
-// HasKey returns a boolean if a field has been set.
-func (o *FormFieldSubmitButton) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
-func (o *FormFieldSubmitButton) SetKey(v string) {
-	o.Key = &v
-}
-
 // GetLabel returns the Label field value
 func (o *FormFieldSubmitButton) GetLabel() string {
 	if o == nil {
@@ -186,9 +152,9 @@ func (o *FormFieldSubmitButton) SetLabel(v string) {
 }
 
 // GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormFieldSubmitButton) GetStyles() FormStyles {
+func (o *FormFieldSubmitButton) GetStyles() FormFlowButtonStyles {
 	if o == nil || IsNil(o.Styles) {
-		var ret FormStyles
+		var ret FormFlowButtonStyles
 		return ret
 	}
 	return *o.Styles
@@ -196,7 +162,7 @@ func (o *FormFieldSubmitButton) GetStyles() FormStyles {
 
 // GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldSubmitButton) GetStylesOk() (*FormStyles, bool) {
+func (o *FormFieldSubmitButton) GetStylesOk() (*FormFlowButtonStyles, bool) {
 	if o == nil || IsNil(o.Styles) {
 		return nil, false
 	}
@@ -212,8 +178,8 @@ func (o *FormFieldSubmitButton) HasStyles() bool {
 	return false
 }
 
-// SetStyles gets a reference to the given FormStyles and assigns it to the Styles field.
-func (o *FormFieldSubmitButton) SetStyles(v FormStyles) {
+// SetStyles gets a reference to the given FormFlowButtonStyles and assigns it to the Styles field.
+func (o *FormFieldSubmitButton) SetStyles(v FormFlowButtonStyles) {
 	o.Styles = &v
 }
 
@@ -231,9 +197,6 @@ func (o FormFieldSubmitButton) ToMap() (map[string]interface{}, error) {
 	toSerialize["position"] = o.Position
 	if !IsNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
-	}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
 	}
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
