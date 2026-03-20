@@ -102,7 +102,7 @@ func (a *BrandingThemesApiService) internalCreateBrandingThemeExecute(r ApiCreat
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/themes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *BrandingThemesApiService) internalDeleteBrandingThemeExecute(r ApiDelet
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/themes/{themeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -604,8 +604,8 @@ func (a *BrandingThemesApiService) internalReadBrandingThemeDefaultExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/themes/{themeID}/default"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -847,7 +847,7 @@ func (a *BrandingThemesApiService) internalReadBrandingThemesExecute(r ApiReadBr
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/themes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1110,8 +1110,8 @@ func (a *BrandingThemesApiService) internalReadOneBrandingThemeExecute(r ApiRead
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/themes/{themeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1354,8 +1354,8 @@ func (a *BrandingThemesApiService) internalUpdateBrandingThemeExecute(r ApiUpdat
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/themes/{themeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1600,8 +1600,8 @@ func (a *BrandingThemesApiService) internalUpdateBrandingThemeDefaultExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/themes/{themeID}/default"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterValueToString(r.themeID, "themeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

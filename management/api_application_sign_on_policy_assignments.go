@@ -104,8 +104,8 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) internalCreateSignOnPolic
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) internalDeleteSignOnPolic
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"SOPAssignmentID"+"}", url.PathEscape(parameterValueToString(r.sOPAssignmentID, "sOPAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"SOPAssignmentID"+"}", url.PathEscape(parameterValueToString(r.sOPAssignmentID, "sOPAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadAllSignOnPoli
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadOneSignOnPoli
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"SOPAssignmentID"+"}", url.PathEscape(parameterValueToString(r.sOPAssignmentID, "sOPAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"SOPAssignmentID"+"}", url.PathEscape(parameterValueToString(r.sOPAssignmentID, "sOPAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) internalUpdateSignOnPolic
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"SOPAssignmentID"+"}", url.PathEscape(parameterValueToString(r.sOPAssignmentID, "sOPAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"SOPAssignmentID"+"}", url.PathEscape(parameterValueToString(r.sOPAssignmentID, "sOPAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

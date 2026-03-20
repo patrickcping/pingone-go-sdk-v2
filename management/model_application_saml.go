@@ -54,8 +54,10 @@ type ApplicationSAML struct {
 	// This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application's ACS URL as a separate RelayState key value (not within the SAMLResponse key value).
 	DefaultTargetUrl *string `json:"defaultTargetUrl,omitempty"`
 	// Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
-	EnableRequestedAuthnContext *bool                           `json:"enableRequestedAuthnContext,omitempty"`
-	IdpSigning                  *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
+	EnableRequestedAuthnContext *bool `json:"enableRequestedAuthnContext,omitempty"`
+	// If enabled (true), this indicates that when a service provider (SP) specifies an ACS URL in its AuthnRequest, and signs the AuthnRequest, then assuming the identity provider (IdP) can validate the signature, the IdP can accept the ACS URL as valid. This is so, regardless of whether the ACS URL is specified in acsUrls as an allowable ACS URL (refer to [Applications SAML metadata settings data model](https://developer.pingidentity.com/pingone-api/platform/applications/applications-1.html#applications-saml-settings-metadata-model)). Enabling this setting is useful when an SP generates ACS URLs dynamically.
+	EnableAlwaysAcceptAcsUrlInSignedAuthnRequest *bool                           `json:"enableAlwaysAcceptAcsUrlInSignedAuthnRequest,omitempty"`
+	IdpSigning                                   *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
 	// A string that specifies the format of the Subject NameID attibute in the SAML assertion
 	NameIdFormat *string `json:"nameIdFormat,omitempty"`
 	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is `false`.
@@ -737,6 +739,38 @@ func (o *ApplicationSAML) SetEnableRequestedAuthnContext(v bool) {
 	o.EnableRequestedAuthnContext = &v
 }
 
+// GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest returns the EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest() bool {
+	if o == nil || IsNil(o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest
+}
+
+// GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk returns a tuple with the EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest) {
+		return nil, false
+	}
+	return o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest, true
+}
+
+// HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest() bool {
+	if o != nil && !IsNil(o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest gets a reference to the given bool and assigns it to the EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field.
+func (o *ApplicationSAML) SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest(v bool) {
+	o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest = &v
+}
+
 // GetIdpSigning returns the IdpSigning field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetIdpSigning() ApplicationSAMLAllOfIdpSigning {
 	if o == nil || IsNil(o.IdpSigning) {
@@ -1205,6 +1239,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableRequestedAuthnContext) {
 		toSerialize["enableRequestedAuthnContext"] = o.EnableRequestedAuthnContext
+	}
+	if !IsNil(o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest) {
+		toSerialize["enableAlwaysAcceptAcsUrlInSignedAuthnRequest"] = o.EnableAlwaysAcceptAcsUrlInSignedAuthnRequest
 	}
 	if !IsNil(o.IdpSigning) {
 		toSerialize["idpSigning"] = o.IdpSigning

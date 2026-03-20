@@ -102,7 +102,7 @@ func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCre
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/credentialTypes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -364,8 +364,8 @@ func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDel
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/credentialTypes/{credentialTypeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -607,8 +607,8 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypeVersionsExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/credentialTypes/{credentialTypeID}/versions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -853,7 +853,7 @@ func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/credentialTypes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiRe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/credentialTypes/{credentialTypeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1331,9 +1331,9 @@ func (a *CredentialTypesApiService) internalReadOneCredentialTypeVersionExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/credentialTypes/{credentialTypeID}/versions/{credentialTypeVersionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialTypeVersionID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeVersionID, "credentialTypeVersionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialTypeVersionID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeVersionID, "credentialTypeVersionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1576,8 +1576,8 @@ func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpd
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/credentialTypes/{credentialTypeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"credentialTypeID"+"}", url.PathEscape(parameterValueToString(r.credentialTypeID, "credentialTypeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

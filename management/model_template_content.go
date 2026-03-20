@@ -18,8 +18,8 @@ import (
 // TemplateContent - struct for TemplateContent
 type TemplateContent struct {
 	TemplateContentEmail *TemplateContentEmail
-	TemplateContentPush *TemplateContentPush
-	TemplateContentSMS *TemplateContentSMS
+	TemplateContentPush  *TemplateContentPush
+	TemplateContentSMS   *TemplateContentSMS
 	TemplateContentVoice *TemplateContentVoice
 }
 
@@ -50,7 +50,6 @@ func TemplateContentVoiceAsTemplateContent(v *TemplateContentVoice) TemplateCont
 		TemplateContentVoice: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *TemplateContent) UnmarshalJSON(data []byte) error {
@@ -84,7 +83,7 @@ func (dst *TemplateContent) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(TemplateContent)")
+		return fmt.Errorf("data failed to match schemas in oneOf(TemplateContent)")
 	}
 	return nil
 }
@@ -111,7 +110,7 @@ func (src TemplateContent) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *TemplateContent) GetActualInstance() (interface{}) {
+func (obj *TemplateContent) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -170,5 +169,3 @@ func (v *NullableTemplateContent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

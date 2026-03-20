@@ -104,8 +104,8 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) internalCreateFlowPolicyAss
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) internalDeleteFlowPolicyAss
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"flowPolicyAssignmentID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyAssignmentID, "flowPolicyAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"flowPolicyAssignmentID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyAssignmentID, "flowPolicyAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) internalReadAllFlowPolicyAs
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) internalReadOneFlowPolicyAs
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"flowPolicyAssignmentID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyAssignmentID, "flowPolicyAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"flowPolicyAssignmentID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyAssignmentID, "flowPolicyAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) internalUpdateFlowPolicyAss
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"flowPolicyAssignmentID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyAssignmentID, "flowPolicyAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterValueToString(r.applicationID, "applicationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"flowPolicyAssignmentID"+"}", url.PathEscape(parameterValueToString(r.flowPolicyAssignmentID, "flowPolicyAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -95,8 +95,8 @@ func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/verifyTransactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -321,8 +321,8 @@ func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/verifyTransactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -561,9 +561,9 @@ func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"transactionID"+"}", url.PathEscape(parameterValueToString(r.transactionID, "transactionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"transactionID"+"}", url.PathEscape(parameterValueToString(r.transactionID, "transactionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -791,9 +791,9 @@ func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"transactionID"+"}", url.PathEscape(parameterValueToString(r.transactionID, "transactionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"transactionID"+"}", url.PathEscape(parameterValueToString(r.transactionID, "transactionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1027,9 +1027,9 @@ func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUse
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"transactionID"+"}", url.PathEscape(parameterValueToString(r.transactionID, "transactionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"transactionID"+"}", url.PathEscape(parameterValueToString(r.transactionID, "transactionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

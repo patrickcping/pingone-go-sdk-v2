@@ -52,7 +52,7 @@ func (c *Config) validateAPIHostnameOverride() error {
 
 	if checkForValue(c.APIHostnameOverride) {
 		if !isHostname.MatchString(*c.APIHostnameOverride) {
-			return fmt.Errorf("Invalid parameter format.  Expected hostname format, got: %s", *c.APIHostnameOverride)
+			return fmt.Errorf("invalid parameter format.  Expected hostname format, got: %s", *c.APIHostnameOverride)
 		}
 	}
 
@@ -68,7 +68,7 @@ func (c *Config) validateAuthHostnameOverride() error {
 
 	if checkForValue(c.AuthHostnameOverride) {
 		if !isHostname.MatchString(*c.AuthHostnameOverride) {
-			return fmt.Errorf("Invalid parameter format.  Expected hostname format, got: %s", *c.AuthHostnameOverride)
+			return fmt.Errorf("invalid parameter format.  Expected hostname format, got: %s", *c.AuthHostnameOverride)
 		}
 	}
 
@@ -84,7 +84,7 @@ func (c *Config) validateClientID() error {
 
 	if checkForValue(c.ClientID) {
 		if !p1ResourceIDRegexp.MatchString(*c.ClientID) {
-			return fmt.Errorf("Invalid parameter format.  Expected PingOne resource ID, got: %s", *c.ClientID)
+			return fmt.Errorf("invalid parameter format.  Expected PingOne resource ID, got: %s", *c.ClientID)
 		}
 	}
 
@@ -110,7 +110,7 @@ func (c *Config) validateEnvironmentID() error {
 
 	if checkForValue(c.EnvironmentID) {
 		if !p1ResourceIDRegexp.MatchString(*c.EnvironmentID) {
-			return fmt.Errorf("Invalid parameter format.  Expected PingOne resource ID, got: %s", *c.EnvironmentID)
+			return fmt.Errorf("invalid parameter format.  Expected PingOne resource ID, got: %s", *c.EnvironmentID)
 		}
 	}
 
@@ -129,11 +129,11 @@ func (c *Config) validateRegion() error {
 	}
 
 	if !checkForValue(c.Region) && !checkForValue(c.RegionCode) {
-		return fmt.Errorf("Must provide the region code parameter.")
+		return fmt.Errorf("must provide the region code parameter")
 	}
 
 	if checkForValue(c.Region) && !slices.Contains(model.RegionsAvailableList(), c.Region) {
-		return fmt.Errorf("Invalid region value %s.  The region parameter is case sensitive and must be one of the following values: %s", c.Region, strings.Join(model.RegionsAvailableList(), ", "))
+		return fmt.Errorf("invalid region value %s.  The region parameter is case sensitive and must be one of the following values: %s", c.Region, strings.Join(model.RegionsAvailableList(), ", "))
 	}
 
 	return nil
@@ -182,7 +182,7 @@ func (c *Config) Validate() error {
 		return err
 	}
 
-	err := fmt.Errorf("Must provide the region parameter and either client ID, client secret and environment ID, or an api access token.")
+	err := fmt.Errorf("must provide the region parameter and either client ID, client secret and environment ID, or an api access token")
 
 	if (!checkForValue(c.ClientID) ||
 		!checkForValue(c.ClientSecret) ||
@@ -200,7 +200,7 @@ func (c *Config) Validate() error {
 	if servicesOverridden := checkForValue(c.APIHostnameOverride) || checkForValue(c.AuthHostnameOverride); servicesOverridden {
 
 		if servicesOverridden && (!checkForValue(c.APIHostnameOverride) || !checkForValue(c.AuthHostnameOverride)) {
-			return fmt.Errorf("Required service endpoints not configured.  When overriding service endpoints, both auth (e.g. auth.pingone.com) and api service (e.g. api.pingone.com) endpoints must be set.")
+			return fmt.Errorf("required service endpoints not configured.  When overriding service endpoints, both auth (e.g. auth.pingone.com) and api service (e.g. api.pingone.com) endpoints must be set")
 		}
 	}
 

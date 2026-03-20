@@ -104,8 +104,8 @@ func (a *GatewayRoleAssignmentsApiService) internalCreateGatewayRoleAssignmentEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/roleAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *GatewayRoleAssignmentsApiService) internalDeleteGatewayRoleAssignmentEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayRoleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.gatewayRoleAssignmentID, "gatewayRoleAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayRoleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.gatewayRoleAssignmentID, "gatewayRoleAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *GatewayRoleAssignmentsApiService) internalReadGatewayRoleAssignmentsExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/roleAssignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *GatewayRoleAssignmentsApiService) internalReadOneGatewayRoleAssignmentE
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayRoleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.gatewayRoleAssignmentID, "gatewayRoleAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayRoleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.gatewayRoleAssignmentID, "gatewayRoleAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *GatewayRoleAssignmentsApiService) internalUpdateGatewayRoleAssignmentEx
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayRoleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.gatewayRoleAssignmentID, "gatewayRoleAssignmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayID"+"}", url.PathEscape(parameterValueToString(r.gatewayID, "gatewayID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"gatewayRoleAssignmentID"+"}", url.PathEscape(parameterValueToString(r.gatewayRoleAssignmentID, "gatewayRoleAssignmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

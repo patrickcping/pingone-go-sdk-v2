@@ -30,10 +30,10 @@ func processResponse(f SDKInterfaceFunc, targetObject any) (*http.Response, erro
 	if targetObject != nil {
 		v := reflect.ValueOf(targetObject)
 		if v.Kind() != reflect.Ptr {
-			return nil, fmt.Errorf("Target object must be a pointer.  This is always a problem with the SDK, please raise an issue with the SDK maintainers.")
+			return nil, fmt.Errorf("target object must be a pointer.  This is always a problem with the SDK, please raise an issue with the SDK maintainers")
 		}
 		if !v.Elem().IsValid() {
-			return nil, fmt.Errorf("Target object is not valid.  This is always a problem with the SDK, please raise an issue with the SDK maintainers.")
+			return nil, fmt.Errorf("target object is not valid.  This is always a problem with the SDK, please raise an issue with the SDK maintainers")
 		}
 
 		if obj != nil {
@@ -158,7 +158,7 @@ func parseRetryAfterHeader(resp *http.Response) (time.Duration, error) {
 	retryAfterTime, err := http.ParseTime(retryAfterHeader)
 
 	if err != nil {
-		return 0, fmt.Errorf("Unable to parse Retry-After header value: %v", err)
+		return 0, fmt.Errorf("unable to parse Retry-After header value: %v", err)
 	}
 
 	return time.Until(retryAfterTime), nil
@@ -171,7 +171,7 @@ func calculateExponentialBackoff(attempt int, baseDelay time.Duration) (time.Dur
 	}
 
 	if !n.IsInt64() {
-		return 0, fmt.Errorf("Generated random jitter value is too large. This is always a problem with the SDK. Please raise an issue with the SDK maintainers.")
+		return 0, fmt.Errorf("generated random jitter value is too large. This is always a problem with the SDK. Please raise an issue with the SDK maintainers")
 	}
 
 	jitter := time.Duration(n.Int64()) * time.Millisecond // Add random jitter

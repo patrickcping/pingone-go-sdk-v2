@@ -24,6 +24,8 @@ type DeviceAuthenticationPolicyCommonTotp struct {
 	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
 	PairingDisabled *bool                                     `json:"pairingDisabled,omitempty"`
 	Otp             DeviceAuthenticationPolicyPingIDDeviceOtp `json:"otp"`
+	// Authenticator App (TOTP) passcodes are valid for 30 seconds (refresh duration). However, to cover time synchronization issues, there is a default grace period of 5 times the refresh duration in each direction. Taking the grace period into account, the passcode is valid for the base 30 seconds plus 5 x 30 = 150 seconds behind the time of issue and 150 seconds past the expiration time. You can use the passcodeGracePeriod parameter to shorten or lengthen this period. Specify the number of windows you want to use, with each window representing 30 seconds in both directions. Minimum value is 1 window (total of 90 seconds) and maximum value is 10 windows (total of 630 seconds).
+	PasscodeGracePeriod *int32 `json:"passcodeGracePeriod,omitempty"`
 	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 	// Object that you can use to provide key:value pairs for `otpauth` URI parameters. For example, if you provide a value for the `issuer` parameter, then authenticators that support that parameter will display the text you specify together with the OTP (in addition to the username). This can help users recognize which application the OTP is for. If you intend on using the same MFA policy for multiple applications, choose a name that reflects the group of applications.
@@ -129,6 +131,38 @@ func (o *DeviceAuthenticationPolicyCommonTotp) SetOtp(v DeviceAuthenticationPoli
 	o.Otp = v
 }
 
+// GetPasscodeGracePeriod returns the PasscodeGracePeriod field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyCommonTotp) GetPasscodeGracePeriod() int32 {
+	if o == nil || IsNil(o.PasscodeGracePeriod) {
+		var ret int32
+		return ret
+	}
+	return *o.PasscodeGracePeriod
+}
+
+// GetPasscodeGracePeriodOk returns a tuple with the PasscodeGracePeriod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyCommonTotp) GetPasscodeGracePeriodOk() (*int32, bool) {
+	if o == nil || IsNil(o.PasscodeGracePeriod) {
+		return nil, false
+	}
+	return o.PasscodeGracePeriod, true
+}
+
+// HasPasscodeGracePeriod returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyCommonTotp) HasPasscodeGracePeriod() bool {
+	if o != nil && !IsNil(o.PasscodeGracePeriod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasscodeGracePeriod gets a reference to the given int32 and assigns it to the PasscodeGracePeriod field.
+func (o *DeviceAuthenticationPolicyCommonTotp) SetPasscodeGracePeriod(v int32) {
+	o.PasscodeGracePeriod = &v
+}
+
 // GetPromptForNicknameOnPairing returns the PromptForNicknameOnPairing field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyCommonTotp) GetPromptForNicknameOnPairing() bool {
 	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
@@ -208,6 +242,9 @@ func (o DeviceAuthenticationPolicyCommonTotp) ToMap() (map[string]interface{}, e
 		toSerialize["pairingDisabled"] = o.PairingDisabled
 	}
 	toSerialize["otp"] = o.Otp
+	if !IsNil(o.PasscodeGracePeriod) {
+		toSerialize["passcodeGracePeriod"] = o.PasscodeGracePeriod
+	}
 	if !IsNil(o.PromptForNicknameOnPairing) {
 		toSerialize["promptForNicknameOnPairing"] = o.PromptForNicknameOnPairing
 	}

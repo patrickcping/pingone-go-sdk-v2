@@ -102,7 +102,7 @@ func (a *IdentityProvidersApiService) internalCreateIdentityProviderExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/identityProviders"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *IdentityProvidersApiService) internalDeleteIdentityProviderExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/identityProviders/{providerID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterValueToString(r.providerID, "providerID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterValueToString(r.providerID, "providerID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *IdentityProvidersApiService) internalReadAllIdentityProvidersExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/identityProviders"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *IdentityProvidersApiService) internalReadOneIdentityProviderExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/identityProviders/{providerID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterValueToString(r.providerID, "providerID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterValueToString(r.providerID, "providerID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *IdentityProvidersApiService) internalUpdateIdentityProviderExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/identityProviders/{providerID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterValueToString(r.providerID, "providerID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterValueToString(r.providerID, "providerID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

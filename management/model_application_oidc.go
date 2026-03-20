@@ -68,15 +68,9 @@ type ApplicationOIDC struct {
 	// A JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwksUrl` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwksUrl` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
 	Jwks *string `json:"jwks,omitempty"`
 	// A URL (supports `https://` only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwks` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwks` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
-	JwksUrl *string                     `json:"jwksUrl,omitempty"`
-	Mobile  *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
-	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
-	// Deprecated
-	BundleId *string `json:"bundleId,omitempty"`
-	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
-	// Deprecated
-	PackageName *string                       `json:"packageName,omitempty"`
-	Kerberos    *ApplicationOIDCAllOfKerberos `json:"kerberos,omitempty"`
+	JwksUrl  *string                       `json:"jwksUrl,omitempty"`
+	Mobile   *ApplicationOIDCAllOfMobile   `json:"mobile,omitempty"`
+	Kerberos *ApplicationOIDCAllOfKerberos `json:"kerberos,omitempty"`
 	// A string that specifies the grant type for the authorization request. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
 	GrantTypes []EnumApplicationOIDCGrantType `json:"grantTypes,omitempty"`
 	// A string that specifies the custom home page URL for the application.
@@ -98,7 +92,8 @@ type ApplicationOIDC struct {
 	// An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
 	RefreshTokenRollingDuration *int32 `json:"refreshTokenRollingDuration,omitempty"`
 	// The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
-	RefreshTokenRollingGracePeriodDuration *int32 `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
+	RefreshTokenRollingGracePeriodDuration *int32                                `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
+	RefreshTokenType                       []EnumApplicationOIDCRefreshTokenType `json:"refreshTokenType,omitempty"`
 	// Specifies whether the application can request scopes from multiple custom resources. The default value is `false`. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes).
 	RequestScopesForMultipleResourcesEnabled *bool `json:"requestScopesForMultipleResourcesEnabled,omitempty"`
 	// Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
@@ -1066,76 +1061,6 @@ func (o *ApplicationOIDC) SetMobile(v ApplicationOIDCAllOfMobile) {
 	o.Mobile = &v
 }
 
-// GetBundleId returns the BundleId field value if set, zero value otherwise.
-// Deprecated
-func (o *ApplicationOIDC) GetBundleId() string {
-	if o == nil || IsNil(o.BundleId) {
-		var ret string
-		return ret
-	}
-	return *o.BundleId
-}
-
-// GetBundleIdOk returns a tuple with the BundleId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *ApplicationOIDC) GetBundleIdOk() (*string, bool) {
-	if o == nil || IsNil(o.BundleId) {
-		return nil, false
-	}
-	return o.BundleId, true
-}
-
-// HasBundleId returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasBundleId() bool {
-	if o != nil && !IsNil(o.BundleId) {
-		return true
-	}
-
-	return false
-}
-
-// SetBundleId gets a reference to the given string and assigns it to the BundleId field.
-// Deprecated
-func (o *ApplicationOIDC) SetBundleId(v string) {
-	o.BundleId = &v
-}
-
-// GetPackageName returns the PackageName field value if set, zero value otherwise.
-// Deprecated
-func (o *ApplicationOIDC) GetPackageName() string {
-	if o == nil || IsNil(o.PackageName) {
-		var ret string
-		return ret
-	}
-	return *o.PackageName
-}
-
-// GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *ApplicationOIDC) GetPackageNameOk() (*string, bool) {
-	if o == nil || IsNil(o.PackageName) {
-		return nil, false
-	}
-	return o.PackageName, true
-}
-
-// HasPackageName returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasPackageName() bool {
-	if o != nil && !IsNil(o.PackageName) {
-		return true
-	}
-
-	return false
-}
-
-// SetPackageName gets a reference to the given string and assigns it to the PackageName field.
-// Deprecated
-func (o *ApplicationOIDC) SetPackageName(v string) {
-	o.PackageName = &v
-}
-
 // GetKerberos returns the Kerberos field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetKerberos() ApplicationOIDCAllOfKerberos {
 	if o == nil || IsNil(o.Kerberos) {
@@ -1552,6 +1477,38 @@ func (o *ApplicationOIDC) SetRefreshTokenRollingGracePeriodDuration(v int32) {
 	o.RefreshTokenRollingGracePeriodDuration = &v
 }
 
+// GetRefreshTokenType returns the RefreshTokenType field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetRefreshTokenType() []EnumApplicationOIDCRefreshTokenType {
+	if o == nil || IsNil(o.RefreshTokenType) {
+		var ret []EnumApplicationOIDCRefreshTokenType
+		return ret
+	}
+	return o.RefreshTokenType
+}
+
+// GetRefreshTokenTypeOk returns a tuple with the RefreshTokenType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetRefreshTokenTypeOk() ([]EnumApplicationOIDCRefreshTokenType, bool) {
+	if o == nil || IsNil(o.RefreshTokenType) {
+		return nil, false
+	}
+	return o.RefreshTokenType, true
+}
+
+// HasRefreshTokenType returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasRefreshTokenType() bool {
+	if o != nil && !IsNil(o.RefreshTokenType) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshTokenType gets a reference to the given []EnumApplicationOIDCRefreshTokenType and assigns it to the RefreshTokenType field.
+func (o *ApplicationOIDC) SetRefreshTokenType(v []EnumApplicationOIDCRefreshTokenType) {
+	o.RefreshTokenType = v
+}
+
 // GetRequestScopesForMultipleResourcesEnabled returns the RequestScopesForMultipleResourcesEnabled field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetRequestScopesForMultipleResourcesEnabled() bool {
 	if o == nil || IsNil(o.RequestScopesForMultipleResourcesEnabled) {
@@ -1921,12 +1878,6 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mobile) {
 		toSerialize["mobile"] = o.Mobile
 	}
-	if !IsNil(o.BundleId) {
-		toSerialize["bundleId"] = o.BundleId
-	}
-	if !IsNil(o.PackageName) {
-		toSerialize["packageName"] = o.PackageName
-	}
 	if !IsNil(o.Kerberos) {
 		toSerialize["kerberos"] = o.Kerberos
 	}
@@ -1965,6 +1916,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RefreshTokenRollingGracePeriodDuration) {
 		toSerialize["refreshTokenRollingGracePeriodDuration"] = o.RefreshTokenRollingGracePeriodDuration
+	}
+	if !IsNil(o.RefreshTokenType) {
+		toSerialize["refreshTokenType"] = o.RefreshTokenType
 	}
 	if !IsNil(o.RequestScopesForMultipleResourcesEnabled) {
 		toSerialize["requestScopesForMultipleResourcesEnabled"] = o.RequestScopesForMultipleResourcesEnabled

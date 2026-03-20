@@ -102,7 +102,7 @@ func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/decisionEndpoints"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/decisionEndpoints/{decisionEndpointID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"decisionEndpointID"+"}", url.PathEscape(parameterValueToString(r.decisionEndpointID, "decisionEndpointID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"decisionEndpointID"+"}", url.PathEscape(parameterValueToString(r.decisionEndpointID, "decisionEndpointID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,7 +609,7 @@ func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/decisionEndpoints"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -846,8 +846,8 @@ func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExec
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/decisionEndpoints/{decisionEndpointID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"decisionEndpointID"+"}", url.PathEscape(parameterValueToString(r.decisionEndpointID, "decisionEndpointID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"decisionEndpointID"+"}", url.PathEscape(parameterValueToString(r.decisionEndpointID, "decisionEndpointID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/decisionEndpoints/{decisionEndpointID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"decisionEndpointID"+"}", url.PathEscape(parameterValueToString(r.decisionEndpointID, "decisionEndpointID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"decisionEndpointID"+"}", url.PathEscape(parameterValueToString(r.decisionEndpointID, "decisionEndpointID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

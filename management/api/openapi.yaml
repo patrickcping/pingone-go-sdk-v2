@@ -21579,12 +21579,22 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Adding a SCIM filter to filter the data. `module` and `block`
-          are supported
-        example: module eq "flow-ui" and block eq "UpdateProfile"
+      - description: Filter by the UI block the translation belongs to. The block
+          field is only applicable for flows translations.
+        example: UpdateProfile
         explode: true
         in: query
-        name: filter
+        name: block
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by the UI module the translation belongs to. The module
+          field is only applicable for flows translations.
+        example: flow-ui
+        explode: true
+        in: query
+        name: module
         required: false
         schema:
           type: string
@@ -37109,6 +37119,8 @@ components:
       - REFRESH_TOKEN
       - CLIENT_CREDENTIALS
       - DEVICE_CODE
+      - TOKEN_EXCHANGE
+      - CIBA
       type: string
     EnumApplicationOIDCPARRequirement:
       default: OPTIONAL
@@ -37148,6 +37160,14 @@ components:
       - PRIVATE_KEY_JWT
       - CLIENT_SECRET_JWT
       type: string
+    EnumApplicationOIDCRefreshTokenType:
+      description: "The format of the refresh token. As opaque tokens are more secure\
+        \ and the recommended format, Ping Identity is shifting towards deprecating\
+        \ JWT tokens. For more information, refer to [Refresh Tokens](https://developer.pingidentity.com/pingone-api/foundations/authentication-concepts/access-tokens-and-id-tokens.html#refresh-tokens)."
+      enum:
+      - JSON_WEB_TOKEN
+      - OPAQUE_TOKEN
+      type: string
     EnumApplicationProtocol:
       description: A string that specifies the protocol for the Application.
       enum:
@@ -37155,6 +37175,15 @@ components:
       - SAML
       - WS_FED
       - EXTERNAL_LINK
+      type: string
+    EnumApplicationPushNumberMatchingType:
+      description: |
+        This option is used to specify the type of number matching that should be used in MFA policies where number matching has been enabled for the application. The possible values are:
+         - `SELECT_NUMBER` - Users must select the correct number from a group of three numbers
+         - `ENTER_MANUALLY` - Users must enter the number that was shown
+      enum:
+      - SELECT_NUMBER
+      - ENTER_MANUALLY
       type: string
     EnumApplicationSAMLSloBinding:
       default: HTTP_POST
@@ -38327,6 +38356,18 @@ components:
       - SPLUNK
       - NEWRELIC
       type: string
+    EnumSubscriptionPayloadOptionsMaximumPayloadLimitType:
+      description: The type of payload to use for limiting subscriptions.
+      enum:
+      - EVENTS_PER_PAYLOAD
+      - KB_PER_PAYLOAD
+      type: string
+    EnumSubscriptionPayloadFormatHttpsFormat:
+      description: The payload format.
+      enum:
+      - JSON_ARRAY
+      - ND_JSON
+      type: string
     EnumTemplateContentDeliveryMethod:
       description: "The content's delivery method. Possible values are `Email`, `SMS`,\
         \ `Voice` or `Push`. Cannot be changed after it is initially set in `POST\
@@ -38889,6 +38930,14 @@ components:
             description: A string that specifies the custom home page URL for the
               application.
             type: string
+          externalId:
+            description: "For applications whose type is `PORTAL_LINK_APP`, you can\
+              \ use this field to specify an external ID that should be used for the\
+              \ application in contexts such as targeted risk policies. Note that\
+              \ `PORTAL_LINK_APP` applications that do not have an external ID specified\
+              \ are not displayed in the list of applications when defining a targeted\
+              \ risk policy in the UI."
+            type: string
         required:
         - homePageUrl
         type: object
@@ -38933,6 +38982,15 @@ components:
           enableRequestedAuthnContext:
             description: Indicates whether `requestedAuthnContext` is taken into account
               in policy decision-making during authentication.
+            type: boolean
+          enableAlwaysAcceptAcsUrlInSignedAuthnRequest:
+            description: "If enabled (true), this indicates that when a service provider\
+              \ (SP) specifies an ACS URL in its AuthnRequest, and signs the AuthnRequest,\
+              \ then assuming the identity provider (IdP) can validate the signature,\
+              \ the IdP can accept the ACS URL as valid. This is so, regardless of\
+              \ whether the ACS URL is specified in acsUrls as an allowable ACS URL\
+              \ (refer to [Applications SAML metadata settings data model](https://developer.pingidentity.com/pingone-api/platform/applications/applications-1.html#applications-saml-settings-metadata-model)).\
+              \ Enabling this setting is useful when an SP generates ACS URLs dynamically."
             type: boolean
           idpSigning:
             $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning'
@@ -39106,16 +39164,6 @@ components:
             type: string
           mobile:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile'
-          bundleId:
-            deprecated: true
-            description: |
-              **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
-            type: string
-          packageName:
-            deprecated: true
-            description: |
-              **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
-            type: string
           kerberos:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
           grantTypes:
@@ -39200,6 +39248,10 @@ components:
               0 and 86400 seconds. Null is treated the same as 0.
             maximum: 86400
             type: integer
+          refreshTokenType:
+            items:
+              $ref: '#/components/schemas/EnumApplicationOIDCRefreshTokenType'
+            type: array
           requestScopesForMultipleResourcesEnabled:
             default: false
             description: "Specifies whether the application can request scopes from\
@@ -39488,6 +39540,13 @@ components:
       allOf:
       - $ref: '#/components/schemas/Application'
       - properties:
+          assertionDuration:
+            default: 300
+            description: The assertion validity duration in seconds. The default value
+              is 300 seconds (5 minutes). Valid values are between 300 and 3932100.
+            maximum: 3932100
+            minimum: 300
+            type: integer
           audienceRestriction:
             default: urn:federation:MicrosoftOnline
             description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
@@ -39512,6 +39571,11 @@ components:
             type: string
           subjectNameIdentifierFormat:
             $ref: '#/components/schemas/EnumApplicationWSFEDSubjectNameIdentifierFormat'
+          wsTrustVersion:
+            description: The WS-Trust (Web Services Trust) version to use. Valid values
+              are `1.2` and `1.3`.
+            pattern: ^(1\.2|1\.3)$
+            type: string
         required:
         - domainName
         - idpSigning
@@ -40100,7 +40164,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 6.628464275087742
+        size: 4.258773108174356
         _links:
           key:
             href: https://openapi-generator.tech
@@ -40133,22 +40197,32 @@ components:
               type: null
             enabled: true
           subscriptions:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            _links:
+          - _links:
               key:
                 href: https://openapi-generator.tech
             format: null
+            tlsClientAuthKeyPair:
+              id: id
+            payloadOptions:
+              maximumPayloadLimit:
+                size: 4
+                type: null
+              payloadFormat:
+                format:
+                  https:
+                    prettyPrint: true
+                    format: null
+            enabled: true
+            verifyTlsCertificates: true
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             httpEndpoint:
               headers:
                 key: headers
               url: url
             name: name
-            tlsClientAuthKeyPair:
-              id: id
             id: id
-            enabled: true
             filterOptions:
               includedActionTypes:
               - includedActionTypes
@@ -40164,24 +40238,33 @@ components:
               includedApplications:
               - id: id
               - id: id
-            verifyTlsCertificates: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            _links:
+          - _links:
               key:
                 href: https://openapi-generator.tech
             format: null
+            tlsClientAuthKeyPair:
+              id: id
+            payloadOptions:
+              maximumPayloadLimit:
+                size: 4
+                type: null
+              payloadFormat:
+                format:
+                  https:
+                    prettyPrint: true
+                    format: null
+            enabled: true
+            verifyTlsCertificates: true
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             httpEndpoint:
               headers:
                 key: headers
               url: url
             name: name
-            tlsClientAuthKeyPair:
-              id: id
             id: id
-            enabled: true
             filterOptions:
               includedActionTypes:
               - includedActionTypes
@@ -40197,7 +40280,6 @@ components:
               includedApplications:
               - id: id
               - id: id
-            verifyTlsCertificates: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           credentials:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -41055,7 +41137,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 4
+              secondsUntilUnlock: 0
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41126,7 +41208,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 4
+              secondsUntilUnlock: 0
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41903,7 +41985,7 @@ components:
           applications:
           - null
           - null
-        count: 0.2025324113236393
+        count: 6.628464275087742
       properties:
         _links:
           additionalProperties:
@@ -46919,22 +47001,32 @@ components:
       type: object
     Subscription:
       example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        environment:
-          id: id
         _links:
           key:
             href: https://openapi-generator.tech
         format: null
+        tlsClientAuthKeyPair:
+          id: id
+        payloadOptions:
+          maximumPayloadLimit:
+            size: 4
+            type: null
+          payloadFormat:
+            format:
+              https:
+                prettyPrint: true
+                format: null
+        enabled: true
+        verifyTlsCertificates: true
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
         httpEndpoint:
           headers:
             key: headers
           url: url
         name: name
-        tlsClientAuthKeyPair:
-          id: id
         id: id
-        enabled: true
         filterOptions:
           includedActionTypes:
           - includedActionTypes
@@ -46950,7 +47042,6 @@ components:
           includedApplications:
           - id: id
           - id: id
-        verifyTlsCertificates: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -46990,6 +47081,8 @@ components:
           description: A string that specifies the subscription name. This is a required
             property.
           type: string
+        payloadOptions:
+          $ref: '#/components/schemas/Subscription_payloadOptions'
         tlsClientAuthKeyPair:
           $ref: '#/components/schemas/Subscription_tlsClientAuthKeyPair'
         updatedAt:
@@ -47319,7 +47412,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 4
+          secondsUntilUnlock: 0
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -47551,7 +47644,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 4
+        secondsUntilUnlock: 0
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -48035,6 +48128,18 @@ components:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection_googlePlay'
       type: object
       example: null
+    ApplicationOIDC_allOf_mobile_push_numberMatching:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumApplicationPushNumberMatchingType'
+      type: object
+      example: null
+    ApplicationOIDC_allOf_mobile_push:
+      properties:
+        numberMatching:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_push_numberMatching'
+      type: object
+      example: null
     ApplicationOIDC_allOf_mobile:
       properties:
         bundleId:
@@ -48061,10 +48166,24 @@ components:
             \ is unique per environment, and once defined, is immutable. Used only\
             \ for applications for the Huawei ecosystem."
           type: string
+        passcodeGracePeriod:
+          description: "To cover time synchronization issues, you can use this field\
+            \ to customize the grace period during which the passcode can still be\
+            \ used even after the passcode has been refreshed. The value of the parameter\
+            \ should be the number of windows to use (min 1, max 10). In this context,\
+            \ a window is equal to the passcode refresh period in either direction.\
+            \ For example, if you defined a passcode refresh duration of 30 seconds\
+            \ and a grace period of 2 windows, the passcode is valid for 150 seconds\
+            \ (from 60 seconds behind the time of issue until 60 seconds past the\
+            \ expiration time). When this field is not included, the default value\
+            \ used is 5 windows."
+          type: integer
         passcodeRefreshDuration:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_passcodeRefreshDuration'
         integrityDetection:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection'
+        push:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_push'
         uriPrefix:
           description: "A string that specifies a URI prefix that enables direct triggering\
             \ of the mobile application when scanning a QR code. The URI prefix can\
@@ -48637,22 +48756,32 @@ components:
             type: null
           enabled: true
         subscriptions:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          _links:
+        - _links:
             key:
               href: https://openapi-generator.tech
           format: null
+          tlsClientAuthKeyPair:
+            id: id
+          payloadOptions:
+            maximumPayloadLimit:
+              size: 4
+              type: null
+            payloadFormat:
+              format:
+                https:
+                  prettyPrint: true
+                  format: null
+          enabled: true
+          verifyTlsCertificates: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           httpEndpoint:
             headers:
               key: headers
             url: url
           name: name
-          tlsClientAuthKeyPair:
-            id: id
           id: id
-          enabled: true
           filterOptions:
             includedActionTypes:
             - includedActionTypes
@@ -48668,24 +48797,33 @@ components:
             includedApplications:
             - id: id
             - id: id
-          verifyTlsCertificates: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          _links:
+        - _links:
             key:
               href: https://openapi-generator.tech
           format: null
+          tlsClientAuthKeyPair:
+            id: id
+          payloadOptions:
+            maximumPayloadLimit:
+              size: 4
+              type: null
+            payloadFormat:
+              format:
+                https:
+                  prettyPrint: true
+                  format: null
+          enabled: true
+          verifyTlsCertificates: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           httpEndpoint:
             headers:
               key: headers
             url: url
           name: name
-          tlsClientAuthKeyPair:
-            id: id
           id: id
-          enabled: true
           filterOptions:
             includedActionTypes:
             - includedActionTypes
@@ -48701,7 +48839,6 @@ components:
             includedApplications:
             - id: id
             - id: id
-          verifyTlsCertificates: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         credentials:
         - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -49559,7 +49696,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 4
+            secondsUntilUnlock: 0
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -49630,7 +49767,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 4
+            secondsUntilUnlock: 0
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -53008,6 +53145,66 @@ components:
           type: object
       required:
       - url
+      type: object
+    Subscription_payloadOptions_maximumPayloadLimit:
+      example:
+        size: 4
+        type: null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumSubscriptionPayloadOptionsMaximumPayloadLimitType'
+        size:
+          description: The maximum size of the payload based on `type`. For `EVENTS_PER_PAYLOAD`
+            this can be from `1` to `500` events (defaults to `500`). For `KB_PER_PAYLOAD`
+            this can be from `1` to `4096` kilobytes.
+          type: integer
+      type: object
+    Subscription_payloadOptions_payloadFormat_format_https:
+      example:
+        prettyPrint: true
+        format: null
+      properties:
+        format:
+          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatHttpsFormat'
+        prettyPrint:
+          description: Only applicable when `format` is `JSON_ARRAY`. Pretty-print
+            is enabled when `true`.
+          type: boolean
+      type: object
+    Subscription_payloadOptions_payloadFormat_format:
+      example:
+        https:
+          prettyPrint: true
+          format: null
+      properties:
+        https:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format_https'
+      type: object
+    Subscription_payloadOptions_payloadFormat:
+      example:
+        format:
+          https:
+            prettyPrint: true
+            format: null
+      properties:
+        format:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format'
+      type: object
+    Subscription_payloadOptions:
+      example:
+        maximumPayloadLimit:
+          size: 4
+          type: null
+        payloadFormat:
+          format:
+            https:
+              prettyPrint: true
+              format: null
+      properties:
+        maximumPayloadLimit:
+          $ref: '#/components/schemas/Subscription_payloadOptions_maximumPayloadLimit'
+        payloadFormat:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat'
       type: object
     Subscription_tlsClientAuthKeyPair:
       description: An onject that describes the TLS client authentication key pair

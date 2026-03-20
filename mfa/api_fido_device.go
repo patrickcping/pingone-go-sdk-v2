@@ -86,7 +86,7 @@ func (a *FIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDeviceRequ
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fidoDevicesMetadata"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -359,8 +359,8 @@ func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fidoDeviceID"+"}", url.PathEscape(parameterValueToString(r.fidoDeviceID, "fidoDeviceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"fidoDeviceID"+"}", url.PathEscape(parameterValueToString(r.fidoDeviceID, "fidoDeviceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,7 +593,7 @@ func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevic
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fidoDevicesMetadata"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -814,8 +814,8 @@ func (a *FIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fidoDeviceID"+"}", url.PathEscape(parameterValueToString(r.fidoDeviceID, "fidoDeviceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"fidoDeviceID"+"}", url.PathEscape(parameterValueToString(r.fidoDeviceID, "fidoDeviceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

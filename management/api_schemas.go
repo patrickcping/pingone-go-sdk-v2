@@ -105,8 +105,8 @@ func (a *SchemasApiService) internalCreateAttributeExecute(r ApiCreateAttributeR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas/{schemaID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -356,9 +356,9 @@ func (a *SchemasApiService) internalDeleteAttributeExecute(r ApiDeleteAttributeR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -594,8 +594,8 @@ func (a *SchemasApiService) internalReadAllSchemaAttributesExecute(r ApiReadAllS
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas/{schemaID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -837,7 +837,7 @@ func (a *SchemasApiService) internalReadAllSchemasExecute(r ApiReadAllSchemasReq
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1103,9 +1103,9 @@ func (a *SchemasApiService) internalReadOneAttributeExecute(r ApiReadOneAttribut
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1342,8 +1342,8 @@ func (a *SchemasApiService) internalReadOneSchemaExecute(r ApiReadOneSchemaReque
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas/{schemaID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1589,9 +1589,9 @@ func (a *SchemasApiService) internalUpdateAttributePatchExecute(r ApiUpdateAttri
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1839,9 +1839,9 @@ func (a *SchemasApiService) internalUpdateAttributePutExecute(r ApiUpdateAttribu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"schemaID"+"}", url.PathEscape(parameterValueToString(r.schemaID, "schemaID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"attributeID"+"}", url.PathEscape(parameterValueToString(r.attributeID, "attributeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

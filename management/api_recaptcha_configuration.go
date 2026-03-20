@@ -93,7 +93,7 @@ func (a *RecaptchaConfigurationApiService) internalDeleteRecaptchaConfigurationE
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/recaptchaV2Config"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -318,7 +318,7 @@ func (a *RecaptchaConfigurationApiService) internalReadRecaptchaConfigurationExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/recaptchaV2Config"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -558,7 +558,7 @@ func (a *RecaptchaConfigurationApiService) internalUpdateRecaptchaConfigurationE
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/recaptchaV2Config"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

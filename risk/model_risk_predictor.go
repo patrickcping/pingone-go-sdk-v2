@@ -215,7 +215,7 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(RiskPredictor)")
+		return fmt.Errorf("data failed to match schemas in oneOf(RiskPredictor)")
 	}
 	return nil
 }

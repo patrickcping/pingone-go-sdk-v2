@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
 **DefaultTargetUrl** | Pointer to **string** | This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application&#39;s ACS URL as a separate RelayState key value (not within the SAMLResponse key value). | [optional] 
 **EnableRequestedAuthnContext** | Pointer to **bool** | Indicates whether &#x60;requestedAuthnContext&#x60; is taken into account in policy decision-making during authentication. | [optional] 
+**EnableAlwaysAcceptAcsUrlInSignedAuthnRequest** | Pointer to **bool** | If enabled (true), this indicates that when a service provider (SP) specifies an ACS URL in its AuthnRequest, and signs the AuthnRequest, then assuming the identity provider (IdP) can validate the signature, the IdP can accept the ACS URL as valid. This is so, regardless of whether the ACS URL is specified in acsUrls as an allowable ACS URL (refer to [Applications SAML metadata settings data model](https://developer.pingidentity.com/pingone-api/platform/applications/applications-1.html#applications-saml-settings-metadata-model)). Enabling this setting is useful when an SP generates ACS URLs dynamically. | [optional] 
 **IdpSigning** | Pointer to [**ApplicationSAMLAllOfIdpSigning**](ApplicationSAMLAllOfIdpSigning.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is &#x60;false&#x60;. | [optional] [default to false]
@@ -552,6 +553,31 @@ SetEnableRequestedAuthnContext sets EnableRequestedAuthnContext field to given v
 `func (o *ApplicationSAML) HasEnableRequestedAuthnContext() bool`
 
 HasEnableRequestedAuthnContext returns a boolean if a field has been set.
+
+### GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest
+
+`func (o *ApplicationSAML) GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest() bool`
+
+GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest returns the EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field if non-nil, zero value otherwise.
+
+### GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk
+
+`func (o *ApplicationSAML) GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk() (*bool, bool)`
+
+GetEnableAlwaysAcceptAcsUrlInSignedAuthnRequestOk returns a tuple with the EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest
+
+`func (o *ApplicationSAML) SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest(v bool)`
+
+SetEnableAlwaysAcceptAcsUrlInSignedAuthnRequest sets EnableAlwaysAcceptAcsUrlInSignedAuthnRequest field to given value.
+
+### HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest
+
+`func (o *ApplicationSAML) HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest() bool`
+
+HasEnableAlwaysAcceptAcsUrlInSignedAuthnRequest returns a boolean if a field has been set.
 
 ### GetIdpSigning
 

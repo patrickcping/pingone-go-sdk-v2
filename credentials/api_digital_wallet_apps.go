@@ -102,7 +102,7 @@ func (a *DigitalWalletAppsApiService) internalCreateDigitalWalletAppExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/digitalWalletApplications"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -364,8 +364,8 @@ func (a *DigitalWalletAppsApiService) internalDeleteDigitalWalletAppExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/digitalWalletApplications/{digitalWalletApplicationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"digitalWalletApplicationID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletApplicationID, "digitalWalletApplicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"digitalWalletApplicationID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletApplicationID, "digitalWalletApplicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -598,7 +598,7 @@ func (a *DigitalWalletAppsApiService) internalReadAllDigitalWalletAppsExecute(r 
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/digitalWalletApplications"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -835,8 +835,8 @@ func (a *DigitalWalletAppsApiService) internalReadOneDigitalWalletAppExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/digitalWalletApplications/{digitalWalletApplicationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"digitalWalletApplicationID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletApplicationID, "digitalWalletApplicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"digitalWalletApplicationID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletApplicationID, "digitalWalletApplicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1079,8 +1079,8 @@ func (a *DigitalWalletAppsApiService) internalUpdateDigitalWalletAppExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/digitalWalletApplications/{digitalWalletApplicationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"digitalWalletApplicationID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletApplicationID, "digitalWalletApplicationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"digitalWalletApplicationID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletApplicationID, "digitalWalletApplicationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

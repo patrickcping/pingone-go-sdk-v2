@@ -102,7 +102,7 @@ func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPolicySets"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,8 +375,8 @@ func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPolicySets/{riskPolicySetID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskPolicySetID"+"}", url.PathEscape(parameterValueToString(r.riskPolicySetID, "riskPolicySetID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskPolicySetID"+"}", url.PathEscape(parameterValueToString(r.riskPolicySetID, "riskPolicySetID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -604,8 +604,8 @@ func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOn
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPolicySets/{riskPolicySetID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskPolicySetID"+"}", url.PathEscape(parameterValueToString(r.riskPolicySetID, "riskPolicySetID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskPolicySetID"+"}", url.PathEscape(parameterValueToString(r.riskPolicySetID, "riskPolicySetID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -847,7 +847,7 @@ func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRisk
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPolicySets"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1090,8 +1090,8 @@ func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateR
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/riskPolicySets/{riskPolicySetID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"riskPolicySetID"+"}", url.PathEscape(parameterValueToString(r.riskPolicySetID, "riskPolicySetID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"riskPolicySetID"+"}", url.PathEscape(parameterValueToString(r.riskPolicySetID, "riskPolicySetID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

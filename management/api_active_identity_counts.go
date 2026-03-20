@@ -111,7 +111,7 @@ func (a *ActiveIdentityCountsApiService) internalEnvironmentsEnvironmentIDActive
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/activeIdentityCounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -366,7 +366,7 @@ func (a *ActiveIdentityCountsApiService) internalEnvironmentsEnvironmentIDMetric
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/metrics/activeIdentityCounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -621,8 +621,8 @@ func (a *ActiveIdentityCountsApiService) internalReadActiveIdentityCountExecute(
 	}
 
 	localVarPath := localBasePath + "/organizations/{organizationID}/licenses/{licenseID}/metrics/activeIdentityCounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"licenseID"+"}", url.PathEscape(parameterValueToString(r.licenseID, "licenseID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
