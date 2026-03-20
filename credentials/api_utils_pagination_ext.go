@@ -52,7 +52,7 @@ func (a *APIClient) paginationIterator(ctx context.Context, initialPageAPIFunc f
 			}
 
 			if loopCursor.EntityArray == nil {
-				if !yield(loopCursor, fmt.Errorf("Paged results unexpectedly nil")) {
+				if !yield(loopCursor, fmt.Errorf("paged results unexpectedly nil")) {
 					return
 				}
 				break

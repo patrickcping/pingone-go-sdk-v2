@@ -101,7 +101,7 @@ func (a *PropagationStoresApiService) internalCreatePropagationStoreExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -348,8 +348,8 @@ func (a *PropagationStoresApiService) internalDeletePropagationStoreExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -582,7 +582,7 @@ func (a *PropagationStoresApiService) internalReadAllStoresExecute(r ApiReadAllS
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -819,8 +819,8 @@ func (a *PropagationStoresApiService) internalReadOnePropagationStoreExecute(r A
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1063,7 +1063,7 @@ func (a *PropagationStoresApiService) internalTestConnectionConfigurationExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/connection/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1313,8 +1313,8 @@ func (a *PropagationStoresApiService) internalUpdatePropagationStoreExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/propagation/stores/{storeID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"storeID"+"}", url.PathEscape(parameterValueToString(r.storeID, "storeID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

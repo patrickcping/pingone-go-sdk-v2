@@ -21579,6 +21579,26 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Filter by the UI block the translation belongs to. The block
+          field is only applicable for flows translations.
+        example: UpdateProfile
+        explode: true
+        in: query
+        name: block
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by the UI module the translation belongs to. The module
+          field is only applicable for flows translations.
+        example: flow-ui
+        explode: true
+        in: query
+        name: module
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "400":
           content:
@@ -37099,6 +37119,8 @@ components:
       - REFRESH_TOKEN
       - CLIENT_CREDENTIALS
       - DEVICE_CODE
+      - TOKEN_EXCHANGE
+      - CIBA
       type: string
     EnumApplicationOIDCPARRequirement:
       default: OPTIONAL
@@ -37138,6 +37160,14 @@ components:
       - PRIVATE_KEY_JWT
       - CLIENT_SECRET_JWT
       type: string
+    EnumApplicationOIDCRefreshTokenType:
+      description: "The format of the refresh token. As opaque tokens are more secure\
+        \ and the recommended format, Ping Identity is shifting towards deprecating\
+        \ JWT tokens. For more information, refer to [Refresh Tokens](https://developer.pingidentity.com/pingone-api/foundations/authentication-concepts/access-tokens-and-id-tokens.html#refresh-tokens)."
+      enum:
+      - JSON_WEB_TOKEN
+      - OPAQUE_TOKEN
+      type: string
     EnumApplicationProtocol:
       description: A string that specifies the protocol for the Application.
       enum:
@@ -37145,6 +37175,15 @@ components:
       - SAML
       - WS_FED
       - EXTERNAL_LINK
+      type: string
+    EnumApplicationPushNumberMatchingType:
+      description: |
+        This option is used to specify the type of number matching that should be used in MFA policies where number matching has been enabled for the application. The possible values are:
+         - `SELECT_NUMBER` - Users must select the correct number from a group of three numbers
+         - `ENTER_MANUALLY` - Users must enter the number that was shown
+      enum:
+      - SELECT_NUMBER
+      - ENTER_MANUALLY
       type: string
     EnumApplicationSAMLSloBinding:
       default: HTTP_POST
@@ -38263,6 +38302,18 @@ components:
       - SPLUNK
       - NEWRELIC
       type: string
+    EnumSubscriptionPayloadOptionsMaximumPayloadLimitType:
+      description: The type of payload to use for limiting subscriptions.
+      enum:
+      - EVENTS_PER_PAYLOAD
+      - KB_PER_PAYLOAD
+      type: string
+    EnumSubscriptionPayloadFormatHttpsFormat:
+      description: The payload format.
+      enum:
+      - JSON_ARRAY
+      - ND_JSON
+      type: string
     EnumTemplateContentDeliveryMethod:
       description: "The content's delivery method. Possible values are `Email`, `SMS`,\
         \ `Voice` or `Push`. Cannot be changed after it is initially set in `POST\
@@ -38825,6 +38876,14 @@ components:
             description: A string that specifies the custom home page URL for the
               application.
             type: string
+          externalId:
+            description: "For applications whose type is `PORTAL_LINK_APP`, you can\
+              \ use this field to specify an external ID that should be used for the\
+              \ application in contexts such as targeted risk policies. Note that\
+              \ `PORTAL_LINK_APP` applications that do not have an external ID specified\
+              \ are not displayed in the list of applications when defining a targeted\
+              \ risk policy in the UI."
+            type: string
         required:
         - homePageUrl
         type: object
@@ -38869,6 +38928,15 @@ components:
           enableRequestedAuthnContext:
             description: Indicates whether `requestedAuthnContext` is taken into account
               in policy decision-making during authentication.
+            type: boolean
+          enableAlwaysAcceptAcsUrlInSignedAuthnRequest:
+            description: "If enabled (true), this indicates that when a service provider\
+              \ (SP) specifies an ACS URL in its AuthnRequest, and signs the AuthnRequest,\
+              \ then assuming the identity provider (IdP) can validate the signature,\
+              \ the IdP can accept the ACS URL as valid. This is so, regardless of\
+              \ whether the ACS URL is specified in acsUrls as an allowable ACS URL\
+              \ (refer to [Applications SAML metadata settings data model](https://developer.pingidentity.com/pingone-api/platform/applications/applications-1.html#applications-saml-settings-metadata-model)).\
+              \ Enabling this setting is useful when an SP generates ACS URLs dynamically."
             type: boolean
           idpSigning:
             $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning'
@@ -39042,16 +39110,6 @@ components:
             type: string
           mobile:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile'
-          bundleId:
-            deprecated: true
-            description: |
-              **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
-            type: string
-          packageName:
-            deprecated: true
-            description: |
-              **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
-            type: string
           kerberos:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
           grantTypes:
@@ -39136,6 +39194,10 @@ components:
               0 and 86400 seconds. Null is treated the same as 0.
             maximum: 86400
             type: integer
+          refreshTokenType:
+            items:
+              $ref: '#/components/schemas/EnumApplicationOIDCRefreshTokenType'
+            type: array
           requestScopesForMultipleResourcesEnabled:
             default: false
             description: "Specifies whether the application can request scopes from\
@@ -39424,6 +39486,13 @@ components:
       allOf:
       - $ref: '#/components/schemas/Application'
       - properties:
+          assertionDuration:
+            default: 300
+            description: The assertion validity duration in seconds. The default value
+              is 300 seconds (5 minutes). Valid values are between 300 and 3932100.
+            maximum: 3932100
+            minimum: 300
+            type: integer
           audienceRestriction:
             default: urn:federation:MicrosoftOnline
             description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
@@ -39448,6 +39517,11 @@ components:
             type: string
           subjectNameIdentifierFormat:
             $ref: '#/components/schemas/EnumApplicationWSFEDSubjectNameIdentifierFormat'
+          wsTrustVersion:
+            description: The WS-Trust (Web Services Trust) version to use. Valid values
+              are `1.2` and `1.3`.
+            pattern: ^(1\.2|1\.3)$
+            type: string
         required:
         - domainName
         - idpSigning
@@ -40036,7 +40110,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 5.533258397034986
+        size: 4.258773108174356
         _links:
           key:
             href: https://openapi-generator.tech
@@ -40069,22 +40143,32 @@ components:
               type: null
             enabled: true
           subscriptions:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            _links:
+          - _links:
               key:
                 href: https://openapi-generator.tech
             format: null
+            tlsClientAuthKeyPair:
+              id: id
+            payloadOptions:
+              maximumPayloadLimit:
+                size: 4
+                type: null
+              payloadFormat:
+                format:
+                  https:
+                    prettyPrint: true
+                    format: null
+            enabled: true
+            verifyTlsCertificates: true
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             httpEndpoint:
               headers:
                 key: headers
               url: url
             name: name
-            tlsClientAuthKeyPair:
-              id: id
             id: id
-            enabled: true
             filterOptions:
               includedActionTypes:
               - includedActionTypes
@@ -40100,24 +40184,33 @@ components:
               includedApplications:
               - id: id
               - id: id
-            verifyTlsCertificates: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            environment:
-              id: id
-            _links:
+          - _links:
               key:
                 href: https://openapi-generator.tech
             format: null
+            tlsClientAuthKeyPair:
+              id: id
+            payloadOptions:
+              maximumPayloadLimit:
+                size: 4
+                type: null
+              payloadFormat:
+                format:
+                  https:
+                    prettyPrint: true
+                    format: null
+            enabled: true
+            verifyTlsCertificates: true
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             httpEndpoint:
               headers:
                 key: headers
               url: url
             name: name
-            tlsClientAuthKeyPair:
-              id: id
             id: id
-            enabled: true
             filterOptions:
               includedActionTypes:
               - includedActionTypes
@@ -40133,7 +40226,6 @@ components:
               includedApplications:
               - id: id
               - id: id
-            verifyTlsCertificates: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           credentials:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -40394,80 +40486,90 @@ components:
             id: id
             key: key
           passwordPolicies:
-          - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-              "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-              abcdefghijklmnopqrstuvwxyz: 0
-            populationCount: 8
+          - populationCount: 3
             _links:
               key:
                 href: https://openapi-generator.tech
-            length:
-              min: 24
-              max: 2
-            notSimilarToCurrent: true
             description: description
-            newPassword: newPassword
             excludesCommonlyUsed: true
-            history:
-              retentionDays: 1
-              count: 1
-            minComplexity: 0
-            excludesProfileData: true
-            currentPassword: currentPassword
+            minComplexity: 4
             createdAt: createdAt
             default: true
-            environment:
-              id: id
-            lockout:
-              durationSeconds: 1
-              failureCount: 1
-            bypassPolicy: false
-            minUniqueCharacters: 4
-            name: name
+            minUniqueCharacters: 8
             maxAgeDays: 1
             id: id
             maxRepeatedCharacters: 3
-            minAgeDays: 1
+            shiftedNumberRowSequenceRule:
+              maxLength: 3
             updatedAt: updatedAt
-          - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-              "0123456789": 7
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-              abcdefghijklmnopqrstuvwxyz: 0
-            populationCount: 8
+            minCharacters:
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+              abcdefghijklmnopqrstuvwxyz: 7
+            length:
+              min: 24
+              max: 6
+            notSimilarToCurrent: true
+            alphabetSequenceRule:
+              maxLength: 2
+            history:
+              retentionDays: 1
+              count: 1
+            qwertySequenceRule:
+              maxLength: 3
+            excludesProfileData: true
+            environment:
+              id: id
+            numberSequenceRule:
+              maxLength: 2
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            name: name
+            minAgeDays: 1
+          - populationCount: 3
             _links:
               key:
                 href: https://openapi-generator.tech
-            length:
-              min: 24
-              max: 2
-            notSimilarToCurrent: true
             description: description
-            newPassword: newPassword
             excludesCommonlyUsed: true
-            history:
-              retentionDays: 1
-              count: 1
-            minComplexity: 0
-            excludesProfileData: true
-            currentPassword: currentPassword
+            minComplexity: 4
             createdAt: createdAt
             default: true
-            environment:
-              id: id
-            lockout:
-              durationSeconds: 1
-              failureCount: 1
-            bypassPolicy: false
-            minUniqueCharacters: 4
-            name: name
+            minUniqueCharacters: 8
             maxAgeDays: 1
             id: id
             maxRepeatedCharacters: 3
-            minAgeDays: 1
+            shiftedNumberRowSequenceRule:
+              maxLength: 3
             updatedAt: updatedAt
+            minCharacters:
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+              abcdefghijklmnopqrstuvwxyz: 7
+            length:
+              min: 24
+              max: 6
+            notSimilarToCurrent: true
+            alphabetSequenceRule:
+              maxLength: 2
+            history:
+              retentionDays: 1
+              count: 1
+            qwertySequenceRule:
+              maxLength: 3
+            excludesProfileData: true
+            environment:
+              id: id
+            numberSequenceRule:
+              maxLength: 2
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            name: name
+            minAgeDays: 1
           revisions:
           - agreement:
               id: id
@@ -40981,7 +41083,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 0
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41052,7 +41154,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 0
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41708,7 +41810,7 @@ components:
             default: true
             environment:
               id: id
-            userCount: 7
+            userCount: 5
             name: name
             theme:
               id: id
@@ -41728,7 +41830,7 @@ components:
             default: true
             environment:
               id: id
-            userCount: 7
+            userCount: 5
             name: name
             theme:
               id: id
@@ -41829,7 +41931,7 @@ components:
           applications:
           - null
           - null
-        count: 7.04836565559697
+        count: 6.628464275087742
       properties:
         _links:
           additionalProperties:
@@ -44584,64 +44686,59 @@ components:
       type: object
     PasswordPolicy:
       example:
-        minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-          "0123456789": 7
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-          abcdefghijklmnopqrstuvwxyz: 0
-        populationCount: 8
+        populationCount: 3
         _links:
           key:
             href: https://openapi-generator.tech
-        length:
-          min: 24
-          max: 2
-        notSimilarToCurrent: true
         description: description
-        newPassword: newPassword
         excludesCommonlyUsed: true
-        history:
-          retentionDays: 1
-          count: 1
-        minComplexity: 0
-        excludesProfileData: true
-        currentPassword: currentPassword
+        minComplexity: 4
         createdAt: createdAt
         default: true
-        environment:
-          id: id
-        lockout:
-          durationSeconds: 1
-          failureCount: 1
-        bypassPolicy: false
-        minUniqueCharacters: 4
-        name: name
+        minUniqueCharacters: 8
         maxAgeDays: 1
         id: id
         maxRepeatedCharacters: 3
-        minAgeDays: 1
+        shiftedNumberRowSequenceRule:
+          maxLength: 3
         updatedAt: updatedAt
+        minCharacters:
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+          "0123456789": 6
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+          abcdefghijklmnopqrstuvwxyz: 7
+        length:
+          min: 24
+          max: 6
+        notSimilarToCurrent: true
+        alphabetSequenceRule:
+          maxLength: 2
+        history:
+          retentionDays: 1
+          count: 1
+        qwertySequenceRule:
+          maxLength: 3
+        excludesProfileData: true
+        environment:
+          id: id
+        numberSequenceRule:
+          maxLength: 2
+        lockout:
+          durationSeconds: 1
+          failureCount: 1
+        name: name
+        minAgeDays: 1
       properties:
         _links:
           additionalProperties:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
-        bypassPolicy:
-          default: false
-          description: "Determines whether the password policy for a user will be\
-            \ ignored. If this property is omitted from a CREATE Password Policy request,\
-            \ its value is set to false."
-          type: boolean
+        alphabetSequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_alphabetSequenceRule'
         createdAt:
           description: The date and time the resource was created (format ISO-8061).
           readOnly: true
-          type: string
-        currentPassword:
-          description: The current password to be verified before the new password
-            is set. Required for self-change when the user already has a password
-            (the user whose password is being changed is the same as the actor in
-            the access token).
           type: string
         default:
           description: "Indicates whether this password policy is enforced within\
@@ -44705,9 +44802,6 @@ components:
           description: The name of the password policy. This value must be unique
             within the environment.
           type: string
-        newPassword:
-          description: The new password (must satisfy all requirements).
-          type: string
         notSimilarToCurrent:
           description: "Set this to true to ensure that the proposed password is not\
             \ too similar to the user's current password based on the Levenshtein\
@@ -44716,6 +44810,10 @@ components:
             \ the new password. By design, PingOne does not know the user's current\
             \ password."
           type: boolean
+        numberSequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_numberSequenceRule'
+        shiftedNumberRowSequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_shiftedNumberRowSequenceRule'
         populationCount:
           description: Returned in the response. The number of populations associated
             with the password policy.
@@ -44725,6 +44823,8 @@ components:
           description: The date and time the resource was last updated (format ISO-8061).
           readOnly: true
           type: string
+        qwertySequenceRule:
+          $ref: '#/components/schemas/PasswordPolicy_qwertySequenceRule'
       required:
       - excludesCommonlyUsed
       - excludesProfileData
@@ -44781,7 +44881,7 @@ components:
         default: true
         environment:
           id: id
-        userCount: 7
+        userCount: 5
         name: name
         theme:
           id: id
@@ -46773,22 +46873,32 @@ components:
       type: object
     Subscription:
       example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        environment:
-          id: id
         _links:
           key:
             href: https://openapi-generator.tech
         format: null
+        tlsClientAuthKeyPair:
+          id: id
+        payloadOptions:
+          maximumPayloadLimit:
+            size: 4
+            type: null
+          payloadFormat:
+            format:
+              https:
+                prettyPrint: true
+                format: null
+        enabled: true
+        verifyTlsCertificates: true
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
         httpEndpoint:
           headers:
             key: headers
           url: url
         name: name
-        tlsClientAuthKeyPair:
-          id: id
         id: id
-        enabled: true
         filterOptions:
           includedActionTypes:
           - includedActionTypes
@@ -46804,7 +46914,6 @@ components:
           includedApplications:
           - id: id
           - id: id
-        verifyTlsCertificates: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -46844,6 +46953,8 @@ components:
           description: A string that specifies the subscription name. This is a required
             property.
           type: string
+        payloadOptions:
+          $ref: '#/components/schemas/Subscription_payloadOptions'
         tlsClientAuthKeyPair:
           $ref: '#/components/schemas/Subscription_tlsClientAuthKeyPair'
         updatedAt:
@@ -47173,7 +47284,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 3
+          secondsUntilUnlock: 0
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -47405,7 +47516,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 3
+        secondsUntilUnlock: 0
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -47889,6 +48000,18 @@ components:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection_googlePlay'
       type: object
       example: null
+    ApplicationOIDC_allOf_mobile_push_numberMatching:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumApplicationPushNumberMatchingType'
+      type: object
+      example: null
+    ApplicationOIDC_allOf_mobile_push:
+      properties:
+        numberMatching:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_push_numberMatching'
+      type: object
+      example: null
     ApplicationOIDC_allOf_mobile:
       properties:
         bundleId:
@@ -47915,10 +48038,24 @@ components:
             \ is unique per environment, and once defined, is immutable. Used only\
             \ for applications for the Huawei ecosystem."
           type: string
+        passcodeGracePeriod:
+          description: "To cover time synchronization issues, you can use this field\
+            \ to customize the grace period during which the passcode can still be\
+            \ used even after the passcode has been refreshed. The value of the parameter\
+            \ should be the number of windows to use (min 1, max 10). In this context,\
+            \ a window is equal to the passcode refresh period in either direction.\
+            \ For example, if you defined a passcode refresh duration of 30 seconds\
+            \ and a grace period of 2 windows, the passcode is valid for 150 seconds\
+            \ (from 60 seconds behind the time of issue until 60 seconds past the\
+            \ expiration time). When this field is not included, the default value\
+            \ used is 5 windows."
+          type: integer
         passcodeRefreshDuration:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_passcodeRefreshDuration'
         integrityDetection:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection'
+        push:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_push'
         uriPrefix:
           description: "A string that specifies a URI prefix that enables direct triggering\
             \ of the mobile application when scanning a QR code. The URI prefix can\
@@ -48491,22 +48628,32 @@ components:
             type: null
           enabled: true
         subscriptions:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          _links:
+        - _links:
             key:
               href: https://openapi-generator.tech
           format: null
+          tlsClientAuthKeyPair:
+            id: id
+          payloadOptions:
+            maximumPayloadLimit:
+              size: 4
+              type: null
+            payloadFormat:
+              format:
+                https:
+                  prettyPrint: true
+                  format: null
+          enabled: true
+          verifyTlsCertificates: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           httpEndpoint:
             headers:
               key: headers
             url: url
           name: name
-          tlsClientAuthKeyPair:
-            id: id
           id: id
-          enabled: true
           filterOptions:
             includedActionTypes:
             - includedActionTypes
@@ -48522,24 +48669,33 @@ components:
             includedApplications:
             - id: id
             - id: id
-          verifyTlsCertificates: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          _links:
+        - _links:
             key:
               href: https://openapi-generator.tech
           format: null
+          tlsClientAuthKeyPair:
+            id: id
+          payloadOptions:
+            maximumPayloadLimit:
+              size: 4
+              type: null
+            payloadFormat:
+              format:
+                https:
+                  prettyPrint: true
+                  format: null
+          enabled: true
+          verifyTlsCertificates: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           httpEndpoint:
             headers:
               key: headers
             url: url
           name: name
-          tlsClientAuthKeyPair:
-            id: id
           id: id
-          enabled: true
           filterOptions:
             includedActionTypes:
             - includedActionTypes
@@ -48555,7 +48711,6 @@ components:
             includedApplications:
             - id: id
             - id: id
-          verifyTlsCertificates: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         credentials:
         - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -48816,80 +48971,90 @@ components:
           id: id
           key: key
         passwordPolicies:
-        - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-            "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-            abcdefghijklmnopqrstuvwxyz: 0
-          populationCount: 8
+        - populationCount: 3
           _links:
             key:
               href: https://openapi-generator.tech
-          length:
-            min: 24
-            max: 2
-          notSimilarToCurrent: true
           description: description
-          newPassword: newPassword
           excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 0
-          excludesProfileData: true
-          currentPassword: currentPassword
+          minComplexity: 4
           createdAt: createdAt
           default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 4
-          name: name
+          minUniqueCharacters: 8
           maxAgeDays: 1
           id: id
           maxRepeatedCharacters: 3
-          minAgeDays: 1
+          shiftedNumberRowSequenceRule:
+            maxLength: 3
           updatedAt: updatedAt
-        - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-            "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-            abcdefghijklmnopqrstuvwxyz: 0
-          populationCount: 8
+          minCharacters:
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+            abcdefghijklmnopqrstuvwxyz: 7
+          length:
+            min: 24
+            max: 6
+          notSimilarToCurrent: true
+          alphabetSequenceRule:
+            maxLength: 2
+          history:
+            retentionDays: 1
+            count: 1
+          qwertySequenceRule:
+            maxLength: 3
+          excludesProfileData: true
+          environment:
+            id: id
+          numberSequenceRule:
+            maxLength: 2
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          name: name
+          minAgeDays: 1
+        - populationCount: 3
           _links:
             key:
               href: https://openapi-generator.tech
-          length:
-            min: 24
-            max: 2
-          notSimilarToCurrent: true
           description: description
-          newPassword: newPassword
           excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 0
-          excludesProfileData: true
-          currentPassword: currentPassword
+          minComplexity: 4
           createdAt: createdAt
           default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 4
-          name: name
+          minUniqueCharacters: 8
           maxAgeDays: 1
           id: id
           maxRepeatedCharacters: 3
-          minAgeDays: 1
+          shiftedNumberRowSequenceRule:
+            maxLength: 3
           updatedAt: updatedAt
+          minCharacters:
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+            abcdefghijklmnopqrstuvwxyz: 7
+          length:
+            min: 24
+            max: 6
+          notSimilarToCurrent: true
+          alphabetSequenceRule:
+            maxLength: 2
+          history:
+            retentionDays: 1
+            count: 1
+          qwertySequenceRule:
+            maxLength: 3
+          excludesProfileData: true
+          environment:
+            id: id
+          numberSequenceRule:
+            maxLength: 2
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          name: name
+          minAgeDays: 1
         revisions:
         - agreement:
             id: id
@@ -49403,7 +49568,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 0
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -49474,7 +49639,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 0
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -50130,7 +50295,7 @@ components:
           default: true
           environment:
             id: id
-          userCount: 7
+          userCount: 5
           name: name
           theme:
             id: id
@@ -50150,7 +50315,7 @@ components:
           default: true
           environment:
             id: id
-          userCount: 7
+          userCount: 5
           name: name
           theme:
             id: id
@@ -51909,6 +52074,19 @@ components:
         innerError:
           $ref: '#/components/schemas/P1Error_details_inner_innerError'
       type: object
+    PasswordPolicy_alphabetSequenceRule:
+      description: Number sequence rule options
+      example:
+        maxLength: 2
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential English letters in the
+            password. Must be a value of 2 or 3.
+          format: int32
+          maximum: 3
+          minimum: 2
+          type: integer
+      type: object
     PasswordPolicy_history:
       description: Settings to control the users password history
       example:
@@ -51930,7 +52108,7 @@ components:
       description: Settings to control the user's password length
       example:
         min: 24
-        max: 2
+        max: 6
       properties:
         max:
           default: 255
@@ -51972,10 +52150,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-        "0123456789": 7
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 7
-        abcdefghijklmnopqrstuvwxyz: 0
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+        "0123456789": 6
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 0
+        abcdefghijklmnopqrstuvwxyz: 7
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
@@ -51992,6 +52170,47 @@ components:
         "~!@#$%^&*()-_=+[]{}|;:,.<>/?":
           description: "Count of special characters (`~!@#$%^&*()-_=+[]{}\\\\|;:,.<>/?`)\
             \ that should feature in the user's password."
+          type: integer
+      type: object
+    PasswordPolicy_numberSequenceRule:
+      description: Number sequence rule options
+      example:
+        maxLength: 2
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential numbers in the password.
+            Must be a value of 2 or 3.
+          format: int32
+          maximum: 3
+          minimum: 2
+          type: integer
+      type: object
+    PasswordPolicy_shiftedNumberRowSequenceRule:
+      description: Options to control policy rules for the allowed sequential symbol
+        row characters.
+      example:
+        maxLength: 3
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential symbol row characters.
+            Must be a value of 3.
+          format: int32
+          maximum: 3
+          minimum: 3
+          type: integer
+      type: object
+    PasswordPolicy_qwertySequenceRule:
+      description: Options to control policy rules for the number of allowed sequential
+        QWERTY keyboard characters in the password.
+      example:
+        maxLength: 3
+      properties:
+        maxLength:
+          description: Maximum number of allowed sequential QWERTY keyboard characters
+            in the password. Must be a value of 3.
+          format: int32
+          maximum: 3
+          minimum: 3
           type: integer
       type: object
     Population_passwordPolicy:
@@ -52775,6 +52994,66 @@ components:
           type: object
       required:
       - url
+      type: object
+    Subscription_payloadOptions_maximumPayloadLimit:
+      example:
+        size: 4
+        type: null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumSubscriptionPayloadOptionsMaximumPayloadLimitType'
+        size:
+          description: The maximum size of the payload based on `type`. For `EVENTS_PER_PAYLOAD`
+            this can be from `1` to `500` events (defaults to `500`). For `KB_PER_PAYLOAD`
+            this can be from `1` to `4096` kilobytes.
+          type: integer
+      type: object
+    Subscription_payloadOptions_payloadFormat_format_https:
+      example:
+        prettyPrint: true
+        format: null
+      properties:
+        format:
+          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatHttpsFormat'
+        prettyPrint:
+          description: Only applicable when `format` is `JSON_ARRAY`. Pretty-print
+            is enabled when `true`.
+          type: boolean
+      type: object
+    Subscription_payloadOptions_payloadFormat_format:
+      example:
+        https:
+          prettyPrint: true
+          format: null
+      properties:
+        https:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format_https'
+      type: object
+    Subscription_payloadOptions_payloadFormat:
+      example:
+        format:
+          https:
+            prettyPrint: true
+            format: null
+      properties:
+        format:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format'
+      type: object
+    Subscription_payloadOptions:
+      example:
+        maximumPayloadLimit:
+          size: 4
+          type: null
+        payloadFormat:
+          format:
+            https:
+              prettyPrint: true
+              format: null
+      properties:
+        maximumPayloadLimit:
+          $ref: '#/components/schemas/Subscription_payloadOptions_maximumPayloadLimit'
+        payloadFormat:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat'
       type: object
     Subscription_tlsClientAuthKeyPair:
       description: An onject that describes the TLS client authentication key pair

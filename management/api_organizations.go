@@ -343,7 +343,7 @@ func (a *OrganizationsApiService) internalReadOneOrganizationExecute(r ApiReadOn
 	}
 
 	localVarPath := localBasePath + "/organizations/{organizationID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

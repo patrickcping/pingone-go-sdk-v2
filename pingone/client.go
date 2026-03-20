@@ -32,7 +32,7 @@ type Client struct {
 	Region               model.RegionMapping
 }
 
-var version = "0.14.6"
+var version = "0.14.10"
 
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
@@ -104,7 +104,7 @@ func AuthorizeAPIClient(token *oauth2.Token) (*authorize.APIClient, error) {
 	client = authorize.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Authorize client")
+		return nil, fmt.Errorf("cannot initialise PingOne Authorize client")
 	}
 
 	return client, nil
@@ -170,7 +170,7 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 	client = authorize.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Authorize client")
+		return nil, fmt.Errorf("cannot initialise PingOne Authorize client")
 	}
 
 	return client, nil
@@ -187,7 +187,7 @@ func CredentialsAPIClient(token *oauth2.Token) (*credentials.APIClient, error) {
 	client = credentials.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Credentials client")
+		return nil, fmt.Errorf("cannot initialise PingOne Credentials client")
 	}
 
 	return client, nil
@@ -253,7 +253,7 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 	client = credentials.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Credentials client")
+		return nil, fmt.Errorf("cannot initialise PingOne Credentials client")
 	}
 
 	return client, nil
@@ -269,7 +269,7 @@ func ManagementAPIClient(token *oauth2.Token) (*management.APIClient, error) {
 	client = management.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Management client")
+		return nil, fmt.Errorf("cannot initialise PingOne Management client")
 	}
 
 	return client, nil
@@ -335,7 +335,7 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 	client = management.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Management client")
+		return nil, fmt.Errorf("cannot initialise PingOne Management client")
 	}
 
 	return client, nil
@@ -351,7 +351,7 @@ func MFAAPIClient(token *oauth2.Token) (*mfa.APIClient, error) {
 	client = mfa.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne MFA client")
+		return nil, fmt.Errorf("cannot initialise PingOne MFA client")
 	}
 
 	return client, nil
@@ -417,7 +417,7 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 	client = mfa.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne MFA client")
+		return nil, fmt.Errorf("cannot initialise PingOne MFA client")
 	}
 
 	return client, nil
@@ -433,7 +433,7 @@ func RiskAPIClient(token *oauth2.Token) (*risk.APIClient, error) {
 	client = risk.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Risk client")
+		return nil, fmt.Errorf("cannot initialise PingOne Risk client")
 	}
 
 	return client, nil
@@ -499,7 +499,7 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 	client = risk.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Risk client")
+		return nil, fmt.Errorf("cannot initialise PingOne Risk client")
 	}
 
 	return client, nil
@@ -515,7 +515,7 @@ func VerifyAPIClient(token *oauth2.Token) (*verify.APIClient, error) {
 	client = verify.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Verify client")
+		return nil, fmt.Errorf("cannot initialise PingOne Verify client")
 	}
 
 	return client, nil
@@ -581,7 +581,7 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 	client = verify.NewAPIClient(clientcfg)
 
 	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Verify client")
+		return nil, fmt.Errorf("cannot initialise PingOne Verify client")
 	}
 
 	return client, nil
@@ -592,7 +592,7 @@ func (c *Config) getToken(ctx context.Context) error {
 	if !checkForValue(c.AccessToken) {
 
 		if !checkForValue(c.ClientID) || !checkForValue(c.ClientSecret) || !checkForValue(c.EnvironmentID) || (!checkForValue(c.Region) && !checkForValue(c.RegionCode)) {
-			return fmt.Errorf("Required parameter missing.  Must provide ClientID, ClientSecret, EnvironmentID and Region.")
+			return fmt.Errorf("required parameter missing.  Must provide ClientID, ClientSecret, EnvironmentID and Region")
 		}
 
 		var region model.RegionMapping
@@ -627,7 +627,7 @@ func (c *Config) getToken(ctx context.Context) error {
 				// Parse the proxy URL
 				proxyURLParsed, err := url.Parse(*v)
 				if err != nil {
-					return nil, fmt.Errorf("Failed to parse proxy URL: %s", err)
+					return nil, fmt.Errorf("failed to parse proxy URL: %s", err)
 				}
 
 				// Create a new Transport object with the proxy settings

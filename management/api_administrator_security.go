@@ -96,7 +96,7 @@ func (a *AdministratorSecurityApiService) internalReadAdministratorSecurityExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/adminConfig"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -336,7 +336,7 @@ func (a *AdministratorSecurityApiService) internalUpdateAdministratorSecurityExe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/adminConfig"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

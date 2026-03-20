@@ -25,6 +25,8 @@ const (
 	ENUMAPPLICATIONOIDCGRANTTYPE_REFRESH_TOKEN      EnumApplicationOIDCGrantType = "REFRESH_TOKEN"
 	ENUMAPPLICATIONOIDCGRANTTYPE_CLIENT_CREDENTIALS EnumApplicationOIDCGrantType = "CLIENT_CREDENTIALS"
 	ENUMAPPLICATIONOIDCGRANTTYPE_DEVICE_CODE        EnumApplicationOIDCGrantType = "DEVICE_CODE"
+	ENUMAPPLICATIONOIDCGRANTTYPE_TOKEN_EXCHANGE     EnumApplicationOIDCGrantType = "TOKEN_EXCHANGE"
+	ENUMAPPLICATIONOIDCGRANTTYPE_CIBA               EnumApplicationOIDCGrantType = "CIBA"
 )
 
 // All allowed values of EnumApplicationOIDCGrantType enum
@@ -34,6 +36,8 @@ var AllowedEnumApplicationOIDCGrantTypeEnumValues = []EnumApplicationOIDCGrantTy
 	"REFRESH_TOKEN",
 	"CLIENT_CREDENTIALS",
 	"DEVICE_CODE",
+	"TOKEN_EXCHANGE",
+	"CIBA",
 }
 
 func (v *EnumApplicationOIDCGrantType) UnmarshalJSON(src []byte) error {

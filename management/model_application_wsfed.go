@@ -42,6 +42,8 @@ type ApplicationWSFED struct {
 	Type     EnumApplicationType     `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// The assertion validity duration in seconds. The default value is 300 seconds (5 minutes). Valid values are between 300 and 3932100.
+	AssertionDuration *int32 `json:"assertionDuration,omitempty"`
 	// The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
 	AudienceRestriction *string                  `json:"audienceRestriction,omitempty"`
 	CorsSettings        *ApplicationCorsSettings `json:"corsSettings,omitempty"`
@@ -54,6 +56,8 @@ type ApplicationWSFED struct {
 	// The single logout endpoint URL.
 	SloEndpoint                 *string                                          `json:"sloEndpoint,omitempty"`
 	SubjectNameIdentifierFormat *EnumApplicationWSFEDSubjectNameIdentifierFormat `json:"subjectNameIdentifierFormat,omitempty"`
+	// The WS-Trust (Web Services Trust) version to use. Valid values are `1.2` and `1.3`.
+	WsTrustVersion *string `json:"wsTrustVersion,omitempty"`
 }
 
 // NewApplicationWSFED instantiates a new ApplicationWSFED object
@@ -66,6 +70,8 @@ func NewApplicationWSFED(enabled bool, name string, protocol EnumApplicationProt
 	this.Name = name
 	this.Protocol = protocol
 	this.Type = type_
+	var assertionDuration int32 = 300
+	this.AssertionDuration = &assertionDuration
 	var audienceRestriction string = "urn:federation:MicrosoftOnline"
 	this.AudienceRestriction = &audienceRestriction
 	this.DomainName = domainName
@@ -79,6 +85,8 @@ func NewApplicationWSFED(enabled bool, name string, protocol EnumApplicationProt
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationWSFEDWithDefaults() *ApplicationWSFED {
 	this := ApplicationWSFED{}
+	var assertionDuration int32 = 300
+	this.AssertionDuration = &assertionDuration
 	var audienceRestriction string = "urn:federation:MicrosoftOnline"
 	this.AudienceRestriction = &audienceRestriction
 	return &this
@@ -500,6 +508,38 @@ func (o *ApplicationWSFED) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetAssertionDuration returns the AssertionDuration field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetAssertionDuration() int32 {
+	if o == nil || IsNil(o.AssertionDuration) {
+		var ret int32
+		return ret
+	}
+	return *o.AssertionDuration
+}
+
+// GetAssertionDurationOk returns a tuple with the AssertionDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetAssertionDurationOk() (*int32, bool) {
+	if o == nil || IsNil(o.AssertionDuration) {
+		return nil, false
+	}
+	return o.AssertionDuration, true
+}
+
+// HasAssertionDuration returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasAssertionDuration() bool {
+	if o != nil && !IsNil(o.AssertionDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssertionDuration gets a reference to the given int32 and assigns it to the AssertionDuration field.
+func (o *ApplicationWSFED) SetAssertionDuration(v int32) {
+	o.AssertionDuration = &v
+}
+
 // GetAudienceRestriction returns the AudienceRestriction field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetAudienceRestriction() string {
 	if o == nil || IsNil(o.AudienceRestriction) {
@@ -732,6 +772,38 @@ func (o *ApplicationWSFED) SetSubjectNameIdentifierFormat(v EnumApplicationWSFED
 	o.SubjectNameIdentifierFormat = &v
 }
 
+// GetWsTrustVersion returns the WsTrustVersion field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetWsTrustVersion() string {
+	if o == nil || IsNil(o.WsTrustVersion) {
+		var ret string
+		return ret
+	}
+	return *o.WsTrustVersion
+}
+
+// GetWsTrustVersionOk returns a tuple with the WsTrustVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetWsTrustVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.WsTrustVersion) {
+		return nil, false
+	}
+	return o.WsTrustVersion, true
+}
+
+// HasWsTrustVersion returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasWsTrustVersion() bool {
+	if o != nil && !IsNil(o.WsTrustVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetWsTrustVersion gets a reference to the given string and assigns it to the WsTrustVersion field.
+func (o *ApplicationWSFED) SetWsTrustVersion(v string) {
+	o.WsTrustVersion = &v
+}
+
 func (o ApplicationWSFED) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -776,6 +848,9 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
+	if !IsNil(o.AssertionDuration) {
+		toSerialize["assertionDuration"] = o.AssertionDuration
+	}
 	if !IsNil(o.AudienceRestriction) {
 		toSerialize["audienceRestriction"] = o.AudienceRestriction
 	}
@@ -793,6 +868,9 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SubjectNameIdentifierFormat) {
 		toSerialize["subjectNameIdentifierFormat"] = o.SubjectNameIdentifierFormat
+	}
+	if !IsNil(o.WsTrustVersion) {
+		toSerialize["wsTrustVersion"] = o.WsTrustVersion
 	}
 	return toSerialize, nil
 }

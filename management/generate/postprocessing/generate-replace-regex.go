@@ -244,7 +244,7 @@ var (
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(FormField)")
+		return fmt.Errorf("data failed to match schemas in oneOf(FormField)")
 	}
 	return nil
 }
@@ -287,7 +287,7 @@ var (
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
+		return fmt.Errorf("data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
 	}
 	return nil
 }
@@ -397,7 +397,7 @@ var (
 		dst.ResourceApplicationResource = nil
 	}
 
-	return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedResourcesInner)")
+	return fmt.Errorf("data failed to match schemas in oneOf(EntityArrayEmbeddedResourcesInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
@@ -448,7 +448,7 @@ var (
 	} else {
 		dst.UserApplicationRoleAssignment = nil
 	}
-	return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedRolesInner)")
+	return fmt.Errorf("data failed to match schemas in oneOf(EntityArrayEmbeddedRolesInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
@@ -485,7 +485,7 @@ var (
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(IntegrationVersion)")
+		return fmt.Errorf("data failed to match schemas in oneOf(IntegrationVersion)")
 	}
 	return nil
 }
@@ -524,7 +524,7 @@ var (
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
+		return fmt.Errorf("data failed to match schemas in oneOf(NotificationsSettingsEmailDeliverySettings)")
 	}
 	return nil
 }
@@ -606,7 +606,7 @@ var (
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(IdentityProvider)")
+		return fmt.Errorf("data failed to match schemas in oneOf(IdentityProvider)")
 	}
 	return nil
 }

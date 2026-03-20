@@ -1,3 +1,11 @@
+# v0.11.2 (2026-03-09)
+
+* **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
+
+# v0.11.1 (2026-02-25)
+
+* **Bug Fix** Added back `OPTIONAL` enum value to `EnumVerify`, removed in error. [#507](https://github.com/patrickcping/pingone-go-sdk-v2/pull/507)
+
 # v0.11.0 (2026-02-13)
 
 * **Breaking Change** Removed `OPTIONAL` enum value from `EnumVerify` as the API no longer supports this value. [#504](https://github.com/patrickcping/pingone-go-sdk-v2/pull/504)

@@ -270,7 +270,7 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(FormField)")
+		return fmt.Errorf("data failed to match schemas in oneOf(FormField)")
 	}
 	return nil
 }

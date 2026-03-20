@@ -146,7 +146,7 @@ func (dst *IdentityProvider) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(IdentityProvider)")
+		return fmt.Errorf("data failed to match schemas in oneOf(IdentityProvider)")
 	}
 	return nil
 }

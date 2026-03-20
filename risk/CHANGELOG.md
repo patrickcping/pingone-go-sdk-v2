@@ -1,3 +1,7 @@
+# v0.21.1 (2026-03-09)
+
+* **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
+
 # v0.21.0 (2025-10-02)
 
 * **Enhancement** Added support for the `GROUPS_INTERSECTION` composite condition type. [#483](https://github.com/patrickcping/pingone-go-sdk-v2/pull/483)
@@ -44,7 +48,7 @@
 
 # v0.14.1 (2024-03-25)
 
-* **Bug** Fixed error "Error when calling `ReadAllRiskPredictors`: Data failed to match schemas in oneOf(RiskPredictor)" when the `EMAIL_REPUTATION` predictor type is in the API's response payload. [#332](https://github.com/patrickcping/pingone-go-sdk-v2/pull/332)
+* **Bug** Fixed error "Error when calling `ReadAllRiskPredictors`: data failed to match schemas in oneOf(RiskPredictor)" when the `EMAIL_REPUTATION` predictor type is in the API's response payload. [#332](https://github.com/patrickcping/pingone-go-sdk-v2/pull/332)
 
 # v0.14.0 (2024-03-15)
 

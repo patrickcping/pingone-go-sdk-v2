@@ -104,8 +104,8 @@ func (a *ApplicationResourcePermissionsApiService) internalCreateApplicationPerm
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationResources/{applicationResourceID}/permissions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *ApplicationResourcePermissionsApiService) internalDeleteApplicationPerm
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourcePermissionID"+"}", url.PathEscape(parameterValueToString(r.applicationResourcePermissionID, "applicationResourcePermissionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourcePermissionID"+"}", url.PathEscape(parameterValueToString(r.applicationResourcePermissionID, "applicationResourcePermissionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *ApplicationResourcePermissionsApiService) internalReadApplicationPermis
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationResources/{applicationResourceID}/permissions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *ApplicationResourcePermissionsApiService) internalReadOneApplicationPer
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourcePermissionID"+"}", url.PathEscape(parameterValueToString(r.applicationResourcePermissionID, "applicationResourcePermissionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourcePermissionID"+"}", url.PathEscape(parameterValueToString(r.applicationResourcePermissionID, "applicationResourcePermissionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *ApplicationResourcePermissionsApiService) internalUpdateApplicationPerm
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourcePermissionID"+"}", url.PathEscape(parameterValueToString(r.applicationResourcePermissionID, "applicationResourcePermissionID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourcePermissionID"+"}", url.PathEscape(parameterValueToString(r.applicationResourcePermissionID, "applicationResourcePermissionID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

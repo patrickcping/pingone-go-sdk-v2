@@ -93,9 +93,9 @@ components:
       description: A string that defines the verification comparison threshold. Options are `LOW`, `MEDIUM` and `HIGH`.      
     EnumVerify:
       type: string
-      enum: [REQUIRED, DISABLED]
+      enum: [REQUIRED, OPTIONAL, DISABLED]
       default: DISABLED
-      description: A string that defines the verification check requirements. Options are `REQUIRED` and `DISABLED`.
+      description: A string that defines the verification check requirements. Options are `REQUIRED`, `OPTIONAL`, and `DISABLED`.
     Environment:
       type: object
       properties:

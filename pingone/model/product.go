@@ -149,7 +149,7 @@ func FindProductByName(product string) (ProductMapping, error) {
 	idx := slices.IndexFunc(productMappingList, func(c ProductMapping) bool { return c.ProductCode == product })
 
 	if idx < 0 {
-		return ProductMapping{}, fmt.Errorf("Cannot find product from name: %s", product)
+		return ProductMapping{}, fmt.Errorf("cannot find product from name: %s", product)
 	}
 
 	return productMappingList[idx], nil
@@ -162,7 +162,7 @@ func FindProductByAPICode(apiCode management.EnumProductType) (ProductMapping, e
 
 	if idx < 0 {
 
-		return ProductMapping{}, fmt.Errorf("Cannot find product from api code: %v", apiCode)
+		return ProductMapping{}, fmt.Errorf("cannot find product from api code: %v", apiCode)
 	}
 
 	return productMappingList[idx], nil

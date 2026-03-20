@@ -1,3 +1,23 @@
+# v0.66.0 (2026-03-16)
+
+* **Note** Removed previously deprecated `BundleId` and `PackageName` from the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `RefreshTokenType` to the `ApplicationOIDC` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `PasscodeGracePeriod` and `Push` to the `ApplicationOIDCAllOfMobile` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `EnableAlwaysAcceptAcsUrlInSignedAuthnRequest` to the `ApplicationSAML` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `AssertionDuration` and `WsTrustVersion` to the `ApplicationWSFED` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `ExternalId` to the `ApplicationExternalLink` data model. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `TOKEN_EXCHANGE` and `CIBA` values to the `EnumApplicationOIDCGrantType` enum type. [#518](https://github.com/patrickcping/pingone-go-sdk-v2/pull/518)
+* **Enhancement** Added `PayloadOptions` to the `Subscription` data model. [#519](https://github.com/patrickcping/pingone-go-sdk-v2/pull/519)
+
+# v0.65.0 (2026-03-09)
+
+* **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
+* **Enhancement** Added `block` and `module` parameters to be able to filter results on the language translations API. [#511](https://github.com/patrickcping/pingone-go-sdk-v2/pull/511) [#513](https://github.com/patrickcping/pingone-go-sdk-v2/pull/513)
+
+# v0.64.0 (2026-02-26)
+
+* **Enhancement** Added `AlphabetSequenceRule`, `NumberSequenceRule`, `ShiftedNumberRowSequenceRule`, `QwertySequenceRule` to the `PasswordPolicy` data model.  Removed `BypassPolicy`, `CurrentPassword`, `NewPassword` from the `PasswordPolicy` data model per API contract. [#502](https://github.com/patrickcping/pingone-go-sdk-v2/pull/502)
+
 # v0.63.0 (2025-12-11)
 
 * **Breaking change** `GrantTypes` is now an optional field on application data models. [#495](https://github.com/patrickcping/pingone-go-sdk-v2/pull/495)

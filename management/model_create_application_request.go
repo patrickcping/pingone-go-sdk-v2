@@ -81,7 +81,7 @@ func (dst *CreateApplicationRequest) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(CreateApplicationRequest)")
+		return fmt.Errorf("data failed to match schemas in oneOf(CreateApplicationRequest)")
 	}
 	return nil
 }

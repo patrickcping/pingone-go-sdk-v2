@@ -5339,12 +5339,35 @@ components:
       required:
       - deviceSelection
       type: object
+    DeviceAuthenticationPolicyCommon_fido2_failure_coolDown:
+      properties:
+        duration:
+          description: "Used in conjunction with `timeUnit` to specify how long the\
+            \ user should be blocked after reaching the maximum number of failures,\
+            \ before they can try authenticating again. Minimum period is two minutes,\
+            \ maximum is 30 minutes."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      type: object
+    DeviceAuthenticationPolicyCommon_fido2_failure:
+      properties:
+        count:
+          description: "The maximum number of times that authentication can fail before\
+            \ user is blocked for the specified period. Minimum is `1`, maximum is\
+            \ `7`."
+          type: integer
+        coolDown:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_fido2_failure_coolDown'
+      type: object
     DeviceAuthenticationPolicyCommon_fido2:
       properties:
         enabled:
           description: A boolean that specifies whether the method is enabled or disabled
             in the policy.
           type: boolean
+        failure:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_fido2_failure'
         pairingDisabled:
           description: You can set `pairingDisabled` to true to prevent users from
             pairing new devices with the relevant method. You can use this option
@@ -5652,6 +5675,18 @@ components:
           type: boolean
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyPingIDDevice_otp'
+        passcodeGracePeriod:
+          description: "Authenticator App (TOTP) passcodes are valid for 30 seconds\
+            \ (refresh duration). However, to cover time synchronization issues, there\
+            \ is a default grace period of 5 times the refresh duration in each direction.\
+            \ Taking the grace period into account, the passcode is valid for the\
+            \ base 30 seconds plus 5 x 30 = 150 seconds behind the time of issue and\
+            \ 150 seconds past the expiration time. You can use the passcodeGracePeriod\
+            \ parameter to shorten or lengthen this period. Specify the number of\
+            \ windows you want to use, with each window representing 30 seconds in\
+            \ both directions. Minimum value is 1 window (total of 90 seconds) and\
+            \ maximum value is 10 windows (total of 630 seconds)."
+          type: integer
         promptForNicknameOnPairing:
           description: Set to `true` if you want to allow users to provide nicknames
             for devices during pairing.

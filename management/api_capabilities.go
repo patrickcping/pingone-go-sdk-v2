@@ -92,7 +92,7 @@ func (a *CapabilitiesApiService) internalEnvironmentsEnvironmentIDCapabilitiesGe
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/capabilities"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -314,7 +314,7 @@ func (a *CapabilitiesApiService) internalOrganizationsOrganizationIDCapabilities
 	}
 
 	localVarPath := localBasePath + "/organizations/{organizationID}/capabilities"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"organizationID"+"}", url.PathEscape(parameterValueToString(r.organizationID, "organizationID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -95,8 +95,8 @@ func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesA
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/activities/{activityID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"activityID"+"}", url.PathEscape(parameterValueToString(r.activityID, "activityID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"activityID"+"}", url.PathEscape(parameterValueToString(r.activityID, "activityID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -331,7 +331,7 @@ func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesG
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/activities"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -565,7 +565,7 @@ func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesP
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/activities"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

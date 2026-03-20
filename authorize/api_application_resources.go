@@ -103,7 +103,7 @@ func (a *ApplicationResourcesApiService) internalReadApplicationResourcesExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationResources"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -340,8 +340,8 @@ func (a *ApplicationResourcesApiService) internalReadOneApplicationResourceExecu
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/applicationResources/{applicationResourceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"applicationResourceID"+"}", url.PathEscape(parameterValueToString(r.applicationResourceID, "applicationResourceID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -104,8 +104,8 @@ func (a *DigitalWalletsApiService) internalCreateDigitalWalletExecute(r ApiCreat
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/digitalWallets"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -344,9 +344,9 @@ func (a *DigitalWalletsApiService) internalDeleteDigitalWalletExecute(r ApiDelet
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/digitalWallets/{digitalWalletID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -582,8 +582,8 @@ func (a *DigitalWalletsApiService) internalReadAllDigitalWalletsExecute(r ApiRea
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/digitalWallets"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -823,9 +823,9 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletExecute(r ApiRead
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/digitalWallets/{digitalWalletID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1073,9 +1073,9 @@ func (a *DigitalWalletsApiService) internalReadOneDigitalWalletCredentialExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/digitalWallets/{digitalWalletID}/provisionedCredentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1321,9 +1321,9 @@ func (a *DigitalWalletsApiService) internalUpdateDigitalWalletExecute(r ApiUpdat
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/users/{userID}/digitalWallets/{digitalWalletID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterValueToString(r.userID, "userID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"digitalWalletID"+"}", url.PathEscape(parameterValueToString(r.digitalWalletID, "digitalWalletID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -95,7 +95,7 @@ func TestValidateAPIHostnameOverride_InvalidFormat(t *testing.T) {
 		t.Fatalf("Invalid Parameter format not successfully verified")
 	}
 
-	if err := config.validateAPIHostnameOverride(); !strings.HasPrefix(err.Error(), "Invalid parameter format") {
+	if err := config.validateAPIHostnameOverride(); !strings.HasPrefix(err.Error(), "invalid parameter format") {
 		t.Fatalf("Invalid Parameter format not successfully verified: %s", err.Error())
 	}
 }
@@ -147,7 +147,7 @@ func TestValidateAuthHostnameOverride_InvalidFormat(t *testing.T) {
 		t.Fatalf("Invalid Parameter format not successfully verified")
 	}
 
-	if err := config.validateAuthHostnameOverride(); !strings.HasPrefix(err.Error(), "Invalid parameter format") {
+	if err := config.validateAuthHostnameOverride(); !strings.HasPrefix(err.Error(), "invalid parameter format") {
 		t.Fatalf("Invalid Parameter format not successfully verified: %s", err.Error())
 	}
 }
@@ -195,7 +195,7 @@ func TestValidateClientID_InvalidFormat(t *testing.T) {
 		ClientID: &value,
 	}
 
-	if err := config.validateClientID(); !strings.HasPrefix(err.Error(), "Invalid parameter format") {
+	if err := config.validateClientID(); !strings.HasPrefix(err.Error(), "invalid parameter format") {
 		t.Fatalf("Invalid Parameter format not successfully verified: %s", err.Error())
 	}
 }
@@ -283,7 +283,7 @@ func TestValidateEnvironmentID_InvalidFormat(t *testing.T) {
 		EnvironmentID: &value,
 	}
 
-	if err := config.validateEnvironmentID(); !strings.HasPrefix(err.Error(), "Invalid parameter format") {
+	if err := config.validateEnvironmentID(); !strings.HasPrefix(err.Error(), "invalid parameter format") {
 		t.Fatalf("Invalid Parameter format not successfully verified: %s", err.Error())
 	}
 }
@@ -332,7 +332,7 @@ func TestValidateRegion_Deprecated_InvalidValue(t *testing.T) {
 		Region: value,
 	}
 
-	if err := config.validateRegion(); !strings.HasPrefix(err.Error(), "Invalid region value") {
+	if err := config.validateRegion(); !strings.HasPrefix(err.Error(), "invalid region value") {
 		t.Fatalf("Invalid Parameter format not successfully verified: %s", err.Error())
 	}
 }

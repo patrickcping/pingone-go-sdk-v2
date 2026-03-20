@@ -104,8 +104,8 @@ func (a *VoicePhraseContentsApiService) internalCreateVoicePhraseContentExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +355,9 @@ func (a *VoicePhraseContentsApiService) internalDeleteVoicePhraseContentExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -593,8 +593,8 @@ func (a *VoicePhraseContentsApiService) internalReadAllVoicePhraseContentsExecut
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -834,9 +834,9 @@ func (a *VoicePhraseContentsApiService) internalReadOneVoicePhraseContentExecute
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *VoicePhraseContentsApiService) internalUpdateVoicePhraseContentExecute(
 	}
 
 	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
