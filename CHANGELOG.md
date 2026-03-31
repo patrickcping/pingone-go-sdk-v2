@@ -2,7 +2,7 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.67.0](./management/CHANGELOG.md)
   * **Note** Remove redundant data models. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
-  * **Enhancement** Re-aligned the `FormFieldQrCode` model to the API contract for DaVinci Forms. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
+  * **Enhancement** Re-aligned DaVinci Forms data models to the API contract. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
   * **Enhancement** Added support for `FormFieldPolling`, `FormFieldFIDO2`, `FormFieldSingleCheckbox` and `FormFieldAgreement` data models for DaVinci Forms. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
 
 # Release (2026-03-16)
