@@ -3138,6 +3138,9 @@ components:
     FormFlowButton:
       type: object
       properties:
+        key:
+          type: string
+          description: A string that specifies the field content.
         label:
           type: string
           description: A string that specifies the button label.

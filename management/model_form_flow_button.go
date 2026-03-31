@@ -19,6 +19,8 @@ var _ MappedNullable = &FormFlowButton{}
 
 // FormFlowButton struct for FormFlowButton
 type FormFlowButton struct {
+	// A string that specifies the field content.
+	Key string `json:"key"`
 	// A string that specifies the button label.
 	Label  string                `json:"label"`
 	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
@@ -28,8 +30,9 @@ type FormFlowButton struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFlowButton(label string) *FormFlowButton {
+func NewFormFlowButton(key string, label string) *FormFlowButton {
 	this := FormFlowButton{}
+	this.Key = key
 	this.Label = label
 	return &this
 }
@@ -40,6 +43,30 @@ func NewFormFlowButton(label string) *FormFlowButton {
 func NewFormFlowButtonWithDefaults() *FormFlowButton {
 	this := FormFlowButton{}
 	return &this
+}
+
+// GetKey returns the Key field value
+func (o *FormFlowButton) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFlowButton) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFlowButton) SetKey(v string) {
+	o.Key = v
 }
 
 // GetLabel returns the Label field value
@@ -108,6 +135,7 @@ func (o FormFlowButton) MarshalJSON() ([]byte, error) {
 
 func (o FormFlowButton) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles

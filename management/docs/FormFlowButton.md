@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Key** | **string** | A string that specifies the field content. | 
 **Label** | **string** | A string that specifies the button label. | 
 **Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewFormFlowButton
 
-`func NewFormFlowButton(label string, ) *FormFlowButton`
+`func NewFormFlowButton(key string, label string, ) *FormFlowButton`
 
 NewFormFlowButton instantiates a new FormFlowButton object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewFormFlowButtonWithDefaults instantiates a new FormFlowButton object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKey
+
+`func (o *FormFlowButton) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFlowButton) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFlowButton) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetLabel
 

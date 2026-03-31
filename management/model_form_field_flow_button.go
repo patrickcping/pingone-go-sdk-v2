@@ -22,6 +22,8 @@ type FormFieldFlowButton struct {
 	Type       EnumFormFieldType          `json:"type"`
 	Position   FormFieldCommonPosition    `json:"position"`
 	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
+	// A string that specifies the field content.
+	Key string `json:"key"`
 	// A string that specifies the button label.
 	Label  string                `json:"label"`
 	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
@@ -31,10 +33,11 @@ type FormFieldFlowButton struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, label string) *FormFieldFlowButton {
+func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string) *FormFieldFlowButton {
 	this := FormFieldFlowButton{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
 	this.Label = label
 	return &this
 }
@@ -127,6 +130,30 @@ func (o *FormFieldFlowButton) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
 }
 
+// GetKey returns the Key field value
+func (o *FormFieldFlowButton) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldFlowButton) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldFlowButton) SetKey(v string) {
+	o.Key = v
+}
+
 // GetLabel returns the Label field value
 func (o *FormFieldFlowButton) GetLabel() string {
 	if o == nil {
@@ -198,6 +225,7 @@ func (o FormFieldFlowButton) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
 	}
+	toSerialize["key"] = o.Key
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles
