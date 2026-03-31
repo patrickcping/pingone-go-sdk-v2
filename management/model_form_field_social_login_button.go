@@ -19,35 +19,39 @@ var _ MappedNullable = &FormFieldSocialLoginButton{}
 
 // FormFieldSocialLoginButton struct for FormFieldSocialLoginButton
 type FormFieldSocialLoginButton struct {
-	Type     EnumFormFieldType       `json:"type"`
-	Position FormFieldCommonPosition `json:"position"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
 	// A string that specifies an identifier for the field component.
-	Key *string `json:"key,omitempty"`
-	// A string that specifies the social login button label.
-	Label   string                     `json:"label"`
-	Styles  *FormStyles                `json:"styles,omitempty"`
-	IdpType EnumFormSocialLoginIdpType `json:"idpType"`
+	Key string `json:"key"`
 	// A string that specifies the external identity provider name.
-	IdpName string `json:"idpName"`
+	IdpName string                     `json:"idpName"`
+	IdpType EnumFormSocialLoginIdpType `json:"idpType"`
 	// A string that specifies the external identity provider's ID.
 	IdpId string `json:"idpId"`
 	// A boolean that specifies whether the external identity provider is enabled.
 	IdpEnabled bool `json:"idpEnabled"`
+	// A string that specifies the external edentity provider’s image icon URL.
+	IconSrc *string `json:"iconSrc,omitempty"`
+	// A string that specifies the social login button label.
+	Label  string                            `json:"label"`
+	Styles *FormSocialLoginButtonAllOfStyles `json:"styles,omitempty"`
 }
 
 // NewFormFieldSocialLoginButton instantiates a new FormFieldSocialLoginButton object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool) *FormFieldSocialLoginButton {
+func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, idpEnabled bool, label string) *FormFieldSocialLoginButton {
 	this := FormFieldSocialLoginButton{}
 	this.Type = type_
 	this.Position = position
-	this.Label = label
-	this.IdpType = idpType
+	this.Key = key
 	this.IdpName = idpName
+	this.IdpType = idpType
 	this.IdpId = idpId
 	this.IdpEnabled = idpEnabled
+	this.Label = label
 	return &this
 }
 
@@ -107,116 +111,60 @@ func (o *FormFieldSocialLoginButton) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetVisibility returns the Visibility field value if set, zero value otherwise.
+func (o *FormFieldSocialLoginButton) GetVisibility() FormFieldCommonVisibility {
+	if o == nil || IsNil(o.Visibility) {
+		var ret FormFieldCommonVisibility
+		return ret
+	}
+	return *o.Visibility
+}
+
+// GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSocialLoginButton) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
+	if o == nil || IsNil(o.Visibility) {
+		return nil, false
+	}
+	return o.Visibility, true
+}
+
+// HasVisibility returns a boolean if a field has been set.
+func (o *FormFieldSocialLoginButton) HasVisibility() bool {
+	if o != nil && !IsNil(o.Visibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
+func (o *FormFieldSocialLoginButton) SetVisibility(v FormFieldCommonVisibility) {
+	o.Visibility = &v
+}
+
+// GetKey returns the Key field value
 func (o *FormFieldSocialLoginButton) GetKey() string {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Key
+
+	return o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *FormFieldSocialLoginButton) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Key, true
+	return &o.Key, true
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *FormFieldSocialLoginButton) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
+// SetKey sets field value
 func (o *FormFieldSocialLoginButton) SetKey(v string) {
-	o.Key = &v
-}
-
-// GetLabel returns the Label field value
-func (o *FormFieldSocialLoginButton) GetLabel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Label
-}
-
-// GetLabelOk returns a tuple with the Label field value
-// and a boolean to check if the value has been set.
-func (o *FormFieldSocialLoginButton) GetLabelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Label, true
-}
-
-// SetLabel sets field value
-func (o *FormFieldSocialLoginButton) SetLabel(v string) {
-	o.Label = v
-}
-
-// GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormFieldSocialLoginButton) GetStyles() FormStyles {
-	if o == nil || IsNil(o.Styles) {
-		var ret FormStyles
-		return ret
-	}
-	return *o.Styles
-}
-
-// GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormFieldSocialLoginButton) GetStylesOk() (*FormStyles, bool) {
-	if o == nil || IsNil(o.Styles) {
-		return nil, false
-	}
-	return o.Styles, true
-}
-
-// HasStyles returns a boolean if a field has been set.
-func (o *FormFieldSocialLoginButton) HasStyles() bool {
-	if o != nil && !IsNil(o.Styles) {
-		return true
-	}
-
-	return false
-}
-
-// SetStyles gets a reference to the given FormStyles and assigns it to the Styles field.
-func (o *FormFieldSocialLoginButton) SetStyles(v FormStyles) {
-	o.Styles = &v
-}
-
-// GetIdpType returns the IdpType field value
-func (o *FormFieldSocialLoginButton) GetIdpType() EnumFormSocialLoginIdpType {
-	if o == nil {
-		var ret EnumFormSocialLoginIdpType
-		return ret
-	}
-
-	return o.IdpType
-}
-
-// GetIdpTypeOk returns a tuple with the IdpType field value
-// and a boolean to check if the value has been set.
-func (o *FormFieldSocialLoginButton) GetIdpTypeOk() (*EnumFormSocialLoginIdpType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IdpType, true
-}
-
-// SetIdpType sets field value
-func (o *FormFieldSocialLoginButton) SetIdpType(v EnumFormSocialLoginIdpType) {
-	o.IdpType = v
+	o.Key = v
 }
 
 // GetIdpName returns the IdpName field value
@@ -241,6 +189,30 @@ func (o *FormFieldSocialLoginButton) GetIdpNameOk() (*string, bool) {
 // SetIdpName sets field value
 func (o *FormFieldSocialLoginButton) SetIdpName(v string) {
 	o.IdpName = v
+}
+
+// GetIdpType returns the IdpType field value
+func (o *FormFieldSocialLoginButton) GetIdpType() EnumFormSocialLoginIdpType {
+	if o == nil {
+		var ret EnumFormSocialLoginIdpType
+		return ret
+	}
+
+	return o.IdpType
+}
+
+// GetIdpTypeOk returns a tuple with the IdpType field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldSocialLoginButton) GetIdpTypeOk() (*EnumFormSocialLoginIdpType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IdpType, true
+}
+
+// SetIdpType sets field value
+func (o *FormFieldSocialLoginButton) SetIdpType(v EnumFormSocialLoginIdpType) {
+	o.IdpType = v
 }
 
 // GetIdpId returns the IdpId field value
@@ -291,6 +263,94 @@ func (o *FormFieldSocialLoginButton) SetIdpEnabled(v bool) {
 	o.IdpEnabled = v
 }
 
+// GetIconSrc returns the IconSrc field value if set, zero value otherwise.
+func (o *FormFieldSocialLoginButton) GetIconSrc() string {
+	if o == nil || IsNil(o.IconSrc) {
+		var ret string
+		return ret
+	}
+	return *o.IconSrc
+}
+
+// GetIconSrcOk returns a tuple with the IconSrc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSocialLoginButton) GetIconSrcOk() (*string, bool) {
+	if o == nil || IsNil(o.IconSrc) {
+		return nil, false
+	}
+	return o.IconSrc, true
+}
+
+// HasIconSrc returns a boolean if a field has been set.
+func (o *FormFieldSocialLoginButton) HasIconSrc() bool {
+	if o != nil && !IsNil(o.IconSrc) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconSrc gets a reference to the given string and assigns it to the IconSrc field.
+func (o *FormFieldSocialLoginButton) SetIconSrc(v string) {
+	o.IconSrc = &v
+}
+
+// GetLabel returns the Label field value
+func (o *FormFieldSocialLoginButton) GetLabel() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldSocialLoginButton) GetLabelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Label, true
+}
+
+// SetLabel sets field value
+func (o *FormFieldSocialLoginButton) SetLabel(v string) {
+	o.Label = v
+}
+
+// GetStyles returns the Styles field value if set, zero value otherwise.
+func (o *FormFieldSocialLoginButton) GetStyles() FormSocialLoginButtonAllOfStyles {
+	if o == nil || IsNil(o.Styles) {
+		var ret FormSocialLoginButtonAllOfStyles
+		return ret
+	}
+	return *o.Styles
+}
+
+// GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSocialLoginButton) GetStylesOk() (*FormSocialLoginButtonAllOfStyles, bool) {
+	if o == nil || IsNil(o.Styles) {
+		return nil, false
+	}
+	return o.Styles, true
+}
+
+// HasStyles returns a boolean if a field has been set.
+func (o *FormFieldSocialLoginButton) HasStyles() bool {
+	if o != nil && !IsNil(o.Styles) {
+		return true
+	}
+
+	return false
+}
+
+// SetStyles gets a reference to the given FormSocialLoginButtonAllOfStyles and assigns it to the Styles field.
+func (o *FormFieldSocialLoginButton) SetStyles(v FormSocialLoginButtonAllOfStyles) {
+	o.Styles = &v
+}
+
 func (o FormFieldSocialLoginButton) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -303,17 +363,21 @@ func (o FormFieldSocialLoginButton) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
+	if !IsNil(o.Visibility) {
+		toSerialize["visibility"] = o.Visibility
+	}
+	toSerialize["key"] = o.Key
+	toSerialize["idpName"] = o.IdpName
+	toSerialize["idpType"] = o.IdpType
+	toSerialize["idpId"] = o.IdpId
+	toSerialize["idpEnabled"] = o.IdpEnabled
+	if !IsNil(o.IconSrc) {
+		toSerialize["iconSrc"] = o.IconSrc
 	}
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles
 	}
-	toSerialize["idpType"] = o.IdpType
-	toSerialize["idpName"] = o.IdpName
-	toSerialize["idpId"] = o.IdpId
-	toSerialize["idpEnabled"] = o.IdpEnabled
 	return toSerialize, nil
 }
 

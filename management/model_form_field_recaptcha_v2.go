@@ -19,11 +19,12 @@ var _ MappedNullable = &FormFieldRecaptchaV2{}
 
 // FormFieldRecaptchaV2 struct for FormFieldRecaptchaV2
 type FormFieldRecaptchaV2 struct {
-	Type      EnumFormFieldType        `json:"type"`
-	Position  FormFieldCommonPosition  `json:"position"`
-	Size      EnumFormRecaptchaV2Size  `json:"size"`
-	Theme     EnumFormRecaptchaV2Theme `json:"theme"`
-	Alignment EnumFormItemAlignment    `json:"alignment"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
+	Size       EnumFormRecaptchaV2Size    `json:"size"`
+	Theme      EnumFormRecaptchaV2Theme   `json:"theme"`
+	Alignment  EnumFormItemAlignment      `json:"alignment"`
 }
 
 // NewFormFieldRecaptchaV2 instantiates a new FormFieldRecaptchaV2 object
@@ -94,6 +95,38 @@ func (o *FormFieldRecaptchaV2) GetPositionOk() (*FormFieldCommonPosition, bool) 
 // SetPosition sets field value
 func (o *FormFieldRecaptchaV2) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
+}
+
+// GetVisibility returns the Visibility field value if set, zero value otherwise.
+func (o *FormFieldRecaptchaV2) GetVisibility() FormFieldCommonVisibility {
+	if o == nil || IsNil(o.Visibility) {
+		var ret FormFieldCommonVisibility
+		return ret
+	}
+	return *o.Visibility
+}
+
+// GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldRecaptchaV2) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
+	if o == nil || IsNil(o.Visibility) {
+		return nil, false
+	}
+	return o.Visibility, true
+}
+
+// HasVisibility returns a boolean if a field has been set.
+func (o *FormFieldRecaptchaV2) HasVisibility() bool {
+	if o != nil && !IsNil(o.Visibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
+func (o *FormFieldRecaptchaV2) SetVisibility(v FormFieldCommonVisibility) {
+	o.Visibility = &v
 }
 
 // GetSize returns the Size field value
@@ -180,6 +213,9 @@ func (o FormFieldRecaptchaV2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	if !IsNil(o.Visibility) {
+		toSerialize["visibility"] = o.Visibility
+	}
 	toSerialize["size"] = o.Size
 	toSerialize["theme"] = o.Theme
 	toSerialize["alignment"] = o.Alignment

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
-**Key** | Pointer to **string** | A string that specifies an identifier for the field component. | [optional] 
+**Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **Label** | **string** | A string that specifies the button label. | 
-**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
 
 ## Methods
 
@@ -69,30 +69,30 @@ and a boolean to check if the value has been set.
 SetPosition sets Position field to given value.
 
 
-### GetKey
+### GetVisibility
 
-`func (o *FormFieldSubmitButton) GetKey() string`
+`func (o *FormFieldSubmitButton) GetVisibility() FormFieldCommonVisibility`
 
-GetKey returns the Key field if non-nil, zero value otherwise.
+GetVisibility returns the Visibility field if non-nil, zero value otherwise.
 
-### GetKeyOk
+### GetVisibilityOk
 
-`func (o *FormFieldSubmitButton) GetKeyOk() (*string, bool)`
+`func (o *FormFieldSubmitButton) GetVisibilityOk() (*FormFieldCommonVisibility, bool)`
 
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+GetVisibilityOk returns a tuple with the Visibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKey
+### SetVisibility
 
-`func (o *FormFieldSubmitButton) SetKey(v string)`
+`func (o *FormFieldSubmitButton) SetVisibility(v FormFieldCommonVisibility)`
 
-SetKey sets Key field to given value.
+SetVisibility sets Visibility field to given value.
 
-### HasKey
+### HasVisibility
 
-`func (o *FormFieldSubmitButton) HasKey() bool`
+`func (o *FormFieldSubmitButton) HasVisibility() bool`
 
-HasKey returns a boolean if a field has been set.
+HasVisibility returns a boolean if a field has been set.
 
 ### GetLabel
 
@@ -116,20 +116,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormFieldSubmitButton) GetStyles() FormStyles`
+`func (o *FormFieldSubmitButton) GetStyles() FormFlowButtonStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormFieldSubmitButton) GetStylesOk() (*FormStyles, bool)`
+`func (o *FormFieldSubmitButton) GetStylesOk() (*FormFlowButtonStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormFieldSubmitButton) SetStyles(v FormStyles)`
+`func (o *FormFieldSubmitButton) SetStyles(v FormFlowButtonStyles)`
 
 SetStyles sets Styles field to given value.
 

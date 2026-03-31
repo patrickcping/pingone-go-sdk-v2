@@ -19,10 +19,14 @@ var _ MappedNullable = &FormFieldSlateTextblob{}
 
 // FormFieldSlateTextblob struct for FormFieldSlateTextblob
 type FormFieldSlateTextblob struct {
-	Type     EnumFormFieldType       `json:"type"`
-	Position FormFieldCommonPosition `json:"position"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
 	// A string that specifies the field content.
 	Content *string `json:"content,omitempty"`
+	// A string that specifies the field content.
+	Key  *string                    `json:"key,omitempty"`
+	Icon *FormItemWithIconAllOfIcon `json:"icon,omitempty"`
 }
 
 // NewFormFieldSlateTextblob instantiates a new FormFieldSlateTextblob object
@@ -92,6 +96,38 @@ func (o *FormFieldSlateTextblob) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetVisibility returns the Visibility field value if set, zero value otherwise.
+func (o *FormFieldSlateTextblob) GetVisibility() FormFieldCommonVisibility {
+	if o == nil || IsNil(o.Visibility) {
+		var ret FormFieldCommonVisibility
+		return ret
+	}
+	return *o.Visibility
+}
+
+// GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSlateTextblob) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
+	if o == nil || IsNil(o.Visibility) {
+		return nil, false
+	}
+	return o.Visibility, true
+}
+
+// HasVisibility returns a boolean if a field has been set.
+func (o *FormFieldSlateTextblob) HasVisibility() bool {
+	if o != nil && !IsNil(o.Visibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
+func (o *FormFieldSlateTextblob) SetVisibility(v FormFieldCommonVisibility) {
+	o.Visibility = &v
+}
+
 // GetContent returns the Content field value if set, zero value otherwise.
 func (o *FormFieldSlateTextblob) GetContent() string {
 	if o == nil || IsNil(o.Content) {
@@ -124,6 +160,70 @@ func (o *FormFieldSlateTextblob) SetContent(v string) {
 	o.Content = &v
 }
 
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *FormFieldSlateTextblob) GetKey() string {
+	if o == nil || IsNil(o.Key) {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSlateTextblob) GetKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.Key) {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *FormFieldSlateTextblob) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *FormFieldSlateTextblob) SetKey(v string) {
+	o.Key = &v
+}
+
+// GetIcon returns the Icon field value if set, zero value otherwise.
+func (o *FormFieldSlateTextblob) GetIcon() FormItemWithIconAllOfIcon {
+	if o == nil || IsNil(o.Icon) {
+		var ret FormItemWithIconAllOfIcon
+		return ret
+	}
+	return *o.Icon
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSlateTextblob) GetIconOk() (*FormItemWithIconAllOfIcon, bool) {
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
+	}
+	return o.Icon, true
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *FormFieldSlateTextblob) HasIcon() bool {
+	if o != nil && !IsNil(o.Icon) {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given FormItemWithIconAllOfIcon and assigns it to the Icon field.
+func (o *FormFieldSlateTextblob) SetIcon(v FormItemWithIconAllOfIcon) {
+	o.Icon = &v
+}
+
 func (o FormFieldSlateTextblob) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -136,8 +236,17 @@ func (o FormFieldSlateTextblob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	if !IsNil(o.Visibility) {
+		toSerialize["visibility"] = o.Visibility
+	}
 	if !IsNil(o.Content) {
 		toSerialize["content"] = o.Content
+	}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
 	}
 	return toSerialize, nil
 }
