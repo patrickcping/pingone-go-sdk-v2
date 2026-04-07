@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | **string** | A string that specifies a valid HTTPS URL to which event messages are sent. This is a required property. | 
+**Url** | Pointer to **string** | A string that specifies a valid HTTPS URL to which event messages are sent. This is a required property. | [optional] 
 **Headers** | Pointer to **map[string]string** | An object map of strings that specifies the headers applied to the outbound request (for example, &#x60;Authorization&#x60; &#x60;Basic usernamepassword&#x60;. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source. | [optional] 
 
 ## Methods
 
 ### NewSubscriptionHttpEndpoint
 
-`func NewSubscriptionHttpEndpoint(url string, ) *SubscriptionHttpEndpoint`
+`func NewSubscriptionHttpEndpoint() *SubscriptionHttpEndpoint`
 
 NewSubscriptionHttpEndpoint instantiates a new SubscriptionHttpEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
+### HasUrl
+
+`func (o *SubscriptionHttpEndpoint) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
 
 ### GetHeaders
 

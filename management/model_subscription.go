@@ -20,20 +20,22 @@ var _ MappedNullable = &Subscription{}
 
 // Subscription struct for Subscription
 type Subscription struct {
-	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	Links             *map[string]LinksHATEOASValue  `json:"_links,omitempty"`
+	ConnectionDetails *SubscriptionConnectionDetails `json:"connectionDetails,omitempty"`
 	// The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether a created or updated subscription should be active or suspended. A suspended state (`\"enabled\":false`) accumulates all matched events, but these events are not delivered until the subscription becomes active again (`\"enabled\":true`). For suspended subscriptions, events accumulate for a maximum of two weeks. Events older than two weeks are deleted. Restarted subscriptions receive the saved events (up to two weeks from the restart date). This is a required property.
 	Enabled       bool                      `json:"enabled"`
 	Environment   *ObjectEnvironment        `json:"environment,omitempty"`
 	FilterOptions SubscriptionFilterOptions `json:"filterOptions"`
-	Format        EnumSubscriptionFormat    `json:"format"`
+	Format        *EnumSubscriptionFormat   `json:"format,omitempty"`
 	// A string that specifies the user resource’s unique identifier.
-	Id           *string                  `json:"id,omitempty"`
-	HttpEndpoint SubscriptionHttpEndpoint `json:"httpEndpoint"`
+	Id           *string                   `json:"id,omitempty"`
+	HttpEndpoint *SubscriptionHttpEndpoint `json:"httpEndpoint,omitempty"`
 	// A string that specifies the subscription name. This is a required property.
 	Name                 string                            `json:"name"`
 	PayloadOptions       *SubscriptionPayloadOptions       `json:"payloadOptions,omitempty"`
+	Protocol             *EnumSubscriptionProtocol         `json:"protocol,omitempty"`
 	TlsClientAuthKeyPair *SubscriptionTlsClientAuthKeyPair `json:"tlsClientAuthKeyPair,omitempty"`
 	// The date and time at which the subscription resource was last updated (ISO 8601 format).
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
@@ -45,12 +47,10 @@ type Subscription struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscription(enabled bool, filterOptions SubscriptionFilterOptions, format EnumSubscriptionFormat, httpEndpoint SubscriptionHttpEndpoint, name string, verifyTlsCertificates bool) *Subscription {
+func NewSubscription(enabled bool, filterOptions SubscriptionFilterOptions, name string, verifyTlsCertificates bool) *Subscription {
 	this := Subscription{}
 	this.Enabled = enabled
 	this.FilterOptions = filterOptions
-	this.Format = format
-	this.HttpEndpoint = httpEndpoint
 	this.Name = name
 	this.VerifyTlsCertificates = verifyTlsCertificates
 	return &this
@@ -94,6 +94,38 @@ func (o *Subscription) HasLinks() bool {
 // SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
 func (o *Subscription) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
+}
+
+// GetConnectionDetails returns the ConnectionDetails field value if set, zero value otherwise.
+func (o *Subscription) GetConnectionDetails() SubscriptionConnectionDetails {
+	if o == nil || IsNil(o.ConnectionDetails) {
+		var ret SubscriptionConnectionDetails
+		return ret
+	}
+	return *o.ConnectionDetails
+}
+
+// GetConnectionDetailsOk returns a tuple with the ConnectionDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Subscription) GetConnectionDetailsOk() (*SubscriptionConnectionDetails, bool) {
+	if o == nil || IsNil(o.ConnectionDetails) {
+		return nil, false
+	}
+	return o.ConnectionDetails, true
+}
+
+// HasConnectionDetails returns a boolean if a field has been set.
+func (o *Subscription) HasConnectionDetails() bool {
+	if o != nil && !IsNil(o.ConnectionDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionDetails gets a reference to the given SubscriptionConnectionDetails and assigns it to the ConnectionDetails field.
+func (o *Subscription) SetConnectionDetails(v SubscriptionConnectionDetails) {
+	o.ConnectionDetails = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -208,28 +240,36 @@ func (o *Subscription) SetFilterOptions(v SubscriptionFilterOptions) {
 	o.FilterOptions = v
 }
 
-// GetFormat returns the Format field value
+// GetFormat returns the Format field value if set, zero value otherwise.
 func (o *Subscription) GetFormat() EnumSubscriptionFormat {
-	if o == nil {
+	if o == nil || IsNil(o.Format) {
 		var ret EnumSubscriptionFormat
 		return ret
 	}
-
-	return o.Format
+	return *o.Format
 }
 
-// GetFormatOk returns a tuple with the Format field value
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetFormatOk() (*EnumSubscriptionFormat, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Format) {
 		return nil, false
 	}
-	return &o.Format, true
+	return o.Format, true
 }
 
-// SetFormat sets field value
+// HasFormat returns a boolean if a field has been set.
+func (o *Subscription) HasFormat() bool {
+	if o != nil && !IsNil(o.Format) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given EnumSubscriptionFormat and assigns it to the Format field.
 func (o *Subscription) SetFormat(v EnumSubscriptionFormat) {
-	o.Format = v
+	o.Format = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -264,28 +304,36 @@ func (o *Subscription) SetId(v string) {
 	o.Id = &v
 }
 
-// GetHttpEndpoint returns the HttpEndpoint field value
+// GetHttpEndpoint returns the HttpEndpoint field value if set, zero value otherwise.
 func (o *Subscription) GetHttpEndpoint() SubscriptionHttpEndpoint {
-	if o == nil {
+	if o == nil || IsNil(o.HttpEndpoint) {
 		var ret SubscriptionHttpEndpoint
 		return ret
 	}
-
-	return o.HttpEndpoint
+	return *o.HttpEndpoint
 }
 
-// GetHttpEndpointOk returns a tuple with the HttpEndpoint field value
+// GetHttpEndpointOk returns a tuple with the HttpEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetHttpEndpointOk() (*SubscriptionHttpEndpoint, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HttpEndpoint) {
 		return nil, false
 	}
-	return &o.HttpEndpoint, true
+	return o.HttpEndpoint, true
 }
 
-// SetHttpEndpoint sets field value
+// HasHttpEndpoint returns a boolean if a field has been set.
+func (o *Subscription) HasHttpEndpoint() bool {
+	if o != nil && !IsNil(o.HttpEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetHttpEndpoint gets a reference to the given SubscriptionHttpEndpoint and assigns it to the HttpEndpoint field.
 func (o *Subscription) SetHttpEndpoint(v SubscriptionHttpEndpoint) {
-	o.HttpEndpoint = v
+	o.HttpEndpoint = &v
 }
 
 // GetName returns the Name field value
@@ -342,6 +390,38 @@ func (o *Subscription) HasPayloadOptions() bool {
 // SetPayloadOptions gets a reference to the given SubscriptionPayloadOptions and assigns it to the PayloadOptions field.
 func (o *Subscription) SetPayloadOptions(v SubscriptionPayloadOptions) {
 	o.PayloadOptions = &v
+}
+
+// GetProtocol returns the Protocol field value if set, zero value otherwise.
+func (o *Subscription) GetProtocol() EnumSubscriptionProtocol {
+	if o == nil || IsNil(o.Protocol) {
+		var ret EnumSubscriptionProtocol
+		return ret
+	}
+	return *o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Subscription) GetProtocolOk() (*EnumSubscriptionProtocol, bool) {
+	if o == nil || IsNil(o.Protocol) {
+		return nil, false
+	}
+	return o.Protocol, true
+}
+
+// HasProtocol returns a boolean if a field has been set.
+func (o *Subscription) HasProtocol() bool {
+	if o != nil && !IsNil(o.Protocol) {
+		return true
+	}
+
+	return false
+}
+
+// SetProtocol gets a reference to the given EnumSubscriptionProtocol and assigns it to the Protocol field.
+func (o *Subscription) SetProtocol(v EnumSubscriptionProtocol) {
+	o.Protocol = &v
 }
 
 // GetTlsClientAuthKeyPair returns the TlsClientAuthKeyPair field value if set, zero value otherwise.
@@ -445,6 +525,9 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
+	if !IsNil(o.ConnectionDetails) {
+		toSerialize["connectionDetails"] = o.ConnectionDetails
+	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
@@ -453,14 +536,21 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["filterOptions"] = o.FilterOptions
-	toSerialize["format"] = o.Format
+	if !IsNil(o.Format) {
+		toSerialize["format"] = o.Format
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	toSerialize["httpEndpoint"] = o.HttpEndpoint
+	if !IsNil(o.HttpEndpoint) {
+		toSerialize["httpEndpoint"] = o.HttpEndpoint
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.PayloadOptions) {
 		toSerialize["payloadOptions"] = o.PayloadOptions
+	}
+	if !IsNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.TlsClientAuthKeyPair) {
 		toSerialize["tlsClientAuthKeyPair"] = o.TlsClientAuthKeyPair

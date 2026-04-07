@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Tcp** | Pointer to [**SubscriptionPayloadOptionsPayloadFormatFormatTcp**](SubscriptionPayloadOptionsPayloadFormatFormatTcp.md) |  | [optional] 
 **Https** | Pointer to [**SubscriptionPayloadOptionsPayloadFormatFormatHttps**](SubscriptionPayloadOptionsPayloadFormatFormatHttps.md) |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewSubscriptionPayloadOptionsPayloadFormatFormatWithDefaults instantiates a new SubscriptionPayloadOptionsPayloadFormatFormat object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTcp
+
+`func (o *SubscriptionPayloadOptionsPayloadFormatFormat) GetTcp() SubscriptionPayloadOptionsPayloadFormatFormatTcp`
+
+GetTcp returns the Tcp field if non-nil, zero value otherwise.
+
+### GetTcpOk
+
+`func (o *SubscriptionPayloadOptionsPayloadFormatFormat) GetTcpOk() (*SubscriptionPayloadOptionsPayloadFormatFormatTcp, bool)`
+
+GetTcpOk returns a tuple with the Tcp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTcp
+
+`func (o *SubscriptionPayloadOptionsPayloadFormatFormat) SetTcp(v SubscriptionPayloadOptionsPayloadFormatFormatTcp)`
+
+SetTcp sets Tcp field to given value.
+
+### HasTcp
+
+`func (o *SubscriptionPayloadOptionsPayloadFormatFormat) HasTcp() bool`
+
+HasTcp returns a boolean if a field has been set.
 
 ### GetHttps
 

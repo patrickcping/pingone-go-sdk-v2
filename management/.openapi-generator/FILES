@@ -368,7 +368,9 @@ docs/EnumSolutionType.md
 docs/EnumSubscriptionFilterIncludedTags.md
 docs/EnumSubscriptionFormat.md
 docs/EnumSubscriptionPayloadFormatHttpsFormat.md
+docs/EnumSubscriptionPayloadFormatTcpFormat.md
 docs/EnumSubscriptionPayloadOptionsMaximumPayloadLimitType.md
+docs/EnumSubscriptionProtocol.md
 docs/EnumTemplateContentDeliveryMethod.md
 docs/EnumTemplateContentPushCategory.md
 docs/EnumTemplateName.md
@@ -726,6 +728,7 @@ docs/SignOnPolicyActionProgressiveProfilingAllOfAttributes.md
 docs/SignOnPolicyActionsApi.md
 docs/SignOnPolicyAssignment.md
 docs/Subscription.md
+docs/SubscriptionConnectionDetails.md
 docs/SubscriptionFilterOptions.md
 docs/SubscriptionFilterOptionsIncludedApplicationsInner.md
 docs/SubscriptionHttpEndpoint.md
@@ -734,6 +737,7 @@ docs/SubscriptionPayloadOptionsMaximumPayloadLimit.md
 docs/SubscriptionPayloadOptionsPayloadFormat.md
 docs/SubscriptionPayloadOptionsPayloadFormatFormat.md
 docs/SubscriptionPayloadOptionsPayloadFormatFormatHttps.md
+docs/SubscriptionPayloadOptionsPayloadFormatFormatTcp.md
 docs/SubscriptionTlsClientAuthKeyPair.md
 docs/SubscriptionsWebhooksApi.md
 docs/Template.md
@@ -1033,7 +1037,9 @@ model_enum_solution_type.go
 model_enum_subscription_filter_included_tags.go
 model_enum_subscription_format.go
 model_enum_subscription_payload_format_https_format.go
+model_enum_subscription_payload_format_tcp_format.go
 model_enum_subscription_payload_options_maximum_payload_limit_type.go
+model_enum_subscription_protocol.go
 model_enum_template_content_delivery_method.go
 model_enum_template_content_push_category.go
 model_enum_template_name.go
@@ -1343,6 +1349,7 @@ model_sign_on_policy_action_progressive_profiling.go
 model_sign_on_policy_action_progressive_profiling_all_of_attributes.go
 model_sign_on_policy_assignment.go
 model_subscription.go
+model_subscription_connection_details.go
 model_subscription_filter_options.go
 model_subscription_filter_options_included_applications_inner.go
 model_subscription_http_endpoint.go
@@ -1351,6 +1358,7 @@ model_subscription_payload_options_maximum_payload_limit.go
 model_subscription_payload_options_payload_format.go
 model_subscription_payload_options_payload_format_format.go
 model_subscription_payload_options_payload_format_format_https.go
+model_subscription_payload_options_payload_format_format_tcp.go
 model_subscription_tls_client_auth_key_pair.go
 model_template.go
 model_template_content_common.go

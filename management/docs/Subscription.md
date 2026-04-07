@@ -5,15 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
+**ConnectionDetails** | Pointer to [**SubscriptionConnectionDetails**](SubscriptionConnectionDetails.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format). | [optional] [readonly] 
 **Enabled** | **bool** | A boolean that specifies whether a created or updated subscription should be active or suspended. A suspended state (&#x60;\&quot;enabled\&quot;:false&#x60;) accumulates all matched events, but these events are not delivered until the subscription becomes active again (&#x60;\&quot;enabled\&quot;:true&#x60;). For suspended subscriptions, events accumulate for a maximum of two weeks. Events older than two weeks are deleted. Restarted subscriptions receive the saved events (up to two weeks from the restart date). This is a required property. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **FilterOptions** | [**SubscriptionFilterOptions**](SubscriptionFilterOptions.md) |  | 
-**Format** | [**EnumSubscriptionFormat**](EnumSubscriptionFormat.md) |  | 
+**Format** | Pointer to [**EnumSubscriptionFormat**](EnumSubscriptionFormat.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the user resource’s unique identifier. | [optional] [readonly] 
-**HttpEndpoint** | [**SubscriptionHttpEndpoint**](SubscriptionHttpEndpoint.md) |  | 
+**HttpEndpoint** | Pointer to [**SubscriptionHttpEndpoint**](SubscriptionHttpEndpoint.md) |  | [optional] 
 **Name** | **string** | A string that specifies the subscription name. This is a required property. | 
 **PayloadOptions** | Pointer to [**SubscriptionPayloadOptions**](SubscriptionPayloadOptions.md) |  | [optional] 
+**Protocol** | Pointer to [**EnumSubscriptionProtocol**](EnumSubscriptionProtocol.md) |  | [optional] 
 **TlsClientAuthKeyPair** | Pointer to [**SubscriptionTlsClientAuthKeyPair**](SubscriptionTlsClientAuthKeyPair.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The date and time at which the subscription resource was last updated (ISO 8601 format). | [optional] [readonly] 
 **VerifyTlsCertificates** | **bool** | A boolean that specifies whether a certificates should be verified. If this property&#39;s value is set to false, then all certificates are trusted. (Setting this property&#39;s value to false introduces a security risk.) This is a required property. | 
@@ -22,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewSubscription
 
-`func NewSubscription(enabled bool, filterOptions SubscriptionFilterOptions, format EnumSubscriptionFormat, httpEndpoint SubscriptionHttpEndpoint, name string, verifyTlsCertificates bool, ) *Subscription`
+`func NewSubscription(enabled bool, filterOptions SubscriptionFilterOptions, name string, verifyTlsCertificates bool, ) *Subscription`
 
 NewSubscription instantiates a new Subscription object
 This constructor will assign default values to properties that have it defined,
@@ -61,6 +63,31 @@ SetLinks sets Links field to given value.
 `func (o *Subscription) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetConnectionDetails
+
+`func (o *Subscription) GetConnectionDetails() SubscriptionConnectionDetails`
+
+GetConnectionDetails returns the ConnectionDetails field if non-nil, zero value otherwise.
+
+### GetConnectionDetailsOk
+
+`func (o *Subscription) GetConnectionDetailsOk() (*SubscriptionConnectionDetails, bool)`
+
+GetConnectionDetailsOk returns a tuple with the ConnectionDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionDetails
+
+`func (o *Subscription) SetConnectionDetails(v SubscriptionConnectionDetails)`
+
+SetConnectionDetails sets ConnectionDetails field to given value.
+
+### HasConnectionDetails
+
+`func (o *Subscription) HasConnectionDetails() bool`
+
+HasConnectionDetails returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -171,6 +198,11 @@ and a boolean to check if the value has been set.
 
 SetFormat sets Format field to given value.
 
+### HasFormat
+
+`func (o *Subscription) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
 
 ### GetId
 
@@ -216,6 +248,11 @@ and a boolean to check if the value has been set.
 
 SetHttpEndpoint sets HttpEndpoint field to given value.
 
+### HasHttpEndpoint
+
+`func (o *Subscription) HasHttpEndpoint() bool`
+
+HasHttpEndpoint returns a boolean if a field has been set.
 
 ### GetName
 
@@ -261,6 +298,31 @@ SetPayloadOptions sets PayloadOptions field to given value.
 `func (o *Subscription) HasPayloadOptions() bool`
 
 HasPayloadOptions returns a boolean if a field has been set.
+
+### GetProtocol
+
+`func (o *Subscription) GetProtocol() EnumSubscriptionProtocol`
+
+GetProtocol returns the Protocol field if non-nil, zero value otherwise.
+
+### GetProtocolOk
+
+`func (o *Subscription) GetProtocolOk() (*EnumSubscriptionProtocol, bool)`
+
+GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtocol
+
+`func (o *Subscription) SetProtocol(v EnumSubscriptionProtocol)`
+
+SetProtocol sets Protocol field to given value.
+
+### HasProtocol
+
+`func (o *Subscription) HasProtocol() bool`
+
+HasProtocol returns a boolean if a field has been set.
 
 ### GetTlsClientAuthKeyPair
 

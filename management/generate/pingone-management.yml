@@ -734,7 +734,15 @@ components:
     EnumSubscriptionPayloadFormatHttpsFormat:
       type: string
       enum: [JSON_ARRAY, ND_JSON]
-      description: The payload format.
+      description: The payload format for HTTPS connections.
+    EnumSubscriptionPayloadFormatTcpFormat:
+      type: string
+      enum: [JSON_DOC, RFC_LOGLINE]
+      description: The payload format for TCP connections.
+    EnumSubscriptionProtocol:
+      type: string
+      enum: [HTTPS, TCP_IP]
+      description: A string that specifies the protocol to use for the subscription.
     EnumTemplateContentDeliveryMethod:
       type: string
       enum: [Email, SMS, Voice, Push]
@@ -7657,6 +7665,17 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        connectionDetails:
+          type: object
+          properties:
+            url:
+              type: string
+              description: A string that specifies a valid URL to which event messages are sent. This is a required property.
+            headers:
+              type: object
+              description: An object map of strings that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
+              additionalProperties:
+                type: string
         createdAt:
           type: string
           format: date-time
@@ -7729,8 +7748,6 @@ components:
               description: An object map of strings that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
               additionalProperties:
                 type: string
-          required:
-            - url
         name:
           type: string
           description: A string that specifies the subscription name. This is a required property.
@@ -7751,6 +7768,15 @@ components:
                 format:
                   type: object
                   properties:
+                    tcp:
+                      type: object
+                      properties:
+                        format:
+                          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatTcpFormat'
+                        additionalAttributes:
+                          type: object
+                          additionalProperties:
+                            type: string
                     https:
                       type: object
                       properties:
@@ -7759,6 +7785,8 @@ components:
                         prettyPrint:
                           type: boolean
                           description: Only applicable when `format` is `JSON_ARRAY`. Pretty-print is enabled when `true`.
+        protocol:
+          $ref: '#/components/schemas/EnumSubscriptionProtocol'
         tlsClientAuthKeyPair:
           type: object
           description: An onject that describes the TLS client authentication key pair to use for mTLS.
@@ -7777,8 +7805,6 @@ components:
       required:
         - enabled
         - filterOptions
-        - format
-        - httpEndpoint
         - name
         - verifyTlsCertificates
     Template:
