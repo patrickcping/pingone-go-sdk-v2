@@ -1,4 +1,4 @@
-# v0.68.0 (Unreleased)
+# v0.68.0 (2026-04-08)
 
 * **Enhancement** Added `ConnectionDetails`, `Protocol` to the `Subscription` (webhook) data model. [#522](https://github.com/patrickcping/pingone-go-sdk-v2/pull/522)
 * **Enhancement** Added `Tcp` to the `SubscriptionPayloadOptionsPayloadFormatFormat` (webhook) data model. [#522](https://github.com/patrickcping/pingone-go-sdk-v2/pull/522)
