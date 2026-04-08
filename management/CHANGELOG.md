@@ -1,8 +1,8 @@
 # v0.68.0 (Unreleased)
 
-* **Enhancement** Added `ConnectionDetails`, `Protocol` to the `Subscription` (webhook) data model.
-* **Enhancement** Added `Tcp` to the `SubscriptionPayloadOptionsPayloadFormatFormat` (webhook) data model.
-* **Enhancement** Made `HttpEndpoint` and `Format` optional in the `Subscription` (webhook) data model.
+* **Enhancement** Added `ConnectionDetails`, `Protocol` to the `Subscription` (webhook) data model. [#522](https://github.com/patrickcping/pingone-go-sdk-v2/pull/522)
+* **Enhancement** Added `Tcp` to the `SubscriptionPayloadOptionsPayloadFormatFormat` (webhook) data model. [#522](https://github.com/patrickcping/pingone-go-sdk-v2/pull/522)
+* **Enhancement** Made `HttpEndpoint` and `Format` optional in the `Subscription` (webhook) data model. [#522](https://github.com/patrickcping/pingone-go-sdk-v2/pull/522)
 
 # v0.67.0 (2026-03-31)
 
