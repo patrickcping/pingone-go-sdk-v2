@@ -9,6 +9,7 @@
 
 # Release (2026-03-31)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.11
   * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.66.0 => v0.67.0 [#521](https://github.com/patrickcping/pingone-go-sdk-v2/pull/521)
   * **Note** Remove redundant data models. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
   * **Enhancement** Re-aligned DaVinci Forms data models to the API contract. [#501](https://github.com/patrickcping/pingone-go-sdk-v2/pull/501)
