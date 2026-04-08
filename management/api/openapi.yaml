@@ -53312,6 +53312,8 @@ components:
             \ PingOne service, ensuring that the information from PingOne is from\
             \ a trusted source."
           type: object
+      required:
+      - url
       type: object
     Subscription_filterOptions_includedApplications_inner:
       example:
@@ -53403,6 +53405,8 @@ components:
             \ the PingOne service, ensuring that the information from PingOne is from\
             \ a trusted source."
           type: object
+      required:
+      - url
       type: object
     Subscription_payloadOptions_maximumPayloadLimit:
       example:

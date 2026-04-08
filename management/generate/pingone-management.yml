@@ -7676,6 +7676,8 @@ components:
               description: An object map of strings that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
               additionalProperties:
                 type: string
+          required:
+            - url
         createdAt:
           type: string
           format: date-time
@@ -7748,6 +7750,8 @@ components:
               description: An object map of strings that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
               additionalProperties:
                 type: string
+          required:
+            - url
         name:
           type: string
           description: A string that specifies the subscription name. This is a required property.

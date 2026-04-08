@@ -20,7 +20,7 @@ var _ MappedNullable = &SubscriptionConnectionDetails{}
 // SubscriptionConnectionDetails struct for SubscriptionConnectionDetails
 type SubscriptionConnectionDetails struct {
 	// A string that specifies a valid URL to which event messages are sent. This is a required property.
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url"`
 	// An object map of strings that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
 	Headers *map[string]string `json:"headers,omitempty"`
 }
@@ -29,8 +29,9 @@ type SubscriptionConnectionDetails struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionConnectionDetails() *SubscriptionConnectionDetails {
+func NewSubscriptionConnectionDetails(url string) *SubscriptionConnectionDetails {
 	this := SubscriptionConnectionDetails{}
+	this.Url = url
 	return &this
 }
 
@@ -42,36 +43,28 @@ func NewSubscriptionConnectionDetailsWithDefaults() *SubscriptionConnectionDetai
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// GetUrl returns the Url field value
 func (o *SubscriptionConnectionDetails) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url
+
+	return o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *SubscriptionConnectionDetails) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return &o.Url, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *SubscriptionConnectionDetails) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl sets field value
 func (o *SubscriptionConnectionDetails) SetUrl(v string) {
-	o.Url = &v
+	o.Url = v
 }
 
 // GetHeaders returns the Headers field value if set, zero value otherwise.
@@ -116,9 +109,7 @@ func (o SubscriptionConnectionDetails) MarshalJSON() ([]byte, error) {
 
 func (o SubscriptionConnectionDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
-	}
+	toSerialize["url"] = o.Url
 	if !IsNil(o.Headers) {
 		toSerialize["headers"] = o.Headers
 	}
