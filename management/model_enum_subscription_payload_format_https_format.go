@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumSubscriptionPayloadFormatHttpsFormat The payload format.
+// EnumSubscriptionPayloadFormatHttpsFormat The payload format for HTTPS connections.
 type EnumSubscriptionPayloadFormatHttpsFormat string
 
 // List of EnumSubscriptionPayloadFormatHttpsFormat

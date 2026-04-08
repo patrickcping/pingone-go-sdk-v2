@@ -19,6 +19,7 @@ var _ MappedNullable = &SubscriptionPayloadOptionsPayloadFormatFormat{}
 
 // SubscriptionPayloadOptionsPayloadFormatFormat struct for SubscriptionPayloadOptionsPayloadFormatFormat
 type SubscriptionPayloadOptionsPayloadFormatFormat struct {
+	Tcp   *SubscriptionPayloadOptionsPayloadFormatFormatTcp   `json:"tcp,omitempty"`
 	Https *SubscriptionPayloadOptionsPayloadFormatFormatHttps `json:"https,omitempty"`
 }
 
@@ -37,6 +38,38 @@ func NewSubscriptionPayloadOptionsPayloadFormatFormat() *SubscriptionPayloadOpti
 func NewSubscriptionPayloadOptionsPayloadFormatFormatWithDefaults() *SubscriptionPayloadOptionsPayloadFormatFormat {
 	this := SubscriptionPayloadOptionsPayloadFormatFormat{}
 	return &this
+}
+
+// GetTcp returns the Tcp field value if set, zero value otherwise.
+func (o *SubscriptionPayloadOptionsPayloadFormatFormat) GetTcp() SubscriptionPayloadOptionsPayloadFormatFormatTcp {
+	if o == nil || IsNil(o.Tcp) {
+		var ret SubscriptionPayloadOptionsPayloadFormatFormatTcp
+		return ret
+	}
+	return *o.Tcp
+}
+
+// GetTcpOk returns a tuple with the Tcp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionPayloadOptionsPayloadFormatFormat) GetTcpOk() (*SubscriptionPayloadOptionsPayloadFormatFormatTcp, bool) {
+	if o == nil || IsNil(o.Tcp) {
+		return nil, false
+	}
+	return o.Tcp, true
+}
+
+// HasTcp returns a boolean if a field has been set.
+func (o *SubscriptionPayloadOptionsPayloadFormatFormat) HasTcp() bool {
+	if o != nil && !IsNil(o.Tcp) {
+		return true
+	}
+
+	return false
+}
+
+// SetTcp gets a reference to the given SubscriptionPayloadOptionsPayloadFormatFormatTcp and assigns it to the Tcp field.
+func (o *SubscriptionPayloadOptionsPayloadFormatFormat) SetTcp(v SubscriptionPayloadOptionsPayloadFormatFormatTcp) {
+	o.Tcp = &v
 }
 
 // GetHttps returns the Https field value if set, zero value otherwise.
@@ -81,6 +114,9 @@ func (o SubscriptionPayloadOptionsPayloadFormatFormat) MarshalJSON() ([]byte, er
 
 func (o SubscriptionPayloadOptionsPayloadFormatFormat) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Tcp) {
+		toSerialize["tcp"] = o.Tcp
+	}
 	if !IsNil(o.Https) {
 		toSerialize["https"] = o.Https
 	}

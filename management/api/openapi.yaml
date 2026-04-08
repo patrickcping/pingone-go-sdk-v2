@@ -38388,10 +38388,22 @@ components:
       - KB_PER_PAYLOAD
       type: string
     EnumSubscriptionPayloadFormatHttpsFormat:
-      description: The payload format.
+      description: The payload format for HTTPS connections.
       enum:
       - JSON_ARRAY
       - ND_JSON
+      type: string
+    EnumSubscriptionPayloadFormatTcpFormat:
+      description: The payload format for TCP connections.
+      enum:
+      - JSON_DOC
+      - RFC_LOGLINE
+      type: string
+    EnumSubscriptionProtocol:
+      description: A string that specifies the protocol to use for the subscription.
+      enum:
+      - HTTPS
+      - TCP_IP
       type: string
     EnumTemplateContentDeliveryMethod:
       description: "The content's delivery method. Possible values are `Email`, `SMS`,\
@@ -40234,14 +40246,23 @@ components:
                 type: null
               payloadFormat:
                 format:
+                  tcp:
+                    format: null
+                    additionalAttributes:
+                      key: additionalAttributes
                   https:
                     prettyPrint: true
                     format: null
+            connectionDetails:
+              headers:
+                key: headers
+              url: url
             enabled: true
             verifyTlsCertificates: true
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
+            protocol: null
             httpEndpoint:
               headers:
                 key: headers
@@ -40276,14 +40297,23 @@ components:
                 type: null
               payloadFormat:
                 format:
+                  tcp:
+                    format: null
+                    additionalAttributes:
+                      key: additionalAttributes
                   https:
                     prettyPrint: true
                     format: null
+            connectionDetails:
+              headers:
+                key: headers
+              url: url
             enabled: true
             verifyTlsCertificates: true
             createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
+            protocol: null
             httpEndpoint:
               headers:
                 key: headers
@@ -47089,14 +47119,23 @@ components:
             type: null
           payloadFormat:
             format:
+              tcp:
+                format: null
+                additionalAttributes:
+                  key: additionalAttributes
               https:
                 prettyPrint: true
                 format: null
+        connectionDetails:
+          headers:
+            key: headers
+          url: url
         enabled: true
         verifyTlsCertificates: true
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
+        protocol: null
         httpEndpoint:
           headers:
             key: headers
@@ -47125,6 +47164,8 @@ components:
             $ref: '#/components/schemas/LinksHATEOAS_value'
           readOnly: true
           type: object
+        connectionDetails:
+          $ref: '#/components/schemas/Subscription_connectionDetails'
         createdAt:
           description: The time the key resource expires.The date and time at which
             the subscription resource was created (ISO 8601 format).
@@ -47159,6 +47200,8 @@ components:
           type: string
         payloadOptions:
           $ref: '#/components/schemas/Subscription_payloadOptions'
+        protocol:
+          $ref: '#/components/schemas/EnumSubscriptionProtocol'
         tlsClientAuthKeyPair:
           $ref: '#/components/schemas/Subscription_tlsClientAuthKeyPair'
         updatedAt:
@@ -47176,8 +47219,6 @@ components:
       required:
       - enabled
       - filterOptions
-      - format
-      - httpEndpoint
       - name
       - verifyTlsCertificates
       type: object
@@ -48844,14 +48885,23 @@ components:
               type: null
             payloadFormat:
               format:
+                tcp:
+                  format: null
+                  additionalAttributes:
+                    key: additionalAttributes
                 https:
                   prettyPrint: true
                   format: null
+          connectionDetails:
+            headers:
+              key: headers
+            url: url
           enabled: true
           verifyTlsCertificates: true
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
+          protocol: null
           httpEndpoint:
             headers:
               key: headers
@@ -48886,14 +48936,23 @@ components:
               type: null
             payloadFormat:
               format:
+                tcp:
+                  format: null
+                  additionalAttributes:
+                    key: additionalAttributes
                 https:
                   prettyPrint: true
                   format: null
+          connectionDetails:
+            headers:
+              key: headers
+            url: url
           enabled: true
           verifyTlsCertificates: true
           createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
+          protocol: null
           httpEndpoint:
             headers:
               key: headers
@@ -53234,6 +53293,28 @@ components:
       - enabled
       type: object
       example: null
+    Subscription_connectionDetails:
+      example:
+        headers:
+          key: headers
+        url: url
+      properties:
+        url:
+          description: A string that specifies a valid URL to which event messages
+            are sent. This is a required property.
+          type: string
+        headers:
+          additionalProperties:
+            type: string
+          description: "An object map of strings that specifies the headers applied\
+            \ to the outbound request (for example, `Authorization` `Basic usernamepassword`.\
+            \ The purpose of these headers is for the endpoint to authenticate the\
+            \ PingOne service, ensuring that the information from PingOne is from\
+            \ a trusted source."
+          type: object
+      required:
+      - url
+      type: object
     Subscription_filterOptions_includedApplications_inner:
       example:
         id: id
@@ -53340,6 +53421,19 @@ components:
             this can be from `1` to `4096` kilobytes.
           type: integer
       type: object
+    Subscription_payloadOptions_payloadFormat_format_tcp:
+      example:
+        format: null
+        additionalAttributes:
+          key: additionalAttributes
+      properties:
+        format:
+          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatTcpFormat'
+        additionalAttributes:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
     Subscription_payloadOptions_payloadFormat_format_https:
       example:
         prettyPrint: true
@@ -53354,16 +53448,26 @@ components:
       type: object
     Subscription_payloadOptions_payloadFormat_format:
       example:
+        tcp:
+          format: null
+          additionalAttributes:
+            key: additionalAttributes
         https:
           prettyPrint: true
           format: null
       properties:
+        tcp:
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format_tcp'
         https:
           $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format_https'
       type: object
     Subscription_payloadOptions_payloadFormat:
       example:
         format:
+          tcp:
+            format: null
+            additionalAttributes:
+              key: additionalAttributes
           https:
             prettyPrint: true
             format: null
@@ -53378,6 +53482,10 @@ components:
           type: null
         payloadFormat:
           format:
+            tcp:
+              format: null
+              additionalAttributes:
+                key: additionalAttributes
             https:
               prettyPrint: true
               format: null
