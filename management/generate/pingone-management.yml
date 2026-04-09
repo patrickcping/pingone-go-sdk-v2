@@ -1513,9 +1513,7 @@ components:
               description: The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
               maximum: 86400
             refreshTokenType:
-              type: array
-              items:
-                $ref: '#/components/schemas/EnumApplicationOIDCRefreshTokenType'
+              $ref: '#/components/schemas/EnumApplicationOIDCRefreshTokenType'
             requestScopesForMultipleResourcesEnabled:
               type: boolean
               description: Specifies whether the application can request scopes from multiple custom resources. The default value is `false`. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes).

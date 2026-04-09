@@ -92,8 +92,8 @@ type ApplicationOIDC struct {
 	// An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
 	RefreshTokenRollingDuration *int32 `json:"refreshTokenRollingDuration,omitempty"`
 	// The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
-	RefreshTokenRollingGracePeriodDuration *int32                                `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
-	RefreshTokenType                       []EnumApplicationOIDCRefreshTokenType `json:"refreshTokenType,omitempty"`
+	RefreshTokenRollingGracePeriodDuration *int32                               `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
+	RefreshTokenType                       *EnumApplicationOIDCRefreshTokenType `json:"refreshTokenType,omitempty"`
 	// Specifies whether the application can request scopes from multiple custom resources. The default value is `false`. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes).
 	RequestScopesForMultipleResourcesEnabled *bool `json:"requestScopesForMultipleResourcesEnabled,omitempty"`
 	// Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
@@ -1478,17 +1478,17 @@ func (o *ApplicationOIDC) SetRefreshTokenRollingGracePeriodDuration(v int32) {
 }
 
 // GetRefreshTokenType returns the RefreshTokenType field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetRefreshTokenType() []EnumApplicationOIDCRefreshTokenType {
+func (o *ApplicationOIDC) GetRefreshTokenType() EnumApplicationOIDCRefreshTokenType {
 	if o == nil || IsNil(o.RefreshTokenType) {
-		var ret []EnumApplicationOIDCRefreshTokenType
+		var ret EnumApplicationOIDCRefreshTokenType
 		return ret
 	}
-	return o.RefreshTokenType
+	return *o.RefreshTokenType
 }
 
 // GetRefreshTokenTypeOk returns a tuple with the RefreshTokenType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetRefreshTokenTypeOk() ([]EnumApplicationOIDCRefreshTokenType, bool) {
+func (o *ApplicationOIDC) GetRefreshTokenTypeOk() (*EnumApplicationOIDCRefreshTokenType, bool) {
 	if o == nil || IsNil(o.RefreshTokenType) {
 		return nil, false
 	}
@@ -1504,9 +1504,9 @@ func (o *ApplicationOIDC) HasRefreshTokenType() bool {
 	return false
 }
 
-// SetRefreshTokenType gets a reference to the given []EnumApplicationOIDCRefreshTokenType and assigns it to the RefreshTokenType field.
-func (o *ApplicationOIDC) SetRefreshTokenType(v []EnumApplicationOIDCRefreshTokenType) {
-	o.RefreshTokenType = v
+// SetRefreshTokenType gets a reference to the given EnumApplicationOIDCRefreshTokenType and assigns it to the RefreshTokenType field.
+func (o *ApplicationOIDC) SetRefreshTokenType(v EnumApplicationOIDCRefreshTokenType) {
+	o.RefreshTokenType = &v
 }
 
 // GetRequestScopesForMultipleResourcesEnabled returns the RequestScopesForMultipleResourcesEnabled field value if set, zero value otherwise.
