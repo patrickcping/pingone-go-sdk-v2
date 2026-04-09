@@ -65,7 +65,7 @@ Name | Type | Description | Notes
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the &#x60;refreshTokenRollingDuration&#x60; property is specified for the application, then this property must be less than or equal to the value of &#x60;refreshTokenRollingDuration&#x60;. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] [default to 2592000]
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingGracePeriodDuration** | Pointer to **int32** | The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0. | [optional] 
-**RefreshTokenType** | Pointer to [**[]EnumApplicationOIDCRefreshTokenType**](EnumApplicationOIDCRefreshTokenType.md) |  | [optional] 
+**RefreshTokenType** | Pointer to [**EnumApplicationOIDCRefreshTokenType**](EnumApplicationOIDCRefreshTokenType.md) |  | [optional] 
 **RequestScopesForMultipleResourcesEnabled** | Pointer to **bool** | Specifies whether the application can request scopes from multiple custom resources. The default value is &#x60;false&#x60;. For more information about scopes and access tokens, refer to [Resource Scopes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#resource-scopes). | [optional] [default to false]
 **RequireSignedRequestObject** | Pointer to **bool** | Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If &#x60;false&#x60; or null (default), a signed request object is not required. Both &#x60;supportUnsignedRequestObject&#x60; and this property cannot be set to &#x60;true&#x60;. | [optional] 
 **ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | The code or token type returned by an authorization request. Options are &#x60;TOKEN&#x60;, &#x60;ID_TOKEN&#x60;, and &#x60;CODE&#x60;. For hybrid flows that specify &#x60;CODE&#x60; with &#x60;TOKEN&#x60; or &#x60;ID_TOKEN&#x60;, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type). | [optional] 
@@ -1582,20 +1582,20 @@ HasRefreshTokenRollingGracePeriodDuration returns a boolean if a field has been 
 
 ### GetRefreshTokenType
 
-`func (o *CreateApplication201Response) GetRefreshTokenType() []EnumApplicationOIDCRefreshTokenType`
+`func (o *CreateApplication201Response) GetRefreshTokenType() EnumApplicationOIDCRefreshTokenType`
 
 GetRefreshTokenType returns the RefreshTokenType field if non-nil, zero value otherwise.
 
 ### GetRefreshTokenTypeOk
 
-`func (o *CreateApplication201Response) GetRefreshTokenTypeOk() (*[]EnumApplicationOIDCRefreshTokenType, bool)`
+`func (o *CreateApplication201Response) GetRefreshTokenTypeOk() (*EnumApplicationOIDCRefreshTokenType, bool)`
 
 GetRefreshTokenTypeOk returns a tuple with the RefreshTokenType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefreshTokenType
 
-`func (o *CreateApplication201Response) SetRefreshTokenType(v []EnumApplicationOIDCRefreshTokenType)`
+`func (o *CreateApplication201Response) SetRefreshTokenType(v EnumApplicationOIDCRefreshTokenType)`
 
 SetRefreshTokenType sets RefreshTokenType field to given value.
 

@@ -39286,9 +39286,7 @@ components:
             maximum: 86400
             type: integer
           refreshTokenType:
-            items:
-              $ref: '#/components/schemas/EnumApplicationOIDCRefreshTokenType'
-            type: array
+            $ref: '#/components/schemas/EnumApplicationOIDCRefreshTokenType'
           requestScopesForMultipleResourcesEnabled:
             default: false
             description: "Specifies whether the application can request scopes from\

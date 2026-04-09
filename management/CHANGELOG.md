@@ -1,3 +1,7 @@
+# v0.68.1 (Unreleased)
+
+* **Bug** Corrected `RefreshTokenType` data type (from slice to string enum) on the `ApplicationOIDC` data model.
+
 # v0.68.0 (2026-04-08)
 
 * **Enhancement** Added `ConnectionDetails`, `Protocol` to the `Subscription` (webhook) data model. [#522](https://github.com/patrickcping/pingone-go-sdk-v2/pull/522)
