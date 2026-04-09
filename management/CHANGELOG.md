@@ -1,6 +1,6 @@
 # v0.68.1 (Unreleased)
 
-* **Bug** Corrected `RefreshTokenType` data type (from slice to string enum) on the `ApplicationOIDC` data model.
+* **Bug** Corrected `RefreshTokenType` data type (from slice to string enum) on the `ApplicationOIDC` data model. [#524](https://github.com/patrickcping/pingone-go-sdk-v2/pull/524)
 
 # v0.68.0 (2026-04-08)
 
