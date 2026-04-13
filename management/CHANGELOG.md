@@ -1,4 +1,4 @@
-# v0.68.2 (2026-04-09)
+# v0.68.2 (2026-04-13)
 
 * **Bug** Removed unneeded `SubscriptionPayloadOptionsPayloadFormatFormat` data type from the `Subscription` (webhook) data model. [#527](https://github.com/patrickcping/pingone-go-sdk-v2/pull/527)
 
