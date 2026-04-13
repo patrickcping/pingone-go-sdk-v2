@@ -11,8 +11,24 @@ else
 
     if [[ -f "generate/pingone-$3.yml" ]]; then \
         echo "==> Running codegen-$3..."
-        openapi-generator-cli version-manager set 7.0.1
-        GO_POST_PROCESS_FILE="../scripts/file-postprocessing.sh" openapi-generator-cli generate --enable-post-process-file -t ../scripts/templates/generator -i generate/pingone-$3.yml -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api -o . --git-repo-id $2 --git-user-id $1 --http-user-agent \"pingtools PingOne-GOLANG-SDK-$3/$version\"; \
+
+        REPO_ROOT=$(cd .. && pwd)
+
+        docker run --rm \
+            -v "$REPO_ROOT:/local" \
+            openapitools/openapi-generator-cli:v7.0.1 generate \
+            -t /local/scripts/templates/generator \
+            -i /local/$3/generate/pingone-$3.yml \
+            -g go \
+            --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api \
+            -o /local/$3 \
+            --git-repo-id $2 \
+            --git-user-id $1 \
+            --http-user-agent "pingtools PingOne-GOLANG-SDK-$3/$version"
+
+        echo "==> Applying file post-processing..."
+        find . -name "*.go" -exec gofmt -w -s {} \;
+        find . -name "*.go" -exec goimports -w {} \;
 
         echo "==> Copying custom templated files..."
         template=$(cat ../scripts/templates/client_ext.go.tmpl)
