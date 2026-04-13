@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Format** | Pointer to [**SubscriptionPayloadOptionsPayloadFormatFormat**](SubscriptionPayloadOptionsPayloadFormatFormat.md) |  | [optional] 
+**Tcp** | Pointer to [**SubscriptionPayloadOptionsPayloadFormatTcp**](SubscriptionPayloadOptionsPayloadFormatTcp.md) |  | [optional] 
+**Https** | Pointer to [**SubscriptionPayloadOptionsPayloadFormatHttps**](SubscriptionPayloadOptionsPayloadFormatHttps.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +26,55 @@ NewSubscriptionPayloadOptionsPayloadFormatWithDefaults instantiates a new Subscr
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetFormat
+### GetTcp
 
-`func (o *SubscriptionPayloadOptionsPayloadFormat) GetFormat() SubscriptionPayloadOptionsPayloadFormatFormat`
+`func (o *SubscriptionPayloadOptionsPayloadFormat) GetTcp() SubscriptionPayloadOptionsPayloadFormatTcp`
 
-GetFormat returns the Format field if non-nil, zero value otherwise.
+GetTcp returns the Tcp field if non-nil, zero value otherwise.
 
-### GetFormatOk
+### GetTcpOk
 
-`func (o *SubscriptionPayloadOptionsPayloadFormat) GetFormatOk() (*SubscriptionPayloadOptionsPayloadFormatFormat, bool)`
+`func (o *SubscriptionPayloadOptionsPayloadFormat) GetTcpOk() (*SubscriptionPayloadOptionsPayloadFormatTcp, bool)`
 
-GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+GetTcpOk returns a tuple with the Tcp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFormat
+### SetTcp
 
-`func (o *SubscriptionPayloadOptionsPayloadFormat) SetFormat(v SubscriptionPayloadOptionsPayloadFormatFormat)`
+`func (o *SubscriptionPayloadOptionsPayloadFormat) SetTcp(v SubscriptionPayloadOptionsPayloadFormatTcp)`
 
-SetFormat sets Format field to given value.
+SetTcp sets Tcp field to given value.
 
-### HasFormat
+### HasTcp
 
-`func (o *SubscriptionPayloadOptionsPayloadFormat) HasFormat() bool`
+`func (o *SubscriptionPayloadOptionsPayloadFormat) HasTcp() bool`
 
-HasFormat returns a boolean if a field has been set.
+HasTcp returns a boolean if a field has been set.
+
+### GetHttps
+
+`func (o *SubscriptionPayloadOptionsPayloadFormat) GetHttps() SubscriptionPayloadOptionsPayloadFormatHttps`
+
+GetHttps returns the Https field if non-nil, zero value otherwise.
+
+### GetHttpsOk
+
+`func (o *SubscriptionPayloadOptionsPayloadFormat) GetHttpsOk() (*SubscriptionPayloadOptionsPayloadFormatHttps, bool)`
+
+GetHttpsOk returns a tuple with the Https field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttps
+
+`func (o *SubscriptionPayloadOptionsPayloadFormat) SetHttps(v SubscriptionPayloadOptionsPayloadFormatHttps)`
+
+SetHttps sets Https field to given value.
+
+### HasHttps
+
+`func (o *SubscriptionPayloadOptionsPayloadFormat) HasHttps() bool`
+
+HasHttps returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

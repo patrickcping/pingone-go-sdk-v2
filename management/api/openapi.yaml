@@ -40243,14 +40243,13 @@ components:
                 size: 4
                 type: null
               payloadFormat:
-                format:
-                  tcp:
-                    format: null
-                    additionalAttributes:
-                      key: additionalAttributes
-                  https:
-                    prettyPrint: true
-                    format: null
+                tcp:
+                  format: null
+                  additionalAttributes:
+                    key: additionalAttributes
+                https:
+                  prettyPrint: true
+                  format: null
             connectionDetails:
               headers:
                 key: headers
@@ -40294,14 +40293,13 @@ components:
                 size: 4
                 type: null
               payloadFormat:
-                format:
-                  tcp:
-                    format: null
-                    additionalAttributes:
-                      key: additionalAttributes
-                  https:
-                    prettyPrint: true
-                    format: null
+                tcp:
+                  format: null
+                  additionalAttributes:
+                    key: additionalAttributes
+                https:
+                  prettyPrint: true
+                  format: null
             connectionDetails:
               headers:
                 key: headers
@@ -47116,14 +47114,13 @@ components:
             size: 4
             type: null
           payloadFormat:
-            format:
-              tcp:
-                format: null
-                additionalAttributes:
-                  key: additionalAttributes
-              https:
-                prettyPrint: true
-                format: null
+            tcp:
+              format: null
+              additionalAttributes:
+                key: additionalAttributes
+            https:
+              prettyPrint: true
+              format: null
         connectionDetails:
           headers:
             key: headers
@@ -48882,14 +48879,13 @@ components:
               size: 4
               type: null
             payloadFormat:
-              format:
-                tcp:
-                  format: null
-                  additionalAttributes:
-                    key: additionalAttributes
-                https:
-                  prettyPrint: true
-                  format: null
+              tcp:
+                format: null
+                additionalAttributes:
+                  key: additionalAttributes
+              https:
+                prettyPrint: true
+                format: null
           connectionDetails:
             headers:
               key: headers
@@ -48933,14 +48929,13 @@ components:
               size: 4
               type: null
             payloadFormat:
-              format:
-                tcp:
-                  format: null
-                  additionalAttributes:
-                    key: additionalAttributes
-                https:
-                  prettyPrint: true
-                  format: null
+              tcp:
+                format: null
+                additionalAttributes:
+                  key: additionalAttributes
+              https:
+                prettyPrint: true
+                format: null
           connectionDetails:
             headers:
               key: headers
@@ -53419,7 +53414,7 @@ components:
             this can be from `1` to `4096` kilobytes.
           type: integer
       type: object
-    Subscription_payloadOptions_payloadFormat_format_tcp:
+    Subscription_payloadOptions_payloadFormat_tcp:
       example:
         format: null
         additionalAttributes:
@@ -53432,7 +53427,7 @@ components:
             type: string
           type: object
       type: object
-    Subscription_payloadOptions_payloadFormat_format_https:
+    Subscription_payloadOptions_payloadFormat_https:
       example:
         prettyPrint: true
         format: null
@@ -53444,7 +53439,7 @@ components:
             is enabled when `true`.
           type: boolean
       type: object
-    Subscription_payloadOptions_payloadFormat_format:
+    Subscription_payloadOptions_payloadFormat:
       example:
         tcp:
           format: null
@@ -53455,23 +53450,9 @@ components:
           format: null
       properties:
         tcp:
-          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format_tcp'
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_tcp'
         https:
-          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format_https'
-      type: object
-    Subscription_payloadOptions_payloadFormat:
-      example:
-        format:
-          tcp:
-            format: null
-            additionalAttributes:
-              key: additionalAttributes
-          https:
-            prettyPrint: true
-            format: null
-      properties:
-        format:
-          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_format'
+          $ref: '#/components/schemas/Subscription_payloadOptions_payloadFormat_https'
       type: object
     Subscription_payloadOptions:
       example:
@@ -53479,14 +53460,13 @@ components:
           size: 4
           type: null
         payloadFormat:
-          format:
-            tcp:
-              format: null
-              additionalAttributes:
-                key: additionalAttributes
-            https:
-              prettyPrint: true
-              format: null
+          tcp:
+            format: null
+            additionalAttributes:
+              key: additionalAttributes
+          https:
+            prettyPrint: true
+            format: null
       properties:
         maximumPayloadLimit:
           $ref: '#/components/schemas/Subscription_payloadOptions_maximumPayloadLimit'

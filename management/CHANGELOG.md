@@ -1,3 +1,7 @@
+# v0.68.2 (2026-04-09)
+
+* **Bug** Removed unneeded `SubscriptionPayloadOptionsPayloadFormatFormat` data type from the `Subscription` (webhook) data model. [#527](https://github.com/patrickcping/pingone-go-sdk-v2/pull/527)
+
 # v0.68.1 (2026-04-09)
 
 * **Bug** Corrected `RefreshTokenType` data type (from slice to string enum) on the `ApplicationOIDC` data model. [#524](https://github.com/patrickcping/pingone-go-sdk-v2/pull/524)

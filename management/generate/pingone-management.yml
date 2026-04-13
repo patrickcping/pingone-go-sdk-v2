@@ -7767,26 +7767,23 @@ components:
             payloadFormat:
               type: object
               properties:
-                format:
+                tcp:
                   type: object
                   properties:
-                    tcp:
+                    format:
+                      $ref: '#/components/schemas/EnumSubscriptionPayloadFormatTcpFormat'
+                    additionalAttributes:
                       type: object
-                      properties:
-                        format:
-                          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatTcpFormat'
-                        additionalAttributes:
-                          type: object
-                          additionalProperties:
-                            type: string
-                    https:
-                      type: object
-                      properties:
-                        format:
-                          $ref: '#/components/schemas/EnumSubscriptionPayloadFormatHttpsFormat'
-                        prettyPrint:
-                          type: boolean
-                          description: Only applicable when `format` is `JSON_ARRAY`. Pretty-print is enabled when `true`.
+                      additionalProperties:
+                        type: string
+                https:
+                  type: object
+                  properties:
+                    format:
+                      $ref: '#/components/schemas/EnumSubscriptionPayloadFormatHttpsFormat'
+                    prettyPrint:
+                      type: boolean
+                      description: Only applicable when `format` is `JSON_ARRAY`. Pretty-print is enabled when `true`.
         protocol:
           $ref: '#/components/schemas/EnumSubscriptionProtocol'
         tlsClientAuthKeyPair:
