@@ -1,4 +1,4 @@
-# SubscriptionPayloadOptionsPayloadFormatFormatHttps
+# SubscriptionPayloadOptionsPayloadFormatHttps
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSubscriptionPayloadOptionsPayloadFormatFormatHttps
+### NewSubscriptionPayloadOptionsPayloadFormatHttps
 
-`func NewSubscriptionPayloadOptionsPayloadFormatFormatHttps() *SubscriptionPayloadOptionsPayloadFormatFormatHttps`
+`func NewSubscriptionPayloadOptionsPayloadFormatHttps() *SubscriptionPayloadOptionsPayloadFormatHttps`
 
-NewSubscriptionPayloadOptionsPayloadFormatFormatHttps instantiates a new SubscriptionPayloadOptionsPayloadFormatFormatHttps object
+NewSubscriptionPayloadOptionsPayloadFormatHttps instantiates a new SubscriptionPayloadOptionsPayloadFormatHttps object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSubscriptionPayloadOptionsPayloadFormatFormatHttpsWithDefaults
+### NewSubscriptionPayloadOptionsPayloadFormatHttpsWithDefaults
 
-`func NewSubscriptionPayloadOptionsPayloadFormatFormatHttpsWithDefaults() *SubscriptionPayloadOptionsPayloadFormatFormatHttps`
+`func NewSubscriptionPayloadOptionsPayloadFormatHttpsWithDefaults() *SubscriptionPayloadOptionsPayloadFormatHttps`
 
-NewSubscriptionPayloadOptionsPayloadFormatFormatHttpsWithDefaults instantiates a new SubscriptionPayloadOptionsPayloadFormatFormatHttps object
+NewSubscriptionPayloadOptionsPayloadFormatHttpsWithDefaults instantiates a new SubscriptionPayloadOptionsPayloadFormatHttps object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetFormat
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) GetFormat() EnumSubscriptionPayloadFormatHttpsFormat`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) GetFormat() EnumSubscriptionPayloadFormatHttpsFormat`
 
 GetFormat returns the Format field if non-nil, zero value otherwise.
 
 ### GetFormatOk
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) GetFormatOk() (*EnumSubscriptionPayloadFormatHttpsFormat, bool)`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) GetFormatOk() (*EnumSubscriptionPayloadFormatHttpsFormat, bool)`
 
 GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFormat
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) SetFormat(v EnumSubscriptionPayloadFormatHttpsFormat)`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) SetFormat(v EnumSubscriptionPayloadFormatHttpsFormat)`
 
 SetFormat sets Format field to given value.
 
 ### HasFormat
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) HasFormat() bool`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) HasFormat() bool`
 
 HasFormat returns a boolean if a field has been set.
 
 ### GetPrettyPrint
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) GetPrettyPrint() bool`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) GetPrettyPrint() bool`
 
 GetPrettyPrint returns the PrettyPrint field if non-nil, zero value otherwise.
 
 ### GetPrettyPrintOk
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) GetPrettyPrintOk() (*bool, bool)`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) GetPrettyPrintOk() (*bool, bool)`
 
 GetPrettyPrintOk returns a tuple with the PrettyPrint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrettyPrint
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) SetPrettyPrint(v bool)`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) SetPrettyPrint(v bool)`
 
 SetPrettyPrint sets PrettyPrint field to given value.
 
 ### HasPrettyPrint
 
-`func (o *SubscriptionPayloadOptionsPayloadFormatFormatHttps) HasPrettyPrint() bool`
+`func (o *SubscriptionPayloadOptionsPayloadFormatHttps) HasPrettyPrint() bool`
 
 HasPrettyPrint returns a boolean if a field has been set.
 
