@@ -1,9 +1,11 @@
-# Release (Unreleased)
+# Release (2026-04-14)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.13
-  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.68.0 => v0.68.1
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.68.0 => v0.68.2
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.68.1](./management/CHANGELOG.md)
   * **Bug** Corrected `RefreshTokenType` data type (from slice to string enum) on the `ApplicationOIDC` data model. [#524](https://github.com/patrickcping/pingone-go-sdk-v2/pull/524)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.68.2](./management/CHANGELOG.md)
+  * **Bug** Removed unneeded `SubscriptionPayloadOptionsPayloadFormatFormat` data type from the `Subscription` (webhook) data model. [#527](https://github.com/patrickcping/pingone-go-sdk-v2/pull/527)
 
 # Release (2026-04-08)
 
