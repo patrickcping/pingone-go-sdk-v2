@@ -41946,7 +41946,6 @@ components:
               fields:
               - null
               - null
-            showPasswordRequirements: true
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -41973,7 +41972,6 @@ components:
               fields:
               - null
               - null
-            showPasswordRequirements: true
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -42225,7 +42223,6 @@ components:
           fields:
           - null
           - null
-        showPasswordRequirements: true
         _links:
           key:
             href: https://openapi-generator.tech
@@ -42314,13 +42311,6 @@ components:
           default: false
           description: A boolean that specifies whether the password auto-complete
             feature is enabled.
-          type: boolean
-        showPasswordRequirements:
-          description: "A boolean that specifies whether to return the password requirements\
-            \ during a DaVinci flow. A form with a new password field does not show\
-            \ the password policy information automatically in the response. To return\
-            \ the password policy information, the value of this property must be\
-            \ set to true."
           type: boolean
         textAutoCompleteEnabled:
           default: false
@@ -50585,7 +50575,6 @@ components:
             fields:
             - null
             - null
-          showPasswordRequirements: true
           _links:
             key:
               href: https://openapi-generator.tech
@@ -50612,7 +50601,6 @@ components:
             fields:
             - null
             - null
-          showPasswordRequirements: true
           _links:
             key:
               href: https://openapi-generator.tech

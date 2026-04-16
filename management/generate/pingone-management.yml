@@ -2794,9 +2794,6 @@ components:
           type: boolean
           description: A boolean that specifies whether the password auto-complete feature is enabled.
           default: false
-        showPasswordRequirements:
-          type: boolean
-          description: A boolean that specifies whether to return the password requirements during a DaVinci flow. A form with a new password field does not show the password policy information automatically in the response. To return the password policy information, the value of this property must be set to true.
         textAutoCompleteEnabled:
           type: boolean
           description: A boolean that specifies whether the text auto-complete feature is enabled.

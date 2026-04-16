@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | The date the resouce was modified (ISO-8061 format). | [optional] [readonly] 
 **Name** | **string** | A string that specifies the form name, which must be provided and must be unique within an environment. | 
 **PasswordAutoCompleteEnabled** | Pointer to **bool** | A boolean that specifies whether the password auto-complete feature is enabled. | [optional] [default to false]
-**ShowPasswordRequirements** | Pointer to **bool** | A boolean that specifies whether to return the password requirements during a DaVinci flow. A form with a new password field does not show the password policy information automatically in the response. To return the password policy information, the value of this property must be set to true. | [optional] 
 **TextAutoCompleteEnabled** | Pointer to **bool** | A boolean that specifies whether the text auto-complete feature is enabled. | [optional] [default to false]
 **TranslationMethod** | Pointer to [**EnumFormTranslationMethod**](EnumFormTranslationMethod.md) |  | [optional] 
 
@@ -391,31 +390,6 @@ SetPasswordAutoCompleteEnabled sets PasswordAutoCompleteEnabled field to given v
 `func (o *Form) HasPasswordAutoCompleteEnabled() bool`
 
 HasPasswordAutoCompleteEnabled returns a boolean if a field has been set.
-
-### GetShowPasswordRequirements
-
-`func (o *Form) GetShowPasswordRequirements() bool`
-
-GetShowPasswordRequirements returns the ShowPasswordRequirements field if non-nil, zero value otherwise.
-
-### GetShowPasswordRequirementsOk
-
-`func (o *Form) GetShowPasswordRequirementsOk() (*bool, bool)`
-
-GetShowPasswordRequirementsOk returns a tuple with the ShowPasswordRequirements field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShowPasswordRequirements
-
-`func (o *Form) SetShowPasswordRequirements(v bool)`
-
-SetShowPasswordRequirements sets ShowPasswordRequirements field to given value.
-
-### HasShowPasswordRequirements
-
-`func (o *Form) HasShowPasswordRequirements() bool`
-
-HasShowPasswordRequirements returns a boolean if a field has been set.
 
 ### GetTextAutoCompleteEnabled
 
