@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **IdpName** | **string** | A string that specifies the external identity provider name. | 
 **IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
-**IdpEnabled** | **bool** | A boolean that specifies whether the external identity provider is enabled. | 
+**IdpEnabled** | Pointer to **bool** | A boolean that specifies whether the external identity provider is enabled. | [optional] 
 **IconSrc** | Pointer to **string** | A string that specifies the icon image URL to be displayed on the button. | [optional] 
 **Label** | **string** | A string that specifies the social login button label. | 
 **Styles** | Pointer to [**FormSocialLoginButtonAllOfStyles**](FormSocialLoginButtonAllOfStyles.md) |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewFormFieldSocialLoginButton
 
-`func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, idpEnabled bool, label string, ) *FormFieldSocialLoginButton`
+`func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, label string, ) *FormFieldSocialLoginButton`
 
 NewFormFieldSocialLoginButton instantiates a new FormFieldSocialLoginButton object
 This constructor will assign default values to properties that have it defined,
@@ -199,6 +199,11 @@ and a boolean to check if the value has been set.
 
 SetIdpEnabled sets IdpEnabled field to given value.
 
+### HasIdpEnabled
+
+`func (o *FormFieldSocialLoginButton) HasIdpEnabled() bool`
+
+HasIdpEnabled returns a boolean if a field has been set.
 
 ### GetIconSrc
 

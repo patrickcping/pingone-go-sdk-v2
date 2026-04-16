@@ -30,7 +30,7 @@ type FormFieldSocialLoginButton struct {
 	// A string that specifies the external identity provider's ID.
 	IdpId string `json:"idpId"`
 	// A boolean that specifies whether the external identity provider is enabled.
-	IdpEnabled bool `json:"idpEnabled"`
+	IdpEnabled *bool `json:"idpEnabled,omitempty"`
 	// A string that specifies the icon image URL to be displayed on the button.
 	IconSrc *string `json:"iconSrc,omitempty"`
 	// A string that specifies the social login button label.
@@ -42,7 +42,7 @@ type FormFieldSocialLoginButton struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, idpEnabled bool, label string) *FormFieldSocialLoginButton {
+func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, label string) *FormFieldSocialLoginButton {
 	this := FormFieldSocialLoginButton{}
 	this.Type = type_
 	this.Position = position
@@ -50,7 +50,6 @@ func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCo
 	this.IdpName = idpName
 	this.IdpType = idpType
 	this.IdpId = idpId
-	this.IdpEnabled = idpEnabled
 	this.Label = label
 	return &this
 }
@@ -239,28 +238,36 @@ func (o *FormFieldSocialLoginButton) SetIdpId(v string) {
 	o.IdpId = v
 }
 
-// GetIdpEnabled returns the IdpEnabled field value
+// GetIdpEnabled returns the IdpEnabled field value if set, zero value otherwise.
 func (o *FormFieldSocialLoginButton) GetIdpEnabled() bool {
-	if o == nil {
+	if o == nil || IsNil(o.IdpEnabled) {
 		var ret bool
 		return ret
 	}
-
-	return o.IdpEnabled
+	return *o.IdpEnabled
 }
 
-// GetIdpEnabledOk returns a tuple with the IdpEnabled field value
+// GetIdpEnabledOk returns a tuple with the IdpEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormFieldSocialLoginButton) GetIdpEnabledOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IdpEnabled) {
 		return nil, false
 	}
-	return &o.IdpEnabled, true
+	return o.IdpEnabled, true
 }
 
-// SetIdpEnabled sets field value
+// HasIdpEnabled returns a boolean if a field has been set.
+func (o *FormFieldSocialLoginButton) HasIdpEnabled() bool {
+	if o != nil && !IsNil(o.IdpEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdpEnabled gets a reference to the given bool and assigns it to the IdpEnabled field.
 func (o *FormFieldSocialLoginButton) SetIdpEnabled(v bool) {
-	o.IdpEnabled = v
+	o.IdpEnabled = &v
 }
 
 // GetIconSrc returns the IconSrc field value if set, zero value otherwise.
@@ -370,7 +377,9 @@ func (o FormFieldSocialLoginButton) ToMap() (map[string]interface{}, error) {
 	toSerialize["idpName"] = o.IdpName
 	toSerialize["idpType"] = o.IdpType
 	toSerialize["idpId"] = o.IdpId
-	toSerialize["idpEnabled"] = o.IdpEnabled
+	if !IsNil(o.IdpEnabled) {
+		toSerialize["idpEnabled"] = o.IdpEnabled
+	}
 	if !IsNil(o.IconSrc) {
 		toSerialize["iconSrc"] = o.IconSrc
 	}

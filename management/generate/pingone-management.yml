@@ -3419,7 +3419,6 @@ components:
             - idpType
             - idpName
             - idpId
-            - idpEnabled
     FormSubmit:
       type: object
       properties:

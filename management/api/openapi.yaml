@@ -42849,7 +42849,6 @@ components:
           styles:
             $ref: '#/components/schemas/FormSocialLoginButton_allOf_styles'
         required:
-        - idpEnabled
         - idpId
         - idpName
         - idpType
