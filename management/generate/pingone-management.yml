@@ -3124,6 +3124,7 @@ components:
     FormFieldSingleCheckbox:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormElement'
         - $ref: '#/components/schemas/FormSingleCheckbox'
     FormFieldFormAgreement:
       allOf:
@@ -3376,7 +3377,7 @@ components:
               description: A boolean that specifies whether the external identity provider is enabled.
             iconSrc:
               type: string
-              description: A string that specifies the external edentity provider’s image icon URL.
+              description: A string that specifies the icon image URL to be displayed on the button.
             label:
               type: string
               description: A string that specifies the social login button label.
@@ -3401,6 +3402,9 @@ components:
                   $ref: '#/components/schemas/EnumFormStylesWidthUnit'
                 padding:
                   $ref: '#/components/schemas/FormStylesPadding'
+                backgroundColor:
+                  type: string
+                  description: A string that specifies the button background color. The value must be a valid hexadecimal color.
                 borderColor:
                   type: string
                   description: A string that specifies the button border color. The value must be a valid hexadecimal color.
@@ -3413,6 +3417,8 @@ components:
                 displayDefaultThemeButtonTextColor:
                   type: boolean
                   description: A boolean that specifies whether the button uses the default theme’s text color.
+            width:
+              type: integer
           required:
             - label
             - idpType
