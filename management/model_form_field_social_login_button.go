@@ -36,7 +36,6 @@ type FormFieldSocialLoginButton struct {
 	// A string that specifies the social login button label.
 	Label  string                            `json:"label"`
 	Styles *FormSocialLoginButtonAllOfStyles `json:"styles,omitempty"`
-	Width  *int32                            `json:"width,omitempty"`
 }
 
 // NewFormFieldSocialLoginButton instantiates a new FormFieldSocialLoginButton object
@@ -352,38 +351,6 @@ func (o *FormFieldSocialLoginButton) SetStyles(v FormSocialLoginButtonAllOfStyle
 	o.Styles = &v
 }
 
-// GetWidth returns the Width field value if set, zero value otherwise.
-func (o *FormFieldSocialLoginButton) GetWidth() int32 {
-	if o == nil || IsNil(o.Width) {
-		var ret int32
-		return ret
-	}
-	return *o.Width
-}
-
-// GetWidthOk returns a tuple with the Width field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormFieldSocialLoginButton) GetWidthOk() (*int32, bool) {
-	if o == nil || IsNil(o.Width) {
-		return nil, false
-	}
-	return o.Width, true
-}
-
-// HasWidth returns a boolean if a field has been set.
-func (o *FormFieldSocialLoginButton) HasWidth() bool {
-	if o != nil && !IsNil(o.Width) {
-		return true
-	}
-
-	return false
-}
-
-// SetWidth gets a reference to the given int32 and assigns it to the Width field.
-func (o *FormFieldSocialLoginButton) SetWidth(v int32) {
-	o.Width = &v
-}
-
 func (o FormFieldSocialLoginButton) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -410,9 +377,6 @@ func (o FormFieldSocialLoginButton) ToMap() (map[string]interface{}, error) {
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles
-	}
-	if !IsNil(o.Width) {
-		toSerialize["width"] = o.Width
 	}
 	return toSerialize, nil
 }

@@ -3414,8 +3414,6 @@ components:
                 displayDefaultThemeButtonTextColor:
                   type: boolean
                   description: A boolean that specifies whether the button uses the default theme’s text color.
-            width:
-              type: integer
           required:
             - label
             - idpType

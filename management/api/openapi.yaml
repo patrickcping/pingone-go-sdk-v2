@@ -42848,8 +42848,6 @@ components:
             type: string
           styles:
             $ref: '#/components/schemas/FormSocialLoginButton_allOf_styles'
-          width:
-            type: integer
         required:
         - idpEnabled
         - idpId
