@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **AttributeDisabled** | Pointer to **bool** | A boolean that specifies whether the linked directory attribute is disabled. | [optional] [readonly] 
 **Key** | **string** | A string that specifies an identifier for the field component. | 
-**Label** | **string** | A string that specifies the text label for the FIDO2 button. | 
+**Label** | **string** | A string of escaped JSON that is designed to store a series of text and translatable keys. | 
 **LabelMode** | Pointer to [**EnumFormElementLabelMode**](EnumFormElementLabelMode.md) |  | [optional] 
 **Required** | Pointer to **bool** | A boolean that specifies whether the field is required. | [optional] 
 **OtherOptionEnabled** | Pointer to **bool** | A boolean that specifies whether the end user can type an entry that is not in a predefined list. | [optional] 
@@ -33,7 +33,8 @@ Name | Type | Description | Notes
 **IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
 **IdpEnabled** | **bool** | A boolean that specifies whether the external identity provider is enabled. | 
-**IconSrc** | Pointer to **string** | A string that specifies the external edentity provider’s image icon URL. | [optional] 
+**IconSrc** | Pointer to **string** | A string that specifies the icon image URL to be displayed on the button. | [optional] 
+**Width** | Pointer to **int32** |  | [optional] 
 **PollingAppearance** | [**EnumFormPollingAppearance**](EnumFormPollingAppearance.md) |  | 
 **Trigger** | [**EnumFormFIDO2Trigger**](EnumFormFIDO2Trigger.md) |  | 
 **Action** | [**EnumFormFIDO2Action**](EnumFormFIDO2Action.md) |  | 
@@ -741,6 +742,31 @@ SetIconSrc sets IconSrc field to given value.
 `func (o *FormField) HasIconSrc() bool`
 
 HasIconSrc returns a boolean if a field has been set.
+
+### GetWidth
+
+`func (o *FormField) GetWidth() int32`
+
+GetWidth returns the Width field if non-nil, zero value otherwise.
+
+### GetWidthOk
+
+`func (o *FormField) GetWidthOk() (*int32, bool)`
+
+GetWidthOk returns a tuple with the Width field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWidth
+
+`func (o *FormField) SetWidth(v int32)`
+
+SetWidth sets Width field to given value.
+
+### HasWidth
+
+`func (o *FormField) HasWidth() bool`
+
+HasWidth returns a boolean if a field has been set.
 
 ### GetPollingAppearance
 

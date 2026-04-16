@@ -28,11 +28,12 @@ type FormSocialLoginButton struct {
 	IdpId string `json:"idpId"`
 	// A boolean that specifies whether the external identity provider is enabled.
 	IdpEnabled bool `json:"idpEnabled"`
-	// A string that specifies the external edentity provider’s image icon URL.
+	// A string that specifies the icon image URL to be displayed on the button.
 	IconSrc *string `json:"iconSrc,omitempty"`
 	// A string that specifies the social login button label.
 	Label  string                            `json:"label"`
 	Styles *FormSocialLoginButtonAllOfStyles `json:"styles,omitempty"`
+	Width  *int32                            `json:"width,omitempty"`
 }
 
 // NewFormSocialLoginButton instantiates a new FormSocialLoginButton object
@@ -266,6 +267,38 @@ func (o *FormSocialLoginButton) SetStyles(v FormSocialLoginButtonAllOfStyles) {
 	o.Styles = &v
 }
 
+// GetWidth returns the Width field value if set, zero value otherwise.
+func (o *FormSocialLoginButton) GetWidth() int32 {
+	if o == nil || IsNil(o.Width) {
+		var ret int32
+		return ret
+	}
+	return *o.Width
+}
+
+// GetWidthOk returns a tuple with the Width field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormSocialLoginButton) GetWidthOk() (*int32, bool) {
+	if o == nil || IsNil(o.Width) {
+		return nil, false
+	}
+	return o.Width, true
+}
+
+// HasWidth returns a boolean if a field has been set.
+func (o *FormSocialLoginButton) HasWidth() bool {
+	if o != nil && !IsNil(o.Width) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidth gets a reference to the given int32 and assigns it to the Width field.
+func (o *FormSocialLoginButton) SetWidth(v int32) {
+	o.Width = &v
+}
+
 func (o FormSocialLoginButton) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -287,6 +320,9 @@ func (o FormSocialLoginButton) ToMap() (map[string]interface{}, error) {
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles
+	}
+	if !IsNil(o.Width) {
+		toSerialize["width"] = o.Width
 	}
 	return toSerialize, nil
 }

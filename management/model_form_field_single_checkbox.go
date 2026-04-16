@@ -19,10 +19,29 @@ var _ MappedNullable = &FormFieldSingleCheckbox{}
 
 // FormFieldSingleCheckbox struct for FormFieldSingleCheckbox
 type FormFieldSingleCheckbox struct {
-	Type       EnumFormFieldType                `json:"type"`
-	Position   FormFieldCommonPosition          `json:"position"`
-	Visibility *FormFieldCommonVisibility       `json:"visibility,omitempty"`
-	Appearance EnumFormSingleCheckboxAppearance `json:"appearance"`
+	Type       EnumFormFieldType          `json:"type"`
+	Position   FormFieldCommonPosition    `json:"position"`
+	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
+	// A boolean that specifies whether the linked directory attribute is disabled.
+	AttributeDisabled *bool `json:"attributeDisabled,omitempty"`
+	// A string that specifies an identifier for the field component.
+	Key string `json:"key"`
+	// A string of escaped JSON that is designed to store a series of text and translatable keys.
+	Label     string                    `json:"label"`
+	LabelMode *EnumFormElementLabelMode `json:"labelMode,omitempty"`
+	// A boolean that specifies whether the field is required.
+	Required *bool `json:"required,omitempty"`
+	// A boolean that specifies whether the end user can type an entry that is not in a predefined list.
+	OtherOptionEnabled *bool `json:"otherOptionEnabled,omitempty"`
+	// A string that specifies whether the form identifies that the choice is a custom choice not from a predefined list.
+	OtherOptionKey *string `json:"otherOptionKey,omitempty"`
+	// A string that specifies the label for a custom or \"other\" choice in a list.
+	OtherOptionLabel *string `json:"otherOptionLabel,omitempty"`
+	// A string that specifies the label for the other option in drop-down controls.
+	OtherOptionInputLabel *string `json:"otherOptionInputLabel,omitempty"`
+	// A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
+	OtherOptionAttributeDisabled *bool                            `json:"otherOptionAttributeDisabled,omitempty"`
+	Appearance                   EnumFormSingleCheckboxAppearance `json:"appearance"`
 	// A string that specifies the message to display if validation fails.
 	ErrorMessage *string                         `json:"errorMessage,omitempty"`
 	InputType    EnumFormSingleCheckboxInputType `json:"inputType"`
@@ -32,10 +51,12 @@ type FormFieldSingleCheckbox struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldSingleCheckbox(type_ EnumFormFieldType, position FormFieldCommonPosition, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormSingleCheckboxInputType) *FormFieldSingleCheckbox {
+func NewFormFieldSingleCheckbox(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormSingleCheckboxInputType) *FormFieldSingleCheckbox {
 	this := FormFieldSingleCheckbox{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
+	this.Label = label
 	this.Appearance = appearance
 	this.InputType = inputType
 	return &this
@@ -127,6 +148,310 @@ func (o *FormFieldSingleCheckbox) HasVisibility() bool {
 // SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
 func (o *FormFieldSingleCheckbox) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
+}
+
+// GetAttributeDisabled returns the AttributeDisabled field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetAttributeDisabled() bool {
+	if o == nil || IsNil(o.AttributeDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AttributeDisabled
+}
+
+// GetAttributeDisabledOk returns a tuple with the AttributeDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetAttributeDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AttributeDisabled) {
+		return nil, false
+	}
+	return o.AttributeDisabled, true
+}
+
+// HasAttributeDisabled returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasAttributeDisabled() bool {
+	if o != nil && !IsNil(o.AttributeDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributeDisabled gets a reference to the given bool and assigns it to the AttributeDisabled field.
+func (o *FormFieldSingleCheckbox) SetAttributeDisabled(v bool) {
+	o.AttributeDisabled = &v
+}
+
+// GetKey returns the Key field value
+func (o *FormFieldSingleCheckbox) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldSingleCheckbox) SetKey(v string) {
+	o.Key = v
+}
+
+// GetLabel returns the Label field value
+func (o *FormFieldSingleCheckbox) GetLabel() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetLabelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Label, true
+}
+
+// SetLabel sets field value
+func (o *FormFieldSingleCheckbox) SetLabel(v string) {
+	o.Label = v
+}
+
+// GetLabelMode returns the LabelMode field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetLabelMode() EnumFormElementLabelMode {
+	if o == nil || IsNil(o.LabelMode) {
+		var ret EnumFormElementLabelMode
+		return ret
+	}
+	return *o.LabelMode
+}
+
+// GetLabelModeOk returns a tuple with the LabelMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetLabelModeOk() (*EnumFormElementLabelMode, bool) {
+	if o == nil || IsNil(o.LabelMode) {
+		return nil, false
+	}
+	return o.LabelMode, true
+}
+
+// HasLabelMode returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasLabelMode() bool {
+	if o != nil && !IsNil(o.LabelMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelMode gets a reference to the given EnumFormElementLabelMode and assigns it to the LabelMode field.
+func (o *FormFieldSingleCheckbox) SetLabelMode(v EnumFormElementLabelMode) {
+	o.LabelMode = &v
+}
+
+// GetRequired returns the Required field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetRequired() bool {
+	if o == nil || IsNil(o.Required) {
+		var ret bool
+		return ret
+	}
+	return *o.Required
+}
+
+// GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.Required) {
+		return nil, false
+	}
+	return o.Required, true
+}
+
+// HasRequired returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasRequired() bool {
+	if o != nil && !IsNil(o.Required) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequired gets a reference to the given bool and assigns it to the Required field.
+func (o *FormFieldSingleCheckbox) SetRequired(v bool) {
+	o.Required = &v
+}
+
+// GetOtherOptionEnabled returns the OtherOptionEnabled field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetOtherOptionEnabled() bool {
+	if o == nil || IsNil(o.OtherOptionEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.OtherOptionEnabled
+}
+
+// GetOtherOptionEnabledOk returns a tuple with the OtherOptionEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetOtherOptionEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.OtherOptionEnabled) {
+		return nil, false
+	}
+	return o.OtherOptionEnabled, true
+}
+
+// HasOtherOptionEnabled returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasOtherOptionEnabled() bool {
+	if o != nil && !IsNil(o.OtherOptionEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionEnabled gets a reference to the given bool and assigns it to the OtherOptionEnabled field.
+func (o *FormFieldSingleCheckbox) SetOtherOptionEnabled(v bool) {
+	o.OtherOptionEnabled = &v
+}
+
+// GetOtherOptionKey returns the OtherOptionKey field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetOtherOptionKey() string {
+	if o == nil || IsNil(o.OtherOptionKey) {
+		var ret string
+		return ret
+	}
+	return *o.OtherOptionKey
+}
+
+// GetOtherOptionKeyOk returns a tuple with the OtherOptionKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetOtherOptionKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionKey) {
+		return nil, false
+	}
+	return o.OtherOptionKey, true
+}
+
+// HasOtherOptionKey returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasOtherOptionKey() bool {
+	if o != nil && !IsNil(o.OtherOptionKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionKey gets a reference to the given string and assigns it to the OtherOptionKey field.
+func (o *FormFieldSingleCheckbox) SetOtherOptionKey(v string) {
+	o.OtherOptionKey = &v
+}
+
+// GetOtherOptionLabel returns the OtherOptionLabel field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetOtherOptionLabel() string {
+	if o == nil || IsNil(o.OtherOptionLabel) {
+		var ret string
+		return ret
+	}
+	return *o.OtherOptionLabel
+}
+
+// GetOtherOptionLabelOk returns a tuple with the OtherOptionLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetOtherOptionLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionLabel) {
+		return nil, false
+	}
+	return o.OtherOptionLabel, true
+}
+
+// HasOtherOptionLabel returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasOtherOptionLabel() bool {
+	if o != nil && !IsNil(o.OtherOptionLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionLabel gets a reference to the given string and assigns it to the OtherOptionLabel field.
+func (o *FormFieldSingleCheckbox) SetOtherOptionLabel(v string) {
+	o.OtherOptionLabel = &v
+}
+
+// GetOtherOptionInputLabel returns the OtherOptionInputLabel field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetOtherOptionInputLabel() string {
+	if o == nil || IsNil(o.OtherOptionInputLabel) {
+		var ret string
+		return ret
+	}
+	return *o.OtherOptionInputLabel
+}
+
+// GetOtherOptionInputLabelOk returns a tuple with the OtherOptionInputLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetOtherOptionInputLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionInputLabel) {
+		return nil, false
+	}
+	return o.OtherOptionInputLabel, true
+}
+
+// HasOtherOptionInputLabel returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasOtherOptionInputLabel() bool {
+	if o != nil && !IsNil(o.OtherOptionInputLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionInputLabel gets a reference to the given string and assigns it to the OtherOptionInputLabel field.
+func (o *FormFieldSingleCheckbox) SetOtherOptionInputLabel(v string) {
+	o.OtherOptionInputLabel = &v
+}
+
+// GetOtherOptionAttributeDisabled returns the OtherOptionAttributeDisabled field value if set, zero value otherwise.
+func (o *FormFieldSingleCheckbox) GetOtherOptionAttributeDisabled() bool {
+	if o == nil || IsNil(o.OtherOptionAttributeDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.OtherOptionAttributeDisabled
+}
+
+// GetOtherOptionAttributeDisabledOk returns a tuple with the OtherOptionAttributeDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSingleCheckbox) GetOtherOptionAttributeDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.OtherOptionAttributeDisabled) {
+		return nil, false
+	}
+	return o.OtherOptionAttributeDisabled, true
+}
+
+// HasOtherOptionAttributeDisabled returns a boolean if a field has been set.
+func (o *FormFieldSingleCheckbox) HasOtherOptionAttributeDisabled() bool {
+	if o != nil && !IsNil(o.OtherOptionAttributeDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionAttributeDisabled gets a reference to the given bool and assigns it to the OtherOptionAttributeDisabled field.
+func (o *FormFieldSingleCheckbox) SetOtherOptionAttributeDisabled(v bool) {
+	o.OtherOptionAttributeDisabled = &v
 }
 
 // GetAppearance returns the Appearance field value
@@ -223,6 +548,32 @@ func (o FormFieldSingleCheckbox) ToMap() (map[string]interface{}, error) {
 	toSerialize["position"] = o.Position
 	if !IsNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
+	}
+	if !IsNil(o.AttributeDisabled) {
+		toSerialize["attributeDisabled"] = o.AttributeDisabled
+	}
+	toSerialize["key"] = o.Key
+	toSerialize["label"] = o.Label
+	if !IsNil(o.LabelMode) {
+		toSerialize["labelMode"] = o.LabelMode
+	}
+	if !IsNil(o.Required) {
+		toSerialize["required"] = o.Required
+	}
+	if !IsNil(o.OtherOptionEnabled) {
+		toSerialize["otherOptionEnabled"] = o.OtherOptionEnabled
+	}
+	if !IsNil(o.OtherOptionKey) {
+		toSerialize["otherOptionKey"] = o.OtherOptionKey
+	}
+	if !IsNil(o.OtherOptionLabel) {
+		toSerialize["otherOptionLabel"] = o.OtherOptionLabel
+	}
+	if !IsNil(o.OtherOptionInputLabel) {
+		toSerialize["otherOptionInputLabel"] = o.OtherOptionInputLabel
+	}
+	if !IsNil(o.OtherOptionAttributeDisabled) {
+		toSerialize["otherOptionAttributeDisabled"] = o.OtherOptionAttributeDisabled
 	}
 	toSerialize["appearance"] = o.Appearance
 	if !IsNil(o.ErrorMessage) {

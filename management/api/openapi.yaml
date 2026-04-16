@@ -42658,6 +42658,7 @@ components:
     FormFieldSingleCheckbox:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormElement'
       - $ref: '#/components/schemas/FormSingleCheckbox'
     FormFieldFormAgreement:
       allOf:
@@ -42849,14 +42850,16 @@ components:
               is enabled.
             type: boolean
           iconSrc:
-            description: A string that specifies the external edentity provider’s
-              image icon URL.
+            description: A string that specifies the icon image URL to be displayed
+              on the button.
             type: string
           label:
             description: A string that specifies the social login button label.
             type: string
           styles:
             $ref: '#/components/schemas/FormSocialLoginButton_allOf_styles'
+          width:
+            type: integer
         required:
         - idpEnabled
         - idpId
@@ -51070,6 +51073,10 @@ components:
           $ref: '#/components/schemas/EnumFormStylesWidthUnit'
         padding:
           $ref: '#/components/schemas/FormStylesPadding'
+        backgroundColor:
+          description: A string that specifies the button background color. The value
+            must be a valid hexadecimal color.
+          type: string
         borderColor:
           description: A string that specifies the button border color. The value
             must be a valid hexadecimal color.

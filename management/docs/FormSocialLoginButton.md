@@ -9,9 +9,10 @@ Name | Type | Description | Notes
 **IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
 **IdpEnabled** | **bool** | A boolean that specifies whether the external identity provider is enabled. | 
-**IconSrc** | Pointer to **string** | A string that specifies the external edentity provider’s image icon URL. | [optional] 
+**IconSrc** | Pointer to **string** | A string that specifies the icon image URL to be displayed on the button. | [optional] 
 **Label** | **string** | A string that specifies the social login button label. | 
 **Styles** | Pointer to [**FormSocialLoginButtonAllOfStyles**](FormSocialLoginButtonAllOfStyles.md) |  | [optional] 
+**Width** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -201,6 +202,31 @@ SetStyles sets Styles field to given value.
 `func (o *FormSocialLoginButton) HasStyles() bool`
 
 HasStyles returns a boolean if a field has been set.
+
+### GetWidth
+
+`func (o *FormSocialLoginButton) GetWidth() int32`
+
+GetWidth returns the Width field if non-nil, zero value otherwise.
+
+### GetWidthOk
+
+`func (o *FormSocialLoginButton) GetWidthOk() (*int32, bool)`
+
+GetWidthOk returns a tuple with the Width field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWidth
+
+`func (o *FormSocialLoginButton) SetWidth(v int32)`
+
+SetWidth sets Width field to given value.
+
+### HasWidth
+
+`func (o *FormSocialLoginButton) HasWidth() bool`
+
+HasWidth returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
