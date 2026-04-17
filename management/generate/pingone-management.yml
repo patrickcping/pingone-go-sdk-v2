@@ -2794,9 +2794,6 @@ components:
           type: boolean
           description: A boolean that specifies whether the password auto-complete feature is enabled.
           default: false
-        showPasswordRequirements:
-          type: boolean
-          description: A boolean that specifies whether to return the password requirements during a DaVinci flow. A form with a new password field does not show the password policy information automatically in the response. To return the password policy information, the value of this property must be set to true.
         textAutoCompleteEnabled:
           type: boolean
           description: A boolean that specifies whether the text auto-complete feature is enabled.
@@ -3124,6 +3121,7 @@ components:
     FormFieldSingleCheckbox:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormElement'
         - $ref: '#/components/schemas/FormSingleCheckbox'
     FormFieldFormAgreement:
       allOf:
@@ -3376,7 +3374,7 @@ components:
               description: A boolean that specifies whether the external identity provider is enabled.
             iconSrc:
               type: string
-              description: A string that specifies the external edentity provider’s image icon URL.
+              description: A string that specifies the icon image URL to be displayed on the button.
             label:
               type: string
               description: A string that specifies the social login button label.
@@ -3401,6 +3399,9 @@ components:
                   $ref: '#/components/schemas/EnumFormStylesWidthUnit'
                 padding:
                   $ref: '#/components/schemas/FormStylesPadding'
+                backgroundColor:
+                  type: string
+                  description: A string that specifies the button background color. The value must be a valid hexadecimal color.
                 borderColor:
                   type: string
                   description: A string that specifies the button border color. The value must be a valid hexadecimal color.
@@ -3418,7 +3419,6 @@ components:
             - idpType
             - idpName
             - idpId
-            - idpEnabled
     FormSubmit:
       type: object
       properties:

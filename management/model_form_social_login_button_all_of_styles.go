@@ -30,6 +30,8 @@ type FormSocialLoginButtonAllOfStyles struct {
 	Width     *int32                   `json:"width,omitempty"`
 	WidthUnit *EnumFormStylesWidthUnit `json:"widthUnit,omitempty"`
 	Padding   *FormStylesPadding       `json:"padding,omitempty"`
+	// A string that specifies the button background color. The value must be a valid hexadecimal color.
+	BackgroundColor *string `json:"backgroundColor,omitempty"`
 	// A string that specifies the button border color. The value must be a valid hexadecimal color.
 	BorderColor *string `json:"borderColor,omitempty"`
 	// A boolean that specifies whether the button uses the default theme’s background color.
@@ -281,6 +283,38 @@ func (o *FormSocialLoginButtonAllOfStyles) SetPadding(v FormStylesPadding) {
 	o.Padding = &v
 }
 
+// GetBackgroundColor returns the BackgroundColor field value if set, zero value otherwise.
+func (o *FormSocialLoginButtonAllOfStyles) GetBackgroundColor() string {
+	if o == nil || IsNil(o.BackgroundColor) {
+		var ret string
+		return ret
+	}
+	return *o.BackgroundColor
+}
+
+// GetBackgroundColorOk returns a tuple with the BackgroundColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormSocialLoginButtonAllOfStyles) GetBackgroundColorOk() (*string, bool) {
+	if o == nil || IsNil(o.BackgroundColor) {
+		return nil, false
+	}
+	return o.BackgroundColor, true
+}
+
+// HasBackgroundColor returns a boolean if a field has been set.
+func (o *FormSocialLoginButtonAllOfStyles) HasBackgroundColor() bool {
+	if o != nil && !IsNil(o.BackgroundColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetBackgroundColor gets a reference to the given string and assigns it to the BackgroundColor field.
+func (o *FormSocialLoginButtonAllOfStyles) SetBackgroundColor(v string) {
+	o.BackgroundColor = &v
+}
+
 // GetBorderColor returns the BorderColor field value if set, zero value otherwise.
 func (o *FormSocialLoginButtonAllOfStyles) GetBorderColor() string {
 	if o == nil || IsNil(o.BorderColor) {
@@ -439,6 +473,9 @@ func (o FormSocialLoginButtonAllOfStyles) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.Padding) {
 		toSerialize["padding"] = o.Padding
+	}
+	if !IsNil(o.BackgroundColor) {
+		toSerialize["backgroundColor"] = o.BackgroundColor
 	}
 	if !IsNil(o.BorderColor) {
 		toSerialize["borderColor"] = o.BorderColor

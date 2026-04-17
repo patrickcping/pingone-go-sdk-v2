@@ -41946,7 +41946,6 @@ components:
               fields:
               - null
               - null
-            showPasswordRequirements: true
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -41973,7 +41972,6 @@ components:
               fields:
               - null
               - null
-            showPasswordRequirements: true
             _links:
               key:
                 href: https://openapi-generator.tech
@@ -42225,7 +42223,6 @@ components:
           fields:
           - null
           - null
-        showPasswordRequirements: true
         _links:
           key:
             href: https://openapi-generator.tech
@@ -42314,13 +42311,6 @@ components:
           default: false
           description: A boolean that specifies whether the password auto-complete
             feature is enabled.
-          type: boolean
-        showPasswordRequirements:
-          description: "A boolean that specifies whether to return the password requirements\
-            \ during a DaVinci flow. A form with a new password field does not show\
-            \ the password policy information automatically in the response. To return\
-            \ the password policy information, the value of this property must be\
-            \ set to true."
           type: boolean
         textAutoCompleteEnabled:
           default: false
@@ -42658,6 +42648,7 @@ components:
     FormFieldSingleCheckbox:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormElement'
       - $ref: '#/components/schemas/FormSingleCheckbox'
     FormFieldFormAgreement:
       allOf:
@@ -42849,8 +42840,8 @@ components:
               is enabled.
             type: boolean
           iconSrc:
-            description: A string that specifies the external edentity provider’s
-              image icon URL.
+            description: A string that specifies the icon image URL to be displayed
+              on the button.
             type: string
           label:
             description: A string that specifies the social login button label.
@@ -42858,7 +42849,6 @@ components:
           styles:
             $ref: '#/components/schemas/FormSocialLoginButton_allOf_styles'
         required:
-        - idpEnabled
         - idpId
         - idpName
         - idpType
@@ -50582,7 +50572,6 @@ components:
             fields:
             - null
             - null
-          showPasswordRequirements: true
           _links:
             key:
               href: https://openapi-generator.tech
@@ -50609,7 +50598,6 @@ components:
             fields:
             - null
             - null
-          showPasswordRequirements: true
           _links:
             key:
               href: https://openapi-generator.tech
@@ -51070,6 +51058,10 @@ components:
           $ref: '#/components/schemas/EnumFormStylesWidthUnit'
         padding:
           $ref: '#/components/schemas/FormStylesPadding'
+        backgroundColor:
+          description: A string that specifies the button background color. The value
+            must be a valid hexadecimal color.
+          type: string
         borderColor:
           description: A string that specifies the button border color. The value
             must be a valid hexadecimal color.

@@ -46,8 +46,6 @@ type Form struct {
 	Name string `json:"name"`
 	// A boolean that specifies whether the password auto-complete feature is enabled.
 	PasswordAutoCompleteEnabled *bool `json:"passwordAutoCompleteEnabled,omitempty"`
-	// A boolean that specifies whether to return the password requirements during a DaVinci flow. A form with a new password field does not show the password policy information automatically in the response. To return the password policy information, the value of this property must be set to true.
-	ShowPasswordRequirements *bool `json:"showPasswordRequirements,omitempty"`
 	// A boolean that specifies whether the text auto-complete feature is enabled.
 	TextAutoCompleteEnabled *bool                      `json:"textAutoCompleteEnabled,omitempty"`
 	TranslationMethod       *EnumFormTranslationMethod `json:"translationMethod,omitempty"`
@@ -523,38 +521,6 @@ func (o *Form) SetPasswordAutoCompleteEnabled(v bool) {
 	o.PasswordAutoCompleteEnabled = &v
 }
 
-// GetShowPasswordRequirements returns the ShowPasswordRequirements field value if set, zero value otherwise.
-func (o *Form) GetShowPasswordRequirements() bool {
-	if o == nil || IsNil(o.ShowPasswordRequirements) {
-		var ret bool
-		return ret
-	}
-	return *o.ShowPasswordRequirements
-}
-
-// GetShowPasswordRequirementsOk returns a tuple with the ShowPasswordRequirements field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Form) GetShowPasswordRequirementsOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShowPasswordRequirements) {
-		return nil, false
-	}
-	return o.ShowPasswordRequirements, true
-}
-
-// HasShowPasswordRequirements returns a boolean if a field has been set.
-func (o *Form) HasShowPasswordRequirements() bool {
-	if o != nil && !IsNil(o.ShowPasswordRequirements) {
-		return true
-	}
-
-	return false
-}
-
-// SetShowPasswordRequirements gets a reference to the given bool and assigns it to the ShowPasswordRequirements field.
-func (o *Form) SetShowPasswordRequirements(v bool) {
-	o.ShowPasswordRequirements = &v
-}
-
 // GetTextAutoCompleteEnabled returns the TextAutoCompleteEnabled field value if set, zero value otherwise.
 func (o *Form) GetTextAutoCompleteEnabled() bool {
 	if o == nil || IsNil(o.TextAutoCompleteEnabled) {
@@ -663,9 +629,6 @@ func (o Form) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.PasswordAutoCompleteEnabled) {
 		toSerialize["passwordAutoCompleteEnabled"] = o.PasswordAutoCompleteEnabled
-	}
-	if !IsNil(o.ShowPasswordRequirements) {
-		toSerialize["showPasswordRequirements"] = o.ShowPasswordRequirements
 	}
 	if !IsNil(o.TextAutoCompleteEnabled) {
 		toSerialize["textAutoCompleteEnabled"] = o.TextAutoCompleteEnabled

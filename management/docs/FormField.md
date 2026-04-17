@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Visibility** | Pointer to [**FormFieldCommonVisibility**](FormFieldCommonVisibility.md) |  | [optional] 
 **AttributeDisabled** | Pointer to **bool** | A boolean that specifies whether the linked directory attribute is disabled. | [optional] [readonly] 
 **Key** | **string** | A string that specifies an identifier for the field component. | 
-**Label** | **string** | A string that specifies the text label for the FIDO2 button. | 
+**Label** | **string** | A string of escaped JSON that is designed to store a series of text and translatable keys. | 
 **LabelMode** | Pointer to [**EnumFormElementLabelMode**](EnumFormElementLabelMode.md) |  | [optional] 
 **Required** | Pointer to **bool** | A boolean that specifies whether the field is required. | [optional] 
 **OtherOptionEnabled** | Pointer to **bool** | A boolean that specifies whether the end user can type an entry that is not in a predefined list. | [optional] 
@@ -32,8 +32,8 @@ Name | Type | Description | Notes
 **IdpName** | **string** | A string that specifies the external identity provider name. | 
 **IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
-**IdpEnabled** | **bool** | A boolean that specifies whether the external identity provider is enabled. | 
-**IconSrc** | Pointer to **string** | A string that specifies the external edentity provider’s image icon URL. | [optional] 
+**IdpEnabled** | Pointer to **bool** | A boolean that specifies whether the external identity provider is enabled. | [optional] 
+**IconSrc** | Pointer to **string** | A string that specifies the icon image URL to be displayed on the button. | [optional] 
 **PollingAppearance** | [**EnumFormPollingAppearance**](EnumFormPollingAppearance.md) |  | 
 **Trigger** | [**EnumFormFIDO2Trigger**](EnumFormFIDO2Trigger.md) |  | 
 **Action** | [**EnumFormFIDO2Action**](EnumFormFIDO2Action.md) |  | 
@@ -47,7 +47,7 @@ Name | Type | Description | Notes
 
 ### NewFormField
 
-`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormItemSize, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, idpEnabled bool, pollingAppearance EnumFormPollingAppearance, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormField`
+`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormItemSize, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, pollingAppearance EnumFormPollingAppearance, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormField`
 
 NewFormField instantiates a new FormField object
 This constructor will assign default values to properties that have it defined,
@@ -716,6 +716,11 @@ and a boolean to check if the value has been set.
 
 SetIdpEnabled sets IdpEnabled field to given value.
 
+### HasIdpEnabled
+
+`func (o *FormField) HasIdpEnabled() bool`
+
+HasIdpEnabled returns a boolean if a field has been set.
 
 ### GetIconSrc
 

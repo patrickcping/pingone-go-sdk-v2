@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Width** | Pointer to **int32** | An integer that specifies the button width. | [optional] 
 **WidthUnit** | Pointer to [**EnumFormStylesWidthUnit**](EnumFormStylesWidthUnit.md) |  | [optional] 
 **Padding** | Pointer to [**FormStylesPadding**](FormStylesPadding.md) |  | [optional] 
+**BackgroundColor** | Pointer to **string** | A string that specifies the button background color. The value must be a valid hexadecimal color. | [optional] 
 **BorderColor** | Pointer to **string** | A string that specifies the button border color. The value must be a valid hexadecimal color. | [optional] 
 **DisplayDefaultThemeButtonBackgroundColor** | Pointer to **bool** | A boolean that specifies whether the button uses the default theme’s background color. | [optional] 
 **DisplayDefaultThemeButtonBorderColor** | Pointer to **bool** | A boolean that specifies whether the button uses the default theme’s border color. | [optional] 
@@ -209,6 +210,31 @@ SetPadding sets Padding field to given value.
 `func (o *FormSocialLoginButtonAllOfStyles) HasPadding() bool`
 
 HasPadding returns a boolean if a field has been set.
+
+### GetBackgroundColor
+
+`func (o *FormSocialLoginButtonAllOfStyles) GetBackgroundColor() string`
+
+GetBackgroundColor returns the BackgroundColor field if non-nil, zero value otherwise.
+
+### GetBackgroundColorOk
+
+`func (o *FormSocialLoginButtonAllOfStyles) GetBackgroundColorOk() (*string, bool)`
+
+GetBackgroundColorOk returns a tuple with the BackgroundColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackgroundColor
+
+`func (o *FormSocialLoginButtonAllOfStyles) SetBackgroundColor(v string)`
+
+SetBackgroundColor sets BackgroundColor field to given value.
+
+### HasBackgroundColor
+
+`func (o *FormSocialLoginButtonAllOfStyles) HasBackgroundColor() bool`
+
+HasBackgroundColor returns a boolean if a field has been set.
 
 ### GetBorderColor
 

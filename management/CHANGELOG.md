@@ -1,3 +1,7 @@
+# v0.69.0 (Unreleased)
+
+* **Enhancement** Re-aligned Forms data model to API for SINGLE_CHECKBOX and SOCIAL_LOGIN_BUTTON form field types [#530](https://github.com/patrickcping/pingone-go-sdk-v2/pull/530)
+
 # v0.68.2 (2026-04-14)
 
 * **Bug** Removed unneeded `SubscriptionPayloadOptionsPayloadFormatFormat` data type from the `Subscription` (webhook) data model. [#527](https://github.com/patrickcping/pingone-go-sdk-v2/pull/527)
