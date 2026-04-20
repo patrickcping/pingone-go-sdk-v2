@@ -42425,6 +42425,7 @@ components:
           TEXT: '#/components/schemas/FormFieldText'
           PASSWORD: '#/components/schemas/FormFieldPassword'
           PASSWORD_VERIFY: '#/components/schemas/FormFieldPasswordVerify'
+          PHONE_NUMBER: '#/components/schemas/FormFieldPhoneNumber'
           RADIO: '#/components/schemas/FormFieldRadio'
           CHECKBOX: '#/components/schemas/FormFieldCheckbox'
           DROPDOWN: '#/components/schemas/FormFieldDropdown'
@@ -42439,6 +42440,7 @@ components:
           RECAPTCHA_V2: '#/components/schemas/FormFieldRecaptchaV2'
           QR_CODE: '#/components/schemas/FormFieldQrCode'
           SOCIAL_LOGIN_BUTTON: '#/components/schemas/FormFieldSocialLoginButton'
+          DEVICE_REGISTRATION: '#/components/schemas/FormFieldDeviceRegistration'
           DEVICE_AUTHENTICATION: '#/components/schemas/FormFieldDeviceAuthentication'
           POLLING: '#/components/schemas/FormFieldPolling'
           FIDO2: '#/components/schemas/FormFieldFIDO2'
@@ -42449,6 +42451,7 @@ components:
       - $ref: '#/components/schemas/FormFieldText'
       - $ref: '#/components/schemas/FormFieldPassword'
       - $ref: '#/components/schemas/FormFieldPasswordVerify'
+      - $ref: '#/components/schemas/FormFieldPhoneNumber'
       - $ref: '#/components/schemas/FormFieldRadio'
       - $ref: '#/components/schemas/FormFieldCheckbox'
       - $ref: '#/components/schemas/FormFieldDropdown'
@@ -42463,6 +42466,7 @@ components:
       - $ref: '#/components/schemas/FormFieldRecaptchaV2'
       - $ref: '#/components/schemas/FormFieldQrCode'
       - $ref: '#/components/schemas/FormFieldSocialLoginButton'
+      - $ref: '#/components/schemas/FormFieldDeviceRegistration'
       - $ref: '#/components/schemas/FormFieldDeviceAuthentication'
       - $ref: '#/components/schemas/FormFieldPolling'
       - $ref: '#/components/schemas/FormFieldFIDO2'
@@ -42524,6 +42528,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldPassword'
       - $ref: '#/components/schemas/FormElementPasswordVerify'
+    FormFieldPhoneNumber:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormPhoneNumber'
     FormFieldRadio:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -42660,6 +42668,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormSocialLoginButton'
+    FormFieldDeviceRegistration:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormDeviceRegistration'
     FormFieldDeviceAuthentication:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -42672,6 +42684,29 @@ components:
       required:
       - key
       type: object
+    FormPhoneNumber:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormElement'
+      - properties:
+          defaultCountryCode:
+            description: The country code to default the country code selection field
+              to (two character country code).
+            type: string
+          countryCodeLabel:
+            description: Label for the country code field.
+            type: string
+          validatePhoneNumber:
+            description: Whether to validate the phone number input.
+            type: boolean
+          showExtension:
+            description: Whether to show an extension field.
+            type: boolean
+          extensionLabel:
+            description: Label for the extension field. This is required and must
+              not be blank if showExtension is true.
+            type: string
+        type: object
     FormFlowButton:
       properties:
         key:
@@ -42719,21 +42754,72 @@ components:
             $ref: '#/components/schemas/FormItemWithIcon_allOf_icon'
         type: object
     FormDeviceAuthentication:
-      properties:
-        label:
-          description: Label for the device authentication field.
-          type: string
-        options:
-          description: List of devices available for authentication. Must not be empty.
-          items:
-            $ref: '#/components/schemas/AuthenticationDevice'
-          type: array
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          label:
+            description: Label for the device authentication field.
+            type: string
+          options:
+            description: List of devices available for authentication. Must not be
+              empty.
+            items:
+              $ref: '#/components/schemas/AuthenticationDevice'
+            type: array
+          required:
+            description: Whether the field is required or not.
+            type: boolean
         required:
-          description: Whether the field is required or not.
-          type: boolean
+        - label
+        - options
+        type: object
+    FormDeviceRegistration:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          label:
+            description: Label for the device registration field.
+            type: string
+          options:
+            description: List of devices available for registration. Must not be empty.
+            items:
+              $ref: '#/components/schemas/RegistrationDevice'
+            type: array
+          required:
+            description: Whether the field is required or not.
+            type: boolean
+        required:
+        - label
+        - options
+        type: object
+    RegistrationDevice:
+      properties:
+        type:
+          description: "Device type. Must be one of [EMAIL, FIDO2, MOBILE, SMS, TOTP,\
+            \ VOICE, WHATSAPP]."
+          enum:
+          - EMAIL
+          - FIDO2
+          - MOBILE
+          - SMS
+          - TOTP
+          - VOICE
+          - WHATSAPP
+          type: string
+        title:
+          description: Title for the device.
+          type: string
+        description:
+          description: Description for the device (Max 1000 characters).
+          maxLength: 1000
+          type: string
+        iconSrc:
+          description: Icon image source to display for the device (Max 500 characters).
+          maxLength: 500
+          type: string
       required:
-      - label
-      - options
+      - title
+      - type
       type: object
     AuthenticationDevice:
       properties:

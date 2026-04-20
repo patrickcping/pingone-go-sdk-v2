@@ -20,6 +20,7 @@ type FormField struct {
 	FormFieldCheckbox             *FormFieldCheckbox
 	FormFieldCombobox             *FormFieldCombobox
 	FormFieldDeviceAuthentication *FormFieldDeviceAuthentication
+	FormFieldDeviceRegistration   *FormFieldDeviceRegistration
 	FormFieldDivider              *FormFieldDivider
 	FormFieldDropdown             *FormFieldDropdown
 	FormFieldEmptyField           *FormFieldEmptyField
@@ -30,6 +31,7 @@ type FormField struct {
 	FormFieldFormAgreement        *FormFieldFormAgreement
 	FormFieldPassword             *FormFieldPassword
 	FormFieldPasswordVerify       *FormFieldPasswordVerify
+	FormFieldPhoneNumber          *FormFieldPhoneNumber
 	FormFieldPolling              *FormFieldPolling
 	FormFieldQrCode               *FormFieldQrCode
 	FormFieldRadio                *FormFieldRadio
@@ -59,6 +61,13 @@ func FormFieldComboboxAsFormField(v *FormFieldCombobox) FormField {
 func FormFieldDeviceAuthenticationAsFormField(v *FormFieldDeviceAuthentication) FormField {
 	return FormField{
 		FormFieldDeviceAuthentication: v,
+	}
+}
+
+// FormFieldDeviceRegistrationAsFormField is a convenience function that returns FormFieldDeviceRegistration wrapped in FormField
+func FormFieldDeviceRegistrationAsFormField(v *FormFieldDeviceRegistration) FormField {
+	return FormField{
+		FormFieldDeviceRegistration: v,
 	}
 }
 
@@ -129,6 +138,13 @@ func FormFieldPasswordAsFormField(v *FormFieldPassword) FormField {
 func FormFieldPasswordVerifyAsFormField(v *FormFieldPasswordVerify) FormField {
 	return FormField{
 		FormFieldPasswordVerify: v,
+	}
+}
+
+// FormFieldPhoneNumberAsFormField is a convenience function that returns FormFieldPhoneNumber wrapped in FormField
+func FormFieldPhoneNumberAsFormField(v *FormFieldPhoneNumber) FormField {
+	return FormField{
+		FormFieldPhoneNumber: v,
 	}
 }
 
@@ -337,6 +353,10 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FormFieldDeviceAuthentication)
 	}
 
+	if src.FormFieldDeviceRegistration != nil {
+		return json.Marshal(&src.FormFieldDeviceRegistration)
+	}
+
 	if src.FormFieldDivider != nil {
 		return json.Marshal(&src.FormFieldDivider)
 	}
@@ -375,6 +395,10 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 
 	if src.FormFieldPasswordVerify != nil {
 		return json.Marshal(&src.FormFieldPasswordVerify)
+	}
+
+	if src.FormFieldPhoneNumber != nil {
+		return json.Marshal(&src.FormFieldPhoneNumber)
 	}
 
 	if src.FormFieldPolling != nil {
@@ -433,6 +457,10 @@ func (obj *FormField) GetActualInstance() interface{} {
 		return obj.FormFieldDeviceAuthentication
 	}
 
+	if obj.FormFieldDeviceRegistration != nil {
+		return obj.FormFieldDeviceRegistration
+	}
+
 	if obj.FormFieldDivider != nil {
 		return obj.FormFieldDivider
 	}
@@ -471,6 +499,10 @@ func (obj *FormField) GetActualInstance() interface{} {
 
 	if obj.FormFieldPasswordVerify != nil {
 		return obj.FormFieldPasswordVerify
+	}
+
+	if obj.FormFieldPhoneNumber != nil {
+		return obj.FormFieldPhoneNumber
 	}
 
 	if obj.FormFieldPolling != nil {

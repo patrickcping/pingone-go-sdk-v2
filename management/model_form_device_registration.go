@@ -14,43 +14,43 @@ import (
 	"encoding/json"
 )
 
-// checks if the FormDeviceAuthentication type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FormDeviceAuthentication{}
+// checks if the FormDeviceRegistration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FormDeviceRegistration{}
 
-// FormDeviceAuthentication struct for FormDeviceAuthentication
-type FormDeviceAuthentication struct {
+// FormDeviceRegistration struct for FormDeviceRegistration
+type FormDeviceRegistration struct {
 	// A string that specifies an identifier for the field component.
 	Key string `json:"key"`
-	// Label for the device authentication field.
+	// Label for the device registration field.
 	Label string `json:"label"`
-	// List of devices available for authentication. Must not be empty.
-	Options []AuthenticationDevice `json:"options"`
+	// List of devices available for registration. Must not be empty.
+	Options []RegistrationDevice `json:"options"`
 	// Whether the field is required or not.
 	Required *bool `json:"required,omitempty"`
 }
 
-// NewFormDeviceAuthentication instantiates a new FormDeviceAuthentication object
+// NewFormDeviceRegistration instantiates a new FormDeviceRegistration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormDeviceAuthentication(key string, label string, options []AuthenticationDevice) *FormDeviceAuthentication {
-	this := FormDeviceAuthentication{}
+func NewFormDeviceRegistration(key string, label string, options []RegistrationDevice) *FormDeviceRegistration {
+	this := FormDeviceRegistration{}
 	this.Key = key
 	this.Label = label
 	this.Options = options
 	return &this
 }
 
-// NewFormDeviceAuthenticationWithDefaults instantiates a new FormDeviceAuthentication object
+// NewFormDeviceRegistrationWithDefaults instantiates a new FormDeviceRegistration object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFormDeviceAuthenticationWithDefaults() *FormDeviceAuthentication {
-	this := FormDeviceAuthentication{}
+func NewFormDeviceRegistrationWithDefaults() *FormDeviceRegistration {
+	this := FormDeviceRegistration{}
 	return &this
 }
 
 // GetKey returns the Key field value
-func (o *FormDeviceAuthentication) GetKey() string {
+func (o *FormDeviceRegistration) GetKey() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *FormDeviceAuthentication) GetKey() string {
 
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
-func (o *FormDeviceAuthentication) GetKeyOk() (*string, bool) {
+func (o *FormDeviceRegistration) GetKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *FormDeviceAuthentication) GetKeyOk() (*string, bool) {
 }
 
 // SetKey sets field value
-func (o *FormDeviceAuthentication) SetKey(v string) {
+func (o *FormDeviceRegistration) SetKey(v string) {
 	o.Key = v
 }
 
 // GetLabel returns the Label field value
-func (o *FormDeviceAuthentication) GetLabel() string {
+func (o *FormDeviceRegistration) GetLabel() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *FormDeviceAuthentication) GetLabel() string {
 
 // GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
-func (o *FormDeviceAuthentication) GetLabelOk() (*string, bool) {
+func (o *FormDeviceRegistration) GetLabelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,14 +93,14 @@ func (o *FormDeviceAuthentication) GetLabelOk() (*string, bool) {
 }
 
 // SetLabel sets field value
-func (o *FormDeviceAuthentication) SetLabel(v string) {
+func (o *FormDeviceRegistration) SetLabel(v string) {
 	o.Label = v
 }
 
 // GetOptions returns the Options field value
-func (o *FormDeviceAuthentication) GetOptions() []AuthenticationDevice {
+func (o *FormDeviceRegistration) GetOptions() []RegistrationDevice {
 	if o == nil {
-		var ret []AuthenticationDevice
+		var ret []RegistrationDevice
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *FormDeviceAuthentication) GetOptions() []AuthenticationDevice {
 
 // GetOptionsOk returns a tuple with the Options field value
 // and a boolean to check if the value has been set.
-func (o *FormDeviceAuthentication) GetOptionsOk() ([]AuthenticationDevice, bool) {
+func (o *FormDeviceRegistration) GetOptionsOk() ([]RegistrationDevice, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,12 +117,12 @@ func (o *FormDeviceAuthentication) GetOptionsOk() ([]AuthenticationDevice, bool)
 }
 
 // SetOptions sets field value
-func (o *FormDeviceAuthentication) SetOptions(v []AuthenticationDevice) {
+func (o *FormDeviceRegistration) SetOptions(v []RegistrationDevice) {
 	o.Options = v
 }
 
 // GetRequired returns the Required field value if set, zero value otherwise.
-func (o *FormDeviceAuthentication) GetRequired() bool {
+func (o *FormDeviceRegistration) GetRequired() bool {
 	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
@@ -132,7 +132,7 @@ func (o *FormDeviceAuthentication) GetRequired() bool {
 
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormDeviceAuthentication) GetRequiredOk() (*bool, bool) {
+func (o *FormDeviceRegistration) GetRequiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
@@ -140,7 +140,7 @@ func (o *FormDeviceAuthentication) GetRequiredOk() (*bool, bool) {
 }
 
 // HasRequired returns a boolean if a field has been set.
-func (o *FormDeviceAuthentication) HasRequired() bool {
+func (o *FormDeviceRegistration) HasRequired() bool {
 	if o != nil && !IsNil(o.Required) {
 		return true
 	}
@@ -149,11 +149,11 @@ func (o *FormDeviceAuthentication) HasRequired() bool {
 }
 
 // SetRequired gets a reference to the given bool and assigns it to the Required field.
-func (o *FormDeviceAuthentication) SetRequired(v bool) {
+func (o *FormDeviceRegistration) SetRequired(v bool) {
 	o.Required = &v
 }
 
-func (o FormDeviceAuthentication) MarshalJSON() ([]byte, error) {
+func (o FormDeviceRegistration) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -161,7 +161,7 @@ func (o FormDeviceAuthentication) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o FormDeviceAuthentication) ToMap() (map[string]interface{}, error) {
+func (o FormDeviceRegistration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	toSerialize["label"] = o.Label
@@ -172,38 +172,38 @@ func (o FormDeviceAuthentication) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableFormDeviceAuthentication struct {
-	value *FormDeviceAuthentication
+type NullableFormDeviceRegistration struct {
+	value *FormDeviceRegistration
 	isSet bool
 }
 
-func (v NullableFormDeviceAuthentication) Get() *FormDeviceAuthentication {
+func (v NullableFormDeviceRegistration) Get() *FormDeviceRegistration {
 	return v.value
 }
 
-func (v *NullableFormDeviceAuthentication) Set(val *FormDeviceAuthentication) {
+func (v *NullableFormDeviceRegistration) Set(val *FormDeviceRegistration) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFormDeviceAuthentication) IsSet() bool {
+func (v NullableFormDeviceRegistration) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFormDeviceAuthentication) Unset() {
+func (v *NullableFormDeviceRegistration) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFormDeviceAuthentication(val *FormDeviceAuthentication) *NullableFormDeviceAuthentication {
-	return &NullableFormDeviceAuthentication{value: val, isSet: true}
+func NewNullableFormDeviceRegistration(val *FormDeviceRegistration) *NullableFormDeviceRegistration {
+	return &NullableFormDeviceRegistration{value: val, isSet: true}
 }
 
-func (v NullableFormDeviceAuthentication) MarshalJSON() ([]byte, error) {
+func (v NullableFormDeviceRegistration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFormDeviceAuthentication) UnmarshalJSON(src []byte) error {
+func (v *NullableFormDeviceRegistration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

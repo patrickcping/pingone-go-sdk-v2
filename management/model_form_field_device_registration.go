@@ -14,30 +14,30 @@ import (
 	"encoding/json"
 )
 
-// checks if the FormFieldDeviceAuthentication type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FormFieldDeviceAuthentication{}
+// checks if the FormFieldDeviceRegistration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FormFieldDeviceRegistration{}
 
-// FormFieldDeviceAuthentication struct for FormFieldDeviceAuthentication
-type FormFieldDeviceAuthentication struct {
+// FormFieldDeviceRegistration struct for FormFieldDeviceRegistration
+type FormFieldDeviceRegistration struct {
 	Type       EnumFormFieldType          `json:"type"`
 	Position   FormFieldCommonPosition    `json:"position"`
 	Visibility *FormFieldCommonVisibility `json:"visibility,omitempty"`
 	// A string that specifies an identifier for the field component.
 	Key string `json:"key"`
-	// Label for the device authentication field.
+	// Label for the device registration field.
 	Label string `json:"label"`
-	// List of devices available for authentication. Must not be empty.
-	Options []AuthenticationDevice `json:"options"`
+	// List of devices available for registration. Must not be empty.
+	Options []RegistrationDevice `json:"options"`
 	// Whether the field is required or not.
 	Required *bool `json:"required,omitempty"`
 }
 
-// NewFormFieldDeviceAuthentication instantiates a new FormFieldDeviceAuthentication object
+// NewFormFieldDeviceRegistration instantiates a new FormFieldDeviceRegistration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldDeviceAuthentication(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, options []AuthenticationDevice) *FormFieldDeviceAuthentication {
-	this := FormFieldDeviceAuthentication{}
+func NewFormFieldDeviceRegistration(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, options []RegistrationDevice) *FormFieldDeviceRegistration {
+	this := FormFieldDeviceRegistration{}
 	this.Type = type_
 	this.Position = position
 	this.Key = key
@@ -46,16 +46,16 @@ func NewFormFieldDeviceAuthentication(type_ EnumFormFieldType, position FormFiel
 	return &this
 }
 
-// NewFormFieldDeviceAuthenticationWithDefaults instantiates a new FormFieldDeviceAuthentication object
+// NewFormFieldDeviceRegistrationWithDefaults instantiates a new FormFieldDeviceRegistration object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFormFieldDeviceAuthenticationWithDefaults() *FormFieldDeviceAuthentication {
-	this := FormFieldDeviceAuthentication{}
+func NewFormFieldDeviceRegistrationWithDefaults() *FormFieldDeviceRegistration {
+	this := FormFieldDeviceRegistration{}
 	return &this
 }
 
 // GetType returns the Type field value
-func (o *FormFieldDeviceAuthentication) GetType() EnumFormFieldType {
+func (o *FormFieldDeviceRegistration) GetType() EnumFormFieldType {
 	if o == nil {
 		var ret EnumFormFieldType
 		return ret
@@ -66,7 +66,7 @@ func (o *FormFieldDeviceAuthentication) GetType() EnumFormFieldType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldDeviceAuthentication) GetTypeOk() (*EnumFormFieldType, bool) {
+func (o *FormFieldDeviceRegistration) GetTypeOk() (*EnumFormFieldType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,12 +74,12 @@ func (o *FormFieldDeviceAuthentication) GetTypeOk() (*EnumFormFieldType, bool) {
 }
 
 // SetType sets field value
-func (o *FormFieldDeviceAuthentication) SetType(v EnumFormFieldType) {
+func (o *FormFieldDeviceRegistration) SetType(v EnumFormFieldType) {
 	o.Type = v
 }
 
 // GetPosition returns the Position field value
-func (o *FormFieldDeviceAuthentication) GetPosition() FormFieldCommonPosition {
+func (o *FormFieldDeviceRegistration) GetPosition() FormFieldCommonPosition {
 	if o == nil {
 		var ret FormFieldCommonPosition
 		return ret
@@ -90,7 +90,7 @@ func (o *FormFieldDeviceAuthentication) GetPosition() FormFieldCommonPosition {
 
 // GetPositionOk returns a tuple with the Position field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldDeviceAuthentication) GetPositionOk() (*FormFieldCommonPosition, bool) {
+func (o *FormFieldDeviceRegistration) GetPositionOk() (*FormFieldCommonPosition, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +98,12 @@ func (o *FormFieldDeviceAuthentication) GetPositionOk() (*FormFieldCommonPositio
 }
 
 // SetPosition sets field value
-func (o *FormFieldDeviceAuthentication) SetPosition(v FormFieldCommonPosition) {
+func (o *FormFieldDeviceRegistration) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
 // GetVisibility returns the Visibility field value if set, zero value otherwise.
-func (o *FormFieldDeviceAuthentication) GetVisibility() FormFieldCommonVisibility {
+func (o *FormFieldDeviceRegistration) GetVisibility() FormFieldCommonVisibility {
 	if o == nil || IsNil(o.Visibility) {
 		var ret FormFieldCommonVisibility
 		return ret
@@ -113,7 +113,7 @@ func (o *FormFieldDeviceAuthentication) GetVisibility() FormFieldCommonVisibilit
 
 // GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldDeviceAuthentication) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
+func (o *FormFieldDeviceRegistration) GetVisibilityOk() (*FormFieldCommonVisibility, bool) {
 	if o == nil || IsNil(o.Visibility) {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *FormFieldDeviceAuthentication) GetVisibilityOk() (*FormFieldCommonVisib
 }
 
 // HasVisibility returns a boolean if a field has been set.
-func (o *FormFieldDeviceAuthentication) HasVisibility() bool {
+func (o *FormFieldDeviceRegistration) HasVisibility() bool {
 	if o != nil && !IsNil(o.Visibility) {
 		return true
 	}
@@ -130,12 +130,12 @@ func (o *FormFieldDeviceAuthentication) HasVisibility() bool {
 }
 
 // SetVisibility gets a reference to the given FormFieldCommonVisibility and assigns it to the Visibility field.
-func (o *FormFieldDeviceAuthentication) SetVisibility(v FormFieldCommonVisibility) {
+func (o *FormFieldDeviceRegistration) SetVisibility(v FormFieldCommonVisibility) {
 	o.Visibility = &v
 }
 
 // GetKey returns the Key field value
-func (o *FormFieldDeviceAuthentication) GetKey() string {
+func (o *FormFieldDeviceRegistration) GetKey() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -146,7 +146,7 @@ func (o *FormFieldDeviceAuthentication) GetKey() string {
 
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldDeviceAuthentication) GetKeyOk() (*string, bool) {
+func (o *FormFieldDeviceRegistration) GetKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -154,12 +154,12 @@ func (o *FormFieldDeviceAuthentication) GetKeyOk() (*string, bool) {
 }
 
 // SetKey sets field value
-func (o *FormFieldDeviceAuthentication) SetKey(v string) {
+func (o *FormFieldDeviceRegistration) SetKey(v string) {
 	o.Key = v
 }
 
 // GetLabel returns the Label field value
-func (o *FormFieldDeviceAuthentication) GetLabel() string {
+func (o *FormFieldDeviceRegistration) GetLabel() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -170,7 +170,7 @@ func (o *FormFieldDeviceAuthentication) GetLabel() string {
 
 // GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldDeviceAuthentication) GetLabelOk() (*string, bool) {
+func (o *FormFieldDeviceRegistration) GetLabelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -178,14 +178,14 @@ func (o *FormFieldDeviceAuthentication) GetLabelOk() (*string, bool) {
 }
 
 // SetLabel sets field value
-func (o *FormFieldDeviceAuthentication) SetLabel(v string) {
+func (o *FormFieldDeviceRegistration) SetLabel(v string) {
 	o.Label = v
 }
 
 // GetOptions returns the Options field value
-func (o *FormFieldDeviceAuthentication) GetOptions() []AuthenticationDevice {
+func (o *FormFieldDeviceRegistration) GetOptions() []RegistrationDevice {
 	if o == nil {
-		var ret []AuthenticationDevice
+		var ret []RegistrationDevice
 		return ret
 	}
 
@@ -194,7 +194,7 @@ func (o *FormFieldDeviceAuthentication) GetOptions() []AuthenticationDevice {
 
 // GetOptionsOk returns a tuple with the Options field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldDeviceAuthentication) GetOptionsOk() ([]AuthenticationDevice, bool) {
+func (o *FormFieldDeviceRegistration) GetOptionsOk() ([]RegistrationDevice, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -202,12 +202,12 @@ func (o *FormFieldDeviceAuthentication) GetOptionsOk() ([]AuthenticationDevice, 
 }
 
 // SetOptions sets field value
-func (o *FormFieldDeviceAuthentication) SetOptions(v []AuthenticationDevice) {
+func (o *FormFieldDeviceRegistration) SetOptions(v []RegistrationDevice) {
 	o.Options = v
 }
 
 // GetRequired returns the Required field value if set, zero value otherwise.
-func (o *FormFieldDeviceAuthentication) GetRequired() bool {
+func (o *FormFieldDeviceRegistration) GetRequired() bool {
 	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
@@ -217,7 +217,7 @@ func (o *FormFieldDeviceAuthentication) GetRequired() bool {
 
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldDeviceAuthentication) GetRequiredOk() (*bool, bool) {
+func (o *FormFieldDeviceRegistration) GetRequiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *FormFieldDeviceAuthentication) GetRequiredOk() (*bool, bool) {
 }
 
 // HasRequired returns a boolean if a field has been set.
-func (o *FormFieldDeviceAuthentication) HasRequired() bool {
+func (o *FormFieldDeviceRegistration) HasRequired() bool {
 	if o != nil && !IsNil(o.Required) {
 		return true
 	}
@@ -234,11 +234,11 @@ func (o *FormFieldDeviceAuthentication) HasRequired() bool {
 }
 
 // SetRequired gets a reference to the given bool and assigns it to the Required field.
-func (o *FormFieldDeviceAuthentication) SetRequired(v bool) {
+func (o *FormFieldDeviceRegistration) SetRequired(v bool) {
 	o.Required = &v
 }
 
-func (o FormFieldDeviceAuthentication) MarshalJSON() ([]byte, error) {
+func (o FormFieldDeviceRegistration) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -246,7 +246,7 @@ func (o FormFieldDeviceAuthentication) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o FormFieldDeviceAuthentication) ToMap() (map[string]interface{}, error) {
+func (o FormFieldDeviceRegistration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
@@ -262,38 +262,38 @@ func (o FormFieldDeviceAuthentication) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableFormFieldDeviceAuthentication struct {
-	value *FormFieldDeviceAuthentication
+type NullableFormFieldDeviceRegistration struct {
+	value *FormFieldDeviceRegistration
 	isSet bool
 }
 
-func (v NullableFormFieldDeviceAuthentication) Get() *FormFieldDeviceAuthentication {
+func (v NullableFormFieldDeviceRegistration) Get() *FormFieldDeviceRegistration {
 	return v.value
 }
 
-func (v *NullableFormFieldDeviceAuthentication) Set(val *FormFieldDeviceAuthentication) {
+func (v *NullableFormFieldDeviceRegistration) Set(val *FormFieldDeviceRegistration) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFormFieldDeviceAuthentication) IsSet() bool {
+func (v NullableFormFieldDeviceRegistration) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFormFieldDeviceAuthentication) Unset() {
+func (v *NullableFormFieldDeviceRegistration) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFormFieldDeviceAuthentication(val *FormFieldDeviceAuthentication) *NullableFormFieldDeviceAuthentication {
-	return &NullableFormFieldDeviceAuthentication{value: val, isSet: true}
+func NewNullableFormFieldDeviceRegistration(val *FormFieldDeviceRegistration) *NullableFormFieldDeviceRegistration {
+	return &NullableFormFieldDeviceRegistration{value: val, isSet: true}
 }
 
-func (v NullableFormFieldDeviceAuthentication) MarshalJSON() ([]byte, error) {
+func (v NullableFormFieldDeviceRegistration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFormFieldDeviceAuthentication) UnmarshalJSON(src []byte) error {
+func (v *NullableFormFieldDeviceRegistration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

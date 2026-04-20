@@ -22,6 +22,11 @@ Name | Type | Description | Notes
 **Validation** | [**FormElementValidation**](FormElementValidation.md) |  | 
 **ShowPasswordRequirements** | Pointer to **bool** | A boolean that specifies whether the password requirements are displayed. | [optional] 
 **LabelPasswordVerify** | Pointer to **string** | A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field. | [optional] 
+**DefaultCountryCode** | Pointer to **string** | The country code to default the country code selection field to (two character country code). | [optional] 
+**CountryCodeLabel** | Pointer to **string** | Label for the country code field. | [optional] 
+**ValidatePhoneNumber** | Pointer to **bool** | Whether to validate the phone number input. | [optional] 
+**ShowExtension** | Pointer to **bool** | Whether to show an extension field. | [optional] 
+**ExtensionLabel** | Pointer to **string** | Label for the extension field. This is required and must not be blank if showExtension is true. | [optional] 
 **Content** | Pointer to **string** | A string that specifies the field content. | [optional] 
 **Icon** | Pointer to [**FormItemWithIconAllOfIcon**](FormItemWithIconAllOfIcon.md) |  | [optional] 
 **Styles** | Pointer to [**FormSocialLoginButtonAllOfStyles**](FormSocialLoginButtonAllOfStyles.md) |  | [optional] 
@@ -476,6 +481,131 @@ SetLabelPasswordVerify sets LabelPasswordVerify field to given value.
 `func (o *FormField) HasLabelPasswordVerify() bool`
 
 HasLabelPasswordVerify returns a boolean if a field has been set.
+
+### GetDefaultCountryCode
+
+`func (o *FormField) GetDefaultCountryCode() string`
+
+GetDefaultCountryCode returns the DefaultCountryCode field if non-nil, zero value otherwise.
+
+### GetDefaultCountryCodeOk
+
+`func (o *FormField) GetDefaultCountryCodeOk() (*string, bool)`
+
+GetDefaultCountryCodeOk returns a tuple with the DefaultCountryCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultCountryCode
+
+`func (o *FormField) SetDefaultCountryCode(v string)`
+
+SetDefaultCountryCode sets DefaultCountryCode field to given value.
+
+### HasDefaultCountryCode
+
+`func (o *FormField) HasDefaultCountryCode() bool`
+
+HasDefaultCountryCode returns a boolean if a field has been set.
+
+### GetCountryCodeLabel
+
+`func (o *FormField) GetCountryCodeLabel() string`
+
+GetCountryCodeLabel returns the CountryCodeLabel field if non-nil, zero value otherwise.
+
+### GetCountryCodeLabelOk
+
+`func (o *FormField) GetCountryCodeLabelOk() (*string, bool)`
+
+GetCountryCodeLabelOk returns a tuple with the CountryCodeLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountryCodeLabel
+
+`func (o *FormField) SetCountryCodeLabel(v string)`
+
+SetCountryCodeLabel sets CountryCodeLabel field to given value.
+
+### HasCountryCodeLabel
+
+`func (o *FormField) HasCountryCodeLabel() bool`
+
+HasCountryCodeLabel returns a boolean if a field has been set.
+
+### GetValidatePhoneNumber
+
+`func (o *FormField) GetValidatePhoneNumber() bool`
+
+GetValidatePhoneNumber returns the ValidatePhoneNumber field if non-nil, zero value otherwise.
+
+### GetValidatePhoneNumberOk
+
+`func (o *FormField) GetValidatePhoneNumberOk() (*bool, bool)`
+
+GetValidatePhoneNumberOk returns a tuple with the ValidatePhoneNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValidatePhoneNumber
+
+`func (o *FormField) SetValidatePhoneNumber(v bool)`
+
+SetValidatePhoneNumber sets ValidatePhoneNumber field to given value.
+
+### HasValidatePhoneNumber
+
+`func (o *FormField) HasValidatePhoneNumber() bool`
+
+HasValidatePhoneNumber returns a boolean if a field has been set.
+
+### GetShowExtension
+
+`func (o *FormField) GetShowExtension() bool`
+
+GetShowExtension returns the ShowExtension field if non-nil, zero value otherwise.
+
+### GetShowExtensionOk
+
+`func (o *FormField) GetShowExtensionOk() (*bool, bool)`
+
+GetShowExtensionOk returns a tuple with the ShowExtension field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowExtension
+
+`func (o *FormField) SetShowExtension(v bool)`
+
+SetShowExtension sets ShowExtension field to given value.
+
+### HasShowExtension
+
+`func (o *FormField) HasShowExtension() bool`
+
+HasShowExtension returns a boolean if a field has been set.
+
+### GetExtensionLabel
+
+`func (o *FormField) GetExtensionLabel() string`
+
+GetExtensionLabel returns the ExtensionLabel field if non-nil, zero value otherwise.
+
+### GetExtensionLabelOk
+
+`func (o *FormField) GetExtensionLabelOk() (*string, bool)`
+
+GetExtensionLabelOk returns a tuple with the ExtensionLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtensionLabel
+
+`func (o *FormField) SetExtensionLabel(v string)`
+
+SetExtensionLabel sets ExtensionLabel field to given value.
+
+### HasExtensionLabel
+
+`func (o *FormField) HasExtensionLabel() bool`
+
+HasExtensionLabel returns a boolean if a field has been set.
 
 ### GetContent
 
