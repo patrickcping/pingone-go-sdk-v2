@@ -2886,6 +2886,7 @@ components:
         - $ref: '#/components/schemas/FormFieldText'
         - $ref: '#/components/schemas/FormFieldPassword'
         - $ref: '#/components/schemas/FormFieldPasswordVerify'
+        - $ref: '#/components/schemas/FormFieldPhoneNumber'
         - $ref: '#/components/schemas/FormFieldRadio'
         - $ref: '#/components/schemas/FormFieldCheckbox'
         - $ref: '#/components/schemas/FormFieldDropdown'
@@ -2912,6 +2913,7 @@ components:
           TEXT: '#/components/schemas/FormFieldText'
           PASSWORD: '#/components/schemas/FormFieldPassword'
           PASSWORD_VERIFY: '#/components/schemas/FormFieldPasswordVerify'
+          PHONE_NUMBER: '#/components/schemas/FormFieldPhoneNumber'
           RADIO: '#/components/schemas/FormFieldRadio'
           CHECKBOX: '#/components/schemas/FormFieldCheckbox'
           DROPDOWN: '#/components/schemas/FormFieldDropdown'
@@ -3007,6 +3009,10 @@ components:
       allOf:
         - $ref: '#/components/schemas/FormFieldPassword'
         - $ref: '#/components/schemas/FormElementPasswordVerify'
+    FormFieldPhoneNumber:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormPhoneNumber'
     FormFieldRadio:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -3151,6 +3157,26 @@ components:
           description: A string that specifies an identifier for the field component.
       required:
         - key
+    FormPhoneNumber:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldWithKey'
+        - type: object
+          properties:
+            defaultCountryCode:
+              type: string
+              description: The country code to default the country code selection field to (two character country code).
+            countryCodeLabel:
+              type: string
+              description: Label for the country code field.
+            validatePhoneNumber:
+              type: boolean
+              description: Whether to validate the phone number input.
+            showExtension:
+              type: boolean
+              description: Whether to show an extension field.
+            extensionLabel:
+              type: string
+              description: Label for the extension field. This is required and must not be blank if showExtension is true.
     FormFlowButton:
       type: object
       properties:
