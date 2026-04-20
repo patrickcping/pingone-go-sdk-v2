@@ -401,8 +401,6 @@ docs/Form.md
 docs/FormAgreement.md
 docs/FormAgreementAllOfAgreement.md
 docs/FormComponents.md
-docs/FormDeviceAuthentication.md
-docs/FormDeviceRegistration.md
 docs/FormElement.md
 docs/FormElementOption.md
 docs/FormElementPasswordVerify.md
@@ -1076,8 +1074,6 @@ model_form.go
 model_form_agreement.go
 model_form_agreement_all_of_agreement.go
 model_form_components.go
-model_form_device_authentication.go
-model_form_device_registration.go
 model_form_element.go
 model_form_element_option.go
 model_form_element_password_verify.go

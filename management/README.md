@@ -741,8 +741,6 @@ Class | Method | HTTP request | Description
  - [FormAgreement](docs/FormAgreement.md)
  - [FormAgreementAllOfAgreement](docs/FormAgreementAllOfAgreement.md)
  - [FormComponents](docs/FormComponents.md)
- - [FormDeviceAuthentication](docs/FormDeviceAuthentication.md)
- - [FormDeviceRegistration](docs/FormDeviceRegistration.md)
  - [FormElement](docs/FormElement.md)
  - [FormElementOption](docs/FormElementOption.md)
  - [FormElementPasswordVerify](docs/FormElementPasswordVerify.md)

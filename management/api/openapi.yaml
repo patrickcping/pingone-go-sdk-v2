@@ -42713,11 +42713,44 @@ components:
     FormFieldDeviceRegistration:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - $ref: '#/components/schemas/FormDeviceRegistration'
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          label:
+            description: Label for the device registration field.
+            type: string
+          options:
+            description: List of devices available for registration. Must not be empty.
+            items:
+              $ref: '#/components/schemas/RegistrationDevice'
+            type: array
+          required:
+            description: Whether the field is required or not.
+            type: boolean
+        required:
+        - label
+        - options
+        type: object
     FormFieldDeviceAuthentication:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - $ref: '#/components/schemas/FormDeviceAuthentication'
+      - $ref: '#/components/schemas/FormFieldWithKey'
+      - properties:
+          label:
+            description: Label for the device authentication field.
+            type: string
+          options:
+            description: List of devices available for authentication. Must not be
+              empty.
+            items:
+              $ref: '#/components/schemas/AuthenticationDevice'
+            type: array
+          required:
+            description: Whether the field is required or not.
+            type: boolean
+        required:
+        - label
+        - options
+        type: object
     FormFieldWithKey:
       properties:
         key:
@@ -42771,45 +42804,6 @@ components:
       - properties:
           icon:
             $ref: '#/components/schemas/FormItemWithIcon_allOf_icon'
-        type: object
-    FormDeviceAuthentication:
-      allOf:
-      - $ref: '#/components/schemas/FormFieldWithKey'
-      - properties:
-          label:
-            description: Label for the device authentication field.
-            type: string
-          options:
-            description: List of devices available for authentication. Must not be
-              empty.
-            items:
-              $ref: '#/components/schemas/AuthenticationDevice'
-            type: array
-          required:
-            description: Whether the field is required or not.
-            type: boolean
-        required:
-        - label
-        - options
-        type: object
-    FormDeviceRegistration:
-      allOf:
-      - $ref: '#/components/schemas/FormFieldWithKey'
-      - properties:
-          label:
-            description: Label for the device registration field.
-            type: string
-          options:
-            description: List of devices available for registration. Must not be empty.
-            items:
-              $ref: '#/components/schemas/RegistrationDevice'
-            type: array
-          required:
-            description: Whether the field is required or not.
-            type: boolean
-        required:
-        - label
-        - options
         type: object
     RegistrationDevice:
       properties:
