@@ -42439,6 +42439,7 @@ components:
           RECAPTCHA_V2: '#/components/schemas/FormFieldRecaptchaV2'
           QR_CODE: '#/components/schemas/FormFieldQrCode'
           SOCIAL_LOGIN_BUTTON: '#/components/schemas/FormFieldSocialLoginButton'
+          DEVICE_AUTHENTICATION: '#/components/schemas/FormFieldDeviceAuthentication'
           POLLING: '#/components/schemas/FormFieldPolling'
           FIDO2: '#/components/schemas/FormFieldFIDO2'
           SINGLE_CHECKBOX: '#/components/schemas/FormFieldSingleCheckbox'
@@ -42462,6 +42463,7 @@ components:
       - $ref: '#/components/schemas/FormFieldRecaptchaV2'
       - $ref: '#/components/schemas/FormFieldQrCode'
       - $ref: '#/components/schemas/FormFieldSocialLoginButton'
+      - $ref: '#/components/schemas/FormFieldDeviceAuthentication'
       - $ref: '#/components/schemas/FormFieldPolling'
       - $ref: '#/components/schemas/FormFieldFIDO2'
       - $ref: '#/components/schemas/FormFieldSingleCheckbox'
@@ -42658,6 +42660,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormSocialLoginButton'
+    FormFieldDeviceAuthentication:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormDeviceAuthentication'
     FormFieldWithKey:
       properties:
         key:
@@ -42712,6 +42718,53 @@ components:
           icon:
             $ref: '#/components/schemas/FormItemWithIcon_allOf_icon'
         type: object
+    FormDeviceAuthentication:
+      properties:
+        label:
+          description: Label for the device authentication field.
+          type: string
+        options:
+          description: List of devices available for authentication. Must not be empty.
+          items:
+            $ref: '#/components/schemas/AuthenticationDevice'
+          type: array
+        required:
+          description: Whether the field is required or not.
+          type: boolean
+      required:
+      - label
+      - options
+      type: object
+    AuthenticationDevice:
+      properties:
+        type:
+          description: "Device type. Must be one of [EMAIL, FIDO2, MAGIC_LINK, MOBILE,\
+            \ SMS, TOTP, VOICE, WHATSAPP]."
+          enum:
+          - EMAIL
+          - FIDO2
+          - MAGIC_LINK
+          - MOBILE
+          - SMS
+          - TOTP
+          - VOICE
+          - WHATSAPP
+          type: string
+        title:
+          description: Title for the device.
+          type: string
+        description:
+          description: Description for the device (Max 1000 characters).
+          maxLength: 1000
+          type: string
+        iconSrc:
+          description: Icon image source to display for the device (Max 500 characters).
+          maxLength: 500
+          type: string
+      required:
+      - title
+      - type
+      type: object
     FormFIDO2:
       allOf:
       - $ref: '#/components/schemas/FormFieldWithKey'

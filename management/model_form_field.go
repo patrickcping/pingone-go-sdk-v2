@@ -17,27 +17,28 @@ import (
 
 // FormField - struct for FormField
 type FormField struct {
-	FormFieldCheckbox          *FormFieldCheckbox
-	FormFieldCombobox          *FormFieldCombobox
-	FormFieldDivider           *FormFieldDivider
-	FormFieldDropdown          *FormFieldDropdown
-	FormFieldEmptyField        *FormFieldEmptyField
-	FormFieldErrorDisplay      *FormFieldErrorDisplay
-	FormFieldFIDO2             *FormFieldFIDO2
-	FormFieldFlowButton        *FormFieldFlowButton
-	FormFieldFlowLink          *FormFieldFlowLink
-	FormFieldFormAgreement     *FormFieldFormAgreement
-	FormFieldPassword          *FormFieldPassword
-	FormFieldPasswordVerify    *FormFieldPasswordVerify
-	FormFieldPolling           *FormFieldPolling
-	FormFieldQrCode            *FormFieldQrCode
-	FormFieldRadio             *FormFieldRadio
-	FormFieldRecaptchaV2       *FormFieldRecaptchaV2
-	FormFieldSingleCheckbox    *FormFieldSingleCheckbox
-	FormFieldSlateTextblob     *FormFieldSlateTextblob
-	FormFieldSocialLoginButton *FormFieldSocialLoginButton
-	FormFieldSubmitButton      *FormFieldSubmitButton
-	FormFieldText              *FormFieldText
+	FormFieldCheckbox             *FormFieldCheckbox
+	FormFieldCombobox             *FormFieldCombobox
+	FormFieldDeviceAuthentication *FormFieldDeviceAuthentication
+	FormFieldDivider              *FormFieldDivider
+	FormFieldDropdown             *FormFieldDropdown
+	FormFieldEmptyField           *FormFieldEmptyField
+	FormFieldErrorDisplay         *FormFieldErrorDisplay
+	FormFieldFIDO2                *FormFieldFIDO2
+	FormFieldFlowButton           *FormFieldFlowButton
+	FormFieldFlowLink             *FormFieldFlowLink
+	FormFieldFormAgreement        *FormFieldFormAgreement
+	FormFieldPassword             *FormFieldPassword
+	FormFieldPasswordVerify       *FormFieldPasswordVerify
+	FormFieldPolling              *FormFieldPolling
+	FormFieldQrCode               *FormFieldQrCode
+	FormFieldRadio                *FormFieldRadio
+	FormFieldRecaptchaV2          *FormFieldRecaptchaV2
+	FormFieldSingleCheckbox       *FormFieldSingleCheckbox
+	FormFieldSlateTextblob        *FormFieldSlateTextblob
+	FormFieldSocialLoginButton    *FormFieldSocialLoginButton
+	FormFieldSubmitButton         *FormFieldSubmitButton
+	FormFieldText                 *FormFieldText
 }
 
 // FormFieldCheckboxAsFormField is a convenience function that returns FormFieldCheckbox wrapped in FormField
@@ -51,6 +52,13 @@ func FormFieldCheckboxAsFormField(v *FormFieldCheckbox) FormField {
 func FormFieldComboboxAsFormField(v *FormFieldCombobox) FormField {
 	return FormField{
 		FormFieldCombobox: v,
+	}
+}
+
+// FormFieldDeviceAuthenticationAsFormField is a convenience function that returns FormFieldDeviceAuthentication wrapped in FormField
+func FormFieldDeviceAuthenticationAsFormField(v *FormFieldDeviceAuthentication) FormField {
+	return FormField{
+		FormFieldDeviceAuthentication: v,
 	}
 }
 
@@ -325,6 +333,10 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FormFieldCombobox)
 	}
 
+	if src.FormFieldDeviceAuthentication != nil {
+		return json.Marshal(&src.FormFieldDeviceAuthentication)
+	}
+
 	if src.FormFieldDivider != nil {
 		return json.Marshal(&src.FormFieldDivider)
 	}
@@ -415,6 +427,10 @@ func (obj *FormField) GetActualInstance() interface{} {
 
 	if obj.FormFieldCombobox != nil {
 		return obj.FormFieldCombobox
+	}
+
+	if obj.FormFieldDeviceAuthentication != nil {
+		return obj.FormFieldDeviceAuthentication
 	}
 
 	if obj.FormFieldDivider != nil {

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **OtherOptionInputLabel** | Pointer to **string** | A string that specifies the label for the other option in drop-down controls. | [optional] 
 **OtherOptionAttributeDisabled** | Pointer to **bool** | A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute. | [optional] 
 **Layout** | [**EnumFormElementLayout**](EnumFormElementLayout.md) |  | 
-**Options** | [**[]FormElementOption**](FormElementOption.md) | An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is &#x60;RADIO&#x60;, &#x60;CHECKBOX&#x60;, or &#x60;DROPDOWN&#x60;. | 
+**Options** | [**[]AuthenticationDevice**](AuthenticationDevice.md) | List of devices available for authentication. Must not be empty. | 
 **Validation** | [**FormElementValidation**](FormElementValidation.md) |  | 
 **ShowPasswordRequirements** | Pointer to **bool** | A boolean that specifies whether the password requirements are displayed. | [optional] 
 **LabelPasswordVerify** | Pointer to **string** | A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field. | [optional] 
@@ -47,7 +47,7 @@ Name | Type | Description | Notes
 
 ### NewFormField
 
-`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormItemSize, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, pollingAppearance EnumFormPollingAppearance, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormField`
+`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []AuthenticationDevice, validation FormElementValidation, size EnumFormItemSize, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, idpName string, idpType EnumFormSocialLoginIdpType, idpId string, pollingAppearance EnumFormPollingAppearance, trigger EnumFormFIDO2Trigger, action EnumFormFIDO2Action, appearance EnumFormSingleCheckboxAppearance, inputType EnumFormAgreementInputType, titleEnabled bool, ) *FormField`
 
 NewFormField instantiates a new FormField object
 This constructor will assign default values to properties that have it defined,
@@ -389,20 +389,20 @@ SetLayout sets Layout field to given value.
 
 ### GetOptions
 
-`func (o *FormField) GetOptions() []FormElementOption`
+`func (o *FormField) GetOptions() []AuthenticationDevice`
 
 GetOptions returns the Options field if non-nil, zero value otherwise.
 
 ### GetOptionsOk
 
-`func (o *FormField) GetOptionsOk() (*[]FormElementOption, bool)`
+`func (o *FormField) GetOptionsOk() (*[]AuthenticationDevice, bool)`
 
 GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptions
 
-`func (o *FormField) SetOptions(v []FormElementOption)`
+`func (o *FormField) SetOptions(v []AuthenticationDevice)`
 
 SetOptions sets Options field to given value.
 
