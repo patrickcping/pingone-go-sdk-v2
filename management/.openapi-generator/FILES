@@ -258,6 +258,7 @@ docs/EnumEnvironmentStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumFlowPolicyTriggerType.md
 docs/EnumFormAgreementInputType.md
+docs/EnumFormAuthenticationDeviceType.md
 docs/EnumFormCategory.md
 docs/EnumFormElementLabelMode.md
 docs/EnumFormElementLayout.md
@@ -273,6 +274,7 @@ docs/EnumFormItemSize.md
 docs/EnumFormPollingAppearance.md
 docs/EnumFormRecaptchaV2Size.md
 docs/EnumFormRecaptchaV2Theme.md
+docs/EnumFormRegistrationDeviceType.md
 docs/EnumFormSingleCheckboxAppearance.md
 docs/EnumFormSingleCheckboxInputType.md
 docs/EnumFormSocialLoginIdpType.md
@@ -934,6 +936,7 @@ model_enum_environment_status.go
 model_enum_environment_type.go
 model_enum_flow_policy_trigger_type.go
 model_enum_form_agreement_input_type.go
+model_enum_form_authentication_device_type.go
 model_enum_form_category.go
 model_enum_form_element_label_mode.go
 model_enum_form_element_layout.go
@@ -949,6 +952,7 @@ model_enum_form_item_size.go
 model_enum_form_polling_appearance.go
 model_enum_form_recaptcha_v2_size.go
 model_enum_form_recaptcha_v2_theme.go
+model_enum_form_registration_device_type.go
 model_enum_form_single_checkbox_appearance.go
 model_enum_form_single_checkbox_input_type.go
 model_enum_form_social_login_idp_type.go

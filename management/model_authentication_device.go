@@ -19,8 +19,7 @@ var _ MappedNullable = &AuthenticationDevice{}
 
 // AuthenticationDevice struct for AuthenticationDevice
 type AuthenticationDevice struct {
-	// Device type. Must be one of [EMAIL, FIDO2, MAGIC_LINK, MOBILE, SMS, TOTP, VOICE, WHATSAPP].
-	Type string `json:"type"`
+	Type EnumFormAuthenticationDeviceType `json:"type"`
 	// Title for the device.
 	Title string `json:"title"`
 	// Description for the device (Max 1000 characters).
@@ -33,7 +32,7 @@ type AuthenticationDevice struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticationDevice(type_ string, title string) *AuthenticationDevice {
+func NewAuthenticationDevice(type_ EnumFormAuthenticationDeviceType, title string) *AuthenticationDevice {
 	this := AuthenticationDevice{}
 	this.Type = type_
 	this.Title = title
@@ -49,9 +48,9 @@ func NewAuthenticationDeviceWithDefaults() *AuthenticationDevice {
 }
 
 // GetType returns the Type field value
-func (o *AuthenticationDevice) GetType() string {
+func (o *AuthenticationDevice) GetType() EnumFormAuthenticationDeviceType {
 	if o == nil {
-		var ret string
+		var ret EnumFormAuthenticationDeviceType
 		return ret
 	}
 
@@ -60,7 +59,7 @@ func (o *AuthenticationDevice) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticationDevice) GetTypeOk() (*string, bool) {
+func (o *AuthenticationDevice) GetTypeOk() (*EnumFormAuthenticationDeviceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +67,7 @@ func (o *AuthenticationDevice) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *AuthenticationDevice) SetType(v string) {
+func (o *AuthenticationDevice) SetType(v EnumFormAuthenticationDeviceType) {
 	o.Type = v
 }
 

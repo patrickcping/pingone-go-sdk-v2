@@ -19,8 +19,7 @@ var _ MappedNullable = &RegistrationDevice{}
 
 // RegistrationDevice struct for RegistrationDevice
 type RegistrationDevice struct {
-	// Device type. Must be one of [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP].
-	Type string `json:"type"`
+	Type EnumFormRegistrationDeviceType `json:"type"`
 	// Title for the device.
 	Title string `json:"title"`
 	// Description for the device (Max 1000 characters).
@@ -33,7 +32,7 @@ type RegistrationDevice struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRegistrationDevice(type_ string, title string) *RegistrationDevice {
+func NewRegistrationDevice(type_ EnumFormRegistrationDeviceType, title string) *RegistrationDevice {
 	this := RegistrationDevice{}
 	this.Type = type_
 	this.Title = title
@@ -49,9 +48,9 @@ func NewRegistrationDeviceWithDefaults() *RegistrationDevice {
 }
 
 // GetType returns the Type field value
-func (o *RegistrationDevice) GetType() string {
+func (o *RegistrationDevice) GetType() EnumFormRegistrationDeviceType {
 	if o == nil {
-		var ret string
+		var ret EnumFormRegistrationDeviceType
 		return ret
 	}
 
@@ -60,7 +59,7 @@ func (o *RegistrationDevice) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RegistrationDevice) GetTypeOk() (*string, bool) {
+func (o *RegistrationDevice) GetTypeOk() (*EnumFormRegistrationDeviceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +67,7 @@ func (o *RegistrationDevice) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *RegistrationDevice) SetType(v string) {
+func (o *RegistrationDevice) SetType(v EnumFormRegistrationDeviceType) {
 	o.Type = v
 }
 

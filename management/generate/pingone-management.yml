@@ -254,6 +254,14 @@ components:
       type: string
       enum: [CUSTOM]
       description: A string that specifies the type of form. The `CUSTOM` form type allows the form to be built with fields that do not map specifically to the PingOne directory attributes.
+    EnumFormAuthenticationDeviceType:
+      type: string
+      description: A string that specifies the device type.
+      enum: [EMAIL, FIDO2, MAGIC_LINK, MOBILE, SMS, TOTP, VOICE, WHATSAPP]
+    EnumFormRegistrationDeviceType:
+      type: string
+      description: A string that specifies the device type.
+      enum: [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP]
     EnumFormElementLabelMode:
       type: string
       enum: [DEFAULT, FLOAT]
@@ -3323,9 +3331,7 @@ components:
       type: object
       properties:
         type:
-          type: string
-          description: Device type. Must be one of [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP].
-          enum: [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP]
+          $ref: '#/components/schemas/EnumFormRegistrationDeviceType'
         title:
           type: string
           description: Title for the device.
@@ -3344,9 +3350,7 @@ components:
       type: object
       properties:
         type:
-          type: string
-          description: Device type. Must be one of [EMAIL, FIDO2, MAGIC_LINK, MOBILE, SMS, TOTP, VOICE, WHATSAPP].
-          enum: [EMAIL, FIDO2, MAGIC_LINK, MOBILE, SMS, TOTP, VOICE, WHATSAPP]
+          $ref: '#/components/schemas/EnumFormAuthenticationDeviceType'
         title:
           type: string
           description: Title for the device.

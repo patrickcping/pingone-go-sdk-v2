@@ -37451,6 +37451,29 @@ components:
       enum:
       - CUSTOM
       type: string
+    EnumFormAuthenticationDeviceType:
+      description: A string that specifies the device type.
+      enum:
+      - EMAIL
+      - FIDO2
+      - MAGIC_LINK
+      - MOBILE
+      - SMS
+      - TOTP
+      - VOICE
+      - WHATSAPP
+      type: string
+    EnumFormRegistrationDeviceType:
+      description: A string that specifies the device type.
+      enum:
+      - EMAIL
+      - FIDO2
+      - MOBILE
+      - SMS
+      - TOTP
+      - VOICE
+      - WHATSAPP
+      type: string
     EnumFormElementLabelMode:
       description: A string that specifies how the field is rendered.
       enum:
@@ -42795,17 +42818,7 @@ components:
     RegistrationDevice:
       properties:
         type:
-          description: "Device type. Must be one of [EMAIL, FIDO2, MOBILE, SMS, TOTP,\
-            \ VOICE, WHATSAPP]."
-          enum:
-          - EMAIL
-          - FIDO2
-          - MOBILE
-          - SMS
-          - TOTP
-          - VOICE
-          - WHATSAPP
-          type: string
+          $ref: '#/components/schemas/EnumFormRegistrationDeviceType'
         title:
           description: Title for the device.
           type: string
@@ -42824,18 +42837,7 @@ components:
     AuthenticationDevice:
       properties:
         type:
-          description: "Device type. Must be one of [EMAIL, FIDO2, MAGIC_LINK, MOBILE,\
-            \ SMS, TOTP, VOICE, WHATSAPP]."
-          enum:
-          - EMAIL
-          - FIDO2
-          - MAGIC_LINK
-          - MOBILE
-          - SMS
-          - TOTP
-          - VOICE
-          - WHATSAPP
-          type: string
+          $ref: '#/components/schemas/EnumFormAuthenticationDeviceType'
         title:
           description: Title for the device.
           type: string

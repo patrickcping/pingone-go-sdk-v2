@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Device type. Must be one of [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP]. | 
+**Type** | [**EnumFormRegistrationDeviceType**](EnumFormRegistrationDeviceType.md) |  | 
 **Title** | **string** | Title for the device. | 
 **Description** | Pointer to **string** | Description for the device (Max 1000 characters). | [optional] 
 **IconSrc** | Pointer to **string** | Icon image source to display for the device (Max 500 characters). | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewRegistrationDevice
 
-`func NewRegistrationDevice(type_ string, title string, ) *RegistrationDevice`
+`func NewRegistrationDevice(type_ EnumFormRegistrationDeviceType, title string, ) *RegistrationDevice`
 
 NewRegistrationDevice instantiates a new RegistrationDevice object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *RegistrationDevice) GetType() string`
+`func (o *RegistrationDevice) GetType() EnumFormRegistrationDeviceType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RegistrationDevice) GetTypeOk() (*string, bool)`
+`func (o *RegistrationDevice) GetTypeOk() (*EnumFormRegistrationDeviceType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RegistrationDevice) SetType(v string)`
+`func (o *RegistrationDevice) SetType(v EnumFormRegistrationDeviceType)`
 
 SetType sets Type field to given value.
 

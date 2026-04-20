@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Device type. Must be one of [EMAIL, FIDO2, MAGIC_LINK, MOBILE, SMS, TOTP, VOICE, WHATSAPP]. | 
+**Type** | [**EnumFormAuthenticationDeviceType**](EnumFormAuthenticationDeviceType.md) |  | 
 **Title** | **string** | Title for the device. | 
 **Description** | Pointer to **string** | Description for the device (Max 1000 characters). | [optional] 
 **IconSrc** | Pointer to **string** | Icon image source to display for the device (Max 500 characters). | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticationDevice
 
-`func NewAuthenticationDevice(type_ string, title string, ) *AuthenticationDevice`
+`func NewAuthenticationDevice(type_ EnumFormAuthenticationDeviceType, title string, ) *AuthenticationDevice`
 
 NewAuthenticationDevice instantiates a new AuthenticationDevice object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AuthenticationDevice) GetType() string`
+`func (o *AuthenticationDevice) GetType() EnumFormAuthenticationDeviceType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AuthenticationDevice) GetTypeOk() (*string, bool)`
+`func (o *AuthenticationDevice) GetTypeOk() (*EnumFormAuthenticationDeviceType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AuthenticationDevice) SetType(v string)`
+`func (o *AuthenticationDevice) SetType(v EnumFormAuthenticationDeviceType)`
 
 SetType sets Type field to given value.
 
