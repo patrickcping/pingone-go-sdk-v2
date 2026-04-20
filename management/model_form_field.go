@@ -333,6 +333,18 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &dst.FormFieldFormAgreement); err != nil {
 			return err
 		}
+	case ENUMFORMFIELDTYPE_DEVICE_AUTHENTICATION:
+		if err := json.Unmarshal(data, &dst.FormFieldDeviceAuthentication); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_DEVICE_REGISTRATION:
+		if err := json.Unmarshal(data, &dst.FormFieldDeviceRegistration); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_PHONE_NUMBER:
+		if err := json.Unmarshal(data, &dst.FormFieldPhoneNumber); err != nil {
+			return err
+		}
 	default:
 		return fmt.Errorf("data failed to match schemas in oneOf(FormField)")
 	}
