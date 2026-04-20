@@ -785,7 +785,6 @@ Class | Method | HTTP request | Description
  - [FormItemWithOptionalKey](docs/FormItemWithOptionalKey.md)
  - [FormLinkCustom](docs/FormLinkCustom.md)
  - [FormLinkCustomAllOfStyles](docs/FormLinkCustomAllOfStyles.md)
- - [FormPhoneNumber](docs/FormPhoneNumber.md)
  - [FormPolling](docs/FormPolling.md)
  - [FormQrCode](docs/FormQrCode.md)
  - [FormRecaptchaV2](docs/FormRecaptchaV2.md)

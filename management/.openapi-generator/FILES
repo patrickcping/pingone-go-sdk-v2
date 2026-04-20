@@ -446,7 +446,6 @@ docs/FormItemWithOptionalKey.md
 docs/FormLinkCustom.md
 docs/FormLinkCustomAllOfStyles.md
 docs/FormManagementApi.md
-docs/FormPhoneNumber.md
 docs/FormPolling.md
 docs/FormQrCode.md
 docs/FormRecaptchaV2.md
@@ -1121,7 +1120,6 @@ model_form_item_with_icon_all_of_icon.go
 model_form_item_with_optional_key.go
 model_form_link_custom.go
 model_form_link_custom_all_of_styles.go
-model_form_phone_number.go
 model_form_polling.go
 model_form_qr_code.go
 model_form_recaptcha_v2.go

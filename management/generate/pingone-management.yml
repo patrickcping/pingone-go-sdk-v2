@@ -3020,7 +3020,24 @@ components:
     FormFieldPhoneNumber:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
-        - $ref: '#/components/schemas/FormPhoneNumber'
+        - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            defaultCountryCode:
+              type: string
+              description: The country code to default the country code selection field to (two character country code).
+            countryCodeLabel:
+              type: string
+              description: Label for the country code field.
+            validatePhoneNumber:
+              type: boolean
+              description: Whether to validate the phone number input.
+            showExtension:
+              type: boolean
+              description: Whether to show an extension field.
+            extensionLabel:
+              type: string
+              description: Label for the extension field. This is required and must not be blank if showExtension is true.
     FormFieldRadio:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -3165,27 +3182,6 @@ components:
           description: A string that specifies an identifier for the field component.
       required:
         - key
-    FormPhoneNumber:
-      allOf:
-        - $ref: '#/components/schemas/FormFieldCommon'
-        - $ref: '#/components/schemas/FormElement'
-        - type: object
-          properties:
-            defaultCountryCode:
-              type: string
-              description: The country code to default the country code selection field to (two character country code).
-            countryCodeLabel:
-              type: string
-              description: Label for the country code field.
-            validatePhoneNumber:
-              type: boolean
-              description: Whether to validate the phone number input.
-            showExtension:
-              type: boolean
-              description: Whether to show an extension field.
-            extensionLabel:
-              type: string
-              description: Label for the extension field. This is required and must not be blank if showExtension is true.
     FormFlowButton:
       type: object
       properties:
