@@ -2900,6 +2900,7 @@ components:
         - $ref: '#/components/schemas/FormFieldRecaptchaV2'
         - $ref: '#/components/schemas/FormFieldQrCode'
         - $ref: '#/components/schemas/FormFieldSocialLoginButton'
+        - $ref: '#/components/schemas/FormFieldDeviceRegistration'
         - $ref: '#/components/schemas/FormFieldDeviceAuthentication'
         - $ref: '#/components/schemas/FormFieldPolling'
         - $ref: '#/components/schemas/FormFieldFIDO2'
@@ -2925,6 +2926,7 @@ components:
           RECAPTCHA_V2: '#/components/schemas/FormFieldRecaptchaV2'
           QR_CODE: '#/components/schemas/FormFieldQrCode'
           SOCIAL_LOGIN_BUTTON: '#/components/schemas/FormFieldSocialLoginButton'
+          DEVICE_REGISTRATION: '#/components/schemas/FormFieldDeviceRegistration'
           DEVICE_AUTHENTICATION: '#/components/schemas/FormFieldDeviceAuthentication'
           POLLING: '#/components/schemas/FormFieldPolling'
           FIDO2: '#/components/schemas/FormFieldFIDO2'
@@ -3133,6 +3135,10 @@ components:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormSocialLoginButton'
+    FormFieldDeviceRegistration:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormDeviceRegistration'
     FormFieldDeviceAuthentication:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -3265,6 +3271,44 @@ components:
       required:
         - label
         - options
+    FormDeviceRegistration:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label for the device registration field.
+        options:
+          type: array
+          description: List of devices available for registration. Must not be empty.
+          items:
+            $ref: '#/components/schemas/RegistrationDevice'
+        required:
+          type: boolean
+          description: Whether the field is required or not.
+      required:
+        - label
+        - options
+    RegistrationDevice:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Device type. Must be one of [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP].
+          enum: [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP]
+        title:
+          type: string
+          description: Title for the device.
+        description:
+          type: string
+          description: Description for the device (Max 1000 characters).
+          maxLength: 1000
+        iconSrc:
+          type: string
+          description: Icon image source to display for the device (Max 500 characters).
+          maxLength: 500
+      required:
+        - type
+        - title
     AuthenticationDevice:
       type: object
       properties:
