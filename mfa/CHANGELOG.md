@@ -1,3 +1,7 @@
+# v0.25.1 (2026-04-21)
+
+* **Bug** Fixed json tag capitalization for the `whatsApp` field in the `DeviceAuthenticationPolicyPingOneMFA` and `DeviceAuthenticationPolicy` data models. [#533](https://github.com/patrickcping/pingone-go-sdk-v2/pull/533)
+
 # v0.25.0 (2026-03-16)
 
 * **Enhancement** Added `PasscodeGracePeriod` to the `DeviceAuthenticationPolicyCommonTotp` data model. [#517](https://github.com/patrickcping/pingone-go-sdk-v2/pull/517)

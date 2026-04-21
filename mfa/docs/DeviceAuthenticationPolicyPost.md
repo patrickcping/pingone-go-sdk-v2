@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **OathToken** | Pointer to [**DeviceAuthenticationPolicyOathToken**](DeviceAuthenticationPolicyOathToken.md) |  | [optional] 
 **RememberMe** | Pointer to [**DeviceAuthenticationPolicyCommonRememberMe**](DeviceAuthenticationPolicyCommonRememberMe.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
-**Whatsapp** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
+**WhatsApp** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
 **Desktop** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
 **Yubikey** | Pointer to [**DeviceAuthenticationPolicyPingIDDevice**](DeviceAuthenticationPolicyPingIDDevice.md) |  | [optional] 
 **MigrationData** | [**[]DeviceAuthenticationPolicyMigrateData**](DeviceAuthenticationPolicyMigrateData.md) |  | 
@@ -482,30 +482,30 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### GetWhatsapp
+### GetWhatsApp
 
-`func (o *DeviceAuthenticationPolicyPost) GetWhatsapp() DeviceAuthenticationPolicyOfflineDevice`
+`func (o *DeviceAuthenticationPolicyPost) GetWhatsApp() DeviceAuthenticationPolicyOfflineDevice`
 
-GetWhatsapp returns the Whatsapp field if non-nil, zero value otherwise.
+GetWhatsApp returns the WhatsApp field if non-nil, zero value otherwise.
 
-### GetWhatsappOk
+### GetWhatsAppOk
 
-`func (o *DeviceAuthenticationPolicyPost) GetWhatsappOk() (*DeviceAuthenticationPolicyOfflineDevice, bool)`
+`func (o *DeviceAuthenticationPolicyPost) GetWhatsAppOk() (*DeviceAuthenticationPolicyOfflineDevice, bool)`
 
-GetWhatsappOk returns a tuple with the Whatsapp field if it's non-nil, zero value otherwise
+GetWhatsAppOk returns a tuple with the WhatsApp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWhatsapp
+### SetWhatsApp
 
-`func (o *DeviceAuthenticationPolicyPost) SetWhatsapp(v DeviceAuthenticationPolicyOfflineDevice)`
+`func (o *DeviceAuthenticationPolicyPost) SetWhatsApp(v DeviceAuthenticationPolicyOfflineDevice)`
 
-SetWhatsapp sets Whatsapp field to given value.
+SetWhatsApp sets WhatsApp field to given value.
 
-### HasWhatsapp
+### HasWhatsApp
 
-`func (o *DeviceAuthenticationPolicyPost) HasWhatsapp() bool`
+`func (o *DeviceAuthenticationPolicyPost) HasWhatsApp() bool`
 
-HasWhatsapp returns a boolean if a field has been set.
+HasWhatsApp returns a boolean if a field has been set.
 
 ### GetDesktop
 
