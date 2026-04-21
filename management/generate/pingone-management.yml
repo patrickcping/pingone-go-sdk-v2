@@ -254,6 +254,14 @@ components:
       type: string
       enum: [CUSTOM]
       description: A string that specifies the type of form. The `CUSTOM` form type allows the form to be built with fields that do not map specifically to the PingOne directory attributes.
+    EnumFormAuthenticationDeviceType:
+      type: string
+      description: A string that specifies the device type.
+      enum: [EMAIL, FIDO2, MAGIC_LINK, MOBILE, SMS, TOTP, VOICE, WHATSAPP]
+    EnumFormRegistrationDeviceType:
+      type: string
+      description: A string that specifies the device type.
+      enum: [EMAIL, FIDO2, MOBILE, SMS, TOTP, VOICE, WHATSAPP]
     EnumFormElementLabelMode:
       type: string
       enum: [DEFAULT, FLOAT]
@@ -2886,6 +2894,7 @@ components:
         - $ref: '#/components/schemas/FormFieldText'
         - $ref: '#/components/schemas/FormFieldPassword'
         - $ref: '#/components/schemas/FormFieldPasswordVerify'
+        - $ref: '#/components/schemas/FormFieldPhoneNumber'
         - $ref: '#/components/schemas/FormFieldRadio'
         - $ref: '#/components/schemas/FormFieldCheckbox'
         - $ref: '#/components/schemas/FormFieldDropdown'
@@ -2900,6 +2909,8 @@ components:
         - $ref: '#/components/schemas/FormFieldRecaptchaV2'
         - $ref: '#/components/schemas/FormFieldQrCode'
         - $ref: '#/components/schemas/FormFieldSocialLoginButton'
+        - $ref: '#/components/schemas/FormFieldDeviceRegistration'
+        - $ref: '#/components/schemas/FormFieldDeviceAuthentication'
         - $ref: '#/components/schemas/FormFieldPolling'
         - $ref: '#/components/schemas/FormFieldFIDO2'
         - $ref: '#/components/schemas/FormFieldSingleCheckbox'
@@ -2910,6 +2921,7 @@ components:
           TEXT: '#/components/schemas/FormFieldText'
           PASSWORD: '#/components/schemas/FormFieldPassword'
           PASSWORD_VERIFY: '#/components/schemas/FormFieldPasswordVerify'
+          PHONE_NUMBER: '#/components/schemas/FormFieldPhoneNumber'
           RADIO: '#/components/schemas/FormFieldRadio'
           CHECKBOX: '#/components/schemas/FormFieldCheckbox'
           DROPDOWN: '#/components/schemas/FormFieldDropdown'
@@ -2924,6 +2936,8 @@ components:
           RECAPTCHA_V2: '#/components/schemas/FormFieldRecaptchaV2'
           QR_CODE: '#/components/schemas/FormFieldQrCode'
           SOCIAL_LOGIN_BUTTON: '#/components/schemas/FormFieldSocialLoginButton'
+          DEVICE_REGISTRATION: '#/components/schemas/FormFieldDeviceRegistration'
+          DEVICE_AUTHENTICATION: '#/components/schemas/FormFieldDeviceAuthentication'
           POLLING: '#/components/schemas/FormFieldPolling'
           FIDO2: '#/components/schemas/FormFieldFIDO2'
           SINGLE_CHECKBOX: '#/components/schemas/FormFieldSingleCheckbox'
@@ -3003,6 +3017,27 @@ components:
       allOf:
         - $ref: '#/components/schemas/FormFieldPassword'
         - $ref: '#/components/schemas/FormElementPasswordVerify'
+    FormFieldPhoneNumber:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            defaultCountryCode:
+              type: string
+              description: The country code to default the country code selection field to (two character country code).
+            countryCodeLabel:
+              type: string
+              description: Label for the country code field.
+            validatePhoneNumber:
+              type: boolean
+              description: Whether to validate the phone number input.
+            showExtension:
+              type: boolean
+              description: Whether to show an extension field.
+            extensionLabel:
+              type: string
+              description: Label for the extension field. This is required and must not be blank if showExtension is true.
     FormFieldRadio:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -3131,6 +3166,46 @@ components:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormSocialLoginButton'
+    FormFieldDeviceRegistration:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormFieldWithKey'
+        - type: object
+          properties:
+            label:
+              type: string
+              description: Label for the device registration field.
+            options:
+              type: array
+              description: List of devices available for registration. Must not be empty.
+              items:
+                $ref: '#/components/schemas/RegistrationDevice'
+            required:
+              type: boolean
+              description: Whether the field is required or not.
+          required:
+            - label
+            - options
+    FormFieldDeviceAuthentication:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormFieldWithKey'
+        - type: object
+          properties:
+            label:
+              type: string
+              description: Label for the device authentication field.
+            options:
+              type: array
+              description: List of devices available for authentication. Must not be empty.
+              items:
+                $ref: '#/components/schemas/AuthenticationDevice'
+            required:
+              type: boolean
+              description: Whether the field is required or not.
+          required:
+            - label
+            - options
     FormFieldWithKey:
       type: object
       properties:
@@ -3242,6 +3317,44 @@ components:
               required:
                 - type
                 - size
+    RegistrationDevice:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumFormRegistrationDeviceType'
+        title:
+          type: string
+          description: Title for the device.
+        description:
+          type: string
+          description: Description for the device (Max 1000 characters).
+          maxLength: 1000
+        iconSrc:
+          type: string
+          description: Icon image source to display for the device (Max 500 characters).
+          maxLength: 500
+      required:
+        - type
+        - title
+    AuthenticationDevice:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumFormAuthenticationDeviceType'
+        title:
+          type: string
+          description: Title for the device.
+        description:
+          type: string
+          description: Description for the device (Max 1000 characters).
+          maxLength: 1000
+        iconSrc:
+          type: string
+          description: Icon image source to display for the device (Max 500 characters).
+          maxLength: 500
+      required:
+        - type
+        - title
     FormFIDO2:
       allOf:
         - $ref: '#/components/schemas/FormFieldWithKey'

@@ -160,6 +160,7 @@ docs/ApplicationWSFEDAllOfKerberosGateways.md
 docs/ApplicationWSFEDAllOfKerberosUserType.md
 docs/ApplicationsApi.md
 docs/AuditActivitiesApi.md
+docs/AuthenticationDevice.md
 docs/AuthenticationsPerApplicationApi.md
 docs/BillOfMaterials.md
 docs/BillOfMaterialsBOMApi.md
@@ -257,6 +258,7 @@ docs/EnumEnvironmentStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumFlowPolicyTriggerType.md
 docs/EnumFormAgreementInputType.md
+docs/EnumFormAuthenticationDeviceType.md
 docs/EnumFormCategory.md
 docs/EnumFormElementLabelMode.md
 docs/EnumFormElementLayout.md
@@ -272,6 +274,7 @@ docs/EnumFormItemSize.md
 docs/EnumFormPollingAppearance.md
 docs/EnumFormRecaptchaV2Size.md
 docs/EnumFormRecaptchaV2Theme.md
+docs/EnumFormRegistrationDeviceType.md
 docs/EnumFormSingleCheckboxAppearance.md
 docs/EnumFormSingleCheckboxInputType.md
 docs/EnumFormSocialLoginIdpType.md
@@ -409,6 +412,8 @@ docs/FormFieldCombobox.md
 docs/FormFieldCommon.md
 docs/FormFieldCommonPosition.md
 docs/FormFieldCommonVisibility.md
+docs/FormFieldDeviceAuthentication.md
+docs/FormFieldDeviceRegistration.md
 docs/FormFieldDivider.md
 docs/FormFieldDropdown.md
 docs/FormFieldEmptyField.md
@@ -419,6 +424,7 @@ docs/FormFieldFlowLink.md
 docs/FormFieldFormAgreement.md
 docs/FormFieldPassword.md
 docs/FormFieldPasswordVerify.md
+docs/FormFieldPhoneNumber.md
 docs/FormFieldPolling.md
 docs/FormFieldQrCode.md
 docs/FormFieldRadio.md
@@ -641,6 +647,7 @@ docs/RateLimitingApi.md
 docs/ReadOneApplication200Response.md
 docs/RecaptchaConfiguration.md
 docs/RecaptchaConfigurationApi.md
+docs/RegistrationDevice.md
 docs/Resource.md
 docs/ResourceApplicationPermission.md
 docs/ResourceApplicationPermissionResource.md
@@ -842,6 +849,7 @@ model_application_wsfed_all_of_idp_signing_key.go
 model_application_wsfed_all_of_kerberos.go
 model_application_wsfed_all_of_kerberos_gateways.go
 model_application_wsfed_all_of_kerberos_user_type.go
+model_authentication_device.go
 model_bill_of_materials.go
 model_bill_of_materials_products_inner.go
 model_bill_of_materials_products_inner_bookmarks_inner.go
@@ -925,6 +933,7 @@ model_enum_environment_status.go
 model_enum_environment_type.go
 model_enum_flow_policy_trigger_type.go
 model_enum_form_agreement_input_type.go
+model_enum_form_authentication_device_type.go
 model_enum_form_category.go
 model_enum_form_element_label_mode.go
 model_enum_form_element_layout.go
@@ -940,6 +949,7 @@ model_enum_form_item_size.go
 model_enum_form_polling_appearance.go
 model_enum_form_recaptcha_v2_size.go
 model_enum_form_recaptcha_v2_theme.go
+model_enum_form_registration_device_type.go
 model_enum_form_single_checkbox_appearance.go
 model_enum_form_single_checkbox_input_type.go
 model_enum_form_social_login_idp_type.go
@@ -1075,6 +1085,8 @@ model_form_field_combobox.go
 model_form_field_common.go
 model_form_field_common_position.go
 model_form_field_common_visibility.go
+model_form_field_device_authentication.go
+model_form_field_device_registration.go
 model_form_field_divider.go
 model_form_field_dropdown.go
 model_form_field_empty_field.go
@@ -1085,6 +1097,7 @@ model_form_field_flow_link.go
 model_form_field_form_agreement.go
 model_form_field_password.go
 model_form_field_password_verify.go
+model_form_field_phone_number.go
 model_form_field_polling.go
 model_form_field_qr_code.go
 model_form_field_radio.go
@@ -1272,6 +1285,7 @@ model_propagation_store_image.go
 model_propagation_store_sync_status.go
 model_rate_limit_configuration.go
 model_recaptcha_configuration.go
+model_registration_device.go
 model_resource.go
 model_resource_application_permission.go
 model_resource_application_permission_resource.go

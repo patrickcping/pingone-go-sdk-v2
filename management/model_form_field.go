@@ -17,27 +17,30 @@ import (
 
 // FormField - struct for FormField
 type FormField struct {
-	FormFieldCheckbox          *FormFieldCheckbox
-	FormFieldCombobox          *FormFieldCombobox
-	FormFieldDivider           *FormFieldDivider
-	FormFieldDropdown          *FormFieldDropdown
-	FormFieldEmptyField        *FormFieldEmptyField
-	FormFieldErrorDisplay      *FormFieldErrorDisplay
-	FormFieldFIDO2             *FormFieldFIDO2
-	FormFieldFlowButton        *FormFieldFlowButton
-	FormFieldFlowLink          *FormFieldFlowLink
-	FormFieldFormAgreement     *FormFieldFormAgreement
-	FormFieldPassword          *FormFieldPassword
-	FormFieldPasswordVerify    *FormFieldPasswordVerify
-	FormFieldPolling           *FormFieldPolling
-	FormFieldQrCode            *FormFieldQrCode
-	FormFieldRadio             *FormFieldRadio
-	FormFieldRecaptchaV2       *FormFieldRecaptchaV2
-	FormFieldSingleCheckbox    *FormFieldSingleCheckbox
-	FormFieldSlateTextblob     *FormFieldSlateTextblob
-	FormFieldSocialLoginButton *FormFieldSocialLoginButton
-	FormFieldSubmitButton      *FormFieldSubmitButton
-	FormFieldText              *FormFieldText
+	FormFieldCheckbox             *FormFieldCheckbox
+	FormFieldCombobox             *FormFieldCombobox
+	FormFieldDeviceAuthentication *FormFieldDeviceAuthentication
+	FormFieldDeviceRegistration   *FormFieldDeviceRegistration
+	FormFieldDivider              *FormFieldDivider
+	FormFieldDropdown             *FormFieldDropdown
+	FormFieldEmptyField           *FormFieldEmptyField
+	FormFieldErrorDisplay         *FormFieldErrorDisplay
+	FormFieldFIDO2                *FormFieldFIDO2
+	FormFieldFlowButton           *FormFieldFlowButton
+	FormFieldFlowLink             *FormFieldFlowLink
+	FormFieldFormAgreement        *FormFieldFormAgreement
+	FormFieldPassword             *FormFieldPassword
+	FormFieldPasswordVerify       *FormFieldPasswordVerify
+	FormFieldPhoneNumber          *FormFieldPhoneNumber
+	FormFieldPolling              *FormFieldPolling
+	FormFieldQrCode               *FormFieldQrCode
+	FormFieldRadio                *FormFieldRadio
+	FormFieldRecaptchaV2          *FormFieldRecaptchaV2
+	FormFieldSingleCheckbox       *FormFieldSingleCheckbox
+	FormFieldSlateTextblob        *FormFieldSlateTextblob
+	FormFieldSocialLoginButton    *FormFieldSocialLoginButton
+	FormFieldSubmitButton         *FormFieldSubmitButton
+	FormFieldText                 *FormFieldText
 }
 
 // FormFieldCheckboxAsFormField is a convenience function that returns FormFieldCheckbox wrapped in FormField
@@ -51,6 +54,20 @@ func FormFieldCheckboxAsFormField(v *FormFieldCheckbox) FormField {
 func FormFieldComboboxAsFormField(v *FormFieldCombobox) FormField {
 	return FormField{
 		FormFieldCombobox: v,
+	}
+}
+
+// FormFieldDeviceAuthenticationAsFormField is a convenience function that returns FormFieldDeviceAuthentication wrapped in FormField
+func FormFieldDeviceAuthenticationAsFormField(v *FormFieldDeviceAuthentication) FormField {
+	return FormField{
+		FormFieldDeviceAuthentication: v,
+	}
+}
+
+// FormFieldDeviceRegistrationAsFormField is a convenience function that returns FormFieldDeviceRegistration wrapped in FormField
+func FormFieldDeviceRegistrationAsFormField(v *FormFieldDeviceRegistration) FormField {
+	return FormField{
+		FormFieldDeviceRegistration: v,
 	}
 }
 
@@ -121,6 +138,13 @@ func FormFieldPasswordAsFormField(v *FormFieldPassword) FormField {
 func FormFieldPasswordVerifyAsFormField(v *FormFieldPasswordVerify) FormField {
 	return FormField{
 		FormFieldPasswordVerify: v,
+	}
+}
+
+// FormFieldPhoneNumberAsFormField is a convenience function that returns FormFieldPhoneNumber wrapped in FormField
+func FormFieldPhoneNumberAsFormField(v *FormFieldPhoneNumber) FormField {
+	return FormField{
+		FormFieldPhoneNumber: v,
 	}
 }
 
@@ -309,6 +333,18 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &dst.FormFieldFormAgreement); err != nil {
 			return err
 		}
+	case ENUMFORMFIELDTYPE_DEVICE_AUTHENTICATION:
+		if err := json.Unmarshal(data, &dst.FormFieldDeviceAuthentication); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_DEVICE_REGISTRATION:
+		if err := json.Unmarshal(data, &dst.FormFieldDeviceRegistration); err != nil {
+			return err
+		}
+	case ENUMFORMFIELDTYPE_PHONE_NUMBER:
+		if err := json.Unmarshal(data, &dst.FormFieldPhoneNumber); err != nil {
+			return err
+		}
 	default:
 		return fmt.Errorf("data failed to match schemas in oneOf(FormField)")
 	}
@@ -323,6 +359,14 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 
 	if src.FormFieldCombobox != nil {
 		return json.Marshal(&src.FormFieldCombobox)
+	}
+
+	if src.FormFieldDeviceAuthentication != nil {
+		return json.Marshal(&src.FormFieldDeviceAuthentication)
+	}
+
+	if src.FormFieldDeviceRegistration != nil {
+		return json.Marshal(&src.FormFieldDeviceRegistration)
 	}
 
 	if src.FormFieldDivider != nil {
@@ -363,6 +407,10 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 
 	if src.FormFieldPasswordVerify != nil {
 		return json.Marshal(&src.FormFieldPasswordVerify)
+	}
+
+	if src.FormFieldPhoneNumber != nil {
+		return json.Marshal(&src.FormFieldPhoneNumber)
 	}
 
 	if src.FormFieldPolling != nil {
@@ -417,6 +465,14 @@ func (obj *FormField) GetActualInstance() interface{} {
 		return obj.FormFieldCombobox
 	}
 
+	if obj.FormFieldDeviceAuthentication != nil {
+		return obj.FormFieldDeviceAuthentication
+	}
+
+	if obj.FormFieldDeviceRegistration != nil {
+		return obj.FormFieldDeviceRegistration
+	}
+
 	if obj.FormFieldDivider != nil {
 		return obj.FormFieldDivider
 	}
@@ -455,6 +511,10 @@ func (obj *FormField) GetActualInstance() interface{} {
 
 	if obj.FormFieldPasswordVerify != nil {
 		return obj.FormFieldPasswordVerify
+	}
+
+	if obj.FormFieldPhoneNumber != nil {
+		return obj.FormFieldPhoneNumber
 	}
 
 	if obj.FormFieldPolling != nil {
