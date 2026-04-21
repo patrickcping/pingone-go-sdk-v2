@@ -20,7 +20,7 @@ var _ MappedNullable = &RiskPredictorCompositeAllOfComposition{}
 // RiskPredictorCompositeAllOfComposition struct for RiskPredictorCompositeAllOfComposition
 type RiskPredictorCompositeAllOfComposition struct {
 	Condition RiskPredictorCompositeConditionBase `json:"condition"`
-	Level EnumRiskLevel `json:"level"`
+	Level     EnumRiskLevel                       `json:"level"`
 }
 
 // NewRiskPredictorCompositeAllOfComposition instantiates a new RiskPredictorCompositeAllOfComposition object
@@ -91,7 +91,7 @@ func (o *RiskPredictorCompositeAllOfComposition) SetLevel(v EnumRiskLevel) {
 }
 
 func (o RiskPredictorCompositeAllOfComposition) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -140,5 +140,3 @@ func (v *NullableRiskPredictorCompositeAllOfComposition) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

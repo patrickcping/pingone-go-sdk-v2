@@ -65,9 +65,9 @@ type ServerVariable struct {
 
 // ServerConfiguration stores the information about a server
 type ServerConfiguration struct {
-	URL string
+	URL         string
 	Description string
-	Variables map[string]ServerVariable
+	Variables   map[string]ServerVariable
 }
 
 // ServerConfigurations stores multiple ServerConfiguration items
@@ -90,17 +90,16 @@ type Configuration struct {
 // NewConfiguration returns a new Configuration object
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		DefaultHeader:    make(map[string]string),
-		UserAgent:        "pingtools PingOne-GOLANG-SDK-authorize/0.8.3",
-		Debug:            false,
-		DefaultServerIndex: 0,
-		Servers:          ServerConfigurations{
+		DefaultHeader: make(map[string]string),
+		UserAgent:     "pingtools PingOne-GOLANG-SDK-authorize/0.8.3",
+		Debug:         false,
+		Servers: ServerConfigurations{
 			{
-				URL: "{protocol}://{baseDomain}.{suffix}/v1",
+				URL:         "{protocol}://{baseDomain}.{suffix}/v1",
 				Description: "PingOne Platform API Endpoint",
 				Variables: map[string]ServerVariable{
-					"suffix": ServerVariable{
-						Description: "No description provided",
+					"suffix": {
+						Description:  "No description provided",
 						DefaultValue: "com",
 						EnumValues: []string{
 							"asia",
@@ -110,33 +109,32 @@ func NewConfiguration() *Configuration {
 							"eu",
 						},
 					},
-					"baseDomain": ServerVariable{
-						Description: "No description provided",
+					"baseDomain": {
+						Description:  "No description provided",
 						DefaultValue: "api.pingone",
 					},
-					"protocol": ServerVariable{
-						Description: "No description provided",
+					"protocol": {
+						Description:  "No description provided",
 						DefaultValue: "https",
 					},
 				},
 			},
 			{
-				URL: "{protocol}://{baseHostname}/v1",
+				URL:         "{protocol}://{baseHostname}/v1",
 				Description: "PingOne Platform API Endpoint",
 				Variables: map[string]ServerVariable{
-					"baseHostname": ServerVariable{
-						Description: "No description provided",
+					"baseHostname": {
+						Description:  "No description provided",
 						DefaultValue: "api.pingone.com",
 					},
-					"protocol": ServerVariable{
-						Description: "No description provided",
+					"protocol": {
+						Description:  "No description provided",
 						DefaultValue: "https",
 					},
 				},
 			},
 		},
-		OperationServers: map[string]ServerConfigurations{
-		},
+		OperationServers: map[string]ServerConfigurations{},
 	}
 	return cfg
 }

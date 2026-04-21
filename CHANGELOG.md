@@ -1,3 +1,15 @@
+# Release (2026-04-21)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.14
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.68.2 => v0.70.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.25.0 => v0.25.1
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.69.0](./management/CHANGELOG.md)
+  * **Enhancement** Re-aligned Forms data model to API for SINGLE_CHECKBOX and SOCIAL_LOGIN_BUTTON form field types [#530](https://github.com/patrickcping/pingone-go-sdk-v2/pull/530)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.70.0](./management/CHANGELOG.md)
+  * **Enhancement** Added support to Forms data model for DEVICE_AUTHENTICATION, DEVICE_REGISTRATION, and PHONE_NUMBER form field types [#532](https://github.com/patrickcping/pingone-go-sdk-v2/pull/532)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.25.1](./mfa/CHANGELOG.md)
+  * **Bug** Fixed json tag capitalization for the `whatsApp` field in the `DeviceAuthenticationPolicyPingOneMFA` and `DeviceAuthenticationPolicy` data models. [#533](https://github.com/patrickcping/pingone-go-sdk-v2/pull/533)
+
 # Release (2026-04-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.13
