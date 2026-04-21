@@ -1,4 +1,4 @@
-# v0.70.0 (Unreleased)
+# v0.70.0 (2026-04-21)
 
 * **Enhancement** Added support to Forms data model for DEVICE_AUTHENTICATION, DEVICE_REGISTRATION, and PHONE_NUMBER form field types [#530](https://github.com/patrickcping/pingone-go-sdk-v2/pull/532)
 
