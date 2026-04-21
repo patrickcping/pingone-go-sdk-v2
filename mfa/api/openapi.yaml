@@ -4291,7 +4291,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon'
       - properties:
-          whatsapp:
+          whatsApp:
             $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice'
         required:
         - default

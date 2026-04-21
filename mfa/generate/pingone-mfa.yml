@@ -229,7 +229,7 @@ components:
         - $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon'
         - type: object
           properties:
-            whatsapp:
+            whatsApp:
               $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice'
           required:
             - name

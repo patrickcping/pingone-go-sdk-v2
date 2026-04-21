@@ -45,7 +45,7 @@ type DeviceAuthenticationPolicyPingOneMFA struct {
 	RememberMe          *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time                               `json:"updatedAt,omitempty"`
-	Whatsapp  *DeviceAuthenticationPolicyOfflineDevice `json:"whatsapp,omitempty"`
+	WhatsApp  *DeviceAuthenticationPolicyOfflineDevice `json:"whatsApp,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyPingOneMFA instantiates a new DeviceAuthenticationPolicyPingOneMFA object
@@ -620,36 +620,36 @@ func (o *DeviceAuthenticationPolicyPingOneMFA) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetWhatsapp returns the Whatsapp field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyPingOneMFA) GetWhatsapp() DeviceAuthenticationPolicyOfflineDevice {
-	if o == nil || IsNil(o.Whatsapp) {
+// GetWhatsApp returns the WhatsApp field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetWhatsApp() DeviceAuthenticationPolicyOfflineDevice {
+	if o == nil || IsNil(o.WhatsApp) {
 		var ret DeviceAuthenticationPolicyOfflineDevice
 		return ret
 	}
-	return *o.Whatsapp
+	return *o.WhatsApp
 }
 
-// GetWhatsappOk returns a tuple with the Whatsapp field value if set, nil otherwise
+// GetWhatsAppOk returns a tuple with the WhatsApp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyPingOneMFA) GetWhatsappOk() (*DeviceAuthenticationPolicyOfflineDevice, bool) {
-	if o == nil || IsNil(o.Whatsapp) {
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetWhatsAppOk() (*DeviceAuthenticationPolicyOfflineDevice, bool) {
+	if o == nil || IsNil(o.WhatsApp) {
 		return nil, false
 	}
-	return o.Whatsapp, true
+	return o.WhatsApp, true
 }
 
-// HasWhatsapp returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyPingOneMFA) HasWhatsapp() bool {
-	if o != nil && !IsNil(o.Whatsapp) {
+// HasWhatsApp returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) HasWhatsApp() bool {
+	if o != nil && !IsNil(o.WhatsApp) {
 		return true
 	}
 
 	return false
 }
 
-// SetWhatsapp gets a reference to the given DeviceAuthenticationPolicyOfflineDevice and assigns it to the Whatsapp field.
-func (o *DeviceAuthenticationPolicyPingOneMFA) SetWhatsapp(v DeviceAuthenticationPolicyOfflineDevice) {
-	o.Whatsapp = &v
+// SetWhatsApp gets a reference to the given DeviceAuthenticationPolicyOfflineDevice and assigns it to the WhatsApp field.
+func (o *DeviceAuthenticationPolicyPingOneMFA) SetWhatsApp(v DeviceAuthenticationPolicyOfflineDevice) {
+	o.WhatsApp = &v
 }
 
 func (o DeviceAuthenticationPolicyPingOneMFA) MarshalJSON() ([]byte, error) {
@@ -703,8 +703,8 @@ func (o DeviceAuthenticationPolicyPingOneMFA) ToMap() (map[string]interface{}, e
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if !IsNil(o.Whatsapp) {
-		toSerialize["whatsapp"] = o.Whatsapp
+	if !IsNil(o.WhatsApp) {
+		toSerialize["whatsApp"] = o.WhatsApp
 	}
 	return toSerialize, nil
 }
