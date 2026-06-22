@@ -21,7 +21,7 @@ var _ MappedNullable = &RiskPolicy{}
 // RiskPolicy struct for RiskPolicy
 type RiskPolicy struct {
 	Links     *map[string]LinksHATEOASValue `json:"_links,omitempty"`
-	Condition RiskPolicyCondition           `json:"condition"`
+	Condition *RiskPolicyCondition          `json:"condition,omitempty"`
 	// The time the resource was first created (format ISO-8061).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
@@ -42,9 +42,8 @@ type RiskPolicy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPolicy(condition RiskPolicyCondition, name string, result RiskPolicyResult) *RiskPolicy {
+func NewRiskPolicy(name string, result RiskPolicyResult) *RiskPolicy {
 	this := RiskPolicy{}
-	this.Condition = condition
 	this.Name = name
 	this.Result = result
 	return &this
@@ -90,28 +89,36 @@ func (o *RiskPolicy) SetLinks(v map[string]LinksHATEOASValue) {
 	o.Links = &v
 }
 
-// GetCondition returns the Condition field value
+// GetCondition returns the Condition field value if set, zero value otherwise.
 func (o *RiskPolicy) GetCondition() RiskPolicyCondition {
-	if o == nil {
+	if o == nil || IsNil(o.Condition) {
 		var ret RiskPolicyCondition
 		return ret
 	}
-
-	return o.Condition
+	return *o.Condition
 }
 
-// GetConditionOk returns a tuple with the Condition field value
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicy) GetConditionOk() (*RiskPolicyCondition, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
-	return &o.Condition, true
+	return o.Condition, true
 }
 
-// SetCondition sets field value
+// HasCondition returns a boolean if a field has been set.
+func (o *RiskPolicy) HasCondition() bool {
+	if o != nil && !IsNil(o.Condition) {
+		return true
+	}
+
+	return false
+}
+
+// SetCondition gets a reference to the given RiskPolicyCondition and assigns it to the Condition field.
 func (o *RiskPolicy) SetCondition(v RiskPolicyCondition) {
-	o.Condition = v
+	o.Condition = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -367,7 +374,9 @@ func (o RiskPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	toSerialize["condition"] = o.Condition
+	if !IsNil(o.Condition) {
+		toSerialize["condition"] = o.Condition
+	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}

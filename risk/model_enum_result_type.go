@@ -15,17 +15,21 @@ import (
 	"fmt"
 )
 
-// EnumResultType A string that specifies the risk evaluation result type. Options are `VALUE`.
+// EnumResultType A string that specifies the risk evaluation result type. Options are `VALUE`, `MITIGATION`, `MITIGATION_FALLBACK`.
 type EnumResultType string
 
 // List of EnumResultType
 const (
-	ENUMRESULTTYPE_VALUE EnumResultType = "VALUE"
+	ENUMRESULTTYPE_VALUE               EnumResultType = "VALUE"
+	ENUMRESULTTYPE_MITIGATION          EnumResultType = "MITIGATION"
+	ENUMRESULTTYPE_MITIGATION_FALLBACK EnumResultType = "MITIGATION_FALLBACK"
 )
 
 // All allowed values of EnumResultType enum
 var AllowedEnumResultTypeEnumValues = []EnumResultType{
 	"VALUE",
+	"MITIGATION",
+	"MITIGATION_FALLBACK",
 }
 
 func (v *EnumResultType) UnmarshalJSON(src []byte) error {

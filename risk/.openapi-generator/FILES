@@ -11,6 +11,7 @@ docs/EnumCompletionStatus.md
 docs/EnumDistanceUnit.md
 docs/EnumEventSharingType.md
 docs/EnumFlowType.md
+docs/EnumMitigationAction.md
 docs/EnumPredictorCompositeConditionType.md
 docs/EnumPredictorNewDeviceDetectType.md
 docs/EnumPredictorType.md
@@ -22,6 +23,7 @@ docs/EnumResultType.md
 docs/EnumRiskLevel.md
 docs/EnumRiskPolicyConditionType.md
 docs/EnumRiskPolicyResultLevel.md
+docs/EnumRiskPolicySetTargetsConditionType.md
 docs/EnumRiskPolicySetTriggerType.md
 docs/EnumRiskPredictorTrafficAnomalyRuleIntervalUnit.md
 docs/EnumRiskPredictorTrafficAnomalyRuleType.md
@@ -67,9 +69,13 @@ docs/RiskPolicyConditionAggregatedWeightsInner.md
 docs/RiskPolicyConditionBetween.md
 docs/RiskPolicyConditionEquals.md
 docs/RiskPolicyResult.md
+docs/RiskPolicyResultMitigationsInner.md
 docs/RiskPolicySet.md
 docs/RiskPolicySetDefaultResult.md
 docs/RiskPolicySetEvaluatedPredictorsInner.md
+docs/RiskPolicySetTargets.md
+docs/RiskPolicySetTargetsCondition.md
+docs/RiskPolicySetTargetsConditionAndInner.md
 docs/RiskPolicySetTriggersInner.md
 docs/RiskPredictor.md
 docs/RiskPredictorAdversaryInTheMiddle.md
@@ -124,6 +130,7 @@ model_enum_completion_status.go
 model_enum_distance_unit.go
 model_enum_event_sharing_type.go
 model_enum_flow_type.go
+model_enum_mitigation_action.go
 model_enum_predictor_composite_condition_type.go
 model_enum_predictor_new_device_detect_type.go
 model_enum_predictor_type.go
@@ -135,6 +142,7 @@ model_enum_result_type.go
 model_enum_risk_level.go
 model_enum_risk_policy_condition_type.go
 model_enum_risk_policy_result_level.go
+model_enum_risk_policy_set_targets_condition_type.go
 model_enum_risk_policy_set_trigger_type.go
 model_enum_risk_predictor_traffic_anomaly_rule_interval_unit.go
 model_enum_risk_predictor_traffic_anomaly_rule_type.go
@@ -176,9 +184,13 @@ model_risk_policy_condition_aggregated_weights_inner.go
 model_risk_policy_condition_between.go
 model_risk_policy_condition_equals.go
 model_risk_policy_result.go
+model_risk_policy_result_mitigations_inner.go
 model_risk_policy_set.go
 model_risk_policy_set_default_result.go
 model_risk_policy_set_evaluated_predictors_inner.go
+model_risk_policy_set_targets.go
+model_risk_policy_set_targets_condition.go
+model_risk_policy_set_targets_condition_and_inner.go
 model_risk_policy_set_triggers_inner.go
 model_risk_predictor.go
 model_risk_predictor_adversary_in_the_middle.go

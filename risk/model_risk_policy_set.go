@@ -41,6 +41,7 @@ type RiskPolicySet struct {
 	EvaluatedPredictors []RiskPolicySetEvaluatedPredictorsInner `json:"evaluatedPredictors,omitempty"`
 	// An array of triggers related to this policy set.
 	Triggers []RiskPolicySetTriggersInner `json:"triggers,omitempty"`
+	Targets  *RiskPolicySetTargets        `json:"targets,omitempty"`
 }
 
 // NewRiskPolicySet instantiates a new RiskPolicySet object
@@ -437,6 +438,38 @@ func (o *RiskPolicySet) SetTriggers(v []RiskPolicySetTriggersInner) {
 	o.Triggers = v
 }
 
+// GetTargets returns the Targets field value if set, zero value otherwise.
+func (o *RiskPolicySet) GetTargets() RiskPolicySetTargets {
+	if o == nil || IsNil(o.Targets) {
+		var ret RiskPolicySetTargets
+		return ret
+	}
+	return *o.Targets
+}
+
+// GetTargetsOk returns a tuple with the Targets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicySet) GetTargetsOk() (*RiskPolicySetTargets, bool) {
+	if o == nil || IsNil(o.Targets) {
+		return nil, false
+	}
+	return o.Targets, true
+}
+
+// HasTargets returns a boolean if a field has been set.
+func (o *RiskPolicySet) HasTargets() bool {
+	if o != nil && !IsNil(o.Targets) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargets gets a reference to the given RiskPolicySetTargets and assigns it to the Targets field.
+func (o *RiskPolicySet) SetTargets(v RiskPolicySetTargets) {
+	o.Targets = &v
+}
+
 func (o RiskPolicySet) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -480,6 +513,9 @@ func (o RiskPolicySet) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Triggers) {
 		toSerialize["triggers"] = o.Triggers
+	}
+	if !IsNil(o.Targets) {
+		toSerialize["targets"] = o.Targets
 	}
 	return toSerialize, nil
 }

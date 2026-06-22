@@ -139,8 +139,8 @@ components:
       description: The type of rule. Currently the only valid value is `UNIQUE_USERS_PER_DEVICE` - for tracking the number of unique users for a device over a defined timeframe.
     EnumResultType:
       type: string
-      enum: [VALUE]
-      description: A string that specifies the risk evaluation result type. Options are `VALUE`.
+      enum: [VALUE, MITIGATION, MITIGATION_FALLBACK]
+      description: A string that specifies the risk evaluation result type. Options are `VALUE`, `MITIGATION`, `MITIGATION_FALLBACK`.
     EnumRiskLevel:
       type: string
       enum: [LOW, MEDIUM, HIGH]
@@ -162,6 +162,26 @@ components:
       type: string
       enum: [EXTERNAL]
       description: A string that specifies the type of user associated with the event. Options are `EXTERNAL`.
+    EnumMitigationAction:
+      type: string
+      enum: [CUSTOM, DENY, DENY_AND_SUSPEND, VERIFY, MFA, APPROVE]
+      description: >-
+        The action that is being recommended if the condition specified for the
+        mitigation is met. Can take any of the following values: `APPROVE`, `VERIFY`,
+        `MFA`, `DENY`, `DENY_AND_SUSPEND`, `CUSTOM`. If you set `action` to `MFA`, use
+        `mfaRegistrationPolicyId` and `mfaAuthenticationPolicyId` to specify the IDs of
+        the MFA registration policy and MFA authentication policy that should be used.
+        If you set `action` to `VERIFY`, use `verifyPolicyId` to specify the ID of the
+        Verify policy that should be used. If you set `action` to `CUSTOM`, use
+        `customAction` to specify the custom action that you want to recommend.
+    EnumRiskPolicySetTargetsConditionType:
+      type: string
+      readOnly: true
+      enum: [STRING_LIST, GROUPS_INTERSECTION]
+      description: >-
+        Included in risk policy responses. For transaction types, value returned is
+        `STRING_LIST`. For user groups, value returned is `GROUPS_INTERSECTION`. For
+        applications, value returned is `STRING_LIST`.
     Environment:
       type: object
       properties:
@@ -688,7 +708,6 @@ components:
       required:
         - name
         - result
-        - condition
     RiskPolicySet:
       type: object
       properties:
@@ -769,6 +788,8 @@ components:
               - type
               - policySet
               - expiresAt
+        targets:
+          $ref: '#/components/schemas/RiskPolicySetTargets'
       required:
         - name
     RiskPolicyResult:
@@ -781,8 +802,85 @@ components:
           $ref: '#/components/schemas/EnumResultType'
         value:
           type: string
+        mitigations:
+          type: array
+          maxItems: 1
+          description: >-
+            For mitigations that you define, contains the action that is being
+            recommended if the specified condition is met. This array can only contain a
+            single object.
+          items:
+            $ref: '#/components/schemas/RiskPolicyResultMitigationsInner'
+    RiskPolicyResultMitigationsInner:
+      type: object
+      description: >-
+        For mitigations that you define, contains the action that is being recommended if
+        the specified condition is met.
+      properties:
+        action:
+          $ref: '#/components/schemas/EnumMitigationAction'
+        customAction:
+          type: string
+          description: If you set the `action` parameter to `CUSTOM`, use `customAction` to specify the custom action that you want to recommend.
+        mfaAuthenticationPolicyId:
+          type: string
+          description: If you set the `action` parameter to `MFA`, use `mfaAuthenticationPolicyId` to specify the ID of the MFA policy that should be used for authentication flows.
+        mfaRegistrationPolicyId:
+          type: string
+          description: If you set the `action` parameter to `MFA`, use `mfaRegistrationPolicyId` to specify the ID of the MFA policy that should be used for registration flows.
+        verifyPolicyId:
+          type: string
+          description: If you set the `action` parameter to `VERIFY`, use `verifyPolicyId` to specify the ID of the Verify policy that should be used.
       required:
-        - level
+        - action
+    RiskPolicySetTargets:
+      type: object
+      description: For targeted policies, used to define the conditions for applying the policy.
+      properties:
+        condition:
+          $ref: '#/components/schemas/RiskPolicySetTargetsCondition'
+    RiskPolicySetTargetsCondition:
+      type: object
+      description: >-
+        Used to specify the conditions for applying the policy - the type of flows, the
+        user groups, and the applications that are being accessed.
+      properties:
+        and:
+          type: array
+          description: >-
+            Array of the conditions for applying the policy. It is mandatory to include in
+            the array the relevant transaction types. The relevant user groups and
+            applications are optional. Each element in the array contains the target
+            transaction types/user groups/applications and the event attribute that is
+            checked.
+          items:
+            $ref: '#/components/schemas/RiskPolicySetTargetsConditionAndInner'
+    RiskPolicySetTargetsConditionAndInner:
+      type: object
+      description: >-
+        Each element contains the target transaction types/user groups/applications and
+        the event attribute that is checked.
+      properties:
+        list:
+          type: array
+          description: >-
+            Used to list the strings for the target transaction types, user groups, or
+            applications, for example, `["AUTHENTICATION", "AUTHORIZATION"]`. For
+            transaction types, should contain one or more of the following: `REGISTRATION`,
+            `AUTHENTICATION`, `ACCESS`, `AUTHORIZATION`, `TRANSACTION`. For user groups,
+            should contain the name of one or more user groups. For applications, should
+            contain the PingOne ID of one or more applications.
+          items:
+            type: string
+        contains:
+          type: string
+          description: >-
+            The event attribute that is checked for the values specified in the `list`
+            parameter. For transaction type, this should be set to `${event.flow.type}`.
+            For user groups, this should be set to `${event.user.groups}`. For
+            applications, this should be set to `${event.targetResource.id}`.
+        type:
+          $ref: '#/components/schemas/EnumRiskPolicySetTargetsConditionType'
     RiskPredictor:
       oneOf:
         - $ref: '#/components/schemas/RiskPredictorAdversaryInTheMiddle'

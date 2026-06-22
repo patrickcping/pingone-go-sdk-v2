@@ -19,18 +19,19 @@ var _ MappedNullable = &RiskPolicyResult{}
 
 // RiskPolicyResult A result object that specifies the result returned if the policy is evaluated as true. If several policies are evaluated as true, the result related to the highest priority policy is returned. for more information, see the Result attribute data model in the Risk Evaluations topic.
 type RiskPolicyResult struct {
-	Level EnumRiskLevel   `json:"level"`
+	Level *EnumRiskLevel  `json:"level,omitempty"`
 	Type  *EnumResultType `json:"type,omitempty"`
 	Value *string         `json:"value,omitempty"`
+	// For mitigations that you define, contains the action that is being recommended if the specified condition is met. This array can only contain a single object.
+	Mitigations []RiskPolicyResultMitigationsInner `json:"mitigations,omitempty"`
 }
 
 // NewRiskPolicyResult instantiates a new RiskPolicyResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPolicyResult(level EnumRiskLevel) *RiskPolicyResult {
+func NewRiskPolicyResult() *RiskPolicyResult {
 	this := RiskPolicyResult{}
-	this.Level = level
 	return &this
 }
 
@@ -42,28 +43,36 @@ func NewRiskPolicyResultWithDefaults() *RiskPolicyResult {
 	return &this
 }
 
-// GetLevel returns the Level field value
+// GetLevel returns the Level field value if set, zero value otherwise.
 func (o *RiskPolicyResult) GetLevel() EnumRiskLevel {
-	if o == nil {
+	if o == nil || IsNil(o.Level) {
 		var ret EnumRiskLevel
 		return ret
 	}
-
-	return o.Level
+	return *o.Level
 }
 
-// GetLevelOk returns a tuple with the Level field value
+// GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskLevel, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Level) {
 		return nil, false
 	}
-	return &o.Level, true
+	return o.Level, true
 }
 
-// SetLevel sets field value
+// HasLevel returns a boolean if a field has been set.
+func (o *RiskPolicyResult) HasLevel() bool {
+	if o != nil && !IsNil(o.Level) {
+		return true
+	}
+
+	return false
+}
+
+// SetLevel gets a reference to the given EnumRiskLevel and assigns it to the Level field.
 func (o *RiskPolicyResult) SetLevel(v EnumRiskLevel) {
-	o.Level = v
+	o.Level = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -130,6 +139,38 @@ func (o *RiskPolicyResult) SetValue(v string) {
 	o.Value = &v
 }
 
+// GetMitigations returns the Mitigations field value if set, zero value otherwise.
+func (o *RiskPolicyResult) GetMitigations() []RiskPolicyResultMitigationsInner {
+	if o == nil || IsNil(o.Mitigations) {
+		var ret []RiskPolicyResultMitigationsInner
+		return ret
+	}
+	return o.Mitigations
+}
+
+// GetMitigationsOk returns a tuple with the Mitigations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicyResult) GetMitigationsOk() ([]RiskPolicyResultMitigationsInner, bool) {
+	if o == nil || IsNil(o.Mitigations) {
+		return nil, false
+	}
+	return o.Mitigations, true
+}
+
+// HasMitigations returns a boolean if a field has been set.
+func (o *RiskPolicyResult) HasMitigations() bool {
+	if o != nil && !IsNil(o.Mitigations) {
+		return true
+	}
+
+	return false
+}
+
+// SetMitigations gets a reference to the given []RiskPolicyResultMitigationsInner and assigns it to the Mitigations field.
+func (o *RiskPolicyResult) SetMitigations(v []RiskPolicyResultMitigationsInner) {
+	o.Mitigations = v
+}
+
 func (o RiskPolicyResult) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -140,12 +181,17 @@ func (o RiskPolicyResult) MarshalJSON() ([]byte, error) {
 
 func (o RiskPolicyResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["level"] = o.Level
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.Mitigations) {
+		toSerialize["mitigations"] = o.Mitigations
 	}
 	return toSerialize, nil
 }

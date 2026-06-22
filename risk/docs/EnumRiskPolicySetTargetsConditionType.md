@@ -1,13 +1,11 @@
-# EnumResultType
+# EnumRiskPolicySetTargetsConditionType
 
 ## Enum
 
 
-* `VALUE` (value: `"VALUE"`)
+* `STRING_LIST` (value: `"STRING_LIST"`)
 
-* `MITIGATION` (value: `"MITIGATION"`)
-
-* `MITIGATION_FALLBACK` (value: `"MITIGATION_FALLBACK"`)
+* `GROUPS_INTERSECTION` (value: `"GROUPS_INTERSECTION"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
