@@ -76,7 +76,7 @@ jobs:
 
       - id: golangci-lint-version
         run: >-
-          echo "version=$(go tool golangci-lint version --format short)" >> $GITHUB_OUTPUT
+          echo "version=v$(go tool golangci-lint version --short)" >> $GITHUB_OUTPUT
 
       - name: lint
         uses: golangci/golangci-lint-action@v9
