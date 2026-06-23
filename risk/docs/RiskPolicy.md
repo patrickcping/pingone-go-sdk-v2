@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
-**Condition** | [**RiskPolicyCondition**](RiskPolicyCondition.md) |  | 
+**Condition** | Pointer to [**RiskPolicyCondition**](RiskPolicyCondition.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was first created (format ISO-8061). | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPolicy
 
-`func NewRiskPolicy(condition RiskPolicyCondition, name string, result RiskPolicyResult, ) *RiskPolicy`
+`func NewRiskPolicy(name string, result RiskPolicyResult, ) *RiskPolicy`
 
 NewRiskPolicy instantiates a new RiskPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -78,6 +78,11 @@ and a boolean to check if the value has been set.
 
 SetCondition sets Condition field to given value.
 
+### HasCondition
+
+`func (o *RiskPolicy) HasCondition() bool`
+
+HasCondition returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

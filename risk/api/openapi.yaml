@@ -1460,21 +1460,21 @@ components:
           - evaluatedPredictors:
             - id: id
             - id: id
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            default: true
-            environment:
-              id: id
             _links:
               key:
                 href: https://openapi-generator.tech
-            name: name
             description: description
-            id: id
             riskPolicies:
             - result:
                 level: null
                 type: null
                 value: value
+                mitigations:
+                - customAction: customAction
+                  verifyPolicyId: verifyPolicyId
+                  action: null
+                  mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                  mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1511,6 +1511,12 @@ components:
                 level: null
                 type: null
                 value: value
+                mitigations:
+                - customAction: customAction
+                  verifyPolicyId: verifyPolicyId
+                  action: null
+                  mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                  mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1552,6 +1558,25 @@ components:
               policySet:
                 id: id
               expiresAt: 2000-01-23T04:56:07.000+00:00
+            targets:
+              condition:
+                and:
+                - contains: contains
+                  list:
+                  - list
+                  - list
+                  type: null
+                - contains: contains
+                  list:
+                  - list
+                  - list
+                  type: null
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            environment:
+              id: id
+            name: name
+            id: id
             defaultResult:
               level: null
               type: null
@@ -1559,21 +1584,21 @@ components:
           - evaluatedPredictors:
             - id: id
             - id: id
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            default: true
-            environment:
-              id: id
             _links:
               key:
                 href: https://openapi-generator.tech
-            name: name
             description: description
-            id: id
             riskPolicies:
             - result:
                 level: null
                 type: null
                 value: value
+                mitigations:
+                - customAction: customAction
+                  verifyPolicyId: verifyPolicyId
+                  action: null
+                  mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                  mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1610,6 +1635,12 @@ components:
                 level: null
                 type: null
                 value: value
+                mitigations:
+                - customAction: customAction
+                  verifyPolicyId: verifyPolicyId
+                  action: null
+                  mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                  mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1651,6 +1682,25 @@ components:
               policySet:
                 id: id
               expiresAt: 2000-01-23T04:56:07.000+00:00
+            targets:
+              condition:
+                and:
+                - contains: contains
+                  list:
+                  - list
+                  - list
+                  type: null
+                - contains: contains
+                  list:
+                  - list
+                  - list
+                  type: null
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            environment:
+              id: id
+            name: name
+            id: id
             defaultResult:
               level: null
               type: null
@@ -1805,10 +1855,12 @@ components:
       - UNIQUE_USERS_PER_DEVICE
       type: string
     EnumResultType:
-      description: A string that specifies the risk evaluation result type. Options
-        are `VALUE`.
+      description: "A string that specifies the risk evaluation result type. Options\
+        \ are `VALUE`, `MITIGATION`, `MITIGATION_FALLBACK`."
       enum:
       - VALUE
+      - MITIGATION
+      - MITIGATION_FALLBACK
       type: string
     EnumRiskLevel:
       description: "Enum string that specifies a given risk level.  Options are `LOW`,\
@@ -1851,6 +1903,33 @@ components:
         Options are `EXTERNAL`.
       enum:
       - EXTERNAL
+      type: string
+    EnumMitigationAction:
+      description: "The action that is being recommended if the condition specified\
+        \ for the mitigation is met. Can take any of the following values: `APPROVE`,\
+        \ `VERIFY`, `MFA`, `DENY`, `DENY_AND_SUSPEND`, `CUSTOM`. If you set `action`\
+        \ to `MFA`, use `mfaRegistrationPolicyId` and `mfaAuthenticationPolicyId`\
+        \ to specify the IDs of the MFA registration policy and MFA authentication\
+        \ policy that should be used. If you set `action` to `VERIFY`, use `verifyPolicyId`\
+        \ to specify the ID of the Verify policy that should be used. If you set `action`\
+        \ to `CUSTOM`, use `customAction` to specify the custom action that you want\
+        \ to recommend."
+      enum:
+      - CUSTOM
+      - DENY
+      - DENY_AND_SUSPEND
+      - VERIFY
+      - MFA
+      - APPROVE
+      type: string
+    EnumRiskPolicySetTargetsConditionType:
+      description: "Included in risk policy responses. For transaction types, value\
+        \ returned is `STRING_LIST`. For user groups, value returned is `GROUPS_INTERSECTION`.\
+        \ For applications, value returned is `STRING_LIST`."
+      enum:
+      - STRING_LIST
+      - GROUPS_INTERSECTION
+      readOnly: true
       type: string
     Environment:
       example:
@@ -2288,6 +2367,12 @@ components:
           level: null
           type: null
           value: value
+          mitigations:
+          - customAction: customAction
+            verifyPolicyId: verifyPolicyId
+            action: null
+            mfaRegistrationPolicyId: mfaRegistrationPolicyId
+            mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
         createdAt: 2000-01-23T04:56:07.000+00:00
         condition:
           aggregatedWeights:
@@ -2367,7 +2452,6 @@ components:
           readOnly: true
           type: string
       required:
-      - condition
       - name
       - result
       type: object
@@ -2376,21 +2460,21 @@ components:
         evaluatedPredictors:
         - id: id
         - id: id
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        default: true
-        environment:
-          id: id
         _links:
           key:
             href: https://openapi-generator.tech
-        name: name
         description: description
-        id: id
         riskPolicies:
         - result:
             level: null
             type: null
             value: value
+            mitigations:
+            - customAction: customAction
+              verifyPolicyId: verifyPolicyId
+              action: null
+              mfaRegistrationPolicyId: mfaRegistrationPolicyId
+              mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
@@ -2427,6 +2511,12 @@ components:
             level: null
             type: null
             value: value
+            mitigations:
+            - customAction: customAction
+              verifyPolicyId: verifyPolicyId
+              action: null
+              mfaRegistrationPolicyId: mfaRegistrationPolicyId
+              mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
@@ -2468,6 +2558,25 @@ components:
           policySet:
             id: id
           expiresAt: 2000-01-23T04:56:07.000+00:00
+        targets:
+          condition:
+            and:
+            - contains: contains
+              list:
+              - list
+              - list
+              type: null
+            - contains: contains
+              list:
+              - list
+              - list
+              type: null
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        default: true
+        environment:
+          id: id
+        name: name
+        id: id
         defaultResult:
           level: null
           type: null
@@ -2535,6 +2644,8 @@ components:
           items:
             $ref: '#/components/schemas/RiskPolicySet_triggers_inner'
           type: array
+        targets:
+          $ref: '#/components/schemas/RiskPolicySetTargets'
       required:
       - name
       type: object
@@ -2547,6 +2658,12 @@ components:
         level: null
         type: null
         value: value
+        mitigations:
+        - customAction: customAction
+          verifyPolicyId: verifyPolicyId
+          action: null
+          mfaRegistrationPolicyId: mfaRegistrationPolicyId
+          mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
       properties:
         level:
           $ref: '#/components/schemas/EnumRiskLevel'
@@ -2554,8 +2671,123 @@ components:
           $ref: '#/components/schemas/EnumResultType'
         value:
           type: string
+        mitigations:
+          description: "For mitigations that you define, contains the action that\
+            \ is being recommended if the specified condition is met. This array can\
+            \ only contain a single object."
+          items:
+            $ref: '#/components/schemas/RiskPolicyResultMitigationsInner'
+          maxItems: 1
+          type: array
+      type: object
+    RiskPolicyResultMitigationsInner:
+      description: "For mitigations that you define, contains the action that is being\
+        \ recommended if the specified condition is met."
+      example:
+        customAction: customAction
+        verifyPolicyId: verifyPolicyId
+        action: null
+        mfaRegistrationPolicyId: mfaRegistrationPolicyId
+        mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
+      properties:
+        action:
+          $ref: '#/components/schemas/EnumMitigationAction'
+        customAction:
+          description: "If you set the `action` parameter to `CUSTOM`, use `customAction`\
+            \ to specify the custom action that you want to recommend."
+          type: string
+        mfaAuthenticationPolicyId:
+          description: "If you set the `action` parameter to `MFA`, use `mfaAuthenticationPolicyId`\
+            \ to specify the ID of the MFA policy that should be used for authentication\
+            \ flows."
+          type: string
+        mfaRegistrationPolicyId:
+          description: "If you set the `action` parameter to `MFA`, use `mfaRegistrationPolicyId`\
+            \ to specify the ID of the MFA policy that should be used for registration\
+            \ flows."
+          type: string
+        verifyPolicyId:
+          description: "If you set the `action` parameter to `VERIFY`, use `verifyPolicyId`\
+            \ to specify the ID of the Verify policy that should be used."
+          type: string
       required:
-      - level
+      - action
+      type: object
+    RiskPolicySetTargets:
+      description: "For targeted policies, used to define the conditions for applying\
+        \ the policy."
+      example:
+        condition:
+          and:
+          - contains: contains
+            list:
+            - list
+            - list
+            type: null
+          - contains: contains
+            list:
+            - list
+            - list
+            type: null
+      properties:
+        condition:
+          $ref: '#/components/schemas/RiskPolicySetTargetsCondition'
+      type: object
+    RiskPolicySetTargetsCondition:
+      description: "Used to specify the conditions for applying the policy - the type\
+        \ of flows, the user groups, and the applications that are being accessed."
+      example:
+        and:
+        - contains: contains
+          list:
+          - list
+          - list
+          type: null
+        - contains: contains
+          list:
+          - list
+          - list
+          type: null
+      properties:
+        and:
+          description: Array of the conditions for applying the policy. It is mandatory
+            to include in the array the relevant transaction types. The relevant user
+            groups and applications are optional. Each element in the array contains
+            the target transaction types/user groups/applications and the event attribute
+            that is checked.
+          items:
+            $ref: '#/components/schemas/RiskPolicySetTargetsConditionAndInner'
+          type: array
+      type: object
+    RiskPolicySetTargetsConditionAndInner:
+      description: Each element contains the target transaction types/user groups/applications
+        and the event attribute that is checked.
+      example:
+        contains: contains
+        list:
+        - list
+        - list
+        type: null
+      properties:
+        list:
+          description: "Used to list the strings for the target transaction types,\
+            \ user groups, or applications, for example, `[\"AUTHENTICATION\", \"\
+            AUTHORIZATION\"]`. For transaction types, should contain one or more of\
+            \ the following: `REGISTRATION`, `AUTHENTICATION`, `ACCESS`, `AUTHORIZATION`,\
+            \ `TRANSACTION`. For user groups, should contain the name of one or more\
+            \ user groups. For applications, should contain the PingOne ID of one\
+            \ or more applications."
+          items:
+            type: string
+          type: array
+        contains:
+          description: "The event attribute that is checked for the values specified\
+            \ in the `list` parameter. For transaction type, this should be set to\
+            \ `${event.flow.type}`. For user groups, this should be set to `${event.user.groups}`.\
+            \ For applications, this should be set to `${event.targetResource.id}`."
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumRiskPolicySetTargetsConditionType'
       type: object
     RiskPredictor:
       oneOf:
@@ -2950,21 +3182,21 @@ components:
         - evaluatedPredictors:
           - id: id
           - id: id
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          default: true
-          environment:
-            id: id
           _links:
             key:
               href: https://openapi-generator.tech
-          name: name
           description: description
-          id: id
           riskPolicies:
           - result:
               level: null
               type: null
               value: value
+              mitigations:
+              - customAction: customAction
+                verifyPolicyId: verifyPolicyId
+                action: null
+                mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -3001,6 +3233,12 @@ components:
               level: null
               type: null
               value: value
+              mitigations:
+              - customAction: customAction
+                verifyPolicyId: verifyPolicyId
+                action: null
+                mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -3042,6 +3280,25 @@ components:
             policySet:
               id: id
             expiresAt: 2000-01-23T04:56:07.000+00:00
+          targets:
+            condition:
+              and:
+              - contains: contains
+                list:
+                - list
+                - list
+                type: null
+              - contains: contains
+                list:
+                - list
+                - list
+                type: null
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default: true
+          environment:
+            id: id
+          name: name
+          id: id
           defaultResult:
             level: null
             type: null
@@ -3049,21 +3306,21 @@ components:
         - evaluatedPredictors:
           - id: id
           - id: id
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          default: true
-          environment:
-            id: id
           _links:
             key:
               href: https://openapi-generator.tech
-          name: name
           description: description
-          id: id
           riskPolicies:
           - result:
               level: null
               type: null
               value: value
+              mitigations:
+              - customAction: customAction
+                verifyPolicyId: verifyPolicyId
+                action: null
+                mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -3100,6 +3357,12 @@ components:
               level: null
               type: null
               value: value
+              mitigations:
+              - customAction: customAction
+                verifyPolicyId: verifyPolicyId
+                action: null
+                mfaRegistrationPolicyId: mfaRegistrationPolicyId
+                mfaAuthenticationPolicyId: mfaAuthenticationPolicyId
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -3141,6 +3404,25 @@ components:
             policySet:
               id: id
             expiresAt: 2000-01-23T04:56:07.000+00:00
+          targets:
+            condition:
+              and:
+              - contains: contains
+                list:
+                - list
+                - list
+                type: null
+              - contains: contains
+                list:
+                - list
+                - list
+                type: null
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default: true
+          environment:
+            id: id
+          name: name
+          id: id
           defaultResult:
             level: null
             type: null

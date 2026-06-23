@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | [**EnumRiskLevel**](EnumRiskLevel.md) |  | 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
 **Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
+**Mitigations** | Pointer to [**[]RiskPolicyResultMitigationsInner**](RiskPolicyResultMitigationsInner.md) | For mitigations that you define, contains the action that is being recommended if the specified condition is met. This array can only contain a single object. | [optional] 
 
 ## Methods
 
 ### NewRiskPolicyResult
 
-`func NewRiskPolicyResult(level EnumRiskLevel, ) *RiskPolicyResult`
+`func NewRiskPolicyResult() *RiskPolicyResult`
 
 NewRiskPolicyResult instantiates a new RiskPolicyResult object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +47,11 @@ and a boolean to check if the value has been set.
 
 SetLevel sets Level field to given value.
 
+### HasLevel
+
+`func (o *RiskPolicyResult) HasLevel() bool`
+
+HasLevel returns a boolean if a field has been set.
 
 ### GetType
 
@@ -96,6 +102,31 @@ SetValue sets Value field to given value.
 `func (o *RiskPolicyResult) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### GetMitigations
+
+`func (o *RiskPolicyResult) GetMitigations() []RiskPolicyResultMitigationsInner`
+
+GetMitigations returns the Mitigations field if non-nil, zero value otherwise.
+
+### GetMitigationsOk
+
+`func (o *RiskPolicyResult) GetMitigationsOk() (*[]RiskPolicyResultMitigationsInner, bool)`
+
+GetMitigationsOk returns a tuple with the Mitigations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMitigations
+
+`func (o *RiskPolicyResult) SetMitigations(v []RiskPolicyResultMitigationsInner)`
+
+SetMitigations sets Mitigations field to given value.
+
+### HasMitigations
+
+`func (o *RiskPolicyResult) HasMitigations() bool`
+
+HasMitigations returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

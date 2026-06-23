@@ -1,3 +1,15 @@
+# v0.22.0 (2026-06-18)
+
+* **Breaking Change** `NewRiskPolicyResult()` no longer requires `level` argument — mitigation results omit level.
+* **Breaking Change** `NewRiskPolicy()` no longer requires `condition` argument — mitigation fallback policies have no condition.
+* **Enhancement** Added `MITIGATION` and `MITIGATION_FALLBACK` result types to `EnumResultType`.
+* **Enhancement** Added `EnumMitigationAction` enum with values `CUSTOM`, `DENY`, `DENY_AND_SUSPEND`, `VERIFY`, `MFA`, `APPROVE`.
+* **Enhancement** Added `RiskPolicyResultMitigationsInner` model with fields `action`, `customAction`, `mfaAuthenticationPolicyId`, `mfaRegistrationPolicyId`, `verifyPolicyId`.
+* **Enhancement** Added `mitigations` array field to `RiskPolicyResult`.
+* **Enhancement** Added `EnumRiskPolicySetTargetsConditionType` enum with values `STRING_LIST`, `GROUPS_INTERSECTION`.
+* **Enhancement** Added `RiskPolicySetTargets`, `RiskPolicySetTargetsCondition`, `RiskPolicySetTargetsConditionAndInner` models.
+* **Enhancement** Added `targets` field to `RiskPolicySet`.
+
 # v0.21.1 (2026-03-09)
 
 * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)
