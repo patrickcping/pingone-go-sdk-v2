@@ -768,7 +768,7 @@ components:
       default: BANNER_BUTTONS
     EnumTemplateName:
       type: string
-      enum: [credential_issued,credential_revoked,credential_updated,credential_verification, device_pairing,digital_wallet_pairing,email_verification_admin,email_verification_user,email_phone_verification,general,id_verification,new_device_paired,recovery_code_template, strong_authentication, transaction, verification_code_template]
+      enum: [credential_issued,credential_revoked,credential_updated,credential_verification,device_pairing,digital_wallet_pairing,email_verification_admin,email_verification_user,email_phone_verification,general,id_verification,new_device_paired,recovery_code_template,strong_authentication,transaction,verification_code_template,verification_code_new]
       description: The name of the template
     EnumTrustedEmailStatus:
       type: string

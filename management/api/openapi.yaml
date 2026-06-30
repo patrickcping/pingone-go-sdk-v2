@@ -38471,6 +38471,7 @@ components:
       - strong_authentication
       - transaction
       - verification_code_template
+      - verification_code_new
       type: string
     EnumTrustedEmailStatus:
       description: A string that specifies the status of the trusted email address.
