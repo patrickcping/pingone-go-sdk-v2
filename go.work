@@ -1,11 +1,12 @@
 go 1.25.6
 
 use (
-    ./
+	./authorize
+	./authorizeeditor
 	./credentials
 	./management
 	./mfa
 	./risk
-	./authorize
 	./verify
+    ./
 )
