@@ -35,6 +35,8 @@
 
 * `VERIFICATION_CODE_TEMPLATE` (value: `"verification_code_template"`)
 
+* `VERIFICATION_CODE_NEW` (value: `"verification_code_new"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
