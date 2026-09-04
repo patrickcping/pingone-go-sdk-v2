@@ -23,24 +23,118 @@ type BrandingThemeConfiguration struct {
 	BackgroundColor *string                                    `json:"backgroundColor,omitempty"`
 	BackgroundType  EnumBrandingThemeBackgroundType            `json:"backgroundType"`
 	BackgroundImage *BrandingThemeConfigurationBackgroundImage `json:"backgroundImage,omitempty"`
+	// The application background color for the theme. It must be a valid hexadecimal color code. Note that this property is not used by DaVinci forms.
+	ApplicationBackgroundColor *string `json:"applicationBackgroundColor,omitempty"`
 	// The body text color for the theme. It must be a valid hexadecimal color code.
 	BodyTextColor string `json:"bodyTextColor"`
+	// The body text size for the theme.
+	BodyTextSize *string `json:"bodyTextSize,omitempty"`
+	// The body text weight for the theme (range from 100-900).
+	BodyTextWeight *string `json:"bodyTextWeight,omitempty"`
 	// The button color for the theme. It must be a valid hexadecimal color code.
 	ButtonColor string `json:"buttonColor"`
+	// The button border color for the theme. It must be a valid hexadecimal color code.
+	ButtonBorderColor *string `json:"buttonBorderColor,omitempty"`
+	// The button corner radius for the theme (range from 0-25px).
+	ButtonCornerRadius *string `json:"buttonCornerRadius,omitempty"`
+	// The button border radius for the theme (range from 0-25px).
+	ButtonBorderRadius *string `json:"buttonBorderRadius,omitempty"`
+	// The button border width for the theme (range from 0-4px).
+	ButtonBorderWidth *string `json:"buttonBorderWidth,omitempty"`
+	// The button hover state border color for the theme. It must be a valid hexadecimal color code.
+	ButtonHoverStateBorderColor *string `json:"buttonHoverStateBorderColor,omitempty"`
+	// The button hover state fill color for the theme. It must be a valid hexadecimal color code.
+	ButtonHoverStateFillColor *string `json:"buttonHoverStateFillColor,omitempty"`
+	// The button hover state text color for the theme. It must be a valid hexadecimal color code.
+	ButtonHoverStateTextColor *string `json:"buttonHoverStateTextColor,omitempty"`
 	// The button text color for the branding theme. It must be a valid hexadecimal color code.
 	ButtonTextColor string `json:"buttonTextColor"`
+	// The button text size for the theme.
+	ButtonTextSize *string `json:"buttonTextSize,omitempty"`
+	// The button text weight for the theme (range from 100-900).
+	ButtonTextWeight *string `json:"buttonTextWeight,omitempty"`
 	// The card color for the branding theme. It must be a valid hexadecimal color code.
 	CardColor string `json:"cardColor"`
+	// The card border color for the theme. It must be a valid hexadecimal color code.
+	CardBorderColor *string `json:"cardBorderColor,omitempty"`
+	// The card border width for the theme (range from 0-4px).
+	CardBorderWidth *string `json:"cardBorderWidth,omitempty"`
+	// The card corner radius for the theme (range from 0-25px).
+	CardCornerRadius *string `json:"cardCornerRadius,omitempty"`
+	// The card horizontal alignment for the theme.
+	CardHorizontalAlignment *string `json:"cardHorizontalAlignment,omitempty"`
+	// The card logo alignment for the theme.
+	CardLogoAlignment *string `json:"cardLogoAlignment,omitempty"`
+	// The card shadow for the theme.
+	CardShadow *string `json:"cardShadow,omitempty"`
+	// The card vertical alignment for the theme.
+	CardVerticalAlignment *string `json:"cardVerticalAlignment,omitempty"`
+	// The focus rectangle color for the theme. It must be a valid hexadecimal color code.
+	FocusRectangleColor *string `json:"focusRectangleColor,omitempty"`
 	// The footer of the branding theme.
-	Footer *string `json:"footer,omitempty"`
+	Footer          *string                                  `json:"footer,omitempty"`
+	FooterLocalized *BrandingThemeConfigurationLocalizedText `json:"footerLocalized,omitempty"`
+	// For PingOne Neo verification presentation screen, the highlight color of the foreground object for the branding theme. It must be a valid hexadecimal color code. Defaults to
+	ForegroundHighlightColor *string `json:"foregroundHighlightColor,omitempty"`
+	// For PingOne Neo verification presentation screen, the outline color of the foreground object for the branding theme. It must be a valid hexadecimal color code. Defaults to
+	ForegroundMainColor *string `json:"foregroundMainColor,omitempty"`
+	// The global font for the theme. The default value is `Helvetica Neue, Helvetica, sans-serif`.
+	GlobalFont *string `json:"globalFont,omitempty"`
+	// The header for the theme. For example, \"<h1>Welcome to PingOne<h1>\".
+	Header *string `json:"header,omitempty"`
+	// The header background color for the theme. It must be a valid hexadecimal color code. Note that this property is not used by DaVinci forms.
+	HeaderBackgroundColor *string                                  `json:"headerBackgroundColor,omitempty"`
+	HeaderLocalized       *BrandingThemeConfigurationLocalizedText `json:"headerLocalized,omitempty"`
 	// The heading text color for the branding theme. It must be a valid hexadecimal color code.
 	HeadingTextColor string `json:"headingTextColor"`
+	// The input border width for the theme (range from 0-4px).
+	InputBorderWidth *string `json:"inputBorderWidth,omitempty"`
+	// The input box border color for the theme. It must be a valid hexadecimal color code.
+	InputBoxBorderColor *string `json:"inputBoxBorderColor,omitempty"`
+	// The input corner radius for the theme (range from 0-25px).
+	InputCornerRadius *string `json:"inputCornerRadius,omitempty"`
+	// The input label position for the theme.
+	InputLabelPosition *string `json:"inputLabelPosition,omitempty"`
+	// The input label text color for the theme. It must be a valid hexadecimal color code.
+	InputLabelTextColor *string `json:"inputLabelTextColor,omitempty"`
+	// The input label text size for the theme.
+	InputLabelTextSize *string `json:"inputLabelTextSize,omitempty"`
+	// The input label text weight for the theme (range from 100-900).
+	InputLabelTextWeight *string `json:"inputLabelTextWeight,omitempty"`
+	// The input value text color for the theme. It must be a valid hexadecimal color code.
+	InputValueTextColor *string `json:"inputValueTextColor,omitempty"`
+	// The input value text size for the theme.
+	InputValueTextSize *string `json:"inputValueTextSize,omitempty"`
+	// The input value text weight for the theme (range from 100-900).
+	InputValueTextWeight *string `json:"inputValueTextWeight,omitempty"`
 	// The hyperlink text color for the branding theme. It must be a valid hexadecimal color code.
-	LinkTextColor string                          `json:"linkTextColor"`
-	Logo          *BrandingThemeConfigurationLogo `json:"logo,omitempty"`
-	LogoType      EnumBrandingLogoType            `json:"logoType"`
+	LinkTextColor string `json:"linkTextColor"`
+	// The link text hover color for the theme. It must be a valid hexadecimal color code.
+	LinkTextHoverColor *string `json:"linkTextHoverColor,omitempty"`
+	// The link text size for the theme.
+	LinkTextSize *string `json:"linkTextSize,omitempty"`
+	// The link text weight for the theme (range from 100-900).
+	LinkTextWeight *string                         `json:"linkTextWeight,omitempty"`
+	Logo           *BrandingThemeConfigurationLogo `json:"logo,omitempty"`
+	// The logo height assigned to the image (range from 0-100px).
+	LogoHeight *string              `json:"logoHeight,omitempty"`
+	LogoType   EnumBrandingLogoType `json:"logoType"`
 	// The name of the branding theme.
 	Name *string `json:"name,omitempty"`
+	// The schema version number for the theme.
+	SchemaVersion *int32 `json:"schemaVersion,omitempty"`
+	// The subtitle text color for the theme. It must be a valid hexadecimal color code.
+	SubTitleTextColor *string `json:"subTitleTextColor,omitempty"`
+	// The subtitle text size for the theme.
+	SubTitleTextSize *string `json:"subTitleTextSize,omitempty"`
+	// The subtitle text weight for the theme (range from 100-900).
+	SubTitleTextWeight *string `json:"subTitleTextWeight,omitempty"`
+	// The title text color for the theme. It must be a valid hexadecimal color code.
+	TitleTextColor *string `json:"titleTextColor,omitempty"`
+	// The title text size for the theme.
+	TitleTextSize *string `json:"titleTextSize,omitempty"`
+	// The title text weight for the theme (range from 100-900).
+	TitleTextWeight *string `json:"titleTextWeight,omitempty"`
 }
 
 // NewBrandingThemeConfiguration instantiates a new BrandingThemeConfiguration object
@@ -156,6 +250,38 @@ func (o *BrandingThemeConfiguration) SetBackgroundImage(v BrandingThemeConfigura
 	o.BackgroundImage = &v
 }
 
+// GetApplicationBackgroundColor returns the ApplicationBackgroundColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetApplicationBackgroundColor() string {
+	if o == nil || IsNil(o.ApplicationBackgroundColor) {
+		var ret string
+		return ret
+	}
+	return *o.ApplicationBackgroundColor
+}
+
+// GetApplicationBackgroundColorOk returns a tuple with the ApplicationBackgroundColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetApplicationBackgroundColorOk() (*string, bool) {
+	if o == nil || IsNil(o.ApplicationBackgroundColor) {
+		return nil, false
+	}
+	return o.ApplicationBackgroundColor, true
+}
+
+// HasApplicationBackgroundColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasApplicationBackgroundColor() bool {
+	if o != nil && !IsNil(o.ApplicationBackgroundColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationBackgroundColor gets a reference to the given string and assigns it to the ApplicationBackgroundColor field.
+func (o *BrandingThemeConfiguration) SetApplicationBackgroundColor(v string) {
+	o.ApplicationBackgroundColor = &v
+}
+
 // GetBodyTextColor returns the BodyTextColor field value
 func (o *BrandingThemeConfiguration) GetBodyTextColor() string {
 	if o == nil {
@@ -178,6 +304,70 @@ func (o *BrandingThemeConfiguration) GetBodyTextColorOk() (*string, bool) {
 // SetBodyTextColor sets field value
 func (o *BrandingThemeConfiguration) SetBodyTextColor(v string) {
 	o.BodyTextColor = v
+}
+
+// GetBodyTextSize returns the BodyTextSize field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetBodyTextSize() string {
+	if o == nil || IsNil(o.BodyTextSize) {
+		var ret string
+		return ret
+	}
+	return *o.BodyTextSize
+}
+
+// GetBodyTextSizeOk returns a tuple with the BodyTextSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetBodyTextSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.BodyTextSize) {
+		return nil, false
+	}
+	return o.BodyTextSize, true
+}
+
+// HasBodyTextSize returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasBodyTextSize() bool {
+	if o != nil && !IsNil(o.BodyTextSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetBodyTextSize gets a reference to the given string and assigns it to the BodyTextSize field.
+func (o *BrandingThemeConfiguration) SetBodyTextSize(v string) {
+	o.BodyTextSize = &v
+}
+
+// GetBodyTextWeight returns the BodyTextWeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetBodyTextWeight() string {
+	if o == nil || IsNil(o.BodyTextWeight) {
+		var ret string
+		return ret
+	}
+	return *o.BodyTextWeight
+}
+
+// GetBodyTextWeightOk returns a tuple with the BodyTextWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetBodyTextWeightOk() (*string, bool) {
+	if o == nil || IsNil(o.BodyTextWeight) {
+		return nil, false
+	}
+	return o.BodyTextWeight, true
+}
+
+// HasBodyTextWeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasBodyTextWeight() bool {
+	if o != nil && !IsNil(o.BodyTextWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetBodyTextWeight gets a reference to the given string and assigns it to the BodyTextWeight field.
+func (o *BrandingThemeConfiguration) SetBodyTextWeight(v string) {
+	o.BodyTextWeight = &v
 }
 
 // GetButtonColor returns the ButtonColor field value
@@ -204,6 +394,230 @@ func (o *BrandingThemeConfiguration) SetButtonColor(v string) {
 	o.ButtonColor = v
 }
 
+// GetButtonBorderColor returns the ButtonBorderColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonBorderColor() string {
+	if o == nil || IsNil(o.ButtonBorderColor) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonBorderColor
+}
+
+// GetButtonBorderColorOk returns a tuple with the ButtonBorderColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonBorderColorOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonBorderColor) {
+		return nil, false
+	}
+	return o.ButtonBorderColor, true
+}
+
+// HasButtonBorderColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonBorderColor() bool {
+	if o != nil && !IsNil(o.ButtonBorderColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonBorderColor gets a reference to the given string and assigns it to the ButtonBorderColor field.
+func (o *BrandingThemeConfiguration) SetButtonBorderColor(v string) {
+	o.ButtonBorderColor = &v
+}
+
+// GetButtonCornerRadius returns the ButtonCornerRadius field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonCornerRadius() string {
+	if o == nil || IsNil(o.ButtonCornerRadius) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonCornerRadius
+}
+
+// GetButtonCornerRadiusOk returns a tuple with the ButtonCornerRadius field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonCornerRadiusOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonCornerRadius) {
+		return nil, false
+	}
+	return o.ButtonCornerRadius, true
+}
+
+// HasButtonCornerRadius returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonCornerRadius() bool {
+	if o != nil && !IsNil(o.ButtonCornerRadius) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonCornerRadius gets a reference to the given string and assigns it to the ButtonCornerRadius field.
+func (o *BrandingThemeConfiguration) SetButtonCornerRadius(v string) {
+	o.ButtonCornerRadius = &v
+}
+
+// GetButtonBorderRadius returns the ButtonBorderRadius field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonBorderRadius() string {
+	if o == nil || IsNil(o.ButtonBorderRadius) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonBorderRadius
+}
+
+// GetButtonBorderRadiusOk returns a tuple with the ButtonBorderRadius field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonBorderRadiusOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonBorderRadius) {
+		return nil, false
+	}
+	return o.ButtonBorderRadius, true
+}
+
+// HasButtonBorderRadius returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonBorderRadius() bool {
+	if o != nil && !IsNil(o.ButtonBorderRadius) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonBorderRadius gets a reference to the given string and assigns it to the ButtonBorderRadius field.
+func (o *BrandingThemeConfiguration) SetButtonBorderRadius(v string) {
+	o.ButtonBorderRadius = &v
+}
+
+// GetButtonBorderWidth returns the ButtonBorderWidth field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonBorderWidth() string {
+	if o == nil || IsNil(o.ButtonBorderWidth) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonBorderWidth
+}
+
+// GetButtonBorderWidthOk returns a tuple with the ButtonBorderWidth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonBorderWidthOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonBorderWidth) {
+		return nil, false
+	}
+	return o.ButtonBorderWidth, true
+}
+
+// HasButtonBorderWidth returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonBorderWidth() bool {
+	if o != nil && !IsNil(o.ButtonBorderWidth) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonBorderWidth gets a reference to the given string and assigns it to the ButtonBorderWidth field.
+func (o *BrandingThemeConfiguration) SetButtonBorderWidth(v string) {
+	o.ButtonBorderWidth = &v
+}
+
+// GetButtonHoverStateBorderColor returns the ButtonHoverStateBorderColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonHoverStateBorderColor() string {
+	if o == nil || IsNil(o.ButtonHoverStateBorderColor) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonHoverStateBorderColor
+}
+
+// GetButtonHoverStateBorderColorOk returns a tuple with the ButtonHoverStateBorderColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonHoverStateBorderColorOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonHoverStateBorderColor) {
+		return nil, false
+	}
+	return o.ButtonHoverStateBorderColor, true
+}
+
+// HasButtonHoverStateBorderColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonHoverStateBorderColor() bool {
+	if o != nil && !IsNil(o.ButtonHoverStateBorderColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonHoverStateBorderColor gets a reference to the given string and assigns it to the ButtonHoverStateBorderColor field.
+func (o *BrandingThemeConfiguration) SetButtonHoverStateBorderColor(v string) {
+	o.ButtonHoverStateBorderColor = &v
+}
+
+// GetButtonHoverStateFillColor returns the ButtonHoverStateFillColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonHoverStateFillColor() string {
+	if o == nil || IsNil(o.ButtonHoverStateFillColor) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonHoverStateFillColor
+}
+
+// GetButtonHoverStateFillColorOk returns a tuple with the ButtonHoverStateFillColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonHoverStateFillColorOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonHoverStateFillColor) {
+		return nil, false
+	}
+	return o.ButtonHoverStateFillColor, true
+}
+
+// HasButtonHoverStateFillColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonHoverStateFillColor() bool {
+	if o != nil && !IsNil(o.ButtonHoverStateFillColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonHoverStateFillColor gets a reference to the given string and assigns it to the ButtonHoverStateFillColor field.
+func (o *BrandingThemeConfiguration) SetButtonHoverStateFillColor(v string) {
+	o.ButtonHoverStateFillColor = &v
+}
+
+// GetButtonHoverStateTextColor returns the ButtonHoverStateTextColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonHoverStateTextColor() string {
+	if o == nil || IsNil(o.ButtonHoverStateTextColor) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonHoverStateTextColor
+}
+
+// GetButtonHoverStateTextColorOk returns a tuple with the ButtonHoverStateTextColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonHoverStateTextColorOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonHoverStateTextColor) {
+		return nil, false
+	}
+	return o.ButtonHoverStateTextColor, true
+}
+
+// HasButtonHoverStateTextColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonHoverStateTextColor() bool {
+	if o != nil && !IsNil(o.ButtonHoverStateTextColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonHoverStateTextColor gets a reference to the given string and assigns it to the ButtonHoverStateTextColor field.
+func (o *BrandingThemeConfiguration) SetButtonHoverStateTextColor(v string) {
+	o.ButtonHoverStateTextColor = &v
+}
+
 // GetButtonTextColor returns the ButtonTextColor field value
 func (o *BrandingThemeConfiguration) GetButtonTextColor() string {
 	if o == nil {
@@ -228,6 +642,70 @@ func (o *BrandingThemeConfiguration) SetButtonTextColor(v string) {
 	o.ButtonTextColor = v
 }
 
+// GetButtonTextSize returns the ButtonTextSize field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonTextSize() string {
+	if o == nil || IsNil(o.ButtonTextSize) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonTextSize
+}
+
+// GetButtonTextSizeOk returns a tuple with the ButtonTextSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonTextSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonTextSize) {
+		return nil, false
+	}
+	return o.ButtonTextSize, true
+}
+
+// HasButtonTextSize returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonTextSize() bool {
+	if o != nil && !IsNil(o.ButtonTextSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonTextSize gets a reference to the given string and assigns it to the ButtonTextSize field.
+func (o *BrandingThemeConfiguration) SetButtonTextSize(v string) {
+	o.ButtonTextSize = &v
+}
+
+// GetButtonTextWeight returns the ButtonTextWeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetButtonTextWeight() string {
+	if o == nil || IsNil(o.ButtonTextWeight) {
+		var ret string
+		return ret
+	}
+	return *o.ButtonTextWeight
+}
+
+// GetButtonTextWeightOk returns a tuple with the ButtonTextWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetButtonTextWeightOk() (*string, bool) {
+	if o == nil || IsNil(o.ButtonTextWeight) {
+		return nil, false
+	}
+	return o.ButtonTextWeight, true
+}
+
+// HasButtonTextWeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasButtonTextWeight() bool {
+	if o != nil && !IsNil(o.ButtonTextWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetButtonTextWeight gets a reference to the given string and assigns it to the ButtonTextWeight field.
+func (o *BrandingThemeConfiguration) SetButtonTextWeight(v string) {
+	o.ButtonTextWeight = &v
+}
+
 // GetCardColor returns the CardColor field value
 func (o *BrandingThemeConfiguration) GetCardColor() string {
 	if o == nil {
@@ -250,6 +728,262 @@ func (o *BrandingThemeConfiguration) GetCardColorOk() (*string, bool) {
 // SetCardColor sets field value
 func (o *BrandingThemeConfiguration) SetCardColor(v string) {
 	o.CardColor = v
+}
+
+// GetCardBorderColor returns the CardBorderColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetCardBorderColor() string {
+	if o == nil || IsNil(o.CardBorderColor) {
+		var ret string
+		return ret
+	}
+	return *o.CardBorderColor
+}
+
+// GetCardBorderColorOk returns a tuple with the CardBorderColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetCardBorderColorOk() (*string, bool) {
+	if o == nil || IsNil(o.CardBorderColor) {
+		return nil, false
+	}
+	return o.CardBorderColor, true
+}
+
+// HasCardBorderColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasCardBorderColor() bool {
+	if o != nil && !IsNil(o.CardBorderColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardBorderColor gets a reference to the given string and assigns it to the CardBorderColor field.
+func (o *BrandingThemeConfiguration) SetCardBorderColor(v string) {
+	o.CardBorderColor = &v
+}
+
+// GetCardBorderWidth returns the CardBorderWidth field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetCardBorderWidth() string {
+	if o == nil || IsNil(o.CardBorderWidth) {
+		var ret string
+		return ret
+	}
+	return *o.CardBorderWidth
+}
+
+// GetCardBorderWidthOk returns a tuple with the CardBorderWidth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetCardBorderWidthOk() (*string, bool) {
+	if o == nil || IsNil(o.CardBorderWidth) {
+		return nil, false
+	}
+	return o.CardBorderWidth, true
+}
+
+// HasCardBorderWidth returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasCardBorderWidth() bool {
+	if o != nil && !IsNil(o.CardBorderWidth) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardBorderWidth gets a reference to the given string and assigns it to the CardBorderWidth field.
+func (o *BrandingThemeConfiguration) SetCardBorderWidth(v string) {
+	o.CardBorderWidth = &v
+}
+
+// GetCardCornerRadius returns the CardCornerRadius field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetCardCornerRadius() string {
+	if o == nil || IsNil(o.CardCornerRadius) {
+		var ret string
+		return ret
+	}
+	return *o.CardCornerRadius
+}
+
+// GetCardCornerRadiusOk returns a tuple with the CardCornerRadius field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetCardCornerRadiusOk() (*string, bool) {
+	if o == nil || IsNil(o.CardCornerRadius) {
+		return nil, false
+	}
+	return o.CardCornerRadius, true
+}
+
+// HasCardCornerRadius returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasCardCornerRadius() bool {
+	if o != nil && !IsNil(o.CardCornerRadius) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardCornerRadius gets a reference to the given string and assigns it to the CardCornerRadius field.
+func (o *BrandingThemeConfiguration) SetCardCornerRadius(v string) {
+	o.CardCornerRadius = &v
+}
+
+// GetCardHorizontalAlignment returns the CardHorizontalAlignment field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetCardHorizontalAlignment() string {
+	if o == nil || IsNil(o.CardHorizontalAlignment) {
+		var ret string
+		return ret
+	}
+	return *o.CardHorizontalAlignment
+}
+
+// GetCardHorizontalAlignmentOk returns a tuple with the CardHorizontalAlignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetCardHorizontalAlignmentOk() (*string, bool) {
+	if o == nil || IsNil(o.CardHorizontalAlignment) {
+		return nil, false
+	}
+	return o.CardHorizontalAlignment, true
+}
+
+// HasCardHorizontalAlignment returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasCardHorizontalAlignment() bool {
+	if o != nil && !IsNil(o.CardHorizontalAlignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardHorizontalAlignment gets a reference to the given string and assigns it to the CardHorizontalAlignment field.
+func (o *BrandingThemeConfiguration) SetCardHorizontalAlignment(v string) {
+	o.CardHorizontalAlignment = &v
+}
+
+// GetCardLogoAlignment returns the CardLogoAlignment field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetCardLogoAlignment() string {
+	if o == nil || IsNil(o.CardLogoAlignment) {
+		var ret string
+		return ret
+	}
+	return *o.CardLogoAlignment
+}
+
+// GetCardLogoAlignmentOk returns a tuple with the CardLogoAlignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetCardLogoAlignmentOk() (*string, bool) {
+	if o == nil || IsNil(o.CardLogoAlignment) {
+		return nil, false
+	}
+	return o.CardLogoAlignment, true
+}
+
+// HasCardLogoAlignment returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasCardLogoAlignment() bool {
+	if o != nil && !IsNil(o.CardLogoAlignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardLogoAlignment gets a reference to the given string and assigns it to the CardLogoAlignment field.
+func (o *BrandingThemeConfiguration) SetCardLogoAlignment(v string) {
+	o.CardLogoAlignment = &v
+}
+
+// GetCardShadow returns the CardShadow field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetCardShadow() string {
+	if o == nil || IsNil(o.CardShadow) {
+		var ret string
+		return ret
+	}
+	return *o.CardShadow
+}
+
+// GetCardShadowOk returns a tuple with the CardShadow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetCardShadowOk() (*string, bool) {
+	if o == nil || IsNil(o.CardShadow) {
+		return nil, false
+	}
+	return o.CardShadow, true
+}
+
+// HasCardShadow returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasCardShadow() bool {
+	if o != nil && !IsNil(o.CardShadow) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardShadow gets a reference to the given string and assigns it to the CardShadow field.
+func (o *BrandingThemeConfiguration) SetCardShadow(v string) {
+	o.CardShadow = &v
+}
+
+// GetCardVerticalAlignment returns the CardVerticalAlignment field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetCardVerticalAlignment() string {
+	if o == nil || IsNil(o.CardVerticalAlignment) {
+		var ret string
+		return ret
+	}
+	return *o.CardVerticalAlignment
+}
+
+// GetCardVerticalAlignmentOk returns a tuple with the CardVerticalAlignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetCardVerticalAlignmentOk() (*string, bool) {
+	if o == nil || IsNil(o.CardVerticalAlignment) {
+		return nil, false
+	}
+	return o.CardVerticalAlignment, true
+}
+
+// HasCardVerticalAlignment returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasCardVerticalAlignment() bool {
+	if o != nil && !IsNil(o.CardVerticalAlignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardVerticalAlignment gets a reference to the given string and assigns it to the CardVerticalAlignment field.
+func (o *BrandingThemeConfiguration) SetCardVerticalAlignment(v string) {
+	o.CardVerticalAlignment = &v
+}
+
+// GetFocusRectangleColor returns the FocusRectangleColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetFocusRectangleColor() string {
+	if o == nil || IsNil(o.FocusRectangleColor) {
+		var ret string
+		return ret
+	}
+	return *o.FocusRectangleColor
+}
+
+// GetFocusRectangleColorOk returns a tuple with the FocusRectangleColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetFocusRectangleColorOk() (*string, bool) {
+	if o == nil || IsNil(o.FocusRectangleColor) {
+		return nil, false
+	}
+	return o.FocusRectangleColor, true
+}
+
+// HasFocusRectangleColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasFocusRectangleColor() bool {
+	if o != nil && !IsNil(o.FocusRectangleColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetFocusRectangleColor gets a reference to the given string and assigns it to the FocusRectangleColor field.
+func (o *BrandingThemeConfiguration) SetFocusRectangleColor(v string) {
+	o.FocusRectangleColor = &v
 }
 
 // GetFooter returns the Footer field value if set, zero value otherwise.
@@ -284,6 +1018,230 @@ func (o *BrandingThemeConfiguration) SetFooter(v string) {
 	o.Footer = &v
 }
 
+// GetFooterLocalized returns the FooterLocalized field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetFooterLocalized() BrandingThemeConfigurationLocalizedText {
+	if o == nil || IsNil(o.FooterLocalized) {
+		var ret BrandingThemeConfigurationLocalizedText
+		return ret
+	}
+	return *o.FooterLocalized
+}
+
+// GetFooterLocalizedOk returns a tuple with the FooterLocalized field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetFooterLocalizedOk() (*BrandingThemeConfigurationLocalizedText, bool) {
+	if o == nil || IsNil(o.FooterLocalized) {
+		return nil, false
+	}
+	return o.FooterLocalized, true
+}
+
+// HasFooterLocalized returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasFooterLocalized() bool {
+	if o != nil && !IsNil(o.FooterLocalized) {
+		return true
+	}
+
+	return false
+}
+
+// SetFooterLocalized gets a reference to the given BrandingThemeConfigurationLocalizedText and assigns it to the FooterLocalized field.
+func (o *BrandingThemeConfiguration) SetFooterLocalized(v BrandingThemeConfigurationLocalizedText) {
+	o.FooterLocalized = &v
+}
+
+// GetForegroundHighlightColor returns the ForegroundHighlightColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetForegroundHighlightColor() string {
+	if o == nil || IsNil(o.ForegroundHighlightColor) {
+		var ret string
+		return ret
+	}
+	return *o.ForegroundHighlightColor
+}
+
+// GetForegroundHighlightColorOk returns a tuple with the ForegroundHighlightColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetForegroundHighlightColorOk() (*string, bool) {
+	if o == nil || IsNil(o.ForegroundHighlightColor) {
+		return nil, false
+	}
+	return o.ForegroundHighlightColor, true
+}
+
+// HasForegroundHighlightColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasForegroundHighlightColor() bool {
+	if o != nil && !IsNil(o.ForegroundHighlightColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetForegroundHighlightColor gets a reference to the given string and assigns it to the ForegroundHighlightColor field.
+func (o *BrandingThemeConfiguration) SetForegroundHighlightColor(v string) {
+	o.ForegroundHighlightColor = &v
+}
+
+// GetForegroundMainColor returns the ForegroundMainColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetForegroundMainColor() string {
+	if o == nil || IsNil(o.ForegroundMainColor) {
+		var ret string
+		return ret
+	}
+	return *o.ForegroundMainColor
+}
+
+// GetForegroundMainColorOk returns a tuple with the ForegroundMainColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetForegroundMainColorOk() (*string, bool) {
+	if o == nil || IsNil(o.ForegroundMainColor) {
+		return nil, false
+	}
+	return o.ForegroundMainColor, true
+}
+
+// HasForegroundMainColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasForegroundMainColor() bool {
+	if o != nil && !IsNil(o.ForegroundMainColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetForegroundMainColor gets a reference to the given string and assigns it to the ForegroundMainColor field.
+func (o *BrandingThemeConfiguration) SetForegroundMainColor(v string) {
+	o.ForegroundMainColor = &v
+}
+
+// GetGlobalFont returns the GlobalFont field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetGlobalFont() string {
+	if o == nil || IsNil(o.GlobalFont) {
+		var ret string
+		return ret
+	}
+	return *o.GlobalFont
+}
+
+// GetGlobalFontOk returns a tuple with the GlobalFont field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetGlobalFontOk() (*string, bool) {
+	if o == nil || IsNil(o.GlobalFont) {
+		return nil, false
+	}
+	return o.GlobalFont, true
+}
+
+// HasGlobalFont returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasGlobalFont() bool {
+	if o != nil && !IsNil(o.GlobalFont) {
+		return true
+	}
+
+	return false
+}
+
+// SetGlobalFont gets a reference to the given string and assigns it to the GlobalFont field.
+func (o *BrandingThemeConfiguration) SetGlobalFont(v string) {
+	o.GlobalFont = &v
+}
+
+// GetHeader returns the Header field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetHeader() string {
+	if o == nil || IsNil(o.Header) {
+		var ret string
+		return ret
+	}
+	return *o.Header
+}
+
+// GetHeaderOk returns a tuple with the Header field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetHeaderOk() (*string, bool) {
+	if o == nil || IsNil(o.Header) {
+		return nil, false
+	}
+	return o.Header, true
+}
+
+// HasHeader returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasHeader() bool {
+	if o != nil && !IsNil(o.Header) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeader gets a reference to the given string and assigns it to the Header field.
+func (o *BrandingThemeConfiguration) SetHeader(v string) {
+	o.Header = &v
+}
+
+// GetHeaderBackgroundColor returns the HeaderBackgroundColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetHeaderBackgroundColor() string {
+	if o == nil || IsNil(o.HeaderBackgroundColor) {
+		var ret string
+		return ret
+	}
+	return *o.HeaderBackgroundColor
+}
+
+// GetHeaderBackgroundColorOk returns a tuple with the HeaderBackgroundColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetHeaderBackgroundColorOk() (*string, bool) {
+	if o == nil || IsNil(o.HeaderBackgroundColor) {
+		return nil, false
+	}
+	return o.HeaderBackgroundColor, true
+}
+
+// HasHeaderBackgroundColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasHeaderBackgroundColor() bool {
+	if o != nil && !IsNil(o.HeaderBackgroundColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaderBackgroundColor gets a reference to the given string and assigns it to the HeaderBackgroundColor field.
+func (o *BrandingThemeConfiguration) SetHeaderBackgroundColor(v string) {
+	o.HeaderBackgroundColor = &v
+}
+
+// GetHeaderLocalized returns the HeaderLocalized field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetHeaderLocalized() BrandingThemeConfigurationLocalizedText {
+	if o == nil || IsNil(o.HeaderLocalized) {
+		var ret BrandingThemeConfigurationLocalizedText
+		return ret
+	}
+	return *o.HeaderLocalized
+}
+
+// GetHeaderLocalizedOk returns a tuple with the HeaderLocalized field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetHeaderLocalizedOk() (*BrandingThemeConfigurationLocalizedText, bool) {
+	if o == nil || IsNil(o.HeaderLocalized) {
+		return nil, false
+	}
+	return o.HeaderLocalized, true
+}
+
+// HasHeaderLocalized returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasHeaderLocalized() bool {
+	if o != nil && !IsNil(o.HeaderLocalized) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaderLocalized gets a reference to the given BrandingThemeConfigurationLocalizedText and assigns it to the HeaderLocalized field.
+func (o *BrandingThemeConfiguration) SetHeaderLocalized(v BrandingThemeConfigurationLocalizedText) {
+	o.HeaderLocalized = &v
+}
+
 // GetHeadingTextColor returns the HeadingTextColor field value
 func (o *BrandingThemeConfiguration) GetHeadingTextColor() string {
 	if o == nil {
@@ -308,6 +1266,326 @@ func (o *BrandingThemeConfiguration) SetHeadingTextColor(v string) {
 	o.HeadingTextColor = v
 }
 
+// GetInputBorderWidth returns the InputBorderWidth field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputBorderWidth() string {
+	if o == nil || IsNil(o.InputBorderWidth) {
+		var ret string
+		return ret
+	}
+	return *o.InputBorderWidth
+}
+
+// GetInputBorderWidthOk returns a tuple with the InputBorderWidth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputBorderWidthOk() (*string, bool) {
+	if o == nil || IsNil(o.InputBorderWidth) {
+		return nil, false
+	}
+	return o.InputBorderWidth, true
+}
+
+// HasInputBorderWidth returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputBorderWidth() bool {
+	if o != nil && !IsNil(o.InputBorderWidth) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputBorderWidth gets a reference to the given string and assigns it to the InputBorderWidth field.
+func (o *BrandingThemeConfiguration) SetInputBorderWidth(v string) {
+	o.InputBorderWidth = &v
+}
+
+// GetInputBoxBorderColor returns the InputBoxBorderColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputBoxBorderColor() string {
+	if o == nil || IsNil(o.InputBoxBorderColor) {
+		var ret string
+		return ret
+	}
+	return *o.InputBoxBorderColor
+}
+
+// GetInputBoxBorderColorOk returns a tuple with the InputBoxBorderColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputBoxBorderColorOk() (*string, bool) {
+	if o == nil || IsNil(o.InputBoxBorderColor) {
+		return nil, false
+	}
+	return o.InputBoxBorderColor, true
+}
+
+// HasInputBoxBorderColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputBoxBorderColor() bool {
+	if o != nil && !IsNil(o.InputBoxBorderColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputBoxBorderColor gets a reference to the given string and assigns it to the InputBoxBorderColor field.
+func (o *BrandingThemeConfiguration) SetInputBoxBorderColor(v string) {
+	o.InputBoxBorderColor = &v
+}
+
+// GetInputCornerRadius returns the InputCornerRadius field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputCornerRadius() string {
+	if o == nil || IsNil(o.InputCornerRadius) {
+		var ret string
+		return ret
+	}
+	return *o.InputCornerRadius
+}
+
+// GetInputCornerRadiusOk returns a tuple with the InputCornerRadius field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputCornerRadiusOk() (*string, bool) {
+	if o == nil || IsNil(o.InputCornerRadius) {
+		return nil, false
+	}
+	return o.InputCornerRadius, true
+}
+
+// HasInputCornerRadius returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputCornerRadius() bool {
+	if o != nil && !IsNil(o.InputCornerRadius) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputCornerRadius gets a reference to the given string and assigns it to the InputCornerRadius field.
+func (o *BrandingThemeConfiguration) SetInputCornerRadius(v string) {
+	o.InputCornerRadius = &v
+}
+
+// GetInputLabelPosition returns the InputLabelPosition field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputLabelPosition() string {
+	if o == nil || IsNil(o.InputLabelPosition) {
+		var ret string
+		return ret
+	}
+	return *o.InputLabelPosition
+}
+
+// GetInputLabelPositionOk returns a tuple with the InputLabelPosition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputLabelPositionOk() (*string, bool) {
+	if o == nil || IsNil(o.InputLabelPosition) {
+		return nil, false
+	}
+	return o.InputLabelPosition, true
+}
+
+// HasInputLabelPosition returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputLabelPosition() bool {
+	if o != nil && !IsNil(o.InputLabelPosition) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputLabelPosition gets a reference to the given string and assigns it to the InputLabelPosition field.
+func (o *BrandingThemeConfiguration) SetInputLabelPosition(v string) {
+	o.InputLabelPosition = &v
+}
+
+// GetInputLabelTextColor returns the InputLabelTextColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputLabelTextColor() string {
+	if o == nil || IsNil(o.InputLabelTextColor) {
+		var ret string
+		return ret
+	}
+	return *o.InputLabelTextColor
+}
+
+// GetInputLabelTextColorOk returns a tuple with the InputLabelTextColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputLabelTextColorOk() (*string, bool) {
+	if o == nil || IsNil(o.InputLabelTextColor) {
+		return nil, false
+	}
+	return o.InputLabelTextColor, true
+}
+
+// HasInputLabelTextColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputLabelTextColor() bool {
+	if o != nil && !IsNil(o.InputLabelTextColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputLabelTextColor gets a reference to the given string and assigns it to the InputLabelTextColor field.
+func (o *BrandingThemeConfiguration) SetInputLabelTextColor(v string) {
+	o.InputLabelTextColor = &v
+}
+
+// GetInputLabelTextSize returns the InputLabelTextSize field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputLabelTextSize() string {
+	if o == nil || IsNil(o.InputLabelTextSize) {
+		var ret string
+		return ret
+	}
+	return *o.InputLabelTextSize
+}
+
+// GetInputLabelTextSizeOk returns a tuple with the InputLabelTextSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputLabelTextSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.InputLabelTextSize) {
+		return nil, false
+	}
+	return o.InputLabelTextSize, true
+}
+
+// HasInputLabelTextSize returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputLabelTextSize() bool {
+	if o != nil && !IsNil(o.InputLabelTextSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputLabelTextSize gets a reference to the given string and assigns it to the InputLabelTextSize field.
+func (o *BrandingThemeConfiguration) SetInputLabelTextSize(v string) {
+	o.InputLabelTextSize = &v
+}
+
+// GetInputLabelTextWeight returns the InputLabelTextWeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputLabelTextWeight() string {
+	if o == nil || IsNil(o.InputLabelTextWeight) {
+		var ret string
+		return ret
+	}
+	return *o.InputLabelTextWeight
+}
+
+// GetInputLabelTextWeightOk returns a tuple with the InputLabelTextWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputLabelTextWeightOk() (*string, bool) {
+	if o == nil || IsNil(o.InputLabelTextWeight) {
+		return nil, false
+	}
+	return o.InputLabelTextWeight, true
+}
+
+// HasInputLabelTextWeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputLabelTextWeight() bool {
+	if o != nil && !IsNil(o.InputLabelTextWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputLabelTextWeight gets a reference to the given string and assigns it to the InputLabelTextWeight field.
+func (o *BrandingThemeConfiguration) SetInputLabelTextWeight(v string) {
+	o.InputLabelTextWeight = &v
+}
+
+// GetInputValueTextColor returns the InputValueTextColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputValueTextColor() string {
+	if o == nil || IsNil(o.InputValueTextColor) {
+		var ret string
+		return ret
+	}
+	return *o.InputValueTextColor
+}
+
+// GetInputValueTextColorOk returns a tuple with the InputValueTextColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputValueTextColorOk() (*string, bool) {
+	if o == nil || IsNil(o.InputValueTextColor) {
+		return nil, false
+	}
+	return o.InputValueTextColor, true
+}
+
+// HasInputValueTextColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputValueTextColor() bool {
+	if o != nil && !IsNil(o.InputValueTextColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputValueTextColor gets a reference to the given string and assigns it to the InputValueTextColor field.
+func (o *BrandingThemeConfiguration) SetInputValueTextColor(v string) {
+	o.InputValueTextColor = &v
+}
+
+// GetInputValueTextSize returns the InputValueTextSize field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputValueTextSize() string {
+	if o == nil || IsNil(o.InputValueTextSize) {
+		var ret string
+		return ret
+	}
+	return *o.InputValueTextSize
+}
+
+// GetInputValueTextSizeOk returns a tuple with the InputValueTextSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputValueTextSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.InputValueTextSize) {
+		return nil, false
+	}
+	return o.InputValueTextSize, true
+}
+
+// HasInputValueTextSize returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputValueTextSize() bool {
+	if o != nil && !IsNil(o.InputValueTextSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputValueTextSize gets a reference to the given string and assigns it to the InputValueTextSize field.
+func (o *BrandingThemeConfiguration) SetInputValueTextSize(v string) {
+	o.InputValueTextSize = &v
+}
+
+// GetInputValueTextWeight returns the InputValueTextWeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetInputValueTextWeight() string {
+	if o == nil || IsNil(o.InputValueTextWeight) {
+		var ret string
+		return ret
+	}
+	return *o.InputValueTextWeight
+}
+
+// GetInputValueTextWeightOk returns a tuple with the InputValueTextWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetInputValueTextWeightOk() (*string, bool) {
+	if o == nil || IsNil(o.InputValueTextWeight) {
+		return nil, false
+	}
+	return o.InputValueTextWeight, true
+}
+
+// HasInputValueTextWeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasInputValueTextWeight() bool {
+	if o != nil && !IsNil(o.InputValueTextWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputValueTextWeight gets a reference to the given string and assigns it to the InputValueTextWeight field.
+func (o *BrandingThemeConfiguration) SetInputValueTextWeight(v string) {
+	o.InputValueTextWeight = &v
+}
+
 // GetLinkTextColor returns the LinkTextColor field value
 func (o *BrandingThemeConfiguration) GetLinkTextColor() string {
 	if o == nil {
@@ -330,6 +1608,102 @@ func (o *BrandingThemeConfiguration) GetLinkTextColorOk() (*string, bool) {
 // SetLinkTextColor sets field value
 func (o *BrandingThemeConfiguration) SetLinkTextColor(v string) {
 	o.LinkTextColor = v
+}
+
+// GetLinkTextHoverColor returns the LinkTextHoverColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetLinkTextHoverColor() string {
+	if o == nil || IsNil(o.LinkTextHoverColor) {
+		var ret string
+		return ret
+	}
+	return *o.LinkTextHoverColor
+}
+
+// GetLinkTextHoverColorOk returns a tuple with the LinkTextHoverColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetLinkTextHoverColorOk() (*string, bool) {
+	if o == nil || IsNil(o.LinkTextHoverColor) {
+		return nil, false
+	}
+	return o.LinkTextHoverColor, true
+}
+
+// HasLinkTextHoverColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasLinkTextHoverColor() bool {
+	if o != nil && !IsNil(o.LinkTextHoverColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkTextHoverColor gets a reference to the given string and assigns it to the LinkTextHoverColor field.
+func (o *BrandingThemeConfiguration) SetLinkTextHoverColor(v string) {
+	o.LinkTextHoverColor = &v
+}
+
+// GetLinkTextSize returns the LinkTextSize field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetLinkTextSize() string {
+	if o == nil || IsNil(o.LinkTextSize) {
+		var ret string
+		return ret
+	}
+	return *o.LinkTextSize
+}
+
+// GetLinkTextSizeOk returns a tuple with the LinkTextSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetLinkTextSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.LinkTextSize) {
+		return nil, false
+	}
+	return o.LinkTextSize, true
+}
+
+// HasLinkTextSize returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasLinkTextSize() bool {
+	if o != nil && !IsNil(o.LinkTextSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkTextSize gets a reference to the given string and assigns it to the LinkTextSize field.
+func (o *BrandingThemeConfiguration) SetLinkTextSize(v string) {
+	o.LinkTextSize = &v
+}
+
+// GetLinkTextWeight returns the LinkTextWeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetLinkTextWeight() string {
+	if o == nil || IsNil(o.LinkTextWeight) {
+		var ret string
+		return ret
+	}
+	return *o.LinkTextWeight
+}
+
+// GetLinkTextWeightOk returns a tuple with the LinkTextWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetLinkTextWeightOk() (*string, bool) {
+	if o == nil || IsNil(o.LinkTextWeight) {
+		return nil, false
+	}
+	return o.LinkTextWeight, true
+}
+
+// HasLinkTextWeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasLinkTextWeight() bool {
+	if o != nil && !IsNil(o.LinkTextWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkTextWeight gets a reference to the given string and assigns it to the LinkTextWeight field.
+func (o *BrandingThemeConfiguration) SetLinkTextWeight(v string) {
+	o.LinkTextWeight = &v
 }
 
 // GetLogo returns the Logo field value if set, zero value otherwise.
@@ -362,6 +1736,38 @@ func (o *BrandingThemeConfiguration) HasLogo() bool {
 // SetLogo gets a reference to the given BrandingThemeConfigurationLogo and assigns it to the Logo field.
 func (o *BrandingThemeConfiguration) SetLogo(v BrandingThemeConfigurationLogo) {
 	o.Logo = &v
+}
+
+// GetLogoHeight returns the LogoHeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetLogoHeight() string {
+	if o == nil || IsNil(o.LogoHeight) {
+		var ret string
+		return ret
+	}
+	return *o.LogoHeight
+}
+
+// GetLogoHeightOk returns a tuple with the LogoHeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetLogoHeightOk() (*string, bool) {
+	if o == nil || IsNil(o.LogoHeight) {
+		return nil, false
+	}
+	return o.LogoHeight, true
+}
+
+// HasLogoHeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasLogoHeight() bool {
+	if o != nil && !IsNil(o.LogoHeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoHeight gets a reference to the given string and assigns it to the LogoHeight field.
+func (o *BrandingThemeConfiguration) SetLogoHeight(v string) {
+	o.LogoHeight = &v
 }
 
 // GetLogoType returns the LogoType field value
@@ -420,6 +1826,230 @@ func (o *BrandingThemeConfiguration) SetName(v string) {
 	o.Name = &v
 }
 
+// GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetSchemaVersion() int32 {
+	if o == nil || IsNil(o.SchemaVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.SchemaVersion
+}
+
+// GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetSchemaVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.SchemaVersion) {
+		return nil, false
+	}
+	return o.SchemaVersion, true
+}
+
+// HasSchemaVersion returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasSchemaVersion() bool {
+	if o != nil && !IsNil(o.SchemaVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchemaVersion gets a reference to the given int32 and assigns it to the SchemaVersion field.
+func (o *BrandingThemeConfiguration) SetSchemaVersion(v int32) {
+	o.SchemaVersion = &v
+}
+
+// GetSubTitleTextColor returns the SubTitleTextColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetSubTitleTextColor() string {
+	if o == nil || IsNil(o.SubTitleTextColor) {
+		var ret string
+		return ret
+	}
+	return *o.SubTitleTextColor
+}
+
+// GetSubTitleTextColorOk returns a tuple with the SubTitleTextColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetSubTitleTextColorOk() (*string, bool) {
+	if o == nil || IsNil(o.SubTitleTextColor) {
+		return nil, false
+	}
+	return o.SubTitleTextColor, true
+}
+
+// HasSubTitleTextColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasSubTitleTextColor() bool {
+	if o != nil && !IsNil(o.SubTitleTextColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubTitleTextColor gets a reference to the given string and assigns it to the SubTitleTextColor field.
+func (o *BrandingThemeConfiguration) SetSubTitleTextColor(v string) {
+	o.SubTitleTextColor = &v
+}
+
+// GetSubTitleTextSize returns the SubTitleTextSize field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetSubTitleTextSize() string {
+	if o == nil || IsNil(o.SubTitleTextSize) {
+		var ret string
+		return ret
+	}
+	return *o.SubTitleTextSize
+}
+
+// GetSubTitleTextSizeOk returns a tuple with the SubTitleTextSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetSubTitleTextSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.SubTitleTextSize) {
+		return nil, false
+	}
+	return o.SubTitleTextSize, true
+}
+
+// HasSubTitleTextSize returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasSubTitleTextSize() bool {
+	if o != nil && !IsNil(o.SubTitleTextSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubTitleTextSize gets a reference to the given string and assigns it to the SubTitleTextSize field.
+func (o *BrandingThemeConfiguration) SetSubTitleTextSize(v string) {
+	o.SubTitleTextSize = &v
+}
+
+// GetSubTitleTextWeight returns the SubTitleTextWeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetSubTitleTextWeight() string {
+	if o == nil || IsNil(o.SubTitleTextWeight) {
+		var ret string
+		return ret
+	}
+	return *o.SubTitleTextWeight
+}
+
+// GetSubTitleTextWeightOk returns a tuple with the SubTitleTextWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetSubTitleTextWeightOk() (*string, bool) {
+	if o == nil || IsNil(o.SubTitleTextWeight) {
+		return nil, false
+	}
+	return o.SubTitleTextWeight, true
+}
+
+// HasSubTitleTextWeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasSubTitleTextWeight() bool {
+	if o != nil && !IsNil(o.SubTitleTextWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubTitleTextWeight gets a reference to the given string and assigns it to the SubTitleTextWeight field.
+func (o *BrandingThemeConfiguration) SetSubTitleTextWeight(v string) {
+	o.SubTitleTextWeight = &v
+}
+
+// GetTitleTextColor returns the TitleTextColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetTitleTextColor() string {
+	if o == nil || IsNil(o.TitleTextColor) {
+		var ret string
+		return ret
+	}
+	return *o.TitleTextColor
+}
+
+// GetTitleTextColorOk returns a tuple with the TitleTextColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetTitleTextColorOk() (*string, bool) {
+	if o == nil || IsNil(o.TitleTextColor) {
+		return nil, false
+	}
+	return o.TitleTextColor, true
+}
+
+// HasTitleTextColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasTitleTextColor() bool {
+	if o != nil && !IsNil(o.TitleTextColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitleTextColor gets a reference to the given string and assigns it to the TitleTextColor field.
+func (o *BrandingThemeConfiguration) SetTitleTextColor(v string) {
+	o.TitleTextColor = &v
+}
+
+// GetTitleTextSize returns the TitleTextSize field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetTitleTextSize() string {
+	if o == nil || IsNil(o.TitleTextSize) {
+		var ret string
+		return ret
+	}
+	return *o.TitleTextSize
+}
+
+// GetTitleTextSizeOk returns a tuple with the TitleTextSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetTitleTextSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.TitleTextSize) {
+		return nil, false
+	}
+	return o.TitleTextSize, true
+}
+
+// HasTitleTextSize returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasTitleTextSize() bool {
+	if o != nil && !IsNil(o.TitleTextSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitleTextSize gets a reference to the given string and assigns it to the TitleTextSize field.
+func (o *BrandingThemeConfiguration) SetTitleTextSize(v string) {
+	o.TitleTextSize = &v
+}
+
+// GetTitleTextWeight returns the TitleTextWeight field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetTitleTextWeight() string {
+	if o == nil || IsNil(o.TitleTextWeight) {
+		var ret string
+		return ret
+	}
+	return *o.TitleTextWeight
+}
+
+// GetTitleTextWeightOk returns a tuple with the TitleTextWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetTitleTextWeightOk() (*string, bool) {
+	if o == nil || IsNil(o.TitleTextWeight) {
+		return nil, false
+	}
+	return o.TitleTextWeight, true
+}
+
+// HasTitleTextWeight returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasTitleTextWeight() bool {
+	if o != nil && !IsNil(o.TitleTextWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitleTextWeight gets a reference to the given string and assigns it to the TitleTextWeight field.
+func (o *BrandingThemeConfiguration) SetTitleTextWeight(v string) {
+	o.TitleTextWeight = &v
+}
+
 func (o BrandingThemeConfiguration) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -437,21 +2067,165 @@ func (o BrandingThemeConfiguration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BackgroundImage) {
 		toSerialize["backgroundImage"] = o.BackgroundImage
 	}
+	if !IsNil(o.ApplicationBackgroundColor) {
+		toSerialize["applicationBackgroundColor"] = o.ApplicationBackgroundColor
+	}
 	toSerialize["bodyTextColor"] = o.BodyTextColor
+	if !IsNil(o.BodyTextSize) {
+		toSerialize["bodyTextSize"] = o.BodyTextSize
+	}
+	if !IsNil(o.BodyTextWeight) {
+		toSerialize["bodyTextWeight"] = o.BodyTextWeight
+	}
 	toSerialize["buttonColor"] = o.ButtonColor
+	if !IsNil(o.ButtonBorderColor) {
+		toSerialize["buttonBorderColor"] = o.ButtonBorderColor
+	}
+	if !IsNil(o.ButtonCornerRadius) {
+		toSerialize["buttonCornerRadius"] = o.ButtonCornerRadius
+	}
+	if !IsNil(o.ButtonBorderRadius) {
+		toSerialize["buttonBorderRadius"] = o.ButtonBorderRadius
+	}
+	if !IsNil(o.ButtonBorderWidth) {
+		toSerialize["buttonBorderWidth"] = o.ButtonBorderWidth
+	}
+	if !IsNil(o.ButtonHoverStateBorderColor) {
+		toSerialize["buttonHoverStateBorderColor"] = o.ButtonHoverStateBorderColor
+	}
+	if !IsNil(o.ButtonHoverStateFillColor) {
+		toSerialize["buttonHoverStateFillColor"] = o.ButtonHoverStateFillColor
+	}
+	if !IsNil(o.ButtonHoverStateTextColor) {
+		toSerialize["buttonHoverStateTextColor"] = o.ButtonHoverStateTextColor
+	}
 	toSerialize["buttonTextColor"] = o.ButtonTextColor
+	if !IsNil(o.ButtonTextSize) {
+		toSerialize["buttonTextSize"] = o.ButtonTextSize
+	}
+	if !IsNil(o.ButtonTextWeight) {
+		toSerialize["buttonTextWeight"] = o.ButtonTextWeight
+	}
 	toSerialize["cardColor"] = o.CardColor
+	if !IsNil(o.CardBorderColor) {
+		toSerialize["cardBorderColor"] = o.CardBorderColor
+	}
+	if !IsNil(o.CardBorderWidth) {
+		toSerialize["cardBorderWidth"] = o.CardBorderWidth
+	}
+	if !IsNil(o.CardCornerRadius) {
+		toSerialize["cardCornerRadius"] = o.CardCornerRadius
+	}
+	if !IsNil(o.CardHorizontalAlignment) {
+		toSerialize["cardHorizontalAlignment"] = o.CardHorizontalAlignment
+	}
+	if !IsNil(o.CardLogoAlignment) {
+		toSerialize["cardLogoAlignment"] = o.CardLogoAlignment
+	}
+	if !IsNil(o.CardShadow) {
+		toSerialize["cardShadow"] = o.CardShadow
+	}
+	if !IsNil(o.CardVerticalAlignment) {
+		toSerialize["cardVerticalAlignment"] = o.CardVerticalAlignment
+	}
+	if !IsNil(o.FocusRectangleColor) {
+		toSerialize["focusRectangleColor"] = o.FocusRectangleColor
+	}
 	if !IsNil(o.Footer) {
 		toSerialize["footer"] = o.Footer
 	}
+	if !IsNil(o.FooterLocalized) {
+		toSerialize["footerLocalized"] = o.FooterLocalized
+	}
+	if !IsNil(o.ForegroundHighlightColor) {
+		toSerialize["foregroundHighlightColor"] = o.ForegroundHighlightColor
+	}
+	if !IsNil(o.ForegroundMainColor) {
+		toSerialize["foregroundMainColor"] = o.ForegroundMainColor
+	}
+	if !IsNil(o.GlobalFont) {
+		toSerialize["globalFont"] = o.GlobalFont
+	}
+	if !IsNil(o.Header) {
+		toSerialize["header"] = o.Header
+	}
+	if !IsNil(o.HeaderBackgroundColor) {
+		toSerialize["headerBackgroundColor"] = o.HeaderBackgroundColor
+	}
+	if !IsNil(o.HeaderLocalized) {
+		toSerialize["headerLocalized"] = o.HeaderLocalized
+	}
 	toSerialize["headingTextColor"] = o.HeadingTextColor
+	if !IsNil(o.InputBorderWidth) {
+		toSerialize["inputBorderWidth"] = o.InputBorderWidth
+	}
+	if !IsNil(o.InputBoxBorderColor) {
+		toSerialize["inputBoxBorderColor"] = o.InputBoxBorderColor
+	}
+	if !IsNil(o.InputCornerRadius) {
+		toSerialize["inputCornerRadius"] = o.InputCornerRadius
+	}
+	if !IsNil(o.InputLabelPosition) {
+		toSerialize["inputLabelPosition"] = o.InputLabelPosition
+	}
+	if !IsNil(o.InputLabelTextColor) {
+		toSerialize["inputLabelTextColor"] = o.InputLabelTextColor
+	}
+	if !IsNil(o.InputLabelTextSize) {
+		toSerialize["inputLabelTextSize"] = o.InputLabelTextSize
+	}
+	if !IsNil(o.InputLabelTextWeight) {
+		toSerialize["inputLabelTextWeight"] = o.InputLabelTextWeight
+	}
+	if !IsNil(o.InputValueTextColor) {
+		toSerialize["inputValueTextColor"] = o.InputValueTextColor
+	}
+	if !IsNil(o.InputValueTextSize) {
+		toSerialize["inputValueTextSize"] = o.InputValueTextSize
+	}
+	if !IsNil(o.InputValueTextWeight) {
+		toSerialize["inputValueTextWeight"] = o.InputValueTextWeight
+	}
 	toSerialize["linkTextColor"] = o.LinkTextColor
+	if !IsNil(o.LinkTextHoverColor) {
+		toSerialize["linkTextHoverColor"] = o.LinkTextHoverColor
+	}
+	if !IsNil(o.LinkTextSize) {
+		toSerialize["linkTextSize"] = o.LinkTextSize
+	}
+	if !IsNil(o.LinkTextWeight) {
+		toSerialize["linkTextWeight"] = o.LinkTextWeight
+	}
 	if !IsNil(o.Logo) {
 		toSerialize["logo"] = o.Logo
+	}
+	if !IsNil(o.LogoHeight) {
+		toSerialize["logoHeight"] = o.LogoHeight
 	}
 	toSerialize["logoType"] = o.LogoType
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SchemaVersion) {
+		toSerialize["schemaVersion"] = o.SchemaVersion
+	}
+	if !IsNil(o.SubTitleTextColor) {
+		toSerialize["subTitleTextColor"] = o.SubTitleTextColor
+	}
+	if !IsNil(o.SubTitleTextSize) {
+		toSerialize["subTitleTextSize"] = o.SubTitleTextSize
+	}
+	if !IsNil(o.SubTitleTextWeight) {
+		toSerialize["subTitleTextWeight"] = o.SubTitleTextWeight
+	}
+	if !IsNil(o.TitleTextColor) {
+		toSerialize["titleTextColor"] = o.TitleTextColor
+	}
+	if !IsNil(o.TitleTextSize) {
+		toSerialize["titleTextSize"] = o.TitleTextSize
+	}
+	if !IsNil(o.TitleTextWeight) {
+		toSerialize["titleTextWeight"] = o.TitleTextWeight
 	}
 	return toSerialize, nil
 }

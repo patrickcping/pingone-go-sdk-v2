@@ -1,3 +1,7 @@
+# v0.71.0 (Unreleased)
+
+* **Enhancement** Added `header`, `headerLocalized`, `footerLocalized`, and additional configuration properties to the `BrandingTheme` data model to align with the API.
+
 # v0.70.0 (2026-04-21)
 
 * **Enhancement** Added support to Forms data model for DEVICE_AUTHENTICATION, DEVICE_REGISTRATION, and PHONE_NUMBER form field types [#532](https://github.com/patrickcping/pingone-go-sdk-v2/pull/532)

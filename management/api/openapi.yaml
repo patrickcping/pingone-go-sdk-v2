@@ -37271,6 +37271,13 @@ components:
       - slate
       - split
       type: string
+    EnumBrandingThemeLocalizedContentType:
+      description: The content type for the localized text. Options are `RichText`
+        and `HTML`.
+      enum:
+      - RichText
+      - HTML
+      type: string
     EnumCertificateKeyAlgorithm:
       description: "Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`."
       enum:
@@ -39733,6 +39740,48 @@ components:
         logo:
           $ref: '#/components/schemas/BrandingSettings_logo'
       type: object
+    BrandingThemeConfigurationLocalizedText:
+      description: The localization object to specify language translations for the
+        form header or footer.
+      example:
+        defaultLanguage: defaultLanguage
+        contentType: null
+        enabled: true
+        content:
+          key:
+            inputText: inputText
+            contentType: null
+      properties:
+        enabled:
+          description: Specifies whether localization is enabled for the header or
+            footer.
+          type: boolean
+        defaultLanguage:
+          description: "The localization language code for the header or footer's\
+            \ default language (for example, \"defaultLanguage\" set to \"en\")."
+          type: string
+        contentType:
+          $ref: '#/components/schemas/EnumBrandingThemeLocalizedContentType'
+        content:
+          additionalProperties:
+            $ref: '#/components/schemas/BrandingThemeConfigurationLocalizedTextContent'
+          description: The localization language object that specifies the localized
+            text and content type for the language options.
+          type: object
+      type: object
+    BrandingThemeConfigurationLocalizedTextContent:
+      description: The localization language object that specifies the localized text
+        and content type for a specific language.
+      example:
+        inputText: inputText
+        contentType: null
+      properties:
+        inputText:
+          description: The header or footer text in the specified language.
+          type: string
+        contentType:
+          $ref: '#/components/schemas/EnumBrandingThemeLocalizedContentType'
+      type: object
     BrandingTheme:
       example:
         template: null
@@ -39743,23 +39792,86 @@ components:
           key:
             href: https://openapi-generator.tech
         configuration:
-          backgroundColor: backgroundColor
+          logoHeight: logoHeight
+          titleTextColor: titleTextColor
+          linkTextSize: linkTextSize
+          inputBoxBorderColor: inputBoxBorderColor
+          buttonTextSize: buttonTextSize
+          buttonCornerRadius: buttonCornerRadius
+          headingTextColor: headingTextColor
+          inputCornerRadius: inputCornerRadius
+          logo:
+            href: href
+            id: id
+          titleTextSize: titleTextSize
+          buttonHoverStateBorderColor: buttonHoverStateBorderColor
+          buttonBorderRadius: buttonBorderRadius
+          backgroundType: null
+          buttonTextWeight: buttonTextWeight
+          cardLogoAlignment: cardLogoAlignment
+          bodyTextWeight: bodyTextWeight
+          buttonHoverStateFillColor: buttonHoverStateFillColor
+          bodyTextSize: bodyTextSize
+          headerLocalized:
+            defaultLanguage: defaultLanguage
+            contentType: null
+            enabled: true
+            content:
+              key:
+                inputText: inputText
+                contentType: null
+          subTitleTextWeight: subTitleTextWeight
+          inputValueTextColor: inputValueTextColor
+          inputLabelTextSize: inputLabelTextSize
+          inputLabelTextColor: inputLabelTextColor
+          name: name
+          header: header
+          buttonBorderWidth: buttonBorderWidth
+          cardHorizontalAlignment: cardHorizontalAlignment
+          cardShadow: cardShadow
+          headerBackgroundColor: headerBackgroundColor
           buttonColor: buttonColor
+          buttonBorderColor: buttonBorderColor
           footer: footer
           backgroundImage:
             href: href
             id: id
-          cardColor: cardColor
-          headingTextColor: headingTextColor
-          name: name
-          logo:
-            href: href
-            id: id
+          cardBorderColor: cardBorderColor
+          inputBorderWidth: inputBorderWidth
+          cardVerticalAlignment: cardVerticalAlignment
+          subTitleTextSize: subTitleTextSize
+          inputLabelTextWeight: inputLabelTextWeight
+          footerLocalized:
+            defaultLanguage: defaultLanguage
+            contentType: null
+            enabled: true
+            content:
+              key:
+                inputText: inputText
+                contentType: null
           buttonTextColor: buttonTextColor
+          globalFont: globalFont
+          logoType: null
+          inputLabelPosition: inputLabelPosition
+          backgroundColor: backgroundColor
+          foregroundMainColor: foregroundMainColor
+          subTitleTextColor: subTitleTextColor
+          schemaVersion: 0
+          titleTextWeight: titleTextWeight
+          cardCornerRadius: cardCornerRadius
+          inputValueTextSize: inputValueTextSize
+          inputValueTextWeight: inputValueTextWeight
+          cardColor: cardColor
+          applicationBackgroundColor: applicationBackgroundColor
+          buttonHoverStateTextColor: buttonHoverStateTextColor
+          linkTextWeight: linkTextWeight
+          linkTextHoverColor: linkTextHoverColor
           linkTextColor: linkTextColor
           bodyTextColor: bodyTextColor
-          logoType: null
-          backgroundType: null
+          foregroundHighlightColor: foregroundHighlightColor
+          cardBorderWidth: cardBorderWidth
+          focusRectangleColor: focusRectangleColor
+        modified: 2000-01-23T04:56:07.000+00:00
         id: id
       properties:
         _links:
@@ -39777,6 +39889,11 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         id:
           description: Specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        modified:
+          description: The time the resource was last modified.
+          format: date-time
           readOnly: true
           type: string
         template:
@@ -40222,7 +40339,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 4.258773108174356
+        size: 1.041444916118296
         _links:
           key:
             href: https://openapi-generator.tech
@@ -40512,23 +40629,86 @@ components:
               key:
                 href: https://openapi-generator.tech
             configuration:
-              backgroundColor: backgroundColor
+              logoHeight: logoHeight
+              titleTextColor: titleTextColor
+              linkTextSize: linkTextSize
+              inputBoxBorderColor: inputBoxBorderColor
+              buttonTextSize: buttonTextSize
+              buttonCornerRadius: buttonCornerRadius
+              headingTextColor: headingTextColor
+              inputCornerRadius: inputCornerRadius
+              logo:
+                href: href
+                id: id
+              titleTextSize: titleTextSize
+              buttonHoverStateBorderColor: buttonHoverStateBorderColor
+              buttonBorderRadius: buttonBorderRadius
+              backgroundType: null
+              buttonTextWeight: buttonTextWeight
+              cardLogoAlignment: cardLogoAlignment
+              bodyTextWeight: bodyTextWeight
+              buttonHoverStateFillColor: buttonHoverStateFillColor
+              bodyTextSize: bodyTextSize
+              headerLocalized:
+                defaultLanguage: defaultLanguage
+                contentType: null
+                enabled: true
+                content:
+                  key:
+                    inputText: inputText
+                    contentType: null
+              subTitleTextWeight: subTitleTextWeight
+              inputValueTextColor: inputValueTextColor
+              inputLabelTextSize: inputLabelTextSize
+              inputLabelTextColor: inputLabelTextColor
+              name: name
+              header: header
+              buttonBorderWidth: buttonBorderWidth
+              cardHorizontalAlignment: cardHorizontalAlignment
+              cardShadow: cardShadow
+              headerBackgroundColor: headerBackgroundColor
               buttonColor: buttonColor
+              buttonBorderColor: buttonBorderColor
               footer: footer
               backgroundImage:
                 href: href
                 id: id
-              cardColor: cardColor
-              headingTextColor: headingTextColor
-              name: name
-              logo:
-                href: href
-                id: id
+              cardBorderColor: cardBorderColor
+              inputBorderWidth: inputBorderWidth
+              cardVerticalAlignment: cardVerticalAlignment
+              subTitleTextSize: subTitleTextSize
+              inputLabelTextWeight: inputLabelTextWeight
+              footerLocalized:
+                defaultLanguage: defaultLanguage
+                contentType: null
+                enabled: true
+                content:
+                  key:
+                    inputText: inputText
+                    contentType: null
               buttonTextColor: buttonTextColor
+              globalFont: globalFont
+              logoType: null
+              inputLabelPosition: inputLabelPosition
+              backgroundColor: backgroundColor
+              foregroundMainColor: foregroundMainColor
+              subTitleTextColor: subTitleTextColor
+              schemaVersion: 0
+              titleTextWeight: titleTextWeight
+              cardCornerRadius: cardCornerRadius
+              inputValueTextSize: inputValueTextSize
+              inputValueTextWeight: inputValueTextWeight
+              cardColor: cardColor
+              applicationBackgroundColor: applicationBackgroundColor
+              buttonHoverStateTextColor: buttonHoverStateTextColor
+              linkTextWeight: linkTextWeight
+              linkTextHoverColor: linkTextHoverColor
               linkTextColor: linkTextColor
               bodyTextColor: bodyTextColor
-              logoType: null
-              backgroundType: null
+              foregroundHighlightColor: foregroundHighlightColor
+              cardBorderWidth: cardBorderWidth
+              focusRectangleColor: focusRectangleColor
+            modified: 2000-01-23T04:56:07.000+00:00
             id: id
           - template: null
             default: true
@@ -40538,23 +40718,86 @@ components:
               key:
                 href: https://openapi-generator.tech
             configuration:
-              backgroundColor: backgroundColor
+              logoHeight: logoHeight
+              titleTextColor: titleTextColor
+              linkTextSize: linkTextSize
+              inputBoxBorderColor: inputBoxBorderColor
+              buttonTextSize: buttonTextSize
+              buttonCornerRadius: buttonCornerRadius
+              headingTextColor: headingTextColor
+              inputCornerRadius: inputCornerRadius
+              logo:
+                href: href
+                id: id
+              titleTextSize: titleTextSize
+              buttonHoverStateBorderColor: buttonHoverStateBorderColor
+              buttonBorderRadius: buttonBorderRadius
+              backgroundType: null
+              buttonTextWeight: buttonTextWeight
+              cardLogoAlignment: cardLogoAlignment
+              bodyTextWeight: bodyTextWeight
+              buttonHoverStateFillColor: buttonHoverStateFillColor
+              bodyTextSize: bodyTextSize
+              headerLocalized:
+                defaultLanguage: defaultLanguage
+                contentType: null
+                enabled: true
+                content:
+                  key:
+                    inputText: inputText
+                    contentType: null
+              subTitleTextWeight: subTitleTextWeight
+              inputValueTextColor: inputValueTextColor
+              inputLabelTextSize: inputLabelTextSize
+              inputLabelTextColor: inputLabelTextColor
+              name: name
+              header: header
+              buttonBorderWidth: buttonBorderWidth
+              cardHorizontalAlignment: cardHorizontalAlignment
+              cardShadow: cardShadow
+              headerBackgroundColor: headerBackgroundColor
               buttonColor: buttonColor
+              buttonBorderColor: buttonBorderColor
               footer: footer
               backgroundImage:
                 href: href
                 id: id
-              cardColor: cardColor
-              headingTextColor: headingTextColor
-              name: name
-              logo:
-                href: href
-                id: id
+              cardBorderColor: cardBorderColor
+              inputBorderWidth: inputBorderWidth
+              cardVerticalAlignment: cardVerticalAlignment
+              subTitleTextSize: subTitleTextSize
+              inputLabelTextWeight: inputLabelTextWeight
+              footerLocalized:
+                defaultLanguage: defaultLanguage
+                contentType: null
+                enabled: true
+                content:
+                  key:
+                    inputText: inputText
+                    contentType: null
               buttonTextColor: buttonTextColor
+              globalFont: globalFont
+              logoType: null
+              inputLabelPosition: inputLabelPosition
+              backgroundColor: backgroundColor
+              foregroundMainColor: foregroundMainColor
+              subTitleTextColor: subTitleTextColor
+              schemaVersion: 0
+              titleTextWeight: titleTextWeight
+              cardCornerRadius: cardCornerRadius
+              inputValueTextSize: inputValueTextSize
+              inputValueTextWeight: inputValueTextWeight
+              cardColor: cardColor
+              applicationBackgroundColor: applicationBackgroundColor
+              buttonHoverStateTextColor: buttonHoverStateTextColor
+              linkTextWeight: linkTextWeight
+              linkTextHoverColor: linkTextHoverColor
               linkTextColor: linkTextColor
               bodyTextColor: bodyTextColor
-              logoType: null
-              backgroundType: null
+              foregroundHighlightColor: foregroundHighlightColor
+              cardBorderWidth: cardBorderWidth
+              focusRectangleColor: focusRectangleColor
+            modified: 2000-01-23T04:56:07.000+00:00
             id: id
           customDomains:
           - environment:
@@ -41211,7 +41454,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 0
+              secondsUntilUnlock: 6
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -41282,7 +41525,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 0
+              secondsUntilUnlock: 6
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -42063,7 +42306,7 @@ components:
           applications:
           - null
           - null
-        count: 6.628464275087742
+        count: 4.258773108174356
       properties:
         _links:
           additionalProperties:
@@ -47645,7 +47888,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 0
+          secondsUntilUnlock: 6
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -47877,7 +48120,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 0
+        secondsUntilUnlock: 6
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -48743,23 +48986,85 @@ components:
       type: object
     BrandingTheme_configuration:
       example:
-        backgroundColor: backgroundColor
+        logoHeight: logoHeight
+        titleTextColor: titleTextColor
+        linkTextSize: linkTextSize
+        inputBoxBorderColor: inputBoxBorderColor
+        buttonTextSize: buttonTextSize
+        buttonCornerRadius: buttonCornerRadius
+        headingTextColor: headingTextColor
+        inputCornerRadius: inputCornerRadius
+        logo:
+          href: href
+          id: id
+        titleTextSize: titleTextSize
+        buttonHoverStateBorderColor: buttonHoverStateBorderColor
+        buttonBorderRadius: buttonBorderRadius
+        backgroundType: null
+        buttonTextWeight: buttonTextWeight
+        cardLogoAlignment: cardLogoAlignment
+        bodyTextWeight: bodyTextWeight
+        buttonHoverStateFillColor: buttonHoverStateFillColor
+        bodyTextSize: bodyTextSize
+        headerLocalized:
+          defaultLanguage: defaultLanguage
+          contentType: null
+          enabled: true
+          content:
+            key:
+              inputText: inputText
+              contentType: null
+        subTitleTextWeight: subTitleTextWeight
+        inputValueTextColor: inputValueTextColor
+        inputLabelTextSize: inputLabelTextSize
+        inputLabelTextColor: inputLabelTextColor
+        name: name
+        header: header
+        buttonBorderWidth: buttonBorderWidth
+        cardHorizontalAlignment: cardHorizontalAlignment
+        cardShadow: cardShadow
+        headerBackgroundColor: headerBackgroundColor
         buttonColor: buttonColor
+        buttonBorderColor: buttonBorderColor
         footer: footer
         backgroundImage:
           href: href
           id: id
-        cardColor: cardColor
-        headingTextColor: headingTextColor
-        name: name
-        logo:
-          href: href
-          id: id
+        cardBorderColor: cardBorderColor
+        inputBorderWidth: inputBorderWidth
+        cardVerticalAlignment: cardVerticalAlignment
+        subTitleTextSize: subTitleTextSize
+        inputLabelTextWeight: inputLabelTextWeight
+        footerLocalized:
+          defaultLanguage: defaultLanguage
+          contentType: null
+          enabled: true
+          content:
+            key:
+              inputText: inputText
+              contentType: null
         buttonTextColor: buttonTextColor
+        globalFont: globalFont
+        logoType: null
+        inputLabelPosition: inputLabelPosition
+        backgroundColor: backgroundColor
+        foregroundMainColor: foregroundMainColor
+        subTitleTextColor: subTitleTextColor
+        schemaVersion: 0
+        titleTextWeight: titleTextWeight
+        cardCornerRadius: cardCornerRadius
+        inputValueTextSize: inputValueTextSize
+        inputValueTextWeight: inputValueTextWeight
+        cardColor: cardColor
+        applicationBackgroundColor: applicationBackgroundColor
+        buttonHoverStateTextColor: buttonHoverStateTextColor
+        linkTextWeight: linkTextWeight
+        linkTextHoverColor: linkTextHoverColor
         linkTextColor: linkTextColor
         bodyTextColor: bodyTextColor
-        logoType: null
-        backgroundType: null
+        foregroundHighlightColor: foregroundHighlightColor
+        cardBorderWidth: cardBorderWidth
+        focusRectangleColor: focusRectangleColor
       properties:
         backgroundColor:
           description: "The background color for the theme. It must be a valid hexadecimal\
@@ -48770,39 +49075,204 @@ components:
           $ref: '#/components/schemas/EnumBrandingThemeBackgroundType'
         backgroundImage:
           $ref: '#/components/schemas/BrandingTheme_configuration_backgroundImage'
+        applicationBackgroundColor:
+          description: The application background color for the theme. It must be
+            a valid hexadecimal color code. Note that this property is not used by
+            DaVinci forms.
+          type: string
         bodyTextColor:
           description: The body text color for the theme. It must be a valid hexadecimal
             color code.
+          type: string
+        bodyTextSize:
+          description: The body text size for the theme.
+          type: string
+        bodyTextWeight:
+          description: The body text weight for the theme (range from 100-900).
           type: string
         buttonColor:
           description: The button color for the theme. It must be a valid hexadecimal
             color code.
           type: string
+        buttonBorderColor:
+          description: The button border color for the theme. It must be a valid hexadecimal
+            color code.
+          type: string
+        buttonCornerRadius:
+          description: The button corner radius for the theme (range from 0-25px).
+          type: string
+        buttonBorderRadius:
+          description: The button border radius for the theme (range from 0-25px).
+          type: string
+        buttonBorderWidth:
+          description: The button border width for the theme (range from 0-4px).
+          type: string
+        buttonHoverStateBorderColor:
+          description: The button hover state border color for the theme. It must
+            be a valid hexadecimal color code.
+          type: string
+        buttonHoverStateFillColor:
+          description: The button hover state fill color for the theme. It must be
+            a valid hexadecimal color code.
+          type: string
+        buttonHoverStateTextColor:
+          description: The button hover state text color for the theme. It must be
+            a valid hexadecimal color code.
+          type: string
         buttonTextColor:
           description: The button text color for the branding theme. It must be a
             valid hexadecimal color code.
+          type: string
+        buttonTextSize:
+          description: The button text size for the theme.
+          type: string
+        buttonTextWeight:
+          description: The button text weight for the theme (range from 100-900).
           type: string
         cardColor:
           description: The card color for the branding theme. It must be a valid hexadecimal
             color code.
           type: string
+        cardBorderColor:
+          description: The card border color for the theme. It must be a valid hexadecimal
+            color code.
+          type: string
+        cardBorderWidth:
+          description: The card border width for the theme (range from 0-4px).
+          type: string
+        cardCornerRadius:
+          description: The card corner radius for the theme (range from 0-25px).
+          type: string
+        cardHorizontalAlignment:
+          description: The card horizontal alignment for the theme.
+          type: string
+        cardLogoAlignment:
+          description: The card logo alignment for the theme.
+          type: string
+        cardShadow:
+          description: The card shadow for the theme.
+          type: string
+        cardVerticalAlignment:
+          description: The card vertical alignment for the theme.
+          type: string
+        focusRectangleColor:
+          description: The focus rectangle color for the theme. It must be a valid
+            hexadecimal color code.
+          type: string
         footer:
           description: The footer of the branding theme.
           type: string
+        footerLocalized:
+          $ref: '#/components/schemas/BrandingThemeConfigurationLocalizedText'
+        foregroundHighlightColor:
+          description: "For PingOne Neo verification presentation screen, the highlight\
+            \ color of the foreground object for the branding theme. It must be a\
+            \ valid hexadecimal color code. Defaults to"
+          type: string
+        foregroundMainColor:
+          description: "For PingOne Neo verification presentation screen, the outline\
+            \ color of the foreground object for the branding theme. It must be a\
+            \ valid hexadecimal color code. Defaults to"
+          type: string
+        globalFont:
+          description: "The global font for the theme. The default value is `Helvetica\
+            \ Neue, Helvetica, sans-serif`."
+          type: string
+        header:
+          description: "The header for the theme. For example, \"<h1>Welcome to PingOne<h1>\"\
+            ."
+          type: string
+        headerBackgroundColor:
+          description: The header background color for the theme. It must be a valid
+            hexadecimal color code. Note that this property is not used by DaVinci
+            forms.
+          type: string
+        headerLocalized:
+          $ref: '#/components/schemas/BrandingThemeConfigurationLocalizedText'
         headingTextColor:
           description: The heading text color for the branding theme. It must be a
             valid hexadecimal color code.
+          type: string
+        inputBorderWidth:
+          description: The input border width for the theme (range from 0-4px).
+          type: string
+        inputBoxBorderColor:
+          description: The input box border color for the theme. It must be a valid
+            hexadecimal color code.
+          type: string
+        inputCornerRadius:
+          description: The input corner radius for the theme (range from 0-25px).
+          type: string
+        inputLabelPosition:
+          description: The input label position for the theme.
+          type: string
+        inputLabelTextColor:
+          description: The input label text color for the theme. It must be a valid
+            hexadecimal color code.
+          type: string
+        inputLabelTextSize:
+          description: The input label text size for the theme.
+          type: string
+        inputLabelTextWeight:
+          description: The input label text weight for the theme (range from 100-900).
+          type: string
+        inputValueTextColor:
+          description: The input value text color for the theme. It must be a valid
+            hexadecimal color code.
+          type: string
+        inputValueTextSize:
+          description: The input value text size for the theme.
+          type: string
+        inputValueTextWeight:
+          description: The input value text weight for the theme (range from 100-900).
           type: string
         linkTextColor:
           description: The hyperlink text color for the branding theme. It must be
             a valid hexadecimal color code.
           type: string
+        linkTextHoverColor:
+          description: The link text hover color for the theme. It must be a valid
+            hexadecimal color code.
+          type: string
+        linkTextSize:
+          description: The link text size for the theme.
+          type: string
+        linkTextWeight:
+          description: The link text weight for the theme (range from 100-900).
+          type: string
         logo:
           $ref: '#/components/schemas/BrandingTheme_configuration_logo'
+        logoHeight:
+          description: The logo height assigned to the image (range from 0-100px).
+          type: string
         logoType:
           $ref: '#/components/schemas/EnumBrandingLogoType'
         name:
           description: The name of the branding theme.
+          type: string
+        schemaVersion:
+          description: The schema version number for the theme.
+          readOnly: true
+          type: integer
+        subTitleTextColor:
+          description: The subtitle text color for the theme. It must be a valid hexadecimal
+            color code.
+          type: string
+        subTitleTextSize:
+          description: The subtitle text size for the theme.
+          type: string
+        subTitleTextWeight:
+          description: The subtitle text weight for the theme (range from 100-900).
+          type: string
+        titleTextColor:
+          description: The title text color for the theme. It must be a valid hexadecimal
+            color code.
+          type: string
+        titleTextSize:
+          description: The title text size for the theme.
+          type: string
+        titleTextWeight:
+          description: The title text weight for the theme (range from 100-900).
           type: string
       required:
       - backgroundType
@@ -49246,23 +49716,86 @@ components:
             key:
               href: https://openapi-generator.tech
           configuration:
-            backgroundColor: backgroundColor
+            logoHeight: logoHeight
+            titleTextColor: titleTextColor
+            linkTextSize: linkTextSize
+            inputBoxBorderColor: inputBoxBorderColor
+            buttonTextSize: buttonTextSize
+            buttonCornerRadius: buttonCornerRadius
+            headingTextColor: headingTextColor
+            inputCornerRadius: inputCornerRadius
+            logo:
+              href: href
+              id: id
+            titleTextSize: titleTextSize
+            buttonHoverStateBorderColor: buttonHoverStateBorderColor
+            buttonBorderRadius: buttonBorderRadius
+            backgroundType: null
+            buttonTextWeight: buttonTextWeight
+            cardLogoAlignment: cardLogoAlignment
+            bodyTextWeight: bodyTextWeight
+            buttonHoverStateFillColor: buttonHoverStateFillColor
+            bodyTextSize: bodyTextSize
+            headerLocalized:
+              defaultLanguage: defaultLanguage
+              contentType: null
+              enabled: true
+              content:
+                key:
+                  inputText: inputText
+                  contentType: null
+            subTitleTextWeight: subTitleTextWeight
+            inputValueTextColor: inputValueTextColor
+            inputLabelTextSize: inputLabelTextSize
+            inputLabelTextColor: inputLabelTextColor
+            name: name
+            header: header
+            buttonBorderWidth: buttonBorderWidth
+            cardHorizontalAlignment: cardHorizontalAlignment
+            cardShadow: cardShadow
+            headerBackgroundColor: headerBackgroundColor
             buttonColor: buttonColor
+            buttonBorderColor: buttonBorderColor
             footer: footer
             backgroundImage:
               href: href
               id: id
-            cardColor: cardColor
-            headingTextColor: headingTextColor
-            name: name
-            logo:
-              href: href
-              id: id
+            cardBorderColor: cardBorderColor
+            inputBorderWidth: inputBorderWidth
+            cardVerticalAlignment: cardVerticalAlignment
+            subTitleTextSize: subTitleTextSize
+            inputLabelTextWeight: inputLabelTextWeight
+            footerLocalized:
+              defaultLanguage: defaultLanguage
+              contentType: null
+              enabled: true
+              content:
+                key:
+                  inputText: inputText
+                  contentType: null
             buttonTextColor: buttonTextColor
+            globalFont: globalFont
+            logoType: null
+            inputLabelPosition: inputLabelPosition
+            backgroundColor: backgroundColor
+            foregroundMainColor: foregroundMainColor
+            subTitleTextColor: subTitleTextColor
+            schemaVersion: 0
+            titleTextWeight: titleTextWeight
+            cardCornerRadius: cardCornerRadius
+            inputValueTextSize: inputValueTextSize
+            inputValueTextWeight: inputValueTextWeight
+            cardColor: cardColor
+            applicationBackgroundColor: applicationBackgroundColor
+            buttonHoverStateTextColor: buttonHoverStateTextColor
+            linkTextWeight: linkTextWeight
+            linkTextHoverColor: linkTextHoverColor
             linkTextColor: linkTextColor
             bodyTextColor: bodyTextColor
-            logoType: null
-            backgroundType: null
+            foregroundHighlightColor: foregroundHighlightColor
+            cardBorderWidth: cardBorderWidth
+            focusRectangleColor: focusRectangleColor
+          modified: 2000-01-23T04:56:07.000+00:00
           id: id
         - template: null
           default: true
@@ -49272,23 +49805,86 @@ components:
             key:
               href: https://openapi-generator.tech
           configuration:
-            backgroundColor: backgroundColor
+            logoHeight: logoHeight
+            titleTextColor: titleTextColor
+            linkTextSize: linkTextSize
+            inputBoxBorderColor: inputBoxBorderColor
+            buttonTextSize: buttonTextSize
+            buttonCornerRadius: buttonCornerRadius
+            headingTextColor: headingTextColor
+            inputCornerRadius: inputCornerRadius
+            logo:
+              href: href
+              id: id
+            titleTextSize: titleTextSize
+            buttonHoverStateBorderColor: buttonHoverStateBorderColor
+            buttonBorderRadius: buttonBorderRadius
+            backgroundType: null
+            buttonTextWeight: buttonTextWeight
+            cardLogoAlignment: cardLogoAlignment
+            bodyTextWeight: bodyTextWeight
+            buttonHoverStateFillColor: buttonHoverStateFillColor
+            bodyTextSize: bodyTextSize
+            headerLocalized:
+              defaultLanguage: defaultLanguage
+              contentType: null
+              enabled: true
+              content:
+                key:
+                  inputText: inputText
+                  contentType: null
+            subTitleTextWeight: subTitleTextWeight
+            inputValueTextColor: inputValueTextColor
+            inputLabelTextSize: inputLabelTextSize
+            inputLabelTextColor: inputLabelTextColor
+            name: name
+            header: header
+            buttonBorderWidth: buttonBorderWidth
+            cardHorizontalAlignment: cardHorizontalAlignment
+            cardShadow: cardShadow
+            headerBackgroundColor: headerBackgroundColor
             buttonColor: buttonColor
+            buttonBorderColor: buttonBorderColor
             footer: footer
             backgroundImage:
               href: href
               id: id
-            cardColor: cardColor
-            headingTextColor: headingTextColor
-            name: name
-            logo:
-              href: href
-              id: id
+            cardBorderColor: cardBorderColor
+            inputBorderWidth: inputBorderWidth
+            cardVerticalAlignment: cardVerticalAlignment
+            subTitleTextSize: subTitleTextSize
+            inputLabelTextWeight: inputLabelTextWeight
+            footerLocalized:
+              defaultLanguage: defaultLanguage
+              contentType: null
+              enabled: true
+              content:
+                key:
+                  inputText: inputText
+                  contentType: null
             buttonTextColor: buttonTextColor
+            globalFont: globalFont
+            logoType: null
+            inputLabelPosition: inputLabelPosition
+            backgroundColor: backgroundColor
+            foregroundMainColor: foregroundMainColor
+            subTitleTextColor: subTitleTextColor
+            schemaVersion: 0
+            titleTextWeight: titleTextWeight
+            cardCornerRadius: cardCornerRadius
+            inputValueTextSize: inputValueTextSize
+            inputValueTextWeight: inputValueTextWeight
+            cardColor: cardColor
+            applicationBackgroundColor: applicationBackgroundColor
+            buttonHoverStateTextColor: buttonHoverStateTextColor
+            linkTextWeight: linkTextWeight
+            linkTextHoverColor: linkTextHoverColor
             linkTextColor: linkTextColor
             bodyTextColor: bodyTextColor
-            logoType: null
-            backgroundType: null
+            foregroundHighlightColor: foregroundHighlightColor
+            cardBorderWidth: cardBorderWidth
+            focusRectangleColor: focusRectangleColor
+          modified: 2000-01-23T04:56:07.000+00:00
           id: id
         customDomains:
         - environment:
@@ -49945,7 +50541,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 0
+            secondsUntilUnlock: 6
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -50016,7 +50612,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 0
+            secondsUntilUnlock: 6
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username

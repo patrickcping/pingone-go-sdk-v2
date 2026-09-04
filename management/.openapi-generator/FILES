@@ -174,6 +174,8 @@ docs/BrandingSettingsLogo.md
 docs/BrandingTheme.md
 docs/BrandingThemeConfiguration.md
 docs/BrandingThemeConfigurationBackgroundImage.md
+docs/BrandingThemeConfigurationLocalizedText.md
+docs/BrandingThemeConfigurationLocalizedTextContent.md
 docs/BrandingThemeConfigurationLogo.md
 docs/BrandingThemeDefault.md
 docs/BrandingThemesApi.md
@@ -238,6 +240,7 @@ docs/EnumAttributeMappingType.md
 docs/EnumBillOfMaterialsProductTags.md
 docs/EnumBrandingLogoType.md
 docs/EnumBrandingThemeBackgroundType.md
+docs/EnumBrandingThemeLocalizedContentType.md
 docs/EnumBrandingThemeTemplate.md
 docs/EnumCSRExportHeader.md
 docs/EnumCSRResponseImportHeader.md
@@ -860,6 +863,8 @@ model_branding_settings_logo.go
 model_branding_theme.go
 model_branding_theme_configuration.go
 model_branding_theme_configuration_background_image.go
+model_branding_theme_configuration_localized_text.go
+model_branding_theme_configuration_localized_text_content.go
 model_branding_theme_configuration_logo.go
 model_branding_theme_default.go
 model_certificate.go
@@ -913,6 +918,7 @@ model_enum_attribute_mapping_type.go
 model_enum_bill_of_materials_product_tags.go
 model_enum_branding_logo_type.go
 model_enum_branding_theme_background_type.go
+model_enum_branding_theme_localized_content_type.go
 model_enum_branding_theme_template.go
 model_enum_certificate_key_algorithm.go
 model_enum_certificate_key_encryption_algorithm.go
