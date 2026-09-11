@@ -39805,7 +39805,6 @@ components:
             id: id
           titleTextSize: titleTextSize
           buttonHoverStateBorderColor: buttonHoverStateBorderColor
-          buttonBorderRadius: buttonBorderRadius
           backgroundType: null
           buttonTextWeight: buttonTextWeight
           cardLogoAlignment: cardLogoAlignment
@@ -40642,7 +40641,6 @@ components:
                 id: id
               titleTextSize: titleTextSize
               buttonHoverStateBorderColor: buttonHoverStateBorderColor
-              buttonBorderRadius: buttonBorderRadius
               backgroundType: null
               buttonTextWeight: buttonTextWeight
               cardLogoAlignment: cardLogoAlignment
@@ -40731,7 +40729,6 @@ components:
                 id: id
               titleTextSize: titleTextSize
               buttonHoverStateBorderColor: buttonHoverStateBorderColor
-              buttonBorderRadius: buttonBorderRadius
               backgroundType: null
               buttonTextWeight: buttonTextWeight
               cardLogoAlignment: cardLogoAlignment
@@ -48999,7 +48996,6 @@ components:
           id: id
         titleTextSize: titleTextSize
         buttonHoverStateBorderColor: buttonHoverStateBorderColor
-        buttonBorderRadius: buttonBorderRadius
         backgroundType: null
         buttonTextWeight: buttonTextWeight
         cardLogoAlignment: cardLogoAlignment
@@ -49100,9 +49096,6 @@ components:
           type: string
         buttonCornerRadius:
           description: The button corner radius for the theme (range from 0-25px).
-          type: string
-        buttonBorderRadius:
-          description: The button border radius for the theme (range from 0-25px).
           type: string
         buttonBorderWidth:
           description: The button border width for the theme (range from 0-4px).
@@ -49729,7 +49722,6 @@ components:
               id: id
             titleTextSize: titleTextSize
             buttonHoverStateBorderColor: buttonHoverStateBorderColor
-            buttonBorderRadius: buttonBorderRadius
             backgroundType: null
             buttonTextWeight: buttonTextWeight
             cardLogoAlignment: cardLogoAlignment
@@ -49818,7 +49810,6 @@ components:
               id: id
             titleTextSize: titleTextSize
             buttonHoverStateBorderColor: buttonHoverStateBorderColor
-            buttonBorderRadius: buttonBorderRadius
             backgroundType: null
             buttonTextWeight: buttonTextWeight
             cardLogoAlignment: cardLogoAlignment

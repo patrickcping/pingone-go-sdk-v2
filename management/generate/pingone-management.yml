@@ -2021,9 +2021,6 @@ components:
             buttonCornerRadius:
               type: string
               description: The button corner radius for the theme (range from 0-25px).
-            buttonBorderRadius:
-              type: string
-              description: The button border radius for the theme (range from 0-25px).
             buttonBorderWidth:
               type: string
               description: The button border width for the theme (range from 0-4px).

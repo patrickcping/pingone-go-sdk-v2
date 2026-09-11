@@ -37,8 +37,6 @@ type BrandingThemeConfiguration struct {
 	ButtonBorderColor *string `json:"buttonBorderColor,omitempty"`
 	// The button corner radius for the theme (range from 0-25px).
 	ButtonCornerRadius *string `json:"buttonCornerRadius,omitempty"`
-	// The button border radius for the theme (range from 0-25px).
-	ButtonBorderRadius *string `json:"buttonBorderRadius,omitempty"`
 	// The button border width for the theme (range from 0-4px).
 	ButtonBorderWidth *string `json:"buttonBorderWidth,omitempty"`
 	// The button hover state border color for the theme. It must be a valid hexadecimal color code.
@@ -456,38 +454,6 @@ func (o *BrandingThemeConfiguration) HasButtonCornerRadius() bool {
 // SetButtonCornerRadius gets a reference to the given string and assigns it to the ButtonCornerRadius field.
 func (o *BrandingThemeConfiguration) SetButtonCornerRadius(v string) {
 	o.ButtonCornerRadius = &v
-}
-
-// GetButtonBorderRadius returns the ButtonBorderRadius field value if set, zero value otherwise.
-func (o *BrandingThemeConfiguration) GetButtonBorderRadius() string {
-	if o == nil || IsNil(o.ButtonBorderRadius) {
-		var ret string
-		return ret
-	}
-	return *o.ButtonBorderRadius
-}
-
-// GetButtonBorderRadiusOk returns a tuple with the ButtonBorderRadius field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BrandingThemeConfiguration) GetButtonBorderRadiusOk() (*string, bool) {
-	if o == nil || IsNil(o.ButtonBorderRadius) {
-		return nil, false
-	}
-	return o.ButtonBorderRadius, true
-}
-
-// HasButtonBorderRadius returns a boolean if a field has been set.
-func (o *BrandingThemeConfiguration) HasButtonBorderRadius() bool {
-	if o != nil && !IsNil(o.ButtonBorderRadius) {
-		return true
-	}
-
-	return false
-}
-
-// SetButtonBorderRadius gets a reference to the given string and assigns it to the ButtonBorderRadius field.
-func (o *BrandingThemeConfiguration) SetButtonBorderRadius(v string) {
-	o.ButtonBorderRadius = &v
 }
 
 // GetButtonBorderWidth returns the ButtonBorderWidth field value if set, zero value otherwise.
@@ -2083,9 +2049,6 @@ func (o BrandingThemeConfiguration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ButtonCornerRadius) {
 		toSerialize["buttonCornerRadius"] = o.ButtonCornerRadius
-	}
-	if !IsNil(o.ButtonBorderRadius) {
-		toSerialize["buttonBorderRadius"] = o.ButtonBorderRadius
 	}
 	if !IsNil(o.ButtonBorderWidth) {
 		toSerialize["buttonBorderWidth"] = o.ButtonBorderWidth

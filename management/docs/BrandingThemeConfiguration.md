@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **ButtonColor** | **string** | The button color for the theme. It must be a valid hexadecimal color code. | 
 **ButtonBorderColor** | Pointer to **string** | The button border color for the theme. It must be a valid hexadecimal color code. | [optional] 
 **ButtonCornerRadius** | Pointer to **string** | The button corner radius for the theme (range from 0-25px). | [optional] 
-**ButtonBorderRadius** | Pointer to **string** | The button border radius for the theme (range from 0-25px). | [optional] 
 **ButtonBorderWidth** | Pointer to **string** | The button border width for the theme (range from 0-4px). | [optional] 
 **ButtonHoverStateBorderColor** | Pointer to **string** | The button hover state border color for the theme. It must be a valid hexadecimal color code. | [optional] 
 **ButtonHoverStateFillColor** | Pointer to **string** | The button hover state fill color for the theme. It must be a valid hexadecimal color code. | [optional] 
@@ -319,31 +318,6 @@ SetButtonCornerRadius sets ButtonCornerRadius field to given value.
 `func (o *BrandingThemeConfiguration) HasButtonCornerRadius() bool`
 
 HasButtonCornerRadius returns a boolean if a field has been set.
-
-### GetButtonBorderRadius
-
-`func (o *BrandingThemeConfiguration) GetButtonBorderRadius() string`
-
-GetButtonBorderRadius returns the ButtonBorderRadius field if non-nil, zero value otherwise.
-
-### GetButtonBorderRadiusOk
-
-`func (o *BrandingThemeConfiguration) GetButtonBorderRadiusOk() (*string, bool)`
-
-GetButtonBorderRadiusOk returns a tuple with the ButtonBorderRadius field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetButtonBorderRadius
-
-`func (o *BrandingThemeConfiguration) SetButtonBorderRadius(v string)`
-
-SetButtonBorderRadius sets ButtonBorderRadius field to given value.
-
-### HasButtonBorderRadius
-
-`func (o *BrandingThemeConfiguration) HasButtonBorderRadius() bool`
-
-HasButtonBorderRadius returns a boolean if a field has been set.
 
 ### GetButtonBorderWidth
 
