@@ -1,6 +1,6 @@
 # v0.71.0 (Unreleased)
 
-* **Enhancement** Added `header`, `headerLocalized`, `footerLocalized`, and additional configuration properties to the `BrandingTheme` data model to align with the API.
+* **Enhancement** Added `headerLocalized`, `footerLocalized`, and additional configuration properties to the `BrandingTheme` data model to align with the API.
 
 # v0.70.0 (2026-04-21)
 
