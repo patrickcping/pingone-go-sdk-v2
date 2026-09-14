@@ -1986,6 +1986,9 @@ components:
             backgroundColor:
               type: string
               description: The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR.
+            backgroundOutlineColor:
+              type: string
+              description: For PingOne Neo verification presentation screen, the outline color of background objects for the branding theme. It must be a valid hexadecimal color code. Defaults to #A5B9C5.
             backgroundType:
               $ref: '#/components/schemas/EnumBrandingThemeBackgroundType'
             backgroundImage:

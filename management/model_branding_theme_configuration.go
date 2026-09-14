@@ -20,9 +20,11 @@ var _ MappedNullable = &BrandingThemeConfiguration{}
 // BrandingThemeConfiguration struct for BrandingThemeConfiguration
 type BrandingThemeConfiguration struct {
 	// The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR.
-	BackgroundColor *string                                    `json:"backgroundColor,omitempty"`
-	BackgroundType  EnumBrandingThemeBackgroundType            `json:"backgroundType"`
-	BackgroundImage *BrandingThemeConfigurationBackgroundImage `json:"backgroundImage,omitempty"`
+	BackgroundColor *string `json:"backgroundColor,omitempty"`
+	// For PingOne Neo verification presentation screen, the outline color of background objects for the branding theme. It must be a valid hexadecimal color code. Defaults to
+	BackgroundOutlineColor *string                                    `json:"backgroundOutlineColor,omitempty"`
+	BackgroundType         EnumBrandingThemeBackgroundType            `json:"backgroundType"`
+	BackgroundImage        *BrandingThemeConfigurationBackgroundImage `json:"backgroundImage,omitempty"`
 	// The application background color for the theme. It must be a valid hexadecimal color code. Note that this property is not used by DaVinci forms.
 	ApplicationBackgroundColor *string `json:"applicationBackgroundColor,omitempty"`
 	// The body text color for the theme. It must be a valid hexadecimal color code.
@@ -190,6 +192,38 @@ func (o *BrandingThemeConfiguration) HasBackgroundColor() bool {
 // SetBackgroundColor gets a reference to the given string and assigns it to the BackgroundColor field.
 func (o *BrandingThemeConfiguration) SetBackgroundColor(v string) {
 	o.BackgroundColor = &v
+}
+
+// GetBackgroundOutlineColor returns the BackgroundOutlineColor field value if set, zero value otherwise.
+func (o *BrandingThemeConfiguration) GetBackgroundOutlineColor() string {
+	if o == nil || IsNil(o.BackgroundOutlineColor) {
+		var ret string
+		return ret
+	}
+	return *o.BackgroundOutlineColor
+}
+
+// GetBackgroundOutlineColorOk returns a tuple with the BackgroundOutlineColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeConfiguration) GetBackgroundOutlineColorOk() (*string, bool) {
+	if o == nil || IsNil(o.BackgroundOutlineColor) {
+		return nil, false
+	}
+	return o.BackgroundOutlineColor, true
+}
+
+// HasBackgroundOutlineColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasBackgroundOutlineColor() bool {
+	if o != nil && !IsNil(o.BackgroundOutlineColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetBackgroundOutlineColor gets a reference to the given string and assigns it to the BackgroundOutlineColor field.
+func (o *BrandingThemeConfiguration) SetBackgroundOutlineColor(v string) {
+	o.BackgroundOutlineColor = &v
 }
 
 // GetBackgroundType returns the BackgroundType field value
@@ -2028,6 +2062,9 @@ func (o BrandingThemeConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BackgroundColor) {
 		toSerialize["backgroundColor"] = o.BackgroundColor
+	}
+	if !IsNil(o.BackgroundOutlineColor) {
+		toSerialize["backgroundOutlineColor"] = o.BackgroundOutlineColor
 	}
 	toSerialize["backgroundType"] = o.BackgroundType
 	if !IsNil(o.BackgroundImage) {
