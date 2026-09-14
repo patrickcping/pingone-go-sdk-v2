@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BackgroundColor** | Pointer to **string** | The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR. | [optional] 
+**BackgroundOutlineColor** | Pointer to **string** | For PingOne Neo verification presentation screen, the outline color of background objects for the branding theme. It must be a valid hexadecimal color code. Defaults to | [optional] 
 **BackgroundType** | [**EnumBrandingThemeBackgroundType**](EnumBrandingThemeBackgroundType.md) |  | 
 **BackgroundImage** | Pointer to [**BrandingThemeConfigurationBackgroundImage**](BrandingThemeConfigurationBackgroundImage.md) |  | [optional] 
 **ApplicationBackgroundColor** | Pointer to **string** | The application background color for the theme. It must be a valid hexadecimal color code. Note that this property is not used by DaVinci forms. | [optional] 
@@ -108,6 +109,31 @@ SetBackgroundColor sets BackgroundColor field to given value.
 `func (o *BrandingThemeConfiguration) HasBackgroundColor() bool`
 
 HasBackgroundColor returns a boolean if a field has been set.
+
+### GetBackgroundOutlineColor
+
+`func (o *BrandingThemeConfiguration) GetBackgroundOutlineColor() string`
+
+GetBackgroundOutlineColor returns the BackgroundOutlineColor field if non-nil, zero value otherwise.
+
+### GetBackgroundOutlineColorOk
+
+`func (o *BrandingThemeConfiguration) GetBackgroundOutlineColorOk() (*string, bool)`
+
+GetBackgroundOutlineColorOk returns a tuple with the BackgroundOutlineColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackgroundOutlineColor
+
+`func (o *BrandingThemeConfiguration) SetBackgroundOutlineColor(v string)`
+
+SetBackgroundOutlineColor sets BackgroundOutlineColor field to given value.
+
+### HasBackgroundOutlineColor
+
+`func (o *BrandingThemeConfiguration) HasBackgroundOutlineColor() bool`
+
+HasBackgroundOutlineColor returns a boolean if a field has been set.
 
 ### GetBackgroundType
 

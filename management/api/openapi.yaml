@@ -39851,6 +39851,7 @@ components:
           buttonTextColor: buttonTextColor
           globalFont: globalFont
           logoType: null
+          backgroundOutlineColor: backgroundOutlineColor
           inputLabelPosition: inputLabelPosition
           backgroundColor: backgroundColor
           foregroundMainColor: foregroundMainColor
@@ -40687,6 +40688,7 @@ components:
               buttonTextColor: buttonTextColor
               globalFont: globalFont
               logoType: null
+              backgroundOutlineColor: backgroundOutlineColor
               inputLabelPosition: inputLabelPosition
               backgroundColor: backgroundColor
               foregroundMainColor: foregroundMainColor
@@ -40775,6 +40777,7 @@ components:
               buttonTextColor: buttonTextColor
               globalFont: globalFont
               logoType: null
+              backgroundOutlineColor: backgroundOutlineColor
               inputLabelPosition: inputLabelPosition
               backgroundColor: backgroundColor
               foregroundMainColor: foregroundMainColor
@@ -49042,6 +49045,7 @@ components:
         buttonTextColor: buttonTextColor
         globalFont: globalFont
         logoType: null
+        backgroundOutlineColor: backgroundOutlineColor
         inputLabelPosition: inputLabelPosition
         backgroundColor: backgroundColor
         foregroundMainColor: foregroundMainColor
@@ -49066,6 +49070,11 @@ components:
           description: "The background color for the theme. It must be a valid hexadecimal\
             \ color code, and it is a required property when configuration.backgroundType\
             \ is set to COLOR."
+          type: string
+        backgroundOutlineColor:
+          description: "For PingOne Neo verification presentation screen, the outline\
+            \ color of background objects for the branding theme. It must be a valid\
+            \ hexadecimal color code. Defaults to"
           type: string
         backgroundType:
           $ref: '#/components/schemas/EnumBrandingThemeBackgroundType'
@@ -49768,6 +49777,7 @@ components:
             buttonTextColor: buttonTextColor
             globalFont: globalFont
             logoType: null
+            backgroundOutlineColor: backgroundOutlineColor
             inputLabelPosition: inputLabelPosition
             backgroundColor: backgroundColor
             foregroundMainColor: foregroundMainColor
@@ -49856,6 +49866,7 @@ components:
             buttonTextColor: buttonTextColor
             globalFont: globalFont
             logoType: null
+            backgroundOutlineColor: backgroundOutlineColor
             inputLabelPosition: inputLabelPosition
             backgroundColor: backgroundColor
             foregroundMainColor: foregroundMainColor
