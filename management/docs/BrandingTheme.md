@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Default** | **bool** | Specifies whether this theme is the environment&#39;s default branding configuration. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | Specifies the resource’s unique identifier. | [optional] [readonly] 
+**Modified** | Pointer to **time.Time** | The time the resource was last modified. | [optional] [readonly] 
 **Template** | [**EnumBrandingThemeTemplate**](EnumBrandingThemeTemplate.md) |  | 
 
 ## Methods
@@ -144,6 +145,31 @@ SetId sets Id field to given value.
 `func (o *BrandingTheme) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetModified
+
+`func (o *BrandingTheme) GetModified() time.Time`
+
+GetModified returns the Modified field if non-nil, zero value otherwise.
+
+### GetModifiedOk
+
+`func (o *BrandingTheme) GetModifiedOk() (*time.Time, bool)`
+
+GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModified
+
+`func (o *BrandingTheme) SetModified(v time.Time)`
+
+SetModified sets Modified field to given value.
+
+### HasModified
+
+`func (o *BrandingTheme) HasModified() bool`
+
+HasModified returns a boolean if a field has been set.
 
 ### GetTemplate
 

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the BrandingTheme type satisfies the MappedNullable interface at compile time
@@ -25,7 +26,9 @@ type BrandingTheme struct {
 	Default     bool               `json:"default"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Specifies the resource’s unique identifier.
-	Id       *string                   `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
+	// The time the resource was last modified.
+	Modified *time.Time                `json:"modified,omitempty"`
 	Template EnumBrandingThemeTemplate `json:"template"`
 }
 
@@ -193,6 +196,38 @@ func (o *BrandingTheme) SetId(v string) {
 	o.Id = &v
 }
 
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *BrandingTheme) GetModified() time.Time {
+	if o == nil || IsNil(o.Modified) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Modified
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingTheme) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.Modified) {
+		return nil, false
+	}
+	return o.Modified, true
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *BrandingTheme) HasModified() bool {
+	if o != nil && !IsNil(o.Modified) {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *BrandingTheme) SetModified(v time.Time) {
+	o.Modified = &v
+}
+
 // GetTemplate returns the Template field value
 func (o *BrandingTheme) GetTemplate() EnumBrandingThemeTemplate {
 	if o == nil {
@@ -237,6 +272,9 @@ func (o BrandingTheme) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
 	}
 	toSerialize["template"] = o.Template
 	return toSerialize, nil

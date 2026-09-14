@@ -164,6 +164,10 @@ components:
       type: string
       enum: [default, focus, mural, slate, split]
       description: The template name of the branding theme associated with the environment. Options are default, focus, mural, slate, and split.
+    EnumBrandingThemeLocalizedContentType:
+      type: string
+      enum: [RichText, HTML]
+      description: The content type for the localized text. Options are `RichText` and `HTML`.
     EnumCertificateKeyAlgorithm:
       type: string
       enum: [RSA, EC, UNKNOWN]
@@ -1945,6 +1949,32 @@ components:
           required:
             - id
             - href
+    BrandingThemeConfigurationLocalizedText:
+      type: object
+      description: The localization object to specify language translations for the form header or footer.
+      properties:
+        enabled:
+          type: boolean
+          description: Specifies whether localization is enabled for the header or footer.
+        defaultLanguage:
+          type: string
+          description: The localization language code for the header or footer's default language (for example, "defaultLanguage" set to "en").
+        contentType:
+          $ref: '#/components/schemas/EnumBrandingThemeLocalizedContentType'
+        content:
+          type: object
+          description: The localization language object that specifies the localized text and content type for the language options.
+          additionalProperties:
+            $ref: '#/components/schemas/BrandingThemeConfigurationLocalizedTextContent'
+    BrandingThemeConfigurationLocalizedTextContent:
+      type: object
+      description: The localization language object that specifies the localized text and content type for a specific language.
+      properties:
+        inputText:
+          type: string
+          description: The header or footer text in the specified language.
+        contentType:
+          $ref: '#/components/schemas/EnumBrandingThemeLocalizedContentType'
     BrandingTheme:
       type: object
       properties:
@@ -1970,27 +2000,142 @@ components:
               required:
                 - href
                 - id
+            applicationBackgroundColor:
+              type: string
+              description: The application background color for the theme. It must be a valid hexadecimal color code. Note that this property is not used by DaVinci forms.
             bodyTextColor:
               type: string
               description: The body text color for the theme. It must be a valid hexadecimal color code.
+            bodyTextSize:
+              type: string
+              description: The body text size for the theme.
+            bodyTextWeight:
+              type: string
+              description: The body text weight for the theme (range from 100-900).
             buttonColor:
               type: string
               description: The button color for the theme. It must be a valid hexadecimal color code.
+            buttonBorderColor:
+              type: string
+              description: The button border color for the theme. It must be a valid hexadecimal color code.
+            buttonCornerRadius:
+              type: string
+              description: The button corner radius for the theme (range from 0-25px).
+            buttonBorderWidth:
+              type: string
+              description: The button border width for the theme (range from 0-4px).
+            buttonHoverStateBorderColor:
+              type: string
+              description: The button hover state border color for the theme. It must be a valid hexadecimal color code.
+            buttonHoverStateFillColor:
+              type: string
+              description: The button hover state fill color for the theme. It must be a valid hexadecimal color code.
+            buttonHoverStateTextColor:
+              type: string
+              description: The button hover state text color for the theme. It must be a valid hexadecimal color code.
             buttonTextColor:
               type: string
               description: The button text color for the branding theme. It must be a valid hexadecimal color code.
+            buttonTextSize:
+              type: string
+              description: The button text size for the theme.
+            buttonTextWeight:
+              type: string
+              description: The button text weight for the theme (range from 100-900).
             cardColor:
               type: string
               description: The card color for the branding theme. It must be a valid hexadecimal color code.
+            cardBorderColor:
+              type: string
+              description: The card border color for the theme. It must be a valid hexadecimal color code.
+            cardBorderWidth:
+              type: string
+              description: The card border width for the theme (range from 0-4px).
+            cardCornerRadius:
+              type: string
+              description: The card corner radius for the theme (range from 0-25px).
+            cardHorizontalAlignment:
+              type: string
+              description: The card horizontal alignment for the theme.
+            cardLogoAlignment:
+              type: string
+              description: The card logo alignment for the theme.
+            cardShadow:
+              type: string
+              description: The card shadow for the theme.
+            cardVerticalAlignment:
+              type: string
+              description: The card vertical alignment for the theme.
+            focusRectangleColor:
+              type: string
+              description: The focus rectangle color for the theme. It must be a valid hexadecimal color code.
             footer:
               type: string
               description: The footer of the branding theme.
+            footerLocalized:
+              $ref: '#/components/schemas/BrandingThemeConfigurationLocalizedText'
+            foregroundHighlightColor:
+              type: string
+              description: For PingOne Neo verification presentation screen, the highlight color of the foreground object for the branding theme. It must be a valid hexadecimal color code. Defaults to #C6D9FF.
+            foregroundMainColor:
+              type: string
+              description: For PingOne Neo verification presentation screen, the outline color of the foreground object for the branding theme. It must be a valid hexadecimal color code. Defaults to #4462ED.
+            globalFont:
+              type: string
+              description: The global font for the theme. The default value is `Helvetica Neue, Helvetica, sans-serif`.
+            header:
+              type: string
+              description: The header for the theme. For example, "<h1>Welcome to PingOne<h1>".
+            headerBackgroundColor:
+              type: string
+              description: The header background color for the theme. It must be a valid hexadecimal color code. Note that this property is not used by DaVinci forms.
+            headerLocalized:
+              $ref: '#/components/schemas/BrandingThemeConfigurationLocalizedText'
             headingTextColor:
               type: string
               description: The heading text color for the branding theme. It must be a valid hexadecimal color code.
+            inputBorderWidth:
+              type: string
+              description: The input border width for the theme (range from 0-4px).
+            inputBoxBorderColor:
+              type: string
+              description: The input box border color for the theme. It must be a valid hexadecimal color code.
+            inputCornerRadius:
+              type: string
+              description: The input corner radius for the theme (range from 0-25px).
+            inputLabelPosition:
+              type: string
+              description: The input label position for the theme.
+            inputLabelTextColor:
+              type: string
+              description: The input label text color for the theme. It must be a valid hexadecimal color code.
+            inputLabelTextSize:
+              type: string
+              description: The input label text size for the theme.
+            inputLabelTextWeight:
+              type: string
+              description: The input label text weight for the theme (range from 100-900).
+            inputValueTextColor:
+              type: string
+              description: The input value text color for the theme. It must be a valid hexadecimal color code.
+            inputValueTextSize:
+              type: string
+              description: The input value text size for the theme.
+            inputValueTextWeight:
+              type: string
+              description: The input value text weight for the theme (range from 100-900).
             linkTextColor:
               type: string
               description: The hyperlink text color for the branding theme. It must be a valid hexadecimal color code.
+            linkTextHoverColor:
+              type: string
+              description: The link text hover color for the theme. It must be a valid hexadecimal color code.
+            linkTextSize:
+              type: string
+              description: The link text size for the theme.
+            linkTextWeight:
+              type: string
+              description: The link text weight for the theme (range from 100-900).
             logo:
               type: object
               properties:
@@ -2003,11 +2148,36 @@ components:
               required:
                 - href
                 - id
+            logoHeight:
+              type: string
+              description: The logo height assigned to the image (range from 0-100px).
             logoType:
               $ref: '#/components/schemas/EnumBrandingLogoType'
             name:
               type: string
               description: The name of the branding theme.
+            schemaVersion:
+              type: integer
+              readOnly: true
+              description: The schema version number for the theme.
+            subTitleTextColor:
+              type: string
+              description: The subtitle text color for the theme. It must be a valid hexadecimal color code.
+            subTitleTextSize:
+              type: string
+              description: The subtitle text size for the theme.
+            subTitleTextWeight:
+              type: string
+              description: The subtitle text weight for the theme (range from 100-900).
+            titleTextColor:
+              type: string
+              description: The title text color for the theme. It must be a valid hexadecimal color code.
+            titleTextSize:
+              type: string
+              description: The title text size for the theme.
+            titleTextWeight:
+              type: string
+              description: The title text weight for the theme (range from 100-900).
           required:
             - backgroundType
             - logoType
@@ -2026,6 +2196,11 @@ components:
           type: string
           readOnly: true
           description: Specifies the resource’s unique identifier.
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was last modified.
         template:
           $ref: '#/components/schemas/EnumBrandingThemeTemplate'
       required:
