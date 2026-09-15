@@ -59,6 +59,8 @@ type APIClient struct {
 
 	ApplicationFlowPolicyAssignmentsApi *ApplicationFlowPolicyAssignmentsApiService
 
+	ApplicationMetadataApi *ApplicationMetadataApiService
+
 	ApplicationPermissionsApi *ApplicationPermissionsApiService
 
 	ApplicationResourceGrantsApi *ApplicationResourceGrantsApiService
@@ -258,6 +260,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlertingApi = (*AlertingApiService)(&c.common)
 	c.ApplicationAttributeMappingApi = (*ApplicationAttributeMappingApiService)(&c.common)
 	c.ApplicationFlowPolicyAssignmentsApi = (*ApplicationFlowPolicyAssignmentsApiService)(&c.common)
+	c.ApplicationMetadataApi = (*ApplicationMetadataApiService)(&c.common)
 	c.ApplicationPermissionsApi = (*ApplicationPermissionsApiService)(&c.common)
 	c.ApplicationResourceGrantsApi = (*ApplicationResourceGrantsApiService)(&c.common)
 	c.ApplicationResourcesApi = (*ApplicationResourcesApiService)(&c.common)

@@ -1,3 +1,7 @@
+# v0.72.0 (Unreleased)
+
+* **Feature** Add support for the Application Metadata API.
+
 # v0.71.0 (Unreleased)
 
 * **Enhancement** Added `headerLocalized`, `footerLocalized`, and additional configuration properties to the `BrandingTheme` data model to align with the API.
