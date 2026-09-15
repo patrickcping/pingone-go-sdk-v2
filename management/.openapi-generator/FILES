@@ -8,6 +8,7 @@ api_agreements_resources.go
 api_alerting.go
 api_application_attribute_mapping.go
 api_application_flow_policy_assignments.go
+api_application_metadata.go
 api_application_permissions.go
 api_application_resource_grants.go
 api_application_resources.go
@@ -112,6 +113,8 @@ docs/ApplicationCorsSettings.md
 docs/ApplicationExternalLink.md
 docs/ApplicationFlowPolicyAssignmentsApi.md
 docs/ApplicationIcon.md
+docs/ApplicationMetadata.md
+docs/ApplicationMetadataApi.md
 docs/ApplicationOIDC.md
 docs/ApplicationOIDCAllOfKerberos.md
 docs/ApplicationOIDCAllOfKerberosKey.md
@@ -812,6 +815,7 @@ model_application_attribute_mapping_application.go
 model_application_cors_settings.go
 model_application_external_link.go
 model_application_icon.go
+model_application_metadata.go
 model_application_oidc.go
 model_application_oidc_all_of_kerberos.go
 model_application_oidc_all_of_kerberos_key.go
