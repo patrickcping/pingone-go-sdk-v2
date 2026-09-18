@@ -1,8 +1,8 @@
 # v0.13.0 (2026-09-11)
 
 * **Enhancement** The `CredentialTypeVersion` data model now matches the response shape of the [Read All Credential Type Versions](https://developer.pingidentity.com/pingone-api/credentials/credential-types/read-all-credential-types-versions.html) and [Read One Credential Type Version](https://developer.pingidentity.com/pingone-api/credentials/credential-types/read-one-credential-type-version.html) APIs, adding `Links`, `Version` (version number), `Snapshot`, `CreatedAt`, `Environment` and `CredentialType` fields. Previously only `Id` was populated when unmarshaling real API responses. [CDI-1484](https://pingidentity.atlassian.net/browse/CDI-1484)
-* **Breaking** The `Number` and `Uri` fields have been removed from `CredentialTypeVersion`, as the versions APIs do not return top-level `number` or `uri` properties (these values were never populated from real responses). The version number is now available as `CredentialTypeVersion.Version`, and the nested number/URI pair as `CredentialTypeVersion.Snapshot.Version`.
-* **Breaking** The `CredentialType.Version` field type has changed from `*CredentialTypeVersion` to the new `*CredentialTypeVersionNumber` data model (same `Id`/`Number`/`Uri` shape). Consumers referencing `CredentialType.Version` by type will need to update the type name.
+* **Breaking change** Removed the `Number` and `Uri` fields from `CredentialTypeVersion`, as the versions APIs do not return top-level `number` or `uri` properties (these values were never populated from real responses). The version number is now available as `CredentialTypeVersion.Version`, and the nested number/URI pair as `CredentialTypeVersion.Snapshot.Version`.
+* **Breaking change** The `CredentialType.Version` field type has changed from `*CredentialTypeVersion` to the new `*CredentialTypeVersionNumber` data model (same `Id`/`Number`/`Uri` shape). Consumers referencing `CredentialType.Version` by type will need to update the type name.
 
 # v0.12.1 (2026-03-09)
 
