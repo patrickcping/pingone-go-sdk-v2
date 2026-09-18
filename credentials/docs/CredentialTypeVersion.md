@@ -4,9 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Identifier (UUID) of this version of the credential type. The service assigns identifiers. | [optional] [readonly] 
-**Number** | Pointer to **int32** | Version of this credential type. The service assigns versions. | [optional] [readonly] 
-**Uri** | Pointer to **string** | A URI to of this version of the credential type. The service assigns URIs. | [optional] [readonly] 
+**Links** | Pointer to [**map[string]LinksHATEOASValue**](LinksHATEOASValue.md) |  | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type version was created. | [optional] [readonly] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**CredentialType** | Pointer to [**ObjectCredentialType**](ObjectCredentialType.md) |  | [optional] 
+**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential type version. | [optional] [readonly] 
+**Snapshot** | Pointer to [**CredentialType**](CredentialType.md) |  | [optional] 
+**Version** | Pointer to **int32** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -26,6 +30,106 @@ will change when the set of required properties is changed
 NewCredentialTypeVersionWithDefaults instantiates a new CredentialTypeVersion object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *CredentialTypeVersion) GetLinks() map[string]LinksHATEOASValue`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *CredentialTypeVersion) GetLinksOk() (*map[string]LinksHATEOASValue, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *CredentialTypeVersion) SetLinks(v map[string]LinksHATEOASValue)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *CredentialTypeVersion) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
+
+### GetCreatedAt
+
+`func (o *CredentialTypeVersion) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *CredentialTypeVersion) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *CredentialTypeVersion) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *CredentialTypeVersion) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *CredentialTypeVersion) GetEnvironment() ObjectEnvironment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *CredentialTypeVersion) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *CredentialTypeVersion) SetEnvironment(v ObjectEnvironment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *CredentialTypeVersion) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
+
+### GetCredentialType
+
+`func (o *CredentialTypeVersion) GetCredentialType() ObjectCredentialType`
+
+GetCredentialType returns the CredentialType field if non-nil, zero value otherwise.
+
+### GetCredentialTypeOk
+
+`func (o *CredentialTypeVersion) GetCredentialTypeOk() (*ObjectCredentialType, bool)`
+
+GetCredentialTypeOk returns a tuple with the CredentialType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialType
+
+`func (o *CredentialTypeVersion) SetCredentialType(v ObjectCredentialType)`
+
+SetCredentialType sets CredentialType field to given value.
+
+### HasCredentialType
+
+`func (o *CredentialTypeVersion) HasCredentialType() bool`
+
+HasCredentialType returns a boolean if a field has been set.
 
 ### GetId
 
@@ -52,55 +156,55 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetNumber
+### GetSnapshot
 
-`func (o *CredentialTypeVersion) GetNumber() int32`
+`func (o *CredentialTypeVersion) GetSnapshot() CredentialType`
 
-GetNumber returns the Number field if non-nil, zero value otherwise.
+GetSnapshot returns the Snapshot field if non-nil, zero value otherwise.
 
-### GetNumberOk
+### GetSnapshotOk
 
-`func (o *CredentialTypeVersion) GetNumberOk() (*int32, bool)`
+`func (o *CredentialTypeVersion) GetSnapshotOk() (*CredentialType, bool)`
 
-GetNumberOk returns a tuple with the Number field if it's non-nil, zero value otherwise
+GetSnapshotOk returns a tuple with the Snapshot field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNumber
+### SetSnapshot
 
-`func (o *CredentialTypeVersion) SetNumber(v int32)`
+`func (o *CredentialTypeVersion) SetSnapshot(v CredentialType)`
 
-SetNumber sets Number field to given value.
+SetSnapshot sets Snapshot field to given value.
 
-### HasNumber
+### HasSnapshot
 
-`func (o *CredentialTypeVersion) HasNumber() bool`
+`func (o *CredentialTypeVersion) HasSnapshot() bool`
 
-HasNumber returns a boolean if a field has been set.
+HasSnapshot returns a boolean if a field has been set.
 
-### GetUri
+### GetVersion
 
-`func (o *CredentialTypeVersion) GetUri() string`
+`func (o *CredentialTypeVersion) GetVersion() int32`
 
-GetUri returns the Uri field if non-nil, zero value otherwise.
+GetVersion returns the Version field if non-nil, zero value otherwise.
 
-### GetUriOk
+### GetVersionOk
 
-`func (o *CredentialTypeVersion) GetUriOk() (*string, bool)`
+`func (o *CredentialTypeVersion) GetVersionOk() (*int32, bool)`
 
-GetUriOk returns a tuple with the Uri field if it's non-nil, zero value otherwise
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUri
+### SetVersion
 
-`func (o *CredentialTypeVersion) SetUri(v string)`
+`func (o *CredentialTypeVersion) SetVersion(v int32)`
 
-SetUri sets Uri field to given value.
+SetVersion sets Version field to given value.
 
-### HasUri
+### HasVersion
 
-`func (o *CredentialTypeVersion) HasUri() bool`
+`func (o *CredentialTypeVersion) HasVersion() bool`
 
-HasUri returns a boolean if a field has been set.
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
