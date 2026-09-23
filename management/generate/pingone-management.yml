@@ -528,9 +528,21 @@ components:
       description: The type of phone delivery service capability.
     EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod:
       type: string
-      enum: [BASIC, BEARER]
+      enum: [BASIC, BEARER, OAUTH2, CUSTOM_HEADER]
       description: |
-        The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`
+        The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`, `OAUTH2`, `CUSTOM_HEADER`
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType:
+      type: string
+      enum: [JWT_BEARER, CLIENT_CREDENTIALS]
+      default: CLIENT_CREDENTIALS
+      description: |
+        The grant type used to request the access token from the authorization server. Possible values: `JWT_BEARER`, `CLIENT_CREDENTIALS`. The default value is `CLIENT_CREDENTIALS`.
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod:
+      type: string
+      readOnly: true
+      enum: [BASIC_AUTH_HEADER, BODY]
+      description: |
+        The method used to send the OAuth 2.0 client credentials to the authorization server. Possible values: `BASIC_AUTH_HEADER`, `BODY`. This is a read-only property.
     EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType:
       type: string
       enum: [SHORT_CODE, TOLL_FREE, PHONE_NUMBER]
@@ -5661,6 +5673,34 @@ components:
                   type: string
                   format: password
                   description: The authentication token for the custom provider account.  Required when `authentication.method=BEARER`
+                authUrl:
+                  type: string
+                  description: The URL of the authorization server that issues the access token for the custom provider account. Required when `authentication.method=OAUTH2`
+                grantType:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType'
+                assertion:
+                  type: string
+                  description: The JWT assertion used to request the access token from the authorization server. Must be a valid JWT. Required when `authentication.grantType=JWT_BEARER`
+                clientId:
+                  type: string
+                  description: The client ID used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
+                clientSecret:
+                  type: string
+                  format: password
+                  description: The client secret used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
+                scopes:
+                  type: array
+                  description: An array of scopes to request in the access token from the authorization server, for example, `sms:send`, `voice:send`.
+                  items:
+                    type: string
+                headerName:
+                  type: string
+                  description: The name of the custom header used to authenticate requests to the custom provider. Required when `authentication.method=CUSTOM_HEADER`
+                headerValue:
+                  type: string
+                  description: The value of the custom header used to authenticate requests to the custom provider. Required when `authentication.method=CUSTOM_HEADER`
+                clientAuthenticationMethod:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod'
               required:
                 - method
             numbers:

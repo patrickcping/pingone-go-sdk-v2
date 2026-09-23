@@ -1,4 +1,8 @@
-# v0.72.0 (Unreleased)
+# v0.73.0 (Unreleased)
+
+* **Enhancement** Added `OAUTH2` and `CUSTOM_HEADER` to the `EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod` data type, and added the `authUrl`, `grantType`, `assertion`, `clientId`, `clientSecret`, `scopes`, `headerName`, `headerValue`, and `clientAuthenticationMethod` properties to the phone delivery settings custom provider authentication data model to align with the API.
+
+# v0.72.0 (2026-09-15)
 
 * **Feature** Add support for the Application Metadata API.
 
