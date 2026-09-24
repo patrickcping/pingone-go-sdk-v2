@@ -36,6 +36,7 @@ const (
 	ENUMTEMPLATENAME_STRONG_AUTHENTICATION      EnumTemplateName = "strong_authentication"
 	ENUMTEMPLATENAME_TRANSACTION                EnumTemplateName = "transaction"
 	ENUMTEMPLATENAME_VERIFICATION_CODE_TEMPLATE EnumTemplateName = "verification_code_template"
+	ENUMTEMPLATENAME_VERIFICATION_CODE_NEW      EnumTemplateName = "verification_code_new"
 )
 
 // All allowed values of EnumTemplateName enum
@@ -56,6 +57,7 @@ var AllowedEnumTemplateNameEnumValues = []EnumTemplateName{
 	"strong_authentication",
 	"transaction",
 	"verification_code_template",
+	"verification_code_new",
 }
 
 func (v *EnumTemplateName) UnmarshalJSON(src []byte) error {
