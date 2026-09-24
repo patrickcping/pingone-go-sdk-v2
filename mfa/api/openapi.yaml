@@ -4351,6 +4351,17 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_mobile'
         totp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyCommon_totp'
+        blockDisabledUsers:
+          description: Set blockDisabledUsers to true if you want to add an additional
+            security measure by ensuring that users whose accounts have been disabled
+            cannot authenticate with MFA.
+          type: boolean
+        blockUsersWithDisabledMfa:
+          description: By default, if a user's MFA setting has been set to disabled,\
+            \ they are not able to authenticate. Set `blockUsersWithDisabledMfa` to\
+            \ `false` if you want to allow users to bypass MFA if their MFA setting\
+            \ has been disabled.
+          type: boolean
         default:
           description: A boolean that specifies whether the policy is the default
             for the environment.
