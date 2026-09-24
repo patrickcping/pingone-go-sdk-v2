@@ -1,3 +1,7 @@
+# v0.25.2 (2026-09-25)
+
+* **Enhancement** Added `blockDisabledUsers' and 'blockUsersWithDisabledMfa` to the `DeviceAuthenticationPolicyCommon` data model. [#551](https://github.com/patrickcping/pingone-go-sdk-v2/pull/551)
+
 # v0.25.1 (2026-04-21)
 
 * **Bug** Fixed json tag capitalization for the `whatsApp` field in the `DeviceAuthenticationPolicyPingOneMFA` and `DeviceAuthenticationPolicy` data models. [#533](https://github.com/patrickcping/pingone-go-sdk-v2/pull/533)
