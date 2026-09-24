@@ -1,3 +1,7 @@
+# v0.73.1 (Unreleased)
+
+* **Enhancement** Added `verification_code_new` to the `EnumTemplateName` enum to the notifications templates settings template name to align with the API.
+
 # v0.73.0 (Unreleased)
 
 * **Enhancement** Added `OAUTH2` and `CUSTOM_HEADER` to the `EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod` data type, and added the `authUrl`, `grantType`, `assertion`, `clientId`, `clientSecret`, `scopes`, `headerName`, `headerValue`, and `clientAuthenticationMethod` properties to the phone delivery settings custom provider authentication data model to align with the API.

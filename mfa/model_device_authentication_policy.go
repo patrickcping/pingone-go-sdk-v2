@@ -34,6 +34,10 @@ type DeviceAuthenticationPolicy struct {
 	Fido2                 *DeviceAuthenticationPolicyCommonFido2          `json:"fido2,omitempty"`
 	Mobile                DeviceAuthenticationPolicyCommonMobile          `json:"mobile"`
 	Totp                  DeviceAuthenticationPolicyCommonTotp            `json:"totp"`
+	// Set blockDisabledUsers to true if you want to add an additional security measure by ensuring that users whose accounts have been disabled cannot authenticate with MFA.
+	BlockDisabledUsers *bool `json:"blockDisabledUsers,omitempty"`
+	// By default, if a user's MFA setting has been set to disabled, they are not able to authenticate. Set `blockUsersWithDisabledMfa` to `false` if you want to allow users to bypass MFA if their MFA setting has been disabled.
+	BlockUsersWithDisabledMfa *bool `json:"blockUsersWithDisabledMfa,omitempty"`
 	// A boolean that specifies whether the policy is the default for the environment.
 	Default bool `json:"default"`
 	// Deprecated
@@ -411,6 +415,70 @@ func (o *DeviceAuthenticationPolicy) SetTotp(v DeviceAuthenticationPolicyCommonT
 	o.Totp = v
 }
 
+// GetBlockDisabledUsers returns the BlockDisabledUsers field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetBlockDisabledUsers() bool {
+	if o == nil || IsNil(o.BlockDisabledUsers) {
+		var ret bool
+		return ret
+	}
+	return *o.BlockDisabledUsers
+}
+
+// GetBlockDisabledUsersOk returns a tuple with the BlockDisabledUsers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetBlockDisabledUsersOk() (*bool, bool) {
+	if o == nil || IsNil(o.BlockDisabledUsers) {
+		return nil, false
+	}
+	return o.BlockDisabledUsers, true
+}
+
+// HasBlockDisabledUsers returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasBlockDisabledUsers() bool {
+	if o != nil && !IsNil(o.BlockDisabledUsers) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockDisabledUsers gets a reference to the given bool and assigns it to the BlockDisabledUsers field.
+func (o *DeviceAuthenticationPolicy) SetBlockDisabledUsers(v bool) {
+	o.BlockDisabledUsers = &v
+}
+
+// GetBlockUsersWithDisabledMfa returns the BlockUsersWithDisabledMfa field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetBlockUsersWithDisabledMfa() bool {
+	if o == nil || IsNil(o.BlockUsersWithDisabledMfa) {
+		var ret bool
+		return ret
+	}
+	return *o.BlockUsersWithDisabledMfa
+}
+
+// GetBlockUsersWithDisabledMfaOk returns a tuple with the BlockUsersWithDisabledMfa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetBlockUsersWithDisabledMfaOk() (*bool, bool) {
+	if o == nil || IsNil(o.BlockUsersWithDisabledMfa) {
+		return nil, false
+	}
+	return o.BlockUsersWithDisabledMfa, true
+}
+
+// HasBlockUsersWithDisabledMfa returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasBlockUsersWithDisabledMfa() bool {
+	if o != nil && !IsNil(o.BlockUsersWithDisabledMfa) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockUsersWithDisabledMfa gets a reference to the given bool and assigns it to the BlockUsersWithDisabledMfa field.
+func (o *DeviceAuthenticationPolicy) SetBlockUsersWithDisabledMfa(v bool) {
+	o.BlockUsersWithDisabledMfa = &v
+}
+
 // GetDefault returns the Default field value
 func (o *DeviceAuthenticationPolicy) GetDefault() bool {
 	if o == nil {
@@ -752,6 +820,12 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["mobile"] = o.Mobile
 	toSerialize["totp"] = o.Totp
+	if !IsNil(o.BlockDisabledUsers) {
+		toSerialize["blockDisabledUsers"] = o.BlockDisabledUsers
+	}
+	if !IsNil(o.BlockUsersWithDisabledMfa) {
+		toSerialize["blockUsersWithDisabledMfa"] = o.BlockUsersWithDisabledMfa
+	}
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
 	if !IsNil(o.IgnoreUserLock) {

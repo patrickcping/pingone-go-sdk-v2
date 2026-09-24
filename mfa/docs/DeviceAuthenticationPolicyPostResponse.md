@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **Fido2** | Pointer to [**DeviceAuthenticationPolicyCommonFido2**](DeviceAuthenticationPolicyCommonFido2.md) |  | [optional] 
 **Mobile** | [**DeviceAuthenticationPolicyCommonMobile**](DeviceAuthenticationPolicyCommonMobile.md) |  | 
 **Totp** | [**DeviceAuthenticationPolicyCommonTotp**](DeviceAuthenticationPolicyCommonTotp.md) |  | 
+**BlockDisabledUsers** | Pointer to **bool** | Set blockDisabledUsers to true if you want to add an additional security measure by ensuring that users whose accounts have been disabled cannot authenticate with MFA. | [optional] 
+**BlockUsersWithDisabledMfa** | Pointer to **bool** | By default, if a user&#39;s MFA setting has been set to disabled, they are not able to authenticate. Set &#x60;blockUsersWithDisabledMfa&#x60; to &#x60;false&#x60; if you want to allow users to bypass MFA if their MFA setting has been disabled. | [optional] 
 **Default** | **bool** | A boolean that specifies whether the policy is the default for the environment. | 
 **ForSignOnPolicy** | **bool** |  | [readonly] 
 **IgnoreUserLock** | Pointer to **bool** | When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set &#x60;ignoreUserLock&#x60; to &#x60;true&#x60; if you want PingOne to skip this account lock check. | [optional] 
@@ -318,6 +320,56 @@ and a boolean to check if the value has been set.
 
 SetTotp sets Totp field to given value.
 
+
+### GetBlockDisabledUsers
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetBlockDisabledUsers() bool`
+
+GetBlockDisabledUsers returns the BlockDisabledUsers field if non-nil, zero value otherwise.
+
+### GetBlockDisabledUsersOk
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetBlockDisabledUsersOk() (*bool, bool)`
+
+GetBlockDisabledUsersOk returns a tuple with the BlockDisabledUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockDisabledUsers
+
+`func (o *DeviceAuthenticationPolicyPostResponse) SetBlockDisabledUsers(v bool)`
+
+SetBlockDisabledUsers sets BlockDisabledUsers field to given value.
+
+### HasBlockDisabledUsers
+
+`func (o *DeviceAuthenticationPolicyPostResponse) HasBlockDisabledUsers() bool`
+
+HasBlockDisabledUsers returns a boolean if a field has been set.
+
+### GetBlockUsersWithDisabledMfa
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetBlockUsersWithDisabledMfa() bool`
+
+GetBlockUsersWithDisabledMfa returns the BlockUsersWithDisabledMfa field if non-nil, zero value otherwise.
+
+### GetBlockUsersWithDisabledMfaOk
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetBlockUsersWithDisabledMfaOk() (*bool, bool)`
+
+GetBlockUsersWithDisabledMfaOk returns a tuple with the BlockUsersWithDisabledMfa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockUsersWithDisabledMfa
+
+`func (o *DeviceAuthenticationPolicyPostResponse) SetBlockUsersWithDisabledMfa(v bool)`
+
+SetBlockUsersWithDisabledMfa sets BlockUsersWithDisabledMfa field to given value.
+
+### HasBlockUsersWithDisabledMfa
+
+`func (o *DeviceAuthenticationPolicyPostResponse) HasBlockUsersWithDisabledMfa() bool`
+
+HasBlockUsersWithDisabledMfa returns a boolean if a field has been set.
 
 ### GetDefault
 
