@@ -1,3 +1,15 @@
+# v0.73.0 (Unreleased)
+
+* **Enhancement** Added `OAUTH2` and `CUSTOM_HEADER` to the `EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod` data type, and added the `authUrl`, `grantType`, `assertion`, `clientId`, `clientSecret`, `scopes`, `headerName`, `headerValue`, and `clientAuthenticationMethod` properties to the phone delivery settings custom provider authentication data model to align with the API.
+
+# v0.72.0 (2026-09-15)
+
+* **Feature** Add support for the Application Metadata API.
+
+# v0.71.0 (Unreleased)
+
+* **Enhancement** Added `headerLocalized`, `footerLocalized`, and additional configuration properties to the `BrandingTheme` data model to align with the API.
+
 # v0.70.0 (2026-04-21)
 
 * **Enhancement** Added support to Forms data model for DEVICE_AUTHENTICATION, DEVICE_REGISTRATION, and PHONE_NUMBER form field types [#532](https://github.com/patrickcping/pingone-go-sdk-v2/pull/532)

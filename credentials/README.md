@@ -156,6 +156,7 @@ Class | Method | HTTP request | Description
  - [CredentialTypeMultiple](docs/CredentialTypeMultiple.md)
  - [CredentialTypeOnDelete](docs/CredentialTypeOnDelete.md)
  - [CredentialTypeVersion](docs/CredentialTypeVersion.md)
+ - [CredentialTypeVersionNumber](docs/CredentialTypeVersionNumber.md)
  - [DigitalWalletApplication](docs/DigitalWalletApplication.md)
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
