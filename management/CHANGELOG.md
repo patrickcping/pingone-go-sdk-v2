@@ -1,3 +1,7 @@
+# v0.74.0 (Unreleased)
+
+* **Enhancement** Added `enableMappedClaims` to the `ResourceScope` data model to align with the API, and updated the `mappedClaims` description to include the `CUSTOM` resource type.
+
 # v0.73.0 (Unreleased)
 
 * **Enhancement** Added `OAUTH2` and `CUSTOM_HEADER` to the `EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod` data type, and added the `authUrl`, `grantType`, `assertion`, `clientId`, `clientSecret`, `scopes`, `headerName`, `headerValue`, and `clientAuthenticationMethod` properties to the phone delivery settings custom provider authentication data model to align with the API.
