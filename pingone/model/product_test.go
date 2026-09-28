@@ -96,7 +96,7 @@ func TestFindProductByAPICode_Success(t *testing.T) {
 
 func TestProductsSelectableList(t *testing.T) {
 
-	expectedList := []string{"APIIntelligence", "Authorize", "Credentials", "DaVinci", "MFA", "PingAccess", "PingAuthorize", "PingCentral", "PingDirectory", "PingFederate", "PingID", "PingID-v2", "Risk", "SSO", "Verify"}
+	expectedList := []string{"APIIntelligence", "Authorize", "Credentials", "DaVinci", "MFA", "PingAccess", "PingAuthorize", "PingCentral", "PingDirectory", "PingFederate", "PingID", "PingID-v2", "Risk", "SSO", "Verify", "AdvancedIdentityCloud", "Privilege"}
 
 	v := ProductsSelectableList()
 	if !reflect.DeepEqual(v, expectedList) {
