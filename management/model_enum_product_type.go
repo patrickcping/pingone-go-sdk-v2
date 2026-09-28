@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumProductType A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_DAVINCI, PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, and PING_CENTRAL
+// EnumProductType A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_DAVINCI, PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, PING_CENTRAL, PING_ONE_PAM, and IDENTITY_CLOUD
 type EnumProductType string
 
 // List of EnumProductType
@@ -43,6 +43,8 @@ const (
 	ENUMPRODUCTTYPE_ONE_ID             EnumProductType = "PING_ONE_ID"
 	ENUMPRODUCTTYPE_INTELLIGENCE       EnumProductType = "PING_INTELLIGENCE"
 	ENUMPRODUCTTYPE_CENTRAL            EnumProductType = "PING_CENTRAL"
+	ENUMPRODUCTTYPE_ONE_PAM            EnumProductType = "PING_ONE_PAM"
+	ENUMPRODUCTTYPE_IDENTITY_CLOUD          EnumProductType = "IDENTITY_CLOUD"
 )
 
 // All allowed values of EnumProductType enum
@@ -70,6 +72,8 @@ var AllowedEnumProductTypeEnumValues = []EnumProductType{
 	"PING_ONE_ID",
 	"PING_INTELLIGENCE",
 	"PING_CENTRAL",
+	"PING_ONE_PAM",
+	"IDENTITY_CLOUD",
 }
 
 func (v *EnumProductType) UnmarshalJSON(src []byte) error {
