@@ -43,6 +43,7 @@ tags:
 - name: Alerting
 - name: Applications
 - name: Application Secret
+- name: Application Metadata
 - name: Application Resource Grants
 - name: Application Flow Policy Assignments
 - name: Application Sign-On Policy Assignments
@@ -3609,6 +3610,204 @@ paths:
       summary: UPDATE Application Secret
       tags:
       - Application Secret
+  /environments/{environmentID}/applications/{applicationID}/metadata:
+    get:
+      operationId: readApplicationMetadata
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationMetadata'
+          description: Successful response
+      summary: READ Application Metadata
+      tags:
+      - Application Metadata
+    put:
+      operationId: updateApplicationMetadata
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationMetadata'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationMetadata'
+          description: Successful response
+      summary: UPDATE Application Metadata
+      tags:
+      - Application Metadata
   /environments/{environmentID}/applications/{applicationID}/grants:
     get:
       operationId: readAllApplicationGrants
@@ -38010,10 +38209,28 @@ components:
       type: string
     EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod:
       description: |
-        The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`
+        The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`, `OAUTH2`, `CUSTOM_HEADER`
       enum:
       - BASIC
       - BEARER
+      - OAUTH2
+      - CUSTOM_HEADER
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType:
+      default: CLIENT_CREDENTIALS
+      description: |
+        The grant type used to request the access token from the authorization server. Possible values: `JWT_BEARER`, `CLIENT_CREDENTIALS`. The default value is `CLIENT_CREDENTIALS`.
+      enum:
+      - JWT_BEARER
+      - CLIENT_CREDENTIALS
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod:
+      description: |
+        The method used to send the OAuth 2.0 client credentials to the authorization server. Possible values: `BASIC_AUTH_HEADER`, `BODY`. This is a read-only property.
+      enum:
+      - BASIC_AUTH_HEADER
+      - BODY
+      readOnly: true
       type: string
     EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType:
       description: |
@@ -39010,6 +39227,37 @@ components:
         required:
         - homePageUrl
         type: object
+    ApplicationMetadata:
+      example:
+        metadata:
+          key: ""
+        environmentId: environmentId
+        _links:
+          key:
+            href: https://openapi-generator.tech
+        applicationId: applicationId
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        applicationId:
+          description: A string that specifies the ID of the application.
+          readOnly: true
+          type: string
+        environmentId:
+          description: A string that specifies the ID of the environment.
+          readOnly: true
+          type: string
+        metadata:
+          additionalProperties: true
+          description: "User-defined custom metadata for the application. The metadata\
+            \ must be a JSON object and can include any custom properties. If metadata\
+            \ is not included in the request body, the existing application metadata\
+            \ will be removed from the application resource."
+          type: object
+      type: object
     ApplicationSAML:
       allOf:
       - $ref: '#/components/schemas/Application'
@@ -42092,6 +42340,7 @@ components:
               id: id
             name: name
             description: description
+            enableMappedClaims: true
             id: id
             mappedClaims:
             - mappedClaims
@@ -42110,6 +42359,7 @@ components:
               id: id
             name: name
             description: description
+            enableMappedClaims: true
             id: id
             mappedClaims:
             - mappedClaims
@@ -46496,6 +46746,7 @@ components:
           id: id
         name: name
         description: description
+        enableMappedClaims: true
         id: id
         mappedClaims:
         - mappedClaims
@@ -46522,6 +46773,13 @@ components:
         description:
           description: A string that specifies the description of the scope.
           type: string
+        enableMappedClaims:
+          description: "A Boolean that enables attribute mapping in scopes to control\
+            \ the attributes included in access tokens. If this property is not set\
+            \ or set to `false` (default), the access token includes all custom attribute\
+            \ claims. When set to `true`, the access token includes only the claims\
+            \ mapped in the scope."
+          type: boolean
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         schemaAttributes:
@@ -46540,12 +46798,12 @@ components:
           type: array
         mappedClaims:
           description: "A list of custom resource attribute IDs. This property applies\
-            \ only for the resource with its type property set to `OPENID_CONNECT`.\
-            \ Moreover, this property does not display predefined OpenID Connect (OIDC)\
-            \ mappings, such as the `email` claim in the OIDC `email` scope or the\
-            \ `name` claim in the `profile` scope. You can create custom attributes,\
-            \ and these custom attributes can be added to `mappedClaims` and will\
-            \ display in the response."
+            \ only for the resource with its `type` property set to `OPENID_CONNECT`\
+            \ or `CUSTOM`. Moreover, this property does not display predefined OpenID\
+            \ Connect (OIDC) mappings, such as the `email` claim in the OIDC `email`\
+            \ scope or the `name` claim in the `profile` scope. You can create custom\
+            \ attributes, and these custom attributes can be added to `mappedClaims`\
+            \ and will display in the response."
           items:
             type: string
           type: array
@@ -51181,6 +51439,7 @@ components:
             id: id
           name: name
           description: description
+          enableMappedClaims: true
           id: id
           mappedClaims:
           - mappedClaims
@@ -51199,6 +51458,7 @@ components:
             id: id
           name: name
           description: description
+          enableMappedClaims: true
           id: id
           mappedClaims:
           - mappedClaims
@@ -53121,6 +53381,41 @@ components:
             when `authentication.method=BEARER`
           format: password
           type: string
+        authUrl:
+          description: The URL of the authorization server that issues the access
+            token for the custom provider account. Required when `authentication.method=OAUTH2`
+          type: string
+        grantType:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType'
+        assertion:
+          description: The JWT assertion used to request the access token from the
+            authorization server. Must be a valid JWT. Required when `authentication.grantType=JWT_BEARER`
+          type: string
+        clientId:
+          description: The client ID used to request the access token from the authorization
+            server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
+          type: string
+        clientSecret:
+          description: The client secret used to request the access token from the
+            authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
+          format: password
+          type: string
+        scopes:
+          description: "An array of scopes to request in the access token from the\
+            \ authorization server, for example, `sms:send`, `voice:send`."
+          items:
+            type: string
+          type: array
+        headerName:
+          description: The name of the custom header used to authenticate requests
+            to the custom provider. Required when `authentication.method=CUSTOM_HEADER`
+          type: string
+        headerValue:
+          description: The value of the custom header used to authenticate requests
+            to the custom provider. Required when `authentication.method=CUSTOM_HEADER`
+          type: string
+        clientAuthenticationMethod:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod'
       required:
       - method
       type: object

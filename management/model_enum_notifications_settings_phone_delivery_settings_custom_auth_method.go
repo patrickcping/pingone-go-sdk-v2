@@ -15,19 +15,23 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`
+// EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`, `OAUTH2`, `CUSTOM_HEADER`
 type EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod string
 
 // List of EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod
 const (
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_BASIC  EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "BASIC"
-	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_BEARER EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "BEARER"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_BASIC         EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "BASIC"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_BEARER        EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "BEARER"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_OAUTH2        EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "OAUTH2"
+	ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHMETHOD_CUSTOM_HEADER EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod = "CUSTOM_HEADER"
 )
 
 // All allowed values of EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod enum
 var AllowedEnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethodEnumValues = []EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod{
 	"BASIC",
 	"BEARER",
+	"OAUTH2",
+	"CUSTOM_HEADER",
 }
 
 func (v *EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod) UnmarshalJSON(src []byte) error {

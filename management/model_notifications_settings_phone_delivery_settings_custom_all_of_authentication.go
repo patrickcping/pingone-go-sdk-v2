@@ -26,6 +26,22 @@ type NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication struct 
 	Password *string `json:"password,omitempty"`
 	// The authentication token for the custom provider account.  Required when `authentication.method=BEARER`
 	AuthToken *string `json:"authToken,omitempty"`
+	// The URL of the authorization server that issues the access token for the custom provider account. Required when `authentication.method=OAUTH2`
+	AuthUrl   *string                                                            `json:"authUrl,omitempty"`
+	GrantType *EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType `json:"grantType,omitempty"`
+	// The JWT assertion used to request the access token from the authorization server. Must be a valid JWT. Required when `authentication.grantType=JWT_BEARER`
+	Assertion *string `json:"assertion,omitempty"`
+	// The client ID used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
+	ClientId *string `json:"clientId,omitempty"`
+	// The client secret used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
+	ClientSecret *string `json:"clientSecret,omitempty"`
+	// An array of scopes to request in the access token from the authorization server, for example, `sms:send`, `voice:send`.
+	Scopes []string `json:"scopes,omitempty"`
+	// The name of the custom header used to authenticate requests to the custom provider. Required when `authentication.method=CUSTOM_HEADER`
+	HeaderName *string `json:"headerName,omitempty"`
+	// The value of the custom header used to authenticate requests to the custom provider. Required when `authentication.method=CUSTOM_HEADER`
+	HeaderValue                *string                                                                             `json:"headerValue,omitempty"`
+	ClientAuthenticationMethod *EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod `json:"clientAuthenticationMethod,omitempty"`
 }
 
 // NewNotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication instantiates a new NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication object
@@ -35,6 +51,8 @@ type NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication struct 
 func NewNotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication(method EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod) *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication {
 	this := NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication{}
 	this.Method = method
+	var grantType EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType = ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHGRANTTYPE_CLIENT_CREDENTIALS
+	this.GrantType = &grantType
 	return &this
 }
 
@@ -43,6 +61,8 @@ func NewNotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication(meth
 // but it doesn't guarantee that properties required by API are set
 func NewNotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthenticationWithDefaults() *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication {
 	this := NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication{}
+	var grantType EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType = ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSCUSTOMAUTHGRANTTYPE_CLIENT_CREDENTIALS
+	this.GrantType = &grantType
 	return &this
 }
 
@@ -166,6 +186,294 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) Se
 	o.AuthToken = &v
 }
 
+// GetAuthUrl returns the AuthUrl field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetAuthUrl() string {
+	if o == nil || IsNil(o.AuthUrl) {
+		var ret string
+		return ret
+	}
+	return *o.AuthUrl
+}
+
+// GetAuthUrlOk returns a tuple with the AuthUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetAuthUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthUrl) {
+		return nil, false
+	}
+	return o.AuthUrl, true
+}
+
+// HasAuthUrl returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasAuthUrl() bool {
+	if o != nil && !IsNil(o.AuthUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthUrl gets a reference to the given string and assigns it to the AuthUrl field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetAuthUrl(v string) {
+	o.AuthUrl = &v
+}
+
+// GetGrantType returns the GrantType field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetGrantType() EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType {
+	if o == nil || IsNil(o.GrantType) {
+		var ret EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType
+		return ret
+	}
+	return *o.GrantType
+}
+
+// GetGrantTypeOk returns a tuple with the GrantType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetGrantTypeOk() (*EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType, bool) {
+	if o == nil || IsNil(o.GrantType) {
+		return nil, false
+	}
+	return o.GrantType, true
+}
+
+// HasGrantType returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasGrantType() bool {
+	if o != nil && !IsNil(o.GrantType) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrantType gets a reference to the given EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType and assigns it to the GrantType field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetGrantType(v EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthGrantType) {
+	o.GrantType = &v
+}
+
+// GetAssertion returns the Assertion field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetAssertion() string {
+	if o == nil || IsNil(o.Assertion) {
+		var ret string
+		return ret
+	}
+	return *o.Assertion
+}
+
+// GetAssertionOk returns a tuple with the Assertion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetAssertionOk() (*string, bool) {
+	if o == nil || IsNil(o.Assertion) {
+		return nil, false
+	}
+	return o.Assertion, true
+}
+
+// HasAssertion returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasAssertion() bool {
+	if o != nil && !IsNil(o.Assertion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssertion gets a reference to the given string and assigns it to the Assertion field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetAssertion(v string) {
+	o.Assertion = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetClientId() string {
+	if o == nil || IsNil(o.ClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientId) {
+		return nil, false
+	}
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasClientId() bool {
+	if o != nil && !IsNil(o.ClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetClientId(v string) {
+	o.ClientId = &v
+}
+
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetClientSecret() string {
+	if o == nil || IsNil(o.ClientSecret) {
+		var ret string
+		return ret
+	}
+	return *o.ClientSecret
+}
+
+// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetClientSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientSecret) {
+		return nil, false
+	}
+	return o.ClientSecret, true
+}
+
+// HasClientSecret returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasClientSecret() bool {
+	if o != nil && !IsNil(o.ClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetClientSecret(v string) {
+	o.ClientSecret = &v
+}
+
+// GetScopes returns the Scopes field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetScopes() []string {
+	if o == nil || IsNil(o.Scopes) {
+		var ret []string
+		return ret
+	}
+	return o.Scopes
+}
+
+// GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetScopesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Scopes) {
+		return nil, false
+	}
+	return o.Scopes, true
+}
+
+// HasScopes returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasScopes() bool {
+	if o != nil && !IsNil(o.Scopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetScopes gets a reference to the given []string and assigns it to the Scopes field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetScopes(v []string) {
+	o.Scopes = v
+}
+
+// GetHeaderName returns the HeaderName field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetHeaderName() string {
+	if o == nil || IsNil(o.HeaderName) {
+		var ret string
+		return ret
+	}
+	return *o.HeaderName
+}
+
+// GetHeaderNameOk returns a tuple with the HeaderName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetHeaderNameOk() (*string, bool) {
+	if o == nil || IsNil(o.HeaderName) {
+		return nil, false
+	}
+	return o.HeaderName, true
+}
+
+// HasHeaderName returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasHeaderName() bool {
+	if o != nil && !IsNil(o.HeaderName) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaderName gets a reference to the given string and assigns it to the HeaderName field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetHeaderName(v string) {
+	o.HeaderName = &v
+}
+
+// GetHeaderValue returns the HeaderValue field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetHeaderValue() string {
+	if o == nil || IsNil(o.HeaderValue) {
+		var ret string
+		return ret
+	}
+	return *o.HeaderValue
+}
+
+// GetHeaderValueOk returns a tuple with the HeaderValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetHeaderValueOk() (*string, bool) {
+	if o == nil || IsNil(o.HeaderValue) {
+		return nil, false
+	}
+	return o.HeaderValue, true
+}
+
+// HasHeaderValue returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasHeaderValue() bool {
+	if o != nil && !IsNil(o.HeaderValue) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaderValue gets a reference to the given string and assigns it to the HeaderValue field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetHeaderValue(v string) {
+	o.HeaderValue = &v
+}
+
+// GetClientAuthenticationMethod returns the ClientAuthenticationMethod field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetClientAuthenticationMethod() EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod {
+	if o == nil || IsNil(o.ClientAuthenticationMethod) {
+		var ret EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod
+		return ret
+	}
+	return *o.ClientAuthenticationMethod
+}
+
+// GetClientAuthenticationMethodOk returns a tuple with the ClientAuthenticationMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetClientAuthenticationMethodOk() (*EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod, bool) {
+	if o == nil || IsNil(o.ClientAuthenticationMethod) {
+		return nil, false
+	}
+	return o.ClientAuthenticationMethod, true
+}
+
+// HasClientAuthenticationMethod returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasClientAuthenticationMethod() bool {
+	if o != nil && !IsNil(o.ClientAuthenticationMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientAuthenticationMethod gets a reference to the given EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod and assigns it to the ClientAuthenticationMethod field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetClientAuthenticationMethod(v EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthClientAuthenticationMethod) {
+	o.ClientAuthenticationMethod = &v
+}
+
 func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -185,6 +493,33 @@ func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) ToM
 	}
 	if !IsNil(o.AuthToken) {
 		toSerialize["authToken"] = o.AuthToken
+	}
+	if !IsNil(o.AuthUrl) {
+		toSerialize["authUrl"] = o.AuthUrl
+	}
+	if !IsNil(o.GrantType) {
+		toSerialize["grantType"] = o.GrantType
+	}
+	if !IsNil(o.Assertion) {
+		toSerialize["assertion"] = o.Assertion
+	}
+	if !IsNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !IsNil(o.ClientSecret) {
+		toSerialize["clientSecret"] = o.ClientSecret
+	}
+	if !IsNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !IsNil(o.HeaderName) {
+		toSerialize["headerName"] = o.HeaderName
+	}
+	if !IsNil(o.HeaderValue) {
+		toSerialize["headerValue"] = o.HeaderValue
+	}
+	if !IsNil(o.ClientAuthenticationMethod) {
+		toSerialize["clientAuthenticationMethod"] = o.ClientAuthenticationMethod
 	}
 	return toSerialize, nil
 }

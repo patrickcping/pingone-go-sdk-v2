@@ -1,3 +1,9 @@
+# v0.13.0 (2026-09-11)
+
+* **Enhancement** The `CredentialTypeVersion` data model now matches the response shape of the [Read All Credential Type Versions](https://developer.pingidentity.com/pingone-api/credentials/credential-types/read-all-credential-types-versions.html) and [Read One Credential Type Version](https://developer.pingidentity.com/pingone-api/credentials/credential-types/read-one-credential-type-version.html) APIs, adding `Links`, `Version` (version number), `Snapshot`, `CreatedAt`, `Environment` and `CredentialType` fields. Previously only `Id` was populated when unmarshaling real API responses. [CDI-1484](https://pingidentity.atlassian.net/browse/CDI-1484)
+* **Breaking change** Removed the `Number` and `Uri` fields from `CredentialTypeVersion`, as the versions APIs do not return top-level `number` or `uri` properties (these values were never populated from real responses). The version number is now available as `CredentialTypeVersion.Version`, and the nested number/URI pair as `CredentialTypeVersion.Snapshot.Version`.
+* **Breaking change** The `CredentialType.Version` field type has changed from `*CredentialTypeVersion` to the new `*CredentialTypeVersionNumber` data model (same `Id`/`Number`/`Uri` shape). Consumers referencing `CredentialType.Version` by type will need to update the type name.
+
 # v0.12.1 (2026-03-09)
 
 * **Note** Upgraded go version to 1.25 to align with the go [release policy](https://go.dev/doc/devel/release#policy). [#515](https://github.com/patrickcping/pingone-go-sdk-v2/pull/515)

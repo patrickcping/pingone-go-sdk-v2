@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CredentialTypeVersion type satisfies the MappedNullable interface at compile time
@@ -19,12 +20,15 @@ var _ MappedNullable = &CredentialTypeVersion{}
 
 // CredentialTypeVersion struct for CredentialTypeVersion
 type CredentialTypeVersion struct {
-	// Identifier (UUID) of this version of the credential type. The service assigns identifiers.
-	Id *string `json:"id,omitempty"`
-	// Version of this credential type. The service assigns versions.
-	Number *int32 `json:"number,omitempty"`
-	// A URI to of this version of the credential type. The service assigns URIs.
-	Uri *string `json:"uri,omitempty"`
+	Links *map[string]LinksHATEOASValue `json:"_links,omitempty"`
+	// A string that specifies the date and time the credential type version was created.
+	CreatedAt      *time.Time            `json:"createdAt,omitempty"`
+	Environment    *ObjectEnvironment    `json:"environment,omitempty"`
+	CredentialType *ObjectCredentialType `json:"credentialType,omitempty"`
+	// A string that specifies the identifier (UUID) of the credential type version.
+	Id       *string         `json:"id,omitempty"`
+	Snapshot *CredentialType `json:"snapshot,omitempty"`
+	Version  *int32          `json:"version,omitempty"`
 }
 
 // NewCredentialTypeVersion instantiates a new CredentialTypeVersion object
@@ -42,6 +46,134 @@ func NewCredentialTypeVersion() *CredentialTypeVersion {
 func NewCredentialTypeVersionWithDefaults() *CredentialTypeVersion {
 	this := CredentialTypeVersion{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *CredentialTypeVersion) GetLinks() map[string]LinksHATEOASValue {
+	if o == nil || IsNil(o.Links) {
+		var ret map[string]LinksHATEOASValue
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeVersion) GetLinksOk() (*map[string]LinksHATEOASValue, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *CredentialTypeVersion) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]LinksHATEOASValue and assigns it to the Links field.
+func (o *CredentialTypeVersion) SetLinks(v map[string]LinksHATEOASValue) {
+	o.Links = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *CredentialTypeVersion) GetCreatedAt() time.Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeVersion) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *CredentialTypeVersion) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *CredentialTypeVersion) SetCreatedAt(v time.Time) {
+	o.CreatedAt = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *CredentialTypeVersion) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeVersion) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *CredentialTypeVersion) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *CredentialTypeVersion) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetCredentialType returns the CredentialType field value if set, zero value otherwise.
+func (o *CredentialTypeVersion) GetCredentialType() ObjectCredentialType {
+	if o == nil || IsNil(o.CredentialType) {
+		var ret ObjectCredentialType
+		return ret
+	}
+	return *o.CredentialType
+}
+
+// GetCredentialTypeOk returns a tuple with the CredentialType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeVersion) GetCredentialTypeOk() (*ObjectCredentialType, bool) {
+	if o == nil || IsNil(o.CredentialType) {
+		return nil, false
+	}
+	return o.CredentialType, true
+}
+
+// HasCredentialType returns a boolean if a field has been set.
+func (o *CredentialTypeVersion) HasCredentialType() bool {
+	if o != nil && !IsNil(o.CredentialType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentialType gets a reference to the given ObjectCredentialType and assigns it to the CredentialType field.
+func (o *CredentialTypeVersion) SetCredentialType(v ObjectCredentialType) {
+	o.CredentialType = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -76,68 +208,68 @@ func (o *CredentialTypeVersion) SetId(v string) {
 	o.Id = &v
 }
 
-// GetNumber returns the Number field value if set, zero value otherwise.
-func (o *CredentialTypeVersion) GetNumber() int32 {
-	if o == nil || IsNil(o.Number) {
+// GetSnapshot returns the Snapshot field value if set, zero value otherwise.
+func (o *CredentialTypeVersion) GetSnapshot() CredentialType {
+	if o == nil || IsNil(o.Snapshot) {
+		var ret CredentialType
+		return ret
+	}
+	return *o.Snapshot
+}
+
+// GetSnapshotOk returns a tuple with the Snapshot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeVersion) GetSnapshotOk() (*CredentialType, bool) {
+	if o == nil || IsNil(o.Snapshot) {
+		return nil, false
+	}
+	return o.Snapshot, true
+}
+
+// HasSnapshot returns a boolean if a field has been set.
+func (o *CredentialTypeVersion) HasSnapshot() bool {
+	if o != nil && !IsNil(o.Snapshot) {
+		return true
+	}
+
+	return false
+}
+
+// SetSnapshot gets a reference to the given CredentialType and assigns it to the Snapshot field.
+func (o *CredentialTypeVersion) SetSnapshot(v CredentialType) {
+	o.Snapshot = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *CredentialTypeVersion) GetVersion() int32 {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
-	return *o.Number
+	return *o.Version
 }
 
-// GetNumberOk returns a tuple with the Number field value if set, nil otherwise
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialTypeVersion) GetNumberOk() (*int32, bool) {
-	if o == nil || IsNil(o.Number) {
+func (o *CredentialTypeVersion) GetVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Number, true
+	return o.Version, true
 }
 
-// HasNumber returns a boolean if a field has been set.
-func (o *CredentialTypeVersion) HasNumber() bool {
-	if o != nil && !IsNil(o.Number) {
+// HasVersion returns a boolean if a field has been set.
+func (o *CredentialTypeVersion) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetNumber gets a reference to the given int32 and assigns it to the Number field.
-func (o *CredentialTypeVersion) SetNumber(v int32) {
-	o.Number = &v
-}
-
-// GetUri returns the Uri field value if set, zero value otherwise.
-func (o *CredentialTypeVersion) GetUri() string {
-	if o == nil || IsNil(o.Uri) {
-		var ret string
-		return ret
-	}
-	return *o.Uri
-}
-
-// GetUriOk returns a tuple with the Uri field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialTypeVersion) GetUriOk() (*string, bool) {
-	if o == nil || IsNil(o.Uri) {
-		return nil, false
-	}
-	return o.Uri, true
-}
-
-// HasUri returns a boolean if a field has been set.
-func (o *CredentialTypeVersion) HasUri() bool {
-	if o != nil && !IsNil(o.Uri) {
-		return true
-	}
-
-	return false
-}
-
-// SetUri gets a reference to the given string and assigns it to the Uri field.
-func (o *CredentialTypeVersion) SetUri(v string) {
-	o.Uri = &v
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *CredentialTypeVersion) SetVersion(v int32) {
+	o.Version = &v
 }
 
 func (o CredentialTypeVersion) MarshalJSON() ([]byte, error) {
@@ -150,14 +282,26 @@ func (o CredentialTypeVersion) MarshalJSON() ([]byte, error) {
 
 func (o CredentialTypeVersion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.CredentialType) {
+		toSerialize["credentialType"] = o.CredentialType
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Number) {
-		toSerialize["number"] = o.Number
+	if !IsNil(o.Snapshot) {
+		toSerialize["snapshot"] = o.Snapshot
 	}
-	if !IsNil(o.Uri) {
-		toSerialize["uri"] = o.Uri
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }

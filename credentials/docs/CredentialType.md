@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **OnDelete** | Pointer to [**CredentialTypeOnDelete**](CredentialTypeOnDelete.md) |  | [optional] 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
 **UpdatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was last updated; can be null. | [optional] [readonly] 
-**Version** | Pointer to [**CredentialTypeVersion**](CredentialTypeVersion.md) |  | [optional] 
+**Version** | Pointer to [**CredentialTypeVersionNumber**](CredentialTypeVersionNumber.md) |  | [optional] 
 
 ## Methods
 
@@ -454,20 +454,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetVersion
 
-`func (o *CredentialType) GetVersion() CredentialTypeVersion`
+`func (o *CredentialType) GetVersion() CredentialTypeVersionNumber`
 
 GetVersion returns the Version field if non-nil, zero value otherwise.
 
 ### GetVersionOk
 
-`func (o *CredentialType) GetVersionOk() (*CredentialTypeVersion, bool)`
+`func (o *CredentialType) GetVersionOk() (*CredentialTypeVersionNumber, bool)`
 
 GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersion
 
-`func (o *CredentialType) SetVersion(v CredentialTypeVersion)`
+`func (o *CredentialType) SetVersion(v CredentialTypeVersionNumber)`
 
 SetVersion sets Version field to given value.
 
