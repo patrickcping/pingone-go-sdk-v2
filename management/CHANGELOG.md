@@ -1,3 +1,7 @@
+# v0.76.0 (Unreleased)
+
+* **Enhancement** Added `account_created`, `account_updated`, `password_change_admin`, `password_change_user`, `password_recovery_new`, and `verification_code_new` notification template names to align with the API.
+
 # v0.75.0 (2026-09-29)
 
 * **Enhancement** Added `PING_ONE_PAM` and `IDENTITY_CLOUD` to `EnumProductType` to align with the API.

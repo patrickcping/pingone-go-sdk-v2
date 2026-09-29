@@ -20,6 +20,8 @@ type EnumTemplateName string
 
 // List of EnumTemplateName
 const (
+	ENUMTEMPLATENAME_ACCOUNT_CREATED            EnumTemplateName = "account_created"
+	ENUMTEMPLATENAME_ACCOUNT_UPDATED            EnumTemplateName = "account_updated"
 	ENUMTEMPLATENAME_CREDENTIAL_ISSUED          EnumTemplateName = "credential_issued"
 	ENUMTEMPLATENAME_CREDENTIAL_REVOKED         EnumTemplateName = "credential_revoked"
 	ENUMTEMPLATENAME_CREDENTIAL_UPDATED         EnumTemplateName = "credential_updated"
@@ -32,14 +34,20 @@ const (
 	ENUMTEMPLATENAME_GENERAL                    EnumTemplateName = "general"
 	ENUMTEMPLATENAME_ID_VERIFICATION            EnumTemplateName = "id_verification"
 	ENUMTEMPLATENAME_NEW_DEVICE_PAIRED          EnumTemplateName = "new_device_paired"
+	ENUMTEMPLATENAME_PASSWORD_CHANGE_ADMIN      EnumTemplateName = "password_change_admin"
+	ENUMTEMPLATENAME_PASSWORD_CHANGE_USER       EnumTemplateName = "password_change_user"
 	ENUMTEMPLATENAME_RECOVERY_CODE_TEMPLATE     EnumTemplateName = "recovery_code_template"
+	ENUMTEMPLATENAME_PASSWORD_RECOVERY_NEW      EnumTemplateName = "password_recovery_new"
 	ENUMTEMPLATENAME_STRONG_AUTHENTICATION      EnumTemplateName = "strong_authentication"
 	ENUMTEMPLATENAME_TRANSACTION                EnumTemplateName = "transaction"
 	ENUMTEMPLATENAME_VERIFICATION_CODE_TEMPLATE EnumTemplateName = "verification_code_template"
+	ENUMTEMPLATENAME_VERIFICATION_CODE_NEW      EnumTemplateName = "verification_code_new"
 )
 
 // All allowed values of EnumTemplateName enum
 var AllowedEnumTemplateNameEnumValues = []EnumTemplateName{
+	"account_created",
+	"account_updated",
 	"credential_issued",
 	"credential_revoked",
 	"credential_updated",
@@ -52,10 +60,14 @@ var AllowedEnumTemplateNameEnumValues = []EnumTemplateName{
 	"general",
 	"id_verification",
 	"new_device_paired",
+	"password_change_admin",
+	"password_change_user",
 	"recovery_code_template",
+	"password_recovery_new",
 	"strong_authentication",
 	"transaction",
 	"verification_code_template",
+	"verification_code_new",
 }
 
 func (v *EnumTemplateName) UnmarshalJSON(src []byte) error {
