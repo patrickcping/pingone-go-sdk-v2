@@ -573,8 +573,8 @@ components:
       enum: [SECONDS]
     EnumProductType:
       type: string
-      enum: [PING_ONE_MFA, PING_ONE_DAVINCI, PING_ONE_ORCHESTRATE, PING_ONE_RISK, PING_ONE_FRAUD, PING_ONE_PROVISIONING, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID_SDK, PING_ONE_FOR_SAAS, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE, PING_ONE_BASE, PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_ONE_ID, PING_INTELLIGENCE, PING_CENTRAL]
-      description: A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_DAVINCI, PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, and PING_CENTRAL
+      enum: [PING_ONE_MFA, PING_ONE_DAVINCI, PING_ONE_ORCHESTRATE, PING_ONE_RISK, PING_ONE_FRAUD, PING_ONE_PROVISIONING, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID_SDK, PING_ONE_FOR_SAAS, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE, PING_ONE_BASE, PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_ONE_ID, PING_INTELLIGENCE, PING_CENTRAL, PING_ONE_PAM, IDENTITY_CLOUD]
+      description: A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_DAVINCI, PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, PING_CENTRAL, PING_ONE_PAM, and IDENTITY_CLOUD
     EnumPropagationStoreConnectionStatusContentType:
       type: string
       enum: [application/vnd.pingidentity.connection.check+json]
@@ -7077,6 +7077,9 @@ components:
         description:
           type: string
           description: A string that specifies the description of the scope.
+        enableMappedClaims:
+          type: boolean
+          description: A Boolean that enables attribute mapping in scopes to control the attributes included in access tokens. If this property is not set or set to `false` (default), the access token includes all custom attribute claims. When set to `true`, the access token includes only the claims mapped in the scope.
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         schemaAttributes:
@@ -7086,7 +7089,7 @@ components:
             type: string
         mappedClaims:
           type: array
-          description: A list of custom resource attribute IDs. This property applies only for the resource with its type property set to `OPENID_CONNECT`. Moreover, this property does not display predefined OpenID Connect (OIDC) mappings, such as the `email` claim in the OIDC `email` scope or the `name` claim in the `profile` scope. You can create custom attributes, and these custom attributes can be added to `mappedClaims` and will display in the response.
+          description: A list of custom resource attribute IDs. This property applies only for the resource with its `type` property set to `OPENID_CONNECT` or `CUSTOM`. Moreover, this property does not display predefined OpenID Connect (OIDC) mappings, such as the `email` claim in the OIDC `email` scope or the `name` claim in the `profile` scope. You can create custom attributes, and these custom attributes can be added to `mappedClaims` and will display in the response.
           items:
             type: string
         createdAt:

@@ -141,6 +141,16 @@ func init() {
 			Selectable:  false,
 			Deprecated:  true,
 		},
+		{
+			APICode:     management.ENUMPRODUCTTYPE_IDENTITY_CLOUD,
+			ProductCode: "AdvancedIdentityCloud",
+			Selectable:  true,
+		},
+		{
+			APICode:     management.ENUMPRODUCTTYPE_ONE_PAM,
+			ProductCode: "Privilege",
+			Selectable:  true,
+		},
 	}
 }
 

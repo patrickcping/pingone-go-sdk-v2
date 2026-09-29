@@ -56,6 +56,15 @@ var (
 			repl:              `management`,
 		},
 
+		// Product type enum: generator no longer strips the common enum value
+		// prefix (removeEnumValuePrefix=false), so restore the legacy constant
+		// names that predate the PING_/IDENTITY_CLOUD prefix split.
+		{
+			fileSelectPattern: "model_enum_product_type.go",
+			pattern:           `ENUMPRODUCTTYPE_PING_`,
+			repl:              `ENUMPRODUCTTYPE_`,
+		},
+
 		// Password policy model
 		{
 			fileSelectPattern: "model_password_policy_min_characters.go",

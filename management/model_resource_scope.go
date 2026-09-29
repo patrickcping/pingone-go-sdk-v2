@@ -27,11 +27,13 @@ type ResourceScope struct {
 	// A string that specifies the resource scope name.
 	Name string `json:"name"`
 	// A string that specifies the description of the scope.
-	Description *string            `json:"description,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Description *string `json:"description,omitempty"`
+	// A Boolean that enables attribute mapping in scopes to control the attributes included in access tokens. If this property is not set or set to `false` (default), the access token includes all custom attribute claims. When set to `true`, the access token includes only the claims mapped in the scope.
+	EnableMappedClaims *bool              `json:"enableMappedClaims,omitempty"`
+	Environment        *ObjectEnvironment `json:"environment,omitempty"`
 	// An array that specifies the user schema attributes that can be read or updated for the specified PingOne access control scope. The value is an array of schema attribute paths (such as `username`, `name.given`, `shirtSize`) that the scope controls. This property is supported only for the `p1:read:user`, `p1:update:user` and `p1:read:user:{suffix}` and `p1:update:user:{suffix}` scopes. No other PingOne platform scopes allow this behavior. Any attributes not listed in the attribute array are excluded from the read or update action. The wildcard path (*) in the array includes all attributes and cannot be used in conjunction with any other user schema attribute paths
 	SchemaAttributes []string `json:"schemaAttributes,omitempty"`
-	// A list of custom resource attribute IDs. This property applies only for the resource with its type property set to `OPENID_CONNECT`. Moreover, this property does not display predefined OpenID Connect (OIDC) mappings, such as the `email` claim in the OIDC `email` scope or the `name` claim in the `profile` scope. You can create custom attributes, and these custom attributes can be added to `mappedClaims` and will display in the response.
+	// A list of custom resource attribute IDs. This property applies only for the resource with its `type` property set to `OPENID_CONNECT` or `CUSTOM`. Moreover, this property does not display predefined OpenID Connect (OIDC) mappings, such as the `email` claim in the OIDC `email` scope or the `name` claim in the `profile` scope. You can create custom attributes, and these custom attributes can be added to `mappedClaims` and will display in the response.
 	MappedClaims []string `json:"mappedClaims,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -207,6 +209,38 @@ func (o *ResourceScope) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ResourceScope) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEnableMappedClaims returns the EnableMappedClaims field value if set, zero value otherwise.
+func (o *ResourceScope) GetEnableMappedClaims() bool {
+	if o == nil || IsNil(o.EnableMappedClaims) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableMappedClaims
+}
+
+// GetEnableMappedClaimsOk returns a tuple with the EnableMappedClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceScope) GetEnableMappedClaimsOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableMappedClaims) {
+		return nil, false
+	}
+	return o.EnableMappedClaims, true
+}
+
+// HasEnableMappedClaims returns a boolean if a field has been set.
+func (o *ResourceScope) HasEnableMappedClaims() bool {
+	if o != nil && !IsNil(o.EnableMappedClaims) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableMappedClaims gets a reference to the given bool and assigns it to the EnableMappedClaims field.
+func (o *ResourceScope) SetEnableMappedClaims(v bool) {
+	o.EnableMappedClaims = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -391,6 +425,9 @@ func (o ResourceScope) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EnableMappedClaims) {
+		toSerialize["enableMappedClaims"] = o.EnableMappedClaims
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment

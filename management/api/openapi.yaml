@@ -38283,7 +38283,7 @@ components:
         \ The PING_ONE_BASE product represents the default set of services that an\
         \ environment can use on the PingOne platform. Options for other Ping Identity\
         \ products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE,\
-        \ PING_ID, PING_INTELLIGENCE, and PING_CENTRAL"
+        \ PING_ID, PING_INTELLIGENCE, PING_CENTRAL, PING_ONE_PAM, and IDENTITY_CLOUD"
       enum:
       - PING_ONE_MFA
       - PING_ONE_DAVINCI
@@ -38308,6 +38308,8 @@ components:
       - PING_ONE_ID
       - PING_INTELLIGENCE
       - PING_CENTRAL
+      - PING_ONE_PAM
+      - IDENTITY_CLOUD
       type: string
     EnumPropagationStoreConnectionStatusContentType:
       enum:
@@ -42339,6 +42341,7 @@ components:
               id: id
             name: name
             description: description
+            enableMappedClaims: true
             id: id
             mappedClaims:
             - mappedClaims
@@ -42357,6 +42360,7 @@ components:
               id: id
             name: name
             description: description
+            enableMappedClaims: true
             id: id
             mappedClaims:
             - mappedClaims
@@ -46743,6 +46747,7 @@ components:
           id: id
         name: name
         description: description
+        enableMappedClaims: true
         id: id
         mappedClaims:
         - mappedClaims
@@ -46769,6 +46774,13 @@ components:
         description:
           description: A string that specifies the description of the scope.
           type: string
+        enableMappedClaims:
+          description: "A Boolean that enables attribute mapping in scopes to control\
+            \ the attributes included in access tokens. If this property is not set\
+            \ or set to `false` (default), the access token includes all custom attribute\
+            \ claims. When set to `true`, the access token includes only the claims\
+            \ mapped in the scope."
+          type: boolean
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         schemaAttributes:
@@ -46787,12 +46799,12 @@ components:
           type: array
         mappedClaims:
           description: "A list of custom resource attribute IDs. This property applies\
-            \ only for the resource with its type property set to `OPENID_CONNECT`.\
-            \ Moreover, this property does not display predefined OpenID Connect (OIDC)\
-            \ mappings, such as the `email` claim in the OIDC `email` scope or the\
-            \ `name` claim in the `profile` scope. You can create custom attributes,\
-            \ and these custom attributes can be added to `mappedClaims` and will\
-            \ display in the response."
+            \ only for the resource with its `type` property set to `OPENID_CONNECT`\
+            \ or `CUSTOM`. Moreover, this property does not display predefined OpenID\
+            \ Connect (OIDC) mappings, such as the `email` claim in the OIDC `email`\
+            \ scope or the `name` claim in the `profile` scope. You can create custom\
+            \ attributes, and these custom attributes can be added to `mappedClaims`\
+            \ and will display in the response."
           items:
             type: string
           type: array
@@ -51428,6 +51440,7 @@ components:
             id: id
           name: name
           description: description
+          enableMappedClaims: true
           id: id
           mappedClaims:
           - mappedClaims
@@ -51446,6 +51459,7 @@ components:
             id: id
           name: name
           description: description
+          enableMappedClaims: true
           id: id
           mappedClaims:
           - mappedClaims
