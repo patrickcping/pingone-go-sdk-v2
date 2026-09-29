@@ -1,3 +1,7 @@
+# v0.75.1 (2026-09-29)
+
+* **Bug** Added support for tag values needed to enable `PING_ONE_PAM` product type.
+
 # v0.75.0 (2026-09-29)
 
 * **Enhancement** Added `PING_ONE_PAM` and `IDENTITY_CLOUD` to `EnumProductType` to align with the API.

@@ -37444,6 +37444,8 @@ components:
     EnumBillOfMaterialsProductTags:
       enum:
       - DAVINCI_MINIMAL
+      - AUTHENTICATION_MODE_AGENT
+      - AUTHENTICATION_MODE_AGENTLESS
       type: string
     EnumBrandingLogoType:
       description: The type of format used for the image. Options are IMAGE and NONE.

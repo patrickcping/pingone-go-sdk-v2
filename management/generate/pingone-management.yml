@@ -151,7 +151,7 @@ components:
       description: A string that specifies the mapping type of the attribute. Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved attributes managed by the API and cannot be removed. Attribute values for these mapping types can be updated. The CUSTOM mapping type is for user-defined attributes. Attributes of this type can be updated and deleted.
     EnumBillOfMaterialsProductTags:
       type: string
-      enum: [DAVINCI_MINIMAL]
+      enum: [DAVINCI_MINIMAL, AUTHENTICATION_MODE_AGENT, AUTHENTICATION_MODE_AGENTLESS]
     EnumBrandingLogoType:
       type: string
       enum: [IMAGE, NONE]
