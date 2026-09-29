@@ -1,8 +1,12 @@
-# v0.74.0 (Unreleased)
+# v0.75.0 (Unreleased)
+
+* **Enhancement** Added `PING_ONE_PAM` and `IDENTITY_CLOUD` to `EnumProductType` to align with the API.
+
+# v0.74.0 (2026-09-25)
 
 * **Enhancement** Added `enableMappedClaims` to the `ResourceScope` data model to align with the API, and updated the `mappedClaims` description to include the `CUSTOM` resource type.
 
-# v0.73.0 (Unreleased)
+# v0.73.0 (2026-09-24)
 
 * **Enhancement** Added `OAUTH2` and `CUSTOM_HEADER` to the `EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod` data type, and added the `authUrl`, `grantType`, `assertion`, `clientId`, `clientSecret`, `scopes`, `headerName`, `headerValue`, and `clientAuthenticationMethod` properties to the phone delivery settings custom provider authentication data model to align with the API.
 
