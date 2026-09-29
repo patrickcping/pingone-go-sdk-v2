@@ -1,4 +1,4 @@
-# v0.75.0 (Unreleased)
+# v0.75.0 (2026-09-29)
 
 * **Enhancement** Added `PING_ONE_PAM` and `IDENTITY_CLOUD` to `EnumProductType` to align with the API.
 
