@@ -38683,6 +38683,8 @@ components:
     EnumTemplateName:
       description: The name of the template
       enum:
+      - account_created
+      - account_updated
       - credential_issued
       - credential_revoked
       - credential_updated
@@ -38695,10 +38697,14 @@ components:
       - general
       - id_verification
       - new_device_paired
+      - password_change_admin
+      - password_change_user
       - recovery_code_template
+      - password_recovery_new
       - strong_authentication
       - transaction
       - verification_code_template
+      - verification_code_new
       type: string
     EnumTrustedEmailStatus:
       description: A string that specifies the status of the trusted email address.
@@ -42650,10 +42656,14 @@ components:
       type: object
     EnvironmentStatus:
       example:
+        license:
+          id: id
         status: null
       properties:
         status:
           $ref: '#/components/schemas/EnumEnvironmentStatus'
+        license:
+          $ref: '#/components/schemas/EnvironmentStatus_license'
       required:
       - status
       type: object
@@ -51874,6 +51884,19 @@ components:
       oneOf:
       - $ref: '#/components/schemas/EnumRegionCode'
       - type: string
+    EnvironmentStatus_license:
+      description: The PingOne license to assign to the environment when setting the
+        status to `ACTIVE`. This property is only required when setting the status
+        to `ACTIVE`.
+      example:
+        id: id
+      properties:
+        id:
+          description: The id of the license.
+          type: string
+      required:
+      - id
+      type: object
     FlowPolicy_application:
       description: An object that specifies the application information associated
         with the flow policy resource.

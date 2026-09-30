@@ -39,10 +39,14 @@ type DeviceAuthenticationPolicyPingOneMFA struct {
 	// Deprecated
 	ForSignOnPolicy bool `json:"forSignOnPolicy"`
 	// When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set `ignoreUserLock` to `true` if you want PingOne to skip this account lock check.
-	IgnoreUserLock      *bool                                                `json:"ignoreUserLock,omitempty"`
-	NotificationsPolicy *DeviceAuthenticationPolicyCommonNotificationsPolicy `json:"notificationsPolicy,omitempty"`
-	OathToken           *DeviceAuthenticationPolicyOathToken                 `json:"oathToken,omitempty"`
-	RememberMe          *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
+	IgnoreUserLock *bool `json:"ignoreUserLock,omitempty"`
+	// Set `blockDisabledUsers` to `true` if you want to add an additional security measure by ensuring that users whose accounts have been disabled cannot authenticate with MFA.
+	BlockDisabledUsers *bool `json:"blockDisabledUsers,omitempty"`
+	// By default, if a user's MFA setting has been set to disabled, they are not able to authenticate. Set `blockUsersWithDisabledMfa` to `false` if you want to allow users to bypass MFA if their MFA setting has been disabled.
+	BlockUsersWithDisabledMfa *bool                                                `json:"blockUsersWithDisabledMfa,omitempty"`
+	NotificationsPolicy       *DeviceAuthenticationPolicyCommonNotificationsPolicy `json:"notificationsPolicy,omitempty"`
+	OathToken                 *DeviceAuthenticationPolicyOathToken                 `json:"oathToken,omitempty"`
+	RememberMe                *DeviceAuthenticationPolicyCommonRememberMe          `json:"rememberMe,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time                               `json:"updatedAt,omitempty"`
 	WhatsApp  *DeviceAuthenticationPolicyOfflineDevice `json:"whatsApp,omitempty"`
@@ -492,6 +496,70 @@ func (o *DeviceAuthenticationPolicyPingOneMFA) SetIgnoreUserLock(v bool) {
 	o.IgnoreUserLock = &v
 }
 
+// GetBlockDisabledUsers returns the BlockDisabledUsers field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetBlockDisabledUsers() bool {
+	if o == nil || IsNil(o.BlockDisabledUsers) {
+		var ret bool
+		return ret
+	}
+	return *o.BlockDisabledUsers
+}
+
+// GetBlockDisabledUsersOk returns a tuple with the BlockDisabledUsers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetBlockDisabledUsersOk() (*bool, bool) {
+	if o == nil || IsNil(o.BlockDisabledUsers) {
+		return nil, false
+	}
+	return o.BlockDisabledUsers, true
+}
+
+// HasBlockDisabledUsers returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) HasBlockDisabledUsers() bool {
+	if o != nil && !IsNil(o.BlockDisabledUsers) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockDisabledUsers gets a reference to the given bool and assigns it to the BlockDisabledUsers field.
+func (o *DeviceAuthenticationPolicyPingOneMFA) SetBlockDisabledUsers(v bool) {
+	o.BlockDisabledUsers = &v
+}
+
+// GetBlockUsersWithDisabledMfa returns the BlockUsersWithDisabledMfa field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetBlockUsersWithDisabledMfa() bool {
+	if o == nil || IsNil(o.BlockUsersWithDisabledMfa) {
+		var ret bool
+		return ret
+	}
+	return *o.BlockUsersWithDisabledMfa
+}
+
+// GetBlockUsersWithDisabledMfaOk returns a tuple with the BlockUsersWithDisabledMfa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) GetBlockUsersWithDisabledMfaOk() (*bool, bool) {
+	if o == nil || IsNil(o.BlockUsersWithDisabledMfa) {
+		return nil, false
+	}
+	return o.BlockUsersWithDisabledMfa, true
+}
+
+// HasBlockUsersWithDisabledMfa returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyPingOneMFA) HasBlockUsersWithDisabledMfa() bool {
+	if o != nil && !IsNil(o.BlockUsersWithDisabledMfa) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockUsersWithDisabledMfa gets a reference to the given bool and assigns it to the BlockUsersWithDisabledMfa field.
+func (o *DeviceAuthenticationPolicyPingOneMFA) SetBlockUsersWithDisabledMfa(v bool) {
+	o.BlockUsersWithDisabledMfa = &v
+}
+
 // GetNotificationsPolicy returns the NotificationsPolicy field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyPingOneMFA) GetNotificationsPolicy() DeviceAuthenticationPolicyCommonNotificationsPolicy {
 	if o == nil || IsNil(o.NotificationsPolicy) {
@@ -690,6 +758,12 @@ func (o DeviceAuthenticationPolicyPingOneMFA) ToMap() (map[string]interface{}, e
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
 	if !IsNil(o.IgnoreUserLock) {
 		toSerialize["ignoreUserLock"] = o.IgnoreUserLock
+	}
+	if !IsNil(o.BlockDisabledUsers) {
+		toSerialize["blockDisabledUsers"] = o.BlockDisabledUsers
+	}
+	if !IsNil(o.BlockUsersWithDisabledMfa) {
+		toSerialize["blockUsersWithDisabledMfa"] = o.BlockUsersWithDisabledMfa
 	}
 	if !IsNil(o.NotificationsPolicy) {
 		toSerialize["notificationsPolicy"] = o.NotificationsPolicy

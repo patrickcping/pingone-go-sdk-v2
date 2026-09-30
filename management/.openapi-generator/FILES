@@ -398,6 +398,7 @@ docs/EnvironmentLicense.md
 docs/EnvironmentOrganization.md
 docs/EnvironmentRegion.md
 docs/EnvironmentStatus.md
+docs/EnvironmentStatusLicense.md
 docs/EnvironmentsApi.md
 docs/FlowPoliciesApi.md
 docs/FlowPolicy.md
@@ -1079,6 +1080,7 @@ model_environment_license.go
 model_environment_organization.go
 model_environment_region.go
 model_environment_status.go
+model_environment_status_license.go
 model_flow_policy.go
 model_flow_policy_application.go
 model_flow_policy_assignment.go
