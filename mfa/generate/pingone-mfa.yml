@@ -589,6 +589,12 @@ components:
         ignoreUserLock:
           type: boolean
           description: When applying an MFA policy, PingOne ordinarily checks if a user account is locked, and if so, prevents the user from authenticating. Set `ignoreUserLock` to `true` if you want PingOne to skip this account lock check.
+        blockDisabledUsers:
+          type: boolean
+          description: Set `blockDisabledUsers` to `true` if you want to add an additional security measure by ensuring that users whose accounts have been disabled cannot authenticate with MFA.
+        blockUsersWithDisabledMfa:
+          type: boolean
+          description: By default, if a user's MFA setting has been set to disabled, they are not able to authenticate. Set `blockUsersWithDisabledMfa` to `false` if you want to allow users to bypass MFA if their MFA setting has been disabled.
         notificationsPolicy:
           type: object
           properties:
