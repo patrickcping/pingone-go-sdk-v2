@@ -91,7 +91,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "pingtools PingOne-GOLANG-SDK-credentials/0.12.1",
+		UserAgent:     "pingtools PingOne-GOLANG-SDK-credentials/0.13.0",
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
