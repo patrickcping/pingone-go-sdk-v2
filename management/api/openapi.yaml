@@ -38681,6 +38681,8 @@ components:
     EnumTemplateName:
       description: The name of the template
       enum:
+      - account_created
+      - account_updated
       - credential_issued
       - credential_revoked
       - credential_updated
@@ -38693,10 +38695,14 @@ components:
       - general
       - id_verification
       - new_device_paired
+      - password_change_admin
+      - password_change_user
       - recovery_code_template
+      - password_recovery_new
       - strong_authentication
       - transaction
       - verification_code_template
+      - verification_code_new
       type: string
     EnumTrustedEmailStatus:
       description: A string that specifies the status of the trusted email address.

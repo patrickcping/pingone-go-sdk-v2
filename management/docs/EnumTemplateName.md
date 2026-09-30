@@ -3,6 +3,10 @@
 ## Enum
 
 
+* `ACCOUNT_CREATED` (value: `"account_created"`)
+
+* `ACCOUNT_UPDATED` (value: `"account_updated"`)
+
 * `CREDENTIAL_ISSUED` (value: `"credential_issued"`)
 
 * `CREDENTIAL_REVOKED` (value: `"credential_revoked"`)
@@ -27,13 +31,21 @@
 
 * `NEW_DEVICE_PAIRED` (value: `"new_device_paired"`)
 
+* `PASSWORD_CHANGE_ADMIN` (value: `"password_change_admin"`)
+
+* `PASSWORD_CHANGE_USER` (value: `"password_change_user"`)
+
 * `RECOVERY_CODE_TEMPLATE` (value: `"recovery_code_template"`)
+
+* `PASSWORD_RECOVERY_NEW` (value: `"password_recovery_new"`)
 
 * `STRONG_AUTHENTICATION` (value: `"strong_authentication"`)
 
 * `TRANSACTION` (value: `"transaction"`)
 
 * `VERIFICATION_CODE_TEMPLATE` (value: `"verification_code_template"`)
+
+* `VERIFICATION_CODE_NEW` (value: `"verification_code_new"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
