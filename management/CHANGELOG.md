@@ -1,3 +1,7 @@
+# v0.76.0 (2026-09-30)
+
+* **Enhancement** Added support for the `license` field when updating an environment's status, which is required when re-activating a production environment that is pending deletion.
+
 # v0.75.0 (2026-09-29)
 
 * **Enhancement** Added `PING_ONE_PAM` and `IDENTITY_CLOUD` to `EnumProductType` to align with the API.

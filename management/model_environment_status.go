@@ -19,7 +19,8 @@ var _ MappedNullable = &EnvironmentStatus{}
 
 // EnvironmentStatus struct for EnvironmentStatus
 type EnvironmentStatus struct {
-	Status EnumEnvironmentStatus `json:"status"`
+	Status  EnumEnvironmentStatus     `json:"status"`
+	License *EnvironmentStatusLicense `json:"license,omitempty"`
 }
 
 // NewEnvironmentStatus instantiates a new EnvironmentStatus object
@@ -64,6 +65,38 @@ func (o *EnvironmentStatus) SetStatus(v EnumEnvironmentStatus) {
 	o.Status = v
 }
 
+// GetLicense returns the License field value if set, zero value otherwise.
+func (o *EnvironmentStatus) GetLicense() EnvironmentStatusLicense {
+	if o == nil || IsNil(o.License) {
+		var ret EnvironmentStatusLicense
+		return ret
+	}
+	return *o.License
+}
+
+// GetLicenseOk returns a tuple with the License field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatus) GetLicenseOk() (*EnvironmentStatusLicense, bool) {
+	if o == nil || IsNil(o.License) {
+		return nil, false
+	}
+	return o.License, true
+}
+
+// HasLicense returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasLicense() bool {
+	if o != nil && !IsNil(o.License) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicense gets a reference to the given EnvironmentStatusLicense and assigns it to the License field.
+func (o *EnvironmentStatus) SetLicense(v EnvironmentStatusLicense) {
+	o.License = &v
+}
+
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -75,6 +108,9 @@ func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["status"] = o.Status
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
 	return toSerialize, nil
 }
 

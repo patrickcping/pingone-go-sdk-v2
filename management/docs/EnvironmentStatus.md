@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | [**EnumEnvironmentStatus**](EnumEnvironmentStatus.md) |  | 
+**License** | Pointer to [**EnvironmentStatusLicense**](EnvironmentStatusLicense.md) |  | [optional] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+
+### GetLicense
+
+`func (o *EnvironmentStatus) GetLicense() EnvironmentStatusLicense`
+
+GetLicense returns the License field if non-nil, zero value otherwise.
+
+### GetLicenseOk
+
+`func (o *EnvironmentStatus) GetLicenseOk() (*EnvironmentStatusLicense, bool)`
+
+GetLicenseOk returns a tuple with the License field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicense
+
+`func (o *EnvironmentStatus) SetLicense(v EnvironmentStatusLicense)`
+
+SetLicense sets License field to given value.
+
+### HasLicense
+
+`func (o *EnvironmentStatus) HasLicense() bool`
+
+HasLicense returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
