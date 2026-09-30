@@ -1,5 +1,6 @@
-# v0.76.0 (Unreleased)
+# v0.76.0 (2026-09-30)
 
+* **Enhancement** Added support for the `license` field when updating an environment's status, which is required when re-activating a production environment that is pending deletion.
 * **Enhancement** Added `account_created`, `account_updated`, `password_change_admin`, `password_change_user`, `password_recovery_new`, and `verification_code_new` notification template names to align with the API.
 
 # v0.75.0 (2026-09-29)

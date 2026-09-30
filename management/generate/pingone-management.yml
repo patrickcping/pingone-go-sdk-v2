@@ -2884,6 +2884,15 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/EnumEnvironmentStatus'
+        license:
+          type: object
+          description: The PingOne license to assign to the environment when setting the status to `ACTIVE`. This property is only required when setting the status to `ACTIVE`.
+          properties:
+            id:
+              type: string
+              description: The id of the license.
+          required:
+            - id
       required:
         - status
     FlowPolicy:
