@@ -1,3 +1,12 @@
+# Release (2026-09-30)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.15.0
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.70.0 => [v0.76.0](./management/CHANGELOG.md)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.25.1 => [v0.26.0](./mfa/CHANGELOG.md)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.12.1 => [v0.13.0](./credentials/CHANGELOG.md)
+  * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.21.1 => [v0.22.0](./risk/CHANGELOG.md)
+  * Add new product types to product mapping list
+
 # Release (2026-04-21)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.14.14
