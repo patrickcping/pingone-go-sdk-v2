@@ -28,6 +28,9 @@ vendor
 .DS_Store
 bin
 
+# Staging directory for SDK generation (scripts/generate-module.sh)
+.generate/
+
 ### Go ###
 # Binaries for programs and plugins
 *.exe

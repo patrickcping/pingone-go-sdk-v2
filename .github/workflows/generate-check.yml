@@ -60,23 +60,19 @@ jobs:
       run: |
         make build
 
-#   generate:
-#     name: generate
-#     needs: [build]
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v6
-#       - uses: actions/setup-go@v6
-#         with:
-#           go-version-file: 'go.mod'
-#           cache: true
-      
-#       - run: make generate
+  generate:
+    name: generation idempotency
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
 
-#       - name: git diff
-#         run: |
-#           git diff --compact-summary --exit-code || \
-#             (echo; echo "Unexpected difference in directories after code generation. Run 'make generate' command and commit."; exit 1)
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+          cache: true
+
+      - run: make generate-check
 
   version:
     name: version check

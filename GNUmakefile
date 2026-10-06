@@ -48,9 +48,16 @@ generate: generate-core generate-modules
 generate-core:
 	@./scripts/generate.sh $(VERSION)
 
+# Only regenerates modules whose spec/tooling changed. Override with
+# MODULES="mfa" or ALL=1; see scripts/generate-all.sh for all knobs.
 generate-modules:
-	@./scripts/generate-all.sh $(OWNER) $(REPO)
+	@MODULES="$(MODULES)" ALL=$(ALL) BASE_REF=$(BASE_REF) ./scripts/generate-all.sh
+
+# CI target: fails if any module's committed output differs from a fresh
+# generation. Run after changing specs or generation tooling.
+generate-check:
+	@ALL=1 CHECK=1 ./scripts/generate-all.sh
 
 devcheck: build vet lint gosec test testacc
-	
-.PHONY: build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate generate-core generate-modules securitycheck devcheck
+
+.PHONY: build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate generate-core generate-modules generate-check securitycheck devcheck

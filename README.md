@@ -82,6 +82,16 @@ Each package is generated from an underlying OpenAPI 3 specification.  Currently
 * [**risk** OpenAPI 3 Specification file](./risk/generate/pingone-risk.yml)
 * [**verify** OpenAPI 3 Specification file](./verify/generate/pingone-verify.yml)
 
-Once this file has been updated, from the module directory itself run `make generate`.  This will generate the required `api_*.go` files, `model_*.go` files and associated documentation.
+Once this file has been updated:
+
+1. Bump the module version in `./<<module>>/.version` **before** generating - the version is baked into the generated `configuration.go` user agent and README at generation time.
+2. Add an entry to `./<<module>>/CHANGELOG.md`.
+3. From the module directory itself, run `make generate`.  This regenerates the required `api_*.go` files, `model_*.go` files and associated documentation.  Generation runs in a staging directory and only copies back the files that actually changed, so no manual cleanup is required.  Files that the generator no longer produces (e.g. removed or renamed models) are reported but never deleted, as removing them would be a breaking change.
+
+The `./<<module>>/api/openapi.yaml` file is generator output and must not be edited directly.
+
+From the repository root, `make generate` only regenerates modules whose specification or generation tooling changed relative to `main`.  Override with `MODULES="mfa"`, `ALL=1`, or `BASE_REF=<ref>`; see `./scripts/generate-all.sh` for all options.  `make generate-check` (used in CI) fails if any committed module output differs from a fresh generation, so generation is verified to be idempotent on every pull request.
+
+Generation requires Docker and Go.  `goimports` is pinned as a Go tool in the root `go.mod` and is resolved automatically.
 
 Before raising a Pull request, the resulting code can be checked using the `make devcheck` command.  This will build, lint and verify the code.
