@@ -26,6 +26,12 @@ type NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication struct 
 	Username *string `json:"username,omitempty"`
 	// If you specified `BASIC` as the authentication method, use password to provide the password for authenticating with the email provider.
 	Password *string `json:"password,omitempty"`
+	// If you specified `OAUTH2` as the authentication method, use authUrl to provide the URL of the authorization server that issues the access token for the email provider.
+	AuthUrl *string `json:"authUrl,omitempty"`
+	// If you specified `OAUTH2` as the authentication method, use clientId to provide the client ID used to request the access token from the authorization server.
+	ClientId *string `json:"clientId,omitempty"`
+	// If you specified `OAUTH2` as the authentication method, use clientSecret to provide the client secret used to request the access token from the authorization server.
+	ClientSecret *string `json:"clientSecret,omitempty"`
 }
 
 // NewNotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication instantiates a new NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication object
@@ -166,6 +172,102 @@ func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) Se
 	o.Password = &v
 }
 
+// GetAuthUrl returns the AuthUrl field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetAuthUrl() string {
+	if o == nil || IsNil(o.AuthUrl) {
+		var ret string
+		return ret
+	}
+	return *o.AuthUrl
+}
+
+// GetAuthUrlOk returns a tuple with the AuthUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetAuthUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthUrl) {
+		return nil, false
+	}
+	return o.AuthUrl, true
+}
+
+// HasAuthUrl returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasAuthUrl() bool {
+	if o != nil && !IsNil(o.AuthUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthUrl gets a reference to the given string and assigns it to the AuthUrl field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetAuthUrl(v string) {
+	o.AuthUrl = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientId() string {
+	if o == nil || IsNil(o.ClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientId) {
+		return nil, false
+	}
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasClientId() bool {
+	if o != nil && !IsNil(o.ClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetClientId(v string) {
+	o.ClientId = &v
+}
+
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientSecret() string {
+	if o == nil || IsNil(o.ClientSecret) {
+		var ret string
+		return ret
+	}
+	return *o.ClientSecret
+}
+
+// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientSecret) {
+		return nil, false
+	}
+	return o.ClientSecret, true
+}
+
+// HasClientSecret returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasClientSecret() bool {
+	if o != nil && !IsNil(o.ClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetClientSecret(v string) {
+	o.ClientSecret = &v
+}
+
 func (o NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -185,6 +287,15 @@ func (o NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) ToM
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.AuthUrl) {
+		toSerialize["authUrl"] = o.AuthUrl
+	}
+	if !IsNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !IsNil(o.ClientSecret) {
+		toSerialize["clientSecret"] = o.ClientSecret
 	}
 	return toSerialize, nil
 }

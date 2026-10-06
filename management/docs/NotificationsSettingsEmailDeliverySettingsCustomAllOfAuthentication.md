@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **AuthToken** | Pointer to **string** | If you specified &#x60;BEARER&#x60; as the authentication method, use authToken to provide the bearer token to use. | [optional] 
 **Username** | Pointer to **string** | If you specified &#x60;BASIC&#x60; as the authentication method, use username to provide the username for authenticating with the email provider. | [optional] 
 **Password** | Pointer to **string** | If you specified &#x60;BASIC&#x60; as the authentication method, use password to provide the password for authenticating with the email provider. | [optional] 
+**AuthUrl** | Pointer to **string** | If you specified &#x60;OAUTH2&#x60; as the authentication method, use authUrl to provide the URL of the authorization server that issues the access token for the email provider. | [optional] 
+**ClientId** | Pointer to **string** | If you specified &#x60;OAUTH2&#x60; as the authentication method, use clientId to provide the client ID used to request the access token from the authorization server. | [optional] 
+**ClientSecret** | Pointer to **string** | If you specified &#x60;OAUTH2&#x60; as the authentication method, use clientSecret to provide the client secret used to request the access token from the authorization server. | [optional] 
 
 ## Methods
 
@@ -122,6 +125,81 @@ SetPassword sets Password field to given value.
 `func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetAuthUrl
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetAuthUrl() string`
+
+GetAuthUrl returns the AuthUrl field if non-nil, zero value otherwise.
+
+### GetAuthUrlOk
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetAuthUrlOk() (*string, bool)`
+
+GetAuthUrlOk returns a tuple with the AuthUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthUrl
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetAuthUrl(v string)`
+
+SetAuthUrl sets AuthUrl field to given value.
+
+### HasAuthUrl
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasAuthUrl() bool`
+
+HasAuthUrl returns a boolean if a field has been set.
+
+### GetClientId
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+
+### GetClientSecret
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
+
+### HasClientSecret
+
+`func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasClientSecret() bool`
+
+HasClientSecret returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

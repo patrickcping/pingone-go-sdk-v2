@@ -15,19 +15,21 @@ import (
 	"fmt"
 )
 
-// EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod Use the value `BASIC` if your authentication with the email provider uses a username and password. Use `BEARER` if your authentication is based on the use of a bearer token.
+// EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod Use the value `BASIC` if your authentication with the email provider uses a username and password. Use `BEARER` if your authentication is based on the use of a bearer token. Use `OAUTH2` if your authentication is based on the OAuth 2.0 client credentials grant.
 type EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod string
 
 // List of EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod
 const (
 	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONMETHOD_BASIC  EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod = "BASIC"
 	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONMETHOD_BEARER EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod = "BEARER"
+	ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONMETHOD_OAUTH2 EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod = "OAUTH2"
 )
 
 // All allowed values of EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod enum
 var AllowedEnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethodEnumValues = []EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod{
 	"BASIC",
 	"BEARER",
+	"OAUTH2",
 }
 
 func (v *EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod) UnmarshalJSON(src []byte) error {

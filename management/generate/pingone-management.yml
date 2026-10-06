@@ -449,8 +449,8 @@ components:
       enum: [IOS, GOOGLE]
     EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod:
       type: string
-      description: Use the value `BASIC` if your authentication with the email provider uses a username and password. Use `BEARER` if your authentication is based on the use of a bearer token.
-      enum: [BASIC, BEARER]
+      description: Use the value `BASIC` if your authentication with the email provider uses a username and password. Use `BEARER` if your authentication is based on the use of a bearer token. Use `OAUTH2` if your authentication is based on the OAuth 2.0 client credentials grant.
+      enum: [BASIC, BEARER, OAUTH2]
     EnumNotificationsSettingsEmailDeliverySettingsProtocol:
       type: string
       enum: [HTTP, SMTP, SMTPS]
@@ -5525,6 +5525,16 @@ components:
                   type: string
                   format: password
                   description: If you specified `BASIC` as the authentication method, use password to provide the password for authenticating with the email provider.
+                authUrl:
+                  type: string
+                  description: If you specified `OAUTH2` as the authentication method, use authUrl to provide the URL of the authorization server that issues the access token for the email provider.
+                clientId:
+                  type: string
+                  description: If you specified `OAUTH2` as the authentication method, use clientId to provide the client ID used to request the access token from the authorization server.
+                clientSecret:
+                  type: string
+                  format: password
+                  description: If you specified `OAUTH2` as the authentication method, use clientSecret to provide the client secret used to request the access token from the authorization server.
               required:
                 - method
             from:
