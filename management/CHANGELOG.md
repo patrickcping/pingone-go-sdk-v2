@@ -1,3 +1,8 @@
+# v0.77.0 (Unreleased)
+
+* **Enhancement** Added `OAUTH2` and `CUSTOM_HEADER` to the `EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod` data type, and added the `authUrl`, `grantType`, `assertion`, `clientId`, `clientSecret`, `scopes`, `headerName`, `headerValue`, and `clientAuthenticationMethod` properties to the email delivery settings custom provider authentication data model to align with the API.
+* **Enhancement** Added the `EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType` and `EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod` data types.
+
 # v0.76.0 (2026-09-30)
 
 * **Enhancement** Added support for the `license` field when updating an environment's status, which is required when re-activating a production environment that is pending deletion.
