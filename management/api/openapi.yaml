@@ -38092,11 +38092,29 @@ components:
       description: Use the value `BASIC` if your authentication with the email provider
         uses a username and password. Use `BEARER` if your authentication is based
         on the use of a bearer token. Use `OAUTH2` if your authentication is based
-        on the OAuth 2.0 client credentials grant.
+        on OAuth 2.0. Use `CUSTOM_HEADER` if your authentication is based on a custom
+        header.
       enum:
       - BASIC
       - BEARER
       - OAUTH2
+      - CUSTOM_HEADER
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType:
+      default: CLIENT_CREDENTIALS
+      description: |
+        The grant type used to request the access token from the authorization server. Possible values: `JWT_BEARER`, `CLIENT_CREDENTIALS`. The default value is `CLIENT_CREDENTIALS`.
+      enum:
+      - JWT_BEARER
+      - CLIENT_CREDENTIALS
+      type: string
+    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod:
+      description: |
+        The method used to send the OAuth 2.0 client credentials to the authorization server. Possible values: `BASIC_AUTH_HEADER`, `BODY`. This is a read-only property.
+      enum:
+      - BASIC_AUTH_HEADER
+      - BODY
+      readOnly: true
       type: string
     EnumNotificationsSettingsEmailDeliverySettingsProtocol:
       enum:
@@ -53310,21 +53328,40 @@ components:
           format: password
           type: string
         authUrl:
-          description: "If you specified `OAUTH2` as the authentication method, use\
-            \ authUrl to provide the URL of the authorization server that issues the\
-            \ access token for the email provider."
+          description: The URL of the authorization server that issues the access
+            token for the email provider. Required when `authentication.method=OAUTH2`
+          type: string
+        grantType:
+          $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType'
+        assertion:
+          description: The JWT assertion used to request the access token from the
+            authorization server. Must be a valid JWT. Required when `authentication.grantType=JWT_BEARER`
           type: string
         clientId:
-          description: "If you specified `OAUTH2` as the authentication method, use\
-            \ clientId to provide the client ID used to request the access token from\
-            \ the authorization server."
+          description: The client ID used to request the access token from the authorization
+            server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
           type: string
         clientSecret:
-          description: "If you specified `OAUTH2` as the authentication method, use\
-            \ clientSecret to provide the client secret used to request the access\
-            \ token from the authorization server."
+          description: The client secret used to request the access token from the
+            authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
           format: password
           type: string
+        scopes:
+          description: "An array of scopes to request in the access token from the\
+            \ authorization server, for example, `mail.send`."
+          items:
+            type: string
+          type: array
+        headerName:
+          description: The name of the custom header used to authenticate requests
+            to the email provider. Required when `authentication.method=CUSTOM_HEADER`
+          type: string
+        headerValue:
+          description: The value of the custom header used to authenticate requests
+            to the email provider. Required when `authentication.method=CUSTOM_HEADER`
+          type: string
+        clientAuthenticationMethod:
+          $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod'
       required:
       - method
       type: object

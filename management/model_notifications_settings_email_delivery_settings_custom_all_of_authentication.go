@@ -26,12 +26,22 @@ type NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication struct 
 	Username *string `json:"username,omitempty"`
 	// If you specified `BASIC` as the authentication method, use password to provide the password for authenticating with the email provider.
 	Password *string `json:"password,omitempty"`
-	// If you specified `OAUTH2` as the authentication method, use authUrl to provide the URL of the authorization server that issues the access token for the email provider.
-	AuthUrl *string `json:"authUrl,omitempty"`
-	// If you specified `OAUTH2` as the authentication method, use clientId to provide the client ID used to request the access token from the authorization server.
+	// The URL of the authorization server that issues the access token for the email provider. Required when `authentication.method=OAUTH2`
+	AuthUrl   *string                                                                      `json:"authUrl,omitempty"`
+	GrantType *EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType `json:"grantType,omitempty"`
+	// The JWT assertion used to request the access token from the authorization server. Must be a valid JWT. Required when `authentication.grantType=JWT_BEARER`
+	Assertion *string `json:"assertion,omitempty"`
+	// The client ID used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
 	ClientId *string `json:"clientId,omitempty"`
-	// If you specified `OAUTH2` as the authentication method, use clientSecret to provide the client secret used to request the access token from the authorization server.
+	// The client secret used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
 	ClientSecret *string `json:"clientSecret,omitempty"`
+	// An array of scopes to request in the access token from the authorization server, for example, `mail.send`.
+	Scopes []string `json:"scopes,omitempty"`
+	// The name of the custom header used to authenticate requests to the email provider. Required when `authentication.method=CUSTOM_HEADER`
+	HeaderName *string `json:"headerName,omitempty"`
+	// The value of the custom header used to authenticate requests to the email provider. Required when `authentication.method=CUSTOM_HEADER`
+	HeaderValue                *string                                                                                       `json:"headerValue,omitempty"`
+	ClientAuthenticationMethod *EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod `json:"clientAuthenticationMethod,omitempty"`
 }
 
 // NewNotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication instantiates a new NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication object
@@ -41,6 +51,8 @@ type NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication struct 
 func NewNotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication(method EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod) *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication {
 	this := NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication{}
 	this.Method = method
+	var grantType EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType = ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONGRANTTYPE_CLIENT_CREDENTIALS
+	this.GrantType = &grantType
 	return &this
 }
 
@@ -49,6 +61,8 @@ func NewNotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication(meth
 // but it doesn't guarantee that properties required by API are set
 func NewNotificationsSettingsEmailDeliverySettingsCustomAllOfAuthenticationWithDefaults() *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication {
 	this := NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication{}
+	var grantType EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType = ENUMNOTIFICATIONSSETTINGSEMAILDELIVERYSETTINGSCUSTOMAUTHENTICATIONGRANTTYPE_CLIENT_CREDENTIALS
+	this.GrantType = &grantType
 	return &this
 }
 
@@ -204,6 +218,70 @@ func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) Se
 	o.AuthUrl = &v
 }
 
+// GetGrantType returns the GrantType field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetGrantType() EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType {
+	if o == nil || IsNil(o.GrantType) {
+		var ret EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType
+		return ret
+	}
+	return *o.GrantType
+}
+
+// GetGrantTypeOk returns a tuple with the GrantType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetGrantTypeOk() (*EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType, bool) {
+	if o == nil || IsNil(o.GrantType) {
+		return nil, false
+	}
+	return o.GrantType, true
+}
+
+// HasGrantType returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasGrantType() bool {
+	if o != nil && !IsNil(o.GrantType) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrantType gets a reference to the given EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType and assigns it to the GrantType field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetGrantType(v EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType) {
+	o.GrantType = &v
+}
+
+// GetAssertion returns the Assertion field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetAssertion() string {
+	if o == nil || IsNil(o.Assertion) {
+		var ret string
+		return ret
+	}
+	return *o.Assertion
+}
+
+// GetAssertionOk returns a tuple with the Assertion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetAssertionOk() (*string, bool) {
+	if o == nil || IsNil(o.Assertion) {
+		return nil, false
+	}
+	return o.Assertion, true
+}
+
+// HasAssertion returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasAssertion() bool {
+	if o != nil && !IsNil(o.Assertion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssertion gets a reference to the given string and assigns it to the Assertion field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetAssertion(v string) {
+	o.Assertion = &v
+}
+
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientId() string {
 	if o == nil || IsNil(o.ClientId) {
@@ -268,6 +346,134 @@ func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) Se
 	o.ClientSecret = &v
 }
 
+// GetScopes returns the Scopes field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetScopes() []string {
+	if o == nil || IsNil(o.Scopes) {
+		var ret []string
+		return ret
+	}
+	return o.Scopes
+}
+
+// GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetScopesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Scopes) {
+		return nil, false
+	}
+	return o.Scopes, true
+}
+
+// HasScopes returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasScopes() bool {
+	if o != nil && !IsNil(o.Scopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetScopes gets a reference to the given []string and assigns it to the Scopes field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetScopes(v []string) {
+	o.Scopes = v
+}
+
+// GetHeaderName returns the HeaderName field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetHeaderName() string {
+	if o == nil || IsNil(o.HeaderName) {
+		var ret string
+		return ret
+	}
+	return *o.HeaderName
+}
+
+// GetHeaderNameOk returns a tuple with the HeaderName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetHeaderNameOk() (*string, bool) {
+	if o == nil || IsNil(o.HeaderName) {
+		return nil, false
+	}
+	return o.HeaderName, true
+}
+
+// HasHeaderName returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasHeaderName() bool {
+	if o != nil && !IsNil(o.HeaderName) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaderName gets a reference to the given string and assigns it to the HeaderName field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetHeaderName(v string) {
+	o.HeaderName = &v
+}
+
+// GetHeaderValue returns the HeaderValue field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetHeaderValue() string {
+	if o == nil || IsNil(o.HeaderValue) {
+		var ret string
+		return ret
+	}
+	return *o.HeaderValue
+}
+
+// GetHeaderValueOk returns a tuple with the HeaderValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetHeaderValueOk() (*string, bool) {
+	if o == nil || IsNil(o.HeaderValue) {
+		return nil, false
+	}
+	return o.HeaderValue, true
+}
+
+// HasHeaderValue returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasHeaderValue() bool {
+	if o != nil && !IsNil(o.HeaderValue) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaderValue gets a reference to the given string and assigns it to the HeaderValue field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetHeaderValue(v string) {
+	o.HeaderValue = &v
+}
+
+// GetClientAuthenticationMethod returns the ClientAuthenticationMethod field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientAuthenticationMethod() EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod {
+	if o == nil || IsNil(o.ClientAuthenticationMethod) {
+		var ret EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod
+		return ret
+	}
+	return *o.ClientAuthenticationMethod
+}
+
+// GetClientAuthenticationMethodOk returns a tuple with the ClientAuthenticationMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) GetClientAuthenticationMethodOk() (*EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod, bool) {
+	if o == nil || IsNil(o.ClientAuthenticationMethod) {
+		return nil, false
+	}
+	return o.ClientAuthenticationMethod, true
+}
+
+// HasClientAuthenticationMethod returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) HasClientAuthenticationMethod() bool {
+	if o != nil && !IsNil(o.ClientAuthenticationMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientAuthenticationMethod gets a reference to the given EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod and assigns it to the ClientAuthenticationMethod field.
+func (o *NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) SetClientAuthenticationMethod(v EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod) {
+	o.ClientAuthenticationMethod = &v
+}
+
 func (o NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -291,11 +497,29 @@ func (o NotificationsSettingsEmailDeliverySettingsCustomAllOfAuthentication) ToM
 	if !IsNil(o.AuthUrl) {
 		toSerialize["authUrl"] = o.AuthUrl
 	}
+	if !IsNil(o.GrantType) {
+		toSerialize["grantType"] = o.GrantType
+	}
+	if !IsNil(o.Assertion) {
+		toSerialize["assertion"] = o.Assertion
+	}
 	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
 	if !IsNil(o.ClientSecret) {
 		toSerialize["clientSecret"] = o.ClientSecret
+	}
+	if !IsNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !IsNil(o.HeaderName) {
+		toSerialize["headerName"] = o.HeaderName
+	}
+	if !IsNil(o.HeaderValue) {
+		toSerialize["headerValue"] = o.HeaderValue
+	}
+	if !IsNil(o.ClientAuthenticationMethod) {
+		toSerialize["clientAuthenticationMethod"] = o.ClientAuthenticationMethod
 	}
 	return toSerialize, nil
 }

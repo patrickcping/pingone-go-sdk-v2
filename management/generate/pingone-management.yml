@@ -449,8 +449,20 @@ components:
       enum: [IOS, GOOGLE]
     EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationMethod:
       type: string
-      description: Use the value `BASIC` if your authentication with the email provider uses a username and password. Use `BEARER` if your authentication is based on the use of a bearer token. Use `OAUTH2` if your authentication is based on the OAuth 2.0 client credentials grant.
-      enum: [BASIC, BEARER, OAUTH2]
+      description: Use the value `BASIC` if your authentication with the email provider uses a username and password. Use `BEARER` if your authentication is based on the use of a bearer token. Use `OAUTH2` if your authentication is based on OAuth 2.0. Use `CUSTOM_HEADER` if your authentication is based on a custom header.
+      enum: [BASIC, BEARER, OAUTH2, CUSTOM_HEADER]
+    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType:
+      type: string
+      enum: [JWT_BEARER, CLIENT_CREDENTIALS]
+      default: CLIENT_CREDENTIALS
+      description: |
+        The grant type used to request the access token from the authorization server. Possible values: `JWT_BEARER`, `CLIENT_CREDENTIALS`. The default value is `CLIENT_CREDENTIALS`.
+    EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod:
+      type: string
+      readOnly: true
+      enum: [BASIC_AUTH_HEADER, BODY]
+      description: |
+        The method used to send the OAuth 2.0 client credentials to the authorization server. Possible values: `BASIC_AUTH_HEADER`, `BODY`. This is a read-only property.
     EnumNotificationsSettingsEmailDeliverySettingsProtocol:
       type: string
       enum: [HTTP, SMTP, SMTPS]
@@ -5527,14 +5539,32 @@ components:
                   description: If you specified `BASIC` as the authentication method, use password to provide the password for authenticating with the email provider.
                 authUrl:
                   type: string
-                  description: If you specified `OAUTH2` as the authentication method, use authUrl to provide the URL of the authorization server that issues the access token for the email provider.
+                  description: The URL of the authorization server that issues the access token for the email provider. Required when `authentication.method=OAUTH2`
+                grantType:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationGrantType'
+                assertion:
+                  type: string
+                  description: The JWT assertion used to request the access token from the authorization server. Must be a valid JWT. Required when `authentication.grantType=JWT_BEARER`
                 clientId:
                   type: string
-                  description: If you specified `OAUTH2` as the authentication method, use clientId to provide the client ID used to request the access token from the authorization server.
+                  description: The client ID used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
                 clientSecret:
                   type: string
                   format: password
-                  description: If you specified `OAUTH2` as the authentication method, use clientSecret to provide the client secret used to request the access token from the authorization server.
+                  description: The client secret used to request the access token from the authorization server. Required when `authentication.grantType=CLIENT_CREDENTIALS`
+                scopes:
+                  type: array
+                  description: An array of scopes to request in the access token from the authorization server, for example, `mail.send`.
+                  items:
+                    type: string
+                headerName:
+                  type: string
+                  description: The name of the custom header used to authenticate requests to the email provider. Required when `authentication.method=CUSTOM_HEADER`
+                headerValue:
+                  type: string
+                  description: The value of the custom header used to authenticate requests to the email provider. Required when `authentication.method=CUSTOM_HEADER`
+                clientAuthenticationMethod:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsEmailDeliverySettingsCustomAuthenticationClientAuthenticationMethod'
               required:
                 - method
             from:
