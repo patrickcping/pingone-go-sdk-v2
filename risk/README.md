@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *RiskAdvancedPredictorsApi* | [**ReadOneRiskPredictor**](docs/RiskAdvancedPredictorsApi.md#readoneriskpredictor) | **Get** /environments/{environmentID}/riskPredictors/{riskPredictorID} | READ One Risk Predictor
 *RiskAdvancedPredictorsApi* | [**UpdateRiskPredictor**](docs/RiskAdvancedPredictorsApi.md#updateriskpredictor) | **Put** /environments/{environmentID}/riskPredictors/{riskPredictorID} | UPDATE Risk Predictor
 *RiskEvaluationsApi* | [**CreateRiskEvaluation**](docs/RiskEvaluationsApi.md#createriskevaluation) | **Post** /environments/{environmentID}/riskEvaluations | CREATE Risk Evaluation
+*RiskEvaluationsApi* | [**CreateRiskFeedbackBulk**](docs/RiskEvaluationsApi.md#createriskfeedbackbulk) | **Post** /environments/{environmentID}/riskFeedback | CREATE Risk Feedback (bulk)
 *RiskEvaluationsApi* | [**ReadOneRiskEvaluation**](docs/RiskEvaluationsApi.md#readoneriskevaluation) | **Get** /environments/{environmentID}/riskEvaluations/{riskEvaluationID} | READ One Risk Evaluation
 *RiskEvaluationsApi* | [**UpdateRiskEvaluation**](docs/RiskEvaluationsApi.md#updateriskevaluation) | **Put** /environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event | UPDATE Risk Evaluation
 *RiskPoliciesApi* | [**CreateRiskPolicySet**](docs/RiskPoliciesApi.md#createriskpolicyset) | **Post** /environments/{environmentID}/riskPolicySets | CREATE Risk Policy Set
@@ -110,6 +111,12 @@ Class | Method | HTTP request | Description
  - [EnumPredictorVelocityMeasure](docs/EnumPredictorVelocityMeasure.md)
  - [EnumPredictorVelocityUseType](docs/EnumPredictorVelocityUseType.md)
  - [EnumResultType](docs/EnumResultType.md)
+ - [EnumRiskFeedbackBulkItemStatus](docs/EnumRiskFeedbackBulkItemStatus.md)
+ - [EnumRiskFeedbackConfidence](docs/EnumRiskFeedbackConfidence.md)
+ - [EnumRiskFeedbackFlowType](docs/EnumRiskFeedbackFlowType.md)
+ - [EnumRiskFeedbackSubjectType](docs/EnumRiskFeedbackSubjectType.md)
+ - [EnumRiskFeedbackTrigger](docs/EnumRiskFeedbackTrigger.md)
+ - [EnumRiskFeedbackVerdict](docs/EnumRiskFeedbackVerdict.md)
  - [EnumRiskLevel](docs/EnumRiskLevel.md)
  - [EnumRiskPolicyConditionType](docs/EnumRiskPolicyConditionType.md)
  - [EnumRiskPolicyResultLevel](docs/EnumRiskPolicyResultLevel.md)
@@ -149,6 +156,14 @@ Class | Method | HTTP request | Description
  - [RiskEvaluationEventUserGroupsInner](docs/RiskEvaluationEventUserGroupsInner.md)
  - [RiskEvaluationResult](docs/RiskEvaluationResult.md)
  - [RiskEvaluationRiskPolicySet](docs/RiskEvaluationRiskPolicySet.md)
+ - [RiskFeedback](docs/RiskFeedback.md)
+ - [RiskFeedbackBulkItemResponse](docs/RiskFeedbackBulkItemResponse.md)
+ - [RiskFeedbackBulkItemResponseBody](docs/RiskFeedbackBulkItemResponseBody.md)
+ - [RiskFeedbackBulkRequest](docs/RiskFeedbackBulkRequest.md)
+ - [RiskFeedbackBulkResponse](docs/RiskFeedbackBulkResponse.md)
+ - [RiskFeedbackBulkResponseErrorsInner](docs/RiskFeedbackBulkResponseErrorsInner.md)
+ - [RiskFeedbackBulkSummary](docs/RiskFeedbackBulkSummary.md)
+ - [RiskFeedbackSubject](docs/RiskFeedbackSubject.md)
  - [RiskPolicy](docs/RiskPolicy.md)
  - [RiskPolicyCondition](docs/RiskPolicyCondition.md)
  - [RiskPolicyConditionAggregatedScoresInner](docs/RiskPolicyConditionAggregatedScoresInner.md)

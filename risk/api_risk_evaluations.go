@@ -303,6 +303,260 @@ func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateRiskFeedbackBulkRequest struct {
+	ctx                        context.Context
+	ApiService                 *RiskEvaluationsApiService
+	environmentID              string
+	riskFeedbackBulkRequest    *RiskFeedbackBulkRequest
+	xPingExternalTransactionID *string
+	xPingExternalSessionID     *string
+}
+
+func (r ApiCreateRiskFeedbackBulkRequest) RiskFeedbackBulkRequest(riskFeedbackBulkRequest RiskFeedbackBulkRequest) ApiCreateRiskFeedbackBulkRequest {
+	r.riskFeedbackBulkRequest = &riskFeedbackBulkRequest
+	return r
+}
+
+// An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
+func (r ApiCreateRiskFeedbackBulkRequest) XPingExternalTransactionID(xPingExternalTransactionID string) ApiCreateRiskFeedbackBulkRequest {
+	r.xPingExternalTransactionID = &xPingExternalTransactionID
+	return r
+}
+
+// An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;
+func (r ApiCreateRiskFeedbackBulkRequest) XPingExternalSessionID(xPingExternalSessionID string) ApiCreateRiskFeedbackBulkRequest {
+	r.xPingExternalSessionID = &xPingExternalSessionID
+	return r
+}
+
+func (r ApiCreateRiskFeedbackBulkRequest) Execute() (*RiskFeedbackBulkResponse, *http.Response, error) {
+	return r.ApiService.CreateRiskFeedbackBulkExecute(r)
+}
+
+/*
+CreateRiskFeedbackBulk CREATE Risk Feedback (bulk)
+
+Persists up to 20 Risk Feedback labels per request on a best-effort basis.
+Requires the PingOne Protect Risk Feedback API v2 feature flag for the environment.
+The request must use the media type `application/vnd.pingidentity.risk.feedback.bulk.v2+json`;
+plain `application/json` routes to a different (v1) surface.
+Schema-level violations (unknown enum values, malformed subject) reject the whole batch with
+HTTP 400; value-level violations (e.g. a timestamp without milliseconds) fail per item inside
+a 200 response, order-aligned in `responses[]`. The response body uses this media type as well,
+but the endpoint also accepts a standard `Accept: application/json` header.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateRiskFeedbackBulkRequest
+*/
+func (a *RiskEvaluationsApiService) CreateRiskFeedbackBulk(ctx context.Context, environmentID string) ApiCreateRiskFeedbackBulkRequest {
+	return ApiCreateRiskFeedbackBulkRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentID: environmentID,
+	}
+}
+
+// Execute executes the request
+//
+//	@return RiskFeedbackBulkResponse
+func (a *RiskEvaluationsApiService) CreateRiskFeedbackBulkExecute(r ApiCreateRiskFeedbackBulkRequest) (*RiskFeedbackBulkResponse, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RiskFeedbackBulkResponse
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateRiskFeedbackBulkExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *RiskEvaluationsApiService) internalCreateRiskFeedbackBulkExecute(r ApiCreateRiskFeedbackBulkRequest) (*RiskFeedbackBulkResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskFeedbackBulkResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RiskEvaluationsApiService.CreateRiskFeedbackBulk")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environments/{environmentID}/riskFeedback"
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")))
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.riskFeedbackBulkRequest == nil {
+		return localVarReturnValue, nil, reportError("riskFeedbackBulkRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.pingidentity.risk.feedback.bulk.v2+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/vnd.pingidentity.risk.feedback.bulk.v2+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xPingExternalTransactionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Transaction-ID", r.xPingExternalTransactionID, "")
+	}
+	if r.xPingExternalSessionID != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Ping-External-Session-ID", r.xPingExternalSessionID, "")
+	}
+	// body params
+	localVarPostBody = r.riskFeedbackBulkRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	var bodyBytes []byte
+	if req.Body != nil {
+		bodyBytes, _ = io.ReadAll(req.Body)
+	}
+
+	var localVarHTTPResponse *http.Response
+	var localVarBody []byte
+
+	for i := range maxRetries {
+		if req.Body != nil {
+			req.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
+		}
+
+		if i > 0 {
+			slog.Debug("Retrying request", "attempt", i, "method", localVarHTTPMethod, "path", localVarPath)
+		}
+
+		localVarHTTPResponse, err = a.client.callAPI(req)
+		if err != nil || localVarHTTPResponse == nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+
+		localVarBody, err = io.ReadAll(localVarHTTPResponse.Body)
+		_ = localVarHTTPResponse.Body.Close()
+		localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+		if err != nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+
+		if localVarHTTPResponse.StatusCode >= 300 {
+			newErr := &GenericOpenAPIError{
+				body:  localVarBody,
+				error: localVarHTTPResponse.Status,
+			}
+			if localVarHTTPResponse.StatusCode == 400 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			if localVarHTTPResponse.StatusCode == 401 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			if localVarHTTPResponse.StatusCode == 403 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			if localVarHTTPResponse.StatusCode == 404 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			if localVarHTTPResponse.StatusCode == 405 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			if localVarHTTPResponse.StatusCode == 429 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			if localVarHTTPResponse.StatusCode == 500 {
+				var v P1Error
+				err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHTTPResponse, newErr
+				}
+				newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+				newErr.model = v
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		break
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiReadOneRiskEvaluationRequest struct {
 	ctx                        context.Context
 	ApiService                 *RiskEvaluationsApiService
