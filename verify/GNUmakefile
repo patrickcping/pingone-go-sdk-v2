@@ -40,10 +40,7 @@ golangci-lint:
 gosec:
 	@gosec -exclude-generated ./...
 
-generate:
-	@echo "==> Running generate for $(MODULE)..."
-	@./../scripts/generate-module.sh $(OWNER) $(REPO) $(MODULE)
 
 devcheck: build vet lint gosec test testacc
 
-.PHONY: build test testacc vet fmtcheck depscheck lint gosec golangci-lint generate
+.PHONY: build test testacc vet fmtcheck depscheck lint gosec golangci-lint
