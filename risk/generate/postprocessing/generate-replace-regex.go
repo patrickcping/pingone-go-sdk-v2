@@ -301,5 +301,28 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// RiskFeedback model: the Risk Feedback API requires exactly three fractional
+		// digits (YYYY-MM-DDThh:mm:ss.SSSZ); Go's default RFC 3339 marshaling trims
+		// zero fractions. Patterns anchor to the line's newline so already-patched
+		// lines (which end with .Format(...)) don't match again.
+		{
+			fileSelectPattern: "model_risk_feedback.go",
+			pattern:           `toSerialize\["occurredFrom"\] = o\.OccurredFrom\n`,
+			repl: `toSerialize["occurredFrom"] = o.OccurredFrom.UTC().Format("2006-01-02T15:04:05.000Z")
+`,
+		},
+		{
+			fileSelectPattern: "model_risk_feedback.go",
+			pattern:           `toSerialize\["occurredTo"\] = o\.OccurredTo\n`,
+			repl: `toSerialize["occurredTo"] = o.OccurredTo.UTC().Format("2006-01-02T15:04:05.000Z")
+`,
+		},
+		{
+			fileSelectPattern: "model_risk_feedback.go",
+			pattern:           `toSerialize\["confirmedAt"\] = o\.ConfirmedAt\n`,
+			repl: `toSerialize["confirmedAt"] = o.ConfirmedAt.UTC().Format("2006-01-02T15:04:05.000Z")
+`,
+		},
 	}
 )

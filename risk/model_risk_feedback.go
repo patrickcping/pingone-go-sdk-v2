@@ -610,9 +610,9 @@ func (o RiskFeedback) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["subject"] = o.Subject
 	toSerialize["verdict"] = o.Verdict
-	toSerialize["occurredFrom"] = o.OccurredFrom
+	toSerialize["occurredFrom"] = o.OccurredFrom.UTC().Format("2006-01-02T15:04:05.000Z")
 	if !IsNil(o.OccurredTo) {
-		toSerialize["occurredTo"] = o.OccurredTo
+		toSerialize["occurredTo"] = o.OccurredTo.UTC().Format("2006-01-02T15:04:05.000Z")
 	}
 	if !IsNil(o.Trigger) {
 		toSerialize["trigger"] = o.Trigger
@@ -621,7 +621,7 @@ func (o RiskFeedback) ToMap() (map[string]interface{}, error) {
 		toSerialize["flowType"] = o.FlowType
 	}
 	if !IsNil(o.ConfirmedAt) {
-		toSerialize["confirmedAt"] = o.ConfirmedAt
+		toSerialize["confirmedAt"] = o.ConfirmedAt.UTC().Format("2006-01-02T15:04:05.000Z")
 	}
 	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason

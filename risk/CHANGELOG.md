@@ -1,3 +1,7 @@
+# v0.22.1 (Unreleased)
+
+* **Bug** Fixed serialization of `occurredFrom`, `occurredTo` and `confirmedAt` in `RiskFeedback` to always emit exactly three fractional digits (`YYYY-MM-DDThh:mm:ss.SSSZ`), as required by the Risk Feedback API. Go's default RFC 3339 marshaling trims zero fractions, which caused the API to reject valid timestamps with `INVALID_DATA`.
+
 # v0.22.0 (2026-06-18)
 
 * **Breaking Change** `NewRiskPolicyResult()` no longer requires `level` argument — mitigation results omit level.
