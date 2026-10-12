@@ -304,8 +304,7 @@ var (
 
 		// RiskFeedback model: the Risk Feedback API requires exactly three fractional
 		// digits (YYYY-MM-DDThh:mm:ss.SSSZ); Go's default RFC 3339 marshaling trims
-		// zero fractions. Patterns anchor to the line's newline so already-patched
-		// lines (which end with .Format(...)) don't match again.
+		// zero fractions.
 		{
 			fileSelectPattern: "model_risk_feedback.go",
 			pattern:           `toSerialize\["occurredFrom"\] = o\.OccurredFrom\n`,
