@@ -35,6 +35,7 @@ tags:
 - name: Risk Management
 - name: Risk Policies
 - name: Risk Evaluations
+- name: Risk Feedback
 - name: Risk Advanced Predictors
 paths:
   /environments/{environmentID}:
@@ -909,6 +910,114 @@ paths:
                 $ref: '#/components/schemas/RiskEvaluation'
           description: Successful response
       summary: UPDATE Risk Evaluation
+      tags:
+      - Risk Evaluations
+  /environments/{environmentID}/riskFeedback:
+    post:
+      description: |
+        Persists up to 20 Risk Feedback labels per request on a best-effort basis.
+        Requires the PingOne Protect Risk Feedback API v2 feature flag for the environment.
+        The request must use the media type `application/vnd.pingidentity.risk.feedback.bulk.v2+json`;
+        plain `application/json` routes to a different (v1) surface.
+        Schema-level violations (unknown enum values, malformed subject) reject the whole batch with
+        HTTP 400; value-level violations (e.g. a timestamp without milliseconds) fail per item inside
+        a 200 response, order-aligned in `responses[]`. The response body uses this media type as well,
+        but the endpoint also accepts a standard `Accept: application/json` header.
+      operationId: createRiskFeedbackBulk
+      parameters:
+      - description: |
+          An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Transaction-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - description: |
+          An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information.
+          Any invalid characters will be converted to underscores. The following characters are allowed:
+          Unicode letters, combining marks, numeric characters, dots, underscores, dashes
+          `/`, `@`, `=`, `#`, `+`
+        explode: false
+        in: header
+        name: X-Ping-External-Session-ID
+        required: false
+        schema:
+          maxLength: 100
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.pingidentity.risk.feedback.bulk.v2+json:
+            schema:
+              $ref: '#/components/schemas/RiskFeedbackBulkRequest'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request. Schema-level violations (e.g. unknown enum\
+            \ values, empty or oversized items array) reject the whole batch."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Not found (environment does not exist, or the Risk Feedback\
+            \ API v2 feature flag is not enabled for the environment)."
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/vnd.pingidentity.risk.feedback.bulk.v2+json:
+              schema:
+                $ref: '#/components/schemas/RiskFeedbackBulkResponse'
+          description: "Successful response (items processed individually; failed\
+            \ items are detailed in responses[] and errors[])"
+      summary: CREATE Risk Feedback (bulk)
       tags:
       - Risk Evaluations
   /environments/{environmentID}/riskPredictors:
@@ -2649,6 +2758,258 @@ components:
       required:
       - name
       type: object
+    RiskFeedback:
+      description: "A Risk Feedback label records the confirmed outcome of a risk\
+        \ evaluation or transaction so the Risk model can learn from it. One element\
+        \ of the `items` array in a Risk Feedback bulk request, and the success payload\
+        \ of one element of the bulk response `responses` array."
+      properties:
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/LinksHATEOAS_value'
+          readOnly: true
+          type: object
+        id:
+          description: A string that specifies the feedback resource's unique identifier.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        subject:
+          $ref: '#/components/schemas/RiskFeedbackSubject'
+        verdict:
+          $ref: '#/components/schemas/EnumRiskFeedbackVerdict'
+        occurredFrom:
+          description: "A string that specifies the start of the period the label\
+            \ refers to, in UTC (format `YYYY-MM-DDThh:mm:ss.SSSZ`, milliseconds required).\
+            \ This is a required property. For `TIME_RANGE` subjects this is the beginning\
+            \ of the labeled period; otherwise it is the event time. Must be at most\
+            \ 3 days before `occurredTo` for `TIME_RANGE` subjects."
+          format: date-time
+          type: string
+        occurredTo:
+          description: "A string that specifies the end of the labeled period in UTC\
+            \ (format `YYYY-MM-DDThh:mm:ss.SSSZ`, milliseconds required). Required\
+            \ for `TIME_RANGE` subjects; omitted otherwise. Must be at most 3 days\
+            \ after `occurredFrom`."
+          format: date-time
+          type: string
+        trigger:
+          $ref: '#/components/schemas/EnumRiskFeedbackTrigger'
+        flowType:
+          $ref: '#/components/schemas/EnumRiskFeedbackFlowType'
+        confirmedAt:
+          description: "A string that specifies when the outcome was confirmed, in\
+            \ UTC (format `YYYY-MM-DDThh:mm:ss.SSSZ`, milliseconds required)."
+          format: date-time
+          type: string
+        reason:
+          description: A string that specifies why the label was assigned. Maximum
+            size is 200 characters.
+          maxLength: 200
+          type: string
+        analyst:
+          description: A string that identifies the analyst who confirmed the label.
+            Maximum size is 50 characters.
+          maxLength: 50
+          type: string
+        confidence:
+          $ref: '#/components/schemas/EnumRiskFeedbackConfidence'
+        fraudType:
+          description: "A string that specifies the fraud category, e.g. `BOT_FARM`.\
+            \ Maximum size is 50 characters."
+          maxLength: 50
+          type: string
+        attributes:
+          additionalProperties:
+            maxLength: 300
+            type: string
+          description: "A flat map of up to 20 context attributes (key max 100 characters,\
+            \ value max 300 characters) attached to the label."
+          maxProperties: 20
+          type: object
+        createdAt:
+          description: The time the feedback was created (format ISO-8061).
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the feedback was last updated (format ISO-8061).
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - occurredFrom
+      - subject
+      - verdict
+      type: object
+    RiskFeedbackSubject:
+      description: "Identifies the entity being labeled. `value` is required for every\
+        \ subject type except `TIME_RANGE`, which instead spans `occurredFrom` to\
+        \ `occurredTo`."
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumRiskFeedbackSubjectType'
+        value:
+          description: A string that specifies the identifier of the labeled entity.
+            Required for every subject type except `TIME_RANGE` (which carries no
+            value). For `RISK_EVALUATION_ID` it is the risk evaluation resource ID;
+            for `EXTERNAL_TRANSACTION_ID` the caller's transaction ID; for `PINGONE_USER_ID`
+            the PingOne user ID; for `EXTERNAL_USER_ID` the caller's user identifier;
+            for `IP_ADDRESS` the IP address of the event.
+          type: string
+      required:
+      - type
+      type: object
+    EnumRiskFeedbackSubjectType:
+      description: |
+        A string that specifies the kind of entity the feedback label refers to. Can be any of the following values:
+        `RISK_EVALUATION_ID` - the ID of a PingOne Risk evaluation resource
+        `EXTERNAL_TRANSACTION_ID` - a transaction identifier from the caller's system
+        `PINGONE_USER_ID` - a PingOne user resource ID
+        `EXTERNAL_USER_ID` - a user identifier from the caller's system
+        `IP_ADDRESS` - the IP address the event originated from
+        `TIME_RANGE` - a period bounded by `occurredFrom` and `occurredTo` (no `value`)
+      enum:
+      - RISK_EVALUATION_ID
+      - EXTERNAL_TRANSACTION_ID
+      - PINGONE_USER_ID
+      - EXTERNAL_USER_ID
+      - IP_ADDRESS
+      - TIME_RANGE
+      type: string
+    EnumRiskFeedbackVerdict:
+      description: "A string that specifies the confirmed outcome for the labeled\
+        \ entity. Options are `FRAUD`, `SUSPECTED_FRAUD`, and `LEGITIMATE`."
+      enum:
+      - FRAUD
+      - SUSPECTED_FRAUD
+      - LEGITIMATE
+      type: string
+    EnumRiskFeedbackTrigger:
+      description: "A string that specifies how the outcome was surfaced (e.g. a chargeback\
+        \ was received, an analyst reviewed the event). Options are `CHARGEBACK`,\
+        \ `MANUAL_REVIEW`, `CUSTOMER_COMPLAINT`, and `THIRD_PARTY_SIGNAL`."
+      enum:
+      - CHARGEBACK
+      - MANUAL_REVIEW
+      - CUSTOMER_COMPLAINT
+      - THIRD_PARTY_SIGNAL
+      type: string
+    EnumRiskFeedbackFlowType:
+      description: |
+        A string that specifies the type of flow the labeled event belongs to. Can be any of the following values:
+        `REGISTRATION` - initial registration of an account
+        `AUTHENTICATION` - standard authentication for login or actions such as password change
+        `ACCESS` - verification of whether user can access the relevant application
+        `AUTHORIZATION` - verification of whether user is authorized to perform a specific action
+        `TRANSACTION` - a purchase or other monetary transaction
+      enum:
+      - REGISTRATION
+      - AUTHENTICATION
+      - ACCESS
+      - AUTHORIZATION
+      - TRANSACTION
+      type: string
+    EnumRiskFeedbackConfidence:
+      description: "A string that specifies the confidence in the assigned label.\
+        \ Options are `HIGH`, `MEDIUM`, and `LOW`."
+      enum:
+      - HIGH
+      - MEDIUM
+      - LOW
+      type: string
+    EnumRiskFeedbackBulkItemStatus:
+      description: A string that specifies the per-item outcome of a bulk request.
+        Options are `SUCCESS` (the item was persisted) and `INVALID_DATA` (the item
+        failed validation).
+      enum:
+      - SUCCESS
+      - INVALID_DATA
+      type: string
+    RiskFeedbackBulkRequest:
+      description: "The request body for the Risk Feedback bulk endpoint. Processes\
+        \ up to 20 feedback items per request on a best-effort basis; schema-level\
+        \ violations reject the whole batch with HTTP 400, while value-level violations\
+        \ fail per item inside a 200 response."
+      properties:
+        items:
+          description: An array of Risk Feedback labels to persist. The API enforces
+            a size between 1 and 20.
+          items:
+            $ref: '#/components/schemas/RiskFeedback'
+          maxItems: 20
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
+    RiskFeedbackBulkItemResponse:
+      description: One element of the order-aligned `responses` array in a bulk response.
+        On success `body` is the created Risk Feedback object; on failure `body` is
+        the PingOne error object for that item.
+      example:
+        body: null
+        status: null
+      properties:
+        status:
+          $ref: '#/components/schemas/EnumRiskFeedbackBulkItemStatus'
+        body:
+          $ref: '#/components/schemas/RiskFeedbackBulkItemResponse_body'
+      type: object
+    RiskFeedbackBulkSummary:
+      description: Aggregate counters for a Risk Feedback bulk request.
+      example:
+        requested: 0
+        errors: 6
+        successful: 1
+        skipped: 5
+      properties:
+        requested:
+          description: The number of items the request contained.
+          type: integer
+        errors:
+          description: The number of items that failed validation.
+          type: integer
+        successful:
+          description: The number of items that were persisted.
+          type: integer
+        skipped:
+          description: The number of items that were not processed.
+          type: integer
+      type: object
+    RiskFeedbackBulkResponse:
+      description: The response body of a Risk Feedback bulk request.
+      example:
+        summary:
+          requested: 0
+          errors: 6
+          successful: 1
+          skipped: 5
+        responses:
+        - body: null
+          status: null
+        - body: null
+          status: null
+        errors:
+        - $ref: $ref
+        - $ref: $ref
+      properties:
+        summary:
+          $ref: '#/components/schemas/RiskFeedbackBulkSummary'
+        responses:
+          description: "An array of per-item results, order-aligned with the request\
+            \ `items` array."
+          items:
+            $ref: '#/components/schemas/RiskFeedbackBulkItemResponse'
+          type: array
+        errors:
+          description: "A reference list of the failed per-item response elements\
+            \ (e.g. {\"$ref\": \"#/responses/1\"})."
+          items:
+            $ref: '#/components/schemas/RiskFeedbackBulkResponse_errors_inner'
+          type: array
+      type: object
     RiskPolicyResult:
       description: "A result object that specifies the result returned if the policy\
         \ is evaluated as true. If several policies are evaluated as true, the result\
@@ -4089,6 +4450,17 @@ components:
       - expiresAt
       - policySet
       - type
+      type: object
+    RiskFeedbackBulkItemResponse_body:
+      oneOf:
+      - $ref: '#/components/schemas/RiskFeedback'
+      - $ref: '#/components/schemas/P1Error'
+    RiskFeedbackBulkResponse_errors_inner:
+      example:
+        $ref: $ref
+      properties:
+        $ref:
+          type: string
       type: object
     RiskPredictorCommon_default_result:
       description: "This specifies the result assigned to the predictor if the predictor\

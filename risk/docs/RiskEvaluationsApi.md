@@ -5,6 +5,7 @@ All URIs are relative to *https://api.pingone.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateRiskEvaluation**](RiskEvaluationsApi.md#CreateRiskEvaluation) | **Post** /environments/{environmentID}/riskEvaluations | CREATE Risk Evaluation
+[**CreateRiskFeedbackBulk**](RiskEvaluationsApi.md#CreateRiskFeedbackBulk) | **Post** /environments/{environmentID}/riskFeedback | CREATE Risk Feedback (bulk)
 [**ReadOneRiskEvaluation**](RiskEvaluationsApi.md#ReadOneRiskEvaluation) | **Get** /environments/{environmentID}/riskEvaluations/{riskEvaluationID} | READ One Risk Evaluation
 [**UpdateRiskEvaluation**](RiskEvaluationsApi.md#UpdateRiskEvaluation) | **Put** /environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event | UPDATE Risk Evaluation
 
@@ -78,6 +79,83 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateRiskFeedbackBulk
+
+> RiskFeedbackBulkResponse CreateRiskFeedbackBulk(ctx, environmentID).RiskFeedbackBulkRequest(riskFeedbackBulkRequest).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
+
+CREATE Risk Feedback (bulk)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/risk"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    riskFeedbackBulkRequest := *openapiclient.NewRiskFeedbackBulkRequest([]openapiclient.RiskFeedback{*openapiclient.NewRiskFeedback(*openapiclient.NewRiskFeedbackSubject(openapiclient.EnumRiskFeedbackSubjectType("RISK_EVALUATION_ID")), openapiclient.EnumRiskFeedbackVerdict("FRAUD"), time.Now())}) // RiskFeedbackBulkRequest | 
+    xPingExternalTransactionID := "xPingExternalTransactionID_example" // string | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+    xPingExternalSessionID := "xPingExternalSessionID_example" // string | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn't provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes `/`, `@`, `=`, `#`, `+`  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RiskEvaluationsApi.CreateRiskFeedbackBulk(context.Background(), environmentID).RiskFeedbackBulkRequest(riskFeedbackBulkRequest).XPingExternalTransactionID(xPingExternalTransactionID).XPingExternalSessionID(xPingExternalSessionID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RiskEvaluationsApi.CreateRiskFeedbackBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateRiskFeedbackBulk`: RiskFeedbackBulkResponse
+    fmt.Fprintf(os.Stdout, "Response from `RiskEvaluationsApi.CreateRiskFeedbackBulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRiskFeedbackBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **riskFeedbackBulkRequest** | [**RiskFeedbackBulkRequest**](RiskFeedbackBulkRequest.md) |  | 
+ **xPingExternalTransactionID** | **string** | An ID for telemetry purposes to correlate transactions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+ **xPingExternalSessionID** | **string** | An ID for telemetry purposes to correlate sessions with client systems through PingOne products. This may be a user defined value. If a value isn&#39;t provided on the API request, a unique value will be generated in the API response. See [External transaction and session IDs](https://apidocs.pingidentity.com/pingone/platform/v1/api/#external-transaction-and-session-ids) for more information. Any invalid characters will be converted to underscores. The following characters are allowed: Unicode letters, combining marks, numeric characters, dots, underscores, dashes &#x60;/&#x60;, &#x60;@&#x60;, &#x60;&#x3D;&#x60;, &#x60;#&#x60;, &#x60;+&#x60;  | 
+
+### Return type
+
+[**RiskFeedbackBulkResponse**](RiskFeedbackBulkResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.pingidentity.risk.feedback.bulk.v2+json
+- **Accept**: application/json, application/vnd.pingidentity.risk.feedback.bulk.v2+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
