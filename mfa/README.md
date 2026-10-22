@@ -1,5 +1,8 @@
 # Go API client for mfa
 
+> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-v2/mfa](https://github.com/pingidentity/pingone-go-sdk-v2). This repository is no longer maintained; existing versions remain functional.
+> The final version published on this repository is [`mfa/v0.26.0`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/mfa/v0.26.0). All tags later than `mfa/v0.26.0` are published on [github.com/pingidentity/pingone-go-sdk-v2](https://github.com/pingidentity/pingone-go-sdk-v2).
+
 The PingOne Platform API covering the PingOne MFA service
 
 ## Overview

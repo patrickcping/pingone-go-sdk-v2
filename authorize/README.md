@@ -1,5 +1,8 @@
 # Go API client for authorize
 
+> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-v2/authorize](https://github.com/pingidentity/pingone-go-sdk-v2). This repository is no longer maintained; existing versions remain functional.
+> The final version published on this repository is [`authorize/v0.8.3`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/authorize/v0.8.3). All tags later than `authorize/v0.8.3` are published on [github.com/pingidentity/pingone-go-sdk-v2](https://github.com/pingidentity/pingone-go-sdk-v2).
+
 The PingOne Platform API covering the PingOne Authorize service
 
 ## Overview

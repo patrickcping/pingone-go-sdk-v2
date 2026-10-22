@@ -1,11 +1,11 @@
 name: "Security Scan"
 
-# Run workflow each time code is pushed to your repository and on a schedule.
-# The scheduled workflow runs every at 00:00 on Sunday UTC time.
+# Run workflow each time code is pushed to your repository. The scheduled run
+# (every 00:00 on Sunday UTC) is disabled as this repository is deprecated.
 on:
   push:
-  schedule:
-  - cron: '0 0 * * 0'
+  # schedule:
+  # - cron: '0 0 * * 0'
 
 jobs:
   tests:
