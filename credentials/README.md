@@ -1,5 +1,7 @@
 # Go API client for credentials
 
+> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-v2/credentials](https://github.com/pingidentity/pingone-go-sdk-v2). This repository is no longer maintained; existing versions remain functional.
+
 The PingOne Platform API covering the PingOne Credentials service
 
 ## Overview
