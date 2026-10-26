@@ -1,9 +1,9 @@
 # PingOne Administration GO SDK
 
-> **⚠️ DEPRECATED:** This repository has moved to [github.com/pingidentity/pingone-go-sdk-v2](https://github.com/pingidentity/pingone-go-sdk-v2).
+> **⚠️ DEPRECATED:** This repository has moved to [github.com/pingidentity/pingone-go-sdk-legacy](https://github.com/pingidentity/pingone-go-sdk-legacy).
 > This repo is no longer maintained. All existing tags and versions remain available and functional.
 > New releases and updates will only be published to the new repository.
-> The final version published on this repository is [`v0.15.0`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/v0.15.0). All tags later than `v0.15.0` are published on [github.com/pingidentity/pingone-go-sdk-v2](https://github.com/pingidentity/pingone-go-sdk-v2).
+> The final version published on this repository is [`v0.15.0`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/v0.15.0). All tags later than `v0.15.0` are published on [github.com/pingidentity/pingone-go-sdk-legacy](https://github.com/pingidentity/pingone-go-sdk-legacy).
 
 The PingOne GO SDK provides a set of functions and stucts that help with interacting with the PingOne public cloud API.
 

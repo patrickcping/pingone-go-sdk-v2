@@ -1,7 +1,7 @@
 # Go API client for risk
 
-> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-v2/risk](https://github.com/pingidentity/pingone-go-sdk-v2). This repository is no longer maintained; existing versions remain functional.
-> The final version published on this repository is [`risk/v0.22.0`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/risk/v0.22.0). All tags later than `risk/v0.22.0` are published on [github.com/pingidentity/pingone-go-sdk-v2](https://github.com/pingidentity/pingone-go-sdk-v2).
+> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-legacy/risk](https://github.com/pingidentity/pingone-go-sdk-legacy). This repository is no longer maintained; existing versions remain functional.
+> The final version published on this repository is [`risk/v0.22.0`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/risk/v0.22.0). All tags later than `risk/v0.22.0` are published on [github.com/pingidentity/pingone-go-sdk-legacy](https://github.com/pingidentity/pingone-go-sdk-legacy).
 
 The PingOne Platform API covering the PingOne Risk service
 

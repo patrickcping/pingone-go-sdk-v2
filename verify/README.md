@@ -1,7 +1,7 @@
 # Go API client for verify
 
-> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-v2/verify](https://github.com/pingidentity/pingone-go-sdk-v2). This repository is no longer maintained; existing versions remain functional.
-> The final version published on this repository is [`verify/v0.11.2`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/verify/v0.11.2). All tags later than `verify/v0.11.2` are published on [github.com/pingidentity/pingone-go-sdk-v2](https://github.com/pingidentity/pingone-go-sdk-v2).
+> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-legacy/verify](https://github.com/pingidentity/pingone-go-sdk-legacy). This repository is no longer maintained; existing versions remain functional.
+> The final version published on this repository is [`verify/v0.11.2`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/verify/v0.11.2). All tags later than `verify/v0.11.2` are published on [github.com/pingidentity/pingone-go-sdk-legacy](https://github.com/pingidentity/pingone-go-sdk-legacy).
 
 The PingOne Platform API covering the PingOne Verify service
 
