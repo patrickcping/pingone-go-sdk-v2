@@ -1,7 +1,7 @@
 # Go API client for management
 
-> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-v2/management](https://github.com/pingidentity/pingone-go-sdk-v2). This repository is no longer maintained; existing versions remain functional.
-> The final version published on this repository is [`management/v0.77.0`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/management/v0.77.0). All tags later than `management/v0.77.0` are published on [github.com/pingidentity/pingone-go-sdk-v2](https://github.com/pingidentity/pingone-go-sdk-v2).
+> **⚠️ DEPRECATED:** This module has moved to [github.com/pingidentity/pingone-go-sdk-legacy/management](https://github.com/pingidentity/pingone-go-sdk-legacy). This repository is no longer maintained; existing versions remain functional.
+> The final version published on this repository is [`management/v0.77.0`](https://github.com/patrickcping/pingone-go-sdk-v2/releases/tag/management/v0.77.0). All tags later than `management/v0.77.0` are published on [github.com/pingidentity/pingone-go-sdk-legacy](https://github.com/pingidentity/pingone-go-sdk-legacy).
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
